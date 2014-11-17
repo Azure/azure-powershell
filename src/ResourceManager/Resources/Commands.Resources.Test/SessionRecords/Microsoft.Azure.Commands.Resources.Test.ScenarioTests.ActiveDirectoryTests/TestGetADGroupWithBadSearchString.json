@@ -1,0 +1,70 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/groups?&$filter=startswith(displayName,'BadSearchString')&api-version=1.42-previewInternal",
+      "EncodedRequestUri": "LzE0NDlkNWI3LThhODMtNDdkYi1hZTRjLTliMDNlODg4YmFkMC9ncm91cHM/JiRmaWx0ZXI9c3RhcnRzd2l0aChkaXNwbGF5TmFtZSwnQmFkU2VhcmNoU3RyaW5nJykmYXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1449d5b7-8a83-47db-ae4c-9b03e888bad0/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.Group\",\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "GHWom5F4FhO0ryJj9WTZucEuZW4pI1MbWekjNz7LQZA="
+        ],
+        "request-id": [
+          "98512b5c-325c-4651-96ad-88d0f5b378a4"
+        ],
+        "client-request-id": [
+          "63067f08-eb19-4940-8885-84f2bab74608"
+        ],
+        "x-ms-gateway-rewrite": [
+          "false"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.42-previewInternal"
+        ],
+        "ocp-aad-session-key": [
+          "RS6Tgp8WngStYaXdco10uNc7vUva3sD79ngeu0bi1Qxm3oShEWdmKrkd2SHJ01u8Rc6RZaqqiWGbVrinxFcfdIy8fr-aSZRB6ONWjUILvB0.-YYk7edzL75e3io2HZ1GQvzIYXIuat6OsPjdfM40CYI"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Tue, 16 Sep 2014 00:28:14 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "db1ab6f0-4769-4b27-930e-01e2ef9c123c",
+    "TenantId": "1449d5b7-8a83-47db-ae4c-9b03e888bad0"
+  }
+}

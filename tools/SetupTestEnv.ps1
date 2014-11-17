@@ -15,63 +15,6 @@
 $scriptFolder = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . ($scriptFolder + '.\SetupEnv.ps1')
 
-function Get-RegistryKeyValues()
-{
-    param
-    (
-        [Parameter(Mandatory=1)][string]$regKeyPath,
-        [Parameter(Mandatory=1)][string]$regKeyValueName
-    )
-
-    $regKeyValue = ""
-
-    $regKeyValueObject = Get-ItemProperty -Path $regKeyPath -Name $regKeyValueName  -ErrorAction SilentlyContinue
-    if ($regKeyValueObject -ne $null) {
-        $regKeyValue = $regKeyValueObject.$regKeyValueName
-    }
-    return $regKeyValue
-}
-
-#Get WebPI CMD
-$WebPi="$scriptFolder\test\WebpiCmd.exe"
-
-$allWebPIVersions = Get-ChildItem HKLM:\SOFTWARE\Microsoft\WebPlatformInstaller -ea SilentlyContinue | 
-    ForEach-Object {  
-        if($_.GetValue("InstallPath", $null) -ne $null)  
-        {
-            $WebPi = $_.GetValue("InstallPath")  + "WebpiCmd.exe"
-        }
-    }
-
-Write-Host "using webpi command: $WebPi"
-
-$programFiles = $env:ProgramFiles
-if (Test-Path "$env:ProgramW6432"){
-    $programFiles = $env:ProgramW6432
-}
-
-if (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Microsoft SDKs\ServiceHosting\v2.4")) {
-    Write-Host installing Azure Authoring Tools
-    Start-Process "$WebPi" "/Install /products:WindowsAzureSDK_Only.2.4 /accepteula" -Wait
-}
-
-$detectKey = "HKLM:\SOFTWARE\Microsoft\Windows Azure Emulator";
-$producteVersion = Get-RegistryKeyValues $detectKey "FullVersion"
-if (!($producteVersion.StartsWith("2.4."))) {
-    Write-Host installing Azure Compute Emulator
-    Start-Process "$WebPi" "/Install /products:WindowsAzureEmulator_Only.2.4 /accepteula" -Wait
-}
-
-$detectKey = "HKLM:\SOFTWARE\Microsoft\Windows Azure Storage Emulator"
-if (${env:ADX64Platform}){
-    $detectKey = "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows Azure Storage Emulator"
-}
-$producteVersion = Get-RegistryKeyValues $detectKey "FullVersion"
-if (!($producteVersion.StartsWith("3.3"))) {
-    Write-Host installing Azure Storage Emulator
-    Start-Process "$WebPi" "/Install /products:WindowsAzureStorageEmulator.3.3 /accepteula" -Wait
-}
-
 try {
   git.exe| Out-Null
 }

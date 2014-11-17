@@ -109,8 +109,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         /// <summary>
         /// Write the given JavaScript object in dictionaroy representation out to package.json
         /// </summary>
+        /// <param name="directoryPath"></param>
         /// <param name="contents">The JavaScript object in dictionary representation</param>
-
         static void SetContents(string directoryPath, Dictionary<string, object> contents)
         {
             string fileName = Path.Combine(directoryPath, Resources.PackageJsonFileName);

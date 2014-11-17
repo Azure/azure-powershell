@@ -39,6 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public List<ResourceExtensionStatus> ResourceExtensionStatusList { get; set; }
         public string PublicIPAddress { get; set; }
         public string PublicIPName { get; set; }
+        public NetworkInterfaceList NetworkInterfaces { get; set; }
 
         public PersistentVM GetInstance()
         {

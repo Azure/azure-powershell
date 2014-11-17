@@ -131,7 +131,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
                 {
                     using (System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create())
                     {
-                        powershell.AddCommand("Get-DscResource").AddParameter("Name", resourceName).
+                        powershell.AddCommand("Get-DscResource").
+                            AddCommand("Where-Object").AddParameter("Property", "ResourceType").AddParameter("Value", resourceName).AddParameter("EQ", true).
                             AddCommand("Foreach-Object").AddParameter("MemberName", "Module").
                             AddCommand("Foreach-Object").AddParameter("MemberName", "Name");
                         moduleName = powershell.Invoke<string>().First();

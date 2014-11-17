@@ -353,7 +353,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
             //Location mapping
             Mapper.CreateMap<LocationsListResponse.Location, PVM.LocationsContext>()
                   .ForMember(c => c.VirtualMachineRoleSizes, o => o.MapFrom(r => r.ComputeCapabilities == null ? null : r.ComputeCapabilities.VirtualMachinesRoleSizes))
-                  .ForMember(c => c.WebWorkerRoleSizes, o => o.MapFrom(r => r.ComputeCapabilities == null ? null : r.ComputeCapabilities.WebWorkerRoleSizes));
+                  .ForMember(c => c.WebWorkerRoleSizes, o => o.MapFrom(r => r.ComputeCapabilities == null ? null : r.ComputeCapabilities.WebWorkerRoleSizes))
+                  .ForMember(c => c.StorageAccountTypes, o => o.MapFrom(r => r.StorageCapabilities == null ? null : r.StorageCapabilities.StorageAccountTypes));
             Mapper.CreateMap<OperationStatusResponse, PVM.LocationsContext>()
                   .ForMember(c => c.OperationId, o => o.MapFrom(r => r.Id))
                   .ForMember(c => c.OperationStatus, o => o.MapFrom(r => r.Status.ToString()));
@@ -568,6 +569,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
 
             Mapper.CreateMap<NSM.RoleInstance.PublicIP, PVM.PublicIP>();
             Mapper.CreateMap<NSM.ConfigurationSet.PublicIP, PVM.AssignPublicIP>();
+
+            // NetworkInterface
+            Mapper.CreateMap<PVM.AssignNetworkInterface, NSM.NetworkInterface>();
+            Mapper.CreateMap<PVM.AssignIPConfiguration, NSM.IPConfiguration>();
+            Mapper.CreateMap<PVM.NetworkInterface, NSM.NetworkInterfaceInstance>();
+            Mapper.CreateMap<PVM.IPConfiguration, NSM.IPConfigurationInstance>();
+            
+            Mapper.CreateMap<NSM.NetworkInterface, PVM.AssignNetworkInterface>();
+            Mapper.CreateMap<NSM.IPConfiguration, PVM.AssignIPConfiguration>();
+            Mapper.CreateMap<NSM.NetworkInterfaceInstance, PVM.NetworkInterface>();
+            Mapper.CreateMap<NSM.IPConfigurationInstance, PVM.IPConfiguration>();
         }
     }
 }

@@ -139,19 +139,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             var vmContext = new T
             {
                 ServiceName                 = serviceName,
-                DeploymentName              = deployment.Name,
-                DNSName                     = deployment.Uri.AbsoluteUri,
-                Name                        = vmRole.RoleName,
-                AvailabilitySetName         = vmRole.AvailabilitySetName,
-                Label                       = vmRole.Label,
-                InstanceSize                = vmRole.RoleSize,
+                DeploymentName              = deployment == null ? string.Empty : deployment.Name,
+                DNSName                     = deployment == null || deployment.Uri == null ? string.Empty : deployment.Uri.AbsoluteUri,
+                Name                        = vmRole == null ? string.Empty : vmRole.RoleName,
+                AvailabilitySetName         = vmRole == null ? string.Empty : vmRole.AvailabilitySetName,
+                Label                       = vmRole == null ? string.Empty : vmRole.Label,
+                InstanceSize                = vmRole == null ? string.Empty : vmRole.RoleSize,
                 InstanceStatus              = roleInstance == null ? string.Empty : roleInstance.InstanceStatus,
                 IpAddress                   = roleInstance == null ? string.Empty : roleInstance.IPAddress,
-                PublicIPAddress             = roleInstance == null ? null
-                                            : roleInstance.PublicIPs == null || !roleInstance.PublicIPs.Any() ? null
+                PublicIPAddress             = roleInstance == null ? string.Empty
+                                            : roleInstance.PublicIPs == null || !roleInstance.PublicIPs.Any() ? string.Empty
                                             : roleInstance.PublicIPs.First().Address,
-                PublicIPName                = roleInstance == null ? null
-                                            : roleInstance.PublicIPs == null || !roleInstance.PublicIPs.Any() ? null
+                PublicIPName                = roleInstance == null ? string.Empty
+                                            : roleInstance.PublicIPs == null || !roleInstance.PublicIPs.Any() ? string.Empty
                                             : !string.IsNullOrEmpty(roleInstance.PublicIPs.First().Name) ? roleInstance.PublicIPs.First().Name
                                             : PersistentVMHelper.GetPublicIPName(vmRole),
                 InstanceStateDetails        = roleInstance == null ? string.Empty : roleInstance.InstanceStateDetails,
@@ -166,22 +166,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 Status                      = roleInstance == null ? string.Empty : roleInstance.InstanceStatus,
                 GuestAgentStatus            = roleInstance == null ? null : Mapper.Map<PVM.GuestAgentStatus>(roleInstance.GuestAgentStatus),
                 ResourceExtensionStatusList = roleInstance == null ? null : Mapper.Map<List<PVM.ResourceExtensionStatus>>(roleInstance.ResourceExtensionStatusList),
-                OperationId                 = deployment.RequestId,
-                OperationStatus             = deployment.StatusCode.ToString(),
+                OperationId                 = deployment == null ? string.Empty : deployment.RequestId,
+                OperationStatus             = deployment == null ? string.Empty : deployment.StatusCode.ToString(),
                 OperationDescription        = CommandRuntime.ToString(),
+                NetworkInterfaces           = roleInstance == null ? null : Mapper.Map<PVM.NetworkInterfaceList>(roleInstance.NetworkInterfaces),
                 VM = new PVM.PersistentVM
                 {
-                    AvailabilitySetName               = vmRole.AvailabilitySetName,
-                    Label                             = vmRole.Label,
-                    RoleName                          = vmRole.RoleName,
-                    RoleSize                          = vmRole.RoleSize,
-                    RoleType                          = vmRole.RoleType,
-                    DefaultWinRmCertificateThumbprint = vmRole.DefaultWinRmCertificateThumbprint,
-                    ProvisionGuestAgent               = vmRole.ProvisionGuestAgent,
-                    ResourceExtensionReferences       = Mapper.Map<PVM.ResourceExtensionReferenceList>(vmRole.ResourceExtensionReferences),
-                    DataVirtualHardDisks              = Mapper.Map<Collection<PVM.DataVirtualHardDisk>>(vmRole.DataVirtualHardDisks),
-                    OSVirtualHardDisk                 = Mapper.Map<PVM.OSVirtualHardDisk>(vmRole.OSVirtualHardDisk),
-                    ConfigurationSets                 = PersistentVMHelper.MapConfigurationSets(vmRole.ConfigurationSets)
+                    AvailabilitySetName               = vmRole == null ? string.Empty : vmRole.AvailabilitySetName,
+                    Label                             = vmRole == null ? string.Empty : vmRole.Label,
+                    RoleName                          = vmRole == null ? string.Empty : vmRole.RoleName,
+                    RoleSize                          = vmRole == null ? string.Empty : vmRole.RoleSize,
+                    RoleType                          = vmRole == null ? string.Empty : vmRole.RoleType,
+                    DefaultWinRmCertificateThumbprint = vmRole == null ? string.Empty : vmRole.DefaultWinRmCertificateThumbprint,
+                    ProvisionGuestAgent               = vmRole == null ? null : vmRole.ProvisionGuestAgent,
+                    ResourceExtensionReferences       = vmRole == null ? null : Mapper.Map<PVM.ResourceExtensionReferenceList>(vmRole.ResourceExtensionReferences),
+                    DataVirtualHardDisks              = vmRole == null ? null : Mapper.Map<Collection<PVM.DataVirtualHardDisk>>(vmRole.DataVirtualHardDisks),
+                    OSVirtualHardDisk                 = vmRole == null ? null : Mapper.Map<PVM.OSVirtualHardDisk>(vmRole.OSVirtualHardDisk),
+                    ConfigurationSets                 = vmRole == null ? null : PersistentVMHelper.MapConfigurationSets(vmRole.ConfigurationSets)
                 }
             };
 

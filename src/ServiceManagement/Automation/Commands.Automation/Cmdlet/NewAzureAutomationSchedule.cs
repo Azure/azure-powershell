@@ -38,12 +38,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         private const string ByDaily = "ByDaily";
 
         /// <summary>
+        /// The hourly schedule parameter set.
+        /// </summary>
+        private const string ByHourly = "ByHourly";
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="NewAzureAutomationSchedule"/> class.
         /// </summary>
         public NewAzureAutomationSchedule()
         {
             this.ExpiryTime = Constants.DefaultScheduleExpiryTime;
-            this.DayInterval = Constants.DefaultDailyScheduleDayInterval;
         }
         
         /// <summary>
@@ -59,13 +63,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The schedule start time.")]
+        [ValidateNotNull]
         public DateTime StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule description.
         /// </summary>
-        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule description.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule description.")]
         public string Description { get; set; }
 
         /// <summary>
@@ -77,14 +81,23 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the schedule expiry time.
         /// </summary>
-        [Parameter(ParameterSetName = ByDaily, Position = 4, Mandatory = false, HelpMessage = "The schedule expiry time.")]
+        [Parameter(ParameterSetName = ByDaily, Mandatory = false, HelpMessage = "The schedule expiry time.")]
+        [Parameter(ParameterSetName = ByHourly, Mandatory = false, HelpMessage = "The schedule expiry time.")]
         public DateTime ExpiryTime { get; set; }
 
         /// <summary>
         /// Gets or sets the daily schedule day interval.
         /// </summary>
-        [Parameter(ParameterSetName = ByDaily, Position = 5, Mandatory = false, HelpMessage = "The daily schedule day interval.")]
+        [Parameter(ParameterSetName = ByDaily, Mandatory = true, HelpMessage = "The daily schedule day interval.")]
+        [ValidateRange(1, int.MaxValue)]
         public int DayInterval { get; set; }
+
+        /// <summary>
+        /// Gets or sets the hourly schedule hour interval.
+        /// </summary>
+        [Parameter(ParameterSetName = ByHourly, Mandatory = true, HelpMessage = "The hourly schedule hour interval.")]
+        [ValidateRange(1, int.MaxValue)]
+        public int HourInterval { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -117,7 +130,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 Schedule schedule = this.AutomationClient.CreateSchedule(this.AutomationAccountName, oneTimeSchedule);
                 this.WriteObject(schedule);
             }
-            else
+            else if (this.DayInterval >= 1)
             {
                 // ByDaily
                 var dailySchedule = new DailySchedule
@@ -130,6 +143,21 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 };
 
                 Schedule schedule = this.AutomationClient.CreateSchedule(this.AutomationAccountName, dailySchedule);
+                this.WriteObject(schedule);
+            }
+            else if (this.HourInterval >= 1)
+            {
+                // ByHourly
+                var hourlySchedule = new HourlySchedule
+                {
+                    Name = this.Name,
+                    StartTime = this.StartTime,
+                    HourInterval = this.HourInterval,
+                    Description = this.Description,
+                    ExpiryTime = this.ExpiryTime
+                };
+
+                Schedule schedule = this.AutomationClient.CreateSchedule(this.AutomationAccountName, hourlySchedule);
                 this.WriteObject(schedule);
             }
         }

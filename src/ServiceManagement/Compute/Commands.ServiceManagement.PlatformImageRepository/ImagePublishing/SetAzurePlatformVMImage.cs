@@ -164,6 +164,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
 
         protected override void OnProcessRecord()
         {
+            ServiceManagementProfile.Initialize();
             this.SetAzurePlatformVMImageProcess();
         }
     }

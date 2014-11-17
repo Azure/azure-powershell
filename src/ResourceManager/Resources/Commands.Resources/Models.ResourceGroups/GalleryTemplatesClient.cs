@@ -98,6 +98,24 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             if (!options.AllVersions && result.Count > 1)
             {
+                if (!string.IsNullOrEmpty(options.Publisher) && string.IsNullOrEmpty(options.ApplicationName) && string.IsNullOrEmpty(options.Identity))
+                {
+                    // we return a list of the most recent templates, for each name.
+                    List<GalleryItem> latest = new List<GalleryItem>();
+                    IEnumerable<string> distinctNames = result.Select(g => g.Name).Distinct();
+                    foreach (var name in distinctNames)
+                    {
+                        List<GalleryItem> galleryItems = result.Where(x => x.Name.Equals(name)).ToList();
+                        GalleryItem recentTemplate = this.MostRecentTemplate(galleryItems);
+                        if (recentTemplate != null)
+                        {
+                            latest.Add(recentTemplate);
+                        }
+                    }
+
+                    return latest.Select(i => i.ToPSGalleryItem()).ToList();
+                }
+
                 // Take only the most recent version
                 GalleryItem mostRecentTemplate = MostRecentTemplate(result);
                 if (mostRecentTemplate != null)
@@ -368,7 +386,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             RuntimeDefinedParameter runtimeParameter = new RuntimeDefinedParameter()
             {
                 // For duplicated template parameter names, add a suffix FromTemplate to distinguish them from the cmdlet parameter.
-                Name = staticParameters.Any(n => n.StartsWith(name, StringComparison.OrdinalIgnoreCase)) 
+                Name = staticParameters.Any(n => n.StartsWith(name, StringComparison.OrdinalIgnoreCase))
                     ? name + duplicatedParameterSuffix : name,
                 ParameterType = GetParameterType(parameter.Value.Type),
                 Value = defaultValue
@@ -414,7 +432,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 parameters = new ItemListParameters() { Filter = string.Join(" and ", filterStrings) };
             }
-            
+
             List<GalleryItem> galleryItems = GalleryClient.Items.List(parameters).Items.ToList();
             if (!string.IsNullOrEmpty(options.ApplicationName))
             {

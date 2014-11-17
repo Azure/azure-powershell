@@ -196,6 +196,50 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             HelpMessage = "To Set the Extension State to 'Uninstall'.")]
         public override SwitchParameter Uninstall { get; set; }
 
+        [Parameter(
+            ParameterSetName = SetByExtensionParamSetName,
+            Position = 9,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Public Configuration's Reference Key.")]
+        [Parameter(
+            ParameterSetName = SetByReferenceParamSetName,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Public Configuration's Reference Key.")]
+        [Parameter(
+            ParameterSetName = SetByExtensionAndConfigFileParamSetName,
+            Position = 9,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Public Configuration's Reference Key.")]
+        [Parameter(
+            ParameterSetName = SetByReferenceAndConfigFileParamSetName,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Public Configuration's Reference Key.")]
+        public override string PublicConfigKey { get; set; }
+
+        [Parameter(
+            ParameterSetName = SetByExtensionParamSetName,
+            Position = 10,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Private Configuration's Reference Key.")]
+        [Parameter(
+            ParameterSetName = SetByReferenceParamSetName,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Private Configuration's Reference Key.")]
+        [Parameter(
+            ParameterSetName = SetByExtensionAndConfigFileParamSetName,
+            Position = 10,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Private Configuration's Reference Key.")]
+        [Parameter(
+            ParameterSetName = SetByReferenceAndConfigFileParamSetName,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Private Configuration's Reference Key.")]
+        public override string PrivateConfigKey { get; set; }
+
         internal void ExecuteCommand()
         {
             ValidateParameters();

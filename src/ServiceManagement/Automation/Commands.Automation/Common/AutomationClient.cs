@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         new AutomationManagement.Models.JobStreamListStreamItemsParameters
                         {
                             JobId = jobModel.Id,
-                            StartTime = createdSince.ToUniversalTime(),
+                            StartTime = this.FormatDateTime(createdSince),
                             StreamType = streamTypeName,
                             SkipToken = skipToken
                         });
@@ -528,6 +528,34 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 ScheduleType =
                     AutomationManagement.Models.ScheduleType
                                         .DailySchedule
+            };
+
+            var scheduleCreateParameters = new AutomationManagement.Models.ScheduleCreateParameters
+            {
+                Schedule = scheduleModel
+            };
+
+            var scheduleCreateResponse = this.automationManagementClient.Schedules.Create(
+                automationAccountName,
+                scheduleCreateParameters);
+
+            return this.GetSchedule(automationAccountName, new Guid(scheduleCreateResponse.Schedule.Id));
+        }
+
+        public Schedule CreateSchedule(string automationAccountName, HourlySchedule schedule)
+        {
+            this.ValidateScheduleName(automationAccountName, schedule.Name);
+
+            var scheduleModel = new AutomationManagement.Models.Schedule
+            {
+                Name = schedule.Name,
+                StartTime = schedule.StartTime.ToUniversalTime(),
+                ExpiryTime = schedule.ExpiryTime.ToUniversalTime(),
+                Description = schedule.Description,
+                HourInterval = schedule.HourInterval,
+                ScheduleType =
+                    AutomationManagement.Models.ScheduleType
+                                        .HourlySchedule
             };
 
             var scheduleCreateParameters = new AutomationManagement.Models.ScheduleCreateParameters
@@ -631,6 +659,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             if (schedule.ScheduleType == AutomationManagement.Models.ScheduleType.DailySchedule)
             {
                 return new DailySchedule(schedule);
+            }
+            else if (schedule.ScheduleType == AutomationManagement.Models.ScheduleType.HourlySchedule)
+            {
+                return new HourlySchedule(schedule);
             }
             else
             {

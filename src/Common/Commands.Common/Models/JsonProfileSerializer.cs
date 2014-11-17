@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Common.Interfaces;
 using Newtonsoft.Json;
@@ -32,24 +33,60 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
             }, Formatting.Indented);
         }
 
-        public void Deserialize(string contents, AzureProfile profile)
+        public bool Deserialize(string contents, AzureProfile profile)
         {
-            var jsonProfile = JObject.Parse(contents);
+            DeserializeErrors = new List<string>();
 
-            foreach (var env in jsonProfile["Environments"])
+            try
             {
-                profile.Environments[(string)env["Name"]] = JsonConvert.DeserializeObject<AzureEnvironment>(env.ToString());
-            }
+                var jsonProfile = JObject.Parse(contents);
 
-            foreach (var subscription in jsonProfile["Subscriptions"])
-            {
-                profile.Subscriptions[new Guid((string)subscription["Id"])] = JsonConvert.DeserializeObject<AzureSubscription>(subscription.ToString());
-            }
+                foreach (var env in jsonProfile["Environments"])
+                {
+                    try
+                    {
+                        profile.Environments[(string) env["Name"]] =
+                            JsonConvert.DeserializeObject<AzureEnvironment>(env.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        DeserializeErrors.Add(ex.Message);
+                    }
+                }
 
-            foreach (var account in jsonProfile["Accounts"])
-            {
-                profile.Accounts[(string)account["Id"]] = JsonConvert.DeserializeObject<AzureAccount>(account.ToString());
+                foreach (var subscription in jsonProfile["Subscriptions"])
+                {
+                    try
+                    {
+                        profile.Subscriptions[new Guid((string) subscription["Id"])] =
+                            JsonConvert.DeserializeObject<AzureSubscription>(subscription.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        DeserializeErrors.Add(ex.Message);
+                    }
+                }
+
+                foreach (var account in jsonProfile["Accounts"])
+                {
+                    try
+                    {
+                        profile.Accounts[(string) account["Id"]] =
+                            JsonConvert.DeserializeObject<AzureAccount>(account.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        DeserializeErrors.Add(ex.Message);
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                DeserializeErrors.Add(ex.Message);
+            }
+            return DeserializeErrors.Count == 0;
         }
+
+        public IList<string> DeserializeErrors { get; private set; }
     }
 }

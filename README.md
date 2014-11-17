@@ -158,7 +158,7 @@ You can also find the standalone installers for all the versions at [Downloads](
 
 In general, following are the steps to start using Microsoft Azure PowerShell
 
-* Get yourself authenticated with Microsoft Azure. For details, please check out [this article](http://www.azure.microsoft.com/en-us/manage/install-and-configure-windows-powershell/).
+* Get yourself authenticated with Microsoft Azure. For details, please check out [this article](http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).
   * Option 1: Login with your Microsoft account or Organizational account directly from PowerShell. Microsoft Azure Active Directory authentication is used in this case. No management certificate is needed.
       * Starting from 0.8.6, you can use ``Add-AzureAccount -Credential`` to avoid the browser pop up for Organizational account.
   * Option 2: Download and import a publish settings file which contains a management certificate.

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AutomationAccountNotFound" xml:space="preserve">
-    <value>The Automation accout was not found.</value>
+    <value>The Automation account was not found.</value>
     <comment>Automation</comment>
   </data>
   <data name="FileNotFound" xml:space="preserve">
@@ -127,6 +127,10 @@
   </data>
   <data name="InvalidDailyScheduleModel" xml:space="preserve">
     <value>The daily schedule model is not valid. Schedule name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="InvalidHourlyScheduleModel" xml:space="preserve">
+    <value>The hourly schedule model is not valid. Schedule name: {0}.</value>
     <comment>Automation</comment>
   </data>
   <data name="InvalidJobModel" xml:space="preserve">

@@ -23,16 +23,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public const string BasicAuthorization = "Basic";
 
-        public const string TracingEventResponseHeaderPrefix = "TracingEvent_";
-
-        public const string RunningState = "Running";
-        public const string StoppedState = "Stopped";
-
-        public const string CustomDomainsEnabledSettingsName = "CustomDomainsEnabled";
-        public const string SslSupportSettingsName = "SslSupport";
-
         public const string UserAgentHeaderName = "User-Agent";
+
         public const string UserAgentHeaderValue = "AzurePowershell/v" + AzurePowerShell.AssemblyVersion;
+
         public static ProductInfoHeaderValue UserAgentValue = new ProductInfoHeaderValue(
             "AzurePowershell",
             string.Format("v{0}", AzurePowerShell.AssemblyVersion));
@@ -109,18 +103,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public const string AzureStorageEndpointSuffix = "core.windows.net";
 
         public const string ChinaStorageEndpointSuffix = "core.chinacloudapi.cn";
-
-        public const string AzureStorageBlobEndpointFormat = "{0}://{1}.blob.core.windows.net/";
-
-        public const string AzureStorageQueueEndpointFormat = "{0}://{1}.queue.core.windows.net/";
-
-        public const string AzureStorageTableEndpointFormat = "{0}://{1}.table.core.windows.net/";
-
-        public const string ChinaStorageBlobEndpointFormat = "{0}://{1}.blob.core.chinacloudapi.cn/";
-
-        public const string ChinaStorageQueueEndpointFormat = "{0}://{1}.queue.core.chinacloudapi.cn/";
-
-        public const string ChinaStorageTableEndpointFormat = "{0}://{1}.table.core.chinacloudapi.cn/";
 
         public const string AzureSqlDatabaseDnsSuffix = ".database.windows.net";
 

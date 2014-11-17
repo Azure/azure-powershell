@@ -102,15 +102,5 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return name;
         }
-
-        public static bool IsPunyCodeName(string name)
-        {
-            if (!string.IsNullOrWhiteSpace(name) && name.Contains(idnHostNamePrefix))
-            {
-                return true;
-            }
-
-            return false;
-        }
     }
 }

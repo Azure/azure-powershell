@@ -45,8 +45,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
         // If the file is already present, it loads its content in the ADAL cache
         private ProtectedFileTokenCache()
         {
-            this.AfterAccess = AfterAccessNotification;
-            this.BeforeAccess = BeforeAccessNotification;
+            AfterAccess = AfterAccessNotification;
+            BeforeAccess = BeforeAccessNotification;
             lock (fileLock)
             {
                 if (ProfileClient.DataStore.FileExists(CacheFileName))
@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
                     var existingData = ProfileClient.DataStore.ReadFileAsBytes(CacheFileName);
                     if (existingData != null)
                     {
-                        this.Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
                     }
                 }
             }
@@ -81,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
                     var existingData = ProfileClient.DataStore.ReadFileAsBytes(CacheFileName);
                     if (existingData != null)
                     {
-                        this.Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
                     }
                 }
             }
@@ -91,15 +91,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
         void AfterAccessNotification(TokenCacheNotificationArgs args)
         {
             // if the access operation resulted in a cache update
-            if (this.HasStateChanged)
+            if (HasStateChanged)
             {
                 lock (fileLock)
                 {
                     // reflect changes in the persistent store
                     ProfileClient.DataStore.WriteFile(CacheFileName,
-                        ProtectedData.Protect(this.Serialize(), null, DataProtectionScope.CurrentUser));
+                        ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser));
                     // once the write operation took place, restore the HasStateChanged bit to false
-                    this.HasStateChanged = false;
+                    HasStateChanged = false;
                 }
             }
         }

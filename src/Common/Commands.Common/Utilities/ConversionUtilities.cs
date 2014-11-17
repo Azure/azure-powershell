@@ -47,35 +47,18 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
                         if (entry.Value is SecureString)
                         {
-                            value = ConversionUtilities.SecureStringToString(entry.Value as SecureString);
+                            value = SecureStringToString(entry.Value as SecureString);
                         }
 
                         if (addValueLayer)
                         {
-                            dictionary[(string)entry.Key] = new Hashtable() { { "value", value } };
+                            dictionary[(string)entry.Key] = new Hashtable { { "value", value } };
                         }
                         else
                         {
                             dictionary[(string)entry.Key] = value;
                         }
                     }
-                }
-                return dictionary;
-            }
-        }
-
-        public static Dictionary<string, string> ToStringDictionary(this Hashtable hashtable)
-        {
-            if (hashtable == null)
-            {
-                return null;
-            }
-            else
-            {
-                var dictionary = new Dictionary<string, string>();
-                foreach (var entry in hashtable.Cast<DictionaryEntry>())
-                {
-                    dictionary[entry.Key.ToString()] = entry.Value == null ? null : entry.Value.ToString();
                 }
                 return dictionary;
             }

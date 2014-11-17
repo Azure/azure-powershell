@@ -26,10 +26,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             cmdletParams.Add(new CmdletParam("ImageName", imageName));
 
-            if (label != null)
-            {
-                cmdletParams.Add(new CmdletParam("Label", label));
-            }
+            cmdletParams.Add(new CmdletParam("Label", label));
+
             if (! string.IsNullOrEmpty(recommendedSize))
             {
                 cmdletParams.Add(new CmdletParam("RecommendedVMSize", recommendedSize));

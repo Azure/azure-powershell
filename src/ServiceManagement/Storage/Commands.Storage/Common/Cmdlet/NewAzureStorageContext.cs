@@ -346,7 +346,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             }
             else
             {
-                azureEnvironment = defaultProfileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                azureEnvironment = DefaultProfileClient.GetEnvironmentOrDefault(azureEnvironmentName);
             }
 
             Uri blobEndPoint = azureEnvironment.GetStorageBlobEndpoint(storageAccountName, useHttps);

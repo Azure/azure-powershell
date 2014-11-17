@@ -61,9 +61,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         public static string NodeWorkerRoleScaffoldingPath = Path.Combine(Resources.NodeScaffolding, RoleType.WorkerRole.ToString());
         public static string PHPWebRoleScaffoldingPath = Path.Combine(Resources.PHPScaffolding, RoleType.WebRole.ToString());
         public static string PHPWorkerRoleScaffoldingPath = Path.Combine(Resources.PHPScaffolding, RoleType.WorkerRole.ToString());
-        public static string PythonWebRoleScaffoldingPath = Path.Combine(Resources.PythonScaffolding, RoleType.WebRole.ToString());
-        public static string GeneralWebRoleScaffoldingPath = Path.Combine(Resources.GeneralScaffolding, RoleType.WebRole.ToString());
-        public static string GeneralWorkerRoleScaffoldingPath = Path.Combine(Resources.GeneralScaffolding, RoleType.WorkerRole.ToString());
 
         static Data()
         {

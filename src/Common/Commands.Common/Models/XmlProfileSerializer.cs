@@ -33,28 +33,30 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
             throw new NotImplementedException();
         }
 
-        public void Deserialize(string contents, AzureProfile profile)
+        public bool Deserialize(string contents, AzureProfile profile)
         {
             ProfileData data = null;
             Debug.Assert(profile != null);
 
-            try
+            DeserializeErrors = new List<string>();
+
+            DataContractSerializer serializer = new DataContractSerializer(typeof(ProfileData));
+            using (MemoryStream s = new MemoryStream(Encoding.UTF8.GetBytes(contents ?? "")))
             {
-                DataContractSerializer serializer = new DataContractSerializer(typeof(ProfileData));
-                using (MemoryStream s = new MemoryStream(Encoding.UTF8.GetBytes(contents ?? "")))
+                data = (ProfileData)serializer.ReadObject(s);
+            }
+
+            if (data != null)
+            {
+                foreach (AzureEnvironmentData oldEnv in data.Environments)
                 {
-                    data = (ProfileData)serializer.ReadObject(s);
+                    profile.Environments[oldEnv.Name] = oldEnv.ToAzureEnvironment();
                 }
 
-                if (data != null)
+                List<AzureEnvironment> envs = profile.Environments.Values.ToList();
+                foreach (AzureSubscriptionData oldSubscription in data.Subscriptions)
                 {
-                    foreach (AzureEnvironmentData oldEnv in data.Environments)
-                    {
-                        profile.Environments[oldEnv.Name] = oldEnv.ToAzureEnvironment();
-                    }
-
-                    List<AzureEnvironment> envs = profile.Environments.Values.ToList();
-                    foreach (AzureSubscriptionData oldSubscription in data.Subscriptions)
+                    try
                     {
                         var newSubscription = oldSubscription.ToAzureSubscription(envs);
                         if (newSubscription.Account == null)
@@ -80,9 +82,17 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
 
                         profile.Subscriptions[newSubscription.Id] = newSubscription;
                     }
+                    catch (Exception ex)
+                    {
+                        // Skip subscription if failed to load
+                        DeserializeErrors.Add(ex.Message);
+                    }
                 }
             }
-            catch (XmlException) { /* The profile XML was malformed ignore parsing the file */ }
+
+            return DeserializeErrors.Count == 0;
         }
+
+        public IList<string> DeserializeErrors { get; private set; }
     }
 }

@@ -312,6 +312,36 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, serviceName, DeploymentSlotType.Production, null, 4);
                 Console.WriteLine("successfully updated the deployment");
 
+                var date = new DateTime(2014, 10, 17);
+                // Get Deployment Events by Name
+                var events = vmPowershellCmdlets.GetAzureDeploymentEvent(serviceName, deploymentName, date, date.AddHours(1));
+                Assert.IsTrue(!events.Any() || events.All(e => e.DeploymentName == deploymentName
+                    && !string.IsNullOrEmpty(e.InstanceName) && !string.IsNullOrEmpty(e.RebootReason) && !string.IsNullOrEmpty(e.RoleName)
+                    && (!e.RebootStartTime.HasValue || (e.RebootStartTime >= date && e.RebootStartTime <= date.AddHours(1)))));
+                // Get Deployment Events by Slot
+                events = vmPowershellCmdlets.GetAzureDeploymentEventBySlot(serviceName, DeploymentSlotType.Production, date, date.AddHours(1));
+                Assert.IsTrue(!events.Any() || events.All(e => e.DeploymentSlot == DeploymentSlotType.Production
+                    && !string.IsNullOrEmpty(e.InstanceName) && !string.IsNullOrEmpty(e.RebootReason) && !string.IsNullOrEmpty(e.RoleName)
+                    && (!e.RebootStartTime.HasValue || (e.RebootStartTime >= date && e.RebootStartTime <= date.AddHours(1)))));
+                // Get Deployment Events default by Production Slot
+                events = vmPowershellCmdlets.GetAzureDeploymentEventBySlot(serviceName, null, date, date.AddHours(1));
+                Assert.IsTrue(!events.Any() || events.All(e => e.DeploymentSlot == DeploymentSlotType.Production
+                    && !string.IsNullOrEmpty(e.InstanceName) && !string.IsNullOrEmpty(e.RebootReason) && !string.IsNullOrEmpty(e.RoleName)
+                    && (!e.RebootStartTime.HasValue || (e.RebootStartTime >= date && e.RebootStartTime <= date.AddHours(1)))));
+
+                try
+                {
+                    // Negative test for invalid date range
+                    events = vmPowershellCmdlets.GetAzureDeploymentEvent(serviceName, deploymentName, date, date.AddHours(-1));
+                }
+                catch (Exception ex)
+                {
+                    Assert.IsNotNull(ex.InnerException);
+                    CloudException ce = (CloudException)ex.InnerException;
+                    Assert.IsTrue(ce.Response.StatusCode == System.Net.HttpStatusCode.BadRequest);
+                    Assert.IsTrue(ce.Message.Contains("The date specified in parameter EndTime is not within the correct range."));
+                }
+
                 vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
 
                 pass &= Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDeployment, serviceName, DeploymentSlotType.Production);
@@ -321,6 +351,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 pass = false;
                 Console.WriteLine("Exception occurred: {0}", e.ToString());
                 throw;
+            }
+            finally
+            {
+                if (!Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDeployment, serviceName, DeploymentSlotType.Production))
+                {
+                    vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
+                }
             }
         }
 
@@ -404,6 +441,92 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 pass = true;
 
+            }
+            catch (Exception e)
+            {
+                pass = false;
+                Console.WriteLine("Exception occurred: {0}", e.ToString());
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Test to validate creation of multiple network interfaces on a vm
+        /// </summary>
+        [TestMethod(), TestCategory(Category.Preview), TestProperty("Feature", "IAAS"), Priority(1), Owner("derajen"), Description("Test the cmdlet ((Add,Set,Remove)-AzureNetworkInterfaceConfig)")]
+        public void AzureMultiNicTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+            try
+            {
+                var nic1 = "eth1";
+                var nic2 = "eth2";
+
+                var nic1Address = "10.0.1.40";
+                var nic2Address = "10.0.1.39";
+
+                // Create a VNet
+                var vnetConfig = vmPowershellCmdlets.GetAzureVNetConfig(null);
+                if (vnetConfig.Count > 0)
+                {
+                    vmPowershellCmdlets.RunPSScript("Get-AzureService | Remove-AzureService -Force");
+                    Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.RemoveAzureVNetConfig(), "in use", 5, 30);
+                }
+                vmPowershellCmdlets.SetAzureVNetConfig(Directory.GetCurrentDirectory() + "\\VnetconfigWithLocation.netcfg");
+                var sites = vmPowershellCmdlets.GetAzureVNetSite(null);
+                var subnet = sites[0].Subnets.First().Name;
+                var vnetName = sites[0].Name;
+
+                // Create a new service
+                vmPowershellCmdlets.NewAzureService(serviceName, locationName);
+
+                // Create the VM
+                var azureVMConfigInfo = new AzureVMConfigInfo(vmName, InstanceSize.Large.ToString(), imageName);
+                var azureProvisioningConfig = new AzureProvisioningConfigInfo(OS.Windows, username, password);
+                var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
+                PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
+                vm = (PersistentVM)vmPowershellCmdlets.SetAzureSubnet(vm, new string[] {subnet});
+
+                // AddNetworkInterfaceConfig
+                vm = (PersistentVM)vmPowershellCmdlets.AddAzureNetworkInterfaceConfig(nic1, subnet, nic1Address, vm);
+                vm = (PersistentVM)vmPowershellCmdlets.AddAzureNetworkInterfaceConfig(nic2, subnet, vm);
+
+                Assert.AreEqual(((NetworkConfigurationSet)vm.ConfigurationSets[1]).NetworkInterfaces.Count, 2);
+                Assert.AreEqual(((NetworkConfigurationSet)vm.ConfigurationSets[1]).NetworkInterfaces[0].Name, nic1);
+                Assert.AreEqual(((NetworkConfigurationSet)vm.ConfigurationSets[1]).NetworkInterfaces[0].IPConfigurations[0].SubnetName, subnet);
+                Assert.AreEqual(((NetworkConfigurationSet)vm.ConfigurationSets[1]).NetworkInterfaces[0].IPConfigurations[0].StaticVirtualNetworkIPAddress, nic1Address);
+
+                Assert.AreEqual(((NetworkConfigurationSet)vm.ConfigurationSets[1]).NetworkInterfaces[1].Name, nic2);
+                Assert.AreEqual(((NetworkConfigurationSet)vm.ConfigurationSets[1]).NetworkInterfaces[1].IPConfigurations[0].SubnetName, subnet);
+                Assert.IsNull(((NetworkConfigurationSet)vm.ConfigurationSets[1]).NetworkInterfaces[1].IPConfigurations[0].StaticVirtualNetworkIPAddress);
+
+                // Verify SetNetworkInterfaceConfig
+                vm = (PersistentVM)vmPowershellCmdlets.SetAzureNetworkInterfaceConfig(nic2, subnet, nic2Address, vm);
+                Assert.AreEqual(((NetworkConfigurationSet)vm.ConfigurationSets[1]).NetworkInterfaces[1].Name, nic2);
+                Assert.AreEqual(((NetworkConfigurationSet)vm.ConfigurationSets[1]).NetworkInterfaces[1].IPConfigurations[0].SubnetName, subnet);
+                Assert.AreEqual(((NetworkConfigurationSet)vm.ConfigurationSets[1]).NetworkInterfaces[1].IPConfigurations[0].StaticVirtualNetworkIPAddress, nic2Address);
+
+                // Verify RemoveNetworkInterfaceConfig
+                vm = (PersistentVM)vmPowershellCmdlets.RemoveAzureNetworkInterfaceConfig(nic2, vm);
+                Assert.AreEqual(((NetworkConfigurationSet)vm.ConfigurationSets[1]).NetworkInterfaces.Count, 1);
+                Assert.AreEqual(((NetworkConfigurationSet)vm.ConfigurationSets[1]).NetworkInterfaces[0].Name, nic1);
+
+                // Verify the create vm using NIC
+                vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, vnetName, null, null, null, null, null, null, null, null, null, false );
+
+                // Verify GetNetworkInterfaceConfig
+                var getVM = vmPowershellCmdlets.GetAzureVM(vmName, serviceName);
+
+                Assert.AreEqual(getVM.NetworkInterfaces[0].Name, nic1);
+                Assert.AreEqual(getVM.NetworkInterfaces[0].IpConfigurations[0].SubnetName, subnet);
+                Assert.IsNotNull(getVM.NetworkInterfaces[0].MacAddress);
+
+                var getNic = vmPowershellCmdlets.GetAzureNetworkInterfaceConfig(nic1, getVM);
+                Assert.AreEqual(getNic.Name, nic1);
+                Assert.AreEqual(getNic.IpConfigurations[0].SubnetName, subnet);
+                Assert.IsNotNull(getNic.MacAddress);
+
+                pass = true;
             }
             catch (Exception e)
             {
@@ -893,6 +1016,53 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 pass = false;
                 Assert.Fail("Exception occurred: {0}", e.ToString());
+            }
+        }
+
+        [TestMethod(), TestCategory(Category.Functional), TestCategory(Category.BVT), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet ((New,Get,Remove)-AzureStorageAccount)")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\storageAccountTestData.csv", "storageAccountTestData#csv", DataAccessMethod.Sequential)]
+        public void AzureStorageAccountBVTTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+
+            string storageAccountPrefix = Convert.ToString(TestContext.DataRow["NamePrefix"]);
+            string location = CheckLocation(Convert.ToString(TestContext.DataRow["Location1"]));
+            var storageName = Utilities.GetUniqueShortName(storageAccountPrefix);
+            var grsAccountType = "Standard_GRS";
+            string[] storageStaticProperties = new string[3] { storageName, location, null };
+
+            try
+            {
+                // New-AzureStorageAccount test for default 'Standard_GRS'
+                vmPowershellCmdlets.NewAzureStorageAccount(storageName, location, null, null, null);
+                Assert.IsTrue(StorageAccountVerify(vmPowershellCmdlets.GetAzureStorageAccount(storageName)[0],
+                    storageStaticProperties, storageName, null, true, grsAccountType));
+                Console.WriteLine("{0} is created", storageName);
+
+                vmPowershellCmdlets.SetAzureStorageAccount(storageName, "test", "test", (string)null);
+                Assert.IsTrue(StorageAccountVerify(vmPowershellCmdlets.GetAzureStorageAccount(storageName)[0],
+                    storageStaticProperties, "test", "test", true, grsAccountType));
+                Console.WriteLine("{0} is updated", storageName);
+
+                vmPowershellCmdlets.RemoveAzureStorageAccount(storageName);
+                Assert.IsTrue(Utilities.CheckRemove(vmPowershellCmdlets.GetAzureStorageAccount, storageName), "The storage account was not removed");
+                Console.WriteLine("{0} is removed", storageName);
+
+                pass = true;
+            }
+            catch (Exception e)
+            {
+                pass = false;
+                Assert.Fail("Exception occurred: {0}", e.ToString());
+            }
+            finally
+            {
+                Console.WriteLine("Starts cleaning up...");
+                // Clean-up storage if it is not removed.
+                if (!Utilities.CheckRemove(vmPowershellCmdlets.GetAzureStorageAccount, storageName))
+                {
+                    vmPowershellCmdlets.RemoveAzureStorageAccount(storageName);
+                }
             }
         }
 

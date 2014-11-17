@@ -198,16 +198,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // Install the WinRM cert to the local machine's root location.
                 InstallCertificate(winRmCert, StoreLocation.LocalMachine, StoreName.Root);
 
-                // Invoke Command
                 var connUri = vmPowershellCmdlets.GetAzureWinRMUri(_serviceName, newAzureVMName);
                 var cred = new PSCredential(username, Utilities.convertToSecureString(password));
-                var scriptBlock = ScriptBlock.Create(@"Get-Content -Path 'C:\AzureData\CustomData.bin'");
 
-                var invokeInfo = new InvokeCommandCmdletInfo(connUri, cred, scriptBlock);
-                var invokeCmd = new PowershellCmdlet(invokeInfo);
-                var results = invokeCmd.Run(false);
-
-                Assert.IsTrue(customDataContent == results.First().BaseObject as string);
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    // Invoke Command
+                    var scriptBlock = ScriptBlock.Create(@"Get-Content -Path 'C:\AzureData\CustomData.bin'");
+                    var invokeInfo = new InvokeCommandCmdletInfo(connUri, cred, scriptBlock);
+                    var invokeCmd = new PowershellCmdlet(invokeInfo);
+                    var results = invokeCmd.Run(false);
+                    Assert.IsTrue(customDataContent == results.First().BaseObject as string);
+                }, "Access is denied", 10, 30);
 
                 pass = true;
             }

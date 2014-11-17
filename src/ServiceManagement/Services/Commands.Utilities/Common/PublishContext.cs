@@ -75,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
                 }
                 catch (Exception)
                 {
-                    throw new ArgumentException(Resources.SubscriptionIdNotFoundMessage, settings.Subscription);
+                    throw new ArgumentException(string.Format(Resources.SubscriptionIdNotFoundMessage, settings.Subscription), "settings.Subscription");
                 }
             }
             else

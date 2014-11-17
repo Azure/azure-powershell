@@ -19,6 +19,7 @@ using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Newtonsoft.Json;
 
@@ -46,27 +47,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                     DscPublicSettings publicSettings = null;
                     try
                     {
-                        publicSettings = string.IsNullOrEmpty(PublicConfiguration)
-                            ? null
-                            : JsonConvert.DeserializeObject<DscPublicSettings>(PublicConfiguration);
+                        publicSettings = DscSettingsSerializer.DeserializePublicSettings(PublicConfiguration);
                     }
-                    catch (JsonException)
+                    catch (JsonException e)
                     {
-                        // Try deserialize as version 1.0
-                        try
-                        {
-                            DscPublicSettings.Version1 publicSettingsV1 = JsonConvert.DeserializeObject<DscPublicSettings.Version1>(PublicConfiguration);
-                            publicSettings = publicSettingsV1.ToCurrentVersion();
-                        }
-                        catch (JsonException e)
-                        {
-                            this.ThrowTerminatingError(new ErrorRecord(new JsonException(String.Format(
-                                CultureInfo.CurrentUICulture,
-                                Properties.Resources.AzureVMDscWrongSettingsFormat,
-                                PublicConfiguration), e), string.Empty,
+                        this.ThrowTerminatingError(
+                            new ErrorRecord(
+                                new JsonException(
+                                    String.Format(
+                                        CultureInfo.CurrentUICulture,
+                                        Properties.Resources.AzureVMDscWrongSettingsFormat,
+                                        PublicConfiguration),
+                                    e),
+                                string.Empty,
                                 ErrorCategory.ParserError,
                                 null));
-                        }
                     }
                     var context = new VirtualMachineDscExtensionContext
                     {

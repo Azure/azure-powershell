@@ -68,11 +68,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return AzureSession.ClientFactory.CreateClient<NetworkManagementClient>(CurrentContext.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
-        private void LogDebug(string message)
-        {
-
-        }
-
         private Lazy<ManagementClient> client;
         public ManagementClient ManagementClient 
         { 
@@ -269,29 +264,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             this.ExecuteClientActionNewSM(input, operationDescription, action, (s, response) => this.ContextFactory<OperationResponse, ManagementOperationContext>(response, s));
         }
 
-        protected void ExecuteClientActionNewSM<TResult>(object input, string operationDescription, Func<TResult> action, Func<string, string, OperationStatusResponse> waitOperation) where TResult : OperationResponse
-        {
-            this.ExecuteClientActionNewSM(input, operationDescription, action, waitOperation, (s, response) => this.ContextFactory<OperationResponse, ManagementOperationContext>(response, s));
-        }
-
-        protected T2 ContextFactory<T1, T2>(T1 source) where T2 : ManagementOperationContext
-        {
-            var context = Mapper.Map<T1, T2>(source);
-            context.OperationDescription = CommandRuntime.ToString();
-            return context;
-        }
-
         protected T2 ContextFactory<T1, T2>(T1 source, OperationStatusResponse response) where T2 : ManagementOperationContext
         {
             var context = Mapper.Map<T1, T2>(source);
             context = Mapper.Map(response, context);
             context.OperationDescription = CommandRuntime.ToString();
-            return context;
-        }
-
-        protected T2 ContextFactory<T1, T2>(T1 source, T2 destination) where T2 : ManagementOperationContext
-        {
-            var context = Mapper.Map(source, destination);
             return context;
         }
     }

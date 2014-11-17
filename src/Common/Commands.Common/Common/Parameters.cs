@@ -29,15 +29,5 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         public const string PackagePath = "PackagePath";
 
         public const string Path = "Path";
-
-        public const string EnvironmentName = "EnvironmentName";
-
-        public const string ServiceEndpoint = "ServiceEndpoint";
-
-        public const string ResourceManagerEndpoint = "ResourceManagerEndpoint";
-
-        public const string PublishSettingsFileUrl = "PublishSettingsFileUrl";
-
-        public const string GalleryEndpoint = "GalleryEndpoint";
     }
 }

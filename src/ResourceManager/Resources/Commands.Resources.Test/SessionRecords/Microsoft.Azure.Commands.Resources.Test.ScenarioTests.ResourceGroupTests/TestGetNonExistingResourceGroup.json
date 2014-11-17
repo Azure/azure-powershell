@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/onesdk4853?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Jlc291cmNlZ3JvdXBzL29uZXNkazQ4NTM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/onesdk1426?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGIxYWI2ZjAtNDc2OS00YjI3LTkzMGUtMDFlMmVmOWMxMjNjL3Jlc291cmNlZ3JvdXBzL29uZXNkazE0MjY/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -10,22 +10,22 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'onesdk4853' could not be found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'onesdk1426' could not be found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31999"
+          "31967"
         ],
         "x-ms-request-id": [
-          "1387d995-0dce-40cf-b61c-9b197a098ebf"
+          "39c310ce-10b4-4fcc-9ac6-304ab96bb8b5"
         ],
         "x-ms-correlation-request-id": [
-          "1387d995-0dce-40cf-b61c-9b197a098ebf"
+          "39c310ce-10b4-4fcc-9ac6-304ab96bb8b5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20140905T172545Z:1387d995-0dce-40cf-b61c-9b197a098ebf"
+          "WESTUS:20140911T080134Z:39c310ce-10b4-4fcc-9ac6-304ab96bb8b5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -34,7 +34,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 05 Sep 2014 17:25:44 GMT"
+          "Thu, 11 Sep 2014 08:01:33 GMT"
         ]
       },
       "StatusCode": 404
@@ -42,10 +42,11 @@
   ],
   "Names": {
     "Test-GetNonExistingResourceGroup": [
-      "onesdk4853"
+      "onesdk1426"
     ]
   },
   "Variables": {
-    "SubscriptionId": "c9cbd920-c00c-427c-852b-8aaf38badaeb"
+    "SubscriptionId": "db1ab6f0-4769-4b27-930e-01e2ef9c123c",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
   }
 }

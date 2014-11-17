@@ -20,7 +20,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
     public class SetAzureVMExtensionCmdletInfo: CmdletsInfo
     {
         public SetAzureVMExtensionCmdletInfo(IPersistentVM vm, string extensionName, string publisher, string version, string referenceName = null,
-            string publicConfiguration = null, string privateConfiguration = null,string publicConfigPath = null,string privateConfigPath =  null, bool disable = false)
+            string publicConfiguration = null, string privateConfiguration = null, string publicConfigKey = null, string privateConfigKey = null,
+            string publicConfigPath = null,string privateConfigPath =  null, bool disable = false)
         {
             cmdletName = Utilities.SetAzureVMExtensionCmdletName;
             cmdletParams.Add(new CmdletParam("VM", vm));
@@ -51,6 +52,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             if (!string.IsNullOrEmpty(privateConfigPath))
             {
                 cmdletParams.Add(new CmdletParam("PrivateConfigPath", privateConfigPath));
+            }
+            if (!string.IsNullOrEmpty(publicConfigKey))
+            {
+                cmdletParams.Add(new CmdletParam("PublicConfigKey", publicConfigKey));
+            }
+            if (!string.IsNullOrEmpty(publicConfigKey))
+            {
+                cmdletParams.Add(new CmdletParam("PrivateConfigKey", privateConfigKey));
             }
         }
     }

@@ -18,34 +18,34 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
-using System.Linq;
-using Microsoft.WindowsAzure.Commands.Common.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public abstract class AzurePSCmdlet : PSCmdlet
     {
         private readonly RecordingTracingInterceptor httpTracingInterceptor = new RecordingTracingInterceptor();
-        protected ProfileClient defaultProfileClient;
-        
+
         public AzurePSCmdlet()
         {
-            defaultProfileClient = new ProfileClient();
+            DefaultProfileClient = new ProfileClient();
+
             if (AzureSession.CurrentContext.Subscription == null &&
-                defaultProfileClient.Profile.DefaultSubscription != null)
+               DefaultProfileClient.Profile.DefaultSubscription != null)
             {
                 try
                 {
                     AzureSession.SetCurrentContext(
-                        defaultProfileClient.Profile.DefaultSubscription,
-                        defaultProfileClient.GetEnvironmentOrDefault(defaultProfileClient.Profile.DefaultSubscription.Environment),
-                        defaultProfileClient.GetAccountOrNull(defaultProfileClient.Profile.DefaultSubscription.Account));
+                        DefaultProfileClient.Profile.DefaultSubscription,
+                        DefaultProfileClient.GetEnvironmentOrDefault(
+                            DefaultProfileClient.Profile.DefaultSubscription.Environment),
+                        DefaultProfileClient.GetAccountOrNull(DefaultProfileClient.Profile.DefaultSubscription.Account));
                 }
-                catch (ArgumentException)
+                catch
                 {
-                    // if context cannot be loaded, start with no account/subscription
+                    // Ignore anything at this point
                 }
             }
+
         }
 
         public AzureContext CurrentContext
@@ -57,6 +57,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             get { return AzureSession.CurrentContext.Subscription != null; }
         }
+
+        public ProfileClient DefaultProfileClient { get; private set; }
 
         protected string CurrentPath()
         {

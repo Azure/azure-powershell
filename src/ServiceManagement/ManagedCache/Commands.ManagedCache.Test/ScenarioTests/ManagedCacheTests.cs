@@ -25,5 +25,12 @@ namespace Microsoft.Azure.Commands.ManagedCache.Test.ScenarioTests
         {
             this.RunPowerShellTest("Test-ManagedCacheEndToEnd");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ListLocationsTest()
+        {
+            this.RunPowerShellTest("Test-ListLocationsSupportCaching");
+        }
     }
 }

@@ -47,13 +47,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     [DataContract]
     public class AzureEnvironmentData
     {
-        /// <summary>
-        /// Constructor used by data contract serializer
-        /// </summary>
-        public AzureEnvironmentData()
-        {
-        }
-
         public AzureEnvironment ToAzureEnvironment()
         {
             return new AzureEnvironment
@@ -127,12 +120,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public AzureSubscription ToAzureSubscription(List<AzureEnvironment> envs)
         {
-            AzureSubscription subscription = new AzureSubscription()
+            AzureSubscription subscription = new AzureSubscription();
+            try
             {
-                Id = new Guid(this.SubscriptionId),
-                Name = Name
-            };
-            
+                subscription.Id = new Guid(this.SubscriptionId);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Subscription ID is not a valid GUID.", ex);
+            }
+            subscription.Name = Name;
+
             // Logic to detect what is the subscription environment rely's on having ManagementEndpoint (i.e. RDFE endpoint) set already on the subscription
             List<AzureEnvironment> allEnvs = envs.Union(AzureEnvironment.PublicEnvironments.Values).ToList();
             AzureEnvironment env = allEnvs.FirstOrDefault(e => e.IsEndpointSetToValue(AzureEnvironment.Endpoint.ServiceManagement, this.ManagementEndpoint));

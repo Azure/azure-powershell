@@ -251,6 +251,30 @@ namespace Microsoft.Azure.Management.ManagedCache.Models
         public CloudServiceCreateParameters()
         {
         }
+        
+        /// <summary>
+        /// Initializes a new instance of the CloudServiceCreateParameters
+        /// class with required arguments.
+        /// </summary>
+        public CloudServiceCreateParameters(string label, string description, string geoRegion)
+            : this()
+        {
+            if (label == null)
+            {
+                throw new ArgumentNullException("label");
+            }
+            if (description == null)
+            {
+                throw new ArgumentNullException("description");
+            }
+            if (geoRegion == null)
+            {
+                throw new ArgumentNullException("geoRegion");
+            }
+            this.Label = label;
+            this.Description = description;
+            this.GeoRegion = geoRegion;
+        }
     }
     
     /// <summary>
@@ -285,7 +309,7 @@ namespace Microsoft.Azure.Management.ManagedCache.Models
         /// </summary>
         public CloudServiceGetResponse()
         {
-            this._resources = new List<CloudServiceResource>();
+            this.Resources = new List<CloudServiceResource>();
         }
     }
     
@@ -310,7 +334,7 @@ namespace Microsoft.Azure.Management.ManagedCache.Models
         /// </summary>
         public CloudServiceListResponse()
         {
-            this._cloudServices = new List<CloudServiceListResponse.CloudService>();
+            this.CloudServices = new List<CloudServiceListResponse.CloudService>();
         }
         
         /// <summary>
@@ -397,7 +421,7 @@ namespace Microsoft.Azure.Management.ManagedCache.Models
             /// </summary>
             public CloudService()
             {
-                this._resources = new List<CloudServiceResource>();
+                this.Resources = new List<CloudServiceResource>();
             }
         }
     }
@@ -659,8 +683,8 @@ namespace Microsoft.Azure.Management.ManagedCache.Models
         /// </summary>
         public CloudServiceResource()
         {
-            this._outputItems = new Dictionary<string, string>();
-            this._usageLimits = new List<CloudServiceResource.UsageLimit>();
+            this.OutputItems = new Dictionary<string, string>();
+            this.UsageLimits = new List<CloudServiceResource.UsageLimit>();
         }
         
         /// <summary>
@@ -816,7 +840,7 @@ namespace Microsoft.Azure.Management.ManagedCache.Models
             /// </summary>
             public CacheServiceInput()
             {
-                this._namedCaches = new List<IntrinsicSettings.CacheServiceInput.NamedCache>();
+                this.NamedCaches = new List<IntrinsicSettings.CacheServiceInput.NamedCache>();
             }
             
             public partial class NamedCache
@@ -939,6 +963,72 @@ namespace Microsoft.Azure.Management.ManagedCache.Models
         {
         }
     }
+    
+    /// <summary>
+    /// A standard service response including an HTTP status code and request
+    /// ID.
+    /// </summary>
+    public partial class RegionsResponse : OperationResponse, IEnumerable<RegionsResponse.Region>
+    {
+        private IList<RegionsResponse.Region> _regions;
+        
+        /// <summary>
+        /// Optional. The list of region with caching service
+        /// </summary>
+        public IList<RegionsResponse.Region> Regions
+        {
+            get { return this._regions; }
+            set { this._regions = value; }
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the RegionsResponse class.
+        /// </summary>
+        public RegionsResponse()
+        {
+            this.Regions = new List<RegionsResponse.Region>();
+        }
+        
+        /// <summary>
+        /// Gets the sequence of Regions.
+        /// </summary>
+        public IEnumerator<RegionsResponse.Region> GetEnumerator()
+        {
+            return this.Regions.GetEnumerator();
+        }
+        
+        /// <summary>
+        /// Gets the sequence of Regions.
+        /// </summary>
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+        
+        /// <summary>
+        /// Defines a caching service region
+        /// </summary>
+        public partial class Region
+        {
+            private string _location;
+            
+            /// <summary>
+            /// Optional. The location of the caching service.
+            /// </summary>
+            public string Location
+            {
+                get { return this._location; }
+                set { this._location = value; }
+            }
+            
+            /// <summary>
+            /// Initializes a new instance of the Region class.
+            /// </summary>
+            public Region()
+            {
+            }
+        }
+    }
 }
 
 namespace Microsoft.Azure.Management.ManagedCache
@@ -950,21 +1040,21 @@ namespace Microsoft.Azure.Management.ManagedCache
         /// </summary>
         Uri BaseUri
         {
-            get; 
+            get; set; 
         }
         
         /// <summary>
-        /// When you create a Microsoft Azure subscription, it is uniquely
+        /// When you create a Windows Azure subscription, it is uniquely
         /// identified by a subscription ID. The subscription ID forms part of
         /// the URI for every call that you make to the Service Management
-        /// API.  The Microsoft Azure Service ManagementAPI use mutual
+        /// API.  The Windows Azure Service ManagementAPI use mutual
         /// authentication of management certificates over SSL to ensure that
         /// a request made to the service is secure.  No anonymous requests
         /// are allowed.
         /// </summary>
         SubscriptionCloudCredentials Credentials
         {
-            get; 
+            get; set; 
         }
         
         /// <summary>
@@ -1020,15 +1110,16 @@ namespace Microsoft.Azure.Management.ManagedCache
         public Uri BaseUri
         {
             get { return this._baseUri; }
+            set { this._baseUri = value; }
         }
         
         private SubscriptionCloudCredentials _credentials;
         
         /// <summary>
-        /// When you create a Microsoft Azure subscription, it is uniquely
+        /// When you create a Windows Azure subscription, it is uniquely
         /// identified by a subscription ID. The subscription ID forms part of
         /// the URI for every call that you make to the Service Management
-        /// API.  The Microsoft Azure Service ManagementAPI use mutual
+        /// API.  The Windows Azure Service ManagementAPI use mutual
         /// authentication of management certificates over SSL to ensure that
         /// a request made to the service is secure.  No anonymous requests
         /// are allowed.
@@ -1036,6 +1127,7 @@ namespace Microsoft.Azure.Management.ManagedCache
         public SubscriptionCloudCredentials Credentials
         {
             get { return this._credentials; }
+            set { this._credentials = value; }
         }
         
         private ICacheServiceOperations _cacheServices;
@@ -1071,10 +1163,10 @@ namespace Microsoft.Azure.Management.ManagedCache
         /// Initializes a new instance of the ManagedCacheClient class.
         /// </summary>
         /// <param name='credentials'>
-        /// Required. When you create a Microsoft Azure subscription, it is
+        /// Required. When you create a Windows Azure subscription, it is
         /// uniquely identified by a subscription ID. The subscription ID
         /// forms part of the URI for every call that you make to the Service
-        /// Management API.  The Microsoft Azure Service ManagementAPI use
+        /// Management API.  The Windows Azure Service ManagementAPI use
         /// mutual authentication of management certificates over SSL to
         /// ensure that a request made to the service is secure.  No anonymous
         /// requests are allowed.
@@ -1104,10 +1196,10 @@ namespace Microsoft.Azure.Management.ManagedCache
         /// Initializes a new instance of the ManagedCacheClient class.
         /// </summary>
         /// <param name='credentials'>
-        /// Required. When you create a Microsoft Azure subscription, it is
+        /// Required. When you create a Windows Azure subscription, it is
         /// uniquely identified by a subscription ID. The subscription ID
         /// forms part of the URI for every call that you make to the Service
-        /// Management API.  The Microsoft Azure Service ManagementAPI use
+        /// Management API.  The Windows Azure Service ManagementAPI use
         /// mutual authentication of management certificates over SSL to
         /// ensure that a request made to the service is secure.  No anonymous
         /// requests are allowed.
@@ -1143,10 +1235,10 @@ namespace Microsoft.Azure.Management.ManagedCache
         /// Initializes a new instance of the ManagedCacheClient class.
         /// </summary>
         /// <param name='credentials'>
-        /// Required. When you create a Microsoft Azure subscription, it is
+        /// Required. When you create a Windows Azure subscription, it is
         /// uniquely identified by a subscription ID. The subscription ID
         /// forms part of the URI for every call that you make to the Service
-        /// Management API.  The Microsoft Azure Service ManagementAPI use
+        /// Management API.  The Windows Azure Service ManagementAPI use
         /// mutual authentication of management certificates over SSL to
         /// ensure that a request made to the service is secure.  No anonymous
         /// requests are allowed.
@@ -1179,10 +1271,10 @@ namespace Microsoft.Azure.Management.ManagedCache
         /// Initializes a new instance of the ManagedCacheClient class.
         /// </summary>
         /// <param name='credentials'>
-        /// Required. When you create a Microsoft Azure subscription, it is
+        /// Required. When you create a Windows Azure subscription, it is
         /// uniquely identified by a subscription ID. The subscription ID
         /// forms part of the URI for every call that you make to the Service
-        /// Management API.  The Microsoft Azure Service ManagementAPI use
+        /// Management API.  The Windows Azure Service ManagementAPI use
         /// mutual authentication of management certificates over SSL to
         /// ensure that a request made to the service is secure.  No anonymous
         /// requests are allowed.
@@ -1201,6 +1293,28 @@ namespace Microsoft.Azure.Management.ManagedCache
             this._baseUri = new Uri("https://management.core.windows.net");
             
             this.Credentials.InitializeServiceClient(this);
+        }
+        
+        /// <summary>
+        /// Clones properties from current instance to another
+        /// ManagedCacheClient instance
+        /// </summary>
+        /// <param name='client'>
+        /// Instance of ManagedCacheClient to clone to
+        /// </param>
+        protected override void Clone(ServiceClient<ManagedCacheClient> client)
+        {
+            base.Clone(client);
+            
+            if (client is ManagedCacheClient)
+            {
+                ManagedCacheClient clonedClient = ((ManagedCacheClient)client);
+                
+                clonedClient._credentials = this._credentials;
+                clonedClient._baseUri = this._baseUri;
+                
+                clonedClient.Credentials.InitializeServiceClient(clonedClient);
+            }
         }
         
         /// <summary>
@@ -1250,8 +1364,8 @@ namespace Microsoft.Azure.Management.ManagedCache
             }
             
             // Construct URL
-            string baseUrl = this.BaseUri.AbsoluteUri;
             string url = (this.Credentials.SubscriptionId != null ? this.Credentials.SubscriptionId.Trim() : "") + "/operations/" + requestId.Trim();
+            string baseUrl = this.BaseUri.AbsoluteUri;
             // Trim '/' character from the end of baseUrl and beginning of url.
             if (baseUrl[baseUrl.Length - 1] == '/')
             {
@@ -1262,6 +1376,7 @@ namespace Microsoft.Azure.Management.ManagedCache
                 url = url.Substring(1);
             }
             url = baseUrl + "/" + url;
+            url = url.Replace(" ", "%20");
             
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
@@ -1401,7 +1516,7 @@ namespace Microsoft.Azure.Management.ManagedCache
         /// The name of the cloud service.
         /// </param>
         /// <param name='cacheServiceName'>
-        /// A name of the cache service. The name can be up to 25 characters
+        /// A name of the cache service. The name can be up to 20 characters
         /// in length with minimum 6 characters and must be all lower cases.
         /// </param>
         /// <param name='parameters'>
@@ -1464,7 +1579,7 @@ namespace Microsoft.Azure.Management.ManagedCache
         /// The name of the cloud service.
         /// </param>
         /// <param name='cacheServiceName'>
-        /// The name of the cache service. The name can be up to 25 characters
+        /// The name of the cache service. The name can be up to 20 characters
         /// in length with minimum 6 characters and must be all lower cases.
         /// </param>
         /// <param name='parameters'>
@@ -1532,6 +1647,18 @@ namespace Microsoft.Azure.Management.ManagedCache
         Task<CachingKeysResponse> GetKeysAsync(string cloudServiceName, string cacheServiceName, CancellationToken cancellationToken);
         
         /// <summary>
+        /// List supported regions of Cache Service
+        /// </summary>
+        /// <param name='cancellationToken'>
+        /// Cancellation token.
+        /// </param>
+        /// <returns>
+        /// A standard service response including an HTTP status code and
+        /// request ID.
+        /// </returns>
+        Task<RegionsResponse> ListRegionsAsync(CancellationToken cancellationToken);
+        
+        /// <summary>
         /// Regenerate access keys for a Cache Service
         /// </summary>
         /// <param name='cloudServiceName'>
@@ -1588,7 +1715,7 @@ namespace Microsoft.Azure.Management.ManagedCache
         /// Required. The name of the cloud service.
         /// </param>
         /// <param name='cacheServiceName'>
-        /// Required. A name of the cache service. The name can be up to 25
+        /// Required. A name of the cache service. The name can be up to 20
         /// characters  in length with minimum 6 characters and must be all
         /// lower cases.
         /// </param>
@@ -1617,7 +1744,7 @@ namespace Microsoft.Azure.Management.ManagedCache
             {
                 throw new ArgumentOutOfRangeException("cacheServiceName");
             }
-            if (cacheServiceName.Length > 25)
+            if (cacheServiceName.Length > 20)
             {
                 throw new ArgumentOutOfRangeException("cacheServiceName");
             }
@@ -1640,8 +1767,8 @@ namespace Microsoft.Azure.Management.ManagedCache
             }
             
             // Construct URL
-            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             string url = "/" + (this.Client.Credentials.SubscriptionId != null ? this.Client.Credentials.SubscriptionId.Trim() : "") + "/cloudservices/" + cloudServiceName.Trim() + "/resources/cacheservice/Caching/" + cacheServiceName.Trim();
+            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             // Trim '/' character from the end of baseUrl and beginning of url.
             if (baseUrl[baseUrl.Length - 1] == '/')
             {
@@ -1652,6 +1779,7 @@ namespace Microsoft.Azure.Management.ManagedCache
                 url = url.Substring(1);
             }
             url = baseUrl + "/" + url;
+            url = url.Replace(" ", "%20");
             
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
@@ -1883,7 +2011,7 @@ namespace Microsoft.Azure.Management.ManagedCache
                 requestContent = requestDoc.ToString();
                 requestContent = System.Text.RegularExpressions.Regex.Replace(requestContent, "<IntrinsicSettings>\\s*<CacheServiceInput", "<IntrinsicSettings><CacheServiceInput");
                 httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
-                httpRequest.Content.Headers.ContentType = new MediaTypeHeaderValue("application/xml");
+                httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/xml");
                 
                 // Send Request
                 HttpResponseMessage httpResponse = null;
@@ -1988,8 +2116,8 @@ namespace Microsoft.Azure.Management.ManagedCache
             }
             
             // Construct URL
-            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             string url = "/" + (this.Client.Credentials.SubscriptionId != null ? this.Client.Credentials.SubscriptionId.Trim() : "") + "/cloudservices/" + cloudServiceName.Trim() + "/resources/cacheservice/Caching/" + cacheServiceName.Trim();
+            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             // Trim '/' character from the end of baseUrl and beginning of url.
             if (baseUrl[baseUrl.Length - 1] == '/')
             {
@@ -2000,6 +2128,7 @@ namespace Microsoft.Azure.Management.ManagedCache
                 url = url.Substring(1);
             }
             url = baseUrl + "/" + url;
+            url = url.Replace(" ", "%20");
             
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
@@ -2115,8 +2244,8 @@ namespace Microsoft.Azure.Management.ManagedCache
             }
             
             // Construct URL
-            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             string url = "/" + (this.Client.Credentials.SubscriptionId != null ? this.Client.Credentials.SubscriptionId.Trim() : "") + "/cloudservices/" + cloudServiceName.Trim() + "/resources/cacheservice/~/Caching/dummy/Namespaces/" + cacheServiceName.Trim();
+            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             // Trim '/' character from the end of baseUrl and beginning of url.
             if (baseUrl[baseUrl.Length - 1] == '/')
             {
@@ -2127,6 +2256,7 @@ namespace Microsoft.Azure.Management.ManagedCache
                 url = url.Substring(1);
             }
             url = baseUrl + "/" + url;
+            url = url.Replace(" ", "%20");
             
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
@@ -2221,7 +2351,7 @@ namespace Microsoft.Azure.Management.ManagedCache
         /// Required. The name of the cloud service.
         /// </param>
         /// <param name='cacheServiceName'>
-        /// Required. The name of the cache service. The name can be up to 25
+        /// Required. The name of the cache service. The name can be up to 20
         /// characters  in length with minimum 6 characters and must be all
         /// lower cases.
         /// </param>
@@ -2465,8 +2595,8 @@ namespace Microsoft.Azure.Management.ManagedCache
             }
             
             // Construct URL
-            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             string url = "/" + (this.Client.Credentials.SubscriptionId != null ? this.Client.Credentials.SubscriptionId.Trim() : "") + "/cloudservices/" + cloudServiceName.Trim() + "/resources/cacheservice/~/Caching/" + cacheServiceName.Trim() + "/Keys";
+            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             // Trim '/' character from the end of baseUrl and beginning of url.
             if (baseUrl[baseUrl.Length - 1] == '/')
             {
@@ -2477,6 +2607,7 @@ namespace Microsoft.Azure.Management.ManagedCache
                 url = url.Substring(1);
             }
             url = baseUrl + "/" + url;
+            url = url.Replace(" ", "%20");
             
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
@@ -2575,6 +2706,135 @@ namespace Microsoft.Azure.Management.ManagedCache
         }
         
         /// <summary>
+        /// List supported regions of Cache Service
+        /// </summary>
+        /// <param name='cancellationToken'>
+        /// Cancellation token.
+        /// </param>
+        /// <returns>
+        /// A standard service response including an HTTP status code and
+        /// request ID.
+        /// </returns>
+        public async Task<RegionsResponse> ListRegionsAsync(CancellationToken cancellationToken)
+        {
+            // Validate
+            
+            // Tracing
+            bool shouldTrace = CloudContext.Configuration.Tracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = Tracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                Tracing.Enter(invocationId, this, "ListRegionsAsync", tracingParameters);
+            }
+            
+            // Construct URL
+            string url = "/" + (this.Client.Credentials.SubscriptionId != null ? this.Client.Credentials.SubscriptionId.Trim() : "") + "/cloudservices/mycloudservice/resources/cacheservice/~/Caching/mycacheservice/Options/Regions";
+            string baseUrl = this.Client.BaseUri.AbsoluteUri;
+            // Trim '/' character from the end of baseUrl and beginning of url.
+            if (baseUrl[baseUrl.Length - 1] == '/')
+            {
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+            }
+            if (url[0] == '/')
+            {
+                url = url.Substring(1);
+            }
+            url = baseUrl + "/" + url;
+            url = url.Replace(" ", "%20");
+            
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = null;
+            try
+            {
+                httpRequest = new HttpRequestMessage();
+                httpRequest.Method = HttpMethod.Get;
+                httpRequest.RequestUri = new Uri(url);
+                
+                // Set Headers
+                httpRequest.Headers.Add("x-ms-version", "2012-08-01");
+                
+                // Set Credentials
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+                
+                // Send Request
+                HttpResponseMessage httpResponse = null;
+                try
+                {
+                    if (shouldTrace)
+                    {
+                        Tracing.SendRequest(invocationId, httpRequest);
+                    }
+                    cancellationToken.ThrowIfCancellationRequested();
+                    httpResponse = await this.Client.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+                    if (shouldTrace)
+                    {
+                        Tracing.ReceiveResponse(invocationId, httpResponse);
+                    }
+                    HttpStatusCode statusCode = httpResponse.StatusCode;
+                    if (statusCode != HttpStatusCode.OK)
+                    {
+                        cancellationToken.ThrowIfCancellationRequested();
+                        CloudException ex = CloudException.Create(httpRequest, null, httpResponse, await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false));
+                        if (shouldTrace)
+                        {
+                            Tracing.Error(invocationId, ex);
+                        }
+                        throw ex;
+                    }
+                    
+                    // Create Result
+                    RegionsResponse result = null;
+                    // Deserialize Response
+                    cancellationToken.ThrowIfCancellationRequested();
+                    string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    result = new RegionsResponse();
+                    XDocument responseDoc = XDocument.Parse(responseContent);
+                    
+                    XElement regionsSequenceElement = responseDoc.Element(XName.Get("Regions", "http://schemas.microsoft.com/windowsazure"));
+                    if (regionsSequenceElement != null)
+                    {
+                        foreach (XElement regionsElement in regionsSequenceElement.Elements(XName.Get("Region", "http://schemas.microsoft.com/windowsazure")))
+                        {
+                            RegionsResponse.Region regionInstance = new RegionsResponse.Region();
+                            result.Regions.Add(regionInstance);
+                            
+                            regionInstance.Location = regionsElement.Value;
+                        }
+                    }
+                    
+                    result.StatusCode = statusCode;
+                    if (httpResponse.Headers.Contains("x-ms-request-id"))
+                    {
+                        result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                    }
+                    
+                    if (shouldTrace)
+                    {
+                        Tracing.Exit(invocationId, result);
+                    }
+                    return result;
+                }
+                finally
+                {
+                    if (httpResponse != null)
+                    {
+                        httpResponse.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (httpRequest != null)
+                {
+                    httpRequest.Dispose();
+                }
+            }
+        }
+        
+        /// <summary>
         /// Regenerate access keys for a Cache Service
         /// </summary>
         /// <param name='cloudServiceName'>
@@ -2631,8 +2891,8 @@ namespace Microsoft.Azure.Management.ManagedCache
             }
             
             // Construct URL
-            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             string url = "/" + (this.Client.Credentials.SubscriptionId != null ? this.Client.Credentials.SubscriptionId.Trim() : "") + "/cloudservices/" + cloudServiceName.Trim() + "/resources/cacheservice/~/Caching/" + cacheServiceName.Trim() + "/Keys/?comp=regenerate";
+            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             // Trim '/' character from the end of baseUrl and beginning of url.
             if (baseUrl[baseUrl.Length - 1] == '/')
             {
@@ -2643,6 +2903,7 @@ namespace Microsoft.Azure.Management.ManagedCache
                 url = url.Substring(1);
             }
             url = baseUrl + "/" + url;
+            url = url.Replace(" ", "%20");
             
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
@@ -2675,7 +2936,7 @@ namespace Microsoft.Azure.Management.ManagedCache
                 
                 requestContent = requestDoc.ToString();
                 httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
-                httpRequest.Content.Headers.ContentType = new MediaTypeHeaderValue("application/xml");
+                httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/xml");
                 
                 // Send Request
                 HttpResponseMessage httpResponse = null;
@@ -2805,7 +3066,7 @@ namespace Microsoft.Azure.Management.ManagedCache
         Task<CloudServiceOperationStatusResponse> CreateAsync(string cloudServiceName, CloudServiceCreateParameters parameters, CancellationToken cancellationToken);
         
         /// <summary>
-        /// Retreive a cloud service.
+        /// Retrieve a cloud service.
         /// </summary>
         /// <param name='cloudServiceName'>
         /// The cloud service name.
@@ -2920,8 +3181,8 @@ namespace Microsoft.Azure.Management.ManagedCache
             }
             
             // Construct URL
-            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             string url = (this.Client.Credentials.SubscriptionId != null ? this.Client.Credentials.SubscriptionId.Trim() : "") + "/CloudServices/" + cloudServiceName.Trim();
+            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             // Trim '/' character from the end of baseUrl and beginning of url.
             if (baseUrl[baseUrl.Length - 1] == '/')
             {
@@ -2932,6 +3193,7 @@ namespace Microsoft.Azure.Management.ManagedCache
                 url = url.Substring(1);
             }
             url = baseUrl + "/" + url;
+            url = url.Replace(" ", "%20");
             
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
@@ -2976,7 +3238,7 @@ namespace Microsoft.Azure.Management.ManagedCache
                 
                 requestContent = requestDoc.ToString();
                 httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
-                httpRequest.Content.Headers.ContentType = new MediaTypeHeaderValue("application/xml");
+                httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/xml");
                 
                 // Send Request
                 HttpResponseMessage httpResponse = null;
@@ -3134,7 +3396,7 @@ namespace Microsoft.Azure.Management.ManagedCache
         }
         
         /// <summary>
-        /// Retreive a cloud service.
+        /// Retrieve a cloud service.
         /// </summary>
         /// <param name='cloudServiceName'>
         /// Required. The cloud service name.
@@ -3169,8 +3431,8 @@ namespace Microsoft.Azure.Management.ManagedCache
             }
             
             // Construct URL
-            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             string url = (this.Client.Credentials.SubscriptionId != null ? this.Client.Credentials.SubscriptionId.Trim() : "") + "/CloudServices/" + cloudServiceName.Trim();
+            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             // Trim '/' character from the end of baseUrl and beginning of url.
             if (baseUrl[baseUrl.Length - 1] == '/')
             {
@@ -3181,6 +3443,7 @@ namespace Microsoft.Azure.Management.ManagedCache
                 url = url.Substring(1);
             }
             url = baseUrl + "/" + url;
+            url = url.Replace(" ", "%20");
             
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
@@ -3515,8 +3778,8 @@ namespace Microsoft.Azure.Management.ManagedCache
             }
             
             // Construct URL
-            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             string url = (this.Client.Credentials.SubscriptionId != null ? this.Client.Credentials.SubscriptionId.Trim() : "") + "/CloudServices";
+            string baseUrl = this.Client.BaseUri.AbsoluteUri;
             // Trim '/' character from the end of baseUrl and beginning of url.
             if (baseUrl[baseUrl.Length - 1] == '/')
             {
@@ -3527,6 +3790,7 @@ namespace Microsoft.Azure.Management.ManagedCache
                 url = url.Substring(1);
             }
             url = baseUrl + "/" + url;
+            url = url.Replace(" ", "%20");
             
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
@@ -3961,7 +4225,7 @@ namespace Microsoft.WindowsAzure
         /// Required. The name of the cloud service.
         /// </param>
         /// <param name='cacheServiceName'>
-        /// Required. A name of the cache service. The name can be up to 25
+        /// Required. A name of the cache service. The name can be up to 20
         /// characters  in length with minimum 6 characters and must be all
         /// lower cases.
         /// </param>
@@ -3993,7 +4257,7 @@ namespace Microsoft.WindowsAzure
         /// Required. The name of the cloud service.
         /// </param>
         /// <param name='cacheServiceName'>
-        /// Required. A name of the cache service. The name can be up to 25
+        /// Required. A name of the cache service. The name can be up to 20
         /// characters  in length with minimum 6 characters and must be all
         /// lower cases.
         /// </param>
@@ -4125,7 +4389,7 @@ namespace Microsoft.WindowsAzure
         /// Required. The name of the cloud service.
         /// </param>
         /// <param name='cacheServiceName'>
-        /// Required. The name of the cache service. The name can be up to 25
+        /// Required. The name of the cache service. The name can be up to 20
         /// characters  in length with minimum 6 characters and must be all
         /// lower cases.
         /// </param>
@@ -4164,7 +4428,7 @@ namespace Microsoft.WindowsAzure
         /// Required. The name of the cloud service.
         /// </param>
         /// <param name='cacheServiceName'>
-        /// Required. The name of the cache service. The name can be up to 25
+        /// Required. The name of the cache service. The name can be up to 20
         /// characters  in length with minimum 6 characters and must be all
         /// lower cases.
         /// </param>
@@ -4299,6 +4563,42 @@ namespace Microsoft.WindowsAzure
         public static Task<CachingKeysResponse> GetKeysAsync(this ICacheServiceOperations operations, string cloudServiceName, string cacheServiceName)
         {
             return operations.GetKeysAsync(cloudServiceName, cacheServiceName, CancellationToken.None);
+        }
+        
+        /// <summary>
+        /// List supported regions of Cache Service
+        /// </summary>
+        /// <param name='operations'>
+        /// Reference to the
+        /// Microsoft.Azure.Management.ManagedCache.ICacheServiceOperations.
+        /// </param>
+        /// <returns>
+        /// A standard service response including an HTTP status code and
+        /// request ID.
+        /// </returns>
+        public static RegionsResponse ListRegions(this ICacheServiceOperations operations)
+        {
+            return Task.Factory.StartNew((object s) => 
+            {
+                return ((ICacheServiceOperations)s).ListRegionsAsync();
+            }
+            , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+        }
+        
+        /// <summary>
+        /// List supported regions of Cache Service
+        /// </summary>
+        /// <param name='operations'>
+        /// Reference to the
+        /// Microsoft.Azure.Management.ManagedCache.ICacheServiceOperations.
+        /// </param>
+        /// <returns>
+        /// A standard service response including an HTTP status code and
+        /// request ID.
+        /// </returns>
+        public static Task<RegionsResponse> ListRegionsAsync(this ICacheServiceOperations operations)
+        {
+            return operations.ListRegionsAsync(CancellationToken.None);
         }
         
         /// <summary>
@@ -4472,7 +4772,7 @@ namespace Microsoft.WindowsAzure
         }
         
         /// <summary>
-        /// Retreive a cloud service.
+        /// Retrieve a cloud service.
         /// </summary>
         /// <param name='operations'>
         /// Reference to the
@@ -4494,7 +4794,7 @@ namespace Microsoft.WindowsAzure
         }
         
         /// <summary>
-        /// Retreive a cloud service.
+        /// Retrieve a cloud service.
         /// </summary>
         /// <param name='operations'>
         /// Reference to the

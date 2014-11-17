@@ -1,30 +1,31 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/resourcegroups/onesdk1428?api-version=2014-04-01-preview",
-      "RequestMethod": "HEAD",
+      "RequestUri": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceGroups/onesdk3830/resources?&api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGIxYWI2ZjAtNDc2OS00YjI3LTkzMGUtMDFlMmVmOWMxMjNjL3Jlc291cmNlR3JvdXBzL29uZXNkazM4MzAvcmVzb3VyY2VzPyZhcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'onesdk3830' could not be found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31864"
+          "31992"
         ],
         "x-ms-request-id": [
-          "b15d25dc-a034-4bf1-b672-aefcdc7c6ed0"
+          "8b60c3b2-77a8-4757-a557-6bb2b0ff4f13"
         ],
         "x-ms-correlation-request-id": [
-          "b15d25dc-a034-4bf1-b672-aefcdc7c6ed0"
+          "8b60c3b2-77a8-4757-a557-6bb2b0ff4f13"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20140822T002335Z:b15d25dc-a034-4bf1-b672-aefcdc7c6ed0"
+          "WESTUS:20140911T081452Z:8b60c3b2-77a8-4757-a557-6bb2b0ff4f13"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -33,7 +34,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 22 Aug 2014 00:23:34 GMT"
+          "Thu, 11 Sep 2014 08:14:52 GMT"
         ]
       },
       "StatusCode": 404
@@ -41,10 +42,11 @@
   ],
   "Names": {
     "Test-GetResourcesFromNonExisingGroup": [
-      "onesdk1428"
+      "onesdk3830"
     ]
   },
   "Variables": {
-    "SubscriptionId": "1165e0f9-4535-44ce-bc6b-c73c00b5fb2c"
+    "SubscriptionId": "db1ab6f0-4769-4b27-930e-01e2ef9c123c",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
   }
 }

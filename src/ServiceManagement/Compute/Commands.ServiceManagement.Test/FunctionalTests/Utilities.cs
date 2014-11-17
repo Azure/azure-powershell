@@ -85,6 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string SetAzureDeploymentCmdletName = "Set-AzureDeployment";
         public const string RemoveAzureDeploymentCmdletName = "Remove-AzureDeployment";
         public const string MoveAzureDeploymentCmdletName = "Move-AzureDeployment";
+        public const string GetAzureDeploymentEventCmdletName = "Get-AzureDeploymentEvent";
 
         // AzureDisk        
         public const string AddAzureDiskCmdletName = "Add-AzureDisk";
@@ -120,6 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         // AzurePublishSettingsFile
         public const string ImportAzurePublishSettingsFileCmdletName = "Import-AzurePublishSettingsFile";
         public const string GetAzurePublishSettingsFileCmdletName = "Get-AzurePublishSettingsFile";
+        public const string AddAzureEnvironmentCmdletName = "Add-AzureEnvironment";
 
         // AzureQuickVM
         public const string NewAzureQuickVMCmdletName = "New-AzureQuickVM";
@@ -204,7 +206,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string GetAzureSubscriptionCmdletName = "Get-AzureSubscription";
         public const string SetAzureSubscriptionCmdletName = "Set-AzureSubscription";
         public const string SelectAzureSubscriptionCmdletName = "Select-AzureSubscription";
-        public const string RemoveAzureSubscriptionCmdletName = "Remove-AzureSubscription";        
+        public const string RemoveAzureSubscriptionCmdletName = "Remove-AzureSubscription";
+
+        // AzureEnvironment
+        public const string GetAzureEnvironmentCmdletName = "Get-AzureEnvironment";
+        public const string SetAzureEnvironmentCmdletName = "Set-AzureEnvironment";
 
         // AzureVhd
         public static string AddAzureVhdCmdletName = "Add-AzureVhd";
@@ -276,7 +282,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string ResetAzureRoleInstanceCmdletName = "ReSet-AzureRoleInstance";
 
         //Static CA cmdlets
-
         public const string TestAzureStaticVNetIPCmdletName = "Test-AzureStaticVNetIP";
         public const string SetAzureStaticVNetIPCmdletName = "Set-AzureStaticVNetIP";
         public const string GetAzureStaticVNetIPCmdletName = "Get-AzureStaticVNetIP";
@@ -320,6 +325,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string SetAzurePublicIPCmdletName = "Set-AzurePublicIP";
         public const string GetAzurePublicIPCmdletName = "Get-AzurePublicIP";
         
+        // NetworkInterface config
+        public const string AddAzureNetworkInterfaceConfig = "Add-AzureNetworkInterfaceConfig";
+        public const string SetAzureNetworkInterfaceConfig = "Set-AzureNetworkInterfaceConfig";
+        public const string RemoveAzureNetworkInterfaceConfig = "Remove-AzureNetworkInterfaceConfig";
+        public const string GetAzureNetworkInterfaceConfig = "Get-AzureNetworkInterfaceConfig";
+
         // Custom script extension
         public const string SetAzureVMDscExtensionCmdletName = "Set-AzureVMDscExtension";
         public const string GetAzureVMDscExtensionCmdletName = "Get-AzureVMDscExtension";
@@ -552,12 +563,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         /// <summary>
-        /// 
+        ///  Retry the given action until success or timed out.
         /// </summary>
-        /// <param name="act"></param>
-        /// <param name="errorMessage"></param>
-        /// <param name="maxTry"></param>
-        /// <param name="intervalSeconds"></param>
+        /// <param name="act">the action</param>
+        /// <param name="errorMessage">retry for this error message</param>
+        /// <param name="maxTry">the max number of retries</param>
+        /// <param name="intervalSeconds">the interval between retries</param>
         public static void RetryActionUntilSuccess(Action act, string errorMessage, int maxTry, int intervalSeconds)
         {
             int i = 0;
@@ -565,7 +576,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 try
                 {
-
                     act();
                     return;
                 }
@@ -574,17 +584,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     if (e.ToString().Contains(errorMessage))
                     {
                         Console.WriteLine("{0} error occurs! retrying ...", errorMessage);
-                        Console.WriteLine(e.InnerException.ToString());
+                        if (e.InnerException != null)
+                        {
+                            Console.WriteLine(e.InnerException);
+                        }
                         Thread.Sleep(TimeSpan.FromSeconds(intervalSeconds));
                         i++;
                         continue;
                     }
                     else
                     {
-                        Console.WriteLine(e.ToString());
+                        Console.WriteLine(e);
                         if (e.InnerException != null)
                         {
-                            Console.WriteLine(e.InnerException.ToString());
+                            Console.WriteLine(e.InnerException);
                         }
                         throw;
                     }

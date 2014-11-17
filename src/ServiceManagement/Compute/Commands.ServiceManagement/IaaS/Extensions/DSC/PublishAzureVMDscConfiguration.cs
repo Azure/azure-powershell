@@ -168,9 +168,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         new ErrorRecord(
                             new InvalidOperationException(
                                 string.Format(CultureInfo.CurrentUICulture, Resources.PublishVMDscExtensionRequiredPsVersion, MinMajorPowerShellVersion, major)), 
-                                string.Empty,
-                                ErrorCategory.InvalidOperation,
-                                null));
+                            "InvalidPowerShellVersion",
+                            ErrorCategory.InvalidOperation,
+                            null));
                 }
             }
         }
@@ -245,7 +245,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             }
             catch (GetDscResourceException e)
             {
-                ThrowTerminatingError(new ErrorRecord(e, string.Empty, ErrorCategory.PermissionDenied, null));
+                ThrowTerminatingError(new ErrorRecord(e, "CannotAccessDscResource", ErrorCategory.PermissionDenied, null));
             }
             if (parseResult.Errors.Any())
             {
@@ -257,7 +257,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                                 Resources.PublishVMDscExtensionStorageParserErrors,
                                 this.ConfigurationPath,
                                 String.Join("\n", parseResult.Errors.Select(error => error.ToString())))),
-                        string.Empty,
+                        "DscConfigurationParseError",
                         ErrorCategory.ParserError,
                         null));
             }
@@ -322,7 +322,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                     this.ThrowTerminatingError(
                         new ErrorRecord(
                             new UnauthorizedAccessException(string.Format(CultureInfo.CurrentUICulture, Resources.AzureVMDscArchiveAlreadyExists, archive)),
-                            string.Empty,
+                            "FileAlreadyExists",
                             ErrorCategory.PermissionDenied,
                             null));
                 }
@@ -357,7 +357,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                     this.ThrowTerminatingError(
                         new ErrorRecord(
                             new UnauthorizedAccessException(string.Format(CultureInfo.CurrentUICulture, Resources.AzureVMDscStorageBlobAlreadyExists, modulesBlob.Uri.AbsoluteUri)),
-                            string.Empty,
+                            "StorageBlobAlreadyExists",
                             ErrorCategory.PermissionDenied,
                             null));
                 }

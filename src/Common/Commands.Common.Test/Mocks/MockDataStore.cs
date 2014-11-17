@@ -40,6 +40,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             VirtualStore[path] = contents;
         }
 
+        public void WriteFile(string path, string contents, Encoding encoding)
+        {
+            WriteFile(path, contents);
+        }
+
         public void WriteFile(string path, byte[] contents)
         {
             VirtualStore[path] = Encoding.Default.GetString(contents);
@@ -273,6 +278,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             if (cert != null && cert.Thumbprint != null)
             {
                 certStore[cert.Thumbprint] = cert;
+            }
+        }
+
+        public void RemoveCertificate(string thumbprint)
+        {
+            if (thumbprint != null && certStore.ContainsKey(thumbprint))
+            {
+                certStore.Remove(thumbprint);
             }
         }
 

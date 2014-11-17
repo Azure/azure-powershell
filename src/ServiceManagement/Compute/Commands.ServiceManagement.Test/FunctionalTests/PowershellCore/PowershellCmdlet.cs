@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 {
                     runspace.Close();
 
-                    var exceptions = powershell.Streams.Error.Select(error => new Exception(error.Exception.Message)).ToList();
+                    var exceptions = powershell.Streams.Error.Select(error => error.Exception).ToList();
                     throw new AggregateException(exceptions);
                 }
             }

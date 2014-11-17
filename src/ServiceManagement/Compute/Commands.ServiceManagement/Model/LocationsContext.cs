@@ -29,5 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public IEnumerable<string> WebWorkerRoleSizes { get; set; }
 
         public IEnumerable<string> VirtualMachineRoleSizes { get; set; }
+
+        public IEnumerable<string> StorageAccountTypes { get; set; }
     }
 }

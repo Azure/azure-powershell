@@ -74,22 +74,6 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common
             return GenerateShareNameInternal(length, ensureUpperCase: true);
         }
 
-        public static string GenerateASCIINameWithInvalidCharacters(int length)
-        {
-            Random r = new Random();
-            int numberOfInavlidCharacters = r.Next(1, length);
-            int numberOfValidCharacters = length - numberOfInavlidCharacters;
-            StringBuilder sb = new StringBuilder(GenerateNameFromRange(numberOfValidCharacters, ValidASCIIRange));
-            for (int i = 0; i < numberOfInavlidCharacters; i++)
-            {
-                int position = r.Next(sb.Length);
-                char invalidCharacter = InvalidFileNameCharacters[r.Next(InvalidFileNameCharacters.Length)];
-                sb.Insert(position, invalidCharacter);
-            }
-
-            return sb.ToString();
-        }
-
         public static string GenerateNameFromRange(int length, Tuple<int, int> range)
         {
             Random r = new Random();

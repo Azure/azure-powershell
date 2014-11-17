@@ -25,7 +25,7 @@ $oldRdfeTestVariables = $(Test-Path env:AZURE_STORAGE_ACCESS_KEY) -and $(Test-Pa
 if (!$serviceManagementVariables -AND !$resourceManagerVariables -AND !$oldRdfeTestVariables) {
   Write-Host "You environment has NOT been set up for sceanrio testing. We will help you configure..." -ForegroundColor "Yellow"
   $subscription = Read-Host 'Please input the Azure subscription guid you tests will use:'
-  $env:TEST_ORGID_AUTHENTICATION = "SubscriptionId=$subscription;BaseUri=https://management.core.windows.net/;AADAuthEndpoint=https://login.windows.net/"
+  $env:TEST_ORGID_AUTHENTICATION = "SubscriptionId=$subscription;BaseUri=https://management.core.windows.net/;AADAuthEndpoint=https://login.windows.net/;GraphUri=https://graph.windows.net/"
   $env:TEST_CSM_ORGID_AUTHENTICATION = "SubscriptionId=$subscription;BaseUri=https://management.azure.com/;AADAuthEndpoint=https://login.windows.net/"
   Write-Host "To avoid getting prompt again, you can preset one of following environment variables with the value beside" -ForegroundColor "Yellow"
   Write-Host "TEST_ORGID_AUTHENTICATION : $env:TEST_ORGID_AUTHENTICATION"

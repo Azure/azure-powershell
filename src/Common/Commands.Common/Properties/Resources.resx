@@ -650,7 +650,7 @@ Please follow these steps in the portal:
     <value>The subscription named '{0}' cannot be found. Use Set-AzureSubscription to initialize the subscription data.</value>
   </data>
   <data name="InvalidSubscriptionId" xml:space="preserve">
-    <value>The provided subscription if {0} is not valid</value>
+    <value>The provided subscription id {0} is not valid</value>
   </data>
   <data name="InvalidSubscriptionName" xml:space="preserve">
     <value>Must specify a non-null subscription name.</value>
@@ -1001,7 +1001,7 @@ Please follow these steps in the portal:
     <value>Resources\Scaffolding\Python</value>
   </data>
   <data name="RedeployCommit" xml:space="preserve">
-    <value>Reploy deployment with {0} Id ?</value>
+    <value>Replace current deployment with '{0}' Id ?</value>
   </data>
   <data name="RegenerateKeyWarning" xml:space="preserve">
     <value>Are you sure you want to regenerate key?</value>
@@ -1392,7 +1392,7 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
     <value>The subscription data file {0} does not exist.</value>
   </data>
   <data name="SubscriptionIdNotFoundMessage" xml:space="preserve">
-    <value>The provided subscription name doesn't exist in the imported publish profile. If subscriptions have changed for the hosted service, retrieve an updated profile by using Get-AzurePublishSettingsFile then import the profile using Import-AzurePublishSettingsFile</value>
+    <value>The subscription id {0} doesn't exist.</value>
   </data>
   <data name="SubscriptionNameNotFoundMessage" xml:space="preserve">
     <value>The subscription name {0} doesn't exist.</value>
@@ -1557,6 +1557,12 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   </data>
   <data name="NoSubscriptionAddedMessage" xml:space="preserve">
     <value>There is no subscription associated with account {0}.</value>
+  </data>
+  <data name="AccountIdDoesntMatchSubscription" xml:space="preserve">
+    <value>Account id doesn't match one in subscription.</value>
+  </data>
+  <data name="EnvironmentNameDoesntMatchSubscription" xml:space="preserve">
+    <value>Environment name doesn't match one in subscription.</value>
   </data>
   <data name="ServiceKeyNotFound" xml:space="preserve">
     <value>Unable to retrieve service key for ServicePrincipal account {0}. Please run the Add-AzureAccount cmdlet to supply the credentials for this service principal.</value>

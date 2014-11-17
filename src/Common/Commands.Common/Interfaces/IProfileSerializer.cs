@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Interfaces
@@ -20,6 +21,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Interfaces
     {
         string Serialize(AzureProfile profile);
 
-        void Deserialize(string contents, AzureProfile profile);
+        bool Deserialize(string contents, AzureProfile profile);
+
+        IList<string> DeserializeErrors { get; }
     }
 }

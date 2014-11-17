@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Common
         {
             return (!string.IsNullOrEmpty(jobRequest.ErrorActionBody) ||
                 !string.IsNullOrEmpty(jobRequest.ErrorActionMethod) ||
-                jobRequest.ErrorActionUri !=null ||
+                jobRequest.ErrorActionUri != null ||
                 jobRequest.ErrorActionHeaders != null ||
                 !string.IsNullOrEmpty(jobRequest.ErrorActionQueueBody) ||
                 !string.IsNullOrEmpty(jobRequest.ErrorActionQueueName) ||
@@ -64,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Common
             return (!string.IsNullOrEmpty(jobRequest.Frequency) ||
                 jobRequest.Interval != null ||
                 jobRequest.ExecutionCount != null ||
-                jobRequest.EndTime != null );
+                jobRequest.EndTime != null);
         }
 
         public static bool IsActionSet(this PSCreateJobParams jobRequest)
@@ -72,7 +72,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Common
             return (!string.IsNullOrEmpty(jobRequest.Method) ||
                 jobRequest.Uri != null ||
                 !string.IsNullOrEmpty(jobRequest.Body) ||
-                jobRequest.Headers != null);
+                jobRequest.Headers != null ||
+                jobRequest.HttpAuthType != null);
         }
 
         public static bool IsStorageActionSet(this PSCreateJobParams jobRequest)
@@ -101,6 +102,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Common
             else if (timespan.Minutes > 0)
                 interval = timespan.Minutes;
             return interval;
-        }        
+        }
     }
 }

@@ -12,44 +12,76 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
 
 
-    [Cmdlet(VerbsCommon.Select, "AzureSubscription", DefaultParameterSetName = "Current")]
+    [Cmdlet(VerbsCommon.Select, "AzureSubscription", DefaultParameterSetName = SelectSubscriptionByNameParameterSet)]
     [OutputType(typeof(AzureSubscription))]
     public class SelectAzureSubscriptionCommand : SubscriptionCmdletBase
     {
+        private const string SelectSubscriptionByIdParameterSet = "SelectSubscriptionByIdParameterSet";
+
+        private const string SelectSubscriptionByNameParameterSet = "SelectSubscriptionByNameParameterSet";
+
+        private const string SelectDefaultSubscriptionByIdParameterSet = "SelectDefaultSubscriptionByIdParameterSet";
+
+        private const string SelectDefaultSubscriptionByNameParameterSet = "SelectDefaultSubscriptionByNameParameterSet";
+
+        private const string NoCurrentSubscriptionParameterSet = "NoCurrentSubscriptionParameterSet";
+
+        private const string NoDefaultSubscriptionParameterSet = "NoDefaultSubscriptionParameterSet";
+
+
         public SelectAzureSubscriptionCommand() : base(true)
         {
         }
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = "Current", HelpMessage = "Name of subscription to select")]
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = "Default", HelpMessage = "Name of subscription to select")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+            ParameterSetName = SelectSubscriptionByNameParameterSet, HelpMessage = "Name of subscription to select")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SelectDefaultSubscriptionByNameParameterSet, HelpMessage = "Name of subscription to select")]
         [ValidateNotNullOrEmpty]
         [Alias("Name")]
         public string SubscriptionName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "Current", HelpMessage = "Name of account to select")]
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "Default", HelpMessage = "Name of account to select")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SelectSubscriptionByIdParameterSet, HelpMessage = "Id of subscription to select")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SelectDefaultSubscriptionByIdParameterSet, HelpMessage = "Id of subscription to select")]
+        [ValidateNotNullOrEmpty]
+        [Alias("Id")]
+        public string SubscriptionId { get; set; }
+
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of account to select")]
         [ValidateNotNullOrEmpty]
         public string Account { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = "Current", HelpMessage = "Switch to set the chosen subscription as the current one")]
+        [Parameter(Mandatory = false, ParameterSetName = SelectSubscriptionByIdParameterSet, 
+            HelpMessage = "Switch to set the chosen subscription as the current one")]
+        [Parameter(Mandatory = false, ParameterSetName = SelectSubscriptionByNameParameterSet,
+            HelpMessage = "Switch to set the chosen subscription as the current one")]
         public SwitchParameter Current { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = "Default", HelpMessage = "Switch to set the chosen subscription as the default one")]
+        [Parameter(Mandatory = true, ParameterSetName = SelectDefaultSubscriptionByIdParameterSet, 
+            HelpMessage = "Switch to set the chosen subscription as the default one")]
+        [Parameter(Mandatory = true, ParameterSetName = SelectDefaultSubscriptionByNameParameterSet,
+            HelpMessage = "Switch to set the chosen subscription as the default one")]
         public SwitchParameter Default { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = "NoCurrent", HelpMessage = "Switch to clear the current subscription")]
+        [Parameter(Mandatory = true, ParameterSetName = NoCurrentSubscriptionParameterSet, 
+            HelpMessage = "Switch to clear the current subscription")]
         public SwitchParameter NoCurrent { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = "NoDefault", HelpMessage = "Switch to clear the default subscription")]
+        [Parameter(Mandatory = true, ParameterSetName = NoDefaultSubscriptionParameterSet, 
+            HelpMessage = "Switch to clear the default subscription")]
         public SwitchParameter NoDefault { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -59,19 +91,27 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         {
             switch (ParameterSetName)
             {
-                case "Current":
+                case SelectSubscriptionByNameParameterSet:
                     WriteObject(ProfileClient.SetSubscriptionAsCurrent(SubscriptionName, Account));
                     break;
 
-                case "Default":
+                case SelectSubscriptionByIdParameterSet:
+                    WriteObject(ProfileClient.SetSubscriptionAsCurrent(SubscriptionIdAsGuid(), Account));
+                    break;
+
+                case SelectDefaultSubscriptionByNameParameterSet:
                     WriteObject(ProfileClient.SetSubscriptionAsDefault(SubscriptionName, Account));
                     break;
 
-                case "NoCurrent":
+                case SelectDefaultSubscriptionByIdParameterSet:
+                    WriteObject(ProfileClient.SetSubscriptionAsDefault(SubscriptionIdAsGuid(), Account));
+                    break;
+
+                case NoCurrentSubscriptionParameterSet:
                     AzureSession.SetCurrentContext(null, null, null);
                     break;
 
-                case "NoDefault":
+                case NoDefaultSubscriptionParameterSet:
                     ProfileClient.ClearDefaultSubscription();
                     break;
             }
@@ -80,6 +120,16 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             {
                 WriteObject(true);
             }
+        }
+
+        private Guid SubscriptionIdAsGuid()
+        {
+            Guid subscriptionIdGuid;
+            if (!Guid.TryParse(SubscriptionId, out subscriptionIdGuid))
+            {
+                throw new ArgumentException(string.Format(Resources.InvalidGuid, SubscriptionId), "SubscriptionId");
+            }
+            return subscriptionIdGuid;
         }
     }
 }

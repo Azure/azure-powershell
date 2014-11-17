@@ -256,6 +256,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         /// Adds the given role to both config files and the service def.
         /// </summary>
         /// <param name="role"></param>
+        /// <param name="type"></param>
         private void AddPythonRoleCore(RoleInfo role, RoleType type)
         {
             Dictionary<string, object> parameters = CreateDefaultParameters(role);
@@ -317,8 +318,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         /// </summary>
         /// <remarks>This methods removes all deployments already in the emulator.</remarks>
         /// <param name="launchBrowser">Switch to control opening a browser for web roles.</param>
-        /// <param name="standardOutput">Output result from csrun.exe</param>
-        /// <param name="standardError">Error result from csrun.exe</param>
+        /// <param name="mode"></param>
+        /// <param name="roleInformation"></param>
+        /// <param name="warning"></param>
         public void StartEmulators(bool launchBrowser, ComputeEmulatorMode mode , out string roleInformation, out string warning)
         {
             var runTool = new CsRun(AzureTool.GetComputeEmulatorDirectory());
@@ -359,7 +361,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         /// </summary>
         /// <param name="paths">The service paths</param>
         /// <param name="roleName">The name of the role to change its instance count</param>
-        /// <param name="VMSize">The new role instance count</param>
+        /// <param name="instances"></param>
         public void SetRoleInstances(CloudProjectPathInfo paths, string roleName, int instances)
         {
             Components.SetRoleInstances(roleName, instances);

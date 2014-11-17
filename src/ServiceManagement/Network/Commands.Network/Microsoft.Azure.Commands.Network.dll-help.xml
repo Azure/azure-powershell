@@ -1,0 +1,1090 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns="http://msh" schema="maml">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-AzureManagedCache</command:name>
+      <maml:description>
+        <maml:para>Gets the Azure Caches in your Azure account.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureManagedCache</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Get-AzureManagedCache cmdlet get the Azure Caches in your account. By default, it gets all Azure Caches in the account. To get a particular Azure Cache, use the Name parameter.</maml:para>
+      <maml:para>An Azure Cache is a secure, dedicated cache that provides extremely fast access to data. This distributed, in-memory, scalable solution enables you to build highly scalable and responsive applications. For more information about Azure Cache, see <maml:navigationLink><maml:linkText>Azure Cache</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://azure.microsoft.com/en-us/services/cache/).</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureManagedCache</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Gets only the specified Azure Cache. Enter the name of an Azure Cache. The parameter value is case-sensitive. Wildcards are not permitted. This parameter is optional. By default, Get-AzureManagedCache get all Azure Caches in the account.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Gets only the specified Azure Cache. Enter the name of an Azure Cache. The parameter value is case-sensitive. Wildcards are not permitted. This parameter is optional. By default, Get-AzureManagedCache get all Azure Caches in the account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.ManagedCache.Models.PSCacheService</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:title />
+      <maml:alert>
+        <maml:para>Before using this cmdlet, use Add-AzureAccount or Import-AzurePublishSettingsFile to make your Azure account available to Windows PowerShell. For more information, see <maml:navigationLink><maml:linkText>How to install and configure Azure PowerShell</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Get all Azure Caches</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Get-AzureManagedCache
+
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command gets all Azure Caches in your account.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Get an Azure Cache by name</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Get-AzureManagedCache -Name ContosoCache
+
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command gets only the ContosoCache Azure Cache.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>
+        </maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureManagedCacheAccessKey</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureManagedCacheAccessKey</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-AzureManagedCacheAccessKey</command:name>
+      <maml:description>
+        <maml:para>Gets the access keys for an Azure Cache</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureManagedCacheAccessKey</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Get-AzureManagedCacheAccessKey cmdlet gets the primary and secondary access keys for an Azure Cache. You can use these keys to allow clients, such as web applications, to access to your Azure Cache. </maml:para>
+      <maml:para>Typically, you use the primary key, but use the secondary key to avoid delays while the primary key is being regenerated. To get new access keys, use the New- AzureManagedCacheAccessKey cmdlet</maml:para>
+      <maml:para>An Azure Cache is a secure, dedicated cache that provides extremely fast access to data. This distributed, in-memory, scalable solution enables you to build highly scalable and responsive applications. For more information about Azure Cache, see <maml:navigationLink><maml:linkText>Azure Cache</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://azure.microsoft.com/en-us/services/cache/).</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureManagedCacheAccessKey</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the Azure Cache. This parameter value is case-sensitve. Wildcard characters are not permitted. This parameter is required.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Azure Cache. This parameter value is case-sensitve. Wildcard characters are not permitted. This parameter is required.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Management.ManagedCache.Models.CachingKeysResponse</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Get the access key</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Get-AzureManagedCacheAccessKey -Name contosocache
+
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command gets the access key for the contosocache Azure Cache.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureManagedCacheAccessKey</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureManagedCacheAccessKey</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureManagedCacheAccessKey</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>New-AzureManagedCache</command:name>
+      <maml:description>
+        <maml:para>Creates an Azure cache</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>New</command:verb>
+      <command:noun>AzureManagedCache</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The New-AzureManagedCache cmdlet creates an Azure Cache in your Azure account and returns an object that represents the new Azure Cache.</maml:para>
+      <maml:para>An Azure Cache is a secure, dedicated cache that provides extremely fast access to data. This distributed, in-memory, scalable solution enables you to build highly scalable and responsive applications. For more information about Azure Cache, see <maml:navigationLink><maml:linkText>Azure Cache</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://azure.microsoft.com/en-us/services/cache/).</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-AzureManagedCache</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies a name for the Azure Cache. The name can include only lower-case letters and numbers, and it must begin with a lower-case letter. The name must  be unique. This parameter is required.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="">
+          <maml:name>Location</maml:name>
+          <maml:description>
+            <maml:para>Specifies the location of the Azure Cache. Enter an Azure data center location, such as "North Central US" or "West Europe". This parameter is required.</maml:para>
+            <maml:para>To find a location that supports Azure Cache, use the Switch-AzureModule cmdlet to switch to the AzureResourceManager module, and then use the Get-AzureLocation cmdlet.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
+          <maml:name>Memory</maml:name>
+          <maml:description>
+            <maml:para>Specifies the size of the Azure Cache. The cache size might affect the cost of the service. Enter a value followed by "MB" or "GB" (no intervening space), such as (128MB or 8GB). This value must be compatible with the value of the Sku parameter. This parameter is optional. The default value is the lowest value in the range specified by the Sku parameter.</maml:para>
+            <maml:para> -- When the value of Sku is Basic, the value of Memory must be divisible by 128MB. 
+
+-- When the value of Sku is Standard, the value of Memory  must be divisible by 1GB. 
+
+-- When the value of Sku is Premium, the value of Memory must be divisible by 5GB.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
+          <maml:name>Sku</maml:name>
+          <maml:description>
+            <maml:para>Specifies the tier of the Azure Cache. Valid values are Basic (128MB - 1GB), Standard (1GB - 10GB), and Premium (5GB - 150GB). This parameter is optional. The default value is Basic.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="">
+        <maml:name>Location</maml:name>
+        <maml:description>
+          <maml:para>Specifies the location of the Azure Cache. Enter an Azure data center location, such as "North Central US" or "West Europe". This parameter is required.</maml:para>
+          <maml:para>To find a location that supports Azure Cache, use the Switch-AzureModule cmdlet to switch to the AzureResourceManager module, and then use the Get-AzureLocation cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
+        <maml:name>Memory</maml:name>
+        <maml:description>
+          <maml:para>Specifies the size of the Azure Cache. The cache size might affect the cost of the service. Enter a value followed by "MB" or "GB" (no intervening space), such as (128MB or 8GB). This value must be compatible with the value of the Sku parameter. This parameter is optional. The default value is the lowest value in the range specified by the Sku parameter.</maml:para>
+          <maml:para> -- When the value of Sku is Basic, the value of Memory must be divisible by 128MB. 
+
+-- When the value of Sku is Standard, the value of Memory  must be divisible by 1GB. 
+
+-- When the value of Sku is Premium, the value of Memory must be divisible by 5GB.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Specifies a name for the Azure Cache. The name can include only lower-case letters and numbers, and it must begin with a lower-case letter. The name must  be unique. This parameter is required.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
+        <maml:name>Sku</maml:name>
+        <maml:description>
+          <maml:para>Specifies the tier of the Azure Cache. Valid values are Basic (128MB - 1GB), Standard (1GB - 10GB), and Premium (5GB - 150GB). This parameter is optional. The default value is Basic.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You cannot pipe input to this cmdlet.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.ManagedCache.Models .PSCacheService</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:title />
+      <maml:alert>
+        <maml:para>Before using this cmdlet, use Add-AzureAccount or Import-AzurePublishSettingsFile to make your Azure account available to Windows PowerShell. For more information, see <maml:navigationLink><maml:linkText>How to install and configure Azure PowerShell</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Create an Azure Cache</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;New-AzureManagedCache -Name contosocache -Location "West Europe"
+
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command creates an Azure Cache named ContosoCache in the West Europe Azure data center. It uses the default values for the Sku and Memory parameters, which are Basic and 128MB.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Create a premium Azure Cache</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;New-AzureManagedCache -Name contosoappcache -Location "West Europe" -Sku Premium -Memory 150GB
+
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command creates the largest available Azure Cache. </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>
+        </maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureManagedCacheAccessKey</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureManagedCacheAccessKey</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>New-AzureManagedCacheAccessKey</command:name>
+      <maml:description>
+        <maml:para>Creates new access keys for an Azure Cache.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>New</command:verb>
+      <command:noun>AzureManagedCacheAccessKey</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The New-AzureManagedCacheAccessKey cmdlet generates new primary or secondary access keys for an Azure Cache. When you create an Azure Cache, it includes a set of access keys. To get the current access keys, use the Get-AzureManagedCacheAccessKey cmdlet. You can use these keys to allow clients, such as web applications, to access to your Azure Cache.</maml:para>
+      <maml:para>An Azure Cache is a secure, dedicated cache that provides extremely fast access to data. This distributed, in-memory, scalable solution enables you to build highly scalable and responsive applications. For more information about Azure Cache, see <maml:navigationLink><maml:linkText>Azure Cache</maml:linkText><maml:uri></maml:uri></maml:navigationLink>  (http://azure.microsoft.com/en-us/services/cache/).</maml:para>
+      <maml:para>Typically, you use the primary key, but use the secondary key to avoid delays while the primary key is being regenerated. To get new access keys, use the New- AzureManagedCacheAccessKey cmdlet</maml:para>
+      <maml:para>
+      </maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-AzureManagedCacheAccessKey</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Generates keys for the specified Azure Cache. Enter the name of the Azure Cache. This parameter is required. The parameter value is case-sensitive. Wildcard characters are not permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="">
+          <maml:name>KeyType</maml:name>
+          <maml:description>
+            <maml:para>Specifies the type of key to create. Valid values are Primary and Secondary. This parameter is optional. The default value is Primary.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="">
+        <maml:name>KeyType</maml:name>
+        <maml:description>
+          <maml:para>Specifies the type of key to create. Valid values are Primary and Secondary. This parameter is optional. The default value is Primary.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Generates keys for the specified Azure Cache. Enter the name of the Azure Cache. This parameter is required. The parameter value is case-sensitive. Wildcard characters are not permitted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You cannot pipe input to this cmdlet.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Management.ManagedCache.Models.CachingKeysResponse</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Create a new primary key</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;New-AzureManagedCacheAccessKey -Name contosocache
+
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command creates a new primary key for the contosocache Azure Cache.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Create a new secondary key</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;New-AzureManagedCacheAccessKey -Name contosocache -KeyType Secondary
+
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command creates a new secondary key for the contosocache Azure Cache.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Create new access keys</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;'Primary', 'Secondary' | ForEach-Object {New-AzureManagedCacheAccessKey -Name contosocache -KeyType $_}
+
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command creates new primary and secondary keys for the contosocache Azure Cache.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>
+        </maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureManagedCacheAccessKey</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-AzureManagedCache</command:name>
+      <maml:description>
+        <maml:para>Deletes an Azure Cache</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>AzureManagedCache</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Remove-AzureManagedCache cmdlet deletes an Azure Cache and all of the data in the Cache. It returns True if the operation was successful and False if it failed.</maml:para>
+      <maml:para>By default, Remove-AzureManagedCache prompts you for confirmation before deleting the Azure Cache, but you can use the Force parameter to suppress the prompt.</maml:para>
+      <maml:para>An Azure Cache is a secure, dedicated cache that provides extremely fast access to data. This distributed, in-memory, scalable solution enables you to build highly scalable and responsive applications. For more information about Azure Cache, see <maml:navigationLink><maml:linkText>Azure Cache</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://azure.microsoft.com/en-us/services/cache/).</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureManagedCache</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the Azure Cache to delete. The parameter value is case-sensitive. Wildcard characters are not permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="f">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Suppresses the confirmation prompt. By default, Remove-AzureManagedCache prompts you for confirmation before deleting the Azure Cache.</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="f">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Suppresses the confirmation prompt. By default, Remove-AzureManagedCache prompts you for confirmation before deleting the Azure Cache.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Azure Cache to delete. The parameter value is case-sensitive. Wildcard characters are not permitted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can input to this cmdlet by property name, but not by value.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Boolean</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>Returns True ($true) if the operation is successful and False ($false) if it fails.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:title />
+      <maml:alert>
+        <maml:para>Before using this cmdlet, use Add-AzureAccount or Import-AzurePublishSettingsFile to make your Azure account available to Windows PowerShell. For more information, see <maml:navigationLink><maml:linkText>How to install and configure Azure PowerShell</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Delete an Azure Cache</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Remove-AzureManagedCache -Name contosocache
+
+Confirm
+Are you sure you want to perform this action?
+Performing the operation "Delete" on target "contosocache".
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):  
+Y
+
+True
+
+
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command deletes the contosocache Azure Cache. The command prompts for confirmation before deleting the Cache. It returns a value of $True to indicate that the Cache was deleted.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Remove all test caches</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Get-AzureManagedCache | Where-Object Name -like Test* | Remove-AzureManagedCache -Force
+
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command removes all Azure Caches that have names that begin with "Test." It uses the Get-AzureManagedCache cmdlet to get the Azure Caches in your account. It pipes them to the Where-Object cmdlet, which returns only the Azure Caches that have names that begin with "Test". Then, it pipes the test caches to the Remove-AzureManagedCache cmdlet with the Force parameter, which deletes them without prompting for confirmation.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>
+        </maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureManagedCache</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureManagedCacheAccessKey</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureManagedCacheAccessKey</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Set-AzureManagedCache</command:name>
+      <maml:description>
+        <maml:para>Changes the properties of an Azure Cache.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Set</command:verb>
+      <command:noun>AzureManagedCache</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Set-AzureManagedCache cmdlet changes the properties of an Azure Cache and returns an object that represents the cache with the changes. Use the Name and Location parameters to identify the Azure Cache, and the Sku and Memory parameters to change its properties.</maml:para>
+      <maml:para>An Azure Cache is a secure, dedicated cache that provides extremely fast access to data. This distributed, in-memory, scalable solution enables you to build highly scalable and responsive applications. For more information about Azure Cache, see <maml:navigationLink><maml:linkText>Azure Cache</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://azure.microsoft.com/en-us/services/cache/).</maml:para>
+      <maml:para>WARNING: When you change the SKU of an Azure Cache, all data in the cache is deleted and a new, empty Azure Cache is created for you with the same name and location. When you use the Sku parameter, Set-AzureManagedCache prompts for confirmation. To suppress the confirmation prompt, use the Force parameter.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Set-AzureManagedCache</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Identifies the Azure Cache. Enter the name of an Azure Cache. This parameter is required. The parameter value is case-sensitive. Wildcards are not permitted. You cannot use this cmdlet to change the name of an Azure Cache.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="">
+          <maml:name>Location</maml:name>
+          <maml:description>
+            <maml:para>Specifies the location of the Azure Cache. This parameter is required. Enter the name of the Azure data center location where the Azure Cache resides, such as "North Central US" or "West Europe". This parameter identifies the Azure Cache. You cannot use this parameter to change the location of the Azure Cache.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="">
+          <maml:name>Sku</maml:name>
+          <maml:description>
+            <maml:para>Changes the tier of the Azure Cache. Valid values are Basic (128MB - 1GB), Standard (1GB - 10GB), and Premium (5GB - 150GB). This parameter is optional.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
+          <maml:name>Memory</maml:name>
+          <maml:description>
+            <maml:para>Changes the Azure Cache to the specified size. The cache size might affect the cost of the service. Enter a value followed by "MB" or "GB" (no intervening space), such as (128MB or 8GB). This value must be compatible with the Sku of the Azure Cache. This parameter is optional.</maml:para>
+            <maml:para> -- When the value of Sku is Basic, the value of Memory must be divisible by 128MB. 
+
+-- When the value of Sku is Standard, the value of Memory  must be divisible by 1GB. 
+
+-- When the value of Sku is Premium, the value of Memory must be divisible by 5GB.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="f">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Suppresses the confirmation prompt that appears when you use the Sku parameter. Because changing the SKU deletes all data in the Azure Cache, Set-AzureManagedCache prompts you for confirmation before performing the operation.</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="f">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Suppresses the confirmation prompt that appears when you use the Sku parameter. Because changing the SKU deletes all data in the Azure Cache, Set-AzureManagedCache prompts you for confirmation before performing the operation.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="">
+        <maml:name>Location</maml:name>
+        <maml:description>
+          <maml:para>Specifies the location of the Azure Cache. This parameter is required. Enter the name of the Azure data center location where the Azure Cache resides, such as "North Central US" or "West Europe". This parameter identifies the Azure Cache. You cannot use this parameter to change the location of the Azure Cache.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
+        <maml:name>Memory</maml:name>
+        <maml:description>
+          <maml:para>Changes the Azure Cache to the specified size. The cache size might affect the cost of the service. Enter a value followed by "MB" or "GB" (no intervening space), such as (128MB or 8GB). This value must be compatible with the Sku of the Azure Cache. This parameter is optional.</maml:para>
+          <maml:para> -- When the value of Sku is Basic, the value of Memory must be divisible by 128MB. 
+
+-- When the value of Sku is Standard, the value of Memory  must be divisible by 1GB. 
+
+-- When the value of Sku is Premium, the value of Memory must be divisible by 5GB.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Identifies the Azure Cache. Enter the name of an Azure Cache. This parameter is required. The parameter value is case-sensitive. Wildcards are not permitted. You cannot use this cmdlet to change the name of an Azure Cache.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="">
+        <maml:name>Sku</maml:name>
+        <maml:description>
+          <maml:para>Changes the tier of the Azure Cache. Valid values are Basic (128MB - 1GB), Standard (1GB - 10GB), and Premium (5GB - 150GB). This parameter is optional.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You cannot pipe input to this cmdlet.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.ManagedCache.Models.PsCacheService</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:title />
+      <maml:alert>
+        <maml:para>Before using this cmdlet, use Add-AzureAccount or Import-AzurePublishSettingsFile to make your Azure account available to Windows PowerShell. For more information, see <maml:navigationLink><maml:linkText>How to install and configure Azure PowerShell</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Change the size of an Azure Cache</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Set-AzureManagedCache -Name contosocache -Location "West Europe" -Memory 256MB
+
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command increases the size of the contosocache Azure Cache to 256 MB.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Change the SKU of an Azure Cache</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+PS C:\&gt;Set-AzureManagedCache -Name contosocache -Location "West Europe" -Sku Standard -Size 10GB
+
+Confirm
+Are you sure you want to perform this action?
+Performing the operation "Delete" on target "contosocache".
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):
+
+
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command changes the SKU of the contosocache Azure Cache from Basic to Standard and the Size to 10 GB.</maml:para>
+          <maml:para>Because this operation deletes the existing Azure Cache and its data and creates a new empty Azure Cache, Set-AzureManagedCache prompts you for confirmation before deleting the cache. To suppress this prompt, use the Force parameter.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>
+        </maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+</helpItems>

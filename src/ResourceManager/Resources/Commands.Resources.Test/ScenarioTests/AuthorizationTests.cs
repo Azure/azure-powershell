@@ -17,14 +17,14 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class AuthorizationTests : ResourcesTestsBase
+    public class AuthorizationTests
     {
         //[Fact]
         //[Trait(Category.AcceptanceType, Category.CheckIn)]
         [Fact(Skip = "TODO: Fix the broken test.")]
         public void TestAuthorizationEndToEnd()
         {
-            RunPowerShellTest("Test-AuthorizationEndToEnd");
+            ResourcesController.NewInstance.RunPsTest("Test-AuthorizationEndToEnd");
         }
     }
 }

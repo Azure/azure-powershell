@@ -1,0 +1,8 @@
+{
+    name: "foo2",
+    properties:
+    {
+        type: "AzureStorageLinkedService",
+        connectionString: "DefaultEndpointsProtocol=https;AccountName=myaccountname;AccountKey=myaccountkey"
+    }
+}

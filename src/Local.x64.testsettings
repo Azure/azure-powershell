@@ -3,6 +3,7 @@
   <Description>These are default test settings for a local test run under x64 architecture.</Description>
  <Deployment>
     <DeploymentItem filename="ServiceManagement\Compute\Commands.ServiceManagement.Test\Resources\" />
+    <DeploymentItem filename="ServiceManagement\Compute\Commands.ServiceManagement.Extensions.Test\Resources\" />
     <DeploymentItem filename="Common\Commands.ScenarioTest\Resources\" />
     <DeploymentItem filename="Package\Debug\" />
     <DeploymentItem filename="Package\Debug\ServiceManagement\Azure\Services\Resources" outputDirectory="Resources" />

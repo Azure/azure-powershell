@@ -49,6 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
             Environments = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
             Subscriptions = new Dictionary<Guid, AzureSubscription>();
             Accounts = new Dictionary<string, AzureAccount>(StringComparer.InvariantCultureIgnoreCase);
+            ProfileLoadErrors = new List<string>();
 
             if (!store.DirectoryExists(AzurePowerShell.ProfileDirectory))
             {
@@ -60,15 +61,22 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
                 string contents = store.ReadFileAsText(profilePath);
 
                 IProfileSerializer serializer;
+
                 if (ParserHelper.IsXml(contents))
                 {
                     serializer = new XmlProfileSerializer();
-                    serializer.Deserialize(contents, this);
+                    if (!serializer.Deserialize(contents, this))
+                    {
+                        ProfileLoadErrors.AddRange(serializer.DeserializeErrors);
+                    }
                 }
                 else if (ParserHelper.IsJson(contents))
                 {
                     serializer = new JsonProfileSerializer();
-                    serializer.Deserialize(contents, this);
+                    if (!serializer.Deserialize(contents, this))
+                    {
+                        ProfileLoadErrors.AddRange(serializer.DeserializeErrors);
+                    }
                 }
             }
 
@@ -102,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
             }
         }
 
-        public IDataStore DataStore { get { return store; } }
+        public List<string> ProfileLoadErrors { get; private set; }
 
         public Dictionary<string, AzureEnvironment> Environments { get; set; }
 
@@ -138,26 +146,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
                     value.Properties[AzureSubscription.Property.Default] = "True";
                 }
             }
-        }
-
-        public X509Certificate2 GetCertificate(string thumbprint)
-        {
-            return store.GetCertificate(thumbprint);
-        }
-
-        public void AddCertificate(X509Certificate2 cert)
-        {
-            store.AddCertificate(cert);
-        }
-
-        public void SaveTokenCache(byte[] data)
-        {
-            store.WriteFile(tokenCacheFile, data);
-        }
-
-        public byte[] LoadTokenCache()
-        {
-            return store.ReadFileAsBytes(tokenCacheFile);
         }
     }
 }

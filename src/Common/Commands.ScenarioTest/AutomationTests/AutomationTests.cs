@@ -52,19 +52,17 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         [Fact]
         [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAutomationSuspendAndResumeJob()
         {
-            if (XUnitHelper.IsCheckin()) return;
-
             RunPowerShellTest("Test-AutomationSuspendAndResumeJob -runbookPath Resources\\Automation\\Use-WorkflowCheckpointSample.ps1");
         }
 
         [Fact]
         [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAutomationStartRunbookOnASchedule()
         {
-            if (XUnitHelper.IsCheckin()) return;
-
             RunPowerShellTest("Test-AutomationStartRunbookOnASchedule -runbookPath Resources\\Automation\\Test-Workflow.ps1");
         }
 

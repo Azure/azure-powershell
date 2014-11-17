@@ -71,37 +71,30 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             int i = 0;            
             while (i < 16)
             {
-                string destinationSasUri2 = CreateSasUriWithPermission(vhdName, i);
-                try
+                if (!isReadWritePermission(i))
                 {
-                    Console.WriteLine("uploads {0} to {1}", vhdName, destinationSasUri2);
-                    vmPowershellCmdlets.RemoveAzureSubscriptions();
-                    var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2);
-                    ReImportSubscription();
-                    Console.WriteLine("Finished uploading: {0}", destinationSasUri2);
-
-                    // Verify the upload.
-                    AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUri2, vhdLocalPath, vhdUploadContext, md5hash);
-                    Console.WriteLine("Test success with permission: {0}", i);
-                    i++;
+                    i++; // Skip negative tests due to BUG: https://github.com/Azure/azure-sdk-tools/issues/2956
                 }
-                catch (Exception e)
+                else
                 {
-                    if (e.ToString().Contains("already running"))
+                    string destinationSasUri2 = CreateSasUriWithPermission(vhdName, i);
+                    try
                     {
-                        Console.WriteLine(e.ToString());
-                        continue;
-                    }
-                    if (i != 3 && i != 7 && i != 11 && i != 15)
-                    {
-                        Console.WriteLine("Error as expected.  Permission: {0}", i);
-                        Console.WriteLine("Error message: {0}", e.InnerException.Message);
+                        Console.WriteLine("uploads {0} to {1}", vhdName, destinationSasUri2);
+                        vmPowershellCmdlets.RemoveAzureSubscriptions();
+                        var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2);
+                        ReImportSubscription();
+                        Console.WriteLine("Finished uploading: {0}", destinationSasUri2);
+
+                        // Verify the upload.
+                        AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUri2, vhdLocalPath, vhdUploadContext, md5hash);
+                        Console.WriteLine("Test success with permission: {0}", i);
                         i++;
-                        continue;
                     }
-                    else
+                    catch (Exception e)
                     {
-                        Assert.Fail("Test failed Permission: {0} \n {1}", i, e.ToString());
+                        continueIfNotReadWrite(e, ref i);
+                        continue;
                     }
                 }
             }
@@ -153,39 +146,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             int i = 0;
             while (i < 16)
             {
-                string destinationSasUri2 = CreateSasUriWithPermission(vhdName, i);
-                try
+                if (!isReadWriteDeletePermission(i))
                 {
-                    Console.WriteLine("uploads {0} to {1}", vhdName, destinationSasUri2);
-
-                    vmPowershellCmdlets.RemoveAzureSubscriptions();
-                    vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2);
-                    var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2, true);
-                    ReImportSubscription();
-                    Console.WriteLine("Finished uploading: {0}", destinationSasUri2);
-
-                    // Verify the upload.
-                    AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUri2, vhdLocalPath, vhdUploadContext, md5hash);
-                    Console.WriteLine("Test success with permission: {0}", i);
-                    i++;
+                    i++; // Skip negative tests due to BUG: https://github.com/Azure/azure-sdk-tools/issues/2956
                 }
-                catch (Exception e)
+                else
                 {
-                    if (e.ToString().Contains("already running"))
+                    string destinationSasUri2 = CreateSasUriWithPermission(vhdName, i);
+                    try
                     {
-                        Console.WriteLine(e.ToString());
-                        continue;
-                    }
-                    if (i != 7 && i != 15)
-                    {
-                        Console.WriteLine("Error as expected.  Permission: {0}", i);
-                        Console.WriteLine("Error message: {0}", e.InnerException.Message);
+                        Console.WriteLine("uploads {0} to {1}", vhdName, destinationSasUri2);
+
+                        vmPowershellCmdlets.RemoveAzureSubscriptions();
+                        vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2);
+                        var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2, true);
+                        ReImportSubscription();
+                        Console.WriteLine("Finished uploading: {0}", destinationSasUri2);
+
+                        // Verify the upload.
+                        AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUri2, vhdLocalPath, vhdUploadContext, md5hash);
+                        Console.WriteLine("Test success with permission: {0}", i);
                         i++;
-                        continue;
                     }
-                    else
+                    catch (Exception e)
                     {
-                        Assert.Fail("Test failed Permission: {0} \n {1}", i, e.ToString());
+                        continueIfNotReadWriteDelete(e, ref i);
+                        continue;
                     }
                 }
             }
@@ -219,37 +205,30 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             int i = 0;
             while (i < 16)
             {
-                string destinationSasUri2 = CreateSasUriWithPermission(vhdName, i);
-                try
+                if (!isReadWriteDeletePermission(i))
                 {
-                    Console.WriteLine("uploads {0} to {1}", vhdName, destinationSasUri2);
-                    vmPowershellCmdlets.RemoveAzureSubscriptions();
-                    var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2, true);
-                    ReImportSubscription();
-                    Console.WriteLine("Finished uploading: {0}", destinationSasUri2);
-
-                    // Verify the upload.
-                    AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUri2, vhdLocalPath, vhdUploadContext, md5hash);
-                    Console.WriteLine("Test success with permission: {0}", i);
-                    i++;
+                    i++; // Skip negative tests due to BUG: https://github.com/Azure/azure-sdk-tools/issues/2956
                 }
-                catch (Exception e)
+                else
                 {
-                    if (e.ToString().Contains("already running"))
+                    string destinationSasUri2 = CreateSasUriWithPermission(vhdName, i);
+                    try
                     {
-                        Console.WriteLine(e.ToString());
-                        continue;
-                    }
-                    if (i != 7 && i != 15)
-                    {
-                        Console.WriteLine("Error as expected.  Permission: {0}", i);
-                        Console.WriteLine("Error message: {0}", e.InnerException.Message);
+                        Console.WriteLine("uploads {0} to {1}", vhdName, destinationSasUri2);
+                        vmPowershellCmdlets.RemoveAzureSubscriptions();
+                        var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2, true);
+                        ReImportSubscription();
+                        Console.WriteLine("Finished uploading: {0}", destinationSasUri2);
+
+                        // Verify the upload.
+                        AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUri2, vhdLocalPath, vhdUploadContext, md5hash);
+                        Console.WriteLine("Test success with permission: {0}", i);
                         i++;
-                        continue;
                     }
-                    else
+                    catch (Exception e)
                     {
-                        Assert.Fail("Test failed Permission: {0} \n {1}", i, e.ToString());
+                        continueIfNotReadWriteDelete(e, ref i);
+                        continue;
                     }
                 }
             }
@@ -281,41 +260,36 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             for (int i = 0; i < 16; i++)            
             {
-                string destinationSasUri2 = CreateSasUriWithPermission(vhdName, i);
-                try
+                if (isReadWritePermission(i)) // Otherwise, skip negative tests due to BUG: https://github.com/Azure/azure-sdk-tools/issues/2956
                 {
-                    Console.WriteLine("uploads {0} to {1}", vhdName, destinationSasUri2);
-                    vmPowershellCmdlets.RemoveAzureSubscriptions();
-                    var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2);
-
+                    string destinationSasUri2 = CreateSasUriWithPermission(vhdName, i);
                     try
                     {
-                        Console.WriteLine("uploads {0} to {1} second times", vhdName, destinationSasUri2);
-                        vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2);
-                        pass = false;
+                        Console.WriteLine("uploads {0} to {1}", vhdName, destinationSasUri2);
+                        vmPowershellCmdlets.RemoveAzureSubscriptions();
+                        var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2);
+
+                        try
+                        {
+                            Console.WriteLine("uploads {0} to {1} second times", vhdName, destinationSasUri2);
+                            vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2);
+                            pass = false;
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Failed as expected while uploading {0} second time without overwrite: {1}", vhdLocalPath.Name, e.InnerException.Message);
+
+                        }
+
+                        // Verify the upload.
+                        ReImportSubscription();
+                        AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUri2, vhdLocalPath, vhdUploadContext, md5hash);
+                        Console.WriteLine("Test success with permission: {0}", i);
                     }
                     catch (Exception e)
-                    {                        
-                        Console.WriteLine("Failed as expected while uploading {0} second time without overwrite: {1}", vhdLocalPath.Name, e.InnerException.Message);
-
-                    }
-
-                    // Verify the upload.
-                    ReImportSubscription();
-                    AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUri2, vhdLocalPath, vhdUploadContext, md5hash);
-                    Console.WriteLine("Test success with permission: {0}", i);
-                }
-                catch (Exception e)
-                {
-                    if (i != 3 && i != 7 && i != 11 && i != 15)
                     {
-                        Console.WriteLine("Error as expected.  Permission: {0}", i);
-                        Console.WriteLine("Error message: {0}", e.InnerException.Message);
+                        continueIfNotReadWrite(e, ref i);
                         continue;
-                    }
-                    else
-                    {
-                        Assert.Fail("Test failed.  Permission: {0}", i);
                     }
                 }
             }
@@ -348,37 +322,30 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             int i = 0;            
             while (i < 16)
             {
-                string destinationSasUri2 = CreateSasUriWithPermission(vhdName, i);
-                try
+                if (!isReadWritePermission(i))
                 {
-                    Console.WriteLine("uploads {0} to {1}", vhdName, destinationSasUri2);
-                    vmPowershellCmdlets.RemoveAzureSubscriptions();
-                    var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2, 16);
-                    ReImportSubscription();
-                    Console.WriteLine("uploading completed: {0}", vhdName);
-
-                    // Verify the upload.
-                    AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUri2, vhdLocalPath, vhdUploadContext, md5hash);
-                    Console.WriteLine("Test success with permission: {0}", i);
-                    i++;
+                    i++; // Skip negative tests due to BUG: https://github.com/Azure/azure-sdk-tools/issues/2956
                 }
-                catch (Exception e)
+                else
                 {
-                    if (e.ToString().Contains("already running"))
+                    string destinationSasUri2 = CreateSasUriWithPermission(vhdName, i);
+                    try
                     {
-                        Console.WriteLine(e.ToString());
-                        continue;
-                    }
-                    if (i != 3 && i != 7 && i != 11 && i != 15)
-                    {
-                        Console.WriteLine("Error as expected.  Permission: {0}", i);
-                        Console.WriteLine("Error message: {0}", e.InnerException.Message);
+                        Console.WriteLine("uploads {0} to {1}", vhdName, destinationSasUri2);
+                        vmPowershellCmdlets.RemoveAzureSubscriptions();
+                        var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2, 16);
+                        ReImportSubscription();
+                        Console.WriteLine("uploading completed: {0}", vhdName);
+
+                        // Verify the upload.
+                        AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUri2, vhdLocalPath, vhdUploadContext, md5hash);
+                        Console.WriteLine("Test success with permission: {0}", i);
                         i++;
-                        continue;
                     }
-                    else
+                    catch (Exception e)
                     {
-                        Assert.Fail("Test failed Permission: {0} \n {1}", i, e.ToString());
+                        continueIfNotReadWrite(e, ref i);
+                        continue;
                     }
                 }
             }
@@ -411,32 +378,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             for (int i = 0; i < 16; i++)
             {
-                string destinationSasUri2 = CreateSasUriWithPermission(vhdName, i);
-                try
+                if (!isReadWriteDeletePermission(i)) // Otherwise, skip negative tests due to BUG: https://github.com/Azure/azure-sdk-tools/issues/2956
                 {
-                    Console.WriteLine("uploads {0} to {1}", vhdName, destinationSasUri2);
-                    vmPowershellCmdlets.RemoveAzureSubscriptions();
-                    vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2);
-                    Console.WriteLine("uploaded: {0}", vhdName); 
-                    var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2, 16, true);
-                    Console.WriteLine("uploading overwrite completed: {0}", vhdName);
+                    string destinationSasUri2 = CreateSasUriWithPermission(vhdName, i);
+                    try
+                    {
+                        Console.WriteLine("uploads {0} to {1}", vhdName, destinationSasUri2);
+                        vmPowershellCmdlets.RemoveAzureSubscriptions();
+                        vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2);
+                        Console.WriteLine("uploaded: {0}", vhdName);
+                        var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, destinationSasUri2, 16, true);
+                        Console.WriteLine("uploading overwrite completed: {0}", vhdName);
 
-                    // Verify the upload.
-                    ReImportSubscription();
-                    AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUri2, vhdLocalPath, vhdUploadContext, md5hash);
-                    Console.WriteLine("Test success with permission: {0}", i);
-                }
-                catch (Exception e)
-                {
-                    if (i != 7 && i != 15)
-                    {
-                        Console.WriteLine("Error as expected.  Permission: {0}", i);
-                        Console.WriteLine("Error message: {0}", e.InnerException.Message);
-                        continue;
+                        // Verify the upload.
+                        ReImportSubscription();
+                        AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUri2, vhdLocalPath, vhdUploadContext, md5hash);
+                        Console.WriteLine("Test success with permission: {0}", i);
                     }
-                    else
+                    catch (Exception e)
                     {
-                        Assert.Fail("Test failed Permission: {0} \n {1}", i, e.ToString());
+                        continueIfNotReadWriteDelete(e, ref i);
+                        continue;
                     }
                 }
             }
@@ -454,6 +416,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         /// </summary>
         [TestMethod(), TestCategory(Category.Sequential), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet (Add-AzureVhd)")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\patch_VHD.csv", "patch_VHD#csv", DataAccessMethod.Sequential)]
+        [Ignore] // BUG: https://github.com/Azure/azure-sdk-tools/issues/2956
         public void PatchFirstLevelDifferencingDiskSasUri()
         {
             StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
@@ -604,46 +567,44 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             int i = 0;
             while (i < 16)
             {
-                string destinationSasUriParent = CreateSasUriWithPermission(baseVhdName, i); // the destination of the parent vhd is a Sas Uri
-
-                // Set the destination of child vhd
-                string vhdBlobName = string.Format("{0}/{1}.vhd", vhdContainerName, Utilities.GetUniqueShortName(Path.GetFileNameWithoutExtension(childVhdName)));
-                string vhdDestUri = blobUrlRoot + vhdBlobName;
-
-                try
+                if (!isReadWritePermission(i))
                 {
-                    // Upload the parent vhd using Sas Uri
-                    Console.WriteLine("uploads {0} to {1}", baseVhdName, destinationSasUriParent);
-                    vmPowershellCmdlets.RemoveAzureSubscriptions();
-                    var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(baseVhdLocalPath, destinationSasUriParent, true);
-                    Console.WriteLine("uploading completed: {0}", baseVhdName);
-
-                    // Verify the upload.
-                    ReImportSubscription();
-                    AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUriParent, baseVhdLocalPath, vhdUploadContext, md5hashBase, false);
-
-                    Console.WriteLine("uploads {0} to {1} with patching from {2}", childVhdName, vhdDestUri, destinationSasUriParent);
-                    var patchVhdUploadContext = vmPowershellCmdlets.AddAzureVhd(childVhdLocalPath, vhdDestUri, destinationSasUriParent);
-                    Console.WriteLine("uploading the child vhd completed: {0}", childVhdName);
-
-                    // Verify the upload.
-                    AssertUploadContextAndContentMD5UsingSaveVhd(vhdDestUri, childVhdLocalPath, patchVhdUploadContext, md5hash);
-                    Console.WriteLine("Test success with permission: {0}", i);
-                    i++;
+                    i++; // Skip negative tests due to BUG: https://github.com/Azure/azure-sdk-tools/issues/2956
                 }
-                catch (Exception e)
+                else
                 {
-                    if (i != 3 && i != 7 && i != 11 && i != 15)
+                    string destinationSasUriParent = CreateSasUriWithPermission(baseVhdName, i); // the destination of the parent vhd is a Sas Uri
+
+                    // Set the destination of child vhd
+                    string vhdBlobName = string.Format("{0}/{1}.vhd", vhdContainerName, Utilities.GetUniqueShortName(Path.GetFileNameWithoutExtension(childVhdName)));
+                    string vhdDestUri = blobUrlRoot + vhdBlobName;
+
+                    try
                     {
-                        Console.WriteLine("Error as expected.  Permission: {0}", i);
-                        Console.WriteLine("Error message: {0}", e.InnerException.Message);
+                        // Upload the parent vhd using Sas Uri
+                        Console.WriteLine("uploads {0} to {1}", baseVhdName, destinationSasUriParent);
+                        vmPowershellCmdlets.RemoveAzureSubscriptions();
+                        var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(baseVhdLocalPath, destinationSasUriParent, true);
+                        Console.WriteLine("uploading completed: {0}", baseVhdName);
+
+                        // Verify the upload.
+                        ReImportSubscription();
+                        AssertUploadContextAndContentMD5UsingSaveVhd(destinationSasUriParent, baseVhdLocalPath, vhdUploadContext, md5hashBase, false);
+
+                        Console.WriteLine("uploads {0} to {1} with patching from {2}", childVhdName, vhdDestUri, destinationSasUriParent);
+                        var patchVhdUploadContext = vmPowershellCmdlets.AddAzureVhd(childVhdLocalPath, vhdDestUri, destinationSasUriParent);
+                        Console.WriteLine("uploading the child vhd completed: {0}", childVhdName);
+
+                        // Verify the upload.
+                        AssertUploadContextAndContentMD5UsingSaveVhd(vhdDestUri, childVhdLocalPath, patchVhdUploadContext, md5hash);
+                        Console.WriteLine("Test success with permission: {0}", i);
                         i++;
+                    }
+                    catch (Exception e)
+                    {
+                        continueIfNotReadWrite(e, ref i);
                         continue;
                     }
-                    else
-                    {
-                        Assert.Fail("Test failed Permission: {0} \n {1}", i, e.ToString());
-                    }                   
                 }
             }
 
@@ -660,6 +621,57 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             Console.WriteLine("Test {0}", pass ? "passed" : "failed");
             ReImportSubscription();
+        }
+
+        private bool checkPermission(int i, int j)
+        {
+            return (i & j) == j;
+        }
+
+        private bool isReadWritePermission(int i)
+        {
+            return checkPermission(i,(int)(SharedAccessBlobPermissions.Read ^ SharedAccessBlobPermissions.Write));
+        }
+
+        private bool isReadWriteDeletePermission(int i)
+        {
+            return checkPermission(i,
+                (int)(SharedAccessBlobPermissions.Read ^ SharedAccessBlobPermissions.Write ^ SharedAccessBlobPermissions.Delete));
+        }
+        private void continueIfNotReadWrite(Exception e, ref int i)
+        {
+            if (e.ToString().Contains("already running"))
+            {
+                Console.WriteLine(e.ToString());
+            }
+            else if (!isReadWritePermission(i))
+            {
+                Console.WriteLine("Error as expected.  Permission: {0}", i);
+                Console.WriteLine("Error message: {0}", e.InnerException.Message);
+                i++;
+            }
+            else
+            {
+                Assert.Fail("Test failed Permission: {0} \n {1}", i, e.ToString());
+            }
+        }
+
+        private void continueIfNotReadWriteDelete(Exception e, ref int i)
+        {
+            if (e.ToString().Contains("already running"))
+            {
+                Console.WriteLine(e.ToString());
+            }
+            else if (!isReadWriteDeletePermission(i))
+            {
+                Console.WriteLine("Error as expected.  Permission: {0}", i);
+                Console.WriteLine("Error message: {0}", e.InnerException.Message);
+                i++;
+            }
+            else
+            {
+                Assert.Fail("Test failed Permission: {0} \n {1}", i, e.ToString());
+            }
         }
     }
 }
