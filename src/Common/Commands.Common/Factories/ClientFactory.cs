@@ -14,16 +14,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Common;
-using System.Diagnostics;
-using Microsoft.WindowsAzure.Management;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Factories
 {
@@ -90,15 +86,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Factories
 
         public virtual HttpClient CreateHttpClient(string endpoint, ICredentials credentials)
         {
-            return CreateHttpClientBase(endpoint, CreateHttpClientHandler(endpoint, credentials));
+            return CreateHttpClient(endpoint, CreateHttpClientHandler(endpoint, credentials));
         }
 
         public virtual HttpClient CreateHttpClient(string endpoint, HttpMessageHandler effectiveHandler)
-        {
-            return CreateHttpClientBase(endpoint, effectiveHandler);
-        }
-
-        public static HttpClient CreateHttpClientBase(string endpoint, HttpMessageHandler effectiveHandler)
         {
             if (endpoint == null)
             {

@@ -40,6 +40,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 
         public string OS { get; set; }
 
+        public string IOType { get; set; }
+
         public class RoleReference
         {
             public string DeploymentName { get; set; }

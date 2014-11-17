@@ -370,9 +370,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     VMImageName = VMTuples[i].Item3 ? persistentVMs[i].VMImageName : null
                 };
 
+                if (parameter.OSVirtualHardDisk != null)
+                {
+                    parameter.OSVirtualHardDisk.IOType = null;
+                }
+
                 if (persistentVMs[i].DataVirtualHardDisks != null && persistentVMs[i].DataVirtualHardDisks.Any())
                 {
                     persistentVMs[i].DataVirtualHardDisks.ForEach(c => parameter.DataVirtualHardDisks.Add(c));
+                    parameter.DataVirtualHardDisks.ForEach(d => d.IOType = null);
                 }
 
                 persistentVMs[i].ConfigurationSets.ForEach(c => parameter.ConfigurationSets.Add(c));
@@ -425,6 +431,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 VMImageName = isVMImage ? persistentVM.OSVirtualHardDisk.SourceImageName : null
             };
 
+            if (result.OSVirtualHardDisk != null)
+            {
+                result.OSVirtualHardDisk.IOType = null;
+            }
+
             if (persistentVM.DataVirtualHardDisks != null && persistentVM.DataVirtualHardDisks.Any())
             {
                 persistentVM.DataVirtualHardDisks.ForEach(c =>
@@ -433,6 +444,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     dataDisk.LogicalUnitNumber = dataDisk.LogicalUnitNumber;
                     result.DataVirtualHardDisks.Add(dataDisk);
                 });
+                result.DataVirtualHardDisks.ForEach(d => d.IOType = null);
             }
             else
             {

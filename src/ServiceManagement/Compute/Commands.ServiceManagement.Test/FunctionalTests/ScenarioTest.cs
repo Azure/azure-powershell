@@ -28,7 +28,6 @@ using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Commands.Service.Gateway;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
@@ -830,24 +829,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     Assert.AreEqual(localNetworkSites[0].VpnGatewayAddress, vnetsite.GatewaySites[0].VpnGatewayAddress);
                     Assert.IsTrue(localNetworkSites[0].AddressSpace.AddressPrefixes.All(c => vnetsite.GatewaySites[0].AddressSpace.AddressPrefixes.Contains(c)));
 
-                    Assert.AreEqual(ProvisioningState.NotProvisioned, vmPowershellCmdlets.GetAzureVNetGateway(vnet)[0].State);
+                    Assert.AreEqual(Microsoft.Azure.Commands.Network.ProvisioningState.NotProvisioned, vmPowershellCmdlets.GetAzureVNetGateway(vnet)[0].State);
                 }
 
                 vmPowershellCmdlets.NewAzureVNetGateway(vnet1);
 
-                Assert.IsTrue(GetVNetState(vnet1, ProvisioningState.Provisioned, 12, 60));
+                Assert.IsTrue(GetVNetState(vnet1, Microsoft.Azure.Commands.Network.ProvisioningState.Provisioned, 12, 60));
 
                 // Set-AzureVNetGateway -Connect Test
                 vmPowershellCmdlets.SetAzureVNetGateway("connect", vnet1, lnet1);
 
-                foreach (GatewayConnectionContext connection in vmPowershellCmdlets.GetAzureVNetConnection(vnet1))
+                foreach (Microsoft.Azure.Commands.Network.Gateway.Model.GatewayConnectionContext connection in vmPowershellCmdlets.GetAzureVNetConnection(vnet1))
                 {
                     Console.WriteLine("Connectivity: {0}, LocalNetwork: {1}", connection.ConnectivityState, connection.LocalNetworkSiteName);
                     Assert.IsFalse(connection.ConnectivityState.ToLowerInvariant().Contains("notconnected"));
                 }
 
                 // Get-AzureVNetGatewayKey
-                SharedKeyContext result = vmPowershellCmdlets.GetAzureVNetGatewayKey(vnet1,
+                Microsoft.Azure.Commands.Network.Gateway.Model.SharedKeyContext result = vmPowershellCmdlets.GetAzureVNetGatewayKey(vnet1,
                     vmPowershellCmdlets.GetAzureVNetConnection(vnet1)[0].LocalNetworkSiteName);
                 Console.WriteLine("Gateway Key: {0}", result.Value);
 
@@ -855,7 +854,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // Set-AzureVNetGateway -Disconnect
                 vmPowershellCmdlets.SetAzureVNetGateway("disconnect", vnet1, lnet1);
 
-                foreach (GatewayConnectionContext connection in vmPowershellCmdlets.GetAzureVNetConnection(vnet1))
+                foreach (Microsoft.Azure.Commands.Network.Gateway.Model.GatewayConnectionContext connection in vmPowershellCmdlets.GetAzureVNetConnection(vnet1))
                 {
                     Console.WriteLine("Connectivity: {0}, LocalNetwork: {1}", connection.ConnectivityState, connection.LocalNetworkSiteName);
                 }
@@ -865,20 +864,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 foreach (string vnet in virtualNets)
                 {
-                    VirtualNetworkGatewayContext gateway = vmPowershellCmdlets.GetAzureVNetGateway(vnet)[0];
+                    Microsoft.Azure.Commands.Network.VirtualNetworkGatewayContext gateway = vmPowershellCmdlets.GetAzureVNetGateway(vnet)[0];
 
                     Console.WriteLine("State: {0}, VIP: {1}", gateway.State.ToString(), gateway.VIPAddress);
                     if (vnet.Equals(vnet1))
                     {
-                        if (gateway.State != ProvisioningState.Deprovisioning &&
-                            gateway.State != ProvisioningState.NotProvisioned)
+                        if (gateway.State != Microsoft.Azure.Commands.Network.ProvisioningState.Deprovisioning &&
+                            gateway.State != Microsoft.Azure.Commands.Network.ProvisioningState.NotProvisioned)
                         {
                             Assert.Fail("The state of the gateway is neither Deprovisioning nor NotProvisioned!");
                         }
                     }
                     else
                     {
-                        Assert.AreEqual(ProvisioningState.NotProvisioned, gateway.State);
+                        Assert.AreEqual(Microsoft.Azure.Commands.Network.ProvisioningState.NotProvisioned, gateway.State);
                     }
 
                 }
@@ -1556,9 +1555,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return responseString;
         }
 
-        private bool GetVNetState(string vnet, ProvisioningState expectedState, int maxTime, int intervalTime)
+        private bool GetVNetState(string vnet, Microsoft.Azure.Commands.Network.ProvisioningState expectedState, int maxTime, int intervalTime)
         {
-            ProvisioningState vnetState;
+            Microsoft.Azure.Commands.Network.ProvisioningState vnetState;
             int i = 0;
             do
             {

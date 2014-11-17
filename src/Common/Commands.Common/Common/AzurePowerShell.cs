@@ -26,13 +26,15 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public const string AssemblyCopyright = "Copyright © Microsoft";
 
-        public const string AssemblyVersion = "0.8.8";
+        public const string AssemblyVersion = "0.8.10.1";
 
-        public const string AssemblyFileVersion = "0.8.8";
+        public const string AssemblyFileVersion = "0.8.10.1";
 
         public const string ProfileFile = "AzureProfile.json";
 
         public const string OldProfileFile = "WindowsAzureProfile.xml";
+
+        public const string OldProfileFileBackup = "WindowsAzureProfile.xml.bak";
 
         public const string TokenCacheFile = "TokenCache.dat";
 

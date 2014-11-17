@@ -47,8 +47,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
         // 12/31/9999 12:00:00 AM
         public static readonly DateTime DefaultScheduleExpiryTime = new DateTime(9999, 12, 31, 0, 0, 0, DateTimeKind.Utc);
 
-        public const int DefaultDailyScheduleDayInterval = 1;
-
         public const string JobStartedByParameterName = "MicrosoftApplicationManagementStartedBy";
 
         public const string ClientIdentity = "PowerShell";

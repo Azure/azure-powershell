@@ -59,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
                 cmdlet.ThrowTerminatingError(
                     new ErrorRecord(
                         new UnauthorizedAccessException(Resources.AzureVMDscDefaultStorageCredentialsNotFound),
-                        string.Empty,
+                        "CredentialsNotFound",
                         ErrorCategory.PermissionDenied,
                         null));
             }
@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             cmdlet.ThrowTerminatingError(
                 new ErrorRecord(
                     new ArgumentException(string.Format(CultureInfo.CurrentUICulture, format, args)),
-                    string.Empty,
+                    "InvalidArgument",
                     ErrorCategory.InvalidArgument,
                     null));
         }

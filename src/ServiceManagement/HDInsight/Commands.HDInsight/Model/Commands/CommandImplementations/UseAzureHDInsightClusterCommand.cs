@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
 
             connection.Cluster = new AzureHDInsightCluster(cluster);
 
-            if (cluster.State != ClusterState.Running)
+            if (!(cluster.State == ClusterState.Running || cluster.State == ClusterState.Operational))
             {
                 throw new NotSupportedException(
                     string.Format(CultureInfo.InvariantCulture, "Cluster {0} is in an invalid state : {1}", this.Name, cluster.State.ToString()));

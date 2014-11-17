@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.Common;
 using Microsoft.WindowsAzure.Commands.Common.Factories;
 using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
 
@@ -26,14 +27,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
     {
         static AzureSession()
         {
-            SubscriptionTokenCache = new Dictionary<Tuple<Guid, string>, IAccessToken>();
             ClientFactory = new AzurePowerShellClientFactory();
             AuthenticationFactory = new AuthenticationFactory();
             CurrentContext = new AzureContext();
             CurrentContext.Environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
         }
-
-        public static IDictionary<Tuple<Guid, string>, IAccessToken> SubscriptionTokenCache { get; set; }
 
         public static AzureContext CurrentContext {get; private set; }
         
@@ -67,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                     }
                     else
                     {
-                        throw new ArgumentException("Account id doesn't match one in subscription.", "account");
+                        throw new ArgumentException(Resources.AccountIdDoesntMatchSubscription, "account");
                     }
 
                     subscription.Account = account.Id;
@@ -77,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
             if (subscription != null && subscription.Environment != environment.Name)
             {
-                throw new ArgumentException("Environment name doesn't match one in subscription.", "environment");
+                throw new ArgumentException(Resources.EnvironmentNameDoesntMatchSubscription, "environment");
             }
 
             CurrentContext = new AzureContext

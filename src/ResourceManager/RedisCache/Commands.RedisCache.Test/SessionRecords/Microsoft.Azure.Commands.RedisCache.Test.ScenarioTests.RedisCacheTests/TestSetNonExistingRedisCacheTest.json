@@ -1,0 +1,43 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/f435d8e1-f7a0-4f79-adf7-b1a564728140/resourceGroups/redisruntimetestrg/providers/Microsoft.Cache/Redis/NonExistingRedisCache?api-version=2014-04-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"Resource not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "8e8de709-75e9-42ad-a8bb-72f33ac571dd"
+        ],
+        "x-ms-correlation-request-id": [
+          "8e8de709-75e9-42ad-a8bb-72f33ac571dd"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140916T191257Z:8e8de709-75e9-42ad-a8bb-72f33ac571dd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Sep 2014 19:12:57 GMT"
+        ]
+      },
+      "StatusCode": 404
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "f435d8e1-f7a0-4f79-adf7-b1a564728140"
+  }
+}

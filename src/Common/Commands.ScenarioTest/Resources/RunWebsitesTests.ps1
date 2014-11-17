@@ -12,8 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-.".\\Common.ps1"
-.".\\Assert.ps1"
+.".\\..\\Common.ps1"
+.".\\..\\Assert.ps1"
 .".\\Websites\\Common.ps1"
 .".\\Websites\\WebsitesTests.ps1"
 $global:totalCount = 0;
@@ -22,6 +22,7 @@ $global:passedTests = @()
 $global:failedTests = @()
 $global:times = @{}
 Add-Type -Path "..\\Microsoft.Azure.Utilities.HttpRecorder.dll"
+Add-Type -Path "..\\Microsoft.WindowsAzure.Testing.dll"
 [Microsoft.Azure.Utilities.HttpRecorder.HttpMockServer]::Initialize("foo", "bar")
 function Run-TestProtected
 {

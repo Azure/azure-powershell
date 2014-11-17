@@ -256,8 +256,7 @@ function Test-AddAzureTrafficManagerEndpointNoWeightLocation
 	Assert-AreEqual "www.microsoft.com" $updatedProfile.Endpoints[0].DomainName
 	Assert-AreEqual Enabled $updatedProfile.Endpoints[0].Status
 	# Test for default values
-	# Commented out until DNS32 is deployed in PROD.
-	# Assert-AreEqual 1 $updatedProfile.Endpoints[0].Weight
+	Assert-AreEqual 1 $updatedProfile.Endpoints[0].Weight
 	Assert-Null $updatedProfile.Endpoints[0].Location
 	Assert-True { $endpointMonitoringStatus -eq "CheckingEndpoint" -or $endpointMonitoringStatus -eq "Online" } "Assert failed as endpoint MonitoringStatus has an unexpected value: $endpointMonitoringStatus"
 }
@@ -277,7 +276,7 @@ function Test-AddAzureTrafficManagerEndpointNoMinChildEndpoints
 	
 	# Assert
 	Assert-AreEqual 1 $updatedProfile.Endpoints.Count
-	Assert-AreEqual 0 $updatedProfile.Endpoints[0].MinChildEndpoints
+	Assert-AreEqual $null $updatedProfile.Endpoints[0].MinChildEndpoints
 }
 
 <#
@@ -343,8 +342,7 @@ function Test-SetAzureTrafficManagerEndpointUpdateWeightLocation
 	$createdProfile = New-Profile $profileName | Add-AzureTrafficManagerEndpoint -DomainName "www.microsoft.com" -Type Any -Status Enabled | Set-AzureTrafficManagerProfile
 	
 	# Assert
-	# Commented out until DNS32 is deployed in PROD.
-	# Assert-AreEqual 1 $createdProfile.Endpoints[0].Weight
+	Assert-AreEqual 1 $createdProfile.Endpoints[0].Weight
 	Assert-Null $createdProfile.Endpoints[0].Location
 	
 	#Test

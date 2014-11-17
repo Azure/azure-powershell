@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                 // Convert each host name to Unicode if necessary.
                 if (hostNames != null)
                 {
-                    for (int i = 0; i < hostNames.Length; i++ )
+                    for (int i = 0; i < hostNames.Length; i++)
                     {
                         hostNames[i] = IdnHelper.GetUnicode(hostNames[i]);
                     }
@@ -110,6 +110,15 @@ namespace Microsoft.WindowsAzure.Commands.Websites
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates if 32-bit mode is enabled.")]
         public bool? Use32BitWorkerProcess { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Sets the slot name to swap with after successful deployment. To remove set to null or empty string.")]
+        public string AutoSwapSlotName { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Sets the list of application setting names to be bound to slot and not swapped on swap operation.")]
+        public List<string> SlotStickyAppSettingNames { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Sets the list of connection string names to be bound to slot and not swapped on swap operation.")]
+        public List<string> SlotStickyConnectionStringNames { get; set; }
 
         private Site website;
         private SiteConfig currentSiteConfig;
@@ -168,7 +177,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                     WebsitesClient.UpdateWebsiteHostNames(website, newHostNames, Slot);
                 }
             }
-            
+
         }
     }
 }

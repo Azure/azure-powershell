@@ -769,30 +769,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return vmPowershellCmdlets.AddAzureDataDisk(azureDataDiskConfigInfo1);
         }
 
-        public string UploadVhdFile()
-        {
-            // Choose the vhd file from local machine
-            var vhdName = Convert.ToString(TestContext.DataRow["vhdName"]);
-            var vhdLocalPath = new FileInfo(Directory.GetCurrentDirectory() + "\\" + vhdName);
-            Assert.IsTrue(File.Exists(vhdLocalPath.FullName), "VHD file not exist={0}", vhdLocalPath);
-
-            // Get the pre-calculated MD5 hash of the fixed vhd that was converted from the original vhd.
-            string md5hash = Convert.ToString(TestContext.DataRow["MD5hash"]);
-
-
-            // Set the destination
-            string vhdBlobName = string.Format("{0}/{1}.vhd", vhdContainerName, Utilities.GetUniqueShortName(Path.GetFileNameWithoutExtension(vhdName)));
-            string vhdDestUri = blobUrlRoot + vhdBlobName;
-
-            // Start uploading...
-            Console.WriteLine("uploads {0} to {1}", vhdName, vhdBlobName);
-            vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, vhdDestUri);
-            var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, vhdDestUri, true);
-            Console.WriteLine("uploading completed: {0}", vhdName);
-
-            return vhdDestUri;
-        }
-
         public void DeleteVMImageIfExists(string vmImageName)
         {
             try

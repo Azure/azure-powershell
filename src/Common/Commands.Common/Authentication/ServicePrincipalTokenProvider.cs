@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Windows.Forms;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common.Models;
@@ -25,18 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
 {
     internal class ServicePrincipalTokenProvider : ITokenProvider
     {
-        private readonly IWin32Window parentWindow;
         private static readonly TimeSpan expirationThreshold = new TimeSpan(0, 5, 0);
-
-        public ServicePrincipalTokenProvider(IWin32Window parentWindow)
-        {
-            this.parentWindow = parentWindow;
-        }
-
-        public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, SecureString password)
-        {
-            throw new InvalidOperationException(string.Format(Resources.InvalidCredentialType, "ServicePrincipal"));
-        }
 
         public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, SecureString password,
             AzureAccount.AccountType credentialType)

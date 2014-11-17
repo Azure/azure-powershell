@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
         [TestMethod]
         public void NewShareWithInvalidCharacter()
         {
-            this.NewShareAndValidate(FileNamingGenerator.GenerateASCIINameWithInvalidCharacters(20), "ArgumentException");
+            this.NewShareAndValidate("&LOv=\\ji1eJgg% -SY;m", "ArgumentException");
         }
 
         private void NewShareAndValidate(string name, string expectedErrorId = null)

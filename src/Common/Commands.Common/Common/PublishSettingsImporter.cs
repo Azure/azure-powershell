@@ -92,18 +92,5 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             
             return certificate;
         }
-
-        private static Uri GetManagementUri(PublishDataPublishProfile profile, PublishDataPublishProfileSubscription s)
-        {
-            if (!string.IsNullOrEmpty(s.ServiceManagementUrl))
-            {
-                return new Uri(s.ServiceManagementUrl);
-            }
-            else if (!string.IsNullOrEmpty(profile.Url))
-            {
-                return new Uri(profile.Url);
-            }
-            return null;
-        }
     }
 }

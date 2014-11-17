@@ -35,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             IEnumerable<string> paths = psModulePath.Split(';');
             paths = job(paths);
 
-            if (paths.Count() == 0)
+            if (!paths.Any())
             {
                 Environment.SetEnvironmentVariable(PSModulePathName, null, target);
             }
@@ -93,30 +93,5 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             return dynamicParameters.Values.Where(dp => MyInvocation.BoundParameters.Keys.Any(bp => bp.Equals(dp.Name)));
         }
-
-        /// <summary>
-        /// Gets the current AzureMode valid values are AzureServiceManagement and AzureResourceManager only.
-        /// </summary>
-        /// <returns>Returns AzureServiceManagement if in RDFE and AzureResourceManager if in CSM</returns>
-        public static AzureModule GetCurrentMode()
-        {
-            return GetCurrentModeOverride();
-        }
-
-        private static AzureModule GetCurrentModuleFromEnvironment()
-        {
-            string PSModulePathEnv = Environment.GetEnvironmentVariable(PSModulePathName);
-
-            if (PSModulePathEnv.Contains(FileUtilities.GetModuleFolderName(AzureModule.AzureResourceManager)))
-            {
-                return AzureModule.AzureResourceManager;
-            }
-            else
-            {
-                return AzureModule.AzureServiceManagement;                
-            }
-        }
-
-        public static Func<AzureModule> GetCurrentModeOverride = GetCurrentModuleFromEnvironment;
     }
 }

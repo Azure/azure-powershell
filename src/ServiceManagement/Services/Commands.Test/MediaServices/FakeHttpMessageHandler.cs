@@ -15,7 +15,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
 {
@@ -29,15 +28,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             return Task.Factory.StartNew(() => Send != null ? Send(request) : new HttpResponseMessage(HttpStatusCode.OK));
-        }
-
-        /// <summary>
-        ///     Creates and initialise instance of HttpClient
-        /// </summary>
-        /// <returns></returns>
-        public HttpClient CreateIMediaServicesHttpClient()
-        {
-            return HttpClientHelper.CreateClient("http://test/services/mediaservices/", handler: this);
         }
     }
 }

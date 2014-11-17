@@ -603,15 +603,66 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         },
                         new GalleryItem()
                         {
-                            Name = "Template1",
+                            Name = "Template0",
                             Publisher = "Microsoft",
                             Version = "0.0.0.1"
                         },
                         new GalleryItem()
                         {
-                            Name = "Template2",
+                            Name = "Template0",
                             Publisher = "Microsoft",
                             Version = "0.0.0.2"
+                        }
+                    }
+                }))
+                .Callback((ItemListParameters p, CancellationToken c) => actual = p);
+
+            FilterGalleryTemplatesOptions options = new FilterGalleryTemplatesOptions()
+            {
+                ApplicationName = "Template0"
+            };
+
+            List<PSGalleryItem> result = galleryTemplatesClient.FilterGalleryTemplates(options);
+
+            Assert.Equal(1, result.Count);
+            Assert.Equal("Template0", result[0].Name);
+            Assert.Equal("0.0.0.2", result[0].Version);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FiltersGalleryTemplatesByPublisherLatestVersion()
+        {
+            string filterString = FilterString.Generate<ItemListFilter>(f => f.Publisher == "Microsoft");
+            ItemListParameters actual = new ItemListParameters();
+            galleryClientMock.Setup(f => f.Items.ListAsync(It.IsAny<ItemListParameters>(), new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => new ItemListResult
+                {
+                    Items = new List<GalleryItem>()
+                    {
+                        new GalleryItem()
+                        {
+                            Name = "Template0",
+                            Publisher = "Microsoft",
+                            Version = "0.0.0.0"
+                        },
+                        new GalleryItem()
+                        {
+                            Name = "Template0",
+                            Publisher = "Microsoft",
+                            Version = "0.0.0.2"
+                        },
+                        new GalleryItem()
+                        {
+                            Name = "Template1",
+                            Publisher = "Microsoft",
+                            Version = "0.0.0.0"
+                        },
+                        new GalleryItem()
+                        {
+                            Name = "Template1",
+                            Publisher = "Microsoft",
+                            Version = "0.0.0.1"
                         }
                     }
                 }))
@@ -624,8 +675,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             List<PSGalleryItem> result = galleryTemplatesClient.FilterGalleryTemplates(options);
 
-            Assert.Equal(1, result.Count);
-            Assert.Equal("Template2", result[0].Name);
+            Assert.Equal(2, result.Count);
+            Assert.True(result.Count(x => x.Name.Equals("Template0")) == 1);
+            Assert.True(result.Count(x => x.Name.Equals("Template1")) == 1);
+            Assert.Equal(result.First(x => x.Name.Equals("Template0")).Version, "0.0.0.2");
+            Assert.Equal(result.First(x => x.Name.Equals("Template1")).Version, "0.0.0.1");
         }
     }
 }

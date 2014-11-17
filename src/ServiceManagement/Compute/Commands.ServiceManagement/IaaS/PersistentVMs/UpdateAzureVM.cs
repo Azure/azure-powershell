@@ -106,14 +106,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 ResourceExtensionReferences = VM.ProvisionGuestAgent != null && VM.ProvisionGuestAgent.Value ? Mapper.Map<List<ResourceExtensionReference>>(VM.ResourceExtensionReferences) : null
             };
 
+            if (parameters.OSVirtualHardDisk != null)
+            {
+                parameters.OSVirtualHardDisk.IOType = null;
+            }
+
             if (VM.DataVirtualHardDisks != null)
             {
+                parameters.DataVirtualHardDisks = new List<DataVirtualHardDisk>();
                 VM.DataVirtualHardDisks.ForEach(c =>
                 {
                     var dataDisk = Mapper.Map<DataVirtualHardDisk>(c);
                     dataDisk.LogicalUnitNumber = dataDisk.LogicalUnitNumber;
                     parameters.DataVirtualHardDisks.Add(dataDisk);
                 });
+                parameters.DataVirtualHardDisks.ForEach(d => d.IOType = null);
             }
 
             if (VM.ConfigurationSets != null)

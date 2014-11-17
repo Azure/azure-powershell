@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/onesdk3280?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Jlc291cmNlZ3JvdXBzL29uZXNkazMyODA/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/onesdk3874?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGIxYWI2ZjAtNDc2OS00YjI3LTkzMGUtMDFlMmVmOWMxMjNjL3Jlc291cmNlZ3JvdXBzL29uZXNkazM4NzQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "HEAD",
       "RequestBody": "",
       "RequestHeaders": {
@@ -16,16 +16,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31983"
+          "31985"
         ],
         "x-ms-request-id": [
-          "ea035062-2894-47d3-be5c-a12215af7bd0"
+          "e517579c-4aa8-4d84-9edd-86b0aa72c869"
         ],
         "x-ms-correlation-request-id": [
-          "ea035062-2894-47d3-be5c-a12215af7bd0"
+          "e517579c-4aa8-4d84-9edd-86b0aa72c869"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20140905T173307Z:ea035062-2894-47d3-be5c-a12215af7bd0"
+          "WESTUS:20140911T080208Z:e517579c-4aa8-4d84-9edd-86b0aa72c869"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -34,14 +34,14 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 05 Sep 2014 17:33:07 GMT"
+          "Thu, 11 Sep 2014 08:02:08 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/onesdk3280?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Jlc291cmNlZ3JvdXBzL29uZXNkazMyODA/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/onesdk3874?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGIxYWI2ZjAtNDc2OS00YjI3LTkzMGUtMDFlMmVmOWMxMjNjL3Jlc291cmNlZ3JvdXBzL29uZXNkazM4NzQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"non-existing\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
@@ -49,22 +49,22 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidResourceLocation\",\r\n    \"message\": \"The provided location 'non-existing' is not supported. List of available regions is 'centralus, eastasia, southeastasia, eastus, westus, northcentralus, southcentralus, northeurope, westeurope'\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"DisallowedLocation\",\r\n    \"message\": \"The provided location 'non-existing' is not permitted for subscription. List of permitted regions is ',eastasia,southeastasia,eastus,westus,northcentralus,southcentralus,centralus,northeurope,westeurope'. Please contact support to change your supported regions.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1196"
         ],
         "x-ms-request-id": [
-          "5e707600-c582-4bf3-b396-eac0d3b4edce"
+          "2ee12605-8299-4047-abad-226667ec8fc4"
         ],
         "x-ms-correlation-request-id": [
-          "5e707600-c582-4bf3-b396-eac0d3b4edce"
+          "2ee12605-8299-4047-abad-226667ec8fc4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20140905T173308Z:5e707600-c582-4bf3-b396-eac0d3b4edce"
+          "WESTUS:20140911T080208Z:2ee12605-8299-4047-abad-226667ec8fc4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -73,7 +73,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 05 Sep 2014 17:33:08 GMT"
+          "Thu, 11 Sep 2014 08:02:08 GMT"
         ]
       },
       "StatusCode": 400
@@ -81,10 +81,11 @@
   ],
   "Names": {
     "Test-NewResourceGroupInNonExistingLocation": [
-      "onesdk3280"
+      "onesdk3874"
     ]
   },
   "Variables": {
-    "SubscriptionId": "c9cbd920-c00c-427c-852b-8aaf38badaeb"
+    "SubscriptionId": "db1ab6f0-4769-4b27-930e-01e2ef9c123c",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
   }
 }

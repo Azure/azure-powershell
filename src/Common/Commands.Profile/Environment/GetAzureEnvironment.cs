@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 }
                 output.Add(base.ConstructPSObject(null, args.ToArray()));
             }
-            WriteObject(output);
+            WriteObject(output, true);
         }
     }
 }

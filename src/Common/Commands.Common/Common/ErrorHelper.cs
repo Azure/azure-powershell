@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             using (var s = response.GetResponseStream())
             {
-                if (s.Length == 0)
+                if (s == null || s.Length == 0)
                 {
                     return false;
                 }
@@ -128,9 +128,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <returns>true if exception caused by resource not found, otherwise, false</returns>
         public static bool IsNotFoundCommunicationException(CommunicationException exception)
         {
-            ServiceManagementError error = null;
-            string operationId = string.Empty;
-            ErrorHelper.TryGetExceptionDetails(exception, out error, out operationId);
+            ServiceManagementError error;
+            string operationId;
+            TryGetExceptionDetails(exception, out error, out operationId);
             return error != null && error.Code == HttpStatusCode.NotFound.ToString();
         }
     }

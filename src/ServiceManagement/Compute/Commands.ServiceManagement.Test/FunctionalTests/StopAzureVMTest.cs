@@ -1109,20 +1109,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 skips = new List<string>(skipStatus);
             }
 
-
+            int totalWaitTimeInSeconds = 0;
             for (int i = 0; i < maxTry; i++)
             {
                 vmStatus = vmPowershellCmdlets.GetAzureVM(vmName, svcName).InstanceStatus;
 
                 if (exps.Contains(vmStatus))
                 {
-                    Console.WriteLine("The VM is in {0} state after {1} seconds", vmStatus, i * interval);
+                    Console.WriteLine("The VM is in {0} state after {1} seconds", vmStatus, totalWaitTimeInSeconds);
                     return;
                 }
                 else if (skips == null || skips.Contains(vmStatus))
                 {
-                    Console.WriteLine("Current VM state is {0}.  Keep waiting...", vmStatus);
-                    Thread.Sleep(interval * 1000);
+                    // waitTimeInSeconds = interval * (2 ^ (i / 10))
+                    int waitTimeInSeconds = interval * (1 << (i / 10));
+                    totalWaitTimeInSeconds += waitTimeInSeconds;
+                    Console.WriteLine("Total wait time = {0} second(s), by {1} {2}.", totalWaitTimeInSeconds, (i + 1), i == 0 ? "retry" : "retries");
+                    Console.WriteLine("Current VM state is {0}. Keep waiting for {1} second(s)...", vmStatus, waitTimeInSeconds);
+                    Thread.Sleep(TimeSpan.FromSeconds(waitTimeInSeconds));
                 }
                 else
                 {
@@ -1131,7 +1135,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 }
             }
 
-            Console.WriteLine("Role status is still {0} after {1} seconds", vmStatus, interval * maxTry);
+            Console.WriteLine("Role status is still {0} after {1} seconds", vmStatus, totalWaitTimeInSeconds);
             Assert.Fail("The VM does not become ready within a given time.");
         }
 

@@ -163,15 +163,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        public static void IsGuid(string candidate)
-        {
-            if (candidate != null)
-            {
-                try { new Guid(candidate); }
-                catch { throw new ArgumentException(Resources.SubscriptionIdNotFoundMessage); }
-            }
-        }
-
         public static void HasWhiteCharacter(string text, string exceptionMessage = null)
         {
             if (text.Any(char.IsWhiteSpace))

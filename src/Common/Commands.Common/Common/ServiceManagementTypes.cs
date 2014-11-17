@@ -35,26 +35,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
     #region Constants
     public static class Constants
     {
-        public const string ContinuationTokenHeaderName = "x-ms-continuation-token";
-        public const string SubscriptionIdsHeaderName = "x-ms-subscription-ids";
-        public const string ClientRequestIdHeader = "x-ms-client-id";
-        public const string OperationTrackingIdHeader = "x-ms-request-id";
-        public const string PrincipalHeader = "x-ms-principal-id";
         public const string ServiceManagementNS = "http://schemas.microsoft.com/windowsazure";
-        public const string VersionHeaderName = "x-ms-version";
         public readonly static string StandardTimeFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'";
         // Please put the newest version outside the #endif.MSFTINTERNAL We only want the newest version to show up in what we ship publically.
         // Also, update rdfe\Utilities\Common\VersionHeaders.cs StaticSupportedVersionsList.
         public const string VersionHeaderContent20130801 = "2013-08-01";
-        public const string VersionHeaderContentLatest = VersionHeaderContent20130801;
-    }
-
-
-    public static class PrincipalConstants
-    {
-        public const string AccountAdministrator = "AccountAdministrator";
-        public const string ServiceAdministrator = "ServiceAdministrator";
-        public const string CoAdministrator = "CoAdministrator";
     }
 
     public static class DeploymentStatus
@@ -878,6 +863,31 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 this.SetValue("PublicIPs", value);
             }
         }
+        [DataMember(Name = "NetworkSecurityGroup", EmitDefaultValue = false, Order = 7)]
+        public string NetworkSecurityGroup
+        {
+            get
+            {
+                return this.GetValue<string>("NetworkSecurityGroup");
+            }
+            set
+            {
+                this.SetValue("NetworkSecurityGroup", value);
+            }
+        }
+
+        [DataMember(Name = "NetworkInterfaces", EmitDefaultValue = false, Order = 7)]
+        public AssignNetworkInterfaceCollection NetworkInterfaces
+        {
+            get
+            {
+                return this.GetValue<AssignNetworkInterfaceCollection>("NetworkInterfaces");
+            }
+            set
+            {
+                this.SetValue("NetworkInterfaces", value);
+            }
+        }
     }
 
     [CollectionDataContract(Name = "PublicIPs", ItemName = "PublicIP", Namespace = Constants.ServiceManagementNS)]
@@ -902,6 +912,63 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         [DataMember(Name = "IdleTimeoutInMinutes", EmitDefaultValue = false, Order = 2)]
         public int? IdleTimeoutInMinutes { get; set; }
 
+    }
+
+    [CollectionDataContract(Name = "NetworkInterfaces", ItemName = "NetworkInterface", Namespace = Constants.ServiceManagementNS)]
+    public class AssignNetworkInterfaceCollection : List<AssignNetworkInterface>
+    {
+        public AssignNetworkInterfaceCollection()
+        {
+        }
+
+        public AssignNetworkInterfaceCollection(IEnumerable<AssignNetworkInterface> assignNetworkInterface)
+            : base(assignNetworkInterface)
+        {
+        }
+    }
+
+    [DataContract(Name = "NetworkInterface", Namespace = Constants.ServiceManagementNS)]
+    public class AssignNetworkInterface : Mergable<AssignNetworkInterface>
+    {
+        [DataMember(Name = "Name", EmitDefaultValue = false, Order = 1)]
+        public string Name { get; set; }
+
+        [DataMember(Name = "IPConfigurations", EmitDefaultValue = false, Order = 2)]
+        public AssignIPConfigurationCollection IPConfigurations
+        {
+            get
+            {
+                return this.GetValue<AssignIPConfigurationCollection>("IPConfigurations");
+            }
+            set
+            {
+                this.SetValue("IPConfigurations", value);
+            }
+        }
+
+    }
+
+    [CollectionDataContract(Name = "IPConfigurations", ItemName = "IPConfiguration", Namespace = Constants.ServiceManagementNS)]
+    public class AssignIPConfigurationCollection : List<AssignIPConfiguration>
+    {
+        public AssignIPConfigurationCollection()
+        {
+        }
+
+        public AssignIPConfigurationCollection(IEnumerable<AssignIPConfiguration> assignIPConfigurations)
+            : base(assignIPConfigurations)
+        {
+        }
+    }
+
+    [DataContract(Name = "IPConfiguration", Namespace = Constants.ServiceManagementNS)]
+    public class AssignIPConfiguration
+    {
+        [DataMember(Name = "SubnetName", EmitDefaultValue = false, Order = 1)]
+        public string SubnetName { get; set; }
+
+        [DataMember(Name = "StaticVirtualNetworkIPAddress", EmitDefaultValue = false, Order = 2)]
+        public string StaticVirtualNetworkIPAddress { get; set; }
     }
 
     [CollectionDataContract(Name = "LoadBalancedEndpointList", Namespace = Constants.ServiceManagementNS)]
@@ -1071,6 +1138,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set
             {
                 base.SetValue("IdleTimeoutInMinutes", value);
+            }
+        }
+
+        [DataMember(Name = "LoadBalancerDistribution", EmitDefaultValue = false, Order = 11)]
+        public string LoadBalancerDistribution
+        {
+            get
+            {
+                return base.GetValue<string>("LoadBalancerDistribution");
+            }
+            set
+            {
+                base.SetValue("LoadBalancerDistribution", value);
             }
         }
     }
@@ -1424,6 +1504,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 this.SetValue("SourceMediaLink", value);
             }
         }
+
+
+        [DataMember(Name = "IOType", EmitDefaultValue = false, Order = 7)]
+        public string IOType
+        {
+            get
+            {
+                return this.GetValue<string>("IOType");
+            }
+            set
+            {
+                this.SetValue("IOType", value);
+            }
+        }
     }
     #endregion
 
@@ -1506,6 +1600,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set
             {
                 this.SetValue("OS", value);
+            }
+        }
+
+        [DataMember(Name = "IOType", EmitDefaultValue = false, Order = 5)]
+        public string IOType
+        {
+            get
+            {
+                return this.GetValue<string>("IOType");
+            }
+            set
+            {
+                this.SetValue("IOType", value);
             }
         }
     }
@@ -2405,6 +2512,45 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public ExtensionDataObject ExtensionData { get; set; }
     }
 
+    [CollectionDataContract(Namespace = Constants.ServiceManagementNS, Name = "NetworkInterfaces", ItemName = "NetworkInterface")]
+    public class NetworkInterfaceList : List<NetworkInterface>, IExtensibleDataObject
+    {
+        public ExtensionDataObject ExtensionData { get; set; }
+    }
+
+    [DataContract(Namespace = Constants.ServiceManagementNS)]
+    public class NetworkInterface : IExtensibleDataObject
+    {
+        [DataMember(EmitDefaultValue = false, Order = 1)]
+        public string Name { get; set; }
+
+        [DataMember(EmitDefaultValue = false, Order = 2)]
+        public string MacAddress { get; set; }
+
+        [DataMember(EmitDefaultValue = false, Order = 3)]
+        public IPConfigurationList IpConfigurations { get; set; }
+
+        public ExtensionDataObject ExtensionData { get; set; }
+    }
+
+    [CollectionDataContract(Namespace = Constants.ServiceManagementNS, Name = "IPConfigurations", ItemName = "IPConfiguration")]
+    public class IPConfigurationList : List<IPConfiguration>, IExtensibleDataObject
+    {
+        public ExtensionDataObject ExtensionData { get; set; }
+    }
+
+    [DataContract(Namespace = Constants.ServiceManagementNS)]
+    public class IPConfiguration : IExtensibleDataObject
+    {
+        [DataMember(EmitDefaultValue = false, Order = 1)]
+        public string SubnetName { get; set; }
+
+        [DataMember(EmitDefaultValue = false, Order = 2)]
+        public string Address { get; set; }
+
+        public ExtensionDataObject ExtensionData { get; set; }
+    }
+
     [CollectionDataContract(Namespace = Constants.ServiceManagementNS, Name = "AvailableServices", ItemName = "AvailableService")]
     public class AvailableServicesList : List<string>, IExtensibleDataObject
     {
@@ -2457,6 +2603,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set;
         }
 
+        [DataMember(EmitDefaultValue = false, Order = 6)]
+        public string IOType
+        {
+            get;
+            set;
+        }
+
         public ExtensionDataObject ExtensionData { get; set; }
     }
 
@@ -2493,6 +2646,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 
         [DataMember(EmitDefaultValue = false, Order = 4)]
         public int LogicalDiskSizeInGB
+        {
+            get;
+            set;
+        }
+
+        [DataMember(EmitDefaultValue = false, Order = 5)]
+        public string IOType
         {
             get;
             set;
@@ -4061,6 +4221,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 
         [DataMember(Order = 4)]
         public int? IdleTimeoutInMinutes { get; set; }
+
+        [DataMember(Order = 5)]
+        public string LoadBalancerDistribution { get; set; }
 
         public ExtensionDataObject ExtensionData { get; set; }
     }

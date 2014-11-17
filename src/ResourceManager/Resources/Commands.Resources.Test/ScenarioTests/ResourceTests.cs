@@ -18,62 +18,62 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceTests : ResourcesTestsBase
+    public class ResourceTests 
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewSimpleResource()
         {
-            RunPowerShellTest("Test-CreatesNewSimpleResource");
+            ResourcesController.NewInstance.RunPsTest("Test-CreatesNewSimpleResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewComplexResource()
         {
-            RunPowerShellTest("Test-CreatesNewComplexResource");
+            ResourcesController.NewInstance.RunPsTest("Test-CreatesNewComplexResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesViaPiping()
         {
-            RunPowerShellTest("Test-GetResourcesViaPiping");
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourcesViaPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesFromEmptyGroup()
         {
-            RunPowerShellTest("Test-GetResourcesFromEmptyGroup");
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourcesFromEmptyGroup");
         }
 
         [Fact (Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesFromNonExisingGroup()
         {
-            RunPowerShellTest("Test-GetResourcesFromNonExisingGroup");
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourcesFromNonExisingGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesForNonExisingType()
         {
-            RunPowerShellTest("Test-GetResourcesForNonExisingType");
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourcesForNonExisingType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceForNonExisingResource()
         {
-            RunPowerShellTest("Test-GetResourceForNonExisingResource");
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourceForNonExisingResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesViaPipingFromAnotherResource()
         {
-            RunPowerShellTest("Test-GetResourcesViaPipingFromAnotherResource");
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourcesViaPipingFromAnotherResource");
         }
     }
 }

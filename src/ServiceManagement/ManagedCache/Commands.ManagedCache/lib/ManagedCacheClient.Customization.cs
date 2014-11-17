@@ -62,18 +62,6 @@ namespace Microsoft.Azure.Management.ManagedCache
                 new ManagedCacheClient(credentials);
         }
 
-        protected override void Clone(ServiceClient<ManagedCacheClient> client)
-        {
-            base.Clone(client);
-            ManagedCacheClient management = client as ManagedCacheClient;
-            if (management != null)
-            {
-                management._credentials = Credentials;
-                management._baseUri = BaseUri;
-                management.Credentials.InitializeServiceClient(management);
-            }
-        }
-
         public override ManagedCacheClient WithHandler(DelegatingHandler handler)
         {
             return (ManagedCacheClient)WithHandler(new ManagedCacheClient(), handler);

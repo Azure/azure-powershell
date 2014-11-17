@@ -1,12 +1,121 @@
+2014.10.27 Version 0.8.10
+* Azure Data Factory cmdlets in AzureResourceManager mode
+    * New-AzureDataFactory
+    * New-AzureDataFactoryGateway
+    * New-AzureDataFactoryGatewayKey
+    * New-AzureDataFactoryHub
+    * New-AzureDataFactoryLinkedService
+    * New-AzureDataFactoryPipeline
+    * New-AzureDataFactoryTable
+    * New-AzureDataFactoryEncryptValue
+    * Get-AzureDataFactory
+    * Get-AzureDataFactoryGateway
+    * Get-AzureDataFactoryHub
+    * Get-AzureDataFactoryLinkedService
+    * Get-AzureDataFactoryPipeline
+    * Get-AzureDataFactoryRun
+    * Get-AzureDataFactorySlice
+    * Get-AzureDataFactoryTable
+    * Remove-AzureDataFactory
+    * Remove-AzureDataFactoryGateway
+    * Remove-AzureDataFactoryHub
+    * Remove-AzureDataFactoryLinkedService
+    * Remove-AzureDataFactoryPipeline
+    * Remove-AzureDataFactoryTable
+    * Resume-AzureDataFactoryPipeline
+    * Save-AzureDataFactoryLog
+    * Set-AzureDataFactoryGateway
+    * Set-AzureDataFactoryPipelineActivePeriod
+    * Set-AzureDataFactorySliceStatus
+    * Suspend-AzureDataFactoryPipeline
+* Azure Batch cmdlets in AzureResourceManager mode
+    * Set-AzureBatchAccount
+    * Remove-AzureBatchAccount
+    * New-AzureBatchAccountKey
+    * New-AzureBatchAccount
+    * Get-AzureBatchAccountKeys
+    * Get-AzureBatchAccount
+* Azure Network
+    * Multi NIC support
+        * Add-AzureNetworkInterfaceConfig
+        * Get-AzureNetworkInterfaceConfig
+        * Remove-AzureNetworkInterfaceConfig
+        * Set-AzureNetworkInterfaceConfig
+    * Security group support
+        * Set-AzureNetworkSecurityGroupToSubnet
+        * Set-AzureNetworkSecurityGroupConfig
+        * Remove-AzureNetworkSecurityGroupFromSubnet
+        * Remove-AzureNetworkSecurityGroupConfig
+        * Remove-AzureNetworkSecurityGroup
+        * New-AzureNetworkSecurityGroup
+        * Get-AzureNetworkSecurityGroupForSubnet
+        * Get-AzureNetworkSecurityGroupConfig
+        * Get-AzureNetworkSecurityGroup
+* Azure Virtual Machine
+    * Added Add PublicConfigKey and PrivateConfigKey parameters to SetAzureVMExtension
+* Azure Website
+    * Set-AzureWebsite exposes new parameters and Get-AzureWebsite returns them
+        * SlotStickyConnectionStringNames – connection string names not to be moved during swap operation
+        * SlotStickyAppSettingNames – application settings names not to be moved during swap operation
+        * AutoSwapSlotName – slot name to swap automatically with after successful deployment
+
+2014.10.03 Version 0.8.9
+* Redis Cache cmdlets in AzureResourceManager mode
+    * New-AzureRedisCache
+    * Get-AzureRedisCache
+    * Set-AzureRedisCache
+    * Remove-AzureRedisCache
+    * New-AzureRedisCacheKey
+    * Get-AzureRedisCacheKey
+* Fixed Remove-AzureDataDisk regression
+* Fixed cloud service cmdlets to work with the latest Azure authoring tools
+* Fixed Get-AzureSubscription -ExtendedDetails regression
+* Added -CreateACSNamespace parameter to New-AzureSBNamespace cmdlet
+
+2014.09.10 Version 0.8.8
+* Role-based access control support
+    * Query role definition
+        * Get-AzureRoleDefinition
+        * Manage role assignment
+        * New-AzureRoleAssignment
+        * Get-AzureRoleAssignment
+        * Remove-AzureRoleAssignment
+    * Query Active Directory object
+        * Get-AzureADUser
+        * Get-AzureADGroup
+        * Get-AzureADGroupMember
+        * Get-AzureADServicePrincipal
+    * Show user's permissions on
+        * Get-AzureResourceGroup
+        * Get-AzureResource
+* Active Directory service principal login support in Azure Resource Manager mode
+    * Add-AzureAccount -Credential -ServicePrincipal -Tenant
+* SQL Database auditing support in Azure Resource Manager mode
+    * Use-AzureSqlServerAuditingSetting
+    * Set-AzureSqlServerAuditingSetting
+    * Set-AzureSqlDatabaseAuditingSetting
+    * Get-AzureSqlServerAuditingSetting
+    * Get-AzureSqlDatabaseAuditingSetting
+    * Disable-AzureSqlServerAuditing
+    * Disable-AzureSqlDatabaseAuditing
+* Other improvements
+    * Virtual Machine DSC extension supports PSCredential as configuration argument
+    * Virtual Machine Antimalware extension supports native JSON configuration
+    * Storage supports creating storage account with different geo-redundant options
+    * Traffic Manager supports nesting of profiles
+    * Website supports configuring x32/x64 worker process
+    * -Detail parameter on Get-AzureResourceGroup to improve performance
+    * Major refactoring around account and subscription management
+
 2014.08.22 Version 0.8.7.1
 * AzureResourceManager
     * Update Gallery and Monitoring management clients to fix Gallery commands
 *HDInsight
     * Update Microsoft.Net API for Hadoop
-    
+
 2014.08.18 Version 0.8.7
 * Update Newtonsoft.Json dependency to 6.0.4
-* Compute 
+* Compute
     * Windows Azure Diagnostics (WAD) Version 1.2: extension cmdlets for Iaas And PaaS
         * Set-AzureVMDiagnosticsExtension
         * Get-AzureVMDiagnosticsExtension

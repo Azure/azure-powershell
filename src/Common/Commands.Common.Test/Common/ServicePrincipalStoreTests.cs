@@ -15,7 +15,6 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Authentication;
 using Xunit;
 using Assert = Xunit.Assert;

@@ -34,13 +34,14 @@ Gets a valid website location, given a preferred location
 function Get-WebsiteDefaultLocation
 {
     param([string] $defaultLoc = $null)
+    $location = $null
     if ($global:DefaultLocation -ne $null)
     {
        $location = $global:DefaultLocation
     }
     else 
     {
-       $locations = Get-AzureWebsiteLocation
+       $locations = @(Get-AzureWebsiteLocation)
        $locations | % {
          if ($_.ToLower() -eq $defaultLoc)
          {
@@ -54,6 +55,24 @@ function Get-WebsiteDefaultLocation
     }
 
     return $location;
+}
+
+<#
+.SYNOPSIS
+Gets a valid storage location
+#>
+function Get-StorageDefaultLocation
+{
+	$location = $null
+	$locations = @(Get-AzureLocation)
+       $locations | % {
+	     if ($_.AvailableServices.Contains("Storage"))
+		 {
+		    $location = $_.Name
+		 }
+	  }
+
+	return $location;
 }
 
 <#
@@ -344,7 +363,7 @@ function Test-CreateAndRemoveAJob
     # Test
     If ($webSiteJobType -eq "Continuous")
     {
-        Write-Host "Wait and retry to work around a known limitation, that a newly created job might not be immiediately available."
+        Write-Host "Wait and retry to work around a known limitation, that a newly created job might not be immediately available."
         $waitScriptBlock = { Stop-AzureWebsiteJob -Name $webSiteName -JobName $webSiteJobName -PassThru }
         Wait-WebsiteFunction $waitScriptBlock $TRUE
     }

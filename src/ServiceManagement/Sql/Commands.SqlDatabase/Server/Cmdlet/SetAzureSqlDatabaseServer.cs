@@ -104,15 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
         {
             try
             {
-                object operationContext = null;
-                switch (this.ParameterSetName)
-                {
-                    case "ResetServerAdminPassword":
-                        operationContext = this.ResetAzureSqlDatabaseServerAdminPasswordProcess(this.ServerName, this.AdminPassword);
-                        break;
-                    default:
-                        break;
-                }
+                object operationContext = this.ResetAzureSqlDatabaseServerAdminPasswordProcess(this.ServerName, this.AdminPassword);
             }
             catch (Exception ex)
             {

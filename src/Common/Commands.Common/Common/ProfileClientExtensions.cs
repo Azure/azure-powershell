@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Common.Models;
-using System.Linq;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {

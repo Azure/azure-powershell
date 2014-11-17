@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model.NetworkSecurityGroupWithRules</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model.NetworkSecurityGroupWithRules</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Rules</Label>
+                <ScriptBlock>$_.Rules | Sort-Object -Property Type,Priority | Format-Table -GroupBy Type | Out-String </ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+
+
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model.NetworkSecurityRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model.NetworkSecurityRule</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Priority</Label>
+            <Width>9</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Action</Label>
+            <Width>8</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Source Address Prefix</Label>
+            <Width>15</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Source Port Range</Label>
+            <Width>13</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Destination Address Prefix</Label>
+            <Width>16</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Destination Port Range</Label>
+            <Width>14</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Protocol</Label>
+            <Width>8</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap/>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Priority</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Action</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceAddressPrefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourcePortRange</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DestinationAddressPrefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DestinationPortRange</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Protocol</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

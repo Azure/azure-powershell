@@ -281,16 +281,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 string vmName = Utilities.GetUniqueShortName(vmNamePrefix);
                 string vmName2 = Utilities.GetUniqueShortName(vmNamePrefix);
-                string vmName3 = Utilities.GetUniqueShortName(vmNamePrefix);
+
                 string endpointName = Utilities.GetUniqueShortName("endpoint");
                 string endpointName2 = Utilities.GetUniqueShortName("endpoint");
-                string endpointName3 = Utilities.GetUniqueShortName("endpoint");
+
                 string disklabel1 = Utilities.GetUniqueShortName("disk");
                 string disklabel2 = Utilities.GetUniqueShortName("disk");
-                string disklabel3 = Utilities.GetUniqueShortName("disk");
+
                 string publicIpName = Utilities.GetUniqueShortName("publicIp");
                 string publicIpName2 = Utilities.GetUniqueShortName("publicIp");
-                string publicIpName3 = Utilities.GetUniqueShortName("publicIp");
 
                 vmPowershellCmdlets.NewAzureService(serviceName, locationName);
                 var vm1 = CreateVMWithEndpointDataDiskAndPublicIP(vmName, endpointName, disklabel1, publicIpName, serviceName, LOCAL_PORT_NUMBER1, PUBLIC_PORT_NUMBER1);
@@ -301,21 +300,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 var vm2 = CreateVMWithEndpointDataDiskAndPublicIP(vmName2, endpointName2, disklabel2, publicIpName2, serviceName, LOCAL_PORT_NUMBER2, PUBLIC_PORT_NUMBER2);
                 vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm2 });
                 VerifyPublicIP(publicIpName2, vm2);
-
-                var vm3 = CreateVMWithEndpointDataDiskAndPublicIP(vmName3, endpointName3, disklabel3, publicIpName3, serviceName, LOCAL_PORT_NUMBER3, PUBLIC_PORT_NUMBER3);
-                Utilities.VerifyFailure(() => vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm3 }), BadRequestException);
                 pass = true;
-
             }
             catch (Exception ex)
             {
                 pass = false;
-                Console.WriteLine(ex.InnerException.ToString());
+                Console.WriteLine(ex);
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine(ex.InnerException);
+                }
                 throw ex;
             }
         }
-
-
 
         private static PersistentVM CreateVMWithEndpointDataDiskAndPublicIP(string vmName, string endpointName, string disklabel1, string publicIpName, string serviceName, int localPort, int publicport)
         {

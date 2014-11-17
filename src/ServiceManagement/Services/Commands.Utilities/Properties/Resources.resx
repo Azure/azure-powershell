@@ -1068,7 +1068,7 @@ Please follow these steps in the portal:
     <value>Resources\Scaffolding\Python</value>
   </data>
   <data name="RedeployCommit" xml:space="preserve">
-    <value>Reploy deployment with {0} Id ?</value>
+    <value>Replace current deployment with '{0}' Id ?</value>
   </data>
   <data name="RegenerateKeyWarning" xml:space="preserve">
     <value>Are you sure you want to regenerate key?</value>
@@ -1586,7 +1586,16 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="ErrorCreatingVMNetwork" xml:space="preserve">
     <value>Error creating VMNetwork</value>
   </data>
+  <data name="SpecifyCreateACSNamespace" xml:space="preserve">
+    <value>Please specify CreateACSNamespace as true or false for better future compatibility.</value>
+  </data>
   <data name="Argument_WebSpaceMissing" xml:space="preserve">
     <value>Please provide webspace name as well.</value>
+  </data>
+  <data name="SchedulerInvalidClientCertAuthRequest" xml:space="preserve">
+    <value>A valid value for ClientCertificatePfx and ClientCertificatePassword parameters are required for Http scheduler jobs with ClientCertificate authentication type.</value>
+  </data>
+  <data name="SchedulerInvalidNoneAuthRequest" xml:space="preserve">
+    <value>For None authentication type, both ClientCertificatePfx and ClientCertificatePassword parameters should be null</value>
   </data>
 </root>

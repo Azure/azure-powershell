@@ -50,6 +50,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public const string Scheduler = "Scheduler";
 
+        public const string Network = "Network";
+
         // Owners
         public const string OneSDK = "OneSDK";
 
@@ -62,6 +64,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public const string CheckIn = "CheckIn";
 
+        // Run Type
+        public const string RunType = "RunType";
+        public const string LiveOnly = "LiveOnly";
+        //Uncomment when we need to tag on only run under mock
+        //public const string MockedOnly = "MockedOnly";
+       
         // Environment
         public const string Environment = "Environment";
 

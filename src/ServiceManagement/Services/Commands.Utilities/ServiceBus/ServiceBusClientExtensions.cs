@@ -835,7 +835,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
             return GetNamespace().Exists(ns => ns.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         }
 
-        public virtual ExtendedServiceBusNamespace CreateNamespace(string name, string location)
+        public virtual ExtendedServiceBusNamespace CreateNamespace(string name, string location, NamespaceType type, bool createACSNamespace = true)
         {
             location = string.IsNullOrEmpty(location) ? GetDefaultLocation() : location;
 
@@ -844,7 +844,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
                 throw new ArgumentException(string.Format(Resources.InvalidNamespaceName, name), "Name");
             }
 
-            ServiceBusClient.Namespaces.Create(name, location);
+            ServiceBusClient.Namespaces.CreateNamespace(name, new ServiceBusNamespaceCreateParameters { Region = location, CreateACSNamespace = createACSNamespace, NamespaceType = type});
 
             // Wait until the namespace is activated
             while (!IsActiveNamespace(name))

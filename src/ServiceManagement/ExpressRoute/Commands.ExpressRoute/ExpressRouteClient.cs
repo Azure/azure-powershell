@@ -12,27 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Net;
+using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Management.ExpressRoute;
-using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
+using Microsoft.WindowsAzure.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
+    using Microsoft.WindowsAzure.Management.ExpressRoute;
+    using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
+    using Utilities.Common;
+    
+   
     public class ExpressRouteClient
     {
         public ExpressRouteManagementClient Client { get; internal set; }
+
+        private static ClientType CreateClient<ClientType>(AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
+        {
+            return AzureSession.ClientFactory.CreateClient<ClientType>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+        }
 
         /// <summary>
         /// Creates new ExpressRouteClient
         /// </summary>
         /// <param name="subscription">Subscription containing websites to manipulate</param>
         public ExpressRouteClient(AzureSubscription subscription)
-        {
-            Client = AzureSession.ClientFactory.CreateClient<ExpressRouteManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            : this(CreateClient<ExpressRouteManagementClient>(subscription))
+        {   
         }
 
         public ExpressRouteClient(ExpressRouteManagementClient client)
@@ -152,6 +162,69 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         public IEnumerable<AzureCrossConnection> ListAzureCrossConnections()
         {
             return (Client.CrossConnections.List()).CrossConnections;
-        } 
+        }
+
+        public AzureDedicatedCircuitLinkAuthorization GetAzureDedicatedCircuitLinkAuthorization(string serviceKey, string authorizationId)
+        {
+            return (Client.DedicatedCircuitLinkAuthorizations.Get(serviceKey, authorizationId)).DedicatedCircuitLinkAuthorization;
+        }
+
+        public AzureDedicatedCircuitLinkAuthorization NewAzureDedicatedCircuitLinkAuthorization(string serviceKey, string description, int limit, string microsoftIds)
+        {
+            return (Client.DedicatedCircuitLinkAuthorizations.New(serviceKey, new DedicatedCircuitLinkAuthorizationNewParameters()
+            {
+                Description = description,
+                Limit = limit,
+                MicrosoftIds = microsoftIds
+            })).DedicatedCircuitLinkAuthorization;
+        }
+
+        public AzureDedicatedCircuitLinkAuthorization SetAzureDedicatedCircuitLinkAuthorization(string serviceKey, string authorizationId, string description, int limit)
+        {
+            return (Client.DedicatedCircuitLinkAuthorizations.Update(serviceKey, authorizationId, new DedicatedCircuitLinkAuthorizationUpdateParameters()
+            {
+                Description = description,
+                Limit = limit
+            })).DedicatedCircuitLinkAuthorization;
+        }
+
+        public IEnumerable<AzureDedicatedCircuitLinkAuthorization> ListAzureDedicatedCircuitLinkAuthorizations(string serviceKey)
+        {
+            return (Client.DedicatedCircuitLinkAuthorizations.List(serviceKey).DedicatedCircuitLinkAuthorizations);
+        }
+
+        public bool RemoveAzureDedicatedCircuitLinkAuthorization(string serviceKey, string authorizationId)
+        {
+            var result = Client.DedicatedCircuitLinkAuthorizations.Remove(serviceKey, authorizationId);
+            return result.HttpStatusCode.Equals(HttpStatusCode.OK);
+        }
+
+        public AzureAuthorizedDedicatedCircuit GetAuthorizedAzureDedicatedCircuit(string serviceKey)
+        {
+            return (Client.AuthorizedDedicatedCircuits.Get(serviceKey)).AuthorizedDedicatedCircuit;
+        }
+
+        public IEnumerable<AzureAuthorizedDedicatedCircuit> ListAzureAuthorizedDedicatedCircuits()
+        {
+            return (Client.AuthorizedDedicatedCircuits.List().AuthorizedDedicatedCircuits);
+        }
+
+        public bool NewAzureDedicatedCircuitLinkAuthorizationMicrosoftIds(string serviceKey, string authorizationId, string microsoftIds)
+        {
+            var result = Client.DedicatedCircuitLinkAuthorizationMicrosoftIds.New(serviceKey, authorizationId, new DedicatedCircuitLinkAuthorizationMicrosoftIdNewParameters()
+                {
+                    MicrosoftIds = microsoftIds
+                });
+            return result.StatusCode.Equals(HttpStatusCode.OK);
+        }
+
+        public bool RemoveAzureDedicatedCircuitLinkAuthorizationMicrosoftIds(string serviceKey, string authorizationId, string microsoftIds)
+        {
+            var result = Client.DedicatedCircuitLinkAuthorizationMicrosoftIds.Remove(serviceKey, authorizationId, new DedicatedCircuitLinkAuthorizationMicrosoftIdRemoveParameters()
+            {
+                MicrosoftIds = microsoftIds
+            });
+            return result.StatusCode.Equals(HttpStatusCode.OK);
+        }
     }  
 }

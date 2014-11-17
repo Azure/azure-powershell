@@ -26,7 +26,7 @@ using Moq;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
-    
+
     public class NewAzureWebsiteTests : WebsitesTestBase
     {
         [Fact]
@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 });
 
             clientMock.Setup(c => c.GetWebsiteConfiguration("website1"))
-                .Returns(new SiteConfig {PublishingUsername = "user1"});
+                .Returns(new SiteConfig { PublishingUsername = "user1" });
 
             string createdSiteName = null;
             string createdWebspaceName = null;
@@ -57,10 +57,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             clientMock.Setup(c => c.CreateWebsite(webspaceName, It.IsAny<SiteWithWebSpace>(), null))
                 .Returns((string space, SiteWithWebSpace site, string slot) => site)
                 .Callback((string space, SiteWithWebSpace site, string slot) =>
-                    {
-                        createdSiteName = site.Name;
-                        createdWebspaceName = space;
-                    });
+                {
+                    createdSiteName = site.Name;
+                    createdWebspaceName = space;
+                });
 
             // Test
             MockCommandRuntime mockRuntime = new MockCommandRuntime();
@@ -105,9 +105,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             clientMock.Setup(c => c.CreateWebsite(It.IsAny<string>(), It.IsAny<SiteWithWebSpace>(), null))
                 .Returns((string space, SiteWithWebSpace site, string slot) => site)
                 .Callback((string space, SiteWithWebSpace site, string slot) =>
-                    {
-                        created = true;
-                    });
+                {
+                    created = true;
+                });
 
             // Test
             MockCommandRuntime mockRuntime = new MockCommandRuntime();
@@ -149,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
 
 
             clientMock.Setup(f => f.WebsiteExists(websiteName)).Returns(true);
-            clientMock.Setup(f => f.GetWebsite(websiteName)).Returns(new Site() { Name = websiteName, ComputeMode = WebSiteComputeMode.Dedicated });
+            clientMock.Setup(f => f.GetWebsite(websiteName)).Returns(new Site() { Name = websiteName, Sku = SkuOptions.Standard });
 
             // Test
             MockCommandRuntime mockRuntime = new MockCommandRuntime();

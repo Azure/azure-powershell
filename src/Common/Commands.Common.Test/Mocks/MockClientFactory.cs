@@ -26,13 +26,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
     public class MockClientFactory : ClientFactory
     {
-        private IAuthenticationFactory authenticationFactory;
-
-        public MockClientFactory(IAuthenticationFactory authenticationFactory)
-        {
-            this.authenticationFactory = authenticationFactory;
-        }
-
         private readonly bool throwWhenNotAvailable;
 
         public List<object> ManagementClients { get; private set; }
@@ -56,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                     Subscription = subscription
                 };
 
-                creds = authenticationFactory.GetSubscriptionCloudCredentials(context);
+                creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
             }
 
             Uri endpointUri = (new ProfileClient()).Profile.Environments[subscription.Environment].GetEndpointAsUri(endpoint);

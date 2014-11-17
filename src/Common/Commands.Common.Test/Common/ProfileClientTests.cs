@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
 using Xunit;
@@ -27,8 +28,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
     public class ProfileClientTests
     {
         private string oldProfileData;
+        private string oldProfileDataBadSubscription;
+        private string oldProfileDataCorruptedFile;
         private string oldProfileDataPath;
+        private string oldProfileDataPathError;
         private string newProfileDataPath;
+        private string jsonProfileWithoutAccount;
+        private string jsonProfileWithBadData;
         private string defaultSubscription = "06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F";
         private WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription rdfeSubscription1;
         private WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription rdfeSubscription2;
@@ -142,6 +148,108 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        public void ProfileMigratesAccountsSkipsBadOnesAndBacksUpFile()
+        {
+            MockDataStore dataStore = new MockDataStore();
+            dataStore.VirtualStore[oldProfileDataPath] = oldProfileDataBadSubscription;
+            ProfileClient.DataStore = dataStore;
+            ProfileClient client = new ProfileClient();
+
+            // Verify Environment migration
+            Assert.Equal(2, client.Profile.Environments.Count);
+            
+            // Verify subscriptions
+            Assert.Equal(3, client.Profile.Subscriptions.Count);
+            Assert.True(client.Profile.Subscriptions.ContainsKey(new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")));
+            Assert.Equal("Test Bad Management Endpoint", client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Name);
+            Assert.Equal(EnvironmentName.AzureCloud, client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")].Environment);
+            Assert.Equal("Test Null Management Endpoint", client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2ADFF")].Name);
+            Assert.Equal(EnvironmentName.AzureCloud, client.Profile.Subscriptions[new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2ADFF")].Environment);
+
+            Assert.True(client.Profile.Subscriptions.ContainsKey(new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")));
+            Assert.Equal("Test Bad Cert", client.Profile.Subscriptions[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].Name);
+            
+            // Verify accounts
+            Assert.Equal(2, client.Profile.Accounts.Count);
+            Assert.Equal("test@mail.com", client.Profile.Accounts["test@mail.com"].Id);
+            Assert.Equal(AzureAccount.AccountType.User, client.Profile.Accounts["test@mail.com"].Type);
+            Assert.True(client.Profile.Accounts["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
+                .Contains(new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F").ToString()));
+            Assert.True(client.Profile.Accounts["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
+                .Contains(new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f").ToString()));
+            Assert.True(client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].GetPropertyAsArray(AzureAccount.Property.Subscriptions)
+                .Contains(new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f").ToString()));
+            Assert.True(client.Profile.Accounts["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Tenants)
+                .Contains("72f988bf-86f1-41af-91ab-2d7cd011db47"));
+            Assert.False(client.Profile.Accounts["test@mail.com"].GetPropertyAsArray(AzureAccount.Property.Tenants)
+                .Contains("123"));
+            Assert.Equal("3AF24D48B97730E5C4C9CCB12397B5E046F79E99", client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].Id);
+            Assert.Equal(AzureAccount.AccountType.Certificate, client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].Type);
+            Assert.Equal(0, client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].GetPropertyAsArray(AzureAccount.Property.Tenants).Length);
+            Assert.Equal(1, client.Profile.Accounts["3AF24D48B97730E5C4C9CCB12397B5E046F79E99"].GetPropertyAsArray(AzureAccount.Property.Subscriptions).Length);
+
+            // Verify backup file
+            Assert.True(dataStore.FileExists(oldProfileDataPathError));
+            Assert.False(dataStore.FileExists(oldProfileDataPath));
+            Assert.Equal(oldProfileDataBadSubscription, dataStore.ReadFileAsText(oldProfileDataPathError));
+        }
+
+        [Fact]
+        public void ProfileMigratesCorruptedFileAndCreatedBackup()
+        {
+            MockDataStore dataStore = new MockDataStore();
+            dataStore.VirtualStore[oldProfileDataPath] = oldProfileDataCorruptedFile;
+            ProfileClient.DataStore = dataStore;
+            ProfileClient client = new ProfileClient();
+
+            // Verify Environment migration
+            Assert.Equal(2, client.Profile.Environments.Count);
+            
+            // Verify subscriptions
+            Assert.Equal(0, client.Profile.Subscriptions.Count);
+            
+            // Verify accounts
+            Assert.Equal(0, client.Profile.Accounts.Count);
+
+            // Verify backup file
+            Assert.True(dataStore.FileExists(oldProfileDataPathError));
+            Assert.False(dataStore.FileExists(oldProfileDataPath));
+            Assert.Equal(oldProfileDataCorruptedFile, dataStore.ReadFileAsText(oldProfileDataPathError));
+        }
+
+        [Fact]
+        public void CmdletStartsWithCorruptedJson()
+        {
+            MockDataStore dataStore = new MockDataStore();
+            dataStore.VirtualStore[newProfileDataPath] = jsonProfileWithBadData;
+            ProfileClient.DataStore = dataStore;
+
+            GetAzureSubscriptionCommand cmdlt = new GetAzureSubscriptionCommand();
+
+            ProfileClient client = new ProfileClient();
+
+            Assert.Equal(0, client.Profile.Subscriptions.Count);
+            Assert.Null(AzureSession.CurrentContext.Subscription);
+            Assert.Null(AzureSession.CurrentContext.Account);
+        }
+
+        [Fact]
+        public void CmdletStartsWithJsonWithoutAccounts()
+        {
+            MockDataStore dataStore = new MockDataStore();
+            dataStore.VirtualStore[newProfileDataPath] = jsonProfileWithoutAccount;
+            ProfileClient.DataStore = dataStore;
+
+            GetAzureSubscriptionCommand cmdlt = new GetAzureSubscriptionCommand();
+
+            ProfileClient client = new ProfileClient();
+
+            Assert.Equal(1, client.Profile.Subscriptions.Count);
+            Assert.Null(AzureSession.CurrentContext.Subscription);
+            Assert.Null(AzureSession.CurrentContext.Account);
+        }
+
+        [Fact]
         public void AddAzureAccountReturnsAccountWithAllSubscriptionsInRdfeMode()
         {
             SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1 }.ToList());
@@ -149,7 +257,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             dataStore.VirtualStore[oldProfileDataPath] = oldProfileData;
             ProfileClient.DataStore = dataStore;
             ProfileClient client = new ProfileClient();
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureServiceManagement;
 
             var account = client.AddAccountAndLoadSubscriptions(new AzureAccount { Id = "test", Type = AzureAccount.AccountType.User }, AzureEnvironment.PublicEnvironments[ EnvironmentName.AzureCloud], null);
 
@@ -168,7 +275,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             dataStore.VirtualStore[oldProfileDataPath] = oldProfileData;
             ProfileClient.DataStore = dataStore;
             ProfileClient client = new ProfileClient();
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureResourceManager;
 
             var account = client.AddAccountAndLoadSubscriptions(new AzureAccount { Id = "test", Type = AzureAccount.AccountType.User }, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], null);
 
@@ -190,7 +296,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             client.Profile.Subscriptions[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
             client.Profile.Accounts[azureAccount.Id] = azureAccount;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureResourceManager;
 
             var account = client.ListAccounts("test").ToList();
 
@@ -212,7 +317,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             client.Profile.Subscriptions[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
             client.Profile.Accounts[azureAccount.Id] = azureAccount;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureResourceManager;
 
             var account = client.ListAccounts("test").ToList();
 
@@ -234,7 +338,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             client.Profile.Subscriptions[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
             client.Profile.Accounts[azureAccount.Id] = azureAccount;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureResourceManager;
 
             var account = client.ListAccounts("test2").ToList();
 
@@ -262,7 +365,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             };
             client.Profile.Subscriptions[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureResourceManager;
 
             var account = client.ListAccounts(null).ToList();
 
@@ -290,7 +392,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             };
             client.Profile.Subscriptions[azureSubscription3withoutUser.Id] = azureSubscription3withoutUser;
             client.Profile.Environments[azureEnvironment.Name] = azureEnvironment;
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureResourceManager;
             List<string> log = new List<string>();
             client.WarningLog = log.Add;
 
@@ -650,7 +751,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             MockDataStore dataStore = new MockDataStore();
             ProfileClient.DataStore = dataStore;
             ProfileClient client = new ProfileClient();
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureResourceManager;
             client.AddOrSetEnvironment(azureEnvironment);
             client.Profile.Accounts[azureAccount.Id] = azureAccount;
             client.AddOrSetSubscription(azureSubscription1);
@@ -670,7 +770,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             MockDataStore dataStore = new MockDataStore();
             ProfileClient.DataStore = dataStore;
             ProfileClient client = new ProfileClient();
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureResourceManager;
             client.AddOrSetEnvironment(azureEnvironment);
             client.Profile.Accounts[azureAccount.Id] = azureAccount;
             client.AddOrSetSubscription(azureSubscription1);
@@ -693,7 +792,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             MockDataStore dataStore = new MockDataStore();
             ProfileClient.DataStore = dataStore;
             ProfileClient client = new ProfileClient();
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureResourceManager;
             
             client.Profile.Accounts[azureAccount.Id] = azureAccount;
 
@@ -716,7 +814,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureServiceManagement;
 
             var subscriptions = client.RefreshSubscriptions(azureEnvironment);
 
@@ -736,7 +833,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             ProfileClient.DataStore = dataStore;
             ProfileClient client = new ProfileClient();
             client.AddOrSetAccount(azureAccount);
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureResourceManager;
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
             client.AddOrSetSubscription(azureSubscription2);
@@ -755,7 +851,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             ProfileClient.DataStore = dataStore;
             ProfileClient client = new ProfileClient();
             client.AddOrSetAccount(azureAccount);
-            PowerShellUtilities.GetCurrentModeOverride = () => AzureModule.AzureResourceManager;
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
             client.AddOrSetSubscription(azureSubscription2);
@@ -1032,7 +1127,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             AzureSession.ClientFactory = new MockClientFactory(new object[] { clientMocks.RdfeSubscriptionClientMock.Object,
                 clientMocks.CsmSubscriptionClientMock.Object });
 
-            AzureSession.AuthenticationFactory = new MockAuthenticationFactory();
+            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }
 
         private void SetMockData()
@@ -1120,6 +1215,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             };
             newProfileDataPath = System.IO.Path.Combine(AzurePowerShell.ProfileDirectory, AzurePowerShell.ProfileFile);
             oldProfileDataPath = System.IO.Path.Combine(AzurePowerShell.ProfileDirectory, AzurePowerShell.OldProfileFile);
+            oldProfileDataPathError = System.IO.Path.Combine(AzurePowerShell.ProfileDirectory, AzurePowerShell.OldProfileFileBackup);
             oldProfileData = @"<?xml version=""1.0"" encoding=""utf-8""?>
                 <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.WindowsAzure.Commands.Utilities.Common"">
                   <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>
@@ -1228,6 +1324,145 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                     </AzureSubscriptionData>
                   </Subscriptions>
                 </ProfileData>";
+
+            oldProfileDataBadSubscription = @"<?xml version=""1.0"" encoding=""utf-8""?>
+                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.WindowsAzure.Commands.Utilities.Common"">
+                  <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>
+                  <Environments>                    
+                  </Environments>
+                  <Subscriptions>
+                    <AzureSubscriptionData>
+                      <ActiveDirectoryEndpoint i:nil=""true"" />
+                      <ActiveDirectoryServiceEndpointResourceId i:nil=""true"" />
+                      <ActiveDirectoryTenantId i:nil=""true"" />
+                      <ActiveDirectoryUserId i:nil=""true"" />
+                      <CloudStorageAccount i:nil=""true"" />
+                      <GalleryEndpoint i:nil=""true"" />
+                      <IsDefault>true</IsDefault>
+                      <LoginType i:nil=""true"" />
+                      <ManagementCertificate i:nil=""true""/>
+                      <ManagementEndpoint>https://management.core.windows.net/</ManagementEndpoint>
+                      <Name>Test Nill ID</Name>
+                      <RegisteredResourceProviders xmlns:d4p1=""http://schemas.microsoft.com/2003/10/Serialization/Arrays"" />
+                      <ResourceManagerEndpoint i:nil=""true"" />
+                      <SqlDatabaseDnsSuffix>.database.windows.net</SqlDatabaseDnsSuffix>
+                      <SubscriptionId i:nil=""true"" />
+                      <TrafficManagerDnsSuffix>trafficmanager.net</TrafficManagerDnsSuffix>
+                    </AzureSubscriptionData>
+                    <AzureSubscriptionData>
+                      <ActiveDirectoryEndpoint i:nil=""true"" />
+                      <ActiveDirectoryServiceEndpointResourceId i:nil=""true"" />
+                      <ActiveDirectoryTenantId i:nil=""true"" />
+                      <ActiveDirectoryUserId>test@mail.com</ActiveDirectoryUserId>
+                      <CloudStorageAccount i:nil=""true"" />
+                      <GalleryEndpoint i:nil=""true"" />
+                      <IsDefault>true</IsDefault>
+                      <LoginType i:nil=""true"" />
+                      <ManagementCertificate i:nil=""true""/>
+                      <ManagementEndpoint>Bad Data</ManagementEndpoint>
+                      <Name>Test Bad Management Endpoint</Name>
+                      <RegisteredResourceProviders xmlns:d4p1=""http://schemas.microsoft.com/2003/10/Serialization/Arrays"" />
+                      <ResourceManagerEndpoint i:nil=""true"" />
+                      <SqlDatabaseDnsSuffix>.database.windows.net</SqlDatabaseDnsSuffix>
+                      <SubscriptionId>06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F</SubscriptionId>
+                      <TrafficManagerDnsSuffix>trafficmanager.net</TrafficManagerDnsSuffix>
+                    </AzureSubscriptionData>
+                    <AzureSubscriptionData>
+                      <ActiveDirectoryEndpoint i:nil=""true"" />
+                      <ActiveDirectoryServiceEndpointResourceId i:nil=""true"" />
+                      <ActiveDirectoryTenantId i:nil=""true"" />
+                      <ActiveDirectoryUserId>test@mail.com</ActiveDirectoryUserId>
+                      <CloudStorageAccount i:nil=""true"" />
+                      <GalleryEndpoint i:nil=""true"" />
+                      <IsDefault>true</IsDefault>
+                      <LoginType i:nil=""true"" />
+                      <ManagementCertificate i:nil=""true""/>
+                      <ManagementEndpoint i:nil=""true""/>
+                      <Name>Test Null Management Endpoint</Name>
+                      <RegisteredResourceProviders xmlns:d4p1=""http://schemas.microsoft.com/2003/10/Serialization/Arrays"" />
+                      <ResourceManagerEndpoint i:nil=""true"" />
+                      <SqlDatabaseDnsSuffix>.database.windows.net</SqlDatabaseDnsSuffix>
+                      <SubscriptionId>06E3F6FD-A3AA-439A-8FC4-1F5C41D2ADFF</SubscriptionId>
+                      <TrafficManagerDnsSuffix>trafficmanager.net</TrafficManagerDnsSuffix>
+                    </AzureSubscriptionData>
+                    <AzureSubscriptionData>
+                      <ActiveDirectoryEndpoint>https://login.windows.net/</ActiveDirectoryEndpoint>
+                      <ActiveDirectoryServiceEndpointResourceId>https://management.core.windows.net/</ActiveDirectoryServiceEndpointResourceId>
+                      <ActiveDirectoryTenantId>72f988bf-86f1-41af-91ab-2d7cd011db47</ActiveDirectoryTenantId>
+                      <ActiveDirectoryUserId>test@mail.com</ActiveDirectoryUserId>
+                      <CloudStorageAccount i:nil=""true"" />
+                      <GalleryEndpoint i:nil=""true"" />
+                      <IsDefault>false</IsDefault>
+                      <LoginType i:nil=""true"" />
+                      <ManagementCertificate>3AF24D48B97730E5C4C9CCB12397B5E046F79E99</ManagementCertificate>
+                      <ManagementEndpoint>https://management.core.windows.net/</ManagementEndpoint>
+                      <Name>Test Bad Cert</Name>
+                      <RegisteredResourceProviders xmlns:d4p1=""http://schemas.microsoft.com/2003/10/Serialization/Arrays"" />
+                      <ResourceManagerEndpoint i:nil=""true"" />
+                      <SqlDatabaseDnsSuffix>.database.windows.net</SqlDatabaseDnsSuffix>
+                      <SubscriptionId>d1e52cbc-b073-42e2-a0a0-c2f547118a6f</SubscriptionId>
+                      <TrafficManagerDnsSuffix>trafficmanager.net</TrafficManagerDnsSuffix>
+                    </AzureSubscriptionData>                    
+                  </Subscriptions>
+                </ProfileData>";
+
+            oldProfileDataCorruptedFile = @"<?xml version=""1.0"" encoding=""utf-8""?>
+                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.WindowsAzure.Commands.Utilities.Common"">
+                  <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>
+                  <Environments bad>
+                    <AzureEnvironmentData>
+                      <ActiveDirectoryServiceEndpointResourceId>https://management.core.windows.net/</ActiveDirectoryServiceEndpointResourceId>
+                      <AdTenantUrl>https://login.windows-ppe.net/</AdTenantUrl>
+                      <CommonTenantId>Common</CommonTenantId>
+                      <GalleryEndpoint>https://current.gallery.azure-test.net</GalleryEndpoint>
+                      <ManagementPortalUrl>http://go.microsoft.com/fwlink/?LinkId=254433</ManagementPortalUrl>
+                      <Name>Current</Name>
+                      <PublishSettingsFileUrl>d:\Code\azure.publishsettings</PublishSettingsFileUrl>
+                      <ResourceManagerEndpoint>https://api-current.resources.windows-int.net/</ResourceManagerEndpoint>
+                      <ServiceEndpoint>https://umapi.rdfetest.dnsdemo4.com:8443/</ServiceEndpoint>
+                      <SqlDatabaseDnsSuffix>.database.windows.net</SqlDatabaseDnsSuffix>
+                      <StorageEndpointSuffix i:nil=""true"" />
+                      <TrafficManagerDnsSuffix>trafficmanager.net</TrafficManagerDnsSuffix>
+                    </AzureEnvironmentData>
+                  <Subscriptions>                    
+                  </Subscriptions>
+                </ProfileData>";
+
+            jsonProfileWithoutAccount = @"{
+              ""Environments"": [],
+              ""Subscriptions"": [  
+                {
+                  ""Id"": ""7e11f45f-70e6-430a-a4fc-af338aa22c11"",
+                  ""Name"": ""Test"",
+                  ""Environment"": ""AzureCloud"",
+                  ""Account"": ""test@mail.com"",
+                  ""Properties"": {
+                    ""SupportedModes"": ""AzureServiceManagement"",
+                    ""Default"": ""True"",
+                    ""StorageAccount"": ""rjfmmanagement""
+                  }
+                }
+              ],
+              ""Accounts"": []
+            }";
+
+            jsonProfileWithBadData = @"{
+              ""Environments"": [],
+              ""Subscriptions"": {  
+                {
+                  ""Id"": ""7e11f45f-70e6-430a-a4fc-af338aa22c11"",
+                  ""Name"": ""Test"",
+                  ""Environment"": ""AzureCloud"",
+                  ""Account"": ""test@mail.com"",
+                  ""Properties"": {
+                    ""SupportedModes"": ""AzureServiceManagement"",
+                    ""Default"": ""True"",
+                    ""StorageAccount"": ""rjfmmanagement""
+                  }
+                }
+              ],
+              ""Accounts"": []
+            }";
         }
     }
 }

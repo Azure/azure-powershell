@@ -12,11 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.Services.Client;
-using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 
@@ -60,16 +57,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return fullPath;
         }
 
-        private static Exception FindDataServiceClientException(Exception ex)
-        {
-            if (ex is DataServiceClientException)
-            {
-                return ex;
-            }
-
-            return ex.InnerException != null ? FindDataServiceClientException(ex.InnerException) : null;
-        }
-
         public static List<T> ExecuteScript<T>(this PSCmdlet cmdlet, string contents)
         {
             List<T> output = new List<T>();
@@ -94,13 +81,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return output;
         }
-
-        public static List<T> ExecuteScriptFile<T>(this PSCmdlet cmdlet, string absolutePath)
-        {
-            string contents = File.ReadAllText(absolutePath);
-            return ExecuteScript<T>(cmdlet, contents);
-        }
-
         #region PowerShell Commands
 
         public static void RemoveModule(this PSCmdlet cmdlet, string moduleName)
@@ -130,6 +110,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             MethodInfo dynMethod = (typeof(PSCmdlet)).GetMethod("BeginProcessing", BindingFlags.NonPublic | BindingFlags.Instance);
             dynMethod.Invoke(cmdlt, null);
+        }
+
+        public static void SetParameterSet(this PSCmdlet cmdlt, string value)
+        {
+            FieldInfo dynField = (typeof(Cmdlet)).GetField("_parameterSetName", BindingFlags.NonPublic | BindingFlags.Instance);
+            dynField.SetValue(cmdlt, value);
         }
 
         public static void InvokeEndProcessing(this PSCmdlet cmdlt)

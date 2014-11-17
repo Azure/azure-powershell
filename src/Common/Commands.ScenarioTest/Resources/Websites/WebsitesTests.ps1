@@ -341,8 +341,7 @@ function Test-EnableApplicationDiagnosticOnTableStorage
     # Setup
     $name = Get-WebsiteName
     $storageName = $(Get-WebsiteName).ToLower()
-    $locations = Get-AzureLocation
-    $defaultLocation = $locations[0].Name
+    $defaultLocation = Get-StorageDefaultLocation
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
     
@@ -408,8 +407,7 @@ function Test-ReconfigureStorageAppDiagnostics
     $name = Get-WebsiteName
     $storageName = $(Get-WebsiteName).ToLower()
     $newStorageName = $(Get-WebsiteName).ToLower()
-    $locations = Get-AzureLocation
-    $defaultLocation = $locations[0].Name
+    $defaultLocation = Get-StorageDefaultLocation
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
     New-AzureStorageAccount -ServiceName $newStorageName -Location $defaultLocation
@@ -453,8 +451,7 @@ function Test-DisableApplicationDiagnosticOnTableStorage
     # Setup
     $name = Get-WebsiteName
     $storageName = $(Get-WebsiteName).ToLower()
-    $locations = Get-AzureLocation
-    $defaultLocation = $locations[0].Name
+    $defaultLocation = Get-StorageDefaultLocation
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
     Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Warning -StorageAccountName $storageName
@@ -501,8 +498,7 @@ function Test-DisableApplicationDiagnosticOnTableStorageAndFile
     # Setup
     $name = Get-WebsiteName
     $storageName = $(Get-WebsiteName).ToLower()
-    $locations = Get-AzureLocation
-    $defaultLocation = $locations[0].Name
+    $defaultLocation = Get-StorageDefaultLocation
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
     Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Warning -StorageAccountName $storageName
@@ -530,8 +526,7 @@ function Test-DisablesFileOnly
     # Setup
     $name = Get-WebsiteName
     $storageName = $(Get-WebsiteName).ToLower()
-    $locations = Get-AzureLocation
-    $defaultLocation = $locations[0].Name
+    $defaultLocation = Get-StorageDefaultLocation
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
     Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Warning -StorageAccountName $storageName
@@ -559,8 +554,7 @@ function Test-DisablesStorageOnly
     # Setup
     $name = Get-WebsiteName
     $storageName = $(Get-WebsiteName).ToLower()
-    $locations = Get-AzureLocation
-    $defaultLocation = $locations[0].Name
+    $defaultLocation = Get-StorageDefaultLocation
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
     Enable-AzureWebsiteApplicationDiagnostic -Name $name -File -LogLevel Verbose
@@ -588,8 +582,7 @@ function Test-DisablesBothByDefault
     # Setup
     $name = Get-WebsiteName
     $storageName = $(Get-WebsiteName).ToLower()
-    $locations = Get-AzureLocation
-    $defaultLocation = $locations[0].Name
+    $defaultLocation = Get-StorageDefaultLocation
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
     Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Warning -StorageAccountName $storageName
@@ -955,7 +948,9 @@ function Test-RemoveNonExistingAzureWebsiteJob
     New-AzureWebsite $webSiteName
     
     # Test
-    Assert-ThrowsContains {Remove-AzureWebsiteJob -Name $webSiteName -JobName $nonExistingWebSiteJobName -JobType Triggered –Force} "not found."    
+    Remove-AzureWebsiteJob -Name $webSiteName -JobName $nonExistingWebSiteJobName -JobType Triggered –Force   
+
+    Assert-True { $true }
 }
 
 ########################################################################### Get-AzureWebsiteJob Scenario Tests ###########################################################################
@@ -996,8 +991,8 @@ function Test-GettingWebsiteJobs
     
     Assert-AreEqual $job1 $webjob.JobName
 
-    # Test does not throw exception with non-existing job
-    Get-AzureWebsiteJob -Name $webSiteName -JobType Triggered -JobName "foo"
+    # Test throws exception with non-existing job
+    Assert-Throws { Get-AzureWebsiteJob -Name $webSiteName -JobType Triggered -JobName "foo" } "Not Found"
 
     Assert-True { $true }
 }

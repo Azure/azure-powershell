@@ -15,6 +15,8 @@
 using System;
 using System.Net;
 using System.Net.Http;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Factories;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
@@ -41,7 +43,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 
             ServiceUrl = GeneralUtilities.EnsureTrailingSlash(serviceUrl);
             Credentials = credentials;
-            Client = HttpClientHelper.CreateClient(ServiceUrl, credentials, handler);
+         
+            if (credentials != null)
+            {
+                Client = AzureSession.ClientFactory.CreateHttpClient(serviceUrl, ClientFactory.CreateHttpClientHandler(serviceUrl, credentials));
+            }
+            else
+            {
+                Client = AzureSession.ClientFactory.CreateHttpClient(serviceUrl, handler);
+            }
         }
 
         public string ServiceUrl { get; private set; }

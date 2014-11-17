@@ -23,13 +23,13 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <summary>
         /// Returns IAccessToken if authentication succeeds or throws an exception if authentication fails.
         /// </summary>
-        /// <param name="environment"></param>
         /// <param name="account"></param>
+        /// <param name="environment"></param>
         /// <param name="tenant"></param>
         /// <param name="password"></param>
         /// <param name="promptBehavior"></param>
         /// <returns></returns>
-        IAccessToken Authenticate(ref AzureAccount account, AzureEnvironment environment, string tenant, SecureString password, ShowDialog promptBehavior);
+        IAccessToken Authenticate(AzureAccount account, AzureEnvironment environment, string tenant, SecureString password, ShowDialog promptBehavior);
 
         SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context);
     }

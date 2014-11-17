@@ -235,9 +235,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.TrafficManager.Endpoints
             Assert.IsTrue(actual.Endpoints.Any(e => e.DomainName == DomainName));
             TrafficManagerEndpoint endpoint = actual.Endpoints.First(e => e.DomainName == DomainName);
 
-            Assert.AreEqual(1, endpoint.Weight);
+            Assert.AreEqual(null, endpoint.Weight);
             Assert.IsNull(endpoint.Location);
-            Assert.AreEqual(1, endpoint.MinChildEndpoints);
+            Assert.AreEqual(null, endpoint.MinChildEndpoints);
         }
 
         private ProfileWithDefinition GetProfileWithDefinition(string profileDomainName = ProfileDomainName)

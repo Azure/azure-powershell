@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.WindowsAzure.Commands.Common.Utilities;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Models

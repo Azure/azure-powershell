@@ -35,10 +35,10 @@ namespace Microsoft.WindowsAzure.Commands.TrafficManager.Models
         public DefinitionEndpointMonitorStatus MonitorStatus { get; set; }
 
         [DataMember(IsRequired = true)]
-        public int Weight { get; set; }
+        public int? Weight { get; set; }
 
         [DataMember(IsRequired = true)]
-        public int MinChildEndpoints { get; set; }
+        public int? MinChildEndpoints { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -69,8 +69,14 @@ namespace Microsoft.WindowsAzure.Commands.TrafficManager.Models
             result = (result * 397) ^ Type.GetHashCode();
             result = (result * 397) ^ Status.GetHashCode();
             result = (result * 397) ^ MonitorStatus.GetHashCode();
-            result = (result * 397) ^ Weight.GetHashCode();
-            result = (result * 397) ^ MinChildEndpoints.GetHashCode();
+            if (Weight.HasValue)
+            {
+                result = (result * 397) ^ Weight.GetHashCode();
+            }
+            if (MinChildEndpoints.HasValue)
+            {
+                result = (result * 397) ^ MinChildEndpoints.GetHashCode();
+            }
             return result;
         }
     }

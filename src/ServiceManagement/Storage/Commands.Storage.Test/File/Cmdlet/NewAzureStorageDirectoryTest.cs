@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
         [TestMethod]
         public void NewDirectoryWithInvalidCharacterTest()
         {
-            NewDirectoryAndAssert(FileNamingGenerator.GenerateASCIINameWithInvalidCharacters(50), "ArgumentException");
+            NewDirectoryAndAssert("?*?\"\\*p:?\\/D?*?<:Z>:/l*<??\\:\\c\"(/:|**<<<|r:/**<:\\y", "ArgumentException");
         }
 
         private void NewDirectoryAndAssert(string directoryName, string expectedErrorId = null)

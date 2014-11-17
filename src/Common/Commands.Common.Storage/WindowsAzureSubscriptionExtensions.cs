@@ -33,19 +33,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 return null;
             }
 
-            if (storageAccountCache.ContainsKey(subscription.Id))
+            using (var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement))
             {
-                return storageAccountCache[subscription.Id];
-            }
-            else
-            {
-                using (var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement))
-                {
-                    storageAccountCache[subscription.Id] = StorageUtilities.GenerateCloudStorageAccount(
-                        storageClient, subscription.GetProperty(AzureSubscription.Property.StorageAccount));
-
-                    return storageAccountCache[subscription.Id];
-                }
+                return StorageUtilities.GenerateCloudStorageAccount(
+                    storageClient, subscription.GetProperty(AzureSubscription.Property.StorageAccount));
             }
         }
     }

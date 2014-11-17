@@ -72,6 +72,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Schedule CreateSchedule(string automationAccountName, DailySchedule schedule);
 
+        Schedule CreateSchedule(string automationAccountName, HourlySchedule schedule);
+
         Runbook PublishRunbook(string automationAccountName, Guid runbookId);
 
         Runbook PublishRunbook(string automationAccountName, string runbookName);

@@ -217,7 +217,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         private void RemoveDisk(string diskName, int maxTry)
         {
-            for (int i = 0; i < maxTry ; i++)
+            for (int i = 0; i <= maxTry ; i++)
             {
                 try
                 {
@@ -232,7 +232,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     }
                     if (e.ToString().Contains("currently in use"))
                     {
-                        Thread.Sleep(5000);
+                        Thread.Sleep(TimeSpan.FromSeconds(30));
                         continue;
                     }
                 }

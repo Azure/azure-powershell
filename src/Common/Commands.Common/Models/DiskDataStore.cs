@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using Microsoft.WindowsAzure.Commands.Common.Interfaces;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Models
@@ -24,6 +27,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
         public void WriteFile(string path, string contents)
         {
             File.WriteAllText(path, contents);
+        }
+
+        public void WriteFile(string path, string contents, Encoding encoding)
+        {
+            File.WriteAllText(path, contents, encoding);
         }
 
         public void WriteFile(string path, byte[] contents)
@@ -102,13 +110,53 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
             }
             else
             {
-                return GeneralUtilities.GetCertificateFromStore(thumbprint);
+                Validate.ValidateStringIsNullOrEmpty(thumbprint, "certificate thumbprint");
+                X509Certificate2Collection certificates;
+                if (TryFindCertificatesInStore(thumbprint, StoreLocation.CurrentUser, out certificates) ||
+                    TryFindCertificatesInStore(thumbprint, StoreLocation.LocalMachine, out certificates))
+                {
+                    return certificates[0];
+                }
+                else
+                {
+                    throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, thumbprint));
+                }
             }
         }
 
-        public void AddCertificate(X509Certificate2 cert)
+        private static bool TryFindCertificatesInStore(string thumbprint,
+            StoreLocation location, out X509Certificate2Collection certificates)
         {
-            GeneralUtilities.AddCertificateToStore(cert);
+            X509Store store = new X509Store(StoreName.My, location);
+            store.Open(OpenFlags.ReadOnly);
+            certificates = store.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false);
+            store.Close();
+
+            return certificates.Count > 0;
+        }
+
+        public void AddCertificate(X509Certificate2 certificate)
+        {
+            Validate.ValidateNullArgument(certificate, Resources.InvalidCertificate);
+            X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+            store.Open(OpenFlags.ReadWrite);
+            store.Add(certificate);
+            store.Close();
+        }
+
+        public void RemoveCertificate(string thumbprint)
+        {
+            if (thumbprint != null)
+            {
+                var certificate = GetCertificate(thumbprint);
+                if (certificate != null)
+                {
+                    X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+                    store.Open(OpenFlags.ReadWrite);
+                    store.Remove(certificate);
+                    store.Close();
+                }
+            }
         }
 
         public bool DirectoryExists(string path)
