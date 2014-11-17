@@ -1,0 +1,26 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ExpressRoute", "ServiceManagement\ExpressRoute\Commands.ExpressRoute\Commands.ExpressRoute.csproj", "{45C2D687-E0CE-4C97-B731-335834DC2BF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "Common\Commands.Common\Commands.Common.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45C2D687-E0CE-4C97-B731-335834DC2BF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C2D687-E0CE-4C97-B731-335834DC2BF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C2D687-E0CE-4C97-B731-335834DC2BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C2D687-E0CE-4C97-B731-335834DC2BF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

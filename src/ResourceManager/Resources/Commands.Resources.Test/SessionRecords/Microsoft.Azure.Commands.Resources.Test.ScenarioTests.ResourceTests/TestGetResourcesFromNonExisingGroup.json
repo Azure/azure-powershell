@@ -1,0 +1,50 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/resourcegroups/onesdk1428?api-version=2014-04-01-preview",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31864"
+        ],
+        "x-ms-request-id": [
+          "b15d25dc-a034-4bf1-b672-aefcdc7c6ed0"
+        ],
+        "x-ms-correlation-request-id": [
+          "b15d25dc-a034-4bf1-b672-aefcdc7c6ed0"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140822T002335Z:b15d25dc-a034-4bf1-b672-aefcdc7c6ed0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Aug 2014 00:23:34 GMT"
+        ]
+      },
+      "StatusCode": 404
+    }
+  ],
+  "Names": {
+    "Test-GetResourcesFromNonExisingGroup": [
+      "onesdk1428"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "1165e0f9-4535-44ce-bc6b-c73c00b5fb2c"
+  }
+}

@@ -1,0 +1,719 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions?api-version=2014-07-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-07-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Owner\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Owner role allowing full access\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Reader\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Reader role allowing only read operations\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"acdd72a7-3385-48ef-bd42-f606fba81ae7\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Operator\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Operator role allowing reads, updates, and actions\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\",\r\n              \"*/update\",\r\n              \"*/action\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "a5fb9df0-07b3-4bfc-bde9-c06c49e6929b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31988"
+        ],
+        "x-ms-correlation-request-id": [
+          "130561aa-ee09-4ab9-916f-c4eabc0332c3"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140716T230504Z:130561aa-ee09-4ab9-916f-c4eabc0332c3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:04 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions?api-version=2014-07-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-07-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Owner\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Owner role allowing full access\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Reader\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Reader role allowing only read operations\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"acdd72a7-3385-48ef-bd42-f606fba81ae7\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Operator\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Operator role allowing reads, updates, and actions\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\",\r\n              \"*/update\",\r\n              \"*/action\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "3f6e77e2-16c3-462d-876f-7340b136a413"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31988"
+        ],
+        "x-ms-correlation-request-id": [
+          "9e47a609-51a9-404c-b17a-1b7ad9792670"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140716T230505Z:9e47a609-51a9-404c-b17a-1b7ad9792670"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:04 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions?api-version=2014-07-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-07-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Owner\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Owner role allowing full access\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Reader\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Reader role allowing only read operations\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"acdd72a7-3385-48ef-bd42-f606fba81ae7\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Operator\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Operator role allowing reads, updates, and actions\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\",\r\n              \"*/update\",\r\n              \"*/action\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "e19e80fd-3a9a-4720-a015-95f5635463dc"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31987"
+        ],
+        "x-ms-correlation-request-id": [
+          "c9c29783-d5ec-42bc-963f-d6201efff2e4"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140716T230505Z:c9c29783-d5ec-42bc-963f-d6201efff2e4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:04 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions?api-version=2014-07-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-07-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Owner\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Owner role allowing full access\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Reader\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Reader role allowing only read operations\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"acdd72a7-3385-48ef-bd42-f606fba81ae7\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Operator\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Operator role allowing reads, updates, and actions\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\",\r\n              \"*/update\",\r\n              \"*/action\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "57fb0e0b-9faf-4bd3-9ec8-650ece18d086"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31987"
+        ],
+        "x-ms-correlation-request-id": [
+          "e1f3ca39-8034-469e-8d5c-cca5e9abf80a"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140716T230505Z:e1f3ca39-8034-469e-8d5c-cca5e9abf80a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:05 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions?api-version=2014-07-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-07-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Owner\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Owner role allowing full access\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Reader\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Reader role allowing only read operations\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"acdd72a7-3385-48ef-bd42-f606fba81ae7\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Operator\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Operator role allowing reads, updates, and actions\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\",\r\n              \"*/update\",\r\n              \"*/action\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "2d41091a-1d6c-4c70-b23d-7ab8a683af24"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31985"
+        ],
+        "x-ms-correlation-request-id": [
+          "d43f90a1-e4c4-44ec-86c5-264ecc3294a5"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140716T230508Z:d43f90a1-e4c4-44ec-86c5-264ecc3294a5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:07 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments?&api-version=2014-07-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-07-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleDefinitionId\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n        \"principalId\": \"ea3ba48b-a7b6-4a10-ad55-08708721883a\",\r\n        \"scope\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c\"\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments/a188ae5e-c8cb-4904-83a9-5540549a1dda\",\r\n      \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n      \"name\": \"a188ae5e-c8cb-4904-83a9-5540549a1dda\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "6aa9bac6-3faf-49f9-8829-d6f11a665eab"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31986"
+        ],
+        "x-ms-correlation-request-id": [
+          "579f8cc1-7ef6-4669-a4de-8146cf4a64b4"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140716T230506Z:579f8cc1-7ef6-4669-a4de-8146cf4a64b4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:06 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments?&api-version=2014-07-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-07-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleDefinitionId\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n        \"principalId\": \"ea3ba48b-a7b6-4a10-ad55-08708721883a\",\r\n        \"scope\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c\"\r\n      },\r\n      \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments/a188ae5e-c8cb-4904-83a9-5540549a1dda\",\r\n      \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n      \"name\": \"a188ae5e-c8cb-4904-83a9-5540549a1dda\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "072603c2-6956-4f8c-9b37-7142cf71c904"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31984"
+        ],
+        "x-ms-correlation-request-id": [
+          "a748a5f4-063d-4766-af80-a15860239c0d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140716T230507Z:a748a5f4-063d-4766-af80-a15860239c0d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:06 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments?&api-version=2014-07-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-07-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "e7da6155-248e-40bd-b8f9-63afa7f9e629"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31986"
+        ],
+        "x-ms-correlation-request-id": [
+          "dcbdffbb-cde1-4cd2-a83f-c87bd7e5ea81"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140716T230508Z:dcbdffbb-cde1-4cd2-a83f-c87bd7e5ea81"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:07 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635?api-version=2014-07-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-07-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleName\": \"Owner\",\r\n    \"type\": \"BuiltInRole\",\r\n    \"description\": \"Owner role allowing full access\",\r\n    \"scope\": \"/\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"*\"\r\n        ],\r\n        \"notActions\": []\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n  \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n  \"name\": \"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "ad8b6ea6-53bb-49c4-a3bf-94856d6e0f65"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31985"
+        ],
+        "x-ms-correlation-request-id": [
+          "e32c0379-bffc-47fb-84db-6cd580efa8ea"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140716T230506Z:e32c0379-bffc-47fb-84db-6cd580efa8ea"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:06 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635?api-version=2014-07-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-07-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleName\": \"Owner\",\r\n    \"type\": \"BuiltInRole\",\r\n    \"description\": \"Owner role allowing full access\",\r\n    \"scope\": \"/\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"*\"\r\n        ],\r\n        \"notActions\": []\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n  \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n  \"name\": \"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "fce431ed-0e57-4c3b-9655-8f42ba58ff64"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31983"
+        ],
+        "x-ms-correlation-request-id": [
+          "86c02115-2768-48c2-821a-e25bebb9187d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140716T230507Z:86c02115-2768-48c2-821a-e25bebb9187d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:06 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/08346394-4d25-4470-a777-16334fa59eb2/users/ea3ba48b-a7b6-4a10-ad55-08708721883a?api-version=2013-04-05",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.ppe.windows.net/08346394-4d25-4470-a777-16334fa59eb2/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"ea3ba48b-a7b6-4a10-ad55-08708721883a\",\r\n  \"accountEnabled\": true,\r\n  \"assignedLicenses\": [],\r\n  \"assignedPlans\": [],\r\n  \"city\": \"Redmond\",\r\n  \"country\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"Jon Doe\",\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"Jon\",\r\n  \"jobTitle\": null,\r\n  \"lastDirSyncTime\": null,\r\n  \"mail\": null,\r\n  \"mailNickname\": \"admin\",\r\n  \"mobile\": \"+1 (123) 456-7890\",\r\n  \"otherMails\": [\r\n    \"jon@doe.com\"\r\n  ],\r\n  \"passwordPolicies\": \"DisablePasswordExpiration\",\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": \"98052\",\r\n  \"preferredLanguage\": null,\r\n  \"provisionedPlans\": [],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"state\": \"WA\",\r\n  \"streetAddress\": \"One Microsoft Way\",\r\n  \"surname\": \"Doe\",\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": null,\r\n  \"userPrincipalName\": \"admin@aad191.ccsctp.net\"\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "5cZdEfeGZq9sASAZFweb4MuCGtck1qacQOViYH3c71Q="
+        ],
+        "request-id": [
+          "6f49e674-0fb9-4bc7-a5e0-11fd639e82f0"
+        ],
+        "client-request-id": [
+          "cc6ecdc7-046c-41b5-bfbd-fa55d2b08479"
+        ],
+        "x-ms-gateway-rewrite": [
+          "false"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.0"
+        ],
+        "ocp-aad-session-key": [
+          "Y-DgiuWPFdEVtSQmwMpoWXe2DbXZ7X_H5lA1s9WuC_z4rQLdq5OdtySChDmEdU8YSMO0GUodrQ7yfyGaKdwuLeRPN_Ia7W8KV3vxOE40lPA.fCmGC2RGFI59UNZSLAB-4871DlbJVpXJxPY0TwSD3tQ"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:05 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/08346394-4d25-4470-a777-16334fa59eb2/users/ea3ba48b-a7b6-4a10-ad55-08708721883a?api-version=2013-04-05",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.ppe.windows.net/08346394-4d25-4470-a777-16334fa59eb2/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"ea3ba48b-a7b6-4a10-ad55-08708721883a\",\r\n  \"accountEnabled\": true,\r\n  \"assignedLicenses\": [],\r\n  \"assignedPlans\": [],\r\n  \"city\": \"Redmond\",\r\n  \"country\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"Jon Doe\",\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"Jon\",\r\n  \"jobTitle\": null,\r\n  \"lastDirSyncTime\": null,\r\n  \"mail\": null,\r\n  \"mailNickname\": \"admin\",\r\n  \"mobile\": \"+1 (123) 456-7890\",\r\n  \"otherMails\": [\r\n    \"jon@doe.com\"\r\n  ],\r\n  \"passwordPolicies\": \"DisablePasswordExpiration\",\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": \"98052\",\r\n  \"preferredLanguage\": null,\r\n  \"provisionedPlans\": [],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"state\": \"WA\",\r\n  \"streetAddress\": \"One Microsoft Way\",\r\n  \"surname\": \"Doe\",\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": null,\r\n  \"userPrincipalName\": \"admin@aad191.ccsctp.net\"\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "kHZt8MuVwYfJdYwujGQteDz/grzV2fJYNO6fQfWZCxg="
+        ],
+        "request-id": [
+          "d49154ce-61c6-4718-a355-41f89d54c318"
+        ],
+        "client-request-id": [
+          "11890730-01c2-4049-9016-d5b7f0631897"
+        ],
+        "x-ms-gateway-rewrite": [
+          "false"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.0"
+        ],
+        "ocp-aad-session-key": [
+          "E7d45bfspTzr4FgD9RGNeKnmFak5roExgIiKRhkTE-IF63Mc1H5zTfKCPHUL1CSJrZY62wQk0PDFXWxLn2E17-VdCXKAwq8FApq9k3Mz7h8.RsVswZ5rQgr2C0lAfz1G4RbH-47RrhTFrvfB9mh46X0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:05 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments/a188ae5e-c8cb-4904-83a9-5540549a1dda?api-version=2014-07-01-preview",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-07-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "fcb51701-9806-4438-9603-1aefe4b562fd"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "5f39986b-85d2-4112-82fd-6ef90c5027ed"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140716T230507Z:5f39986b-85d2-4112-82fd-6ef90c5027ed"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:07 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/08346394-4d25-4470-a777-16334fa59eb2/users/admin@aad191.ccsctp.net?api-version=2013-04-05",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.ppe.windows.net/08346394-4d25-4470-a777-16334fa59eb2/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"ea3ba48b-a7b6-4a10-ad55-08708721883a\",\r\n  \"accountEnabled\": true,\r\n  \"assignedLicenses\": [],\r\n  \"assignedPlans\": [],\r\n  \"city\": \"Redmond\",\r\n  \"country\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"Jon Doe\",\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"Jon\",\r\n  \"jobTitle\": null,\r\n  \"lastDirSyncTime\": null,\r\n  \"mail\": null,\r\n  \"mailNickname\": \"admin\",\r\n  \"mobile\": \"+1 (123) 456-7890\",\r\n  \"otherMails\": [\r\n    \"jon@doe.com\"\r\n  ],\r\n  \"passwordPolicies\": \"DisablePasswordExpiration\",\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": \"98052\",\r\n  \"preferredLanguage\": null,\r\n  \"provisionedPlans\": [],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"state\": \"WA\",\r\n  \"streetAddress\": \"One Microsoft Way\",\r\n  \"surname\": \"Doe\",\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": null,\r\n  \"userPrincipalName\": \"admin@aad191.ccsctp.net\"\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "h18CQeQQ6hNksP2st9xsNS1OU3V1ecOI0YBiucSafCY="
+        ],
+        "request-id": [
+          "076c1192-ebb3-4221-b71c-25a5e3b175f8"
+        ],
+        "client-request-id": [
+          "9417421d-78e6-416e-987b-c51d257ffbf9"
+        ],
+        "x-ms-gateway-rewrite": [
+          "false"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.0"
+        ],
+        "ocp-aad-session-key": [
+          "04LN614MXcEgnWo32WvnRulQPYmPV8_e_dEq1GtYW_hcXJp818FZTYITkU7wieOFzYNFhO0xEhk8fxdTZSTPsO3OIGkqP_V3mttNqkm_4bU.Pv_xvyaTS7_afNM_HYdXindbzNCWb10Y7BGCMMWO8wg"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:07 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments/C6408EC2-C27D-49C3-87ED-F49AC8354B76?api-version=2014-07-01-preview",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n    \"principalId\": \"ea3ba48b-a7b6-4a10-ad55-08708721883a\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"CreateRoleAssignmentFailed\",\r\n    \"message\": \"Unable to create role assignment: 'C6408EC2-C27D-49C3-87ED-F49AC8354B76': 'The roleAssignment already exists.'\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "44c5130a-7f03-47cd-8289-f9e9dfdf5884"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "0323ea26-f9ab-4975-83c9-a43522a5f810"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20140716T230509Z:0323ea26-f9ab-4975-83c9-a43522a5f810"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 Jul 2014 23:05:09 GMT"
+        ]
+      },
+      "StatusCode": 409
+    }
+  ],
+  "Names": {
+    "Test-AuthorizationEndToEnd": [
+      "onesdk6973"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "1165e0f9-4535-44ce-bc6b-c73c00b5fb2c",
+    "Username": "admin@aad191.ccsctp.net",
+    "Tenantd": "08346394-4d25-4470-a777-16334fa59eb2"
+  }
+}
