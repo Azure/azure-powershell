@@ -15,7 +15,9 @@
 using System;
 using System.Collections;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Scheduler;
+using Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model;
 
 namespace Microsoft.WindowsAzure.Commands.Scheduler
@@ -29,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Scheduler
         const string RequiredParamSet = "Required";
         const string PutPostParamSet = "PutPost";
         const string RecurringParamSet = "Recurring";
+        const string AuthParamSet = "Authentication";
 
         [Parameter(Mandatory = true, ParameterSetName = RequiredParamSet, HelpMessage = "The location name.")]
         [ValidateNotNullOrEmpty]
@@ -114,12 +117,27 @@ namespace Microsoft.WindowsAzure.Commands.Scheduler
         [ValidateNotNullOrEmpty]
         public string ErrorActionQueueMessageBody { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, ParameterSetName = AuthParamSet, HelpMessage = "The Http Authentication type (None or ClientCertificate).")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, ParameterSetName = RequiredParamSet, HelpMessage = "The Http Authentication type (None or ClientCertificate).")]
+        [ValidateSet("None", "ClientCertificate", IgnoreCase = true)]
+        public string HttpAuthenticationType { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, ParameterSetName = AuthParamSet, HelpMessage = "The pfx of client certificate.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, ParameterSetName = RequiredParamSet, HelpMessage = "The pfx of client certificate.")]
+        [ValidateNotNullOrEmpty]
+        public object ClientCertificatePfx { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, ParameterSetName = AuthParamSet, HelpMessage = "The password for the pfx.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, ParameterSetName = RequiredParamSet, HelpMessage = "The password for the pfx.")]
+        [ValidateNotNullOrEmpty]
+        public string ClientCertificatePassword { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
-        { 
-            string status = string.Empty;           
+        {
+            string status = string.Empty;
             if (PassThru.IsPresent)
             {
                 WriteObject(SMClient.PatchHttpJob(new PSCreateJobParams
@@ -144,7 +162,10 @@ namespace Microsoft.WindowsAzure.Commands.Scheduler
                     ErrorActionStorageAccount = ErrorActionStorageAccount,
                     ErrorActionQueueName = ErrorActionStorageQueue,
                     ErrorActionQueueBody = ErrorActionQueueMessageBody,
-                    ErrorActionSasToken = ErrorActionSASToken
+                    ErrorActionSasToken = ErrorActionSASToken,
+                    HttpAuthType = HttpAuthenticationType ?? string.Empty,
+                    ClientCertPfx = ClientCertificatePfx == null ? null : SchedulerUtils.GetCertData(this.ResolvePath(ClientCertificatePfx.ToString()), ClientCertificatePassword),
+                    ClientCertPassword = ClientCertificatePassword
                 }, out status), true);
                 WriteObject(status);
             }
@@ -172,10 +193,13 @@ namespace Microsoft.WindowsAzure.Commands.Scheduler
                     ErrorActionStorageAccount = ErrorActionStorageAccount,
                     ErrorActionQueueName = ErrorActionStorageQueue,
                     ErrorActionQueueBody = ErrorActionQueueMessageBody,
-                    ErrorActionSasToken = ErrorActionSASToken
+                    ErrorActionSasToken = ErrorActionSASToken,
+                    HttpAuthType = HttpAuthenticationType ?? string.Empty,
+                    ClientCertPfx = ClientCertificatePfx == null ? null : SchedulerUtils.GetCertData(this.ResolvePath(ClientCertificatePfx.ToString()), ClientCertificatePassword),
+                    ClientCertPassword = ClientCertificatePassword
                 }, out status);
                 WriteDebug(status);
-            }    
-        }   
+            }
+        }
     }
 }

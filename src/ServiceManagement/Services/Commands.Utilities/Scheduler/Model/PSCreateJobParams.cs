@@ -69,5 +69,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model
 
         public string ErrorActionQueueBody { get; set; }
 
+        public string HttpAuthType { get; set; }
+
+        public string ClientCertPfx { get; set; }
+
+        public string ClientCertPassword { get; set; }
     }
 }

@@ -61,7 +61,8 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.CreateSchedule(accountName, It.IsAny<OneTimeSchedule>()), Times.Once());
+            this.mockAutomationClient
+                .Verify(f => f.CreateSchedule(accountName, It.IsAny<OneTimeSchedule>()), Times.Once());
         }
 
         [TestMethod]
@@ -70,16 +71,40 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             // Setup
             string accountName = "automation";
             string scheduleName = "schedule";
+            int dayInterval = 1;
 
             this.mockAutomationClient.Setup(f => f.CreateSchedule(accountName, It.IsAny<DailySchedule>()));
 
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.Name = scheduleName;
             this.cmdlet.StartTime = DateTime.Now;
+            this.cmdlet.DayInterval = dayInterval;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.CreateSchedule(accountName, It.IsAny<DailySchedule>()), Times.Once());
+            this.mockAutomationClient
+                .Verify(f => f.CreateSchedule(accountName, It.IsAny<DailySchedule>()), Times.Once());
+        }
+
+        [TestMethod]
+        public void NewAzureAutomationScheduleByHourlySuccessfull()
+        {
+            // Setup
+            string accountName = "automation";
+            string scheduleName = "schedule";
+            int hourInterval = 1;
+
+            this.mockAutomationClient.Setup(f => f.CreateSchedule(accountName, It.IsAny<HourlySchedule>()));
+
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.Name = scheduleName;
+            this.cmdlet.StartTime = DateTime.Now;
+            this.cmdlet.HourInterval = hourInterval;
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient
+                .Verify(f => f.CreateSchedule(accountName, It.IsAny<HourlySchedule>()), Times.Once());
         }
 
         [TestMethod]
@@ -88,25 +113,82 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             // Setup
             string accountName = "automation";
             string scheduleName = "schedule";
+            int dayInterval = 1;
 
-            this.mockAutomationClient.Setup(f => f.CreateSchedule(accountName, It.IsAny<DailySchedule>())).Returns((string a, DailySchedule s) => s);
+            this.mockAutomationClient
+                .Setup(f => f.CreateSchedule(accountName, It.IsAny<DailySchedule>()))
+                .Returns((string a, DailySchedule s) => s);
 
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.Name = scheduleName;
             this.cmdlet.StartTime = DateTime.Now;
+            this.cmdlet.DayInterval = dayInterval;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.CreateSchedule(accountName, It.IsAny<DailySchedule>()), Times.Once());
+            this.mockAutomationClient
+                .Verify(f => f.CreateSchedule(accountName, It.IsAny<DailySchedule>()), Times.Once());
 
             Assert.AreEqual<int>(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
-            var schedule = (DailySchedule)((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.FirstOrDefault();
+            var schedule = (DailySchedule)((MockCommandRuntime)this.cmdlet.CommandRuntime)
+                .OutputPipeline
+                .FirstOrDefault();
             Assert.IsNotNull(schedule);
-            Assert.IsTrue(schedule.Name == scheduleName);
+            Assert.AreEqual(scheduleName, schedule.Name, "Schedule name is unexpectedly {0}", schedule.Name);
 
             // Test for default values
-            Assert.IsTrue(schedule.ExpiryTime == Constants.DefaultScheduleExpiryTime);
-            Assert.IsTrue(schedule.DayInterval == Constants.DefaultDailyScheduleDayInterval);
+            Assert.AreEqual(
+                Constants.DefaultScheduleExpiryTime, 
+                schedule.ExpiryTime, 
+                "Expiry time is unexpectedly {0}", 
+                schedule.ExpiryTime);
+            Assert.AreEqual(
+                dayInterval, 
+                schedule.DayInterval, 
+                "Day Interval is unexpectedly {0}", 
+                schedule.DayInterval);
+        }
+
+        [TestMethod]
+        public void NewAzureAutomationScheduleByHourlyWithDefaultExpiryTimeDayIntervalSuccessfull()
+        {
+            // Setup
+            string accountName = "automation";
+            string scheduleName = "schedule";
+            int hourInterval = 1;
+
+            this.mockAutomationClient
+                .Setup(f => f.CreateSchedule(accountName, It.IsAny<HourlySchedule>()))
+                .Returns((string a, HourlySchedule s) => s);
+
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.Name = scheduleName;
+            this.cmdlet.StartTime = DateTime.Now;
+            this.cmdlet.HourInterval = hourInterval;
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient
+                .Verify(f => f.CreateSchedule(accountName, It.IsAny<HourlySchedule>()), Times.Once());
+
+            Assert.AreEqual<int>(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
+            var schedule = (HourlySchedule)((MockCommandRuntime)this.cmdlet.CommandRuntime)
+                .OutputPipeline
+                .FirstOrDefault();
+            Assert.IsNotNull(schedule);
+            Assert.AreEqual(scheduleName, schedule.Name, "Schedule name is unexpectedly {0}", schedule.Name);
+
+            // Test for default values
+            Assert.AreEqual(
+                Constants.DefaultScheduleExpiryTime, 
+                schedule.ExpiryTime, 
+                "Expiry time is unexpectedly {0}", 
+                schedule.ExpiryTime);
+            Assert.AreEqual(
+                hourInterval, 
+                schedule.HourInterval, 
+                "Hour Interval is unexpectedly {0}", 
+                schedule.HourInterval);
         }
 
         [TestMethod]
@@ -115,28 +197,88 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             // Setup
             string accountName = "automation";
             string scheduleName = "schedule";
+            int dayInterval = 1;
             var startTime = DateTime.Now;
             var expiryTime = new DateTime(2048, 4, 2);
 
-            this.mockAutomationClient.Setup(f => f.CreateSchedule(accountName, It.IsAny<DailySchedule>())).Returns((string a, DailySchedule s) => s);
+            this.mockAutomationClient
+                .Setup(f => f.CreateSchedule(accountName, It.IsAny<DailySchedule>()))
+                .Returns((string a, DailySchedule s) => s);
 
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.Name = scheduleName;
             this.cmdlet.StartTime = startTime;
             this.cmdlet.ExpiryTime = expiryTime;
+            this.cmdlet.DayInterval = dayInterval;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.CreateSchedule(accountName, It.IsAny<DailySchedule>()), Times.Once());
+            this.mockAutomationClient
+                .Verify(f => f.CreateSchedule(accountName, It.IsAny<DailySchedule>()), Times.Once());
 
             Assert.AreEqual<int>(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
-            var schedule = (DailySchedule)((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.FirstOrDefault();
+            var schedule = (DailySchedule)((MockCommandRuntime)this.cmdlet.CommandRuntime)
+                .OutputPipeline
+                .FirstOrDefault();
             Assert.IsNotNull(schedule);
-            Assert.IsTrue(schedule.Name == scheduleName);
+            Assert.AreEqual(scheduleName, schedule.Name, "Schedule name is unexpectedly {0}", schedule.Name);
 
             // If startTime or expiryTime is unspecified DateTimeKind, we assume they are local time
-            Assert.IsTrue(schedule.StartTime.Kind == DateTimeKind.Local);
-            Assert.IsTrue(schedule.ExpiryTime.Kind == DateTimeKind.Local);
+            Assert.AreEqual(
+                DateTimeKind.Local, 
+                schedule.StartTime.Kind, 
+                "DateTimeKind of start time is unexpectedly {0}", 
+                schedule.StartTime.Kind);
+            Assert.AreEqual(
+                DateTimeKind.Local, 
+                schedule.ExpiryTime.Kind, 
+                "DateTimeKind of expiry time is unexpectedly {0}", 
+                schedule.ExpiryTime.Kind);
+        }
+
+        [TestMethod]
+        public void NewAzureAutomationScheduleByHourlyWithUnspecificedDateTimeKindSuccessfull()
+        {
+            // Setup
+            string accountName = "automation";
+            string scheduleName = "schedule";
+            int hourInterval = 1;
+            var startTime = DateTime.Now;
+            var expiryTime = new DateTime(2048, 4, 2);
+
+            this.mockAutomationClient
+                .Setup(f => f.CreateSchedule(accountName, It.IsAny<HourlySchedule>()))
+                .Returns((string a, HourlySchedule s) => s);
+
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.Name = scheduleName;
+            this.cmdlet.StartTime = startTime;
+            this.cmdlet.ExpiryTime = expiryTime;
+            this.cmdlet.HourInterval = hourInterval;
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient
+                .Verify(f => f.CreateSchedule(accountName, It.IsAny<HourlySchedule>()), Times.Once());
+
+            Assert.AreEqual<int>(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
+            var schedule = (HourlySchedule)((MockCommandRuntime)this.cmdlet.CommandRuntime)
+                .OutputPipeline
+                .FirstOrDefault();
+            Assert.IsNotNull(schedule);
+            Assert.AreEqual(scheduleName, schedule.Name, "Schedule name is unexpectedly {0}", schedule.Name);
+
+            // If startTime or expiryTime is unspecified DateTimeKind, we assume they are local time
+            Assert.AreEqual(
+                DateTimeKind.Local, 
+                schedule.StartTime.Kind, 
+                "DateTimeKind of start time is unexpectedly {0}", 
+                schedule.StartTime.Kind);
+            Assert.AreEqual(
+                DateTimeKind.Local, 
+                schedule.ExpiryTime.Kind, 
+                "DateTimeKind of expiry time is unexpectedly {0}", 
+                schedule.ExpiryTime.Kind);
         }
     }
 }

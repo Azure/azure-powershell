@@ -790,4 +790,16 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
   <data name="DeprecationOfTheGeoReplicationEnabledParamInTheGetCmdlet" xml:space="preserve">
     <value>GeoReplicationEnabled property will be deprecated in a future release of Azure PowerShell. The value will be merged into the AccountType property.</value>
   </data>
+  <data name="DuplicateNetworkInterfaceFound" xml:space="preserve">
+    <value>Duplicate NetworkInterface found on the VM</value>
+  </data>
+  <data name="NetworkInterfaceNotFound" xml:space="preserve">
+    <value>The specified NetworkInterface is not found</value>
+  </data>
+  <data name="CannotRemoveNetworkSecurityGroupBecauseNotDirectlyAssociatedwithVm" xml:space="preserve">
+    <value>Cannot remove Network Security Group "{0}" from Virtual Machine "{1}" because it is not directly.</value>
+  </data>
+  <data name="WarningVmIsNotDirectlyAssociatedWithNetworkSecurityGroup" xml:space="preserve">
+    <value>VM "{0}" is not currently associated with a Network Security Group.</value>
+  </data>
 </root>

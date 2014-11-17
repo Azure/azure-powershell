@@ -153,6 +153,18 @@
   <data name="RemoveAzureDedicatedCircuitFailed" xml:space="preserve">
     <value>Remove-AzureDedicatedCircuit Operation failed.</value>
   </data>
+  <data name="RemoveAzureDedicatedCircuitLinkAuthorizationFailed" xml:space="preserve">
+    <value>Remove-AzureDedicatedCircuitLinkAuthorization Operation failed.</value>
+  </data>
+  <data name="RemoveAzureDedicatedCircuitLinkAuthorizationMessage" xml:space="preserve">
+    <value>Removing Dedicated Circuit Link Authorization</value>
+  </data>
+  <data name="RemoveAzureDedicatedCircuitLinkAuthorizationSucceeded" xml:space="preserve">
+    <value>Successfully removed Dedicated Circuit Link Authorization with service key '{0}' and authorization Id '{1}'.</value>
+  </data>
+  <data name="RemoveAzureDedicatedCircuitLinkAuthorizationWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Dedicated Circuit Link Authorization with service key '{0}' and authorization Id '{1}'?</value>
+  </data>
   <data name="RemoveAzureDedicatedCircuitLinkFailed" xml:space="preserve">
     <value>Remove-AzureDedicatedCircuitLink Operation failed.</value>
   </data>

@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Models;
@@ -44,6 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         protected const string WinRmEndpointName = "PowerShell";
         protected const string RdpEndpointName = "RemoteDesktop";
+        protected const string TempEnvName = "tempEnv";
 
         // Test cleanup settings
         protected const bool deleteDefaultStorageAccount = false; // Temporarily set to false
@@ -58,6 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         protected static string locationName;
         protected static string imageName;
+        protected static string currentEnvName = null;
 
         protected bool pass;
         protected string testName;
@@ -92,6 +96,74 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public static void AssemblyInit(TestContext context)
         {
             SetTestSettings();
+        }
+
+        [AssemblyCleanup]
+        public static void CleanUpAssembly()
+        {
+            vmPowershellCmdlets = new ServiceManagementCmdletTestHelper();
+
+            // Cleaning up affinity groups
+            var affGroup = vmPowershellCmdlets.GetAzureAffinityGroup();
+            if (affGroup.Count > 0)
+            {
+                foreach (var aff in affGroup)
+                {
+                    try
+                    {
+                        vmPowershellCmdlets.RemoveAzureAffinityGroup(aff.Name);
+                    }
+                    catch (Exception e)
+                    {
+                        if (e.ToString().Contains(BadRequestException))
+                        {
+                            Console.WriteLine("Affinity Group, {0}, is not deleted.", aff.Name);
+                        }
+                    }
+                }
+            }
+
+            if (defaultAzureSubscription != null)
+            {
+                // Cleaning up virtual disks
+                try
+                {
+                    Retry(String.Format("Get-AzureDisk | Where {{$_.DiskName.Contains(\"{0}\")}} | Remove-AzureDisk", serviceNamePrefix), "in use");
+                    if (deleteDefaultStorageAccount)
+                    {
+                        //vmPowershellCmdlets.RemoveAzureStorageAccount(defaultAzureSubscription.CurrentStorageAccountName);
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Error occurred during cleaning up disks..");
+                }
+
+                // Cleaning up vm images
+                try
+                {
+                    vmPowershellCmdlets.RunPSScript("Get-AzureVMImage | Where {$_.Categori -eq \"User\"} | Remove-AzureVMImage");
+                }
+                catch
+                {
+                    Console.WriteLine("Error occurred during cleaning up vm images..");
+                }
+
+                // Cleaning up reserved ips
+                try
+                {
+                    vmPowershellCmdlets.RunPSScript("Get-AzureReservedIp | Remove-AzureReservedIp -Force");
+                }
+                catch
+                {
+                    Console.WriteLine("Error occurred during cleaning up reserved ips..");
+                }
+            }
+
+            if (string.IsNullOrEmpty(currentEnvName))
+            {
+                vmPowershellCmdlets.RunPSScript(string.Format("Remove-AzureEnvironment -Name {0} -Force", TempEnvName));
+            }
         }
 
         public static void SetDefaultStorage()
@@ -150,13 +222,92 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
+        private static string GetServiceManagementUrl(string publishSettingsFile)
+        {
+            try
+            {
+                XDocument psf = XDocument.Load(publishSettingsFile);
+                XElement pubData = psf.Descendants().FirstOrDefault();
+                XElement pubProfile = pubData.Elements().ToList()[0];
+                return pubProfile.Attribute("Url").Value;
+            }
+            catch
+            {
+                Console.WriteLine("Error occurred during loading publish settings file...");
+                return null;
+            }
+        }
+
         public static void SetTestSettings()
         {
             vmPowershellCmdlets = new ServiceManagementCmdletTestHelper();
             CredentialHelper.GetTestSettings(Resource.TestSettings);
 
             vmPowershellCmdlets.RemoveAzureSubscriptions();
-            vmPowershellCmdlets.ImportAzurePublishSettingsFile(CredentialHelper.PublishSettingsFile);
+            if (vmPowershellCmdlets.GetAzureEnvironment("ussouth").Count > 0)
+            {
+                Console.WriteLine("Removing ussouth environment...");
+                vmPowershellCmdlets.RunPSScript("Remove-AzureEnvironment -Name ussouth -Force");
+            }
+
+            List<AzureEnvironment> environments =  vmPowershellCmdlets.GetAzureEnvironment();
+            var serviceManagementUrl = GetServiceManagementUrl(CredentialHelper.PublishSettingsFile);
+
+            foreach (var env in environments)
+            {
+                var envServiceManagementUrl = (string) env.Endpoints[AzureEnvironment.Endpoint.ServiceManagement];
+                if (!string.IsNullOrEmpty(envServiceManagementUrl))
+                {
+                    if (envServiceManagementUrl.Equals(serviceManagementUrl))
+                    {
+                        currentEnvName = env.Name;
+                        var curEnv = vmPowershellCmdlets.GetAzureEnvironment(currentEnvName)[0];
+                        Console.WriteLine("Using the existing environment: {0}", currentEnvName);
+                        Console.WriteLine("PublichSettingsFileUrl: {0}", curEnv.GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl));
+                        Console.WriteLine("ServiceManagement: {0}", curEnv.GetEndpoint(AzureEnvironment.Endpoint.ServiceManagement));
+                        Console.WriteLine("ManagementPortalUrl: {0}", curEnv.GetEndpoint(AzureEnvironment.Endpoint.ManagementPortalUrl));
+                        Console.WriteLine("ActiveDirectory: {0}", curEnv.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectory));
+                        Console.WriteLine("ActiveDirectoryServiceEndpointResourceId: {0}", curEnv.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
+                        Console.WriteLine("ResourceManager: {0}", curEnv.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager));
+                        Console.WriteLine("Gallery: {0}", curEnv.GetEndpoint(AzureEnvironment.Endpoint.Gallery));
+                        Console.WriteLine("Graph: {0}", curEnv.GetEndpoint(AzureEnvironment.Endpoint.Graph));
+                        break;
+                    }
+                }
+            }
+
+            if (string.IsNullOrEmpty(currentEnvName))
+            {
+                Console.WriteLine("Creating new environment... : {0}", TempEnvName);
+                var prodEnv = vmPowershellCmdlets.GetAzureEnvironment("AzureCloud")[0];
+                vmPowershellCmdlets.RunPSScript(string.Format(
+                    @"Add-AzureEnvironment -Name {0} `
+                    -PublishSettingsFileUrl {1} `
+                    -ServiceEndpoint {2} `
+                    -ManagementPortalUrl {3} `
+                    -ActiveDirectoryEndpoint {4} `
+                    -ActiveDirectoryServiceEndpointResourceId {5} `
+                    -ResourceManagerEndpoint {6} `
+                    -GalleryEndpoint {7} `
+                    -GraphEndpoint {8}",
+                    TempEnvName,
+                    prodEnv.GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl),
+                    serviceManagementUrl,
+                    prodEnv.GetEndpoint(AzureEnvironment.Endpoint.ManagementPortalUrl),
+                    prodEnv.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectory),
+                    prodEnv.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId),
+                    prodEnv.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager),
+                    prodEnv.GetEndpoint(AzureEnvironment.Endpoint.Gallery),
+                    prodEnv.GetEndpoint(AzureEnvironment.Endpoint.Graph)));
+
+                vmPowershellCmdlets.ImportAzurePublishSettingsFile(CredentialHelper.PublishSettingsFile, TempEnvName);
+            }
+            else
+            {
+                Console.WriteLine("Using existing environment... : {0}", currentEnvName);
+                vmPowershellCmdlets.ImportAzurePublishSettingsFile(CredentialHelper.PublishSettingsFile, currentEnvName);
+            }
+
             var firstSub = vmPowershellCmdlets.GetAzureSubscription().First();
             vmPowershellCmdlets.SelectAzureSubscription(firstSub.SubscriptionName);
 
@@ -219,49 +370,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Console.WriteLine("{0} test starts at {1}", testname, testStartTime);
         }
 
-        [AssemblyCleanup]
-        public static void CleanUpAssembly()
-        {
-            vmPowershellCmdlets = new ServiceManagementCmdletTestHelper();
-
-            try
-            {
-                // Cleaning up affinity groups
-                var affGroup = vmPowershellCmdlets.GetAzureAffinityGroup();
-                if (affGroup.Count > 0)
-                {
-                    foreach (var aff in affGroup)
-                    {
-                        try
-                        {
-                            vmPowershellCmdlets.RemoveAzureAffinityGroup(aff.Name);
-                        }
-                        catch (Exception e)
-                        {
-                            if (e.ToString().Contains(BadRequestException))
-                            {
-                                Console.WriteLine("Affinity Group, {0}, is not deleted.", aff.Name);
-                            }
-                        }
-                    }
-                }
-
-                // Cleaning up virtual disks
-                if (defaultAzureSubscription != null)
-                {
-                    Retry(String.Format("Get-AzureDisk | Where {{$_.DiskName.Contains(\"{0}\")}} | Remove-AzureDisk -DeleteVhd", serviceNamePrefix), "in use");
-                    if (deleteDefaultStorageAccount)
-                    {
-                        //vmPowershellCmdlets.RemoveAzureStorageAccount(defaultAzureSubscription.CurrentStorageAccountName);
-                    }
-                }
-            }
-            catch
-            {
-                Console.WriteLine("Error occurred during cleaning up..");
-            }
-        }
-
         private static void Retry(string cmdlet, string message, int maxTry = 1, int intervalSecond = 10)
         {
 
@@ -282,7 +390,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     }
                     if (e.ToString().Contains(message))
                     {
-                        //Thread.Sleep(intervalSecond * 1000);
+                        Thread.Sleep(TimeSpan.FromSeconds(intervalSecond));
                         continue;
                     }
                     else
@@ -356,6 +464,30 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
 
             Assert.IsTrue((Utilities.RDPtestPaaS(dns, "WebRole1", 0, username, password, true)), "Cannot RDP to the instance!!");
+        }
+
+        protected string UploadVhdFile()
+        {
+            // Choose the vhd file from local machine
+            var vhdName = Convert.ToString(TestContext.DataRow["vhdName"]);
+            var vhdLocalPath = new FileInfo(Directory.GetCurrentDirectory() + "\\" + vhdName);
+            Assert.IsTrue(File.Exists(vhdLocalPath.FullName), "VHD file not exist={0}", vhdLocalPath);
+
+            // Get the pre-calculated MD5 hash of the fixed vhd that was converted from the original vhd.
+            string md5hash = Convert.ToString(TestContext.DataRow["MD5hash"]);
+
+
+            // Set the destination
+            string vhdBlobName = string.Format("{0}/{1}.vhd", vhdContainerName, Utilities.GetUniqueShortName(Path.GetFileNameWithoutExtension(vhdName)));
+            string vhdDestUri = blobUrlRoot + vhdBlobName;
+
+            // Start uploading...
+            Console.WriteLine("uploads {0} to {1}", vhdName, vhdBlobName);
+            vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, vhdDestUri);
+            var vhdUploadContext = vmPowershellCmdlets.AddAzureVhd(vhdLocalPath, vhdDestUri, true);
+            Console.WriteLine("uploading completed: {0}", vhdName);
+
+            return vhdDestUri;
         }
     }
 }

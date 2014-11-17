@@ -93,6 +93,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
         [ValidateNotNullOrEmpty]
         public int? IdleTimeoutInMinutes { get; set; }
 
+        [Parameter(HelpMessage = "LoadBalancerDistribution.")]
+        [ValidateSet("sourceIP", "sourceIPProtocol", "none", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string LoadBalancerDistribution { get; set; }
+
         internal void ExecuteCommand()
         {
             this.ValidateParameters();
@@ -120,6 +125,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
                 EnableDirectServerReturn = this.DirectServerReturn,
                 LoadBalancerName = this.InternalLoadBalancerName,
                 IdleTimeoutInMinutes = this.ParameterSpecified("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : null,
+                LoadBalancerDistribution = this.ParameterSpecified("LoadBalancerDistribution") ? this.LoadBalancerDistribution : null,
             };
 
             if (this.ParameterSetName == AddAzureEndpoint.LBNoProbeParameterSet

@@ -37,11 +37,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
             this.parentWindow = parentWindow;
         }
 
-        public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, SecureString password)
-        {
-            return GetAccessToken(config, promptBehavior, userId, password, AzureAccount.AccountType.User);
-        }
-
         public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, SecureString password,
             AzureAccount.AccountType credentialType)
         {
@@ -94,43 +89,28 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
 
         // We have to run this in a separate thread to guarantee that it's STA. This method
         // handles the threading details.
-        private AuthenticationResult AcquireToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, SecureString password)
+        private AuthenticationResult AcquireToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, 
+            SecureString password)
         {
             AuthenticationResult result = null;
             Exception ex = null;
-
-            var thread = new Thread(() =>
+            if (promptBehavior == ShowDialog.Never)
             {
-                try
+                result = SafeAquireToken(config, promptBehavior, userId, password, out ex);
+            }
+            else
+            {
+                var thread = new Thread(() =>
                 {
-                    result = DoAcquireToken(config, promptBehavior, userId, password);
-                }
-                catch (AdalException adalEx)
-                {
-                    if (adalEx.ErrorCode == AdalError.UserInteractionRequired ||
-                        adalEx.ErrorCode == AdalError.MultipleTokensMatched)
-                    {
-                        ex = new AadAuthenticationFailedWithoutPopupException(Resources.InvalidSubscriptionState, adalEx);
-                    }
-                    else if (adalEx.ErrorCode == AdalError.MissingFederationMetadataUrl)
-                    {
-                        ex = new AadAuthenticationFailedException(Resources.CredentialOrganizationIdMessage, adalEx);
-                    }
-                    else
-                    {
-                        ex = adalEx;
-                    }
-                }
-                catch (Exception threadEx)
-                {
-                    ex = threadEx;
-                }
-            });
+                    result = SafeAquireToken(config, promptBehavior, userId, password, out ex);
+                });
 
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Name = "AcquireTokenThread";
-            thread.Start();
-            thread.Join();
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Name = "AcquireTokenThread";
+                thread.Start();
+                thread.Join();
+            }
+
             if (ex != null)
             {
                 var adex = ex as AdalException;
@@ -151,15 +131,51 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
             return result;
         }
 
-        private AuthenticationResult DoAcquireToken(AdalConfiguration config, ShowDialog showDialog, string userId, SecureString password)
+        private AuthenticationResult SafeAquireToken(
+            AdalConfiguration config, 
+            ShowDialog showDialog, 
+            string userId,
+            SecureString password, 
+            out Exception ex)
+        {
+            try
+            {
+                ex = null;
+                var promptBehavior = (PromptBehavior)Enum.Parse(typeof(PromptBehavior), showDialog.ToString());
+
+                return DoAcquireToken(config, promptBehavior, userId, password);
+            }
+            catch (AdalException adalEx)
+            {
+                if (adalEx.ErrorCode == AdalError.UserInteractionRequired ||
+                    adalEx.ErrorCode == AdalError.MultipleTokensMatched)
+                {
+                    ex = new AadAuthenticationFailedWithoutPopupException(Resources.InvalidSubscriptionState, adalEx);
+                }
+                else if (adalEx.ErrorCode == AdalError.MissingFederationMetadataUrl)
+                {
+                    ex = new AadAuthenticationFailedException(Resources.CredentialOrganizationIdMessage, adalEx);
+                }
+                else
+                {
+                    ex = adalEx;
+                }
+            }
+            catch (Exception threadEx)
+            {
+                ex = threadEx;
+            }
+            return null;
+        }
+
+        private AuthenticationResult DoAcquireToken(AdalConfiguration config, PromptBehavior promptBehavior, string userId, 
+            SecureString password)
         {
             AuthenticationResult result;
             var context = CreateContext(config);
 
             if (string.IsNullOrEmpty(userId))
             {
-                PromptBehavior promptBehavior = (PromptBehavior)Enum.Parse(typeof(PromptBehavior), showDialog.ToString());
-
                 if (promptBehavior != PromptBehavior.Never)
                 {
                     ClearCookies();
@@ -171,8 +187,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
             }
             else
             {
-                PromptBehavior promptBehavior = (PromptBehavior)Enum.Parse(typeof(PromptBehavior), showDialog.ToString());
-
                 if (password == null)
                 {
                     result = context.AcquireToken(config.ResourceClientUri, config.ClientId,

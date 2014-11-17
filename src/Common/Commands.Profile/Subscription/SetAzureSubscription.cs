@@ -106,7 +106,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             AzureEnvironment environment = ProfileClient.GetEnvironment(Environment, ServiceEndpoint, ResourceManagerEndpoint);
             if (environment == null)
             {
-                environment = defaultProfileClient.GetEnvironment(Environment, ServiceEndpoint, ResourceManagerEndpoint);
+                environment = DefaultProfileClient.GetEnvironment(Environment, ServiceEndpoint, ResourceManagerEndpoint);
             }
 
             if (environment == null)

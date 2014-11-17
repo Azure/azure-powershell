@@ -66,8 +66,8 @@ namespace Microsoft.WindowsAzure.Commands.TrafficManager.Endpoint
                 endpoint.DomainName = DomainName;
                 endpoint.Location = Location;
                 endpoint.Type = (EndpointType)Enum.Parse(typeof(EndpointType), Type);
-                endpoint.Weight = Weight.HasValue ? Weight.Value : 1;
-                endpoint.MinChildEndpoints = MinChildEndpoints.HasValue ? MinChildEndpoints.Value : 1;
+                endpoint.Weight = Weight;
+                endpoint.MinChildEndpoints = MinChildEndpoints;
                 endpoint.Status = (EndpointStatus)Enum.Parse(typeof(EndpointStatus), Status);
 
                 // Add it because the endpoint didn't exist

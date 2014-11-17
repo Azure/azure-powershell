@@ -28,6 +28,7 @@ using System.ServiceModel.Channels;
 using System.Text;
 using System.Xml;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.WindowsAzure.Common.Internals;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -48,45 +49,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return certificates != null && certificates.Count > 0;
         }
 
-        private static string TryGetEnvironmentVariable(string environmentVariableName, string defaultValue)
-        {
-            string value = Environment.GetEnvironmentVariable(environmentVariableName);
-            return (string.IsNullOrEmpty(value)) ? defaultValue : value;
-        }
-
         public static string GetNodeModulesPath()
         {
             return Path.Combine(FileUtilities.GetAssemblyDirectory(), Resources.NodeModulesPath);
-        }
-
-        public static byte[] GetResourceContents(string resourceName)
-        {
-            Stream stream = assembly.GetManifestResourceStream(resourceName);
-            byte[] contents = new byte[stream.Length];
-            stream.Read(contents, (int)stream.Position, (int)stream.Length);
-            return contents;
         }
 
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
         public static void LaunchWebPage(string target)
         {
             ProcessHelper.Start(target);
-        }
-
-        public static int GetRandomFromTwo(int first, int second)
-        {
-            return (new Random(DateTime.Now.Millisecond).Next(2) == 0) ? first : second;
-        }
-
-        public static string[] GetResourceNames(string resourcesFullFolderName)
-        {
-            return assembly.GetManifestResourceNames().Where<string>(item => item.StartsWith(resourcesFullFolderName)).ToArray<string>();
-        }
-
-        public static TResult InvokeMethod<T, TResult>(string methodName, object instance, params object[] arguments)
-        {
-            MethodInfo info = typeof(T).GetMethod(methodName);
-            return (TResult)info.Invoke(instance, arguments);
         }
 
         public static X509Certificate2 GetCertificateFromStore(string thumbprint)
@@ -102,38 +73,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, thumbprint));
             }
-        }
-
-        public static void AddCertificateToStore(X509Certificate2 certificate)
-        {
-            Validate.ValidateNullArgument(certificate, Resources.InvalidCertificate);
-            X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-            store.Open(OpenFlags.ReadWrite);
-            store.Add(certificate);
-            store.Close();
-        }
-
-        public static void RemoveCertificateFromStore(X509Certificate2 certificate)
-        {
-            if (certificate != null)
-            {
-                X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-                store.Open(OpenFlags.ReadWrite);
-                store.Remove(certificate);
-                store.Close();
-            }
-        }
-
-        /// <summary>
-        /// Gets the value of blob endpoint uri from environment if set, otherwise returns the default value.
-        /// </summary>
-        /// <param name="accountName">The storage account name</param>
-        /// <returns>The full blob endpoint uri including the storage account name</returns>
-        public static string BlobEndpointUri(string accountName)
-        {
-            return string.Format(CultureInfo.InvariantCulture,
-                TryGetEnvironmentVariable(Resources.BlobEndpointUriEnv, Resources.BlobEndpointUri),
-                accountName);
         }
 
         /// <summary>
@@ -389,11 +328,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string FormatString(string content)
         {
-            if (XmlUtilities.IsXml(content))
+            if (ParserHelper.IsXml(content))
             {
                 return XmlUtilities.TryFormatXml(content);
             }
-            else if (JsonUtilities.IsJson(content))
+            else if (ParserHelper.IsJson(content))
             {
                 return JsonUtilities.TryFormatJson(content);
             }
@@ -451,11 +390,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return new Uri(endpoint);
         }
 
-        public static string GetNonEmptyValue(string oldValue, string newValue)
-        {
-            return string.IsNullOrEmpty(newValue) ? oldValue : newValue;
-        }
-
         public static string DownloadFile(string uri)
         {
             string contents = null;
@@ -473,24 +407,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 
             return contents;
-        }
-
-        public static string ToUpperFirstLetter(string word)
-        {
-            return string.IsNullOrEmpty(word) ? word : word.Substring(0, 1).ToUpper() + word.Substring(1);
-        }
-
-        public static object GetValue(dynamic variable, string property)
-        {
-            object value = null;
-            IDictionary<String, object> expanded = (IDictionary<String, object>)variable;
-
-            if (expanded.ContainsKey(property))
-            {
-                value = expanded[property];
-            }
-
-            return value;
         }
 
         public static string GenerateSeparator(int amount, string separator)

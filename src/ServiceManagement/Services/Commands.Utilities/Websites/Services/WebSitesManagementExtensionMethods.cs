@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,8 +40,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
                 NetFrameworkVersion = getConfigResponse.NetFrameworkVersion,
                 NumberOfWorkers = getConfigResponse.NumberOfWorkers,
                 PhpVersion = getConfigResponse.PhpVersion,
-                PublishingPassword = getConfigResponse.PublishingPassword,
-                PublishingUserName = getConfigResponse.PublishingUserName,
                 RequestTracingEnabled = getConfigResponse.RequestTracingEnabled,
                 RequestTracingExpirationTime = getConfigResponse.RequestTracingExpirationTime,
                 ScmType = getConfigResponse.ScmType,
@@ -103,7 +102,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
                 RemoteDebuggingEnabled = getConfigResponse.RemoteDebuggingEnabled,
                 RemoteDebuggingVersion = getConfigResponse.RemoteDebuggingVersion.GetValueOrDefault(),
                 RoutingRules = getConfigResponse.RoutingRules.Select(r => r.ToRoutingRule()).ToList(),
-                Use32BitWorkerProcess = getConfigResponse.Use32BitWorkerProcess
+                Use32BitWorkerProcess = getConfigResponse.Use32BitWorkerProcess,
+                AutoSwapSlotName = getConfigResponse.AutoSwapSlotName,
             };
             return config;
         }
@@ -134,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
 
             return result;
         }
-          
+
         internal static Utilities.Site ToSite(this WebSiteGetResponse response)
         {
             return new Utilities.Site
@@ -145,7 +145,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
                 WebSpace = response.WebSite.WebSpace,
                 SelfLink = response.WebSite.Uri,
                 RepositorySiteName = response.WebSite.RepositorySiteName,
-                Owner = response.WebSite.Owner,
                 UsageState = (Utilities.UsageState)(int)response.WebSite.UsageState,
                 Enabled = response.WebSite.Enabled,
                 AdminEnabled = response.WebSite.AdminEnabled,
@@ -156,10 +155,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
                     Properties = response.WebSite.SiteProperties.Properties.Select(ToNameValuePair).ToList()
                 },
                 AvailabilityState = (Utilities.SiteAvailabilityState)(int)response.WebSite.AvailabilityState,
-                SSLCertificates = response.WebSite.SslCertificates.Select(ToCertificate).ToArray(),
-                SiteMode = response.WebSite.SiteMode.ToString(),
+                // SSLCertificates = response.WebSite.SslCertificates.Select(ToCertificate).ToArray(),
                 HostNameSslStates = new Utilities.HostNameSslStates(response.WebSite.HostNameSslStates.Select(ToNameSslState).ToList()),
-                ComputeMode = response.WebSite.ComputeMode
+                Sku = response.WebSite.Sku
             };
         }
 
@@ -173,7 +171,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
                 WebSpace = site.WebSpace,
                 SelfLink = site.Uri,
                 RepositorySiteName = site.RepositorySiteName,
-                Owner = site.Owner,
                 UsageState = (Utilities.UsageState)(int)site.UsageState,
                 Enabled = site.Enabled,
                 AdminEnabled = site.AdminEnabled,
@@ -184,10 +181,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
                     Properties = site.SiteProperties.Properties.Select(ToNameValuePair).ToList()
                 },
                 AvailabilityState = (Utilities.SiteAvailabilityState)(int)site.AvailabilityState,
-                SSLCertificates = site.SslCertificates.Select(ToCertificate).ToArray(),
-                SiteMode = site.SiteMode.ToString(),
+                // SSLCertificates = site.SslCertificates.Select(ToCertificate).ToArray(),
                 HostNameSslStates = new Utilities.HostNameSslStates(site.HostNameSslStates.Select(ToNameSslState).ToList()),
-                ComputeMode = site.ComputeMode
+                Sku = site.Sku
             };
         }
 
@@ -249,7 +245,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
 
             return result;
         }
-        
+
         internal static Utilities.MetricSet ToMetricSet(this HistoricalUsageMetricData data)
         {
             var metrics = new Utilities.MetricSet
@@ -291,7 +287,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
                     long.TryParse(s.Maximum, out val);
                     converted.Maximum = val;
                 }
-                
+
                 if (!string.IsNullOrEmpty(s.Total))
                 {
                     long.TryParse(s.Total, out val);
@@ -302,25 +298,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
             }
 
             return result;
-        }
-
-        private static Utilities.Certificate ToCertificate(WebSite.WebSiteSslCertificate certificate)
-        {
-            return new Utilities.Certificate
-            {
-                FriendlyName = certificate.FriendlyName,
-                SubjectName = certificate.SubjectName,
-                HostName = certificate.HostNames.FirstOrDefault(),
-                PfxBlob = certificate.PfxBlob,
-                SiteName = certificate.SiteName,
-                SelfLink = certificate.SelfLinkUri,
-                Issuer = certificate.Issuer,
-                IssueDate = certificate.IssueDate.Value,
-                ExpirationDate = certificate.ExpirationDate.Value,
-                Password = certificate.Password,
-                Thumbprint = certificate.Thumbprint,
-                Valid = certificate.IsValid
-            };
         }
 
         private static Utilities.HostNameSslState ToNameSslState(WebSite.WebSiteHostNameSslState state)
@@ -361,8 +338,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
                 NetFrameworkVersion = config.NetFrameworkVersion,
                 NumberOfWorkers = config.NumberOfWorkers,
                 PhpVersion = config.PhpVersion,
-                PublishingPassword = config.PublishingPassword,
-                PublishingUserName = config.PublishingUsername,
                 RequestTracingEnabled = config.RequestTracingEnabled,
                 ManagedPipelineMode = config.ManagedPipelineMode,
                 WebSocketsEnabled = config.WebSocketsEnabled,
@@ -370,6 +345,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
                 RemoteDebuggingVersion = config.RemoteDebuggingVersion,
                 RoutingRules = config.RoutingRules.Select(r => r.ToRoutingRule()).ToArray(),
                 Use32BitWorkerProcess = config.Use32BitWorkerProcess,
+                AutoSwapSlotName = config.AutoSwapSlotName,
             };
             if (config.AppSettings != null)
                 config.AppSettings.ForEach(nvp => parameters.AppSettings.Add(ToKeyValuePair(nvp)));
@@ -428,41 +404,36 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
             return result;
         }
 
+        internal static SlotConfigNamesUpdate ToSlotConfigNamesUpdate(this Utilities.SiteConfig config)
+        {
+            return new SlotConfigNamesUpdate
+            {
+                AppSettingNames = config.SlotStickyAppSettingNames,
+                ConnectionStringNames = config.SlotStickyConnectionStringNames
+            };
+        }
+
         internal static Utilities.WebHostingPlan ToWebHostingPlan(this Management.WebSites.Models.WebHostingPlan plan, string webSpace)
         {
             return new Utilities.WebHostingPlan
             {
                 Name = plan.Name,
-                CurrentNumberOfWorkers = plan.CurrentNumberOfWorkers,
-                CurrentWorkerSize = plan.CurrentWorkerSize.HasValue
-                        ? new Utilities.WorkerSizeOptions?((Utilities.WorkerSizeOptions)(int)plan.CurrentWorkerSize.Value)
+                CurrentNumberOfWorkers = plan.NumberOfWorkers,
+                CurrentWorkerSize = plan.WorkerSize.HasValue
+                        ? new Utilities.WorkerSizeOptions?((Utilities.WorkerSizeOptions)(int)plan.WorkerSize.Value)
                         : null,
                 WorkerSize = plan.WorkerSize.HasValue
                         ? new Utilities.WorkerSizeOptions?((Utilities.WorkerSizeOptions)(int)plan.WorkerSize.Value)
                         : null,
-                Status = (Utilities.StatusOptions) plan.Status,
                 NumberOfWorkers = plan.NumberOfWorkers,
-                SKU = plan.SKU,
+                SKU = plan.SKU.ToString(),
                 WebSpace = webSpace,
             };
         }
 
         internal static Utilities.WebHostingPlan ToWebHostingPlan(this Management.WebSites.Models.WebHostingPlanGetResponse plan)
         {
-            return new Utilities.WebHostingPlan
-            {
-                Name = plan.Name,
-                CurrentNumberOfWorkers = plan.CurrentNumberOfWorkers,
-                CurrentWorkerSize = plan.CurrentWorkerSize.HasValue
-                        ? new Utilities.WorkerSizeOptions?((Utilities.WorkerSizeOptions)(int)plan.CurrentWorkerSize.Value)
-                        : null,
-                WorkerSize = plan.WorkerSize.HasValue
-                        ? new Utilities.WorkerSizeOptions?((Utilities.WorkerSizeOptions)(int)plan.WorkerSize.Value)
-                        : null,
-                Status = (Utilities.StatusOptions)plan.Status,
-                NumberOfWorkers = plan.NumberOfWorkers,
-                SKU = plan.SKU
-            };
+            return ToWebHostingPlan(plan.WebHostingPlan, webSpace: null);
         }
     }
 

@@ -30,14 +30,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
     public class ProfileCmdltsTests
     {
-        private WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription rdfeSubscription1;
-        private WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription rdfeSubscription2;
-        private Azure.Subscriptions.Models.Subscription csmSubscription1;
-        private Azure.Subscriptions.Models.Subscription csmSubscription1withDuplicateId;
-        private Azure.Subscriptions.Models.Subscription csmSubscription2;
         private AzureSubscription azureSubscription1;
         private AzureSubscription azureSubscription2;
-        private AzureSubscription azureSubscription3withoutUser;
         private AzureEnvironment azureEnvironment;
         private AzureAccount azureAccount;
         private Mock<ICommandRuntime> commandRuntimeMock;
@@ -365,43 +359,193 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             }
         }
 
+        [Fact]
+        public void SelectDefaultAzureSubscriptionByNameUpdatesProfile()
+        {
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
+            var client = SetupDefaultProfile();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock.Object;
+            cmdlt.SetParameterSet("SelectDefaultSubscriptionByNameParameterSet");
+            cmdlt.SubscriptionName = azureSubscription2.Name;
+            cmdlt.Default = new SwitchParameter(true);
+            Assert.NotEqual(azureSubscription2.Id, client.Profile.DefaultSubscription.Id);
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            // Verify
+            client = new ProfileClient();
+            Assert.NotNull(client.Profile.DefaultSubscription);
+            Assert.Equal(azureSubscription2.Id, client.Profile.DefaultSubscription.Id);
+        }
+
+        [Fact]
+        public void SelectAzureSubscriptionByNameUpdatesProfile()
+        {
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
+            SetupDefaultProfile();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock.Object;
+            cmdlt.SetParameterSet("SelectSubscriptionByNameParameterSet");
+            cmdlt.SubscriptionName = azureSubscription2.Name;
+            Assert.Null(AzureSession.CurrentContext.Subscription);
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            // Verify
+            Assert.NotNull(AzureSession.CurrentContext.Subscription);
+            Assert.Equal(azureSubscription2.Id, AzureSession.CurrentContext.Subscription.Id);
+        }
+        [Fact]
+        public void SelectDefaultAzureSubscriptionByIdAndNoDefaultUpdatesProfile()
+        {
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
+            var client = SetupDefaultProfile();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock.Object;
+            cmdlt.SetParameterSet("SelectDefaultSubscriptionByIdParameterSet");
+            cmdlt.SubscriptionId = azureSubscription2.Id.ToString();
+            cmdlt.Default = new SwitchParameter(true);
+            Assert.NotEqual(azureSubscription2.Id, client.Profile.DefaultSubscription.Id);
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            // Verify
+            client = new ProfileClient();
+            Assert.NotNull(client.Profile.DefaultSubscription);
+            Assert.Equal(azureSubscription2.Id, client.Profile.DefaultSubscription.Id);
+
+            cmdlt = new SelectAzureSubscriptionCommand();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock.Object;
+            cmdlt.SetParameterSet("NoDefaultSubscriptionParameterSet");
+            cmdlt.NoDefault = new SwitchParameter(true);
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            // Verify
+            client = new ProfileClient();
+            Assert.Null(client.Profile.DefaultSubscription);
+        }
+
+        [Fact]
+        public void SelectAzureSubscriptionByIdAndNoCurrentUpdatesProfile()
+        {
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
+            SetupDefaultProfile();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock.Object;
+            cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
+            cmdlt.SubscriptionId = azureSubscription2.Id.ToString();
+            Assert.Null(AzureSession.CurrentContext.Subscription);
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            // Verify
+            Assert.NotNull(AzureSession.CurrentContext.Subscription);
+            Assert.Equal(azureSubscription2.Id, AzureSession.CurrentContext.Subscription.Id);
+
+            cmdlt = new SelectAzureSubscriptionCommand();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock.Object;
+            cmdlt.SetParameterSet("NoCurrentSubscriptionParameterSet");
+            cmdlt.NoCurrent = new SwitchParameter(true);
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            // Verify
+            Assert.Null(AzureSession.CurrentContext.Subscription);
+        }
+
+        [Fact]
+        public void SelectAzureSubscriptionByInvalidIdThrowsException()
+        {
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
+            SetupDefaultProfile();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock.Object;
+            cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
+            string invalidGuid = Guid.NewGuid().ToString();
+            cmdlt.SubscriptionId = invalidGuid;
+            Assert.Null(AzureSession.CurrentContext.Subscription);
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            try
+            {
+                cmdlt.ExecuteCmdlet();
+                Assert.True(false);
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.Contains(string.Format(Microsoft.WindowsAzure.Commands.Common.Properties.Resources.InvalidSubscriptionId, invalidGuid), ex.Message);
+            }
+        }
+
+        [Fact]
+        public void SelectAzureSubscriptionByInvalidGuidThrowsException()
+        {
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
+            SetupDefaultProfile();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock.Object;
+            cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
+            string invalidGuid = "foo";
+            cmdlt.SubscriptionId = invalidGuid;
+            Assert.Null(AzureSession.CurrentContext.Subscription);
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            try
+            {
+                cmdlt.ExecuteCmdlet();
+                Assert.True(false);
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.Contains(string.Format(Microsoft.WindowsAzure.Commands.Common.Properties.Resources.InvalidGuid, invalidGuid), ex.Message);
+            }
+        }
+
+        private ProfileClient SetupDefaultProfile()
+        {
+            ProfileClient client = new ProfileClient();
+            client.AddOrSetEnvironment(azureEnvironment);
+            client.AddOrSetAccount(azureAccount);
+            client.AddOrSetSubscription(azureSubscription1);
+            client.AddOrSetSubscription(azureSubscription2);
+            client.Profile.Save();
+            return client;
+        }
+
         private void SetMockData()
         {
-            rdfeSubscription1 = new Subscriptions.Models.SubscriptionListOperationResponse.Subscription
-            {
-                SubscriptionId = "16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
-                SubscriptionName = "RdfeSub1",
-                SubscriptionStatus = Subscriptions.Models.SubscriptionStatus.Active,
-                ActiveDirectoryTenantId = "Common"
-            };
-            rdfeSubscription2 = new Subscriptions.Models.SubscriptionListOperationResponse.Subscription
-            {
-                SubscriptionId = "26E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
-                SubscriptionName = "RdfeSub2",
-                SubscriptionStatus = Subscriptions.Models.SubscriptionStatus.Active,
-                ActiveDirectoryTenantId = "Common"
-            };
-            csmSubscription1 = new Azure.Subscriptions.Models.Subscription
-            {
-                Id = "Subscriptions/36E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
-                DisplayName = "CsmSub1",
-                State = "Active",
-                SubscriptionId = "36E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E"
-            };
-            csmSubscription1withDuplicateId = new Azure.Subscriptions.Models.Subscription
-            {
-                Id = "Subscriptions/16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
-                DisplayName = "RdfeSub1",
-                State = "Active",
-                SubscriptionId = "16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E"
-            };
-            csmSubscription2 = new Azure.Subscriptions.Models.Subscription
-            {
-                Id = "Subscriptions/46E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
-                DisplayName = "CsmSub2",
-                State = "Active",
-                SubscriptionId = "46E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E"
-            };
             azureSubscription1 = new AzureSubscription
             {
                 Id = new Guid("56E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E"),
@@ -419,12 +563,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 Name = "LocalSub2",
                 Environment = "Test",
                 Account = "test"
-            };
-            azureSubscription3withoutUser = new AzureSubscription
-            {
-                Id = new Guid("76E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E"),
-                Name = "LocalSub3",
-                Environment = "Test",
             };
             azureEnvironment = new AzureEnvironment
             {

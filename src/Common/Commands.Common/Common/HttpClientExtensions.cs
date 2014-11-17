@@ -87,26 +87,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        private static string GetRawBody(
-            HttpClient client,
-            string requestUri,
-            Action<string> logger,
-            Func<string, string> formatter)
-        {
-            AddUserAgent(client);
-            LogRequest(
-                HttpMethod.Get.Method,
-                client.BaseAddress + requestUri,
-                client.DefaultRequestHeaders,
-                string.Empty,
-                logger);
-            HttpResponseMessage response = client.GetAsync(requestUri).Result;
-            string content = response.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
-            LogResponse(response.StatusCode.ToString(), response.Headers, formatter(content), logger);
-
-            return content;
-        }
-
         private static T CallRestApiWithJsonPayload<T>(
             this HttpClient client,
             string requestUri,
@@ -149,19 +129,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return GetFormat<T>(client, requestUri, logger, JsonUtilities.TryFormatJson, JsonConvert.DeserializeObject<T>);
         }
 
-        public static string GetXml(this HttpClient client, string requestUri, Action<string> logger)
-        {
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml"));
-            return GetRawBody(client, requestUri, logger, XmlUtilities.TryFormatXml);
-        }
-
-        public static T GetXml<T>(this HttpClient client, string requestUri, Action<string> logger)
-            where T: class, new()
-        {
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml"));
-            return GetFormat<T>(client, requestUri, logger, XmlUtilities.TryFormatXml, XmlUtilities.DeserializeXmlString<T>);
-        }
-
         public static T PostJson<T>(
             this HttpClient client,
             string requestUri,
@@ -178,49 +145,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             Action<string> logger)
         {
             return CallRestApiWithJsonPayload<T>(client, requestUri, json, logger, WebRequestMethods.Http.Put);
-        }
-
-        public static void Delete(this HttpClient client, string requestUri, Action<string> logger)
-        {
-            AddUserAgent(client);
-            LogRequest(
-                HttpMethod.Delete.Method,
-                client.BaseAddress + requestUri,
-                client.DefaultRequestHeaders,
-                string.Empty,
-                logger);
-            HttpResponseMessage response = client.DeleteAsync(requestUri).Result;
-            string content = response.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
-            LogResponse(response.StatusCode.ToString(), response.Headers, content, logger);
-        }
-
-        public static Task<HttpResponseMessage> GetAsync(this HttpClient client, string requestUri, Action<string> Logger)
-        {
-            AddUserAgent(client);
-            LogRequest(
-                HttpMethod.Get.Method,
-                client.BaseAddress + requestUri,
-                client.DefaultRequestHeaders,
-                string.Empty,
-                Logger);
-            return client.GetAsync(requestUri);
-        }
-
-        public static Task<HttpResponseMessage> PostAsJsonAsyncWithoutEnsureSuccessStatusCode(
-            this HttpClient client,
-            string requestUri,
-            JObject json,
-            Action<string> Logger)
-        {
-            AddUserAgent(client);
-
-            LogRequest(
-                HttpMethod.Post.Method,
-                client.BaseAddress + requestUri,
-                client.DefaultRequestHeaders,
-                JsonConvert.SerializeObject(json, Formatting.Indented),
-                Logger);
-            return client.PostAsJsonAsync(requestUri, json);
         }
     }
 }

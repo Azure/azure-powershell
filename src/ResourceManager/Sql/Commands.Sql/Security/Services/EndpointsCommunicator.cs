@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.WindowsAzure.Management.Storage.Models;
 using System;
 using System.Collections.Generic;
 
@@ -90,14 +91,18 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         }
         
         /// <summary>
-        /// Gets primary storage keys for the given storage account
+        /// Gets the storage keys for the given storage account. 
         /// </summary>
-        public string GetPrimaryStorageKeys(string storageAccountName)
+        public Dictionary<Constants.StorageKeyTypes, string> GetStorageKeys(string storageAccountName)
         {
-            
             try
             {
-                return GetCurrentStorageClient().StorageAccounts.GetKeys(storageAccountName).PrimaryKey;
+                // intentionally returning a dictinary and not the response object to allow callees not to depand upon the storage module
+                StorageAccountGetKeysResponse keys = GetCurrentStorageClient().StorageAccounts.GetKeys(storageAccountName);
+                Dictionary<Constants.StorageKeyTypes, String> result = new Dictionary<Constants.StorageKeyTypes, String>();
+                result.Add(Constants.StorageKeyTypes.Primary, keys.PrimaryKey);
+                result.Add(Constants.StorageKeyTypes.Secondary, keys.SecondaryKey);
+                return result;
             }
             catch
             {

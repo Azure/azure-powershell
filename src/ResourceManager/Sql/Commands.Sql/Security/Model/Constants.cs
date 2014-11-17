@@ -31,5 +31,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
         
         //id to locate a server's security policy
         public const string ServerPolicyId = "c3d905bb-e460-48bb-884d-75fac8f63e11";
+
+        // types of storage keys
+       public enum StorageKeyTypes {Primary, Secondary}; 
     }
 }

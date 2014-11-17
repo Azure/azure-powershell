@@ -1,0 +1,16 @@
+{
+    name: "foo",
+    properties:
+    {
+        description : "sample",
+        activities:
+        [
+            {
+                name: "foo",
+                inputs: [ {name: "foo1"} ],
+                outputs: [ {name: "foo1"} ],
+                linkedServiceName: "foo2",               
+            }
+        ]
+    }
+}

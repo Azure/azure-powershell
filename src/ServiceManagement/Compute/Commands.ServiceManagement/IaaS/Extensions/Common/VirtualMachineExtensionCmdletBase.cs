@@ -70,6 +70,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         public virtual string Version { get; set; }
         public virtual string ReferenceName { get; set; }
+        public virtual string PublicConfigKey { get; set; }
+        public virtual string PrivateConfigKey { get; set; }
         public virtual string PublicConfiguration { get; set; }
         public virtual string PrivateConfiguration { get; set; }
         public virtual string PublicConfigPath { get; set; }
@@ -216,7 +218,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 extensionRef.ResourceExtensionParameterValues.Add(
                     new ResourceExtensionParameterValue
                     {
-                        Key = ExtensionName + (IsLegacyExtension() ? string.Empty : PublicTypeStr) + "ConfigParameter",
+                        Key = !string.IsNullOrEmpty(this.PublicConfigKey) ? this.PublicConfigKey
+                            : ExtensionName + (IsLegacyExtension() ? string.Empty : PublicTypeStr) + "ConfigParameter",
                         Type = IsLegacyExtension() ? null : PublicTypeStr,
                         Value = PublicConfiguration
                     });
@@ -232,7 +235,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 extensionRef.ResourceExtensionParameterValues.Add(
                     new ResourceExtensionParameterValue
                     {
-                        Key =  ExtensionName + (IsLegacyExtension() ? string.Empty : PrivateTypeStr) + "ConfigParameter",
+                        Key = !string.IsNullOrEmpty(this.PrivateConfigKey) ? this.PrivateConfigKey
+                            : ExtensionName + (IsLegacyExtension() ? string.Empty : PrivateTypeStr) + "ConfigParameter",
                         Type = IsLegacyExtension() ? null : PrivateTypeStr,
                         SecureValue = SecureStringHelper.GetSecureString(PrivateConfiguration)
                     });

@@ -99,7 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
             Repository repository;
             ICredentials credentials;
             GetWebsiteDeploymentHttpConfiguration(websiteName, out repository, out credentials);
-            return HttpClientHelper.CreateClient(repository.RepositoryUri, credentials);
+            return AzureSession.ClientFactory.CreateHttpClient(repository.RepositoryUri, credentials);
         }
 
         private string GetWebsiteDeploymentHttpConfiguration(
@@ -129,7 +129,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 // which will clear the corresponding settings of the web site, thus results in a 404 when browsing the web site.
                 HostNames = null,
                 HostNameSslStates = null,
-                SslCertificates = null
             });
         }
 
@@ -535,16 +534,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
             var options = new WebSiteCreateParameters
             {
                 Name = siteToCreate.Name,
-                WebSpaceName = siteToCreate.WebSpaceToCreate.Name,
                 WebSpace = new WebSiteCreateParameters.WebSpaceDetails
                 {
                     GeoRegion = siteToCreate.WebSpaceToCreate.GeoRegion,
                     Name = siteToCreate.WebSpaceToCreate.Name,
                     Plan = siteToCreate.WebSpaceToCreate.Plan
-                }
+                },
+                ServerFarm = string.Empty
             };
-
-            siteToCreate.HostNames.ForEach(s => options.HostNames.Add(s));
 
             var response = WebsiteManagementClient.WebSites.Create(webspaceName, options);
             return response.WebSite.ToSite();
@@ -589,6 +586,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
             Utilities.Site website = GetWebsite(name);
             Utilities.SiteConfig configuration =
                 WebsiteManagementClient.WebSites.GetConfiguration(website.WebSpace, website.Name).ToSiteConfig();
+
+            string siteName, slotName;
+            SiteNameParser.ParseSiteWithSlotName(name, out siteName, out slotName);
+
+            // get slot config only for production
+            if (slotName.Equals(SiteNameParser.ProductionSlot, StringComparison.InvariantCultureIgnoreCase))
+            {
+                var config = WebsiteManagementClient.WebSites.GetSlotConfigNames(website.WebSpace, name);
+                configuration.SlotStickyAppSettingNames = config.AppSettingNames;
+                configuration.SlotStickyConnectionStringNames = config.ConnectionStringNames;
+            }
 
             return configuration;
         }
@@ -668,6 +676,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
             Utilities.Site website = GetWebsite(name);
             WebsiteManagementClient.WebSites.UpdateConfiguration(website.WebSpace, name,
                 newConfiguration.ToConfigUpdateParameters());
+
+            if (newConfiguration.SlotStickyAppSettingNames != null
+                || newConfiguration.SlotStickyConnectionStringNames != null)
+            {
+                WebsiteManagementClient.WebSites.UpdateSlotConfigNames(website.WebSpace, name,
+                    newConfiguration.ToSlotConfigNamesUpdate());
+            }
         }
 
         /// <summary>
@@ -931,7 +946,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 .Users.Select(u => u.Name).Where(n => !string.IsNullOrEmpty(n)).ToList();
         }
 
-        
+
         /// <summary>
         /// Get a list of historic metrics for the site.
         /// </summary>
@@ -1025,12 +1040,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 websiteToUpdate.Name,
                 new WebSiteUpdateParameters
                 {
-                    ComputeMode = websiteToUpdate.ComputeMode,
                     // Set the following 3 collection properties to null since by default they are empty lists,
                     // which will clear the corresponding settings of the web site, thus results in a 404 when browsing the web site.
                     HostNames = null,
                     HostNameSslStates = null,
-                    SslCertificates = null
+                    ServerFarm = null
                 });
         }
 
@@ -1419,22 +1433,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 case WebJobType.Continuous:
                     if (isZipFile)
                     {
-                        client.ContinuousWebJobs.UploadZipAsync(jobName, fileName, File.OpenRead(jobFile));
+                        client.ContinuousWebJobs.UploadZip(jobName, fileName, File.OpenRead(jobFile));
                     }
                     else
                     {
-                        client.ContinuousWebJobs.UploadFileAsync(jobName, fileName, File.OpenRead(jobFile));
+                        client.ContinuousWebJobs.UploadFile(jobName, fileName, File.OpenRead(jobFile));
                     }
                     break;
 
                 case WebJobType.Triggered:
                     if (isZipFile)
                     {
-                        client.TriggeredWebJobs.UploadZipAsync(jobName, fileName, File.OpenRead(jobFile));
+                        client.TriggeredWebJobs.UploadZip(jobName, fileName, File.OpenRead(jobFile));
                     }
                     else
                     {
-                        client.TriggeredWebJobs.UploadFileAsync(jobName, fileName, File.OpenRead(jobFile));
+                        client.TriggeredWebJobs.UploadFile(jobName, fileName, File.OpenRead(jobFile));
                     }
                     break;
 
@@ -1638,7 +1652,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="timeGrain">Time grains for the metrics.</param>
         /// <param name="instanceDetails">Include details for the server instances in which the site is running.</param>
         /// <returns>The list of site metrics for the specified period.</returns>
-        public IList<Utilities.MetricResponse> GetPlanHistoricalUsageMetrics(string webSpaceName, string planName, IList<string> metricNames, 
+        public IList<Utilities.MetricResponse> GetPlanHistoricalUsageMetrics(string webSpaceName, string planName, IList<string> metricNames,
             DateTime? starTime, DateTime? endTime, string timeGrain, bool instanceDetails)
         {
             Utilities.WebHostingPlan plan = GetWebHostingPlan(webSpaceName, planName);

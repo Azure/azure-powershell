@@ -40,6 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private static string defaultSubscriptionName = null;
         private static string location = null;
         private static string defaultStorageName = null;
+        private static string currentTestEnvironment = null;
         private static CloudBlobContainer blobContainer;
 
         private static Dictionary<string, string> environment = new Dictionary<string, string>();
@@ -51,14 +52,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             StringDictionary environment = currentProcess.StartInfo.EnvironmentVariables;
             Assert.IsTrue(environment.ContainsKey(TestEnvironmentVariable),
                 string.Format("You must define a test environment using environment variable {0}", TestEnvironmentVariable));
-            string testEnvironment = environment[TestEnvironmentVariable];
+            currentTestEnvironment = environment[TestEnvironmentVariable];
             Assert.IsTrue(environment.ContainsKey(StorageAccountVariable),
                 string.Format("You must define a storage account for credential download using environment variable {0}", StorageAccountVariable));
             string storageAccount = environment[StorageAccountVariable];
             Assert.IsTrue(environment.ContainsKey(StorageAccountKeyVariable),
                 string.Format("You must define a storage account key for credential download using environment variable {0}", StorageAccountKeyVariable));
             string storageAccountKey = environment[StorageAccountKeyVariable];
-            DownloadTestCredentials(testEnvironment, downloadDirectoryPath, 
+            DownloadTestCredentials(currentTestEnvironment, downloadDirectoryPath, 
                 string.Format(CredentialBlobUriFormat, storageAccount),
                 storageAccount, storageAccountKey);
 
@@ -166,6 +167,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             set
             {
                 publishSettingsFile = value;
+            }
+        }
+
+        public static string TestEnvironment
+        {
+            get
+            {
+                return currentTestEnvironment;
+            }
+            set
+            {
+                currentTestEnvironment = value;
             }
         }
 

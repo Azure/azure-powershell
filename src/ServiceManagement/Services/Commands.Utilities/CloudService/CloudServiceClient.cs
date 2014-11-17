@@ -897,7 +897,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         {
             if (!StorageServiceExists(name))
             {
-                var createParameters = new StorageAccountCreateParameters {Name = name, Label = label};
+                var createParameters = new StorageAccountCreateParameters {Name = name, Label = label, AccountType = "Standard_LRS"};
              
                 if (!string.IsNullOrEmpty(affinityGroup))
                 {

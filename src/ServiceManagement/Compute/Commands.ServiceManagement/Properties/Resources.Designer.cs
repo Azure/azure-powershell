@@ -350,6 +350,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot remove Network Security Group &quot;{0}&quot; from Virtual Machine &quot;{1}&quot; because it is not directly..
+        /// </summary>
+        public static string CannotRemoveNetworkSecurityGroupBecauseNotDirectlyAssociatedwithVm {
+            get {
+                return ResourceManager.GetString("CannotRemoveNetworkSecurityGroupBecauseNotDirectlyAssociatedwithVm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VM image capture operation is trigged while VM is still running. As this may cause data corruption while creating VMs from this image, we recommend using Stop-AzureVM to stop the VM before capturing..
         /// </summary>
         public static string CaptureVMImageOperationWhileVMIsStillRunning {
@@ -526,6 +535,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string DuplicateNamesFoundInBothVMAndOSImages {
             get {
                 return ResourceManager.GetString("DuplicateNamesFoundInBothVMAndOSImages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duplicate NetworkInterface found on the VM.
+        /// </summary>
+        public static string DuplicateNetworkInterfaceFound {
+            get {
+                return ResourceManager.GetString("DuplicateNetworkInterfaceFound", resourceCulture);
             }
         }
         
@@ -859,6 +877,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string NetworkConfigurationNotFoundOnPersistentVM {
             get {
                 return ResourceManager.GetString("NetworkConfigurationNotFoundOnPersistentVM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified NetworkInterface is not found.
+        /// </summary>
+        public static string NetworkInterfaceNotFound {
+            get {
+                return ResourceManager.GetString("NetworkInterfaceNotFound", resourceCulture);
             }
         }
         
@@ -1982,6 +2009,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string WaitForUploadingPackage {
             get {
                 return ResourceManager.GetString("WaitForUploadingPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VM &quot;{0}&quot; is not currently associated with a Network Security Group..
+        /// </summary>
+        public static string WarningVmIsNotDirectlyAssociatedWithNetworkSecurityGroup {
+            get {
+                return ResourceManager.GetString("WarningVmIsNotDirectlyAssociatedWithNetworkSecurityGroup", resourceCulture);
             }
         }
         

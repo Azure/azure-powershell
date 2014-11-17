@@ -39,14 +39,15 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.Iaa
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.ILB;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PaasCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PIRCmdletInfo;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PreviewCmdletInfo;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.SubscriptionCmdletInfo;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
     using SM = Model;
-   
 
     public class ServiceManagementCmdletTestHelper
     {
@@ -128,7 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return resultCollection;
         }
 
-        public Collection <PSObject> RunPSScript(string script, bool debug = true)
+        public Collection <PSObject> RunPSScript(string script, bool debug = false)
         {
             List<string> st = new List<string>();
             st.Add(script);
@@ -390,6 +391,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public SM.DeploymentInfoContext GetAzureDeployment(string serviceName)
         {
             return GetAzureDeployment(serviceName, SM.DeploymentSlotType.Production);
+        }
+
+        public Collection<SM.DeploymentRebootEventContext> GetAzureDeploymentEvent(string serviceName, string deploymentName, DateTime startTime, DateTime endTime)
+        {
+            return RunPSCmdletAndReturnAll<SM.DeploymentRebootEventContext>(new GetAzureDeploymentEventCmdletInfo(serviceName, deploymentName, startTime, endTime));
+        }
+
+        public Collection<SM.DeploymentRebootEventContext> GetAzureDeploymentEventBySlot(string serviceName, string deploymentSlot, DateTime startTime, DateTime endTime)
+        {
+            return RunPSCmdletAndReturnAll<SM.DeploymentRebootEventContext>(new GetAzureDeploymentEventBySlotCmdletInfo(serviceName, deploymentSlot, startTime, endTime));
         }
 
         private ManagementOperationContext SetAzureDeployment(SetAzureDeploymentCmdletInfo cmdletInfo)
@@ -823,8 +834,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         internal void ImportAzurePublishSettingsFile(string publishSettingsFile, bool debug = false)
         {
-            (new WindowsAzurePowershellCmdlet(new ImportAzurePublishSettingsFileCmdletInfo(publishSettingsFile))).Run(
-                (debug));
+            (new WindowsAzurePowershellCmdlet(new ImportAzurePublishSettingsFileCmdletInfo(publishSettingsFile))).Run(debug);
+        }
+
+        internal void ImportAzurePublishSettingsFile(string publishSettingsFile, string env, bool debug = false)
+        {
+            (new WindowsAzurePowershellCmdlet(new ImportAzurePublishSettingsFileCmdletInfo(publishSettingsFile, env))).Run(debug);
         }
 
         #endregion
@@ -1450,9 +1465,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureVNetGatewayCmdletInfo(vnetName));
         }
 
-        public Collection <SM.VirtualNetworkGatewayContext> GetAzureVNetGateway(string vnetName)
+        public Collection<Microsoft.Azure.Commands.Network.VirtualNetworkGatewayContext> GetAzureVNetGateway(string vnetName)
         {
-            return RunPSCmdletAndReturnAll<SM.VirtualNetworkGatewayContext>(new GetAzureVNetGatewayCmdletInfo(vnetName));
+            return RunPSCmdletAndReturnAll<Microsoft.Azure.Commands.Network.VirtualNetworkGatewayContext>(new GetAzureVNetGatewayCmdletInfo(vnetName));
         }
 
         public ManagementOperationContext SetAzureVNetGateway(string option, string vnetName, string localNetwork)
@@ -1465,18 +1480,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureVNetGatewayCmdletInfo(vnetName));
         }
 
-        public SM.SharedKeyContext GetAzureVNetGatewayKey(string vnetName, string localnet)
+        public Microsoft.Azure.Commands.Network.Gateway.Model.SharedKeyContext GetAzureVNetGatewayKey(string vnetName, string localnet)
         {
-            return RunPSCmdletAndReturnFirst<SM.SharedKeyContext>(new GetAzureVNetGatewayKeyCmdletInfo(vnetName, localnet));
+            return RunPSCmdletAndReturnFirst<Microsoft.Azure.Commands.Network.Gateway.Model.SharedKeyContext>(new GetAzureVNetGatewayKeyCmdletInfo(vnetName, localnet));
         }
 
         #endregion
 
         #region AzureVNet
 
-        public Collection<SM.GatewayConnectionContext> GetAzureVNetConnection(string vnetName)
+        public Collection<Microsoft.Azure.Commands.Network.Gateway.Model.GatewayConnectionContext> GetAzureVNetConnection(string vnetName)
         {
-            return RunPSCmdletAndReturnAll<SM.GatewayConnectionContext>(new GetAzureVNetConnectionCmdletInfo(vnetName));
+            return RunPSCmdletAndReturnAll<Microsoft.Azure.Commands.Network.Gateway.Model.GatewayConnectionContext>(new GetAzureVNetConnectionCmdletInfo(vnetName));
         }
 
         public Collection<SM.VirtualNetworkSiteContext> GetAzureVNetSite(string vnetName)
@@ -1618,6 +1633,29 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             var removeAzureSubscriptionCmdletInfo = new RemoveAzureSubscriptionCmdletInfo(Name, null, force);
             var removeAzureSubscriptionCmdlet = new WindowsAzurePowershellCmdlet(removeAzureSubscriptionCmdletInfo);
             removeAzureSubscriptionCmdlet.Run(debug);
+        }
+
+        public List<AzureEnvironment> GetAzureEnvironment(string name = null, string subscriptionDataFile = null, bool debug = false)
+        {
+            Collection<PSObject> result = (new WindowsAzurePowershellCmdlet(new GetAzureEnvironmentCmdletInfo(name, subscriptionDataFile))).Run(debug);
+            List<AzureEnvironment> envList = new List<AzureEnvironment>();
+
+            foreach (var element in result)
+            {
+                var newEnv = new AzureEnvironment();
+                newEnv.Name = element.Properties.Match("Name")[0].Value.ToString();
+                var endpoints = new Dictionary<AzureEnvironment.Endpoint,string>();
+                var endpointKeys = Enum.GetValues(typeof(AzureEnvironment.Endpoint));
+                foreach(var key in endpointKeys)
+                {
+                    endpoints.Add((AzureEnvironment.Endpoint) key, (string) element.Properties.Match(key.ToString())[0].Value);
+                }
+
+                newEnv.Endpoints = endpoints;
+                envList.Add(newEnv);
+            }
+
+            return envList;
         }
 
         internal SM.NetworkAclObject NewAzureAclConfig()
@@ -1832,10 +1870,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #region Generic VM Extension cmdlets
         public SM.PersistentVM SetAzureVMExtension(SM.IPersistentVM vm, string extensionName, string publisher, string version, string referenceName = null,
-            string publicConfiguration = null, string privateConfiguration = null, string publicConfigPath = null, string privateConfigPath = null, bool disable = false)
+            string publicConfiguration = null, string privateConfiguration = null, string publicConfigKey = null, string privateConfigKey = null, string publicConfigPath = null, string privateConfigPath = null, bool disable = false)
         {
             return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMExtensionCmdletInfo(vm, extensionName, publisher, version, referenceName,
-             publicConfiguration, privateConfiguration,publicConfigPath,privateConfigPath, disable));
+             publicConfiguration, privateConfiguration, publicConfigKey, privateConfigKey, publicConfigPath, privateConfigPath, disable));
         }
 
         public SM.PersistentVM RemoveAzureVMExtension(SM.PersistentVM vm, string extensionName, string publisher, string referenceName=null, bool removeAll=false)
@@ -2013,6 +2051,36 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         internal SM.AssignPublicIP GetAzurePublicIpName(string publicIpName, SM.IPersistentVM vm)
         {
             return RunPSCmdletAndReturnFirst<SM.AssignPublicIP>(new GetAzurePublicIPCmdletInfo(publicIpName, vm));
+        }
+
+        internal SM.IPersistentVM AddAzureNetworkInterfaceConfig(string name, string subnetName, string staticVnetIpAddress, SM.IPersistentVM vm)
+        {
+            return RunPSCmdletAndReturnFirst<SM.IPersistentVM>(new AddAzureNetworkInterfaceConfigCmdletInfo(name, subnetName, staticVnetIpAddress, vm));
+        }
+
+        internal SM.IPersistentVM AddAzureNetworkInterfaceConfig(string name, string subnetName, SM.IPersistentVM vm)
+        {
+            return RunPSCmdletAndReturnFirst<SM.IPersistentVM>(new AddAzureNetworkInterfaceConfigCmdletInfo(name, subnetName, null, vm));
+        }
+
+        internal SM.IPersistentVM SetAzureNetworkInterfaceConfig(string name, string subnetName, string staticVnetIpAddress, SM.IPersistentVM vm)
+        {
+            return RunPSCmdletAndReturnFirst<SM.IPersistentVM>(new SetAzureNetworkInterfaceConfigCmdletInfo(name, subnetName, staticVnetIpAddress, vm));
+        }
+
+        internal SM.IPersistentVM SetAzureNetworkInterfaceConfig(string name, string subnetName, SM.IPersistentVM vm)
+        {
+            return RunPSCmdletAndReturnFirst<SM.IPersistentVM>(new SetAzureNetworkInterfaceConfigCmdletInfo(name, subnetName, null, vm));
+        }
+
+        internal SM.NetworkInterface GetAzureNetworkInterfaceConfig(string name, SM.PersistentVMRoleContext vm)
+        {
+            return RunPSCmdletAndReturnFirst<SM.NetworkInterface>(new GetAzureNetworkInterfaceConfigCmdletInfo(name, vm));
+        }
+
+        internal SM.IPersistentVM RemoveAzureNetworkInterfaceConfig(string name, SM.IPersistentVM vm)
+        {
+            return RunPSCmdletAndReturnFirst<SM.IPersistentVM>(new RemoveAzureNetworkInterfaceConfigCmdletInfo(name, vm));
         }
     }
 }

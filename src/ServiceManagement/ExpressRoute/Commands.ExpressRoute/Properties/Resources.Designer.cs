@@ -169,6 +169,42 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove-AzureDedicatedCircuitLinkAuthorization Operation failed..
+        /// </summary>
+        internal static string RemoveAzureDedicatedCircuitLinkAuthorizationFailed {
+            get {
+                return ResourceManager.GetString("RemoveAzureDedicatedCircuitLinkAuthorizationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Dedicated Circuit Link Authorization.
+        /// </summary>
+        internal static string RemoveAzureDedicatedCircuitLinkAuthorizationMessage {
+            get {
+                return ResourceManager.GetString("RemoveAzureDedicatedCircuitLinkAuthorizationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully removed Dedicated Circuit Link Authorization with service key &apos;{0}&apos; and authorization Id &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureDedicatedCircuitLinkAuthorizationSucceeded {
+            get {
+                return ResourceManager.GetString("RemoveAzureDedicatedCircuitLinkAuthorizationSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Dedicated Circuit Link Authorization with service key &apos;{0}&apos; and authorization Id &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureDedicatedCircuitLinkAuthorizationWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureDedicatedCircuitLinkAuthorizationWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove-AzureDedicatedCircuitLink Operation failed..
         /// </summary>
         internal static string RemoveAzureDedicatedCircuitLinkFailed {

@@ -64,14 +64,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
 
             //Get available regions
             string val = string.Empty;
-            if(dict.TryGetValue(SupportedRegionsKey, out val))
+            if (dict.TryGetValue(SupportedRegionsKey, out val))
             {
                 AvailableRegions = new List<string>();
                 val.Split(',').ToList().ForEach(s => AvailableRegions.Add(s));
-            }            
+            }
 
             //Store global counts for max jobs and min recurrence for each plan     
-            if(dict.TryGetValue(FreeMaxJobCountKey, out val))
+            if (dict.TryGetValue(FreeMaxJobCountKey, out val))
                 FreeMaxJobCountValue = Convert.ToInt32(dict[FreeMaxJobCountKey]);
 
             if (dict.TryGetValue(FreeMinRecurrenceKey, out val))
@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
 
         #region Get Available Regions
         public List<string> GetAvailableRegions()
-        {            
+        {
             return AvailableRegions;
         }
         #endregion
@@ -216,7 +216,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
             {
                 if (csRes.ResourceProviderNamespace.Equals(Constants.SchedulerRPNameProvider, StringComparison.OrdinalIgnoreCase) && csRes.Name.Equals(jobCollection, StringComparison.OrdinalIgnoreCase))
                 {
-                    SchedulerClient schedClient = AzureSession.ClientFactory.CreateCustomClient<SchedulerClient>(cloudService, jobCollection, csmClient.Credentials, schedulerManagementClient.BaseUri);                      
+                    SchedulerClient schedClient = AzureSession.ClientFactory.CreateCustomClient<SchedulerClient>(cloudService, jobCollection, csmClient.Credentials, schedulerManagementClient.BaseUri);
 
                     JobListResponse jobs = schedClient.Jobs.List(new JobListParameters
                     {
@@ -392,7 +392,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
             {
                 if (csRes.ResourceProviderNamespace.Equals(Constants.SchedulerRPNameProvider, StringComparison.OrdinalIgnoreCase) && csRes.Name.Equals(jobCollection, StringComparison.OrdinalIgnoreCase))
                 {
-                    SchedulerClient schedClient = AzureSession.ClientFactory.CreateCustomClient<SchedulerClient>(cloudService, jobCollection, csmClient.Credentials, schedulerManagementClient.BaseUri);                  
+                    SchedulerClient schedClient = AzureSession.ClientFactory.CreateCustomClient<SchedulerClient>(cloudService, jobCollection, csmClient.Credentials, schedulerManagementClient.BaseUri);
 
                     JobListResponse jobs = schedClient.Jobs.List(new JobListParameters
                     {
@@ -404,26 +404,34 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
                         {
                             if (Enum.GetName(typeof(JobActionType), j.Action.Type).Contains("Http"))
                             {
-                                return new PSHttpJobDetail
+                                PSHttpJobDetail jobDetail = new PSHttpJobDetail();
+                                jobDetail.JobName = j.Id;
+                                jobDetail.JobCollectionName = jobCollection;
+                                jobDetail.CloudService = cloudService;
+                                jobDetail.ActionType = Enum.GetName(typeof(JobActionType), j.Action.Type);
+                                jobDetail.Uri = j.Action.Request.Uri;
+                                jobDetail.Method = j.Action.Request.Method;
+                                jobDetail.Body = j.Action.Request.Body;
+                                jobDetail.Headers = j.Action.Request.Headers;
+                                jobDetail.Status = j.State.ToString();
+                                jobDetail.StartTime = j.StartTime;
+                                jobDetail.EndSchedule = GetEndTime(j);
+                                jobDetail.Recurrence = j.Recurrence == null ? string.Empty : j.Recurrence.Interval.ToString() + " (" + j.Recurrence.Frequency.ToString() + "s)";
+                                if (j.Status != null)
                                 {
-                                    JobName = j.Id,
-                                    JobCollectionName = jobCollection,
-                                    CloudService = cloudService,
-                                    ActionType = Enum.GetName(typeof(JobActionType), j.Action.Type),
-                                    Uri = j.Action.Request.Uri,
-                                    Method = j.Action.Request.Method,
-                                    Body = j.Action.Request.Body,
-                                    Headers = j.Action.Request.Headers,
-                                    Status = j.State.ToString(),
-                                    StartTime = j.StartTime,
-                                    EndSchedule = GetEndTime(j),
-                                    Recurrence = j.Recurrence == null ? string.Empty : j.Recurrence.Interval.ToString() + " per " + j.Recurrence.Frequency.ToString(),
-                                    Failures = j.Status == null ? default(int?) : j.Status.FailureCount,
-                                    Faults = j.Status == null ? default(int?) : j.Status.FaultedCount,
-                                    Executions = j.Status == null ? default(int?) : j.Status.ExecutionCount,
-                                    Lastrun = j.Status == null ? null : j.Status.LastExecutionTime,
-                                    Nextrun = j.Status == null ? null : j.Status.NextExecutionTime
-                                };
+                                    jobDetail.Failures = j.Status.FailureCount;
+                                    jobDetail.Faults = j.Status.FaultedCount;
+                                    jobDetail.Executions = j.Status.ExecutionCount;
+                                    jobDetail.Lastrun = j.Status.LastExecutionTime;
+                                    jobDetail.Nextrun = j.Status.NextExecutionTime;
+                                }
+                                if (j.Action.Request.Authentication != null && j.Action.Request.Authentication.Type == HttpAuthenticationType.ClientCertificate)
+                                {
+                                    jobDetail.ClientCertThumbprint = ((j.Action.Request.Authentication) as ClientCertAuthentication).CertificateThumbprint;
+                                    jobDetail.ClientCertExpiryDate = ((j.Action.Request.Authentication) as ClientCertAuthentication).CertificateExpiration.ToString();
+                                    jobDetail.ClientCertSubjectName = ((j.Action.Request.Authentication) as ClientCertAuthentication).CertificateSubjectName;
+                                }
+                                return jobDetail;
                             }
                             else
                             {
@@ -440,7 +448,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
                                     Status = j.State.ToString(),
                                     EndSchedule = GetEndTime(j),
                                     StartTime = j.StartTime,
-                                    Recurrence = j.Recurrence == null ? string.Empty : j.Recurrence.Interval.ToString() + " per " + j.Recurrence.Frequency.ToString(),
+                                    Recurrence = j.Recurrence == null ? string.Empty : j.Recurrence.Interval.ToString() + " (" + j.Recurrence.Frequency.ToString() + "s)",
                                     Failures = j.Status == null ? default(int?) : j.Status.FailureCount,
                                     Faults = j.Status == null ? default(int?) : j.Status.FaultedCount,
                                     Executions = j.Status == null ? default(int?) : j.Status.ExecutionCount,
@@ -537,5 +545,4 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
 
         #endregion
     }
-
 }

@@ -46,16 +46,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntitie
         string WebSpace { get; set; }
         Uri SelfLink { get; set; }
         string RepositorySiteName { get; set; }
-        string Owner { get; set; }
         UsageState UsageState { get; set; }
         bool? Enabled { get; set; }
         bool? AdminEnabled { get; set; }
         string[] EnabledHostNames { get; set; }
         SiteProperties SiteProperties { get; set; }
         SiteAvailabilityState AvailabilityState { get; set; }
-        Certificate[] SSLCertificates { get; set; }
-        string SiteMode { get; set; }
         HostNameSslStates HostNameSslStates { get; set; }
+        SkuOptions? Sku { get; set; }
     }
 
     [DataContract(Namespace = UriElements.ServiceNamespace)]
@@ -104,12 +102,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntitie
         public Certificate[] SSLCertificates { get; set; }
 
         [DataMember(IsRequired = false)]
-        public string SiteMode { get; set; }
-
-        [DataMember(IsRequired = false)]
         public HostNameSslStates HostNameSslStates { get; set; }
 
-        public WebSiteComputeMode? ComputeMode { get; set; }
+        [DataMember(IsRequired = false)]
+        public SkuOptions? Sku { get; set; }
 
         internal string GetProperty(string property)
         {

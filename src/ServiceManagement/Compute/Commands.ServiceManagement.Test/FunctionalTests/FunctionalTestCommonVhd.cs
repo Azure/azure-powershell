@@ -154,11 +154,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 OSImageContext result = vmPowershellCmdlets.AddAzureVMImage(newImageName, mediaLocation, OS.Windows, oldLabel);
 
                 OSImageContext resultReturned = vmPowershellCmdlets.GetAzureVMImage(newImageName)[0];
+                Assert.IsTrue(!string.IsNullOrEmpty(resultReturned.IOType));
                 Assert.IsTrue(CompareContext<OSImageContext>(result, resultReturned));
 
                 result = vmPowershellCmdlets.UpdateAzureVMImage(newImageName, newLabel);
-
                 resultReturned = vmPowershellCmdlets.GetAzureVMImage(newImageName)[0];
+                Assert.IsTrue(!string.IsNullOrEmpty(resultReturned.IOType));
                 Assert.IsTrue(CompareContext<OSImageContext>(result, resultReturned));
 
                 vmPowershellCmdlets.RemoveAzureVMImage(newImageName, false);
@@ -184,15 +185,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         ///
         /// </summary>
         [TestMethod(), TestCategory(Category.Functional), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet (Set-AzureVMSize)")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\overwrite_VHD.csv", "overwrite_VHD#csv", DataAccessMethod.Sequential)]
         public void AzureVMImageSizeTest()
         {
-            vhdName = "os2.vhd";
+            string mediaLocation = UploadVhdFile();
             string newImageName = Utilities.GetUniqueShortName("vmimage");
-            string mediaLocation = string.Format("{0}{1}/{2}", blobUrlRoot, vhdContainerName, vhdName);
 
             try
             {
-                var instanceSizes = vmPowershellCmdlets.GetAzureRoleSize().ToArray();
+                var instanceSizes = vmPowershellCmdlets.GetAzureRoleSize().Where(r => r.Cores <= 1).ToArray();
                 int arrayLength = instanceSizes.Count();
 
                 for (int i = 0; i < arrayLength; i++)
@@ -201,21 +202,47 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     // Add-AzureVMImage test for VM size
                     OSImageContext result = vmPowershellCmdlets.AddAzureVMImage(newImageName, mediaLocation, OS.Windows, null, instanceSizes[i].InstanceSize);
                     OSImageContext resultReturned = vmPowershellCmdlets.GetAzureVMImage(newImageName)[0];
+                    Assert.IsTrue(!string.IsNullOrEmpty(resultReturned.IOType));
                     Assert.IsTrue(CompareContext<OSImageContext>(result, resultReturned));
 
                     // Update-AzureVMImage test for VM size
-                    result = vmPowershellCmdlets.UpdateAzureVMImage(newImageName, null, instanceSizes[Math.Max((i + 1) % arrayLength, 1)].InstanceSize);
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(10));
+                    result = vmPowershellCmdlets.UpdateAzureVMImage(newImageName, resultReturned.ImageName, instanceSizes[Math.Max((i + 1) % arrayLength, 1)].InstanceSize);
                     resultReturned = vmPowershellCmdlets.GetAzureVMImage(newImageName)[0];
+                    Assert.IsTrue(!string.IsNullOrEmpty(resultReturned.IOType));
                     Assert.IsTrue(CompareContext<OSImageContext>(result, resultReturned));
 
                     vmPowershellCmdlets.RemoveAzureVMImage(newImageName);
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(10));
+                    pass = true;
                 }
             }
             catch (Exception e)
             {
                 pass = false;
+                System.Threading.Thread.Sleep(TimeSpan.FromSeconds(10));
+                vmPowershellCmdlets.RemoveAzureVMImage(newImageName, true);
                 Console.WriteLine("Exception occurred: {0}", e.ToString());
                 throw;
+            }
+            finally
+            {
+                try
+                {
+                    vmPowershellCmdlets.GetAzureVMImage(newImageName);
+                    vmPowershellCmdlets.RemoveAzureVMImage(newImageName);
+                }
+                catch (Exception e)
+                {
+                    if (e.ToString().Contains("ResourceNotFound"))
+                    {
+                        Console.WriteLine("The vm image, {0}, is already deleted.", newImageName);
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
             }
         }
 
@@ -306,7 +333,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                     var size = instanceSize.InstanceSize;
                     if (!size.Equals(InstanceSize.A5.ToString()) && !size.Equals(InstanceSize.A6.ToString()) && !size.Equals(InstanceSize.A7.ToString())
-                        && !size.Equals(InstanceSize.A8.ToString()) && !size.Equals(InstanceSize.A9.ToString()))
+                        && !size.Equals(InstanceSize.A8.ToString()) && !size.Equals(InstanceSize.A9.ToString()) && !size.Contains("Standard_D"))
                     {
                         // Set-AzureVMSize test for regular VM size
                         vmPowershellCmdlets.SetVMSize(vmName, serviceName, new SetAzureVMSizeConfig(size));

@@ -150,7 +150,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
 
         public bool IsEndpointSetToValue(AzureEnvironment.Endpoint endpoint, string url)
         {
-            if (Endpoints.IsPropertySet(endpoint))
+            if (url == null && !Endpoints.IsPropertySet(endpoint))
+            {
+                return true;
+            }
+            if (url != null && Endpoints.IsPropertySet(endpoint))
             {
                 return GetEndpoint(endpoint)
                     .Trim(new[] {'/'})

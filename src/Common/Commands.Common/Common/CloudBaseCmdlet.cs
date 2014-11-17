@@ -128,7 +128,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 
             string certificateThumbprint = CurrentContext.Account.Id;
-            Debug.Assert(defaultProfileClient.Profile.Accounts[certificateThumbprint].Type == AzureAccount.AccountType.Certificate);
+            Debug.Assert(DefaultProfileClient.Profile.Accounts[certificateThumbprint].Type == AzureAccount.AccountType.Certificate);
 
             return ChannelHelper.CreateServiceManagementChannel<T>(
                 ServiceBinding,

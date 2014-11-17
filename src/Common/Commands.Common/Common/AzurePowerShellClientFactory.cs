@@ -18,12 +18,9 @@ using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Common;
 using System.Net;
-using System.Net.Http;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Management;
-using System;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Common
 {
@@ -54,7 +51,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Common
         /// <typeparam name="T">The client type</typeparam>
         private void RegisterResourceManagerProviders<T>(AzureContext context) where T : ServiceClient<T>
         {
-            var credentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
             var providersToRegister = RequiredResourceLookup.RequiredProvidersForResourceManager<T>();
             var registeredProviders = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
             var unregisteredProviders = providersToRegister.Where(p => !registeredProviders.Contains(p)).ToList();

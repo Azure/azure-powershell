@@ -73,8 +73,17 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             wrapper.IsEnabled = properties.IsAuditingEnabled;
             wrapper.StorageAccountName = properties.StorageAccountName;
             AddEventTypesToWrapperFromPolicy(wrapper, properties);
+            AddConnectionStringsToWrapperFromPolicy(wrapper, properties);
             this.FetchedProperties = properties;           
             return wrapper;
+        }
+
+        private void AddConnectionStringsToWrapperFromPolicy(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
+        {
+            wrapper.ConnectionStrings.AdoNetConnectionString = properties.AdoNetConnectionString;
+            wrapper.ConnectionStrings.OdbcConnectionString = properties.OdbcConnectionString;
+            wrapper.ConnectionStrings.JdbcConnectionString = properties.JdbcConnectionString;
+            wrapper.ConnectionStrings.PhpConnectionString = properties.PhpConnectionString;
         }
 
         private void AddEventTypesToWrapperFromPolicy(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
@@ -100,6 +109,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             Communicator.SetDatabaseSecurityPolicy(policy.ResourceGroupName, policy.ServerName, policy.DatabaseName, clientId, parameters);
         }
 
+        /// <summary>
+        /// Unwrap the cmdlets model object and transform it to the communication model object
+        /// </summary>
+        /// <param name="policy">The AuditingPolicy object</param>
+        /// <returns>The communication model object</returns>
         private DatabaseSecurityPolicyUpdateParameters UnwrapPolicy(AuditingPolicy policy)
         {
             DatabaseSecurityPolicyUpdateParameters updateParameters = new DatabaseSecurityPolicyUpdateParameters();
@@ -114,22 +128,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         }
 
         /// <summary>
-        /// Check that the user didn't enter an All or None option with other event types.
-        /// Assumption - it is valid to repeat the All or None option several times, as long as no other values are provided
+        /// Check that the user didn't enter a shortcut option (All or None) with other event types.
         /// </summary>
-        private bool ValidateEventTypeOption(string[] userEnteredEventType, string option)
+        private bool ValidateShortcutUsage(HashSet<String> userEnteredEventType, string option)
         {
-            // if there's only one value, there can't be All / None with other values
-            if (userEnteredEventType.Length > 1)
-            {
-                // if All / None is not there, no problem either
-                if (!userEnteredEventType.Contains(option)) 
-                    return true;
-                // if there are values that are not All / None alongside All / None, than we're at invalid state
-                if (userEnteredEventType.Count(s => s.Equals(option)) != userEnteredEventType.Length)
-                    return false;
-            }
-            return true;
+            return userEnteredEventType.Count == 1 || !userEnteredEventType.Contains(option);
         }
 
         /// <summary>
@@ -140,13 +143,13 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             string[] userEnteredEventType = wrappedPolicy.EventType;
             if (userEnteredEventType == null || userEnteredEventType.Length == 0)
                 return;
+            HashSet<String> eventTypes = new HashSet<String>(userEnteredEventType);
 
-            if (!ValidateEventTypeOption(userEnteredEventType, Constants.All))
+            if (!ValidateShortcutUsage(eventTypes, Constants.All))
                 throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidEventTypeSet, Constants.All));
-            if (!ValidateEventTypeOption(userEnteredEventType, Constants.None))
+            if (!ValidateShortcutUsage(eventTypes, Constants.None))
                 throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidEventTypeSet, Constants.None));
             
-            HashSet<String> eventTypes = new HashSet<String>(userEnteredEventType);
             properties.IsEventTypeDataAccessEnabled = ValueOfProperty(eventTypes, Constants.Access);
             properties.IsEventTypeSchemaChangeEnabled = ValueOfProperty(eventTypes, Constants.Schema);
             properties.IsEventTypeDataChangesEnabled = ValueOfProperty(eventTypes, Constants.Data);
@@ -187,8 +190,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
 
             if (!IgnoreStorage)
             {
-                // storage primary key is not sent when fetching the policy, so if it is needed, it should be fetched 
-                properties.StorageAccountKey = Communicator.GetPrimaryStorageKeys(properties.StorageAccountName);
+                // storage keys are not sent when fetching the policy, so if they are needed, they should be fetched 
+                Dictionary<Constants.StorageKeyTypes, string> keys = Communicator.GetStorageKeys(properties.StorageAccountName);
+                properties.StorageAccountKey = keys[Constants.StorageKeyTypes.Primary];
             }
         }
 

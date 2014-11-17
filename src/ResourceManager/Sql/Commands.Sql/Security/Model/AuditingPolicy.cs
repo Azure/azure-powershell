@@ -12,10 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
     public class AuditingPolicy
     {
+       
+        public AuditingPolicy()
+        {
+            ConnectionStrings = new ConnectionStrings();
+        }
+
         public string ResourceGroupName { get; set; }
         
         public string ServerName { get; set; }
@@ -29,5 +37,18 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
         public bool IsEnabled { get; set; }
         
         public bool UseServerDefault { get; set; }
+
+        public ConnectionStrings ConnectionStrings { get; set; }
+    }
+
+    public class ConnectionStrings
+    {
+        public string AdoNetConnectionString { get; set; }
+
+        public string OdbcConnectionString { get; set; }
+
+        public string PhpConnectionString { get; set; }
+
+        public string JdbcConnectionString { get; set; }
     }
 }

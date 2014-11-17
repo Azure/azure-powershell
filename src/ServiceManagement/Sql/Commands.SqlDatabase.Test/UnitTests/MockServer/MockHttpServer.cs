@@ -171,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
         {
             TestingTracingInterceptor.AddToContext();
             ProfileClient.DataStore = new MockDataStore();
-            AzureSession.AuthenticationFactory = new MockAuthenticationFactory();
+            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var newGuid = Guid.NewGuid();
             ProfileClient client = new ProfileClient();
             client.Profile.Subscriptions[newGuid] = new AzureSubscription

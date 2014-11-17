@@ -79,51 +79,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             }
         }
         
-        public static void AssertThrows<TException, TResult>(Func<TResult> action, string expectedMessage)
-            where TException : Exception
-        {
-            Debug.Assert(action != null);
-
-            try
-            {
-                action();
-                Assert.Fail("No exception was thrown!");
-            }
-            catch (Exception ex)
-            {
-                Assert.IsInstanceOfType(ex, typeof(TException));
-                Assert.AreEqual(expectedMessage, ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// Ensure an action throws a specific type of Exception.
-        /// </summary>
-        /// <typeparam name="T">Expected exception type.</typeparam>
-        /// <param name="action">
-        /// The action that should throw when executed.
-        /// </param>
-        /// <param name="verification">
-        /// Additional verification to perform on the exception.
-        /// </param>
-        public static void AssertThrows<T>(Action action, Action<T> verification)
-            where T : Exception
-        {
-            Debug.Assert(action != null);
-            Debug.Assert(verification != null);
-            
-            try
-            {
-                action();
-                Assert.Fail("No exception was thrown!");
-            }
-            catch (Exception ex)
-            {
-                Assert.IsInstanceOfType(ex, typeof(T));
-                verification(ex as T);
-            }
-        }
-        
         /// <summary>
         /// Get the path to a file included in the test project as something to
         /// be copied on Deployment (see Local.testsettings > Deployment for

@@ -168,6 +168,7 @@ ClientBin/
 *.dbmdl
 *.dbproj.schemaview
 node_modules/
+.pshproj
 
 # RIA/Silverlight projects
 Generated_Code/

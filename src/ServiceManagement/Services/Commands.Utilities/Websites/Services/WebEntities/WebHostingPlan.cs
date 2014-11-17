@@ -41,9 +41,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntitie
         public int? CurrentNumberOfWorkers { get; set; }
 
         [DataMember(IsRequired = false)]
-        public StatusOptions Status { get; set; }
-
-        [DataMember(IsRequired = false)]
         public string WebSpace { get; set; }
     }
 }

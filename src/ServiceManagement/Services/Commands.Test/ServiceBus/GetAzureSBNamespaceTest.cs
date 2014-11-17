@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
                 CommandRuntime = mockCommandRuntime,
                 Client = client.Object
             };
-            AzureSession.AuthenticationFactory = new MockAuthenticationFactory();
+            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }
 
         [Fact]

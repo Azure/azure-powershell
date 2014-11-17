@@ -83,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
                 throw new Exception(Resources.SchedulerInvalidLocation);
 
             SchedulerClient schedulerClient = AzureSession.ClientFactory.CreateCustomClient<SchedulerClient>(jobRequest.Region.ToCloudServiceName(), jobRequest.JobCollectionName, csmClient.Credentials, schedulerManagementClient.BaseUri);
-         
+
             JobCreateOrUpdateParameters jobCreateParams = new JobCreateOrUpdateParameters
             {
                 Action = new JobAction
@@ -99,6 +99,31 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
             if (jobRequest.Headers != null)
             {
                 jobCreateParams.Action.Request.Headers = jobRequest.Headers.ToDictionary();
+            }
+
+            if (jobRequest.HttpAuthType.Equals("ClientCertificate", StringComparison.OrdinalIgnoreCase))
+            {
+                if (jobRequest.ClientCertPfx != null && jobRequest.ClientCertPassword != null)
+                {
+                    jobCreateParams.Action.Request.Authentication = new ClientCertAuthentication
+                    {
+                        Type = HttpAuthenticationType.ClientCertificate,
+                        Password = jobRequest.ClientCertPassword,
+                        Pfx = jobRequest.ClientCertPfx
+                    };
+                }
+                else
+                {
+                    throw new InvalidOperationException(Resources.SchedulerInvalidClientCertAuthRequest);
+                }
+            }
+
+            if (jobRequest.HttpAuthType.Equals("None", StringComparison.OrdinalIgnoreCase))
+            {
+                if (!string.IsNullOrEmpty(jobRequest.ClientCertPfx) || !string.IsNullOrEmpty(jobRequest.ClientCertPassword))
+                {
+                    throw new InvalidOperationException(Resources.SchedulerInvalidNoneAuthRequest);
+                }
             }
 
             if (jobRequest.Method.Equals("PUT", StringComparison.OrdinalIgnoreCase) || jobRequest.Method.Equals("POST", StringComparison.OrdinalIgnoreCase))
@@ -286,6 +311,34 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
                             jobUpdateParams.Action.Request.Method = jobRequest.Method ?? job.Action.Request.Method;
                             jobUpdateParams.Action.Request.Headers = jobRequest.Headers == null ? job.Action.Request.Headers : jobRequest.Headers.ToDictionary();
                             jobUpdateParams.Action.Request.Body = jobRequest.Body ?? job.Action.Request.Body;
+
+                            //Job has existing authentication
+                            if (job.Action.Request.Authentication != null)
+                            {
+                                if (jobRequest.HttpAuthType.Equals("ClientCertificate", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    jobUpdateParams.Action.Request.Authentication = SetClientCertAuthentication(jobRequest, jobUpdateParams);
+                                }
+                                else if (jobRequest.HttpAuthType.Equals("None", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    if (!string.IsNullOrEmpty(jobRequest.ClientCertPfx) || !string.IsNullOrEmpty(jobRequest.ClientCertPassword))
+                                    {
+                                        throw new InvalidOperationException(Resources.SchedulerInvalidNoneAuthRequest);
+                                    }
+                                    else
+                                    {
+                                        jobUpdateParams.Action.Request.Authentication = null;
+                                    }
+                                }
+                                else
+                                {
+                                    jobUpdateParams.Action.Request.Authentication = job.Action.Request.Authentication;
+                                }
+                            }
+                            else if (job.Action.Request.Authentication == null && jobRequest.HttpAuthType.Equals("ClientCertificate", StringComparison.OrdinalIgnoreCase))
+                            {
+                                jobUpdateParams.Action.Request.Authentication = SetClientCertAuthentication(jobRequest, jobUpdateParams);
+                            }
                         }
                         else if (job.Action.Request == null)
                         {
@@ -293,8 +346,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
                             jobUpdateParams.Action.Request.Method = jobRequest.Method;
                             jobUpdateParams.Action.Request.Headers = jobRequest.Headers.ToDictionary();
                             jobUpdateParams.Action.Request.Body = jobRequest.Body;
+                            if (jobRequest.HttpAuthType.Equals("ClientCertificate", StringComparison.OrdinalIgnoreCase))
+                            {
+                                jobUpdateParams.Action.Request.Authentication = SetClientCertAuthentication(jobRequest, jobUpdateParams);
+                            }
                         }
-
                     }
                     else
                     {
@@ -302,6 +358,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
                         jobUpdateParams.Action.Request.Method = jobRequest.Method;
                         jobUpdateParams.Action.Request.Headers = jobRequest.Headers.ToDictionary();
                         jobUpdateParams.Action.Request.Body = jobRequest.Body;
+                        if (jobRequest.HttpAuthType.Equals("ClientCertificate", StringComparison.OrdinalIgnoreCase))
+                        {
+                            jobUpdateParams.Action.Request.Authentication = SetClientCertAuthentication(jobRequest, jobUpdateParams);
+                        }
                     }
                 }
                 else
@@ -398,6 +458,23 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
             jobUpdateParams.StartTime = jobRequest.StartTime ?? job.StartTime;
 
             return jobUpdateParams;
+        }
+
+        private HttpAuthentication SetClientCertAuthentication(PSCreateJobParams jobRequest, JobCreateOrUpdateParameters jobUpdateParams)
+        {
+            if (jobRequest.ClientCertPfx != null && jobRequest.ClientCertPassword != null)
+            {
+                return new ClientCertAuthentication
+                {
+                    Type = HttpAuthenticationType.ClientCertificate,
+                    Password = jobRequest.ClientCertPassword,
+                    Pfx = jobRequest.ClientCertPfx
+                };
+            }
+            else
+            {
+                throw new InvalidOperationException(Resources.SchedulerInvalidClientCertAuthRequest);
+            }
         }
 
         /// <summary>

@@ -16,7 +16,12 @@
     <maml:description>
       <maml:para>The Add-AzureAccount cmdlet makes your Azure account and its subscriptions available in Windows PowerShell. It's like logging into your Azure account in Windows PowerShell. To log out of the account, use the Remove-AzureAccount cmdlet.</maml:para>
       <maml:para>Add-AzureAccount downloads information about your Azure account and saves it in a subscription data file in your roaming user profile. It also gets an access token that allows Windows PowerShell to access your Azure account on your behalf. When the command completes, you can manage your Azure account in Windows PowerShell.</maml:para>
-      <maml:para>There are two different ways to make your Azure account available to Windows PowerShell. You can use the Add-AzureAccount cmdlet, which uses Azure Active Directory (Azure AD) authentication access tokens, or Import-AzurePublishSettingsFile, which uses a management certificate. For guidance on which method to use, see "<maml:navigationLink><maml:linkText>How to: Connect to your subscription</maml:linkText><maml:uri></maml:uri></maml:navigationLink>" (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/#Connect).</maml:para>
+      <maml:para>
+        There are two different ways to make your Azure account available to Windows PowerShell. You can use the Add-AzureAccount cmdlet, which uses Azure Active Directory (Azure AD) authentication access tokens, or Import-AzurePublishSettingsFile, which uses a management certificate. For guidance on which method to use, see "<maml:navigationLink>
+          <maml:linkText>How to: Connect to your subscription</maml:linkText>
+          <maml:uri></maml:uri>
+        </maml:navigationLink>" (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/#Connect).
+      </maml:para>
       <maml:para>When you run Add-AzureAccount, it displays an interactive window that prompts you to sign into your Azure account. This sign-in is valid until the access token expires. When it expires, cmdlets that require access to your account prompt you to run Add-AzureAccount again.</maml:para>
       <maml:para>If you have a Microsoft Organizational account, you can use the -Credential parameter to add the subscriptions associated with your account to Windows PowerShell without an interactive dialog.</maml:para>
       <maml:para>This topic describes the cmdlet in the .7.2 version of the Microsoft Azure PowerShell module. To find out the version of the module you're using, from the Azure PowerShell console, type (get-module azure).version.</maml:para>
@@ -35,7 +40,12 @@
           <maml:name>Environment</maml:name>
           <maml:description>
             <maml:para>Specifies an Azure environment for  the user account. This parameter is optional. The default is the AzureCloud environment.</maml:para>
-            <maml:para>An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see <maml:navigationLink><maml:linkText>Azure Pack</maml:linkText><maml:uri></maml:uri></maml:navigationLink>.</maml:para>
+            <maml:para>
+              An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see <maml:navigationLink>
+                <maml:linkText>Azure Pack</maml:linkText>
+                <maml:uri></maml:uri>
+              </maml:navigationLink>.
+            </maml:para>
             <maml:para>To get the available Azure environments, use the Get-AzureEnvironment cmdlet. To add an environment, use the Add-AzureEnvironment cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -68,7 +78,12 @@
         <maml:name>Environment</maml:name>
         <maml:description>
           <maml:para>Specifies an Azure environment for  the user account. This parameter is optional. The default is the AzureCloud environment.</maml:para>
-          <maml:para>An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see <maml:navigationLink><maml:linkText>Azure Pack</maml:linkText><maml:uri></maml:uri></maml:navigationLink>.</maml:para>
+          <maml:para>
+            An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see <maml:navigationLink>
+              <maml:linkText>Azure Pack</maml:linkText>
+              <maml:uri></maml:uri>
+            </maml:navigationLink>.
+          </maml:para>
           <maml:para>To get the available Azure environments, use the Get-AzureEnvironment cmdlet. To add an environment, use the Add-AzureEnvironment cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -145,9 +160,10 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Add-AzureAccount
+        <dev:code>
+          PS C:\&gt;Add-AzureAccount
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command adds an Azure account to Windows PowerShell. When you run the command, a windows pops up to request the user name and password of the account. </maml:para>
         </dev:remarks>
@@ -163,8 +179,9 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Add-AzureAccount -SubscriptionDataFile C:\Testing\SDF.xml
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Add-AzureAccount -SubscriptionDataFile C:\Testing\SDF.xml
+        </dev:code>
         <dev:remarks>
           <maml:para>This command uses the SubscriptionDataFile parameter to direct Add-AzureAccount to store the account data in the C:\Testing\SDF.xml file, instead of the default file.</maml:para>
         </dev:remarks>
@@ -182,7 +199,7 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$credential = Get-Credential
-PS C:\&gt;Add-AzureAccount -Credential $credential
+          PS C:\&gt;Add-AzureAccount -Credential $credential
         </dev:code>
         <dev:remarks>
           <maml:para>This command uses the Credential parameter to provide AAD authentication information on the command line, rather than using the pop-up dialog for AAD authentication.</maml:para>
@@ -342,13 +359,14 @@ PS C:\&gt;Add-AzureAccount -Credential $credential
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureAccount
-Name                         ActiveDirectories
-----                         -----------------
-contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd86-e6a...
-contosotest1@outlook.com     {{ ActiveDirectoryTenantId = aaeabcde-386c-4466-bf70-794...
+        <dev:code>
+          PS C:\&gt;Get-AzureAccount
+          Name                         ActiveDirectories
+          ----                         -----------------
+          contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd86-e6a...
+          contosotest1@outlook.com     {{ ActiveDirectoryTenantId = aaeabcde-386c-4466-bf70-794...
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all accounts associated with the specified user.</maml:para>
         </dev:remarks>
@@ -364,11 +382,12 @@ contosotest1@outlook.com     {{ ActiveDirectoryTenantId = aaeabcde-386c-4466-bf7
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureAccount -Name contosoadmin@outlook.com
-Name                         ActiveDirectories
-----                         -----------------
-contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd86-e6a...
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-AzureAccount -Name contosoadmin@outlook.com
+          Name                         ActiveDirectories
+          ----                         -----------------
+          contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd86-e6a...
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the ContosoAdmin account.</maml:para>
         </dev:remarks>
@@ -581,9 +600,10 @@ contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd8
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureAccount -Name admin@contoso.com
+        <dev:code>
+          PS C:\&gt;Remove-AzureAccount -Name admin@contoso.com
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the admin@contoso.com from your subscription data file. When the command completes, the account is no longer available to Windows PowerShell.</maml:para>
         </dev:remarks>
@@ -624,7 +644,12 @@ contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd8
     </command:details>
     <maml:description>
       <maml:para>The Get-AzureEnvironment cmdlet gets the Azure environments that are available to Windows PowerShell.</maml:para>
-      <maml:para>An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see <maml:navigationLink><maml:linkText>Azure Pack</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://www.microsoft.com/en-us/server-cloud/products/windows-azure-pack/default.aspx).</maml:para>
+      <maml:para>
+        An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see <maml:navigationLink>
+          <maml:linkText>Azure Pack</maml:linkText>
+          <maml:uri></maml:uri>
+        </maml:navigationLink> (http://www.microsoft.com/en-us/server-cloud/products/windows-azure-pack/default.aspx).
+      </maml:para>
       <maml:para>The Get-AzureEnvironment cmdlet gets environments from your subscription data file, not from Azure. If the subscription data file is outdated, run the Add-AzureAccount or Import-PublishSettingsFile cmdlet to refresh it.</maml:para>
       <maml:para>This topic describes the cmdlet in the .7.2 version of the Microsoft Azure PowerShell module. To find out the version of the module you're using, from the Azure PowerShell console, type (get-module azure).version.</maml:para>
     </maml:description>
@@ -707,13 +732,14 @@ contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd8
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureEnvironment
-EnvironmentName               ServiceEndpoint               ResourceManagerEndpoint       PublishSettingsFileUrl
----------------               ---------------               -----------------------       ----------------------
+        <dev:code>
+          PS C:\&gt;Get-AzureEnvironment
+          EnvironmentName               ServiceEndpoint               ResourceManagerEndpoint       PublishSettingsFileUrl
+          ---------------               ---------------               -----------------------       ----------------------
 
-AzureCloud                    https://management.core.wi... https://management.azure.com/ http://go.microsoft.com/fw... 
-AzureChinaCloud               https://management.core.ch... https://not-supported-serv... http://go.microsoft.com/fw...
-</dev:code>
+          AzureCloud                    https://management.core.wi... https://management.azure.com/ http://go.microsoft.com/fw...
+          AzureChinaCloud               https://management.core.ch... https://not-supported-serv... http://go.microsoft.com/fw...
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all environments that are available to Windows PowerShell.</maml:para>
         </dev:remarks>
@@ -729,32 +755,33 @@ AzureChinaCloud               https://management.core.ch... https://not-supporte
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureEnvironment -Name AzureCloud
-Name                          : AzureCloud
+        <dev:code>
+          PS C:\&gt;Get-AzureEnvironment -Name AzureCloud
+          Name                          : AzureCloud
 
-PublishSettingsFileUrl        : http://go.microsoft.com/fwlink/?LinkID=301775
+          PublishSettingsFileUrl        : http://go.microsoft.com/fwlink/?LinkID=301775
 
-ServiceEndpoint               : https://management.core.windows.net/
+          ServiceEndpoint               : https://management.core.windows.net/
 
-ResourceManagerEndpoint       : https://management.azure.com/
+          ResourceManagerEndpoint       : https://management.azure.com/
 
-ManagementPortalUrl           : http://go.microsoft.com/fwlink/?LinkId=254433
+          ManagementPortalUrl           : http://go.microsoft.com/fwlink/?LinkId=254433
 
-ActiveDirectoryEndpoint       : https://login.windows.net/
+          ActiveDirectoryEndpoint       : https://login.windows.net/
 
-ActiveDirectoryCommonTenantId : common
+          ActiveDirectoryCommonTenantId : common
 
-StorageEndpointSuffix         : core.windows.net
+          StorageEndpointSuffix         : core.windows.net
 
-StorageBlobEndpointFormat     : {0}://{1}.blob.core.windows.net/
+          StorageBlobEndpointFormat     : {0}://{1}.blob.core.windows.net/
 
-StorageQueueEndpointFormat    : {0}://{1}.queue.core.windows.net/
+          StorageQueueEndpointFormat    : {0}://{1}.queue.core.windows.net/
 
-StorageTableEndpointFormat    : {0}://{1}.table.core.windows.net/
+          StorageTableEndpointFormat    : {0}://{1}.table.core.windows.net/
 
-GalleryEndpoint               : https://gallery.azure.com/
+          GalleryEndpoint               : https://gallery.azure.com/
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This example gets the AzureCloud environment.</maml:para>
         </dev:remarks>
@@ -770,9 +797,10 @@ GalleryEndpoint               : https://gallery.azure.com/
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureEnvironment | ForEach-Object {Get-AzureEnvironment -Name $_.EnvironmentName}
+        <dev:code>
+          PS C:\&gt;Get-AzureEnvironment | ForEach-Object {Get-AzureEnvironment -Name $_.EnvironmentName}
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all properties of all environments.</maml:para>
           <maml:para>The command uses the Get-AzureEnvironment cmdlet to get all Azure environments for this account. Then, it uses the Foreach-Object cmdlet to run a Get-AzureEnvironment command with the Name parameter on each environment. The value of the Name parameter is the EnvironmentName property of each environment.</maml:para>
@@ -831,7 +859,12 @@ GalleryEndpoint               : https://gallery.azure.com/
     </command:details>
     <maml:description>
       <maml:para>The Add-AzureEnvironment cmdlet creates a new custom Azure account environment and saves it in your roaming user profile. The cmdlet returns an object that represents the new environment. When the command completes, you can use the environment in Windows PowerShell.</maml:para>
-      <maml:para>An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see <maml:navigationLink><maml:linkText>Azure Pack</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://www.microsoft.com/en-us/server-cloud/products/windows-azure-pack/default.aspx).</maml:para>
+      <maml:para>
+        An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see <maml:navigationLink>
+          <maml:linkText>Azure Pack</maml:linkText>
+          <maml:uri></maml:uri>
+        </maml:navigationLink> (http://www.microsoft.com/en-us/server-cloud/products/windows-azure-pack/default.aspx).
+      </maml:para>
       <maml:para>Only the Name parameter of this cmdlet is mandatory. If you omit a parameter, its value is null ($null), and the service that uses that endpoint might not function properly. To add or change the value of an environment property, use the Set-AzureEnvironment cmdlet.</maml:para>
       <maml:para>NOTE: Changing your environment can cause your account to fail. Typically, environments are added only for testing or troubleshooting.</maml:para>
       <maml:para>This topic describes the cmdlet in the .7.2 version of the Microsoft Azure PowerShell module. To find out the version of the module you're using, from the Azure PowerShell console, type (get-module azure).version.</maml:para>
@@ -884,14 +917,27 @@ GalleryEndpoint               : https://gallery.azure.com/
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="">
           <maml:name>ResourceManagerEndpoint</maml:name>
           <maml:description>
-            <maml:para>Specifies the endpoint for Azure Resource Manager data, including data about resource groups associated with the account. For more information about Azure Resource Manager, see <maml:navigationLink><maml:linkText>Azure Resource Manager Cmdlets</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394765) and  <maml:navigationLink><maml:linkText>Using Windows PowerShell with Resource Manager</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394767).</maml:para>
+            <maml:para>
+              Specifies the endpoint for Azure Resource Manager data, including data about resource groups associated with the account. For more information about Azure Resource Manager, see <maml:navigationLink>
+                <maml:linkText>Azure Resource Manager Cmdlets</maml:linkText>
+                <maml:uri></maml:uri>
+              </maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394765) and  <maml:navigationLink>
+                <maml:linkText>Using Windows PowerShell with Resource Manager</maml:linkText>
+                <maml:uri></maml:uri>
+              </maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394767).
+            </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="8" aliases="">
           <maml:name>GalleryEndpoint</maml:name>
           <maml:description>
-            <maml:para>Specifies the endpoint for the Azure Resource Manager gallery, which stores resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for <maml:navigationLink><maml:linkText>Get-AzureResourceGroupGalleryTemplate</maml:linkText><maml:uri></maml:uri></maml:navigationLink>.</maml:para>
+            <maml:para>
+              Specifies the endpoint for the Azure Resource Manager gallery, which stores resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for <maml:navigationLink>
+                <maml:linkText>Get-AzureResourceGroupGalleryTemplate</maml:linkText>
+                <maml:uri></maml:uri>
+              </maml:navigationLink>.
+            </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -914,7 +960,12 @@ GalleryEndpoint               : https://gallery.azure.com/
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="8" aliases="">
         <maml:name>GalleryEndpoint</maml:name>
         <maml:description>
-          <maml:para>Specifies the endpoint for the Azure Resource Manager gallery, which stores resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for <maml:navigationLink><maml:linkText>Get-AzureResourceGroupGalleryTemplate</maml:linkText><maml:uri></maml:uri></maml:navigationLink>.</maml:para>
+          <maml:para>
+            Specifies the endpoint for the Azure Resource Manager gallery, which stores resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for <maml:navigationLink>
+              <maml:linkText>Get-AzureResourceGroupGalleryTemplate</maml:linkText>
+              <maml:uri></maml:uri>
+            </maml:navigationLink>.
+          </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -966,7 +1017,15 @@ GalleryEndpoint               : https://gallery.azure.com/
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="">
         <maml:name>ResourceManagerEndpoint</maml:name>
         <maml:description>
-          <maml:para>Specifies the endpoint for Azure Resource Manager data, including data about resource groups associated with the account. For more information about Azure Resource Manager, see <maml:navigationLink><maml:linkText>Azure Resource Manager Cmdlets</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394765) and  <maml:navigationLink><maml:linkText>Using Windows PowerShell with Resource Manager</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394767).</maml:para>
+          <maml:para>
+            Specifies the endpoint for Azure Resource Manager data, including data about resource groups associated with the account. For more information about Azure Resource Manager, see <maml:navigationLink>
+              <maml:linkText>Azure Resource Manager Cmdlets</maml:linkText>
+              <maml:uri></maml:uri>
+            </maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394765) and  <maml:navigationLink>
+              <maml:linkText>Using Windows PowerShell with Resource Manager</maml:linkText>
+              <maml:uri></maml:uri>
+            </maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394767).
+          </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1043,31 +1102,32 @@ GalleryEndpoint               : https://gallery.azure.com/
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Add-AzureEnvironment -Name ContosoEnv -PublishSettingsFileUrl https://contoso.com/fwlink/?LinkID=101 -ServiceEndpoint https://contoso.com/fwlink/?LinkID=102
-Name                          : ContosoEnv
+        <dev:code>
+          PS C:\&gt;Add-AzureEnvironment -Name ContosoEnv -PublishSettingsFileUrl https://contoso.com/fwlink/?LinkID=101 -ServiceEndpoint https://contoso.com/fwlink/?LinkID=102
+          Name                          : ContosoEnv
 
-PublishSettingsFileUrl        : https://contoso.com/fwlink/?LinkID=101
+          PublishSettingsFileUrl        : https://contoso.com/fwlink/?LinkID=101
 
-ServiceEndpoint               : https://contoso.com/fwlink/?LinkID=102
+          ServiceEndpoint               : https://contoso.com/fwlink/?LinkID=102
 
-ResourceManagerEndpoint       : 
+          ResourceManagerEndpoint       :
 
-ManagementPortalUrl           : 
+          ManagementPortalUrl           :
 
-ActiveDirectoryEndpoint       : 
+          ActiveDirectoryEndpoint       :
 
-ActiveDirectoryCommonTenantId : 
+          ActiveDirectoryCommonTenantId :
 
-StorageEndpointSuffix         : 
+          StorageEndpointSuffix         :
 
-StorageBlobEndpointFormat     : 
+          StorageBlobEndpointFormat     :
 
-StorageQueueEndpointFormat    : 
+          StorageQueueEndpointFormat    :
 
-StorageTableEndpointFormat    : 
+          StorageTableEndpointFormat    :
 
-GalleryEndpoint               : 
-</dev:code>
+          GalleryEndpoint               :
+        </dev:code>
         <dev:remarks>
           <maml:para>This command creates the ContosoEnv Azure environment.</maml:para>
         </dev:remarks>
@@ -1112,7 +1172,12 @@ GalleryEndpoint               :
     </command:details>
     <maml:description>
       <maml:para>The Set-AzureEnvironment cmdlet changes the properties of an Azure environment. It returns an object that represents the environment with its new property values. Use the Name parameter to identify the environment and the other parameters to change property values. You cannot use Set-AzureEnvironment to change the name of an Azure environment.</maml:para>
-      <maml:para>An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see <maml:navigationLink><maml:linkText>Azure Pack</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://www.microsoft.com/en-us/server-cloud/products/windows-azure-pack/default.aspx).</maml:para>
+      <maml:para>
+        An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see <maml:navigationLink>
+          <maml:linkText>Azure Pack</maml:linkText>
+          <maml:uri></maml:uri>
+        </maml:navigationLink> (http://www.microsoft.com/en-us/server-cloud/products/windows-azure-pack/default.aspx).
+      </maml:para>
       <maml:para>NOTE:  Do not change the properties of the AzureCloud or AzureChinaCloud environments. Use this cmdlet to change the values of private environments that you create.</maml:para>
     </maml:description>
     <command:syntax>
@@ -1163,14 +1228,27 @@ GalleryEndpoint               :
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="">
           <maml:name>ResourceManagerEndpoint</maml:name>
           <maml:description>
-            <maml:para>Changes the endpoint for Azure Resource Manager data, including data about resource groups associated with the account. For more information about Azure Resource Manager, see <maml:navigationLink><maml:linkText>Azure Resource Manager Cmdlets</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394765) and  <maml:navigationLink><maml:linkText>Using Windows PowerShell with Resource Manager</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394767).</maml:para>
+            <maml:para>
+              Changes the endpoint for Azure Resource Manager data, including data about resource groups associated with the account. For more information about Azure Resource Manager, see <maml:navigationLink>
+                <maml:linkText>Azure Resource Manager Cmdlets</maml:linkText>
+                <maml:uri></maml:uri>
+              </maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394765) and  <maml:navigationLink>
+                <maml:linkText>Using Windows PowerShell with Resource Manager</maml:linkText>
+                <maml:uri></maml:uri>
+              </maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394767).
+            </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="8" aliases="">
           <maml:name>GalleryEndpoint</maml:name>
           <maml:description>
-            <maml:para>Changes the endpoint for the Azure Resource Manager gallery to the specified value. The gallery endpoint is the location for resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for <maml:navigationLink><maml:linkText>Get-AzureResourceGroupGalleryTemplate</maml:linkText><maml:uri></maml:uri></maml:navigationLink>.</maml:para>
+            <maml:para>
+              Changes the endpoint for the Azure Resource Manager gallery to the specified value. The gallery endpoint is the location for resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for <maml:navigationLink>
+                <maml:linkText>Get-AzureResourceGroupGalleryTemplate</maml:linkText>
+                <maml:uri></maml:uri>
+              </maml:navigationLink>.
+            </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1193,7 +1271,12 @@ GalleryEndpoint               :
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="8" aliases="">
         <maml:name>GalleryEndpoint</maml:name>
         <maml:description>
-          <maml:para>Changes the endpoint for the Azure Resource Manager gallery to the specified value. The gallery endpoint is the location for resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for <maml:navigationLink><maml:linkText>Get-AzureResourceGroupGalleryTemplate</maml:linkText><maml:uri></maml:uri></maml:navigationLink>.</maml:para>
+          <maml:para>
+            Changes the endpoint for the Azure Resource Manager gallery to the specified value. The gallery endpoint is the location for resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for <maml:navigationLink>
+              <maml:linkText>Get-AzureResourceGroupGalleryTemplate</maml:linkText>
+              <maml:uri></maml:uri>
+            </maml:navigationLink>.
+          </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1245,7 +1328,15 @@ GalleryEndpoint               :
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="7" aliases="">
         <maml:name>ResourceManagerEndpoint</maml:name>
         <maml:description>
-          <maml:para>Changes the endpoint for Azure Resource Manager data, including data about resource groups associated with the account. For more information about Azure Resource Manager, see <maml:navigationLink><maml:linkText>Azure Resource Manager Cmdlets</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394765) and  <maml:navigationLink><maml:linkText>Using Windows PowerShell with Resource Manager</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394767).</maml:para>
+          <maml:para>
+            Changes the endpoint for Azure Resource Manager data, including data about resource groups associated with the account. For more information about Azure Resource Manager, see <maml:navigationLink>
+              <maml:linkText>Azure Resource Manager Cmdlets</maml:linkText>
+              <maml:uri></maml:uri>
+            </maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394765) and  <maml:navigationLink>
+              <maml:linkText>Using Windows PowerShell with Resource Manager</maml:linkText>
+              <maml:uri></maml:uri>
+            </maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394767).
+          </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1322,9 +1413,10 @@ GalleryEndpoint               :
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureEnvironment -Name ContosoEnv -PublishSettingsFileUrl "https://contoso.com" -StorageEndpoint "contoso.com"
+        <dev:code>
+          PS C:\&gt;Set-AzureEnvironment -Name ContosoEnv -PublishSettingsFileUrl "https://contoso.com" -StorageEndpoint "contoso.com"
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command changes the values of the PublishSettingsFileUrl and StorageEndpoint properties of the ContosoEnv environment.</maml:para>
         </dev:remarks>
@@ -1369,7 +1461,12 @@ GalleryEndpoint               :
     </command:details>
     <maml:description>
       <maml:para>The Remove-AzureEnvironment cmdlet deletes an Azure environment from your roaming profile so Windows PowerShell can't find it. This cmdlet does not delete the environment from Microsoft Azure, or change the actual environment in any way.</maml:para>
-      <maml:para>An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see <maml:navigationLink><maml:linkText>Azure Pack</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://www.microsoft.com/en-us/server-cloud/products/windows-azure-pack/default.aspx).</maml:para>
+      <maml:para>
+        An Azure environment an independent deployment of Microsoft Azure, such as AzureCloud for global Azure and AzureChinaCloud for Azure operated by 21Vianet in China. You can also create on-premises Azure environments by using Azure Pack and the WAPack cmdlets. For more information, see <maml:navigationLink>
+          <maml:linkText>Azure Pack</maml:linkText>
+          <maml:uri></maml:uri>
+        </maml:navigationLink> (http://www.microsoft.com/en-us/server-cloud/products/windows-azure-pack/default.aspx).
+      </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1457,9 +1554,10 @@ GalleryEndpoint               :
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureEnvironment -Name ContosoEnv
+        <dev:code>
+          PS C:\&gt;Remove-AzureEnvironment -Name ContosoEnv
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the ContosoEnv environment from Windows PowerShell.</maml:para>
         </dev:remarks>
@@ -1475,9 +1573,10 @@ GalleryEndpoint               :
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureEnvironment | Where-Object EnvironmentName -like "Contoso*" | ForEach-Object {Remove-AzureEnvironment -Name $_.EnvironmentName }
+        <dev:code>
+          PS C:\&gt;Get-AzureEnvironment | Where-Object EnvironmentName -like "Contoso*" | ForEach-Object {Remove-AzureEnvironment -Name $_.EnvironmentName }
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command deletes environments whose names begin with "Contoso" from Windows PowerShell.</maml:para>
         </dev:remarks>
@@ -1845,8 +1944,9 @@ GalleryEndpoint               :
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt;Get-AzureSubscription
-</dev:code>
+        <dev:code>
+          C:\PS&gt;Get-AzureSubscription
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all subscriptions that are available to Windows PowerShell.</maml:para>
         </dev:remarks>
@@ -1862,8 +1962,9 @@ GalleryEndpoint               :
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt;Get-AzureSubscription ???SubscriptionName MyProdSubscription
-</dev:code>
+        <dev:code>
+          C:\PS&gt;Get-AzureSubscription ???SubscriptionName MyProdSubscription
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets only the "MyProdSubsciption" subscription.</maml:para>
         </dev:remarks>
@@ -1879,9 +1980,10 @@ GalleryEndpoint               :
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt;(Get-AzureSubscription -Default).SubscriptionName
-ContosoEngineering
-</dev:code>
+        <dev:code>
+          C:\PS&gt;(Get-AzureSubscription -Default).SubscriptionName
+          ContosoEngineering
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the name of the default subscription. The command first gets the subscription and then uses the dot method to get the SubscriptionName property of the subscription.</maml:para>
         </dev:remarks>
@@ -1897,9 +1999,10 @@ ContosoEngineering
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt;Get-AzureSubscription -Current | Format-List -Property SubscriptionName, Certificate
+        <dev:code>
+          C:\PS&gt;Get-AzureSubscription -Current | Format-List -Property SubscriptionName, Certificate
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command returns a list with the name and certificate of the current subscription. It uses a Get-AzureSubscription command to get the current subscription. Then it pipes the subscription to a Format-List command that displays the selected properties in a list.</maml:para>
         </dev:remarks>
@@ -1915,8 +2018,9 @@ ContosoEngineering
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt;Get-AzureSubscription -SubscriptionDataFile "C:\Temp\MySubscriptions.xml" -ExtendedDetails
-</dev:code>
+        <dev:code>
+          C:\PS&gt;Get-AzureSubscription -SubscriptionDataFile "C:\Temp\MySubscriptions.xml" -ExtendedDetails
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all properties, included quota properties, of the subscriptions in the C:\Temp\MySubscriptions.xml subscription data file. Use the SubscriptionDataFile parameter if you specified an alternate subscription data file when you ran the Add-AzureAccount or Import-PublishSettingsFile cmdlets.</maml:para>
         </dev:remarks>
@@ -2303,12 +2407,13 @@ ContosoEngineering
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt; Remove-AzureSubscription -SubscriptionName Test
+        <dev:code>
+          C:\PS&gt; Remove-AzureSubscription -SubscriptionName Test
 
-Confirm
-Are you sure you want to perform this action?
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):
-</dev:code>
+          Confirm
+          Are you sure you want to perform this action?
+          [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):
+        </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the "Test" subscription from the default subscription data file. </maml:para>
         </dev:remarks>
@@ -2324,8 +2429,9 @@ Are you sure you want to perform this action?
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt; Remove-AzureSubscription -SubscriptionName Test -SubscriptionDataFile C:\Subs\MySubscriptions.xml -Force
-</dev:code>
+        <dev:code>
+          C:\PS&gt; Remove-AzureSubscription -SubscriptionName Test -SubscriptionDataFile C:\Subs\MySubscriptions.xml -Force
+        </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the Test subscription from the MySubscriptions.xml subscription data file. The command uses the Force parameter to suppress the confirmation prompt.</maml:para>
         </dev:remarks>
@@ -2341,8 +2447,9 @@ Are you sure you want to perform this action?
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt; ...if (Remove-AzureSubscription -SubscriptionName Test -PassThru) {...}
-</dev:code>
+        <dev:code>
+          C:\PS&gt; ...if (Remove-AzureSubscription -SubscriptionName Test -PassThru) {...}
+        </dev:code>
         <dev:remarks>
           <maml:para>This command uses the Remove-AzureSubscription command in an If statement. It uses the PassThru parameter, which returns a Boolean value, to determine whether the script block in the If statement is executed.</maml:para>
         </dev:remarks>
@@ -2631,8 +2738,9 @@ Are you sure you want to perform this action?
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt; Select-AzureSubscription -SubscriptionName ContosoEngineering -Current
-</dev:code>
+        <dev:code>
+          C:\PS&gt; Select-AzureSubscription -SubscriptionName ContosoEngineering -Current
+        </dev:code>
         <dev:remarks>
           <maml:para>This command makes "ContosoEngineering" the current subscription.</maml:para>
         </dev:remarks>
@@ -2648,8 +2756,9 @@ Are you sure you want to perform this action?
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt; Select-AzureSubscription -SubscriptionName ContosoFinance -SubscriptionDataFile "C:\subs\MySubscriptions.xml"
-</dev:code>
+        <dev:code>
+          C:\PS&gt; Select-AzureSubscription -SubscriptionName ContosoFinance -SubscriptionDataFile "C:\subs\MySubscriptions.xml"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command changes the default subscription to "ContosoFinance." It saves the setting in the Subscriptions.xml subscription data file.</maml:para>
         </dev:remarks>
@@ -2734,7 +2843,15 @@ Are you sure you want to perform this action?
           <maml:name>ResourceManagerEndpoint</maml:name>
           <maml:description>
             <maml:para>Sets or changes the endpoint for Azure Resource Manager data to the specified value.</maml:para>
-            <maml:para>For more information about Azure Resource Manager, see <maml:navigationLink><maml:linkText>Azure Resource Manager Cmdlets</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394765) and  <maml:navigationLink><maml:linkText>Using Windows PowerShell with Resource Manager</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394767).</maml:para>
+            <maml:para>
+              For more information about Azure Resource Manager, see <maml:navigationLink>
+                <maml:linkText>Azure Resource Manager Cmdlets</maml:linkText>
+                <maml:uri></maml:uri>
+              </maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394765) and  <maml:navigationLink>
+                <maml:linkText>Using Windows PowerShell with Resource Manager</maml:linkText>
+                <maml:uri></maml:uri>
+              </maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394767).
+            </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -2831,7 +2948,15 @@ Are you sure you want to perform this action?
         <maml:name>ResourceManagerEndpoint</maml:name>
         <maml:description>
           <maml:para>Sets or changes the endpoint for Azure Resource Manager data to the specified value.</maml:para>
-          <maml:para>For more information about Azure Resource Manager, see <maml:navigationLink><maml:linkText>Azure Resource Manager Cmdlets</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394765) and  <maml:navigationLink><maml:linkText>Using Windows PowerShell with Resource Manager</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394767).</maml:para>
+          <maml:para>
+            For more information about Azure Resource Manager, see <maml:navigationLink>
+              <maml:linkText>Azure Resource Manager Cmdlets</maml:linkText>
+              <maml:uri></maml:uri>
+            </maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394765) and  <maml:navigationLink>
+              <maml:linkText>Using Windows PowerShell with Resource Manager</maml:linkText>
+              <maml:uri></maml:uri>
+            </maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkID=394767).
+          </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -2935,11 +3060,12 @@ Are you sure you want to perform this action?
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$thumbprint = &lt;Certificate Thumbprint&gt;
-PS C:\&gt;$myCert = Get-Item cert:\\CurrentUser\My\$thumbprint 
-PS C:\&gt;Set-AzureSubscription -SubscriptionName ContosotTest -Certificate $myCert -SubscriptionID 12345
+        <dev:code>
+          PS C:\&gt;$thumbprint = &lt;Certificate Thumbprint&gt;
+          PS C:\&gt;$myCert = Get-Item cert:\\CurrentUser\My\$thumbprint
+          PS C:\&gt;Set-AzureSubscription -SubscriptionName ContosotTest -Certificate $myCert -SubscriptionID 12345
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>These commands create the ContosoTest subscription in the default subscription data file. The commands add a management certificate and subscription ID for the new subscription.</maml:para>
           <maml:para>When you run the Set-AzureSubscription command, the cmdlet looks for a subscription with the name "ContosoTest". If it doesn't find one, it creates a new subscription with the specified values.</maml:para>
@@ -2956,10 +3082,11 @@ PS C:\&gt;Set-AzureSubscription -SubscriptionName ContosotTest -Certificate $myC
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt; $thumbprint = &lt;Thumbprint-2&gt;
-C:\PS&gt; $differentCert = Get-Item cert:\\CurrentUser\My\$thumbprint 
-C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certificate $differentCert
-</dev:code>
+        <dev:code>
+          C:\PS&gt; $thumbprint = &lt;Thumbprint-2&gt;
+          C:\PS&gt; $differentCert = Get-Item cert:\\CurrentUser\My\$thumbprint
+          C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certificate $differentCert
+        </dev:code>
         <dev:remarks>
           <maml:para>These commands are very similar to the commands in Example 1. However, because the SubscriptionName parameter now identifies an existing subscription, Set-AzureSubscription uses the remaining parameters to change the values of the existing subscription rather than creating a new subscription</maml:para>
         </dev:remarks>
@@ -2975,8 +3102,9 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -ServiceEndpoint "https://management.core.contoso.com"
-</dev:code>
+        <dev:code>
+          C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -ServiceEndpoint "https://management.core.contoso.com"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command adds or changes a custom service endpoint for the ContosoEngineering subscription.</maml:para>
         </dev:remarks>
@@ -2992,8 +3120,9 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering ???Certificate $null -ResourceManagerEndpoint $null
-</dev:code>
+        <dev:code>
+          C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering ???Certificate $null -ResourceManagerEndpoint $null
+        </dev:code>
         <dev:remarks>
           <maml:para>This command sets the values of the Certificate and ResourceManagerEndpoint properties to null ($null). This clears the values of those properties without changing other settings.</maml:para>
         </dev:remarks>
@@ -3009,8 +3138,9 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>C:\PS&gt; Set-AzureSubscription -SubscriptionName ContosoFinance -SubscriptionDataFile = C:\Azure\SubscriptionData.xml - CurrentStorageAccount ContosoStorage01
-</dev:code>
+        <dev:code>
+          C:\PS&gt; Set-AzureSubscription -SubscriptionName ContosoFinance -SubscriptionDataFile = C:\Azure\SubscriptionData.xml - CurrentStorageAccount ContosoStorage01
+        </dev:code>
         <dev:remarks>
           <maml:para>This command changes the current storage account of the ContosoFinance subscription to ContosoStorage01. The command uses the SubscriptionDataFile parameter to change the data in the C:\Azure\SubscriptionData.xml subscription data file. By default, Set-AzureSubscription uses the default subscription data file in your roaming user profile.</maml:para>
         </dev:remarks>
@@ -7680,6 +7810,20 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+          <maml:name>CreateACSNamespace</maml:name>
+          <maml:description>
+            <maml:para>Create assosciated ACS namespace as well</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+          <maml:name>NamespaceType</maml:name>
+          <maml:description>
+            <maml:para>Choose if the Namespace will be used for Messaging or Notification Hubs</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">NamespaceType</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -7709,6 +7853,33 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+        <maml:name>CreateACSNamespace</maml:name>
+        <maml:description>
+          <maml:para>Create assosciated ACS namespace as well</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+        <dev:type>
+          <maml:name>Boolean</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+        <maml:name>NamespaceType</maml:name>
+        <maml:description>
+          <maml:para>Choose if the Namespace will be used for Messaging or Notification Hubs</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">NamespaceType</command:parameterValue>
+        <dev:type>
+          <maml:name>NamespaceType</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -9502,7 +9673,15 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
     <maml:description>
       <maml:para>The Get-AzureWebsite cmdlet gets information about Azure websites in the current subscription. </maml:para>
       <maml:para>By default, Get-AzureWebsite gets all Azure websites in the current subscription and returns an object that provides basic information about the sites. When you use the Name parameter, Get-AzureWebsite returns an object with extensive information, including configuration details.</maml:para>
-      <maml:para>The current subscription is the subscription that is designated as "current." To find the current subscription, use the Current parameter of the <maml:navigationLink><maml:linkText>Get-AzureSubscription</maml:linkText><maml:uri></maml:uri></maml:navigationLink> cmdlet. To change the current subscription, use the <maml:navigationLink><maml:linkText>Select-AzureSubscription</maml:linkText><maml:uri></maml:uri></maml:navigationLink> cmdlet.</maml:para>
+      <maml:para>
+        The current subscription is the subscription that is designated as "current." To find the current subscription, use the Current parameter of the <maml:navigationLink>
+          <maml:linkText>Get-AzureSubscription</maml:linkText>
+          <maml:uri></maml:uri>
+        </maml:navigationLink> cmdlet. To change the current subscription, use the <maml:navigationLink>
+          <maml:linkText>Select-AzureSubscription</maml:linkText>
+          <maml:uri></maml:uri>
+        </maml:navigationLink> cmdlet.
+      </maml:para>
       <maml:para>This topic describes the cmdlet in the 0.8.2 version of the Microsoft Azure PowerShell module. To find the version of the module you're using, in the Azure PowerShell console, type (Get-Module -Name Azure).Version.</maml:para>
     </maml:description>
     <command:syntax>
@@ -9518,7 +9697,12 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Slot</maml:name>
           <maml:description>
-            <maml:para>Gets the specified deployment slot of the website. Enter the slot name, such as "Staging" or "Production". For more information about deployment slots, see <maml:navigationLink><maml:linkText>Staged Deployment on Microsoft Azure Web Sites</maml:linkText><maml:uri></maml:uri></maml:navigationLink>. To add a deployment slot to an existing Azure website, use the Set-AzureWebsite cmdlet.</maml:para>
+            <maml:para>
+              Gets the specified deployment slot of the website. Enter the slot name, such as "Staging" or "Production". For more information about deployment slots, see <maml:navigationLink>
+                <maml:linkText>Staged Deployment on Microsoft Azure Web Sites</maml:linkText>
+                <maml:uri></maml:uri>
+              </maml:navigationLink>. To add a deployment slot to an existing Azure website, use the Set-AzureWebsite cmdlet.
+            </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -9541,7 +9725,12 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>Slot</maml:name>
         <maml:description>
-          <maml:para>Gets the specified deployment slot of the website. Enter the slot name, such as "Staging" or "Production". For more information about deployment slots, see <maml:navigationLink><maml:linkText>Staged Deployment on Microsoft Azure Web Sites</maml:linkText><maml:uri></maml:uri></maml:navigationLink>. To add a deployment slot to an existing Azure website, use the Set-AzureWebsite cmdlet.</maml:para>
+          <maml:para>
+            Gets the specified deployment slot of the website. Enter the slot name, such as "Staging" or "Production". For more information about deployment slots, see <maml:navigationLink>
+              <maml:linkText>Staged Deployment on Microsoft Azure Web Sites</maml:linkText>
+              <maml:uri></maml:uri>
+            </maml:navigationLink>. To add a deployment slot to an existing Azure website, use the Set-AzureWebsite cmdlet.
+          </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -9604,9 +9793,10 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureWebsite
+        <dev:code>
+          PS C:\&gt;Get-AzureWebsite
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all Azure websites in the current subscription.</maml:para>
         </dev:remarks>
@@ -9622,9 +9812,10 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureWebsite -Name ContosoWeb
+        <dev:code>
+          PS C:\&gt;Get-AzureWebsite -Name ContosoWeb
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets detailed information about the ContosoWeb Azure website, including configuration information. When you use the Name parameter, Get-AzureWebsite returns a SiteWithConfig object with extended information about the website.</maml:para>
         </dev:remarks>
@@ -9640,9 +9831,10 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureWebsite | ForEach-Object {Get-AzureWebsite -Name $_.Name}
+        <dev:code>
+          PS C:\&gt;Get-AzureWebsite | ForEach-Object {Get-AzureWebsite -Name $_.Name}
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets detailed information about all websites in the subscription. It uses a Get-AzureWebsite command to get all websites and then uses the ForEach-Object cmdlet to get each website by name.</maml:para>
         </dev:remarks>
@@ -9658,9 +9850,10 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureWebsite -Name ContosoWeb -Slot Staging
+        <dev:code>
+          PS C:\&gt;Get-AzureWebsite -Name ContosoWeb -Slot Staging
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the Staging deployment slot of the ContosoWeb website. Deployment slots let you test different versions of your Azure website without releasing them to the public.</maml:para>
         </dev:remarks>
@@ -9676,17 +9869,18 @@ C:\PS&gt; Set-AzureSubscription ???SubscriptionName ContosoEngineering -Certific
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances
+        <dev:code>
+          PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances
 
-InstanceId
-----------
-2d8e712fb8f85d061c30fd793a534e6700a175f9a9ab12ca55cb3b0edfcc10ee
-5834916b8cef49249b18187708223a33fbbc4352d33b48369f3166644bdd3445
+          InstanceId
+          ----------
+          2d8e712fb8f85d061c30fd793a534e6700a175f9a9ab12ca55cb3b0edfcc10ee
+          5834916b8cef49249b18187708223a33fbbc4352d33b48369f3166644bdd3445
 
-PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
-2
+          PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
+          2
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>The commands in this example use the Instances property of an Azure website to get information about currently running website instances. The Instances property was added to the SiteWithConfig object in version 0.8.3 of the Azure module. </maml:para>
           <maml:para>The first command gets the instance IDs of all currently running instances of a website. The second command gets the number of running instances of the website. (You can use the Count property on any array.)</maml:para>
@@ -9915,106 +10109,106 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-       </command:syntaxItem>
+      </command:syntaxItem>
     </command:syntax>
 
     <command:inputTypes>
-          <command:inputType>
-            <dev:type>
-              <maml:name>None</maml:name>
-              <maml:uri>
-              </maml:uri>
-              <maml:description>
-                <maml:para />
-              </maml:description>
-            </dev:type>
-            <maml:description>
-              <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
-            </maml:description>
-          </command:inputType>
-        </command:inputTypes>
-        <command:returnValues>
-          <command:returnValue>
-            <dev:type>
-              <maml:name>Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.WebHostingPlan</maml:name>
-              <maml:uri>
-              </maml:uri>
-              <maml:description>
-                <maml:para />
-              </maml:description>
-            </dev:type>
-            <maml:description>
-              <maml:para>By default, Get-AzureWebHostingPlan returns an array of WebHostingPlan objects.</maml:para>
-            </maml:description>
-          </command:returnValue>
-        </command:returnValues>
-        <command:terminatingErrors />
-        <command:nonTerminatingErrors />
-        <command:examples>
-          <command:example>
-            <maml:title>Example 1: Get all web hosting plans in the subscription</maml:title>
-            <maml:introduction>
-              <maml:para>
-              </maml:para>
-            </maml:introduction>
-            <dev:code>
-              PS C:\&gt;Get-AzureWebHostingPlan
-              Name                   : Default1
-              SKU                    : Basic
-              WorkerSize             : Small
-              NumberOfWorkers        : 1
-              CurrentWorkerSize      : Small
-              CurrentNumberOfWorkers : 1
-              Status                 : Ready
-              WebSpace               : eastuswebspace
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.WebHostingPlan</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>By default, Get-AzureWebHostingPlan returns an array of WebHostingPlan objects.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Get all web hosting plans in the subscription</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Get-AzureWebHostingPlan
+          Name                   : Default1
+          SKU                    : Basic
+          WorkerSize             : Small
+          NumberOfWorkers        : 1
+          CurrentWorkerSize      : Small
+          CurrentNumberOfWorkers : 1
+          Status                 : Ready
+          WebSpace               : eastuswebspace
 
-              Name                   : Default0
-              SKU                    : Free
-              WorkerSize             : Small
-              NumberOfWorkers        : 0
-              CurrentWorkerSize      : Small
-              CurrentNumberOfWorkers : 0
-              Status                 : Ready
-            </dev:code>
-            <dev:remarks>
-              <maml:para>This command gets all Azure web hosting plans in the current subscription.</maml:para>
-            </dev:remarks>
-            <command:commandLines>
-              <command:commandLine>
-                <command:commandText />
-              </command:commandLine>
-            </command:commandLines>
-          </command:example>
-            <command:example>
-              <maml:title>Example 2: Get a specific web hosting plans in the subscription</maml:title>
-              <maml:introduction>
-                <maml:para>
-                </maml:para>
-              </maml:introduction>
-              <dev:code>
-                PS C:\&gt;Get-AzureWebHostingPlan westeuropewebspace Default0
+          Name                   : Default0
+          SKU                    : Free
+          WorkerSize             : Small
+          NumberOfWorkers        : 0
+          CurrentWorkerSize      : Small
+          CurrentNumberOfWorkers : 0
+          Status                 : Ready
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command gets all Azure web hosting plans in the current subscription.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Get a specific web hosting plans in the subscription</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Get-AzureWebHostingPlan westeuropewebspace Default0
 
-                Name                   : Default0
-                SKU                    : Free
-                WorkerSize             : Small
-                NumberOfWorkers        : 0
-                CurrentWorkerSize      : Small
-                CurrentNumberOfWorkers : 0
-                Status                 : Ready
-                WebSpace               : westeuropewebspace
+          Name                   : Default0
+          SKU                    : Free
+          WorkerSize             : Small
+          NumberOfWorkers        : 0
+          CurrentWorkerSize      : Small
+          CurrentNumberOfWorkers : 0
+          Status                 : Ready
+          WebSpace               : westeuropewebspace
 
-              </dev:code>
-              <dev:remarks>
-                <maml:para>This command gets single Azure web hosting plans in the current subscription.</maml:para>
-              </dev:remarks>
-              <command:commandLines>
-                <command:commandLine>
-                  <command:commandText />
-                </command:commandLine>
-              </command:commandLines>
-            </command:example>
-          </command:examples>
-     </command:command>
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command gets single Azure web hosting plans in the current subscription.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+  </command:command>
 
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -10165,7 +10359,7 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
       </command:example>
     </command:examples>
   </command:command>
-  
+
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <!--Generated by Help Cmdlet Editor-->
     <command:details>
@@ -15779,8 +15973,8 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-                     Publish-AzureWebsiteProject
-		  </command:name>
+        Publish-AzureWebsiteProject
+      </command:name>
       <maml:description>
         <maml:para>Publish a Visual Studio web project to a Microsoft Azure web site using WebDeploy.</maml:para>
       </maml:description>
@@ -15999,13 +16193,14 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
     <command:examples>
       <command:example>
         <maml:title>
-				  -------------------------- EXAMPLE 1 --------------------------
-			  </maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-  Publish-AzureWebsiteProject -Name site1 -ProjectFile .\WebApplication1.csproj -Configuration Debug                        </dev:code>
+          Publish-AzureWebsiteProject -Name site1 -ProjectFile .\WebApplication1.csproj -Configuration Debug
+        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
@@ -16028,13 +16223,14 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
       </command:example>
       <command:example>
         <maml:title>
-				  -------------------------- EXAMPLE 2 --------------------------
-			  </maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-  Publish-AzureWebsiteProject -Name site1 -Package .\WebApplication1.zip                        </dev:code>
+          Publish-AzureWebsiteProject -Name site1 -Package .\WebApplication1.zip
+        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
@@ -16057,13 +16253,14 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
       </command:example>
       <command:example>
         <maml:title>
-				  -------------------------- EXAMPLE 3 --------------------------
-			  </maml:title>
+          -------------------------- EXAMPLE 3 --------------------------
+        </maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-  Publish-AzureWebsiteProject -Name site1 -Package .\WebApplication1                        </dev:code>
+          Publish-AzureWebsiteProject -Name site1 -Package .\WebApplication1
+        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
@@ -16116,13 +16313,14 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
       </command:example>
       <command:example>
         <maml:title>
-				  -------------------------- EXAMPLE 5 --------------------------
-			  </maml:title>
+          -------------------------- EXAMPLE 5 --------------------------
+        </maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-  Publish-AzureWebsiteProject -Name site1 -ProjectFile .\WebApplication1.csproj -DefaultConnection "my connection string"                        </dev:code>
+          Publish-AzureWebsiteProject -Name site1 -ProjectFile .\WebApplication1.csproj -DefaultConnection "my connection string"
+        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
@@ -18329,8 +18527,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVM -Name "ContosoV126"
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVM -Name "ContosoV126"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the virtual machine named ContosoV126. </maml:para>
         </dev:remarks>
@@ -18346,8 +18545,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVM -Id 66242D17-189F-480D-87CF-8E1D749998C8
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVM -Id 66242D17-189F-480D-87CF-8E1D749998C8
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the virtual machine that has the specified ID. </maml:para>
         </dev:remarks>
@@ -18363,11 +18563,13 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVM
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVM
+        </dev:code>
         <dev:remarks>
-          <maml:para>This command gets all virtual machines.
-</maml:para>
+          <maml:para>
+            This command gets all virtual machines.
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -18520,8 +18722,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVMOSDisk -Name "ContosoOSDisk"
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVMOSDisk -Name "ContosoOSDisk"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets an operating system disk named ContosoOSDisk. </maml:para>
         </dev:remarks>
@@ -18537,9 +18740,10 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVMOSDisk -Id 66242D17-189F-480D-87CF-8E1D749998C8
+        <dev:code>
+          PS C:\&gt;Get-WAPackVMOSDisk -Id 66242D17-189F-480D-87CF-8E1D749998C8
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the operating system disk that has the specified ID. </maml:para>
         </dev:remarks>
@@ -18555,8 +18759,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVMOSDisk
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVMOSDisk
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all operating system disks. </maml:para>
         </dev:remarks>
@@ -18679,8 +18884,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVMSizeProfile -Name "ContosoSizeProfile07"
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVMSizeProfile -Name "ContosoSizeProfile07"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the size profile named ContosoSizeProfile07. </maml:para>
         </dev:remarks>
@@ -18696,8 +18902,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVMSizeProfile -ID 66242D17-189F-480D-87CF-8E1D749998C8
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVMSizeProfile -ID 66242D17-189F-480D-87CF-8E1D749998C8
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the size profile that has the specified ID. </maml:para>
         </dev:remarks>
@@ -18713,8 +18920,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVMSizeProfile
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVMSizeProfile
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all the size profiles. </maml:para>
         </dev:remarks>
@@ -18837,8 +19045,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVMTemplate -Name "ContosoTemplate04"
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVMTemplate -Name "ContosoTemplate04"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the virtual machine template named ContosoTemplate04. </maml:para>
         </dev:remarks>
@@ -18854,8 +19063,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVMTemplate -Id 66242D17-189F-480D-87CF-8E1D749998C8
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVMTemplate -Id 66242D17-189F-480D-87CF-8E1D749998C8
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the virtual machine template that has the specified ID. </maml:para>
         </dev:remarks>
@@ -18871,8 +19081,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVMTemplate
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVMTemplate
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all the virtual machine templates. </maml:para>
         </dev:remarks>
@@ -18995,8 +19206,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVNet
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVNet
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all virtual networks.</maml:para>
         </dev:remarks>
@@ -19012,8 +19224,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-WAPackVNet -ID 66242D17-189F-480D-87CF-8E1D749998C8
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-WAPackVNet -ID 66242D17-189F-480D-87CF-8E1D749998C8
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the virtual network that has the specified ID. </maml:para>
         </dev:remarks>
@@ -19029,8 +19242,9 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt; Get-WAPackVNet -Name "ContosoVNet08"
-</dev:code>
+        <dev:code>
+          PS C:\&gt; Get-WAPackVNet -Name "ContosoVNet08"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the virtual network named ContosoVNet08. </maml:para>
         </dev:remarks>
@@ -19174,11 +19388,12 @@ PS C:\&gt;(Get-AzureWebsite -Name ContosoWeb).Instances.Count
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$Credentials = Get-Credential
-PS C:\&gt; $TemplateId = Get-WAPackVMTemplate -Id 66242D17-189F-480D-87CF-8E1D749998C8
-PS C:\&gt; New-WAPackQuickVM -Name "VirtualMachine023" -Template $TemplateId -VMCredential $Credentials
+        <dev:code>
+          PS C:\&gt;$Credentials = Get-Credential
+          PS C:\&gt; $TemplateId = Get-WAPackVMTemplate -Id 66242D17-189F-480D-87CF-8E1D749998C8
+          PS C:\&gt; New-WAPackQuickVM -Name "VirtualMachine023" -Template $TemplateId -VMCredential $Credentials
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command creates a PSCredential object, and then stores it in the $Credentials variable. The cmdlet prompts you for an account and password. For more information, type Get-Help Get-Credential.</maml:para>
           <maml:para>The second command gets a template by using the Get-WAPackVMTemplate cmdlet. The command specifies the ID of a template. The command stores the template object in the $TemplateID variable. </maml:para>
@@ -19515,10 +19730,11 @@ PS C:\&gt; New-WAPackQuickVM -Name "VirtualMachine023" -Template $TemplateId -VM
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$Credentials = Get-Credential 
-PS C:\&gt; $Template = Get-WAPackVMTemplate -Name "ContosoTemplate04"
-PS C:\&gt; New-WAPackVM -Name "ContosoV023" -Template $Template -VMCredential $Credentials -Windows
-</dev:code>
+        <dev:code>
+          PS C:\&gt;$Credentials = Get-Credential
+          PS C:\&gt; $Template = Get-WAPackVMTemplate -Name "ContosoTemplate04"
+          PS C:\&gt; New-WAPackVM -Name "ContosoV023" -Template $Template -VMCredential $Credentials -Windows
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command creates a PSCredential object, and then stores it in the $Credentials variable. The cmdlet prompts you for an account and password. For more information, type Get-Help Get-Credential.</maml:para>
           <maml:para>The second command gets the virtual machine template named ContosoTemplate04 by using the Get-WAPackVMTemplate cmdlet, and then stores it in the $Template variable.</maml:para>
@@ -19536,10 +19752,11 @@ PS C:\&gt; New-WAPackVM -Name "ContosoV023" -Template $Template -VMCredential $C
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$Credentials = Get-Credential 
-PS C:\&gt; $Template = Get-WAPackVMTemplate -Name "ContosoTemplate19"
-PS C:\&gt; New-WAPackVM -Linux -Name "ContosoV028" -Template $Template -VMCredential $Credentials
-</dev:code>
+        <dev:code>
+          PS C:\&gt;$Credentials = Get-Credential
+          PS C:\&gt; $Template = Get-WAPackVMTemplate -Name "ContosoTemplate19"
+          PS C:\&gt; New-WAPackVM -Linux -Name "ContosoV028" -Template $Template -VMCredential $Credentials
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command creates a PSCredential object, and then stores it in the $Credentials variable. </maml:para>
           <maml:para>The second command gets the virtual machine template named ContosoTemplate19 by using the Get-WAPackVMTemplate cmdlet, and then stores it in the $Template variable.</maml:para>
@@ -19557,10 +19774,11 @@ PS C:\&gt; New-WAPackVM -Linux -Name "ContosoV028" -Template $Template -VMCreden
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$OSDisk = Get-WAPackVMOSDisk -Name "ContosoDiskOS"
-PS C:\&gt; $SizeProfile = Get-WAPackVMSizeProfile -Name "MediumSizeVM"
-PS C:\&gt; New-WAPackVM -Name "ContosoV073" -OSDisk $OSDisk -VMSizeProfile $SizeProfile
-</dev:code>
+        <dev:code>
+          PS C:\&gt;$OSDisk = Get-WAPackVMOSDisk -Name "ContosoDiskOS"
+          PS C:\&gt; $SizeProfile = Get-WAPackVMSizeProfile -Name "MediumSizeVM"
+          PS C:\&gt; New-WAPackVM -Name "ContosoV073" -OSDisk $OSDisk -VMSizeProfile $SizeProfile
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command gets an operating system disk named ContosoDiskOS by using the Get-WAPackVMOSDisk cmdlet, and then stores it in the $OSDisk variable.</maml:para>
           <maml:para>The second command gets the size profile named MediumSizeVM by using the Get-WAPackVMSizeProfile cmdlet, and then stores it in the $SizeProfile variable.</maml:para>
@@ -19780,9 +19998,10 @@ PS C:\&gt; New-WAPackVM -Name "ContosoV073" -OSDisk $OSDisk -VMSizeProfile $Size
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"
-PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine
-</dev:code>
+        <dev:code>
+          PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"
+          PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command gets the virtual machine named ContosoV126 by using the Get-WAPackVM cmdlet, and then stores that object in the $VirtualMachine variable.</maml:para>
           <maml:para>The second command removes the virtual machine stored in $VirtualMachine. The command prompts you for confirmation.</maml:para>
@@ -19799,9 +20018,10 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"
-PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
-</dev:code>
+        <dev:code>
+          PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"
+          PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command gets the virtual machine named ContosoV126 by using the Get-WAPackVM cmdlet, and then stores that object in the $VirtualMachine variable.</maml:para>
           <maml:para>The second command removes the virtual machine stored in $VirtualMachine. This command includes the Force parameter. The command does not prompt you for confirmation.</maml:para>
@@ -19949,8 +20169,9 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"PS C:\&gt; Restart-WAPackVM -VM $VirtualMachine
-</dev:code>
+        <dev:code>
+          PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"PS C:\&gt; Restart-WAPackVM -VM $VirtualMachine
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command gets the virtual machine named ContosoV126 by using the Get-WAPackVM cmdlet, and then stores that object in the $VirtualMachine variable.</maml:para>
           <maml:para>The second command restarts the virtual machine stored in $VirtualMachine. </maml:para>
@@ -20098,8 +20319,9 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"PS C:\&gt; Resume-WAPackVM -VM $VirtualMachine
-</dev:code>
+        <dev:code>
+          PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"PS C:\&gt; Resume-WAPackVM -VM $VirtualMachine
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command gets the virtual machine named ContosoV126 by using the Get-WAPackVM cmdlet, and then stores that object in the $VirtualMachine variable.</maml:para>
           <maml:para>The second command resumes the virtual machine stored in $VirtualMachine. </maml:para>
@@ -20267,8 +20489,9 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"PS C:\&gt; $SizeProfile = Get-WAPackVMSizeProfile -Name "MediumSizeVM"PS C:\&gt; Set-WAPackVM -VM $VirtualMachine -VMSizeProfile $SizeProfile
-</dev:code>
+        <dev:code>
+          PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"PS C:\&gt; $SizeProfile = Get-WAPackVMSizeProfile -Name "MediumSizeVM"PS C:\&gt; Set-WAPackVM -VM $VirtualMachine -VMSizeProfile $SizeProfile
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command gets the virtual machine named ContosoV126 by using the Get-WAPackVM cmdlet, and then stores that object in the $VirtualMachine variable.</maml:para>
           <maml:para>The second command gets the size profile named MediumSizeVM by using the Get-WAPackVMSizeProfile cmdlet, and then stores that object in the $SizeProfile variable.</maml:para>
@@ -20421,8 +20644,9 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"PS C:\&gt; Start-WAPackVM -VM $VirtualMachine
-</dev:code>
+        <dev:code>
+          PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"PS C:\&gt; Start-WAPackVM -VM $VirtualMachine
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command gets the virtual machine named ContosoV126 by using the Get-WAPackVM cmdlet, and then stores that object in the $VirtualMachine variable.</maml:para>
           <maml:para>The second command starts the virtual machine stored in $VirtualMachine. </maml:para>
@@ -20593,9 +20817,10 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"PS C:\&gt; Stop-WAPackVM -VM $VirtualMachine
+        <dev:code>
+          PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"PS C:\&gt; Stop-WAPackVM -VM $VirtualMachine
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command gets the virtual machine named ContosoV126 by using the Get-WAPackVM cmdlet, and then stores that object in the $VirtualMachine variable.</maml:para>
           <maml:para>The second command stops the virtual machine stored in $VirtualMachine. </maml:para>
@@ -20752,9 +20977,10 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"PS C:\&gt; Suspend-WAPackVM -VM $VirtualMachine
+        <dev:code>
+          PS C:\&gt;$VirtualMachine = Get-WAPackVM -Name "ContosoV126"PS C:\&gt; Suspend-WAPackVM -VM $VirtualMachine
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command gets the virtual machine named ContosoV126 by using the Get-WAPackVM cmdlet, and then stores that object in the $VirtualMachine variable.</maml:para>
           <maml:para>The second command suspends the virtual machine stored in $VirtualMachine.</maml:para>
@@ -20926,7 +21152,7 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
-    <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-WAPackStaticIPAddressPool</command:name>
       <maml:description>
@@ -21031,7 +21257,8 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$Subnet = Get-WAPackVMSubet –Name “ContosoVMSubnet01”PS C:\&gt;Get-WAPackStaticIPAddressPool –VMSubnet $Subnet -Name "ContosoStaticIPAddressPool01"
+        <dev:code>
+          PS C:\&gt;$Subnet = Get-WAPackVMSubet –Name “ContosoVMSubnet01”PS C:\&gt;Get-WAPackStaticIPAddressPool –VMSubnet $Subnet -Name "ContosoStaticIPAddressPool01"
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets the static ip address pool named “ContosoStaticIPAddressPool01” from a given VMSubnet. </maml:para>
@@ -21048,7 +21275,8 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$Subnet = Get-WAPackVMSubet –Name “ContosoVMSubnet01”PS C:\&gt;Get-WAPackStaticIPAddressPool –VMSubnet $Subnet
+        <dev:code>
+          PS C:\&gt;$Subnet = Get-WAPackVMSubet –Name “ContosoVMSubnet01”PS C:\&gt;Get-WAPackStaticIPAddressPool –VMSubnet $Subnet
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets all the static ip pool from a given VMSubet. </maml:para>
@@ -21556,7 +21784,7 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
-    <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-WAPackStaticIPAddressPool</command:name>
       <maml:description>
@@ -21698,7 +21926,8 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$VNet = Get-WAPackVNet -Name "ContosoVNet01"
+        <dev:code>
+          PS C:\&gt;$VNet = Get-WAPackVNet -Name "ContosoVNet01"
           PS C:\&gt;$VMSubnet = Get-WAPackVMSubnet –VNet $VNet -Name "ContosoVMSubnet01"
           PS C:\&gt;New-WAPackStaticIpAddressPool –VMSubnet $VMSubnet -Name "ContosoStaticIpAddressPool01" -IPAddressRangeStart “192.168.1.0” –IPAddressRangeEnd “192.168.1.10”
         </dev:code>
@@ -23125,7 +23354,7 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
-    <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-WAPackVMRole</command:name>
       <maml:description>
@@ -23281,7 +23510,8 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$VMRole = Get-WAPackVMRole -Name “ContosoVMRole01”
+        <dev:code>
+          PS C:\&gt;$VMRole = Get-WAPackVMRole -Name “ContosoVMRole01”
           PS C:\&gt;Remove-WAPackVMRole -VMRole $VMRole
         </dev:code>
         <dev:remarks>
@@ -23301,7 +23531,8 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$VMRole = Get-WAPackVMRole -Name “ContosoVMRole02”
+        <dev:code>
+          PS C:\&gt;$VMRole = Get-WAPackVMRole -Name “ContosoVMRole02”
           PS C:\&gt;Remove-WAPackVMRole -VMRole $VMRole –CloudServiceName “ContosoCloudService02”
         </dev:code>
         <dev:remarks>
@@ -23690,10 +23921,11 @@ PS C:\&gt; Remove-WAPackVM -VM $VirtualMachine -Force
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Use-AzureHDInsightCluster yourcluster -Subscription (Get-AzureSubscription -Current).SubscriptionId
-Invoke-Hive "select * from hivesampletable limit 10"
+        <dev:code>
+          PS C:\&gt;Use-AzureHDInsightCluster yourcluster -Subscription (Get-AzureSubscription -Current).SubscriptionId
+          Invoke-Hive "select * from hivesampletable limit 10"
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>Submit a Hive queries to the HDInsight cluster.</maml:para>
         </dev:remarks>
@@ -23869,9 +24101,10 @@ Invoke-Hive "select * from hivesampletable limit 10"
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$sqoopJobDef = New-AzureHDInsightSqoopJobDefinition -Command "import --connect jdbc:sqlserver://&lt;SQLDatabaseServerName&gt;.database.windows.net:1433;username=&lt;SQLDatabasUsername&gt;@&lt;SQLDatabaseServerName&gt;; password=&lt;SQLDatabasePassword&gt;; database=&lt;SQLDatabaseDatabaseName&gt; --table &lt;TableName&gt; --target-dir wasb://&lt;ContainerName&gt;@&lt;WindowsAzureStorageAccountName&gt;.blob.core.windows.net/&lt;Path&gt;"
+        <dev:code>
+          PS C:\&gt;$sqoopJobDef = New-AzureHDInsightSqoopJobDefinition -Command "import --connect jdbc:sqlserver://&lt;SQLDatabaseServerName&gt;.database.windows.net:1433;username=&lt;SQLDatabasUsername&gt;@&lt;SQLDatabaseServerName&gt;; password=&lt;SQLDatabasePassword&gt;; database=&lt;SQLDatabaseDatabaseName&gt; --table &lt;TableName&gt; --target-dir wasb://&lt;ContainerName&gt;@&lt;WindowsAzureStorageAccountName&gt;.blob.core.windows.net/&lt;Path&gt;"
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>Define a Sqoop job that that imports??all the rows of a table from a Windows Azure SQL Database to an HDInsight cluster.</maml:para>
         </dev:remarks>
@@ -23990,8 +24223,9 @@ Invoke-Hive "select * from hivesampletable limit 10"
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureAutomationAccount -Name "Contoso17"
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-AzureAutomationAccount -Name "Contoso17"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the Automation account named Contoso17.</maml:para>
         </dev:remarks>
@@ -24243,8 +24477,9 @@ Invoke-Hive "select * from hivesampletable limit 10"
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b647
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-AzureAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b647
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the job that has the specified GUID.</maml:para>
         </dev:remarks>
@@ -24317,15 +24552,17 @@ Invoke-Hive "select * from hivesampletable limit 10"
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="OutputType">
           <maml:name>Stream</maml:name>
           <maml:description>
-            <maml:para>Specifies the type of output. Valid values are: 
+            <maml:para>
+              Specifies the type of output. Valid values are:
 
--- Any
--- Debug
--- Error
--- Output
--- Progress
--- Verbose
--- Warning</maml:para>
+              -- Any
+              -- Debug
+              -- Error
+              -- Output
+              -- Progress
+              -- Verbose
+              -- Warning
+            </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -24371,15 +24608,17 @@ Invoke-Hive "select * from hivesampletable limit 10"
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="OutputType">
         <maml:name>Stream</maml:name>
         <maml:description>
-          <maml:para>Specifies the type of output. Valid values are: 
+          <maml:para>
+            Specifies the type of output. Valid values are:
 
--- Any
--- Debug
--- Error
--- Output
--- Progress
--- Verbose
--- Warning</maml:para>
+            -- Any
+            -- Debug
+            -- Error
+            -- Output
+            -- Progress
+            -- Verbose
+            -- Warning
+          </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -24428,8 +24667,9 @@ Invoke-Hive "select * from hivesampletable limit 10"
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureAutomationJobOutput -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -Stream "Any" 
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-AzureAutomationJobOutput -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -Stream "Any"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all of the output of the job that has the specified ID.</maml:para>
         </dev:remarks>
@@ -24631,9 +24871,10 @@ Invoke-Hive "select * from hivesampletable limit 10"
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureAutomationRunbook -AutomationAccountName "Contoso17" 
+        <dev:code>
+          PS C:\&gt;Get-AzureAutomationRunbook -AutomationAccountName "Contoso17"
 
-</dev:code>
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets all runbooks in the Azure Automation account named Contoso17.</maml:para>
         </dev:remarks>
@@ -24700,10 +24941,12 @@ Invoke-Hive "select * from hivesampletable limit 10"
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Slot</maml:name>
           <maml:description>
-            <maml:para>Specifies a runbook definition type. Valid values are:
+            <maml:para>
+              Specifies a runbook definition type. Valid values are:
 
--- Published
--- Draft</maml:para>
+              -- Published
+              -- Draft
+            </maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -24727,10 +24970,12 @@ Invoke-Hive "select * from hivesampletable limit 10"
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Slot</maml:name>
           <maml:description>
-            <maml:para>Specifies a runbook definition type. Valid values are:
+            <maml:para>
+              Specifies a runbook definition type. Valid values are:
 
--- Published
--- Draft</maml:para>
+              -- Published
+              -- Draft
+            </maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -24754,10 +24999,12 @@ Invoke-Hive "select * from hivesampletable limit 10"
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Slot</maml:name>
           <maml:description>
-            <maml:para>Specifies a runbook definition type. Valid values are:
+            <maml:para>
+              Specifies a runbook definition type. Valid values are:
 
--- Published
--- Draft</maml:para>
+              -- Published
+              -- Draft
+            </maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -24810,10 +25057,12 @@ Invoke-Hive "select * from hivesampletable limit 10"
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Slot</maml:name>
         <maml:description>
-          <maml:para>Specifies a runbook definition type. Valid values are:
+          <maml:para>
+            Specifies a runbook definition type. Valid values are:
 
--- Published
--- Draft</maml:para>
+            -- Published
+            -- Draft
+          </maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -24874,8 +25123,9 @@ Invoke-Hive "select * from hivesampletable limit 10"
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureAutomationRunbookDefinition -AutomationAccountName "Contoso17" -Name "RunbookDef01" -Slot "Published"
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-AzureAutomationRunbookDefinition -AutomationAccountName "Contoso17" -Name "RunbookDef01" -Slot "Published"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the published runbook definition of the runbook named RunbookDef01 in the Azure Automation account named Contoso17.</maml:para>
         </dev:remarks>
@@ -25036,8 +25286,9 @@ Invoke-Hive "select * from hivesampletable limit 10"
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08"
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Get-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the schedule named DailySchedule08.</maml:para>
         </dev:remarks>
@@ -25249,8 +25500,9 @@ Invoke-Hive "select * from hivesampletable limit 10"
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbook02"
-</dev:code>
+        <dev:code>
+          PS C:\&gt;New-AzureAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbook02"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new runbook named Runbook02 in the Azure Automation account named Contoso17.</maml:para>
         </dev:remarks>
@@ -25513,10 +25765,11 @@ Invoke-Hive "select * from hivesampletable limit 10"
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$StartDate = Get-Date -Day 12 -Month 6 -Year 2016
-PS C:\&gt; $EndDate = Get-Date -Day 12 -Month 6 -Year 2023
-PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime $StartDate -ExpiryTime $EndDate
-</dev:code>
+        <dev:code>
+          PS C:\&gt;$StartDate = Get-Date -Day 12 -Month 6 -Year 2016
+          PS C:\&gt; $EndDate = Get-Date -Day 12 -Month 6 -Year 2023
+          PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime $StartDate -ExpiryTime $EndDate
+        </dev:code>
         <dev:remarks>
           <maml:para>The first command creates a date object by using the Get-Date cmdlet, and then stores the object in the $StartDate variable. Specify a time that is at least five minutes in the future. For more information, type Get-Help Get-Date.</maml:para>
           <maml:para>The second command creates a date object by using the Get-Date cmdlet, and then stores the object in the $EndDate variable. The command specifies a future time. </maml:para>
@@ -25677,8 +25930,9 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Publish-AzureAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" 
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Publish-AzureAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbk01"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command publishes the runbook named Runbk01 in the Azure Automation account named Contoso17.</maml:para>
         </dev:remarks>
@@ -25897,8 +26151,9 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Register-AzureAutomationScheduledRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" -ScheduleName "Sched01" 
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Register-AzureAutomationScheduledRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" -ScheduleName "Sched01"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command associates the runbook named Runbk01 with the schedule named Sched01 in the Azure Automation account named Contoso17.</maml:para>
         </dev:remarks>
@@ -26125,8 +26380,9 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureAutomationRunbook -AutomationAccountName "Contoso17" -Name "MyRunbook"
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Remove-AzureAutomationRunbook -AutomationAccountName "Contoso17" -Name "MyRunbook"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command removes the runbook named MyRunbook in the Azure Automation account named Contoso17.</maml:para>
         </dev:remarks>
@@ -26365,8 +26621,9 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name "MySchedule"
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Remove-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name "MySchedule"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command removes the schedule named MySchedule.</maml:para>
         </dev:remarks>
@@ -26497,8 +26754,9 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Resume-AzureAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Resume-AzureAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64
+        </dev:code>
         <dev:remarks>
           <maml:para>This command resumes the job that has the specified ID.</maml:para>
         </dev:remarks>
@@ -26787,8 +27045,9 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureAutomationRunbook -AutomationAccountName "Contoso17" -Name "MyRunbook" -LogVerbose $True
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Set-AzureAutomationRunbook -AutomationAccountName "Contoso17" -Name "MyRunbook" -LogVerbose $True
+        </dev:code>
         <dev:remarks>
           <maml:para>This command enables verbose logging for the jobs of the specified runbook in the Azure Automation account named Contoso17.</maml:para>
         </dev:remarks>
@@ -27005,8 +27264,9 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureAutomationRunbookDefinition -AutomationAccountName "Contoso17" -Name "Runbk01" -Path App01.ps1 -Overwrite
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Set-AzureAutomationRunbookDefinition -AutomationAccountName "Contoso17" -Name "Runbk01" -Path App01.ps1 -Overwrite
+        </dev:code>
         <dev:remarks>
           <maml:para>This command overwrites the existing draft definition of a runbook.</maml:para>
         </dev:remarks>
@@ -27183,8 +27443,9 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -Description "Automation Schedule"
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Set-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -Description "Automation Schedule"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command modifies the description of the schedule named Schedule01.</maml:para>
         </dev:remarks>
@@ -27369,8 +27630,9 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Start-AzureAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" 
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Start-AzureAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbk01"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command starts a runbook job for the runbook named Runbk01 in the Azure Automation account named Contoso17.</maml:para>
         </dev:remarks>
@@ -27508,8 +27770,9 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Stop-AzureAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Stop-AzureAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64
+        </dev:code>
         <dev:remarks>
           <maml:para>This command stops the job that has the specified ID.</maml:para>
         </dev:remarks>
@@ -27640,8 +27903,9 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Suspend-AzureAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Suspend-AzureAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64
+        </dev:code>
         <dev:remarks>
           <maml:para>This command suspends the job that has the specified ID.</maml:para>
         </dev:remarks>
@@ -27826,8 +28090,9 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Unregister-AzureAutomationScheduledRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" -ScheduleName "Runbk01Sched"
-</dev:code>
+        <dev:code>
+          PS C:\&gt;Unregister-AzureAutomationScheduledRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" -ScheduleName "Runbk01Sched"
+        </dev:code>
         <dev:remarks>
           <maml:para>This command removes the association between the runbook named Runbk01 and the schedule named Runbk01Sched.</maml:para>
         </dev:remarks>

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
@@ -42,9 +43,17 @@ namespace Microsoft.WindowsAzure.Commands.Test.Common
         {
             string accountName = "azure awesome account";
             string expected = string.Format(Resources.BlobEndpointUri, accountName);
-            string actual = GeneralUtilities.BlobEndpointUri(accountName);
+            string actual = string.Format(CultureInfo.InvariantCulture,
+                TryGetEnvironmentVariable(Resources.BlobEndpointUriEnv, Resources.BlobEndpointUri),
+                accountName);
 
             Assert.Equal<string>(expected, actual);
+        }
+
+        private static string TryGetEnvironmentVariable(string environmentVariableName, string defaultValue)
+        {
+            string value = System.Environment.GetEnvironmentVariable(environmentVariableName);
+            return (string.IsNullOrEmpty(value)) ? defaultValue : value;
         }
 
         public void Dispose()

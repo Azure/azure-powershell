@@ -37,7 +37,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             XmlUtilities.SerializeXmlFile(serviceDefinition, outputFileName);
 
             // Assert
-            // If reached this point means the test passed
+            // And check we are writing out with UTF encoding with a BOM
+            byte[] data = System.IO.File.ReadAllBytes(outputFileName);
+            Assert.True(data[0] == 0xff && data[1] == 0xfe);
         }
     }
 }

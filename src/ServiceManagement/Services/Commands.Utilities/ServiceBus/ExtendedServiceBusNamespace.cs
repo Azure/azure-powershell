@@ -39,6 +39,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
 
             CreatedAt = serviceBusNamespace.CreatedAt;
 
+            NamespaceType = serviceBusNamespace.NamespaceType;
+
             AcsManagementEndpoint = serviceBusNamespace.AcsManagementEndpoint != null ? serviceBusNamespace.AcsManagementEndpoint.ToString() : string.Empty;
 
             ServiceBusEndpoint = serviceBusNamespace.ServiceBusEndpoint != null ? serviceBusNamespace.ServiceBusEndpoint.ToString() : string.Empty;
@@ -73,6 +75,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
 
         public string ConnectionString { get; set; }
 
+        public NamespaceType NamespaceType { get; set; }
+
         public override bool Equals(object obj)
         {
             ExtendedServiceBusNamespace lhs = obj as ExtendedServiceBusNamespace;
@@ -82,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
                 return false;
             }
 
-            return this.Name.Equals(lhs.Name) && this.Region.Equals(lhs.Region);
+            return this.Name.Equals(lhs.Name) && this.Region.Equals(lhs.Region) && this.NamespaceType.Equals(lhs.NamespaceType);
         }
 
         public override int GetHashCode()

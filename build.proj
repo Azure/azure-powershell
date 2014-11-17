@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <UsingTask 
-    AssemblyFile="$(MSBuildProjectDirectory)\src\packages\xunit.1.9.2\lib\net20\xunit.runner.msbuild.dll"
+    AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runners.2.0.0-beta4-build2738\tools\xunit.runner.msbuild.dll"
     TaskName="Xunit.Runner.MSBuild.xunit" />
   
   <!-- Clean the build in all configurations -->
@@ -78,9 +78,9 @@
   -->
   <Target Name="ForceRestorePackages">
     <PropertyGroup>
-        <NuGetCommand>$(MSBuildProjectDirectory)\src\.nuget\NuGet.exe</NuGetCommand>
-        <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
-        <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
+      <NuGetCommand>$(MSBuildProjectDirectory)\src\.nuget\NuGet.exe</NuGetCommand>
+      <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
+      <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
     </PropertyGroup>
     
     <ItemGroup>
@@ -94,12 +94,20 @@
     <WriteLinesToFile File="$(NuGetRestoreConfigFile)" Lines="&lt;configuration&gt;&lt;/configuration&gt;" Overwrite="true" Encoding="UTF-8" />
     <!-- Create config for user name and password for private feed access -->
     <Exec Command="$(NuGetCommand) sources add -Name AzureSdkInternal -Source &quot;https://www.myget.org/F/azure-sdk-internal/&quot; $(NuGetRestoreConfigSwitch)" />
+    <!-- Private versions of packages are picked up from these feeds, defined with environment variables -->
+    <Exec Command="$(NuGetCommand) sources add -Name PrimaryFeed -Source &quot;$(PRIVATE_FEED_URL)&quot; $(NuGetRestoreConfigSwitch)" Condition=" '$(PRIVATE_FEED_URL)'!='' "/>
+    <Exec Command="$(NuGetCommand) sources Update -Name PrimaryFeed -UserName $(PRIVATE_FEED_USER_NAME) -Password &quot;$(PRIVATE_FEED_PASSWORD)&quot; $(NuGetRestoreConfigSwitch)" EchoOff="true" Condition=" '$(PRIVATE_FEED_PASSWORD)'!='' AND '$(PRIVATE_FEED_USER_NAME)'!='' "/>
+    <Exec Command="$(NuGetCommand) sources add -Name SecondaryFeed -Source &quot;$(SECONDARY_FEED_URL)&quot; $(NuGetRestoreConfigSwitch)" Condition=" '$(SECONDARY_FEED_URL)'!='' "/>
+    <Exec Command="$(NuGetCommand) sources Update -Name SecondaryFeed -UserName $(SECONDARY_FEED_USER_NAME) -Password &quot;$(SECONDARY_FEED_PASSWORD)&quot; $(NuGetRestoreConfigSwitch)" EchoOff="true" Condition=" '$(SECONDARY_FEED_PASSWORD)'!='' AND '$(SECONDARY_FEED_USER_NAME)'!='' "/>
+
     <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\AzurePowerShell.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="ErrorAndContinue" />
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\AzurePowerShell.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
     <!-- delete config file, don't want to leave passwords hanging around on the build server file system -->
     <Delete Files="$(NuGetRestoreConfigFile)" />
+    <!--Restore the xunit runner needed to run unit tests-->
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
   </Target>
-
+  
   <!-- Build all flavors of the Cmdlets -->
   <Target Name="BuildCmdlets" DependsOnTargets="ForceRestorePackages">
     <Message Importance="high" Text="Building Cmdlets..." />
@@ -176,13 +184,17 @@
       ContinueOnError="false" />
   </Target>
 
+  <PropertyGroup>
+    <RunTestLive Condition="'$(RunTestLive)' == ''">false</RunTestLive>
+    <XUnitExcludedTrait Condition="!$(RunTestLive)">RunType=LiveOnly</XUnitExcludedTrait>
+  </PropertyGroup>
   <!-- Note: all testing related target should go to 'AzurePowershell.test.targets' file except the one used by CI run -->
   <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.test.targets"/>
   
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BuildDebug;BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
-    <CallTarget Targets="CommonTests; TestManagement; TestHDInsight; TestManagedCache; TestServiceManagement; TestSqlDatabase; TestStorage; TestResourceManager; MockedScenarioTests" />
+    <CallTarget Targets="SqlTests; CommonTests; TestManagement; TestHDInsight; TestManagedCache; TestServiceManagement; TestServiceManagementExtensions; TestSqlDatabase; TestStorage; TestResourceManager; MockedScenarioTests; TestDSCExtension_x64; TestBatch; TestDataFactoryManager; TestRecoveryServices"/>
   </Target>
   
   <!-- Run Full switch with scenario tests -->
@@ -190,4 +202,13 @@
     Name="FullWithScenarioTests"
     DependsOnTargets="ForceRestorePackages;Clean;BuildDebug;BuildRelease;Test;BuildSetupDebug;BuildSetupRelease;RunOneSDKCIT" />
   
+  <!-- Run live tests and record mocks -->
+    <Target
+    Name="RunLiveTests"
+    DependsOnTargets="ForceRestorePackages;Clean;BuildDebug;BuildRelease;LiveTestsFilter;BuildSetupDebug;BuildSetupRelease" />
+
+    <Target Name="LiveTestsFilter" DependsOnTargets="BuildDebug;BeforeRunTests">
+    <Message Importance="high" Text="Running live tests..." />
+    <CallTarget Targets="LiveTests"/>
+  </Target>
 </Project>

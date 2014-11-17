@@ -44,3 +44,26 @@ function Test-ManagedCacheEndToEnd
     # Remove it
     Remove-AzureManagedCache $cacheName -Force
 }
+
+########################## List caching service location Test  #############################
+<#
+.SYNOPSIS
+List locations that support managed caching service
+#>
+function Test-ListLocationsSupportCaching
+{
+    $allLocations = Get-AzureManagedCacheLocation
+    
+    Assert-AreNotEqual 0 $allLocations.Count
+
+    $found = $FALSE
+    foreach ($location in $allLocations)
+    {
+        if ($location.Location -eq "West US")
+        {
+            $found = $TRUE
+            break
+        }
+    }
+    Assert-True {$found}
+}
