@@ -1,0 +1,46 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/cloudservices/mycloudservice/resources/cacheservice/~/Caching/mycacheservice/Options/Regions",
+      "EncodedRequestUri": "LzJjMjI0ZTdlLTNlZjUtNDMxZC1hNTdiLWU3MWY0NjYyZTNhNi9jbG91ZHNlcnZpY2VzL215Y2xvdWRzZXJ2aWNlL3Jlc291cmNlcy9jYWNoZXNlcnZpY2Uvfi9DYWNoaW5nL215Y2FjaGVzZXJ2aWNlL09wdGlvbnMvUmVnaW9ucw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.0"
+        ]
+      },
+      "ResponseBody": "<Regions xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Region>East Asia</Region>\r\n  <Region>East US</Region>\r\n  <Region>East US 2</Region>\r\n  <Region>North Central US</Region>\r\n  <Region>North Europe</Region>\r\n  <Region>Southeast Asia</Region>\r\n  <Region>West Europe</Region>\r\n  <Region>West US</Region>\r\n  <Region>South Central US</Region>\r\n</Regions>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "01a9adbe4c6d1f1cbbe16f99c4d7d519"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Sep 2014 23:47:54 GMT"
+        ],
+        "Server": [
+          "1.0.6198.129",
+          "(rd_rdfe_stable.140922-1311)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "2c224e7e-3ef5-431d-a57b-e71f4662e3a6"
+  }
+}

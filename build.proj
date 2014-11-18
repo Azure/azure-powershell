@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+  ToolsVersion="4.0"
+  DefaultTargets="ForceRestorePackages;Clean;BuildDebug;BuildRelease;BuildSetupDebug">
+
+  <!-- Define build properties -->
+  <PropertyGroup>
+    <ManagementCmdletBinDirectory>.\src\ServiceManagement\Services\Commands\bin</ManagementCmdletBinDirectory>
+    <ManagementTestDirectory>.\src\ServiceManagement\Services\Commands.Test\bin</ManagementTestDirectory>
+    <ManagementTestAssemblyName>Microsoft.WindowsAzure.Commands.Test.dll</ManagementTestAssemblyName>
+    <SetupDirectory>.\setup\build</SetupDirectory>
+    <PublishDirectory>.\src\Publish</PublishDirectory>
+    <PackageDirectory>.\src\Package</PackageDirectory>
+    <BuildOutputDirectory>$(PublishDirectory)\Build</BuildOutputDirectory>
+    <SetupOutputDirectory>$(PublishDirectory)\Setup</SetupOutputDirectory>
+    <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
+    <DebugBuildConfig>Configuration=Debug;Platform=Any CPU</DebugBuildConfig>
+    <ReleaseBuildConfig>Configuration=Release;Platform=Any CPU</ReleaseBuildConfig>
+  </PropertyGroup>
+  <ItemGroup>
+    <AzurePowerShellSln Include=".\src\AzurePowerShell.sln" />
+    <SetupSln Include=".\setup\azurepowershell.sln" />
+  </ItemGroup>
+
+  <UsingTask 
+    AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runners.2.0.0-beta4-build2738\tools\xunit.runner.msbuild.dll"
+    TaskName="Xunit.Runner.MSBuild.xunit" />
+  
+  <!-- Clean the build in all configurations -->
+  <Target Name="Clean">
+    <!-- Clean the solutions -->
+    <Message Importance="high" Text="Cleaning Cmdlets..." ContinueOnError="false" />
+    <MSBuild
+      Projects="@(AzurePowerShellSln)"
+      Targets="Clean"
+      Properties="$(DebugBuildConfig)"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(AzurePowerShellSln)"
+      Targets="Clean"
+      Properties="$(ReleaseBuildConfig)"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(SetupSln)"
+      Targets="Clean"
+      Properties="$(DebugBuildConfig)"
+      ContinueOnError="false" />
+
+    <!-- Delete the publish files -->
+    <Message Importance="high" Text="Cleaning publish files..." ContinueOnError="false" />
+    <ItemGroup>
+      <PublishFiles Include="$(PublishDirectory)\**\*.*" />
+    </ItemGroup>
+    <Delete
+      Files="@(PublishFiles)"
+      ContinueOnError="false" />
+    <RemoveDir
+      Directories="$(PublishDirectory)"
+      ContinueOnError="false" />
+
+    <!-- Delete the package files -->
+    <Message Importance="high" Text="Cleaning package files..." ContinueOnError="false" />
+    <ItemGroup>
+      <PackageFiles Include="$(PackageDirectory)\**\*.*" />
+    </ItemGroup>
+    <Delete
+      Files="@(PackageFiles)"
+      ContinueOnError="false" />
+    <RemoveDir
+      Directories="$(PackageDirectory)"
+      ContinueOnError="false" />
+  </Target>
+  
+  <PropertyGroup>
+	<NuGetCommand>$(MSBuildProjectDirectory)\src\.nuget\NuGet.exe</NuGetCommand>
+	<NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
+	<NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
+  </PropertyGroup>
+  
+  <!--
+  Force nuget package restore so that packages that include .targets files
+  don't need to be checked into source control.
+  -->
+  <Target Name="ForceRestorePackages">
+    <ItemGroup>
+      <NuGetCache Include="$(LOCALAPPDATA)\NuGet\Cache\*.nupkg"/>
+    </ItemGroup>
+
+    <!-- Delete NuGet cache-->
+    <Delete Files="@(NuGetCache)" />
+
+    <Delete Files="$(NuGetRestoreConfigFile)" />
+    <WriteLinesToFile File="$(NuGetRestoreConfigFile)" Lines="&lt;configuration&gt;&lt;/configuration&gt;" Overwrite="true" Encoding="UTF-8" />
+    <!-- Create config for user name and password for private feed access -->
+    <Exec Command="$(NuGetCommand) sources add -Name AzureSdkInternal -Source &quot;https://www.myget.org/F/azure-sdk-internal/&quot; $(NuGetRestoreConfigSwitch)" />
+    <CallTarget Targets="ForceRestorePackagesFromPrivateFeed"/>
+    <!-- Restore packages -->
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\AzurePowerShell.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
+    <!-- delete config file, don't want to leave passwords hanging around on the build server file system -->
+    <Delete Files="$(NuGetRestoreConfigFile)" />
+    <!--Restore the xunit runner needed to run unit tests-->
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
+  </Target>
+  
+  <Target Name="ForceRestorePackagesFromPrivateFeed" Condition="'$(PRIVATE_FEED_PASSWORD)' != ''">
+    <Exec Command="$(NuGetCommand) sources add -Name Hydra -Source &quot;$(PRIVATE_FEED_URL)&quot; $(NuGetRestoreConfigSwitch)" />
+    <Exec Command="$(NuGetCommand) sources Update -Name Hydra -UserName $(PRIVATE_FEED_USER_NAME) -Password &quot;$(PRIVATE_FEED_PASSWORD)&quot; $(NuGetRestoreConfigSwitch)"
+          EchoOff="true" />
+  </Target>
+
+  <!-- Build all flavors of the Cmdlets -->
+  <Target Name="BuildCmdlets" DependsOnTargets="ForceRestorePackages">
+    <Message Importance="high" Text="Building Cmdlets..." />
+    <MSBuild
+      Projects="@(AzurePowerShellSln)"
+      Targets="Build"
+      Properties="$(DebugBuildConfig)"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(AzurePowerShellSln)"
+      Targets="Build"
+      Properties="$(ReleaseBuildConfig)"
+      ContinueOnError="false" />
+  </Target>
+
+  <!-- Build the Setup -->
+  <Target Name="BuildSetupDebug">
+    <Message
+      Importance="high"
+      Text="Building Setup..."
+      ContinueOnError="false" />
+    <Message
+      Importance="high"
+      Text="You are required to have installed the WiX Toolset at http://wix.codeplex.com/releases/view/115492 (Wix38.msi)"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(SetupSln)"
+      Targets="Build"
+      Properties="$(DebugBuildConfig)"
+      ContinueOnError="false" />
+  </Target>
+
+  <!-- Build the Setup -->
+  <Target Name="BuildSetupRelease">
+    <Message
+      Importance="high"
+      Text="Building Setup..."
+      ContinueOnError="false" />
+    <Message
+      Importance="high"
+      Text="You are required to have installed the WiX Toolset at http://wix.codeplex.com/releases/view/115492 (Wix38.msi)"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(SetupSln)"
+      Targets="Build"
+      Properties="$(ReleaseBuildConfig)"
+      ContinueOnError="false" />
+  </Target>
+
+  <!-- Build the Cmdlets and Setup in all configurations -->
+  <Target Name="Build" DependsOnTargets="BuildCmdlets;BuildSetupRelease" />
+  <!-- Do everything possible -->
+  <Target
+    Name="Full"
+    DependsOnTargets="ForceRestorePackages;Clean;BuildDebug;BuildRelease;Test;BuildSetupDebug;BuildSetupRelease" />
+
+  <!-- Build the Cmdlets in Release configuration -->
+  <Target Name="BuildRelease" DependsOnTargets="ForceRestorePackages">
+    <Message Importance="high" Text="Building Cmdlets in Release config..." />
+    <MSBuild
+      Projects="@(AzurePowerShellSln)"
+      Targets="Build"
+      Properties="$(ReleaseBuildConfig)"
+      ContinueOnError="false" />
+  </Target>
+
+  <!-- Build the Cmdlets in Debug configuration -->
+  <Target Name="BuildDebug" DependsOnTargets="ForceRestorePackages">
+    <Message Importance="high" Text="Building Cmdlets in Debug config..." />
+    <MSBuild
+      Projects="@(AzurePowerShellSln)"
+      Targets="Build"
+      Properties="$(DebugBuildConfig)"
+      ContinueOnError="false" />
+  </Target>
+
+  <PropertyGroup>
+    <RunTestLive Condition="'$(RunTestLive)' == ''">false</RunTestLive>
+    <XUnitExcludedTrait Condition="!$(RunTestLive)">RunType=LiveOnly</XUnitExcludedTrait>
+  </PropertyGroup>
+  <!-- Note: all testing related target should go to 'AzurePowershell.test.targets' file except the one used by CI run -->
+  <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.test.targets"/>
+  
+  <!-- Run checkin tests for each pull request -->
+  <Target Name="Test" DependsOnTargets="BuildDebug;BeforeRunTests">
+    <Message Importance="high" Text="Running check in tests..." />
+    <CallTarget Targets="SqlTests; CommonTests; TestManagement; TestHDInsight; TestManagedCache; TestServiceManagement; TestServiceManagementExtensions; TestSqlDatabase; TestStorage; TestResourceManager; MockedScenarioTests; TestDSCExtension_x64; TestBatch; TestDataFactoryManager; TestRecoveryServices"/>
+  </Target>
+  
+  <!-- Run Full switch with scenario tests -->
+  <Target
+    Name="FullWithScenarioTests"
+    DependsOnTargets="ForceRestorePackages;Clean;BuildDebug;BuildRelease;Test;BuildSetupDebug;BuildSetupRelease;RunOneSDKCIT" />
+  
+  <!-- Run live tests and record mocks -->
+    <Target
+    Name="RunLiveTests"
+    DependsOnTargets="ForceRestorePackages;Clean;BuildDebug;BuildRelease;LiveTestsFilter;BuildSetupDebug;BuildSetupRelease" />
+
+    <Target Name="LiveTestsFilter" DependsOnTargets="BuildDebug;BeforeRunTests">
+    <Message Importance="high" Text="Running live tests..." />
+    <CallTarget Targets="LiveTests"/>
+  </Target>
+</Project>

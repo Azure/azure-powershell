@@ -1,0 +1,2 @@
+packageName,configName,rdpCertName
+OneWebOneWorkerRDP.cspkg,OneWebOneWorkerRDP.cscfg,rdpcert.pfx

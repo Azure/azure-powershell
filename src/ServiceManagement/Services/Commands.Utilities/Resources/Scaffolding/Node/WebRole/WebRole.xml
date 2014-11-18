@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="DummyName" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <WebRole name="$RoleName$" vmsize="ExtraSmall">
+    <Sites>
+      <Site name="Web">
+        <Bindings>
+          <Binding name="Endpoint1" endpointName="Endpoint1" />
+        </Bindings>
+      </Site>
+    </Sites>
+    <Endpoints>
+      <InputEndpoint name="Endpoint1" protocol="http" port="$Port$" />
+    </Endpoints>
+    <Imports>
+    </Imports>
+    <Startup>
+      <Task executionContext="elevated" commandLine="setup_web.cmd &gt; log.txt">
+        <Environment>
+          <Variable name="EMULATED">
+            <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+          </Variable>
+          <!-- 
+                Use this value to provide your own url for a role runtime self-extracting package 
+                <Variable name="RUNTIMEURLOVERRIDE" value=""/> 
+                
+                Use this value to specify a particular node version to install on the role
+                Not all node versions are available in the cloud
+                <Variable name="RUNTIMEVERSIONPRIMARYKEY" value="" />
+                
+                Use this value to specify a particular iisnode version to install on the role
+                Not all node versions are availabel in the cloud
+                <Variable name="RUNTIMEVERSIONSECONDARYKEY" value="" />
+          -->
+          <Variable name="RUNTIMEID" value="node;iisnode" />
+          <Variable name="RUNTIMEURL" value=""/>
+        </Environment>
+      </Task>
+      <Task executionContext="elevated" commandLine="node.cmd ..\startup.js" />
+    </Startup>
+  </WebRole>
+</ServiceDefinition>

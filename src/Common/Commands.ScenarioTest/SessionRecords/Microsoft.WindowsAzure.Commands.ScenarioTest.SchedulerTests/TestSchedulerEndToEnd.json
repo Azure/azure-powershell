@@ -1,0 +1,1154 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceproviders/scheduler/Properties?resourceType=JobCollections",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<ResourceProviderProperties xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ResourceProviderProperty>\r\n    <Key>SupportedGeoRegions</Key>\r\n    <Value>South Central US,North Central US,North Europe,West Europe,East Asia,Southeast Asia,West US,East US,Japan West,Japan East</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>Plans</Key>\r\n    <Value>Free, Standard</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MaxJobCount</Key>\r\n    <Value>5</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MaxJobCount</Key>\r\n    <Value>50</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MinRecurrence</Key>\r\n    <Value>01:00:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MinRecurrence</Key>\r\n    <Value>00:01:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:MaxJobCollections</Key>\r\n    <Value>1</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:MaxJobCollections</Key>\r\n    <Value>100</Value>\r\n  </ResourceProviderProperty>\r\n</ResourceProviderProperties>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "a99609e3fc1eac3fa993774a2cc509cb"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:00:53 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceproviders/scheduler/Properties?resourceType=JobCollections",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<ResourceProviderProperties xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ResourceProviderProperty>\r\n    <Key>SupportedGeoRegions</Key>\r\n    <Value>South Central US,North Central US,North Europe,West Europe,East Asia,Southeast Asia,West US,East US,Japan West,Japan East</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>Plans</Key>\r\n    <Value>Free, Standard</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MaxJobCount</Key>\r\n    <Value>5</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MaxJobCount</Key>\r\n    <Value>50</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MinRecurrence</Key>\r\n    <Value>01:00:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MinRecurrence</Key>\r\n    <Value>00:01:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:MaxJobCollections</Key>\r\n    <Value>1</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:MaxJobCollections</Key>\r\n    <Value>100</Value>\r\n  </ResourceProviderProperty>\r\n</ResourceProviderProperties>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "d932e37e1556af71824ece011bc4b0c0"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:00:53 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceproviders/scheduler/Properties?resourceType=JobCollections",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<ResourceProviderProperties xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ResourceProviderProperty>\r\n    <Key>SupportedGeoRegions</Key>\r\n    <Value>South Central US,North Central US,North Europe,West Europe,East Asia,Southeast Asia,West US,East US,Japan West,Japan East</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>Plans</Key>\r\n    <Value>Free, Standard</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MaxJobCount</Key>\r\n    <Value>5</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MaxJobCount</Key>\r\n    <Value>50</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MinRecurrence</Key>\r\n    <Value>01:00:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MinRecurrence</Key>\r\n    <Value>00:01:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:MaxJobCollections</Key>\r\n    <Value>1</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:MaxJobCollections</Key>\r\n    <Value>100</Value>\r\n  </ResourceProviderProperty>\r\n</ResourceProviderProperties>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "f2bfe528dd0dae059385897818ca9b85"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:20 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceproviders/scheduler/Properties?resourceType=JobCollections",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<ResourceProviderProperties xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ResourceProviderProperty>\r\n    <Key>SupportedGeoRegions</Key>\r\n    <Value>South Central US,North Central US,North Europe,West Europe,East Asia,Southeast Asia,West US,East US,Japan West,Japan East</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>Plans</Key>\r\n    <Value>Free, Standard</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MaxJobCount</Key>\r\n    <Value>5</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MaxJobCount</Key>\r\n    <Value>50</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MinRecurrence</Key>\r\n    <Value>01:00:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MinRecurrence</Key>\r\n    <Value>00:01:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:MaxJobCollections</Key>\r\n    <Value>1</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:MaxJobCollections</Key>\r\n    <Value>100</Value>\r\n  </ResourceProviderProperty>\r\n</ResourceProviderProperties>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "a59a89ef8895a0dd96e67947bac9b50b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:22 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceproviders/scheduler/Properties?resourceType=JobCollections",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<ResourceProviderProperties xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ResourceProviderProperty>\r\n    <Key>SupportedGeoRegions</Key>\r\n    <Value>South Central US,North Central US,North Europe,West Europe,East Asia,Southeast Asia,West US,East US,Japan West,Japan East</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>Plans</Key>\r\n    <Value>Free, Standard</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MaxJobCount</Key>\r\n    <Value>5</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MaxJobCount</Key>\r\n    <Value>50</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MinRecurrence</Key>\r\n    <Value>01:00:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MinRecurrence</Key>\r\n    <Value>00:01:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:MaxJobCollections</Key>\r\n    <Value>1</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:MaxJobCollections</Key>\r\n    <Value>100</Value>\r\n  </ResourceProviderProperty>\r\n</ResourceProviderProperties>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "d81e806c598aade6b9476fa980befb3c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:27 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceproviders/scheduler/Properties?resourceType=JobCollections",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<ResourceProviderProperties xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ResourceProviderProperty>\r\n    <Key>SupportedGeoRegions</Key>\r\n    <Value>South Central US,North Central US,North Europe,West Europe,East Asia,Southeast Asia,West US,East US,Japan West,Japan East</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>Plans</Key>\r\n    <Value>Free, Standard</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MaxJobCount</Key>\r\n    <Value>5</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MaxJobCount</Key>\r\n    <Value>50</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MinRecurrence</Key>\r\n    <Value>01:00:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MinRecurrence</Key>\r\n    <Value>00:01:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:MaxJobCollections</Key>\r\n    <Value>1</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:MaxJobCollections</Key>\r\n    <Value>100</Value>\r\n  </ResourceProviderProperty>\r\n</ResourceProviderProperties>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "6c2c4c63ddd1a85a9273a8b62d060a2e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:30 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourceproviders/scheduler/Properties?resourceType=JobCollections",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<ResourceProviderProperties xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ResourceProviderProperty>\r\n    <Key>SupportedGeoRegions</Key>\r\n    <Value>South Central US,North Central US,North Europe,West Europe,East Asia,Southeast Asia,West US,East US,Japan West,Japan East</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>Plans</Key>\r\n    <Value>Free, Standard</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MaxJobCount</Key>\r\n    <Value>5</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MaxJobCount</Key>\r\n    <Value>50</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:Quota:MinRecurrence</Key>\r\n    <Value>01:00:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:Quota:MinRecurrence</Key>\r\n    <Value>00:01:00</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Free:MaxJobCollections</Key>\r\n    <Value>1</Value>\r\n  </ResourceProviderProperty>\r\n  <ResourceProviderProperty>\r\n    <Key>PlanDetail:Standard:MaxJobCollections</Key>\r\n    <Value>100</Value>\r\n  </ResourceProviderProperty>\r\n</ResourceProviderProperties>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "74c42616e949a3269257fea0d058a92d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:31 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/CloudServices",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.CloudServiceManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Name>\r\n    <Label>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Label>\r\n    <Description>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Name>\r\n    <Label>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Label>\r\n    <Description>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>cache7810</Name>\r\n        <ETag>acd859a6-c85e-4ca2-a361-2ad88dfdc70f</ETag>\r\n        <State>Unknown</State>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Failed</Result>\r\n          <Error>\r\n            <HttpCode>400</HttpCode>\r\n            <Message />\r\n            <ExtendedCode>RequestBodyNotAsPerRequirement</ExtendedCode>\r\n          </Error>\r\n        </OperationStatus>\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>cs-WestUS-scheduler</Name>\r\n    <Label>Cloud service created by scheduler powershell</Label>\r\n    <Description>Cloud service created by scheduler powershell</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US</Name>\r\n    <Label>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US</Label>\r\n    <Description>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US in East US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>AutomationAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>56b96e88-0643-4d6c-9cee-8a2d88fb496c</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>TestAutomationAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>5f56af82-3751-46a2-9ebb-3959bbb26de2</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>SchedulerTest19393jgc5ecie</Name>\r\n    <Label>SchedulerTest19393jgc5ecie</Label>\r\n    <Description>Testing</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>SchedulerTest19393lynb3n52</Name>\r\n    <Label>SchedulerTest19393lynb3n52</Label>\r\n    <Description>Testing</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "48df9e4415f9a17883e3e9dff21807f8"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:00:55 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/CloudServices",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.CloudServiceManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Name>\r\n    <Label>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Label>\r\n    <Description>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Name>\r\n    <Label>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Label>\r\n    <Description>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>cache7810</Name>\r\n        <ETag>acd859a6-c85e-4ca2-a361-2ad88dfdc70f</ETag>\r\n        <State>Unknown</State>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Failed</Result>\r\n          <Error>\r\n            <HttpCode>400</HttpCode>\r\n            <Message />\r\n            <ExtendedCode>RequestBodyNotAsPerRequirement</ExtendedCode>\r\n          </Error>\r\n        </OperationStatus>\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>cs-WestUS-scheduler</Name>\r\n    <Label>Cloud service created by scheduler powershell</Label>\r\n    <Description>Cloud service created by scheduler powershell</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US</Name>\r\n    <Label>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US</Label>\r\n    <Description>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US in East US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>AutomationAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>56b96e88-0643-4d6c-9cee-8a2d88fb496c</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>TestAutomationAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>5f56af82-3751-46a2-9ebb-3959bbb26de2</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>SchedulerTest19393jgc5ecie</Name>\r\n    <Label>SchedulerTest19393jgc5ecie</Label>\r\n    <Description>Testing</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>SchedulerTest19393lynb3n52</Name>\r\n    <Label>SchedulerTest19393lynb3n52</Label>\r\n    <Description>Testing</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth"
+        ],
+        "x-ms-request-id": [
+          "5c7de0fdc651a03389b32c2d77ac4b0a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:00:57 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/CloudServices",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.CloudServiceManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Name>\r\n    <Label>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Label>\r\n    <Description>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Name>\r\n    <Label>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Label>\r\n    <Description>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>cache7810</Name>\r\n        <ETag>acd859a6-c85e-4ca2-a361-2ad88dfdc70f</ETag>\r\n        <State>Unknown</State>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Failed</Result>\r\n          <Error>\r\n            <HttpCode>400</HttpCode>\r\n            <Message />\r\n            <ExtendedCode>RequestBodyNotAsPerRequirement</ExtendedCode>\r\n          </Error>\r\n        </OperationStatus>\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>cs-WestUS-scheduler</Name>\r\n    <Label>Cloud service created by scheduler powershell</Label>\r\n    <Description>Cloud service created by scheduler powershell</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US</Name>\r\n    <Label>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US</Label>\r\n    <Description>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US in East US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>AutomationAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>56b96e88-0643-4d6c-9cee-8a2d88fb496c</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>TestAutomationAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>5f56af82-3751-46a2-9ebb-3959bbb26de2</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>SchedulerTest19393jgc5ecie</Name>\r\n    <Label>SchedulerTest19393jgc5ecie</Label>\r\n    <Description>Testing</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>SchedulerTest19393lynb3n52</Name>\r\n    <Label>SchedulerTest19393lynb3n52</Label>\r\n    <Description>Testing</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "39945b0984f4a46e88d774e19af92aaf"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:00:58 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/CloudServices",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.CloudServiceManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Name>\r\n    <Label>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Label>\r\n    <Description>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Name>\r\n    <Label>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Label>\r\n    <Description>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>cache7810</Name>\r\n        <ETag>acd859a6-c85e-4ca2-a361-2ad88dfdc70f</ETag>\r\n        <State>Unknown</State>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Failed</Result>\r\n          <Error>\r\n            <HttpCode>400</HttpCode>\r\n            <Message />\r\n            <ExtendedCode>RequestBodyNotAsPerRequirement</ExtendedCode>\r\n          </Error>\r\n        </OperationStatus>\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>cs-WestUS-scheduler</Name>\r\n    <Label>Cloud service created by scheduler powershell</Label>\r\n    <Description>Cloud service created by scheduler powershell</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>scheduler</ResourceProviderNamespace>\r\n        <Type>JobCollections</Type>\r\n        <Name>testFromPSScenario</Name>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>bb82b6d8-174e-4eae-a497-c582401dbe12</ETag>\r\n        <State>Started</State>\r\n        <IntrinsicSettings>\r\n          <Plan>Standard</Plan>\r\n          <Quota>\r\n            <MaxJobCount>50</MaxJobCount>\r\n            <MaxRecurrence>\r\n              <Frequency>Minute</Frequency>\r\n              <Interval>1</Interval>\r\n            </MaxRecurrence>\r\n          </Quota>\r\n        </IntrinsicSettings>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US</Name>\r\n    <Label>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US</Label>\r\n    <Description>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US in East US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>AutomationAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>56b96e88-0643-4d6c-9cee-8a2d88fb496c</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>TestAutomationAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>5f56af82-3751-46a2-9ebb-3959bbb26de2</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>SchedulerTest19393jgc5ecie</Name>\r\n    <Label>SchedulerTest19393jgc5ecie</Label>\r\n    <Description>Testing</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>SchedulerTest19393lynb3n52</Name>\r\n    <Label>SchedulerTest19393lynb3n52</Label>\r\n    <Description>Testing</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "330b52cd3df1abbd963847d2a8cfa733"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:18 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/CloudServices",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.CloudServiceManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Name>\r\n    <Label>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Label>\r\n    <Description>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-Asia</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Name>\r\n    <Label>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Label>\r\n    <Description>CachingMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>cache7810</Name>\r\n        <ETag>acd859a6-c85e-4ca2-a361-2ad88dfdc70f</ETag>\r\n        <State>Unknown</State>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Failed</Result>\r\n          <Error>\r\n            <HttpCode>400</HttpCode>\r\n            <Message />\r\n            <ExtendedCode>RequestBodyNotAsPerRequirement</ExtendedCode>\r\n          </Error>\r\n        </OperationStatus>\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>cs-WestUS-scheduler</Name>\r\n    <Label>Cloud service created by scheduler powershell</Label>\r\n    <Description>Cloud service created by scheduler powershell</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>scheduler</ResourceProviderNamespace>\r\n        <Type>JobCollections</Type>\r\n        <Name>testFromPSScenario</Name>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>bb82b6d8-174e-4eae-a497-c582401dbe12</ETag>\r\n        <State>Started</State>\r\n        <IntrinsicSettings>\r\n          <Plan>Standard</Plan>\r\n          <Quota>\r\n            <MaxJobCount>50</MaxJobCount>\r\n            <MaxRecurrence>\r\n              <Frequency>Minute</Frequency>\r\n              <Interval>1</Interval>\r\n            </MaxRecurrence>\r\n          </Quota>\r\n        </IntrinsicSettings>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US</Name>\r\n    <Label>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US</Label>\r\n    <Description>OaaSCSMJZ4AGUOA5SDKKDLDMOVNQHWHCSXMDQM2D3WXNGHPTXHETYQYXGQ-East-US in East US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>AutomationAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>56b96e88-0643-4d6c-9cee-8a2d88fb496c</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>TestAutomationAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>5f56af82-3751-46a2-9ebb-3959bbb26de2</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>SchedulerTest19393jgc5ecie</Name>\r\n    <Label>SchedulerTest19393jgc5ecie</Label>\r\n    <Description>Testing</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>SchedulerTest19393lynb3n52</Name>\r\n    <Label>SchedulerTest19393lynb3n52</Label>\r\n    <Description>Testing</Description>\r\n    <GeoRegion>East Asia</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "05e35ce9d334a14190ae16adf8847b0e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:21 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/CloudServices/cs-WestUS-scheduler",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.CloudServiceManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>cs-WestUS-scheduler</Name>\r\n  <Label>Cloud service created by scheduler powershell</Label>\r\n  <Description>Cloud service created by scheduler powershell</Description>\r\n  <GeoRegion>West US</GeoRegion>\r\n  <Resources />\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "4ca310d96a51acee858e4fc20b85ce13"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:00:56 GMT"
+        ],
+        "ETag": [
+          "898c7788-a784-462c-b22b-66cc74b0ff3c"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/CloudServices/cs-WestUS-scheduler",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.CloudServiceManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>cs-WestUS-scheduler</Name>\r\n  <Label>Cloud service created by scheduler powershell</Label>\r\n  <Description>Cloud service created by scheduler powershell</Description>\r\n  <GeoRegion>West US</GeoRegion>\r\n  <Resources />\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "b60968228d5da7d7ad0828e1dd7a0f3e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:00:57 GMT"
+        ],
+        "ETag": [
+          "898c7788-a784-462c-b22b-66cc74b0ff3c"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/CloudServices/cs-WestUS-scheduler",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.CloudServiceManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>cs-WestUS-scheduler</Name>\r\n  <Label>Cloud service created by scheduler powershell</Label>\r\n  <Description>Cloud service created by scheduler powershell</Description>\r\n  <GeoRegion>West US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>scheduler</ResourceProviderNamespace>\r\n      <Type>JobCollections</Type>\r\n      <Name>testFromPSScenario</Name>\r\n      <SchemaVersion>1.1</SchemaVersion>\r\n      <ETag>bb82b6d8-174e-4eae-a497-c582401dbe12</ETag>\r\n      <State>Started</State>\r\n      <IntrinsicSettings>\r\n        <Plan>Standard</Plan>\r\n        <Quota>\r\n          <MaxJobCount>50</MaxJobCount>\r\n          <MaxRecurrence>\r\n            <Frequency>Minute</Frequency>\r\n            <Interval>1</Interval>\r\n          </MaxRecurrence>\r\n        </Quota>\r\n      </IntrinsicSettings>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "f8c0ecda9149a00d88f03a7cf3bc5766"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:18 GMT"
+        ],
+        "ETag": [
+          "898c7788-a784-462c-b22b-66cc74b0ff3c"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/CloudServices/cs-WestUS-scheduler",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.CloudServiceManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>cs-WestUS-scheduler</Name>\r\n  <Label>Cloud service created by scheduler powershell</Label>\r\n  <Description>Cloud service created by scheduler powershell</Description>\r\n  <GeoRegion>West US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>scheduler</ResourceProviderNamespace>\r\n      <Type>JobCollections</Type>\r\n      <Name>testFromPSScenario</Name>\r\n      <SchemaVersion>1.1</SchemaVersion>\r\n      <ETag>bb82b6d8-174e-4eae-a497-c582401dbe12</ETag>\r\n      <State>Started</State>\r\n      <IntrinsicSettings>\r\n        <Plan>Standard</Plan>\r\n        <Quota>\r\n          <MaxJobCount>50</MaxJobCount>\r\n          <MaxRecurrence>\r\n            <Frequency>Minute</Frequency>\r\n            <Interval>1</Interval>\r\n          </MaxRecurrence>\r\n        </Quota>\r\n      </IntrinsicSettings>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "315e2b6f441dadfea06364853c0ee886"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:21 GMT"
+        ],
+        "ETag": [
+          "898c7788-a784-462c-b22b-66cc74b0ff3c"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/CloudServices/cs-WestUS-scheduler",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.CloudServiceManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>cs-WestUS-scheduler</Name>\r\n  <Label>Cloud service created by scheduler powershell</Label>\r\n  <Description>Cloud service created by scheduler powershell</Description>\r\n  <GeoRegion>West US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>scheduler</ResourceProviderNamespace>\r\n      <Type>JobCollections</Type>\r\n      <Name>testFromPSScenario</Name>\r\n      <SchemaVersion>1.1</SchemaVersion>\r\n      <ETag>bb82b6d8-174e-4eae-a497-c582401dbe12</ETag>\r\n      <State>Started</State>\r\n      <IntrinsicSettings>\r\n        <Plan>Standard</Plan>\r\n        <Quota>\r\n          <MaxJobCount>50</MaxJobCount>\r\n          <MaxRecurrence>\r\n            <Frequency>Minute</Frequency>\r\n            <Interval>1</Interval>\r\n          </MaxRecurrence>\r\n        </Quota>\r\n      </IntrinsicSettings>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "9fb83e0aac1da602baee7cce587dcd77"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:25 GMT"
+        ],
+        "ETag": [
+          "898c7788-a784-462c-b22b-66cc74b0ff3c"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/CloudServices/cs-WestUS-scheduler",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.CloudServiceManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>cs-WestUS-scheduler</Name>\r\n  <Label>Cloud service created by scheduler powershell</Label>\r\n  <Description>Cloud service created by scheduler powershell</Description>\r\n  <GeoRegion>West US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>scheduler</ResourceProviderNamespace>\r\n      <Type>JobCollections</Type>\r\n      <Name>testFromPSScenario</Name>\r\n      <SchemaVersion>1.1</SchemaVersion>\r\n      <ETag>bb82b6d8-174e-4eae-a497-c582401dbe12</ETag>\r\n      <State>Started</State>\r\n      <IntrinsicSettings>\r\n        <Plan>Standard</Plan>\r\n        <Quota>\r\n          <MaxJobCount>50</MaxJobCount>\r\n          <MaxRecurrence>\r\n            <Frequency>Minute</Frequency>\r\n            <Interval>1</Interval>\r\n          </MaxRecurrence>\r\n        </Quota>\r\n      </IntrinsicSettings>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "6aeb372d73aaa0c78a242b2160a0e022"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:27 GMT"
+        ],
+        "ETag": [
+          "898c7788-a784-462c-b22b-66cc74b0ff3c"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/cs-WestUS-scheduler/resources/scheduler/JobCollections/testFromPSScenario",
+      "RequestMethod": "PUT",
+      "RequestBody": "<Resource xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <IntrinsicSettings>\r\n    <Plan>Standard</Plan>\r\n    <Quota>\r\n      <MaxJobCount>50</MaxJobCount>\r\n      <MaxRecurrence>\r\n        <Frequency>Minute</Frequency>\r\n        <Interval>1</Interval>\r\n      </MaxRecurrence>\r\n    </Quota>\r\n  </IntrinsicSettings>\r\n</Resource>",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ],
+        "client-tracking-id": [
+          "9"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "7383cde2428dad079cf0156a983a6b44"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:00 GMT"
+        ],
+        "ETag": [
+          "bb82b6d8-174e-4eae-a497-c582401dbe12"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/7383cde2428dad079cf0156a983a6b44",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ],
+        "client-tracking-id": [
+          "9"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>7383cde2-428d-ad07-9cf0-156a983a6b44</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "523a77b07303a746a7dae589e343d9e5"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:00 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/7383cde2428dad079cf0156a983a6b44",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ],
+        "client-tracking-id": [
+          "9"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>7383cde2-428d-ad07-9cf0-156a983a6b44</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "usnorth"
+        ],
+        "x-ms-request-id": [
+          "22c821f1e271a12b9c3b4c22fd29446c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:16 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/cs-WestUS-scheduler/resources/scheduler/~/JobCollections/testFromPSScenario",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<Resource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudServiceSettings>\r\n    <GeoRegion>West US</GeoRegion>\r\n  </CloudServiceSettings>\r\n  <ETag>bb82b6d8-174e-4eae-a497-c582401dbe12</ETag>\r\n  <IntrinsicSettings>\r\n    <Plan>Standard</Plan>\r\n    <Quota>\r\n      <MaxJobCount>50</MaxJobCount>\r\n      <MaxRecurrence>\r\n        <Frequency>Minute</Frequency>\r\n        <Interval>1</Interval>\r\n      </MaxRecurrence>\r\n    </Quota>\r\n  </IntrinsicSettings>\r\n  <Name>testFromPSScenario</Name>\r\n  <OperationStatus>\r\n    <Error>\r\n      <HttpCode>200</HttpCode>\r\n      <Message>OK</Message>\r\n    </Error>\r\n    <Result>Succeeded</Result>\r\n  </OperationStatus>\r\n  <PromotionCode></PromotionCode>\r\n  <SchemaVersion>1.1</SchemaVersion>\r\n  <State>Started</State>\r\n  <SubState i:nil=\"true\" />\r\n  <Type>jobcollections</Type>\r\n</Resource>",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "3b6f92d8f477abf4bef4a70fcd940876"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:18 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/cs-WestUS-scheduler/resources/scheduler/~/JobCollections/testFromPSScenario",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<Resource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudServiceSettings>\r\n    <GeoRegion>West US</GeoRegion>\r\n  </CloudServiceSettings>\r\n  <ETag>bb82b6d8-174e-4eae-a497-c582401dbe12</ETag>\r\n  <IntrinsicSettings>\r\n    <Plan>Standard</Plan>\r\n    <Quota>\r\n      <MaxJobCount>50</MaxJobCount>\r\n      <MaxRecurrence>\r\n        <Frequency>Minute</Frequency>\r\n        <Interval>1</Interval>\r\n      </MaxRecurrence>\r\n    </Quota>\r\n  </IntrinsicSettings>\r\n  <Name>testFromPSScenario</Name>\r\n  <OperationStatus>\r\n    <Error>\r\n      <HttpCode>200</HttpCode>\r\n      <Message>OK</Message>\r\n    </Error>\r\n    <Result>Succeeded</Result>\r\n  </OperationStatus>\r\n  <PromotionCode></PromotionCode>\r\n  <SchemaVersion>1.1</SchemaVersion>\r\n  <State>Started</State>\r\n  <SubState i:nil=\"true\" />\r\n  <Type>jobcollections</Type>\r\n</Resource>",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "92a7bea1cc89aba298604bea004a7610"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:22 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/cs-WestUS-scheduler/resources/scheduler/~/JobCollections/testFromPSScenario/jobs/testFromPSScenarioJob?api-version=2014-04-01",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"action\": {\r\n    \"type\": \"http\",\r\n    \"request\": {\r\n      \"uri\": \"http://www.bing.com/\",\r\n      \"method\": \"GET\",\r\n      \"headers\": {}\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Scheduler.SchedulerClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"testFromPSScenarioJob\",\r\n  \"action\": {\r\n    \"request\": {\r\n      \"uri\": \"http://www.bing.com/\",\r\n      \"method\": \"GET\",\r\n      \"headers\": {}\r\n    },\r\n    \"type\": \"http\"\r\n  },\r\n  \"state\": \"enabled\",\r\n  \"status\": {\r\n    \"nextExecutionTime\": \"2014-06-16T23:01:44.5954124Z\",\r\n    \"executionCount\": 0,\r\n    \"failureCount\": 0,\r\n    \"faultedCount\": 0\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "8a071023781cae5c94b0bad96d69f96d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:24 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/cs-WestUS-scheduler/resources/scheduler/~/JobCollections/testFromPSScenario/jobs?api-version=2014-04-01&$skip=0",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Scheduler.SchedulerClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "[\r\n  {\r\n    \"id\": \"testFromPSScenarioJob\",\r\n    \"action\": {\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"GET\",\r\n        \"headers\": {}\r\n      },\r\n      \"type\": \"http\"\r\n    },\r\n    \"state\": \"enabled\",\r\n    \"status\": {\r\n      \"nextExecutionTime\": \"2014-06-16T23:01:44.5954124Z\",\r\n      \"executionCount\": 0,\r\n      \"failureCount\": 0,\r\n      \"faultedCount\": 0\r\n    }\r\n  }\r\n]",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "2f61220c00f5a6feba85787415799e43"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:26 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/cs-WestUS-scheduler/resources/scheduler/~/JobCollections/testFromPSScenario/jobs?api-version=2014-04-01&$skip=0",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Scheduler.SchedulerClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "[\r\n  {\r\n    \"id\": \"testFromPSScenarioJob\",\r\n    \"action\": {\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"GET\",\r\n        \"headers\": {}\r\n      },\r\n      \"type\": \"http\"\r\n    },\r\n    \"state\": \"enabled\",\r\n    \"status\": {\r\n      \"nextExecutionTime\": \"2014-06-16T23:01:44.5954124Z\",\r\n      \"executionCount\": 0,\r\n      \"failureCount\": 0,\r\n      \"faultedCount\": 0\r\n    }\r\n  }\r\n]",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "b123085c5a6fa76c94cb2392ec928234"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:28 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/cs-WestUS-scheduler/resources/scheduler/~/JobCollections/testFromPSScenario/jobs/testFromPSScenarioJob?api-version=2014-04-01",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Scheduler.SchedulerClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "e19824e79d69a5da86f394df497948d3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:30 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/cs-WestUS-scheduler/resources/scheduler/JobCollections/testFromPSScenario",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ],
+        "client-tracking-id": [
+          "30"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "b93c33477b0ca970ae6b63c7843052a0"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:32 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/b93c33477b0ca970ae6b63c7843052a0",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ],
+        "client-tracking-id": [
+          "30"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>b93c3347-7b0c-a970-ae6b-63c7843052a0</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "a9b77e204dbda562af52c17ac1e9ec0b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:33 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/operations/b93c33477b0ca970ae6b63c7843052a0",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient/2.0.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ],
+        "client-tracking-id": [
+          "30"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>b93c3347-7b0c-a970-ae6b-63c7843052a0</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "2a4d4934be06acb7b703cdf7791e6350"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 16 Jun 2014 23:01:48 GMT"
+        ],
+        "Server": [
+          "1.0.6198.89",
+          "(rd_rdfe_stable.140611-1210)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "db1ab6f0-4769-4b27-930e-01e2ef9c123c"
+  }
+}

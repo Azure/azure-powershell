@@ -1,0 +1,2006 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices?resourceType=AutomationAccount&detailLevel=Full&resourceProviderNamespace=automation",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>OaaSCSZV2MEWJSFZEUBUOS6RFER33W6CF6HZFLIHTKWAXRNBGWIHNJEUXQ-East-US</Name>\r\n    <Label>OaaSCSZV2MEWJSFZEUBUOS6RFER33W6CF6HZFLIHTKWAXRNBGWIHNJEUXQ-East-US</Label>\r\n    <Description>OaaSCSZV2MEWJSFZEUBUOS6RFER33W6CF6HZFLIHTKWAXRNBGWIHNJEUXQ-East-US in East US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>Automation509</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>c1251ced-1d0f-4cd8-9a9d-2b452f4283d2</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>elvgAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>5692ec51-f3da-4795-a2a4-602c5919b91f</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>submgmt</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>d53eecef-d95b-4f3e-a34a-78ce14550d41</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>SuhasBugBash</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>21e6ad99-4956-49aa-ae40-7d00d3a039a4</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>TestAutomationAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>051d7050-e346-4f3e-9e09-bb421fe3d725</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>Viv-0516</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>d8e578b0-d880-48a5-a92b-ef9698f8ff68</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>automation</ResourceProviderNamespace>\r\n        <Type>AutomationAccount</Type>\r\n        <Name>AutomationAccount</Name>\r\n        <Plan>Preview</Plan>\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>47e18c76-a0f5-4d45-8512-dac82e07cfc2</ETag>\r\n        <State>Started</State>\r\n        <SubState />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "b0bcac941acba3a4805de86c35d548be"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:23 GMT"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Runbooks?$expand=Schedules&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Runbooks\",\r\n  \"value\": [\r\n    {\r\n      \"Schedules\": [\r\n        {\r\n          \"odata.type\": \"AutomationApi.V2014_03_13.OneTimeSchedule\",\r\n          \"ScheduleID\": \"837eaad3-2043-4a2d-995d-bea247ab8378\",\r\n          \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n          \"Name\": \"s01\",\r\n          \"Description\": null,\r\n          \"StartTime\": \"2014-04-30T06:30:00\",\r\n          \"ExpiryTime\": \"2014-04-30T06:30:00\",\r\n          \"CreationTime\": \"2014-04-29T00:00:34.637\",\r\n          \"LastModifiedTime\": \"2014-04-29T00:00:34.637\",\r\n          \"IsEnabled\": true,\r\n          \"NextRun\": null\r\n        }\r\n      ],\r\n      \"#OrchestratorApi.Publish\": {},\r\n      \"#OrchestratorApi.Edit\": {},\r\n      \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n      \"RunbookID\": \"17c9a137-d057-459d-bde3-68a5da1ff9b0\",\r\n      \"RunbookName\": \"myrunbook3\",\r\n      \"CreationTime\": \"2014-04-24T23:44:33\",\r\n      \"LastModifiedTime\": \"2014-04-24T23:44:57.683\",\r\n      \"LastModifiedBy\": \"oaastest@live.com\",\r\n      \"Description\": null,\r\n      \"IsApiOnly\": false,\r\n      \"IsGlobal\": false,\r\n      \"PublishedRunbookVersionID\": \"3f4a63e6-8ee2-4a0e-8d1c-9088af655a8b\",\r\n      \"DraftRunbookVersionID\": \"c465d82a-bf38-4cb2-98b9-510485641f3f\",\r\n      \"Tags\": null,\r\n      \"LogDebug\": false,\r\n      \"LogVerbose\": false,\r\n      \"LogProgress\": false\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "bd38620e2304af1f819c85a034c17f89"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:24 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=ule531mixv4jliodgddb2qs4; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/RunbookVersions?api-version=2014-03-13_Preview",
+      "RequestMethod": "POST",
+      "RequestBody": "workflow Use-WorkflowCheckpointSample\r\n{\r\n    Write-Output \"Before Checkpoint.\"\r\n    start-sleep -s 20\r\n\t\r\n    # A checkpoint is created.\r\n    Checkpoint-Workflow\r\n\r\n    # This line occurs after the checkpoint. The runbook will start here on resume.\r\n    Write-Output \"After Checkpoint.\"\r\n}",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#RunbookVersions/@Element\",\r\n  \"odata.mediaReadLink\": \"RunbookVersions(guid'ee6d2d19-a2be-494b-ab88-b8425b74fda2')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"odata.mediaETag\": \"\\\"635375017454000000\\\"\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"RunbookVersionID\": \"ee6d2d19-a2be-494b-ab88-b8425b74fda2\",\r\n  \"RunbookID\": \"00000000-0000-0000-0000-000000000000\",\r\n  \"VersionNumber\": 0,\r\n  \"IsDraft\": false,\r\n  \"CreationTime\": \"0001-01-01T00:00:00\",\r\n  \"LastModifiedTime\": \"0001-01-01T00:00:00\"\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "x-ms-location": [
+          "https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/RunbookVersions(guid'ee6d2d19-a2be-494b-ab88-b8425b74fda2')"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "fe5c11efc321af60b51abc320c12cbac"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:25 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=kisjtaln00z2eekqzyzzv3oj; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/RunbookVersions(guid'ee6d2d19-a2be-494b-ab88-b8425b74fda2')?api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#RunbookVersions/@Element\",\r\n  \"odata.mediaReadLink\": \"RunbookVersions(guid'ee6d2d19-a2be-494b-ab88-b8425b74fda2')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"odata.mediaETag\": \"\\\"635375017454000000\\\"\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"RunbookVersionID\": \"ee6d2d19-a2be-494b-ab88-b8425b74fda2\",\r\n  \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n  \"VersionNumber\": 1,\r\n  \"IsDraft\": true,\r\n  \"CreationTime\": \"2014-06-04T18:02:25.4\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:02:25.4\"\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ef327ab09cd6a06cb517f022c67ae7bb"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:26 GMT"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Runbooks(guid'9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4')?$expand=Schedules&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Runbooks/@Element\",\r\n  \"Schedules\": [],\r\n  \"#OrchestratorApi.Publish\": {},\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n  \"RunbookName\": \"Use-WorkflowCheckpointSample\",\r\n  \"CreationTime\": \"2014-06-04T18:02:25.397\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:02:25.397\",\r\n  \"LastModifiedBy\": null,\r\n  \"Description\": null,\r\n  \"IsApiOnly\": false,\r\n  \"IsGlobal\": false,\r\n  \"PublishedRunbookVersionID\": null,\r\n  \"DraftRunbookVersionID\": \"ee6d2d19-a2be-494b-ab88-b8425b74fda2\",\r\n  \"Tags\": null,\r\n  \"LogDebug\": false,\r\n  \"LogVerbose\": false,\r\n  \"LogProgress\": false\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0bca89d1356faa00994f518c407838f5"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:26 GMT"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Runbooks(guid'9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4')?$expand=Schedules&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Runbooks/@Element\",\r\n  \"Schedules\": [],\r\n  \"#OrchestratorApi.Publish\": {},\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n  \"RunbookName\": \"Use-WorkflowCheckpointSample\",\r\n  \"CreationTime\": \"2014-06-04T18:02:25.397\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:02:27.653\",\r\n  \"LastModifiedBy\": null,\r\n  \"Description\": \"\",\r\n  \"IsApiOnly\": false,\r\n  \"IsGlobal\": false,\r\n  \"PublishedRunbookVersionID\": null,\r\n  \"DraftRunbookVersionID\": \"ee6d2d19-a2be-494b-ab88-b8425b74fda2\",\r\n  \"Tags\": null,\r\n  \"LogDebug\": false,\r\n  \"LogVerbose\": false,\r\n  \"LogProgress\": false\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "34cc2679d3d5aaacaab1b7bdfce34752"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:28 GMT"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Runbooks(guid'9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4')?$expand=Schedules&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Runbooks/@Element\",\r\n  \"Schedules\": [],\r\n  \"#OrchestratorApi.Publish\": {},\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n  \"RunbookName\": \"Use-WorkflowCheckpointSample\",\r\n  \"CreationTime\": \"2014-06-04T18:02:25.397\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:02:27.653\",\r\n  \"LastModifiedBy\": null,\r\n  \"Description\": \"\",\r\n  \"IsApiOnly\": false,\r\n  \"IsGlobal\": false,\r\n  \"PublishedRunbookVersionID\": null,\r\n  \"DraftRunbookVersionID\": \"ee6d2d19-a2be-494b-ab88-b8425b74fda2\",\r\n  \"Tags\": null,\r\n  \"LogDebug\": false,\r\n  \"LogVerbose\": false,\r\n  \"LogProgress\": false\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8c6da9503d5ba106bca1c313c335f932"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:29 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=y2bop2niih5tdbg4wxtfhlp5; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.85",
+          "(rd_rdfe_stable.140604-0056)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Runbooks(guid'9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4')?$expand=Schedules&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Runbooks/@Element\",\r\n  \"Schedules\": [],\r\n  \"#OrchestratorApi.Edit\": {},\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n  \"RunbookName\": \"Use-WorkflowCheckpointSample\",\r\n  \"CreationTime\": \"2014-06-04T18:02:25.397\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:02:30.257\",\r\n  \"LastModifiedBy\": \"PowerShell\",\r\n  \"Description\": \"\",\r\n  \"IsApiOnly\": false,\r\n  \"IsGlobal\": false,\r\n  \"PublishedRunbookVersionID\": \"eb6bef00-9829-447f-a780-d972c6e4b541\",\r\n  \"DraftRunbookVersionID\": null,\r\n  \"Tags\": null,\r\n  \"LogDebug\": false,\r\n  \"LogVerbose\": false,\r\n  \"LogProgress\": false\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "f89888a707bdaa2d80a5ec1ec5be8d90"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:30 GMT"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Runbooks(guid'9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4')?$expand=Schedules&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Runbooks/@Element\",\r\n  \"Schedules\": [],\r\n  \"#OrchestratorApi.Edit\": {},\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n  \"RunbookName\": \"Use-WorkflowCheckpointSample\",\r\n  \"CreationTime\": \"2014-06-04T18:02:25.397\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:02:30.257\",\r\n  \"LastModifiedBy\": \"PowerShell\",\r\n  \"Description\": \"\",\r\n  \"IsApiOnly\": false,\r\n  \"IsGlobal\": false,\r\n  \"PublishedRunbookVersionID\": \"eb6bef00-9829-447f-a780-d972c6e4b541\",\r\n  \"DraftRunbookVersionID\": null,\r\n  \"Tags\": null,\r\n  \"LogDebug\": false,\r\n  \"LogVerbose\": false,\r\n  \"LogProgress\": false\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "179bd4404d9ea7cbb0a6c5e97163e068"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:32 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=34drkyg4ojtf0b45cwzbh1xe; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Runbooks(guid'9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4')?api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Runbooks/@Element\",\r\n  \"#OrchestratorApi.Publish\": {},\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n  \"RunbookName\": \"Use-WorkflowCheckpointSample\",\r\n  \"CreationTime\": \"2014-06-04T18:02:25.397\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:02:25.397\",\r\n  \"LastModifiedBy\": null,\r\n  \"Description\": null,\r\n  \"IsApiOnly\": false,\r\n  \"IsGlobal\": false,\r\n  \"PublishedRunbookVersionID\": null,\r\n  \"DraftRunbookVersionID\": \"ee6d2d19-a2be-494b-ab88-b8425b74fda2\",\r\n  \"Tags\": null,\r\n  \"LogDebug\": false,\r\n  \"LogVerbose\": false,\r\n  \"LogProgress\": false\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8f06f430f07da6e59f07a89d5dc20e06"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:27 GMT"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Runbooks(guid'9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4')?api-version=2014-03-13_Preview",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n  \"RunbookName\": \"Use-WorkflowCheckpointSample\",\r\n  \"CreationTime\": \"2014-06-04T18:02:25.397\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:02:25.397\",\r\n  \"Description\": \"\",\r\n  \"IsApiOnly\": false,\r\n  \"IsGlobal\": false,\r\n  \"DraftRunbookVersionID\": \"ee6d2d19-a2be-494b-ab88-b8425b74fda2\",\r\n  \"LogDebug\": false,\r\n  \"LogVerbose\": false,\r\n  \"LogProgress\": false,\r\n  \"Schedules\": []\r\n}",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "afa4596b0c4aa0a2b36cf90eee7b898c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:27 GMT"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Runbooks(guid'9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4')/Publish?api-version=2014-03-13_Preview",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-automation-client-request-user-identity": [
+          "PowerShell"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Edm.Guid\",\r\n  \"value\": \"eb6bef00-9829-447f-a780-d972c6e4b541\"\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "eac91fc6d53fa7e6ad77cea1299ab48a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:30 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=kz4mpr1wjr43g2b4vnmhnxph; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/RunbookParameters?$filter=RunbookVersionID%20eq%20guid'eb6bef00-9829-447f-a780-d972c6e4b541'&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#RunbookParameters\",\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b9892895afb4af8d9faa6eb7e6abc886"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:32 GMT"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Runbooks(guid'9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4')/Start?api-version=2014-03-13_Preview",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"parameters\": [\r\n    {\r\n      \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n      \"Value\": \"PowerShell\"\r\n    }\r\n  ]\r\n}",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Edm.Guid\",\r\n  \"value\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\"\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "2130ea373160ab2393ffec6cd40647f1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:33 GMT"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"New\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": null,\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:02:32.863\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b2a84aeafd2da3c2b2801455718f427d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:42 GMT"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"New\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": null,\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:02:32.863\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "43cd77bcb1bea4a990f59d75be7043e9"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:48 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=k0wrhltkavolb0wm4mjswxtk; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"New\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": null,\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:02:32.863\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "eea37c9a3c32a07c8bb841d9778c271c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:02:57 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=3earth15jvywsrgjs2pi3fod; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"New\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": null,\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:02:32.863\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "1318391ba871a816bbb50a31f3501822"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:03 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=kas0glbt2m2w3mi3vdn4z5al; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"Activating\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": null,\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:03:04.84\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:03:04.84\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3b53aa3f2621a6c98ca73b2be07881b0"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:07 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=351225v5kwnvjzw2thkhhjs2; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"Activating\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": null,\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:03:04.84\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:03:04.84\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "5af357df6efba5b9b8fa91845a8874af"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:13 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=enui0f2smatwgrg0j3blrdup; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"Activating\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": null,\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:03:04.84\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:03:04.84\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "4a3374e74055ae06b607e9cae6caaff5"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:17 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=wwfqfrirbntwraacz35nrv5b; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"Activating\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": null,\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:03:04.84\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:03:04.84\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "1296ab57a827ab4da20c0a21155044a3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:21 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=omy0q3ngqec1potxzauyh0dy; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"Activating\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": null,\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:03:04.84\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:03:04.84\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "d5a63cba18cdaf029d042b740001556f"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:24 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=vubkt2pbwmptj2s0ryeexy5g; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"Running\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": \"2014-06-04T18:03:25.27\",\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:03:25.27\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:03:25.27\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "69ff525fc8c0a6b09aa5d0e69608422c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:29 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=5ccsourl2uongqeogtpaap1b; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"Suspending\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": \"2014-06-04T18:03:25.27\",\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:03:31.203\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:03:31.203\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "25b7ddeae071aec9a9598131991c142f"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:34 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=iufspqdjn1cuvt35ozk0ansm; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"Suspending\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": \"2014-06-04T18:03:25.27\",\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:03:31.203\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:03:31.203\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "94db461db23fa320853726dcbc53aac6"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:40 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=dhtdzgjv5terfjvltuvwmygx; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"Suspending\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": \"2014-06-04T18:03:25.27\",\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:03:31.203\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:03:31.203\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "22c575721208ab719e9e72e13e3c9ff6"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:44 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=qnskifda5zinyg4vna1a0oac; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"Suspended\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": \"2014-06-04T18:03:25.27\",\r\n  \"EndTime\": null,\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:03:48.56\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:03:48.56\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "4eb42bdcb170a5e99f7025292ba2aa3d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:51 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=2eqz0sysaekelaxbyl0eacxy; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')?$expand=JobContext/RunbookVersion/Runbook,JobContext/Schedule,JobContext/JobParameters&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Jobs/@Element&$select=JobID,JobContextID,AccountID,JobStatus,JobStatusDetails,StartTime,EndTime,CreationTime,LastModifiedTime,LastStatusModifiedTime,JobException,JobContext/RunbookVersion/Runbook/RunbookID,JobContext/RunbookVersion/Runbook/RunbookName,JobContext/Schedule/Name,JobContext/JobParameters\",\r\n  \"odata.mediaReadLink\": \"Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/$value\",\r\n  \"odata.mediaContentType\": \"application/octet-stream\",\r\n  \"JobContext\": {\r\n    \"RunbookVersion\": {\r\n      \"odata.mediaReadLink\": \"RunbookVersions(guid'eb6bef00-9829-447f-a780-d972c6e4b541')/$value\",\r\n      \"odata.mediaContentType\": \"application/octet-stream\",\r\n      \"Runbook\": {\r\n        \"RunbookID\": \"9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4\",\r\n        \"RunbookName\": \"Use-WorkflowCheckpointSample\"\r\n      }\r\n    },\r\n    \"JobParameters\": [\r\n      {\r\n        \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n        \"Name\": \"MicrosoftApplicationManagementStartedBy\",\r\n        \"Value\": \"PowerShell\",\r\n        \"Type\": \"System.String\"\r\n      }\r\n    ],\r\n    \"Schedule\": null\r\n  },\r\n  \"JobID\": \"71723a0e-bdda-4857-a7fe-0b8112fd89df\",\r\n  \"JobContextID\": \"f4b4f0e7-0117-42c4-9886-76df80295b65\",\r\n  \"AccountID\": \"18bcf3ce-b68c-462e-b640-c8386d43d30c\",\r\n  \"JobStatus\": \"Completed\",\r\n  \"JobStatusDetails\": \"None\",\r\n  \"StartTime\": \"2014-06-04T18:03:25.27\",\r\n  \"EndTime\": \"2014-06-04T18:03:54.333\",\r\n  \"CreationTime\": \"2014-06-04T18:02:32.863\",\r\n  \"LastModifiedTime\": \"2014-06-04T18:03:54.333\",\r\n  \"LastStatusModifiedTime\": \"2014-06-04T18:03:54.333\",\r\n  \"JobException\": null\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ccad88ac32aba177ac8579096fb0a84f"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:56 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=4rlm2dobcn4ybl4uuczzdft2; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/Suspend?api-version=2014-03-13_Preview",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "deb62b933c05aacba2006836ffc6cb27"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:31 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=11dzfe0iwlqoej1kp2hmvffq; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Jobs(guid'71723a0e-bdda-4857-a7fe-0b8112fd89df')/Resume?api-version=2014-03-13_Preview",
+      "RequestMethod": "POST",
+      "RequestBody": "{}",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "1f7a2cd6e94fa378b47cbf05743097c1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:53 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=4js5hyrysf13bmatx1xs40os; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Runbooks(guid'9f5bd4ad-86e4-46fb-a56d-ecff4a8d0df4')?api-version=2014-03-13_Preview",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8a225aa8e0aaaadb8408efa3cdedd1ce"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:58 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=yixviojdgljlfj0ieyphmp2g; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.85",
+          "(rd_rdfe_stable.140604-0056)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/automation/~/Accounts/AutomationAccount/Runbooks?$filter=RunbookName%20eq%20'Use-WorkflowCheckpointSample'&$expand=Schedules&api-version=2014-03-13_Preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "MaxDataServiceVersion": [
+          "3.0"
+        ],
+        "MinDataServiceVersion": [
+          "3.0"
+        ],
+        "x-ms-version": [
+          "2013-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/0.9.0.0",
+          "WindowsAzurePowershell/v0.8.5"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://oaas.azure-automation.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/cloudservices/OaaSCS/resources/~/Accounts/AutomationAccount/$metadata#Runbooks\",\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "168eb5b8385aa25b993851abde9635f1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 04 Jun 2014 18:03:59 GMT"
+        ],
+        "Set-Cookie": [
+          "ASP.NET_SessionId=w1qotrszta5krrekg3d2bxd4; path=/; HttpOnly"
+        ],
+        "Server": [
+          "1.0.6198.81",
+          "(rd_rdfe_stable.140529-1904)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "db1ab6f0-4769-4b27-930e-01e2ef9c123c"
+  }
+}

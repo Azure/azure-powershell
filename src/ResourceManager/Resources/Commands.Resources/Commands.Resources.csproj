@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E1F5201D-6067-430E-B303-4E367652991B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.Resources</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Resources</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <CodeAnalysisAdditionalOptions>/assemblyCompareMode:StrongNameIgnoringVersion</CodeAnalysisAdditionalOptions>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Resources</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\Resources</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Microsoft.Azure.Commands.Resources.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop\Rules</CodeAnalysisRuleDirectories>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Gallery, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Gallery.2.2.0-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Graph.RBAC">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.4.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.Authorization, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.11.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Monitoring">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Monitoring.2.2.0-preview\lib\net40\Microsoft.Azure.Monitoring.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.7.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.11.10918.1222\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.11.10918.1222\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActiveDirectory\GetAzureADGroupMemberCommand.cs" />
+    <Compile Include="ActiveDirectory\GetAzureADGroupCommand.cs" />
+    <Compile Include="ActiveDirectory\GetAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\GetAzureADUserCommand.cs" />
+    <Compile Include="Models.ActiveDirectory\ActiveDirectoryBaseCmdlet.cs" />
+    <Compile Include="Models.ActiveDirectory\ActiveDirectoryClientExtensions.cs" />
+    <Compile Include="Models.ActiveDirectory\ADObjectFilterOptions.cs" />
+    <Compile Include="Models.ActiveDirectory\ParameterSet.cs" />
+    <Compile Include="Models.ActiveDirectory\PSADServicePrincipal.cs" />
+    <Compile Include="Models.ActiveDirectory\PSADGroup.cs" />
+    <Compile Include="Models.ActiveDirectory\PSADUser.cs" />
+    <Compile Include="Models.ActiveDirectory\PSADObject.cs" />
+    <Compile Include="Models.Authorization\FilterRoleAssignmentsOptions.cs" />
+    <Compile Include="Models.ActiveDirectory\ActiveDirectoryClient.cs" />
+    <Compile Include="Models.Authorization\AuthorizationClientExtensions.cs" />
+    <Compile Include="Models.Authorization\PSGroupRoleAssignment.cs" />
+    <Compile Include="Models.Authorization\PSServiceRoleAssignment.cs" />
+    <Compile Include="Models.Authorization\PSUserRoleAssignment.cs" />
+    <Compile Include="Models.Authorization\PSRoleAssignment.cs" />
+    <Compile Include="Models.Authorization\PSRoleDefinition.cs" />
+    <Compile Include="Models.Authorization\PSPermission.cs" />
+    <Compile Include="Models.ResourceGroups\TemplateValidationInfo.cs" />
+    <Compile Include="Models.ResourceGroups\PSGalleryItem.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceManagerError.cs" />
+    <Compile Include="Models.ResourceGroups\PSTagValuePair.cs" />
+    <Compile Include="Models.ResourceGroups\ResourceBaseCmdlet.cs" />
+    <Compile Include="Models.ResourceGroups\ResourceIdentifier.cs" />
+    <Compile Include="Models.ResourceGroups\ResourcesBaseCmdlet.cs" />
+    <Compile Include="Models.ResourceGroups\ResourcesExtensions.cs" />
+    <Compile Include="Models.ResourceGroups\TagsConversionHelper.cs" />
+    <Compile Include="Models.ResourceGroups\TemplateFileParameterV2.cs" />
+    <Compile Include="Models.ResourceGroups\GetPSResourceGroupLogParameters.cs" />
+    <Compile Include="Models.ResourceGroups\PSDeploymentEventDataAuthorization.cs" />
+    <Compile Include="Models.ResourceGroups\PSDeploymentEventDataHttpRequest.cs" />
+    <Compile Include="Models.ResourceGroups\PSDeploymentEventData.cs" />
+    <Compile Include="Models.ResourceGroups\ResourceClient.Events.cs" />
+    <Compile Include="Models.ResourceGroups\FilterResourceGroupDeploymentOptions.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceProviderType.cs" />
+    <Compile Include="Models.ResourceGroups\BasePSResourceParameters.cs" />
+    <Compile Include="Models.ResourceGroups\UpdatePSResourceGroupParameters.cs" />
+    <Compile Include="Models.ResourceGroups\UpdatePSResourceParameters.cs" />
+    <Compile Include="Models.ResourceGroups\TemplateFileResource.cs" />
+    <Compile Include="Models.ResourceGroups\ValidatePSResourceGroupDeploymentParameters.cs" />
+    <Compile Include="Models.Authorization\AuthorizationClient.cs" />
+    <Compile Include="ResourceGroups\GetAzureResourceGroupLogCommand.cs" />
+    <Compile Include="ResourceGroups\GetAzureLocationCommand.cs" />
+    <Compile Include="ResourceGroups\SetAzureResourceGroupCommand.cs" />
+    <Compile Include="Resources\RemoveAzureResourceCommand.cs" />
+    <Compile Include="RoleAssignments\RemoveAzureRoleAssignmentCommand.cs" />
+    <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />
+    <Compile Include="RoleAssignments\NewAzureRoleAssignmentCommand.cs" />
+    <Compile Include="RoleDefinitions\GetAzureRoleDefinitionCommand.cs" />
+    <Compile Include="Templates\TestAzureResourceGroupTemplateCommand.cs" />
+    <Compile Include="Templates\SaveAzureResourceGroupGalleryTemplateCommand.cs" />
+    <Compile Include="Templates\GetAzureResourceGroupGalleryTemplateCommand.cs" />
+    <Compile Include="Models.ResourceGroups\CreatePSResourceParameters.cs" />
+    <Compile Include="Models.ResourceGroups\PSResource.cs" />
+    <Compile Include="Models.ResourceGroups\DeploymentVariable.cs" />
+    <Compile Include="Models.ResourceGroups\FilterPSGalleryTemplatesOptions.cs" />
+    <Compile Include="Models.ResourceGroups\FilterResourcesOptions.cs" />
+    <Compile Include="Models.ResourceGroups\CreatePSDeploymentParameters.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceGroup.cs" />
+    <Compile Include="Models.ResourceGroups\CreatePSResourceGroupParameters.cs" />
+    <Compile Include="Models.ResourceGroups\GalleryTemplatesClient.cs" />
+    <Compile Include="Models.ResourceGroups\SetResourceMode.cs" />
+    <Compile Include="Models.ResourceGroups\TemplateFile.cs" />
+    <Compile Include="Models.ResourceGroups\TemplateFileParameterV1.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models.ResourceGroups\ResourceClient.ResourceManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceGroupDeployments\StopAzureResourceGroupDeploymentCommand.cs" />
+    <Compile Include="ResourceGroupDeployments\GetAzureResourceGroupDeploymentCommand.cs" />
+    <Compile Include="ResourceGroupDeployments\NewAzureResourceGroupDeploymentCommand.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceGroupDeployment.cs" />
+    <Compile Include="ResourceGroups\RemoveAzureResourceGroupCommand.cs" />
+    <Compile Include="ResourceGroups\GetAzureResourceGroupCommand.cs" />
+    <Compile Include="ResourceGroups\NewAzureResourceGroupCommand.cs" />
+    <Compile Include="Models.ResourceGroups\ResourceWithParameterBaseCmdlet.cs" />
+    <Compile Include="Models.ResourceGroups\ResourceClient.cs" />
+    <Compile Include="Resources\SetAzureResourceCommand.cs" />
+    <Compile Include="Resources\GetAzureResourceCommand.cs" />
+    <Compile Include="Resources\NewAzureResourceCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Profile\Commands.Profile.csproj">
+      <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
+      <Name>Commands.Profile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Batch\Commands.Batch\Commands.Batch.csproj">
+      <Project>{d470e50a-9607-48d6-a924-4f9f86502704}</Project>
+      <Name>Commands.Batch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RedisCache\Commands.RedisCache\Commands.RedisCache.csproj">
+      <Project>{c972e3ef-4461-4758-ba31-93e0947b1253}</Project>
+      <Name>Commands.RedisCache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Sql\Commands.Sql\Commands.Sql.csproj">
+      <Project>{69ed499e-6f3c-488f-86b8-b74cfda4d47e}</Project>
+      <Name>Commands.Sql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
+      <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
+      <Name>Commands.Tags</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Microsoft.Azure.Commands.Resources.dll-Help.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Microsoft.Azure.Commands.Resources.format.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AzureResourceManager.psd1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config" />
+    <None Include="PostBuild.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>powershell.exe -ExecutionPolicy Unrestricted -File "$(ProjectDir)\PostBuild.ps1" "$(TargetDir)\"</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+</Project>

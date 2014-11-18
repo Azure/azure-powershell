@@ -1,0 +1,6 @@
+﻿<Scaffold>
+  <ScaffoldFile Path="setup_cache.cmd" />
+  <ScaffoldFile Path="web.config" >
+    <Scaffold.ReplaceParameterRule />
+  </ScaffoldFile>
+</Scaffold>

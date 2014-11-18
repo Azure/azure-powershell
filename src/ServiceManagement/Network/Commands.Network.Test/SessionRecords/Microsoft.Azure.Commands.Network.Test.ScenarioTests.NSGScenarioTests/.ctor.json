@@ -1,0 +1,314 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/803c7f98-a213-4724-b8b2-46dab6bedc9a/locations",
+      "EncodedRequestUri": "LzgwM2M3Zjk4LWEyMTMtNDcyNC1iOGIyLTQ2ZGFiNmJlZGM5YS9sb2NhdGlvbnM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-05-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/1.0.0.0",
+          "AzurePowershell/v0.8.9"
+        ]
+      },
+      "ResponseBody": "<Locations xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Location>\r\n    <Name>North Central US</Name>\r\n    <DisplayName>North Central US</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>West US</Name>\r\n    <DisplayName>West US</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n  </Location>\r\n</Locations>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "90002b98149e23708e876b3156f8ffff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 17 Oct 2014 19:21:03 GMT"
+        ],
+        "Server": [
+          "1.0.6195.343",
+          "(rd_rdfe_dhf1.141013-1212)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/803c7f98-a213-4724-b8b2-46dab6bedc9a/operations/90002b98149e23708e876b3156f8ffff",
+      "EncodedRequestUri": "LzgwM2M3Zjk4LWEyMTMtNDcyNC1iOGIyLTQ2ZGFiNmJlZGM5YS9vcGVyYXRpb25zLzkwMDAyYjk4MTQ5ZTIzNzA4ZTg3NmIzMTU2ZjhmZmZm",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-05-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/1.0.0.0",
+          "AzurePowershell/v0.8.9"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>90002b98-149e-2370-8e87-6b3156f8ffff</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "b393774b1823282495a2aa9d3da192f2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 17 Oct 2014 19:21:04 GMT"
+        ],
+        "Server": [
+          "1.0.6195.343",
+          "(rd_rdfe_dhf1.141013-1212)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/803c7f98-a213-4724-b8b2-46dab6bedc9a/services/networking/media",
+      "EncodedRequestUri": "LzgwM2M3Zjk4LWEyMTMtNDcyNC1iOGIyLTQ2ZGFiNmJlZGM5YS9zZXJ2aWNlcy9uZXR3b3JraW5nL21lZGlh",
+      "RequestMethod": "PUT",
+      "RequestBody": "<NetworkConfiguration xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <VirtualNetworkConfiguration></VirtualNetworkConfiguration>\r\n</NetworkConfiguration>",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-09-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/3.0.0.0"
+        ],
+        "client-tracking-id": [
+          "159"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "324579022e8f206f904ab0ba78c2d7a2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 17 Oct 2014 19:21:05 GMT"
+        ],
+        "Server": [
+          "1.0.6195.343",
+          "(rd_rdfe_dhf1.141013-1212)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/803c7f98-a213-4724-b8b2-46dab6bedc9a/operations/324579022e8f206f904ab0ba78c2d7a2",
+      "EncodedRequestUri": "LzgwM2M3Zjk4LWEyMTMtNDcyNC1iOGIyLTQ2ZGFiNmJlZGM5YS9vcGVyYXRpb25zLzMyNDU3OTAyMmU4ZjIwNmY5MDRhYjBiYTc4YzJkN2Ey",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-09-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/3.0.0.0"
+        ],
+        "client-tracking-id": [
+          "159"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>32457902-2e8f-206f-904a-b0ba78c2d7a2</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "f92a5bb2b4f92de4848df93dc9874c37"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 17 Oct 2014 19:21:06 GMT"
+        ],
+        "Server": [
+          "1.0.6195.343",
+          "(rd_rdfe_dhf1.141013-1212)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/803c7f98-a213-4724-b8b2-46dab6bedc9a/operations/324579022e8f206f904ab0ba78c2d7a2",
+      "EncodedRequestUri": "LzgwM2M3Zjk4LWEyMTMtNDcyNC1iOGIyLTQ2ZGFiNmJlZGM5YS9vcGVyYXRpb25zLzMyNDU3OTAyMmU4ZjIwNmY5MDRhYjBiYTc4YzJkN2Ey",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-09-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/3.0.0.0"
+        ],
+        "client-tracking-id": [
+          "159"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>32457902-2e8f-206f-904a-b0ba78c2d7a2</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "f2eae6b827652987be0f92f023dc9583"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 17 Oct 2014 19:21:37 GMT"
+        ],
+        "Server": [
+          "1.0.6195.343",
+          "(rd_rdfe_dhf1.141013-1212)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/803c7f98-a213-4724-b8b2-46dab6bedc9a/services/networking/networksecuritygroups",
+      "EncodedRequestUri": "LzgwM2M3Zjk4LWEyMTMtNDcyNC1iOGIyLTQ2ZGFiNmJlZGM5YS9zZXJ2aWNlcy9uZXR3b3JraW5nL25ldHdvcmtzZWN1cml0eWdyb3Vwcw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-09-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseBody": "<NetworkSecurityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <NetworkSecurityGroup>\r\n    <Name>NetworkTests1329</Name>\r\n    <Label>NetworkTests3784</Label>\r\n    <Location>North Central US</Location>\r\n  </NetworkSecurityGroup>\r\n  <NetworkSecurityGroup>\r\n    <Name>NetworkTests2209</Name>\r\n    <Label>NetworkTests5913</Label>\r\n    <Location>North Central US</Location>\r\n  </NetworkSecurityGroup>\r\n  <NetworkSecurityGroup>\r\n    <Name>NetworkTests8401</Name>\r\n    <Label>NetworkTests5137</Label>\r\n    <Location>North Central US</Location>\r\n  </NetworkSecurityGroup>\r\n  <NetworkSecurityGroup>\r\n    <Name>onesdk6910</Name>\r\n    <Label>Scenario Test NSG</Label>\r\n    <Location>North Central US</Location>\r\n  </NetworkSecurityGroup>\r\n  <NetworkSecurityGroup>\r\n    <Name>randomName</Name>\r\n    <Label>Scenario Test NSG</Label>\r\n    <Location>West US</Location>\r\n  </NetworkSecurityGroup>\r\n  <NetworkSecurityGroup>\r\n    <Name>randomName2</Name>\r\n    <Label>Scenario Test NSG</Label>\r\n    <Location>West US</Location>\r\n  </NetworkSecurityGroup>\r\n  <NetworkSecurityGroup>\r\n    <Name>securityGroupName</Name>\r\n    <Location>North Central US</Location>\r\n  </NetworkSecurityGroup>\r\n</NetworkSecurityGroups>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "b30a7959cd72240387e1021cce3cb18b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 17 Oct 2014 19:21:37 GMT"
+        ],
+        "Server": [
+          "1.0.6195.343",
+          "(rd_rdfe_dhf1.141013-1212)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/803c7f98-a213-4724-b8b2-46dab6bedc9a/services/networking/networksecuritygroups/onesdk6910",
+      "EncodedRequestUri": "LzgwM2M3Zjk4LWEyMTMtNDcyNC1iOGIyLTQ2ZGFiNmJlZGM5YS9zZXJ2aWNlcy9uZXR3b3JraW5nL25ldHdvcmtzZWN1cml0eWdyb3Vwcy9vbmVzZGs2OTEw",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-09-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/3.0.0.0"
+        ],
+        "client-tracking-id": [
+          "164"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "88cb4014c7062302b8aa0c49f0d04f81"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 17 Oct 2014 19:21:39 GMT"
+        ],
+        "Server": [
+          "1.0.6195.343",
+          "(rd_rdfe_dhf1.141013-1212)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/803c7f98-a213-4724-b8b2-46dab6bedc9a/operations/88cb4014c7062302b8aa0c49f0d04f81",
+      "EncodedRequestUri": "LzgwM2M3Zjk4LWEyMTMtNDcyNC1iOGIyLTQ2ZGFiNmJlZGM5YS9vcGVyYXRpb25zLzg4Y2I0MDE0YzcwNjIzMDJiOGFhMGM0OWYwZDA0Zjgx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-09-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/3.0.0.0"
+        ],
+        "client-tracking-id": [
+          "164"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>88cb4014-c706-2302-b8aa-0c49f0d04f81</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "909d028dea1e2bf395c6245044aa3673"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 17 Oct 2014 19:21:39 GMT"
+        ],
+        "Server": [
+          "1.0.6195.343",
+          "(rd_rdfe_dhf1.141013-1212)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/803c7f98-a213-4724-b8b2-46dab6bedc9a/operations/88cb4014c7062302b8aa0c49f0d04f81",
+      "EncodedRequestUri": "LzgwM2M3Zjk4LWEyMTMtNDcyNC1iOGIyLTQ2ZGFiNmJlZGM5YS9vcGVyYXRpb25zLzg4Y2I0MDE0YzcwNjIzMDJiOGFhMGM0OWYwZDA0Zjgx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-09-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/3.0.0.0"
+        ],
+        "client-tracking-id": [
+          "164"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>88cb4014-c706-2302-b8aa-0c49f0d04f81</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "ff2171d6253d269b86adf91750ef38e2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 17 Oct 2014 19:22:11 GMT"
+        ],
+        "Server": [
+          "1.0.6195.343",
+          "(rd_rdfe_dhf1.141013-1212)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {}
+}

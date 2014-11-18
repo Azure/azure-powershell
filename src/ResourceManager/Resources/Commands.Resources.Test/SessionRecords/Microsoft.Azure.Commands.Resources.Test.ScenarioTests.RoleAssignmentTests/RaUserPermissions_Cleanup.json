@@ -1,0 +1,122 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/users/68730ae1-2d5c-446b-b37c-bd495a91bf6d?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "LzE0NDlkNWI3LThhODMtNDdkYi1hZTRjLTliMDNlODg4YmFkMC91c2Vycy82ODczMGFlMS0yZDVjLTQ0NmItYjM3Yy1iZDQ5NWE5MWJmNmQ/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "OijwP55bzFPNFU61dGL7reXxvBErwXnDlELDsunJBUw="
+        ],
+        "request-id": [
+          "a26fe1c3-5ac7-4ed0-90f3-8b2389cb6363"
+        ],
+        "client-request-id": [
+          "d1806fcd-5342-440f-8e9a-cac57ed8088b"
+        ],
+        "x-ms-gateway-rewrite": [
+          "false"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.42-previewInternal"
+        ],
+        "ocp-aad-session-key": [
+          "g76B0s0E53V6bbPU1FYqzXWtq50zj4D291xTO3DNHCC1tyP_Rt3QJgNjVWr2r-Au7iVzBYens9kYkUOV_tSWGnF8C6YhECcZwQ1ftOwQ1r8YTaQMIvXXAR5Uq_F4VLj2_m3rreF5_zoOYe5JObjWyA.rp4UgIeMaoSzJbSRsjzEZrEMSLFVcNQQkG3KP6_ty2M"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "1.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Thu, 25 Sep 2014 17:34:35 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "//subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/contrib1/providers/Microsoft.Authorization/roleAssignments/6a26d717-aba9-44e3-b971-c53694e413b2?api-version=2014-07-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzNjYTQ5MDQyLTc4MmEtNGNjOS04OWI1LWVlMWI0ODdmZTExNS9yZXNvdXJjZUdyb3Vwcy9jb250cmliMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZUFzc2lnbm1lbnRzLzZhMjZkNzE3LWFiYTktNDRlMy1iOTcxLWM1MzY5NGU0MTNiMj9hcGktdmVyc2lvbj0yMDE0LTA3LTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-07-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:75bb9eee-20db-48f8-b237-0cf3929206eb"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "620b9a6a-dbd8-4d8e-8e7e-d5ac0e4045aa"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20140925T173440Z:620b9a6a-dbd8-4d8e-8e7e-d5ac0e4045aa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 25 Sep 2014 17:34:40 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "3ca49042-782a-4cc9-89b5-ee1b487fe115",
+    "TenantId": "1449d5b7-8a83-47db-ae4c-9b03e888bad0",
+    "Domain": "rbactest.onmicrosoft.com"
+  }
+}
