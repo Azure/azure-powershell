@@ -217,6 +217,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestCreateDataFactoryGatewayWithDataFactoryParameter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestCreateAndOverwriteDataFactory.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestCreateDataFactory.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
