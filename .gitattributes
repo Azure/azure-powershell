@@ -1,0 +1,8 @@
+# Set default behaviour, in case users don't have core.autocrlf set.
+* text=auto
+
+*.sln text eol=crlf
+*.cs text eol=crlf
+*.csproj text eol=crlf
+*.ps1 text eol=crlf
+build.proj text eol=crlf

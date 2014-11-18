@@ -1,0 +1,18 @@
+{
+    "$schema" : "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentParameter.json#",
+    "contentVersion" : "1.0.0.0",
+    "parameters" : {
+        "securestring" : {
+            "value" : "myvalue"
+        },
+        "bool" : {
+            "value" : "True"
+        },
+        "string" : {
+            "value" : "myvalue"
+        },
+        "int" : {
+            "value" : "12"
+        }
+    }
+}

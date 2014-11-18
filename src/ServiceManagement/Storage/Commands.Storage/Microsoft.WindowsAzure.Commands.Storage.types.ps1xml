@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <Type>
+    <Name>Microsoft.WindowsAzure.Storage.File.CloudFile</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>DirectoryTag</Name>
+        <GetScriptBlock>[string]::Empty</GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IsDirectory</Name>
+        <GetScriptBlock>$false</GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Length</Name>
+        <GetScriptBlock>$_.Properties.Length</GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Microsoft.WindowsAzure.Storage.File.CloudFileDirectory</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>DirectoryTag</Name>
+        <GetScriptBlock>"DIR"</GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IsDirectory</Name>
+        <GetScriptBlock>$true</GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Length</Name>
+        <GetScriptBlock>[string]::Empty</GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

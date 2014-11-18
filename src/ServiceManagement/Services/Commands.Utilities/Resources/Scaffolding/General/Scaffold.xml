@@ -1,0 +1,14 @@
+﻿<Scaffold>
+  <ScaffoldFile Path="ServiceConfiguration.Cloud.cscfg">
+    <Scaffold.ReplaceParameterRule />
+  </ScaffoldFile>
+  <ScaffoldFile Path="ServiceConfiguration.Local.cscfg">
+    <Scaffold.ReplaceParameterRule />
+  </ScaffoldFile>
+  <ScaffoldFile Path="ServiceDefinition.csdef">
+    <Scaffold.ReplaceParameterRule />
+  </ScaffoldFile>
+  <ScaffoldFile Path="deploymentSettings.json">
+    <Scaffold.ReplaceParameterRule />
+  </ScaffoldFile>
+</Scaffold>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20827.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsAzurePowerShell.Test.Commands", "WindowsAzurePowerShell.Test.Commands\WindowsAzurePowerShell.Test.Commands.csproj", "{DB26D610-26DA-4C86-8013-283A68BF1C12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AnyCPU = Debug|AnyCPU
+		Release|AnyCPU = Release|AnyCPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB26D610-26DA-4C86-8013-283A68BF1C12}.Debug|AnyCPU.ActiveCfg = Debug|AnyCPU
+		{DB26D610-26DA-4C86-8013-283A68BF1C12}.Debug|AnyCPU.Build.0 = Debug|AnyCPU
+		{DB26D610-26DA-4C86-8013-283A68BF1C12}.Release|AnyCPU.ActiveCfg = Release|AnyCPU
+		{DB26D610-26DA-4C86-8013-283A68BF1C12}.Release|AnyCPU.Build.0 = Release|AnyCPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

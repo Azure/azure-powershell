@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model.PSJobHistory</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model.PSJobHistory</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>JobName</Label>
+                <PropertyName>JobName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Status</Label>
+                <PropertyName>Status</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Retry</Label>
+                <PropertyName>Retry</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Occurence</Label>
+                <PropertyName>Occurence</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StartTime</Label>
+                <PropertyName>StartTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EndTime</Label>
+                <PropertyName>EndTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Details</Label>
+                <ScriptBlock>
+                  "ActionType: " + $_.Details.ActionType
+                  if ($_.Details.HostName -ne $null)
+                  {
+                  "HostName: " + $_.Details.HostName
+                  "Response: " + $_.Details.Response
+                  "ResponseBody: " + $_.Details.ResponseBody
+                  }
+                  elseif ($_.Details.StorageAccountName -ne $null)
+                  {
+                  "Storage Account: " + $_.Details.StorageAccountName
+                  "Storage Queue: " + $_.Details.StorageQueueName
+                  "Response Status: "  + $_.Details.ResponseStatus
+                  "Queue Message: " + $_.Details.ResponseBody
+                  }
+                </ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model.PSJobHistoryDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model.PSJobHistoryDetail</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ActionType</Label>
+                <PropertyName>ActionType</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model.PSJobHistoryHttpDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model.PSJobHistoryHttpDetail</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>HostName</Label>
+                <PropertyName>HostName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Response</Label>
+                <PropertyName>Response</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResponseBody</Label>
+                <PropertyName>ResponseBody</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model.PSJobHistoryStorageDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model.PSJobHistoryStorageDetail</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>StorageAccountName</Label>
+                <PropertyName>StorageAccountName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StorageQueueName</Label>
+                <PropertyName>StorageQueueName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResponseStatus</Label>
+                <PropertyName>ResponseStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResponseBody</Label>
+                <PropertyName>ResponseBody</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
+<WadCfg>
+<DiagnosticMonitorConfiguration overallQuotaInMB="10000">
+    <PerformanceCounters scheduledTransferPeriod="PT1M">
+        <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT30S" unit="percent" />
+    </PerformanceCounters>
+</DiagnosticMonitorConfiguration>
+</WadCfg>
+</PublicConfig>

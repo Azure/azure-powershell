@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="InvalidThumbprint" xml:space="preserve">
+    <value>You must specify the thumbprint algorithm.</value>
+  </data>
+  <data name="Pfx_CertificateFormat" xml:space="preserve">
+    <value>pfx</value>
+  </data>
+  <data name="MissingThumbprintAlgorithm" xml:space="preserve">
+    <value>You must specify the thumbprint algorithm.</value>
+  </data>
+  <data name="InvalidDeploymentUpgradeType" xml:space="preserve">
+    <value>ValidateSetFailure - Invalid UpgradeType is specified: '{0}', valid values are: '{1}'</value>
+  </data>
+  <data name="InvalidVMSize" xml:space="preserve">
+    <value>ValidateSetFailure - Invalid VM Size specified: '{0}', valid values are: '{1}'</value>
+  </data>
+  <data name="MissingPersistentVMRole" xml:space="preserve">
+    <value>Role cannot be null</value>
+  </data>
+  <data name="MissingPersistentVMFile" xml:space="preserve">
+    <value>The file to load the role does not exist</value>
+  </data>
+  <data name="MissingWinRMHttpsListener" xml:space="preserve">
+    <value>There is no WinRM Https Listener in ProvisioningConfiguration</value>
+  </data>
+  <data name="AlreadyExistingWinRMHttpListener" xml:space="preserve">
+    <value>There is already an WinRM Http Listener in ProvisioningConfiguration</value>
+  </data>
+  <data name="MissingPrivateKeyInWinRMCertificate" xml:space="preserve">
+    <value>WinRMCertificate must have private key</value>
+  </data>
+  <data name="AlreadyExistingWinRMHttpsListener" xml:space="preserve">
+    <value>There is already an WinRM Https Listener in ProvisioningConfiguration</value>
+  </data>
+  <data name="GetDeploymentBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Get Deployment</value>
+  </data>
+  <data name="GetDeploymentCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Get Deployment</value>
+  </data>
+  <data name="NoDeploymentInStagingOrProduction" xml:space="preserve">
+    <value>No deployment found in Staging or Production: {0}</value>
+  </data>
+  <data name="NoDeploymentInStaging" xml:space="preserve">
+    <value>No deployment found in Staging: {0}</value>
+  </data>
+  <data name="MovingDeploymentFromStagingToProduction" xml:space="preserve">
+    <value>Moving deployment from Staging to Production:{0}</value>
+  </data>
+  <data name="VIPSwapBetweenStagingAndProduction" xml:space="preserve">
+    <value>VIP Swap is taking place between Staging and Production deployments.:{0}</value>
+  </data>
+  <data name="CanNotMoveDeploymentsWhileVMsArePresent" xml:space="preserve">
+    <value>Cannot Move Deployments with Virtual Machines Present in {0}</value>
+  </data>
+  <data name="NoDeploymentFoundToMove" xml:space="preserve">
+    <value>No deployment found in {0}</value>
+  </data>
+  <data name="UploadingPackage" xml:space="preserve">
+    <value>Uploading package to blob storage</value>
+  </data>
+  <data name="WaitForUploadingPackage" xml:space="preserve">
+    <value>Please wait...</value>
+  </data>
+  <data name="CreatingNewDeployment" xml:space="preserve">
+    <value>Creating the new deployment</value>
+  </data>
+  <data name="CanNotCreateNewDeploymentWhileVMsArePresent" xml:space="preserve">
+    <value>Cannot Create New Deployment with Virtual Machines Present in {0} Slot</value>
+  </data>
+  <data name="CurrentStorageAccountIsNotSet" xml:space="preserve">
+    <value>CurrentStorageAccountName is not set. Use Set-AzureSubscription subname -CurrentStorageAccountName storageaccount to set it.</value>
+  </data>
+  <data name="DeployedArtifactsWillBeRemoved" xml:space="preserve">
+    <value>This cmdlet will remove deployed applications including VMs from the specified deployment slot. Do you want to continue?</value>
+  </data>
+  <data name="DeploymentDeletion" xml:space="preserve">
+    <value>Deployment Deletion</value>
+  </data>
+  <data name="RebootAndReImageExclusive" xml:space="preserve">
+    <value>Reboot and Reimage parameters are mutually exclusive.</value>
+  </data>
+  <data name="RebootOrReImageMustBeSpecified" xml:space="preserve">
+    <value>Reboot or Reimage parameters should be specified.</value>
+  </data>
+  <data name="RebootAndReImageAreMutuallyExclusive" xml:space="preserve">
+    <value>Reboot and Reimage parameters are mutually exclusive.</value>
+  </data>
+  <data name="RebootOrReImageAreMissing" xml:space="preserve">
+    <value>Reboot or Reimage parameters should be specified.</value>
+  </data>
+  <data name="LabelOrDescriptionOrReverseDnsFqdnMustBeSpecified" xml:space="preserve">
+    <value>You must specify a value for Label, Description or ReverseDnsFqdn.</value>
+  </data>
+  <data name="DataDiskAlreadySpecifiedForVM" xml:space="preserve">
+    <value>A data disk has already been assigned to LUN #{0} for this VM. Specify a different LUN or use Set-DataDisk to change the configuration settings of the existing disk.</value>
+  </data>
+  <data name="MediaLocationOrDefaultStorageAccountMustBeSpecified" xml:space="preserve">
+    <value>Must specify MediaLocation or set a default storage account using Set-AzureSubscription.</value>
+  </data>
+  <data name="DataDiskAlreadyAssignedInVMConfiguration" xml:space="preserve">
+    <value>A data disk is not currently assigned to LUN #{0} in the configuration of this VM.</value>
+  </data>
+  <data name="DataDiskNotAssignedForVM" xml:space="preserve">
+    <value>A data disk is not currently assigned to LUN #{0} for this VM. Use New-DataDisk to define it.</value>
+  </data>
+  <data name="OSDiskNotDefinedForVM" xml:space="preserve">
+    <value>An OSDisk has not been defined for this VM. Use New-OSDisk to assign a new OS disk.</value>
+  </data>
+  <data name="EndpointAlreadyDefinedForVM" xml:space="preserve">
+    <value>An endpoint named '{0}' has already been defined for this VM. Specify a different endpoint name or use Set-Endpoint to change the configuration settings of the existing endpoint.</value>
+  </data>
+  <data name="ProbePathIsNotValidWithTcp" xml:space="preserve">
+    <value>ProbePath not valid with tcp</value>
+  </data>
+  <data name="ProbePathIsRequiredForHttp" xml:space="preserve">
+    <value>ProbePath is required for http</value>
+  </data>
+  <data name="PortSpecifiedIsNotInRange" xml:space="preserve">
+    <value>Ports must be in the range of 1 - 65535</value>
+  </data>
+  <data name="EndpointCanNotBeFoundInVMConfiguration" xml:space="preserve">
+    <value>An endpoint named '{0}' cannot be found in the configuration of this VM.</value>
+  </data>
+  <data name="EndpointCanNotBeFoundInVMConfigurationInSetAzureEndpoint" xml:space="preserve">
+    <value>An endpoint named '{0}' cannot be found in the configuration of this VM. Use New-ExternalEndpoint to define it.</value>
+  </data>
+  <data name="PortsNotInRangeInSetAzureEndpoint" xml:space="preserve">
+    <value>Ports must be in the range of 0 - 65535</value>
+  </data>
+  <data name="HttpStatusCodeAndErrorMessage" xml:space="preserve">
+    <value>HTTP Status Code: {0} - HTTP Error Message: {1}</value>
+  </data>
+  <data name="GatewayOperationStatus" xml:space="preserve">
+    <value>Operation Status: </value>
+  </data>
+  <data name="AzureVNetConfigBeginOperation" xml:space="preserve">
+    <value>Begin Operation: {0}</value>
+  </data>
+  <data name="AzureVNetConfigCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: {0}</value>
+  </data>
+  <data name="NetworkConfigurationDirectoryDoesNotExist" xml:space="preserve">
+    <value>The directory specified to export the network configuration does not exist.</value>
+  </data>
+  <data name="AzureVNetSiteBeginOperation" xml:space="preserve">
+    <value>Begin Operation: {0}</value>
+  </data>
+  <data name="AzureVNetSiteCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: {0}</value>
+  </data>
+  <data name="VirtualNetworkNameNotFound" xml:space="preserve">
+    <value>The specified virtual network name was not found: {0}</value>
+  </data>
+  <data name="NetworkConfigurationFilePathDoesNotExist" xml:space="preserve">
+    <value>The specified network configuration file path does not exist.</value>
+  </data>
+  <data name="PasswordNotComplexEnough" xml:space="preserve">
+    <value>Password does not meet complexity requirements.</value>
+  </data>
+  <data name="InvalidHostName" xml:space="preserve">
+    <value>Hostname is invalid.</value>
+  </data>
+  <data name="InvalidComputerName" xml:space="preserve">
+    <value>Computer Name is invalid.</value>
+  </data>
+  <data name="NoCloudServicePresent" xml:space="preserve">
+    <value>Cloud Service is not present or there is no virtual machine deployment.</value>
+  </data>
+  <data name="AzureRemoteDesktopBeginOperation" xml:space="preserve">
+    <value>Begin Operation: {0}</value>
+  </data>
+  <data name="AzureRemoteDesktopCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: {0}</value>
+  </data>
+  <data name="VMPropertiesCanNotBeRead" xml:space="preserve">
+    <value>Could not read properties for virtual machine: {0}. It may still be provisioning.</value>
+  </data>
+  <data name="CurrentDeploymentDoesNotHaveUrl" xml:space="preserve">
+    <value>Current deployment doesn't have any Url</value>
+  </data>
+  <data name="CurrentDeploymentDoesNotHaveVMs" xml:space="preserve">
+    <value>Current deployment doesn't have any VMs</value>
+  </data>
+  <data name="RoleInstanceCanNotBeFoundWithName" xml:space="preserve">
+    <value>Roleinstance cannot be found: {0}</value>
+  </data>
+  <data name="RoleInstanceCanNotBeFound" xml:space="preserve">
+    <value>Roleinstance cannot be found</value>
+  </data>
+  <data name="NoEndpointFoundForVM" xml:space="preserve">
+    <value>No endpoint found for the VM: {0}</value>
+  </data>
+  <data name="CurrentStorageAccountIsNotAccessible" xml:space="preserve">
+    <value>CurrentStorageAccountName is not accessible. Ensure the current storage account is accessible and in the same location or affinity group as your cloud service.</value>
+  </data>
+  <data name="ServiceExistsLocationCanNotBeSpecified" xml:space="preserve">
+    <value>Service already exists, Location cannot be specified.</value>
+  </data>
+  <data name="ServiceExistsAffinityGroupCanNotBeSpecified" xml:space="preserve">
+    <value>Service already exists, AffinityGroup cannot be specified.</value>
+  </data>
+  <data name="WinRMCertificateDoesNotHaveExportablePrivateKey" xml:space="preserve">
+    <value>WinRMCertificate needs to have an exportable private key.</value>
+  </data>
+  <data name="ServiceDoesNotExistSpecifyLocationOrAffinityGroup" xml:space="preserve">
+    <value>Cloud Service does not exist. Specify -Location or -Affinity group to create one.</value>
+  </data>
+  <data name="VNetNameOrDnsSettingsCanOnlyBeSpecifiedOnNewDeployments" xml:space="preserve">
+    <value>VNetName or DnsSettings can only be specified on new deployments.</value>
+  </data>
+  <data name="QuickVMBeginOperation" xml:space="preserve">
+    <value>Begin Operation: {0}</value>
+  </data>
+  <data name="QuickVMCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: {0}</value>
+  </data>
+  <data name="VNetNameRequiredWhenSpecifyingDNSSettings" xml:space="preserve">
+    <value>VNetName is required when specifying DNS Settings.</value>
+  </data>
+  <data name="SpecifyLinuxUserWhenCreatingLinuxVMs" xml:space="preserve">
+    <value>Specify -LinuxUser when creating Linux Virtual Machines</value>
+  </data>
+  <data name="EitherLocationOrAffinityGroupBeSpecified" xml:space="preserve">
+    <value>Location or AffinityGroup, only one of them needs to be specified.</value>
+  </data>
+  <data name="VNetNameCanBeSpecifiedOnlyOnInitialDeployment" xml:space="preserve">
+    <value>Virtual Network Name may only be specified on the initial deployment. Specify Location or Affinity Group to create a new cloud service and deployment.</value>
+  </data>
+  <data name="VNetNameDnsSettingsDeploymentLabelDeploymentNameCanBeSpecifiedOnNewDeployments" xml:space="preserve">
+    <value>VNetName, DnsSettings, DeploymentLabel or DeploymentName Name can only be specified on new deployments.</value>
+  </data>
+  <data name="LocationOrAffinityGroupRequiredWhenCreatingNewCloudService" xml:space="preserve">
+    <value>Location or AffinityGroup is required when creating a new Cloud Service.</value>
+  </data>
+  <data name="LocationOrAffinityGroupCanOnlyBeSpecifiedWhenNewCloudService" xml:space="preserve">
+    <value>Location or AffinityGroup can only be specified when creating a new cloud service.</value>
+  </data>
+  <data name="MustSpecifySameAffinityGroupAsVirtualNetwork" xml:space="preserve">
+    <value>Must specify the same affinity group as the virtual network is deployed to.</value>
+  </data>
+  <data name="VMMissingProvisioningConfiguration" xml:space="preserve">
+    <value>Virtual Machine {0} is missing provisioning configuration</value>
+  </data>
+  <data name="AzureVMBeginOperation" xml:space="preserve">
+    <value>Begin Operation: {0}</value>
+  </data>
+  <data name="AzureVMCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: {0}</value>
+  </data>
+  <data name="MustSpecifyMediaLocationOrHaveCurrentStorageAccount" xml:space="preserve">
+    <value>Must specify MediaLocation or set a current storage account using Set-AzureSubscription.</value>
+  </data>
+  <data name="CouldNotFindDeployment" xml:space="preserve">
+    <value>Could not find a deployment for '{0}' in '{1}' slot.</value>
+  </data>
+  <data name="RoleInstanceStatus" xml:space="preserve">
+    <value>InstanceStatus is {0}</value>
+  </data>
+  <data name="VMCreationFailedWithVMStatus" xml:space="preserve">
+    <value>VM creation failed, VM status is '{0}'</value>
+  </data>
+  <data name="PSSyncOutputEventsCopying" xml:space="preserve">
+    <value>Copying</value>
+  </data>
+  <data name="PSSyncOutputEventsElapsedTimeForCopy" xml:space="preserve">
+    <value>Elapsed time for copy: {0}</value>
+  </data>
+  <data name="PSSyncOutputEventsUploading" xml:space="preserve">
+    <value>Uploading</value>
+  </data>
+  <data name="PSSyncOutputEventsCreatingNewPageBlob" xml:space="preserve">
+    <value>Creating new page blob of size {0}...</value>
+  </data>
+  <data name="PSSyncOutputEventsResumingUpload" xml:space="preserve">
+    <value>Found existing page blob. Resuming upload...</value>
+  </data>
+  <data name="PSSyncOutputEventsElapsedTimeForUpload" xml:space="preserve">
+    <value>Elapsed time for upload: {0}</value>
+  </data>
+  <data name="PSSyncOutputEventsDownloading" xml:space="preserve">
+    <value>Downloading</value>
+  </data>
+  <data name="PSSyncOutputEventsElapsedTimeForDownload" xml:space="preserve">
+    <value>Elapsed time for download: {0}</value>
+  </data>
+  <data name="PSSyncOutputEventsCalculatingMD5Hash" xml:space="preserve">
+    <value>Calculating MD5 Hash</value>
+  </data>
+  <data name="PSSyncOutputEventsElapsedTimeForOperation" xml:space="preserve">
+    <value>Elapsed time for the operation: {0}</value>
+  </data>
+  <data name="PSSyncOutputEventsUploadFailedWithException" xml:space="preserve">
+    <value>Upload failed with exceptions:</value>
+  </data>
+  <data name="PSSyncOutputEventsCalculatingMD5HashForFile" xml:space="preserve">
+    <value>MD5 hash is being calculated for the file '{0}'.</value>
+  </data>
+  <data name="PSSyncOutputEventsMD5HashCalculationFinished" xml:space="preserve">
+    <value>MD5 hash calculation is completed.</value>
+  </data>
+  <data name="PSSyncOutputEventsRetryingAfterANetworkDisruption" xml:space="preserve">
+    <value>Network disruption occured, retrying.</value>
+  </data>
+  <data name="PSSyncOutputEventsDetectingActualDataBlocks" xml:space="preserve">
+    <value>Detecting the empty data blocks in the local file.</value>
+  </data>
+  <data name="PSSyncOutputEventsDetectingActualDataBlocksCompleted" xml:space="preserve">
+    <value>Detecting the empty data blocks completed.</value>
+  </data>
+  <data name="PSSyncOutputEventsPrintBlockRange" xml:space="preserve">
+    <value>Range of the block is {0}, Length: {1}</value>
+  </data>
+  <data name="PSSyncOutputEventsEmptyBlockDetected" xml:space="preserve">
+    <value>Empty block detected: {0}</value>
+  </data>
+  <data name="VirtualNetworkConfigContextMissingFilePath" xml:space="preserve">
+    <value>A file path should be specified.</value>
+  </data>
+  <data name="VirtualNetworkConfigContextDirectoryDoesNotExist" xml:space="preserve">
+    <value>The directory specified by the file path does not exist.</value>
+  </data>
+  <data name="AddAzureVhdCommandSASUriNotSupportedInPatchMode" xml:space="preserve">
+    <value>SAS Uri for the destination blob is not supported in patch mode:{0}</value>
+  </data>
+  <data name="StorageCredentialsFactoryCurrentSubscriptionNotSet" xml:space="preserve">
+    <value>No current subscription has been designated. Use Select-AzureSubscription -Current &lt;subscriptionName&gt; to set the current subscription.</value>
+  </data>
+  <data name="PSSyncOutputEventsFormatDuration" xml:space="preserve">
+    <value>{0} days {1:00}:{2:00}:{3:00}</value>
+  </data>
+  <data name="PSSyncOutputEventsLogProgress" xml:space="preserve">
+    <value>{0:0.0}% complete; Remaining Time: {1}; Throughput: {2:0.0}Mbps</value>
+  </data>
+  <data name="PSSyncOutputEventsProgressEmptyBlockDetection" xml:space="preserve">
+    <value>Empty Block Detection</value>
+  </data>
+  <data name="PSSyncOutputEventsEmptyBlockDetectionCompleted" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="PSSyncOutputEventsEmptyBlockDetectionDetecting" xml:space="preserve">
+    <value>Detecting empty blocks</value>
+  </data>
+  <data name="PSSyncOutputEventsLogProgressCompleteCompleted" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="AzureVMUploadingWinRMCertificate" xml:space="preserve">
+    <value>{0} - Uploading WinRMCertificate: {1}</value>
+  </data>
+  <data name="AzureVMCommandUploadingCertificate" xml:space="preserve">
+    <value>{0} - Uploading Certificate: {1}</value>
+  </data>
+  <data name="AzureVMCommandCreateDeploymentWithVM" xml:space="preserve">
+    <value>{0} - Create Deployment with VM {1}</value>
+  </data>
+  <data name="AzureVMCommandCreateVM" xml:space="preserve">
+    <value>{0} - Create VM {1}</value>
+  </data>
+  <data name="QuickVMCreateCloudService" xml:space="preserve">
+    <value> - Create Cloud Service</value>
+  </data>
+  <data name="QuickVMUploadingWinRMCertificate" xml:space="preserve">
+    <value>{0} - Uploading WinRMCertificate: {1}</value>
+  </data>
+  <data name="QuickVMUploadingCertificate" xml:space="preserve">
+    <value>{0} - Uploading Certificate: {1}</value>
+  </data>
+  <data name="QuickVMCreateDeploymentWithVM" xml:space="preserve">
+    <value>{0} - Create Deployment with VM {1}</value>
+  </data>
+  <data name="QuickVMCreateVM" xml:space="preserve">
+    <value>{0} - Create VM {1}</value>
+  </data>
+  <data name="ServiceExtensionCannotFindAntimalwareEnableSetting" xml:space="preserve">
+    <value>Unsupported configuration.  To enable antimalware, specify a value of true for the AntimalwareEnabled element.</value>
+  </data>
+  <data name="ServiceExtensionCannotFindServiceName" xml:space="preserve">
+    <value>Cannot find cloud service: {0}.</value>
+  </data>
+  <data name="ServiceExtensionCannotFindStorageAccountKey" xml:space="preserve">
+    <value>Cannot find storage keys for the account name: {0}.</value>
+  </data>
+  <data name="ServiceExtensionCannotFindStorageAccountName" xml:space="preserve">
+    <value>Cannot find storage service for the account name: {0}.</value>
+  </data>
+  <data name="ServiceExtensionCannotApplyExtensionsInSameType" xml:space="preserve">
+    <value>Cannot apply more than one extension in the same namespace and type: {0}.</value>
+  </data>
+  <data name="ServiceExtensionCannotFindDeployment" xml:space="preserve">
+    <value>Deployment not found in service: {0} and slot: {1}.</value>
+  </data>
+  <data name="ServiceExtensionCannotFindRole" xml:space="preserve">
+    <value>Role: {0} not found in deployment {1} of service {2}.</value>
+  </data>
+  <data name="ServiceExtensionCannotFindRoleName" xml:space="preserve">
+    <value>Specified role name cannot be empty or null.</value>
+  </data>
+  <data name="ServiceExtensionNoExistingExtensionsEnabledOnRoles" xml:space="preserve">
+    <value>No existing {0}.{1} extensions enabled on given roles.</value>
+  </data>
+  <data name="ServiceExtensionUploadingCertificate" xml:space="preserve">
+    <value>{0} - Uploading Certificate: {1}</value>
+  </data>
+  <data name="DeploymentVIPLossWarning" xml:space="preserve">
+    <value>The specified virtual machine is the last virtual machine in this deployment. Continuing will result in a new IP address for your deployment. To shut down without losing the deployment IP use -StayProvisioned.</value>
+  </data>
+  <data name="DeprovisioningVM" xml:space="preserve">
+    <value>Deprovisioning the VM: {0} </value>
+  </data>
+  <data name="EndpointsCannotBeFoundWithGivenLBSetName" xml:space="preserve">
+    <value>An endpoint cannot be found with the given load balancer set name '{0}'.</value>
+  </data>
+  <data name="NoCorrespondingRoleCanBeFoundInDeployment" xml:space="preserve">
+    <value>No role can be found in the deployment with '{0}' name</value>
+  </data>
+  <data name="ServiceExtensionCannotFindStorageAccount" xml:space="preserve">
+    <value>Cannot find storage account for the account name: {0}.</value>
+  </data>
+  <data name="ServiceExtensionSettingForSpecificRole" xml:space="preserve">
+    <value>Setting {0} configuration for {1}.</value>
+  </data>
+  <data name="ServiceExtensionSettingForDefaultRole" xml:space="preserve">
+    <value>Setting default {0} configuration for all roles.</value>
+  </data>
+  <data name="ServiceExtensionRemovingFromAllRoles" xml:space="preserve">
+    <value>Removing default {0} configuration for all roles from Cloud Service {1}.</value>
+  </data>
+  <data name="ServiceExtensionRemovingSpecificAndApplyingDefault" xml:space="preserve">
+    <value>Default {0} configuration exists applying default configuration to {1}.</value>
+  </data>
+  <data name="ServiceExtensionRemovingFromSpecificRoles" xml:space="preserve">
+    <value>Removing {0} configuration for {1} from Cloud Service {2}.</value>
+  </data>
+  <data name="MustSpecifyForceParameterWhenUsingWildcards" xml:space="preserve">
+    <value>Must provide the Force switch when using wildcard syntax.</value>
+  </data>
+  <data name="NetworkConfigurationCannotBeDeserialized" xml:space="preserve">
+    <value>Network configuration cannot be deserialized.</value>
+  </data>
+  <data name="ReservedIPNameNoLongerInUseByDeploymentButStillBeingReserved" xml:space="preserve">
+    <value>Reserved IP with the Name:'{0}' will no longer be in use after the deployment is deleted, it is still reserved in your subscription for later use. Please note that the Reserved IPs that are not associated with a cloud service will incur billing charges.</value>
+  </data>
+  <data name="CannotDeleteVirtualMachineDataDiskForLUN" xml:space="preserve">
+    <value>Cannot delete VM Data Disk for LUN '{0}', </value>
+  </data>
+  <data name="NetworkConfigurationNotFoundOnPersistentVM" xml:space="preserve">
+    <value>Network configuration not found on the persistent VM.</value>
+  </data>
+  <data name="StaticIPAddressNoLongerInUseButStillBeingReserved" xml:space="preserve">
+    <value>Stopping VM role: '{0}'. Its static IP address: '{1}' will no longer be in use after the it is stopped and stayed in provision, but it is still being reserved.</value>
+  </data>
+  <data name="EitherDiagnosticsConfigurationXmlOrFilePathBeSpecified" xml:space="preserve">
+    <value>Diagnostics Configuration Xml or File Path, only one of them needs to be specified.</value>
+  </data>
+  <data name="EitherDiagnosticsConfigurationXmlOrFilePathMustBeSpecified" xml:space="preserve">
+    <value>Either Diagnostics Configuration Xml or File Path must be specified.</value>
+  </data>
+  <data name="ProvisionGuestAgentMustBeEnabledBeforeSettingIaaSDiagnosticsExtension" xml:space="preserve">
+    <value>Provision Guest Agent must be enabled on the VM object before setting IaaS Diagnostics Extension.</value>
+  </data>
+  <data name="ProvisionGuestAgentMustBeEnabledBeforeSettingIaaSVMAccessExtension" xml:space="preserve">
+    <value>Provision Guest Agent must be enabled on the VM object before setting IaaS VM Access Extension.</value>
+  </data>
+  <data name="ResourceExtensionReferenceCannotBeFound" xml:space="preserve">
+    <value>The specified resource extension reference cannot be found.</value>
+  </data>
+  <data name="ResourceExtensionReferencesIsNullOrEmpty" xml:space="preserve">
+    <value>The resource extension reference list is null or empty.</value>
+  </data>
+  <data name="ResourceExtensionConfigTemplateWritingPath" xml:space="preserve">
+    <value>Writing Config Template to the following file path: '{0}'.</value>
+  </data>
+  <data name="DuplicateNamesFoundInBothVMAndOSImages" xml:space="preserve">
+    <value>Duplicate names '{0}' found in both VM and OS images. Please delete one of them, using other method such as Portal or Invoke-RestMethod call, and try again.</value>
+  </data>
+  <data name="NoDeploymentFoundByServiceAndVMName" xml:space="preserve">
+    <value>No VM deployment found by service name '{0}' and VM name '{1}'.</value>
+  </data>
+  <data name="ErrorAnotherImageTypeFoundWithTheSameName" xml:space="preserve">
+    <value>There is another image in '{0}' type found with the same name '{1}' exists; WAPS will stop here to avoid duplicates and potential conflicts. Please use another name for the image.</value>
+  </data>
+  <data name="CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript" xml:space="preserve">
+    <value>No Run File has been assigned, and the Custom Script extension will try to use the first specified File Name as the Run File.</value>
+  </data>
+  <data name="NoDeploymentFoundInService" xml:space="preserve">
+    <value>No deployment found in service: '{0}'.</value>
+  </data>
+  <data name="CaptureVMImageOperationWhileVMIsStillRunning" xml:space="preserve">
+    <value>VM image capture operation is trigged while VM is still running. As this may cause data corruption while creating VMs from this image, we recommend using Stop-AzureVM to stop the VM before capturing.</value>
+  </data>
+  <data name="RemoveReservedIPWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Reserved IP from your subscription?</value>
+  </data>
+  <data name="RemoveReservedIPWhatIfMessage" xml:space="preserve">
+    <value>Remove the Reserved IP from your subscription.</value>
+  </data>
+  <data name="ReservedIPNameNoLongerInUseByDeletingLastVMButStillBeingReserved" xml:space="preserve">
+    <value>Reserved IP with the Name:'{0}' will no longer be in use after the last VM in the Cloud Service is deleted, it is still reserved in your subscription for later use. Please note that the Reserved IPs that are not associated with a deployment will incur billing charges.</value>
+  </data>
+  <data name="ReservedIPNameNoLongerInUseByStoppingLastVMButStillBeingReserved" xml:space="preserve">
+    <value>Reserved IP with the Name:'{0}' will no longer be in use after all the VMs in the Cloud Service are in the Stopped Deallocated state, it is still reserved in your subscription for later use. Please note that the Reserved IPs that are not associated with a deployment will incur billing charges.</value>
+  </data>
+  <data name="DiagnosticsSlashNotFound" xml:space="preserve">
+    <value>Cannot find the // in the endpoint {0}</value>
+  </data>
+  <data name="DiagnosticsStorageAccountNotFound" xml:space="preserve">
+    <value>Cannot find the storage account name {0} in the endpoint {1}</value>
+  </data>
+  <data name="ServiceExistsReverseDnsFqdnCanNotBeSpecified" xml:space="preserve">
+    <value>Service already exists, ReverseDnsFqdn cannot be specified.</value>
+  </data>
+  <data name="ReverseDnsFqdnCanOnlyBeSpecifiedWhenNewCloudService" xml:space="preserve">
+    <value>ReverseDnsFqdn can only be specified when creating a new cloud service.</value>
+  </data>
+  <data name="RemoveAzureDnsServerCaption" xml:space="preserve">
+    <value>Remove Azure DNS Server</value>
+  </data>
+  <data name="RemoveAzureDnsServerWarning" xml:space="preserve">
+    <value>Are you sure you want to remove this DNS server: {0} from your service: {1}</value>
+  </data>
+  <data name="AzureVMDscCannotFindConfigurationDataFile" xml:space="preserve">
+    <value>Cannot find configuration data file: {0}</value>
+  </data>
+  <data name="AzureVMDscConfigurationDataFileShouldNotIncludePath" xml:space="preserve">
+    <value>The -ConfigurationArchive parameter must no include a path</value>
+  </data>
+  <data name="AzureVMDscInvalidConfigurationDataFile" xml:space="preserve">
+    <value>The configuration data must be a .psd1 file</value>
+  </data>
+  <data name="PublishVMDscExtensionConfigFileNotFound" xml:space="preserve">
+    <value>Cannot find configuration file: {0}.</value>
+    <comment>0 = path to the configuration file</comment>
+  </data>
+  <data name="PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension" xml:space="preserve">
+    <value>Invalid configuration file: {0}.
+The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip).</value>
+    <comment>0 = path to the configuration file</comment>
+  </data>
+  <data name="PublishVMDscExtensionUploadArchiveConfigFileNotExist" xml:space="preserve">
+    <value>Configuration file '{0}' not found.</value>
+    <comment>0 = path to the configuration file</comment>
+  </data>
+  <data name="PublishVMDscExtensionGetDscResourceFailed" xml:space="preserve">
+    <value>Cannot get module for DscResource '{0}'. Possible solutions:
+1) Specify -ModuleName for Import-DscResource in your configuration.
+2) Unblock module that contains resource.
+3) Move Import-DscResource inside Node block.
+</value>
+    <comment>0 = name of DscResource</comment>
+  </data>
+  <data name="PublishVMDscExtensionStorageParserErrors" xml:space="preserve">
+    <value>Configuration script '{0}' contained parse errors:
+{1}</value>
+    <comment>0 = path to the configuration script, 1 = parser errors</comment>
+  </data>
+  <data name="AzureVMDscStorageContextMustIncludeAccountName" xml:space="preserve">
+    <value>The storage context must include an storage account.</value>
+  </data>
+  <data name="IaasDiagnosticsBadConfigNoEndWadCfg" xml:space="preserve">
+    <value>Cannot find the WadCfg end element in the config.</value>
+  </data>
+  <data name="IaasDiagnosticsBadConfigNoWadCfg" xml:space="preserve">
+    <value>Cannot find the WadCfg element in the config.</value>
+  </data>
+  <data name="IaasDiagnosticsBadConfigNoMatchingWadCfg" xml:space="preserve">
+    <value>WadCfg start element in the config is not matching the end element.</value>
+  </data>
+  <data name="PaaSDiagnosticsWrongHeader" xml:space="preserve">
+    <value>Your xml configuration file doesn't start with the required header &lt;?xml version="1.0" encoding="utf-8"?&gt;</value>
+  </data>
+  <data name="PaaSDiagnosticsNullStorageAccount" xml:space="preserve">
+    <value>The element StorageAccount cannot be empty. It is recommended to not use this element in the config. It will be set automatically by the cmdlet.</value>
+  </data>
+  <data name="PassDiagnosticsNoMatchStorageAccount" xml:space="preserve">
+    <value>The element StorageAccount doesn't match the storage account name provided in the cmdlet arguments. It is recommended to not use the element StorageAccount as it is automatically set by the cmdlet.</value>
+  </data>
+  <data name="AzureVMDscApplyConfigurationAction" xml:space="preserve">
+    <value>Apply configuration '{0}'</value>
+    <comment>{0} is the name of a PowerShell DSC Configuration function</comment>
+  </data>
+  <data name="AzureVMDscParsingConfiguration" xml:space="preserve">
+    <value>Parsing configuration script: {0}</value>
+    <comment>{0} is the path to a script file</comment>
+  </data>
+  <data name="AzureVMDscStorageBlobAlreadyExists" xml:space="preserve">
+    <value>Storage Blob '{0}' already exists. Use the -Force parameter to overwrite it.</value>
+    <comment>{0} is the name of an storage blob</comment>
+  </data>
+  <data name="AzureVMDscUploadToBlobStorageAction" xml:space="preserve">
+    <value>Upload '{0}'</value>
+    <comment>{0} is the name of an storage blob</comment>
+  </data>
+  <data name="PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension" xml:space="preserve">
+    <value>Invalid configuration file: {0}.
+The file needs to be a PowerShell script (.ps1 or .psm1).</value>
+    <comment>0 = path to the configuration file</comment>
+  </data>
+  <data name="AzureVMDscNullArchiveNoConfiguragionParameters" xml:space="preserve">
+    <value>If the ConfigurationArchive argument is null, then the ConfigurationName, ConfigurationArgument, and ConfigurationDataPath parameters must not be specified </value>
+  </data>
+  <data name="AzureVMDscNullArchiveNoStorageParameters" xml:space="preserve">
+    <value>If the ConfigurationArchive argument is null, then the StorageContext, ContainerName, and StorageEndpointSuffix parameters must not be specified</value>
+  </data>
+  <data name="AzureVMDscCreateArchiveAction" xml:space="preserve">
+    <value>Create Archive</value>
+  </data>
+  <data name="AzureVMDscArchiveAlreadyExists" xml:space="preserve">
+    <value>File '{0}' already exists. Use the -Force parameter to overwrite it.</value>
+    <comment>{0} is the path to a file</comment>
+  </data>
+  <data name="PublishVMDscExtensionRequiredPsVersion" xml:space="preserve">
+    <value>Your current PowerShell version {1} is less then required by this cmdlet {0}. Consider download and install latest PowerShell version.</value>
+    <comment>{0} = minimal required PS version, {1} = current PS version</comment>
+  </data>
+  <data name="AzureVMDscDefaultStorageCredentialsNotFound" xml:space="preserve">
+    <value>Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using "Set-AzureSubscription", or set the "AZURE_STORAGE_CONNECTION_STRING" environment variable.</value>
+  </data>
+  <data name="PublishVMDscExtensionRequiredModulesVerbose" xml:space="preserve">
+    <value>List of required modules: [{0}].</value>
+    <comment>{0} = list of modules</comment>
+  </data>
+  <data name="PublishVMDscExtensionTempFolderVerbose" xml:space="preserve">
+    <value>Temp folder '{0}' created.</value>
+    <comment>{0} = temp folder path</comment>
+  </data>
+  <data name="PublishVMDscExtensionCopyFileVerbose" xml:space="preserve">
+    <value>Copy '{0}' to '{1}'.</value>
+    <comment>{0} = source, {1} = destination</comment>
+  </data>
+  <data name="PublishVMDscExtensionCopyModuleVerbose" xml:space="preserve">
+    <value>Copy the module '{0}' to '{1}'.</value>
+    <comment>{0} = source, {1} = destination</comment>
+  </data>
+  <data name="PublishVMDscExtensionCreateZipVerbose" xml:space="preserve">
+    <value>Create a zip file '{0}' from directory '{1}'.</value>
+    <comment>{0} = target zip, {1} = source</comment>
+  </data>
+  <data name="PublishVMDscExtensionDeletedFileMessage" xml:space="preserve">
+    <value>Deleted '{0}'</value>
+    <comment>{0} is the path of a file</comment>
+  </data>
+  <data name="PublishVMDscExtensionDeleteErrorMessage" xml:space="preserve">
+    <value>Cannot delete '{0}': {1}</value>
+    <comment>{0} is the path of a file, {1} is an error message</comment>
+  </data>
+  <data name="AzureVMDscWrongSettingsFormat" xml:space="preserve">
+    <value>Cannot deserialize settings string from DSC extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+{0}</value>
+    <comment>{0} settings json string</comment>
+  </data>
+  <data name="UnableToDecodeBase64String" xml:space="preserve">
+    <value>Unable to decode string from base 64. Please make sure the string is correctly encoded: {0}.</value>
+    <comment>{0} is the string that is not in a valid base 64 format.</comment>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>&lt;NONE&gt;</value>
+  </data>
+  <data name="ServiceManagementClientExceptionStringFormat" xml:space="preserve">
+    <value>"An exception occurred when calling the ServiceManagement API. HTTP Status Code: {0}. Service Management Error Code: {1}. Message: {2}. Operation Tracking ID: {3}."</value>
+    <comment>{0} is the HTTP status code. {1} is the Service Management Error Code. {2} is the Service Management Error message. {3} is the operation tracking ID.</comment>
+  </data>
+  <data name="PublishVMDscExtensionArchiveUploadedMessage" xml:space="preserve">
+    <value>Configuration published to {0}</value>
+    <comment>{0} is an URI</comment>
+  </data>
+  <data name="SubnetShouldBeSpecifiedIfVnetPresent" xml:space="preserve">
+    <value>Subnet should be specified when deploying VMs in a VNET: {0}</value>
+  </data>
+  <data name="DeprecationOfTheGeoReplicationEnabledParamInTheSetCmdlet" xml:space="preserve">
+    <value>GeoReplicationEnabled parameter will be deprecated in a future release of Azure PowerShell. The functionality will be merged into the Type parameter.</value>
+  </data>
+  <data name="DeprecationOfTheGeoReplicationEnabledParamInTheGetCmdlet" xml:space="preserve">
+    <value>GeoReplicationEnabled property will be deprecated in a future release of Azure PowerShell. The value will be merged into the AccountType property.</value>
+  </data>
+  <data name="DuplicateNetworkInterfaceFound" xml:space="preserve">
+    <value>Duplicate NetworkInterface found on the VM</value>
+  </data>
+  <data name="NetworkInterfaceNotFound" xml:space="preserve">
+    <value>The specified NetworkInterface is not found</value>
+  </data>
+  <data name="CannotRemoveNetworkSecurityGroupBecauseNotDirectlyAssociatedwithVm" xml:space="preserve">
+    <value>Cannot remove Network Security Group "{0}" from Virtual Machine "{1}" because it is not directly.</value>
+  </data>
+  <data name="WarningVmIsNotDirectlyAssociatedWithNetworkSecurityGroup" xml:space="preserve">
+    <value>VM "{0}" is not currently associated with a Network Security Group.</value>
+  </data>
+</root>

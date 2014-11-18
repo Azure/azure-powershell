@@ -1,0 +1,32 @@
+<server_name>#<sessionActivity_id>#<clientsession_id>#<clientRequest_id>#<database_list>#<databaseCreate_date>
+ServerDataServiceSqlAuth
+
+
+ServerName        : <server_name>
+SessionActivityId : <sessionActivity_id>
+ClientSessionId   : <clientsession_id>
+ClientRequestId   : <clientRequest_id>
+Databases         : <database_list>
+
+
+
+Database
+
+Name                   CollationName                Edition MaxSizeGB ServiceObjectiveName ServiceObjectiveAssignmentStateDescription CreationDate        
+----                   -------------                ------- --------- -------------------- ------------------------------------------ ------------        
+testFormatdbfromcmdlet SQL_Latin1_General_CP1_CI_AS Web             1 Shared               Complete                                   <databaseCreate_date>
+
+
+
+
+
+Name                                       : testFormatdbfromcmdlet
+CollationName                              : SQL_Latin1_General_CP1_CI_AS
+Edition                                    : Web
+MaxSizeGB                                  : 1
+ServiceObjectiveName                       : Shared
+ServiceObjectiveAssignmentStateDescription : Complete
+CreationDate                               : <databaseCreate_date>
+
+
+

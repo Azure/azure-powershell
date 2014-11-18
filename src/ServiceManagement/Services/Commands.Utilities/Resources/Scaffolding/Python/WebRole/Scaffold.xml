@@ -1,0 +1,29 @@
+﻿<Scaffold>
+  <ScaffoldFile Path="WebPICmdLine.exe.content" TargetPath="bin\WebPICmdLine.exe" />
+  <ScaffoldFile Path="Microsoft.Web.Deployment.dll.content" TargetPath="bin\Microsoft.Web.Deployment.dll" />
+  <ScaffoldFile Path="Microsoft.Web.PlatformInstaller.dll.content" TargetPath="bin\Microsoft.Web.PlatformInstaller.dll" />
+  <ScaffoldFile Path="Microsoft.Web.PlatformInstaller.UI.dll.content" TargetPath="bin\Microsoft.Web.PlatformInstaller.UI.dll" />
+  <ScaffoldFile Path="Microsoft.PythonTools.WebRole.dll.content" TargetPath="bin\Microsoft.PythonTools.WebRole.dll" />
+  <ScaffoldFile Path="Microsoft.PythonTools.AzureSetup.exe.content" TargetPath="bin\Microsoft.PythonTools.AzureSetup.exe" />
+  <ScaffoldFile Path="Microsoft.PythonTools.AzureSetup.exe.config" TargetPath="bin\Microsoft.PythonTools.AzureSetup.exe.config" />
+
+  <ScaffoldFile Path="wfastcgi.py" TargetPath="bin\wfastcgi.py" />
+  <ScaffoldFile Path="AzureSetup.cfg" TargetPath="bin\AzureSetup.cfg">
+    <Scaffold.ReplaceParameterRule />   
+  </ScaffoldFile>
+
+  <ScaffoldFile Path="Web.cloud.config">
+    <Scaffold.ReplaceParameterRule />   
+  </ScaffoldFile>
+  <ScaffoldFile Path="Web.config">
+    <Scaffold.ReplaceParameterRule />   
+  </ScaffoldFile>
+  <ScaffoldFile Path="RoleSettings.xml" Copy="false">
+    <Scaffold.ReplaceParameterRule />
+    <PythonRules.AddRoleToConfig />
+  </ScaffoldFile>
+  <ScaffoldFile Path="WebRole.xml" Copy="false">
+    <Scaffold.ReplaceParameterRule />
+    <PythonRules.AddWebRoleToDef />
+  </ScaffoldFile>
+</Scaffold>
