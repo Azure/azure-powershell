@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
     {
         public virtual PSOutput GetOutput(string resourceGroupName, string jobName, string name)
         {
-            var response = StreamAnalyticsManagementClient.Output.Get(
+            var response = StreamAnalyticsManagementClient.Outputs.Get(
                 resourceGroupName, jobName, name);
 
             return new PSOutput(response.Output)
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             List<PSOutput> outputs = new List<PSOutput>();
 
-            var response = StreamAnalyticsManagementClient.Output.ListOutputInJob(resourceGroupName, jobName);
+            var response = StreamAnalyticsManagementClient.Outputs.ListOutputInJob(resourceGroupName, jobName);
 
             if (response != null && response.Value != null)
             {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             // If create failed, the current behavior is to throw
-            var response = StreamAnalyticsManagementClient.Output.CreateOrUpdateWithRawJsonContent(
+            var response = StreamAnalyticsManagementClient.Outputs.CreateOrUpdateWithRawJsonContent(
                     resourceGroupName,
                     jobName,
                     outputName,
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public virtual HttpStatusCode RemovePSOutput(string resourceGroupName, string jobName, string outputName)
         {
-            OperationResponse response = StreamAnalyticsManagementClient.Output.Delete(resourceGroupName, jobName, outputName);
+            OperationResponse response = StreamAnalyticsManagementClient.Outputs.Delete(resourceGroupName, jobName, outputName);
 
             return response.StatusCode;
         }

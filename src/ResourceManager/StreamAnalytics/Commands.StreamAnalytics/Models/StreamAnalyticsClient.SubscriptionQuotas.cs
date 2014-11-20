@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         public virtual List<PSQuota> GetQuotas(string location)
         {
             List<PSQuota> quotas = new List<PSQuota>();
-            var response = StreamAnalyticsManagementClient.Subscription.GetQuotas(location);
+            var response = StreamAnalyticsManagementClient.Subscriptions.GetQuotas(location);
 
             if (response != null && response.Value != null)
             {

@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             get
             {
-                return input.InputProperties;
+                return input.Properties;
             }
             set
             {
-                input.InputProperties = value;
+                input.Properties = value;
             }
         }
     }

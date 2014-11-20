@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
     {
         public virtual PSTransformation GetTransformation(string resourceGroupName, string jobName, string transformationName)
         {
-            var response = StreamAnalyticsManagementClient.Transformation.Get(resourceGroupName, jobName, transformationName);
+            var response = StreamAnalyticsManagementClient.Transformations.Get(resourceGroupName, jobName, transformationName);
 
             return new PSTransformation(response.Transformation)
             {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             // If create failed, the current behavior is to throw
-            var response = StreamAnalyticsManagementClient.Transformation.CreateOrUpdateWithRawJsonContent(
+            var response = StreamAnalyticsManagementClient.Transformations.CreateOrUpdateWithRawJsonContent(
                     resourceGroupName,
                     jobName,
                     transformationName,

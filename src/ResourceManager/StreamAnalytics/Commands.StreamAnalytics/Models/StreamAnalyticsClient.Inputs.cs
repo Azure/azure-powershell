@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
     {
         public virtual PSInput GetInput(string resourceGroupName, string jobName, string name)
         {
-            var response = StreamAnalyticsManagementClient.Input.Get(
+            var response = StreamAnalyticsManagementClient.Inputs.Get(
                 resourceGroupName, jobName, name);
 
             return new PSInput(response.Input)
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             List<PSInput> inputs = new List<PSInput>();
 
-            var response = StreamAnalyticsManagementClient.Input.ListInputInJob(resourceGroupName, jobName);
+            var response = StreamAnalyticsManagementClient.Inputs.ListInputInJob(resourceGroupName, jobName);
 
             if (response != null && response.Value != null)
             {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             // If create failed, the current behavior is to throw
-            var response = StreamAnalyticsManagementClient.Input.CreateOrUpdateWithRawJsonContent(
+            var response = StreamAnalyticsManagementClient.Inputs.CreateOrUpdateWithRawJsonContent(
                     resourceGroupName,
                     jobName,
                     inputName,
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public virtual HttpStatusCode RemovePSInput(string resourceGroupName, string jobName, string inputName)
         {
-            OperationResponse response = StreamAnalyticsManagementClient.Input.Delete(resourceGroupName, jobName, inputName);
+            OperationResponse response = StreamAnalyticsManagementClient.Inputs.Delete(resourceGroupName, jobName, inputName);
 
             return response.StatusCode;
         }

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         public virtual PSJob GetJob(string resourceGroupName, string jobName, string propertiesToExpand)
         {
             JobGetParameters parameters = new JobGetParameters(propertiesToExpand);
-            var response = StreamAnalyticsManagementClient.Job.Get(
+            var response = StreamAnalyticsManagementClient.StreamingJobs.Get(
                 resourceGroupName, jobName, parameters);
 
             return new PSJob(response.Job)
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             List<PSJob> jobs = new List<PSJob>();
             JobListParameters parameters = new JobListParameters(propertiesToExpand);
-            var response = StreamAnalyticsManagementClient.Job.ListJobsInResourceGroup(resourceGroupName, parameters);
+            var response = StreamAnalyticsManagementClient.StreamingJobs.ListJobsInResourceGroup(resourceGroupName, parameters);
 
             if (response != null && response.Value != null)
             {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             List<PSJob> jobs = new List<PSJob>();
             JobListParameters parameters = new JobListParameters(propertiesToExpand);
-            var response = StreamAnalyticsManagementClient.Job.ListJobsInSubscription(parameters);
+            var response = StreamAnalyticsManagementClient.StreamingJobs.ListJobsInSubscription(parameters);
 
             if (response != null && response.Value != null)
             {
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
             // If create failed, the current behavior is to throw
             var response =
-                StreamAnalyticsManagementClient.Job.CreateOrUpdateWithRawJsonContent(
+                StreamAnalyticsManagementClient.StreamingJobs.CreateOrUpdateWithRawJsonContent(
                     resourceGroupName,
                     jobName,
                     new JobCreateOrUpdateWithRawJsonContentParameters() { Content = rawJsonContent });
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public virtual HttpStatusCode StartPSJob(string resourceGroupName, string jobName)
         {
-            OperationResponse response = StreamAnalyticsManagementClient.Job.Start(resourceGroupName, jobName);
+            OperationResponse response = StreamAnalyticsManagementClient.StreamingJobs.Start(resourceGroupName, jobName);
 
             return response.StatusCode;
         }
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public virtual HttpStatusCode StopPSJob(string resourceGroupName, string jobName)
         {
-            OperationResponse response = StreamAnalyticsManagementClient.Job.Stop(resourceGroupName, jobName);
+            OperationResponse response = StreamAnalyticsManagementClient.StreamingJobs.Stop(resourceGroupName, jobName);
 
             return response.StatusCode;
         }
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public virtual HttpStatusCode RemovePSJob(string resourceGroupName, string jobName)
         {
-            OperationResponse response = StreamAnalyticsManagementClient.Job.Delete(resourceGroupName, jobName);
+            OperationResponse response = StreamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, jobName);
 
             return response.StatusCode;
         }
