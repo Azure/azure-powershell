@@ -54,7 +54,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
             var expectedOutput = new PSDataFactoryGateway
             {
                 Name = GatewayName,
-                Location = Location,
                 Status = GatewayStatus.Online,
                 Description = "New gateway description for test"
             };

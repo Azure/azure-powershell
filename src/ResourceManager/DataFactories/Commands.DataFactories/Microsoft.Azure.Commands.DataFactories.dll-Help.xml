@@ -298,7 +298,6 @@
         <dev:code>
           PS C:\&gt; Get-AzureDataFactoryGateway -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
           Name            : gateway1
-          Location        : West US
           Description     :
           Version         : 1.3.5338.1
           Status          : Online
@@ -336,7 +335,6 @@
         <dev:code>
           PS C:\&gt; Get-AzureDataFactoryGateway -ResourceGroupName "ADF" -Name "Gateway01" -DataFactoryName "WikiADF"
           Name            : Gateway01
-          Location        : West US
           Description     :
           Version         : 1.3.5338.1
           Status          : Online
@@ -2293,13 +2291,6 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="">
-          <maml:name>Location</maml:name>
-          <maml:description>
-            <maml:para>Specifies the location of the gateway, such as WestUs or EastUS. Only WestUS is currently supported.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="">
           <maml:name>Description</maml:name>
           <maml:description>
@@ -2328,13 +2319,6 @@
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the gateway to create.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="">
-          <maml:name>Location</maml:name>
-          <maml:description>
-            <maml:para>Specifies the location of the gateway, such as WestUs or EastUS. Only WestUS is currently supported.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -2376,18 +2360,6 @@
         <maml:name>Description</maml:name>
         <maml:description>
           <maml:para>Specifies a description for the gateway.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="">
-        <maml:name>Location</maml:name>
-        <maml:description>
-          <maml:para>Specifies the location of the gateway, such as WestUs or EastUS. Only WestUS is currently supported.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -2454,9 +2426,8 @@
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt; New-AzureDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Location "WestUs" -Description "my gateway"
+          PS C:\&gt; New-AzureDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
           Name            : ContosoGateway
-          Location        : West US
           Description     : my gateway
           Version         :
           Status          : NeedRegistration
@@ -5461,7 +5432,6 @@
         <dev:code>
           PS C:\&gt; Set-AzureDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
           Name            : ContosoGateway
-          Location        : West US
           Description     : my gateway
           Version         : 1.3.5338.1
           Status          : Online
