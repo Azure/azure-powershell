@@ -18,10 +18,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     public abstract class StreamAnalyticsResourceProviderBaseCmdlet : StreamAnalyticsBaseCmdlet
     {
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [Parameter(ParameterSetName = StreamAnalyticsObjectsList, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
     }

@@ -22,21 +22,19 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
     [Cmdlet(VerbsCommon.New, Constants.StreamAnalyticsTransformation), OutputType(typeof(PSTransformation))]
     public class NewAzureStreamAnalyticsTransformationCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The stream analytics job name.")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics job name.")]
         [ValidateNotNullOrEmpty]
         public string JobName { get; set; }
 
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The stream analytics transformation name.")]
+        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics transformation name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 3, Mandatory = true, HelpMessage = "The stream analytics transformation JSON file path.")]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The stream analytics transformation JSON file path.")]
         [ValidateNotNullOrEmpty]
         public string File { get; set; }
 
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]

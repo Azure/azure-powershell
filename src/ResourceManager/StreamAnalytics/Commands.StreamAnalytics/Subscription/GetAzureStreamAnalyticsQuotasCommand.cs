@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
     [Cmdlet(VerbsCommon.Get, Constants.StreamAnalyticsQuota), OutputType(typeof(List<PSQuota>), typeof(PSQuota))]
     public class GetAzureStreamAnalyticsQuotasCommand : StreamAnalyticsBaseCmdlet
     {
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location of the azure stream analytics quota.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the azure stream analytics quota.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

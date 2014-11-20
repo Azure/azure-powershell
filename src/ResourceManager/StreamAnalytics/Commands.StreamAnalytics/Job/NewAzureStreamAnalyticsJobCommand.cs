@@ -22,16 +22,15 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
     [Cmdlet(VerbsCommon.New, Constants.StreamAnalyticsJob), OutputType(typeof(PSJob))]
     public class NewAzureStreamAnalyticsJobCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The stream analytics job name.")]
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics job name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 2, Mandatory = true, HelpMessage = "The stream analytics job JSON file path.")]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The stream analytics job JSON file path.")]
         [ValidateNotNullOrEmpty]
         public string File { get; set; }
 
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]

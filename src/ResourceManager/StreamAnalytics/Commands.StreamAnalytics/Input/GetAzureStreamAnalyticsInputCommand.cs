@@ -22,13 +22,11 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
     [Cmdlet(VerbsCommon.Get, Constants.StreamAnalyticsInput), OutputType(typeof(List<PSInput>), typeof(PSInput))]
     public class GetAzureStreamAnalyticsInputCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The azure stream analytics job name.")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]
         [ValidateNotNullOrEmpty]
         public string JobName { get; set; }
 
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The azure stream analytics input name.")]
+        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics input name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

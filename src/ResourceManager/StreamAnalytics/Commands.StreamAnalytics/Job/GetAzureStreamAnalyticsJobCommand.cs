@@ -20,8 +20,15 @@ using Microsoft.Azure.Commands.StreamAnalytics.Models;
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     [Cmdlet(VerbsCommon.Get, Constants.StreamAnalyticsJob), OutputType(typeof(List<PSJob>), typeof(PSJob))]
-    public class GetAzureStreamAnalyticsJobCommand : StreamAnalyticsResourceProviderBaseCmdlet
+    public class GetAzureStreamAnalyticsJobCommand : StreamAnalyticsBaseCmdlet
     {
+        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(ParameterSetName = StreamAnalyticsObjectsList, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The azure stream analytics job name.")]
         [ValidateNotNullOrEmpty]
