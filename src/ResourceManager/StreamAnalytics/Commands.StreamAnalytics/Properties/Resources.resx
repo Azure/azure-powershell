@@ -161,4 +161,22 @@ Are you sure you want to continue?</value>
   <data name="TransformationNotFound" xml:space="preserve">
     <value>Transformation '{0}' does not exist in the stream analytics job {1} in the resource group '{2}'.</value>
   </data>
+  <data name="JobRemovalConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove the stream analytics job '{0}' in the resource group '{1}'?</value>
+  </data>
+  <data name="JobRemoving" xml:space="preserve">
+    <value>Removing the stream analytics '{0}' in the resource group '{1}'.</value>
+  </data>
+  <data name="InputRemovalConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove the stream analytics input '{0}' in the stream analytics job {1} in the resource group '{2}'?</value>
+  </data>
+  <data name="InputRemoving" xml:space="preserve">
+    <value>Removing the stream analytics input '{0}' in the stream analytics job {1} in the resource group '{2}'.</value>
+  </data>
+  <data name="OutputRemovalConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove the stream analytics output '{0}' in the stream analytics job {1} in the resource group '{2}'?</value>
+  </data>
+  <data name="OutputRemoving" xml:space="preserve">
+    <value>Removing the stream analytics output '{0}' in the stream analytics job {1} in the resource group '{2}'.</value>
+  </data>
 </root>

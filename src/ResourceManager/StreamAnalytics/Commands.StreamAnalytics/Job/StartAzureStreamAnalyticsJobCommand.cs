@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                     JobName = Name
                 };
 
-            // TODO: change to async call
             HttpStatusCode statusCode = StreamAnalyticsClient.StartPSJob(parameter);
             if (statusCode == HttpStatusCode.NoContent)
             {

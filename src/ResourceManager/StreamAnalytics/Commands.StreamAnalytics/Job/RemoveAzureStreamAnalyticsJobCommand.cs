@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -36,13 +39,30 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 throw new PSArgumentNullException("ResourceGroupName");
             }
 
+            this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.JobRemovalConfirmationMessage,
+                    this.Name,
+                    this.ResourceGroupName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.JobRemoving,
+                    this.Name,
+                    this.ResourceGroupName),
+                this.Name,
+                this.ExecuteDelete);
+        }
+
+        private void ExecuteDelete()
+        {
             JobParametersBase parameter = new JobParametersBase()
             {
                 ResourceGroupName = ResourceGroupName,
                 JobName = Name
             };
 
-            // TODO: change to async call
             HttpStatusCode statusCode = StreamAnalyticsClient.RemovePSJob(parameter);
             if (statusCode == HttpStatusCode.NoContent)
             {

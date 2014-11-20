@@ -116,8 +116,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             PSInput input = null;
             Action createInput = () =>
             {
-                input =
-                    new PSInput(CreateOrUpdatePSInput(parameter.ResourceGroupName,
+                input = new PSInput(
+                    CreateOrUpdatePSInput(parameter.ResourceGroupName,
                         parameter.JobName,
                         parameter.InputName,
                         parameter.RawJsonContent))

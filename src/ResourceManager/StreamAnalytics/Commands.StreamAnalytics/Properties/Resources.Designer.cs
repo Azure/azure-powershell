@@ -112,6 +112,24 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the stream analytics input &apos;{0}&apos; in the stream analytics job {1} in the resource group &apos;{2}&apos;?.
+        /// </summary>
+        internal static string InputRemovalConfirmationMessage {
+            get {
+                return ResourceManager.GetString("InputRemovalConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the stream analytics input &apos;{0}&apos; in the stream analytics job {1} in the resource group &apos;{2}&apos;..
+        /// </summary>
+        internal static string InputRemoving {
+            get {
+                return ResourceManager.GetString("InputRemoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to parse input JSON file. {0}. Please correct the error in the JSON file and re-deploy {1} again..
         /// </summary>
         internal static string InvalidJson {
@@ -159,6 +177,24 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the stream analytics job &apos;{0}&apos; in the resource group &apos;{1}&apos;?.
+        /// </summary>
+        internal static string JobRemovalConfirmationMessage {
+            get {
+                return ResourceManager.GetString("JobRemovalConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the stream analytics &apos;{0}&apos; in the resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string JobRemoving {
+            get {
+                return ResourceManager.GetString("JobRemoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating output &apos;{0}&apos; in stream analytics job {1} in resource group &apos;{2}&apos;..
         /// </summary>
         internal static string OutputCreating {
@@ -184,6 +220,24 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         internal static string OutputNotFound {
             get {
                 return ResourceManager.GetString("OutputNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the stream analytics output &apos;{0}&apos; in the stream analytics job {1} in the resource group &apos;{2}&apos;?.
+        /// </summary>
+        internal static string OutputRemovalConfirmationMessage {
+            get {
+                return ResourceManager.GetString("OutputRemovalConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the stream analytics output &apos;{0}&apos; in the stream analytics job {1} in the resource group &apos;{2}&apos;..
+        /// </summary>
+        internal static string OutputRemoving {
+            get {
+                return ResourceManager.GetString("OutputRemoving", resourceCulture);
             }
         }
         

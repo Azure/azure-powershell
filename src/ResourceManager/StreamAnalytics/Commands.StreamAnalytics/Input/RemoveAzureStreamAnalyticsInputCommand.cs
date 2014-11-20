@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -49,7 +52,26 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 throw new PSArgumentNullException("Name");
             }
 
-            // TODO: change to async call
+            this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.InputRemovalConfirmationMessage,
+                    this.Name,
+                    this.JobName,
+                    this.ResourceGroupName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.InputRemoving,
+                    this.Name,
+                    this.JobName,
+                    this.ResourceGroupName),
+                this.Name,
+                this.ExecuteDelete);
+        }
+
+        private void ExecuteDelete()
+        {
             HttpStatusCode statusCode = StreamAnalyticsClient.RemovePSInput(ResourceGroupName, JobName, Name);
             if (statusCode == HttpStatusCode.NoContent)
             {
