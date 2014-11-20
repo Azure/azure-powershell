@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
     /// </summary>
     public class ProtectedFileTokenCache : TokenCache
     {
-        private static readonly string CacheFileName = Path.Combine(AzurePowerShell.ProfileDirectory, "TokenCache.dat");
+        public static readonly string CacheFileName = Path.Combine(AzurePowerShell.ProfileDirectory, "TokenCache.dat");
 
         private static readonly object fileLock = new object();
 
@@ -54,7 +54,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
                     var existingData = ProfileClient.DataStore.ReadFileAsBytes(CacheFileName);
                     if (existingData != null)
                     {
-                        Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        try
+                        {
+                            Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        }
+                        catch (CryptographicException) 
+                        {
+                            ProfileClient.DataStore.DeleteFile(CacheFileName);
+                        }
                     }
                 }
             }
@@ -81,7 +88,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
                     var existingData = ProfileClient.DataStore.ReadFileAsBytes(CacheFileName);
                     if (existingData != null)
                     {
-                        Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        try
+                        {
+                            Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        }
+                        catch (CryptographicException)
+                        {
+                            ProfileClient.DataStore.DeleteFile(CacheFileName);
+                        }
                     }
                 }
             }
