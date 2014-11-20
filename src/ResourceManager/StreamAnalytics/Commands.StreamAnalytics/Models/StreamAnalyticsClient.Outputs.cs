@@ -163,6 +163,13 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
             return response.StatusCode;
         }
+        
+        public virtual HttpStatusCode TestPSOutput(string resourceGroupName, string jobName, string outputName)
+        {
+            OperationResponse response = StreamAnalyticsManagementClient.Outputs.TestConnection(resourceGroupName, jobName, outputName);
+
+            return response.StatusCode;
+        }
 
         private bool CheckOutputExists(string resourceGroupName, string jobName, string outputName)
         {
