@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 {
                     jobs.Add(new PSJob(job)
                         {
+                            ResourceGroupName = StreamAnalyticsCommonUtilities.ExtractResourceGroupFromId(job.Id),
                             JobName = job.Name
                         });
                 }

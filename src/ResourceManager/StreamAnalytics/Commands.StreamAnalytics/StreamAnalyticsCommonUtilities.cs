@@ -104,5 +104,29 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 
             return equal;
         }
+
+        public static string ExtractResourceGroupFromId(string jobCSMId)
+        {
+            if (string.IsNullOrWhiteSpace(jobCSMId))
+            {
+                throw new ArgumentNullException("jobCSMId");
+            }
+
+            int startIndex = jobCSMId.IndexOf("/resourceGroups/", StringComparison.OrdinalIgnoreCase);
+            if (startIndex < 0)
+            {
+                throw new ArgumentException("id must contain \"/resourceGroups/\"", "jobCSMId");
+            }
+
+            startIndex += "/resourceGroups/".Length;
+
+            int endIndex = jobCSMId.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
+            if (endIndex < 0)
+            {
+                throw new ArgumentException("id must contain \"/\"  after \"/resourceGroups/\"", "jobCSMId");
+            }
+
+            return jobCSMId.Substring(startIndex, endIndex - startIndex);
+        }
     }
 }
