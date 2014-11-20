@@ -63,5 +63,10 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 input.Properties = value;
             }
         }
+
+        public string PropertiesInJson
+        {
+            get { return input.Properties.ToFormattedString(); }
+        }
     }
 }

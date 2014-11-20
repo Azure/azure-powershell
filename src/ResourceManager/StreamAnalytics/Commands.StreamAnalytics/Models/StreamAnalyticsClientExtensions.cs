@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
             return JsonConvert.SerializeObject(properties, Formatting.Indented);
         }
 
-        public static string ToFormattedString<T>(T objectToSerialize)
+        public static string ToFormattedString<T>(this T objectToSerialize)
         {
             return JsonConvert.SerializeObject(objectToSerialize, Formatting.Indented);
         }

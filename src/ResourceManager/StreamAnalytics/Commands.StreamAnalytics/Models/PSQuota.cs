@@ -50,6 +50,30 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public string Location { get; set; }
 
+        public int CurrentCount
+        {
+            get
+            {
+                return subscriptionQuotas.Properties.CurrentCount;
+            }
+            set
+            {
+                subscriptionQuotas.Properties.CurrentCount = value;
+            }
+        }
+
+        public int MaxCount
+        {
+            get
+            {
+                return subscriptionQuotas.Properties.MaxCount;
+            }
+            set
+            {
+                subscriptionQuotas.Properties.MaxCount = value;
+            }
+        }
+
         public SubscriptionQuotasProperties Properties
         {
             get

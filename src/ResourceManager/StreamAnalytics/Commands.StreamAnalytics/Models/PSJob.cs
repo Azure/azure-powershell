@@ -41,6 +41,18 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public string ResourceGroupName { get; set; }
 
+        public string JobId
+        {
+            get
+            {
+                return job.Properties.JobId;
+            }
+            set
+            {
+                job.Properties.JobId = value;
+            }
+        }
+
         public string Location
         {
             get

@@ -19,6 +19,10 @@
                 <PropertyName>ResourceGroupName</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>JobId</Label>
+                <PropertyName>JobId</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Location</Label>
                 <PropertyName>Location</PropertyName>
               </ListItem>
@@ -37,6 +41,126 @@
               <ListItem>
                 <Label>Tags</Label>
                 <PropertyName>Tags</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Properties</Label>
+                <PropertyName>PropertiesInJson</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>JobName</Label>
+                <PropertyName>JobName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Properties</Label>
+                <PropertyName>PropertiesInJson</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>JobName</Label>
+                <PropertyName>JobName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Properties</Label>
+                <PropertyName>PropertiesInJson</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CurrentCount</Label>
+                <PropertyName>CurrentCount</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MaxCount</Label>
+                <PropertyName>MaxCount</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>JobName</Label>
+                <PropertyName>JobName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Properties</Label>
