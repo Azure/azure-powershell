@@ -28119,9 +28119,6 @@
       <maml:description>
         <maml:para>Please run Switch-AzureMode AzureResourceManager to use ADF cmdlet, this is just a stub command.</maml:para>
       </maml:description>
-      <maml:copyright>
-        <maml:para />
-      </maml:copyright>
       <command:verb>New</command:verb>
       <command:noun>AzureDataFactory</command:noun>
     </command:details>
