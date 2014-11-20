@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the azure stream analytics quota.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("East US", "East US 2", "North Central US", "North Europe", "West Europe", "Brazil South", "West US", "Central US", "South Central US",
-            "Japan East", "Japan West", "East Asia", "Southeast Asia", IgnoreCase = true)]
         public string Location { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
