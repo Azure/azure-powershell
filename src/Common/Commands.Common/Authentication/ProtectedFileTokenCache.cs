@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
     /// </summary>
     public class ProtectedFileTokenCache : TokenCache
     {
-        public static readonly string CacheFileName = Path.Combine(AzurePowerShell.ProfileDirectory, "TokenCache.dat");
+        private static readonly string CacheFileName = Path.Combine(AzurePowerShell.ProfileDirectory, "TokenCache.dat");
 
         private static readonly object fileLock = new object();
 
@@ -45,26 +45,36 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
         // If the file is already present, it loads its content in the ADAL cache
         private ProtectedFileTokenCache()
         {
+            Initialize(CacheFileName);
+        }
+
+        private void Initialize(string fileName)
+        {
             AfterAccess = AfterAccessNotification;
             BeforeAccess = BeforeAccessNotification;
             lock (fileLock)
             {
-                if (ProfileClient.DataStore.FileExists(CacheFileName))
+                if (ProfileClient.DataStore.FileExists(fileName))
                 {
-                    var existingData = ProfileClient.DataStore.ReadFileAsBytes(CacheFileName);
+                    var existingData = ProfileClient.DataStore.ReadFileAsBytes(fileName);
                     if (existingData != null)
                     {
                         try
                         {
                             Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
                         }
-                        catch (CryptographicException) 
+                        catch (CryptographicException)
                         {
-                            ProfileClient.DataStore.DeleteFile(CacheFileName);
+                            ProfileClient.DataStore.DeleteFile(fileName);
                         }
                     }
                 }
             }
+        }
+
+        public ProtectedFileTokenCache(string cacheFile)
+        {
+            Initialize(cacheFile);
         }
 
         // Empties the persistent store.

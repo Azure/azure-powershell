@@ -152,9 +152,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void DeleteCorruptedTokenCache()
         {
-            ProfileClient.DataStore.WriteFile(ProtectedFileTokenCache.CacheFileName, new byte[]{0,1});
-            ProtectedFileTokenCache tokenCache = ProtectedFileTokenCache.Instance;
-            Assert.False(ProfileClient.DataStore.FileExists(ProtectedFileTokenCache.CacheFileName));
+            //setup
+            string testFileName = @"c:\foobar\TokenCache.dat";
+            ProfileClient.DataStore.WriteFile(testFileName, new byte[] { 0, 1 });
+            
+            //Act
+            ProtectedFileTokenCache tokenCache = new ProtectedFileTokenCache(testFileName);
+
+            //Assert
+            Assert.False(ProfileClient.DataStore.FileExists(testFileName));
         }
 
         [Fact]
