@@ -103,6 +103,15 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stream analytics input name cannot be null..
+        /// </summary>
+        internal static string InputNameCannotBeEmpty {
+            get {
+                return ResourceManager.GetString("InputNameCannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Input &apos;{0}&apos; does not exist in the stream analytics job {1} in the resource group &apos;{2}&apos;..
         /// </summary>
         internal static string InputNotFound {
@@ -215,6 +224,15 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stream analytics output name cannot be null..
+        /// </summary>
+        internal static string OutputNameCannotBeEmpty {
+            get {
+                return ResourceManager.GetString("OutputNameCannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Output &apos;{0}&apos; does not exist in the stream analytics job {1} in the resource group &apos;{2}&apos;..
         /// </summary>
         internal static string OutputNotFound {
@@ -267,6 +285,15 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         internal static string TransformationExists {
             get {
                 return ResourceManager.GetString("TransformationExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stream analytics transformation name cannot be null..
+        /// </summary>
+        internal static string TransformationNameCannotBeEmpty {
+            get {
+                return ResourceManager.GetString("TransformationNameCannotBeEmpty", resourceCulture);
             }
         }
         

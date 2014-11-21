@@ -111,6 +111,15 @@ Timestamp (Utc):{4}</value>
   <data name="JobNameCannotBeEmpty" xml:space="preserve">
     <value>Stream analytics job name cannot be null.</value>
   </data>
+  <data name="InputNameCannotBeEmpty" xml:space="preserve">
+    <value>Stream analytics input name cannot be null.</value>
+  </data>
+  <data name="OutputNameCannotBeEmpty" xml:space="preserve">
+    <value>Stream analytics output name cannot be null.</value>
+  </data>
+  <data name="TransformationNameCannotBeEmpty" xml:space="preserve">
+    <value>Stream analytics transformation name cannot be null.</value>
+  </data>
   <data name="InvalidJson" xml:space="preserve">
     <value>Failed to parse input JSON file. {0}. Please correct the error in the JSON file and re-deploy {1} again.</value>
   </data>

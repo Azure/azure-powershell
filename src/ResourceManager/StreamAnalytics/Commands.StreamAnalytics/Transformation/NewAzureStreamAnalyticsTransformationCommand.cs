@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.StreamAnalytics.Models;
+using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
@@ -43,6 +45,11 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
             string rawJsonContent = StreamAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(File));
 
             Name = ResolveResourceName(rawJsonContent, Name, "Transformation");
+
+            if (Name != null && string.IsNullOrWhiteSpace(Name))
+            {
+                throw new ArgumentException(Resources.TransformationNameCannotBeEmpty);
+            }
 
             CreatePSTransformationParameter parameter = new CreatePSTransformationParameter
             {
