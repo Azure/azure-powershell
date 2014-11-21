@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return job.Properties.JobId;
             }
-            set
+            internal set
             {
                 job.Properties.JobId = value;
             }
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return job.Location;
             }
-            set
+            internal set
             {
                 job.Location = value;
             }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return job.Properties.CreatedDate;
             }
-            set
+            internal set
             {
                 job.Properties.CreatedDate = value;
             }
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return job.Properties.ProvisioningState;
             }
-            set
+            internal set
             {
                 job.Properties.ProvisioningState = value;
             }
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return job.Properties.JobState;
             }
-            set
+            internal set
             {
                 job.Properties.JobState = value;
             }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return job.Tags;
             }
-            set
+            internal set
             {
                 job.Tags = value;
             }
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return job.Properties;
             }
-            set
+            internal set
             {
                 job.Properties = value;
             }

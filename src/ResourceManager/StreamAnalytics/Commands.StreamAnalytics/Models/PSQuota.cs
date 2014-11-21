@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return subscriptionQuotas.Name;
             }
-            set
+            internal set
             {
                 subscriptionQuotas.Name = value;
             }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return subscriptionQuotas.Properties.CurrentCount;
             }
-            set
+            internal set
             {
                 subscriptionQuotas.Properties.CurrentCount = value;
             }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return subscriptionQuotas.Properties.MaxCount;
             }
-            set
+            internal set
             {
                 subscriptionQuotas.Properties.MaxCount = value;
             }
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return subscriptionQuotas.Properties;
             }
-            set
+            internal set
             {
                 subscriptionQuotas.Properties = value;
             }

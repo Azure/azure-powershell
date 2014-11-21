@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return transformation.Name;
             }
-            set
+            internal set
             {
                 transformation.Name = value;
             }
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             {
                 return transformation.Properties;
             }
-            set
+            internal set
             {
                 transformation.Properties = value;
             }
