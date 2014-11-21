@@ -28,6 +28,14 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         [ValidateNotNullOrEmpty]
         public Hashtable ConnectionString { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = "ProjectFile")]
+        [Parameter(Mandatory = false, ParameterSetName = "Package")]
+        public SwitchParameter SkipAppData { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = "ProjectFile")]
+        [Parameter(Mandatory = false, ParameterSetName = "Package")]
+        public SwitchParameter DoNotDelete { get; set; }
+
         private string fullProjectFile;
         private string fullWebConfigFileWithConfiguration;
         private string fullWebConfigFile;
@@ -39,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         public override void ExecuteCmdlet()
         {
             PrepareFileFullPaths();
-            
+
             // If a project file is specified, use MSBuild to build the package zip file.
             if (!string.IsNullOrEmpty(ProjectFile))
             {
@@ -72,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
             try
             {
                 // Publish the package.
-                WebsitesClient.PublishWebProject(Name, Slot, fullPackage, connectionStrings);
+                WebsitesClient.PublishWebProject(Name, Slot, fullPackage, connectionStrings, SkipAppData.IsPresent, DoNotDelete.IsPresent);
                 WriteVerbose(string.Format(Resources.CompletePublishingProjectTemplate, fullPackage));
             }
             catch (Exception)
@@ -119,7 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                         );
                         dynamicParameters.Add(name, parameter);
                     }
-                } 
+                }
             }
             return dynamicParameters;
         }

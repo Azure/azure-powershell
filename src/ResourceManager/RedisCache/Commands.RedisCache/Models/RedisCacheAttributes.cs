@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             ProvisioningState = cache.Properties.ProvisioningState;
             SslPort = cache.Properties.SslPort;
             MaxMemoryPolicy = cache.Properties.MaxMemoryPolicy;
+            EnableNonSslPort = cache.Properties.EnableNonSslPort;
             RedisVersion = cache.Properties.RedisVersion;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
             Sku = cache.Properties.Sku.Name;
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             ProvisioningState = cache.Properties.ProvisioningState;
             SslPort = cache.Properties.SslPort;
             MaxMemoryPolicy = cache.Properties.MaxMemoryPolicy;
+            EnableNonSslPort = cache.Properties.EnableNonSslPort;
             RedisVersion = cache.Properties.RedisVersion;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
             Sku = cache.Properties.Sku.Name;
@@ -93,6 +95,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public int SslPort { get; protected set; }
 
         public string MaxMemoryPolicy { get; protected set; }
+
+        public bool EnableNonSslPort { get; protected set; }
 
         public string RedisVersion { get; protected set; }
 

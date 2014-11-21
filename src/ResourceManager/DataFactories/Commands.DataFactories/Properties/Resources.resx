@@ -146,7 +146,7 @@ Are you sure you want to continue?</value>
   <data name="DataFactoryRemoving" xml:space="preserve">
     <value>Removing data factory '{0}' in resource group '{1}'.</value>
   </data>
-   <data name="InvalidJson" xml:space="preserve">
+  <data name="InvalidJson" xml:space="preserve">
     <value>Failed to parse input JSON file. {0}. Please correct the error in the JSON file and re-deploy {1} again.</value>
   </data>
   <data name="DownloadCredentialsNull" xml:space="preserve">
@@ -244,5 +244,11 @@ Are you sure you want to continue?</value>
   </data>
   <data name="NoDataSliceFound" xml:space="preserve">
     <value>No Slices were found in the time range specified. </value>
+  </data>
+  <data name="GatewayProvisioningFailed" xml:space="preserve">
+    <value>Failed to provision the gateway.  Please check if there is any error in the gateway properties before re-create it again.</value>
+  </data>
+  <data name="HubProvisioningFailed" xml:space="preserve">
+    <value>Failed to provision the hub.  Please check if there is any error in the hub properties before re-create it again.</value>
   </data>
 </root>

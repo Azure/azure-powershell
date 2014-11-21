@@ -106,7 +106,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                     RecommendedVMSize = this.RecommendedVMSize,
                     Language          = this.Language,
                     IconUri           = this.IconUri,
-                    SmallIconUri      = this.SmallIconUri
+                    SmallIconUri      = this.SmallIconUri,
+                    ShowInGui         = this.DontShowInGui.IsPresent ? (bool?)false : null
                 };
 
                 this.ExecuteClientActionNewSM(

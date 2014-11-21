@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
     public class AuditingPolicy
@@ -31,12 +29,16 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
         public string DatabaseName { get; set; }
         
         public string StorageAccountName { get; set; }
+
+        public Constants.StorageKeyTypes StorageKeyType { get; set; }
         
         public string[] EventType { get; set; }
         
         public bool IsEnabled { get; set; }
         
         public bool UseServerDefault { get; set; }
+
+        public bool DirectAccessEnabled { get; set; } 
 
         public ConnectionStrings ConnectionStrings { get; set; }
     }

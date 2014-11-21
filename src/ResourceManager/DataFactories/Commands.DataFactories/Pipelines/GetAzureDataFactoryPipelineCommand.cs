@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Get, Constants.Pipeline), OutputType(typeof(List<PSPipeline>), typeof(PSPipeline))]
+    [Cmdlet(VerbsCommon.Get, Constants.Pipeline, DefaultParameterSetName = ByFactoryName), OutputType(typeof(List<PSPipeline>), typeof(PSPipeline))]
     public class GetAzureDataFactoryPipelineCommand : DataFactoryBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,

@@ -16,14 +16,12 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
-using System.Linq;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -94,7 +92,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                             Tags = tags
                         }
                 });
-
+            
             return response.DataFactory;
         }
 
@@ -138,6 +136,14 @@ namespace Microsoft.Azure.Commands.DataFactories
                         parameters.ResourceGroupName),
                     parameters.DataFactoryName,
                     createDataFactory);
+            }
+
+            if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(dataFactory.ProvisioningState))
+            {
+                string errorMessage = dataFactory.Properties == null
+                    ? string.Empty
+                    : dataFactory.Properties.ErrorMessage;
+                throw new ProvisioningFailedException(errorMessage);
             }
 
             return dataFactory;

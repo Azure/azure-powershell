@@ -53,5 +53,12 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         {
             RunPowerShellTest("Test-GetDataFactoryWithWhiteSpaceName");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDataFactoryPiping()
+        {
+            RunPowerShellTest("Test-DataFactoryPiping");
+        }
     }
 }

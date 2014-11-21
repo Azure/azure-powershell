@@ -152,7 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
         [ValidateNotNullOrEmpty]
         public string InstanceSize { get; set; }
 
-        [Parameter(HelpMessage = "Location of the where the VHD should be created. This link refers to a blob in a storage account. If not specified the VHD will be created in the current storage account in the vhds container.")]
+        [Parameter(HelpMessage = "Location where the VHD should be created. This link refers to a blob in a storage account. If not specified the VHD will be created in the current storage account in the vhds container.")]
         [ValidateNotNullOrEmpty]
         public string MediaLocation { get; set; }
 

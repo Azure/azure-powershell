@@ -1,0 +1,1320 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources />\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "8a9649f6a02cb645be0654a43089ff70"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:39:17 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "b0c144b5ef08bb4a9ab3e756e9a85e97"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:39:54 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "bf3b79f3bc31bd1ca632ac081060c5f6"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:40:55 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "0f21231466d3be6286cf34678c2fe1f3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:41:57 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "443527abee65bf36a70f1b08174e6189"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:42:57 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "61829efc2aeab6fcb5fc28f3fd3466ae"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:43:58 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "130cebbc5196bdb9b08bb9377e6d6e00"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:45:00 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "490fa6d17adfb372bd5a7edd1b3dac78"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:46:02 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "d5be515f9ee1b78fa123c31296271f98"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:47:03 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "c65d5c82df4cba188490aca4f06e0797"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:48:04 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "dfe2ff24ede5b29b8b604b8dadb03ba5"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:49:05 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "990b0229e3ddb5839d390d372a34c0fb"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:50:05 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "14c2dc73187ab3559d5f75c3844a74eb"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:51:08 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Creating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "85fb704582d2bd97a5e2f7c3384d463b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:52:09 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n      <State>Started</State>\r\n      <SubState>Active</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Create</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "d48963f56b68bb0a97853b2ff5465fcc"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:09 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>14857726-58e9-4b96-9776-731eeef73446</ETag>\r\n      <State>Started</State>\r\n      <SubState>Updating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:53:00 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Update</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "78266ca57b6cb5cfa3d2fcb47453c000"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:53 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>14857726-58e9-4b96-9776-731eeef73446</ETag>\r\n      <State>Started</State>\r\n      <SubState>Updating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:53:00 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Update</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "58f38f919aaab8fe8dc4d6fe7b38934a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:54:53 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>14857726-58e9-4b96-9776-731eeef73446</ETag>\r\n      <State>Started</State>\r\n      <SubState>Updating</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                <Type>Absolute</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:53:00 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Update</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "75efc1aec8b8b5278faa440e4a307637"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:55:55 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n  <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n  <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n  <GeoRegion>East US</GeoRegion>\r\n  <Resources>\r\n    <Resource>\r\n      <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n      <Type>Caching</Type>\r\n      <Name>powershellbasic</Name>\r\n      <SchemaVersion>1.0</SchemaVersion>\r\n      <ETag>14857726-58e9-4b96-9776-731eeef73446</ETag>\r\n      <State>Started</State>\r\n      <SubState>Active</SubState>\r\n      <UsageMeters />\r\n      <IntrinsicSettings>\r\n        <CacheServiceInput xmlns=\"\">\r\n          <SkuType>Basic</SkuType>\r\n          <Location>East US</Location>\r\n          <SkuCount>1</SkuCount>\r\n          <ServiceVersion>1.2.0</ServiceVersion>\r\n          <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n          <NamedCaches>\r\n            <NamedCache>\r\n              <CacheName>default</CacheName>\r\n              <NotificationsEnabled>false</NotificationsEnabled>\r\n              <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n              <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n              <ExpirationSettings>\r\n                <TimeToLiveInMinutes>11</TimeToLiveInMinutes>\r\n                <Type>Sliding</Type>\r\n              </ExpirationSettings>\r\n            </NamedCache>\r\n          </NamedCaches>\r\n        </CacheServiceInput>\r\n      </IntrinsicSettings>\r\n      <OutputItems>\r\n        <OutputItem>\r\n          <Key>CreationDate</Key>\r\n          <Value>10/1/2014 5:53:00 PM +00:00</Value>\r\n        </OutputItem>\r\n      </OutputItems>\r\n      <OperationStatus>\r\n        <Type>Update</Type>\r\n        <Result>Succeeded</Result>\r\n      </OperationStatus>\r\n      <Label />\r\n    </Resource>\r\n  </Resources>\r\n</CloudService>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "afcebf7967aeba10ada8c0f37c1ac540"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:56:56 GMT"
+        ],
+        "ETag": [
+          "8c0f3b73-56a2-4b98-8719-d7301209eea3"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/cloudservices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US/resources/cacheservice/~/Caching/dummy/Namespaces/powershellbasic",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9jbG91ZHNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVMvcmVzb3VyY2VzL2NhY2hlc2VydmljZS9+L0NhY2hpbmcvZHVtbXkvTmFtZXNwYWNlcy9wb3dlcnNoZWxsYmFzaWM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<boolean xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">true</boolean>",
+      "ResponseHeaders": {
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "e6ea306cd367bc96bf3d0c4e566bb62c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:39:20 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/cloudservices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US/resources/cacheservice/Caching/powershellbasic",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9jbG91ZHNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVMvcmVzb3VyY2VzL2NhY2hlc2VydmljZS9DYWNoaW5nL3Bvd2Vyc2hlbGxiYXNpYw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "<Resource xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <IntrinsicSettings>\r\n    <CacheServiceInput xmlns=\"\">\r\n      <SkuType>Basic</SkuType>\r\n      <Location>East US</Location>\r\n      <SkuCount>1</SkuCount>\r\n      <ServiceVersion>1.0.0</ServiceVersion>\r\n      <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n      <NamedCaches />\r\n    </CacheServiceInput>\r\n  </IntrinsicSettings>\r\n</Resource>",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ],
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "client-tracking-id": [
+          "6"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "ac0274caef15bf85b5d8bb4a6e3bc3b8"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:39:22 GMT"
+        ],
+        "ETag": [
+          "467d3105-3a62-4c09-b495-7b4a65603bc1"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/cloudservices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US/resources/cacheservice/Caching/powershellbasic",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9jbG91ZHNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVMvcmVzb3VyY2VzL2NhY2hlc2VydmljZS9DYWNoaW5nL3Bvd2Vyc2hlbGxiYXNpYw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "<Resource xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <IntrinsicSettings>\r\n    <CacheServiceInput xmlns=\"\">\r\n      <SkuType>Basic</SkuType>\r\n      <Location>East US</Location>\r\n      <SkuCount>1</SkuCount>\r\n      <ServiceVersion>1.2.0</ServiceVersion>\r\n      <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n      <NamedCaches>\r\n        <NamedCache>\r\n          <CacheName>default</CacheName>\r\n          <NotificationsEnabled>false</NotificationsEnabled>\r\n          <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n          <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n          <ExpirationSettings>\r\n            <TimeToLiveInMinutes>11</TimeToLiveInMinutes>\r\n            <Type>Sliding</Type>\r\n          </ExpirationSettings>\r\n        </NamedCache>\r\n      </NamedCaches>\r\n    </CacheServiceInput>\r\n  </IntrinsicSettings>\r\n</Resource>",
+      "RequestHeaders": {
+        "If-Match": [
+          "467d3105-3a62-4c09-b495-7b4a65603bc1"
+        ],
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ],
+        "client-tracking-id": [
+          "32"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "40bb52353667b724972f2547f2bc202e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:20 GMT"
+        ],
+        "ETag": [
+          "14857726-58e9-4b96-9776-731eeef73446"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/operations/ac0274caef15bf85b5d8bb4a6e3bc3b8",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9vcGVyYXRpb25zL2FjMDI3NGNhZWYxNWJmODViNWQ4YmI0YTZlM2JjM2I4",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ],
+        "client-tracking-id": [
+          "6"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>ac0274ca-ef15-bf85-b5d8-bb4a6e3bc3b8</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "cb08d5c3c430b0ff899efa51ed99d21c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:39:22 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/operations/ac0274caef15bf85b5d8bb4a6e3bc3b8",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9vcGVyYXRpb25zL2FjMDI3NGNhZWYxNWJmODViNWQ4YmI0YTZlM2JjM2I4",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ],
+        "client-tracking-id": [
+          "6"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>ac0274ca-ef15-bf85-b5d8-bb4a6e3bc3b8</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "cb134640b8dbb3a0be8d622a3977da68"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:39:53 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2Vz",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>powershellbasic</Name>\r\n        <SchemaVersion>1.0</SchemaVersion>\r\n        <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n        <State>Started</State>\r\n        <SubState>Active</SubState>\r\n        <UsageMeters />\r\n        <IntrinsicSettings>\r\n          <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n            <SkuType>Basic</SkuType>\r\n            <Location>East US</Location>\r\n            <SkuCount>1</SkuCount>\r\n            <ServiceVersion>1.2.0</ServiceVersion>\r\n            <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n            <NamedCaches>\r\n              <NamedCache>\r\n                <CacheName>default</CacheName>\r\n                <NotificationsEnabled>false</NotificationsEnabled>\r\n                <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n                <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n                <ExpirationSettings>\r\n                  <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                  <Type>Absolute</Type>\r\n                </ExpirationSettings>\r\n              </NamedCache>\r\n            </NamedCaches>\r\n          </CacheServiceInput>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>CreationDate</Key>\r\n            <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "323df78fde00b331a19db4eb4b13c530"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:11 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2Vz",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>powershellbasic</Name>\r\n        <SchemaVersion>1.0</SchemaVersion>\r\n        <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n        <State>Started</State>\r\n        <SubState>Active</SubState>\r\n        <UsageMeters />\r\n        <IntrinsicSettings>\r\n          <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n            <SkuType>Basic</SkuType>\r\n            <Location>East US</Location>\r\n            <SkuCount>1</SkuCount>\r\n            <ServiceVersion>1.2.0</ServiceVersion>\r\n            <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n            <NamedCaches>\r\n              <NamedCache>\r\n                <CacheName>default</CacheName>\r\n                <NotificationsEnabled>false</NotificationsEnabled>\r\n                <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n                <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n                <ExpirationSettings>\r\n                  <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                  <Type>Absolute</Type>\r\n                </ExpirationSettings>\r\n              </NamedCache>\r\n            </NamedCaches>\r\n          </CacheServiceInput>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>CreationDate</Key>\r\n            <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "a04c234bda23b67980ed255cd0db7cc5"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:12 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2Vz",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>powershellbasic</Name>\r\n        <SchemaVersion>1.0</SchemaVersion>\r\n        <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n        <State>Started</State>\r\n        <SubState>Active</SubState>\r\n        <UsageMeters />\r\n        <IntrinsicSettings>\r\n          <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n            <SkuType>Basic</SkuType>\r\n            <Location>East US</Location>\r\n            <SkuCount>1</SkuCount>\r\n            <ServiceVersion>1.2.0</ServiceVersion>\r\n            <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n            <NamedCaches>\r\n              <NamedCache>\r\n                <CacheName>default</CacheName>\r\n                <NotificationsEnabled>false</NotificationsEnabled>\r\n                <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n                <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n                <ExpirationSettings>\r\n                  <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                  <Type>Absolute</Type>\r\n                </ExpirationSettings>\r\n              </NamedCache>\r\n            </NamedCaches>\r\n          </CacheServiceInput>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>CreationDate</Key>\r\n            <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "10fd8f50aa6eb477a8d6e42b4908cbbe"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:13 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2Vz",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>powershellbasic</Name>\r\n        <SchemaVersion>1.0</SchemaVersion>\r\n        <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n        <State>Started</State>\r\n        <SubState>Active</SubState>\r\n        <UsageMeters />\r\n        <IntrinsicSettings>\r\n          <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n            <SkuType>Basic</SkuType>\r\n            <Location>East US</Location>\r\n            <SkuCount>1</SkuCount>\r\n            <ServiceVersion>1.2.0</ServiceVersion>\r\n            <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n            <NamedCaches>\r\n              <NamedCache>\r\n                <CacheName>default</CacheName>\r\n                <NotificationsEnabled>false</NotificationsEnabled>\r\n                <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n                <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n                <ExpirationSettings>\r\n                  <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                  <Type>Absolute</Type>\r\n                </ExpirationSettings>\r\n              </NamedCache>\r\n            </NamedCaches>\r\n          </CacheServiceInput>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>CreationDate</Key>\r\n            <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "866fc2eb01f9b86e9849377b1b0fa11d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:14 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2Vz",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>powershellbasic</Name>\r\n        <SchemaVersion>1.0</SchemaVersion>\r\n        <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n        <State>Started</State>\r\n        <SubState>Active</SubState>\r\n        <UsageMeters />\r\n        <IntrinsicSettings>\r\n          <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n            <SkuType>Basic</SkuType>\r\n            <Location>East US</Location>\r\n            <SkuCount>1</SkuCount>\r\n            <ServiceVersion>1.2.0</ServiceVersion>\r\n            <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n            <NamedCaches>\r\n              <NamedCache>\r\n                <CacheName>default</CacheName>\r\n                <NotificationsEnabled>false</NotificationsEnabled>\r\n                <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n                <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n                <ExpirationSettings>\r\n                  <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                  <Type>Absolute</Type>\r\n                </ExpirationSettings>\r\n              </NamedCache>\r\n            </NamedCaches>\r\n          </CacheServiceInput>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>CreationDate</Key>\r\n            <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "806df0cfcca3bb8cb9b2d3f7d5e85d53"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:15 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2Vz",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>powershellbasic</Name>\r\n        <SchemaVersion>1.0</SchemaVersion>\r\n        <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n        <State>Started</State>\r\n        <SubState>Active</SubState>\r\n        <UsageMeters />\r\n        <IntrinsicSettings>\r\n          <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n            <SkuType>Basic</SkuType>\r\n            <Location>East US</Location>\r\n            <SkuCount>1</SkuCount>\r\n            <ServiceVersion>1.2.0</ServiceVersion>\r\n            <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n            <NamedCaches>\r\n              <NamedCache>\r\n                <CacheName>default</CacheName>\r\n                <NotificationsEnabled>false</NotificationsEnabled>\r\n                <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n                <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n                <ExpirationSettings>\r\n                  <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                  <Type>Absolute</Type>\r\n                </ExpirationSettings>\r\n              </NamedCache>\r\n            </NamedCaches>\r\n          </CacheServiceInput>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>CreationDate</Key>\r\n            <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "7c1cde9294bbbd52afd2dbb520de304c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:16 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2Vz",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>powershellbasic</Name>\r\n        <SchemaVersion>1.0</SchemaVersion>\r\n        <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n        <State>Started</State>\r\n        <SubState>Active</SubState>\r\n        <UsageMeters />\r\n        <IntrinsicSettings>\r\n          <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n            <SkuType>Basic</SkuType>\r\n            <Location>East US</Location>\r\n            <SkuCount>1</SkuCount>\r\n            <ServiceVersion>1.2.0</ServiceVersion>\r\n            <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n            <NamedCaches>\r\n              <NamedCache>\r\n                <CacheName>default</CacheName>\r\n                <NotificationsEnabled>false</NotificationsEnabled>\r\n                <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n                <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n                <ExpirationSettings>\r\n                  <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                  <Type>Absolute</Type>\r\n                </ExpirationSettings>\r\n              </NamedCache>\r\n            </NamedCaches>\r\n          </CacheServiceInput>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>CreationDate</Key>\r\n            <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "9e9ec9c88635b0bc94ecfbd516550093"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:17 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2Vz",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>powershellbasic</Name>\r\n        <SchemaVersion>1.0</SchemaVersion>\r\n        <ETag>467d3105-3a62-4c09-b495-7b4a65603bc1</ETag>\r\n        <State>Started</State>\r\n        <SubState>Active</SubState>\r\n        <UsageMeters />\r\n        <IntrinsicSettings>\r\n          <CacheServiceInput xmlns=\"\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n            <SkuType>Basic</SkuType>\r\n            <Location>East US</Location>\r\n            <SkuCount>1</SkuCount>\r\n            <ServiceVersion>1.2.0</ServiceVersion>\r\n            <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n            <NamedCaches>\r\n              <NamedCache>\r\n                <CacheName>default</CacheName>\r\n                <NotificationsEnabled>false</NotificationsEnabled>\r\n                <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n                <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n                <ExpirationSettings>\r\n                  <TimeToLiveInMinutes>10</TimeToLiveInMinutes>\r\n                  <Type>Absolute</Type>\r\n                </ExpirationSettings>\r\n              </NamedCache>\r\n            </NamedCaches>\r\n          </CacheServiceInput>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>CreationDate</Key>\r\n            <Value>10/1/2014 5:39:26 PM +00:00</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "cf6c0bcea5a3b8f39f27b61d140f43cb"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:17 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2Vz",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>cacheservice</ResourceProviderNamespace>\r\n        <Type>Caching</Type>\r\n        <Name>powershellbasic</Name>\r\n        <SchemaVersion>1.0</SchemaVersion>\r\n        <ETag>14857726-58e9-4b96-9776-731eeef73446</ETag>\r\n        <State>Started</State>\r\n        <SubState>Active</SubState>\r\n        <UsageMeters />\r\n        <IntrinsicSettings>\r\n          <CacheServiceInput xmlns=\"\">\r\n            <SkuType>Basic</SkuType>\r\n            <Location>East US</Location>\r\n            <SkuCount>1</SkuCount>\r\n            <ServiceVersion>1.2.0</ServiceVersion>\r\n            <ObjectSizeInBytes>1024</ObjectSizeInBytes>\r\n            <NamedCaches>\r\n              <NamedCache>\r\n                <CacheName>default</CacheName>\r\n                <NotificationsEnabled>false</NotificationsEnabled>\r\n                <HighAvailabilityEnabled>false</HighAvailabilityEnabled>\r\n                <EvictionPolicy>LeastRecentlyUsed</EvictionPolicy>\r\n                <ExpirationSettings>\r\n                  <TimeToLiveInMinutes>11</TimeToLiveInMinutes>\r\n                  <Type>Sliding</Type>\r\n                </ExpirationSettings>\r\n              </NamedCache>\r\n            </NamedCaches>\r\n          </CacheServiceInput>\r\n        </IntrinsicSettings>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>CreationDate</Key>\r\n            <Value>10/1/2014 5:53:00 PM +00:00</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Update</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "abd103fb6a3bb575862efeaecfc932ee"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:56:57 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/operations/40bb52353667b724972f2547f2bc202e",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9vcGVyYXRpb25zLzQwYmI1MjM1MzY2N2I3MjQ5NzJmMjU0N2YyYmMyMDJl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ],
+        "client-tracking-id": [
+          "32"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>40bb5235-3667-b724-972f-2547f2bc202e</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "472c52559f5fbaedacddfa7e41ab9edf"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:20 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/operations/40bb52353667b724972f2547f2bc202e",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9vcGVyYXRpb25zLzQwYmI1MjM1MzY2N2I3MjQ5NzJmMjU0N2YyYmMyMDJl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ],
+        "client-tracking-id": [
+          "32"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>40bb5235-3667-b724-972f-2547f2bc202e</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "f1f073a5ce1fb9d4bfd053a336e983be"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:53:51 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/cloudservices/CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US/resources/cacheservice/Caching/powershellbasic",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9jbG91ZHNlcnZpY2VzL0NhY2hpbmdIWU4yUzY1SVdJNUtCS0NaV05DNkxYQkJJUTJaUTZFVTVCTEhEWFNNUlo1SUpMREQ3N1VRLUVhc3QtVVMvcmVzb3VyY2VzL2NhY2hlc2VydmljZS9DYWNoaW5nL3Bvd2Vyc2hlbGxiYXNpYw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ],
+        "client-tracking-id": [
+          "41"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "3f5a18d2abe5b2ab86a650f3913f84a6"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:56:58 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/operations/3f5a18d2abe5b2ab86a650f3913f84a6",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9vcGVyYXRpb25zLzNmNWExOGQyYWJlNWIyYWI4NmE2NTBmMzkxM2Y4NGE2",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ],
+        "client-tracking-id": [
+          "41"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>3f5a18d2-abe5-b2ab-86a6-50f3913f84a6</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "41525c709a8cb60788ee2abd6bd39e74"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:56:58 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/operations/3f5a18d2abe5b2ab86a650f3913f84a6",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9vcGVyYXRpb25zLzNmNWExOGQyYWJlNWIyYWI4NmE2NTBmMzkxM2Y4NGE2",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ],
+        "client-tracking-id": [
+          "41"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>3f5a18d2-abe5-b2ab-86a6-50f3913f84a6</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "87090aff7122b836a4f8619281a96c3a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:57:28 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "81d469b7-5467-4107-bb5a-d11907112633"
+  }
+}

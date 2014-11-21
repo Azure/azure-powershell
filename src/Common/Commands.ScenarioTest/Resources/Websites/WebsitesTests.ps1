@@ -346,13 +346,39 @@ function Test-EnableApplicationDiagnosticOnTableStorage
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
     
     # Test
-    Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Warning -StorageAccountName $storageName
 
+    Enable-AzureWebsiteApplicationDiagnostic -Name $name -TableStorage -LogLevel Warning -StorageAccountName $storageName
     # Assert
     $website = Get-AzureWebsite $name -Slot Production
     Assert-True { $website.AzureTableTraceEnabled }
     Assert-AreEqual Warning $website.AzureTableTraceLevel
-    Assert-NotNull { $website.ConnectionStrings | ?{ $_.Name -eq "CLOUD_STORAGE_ACCOUNT" } }
+    Assert-True { $website.AppSettings.ContainsKey("DIAGNOSTICS_AZURETABLESASURL") }
+
+    # Cleanup
+    Remove-AzureStorageAccount $storageName
+}
+
+<#
+.SYNOPSIS
+Tests Enable-AzureWebsiteApplicationDiagnostic with blob storage
+#>
+function Test-EnableApplicationDiagnosticOnBlobStorage
+{
+    # Setup
+    $name = Get-WebsiteName
+    $storageName = $(Get-WebsiteName).ToLower()
+    $defaultLocation = Get-StorageDefaultLocation
+    New-AzureWebsite $name
+    New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
+    
+    # Test
+
+    Enable-AzureWebsiteApplicationDiagnostic -Name $name -BlobStorage -LogLevel Warning -StorageAccountName $storageName
+    # Assert
+    $website = Get-AzureWebsite $name -Slot Production
+    Assert-True { $website.AzureBlobTraceEnabled }
+    Assert-AreEqual Warning $website.AzureBlobTraceLevel
+    Assert-True { $website.AppSettings.ContainsKey("DIAGNOSTICS_AZUREBLOBCONTAINERSASURL") }
 
     # Cleanup
     Remove-AzureStorageAccount $storageName
@@ -411,16 +437,16 @@ function Test-ReconfigureStorageAppDiagnostics
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
     New-AzureStorageAccount -ServiceName $newStorageName -Location $defaultLocation
-    Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Warning -StorageAccountName $storageName
+    Enable-AzureWebsiteApplicationDiagnostic -Name $name -TableStorage -LogLevel Warning -StorageAccountName $storageName
 
     # Test
-    Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Verbose -StorageAccountName $newStorageName
+    Enable-AzureWebsiteApplicationDiagnostic -Name $name -TableStorage -LogLevel Verbose -StorageAccountName $newStorageName
 
     # Assert
     $website = Get-AzureWebsite $name -Slot Production
     Assert-True { $website.AzureTableTraceEnabled }
     Assert-AreEqual Verbose $website.AzureTableTraceLevel
-    Assert-True { ($website.ConnectionStrings | ?{ $_.Name -eq "CLOUD_STORAGE_ACCOUNT" }).ConnectionString -like "*" + $newStorageName + "*" }
+    Assert-True { $website.AppSettings.ContainsKey("DIAGNOSTICS_AZURETABLESASURL") }
 
     # Cleanup
     Remove-AzureStorageAccount $storageName
@@ -437,7 +463,7 @@ function Test-ThrowsForInvalidStorageAccountName
     New-AzureWebsite $name
     
     # Test
-    Assert-Throws { Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Warning -StorageAccountName "notexsiting" }
+    Assert-Throws { Enable-AzureWebsiteApplicationDiagnostic -Name $name -TableStorage -LogLevel Warning -StorageAccountName "notexsiting" }
 }
 
 ########################################################################### Disable-AzureWebsiteApplicationDiagnostic Scenario Tests ###########################################################################
@@ -454,16 +480,16 @@ function Test-DisableApplicationDiagnosticOnTableStorage
     $defaultLocation = Get-StorageDefaultLocation
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
-    Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Warning -StorageAccountName $storageName
+    Enable-AzureWebsiteApplicationDiagnostic -Name $name -TableStorage -LogLevel Warning -StorageAccountName $storageName
     
     # Test
-    Disable-AzureWebsiteApplicationDiagnostic -Name $name -Storage
+    Disable-AzureWebsiteApplicationDiagnostic -Name $name -TableStorage
 
     # Assert
     $website = Get-AzureWebsite $name -Slot Production
     Assert-False { $website.AzureTableTraceEnabled }
     Assert-AreEqual Warning $website.AzureTableTraceLevel
-    Assert-NotNull { $website.ConnectionStrings | ?{ $_.Name -eq "CLOUD_STORAGE_ACCOUNT" } }
+    Assert-True { $website.AppSettings.ContainsKey("DIAGNOSTICS_AZURETABLESASURL") }
 
     # Cleanup
     Remove-AzureStorageAccount $storageName
@@ -501,17 +527,17 @@ function Test-DisableApplicationDiagnosticOnTableStorageAndFile
     $defaultLocation = Get-StorageDefaultLocation
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
-    Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Warning -StorageAccountName $storageName
+    Enable-AzureWebsiteApplicationDiagnostic -Name $name -TableStorage -LogLevel Warning -StorageAccountName $storageName
     Enable-AzureWebsiteApplicationDiagnostic -Name $name -File -LogLevel Warning
     
     # Test
-    Disable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -File
+    Disable-AzureWebsiteApplicationDiagnostic -Name $name -TableStorage -File
 
     # Assert
     $website = Get-AzureWebsite $name -Slot Production
     Assert-False { $website.AzureTableTraceEnabled }
     Assert-False { $website.AzureDriveTraceEnabled }
-    Assert-NotNull { $website.ConnectionStrings | ?{ $_.Name -eq "CLOUD_STORAGE_ACCOUNT" } }
+    Assert-True { $website.AppSettings.ContainsKey("DIAGNOSTICS_AZURETABLESASURL") }
 
     # Cleanup
     Remove-AzureStorageAccount $storageName
@@ -529,7 +555,7 @@ function Test-DisablesFileOnly
     $defaultLocation = Get-StorageDefaultLocation
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
-    Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Warning -StorageAccountName $storageName
+    Enable-AzureWebsiteApplicationDiagnostic -Name $name -TableStorage -LogLevel Warning -StorageAccountName $storageName
     Enable-AzureWebsiteApplicationDiagnostic -Name $name -File -LogLevel Verbose
     
     # Test
@@ -539,7 +565,7 @@ function Test-DisablesFileOnly
     $website = Get-AzureWebsite $name -Slot Production
     Assert-True { $website.AzureTableTraceEnabled }
     Assert-False { $website.AzureDriveTraceEnabled }
-    Assert-NotNull { $website.ConnectionStrings | ?{ $_.Name -eq "CLOUD_STORAGE_ACCOUNT" } }
+    Assert-True { $website.AppSettings.ContainsKey("DIAGNOSTICS_AZURETABLESASURL") }
 
     # Cleanup
     Remove-AzureStorageAccount $storageName
@@ -558,16 +584,16 @@ function Test-DisablesStorageOnly
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
     Enable-AzureWebsiteApplicationDiagnostic -Name $name -File -LogLevel Verbose
-    Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Warning -StorageAccountName $storageName
+    Enable-AzureWebsiteApplicationDiagnostic -Name $name -TableStorage -LogLevel Warning -StorageAccountName $storageName
     
     # Test
-    Disable-AzureWebsiteApplicationDiagnostic -Name $name -Storage
+    Disable-AzureWebsiteApplicationDiagnostic -Name $name -TableStorage
 
     # Assert
     $website = Get-AzureWebsite $name -Slot Production
     Assert-True { $website.AzureDriveTraceEnabled }
     Assert-False { $website.AzureTableTraceEnabled }
-    Assert-NotNull { $website.ConnectionStrings | ?{ $_.Name -eq "CLOUD_STORAGE_ACCOUNT" } }
+    Assert-True { $website.AppSettings.ContainsKey("DIAGNOSTICS_AZURETABLESASURL") }
 
     # Cleanup
     Remove-AzureStorageAccount $storageName
@@ -585,7 +611,7 @@ function Test-DisablesBothByDefault
     $defaultLocation = Get-StorageDefaultLocation
     New-AzureWebsite $name
     New-AzureStorageAccount -ServiceName $storageName -Location $defaultLocation
-    Enable-AzureWebsiteApplicationDiagnostic -Name $name -Storage -LogLevel Warning -StorageAccountName $storageName
+    Enable-AzureWebsiteApplicationDiagnostic -Name $name -TableStorage -LogLevel Warning -StorageAccountName $storageName
     Enable-AzureWebsiteApplicationDiagnostic -Name $name -File -LogLevel Verbose
     
     # Test
@@ -595,7 +621,7 @@ function Test-DisablesBothByDefault
     $website = Get-AzureWebsite $name -Slot Production
     Assert-False { $website.AzureTableTraceEnabled }
     Assert-False { $website.AzureDriveTraceEnabled }
-    Assert-NotNull { $website.ConnectionStrings | ?{ $_.Name -eq "CLOUD_STORAGE_ACCOUNT" } }
+    Assert-True { $website.AppSettings.ContainsKey("DIAGNOSTICS_AZURETABLESASURL") }
 
     # Cleanup
     Remove-AzureStorageAccount $storageName

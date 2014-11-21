@@ -28,6 +28,18 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
 
         internal bool IsGitWorkingTree()
         {
+            try
+            {
+                if (!Git.IsGitRepository())
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                // Ignore failure and continue
+            }
+
             return Git.GetWorkingTree().Any(line => line.Equals(".git"));
         }
 

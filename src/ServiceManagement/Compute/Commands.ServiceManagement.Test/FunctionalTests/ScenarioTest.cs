@@ -99,7 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 try
                 {
-                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password, locationName, null, "");                    
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password, locationName, null, "");
                     pass = true;
 
                 }
@@ -162,7 +162,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 if (string.IsNullOrEmpty(imageName))
                     imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
 
-                vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName, serviceName, imageName, username, password, locationName);
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    if (vmPowershellCmdlets.TestAzureServiceName(serviceName))
+                    {
+                        var op = vmPowershellCmdlets.RemoveAzureService(serviceName);
+                    }
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName, serviceName, imageName, username, password, locationName);
+                }, "Windows Azure is currently performing an operation on this hosted service that requires exclusive access.", 10, 30);
 
                 // Verify the VM
                 var vmRoleCtxt = vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName, serviceName);
@@ -265,7 +272,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             string newAzureVM1Name = Utilities.GetUniqueShortName(vmNamePrefix);
             //Find a Windows VM Image
             imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
-            
+
             //Specify a small Windows image, with username and pw
             AzureVMConfigInfo azureVMConfigInfo1 = new AzureVMConfigInfo(newAzureVM1Name, InstanceSize.ExtraSmall.ToString(), imageName);
             AzureProvisioningConfigInfo azureProvisioningConfig = new AzureProvisioningConfigInfo(OS.Windows, username, password);
@@ -754,7 +761,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             List<string> localNets = new List<string>();
             List<string> virtualNets = new List<string>();
             HashSet<string> affinityGroups = new HashSet<string>();
-            Dictionary<string,string> dns = new Dictionary<string,string>();
+            Dictionary<string, string> dns = new Dictionary<string, string>();
             List<LocalNetworkSite> localNetworkSites = new List<LocalNetworkSite>();
             AddressPrefixList prefixlist = null;
 
@@ -769,10 +776,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                             prefixlist = new AddressPrefixList();
                             prefixlist.Add(elements[0].Elements().First().Value);
                             localNetworkSites.Add(new LocalNetworkSite()
-                                {
-                                    VpnGatewayAddress = elements[1].Value,
-                                    AddressSpace = new AddressSpace() { AddressPrefixes = prefixlist }
-                                }
+                            {
+                                VpnGatewayAddress = elements[1].Value,
+                                AddressSpace = new AddressSpace() { AddressPrefixes = prefixlist }
+                            }
                             );
                         }
                         break;
@@ -812,6 +819,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 foreach (VirtualNetworkSiteContext site in vmPowershellCmdlets.GetAzureVNetSite(null))
                 {
                     Console.WriteLine("Name: {0}, AffinityGroup: {1}", site.Name, site.AffinityGroup);
+                    Console.WriteLine("Name: {0}, Location: {1}", site.Name, site.Location);
                 }
 
                 foreach (string vnet in virtualNets)
@@ -825,7 +833,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     Assert.AreEqual(dns[vnetsite.DnsServers.First().Name], vnetsite.DnsServers.First().Address);
 
                     //Verify the Gateway sites
-                    Assert.AreEqual(1,vnetsite.GatewaySites.Count);
+                    Assert.AreEqual(1, vnetsite.GatewaySites.Count);
                     Assert.AreEqual(localNetworkSites[0].VpnGatewayAddress, vnetsite.GatewaySites[0].VpnGatewayAddress);
                     Assert.IsTrue(localNetworkSites[0].AddressSpace.AddressPrefixes.All(c => vnetsite.GatewaySites[0].AddressSpace.AddressPrefixes.Contains(c)));
 
@@ -847,7 +855,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 // Get-AzureVNetGatewayKey
                 Microsoft.Azure.Commands.Network.Gateway.Model.SharedKeyContext result = vmPowershellCmdlets.GetAzureVNetGatewayKey(vnet1,
-                    vmPowershellCmdlets.GetAzureVNetConnection(vnet1)[0].LocalNetworkSiteName);
+                    vmPowershellCmdlets.GetAzureVNetConnection(vnet1).First().LocalNetworkSiteName);
                 Console.WriteLine("Gateway Key: {0}", result.Value);
 
 
@@ -1465,7 +1473,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, locationName, false);
                 var vmRoleContext = vmPowershellCmdlets.GetAzureVM(vmName, serviceName);
                 Utilities.PrintContext(vmRoleContext);
-                Assert.IsNotNull(vmRoleContext.VM.ProvisionGuestAgent,"ProvisionGuestAgent value cannot be null");
+                Assert.IsNotNull(vmRoleContext.VM.ProvisionGuestAgent, "ProvisionGuestAgent value cannot be null");
                 Assert.IsFalse(vmRoleContext.VM.ProvisionGuestAgent.Value);
                 Console.WriteLine("Guest Agent Status: {0}", vmRoleContext.VM.ProvisionGuestAgent.Value);
                 vmRoleContext.VM.ProvisionGuestAgent = true;
@@ -1595,7 +1603,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        private void VerifyRDPExtContext(RemoteDesktopExtensionContext resultContext, string role, string extID, string userName, DateTime exp, string version  = null)
+        private void VerifyRDPExtContext(RemoteDesktopExtensionContext resultContext, string role, string extID, string userName, DateTime exp, string version = null)
         {
             Utilities.PrintContextAndItsBase(resultContext);
 
@@ -1606,7 +1614,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Assert.AreEqual(extID, resultContext.Id, "extension id is not same");
                 Assert.AreEqual(userName, resultContext.UserName, "storage account name is not same");
                 Assert.IsTrue(Utilities.CompareDateTime(exp, resultContext.Expiration), "expiration is not same");
-                if (! string.IsNullOrEmpty(version))
+                if (!string.IsNullOrEmpty(version))
                 {
                     Assert.AreEqual(version, resultContext.Version, "version numbers are not same");
                 }

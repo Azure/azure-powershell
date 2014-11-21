@@ -316,6 +316,7 @@
     <Compile Include="Websites\Common\WebsiteBaseCmdlet.cs" />
     <Compile Include="Websites\Common\WebHostingPlanContextBaseCmdlet.cs" />
     <Compile Include="Websites\Common\WebsiteContextBaseCmdlet.cs" />
+    <Compile Include="Websites\PSTriggeredWebJobRun.cs" />
     <Compile Include="Websites\Services\WebEntities\RoutingRule.cs" />
     <Compile Include="Websites\PSContinuousWebJob.cs" />
     <Compile Include="Websites\PSTriggeredWebJob.cs" />

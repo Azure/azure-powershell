@@ -37,12 +37,15 @@ namespace Microsoft.Azure.Commands.RedisCache
             MaxMemoryPolicyStrings.VolatileLRU, MaxMemoryPolicyStrings.VolatileRandom, MaxMemoryPolicyStrings.VolatileTTL, IgnoreCase = false)]
         public string MaxMemoryPolicy { get; set;}
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "EnableNonSslPort property of redis cache.")]
+        public bool? EnableNonSslPort { get; set; }
+
         public override void ExecuteCmdlet()
         {
             RedisGetResponse response = CacheClient.GetCache(ResourceGroupName, Name);
             WriteObject(new RedisCacheAttributesWithAccessKeys(
-                CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, response.Location, response.Properties.RedisVersion, 
-                    response.Properties.Sku.Family, response.Properties.Sku.Capacity, response.Properties.Sku.Name, MaxMemoryPolicy), 
+                CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, response.Location, response.Properties.RedisVersion,
+                    response.Properties.Sku.Family, response.Properties.Sku.Capacity, response.Properties.Sku.Name, MaxMemoryPolicy, EnableNonSslPort), 
                 ResourceGroupName));
         }
     }

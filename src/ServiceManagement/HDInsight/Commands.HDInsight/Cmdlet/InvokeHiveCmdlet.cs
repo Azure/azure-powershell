@@ -108,6 +108,17 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             set { this.hiveJobDefinitionCommand.Query = value; }
         }
 
+        ///<inheritdoc />
+        ///<summary>
+        /// Invoke-Hive always submits the job as a file.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run the query as a file.")]
+        public SwitchParameter RunAsFileJob
+        {
+            get { return true; }
+            set { this.hiveJobDefinitionCommand.RunAsFileJob = true; }
+        }
+
         /// <inheritdoc />
         [Parameter(Mandatory = false, HelpMessage = "The output location to use for the jobDetails.")]
         public string StatusFolder

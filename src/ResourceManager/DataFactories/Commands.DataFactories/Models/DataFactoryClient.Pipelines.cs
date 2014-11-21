@@ -224,6 +224,14 @@ namespace Microsoft.Azure.Commands.DataFactories
                         createPipeline);
             }
 
+            if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(pipeline.ProvisioningState))
+            {
+                string errorMessage = pipeline.Properties == null
+                    ? string.Empty
+                    : pipeline.Properties.ErrorMessage;
+                throw new ProvisioningFailedException(errorMessage);
+            }
+
             return pipeline;
         }
 

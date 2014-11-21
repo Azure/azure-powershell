@@ -162,6 +162,14 @@ namespace Microsoft.Azure.Commands.DataFactories
                         createLinkedService);
             }
 
+            if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(linkedService.ProvisioningState))
+            {
+                string errorMessage = linkedService.Properties == null
+                    ? string.Empty
+                    : linkedService.Properties.ErrorMessage;
+                throw new ProvisioningFailedException(errorMessage);
+            }
+
             return linkedService;
         }
 

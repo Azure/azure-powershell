@@ -34,7 +34,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private static string DefaultStorageAccountVariable = "AZURERT_DEFAULT_STORAGE_ACCOUNT";
         private static string DefaultLocationVariable = "AZURERT_DEFAULT_LOCATION";
         private static string CredentialBlobUriFormat = "https://{0}.blob.core.windows.net";
-        //private static string CredentialImportFormat = "Import-AzurePublishSettingsFile '{0}'";
         
         private static string publishSettingsFile = null;
         private static string defaultSubscriptionName = null;
@@ -42,6 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private static string defaultStorageName = null;
         private static string currentTestEnvironment = null;
         private static CloudBlobContainer blobContainer;
+        private const string VhdFilesContainerName = "vhdfiles";
 
         private static Dictionary<string, string> environment = new Dictionary<string, string>();
         public static Dictionary<string, string> PowerShellVariables { get; private set; }
@@ -59,7 +59,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Assert.IsTrue(environment.ContainsKey(StorageAccountKeyVariable),
                 string.Format("You must define a storage account key for credential download using environment variable {0}", StorageAccountKeyVariable));
             string storageAccountKey = environment[StorageAccountKeyVariable];
+
             DownloadTestCredentials(currentTestEnvironment, downloadDirectoryPath, 
+                string.Format(CredentialBlobUriFormat, storageAccount),
+                storageAccount, storageAccountKey);
+
+            DownloadTestVhdsAndPackages(currentTestEnvironment, downloadDirectoryPath,
                 string.Format(CredentialBlobUriFormat, storageAccount),
                 storageAccount, storageAccountKey);
 
@@ -85,6 +90,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             StorageCredentials credentials = new StorageCredentials(storageAccount, storageKey);
             CloudBlobClient blobClient = new CloudBlobClient(new Uri(blobUri), credentials);
             blobContainer = blobClient.GetContainerReference(containerPath);
+            foreach (IListBlobItem blobItem in blobContainer.ListBlobs())
+            {
+                ICloudBlob blob = blobClient.GetBlobReferenceFromServer(blobItem.Uri);
+                Console.WriteLine("Downloading file {0} from blob Uri {1}", blob.Name, blob.Uri);
+                FileStream blobStream = new FileStream(Path.Combine(downloadDirectoryPath, blob.Name), FileMode.Create);
+                blob.DownloadToStream(blobStream);
+                blobStream.Flush();
+                blobStream.Close();
+            }
+        }
+
+        private static void DownloadTestVhdsAndPackages(string testEnvironment, string downloadDirectoryPath, string blobUri, string storageAccount, string storageKey)
+        {
+            StorageCredentials credentials = new StorageCredentials(storageAccount, storageKey);
+            CloudBlobClient blobClient = new CloudBlobClient(new Uri(blobUri), credentials);
+            blobContainer = blobClient.GetContainerReference(VhdFilesContainerName);
             foreach (IListBlobItem blobItem in blobContainer.ListBlobs())
             {
                 ICloudBlob blob = blobClient.GetBlobReferenceFromServer(blobItem.Uri);

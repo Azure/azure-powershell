@@ -25513,7 +25513,10 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
 				<maml:name>DiagnosticsConfigurationPath</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>
+                        Configuration for Microsoft Azure diagnostics. You can download the schema by doing:
+                        (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
+                    </maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -25565,7 +25568,10 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
 				<maml:name>DiagnosticsConfigurationPath</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>
+                        Configuration for Microsoft Azure diagnostics. You can download the schema by doing:
+                        (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
+                    </maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -25647,7 +25653,10 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
 			<maml:name>DiagnosticsConfigurationPath</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>
+                    Configuration for Microsoft Azure diagnostics. You can download the schema by doing:
+                    (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
+                </maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -25664,633 +25673,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
-			<maml:name>DiagnosticsConfiguration</maml:name>
-			<maml:description>
-				<maml:para>Configuration for Microsoft Azure diagnostics. The schema is:
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;xs:schema id=&quot;DiagnosticsConfigSchema&quot;
-    targetNamespace=&quot;http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration&quot;
-    elementFormDefault=&quot;qualified&quot;
-    xmlns=&quot;http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration&quot;
-    xmlns:wad=&quot;http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration&quot;
-    xmlns:mstns=&quot;http://tempuri.org/XMLSchema.xsd&quot;
-    xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
-  &lt;xs:simpleType name=&quot;PositiveDuration&quot;&gt;
-    &lt;xs:restriction base=&quot;xs:duration&quot;&gt;
-      &lt;xs:minInclusive value=&quot;PT0S&quot; /&gt;
-    &lt;/xs:restriction&gt;
-  &lt;/xs:simpleType&gt;
-  &lt;xs:simpleType name=&quot;LogLevel&quot;&gt;
-    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-      &lt;xs:enumeration value=&quot;Undefined&quot; /&gt;
-      &lt;xs:enumeration value=&quot;Verbose&quot; /&gt;
-      &lt;xs:enumeration value=&quot;Information&quot; /&gt;
-      &lt;xs:enumeration value=&quot;Warning&quot; /&gt;
-      &lt;xs:enumeration value=&quot;Error&quot; /&gt;
-      &lt;xs:enumeration value=&quot;Critical&quot; /&gt;
-    &lt;/xs:restriction&gt;
-  &lt;/xs:simpleType&gt;
-  &lt;xs:simpleType name=&quot;ContainerName&quot;&gt;
-    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-      &lt;xs:pattern value=&quot;[a-z0-9][a-z0-9\-]{1,61}[a-z0-9]&quot; /&gt;
-    &lt;/xs:restriction&gt;
-  &lt;/xs:simpleType&gt;
-  &lt;xs:simpleType name=&quot;locale&quot;&gt;
-    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-    &lt;/xs:restriction&gt;
-  &lt;/xs:simpleType&gt;
-  &lt;xs:simpleType name=&quot;displayName&quot;&gt;
-    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-    &lt;/xs:restriction&gt;
-  &lt;/xs:simpleType&gt;
-  &lt;xs:simpleType name=&quot;AbsolutePathWithEnvironmentExpansion&quot;&gt;
-    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-      &lt;xs:pattern value=&quot;([a-zA-Z]:\)?([^&amp;lt;&amp;gt;:&amp;quot;/|?*]+)*(\)?&quot; /&gt;
-    &lt;/xs:restriction&gt;
-  &lt;/xs:simpleType&gt;
-  &lt;xs:simpleType name=&quot;RelativePathWithEnvironmentExpansion&quot;&gt;
-    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-      &lt;xs:pattern value=&quot;([^&amp;lt;&amp;gt;:&amp;quot;/\|?*]+)(\([^&amp;lt;&amp;gt;:&amp;quot;/\|?*]+))*(\)?&quot; /&gt;
-    &lt;/xs:restriction&gt;
-  &lt;/xs:simpleType&gt;
-  &lt;xs:simpleType name=&quot;PerformanceCounterPath&quot;&gt;
-    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-      &lt;xs:pattern value=&quot;\.*&quot; /&gt;
-    &lt;/xs:restriction&gt;
-  &lt;/xs:simpleType&gt;
-  &lt;xs:simpleType name=&quot;EventNameType&quot;&gt;
-    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-      &lt;xs:pattern value=&quot;[a-zA-Z][_a-zA-Z0-9]{0,59}&quot; /&gt;
-    &lt;/xs:restriction&gt;
-  &lt;/xs:simpleType&gt;
-
-  &lt;xs:simpleType name=&quot;CrashDumpType&quot; &gt;
-    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-      &lt;xs:enumeration value=&quot;Mini&quot;/&gt;
-      &lt;xs:enumeration value=&quot;Full&quot;/&gt;
-    &lt;/xs:restriction&gt;
-  &lt;/xs:simpleType&gt;
-
-  &lt;xs:simpleType name=&quot;NamedElementNameString&quot;&gt;
-    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-      &lt;xs:pattern value=&quot;^[a-zA-Z_][^\\/\:\*\?\&amp;quot;\&amp;lt;\&amp;gt;\|]*(?&amp;lt;![\.\s])$&quot; /&gt;
-    &lt;/xs:restriction&gt;
-  &lt;/xs:simpleType&gt;
-  &lt;xs:simpleType name=&quot;format&quot;&gt;
-    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-      &lt;xs:enumeration value=&quot;Manifest&quot; /&gt;
-      &lt;xs:enumeration value=&quot;EventSource&quot; /&gt;
-    &lt;/xs:restriction&gt;
-  &lt;/xs:simpleType&gt;
-
-    &lt;xs:simpleType name=&quot;directoryQuotaPercentage&quot;&gt;
-      &lt;xs:restriction base=&quot;xs:integer&quot;&gt;
-        &lt;xs:minInclusive value=&quot;0&quot;/&gt;
-        &lt;xs:maxInclusive value=&quot;100&quot;/&gt;
-      &lt;/xs:restriction&gt;
-    &lt;/xs:simpleType&gt;
-
-	&lt;xs:simpleType name=&quot;guidType&quot;&gt;
-	  &lt;xs:annotation&gt;
-          &lt;xs:documentation&gt;
-            A GUID. Brackets (and only brakets) before and/or after are ignored. e.g. {12345678-1234-1234-1234-123456789abc}, {12345678-1234-1234-1234-123456789abc, 12345678-1234-1234-1234-123456789abc} and 12345678-1234-1234-1234-123456789abc are valid.
-          &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-	  &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-	    &lt;xs:pattern value=&quot;^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$&quot;/&gt;
-	  &lt;/xs:restriction&gt;
-	&lt;/xs:simpleType&gt;
-
-  &lt;xs:attributeGroup name=&quot;BasicConfiguration&quot;&gt;
-    &lt;xs:attribute name=&quot;scheduledTransferPeriod&quot; type=&quot;PositiveDuration&quot; use=&quot;optional&quot; default=&quot;PT0S&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The interval between scheduled transfers for this data, rounded up to the nearest minute.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-  &lt;/xs:attributeGroup&gt;
-
-  &lt;xs:attributeGroup name=&quot;ETWConfiguration&quot;&gt;
-    &lt;xs:attribute name=&quot;scheduledTransferPeriod&quot; type=&quot;PositiveDuration&quot; use=&quot;optional&quot; default=&quot;PT0S&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The interval between scheduled transfers for this data, rounded up to the nearest minute.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute name=&quot;scheduledTransferLogLevelFilter&quot; type=&quot;LogLevel&quot; use=&quot;optional&quot; default=&quot;Undefined&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The minimum log severity to transfer.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute name=&quot;provider&quot; type=&quot;xs:string&quot; use=&quot;required&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The provider guid or class name for event source
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute name=&quot;scheduledTransferKeywordFilter&quot; type=&quot;xs:unsignedLong&quot; use=&quot;optional&quot; default=&quot;0&quot; &gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The keyword to filter by
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-  &lt;/xs:attributeGroup&gt;
-
-  &lt;xs:attributeGroup name=&quot;LogLevel&quot;&gt;
-    &lt;xs:attribute name=&quot;scheduledTransferLogLevelFilter&quot; type=&quot;LogLevel&quot; use=&quot;optional&quot; default=&quot;Undefined&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The minimum log severity to transfer.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-  &lt;/xs:attributeGroup&gt;
-
-  &lt;xs:attributeGroup name=&quot;DirectoryAttributes&quot;&gt;
-    &lt;xs:attribute name=&quot;containerName&quot; type=&quot;wad:ContainerName&quot; use=&quot;required&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The name of the container where the content of the directory is to be transferred.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-  &lt;/xs:attributeGroup&gt;
-
-  &lt;xs:attributeGroup name=&quot;CrashDumpConfiguration&quot;&gt;
-    &lt;xs:attribute name=&quot;directoryQuotaPercentage&quot; type=&quot;directoryQuotaPercentage&quot; use=&quot;optional&quot; default=&quot;10&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The percentage of directory quota used by crashdumps
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute name=&quot;dumpType&quot; type=&quot;CrashDumpType&quot; use=&quot;optional&quot; default=&quot;Mini&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The type of crashdump
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute name=&quot;containerName&quot; type=&quot;wad:ContainerName&quot; use=&quot;optional&quot; default=&quot;wad-crashdumps&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The blob container to store the crashdumps
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-  &lt;/xs:attributeGroup&gt;
-
-  &lt;xs:complexType name=&quot;LogsBase&quot;&gt;
-    &lt;xs:attributeGroup ref=&quot;BasicConfiguration&quot; /&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;EtwEventsBase&quot;&gt;
-    &lt;xs:attributeGroup ref=&quot;ETWConfiguration&quot; /&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name =&quot;CrashDumpsBase&quot;&gt;
-    &lt;xs:attributeGroup ref=&quot;CrashDumpConfiguration&quot;/&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;EtwManifestProviderConfiguration&quot;&gt;
-    &lt;xs:complexContent&gt;
-      &lt;xs:extension base=&quot;EtwEventsBase&quot;&gt;
-        &lt;xs:sequence&gt;
-            &lt;xs:element maxOccurs=&quot;unbounded&quot; name=&quot;Event&quot; minOccurs=&quot;0&quot;&gt;
-              &lt;xs:complexType&gt;
-                &lt;xs:attribute name=&quot;id&quot; type=&quot;xs:int&quot; use=&quot;required&quot;&gt;
-                  &lt;xs:annotation&gt;
-                    &lt;xs:documentation&gt;
-                      The id of the ETW event that is to be collected
-                    &lt;/xs:documentation&gt;
-                  &lt;/xs:annotation&gt;
-                &lt;/xs:attribute&gt;
-                &lt;xs:attribute name=&quot;eventDestination&quot; type=&quot;EventNameType&quot; use=&quot;optional&quot;&gt;
-                  &lt;xs:annotation&gt;
-                    &lt;xs:documentation&gt;
-                      The name of the table in which the event data will be stored. If this attribute is not defined the table&#39;s name is &#39;Event&#39;+&#39;MD5 of the provider&#39;+EventId#.
-                    &lt;/xs:documentation&gt;
-                  &lt;/xs:annotation&gt;
-                &lt;/xs:attribute&gt;
-              &lt;/xs:complexType&gt;
-            &lt;/xs:element&gt;
-            &lt;xs:element name=&quot;DefaultEvents&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot;&gt;
-              &lt;xs:complexType&gt;
-                &lt;xs:attribute name=&quot;eventDestination&quot; type=&quot;EventNameType&quot; use=&quot;optional&quot;&gt;
-                  &lt;xs:annotation&gt;
-                    &lt;xs:documentation&gt;
-                      The name of the table in which the event data will be stored. If this attribute is not defined the table&#39;s name is &#39;Default&#39;+&#39;MD5 of the provider&#39;+EventId#.
-                    &lt;/xs:documentation&gt;
-                  &lt;/xs:annotation&gt;
-                &lt;/xs:attribute&gt;
-              &lt;/xs:complexType&gt;
-            &lt;/xs:element&gt;
-        &lt;/xs:sequence&gt;
-      &lt;/xs:extension&gt;
-    &lt;/xs:complexContent&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;EtwEventSourceProviderConfiguration&quot;&gt;
-    &lt;xs:complexContent&gt;
-      &lt;xs:extension base=&quot;EtwEventsBase&quot;&gt;
-        &lt;xs:sequence&gt;
-            &lt;xs:element maxOccurs=&quot;unbounded&quot; name=&quot;Event&quot; minOccurs=&quot;0&quot;&gt;
-              &lt;xs:complexType&gt;
-                &lt;xs:attribute name=&quot;id&quot; type=&quot;xs:int&quot; use=&quot;required&quot;&gt;
-                  &lt;xs:annotation&gt;
-                    &lt;xs:documentation&gt;
-                      The id of the ETW event that is to be collected
-                    &lt;/xs:documentation&gt;
-                  &lt;/xs:annotation&gt;
-                &lt;/xs:attribute&gt;
-                &lt;xs:attribute name=&quot;eventDestination&quot; type=&quot;EventNameType&quot; use=&quot;optional&quot;&gt;
-                  &lt;xs:annotation&gt;
-                    &lt;xs:documentation&gt;
-                      The name of the table in which the event data will be stored. If this attribute is not defined the table&#39;s name is &#39;Event&#39;+&#39;MD5 of the provider&#39;+EventId#.
-                    &lt;/xs:documentation&gt;
-                  &lt;/xs:annotation&gt;
-                &lt;/xs:attribute&gt;
-              &lt;/xs:complexType&gt;
-            &lt;/xs:element&gt;
-            &lt;xs:element name=&quot;DefaultEvents&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot;&gt;
-              &lt;xs:complexType&gt;
-                &lt;xs:attribute name=&quot;eventDestination&quot; type=&quot;EventNameType&quot; use=&quot;optional&quot;&gt;
-                  &lt;xs:annotation&gt;
-                    &lt;xs:documentation&gt;
-                      The name of the table in which the event data will be stored. If this attribute is not defined the table&#39;s name is &#39;Default&#39;+&#39;MD5 of the provider&#39;+EventId#.
-                    &lt;/xs:documentation&gt;
-                  &lt;/xs:annotation&gt;
-                &lt;/xs:attribute&gt;
-              &lt;/xs:complexType&gt;
-            &lt;/xs:element&gt;
-        &lt;/xs:sequence&gt;
-      &lt;/xs:extension&gt;
-    &lt;/xs:complexContent&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;EtwProviders&quot;&gt;
-      &lt;xs:sequence maxOccurs=&quot;unbounded&quot;&gt;
-        &lt;xs:element  name=&quot;EtwEventSourceProviderConfiguration&quot; type=&quot;EtwEventSourceProviderConfiguration&quot; minOccurs=&quot;0&quot; &gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;
-                ETW collection by event source
-              &lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:element&gt;
-        &lt;xs:element  name=&quot;EtwManifestProviderConfiguration&quot; type=&quot;EtwManifestProviderConfiguration&quot; minOccurs=&quot;0&quot;&gt;
-          &lt;xs:annotation&gt;
-            &lt;xs:documentation&gt;
-              ETW collection by manifest
-            &lt;/xs:documentation&gt;
-          &lt;/xs:annotation&gt;
-        &lt;/xs:element&gt;
-        &lt;/xs:sequence&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;CrashDumpConfiguration&quot;&gt;
-    &lt;xs:attribute name=&quot;processName&quot; type=&quot;xs:string&quot; use=&quot;required&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The name of the process to to monitor for crashes.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;CrashDumps&quot;&gt;
-    &lt;xs:complexContent&gt;
-      &lt;xs:extension base=&quot;CrashDumpsBase&quot;&gt;
-        &lt;xs:sequence maxOccurs=&quot;unbounded&quot;&gt;
-          &lt;xs:element name=&quot;CrashDumpConfiguration&quot; type=&quot;CrashDumpConfiguration&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;
-                The crashdump to collect
-              &lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:element&gt;
-        &lt;/xs:sequence&gt;
-      &lt;/xs:extension&gt;
-    &lt;/xs:complexContent&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;DiagnosticInfrastructureLogs&quot;&gt;
-    &lt;xs:complexContent&gt;
-      &lt;xs:extension base=&quot;LogsBase&quot;&gt;
-        &lt;xs:attributeGroup ref=&quot;LogLevel&quot; /&gt;
-      &lt;/xs:extension&gt;
-    &lt;/xs:complexContent&gt;
-  &lt;/xs:complexType&gt;
-
-
-  &lt;xs:complexType name=&quot;DirectoryBase&quot; /&gt;
-
-  &lt;xs:complexType name=&quot;DirectoryAbsolute&quot;&gt;
-    &lt;xs:complexContent&gt;
-      &lt;xs:extension base=&quot;DirectoryBase&quot;&gt;
-        &lt;xs:attribute name=&quot;path&quot; type=&quot;AbsolutePathWithEnvironmentExpansion&quot; use=&quot;required&quot;&gt;
-          &lt;xs:annotation&gt;
-            &lt;xs:documentation&gt;
-              The absolute path to the directory to monitor.
-            &lt;/xs:documentation&gt;
-          &lt;/xs:annotation&gt;
-        &lt;/xs:attribute&gt;
-        &lt;xs:attribute name=&quot;expandEnvironment&quot; type=&quot;xs:boolean&quot; use=&quot;required&quot;&gt;
-          &lt;xs:annotation&gt;
-            &lt;xs:documentation&gt;
-              If true, then environment variables in the path will be expanded.
-            &lt;/xs:documentation&gt;
-          &lt;/xs:annotation&gt;
-        &lt;/xs:attribute&gt;
-      &lt;/xs:extension&gt;
-    &lt;/xs:complexContent&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;DirectoryLocalResource&quot;&gt;
-    &lt;xs:complexContent&gt;
-      &lt;xs:extension base=&quot;DirectoryBase&quot;&gt;
-        &lt;xs:attribute name=&quot;relativePath&quot; type=&quot;RelativePathWithEnvironmentExpansion&quot; use=&quot;required&quot;&gt;
-          &lt;xs:annotation&gt;
-            &lt;xs:documentation&gt;
-              The path relative to the local resource to monitor.
-            &lt;/xs:documentation&gt;
-          &lt;/xs:annotation&gt;
-        &lt;/xs:attribute&gt;
-        &lt;xs:attribute name=&quot;name&quot; type=&quot;NamedElementNameString&quot; use=&quot;required&quot;&gt;
-          &lt;xs:annotation&gt;
-            &lt;xs:documentation&gt;
-              The local resource that contains the directory to monitor.
-            &lt;/xs:documentation&gt;
-          &lt;/xs:annotation&gt;
-        &lt;/xs:attribute&gt;
-      &lt;/xs:extension&gt;
-    &lt;/xs:complexContent&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;DirectoryConfiguration&quot;&gt;
-    &lt;xs:choice&gt;
-      &lt;xs:element name=&quot;Absolute&quot; type=&quot;DirectoryAbsolute&quot;&gt;
-        &lt;xs:annotation&gt;
-          &lt;xs:documentation&gt;
-            The absolute path to the directory to monitor.
-          &lt;/xs:documentation&gt;
-        &lt;/xs:annotation&gt;
-      &lt;/xs:element&gt;
-      &lt;xs:element name=&quot;LocalResource&quot; type=&quot;DirectoryLocalResource&quot;&gt;
-        &lt;xs:annotation&gt;
-          &lt;xs:documentation&gt;
-            The path relative to a local resource to monitor.
-          &lt;/xs:documentation&gt;
-        &lt;/xs:annotation&gt;
-      &lt;/xs:element&gt;
-    &lt;/xs:choice&gt;
-    &lt;xs:attributeGroup ref=&quot;DirectoryAttributes&quot; /&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;SpecialLogDirectory&quot;&gt;
-    &lt;xs:attributeGroup ref=&quot;DirectoryAttributes&quot; /&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;DataSources&quot;&gt;
-    &lt;xs:sequence&gt;
-      &lt;xs:element name=&quot;DirectoryConfiguration&quot; type=&quot;DirectoryConfiguration&quot; maxOccurs=&quot;unbounded&quot;&gt;
-        &lt;xs:annotation&gt;
-          &lt;xs:documentation&gt;
-            The directory of log files to monitor.
-          &lt;/xs:documentation&gt;
-        &lt;/xs:annotation&gt;
-      &lt;/xs:element&gt;
-    &lt;/xs:sequence&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;Directories&quot;&gt;
-    &lt;xs:complexContent&gt;
-      &lt;xs:extension base=&quot;LogsBase&quot;&gt;
-        &lt;xs:all&gt;
-          &lt;xs:element name=&quot;IISLogs&quot; type=&quot;SpecialLogDirectory&quot; minOccurs=&quot;0&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;
-                The IIS log directory.
-              &lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:element&gt;
-          &lt;xs:element name=&quot;FailedRequestLogs&quot; type=&quot;SpecialLogDirectory&quot; minOccurs=&quot;0&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;
-                The failed request log directory.
-              &lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:element&gt;
-          &lt;xs:element name=&quot;DataSources&quot; type=&quot;DataSources&quot; minOccurs=&quot;0&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;
-                Additional log directories.
-              &lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:element&gt;
-        &lt;/xs:all&gt;
-      &lt;/xs:extension&gt;
-    &lt;/xs:complexContent&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;annotation&quot;&gt;
-    &lt;xs:attribute name=&quot;displayName&quot; type=&quot;displayName&quot; use=&quot;required&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The display name for the performance counter.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute name=&quot;locale&quot; type=&quot;locale&quot; use=&quot;optional&quot; default=&quot;en-US&quot;&gt;
-      &lt;xs:annotation&gt;
-      &lt;xs:documentation&gt;
-        The locale for the performance counter diplay name.
-      &lt;/xs:documentation&gt;
-        &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;PerformanceCounterConfiguration&quot;&gt;
-    &lt;xs:sequence minOccurs=&quot;0&quot;&gt;
-      &lt;xs:element maxOccurs=&quot;unbounded&quot; name=&quot;annotation&quot; type=&quot;annotation&quot;&gt;
-        &lt;xs:annotation&gt;
-          &lt;xs:documentation&gt;
-            The display name and locale for the performance counter
-          &lt;/xs:documentation&gt;
-        &lt;/xs:annotation&gt;
-      &lt;/xs:element&gt;
-    &lt;/xs:sequence&gt;
-    &lt;xs:attribute name=&quot;counterSpecifier&quot; type=&quot;PerformanceCounterPath&quot; use=&quot;required&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The path to the performance counter to collect.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute name=&quot;sampleRate&quot; type=&quot;PositiveDuration&quot; use=&quot;required&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The rate at which the performance counter should be sampled.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute name=&quot;unit&quot; type=&quot;xs:string&quot; use=&quot;optional&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The unit for the performance counter for display purposes.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;PerformanceCounters&quot;&gt;
-    &lt;xs:complexContent&gt;
-      &lt;xs:extension base=&quot;LogsBase&quot;&gt;
-        &lt;xs:sequence maxOccurs=&quot;unbounded&quot;&gt;
-          &lt;xs:element name=&quot;PerformanceCounterConfiguration&quot; type=&quot;PerformanceCounterConfiguration&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;
-                The performance counter to collect.
-              &lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:element&gt;
-        &lt;/xs:sequence&gt;
-      &lt;/xs:extension&gt;
-    &lt;/xs:complexContent&gt;
-  &lt;/xs:complexType&gt;
-
-
-
-  &lt;xs:complexType name=&quot;DataSource&quot;&gt;
-    &lt;xs:attribute name=&quot;name&quot; type=&quot;xs:string&quot; use=&quot;required&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          An XPath expression specifying the logs to collect.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;WindowsEventLog&quot;&gt;
-    &lt;xs:complexContent&gt;
-      &lt;xs:extension base=&quot;LogsBase&quot;&gt;
-        &lt;xs:sequence maxOccurs=&quot;unbounded&quot;&gt;
-          &lt;xs:element name=&quot;DataSource&quot; type=&quot;DataSource&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;
-                The event log to monitor.
-              &lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:element&gt;
-        &lt;/xs:sequence&gt;
-      &lt;/xs:extension&gt;
-    &lt;/xs:complexContent&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:complexType name=&quot;DiagnosticMonitorConfiguration&quot;&gt;
-    &lt;xs:all&gt;
-      &lt;xs:element name=&quot;DiagnosticInfrastructureLogs&quot; type=&quot;DiagnosticInfrastructureLogs&quot; minOccurs=&quot;0&quot;&gt;
-        &lt;xs:annotation&gt;
-          &lt;xs:documentation&gt;
-            Configures the logs generated by the underlying diagnostics infrastructure. The diagnostic infrastructure logs are useful for troubleshooting the diagnostics system itself.
-          &lt;/xs:documentation&gt;
-        &lt;/xs:annotation&gt;
-      &lt;/xs:element&gt;
-      &lt;xs:element name=&quot;Directories&quot; type=&quot;Directories&quot; minOccurs=&quot;0&quot;&gt;
-        &lt;xs:annotation&gt;
-          &lt;xs:documentation&gt;
-            Describes the configuration of a directory to which file-based logs are written.
-          &lt;/xs:documentation&gt;
-        &lt;/xs:annotation&gt;
-      &lt;/xs:element&gt;
-      &lt;xs:element name=&quot;PerformanceCounters&quot; type=&quot;PerformanceCounters&quot; minOccurs=&quot;0&quot;&gt;
-        &lt;xs:annotation&gt;
-          &lt;xs:documentation&gt;
-            Configures performance counter collection.
-          &lt;/xs:documentation&gt;
-        &lt;/xs:annotation&gt;
-      &lt;/xs:element&gt;
-      &lt;xs:element name=&quot;WindowsEventLog&quot; type=&quot;WindowsEventLog&quot; minOccurs=&quot;0&quot;&gt;
-        &lt;xs:annotation&gt;
-          &lt;xs:documentation&gt;
-            Configures Windows event log collection.
-          &lt;/xs:documentation&gt;
-        &lt;/xs:annotation&gt;
-      &lt;/xs:element&gt;
-      &lt;xs:element name=&quot;EtwProviders&quot; type=&quot;EtwProviders&quot; minOccurs=&quot;0&quot;&gt;
-        &lt;xs:annotation&gt;
-          &lt;xs:documentation&gt;
-            Configures ETW event collection.
-          &lt;/xs:documentation&gt;
-        &lt;/xs:annotation&gt;
-      &lt;/xs:element&gt;
-      &lt;xs:element name=&quot;CrashDumps&quot; type=&quot;CrashDumps&quot; minOccurs=&quot;0&quot;&gt;
-        &lt;xs:annotation&gt;
-          &lt;xs:documentation&gt;
-            Configures crashdump collection.
-          &lt;/xs:documentation&gt;
-        &lt;/xs:annotation&gt;
-      &lt;/xs:element&gt;
-    &lt;/xs:all&gt;
-
-    &lt;xs:attribute name=&quot;overallQuotaInMB&quot; type=&quot;xs:unsignedInt&quot; use=&quot;optional&quot; default=&quot;5120&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          The total amount of file system storage allocated for all logging buffers.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute name=&quot;useProxyServer&quot; type=&quot;xs:boolean&quot; use=&quot;optional&quot; default=&quot;true&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;
-          Force the Monitoring Agent to use the specified IE proxy server if specified.
-        &lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-  &lt;/xs:complexType&gt;
-
-  &lt;xs:element name=&quot;PublicConfig&quot;&gt;
-    &lt;xs:complexType&gt;
-      &lt;xs:all&gt;
-        &lt;xs:element name=&quot;WadCfg&quot;&gt;
-          &lt;xs:complexType&gt;
-            &lt;xs:sequence&gt;
-              &lt;xs:element name=&quot;DiagnosticMonitorConfiguration&quot; type=&quot;DiagnosticMonitorConfiguration&quot; minOccurs=&quot;1&quot; maxOccurs=&quot;1&quot; /&gt;
-            &lt;/xs:sequence&gt;
-          &lt;/xs:complexType&gt;
-        &lt;/xs:element&gt;
-        &lt;xs:element name=&quot;LocalResourceDirectory&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot;  type=&quot;DirectoryAbsolute&quot; /&gt;
-        &lt;xs:element name=&quot;StorageAccount&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot; type=&quot;xs:string&quot; /&gt;
-      &lt;/xs:all&gt;
-    &lt;/xs:complexType&gt;
-  &lt;/xs:element&gt;
-&lt;/xs:schema&gt;</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">xmldocument</command:parameterValue>
-			<dev:type>
-				<maml:name>xmldocument</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
-			<maml:name>StorageAccountName</maml:name>
-			<maml:description>
-				<maml:para>The name of the storage account diagnostics will use to store diagnostics data such as performance counter data and file logs.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -33477,4 +32859,1108 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
     </maml:navigationLink>
   </maml:relatedLinks>
 </command:command>
+
+ <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureVMSqlServerExtension
+      </command:name>
+      <maml:description>
+        <maml:para>Gets the settings of the SQL Server IaaS Agent on a particular VM.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureVMSqlServerExtension</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Gets the settings of the SQL Server IaaS Agent on a particular virtual machine.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureVMSqlServerExtension</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The virtual machine to get the settings from.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+          <maml:name>Version</maml:name>
+          <maml:description>
+            <maml:para>The specific version of the SQL Server IaaS Agent.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+        <maml:name>Version</maml:name>
+        <maml:description>
+          <maml:para>The specific version of the SQL Server IaaS Agent.</maml:para>
+         </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+        <maml:name>VM</maml:name>
+        <maml:description>
+          <maml:para>The virtual machine to get the settings from.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+        <dev:type>
+          <maml:name>IPersistentVM</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          C:\PS&gt; Get-AzureVMSqlServerExtension-VM $vm
+
+          ExtensionName        : SqlIaaSAgent
+          Publisher            : Microsoft.SqlServer.Management
+          Version              : 1.0
+          State                : Enable
+          RoleName             : vmname
+          AutoPatchingSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoPatchingSettings
+          AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Gets the settings of the Sql Server extension on a particular virtual machine.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          C:\PS&gt; Get-AzureVM -ServiceName &quot;service&quot; -Name &quot;vmname&quot; | Get-AzureVMSqlServerExtension
+
+          ExtensionName        : SqlIaaSAgent
+          Publisher            : Microsoft.SqlServer.Management
+          Version              : 1.0
+          State                : Enable
+          RoleName             : vmname
+          AutoPatchingSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoPatchingSettings
+          AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Gets the settings of the SQL Server IaaS Agent on a particular virtual machine using piped input.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 3 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          C:\PS&gt; Get-AzureVMSqlServerExtension -VM $vm -Version &quot;1.0&quot;
+
+          ExtensionName        : SqlIaaSAgent
+          Publisher            : Microsoft.SqlServer.Management
+          Version              : 1.0
+          State                : Enable
+          RoleName             : vmname
+          AutoPatchingSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoPatchingSettings
+          AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Gets the settings of the particular version of SQL Server IaaS Agent on a virtual machine.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureVMSqlServerExtension</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureVMSqlServerExtension</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+
+ <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        New-AzureVMSqlServerAutoPatchingConfig
+      </command:name>
+      <maml:description>
+        <maml:para>Creates configuration object for virtual machine automatic patching </maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>New</command:verb>
+      <command:noun>AzureVMSqlServerAutoPatchingConfig</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Creates configuration object for virtual machine automatic patching</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-AzureVMSqlServerAutoPatchingConfig</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Enable</maml:name>
+          <maml:description>
+            <maml:para>Enables or disables automated patching for the virtual machine. Enabling automated patching will put Windows Update into interactive mode. Disabling automated patching does not changes Windows Update settings.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DayOfWeek</maml:name>
+          <maml:description>
+            <maml:para>Specifies the day of the week when updates should be installed. Can be specified any single day of the week or every day.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MaintenanceWindowStartingHour</maml:name>
+          <maml:description>
+            <maml:para>Specifies the hour of the day when maintenance window starts. This time defines when updates start installing. Rounded to the hour.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MaintenanceWindowDuration</maml:name>
+          <maml:description>
+            <maml:para>Specifies the duration of the maintenance window. Automated patching will avoid performing an action that can impact a machine availability outside of that window. Only 30 minutes increments are allowed.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>PatchCategory</maml:name>
+          <maml:description>
+            <maml:para>Defines if recommended updates should be included.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DayOfWeek</maml:name>
+        <maml:description>
+          <maml:para>Specifies the day of the week when updates should be installed. Can be specified any single day of the week or every day.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Enable</maml:name>
+        <maml:description>
+          <maml:para>Enables or disables automated patching for the virtual machine. Enabling automated patching will put Windows Update into interactive mode. Disabling automated patching does not changes Windows Update settings.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
+        <dev:type>
+          <maml:name>bool</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>True</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaintenanceWindowStartingHour</maml:name>
+        <maml:description>
+          <maml:para>Specifies the hour of the day when maintenance window starts. This time defines when updates start installing.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>3</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaintenanceWindowDuration</maml:name>
+        <maml:description>
+          <maml:para>Specifies the duration of the maintenance window. Automated patching will avoid performing an action that can impact a machine availability outside of that window. Only 30 minutes increments are allowed.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>120</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>PatchCategory</maml:name>
+        <maml:description>
+          <maml:para>Defines if recommended updates should be included.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>Optional</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>AutoPatchingSettings</maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            Returns object contains settings for automated patching.
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          C:\PS&gt; $aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek &quot;Thursday&quot; -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory &quot;Optional&quot;
+
+          PS C:\&gt; $aps
+          Enable                        : True
+          DayOfWeek                     : Thursday
+          MaintenanceWindowStartingHour : 11
+          MaintenanceWindowDuration     : 120
+          PatchCategory                 : Optional
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command creates configuration object that can be used to configure automatic patching using Set-AzureVMSqlServerExtension</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureVMSqlServerExtension</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureVMSqlServerExtension</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+
+ <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>
+                   New-AzureVMSqlServerAutoBackupConfig
+        </command:name>
+        <maml:description>
+            <maml:para>Creates configuration object for SQL Server Automatic Backup </maml:para>
+        </maml:description>
+        <maml:copyright>
+            <maml:para></maml:para>
+        </maml:copyright>
+        <command:verb>New</command:verb>
+        <command:noun>AzureVMSqlServerAutoBackupConfig</command:noun>
+        <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+        <maml:para>Creates  configuration object for SQL Server automatic backup </maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>New-AzureVMSqlServerAutoBackupConfig</maml:name>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+                <maml:name>Enable</maml:name>
+                <maml:description>
+                    <maml:para>Enables or disables automated backup for the SQL Server Virtual Machine. Enabling automated backup will set a backup schedule for all of your existing and new databases. This will update your Managed Backup settings to follow this schedule.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+                <maml:name>StorageContext</maml:name>
+                <maml:description>
+                    <maml:para>Specifies the storage account to be used to store backups. Default will be storage account associated with the SQL Server VM.</maml:para>
+        </maml:description>
+                <command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+                <maml:name>RetentionPeriod</maml:name>
+                <maml:description>
+                    <maml:para>Backup Retention period in days. 1 day minimum, 30 day maximum. Default is 30 days.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+                <maml:name>EncryptionEnabled</maml:name>
+                <maml:description>
+                    <maml:para>Enable backup encryption. If enabled, the certificate will be automatically generated and stored in the same storage account as the backups, and password protected.</maml:para>
+        </maml:description>
+                <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
+                <maml:name>CertificatePassword</maml:name>
+                <maml:description>
+                    <maml:para>Password to encrypt the certificate that is used to perform SQL Server encrypted backups</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+            <maml:name>Enable</maml:name>
+            <maml:description>
+                <maml:para>Enables or disables automated backup for the SQL Server Virtual Machine. Enabling automated backup will set a backup schedule for all of your existing and new databases. This will update your Managed Backup settings to follow this schedule.</maml:para>
+      </maml:description>
+            <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
+            <dev:type>
+                <maml:name>bool</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue>True</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+            <maml:name>EncryptionEnabled</maml:name>
+            <maml:description>
+                <maml:para>Enable backup encryption. If enabled, the certificate will be automatically generated and stored in the same storage account as the backups, and password protected.</maml:para>
+      </maml:description>
+            <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
+            <dev:type>
+                <maml:name>bool</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
+            <maml:name>CertificatePassword</maml:name>
+            <maml:description>
+                <maml:para>Password to encrypt the certificate that is used to perform SQL Server encrypted backups</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+            <dev:type>
+                <maml:name>SecureString</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+            <maml:name>RetentionPeriod</maml:name>
+            <maml:description>
+                <maml:para>Backup Retention period in days. 1 day minimum, 30 day maximum. Default is 30 days.</maml:para>
+      </maml:description>
+            <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+            <dev:type>
+                <maml:name>int</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+            <maml:name>StorageContext</maml:name>
+            <maml:description>
+                <maml:para>Specifies the storage account to be used to store backups. Default will be storage account associated with the SQL Server VM.</maml:para>
+       </maml:description>
+            <command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+            <dev:type>
+                <maml:name>AzureStorageContext</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+        <command:inputType>
+            <dev:type>
+                <maml:name></maml:name>
+                <maml:uri/>
+                <maml:description />
+            </dev:type>
+            <maml:description>
+                <maml:para>
+                    <!-- description  -->
+        </maml:para>
+            </maml:description>
+        </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name></maml:name>
+                <maml:uri />
+                <maml:description />
+            </dev:type>   
+            <maml:description>
+                <maml:para>
+                    <!-- description  -->
+        </maml:para>
+            </maml:description> 
+        </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+        <!-- Notes section  -->
+    <maml:alertSet>
+        <maml:title></maml:title>
+        <maml:alert>
+            <maml:para>
+      </maml:para>
+        </maml:alert>
+        <maml:alert>
+            <maml:para></maml:para>
+        </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  --> 
+    <command:examples>
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 1 --------------------------
+            </maml:title> 
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+              <dev:code>
+$abs = New-AzureVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri $storageUrl -StorageKey $storageAccountKeySecure
+
+Enable                : True
+EnableEncryption      : False
+RetentionPeriodInDays : 10                        </dev:code>
+        <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                                <maml:para>Creates a auto-backup config object by specifying storage uri and account key.</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+              </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 2 --------------------------
+            </maml:title> 
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+      <dev:code>
+$abs = New-AzureVMSqlServerAutoBackupConfig -StorageContext $storageContext -Enable -RetentionPeriod 10
+
+Enable                : True
+EnableEncryption      : False
+RetentionPeriodInDays : 10                        </dev:code>
+      <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                      <maml:para>Creates an auto-backup config object by specifying Storage context.</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+              </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 3 --------------------------
+            </maml:title>
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+      <dev:code>
+$abs = New-AzureVMSqlServerAutoBackupConfig -StorageContext $storageContext -Enable -RetentionPeriod 10 -EnableEncryption -CertificatePassword $certPasswd
+
+Enable                : True
+EnableEncryption      : True
+RetentionPeriodInDays : 10                        </dev:code>
+      <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                          <maml:para>Creates an auto-backup config object by specifying Storage context and enabling encryption option with password.</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+      </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+        <maml:navigationLink>
+            <maml:linkText></maml:linkText>
+            <maml:uri/>
+        </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+ <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Remove-AzureVMSqlServerExtension
+      </command:name>
+      <maml:description>
+        <maml:para>Remove Azure VM Sql Server extension from a VM object.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>AzureVMSqlServerExtension</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Remove Azure VM Sql Server extension from a VM object.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureVMSqlServerExtension</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The Virtual Machine to get the settings from.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
+        <maml:name>VM</maml:name>
+        <maml:description>
+          <maml:para>The Virtual Machine to get the settings from.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+        <dev:type>
+          <maml:name>IPersistentVM</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+
+ <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>
+                   Set-AzureVMSqlServerExtension
+        </command:name>
+        <maml:description>
+            <maml:para>Configure the Sql Server extension on a VM.</maml:para>
+        </maml:description>
+        <maml:copyright>
+            <maml:para></maml:para>
+        </maml:copyright>
+        <command:verb>Set</command:verb>
+        <command:noun>AzureVMSqlServerExtension</command:noun>
+        <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+        <maml:para>Configure the Sql Server extension on a VM.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Set-AzureVMSqlServerExtension</maml:name>
+            <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+                <maml:name>VM</maml:name>
+                <maml:description>
+                    <maml:para>The Virtual Machine to get the settings from.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+                <maml:name>Version</maml:name>
+                <maml:description>
+                    <maml:para>The specific version of the SQL Server extension that Get-AzureVMSqlServerExtension will get the settings from.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                <maml:name>AutoBackupSettings</maml:name>
+                <maml:description>
+                    <maml:para>Automatic SQL Server backup settings</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">AutoBackupSettings</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                <maml:name>AutoPatchingSetttings</maml:name>
+                <maml:description>
+                    <maml:para>Automatic patching settings</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">AutoPatchingSetttings</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+                <maml:name>Confirm</maml:name>
+                <maml:description>
+                <maml:para>Prompts you for confirmation before executing the command.</maml:para>
+                </maml:description>
+            </command:parameter>
+            <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+                <maml:name>WhatIf</maml:name>
+                <maml:description>
+                <maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+                </maml:description>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>AutoBackupSettings</maml:name>
+            <maml:description>
+                <maml:para>Automatic SQL Server backup settings</maml:para>
+      </maml:description>
+            <command:parameterValue required="true" variableLength="false">AutoBackupSettings</command:parameterValue>
+            <dev:type>
+                <maml:name>AutoBackupSettings</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>AutoPatchingSetttings</maml:name>
+            <maml:description>
+                <maml:para>Automatic patching settings</maml:para>
+      </maml:description>
+            <command:parameterValue required="true" variableLength="false">AutoPatchingSetttings</command:parameterValue>
+            <dev:type>
+                <maml:name>AutoPatchingSetttings</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+            <maml:name>Version</maml:name>
+            <maml:description>
+                <maml:para>The specific version of the SQL Server extension that Get-AzureVMSqlServerExtension will get the settings from.</maml:para>
+                                
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+            <dev:type>
+                <maml:name>string</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+            <maml:name>VM</maml:name>
+            <maml:description>
+                <maml:para>The Virtual Machine to get the settings from.</maml:para>
+      </maml:description>
+            <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+            <dev:type>
+                <maml:name>IPersistentVM</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+            <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+                <maml:name>Confirm</maml:name>
+                <maml:description>
+                <maml:para>Prompts you for confirmation before executing the command.</maml:para>
+                </maml:description>
+                <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>    
+                <dev:type>
+                  <maml:name>SwitchParameter</maml:name> 
+                    <maml:uri /> 
+                    </dev:type>
+             <dev:defaultValue /> 
+            </command:parameter>
+            <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+                <maml:name>WhatIf</maml:name>
+                <maml:description>
+                <maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+                </maml:description>
+                <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>    
+                <dev:type>
+                  <maml:name>SwitchParameter</maml:name> 
+                    <maml:uri /> 
+                    </dev:type>
+             <dev:defaultValue /> 
+            </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+        <command:inputType>
+            <dev:type>
+                <maml:name></maml:name>
+                <maml:uri/>
+                <maml:description />
+            </dev:type>
+            <maml:description>
+                <maml:para>
+                    <!-- description  -->
+                    
+                </maml:para>
+            </maml:description>
+        </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name></maml:name>
+                <maml:uri />
+                <maml:description />
+            </dev:type>   
+            <maml:description>
+                <maml:para>
+                    <!-- description  -->
+                    
+                </maml:para>
+            </maml:description> 
+        </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+        <!-- Notes section  -->
+    <maml:alertSet>
+        <maml:title></maml:title>
+        <maml:alert>
+            <maml:para>
+                          
+                        </maml:para>
+        </maml:alert>
+        <maml:alert>
+            <maml:para></maml:para>
+        </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  --> 
+    <command:examples>
+
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 1 --------------------------
+            </maml:title> 
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+              <dev:code>
+Get-AzureVM -ServiceName serviceName -Name vmName | Set-AzureVMSqlServerExtension -AutoPatchingSettings $aps  | Update-AzureVM                        </dev:code>
+                   <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                      <maml:para>Sets auto-patching settings on Azure VM.</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+              </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 2 --------------------------
+            </maml:title> 
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+              <dev:code>
+Get-AzureVM -ServiceName serviceName -Name vmName | Set-AzureVMSqlServerExtension -AutoBackupSettings $abs | Update-AzureVM                        </dev:code>
+                   <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                      <maml:para>Sets auto-backup settings on Azure VM.</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+              </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 3 --------------------------
+            </maml:title> 
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+              <dev:code>
+Get-AzureVM -ServiceName service -Name vmName|  Set-AzureVMSqlServerExtension -Disable                        </dev:code>
+                   <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                      <maml:para>Disables SQL Server VM extension on a given VM</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+              </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 4 --------------------------
+            </maml:title> 
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+              <dev:code>
+          Get-AzureVM -ServiceName service -Name vmName|  Set-AzureVMSqlServerExtension -Uninstall
+        </dev:code>
+                   <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                      <maml:para>Uninstalls SQL Server VM extension on a given VM</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+              </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+        <maml:navigationLink>
+            <maml:linkText></maml:linkText>
+            <maml:uri/>
+        </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+
 </helpItems>

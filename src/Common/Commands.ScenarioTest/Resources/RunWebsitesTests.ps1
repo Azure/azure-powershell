@@ -93,6 +93,7 @@ Run-TestProtected { Run-WebsiteTest {Test-ReconfigureStorageAppDiagnostics} "Tes
 Run-TestProtected { Run-WebsiteTest {Test-UpdateTheDiagnositicLogLevel} "Test-UpdateTheDiagnositicLogLevel"} "Test-UpdateTheDiagnositicLogLevel"
 Run-TestProtected { Run-WebsiteTest {Test-EnableApplicationDiagnosticOnFileSystem} "Test-EnableApplicationDiagnosticOnFileSystem"} "Test-EnableApplicationDiagnosticOnFileSystem"
 Run-TestProtected { Run-WebsiteTest {Test-EnableApplicationDiagnosticOnTableStorage} "Test-EnableApplicationDiagnosticOnTableStorage"} "Test-EnableApplicationDiagnosticOnTableStorage"
+Run-TestProtected { Run-WebsiteTest {Test-EnableApplicationDiagnosticOnBlobStorage} "Test-EnableApplicationDiagnosticOnBlobStorage"} "Test-EnableApplicationDiagnosticOnBlobStorage"
 Run-TestProtected { Run-WebsiteTest {Test-RestartAzureWebsite} "Test-RestartAzureWebsite"} "Test-RestartAzureWebsite"
 Run-TestProtected { Run-WebsiteTest {Test-StopAzureWebsite} "Test-StopAzureWebsite"} "Test-StopAzureWebsite"
 Run-TestProtected { Run-WebsiteTest {Test-StartAzureWebsite} "Test-StartAzureWebsite"} "Test-StartAzureWebsite"

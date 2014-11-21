@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
@@ -101,6 +102,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services
             };
 
             return uriBuilder.Uri.ToString();
+        }
+
+        public static bool IsGitRepository()
+        {
+            var sessionState = new SessionState();
+            return Directory.Exists(Path.Combine(sessionState.Path.CurrentFileSystemLocation.Path, ".git"));
         }
 
         private static string ExecuteGitProcess(string arguments)

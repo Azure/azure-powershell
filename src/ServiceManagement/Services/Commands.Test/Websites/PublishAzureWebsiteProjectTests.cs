@@ -1,17 +1,16 @@
 ﻿using System.Collections;
 using System.IO;
 using System.Management.Automation;
-using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Microsoft.WindowsAzure.Management.WebSites.Models;
 using Moq;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
-    
     public class PublishAzureWebsiteProjectTests : WebsitesTestBase
     {
         [Fact]
@@ -35,13 +34,15 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             Mock<IWebsitesClient> clientMock = new Mock<IWebsitesClient>();
 
             clientMock.Setup(c => c.GetWebDeployPublishProfile(websiteName, slot)).Returns(publishProfile);
-            clientMock.Setup(c => c.PublishWebProject(websiteName, slot, package, connectionStrings))
-                .Callback((string n, string s, string p, Hashtable cs) =>
+            clientMock.Setup(c => c.PublishWebProject(websiteName, slot, package, connectionStrings, false, false))
+                .Callback((string n, string s, string p, Hashtable cs, bool skipAppData, bool doNotDelete) =>
                 {
                     Assert.Equal(websiteName, n);
                     Assert.Equal(slot, s);
                     Assert.Equal(package, p);
                     Assert.Equal(connectionStrings, cs);
+                    Assert.False(skipAppData);
+                    Assert.False(doNotDelete);
                     published = true;
                 });
 
@@ -92,13 +93,15 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
 
             clientMock.Setup(c => c.GetWebDeployPublishProfile(websiteName, slot)).Returns(publishProfile);
             clientMock.Setup(c => c.BuildWebProject(projectFile, configuration, logFile)).Returns(package);
-            clientMock.Setup(c => c.PublishWebProject(websiteName, slot, package, connectionStrings))
-                .Callback((string n, string s, string p, Hashtable cs) =>
+            clientMock.Setup(c => c.PublishWebProject(websiteName, slot, package, connectionStrings, false, false))
+                .Callback((string n, string s, string p, Hashtable cs, bool skipAppData, bool doNotDelete) =>
                 {
                     Assert.Equal(websiteName, n);
                     Assert.Equal(slot, s);
                     Assert.Equal(package, p);
                     Assert.Equal(connectionStrings, cs);
+                    Assert.False(skipAppData);
+                    Assert.False(doNotDelete);
                     published = true;
                 });
 
