@@ -33,8 +33,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
             return new PSJob(response.Job)
             {
-                ResourceGroupName = resourceGroupName,
-                JobName = jobName
+                ResourceGroupName = resourceGroupName
             };
         }
 
@@ -50,8 +49,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 {
                     jobs.Add(new PSJob(job)
                         {
-                            ResourceGroupName = resourceGroupName,
-                            JobName = job.Name
+                            ResourceGroupName = resourceGroupName
                         });
                 }
             }
@@ -71,8 +69,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 {
                     jobs.Add(new PSJob(job)
                         {
-                            ResourceGroupName = StreamAnalyticsCommonUtilities.ExtractResourceGroupFromId(job.Id),
-                            JobName = job.Name
+                            ResourceGroupName = StreamAnalyticsCommonUtilities.ExtractResourceGroupFromId(job.Id)
                         });
                 }
             }

@@ -37,7 +37,17 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             this.job = job;
         }
 
-        public string JobName { get; set; }
+        public string JobName
+        {
+            get
+            {
+                return job.Name;
+            }
+            set
+            {
+                job.Name = value;
+            }
+        }
 
         public string ResourceGroupName { get; set; }
 

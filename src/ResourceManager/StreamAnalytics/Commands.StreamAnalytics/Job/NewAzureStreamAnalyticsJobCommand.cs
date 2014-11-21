@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
     [Cmdlet(VerbsCommon.New, Constants.StreamAnalyticsJob), OutputType(typeof(PSJob))]
     public class NewAzureStreamAnalyticsJobCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics job name.")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics job name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
