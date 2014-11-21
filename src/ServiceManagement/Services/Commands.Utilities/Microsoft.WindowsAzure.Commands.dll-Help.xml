@@ -28117,7 +28117,7 @@
     <command:details>
       <command:name>New-AzureDataFactory</command:name>
       <maml:description>
-        <maml:para>Please run Switch-AzureMode AzureResourceManager to use ADF cmdlet, this is just a stub command.</maml:para>
+        <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, run Switch-AzureMode AzureResourceManager.</maml:para>
       </maml:description>
       <command:verb>New</command:verb>
       <command:noun>AzureDataFactory</command:noun>

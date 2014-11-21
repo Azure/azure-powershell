@@ -17,7 +17,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-namespace Microsoft.WindowsAzure.Commands
+namespace Microsoft.WindowsAzure.Commands.DataFactories
 {
     /// <summary>
     /// In order to show warning for ADF cmdlets if client is using service management mode
@@ -36,9 +36,6 @@ namespace Microsoft.WindowsAzure.Commands
         public string Location { get; set; }
 
         [Parameter(Mandatory = false)]
-        public string File { get; set; }
-
-        [Parameter(Mandatory = false)]
         public Hashtable Tags { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -50,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            WriteWarning("This Azure Data Factory cmdlet is available in the AzureResourceManager mode. To use the cmdlet, switch the Azure mode using Switch-AzureMode AzureResourceManager.");
+            WriteWarning("You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, run Switch-AzureMode AzureResourceManager.");
         }
     }
 }
