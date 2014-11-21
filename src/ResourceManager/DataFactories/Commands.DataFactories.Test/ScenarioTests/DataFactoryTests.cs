@@ -60,12 +60,5 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         {
             RunPowerShellTest("Test-DataFactoryPiping");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateAndOverwriteDataFactory()
-        {
-            RunPowerShellTest("Test-CreateAndOverwriteDataFactory");
-        }
     }
 }

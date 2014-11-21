@@ -125,29 +125,3 @@ function Test-DataFactoryPiping
     # Test the data factory no longer exists
     Assert-ThrowsContains { Get-AzureDataFactory -ResourceGroupName $rgname -Name $dfname } "ResourceNotFound"
 }
-
-<#
-.SYNOPSIS
-Test Creating and overwriting data factory.
-#>
-function Test-CreateAndOverwriteDataFactory
-{
-    $dfname = Get-DataFactoryName
-    $rgname = Get-ResourceGroupName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    $dflocation = Get-ProviderLocation DataFactoryManagement
-
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
-
-    $df = New-AzureDataFactory -ResourceGroupName $rgname -Name $dfName -Location $rglocation -force
-    Assert-AreEqual $df.DataFactoryName $dfName
-
-	$dfDuplicate = New-AzureDataFactory -ResourceGroupName $rgname -Name $dfName -Location $rglocation -force
-	Assert-AreEqual $dfDuplicate.DataFactoryName $dfName
-	
-	$dfGetResult = Get-AzureDataFactory -ResourceGroupName $rgname -Name $dfName
-
-	Assert-AreEqual $dfGetResult.Count 1
-	
-	Remove-AzureDataFactory -Name $dfName -ResourceGroupName $rgname -Force 
-}
