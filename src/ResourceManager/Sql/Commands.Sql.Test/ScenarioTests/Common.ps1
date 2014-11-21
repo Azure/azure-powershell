@@ -43,6 +43,5 @@ Removes the test environment that was needed to perform the Sql auditing tests
 function Remove-TestEnvironment ($testSuffix)
 {
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	#Remove-AzureResourceGroup -Name $params.rgname -force
 	Remove-AzureStorageAccount -StorageAccountName $params.storageAccount
 }

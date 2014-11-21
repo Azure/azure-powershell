@@ -22,4 +22,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test
         public const string Preview = "Preview";
         public const string Sequential = "Sequential";
     }
+
+    public class LoadBalancerDistribution
+    {
+        public const string SourceIP = "sourceIP";
+        public const string SourceIPProtorol = "sourceIPProtocol";
+        public const string None = "none";
+    }
 }

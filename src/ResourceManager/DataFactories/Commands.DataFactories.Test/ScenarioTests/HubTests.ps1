@@ -82,3 +82,35 @@ function Test-HubWithDataFactoryParameter
         Clean-DataFactory $rgname $dfname
     }
 }
+
+<#
+.SYNOPSIS
+Test piping support.
+#>
+function Test-HubPiping
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+        
+    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+     
+        $hubname = "SampleHub"
+   
+        New-AzureDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -File .\Resources\hub.json -Force
+        
+        Get-AzureDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname | Remove-AzureDataFactoryHub -Force
+
+        # Test the hub no longer exists
+        Assert-ThrowsContains { Get-AzureDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname } "HubNotFound"
+    }
+    finally
+    {
+        Clean-DataFactory $rgname $dfname
+    }
+}

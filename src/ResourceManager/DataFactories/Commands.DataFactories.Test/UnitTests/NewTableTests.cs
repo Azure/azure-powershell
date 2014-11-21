@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
             Table expected = new Table()
             {
                 Name = tableName,
-                Properties = null
+                Properties = new TableProperties() { ProvisioningState = "Succeeded" }
             };
 
             dataFactoriesClientMock.Setup(c => c.ReadJsonFileContent(It.IsAny<string>()))
@@ -117,6 +117,46 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                                 DataFactoryName == tbl.DataFactoryName &&
                                 expected.Name == tbl.TableName)),
                 Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanThrowIfTableProvisioningFailed()
+        {
+            // Arrange
+            Table expected = new Table()
+            {
+                Name = tableName,
+                Properties = new TableProperties() { ProvisioningState = "Failed" }
+            };
+
+            dataFactoriesClientMock.Setup(c => c.ReadJsonFileContent(It.IsAny<string>()))
+                .Returns(rawJsonContent)
+                .Verifiable();
+
+            dataFactoriesClientMock.Setup(
+                c =>
+                    c.CreatePSTable(
+                        It.Is<CreatePSTableParameters>(
+                            parameters =>
+                                parameters.Name == tableName &&
+                                parameters.ResourceGroupName == ResourceGroupName &&
+                                parameters.DataFactoryName == DataFactoryName)))
+                .CallBase()
+                .Verifiable();
+
+            dataFactoriesClientMock.Setup(
+                c =>
+                    c.CreateOrUpdateTable(ResourceGroupName, DataFactoryName, tableName, rawJsonContent))
+                .Returns(expected)
+                .Verifiable();
+
+            // Action
+            cmdlet.File = filePath;
+            cmdlet.Force = true;
+            
+            // Assert
+            Assert.Throws<ProvisioningFailedException>(() => cmdlet.ExecuteCmdlet());
         }
     }
 }

@@ -20,11 +20,12 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Hub), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, Constants.Hub, DefaultParameterSetName = ByFactoryName), OutputType(typeof(bool))]
     public class RemoveAzureDataFactoryHubCommand : HubContextBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The hub name.")]
+        [Alias("HubName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

@@ -32,5 +32,12 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         {
             RunPowerShellTest("Test-HubWithDataFactoryParameter");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestHubPiping()
+        {
+            RunPowerShellTest("Test-HubPiping");
+        }
     }
 }

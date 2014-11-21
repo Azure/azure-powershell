@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     {
         public string StandardOutput { get; set;}
         public string StandardError { get; set;}
+        public int ExitCode { get; set; }
 
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
         public static void Start(string target)
@@ -29,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
-        public static void StartAndWaitForProcess(ProcessStartInfo processInfo, out string standardOutput, out string standardError)
+        public static int StartAndWaitForProcess(ProcessStartInfo processInfo, out string standardOutput, out string standardError)
         {
             processInfo.CreateNoWindow = true;
             processInfo.UseShellExecute = false;
@@ -38,9 +39,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             Process p = Process.Start(processInfo);
             p.WaitForExit();
+
+            int exitCode = p.ExitCode;
             standardOutput = p.StandardOutput.ReadToEnd();
             standardError = p.StandardError.ReadToEnd();
+
             p.Close();
+            return exitCode;
         }
 
         public virtual void StartAndWaitForProcess(string command, string arguments)
@@ -49,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             StandardError = string.Empty;
             ProcessStartInfo startInfo = new ProcessStartInfo(command, arguments);
             string output, error;
-            StartAndWaitForProcess(startInfo, out output, out error);
+            ExitCode = StartAndWaitForProcess(startInfo, out output, out error);
             StandardOutput = output;
             StandardError = error;
         }

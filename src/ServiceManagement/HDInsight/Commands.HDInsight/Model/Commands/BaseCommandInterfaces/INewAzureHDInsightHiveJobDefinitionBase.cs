@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.BaseCommandInterfaces
 {
+    using System.Management.Automation;
+
     internal interface INewAzureHDInsightHiveJobDefinitionBase : INewAzureHDInsightJobWithDefinesConfigBase
     {
         /// <summary>
@@ -29,5 +31,10 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.BaseComman
         ///     Gets or sets the Query to use for the jobDetails.
         /// </summary>
         string Query { get; set; }
+
+        ///<summary>
+        ///    Gets or sets RunAsFileJob.
+        ///</summary>
+        SwitchParameter RunAsFileJob { get; set; }
     }
 }

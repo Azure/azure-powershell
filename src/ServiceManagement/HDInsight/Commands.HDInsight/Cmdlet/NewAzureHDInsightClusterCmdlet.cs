@@ -101,6 +101,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 result.DefaultStorageAccount.StorageAccountKey = this.command.DefaultStorageAccountKey;
                 result.DefaultStorageAccount.StorageContainerName = this.command.DefaultStorageContainerName;
                 result.AdditionalStorageAccounts.AddRange(this.command.AdditionalStorageAccounts);
+                result.ConfigActions.AddRange(this.command.ConfigActions);
                 result.CoreConfiguration.AddRange(this.command.CoreConfiguration);
                 result.YarnConfiguration.AddRange(this.command.YarnConfiguration);
                 result.HdfsConfiguration.AddRange(this.command.HdfsConfiguration);
@@ -131,6 +132,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 this.command.DefaultStorageAccountKey = value.DefaultStorageAccount.StorageAccountKey;
                 this.command.DefaultStorageContainerName = value.DefaultStorageAccount.StorageContainerName;
                 this.command.AdditionalStorageAccounts.AddRange(value.AdditionalStorageAccounts);
+                this.command.ConfigActions.AddRange(value.ConfigActions);
                 this.command.CoreConfiguration.AddRange(value.CoreConfiguration);
                 this.command.YarnConfiguration.AddRange(value.YarnConfiguration);
                 this.command.HdfsConfiguration.AddRange(value.HdfsConfiguration);

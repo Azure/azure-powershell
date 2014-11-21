@@ -165,6 +165,140 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
+        /// <summary>
+        /// Test NoLB, NoProbe, DefaultProbe, CustomProbe parameter sets of Azure Endpoint cmdlets and Set-AzureLoadBalancedEndpoint cmdlet
+        /// </summary>
+        [TestMethod(), TestCategory(Category.Functional), TestProperty("Feature", "IAAS"), Priority(1), Owner("priya"), Description("Test the cmdlets ((Add,Get,Set,Remove)-AzureEndpoint), & Set-AzureLoadBalancedEndpoint")]
+        public void AzureEndpointLBDTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+
+            string ep1Name = "tcp1";
+            int ep1LocalPort = 60010;
+            int ep1PublicPort = 60011;
+            string ep1LBSetName = "lbset1";
+            int ep1ProbePort = 60012;
+            string ep1ProbePath = string.Empty;
+            int? ep1ProbeInterval = 7;
+            int? ep1ProbeTimeout = null;
+            NetworkAclObject ep1AclObj = null;
+            bool ep1DirectServerReturn = false;
+
+            string ep2Name = "tcp2";
+            int ep2LocalPort = 60020;
+            int ep2PublicPort = 60021;
+            int ep2LocalPortChanged = 60030;
+            int ep2PublicPortChanged = 60031;
+            string ep2LBSetName = "lbset2";
+            int ep2ProbePort = 60022;
+            string ep2ProbePath = @"/";
+            int? ep2ProbeInterval = null;
+            int? ep2ProbeTimeout = 32;
+            NetworkAclObject ep2AclObj = null;
+            bool ep2DirectServerReturn = false;
+
+            AzureEndPointConfigInfo ep1Info = new AzureEndPointConfigInfo(
+                AzureEndPointConfigInfo.ParameterSet.CustomProbe,
+                ProtocolInfo.tcp,
+                ep1LocalPort,
+                ep1PublicPort,
+                ep1Name,
+                ep1LBSetName,
+                ep1ProbePort,
+                ProtocolInfo.tcp,
+                ep1ProbePath,
+                ep1ProbeInterval,
+                ep1ProbeTimeout,
+                ep1AclObj,
+                ep1DirectServerReturn,
+                null,
+                null,
+                LoadBalancerDistribution.SourceIP);
+
+            AzureEndPointConfigInfo ep2Info = new AzureEndPointConfigInfo(
+                AzureEndPointConfigInfo.ParameterSet.CustomProbe,
+                ProtocolInfo.tcp,
+                ep2LocalPort,
+                ep2PublicPort,
+                ep2Name,
+                ep2LBSetName,
+                ep2ProbePort,
+                ProtocolInfo.http,
+                ep2ProbePath,
+                ep2ProbeInterval,
+                ep2ProbeTimeout,
+                ep2AclObj,
+                ep2DirectServerReturn,
+                null,
+                null,
+                LoadBalancerDistribution.SourceIPProtorol);
+
+            string defaultVm = Utilities.GetUniqueShortName(vmNamePrefix);
+            Assert.IsNull(vmPowershellCmdlets.GetAzureVM(defaultVm, serviceName));
+
+            vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, defaultVm, serviceName, imageName, username, password, locationName);
+            Console.WriteLine("Service Name: {0} is created.", serviceName);
+
+            try
+            {
+                foreach (AzureEndPointConfigInfo.ParameterSet p in Enum.GetValues(typeof(AzureEndPointConfigInfo.ParameterSet)))
+                {
+                    string pSetName = Enum.GetName(typeof(AzureEndPointConfigInfo.ParameterSet), p);
+                    Console.WriteLine("--Begin Endpoint Test with '{0}' parameter set.", pSetName);
+
+                    ep1Info.ParamSet = p;
+                    ep2Info.ParamSet = p;
+                    //ep3Info.ParamSet = p;
+                    ep1Info.Acl = vmPowershellCmdlets.NewAzureAclConfig();
+                    ep2Info.Acl = vmPowershellCmdlets.NewAzureAclConfig();
+                    ep2Info.EndpointLocalPort = ep2LocalPort;
+                    ep2Info.EndpointPublicPort = ep2PublicPort;
+
+                    // Add two new endpoints
+                    Console.WriteLine("-----Add 2 new endpoints.");
+                    vmPowershellCmdlets.AddEndPoint(defaultVm, serviceName, new[] { ep1Info, ep2Info }); // Add-AzureEndpoint with Get-AzureVM and Update-AzureVm                             
+                    CheckEndpoint(defaultVm, serviceName, new[] { ep1Info, ep2Info });
+
+                    // Change the endpoint
+                    if (p == AzureEndPointConfigInfo.ParameterSet.NoLB)
+                    {
+                        Console.WriteLine("-----Change the second endpoint.");
+                        ep2Info.EndpointLocalPort = ep2LocalPortChanged;
+                        ep2Info.EndpointPublicPort = ep2PublicPortChanged;
+                        ep2Info.LoadBalancerDistribution = LoadBalancerDistribution.None;
+                        vmPowershellCmdlets.SetEndPoint(defaultVm, serviceName, ep2Info); // Set-AzureEndpoint with Get-AzureVM and Update-AzureVm
+                        CheckEndpoint(defaultVm, serviceName, new[] { ep2Info });
+                    }
+                    else
+                    {
+                        Console.WriteLine("-----Change the second endpoint.");
+                        ep2Info.ServiceName = serviceName;
+                        ep2Info.EndpointLocalPort = ep2LocalPortChanged;
+                        ep2Info.EndpointPublicPort = ep2PublicPortChanged;
+                        ep2Info.LoadBalancerDistribution = LoadBalancerDistribution.SourceIP;
+                        vmPowershellCmdlets.SetLBEndPoint(defaultVm, serviceName, ep2Info, p);
+
+                        CheckEndpoint(defaultVm, serviceName, new[] { ep2Info });
+                    }
+
+                    // Remove Endpoint
+                    Console.WriteLine("-----Remove endpoints.");
+                    vmPowershellCmdlets.RemoveEndPoint(defaultVm, serviceName, new[] { ep1Name, ep2Name }); // Remove-AzureEndpoint
+                    CheckEndpointRemoved(defaultVm, serviceName, new[] { ep1Info, ep2Info });
+
+                    Console.WriteLine("Endpoint Test passed with '{0}' parameter set.", pSetName);
+                }
+
+                pass = true;
+
+            }
+            catch (Exception e)
+            {
+                pass = false;
+                Assert.Fail("Exception occurred: {0}", e.ToString());
+            }
+        }
+
         private bool CheckEndpoint(string vmName, string serviceName, AzureEndPointConfigInfo[] epInfos)
         {
             var serverEndpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(vmName, serviceName));

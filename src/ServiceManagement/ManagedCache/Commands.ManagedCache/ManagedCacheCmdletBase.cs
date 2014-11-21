@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
 namespace Microsoft.Azure.Commands.ManagedCache
 {
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
     /// <summary>
     /// The base class for all Microsoft Azure Managed Cache Management Cmdlets
     /// </summary>
