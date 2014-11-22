@@ -72,17 +72,17 @@
       ContinueOnError="false" />
   </Target>
   
+  <PropertyGroup>
+	<NuGetCommand>$(MSBuildProjectDirectory)\src\.nuget\NuGet.exe</NuGetCommand>
+	<NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
+	<NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
+  </PropertyGroup>
+  
   <!--
   Force nuget package restore so that packages that include .targets files
   don't need to be checked into source control.
   -->
   <Target Name="ForceRestorePackages">
-    <PropertyGroup>
-      <NuGetCommand>$(MSBuildProjectDirectory)\src\.nuget\NuGet.exe</NuGetCommand>
-      <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
-      <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
-    </PropertyGroup>
-    
     <ItemGroup>
       <NuGetCache Include="$(LOCALAPPDATA)\NuGet\Cache\*.nupkg"/>
     </ItemGroup>
@@ -94,12 +94,7 @@
     <WriteLinesToFile File="$(NuGetRestoreConfigFile)" Lines="&lt;configuration&gt;&lt;/configuration&gt;" Overwrite="true" Encoding="UTF-8" />
     <!-- Create config for user name and password for private feed access -->
     <Exec Command="$(NuGetCommand) sources add -Name AzureSdkInternal -Source &quot;https://www.myget.org/F/azure-sdk-internal/&quot; $(NuGetRestoreConfigSwitch)" />
-    <!-- Private versions of packages are picked up from these feeds, defined with environment variables -->
-    <Exec Command="$(NuGetCommand) sources add -Name PrimaryFeed -Source &quot;$(PRIVATE_FEED_URL)&quot; $(NuGetRestoreConfigSwitch)" Condition=" '$(PRIVATE_FEED_URL)'!='' "/>
-    <Exec Command="$(NuGetCommand) sources Update -Name PrimaryFeed -UserName $(PRIVATE_FEED_USER_NAME) -Password &quot;$(PRIVATE_FEED_PASSWORD)&quot; $(NuGetRestoreConfigSwitch)" EchoOff="true" Condition=" '$(PRIVATE_FEED_PASSWORD)'!='' AND '$(PRIVATE_FEED_USER_NAME)'!='' "/>
-    <Exec Command="$(NuGetCommand) sources add -Name SecondaryFeed -Source &quot;$(SECONDARY_FEED_URL)&quot; $(NuGetRestoreConfigSwitch)" Condition=" '$(SECONDARY_FEED_URL)'!='' "/>
-    <Exec Command="$(NuGetCommand) sources Update -Name SecondaryFeed -UserName $(SECONDARY_FEED_USER_NAME) -Password &quot;$(SECONDARY_FEED_PASSWORD)&quot; $(NuGetRestoreConfigSwitch)" EchoOff="true" Condition=" '$(SECONDARY_FEED_PASSWORD)'!='' AND '$(SECONDARY_FEED_USER_NAME)'!='' "/>
-
+    <CallTarget Targets="ForceRestorePackagesFromPrivateFeed"/>
     <!-- Restore packages -->
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\AzurePowerShell.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
     <!-- delete config file, don't want to leave passwords hanging around on the build server file system -->
@@ -108,6 +103,12 @@
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
   </Target>
   
+  <Target Name="ForceRestorePackagesFromPrivateFeed" Condition="'$(PRIVATE_FEED_PASSWORD)' != ''">
+    <Exec Command="$(NuGetCommand) sources add -Name Hydra -Source &quot;$(PRIVATE_FEED_URL)&quot; $(NuGetRestoreConfigSwitch)" />
+    <Exec Command="$(NuGetCommand) sources Update -Name Hydra -UserName $(PRIVATE_FEED_USER_NAME) -Password &quot;$(PRIVATE_FEED_PASSWORD)&quot; $(NuGetRestoreConfigSwitch)"
+          EchoOff="true" />
+  </Target>
+
   <!-- Build all flavors of the Cmdlets -->
   <Target Name="BuildCmdlets" DependsOnTargets="ForceRestorePackages">
     <Message Importance="high" Text="Building Cmdlets..." />

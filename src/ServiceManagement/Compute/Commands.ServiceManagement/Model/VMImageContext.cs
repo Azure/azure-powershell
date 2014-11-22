@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public override Uri PrivacyUri { get; set; }
         public override string PublisherName { get; set; }
         public override DateTime? PublishedDate { get; set; }
-        public bool? ShowInGui { get; set; }
+        public override bool? ShowInGui { get; set; }
         public Uri PricingDetailLink { get; set; }
     }
 }

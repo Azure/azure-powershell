@@ -64,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Run-WebsiteTest {Test-RemoveAzureServiceWithWhatIf} 'TestRemoveAzureServiceWithWhatIf'");
         }
 
-        #endregion
+        #endregion Remove-AzureWebsite Scenario Tests
 
         #region Get-AzureWebsiteLog Scenario Tests
 
@@ -114,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Test-GetAzureWebsiteLogListPath");
         }
 
-        #endregion
+        #endregion Get-AzureWebsiteLog Scenario Tests
 
         #region Get-AzureWebsite Scenario Tests
 
@@ -140,7 +140,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Run-WebsiteTest {Test-GetAzureWebsiteWithStoppedSite} 'TestGetAzureWebsiteWithStoppedSite'");
         }
 
-        #endregion
+        #endregion Get-AzureWebsite Scenario Tests
 
         #region Start-AzureWebsite Scenario Tests
 
@@ -155,7 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Run-WebsiteTest {Test-StartAzureWebsite} 'TestStartAzureWebsite'");
         }
 
-        #endregion
+        #endregion Start-AzureWebsite Scenario Tests
 
         #region Stop-AzureWebsite Scenario Tests
 
@@ -170,7 +170,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Run-WebsiteTest {Test-StopAzureWebsite} 'TestStopAzureWebsite'");
         }
 
-        #endregion
+        #endregion Stop-AzureWebsite Scenario Tests
 
         #region Restart-AzureWebsite Scenario Tests
 
@@ -185,7 +185,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Run-WebsiteTest {Test-RestartAzureWebsite} 'TestRestartAzureWebsite'");
         }
 
-        #endregion
+        #endregion Restart-AzureWebsite Scenario Tests
 
         #region Enable-AzureWebsiteApplicationDiagnostic Scenario Tests
 
@@ -196,6 +196,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
         public void TestEnableApplicationDiagnosticOnTableStorage()
         {
             RunPowerShellTest("Run-WebsiteTest {Test-EnableApplicationDiagnosticOnTableStorage} 'TestEnableApplicationDiagnosticOnTableStorage'");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.Service, Category.Websites)]
+        public void TestEnableApplicationDiagnosticOnBlobStorage()
+        {
+            RunPowerShellTest("Run-WebsiteTest {Test-EnableApplicationDiagnosticOnBlobStorage} 'TestEnableApplicationDiagnosticOnBlobStorage'");
         }
 
         [Fact]
@@ -237,7 +246,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Run-WebsiteTest {Test-ThrowsForInvalidStorageAccountName} 'TestThrowsForInvalidStorageAccountName'");
         }
 
-        #endregion
+        #endregion Enable-AzureWebsiteApplicationDiagnostic Scenario Tests
 
         #region Disable-AzureWebsiteApplicationDiagnostic Scenario Tests
 
@@ -296,7 +305,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Run-WebsiteTest {Test-DisablesBothByDefault} 'TestDisablesBothByDefault'");
         }
 
-        #endregion
+        #endregion Disable-AzureWebsiteApplicationDiagnostic Scenario Tests
 
         #region Get-AzureWebsiteLocation Scenario Tests
 
@@ -354,7 +363,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Run-WebsiteTest {Test-AzureWebSiteShowSingleSite} 'TestAzureWebSiteShowSingleSite'");
         }
 
-        #endregion
+        #endregion Get-AzureWebsiteLocation Scenario Tests
 
         #region AzureWebSiteGitHubAllParms Scenario Tests
 
@@ -368,7 +377,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Run-WebsiteTest {Test-NewAzureWebSiteMultipleCreds} 'TestNewAzureWebSiteMultipleCreds'");
         }
 
-        [Fact (Skip = "TODO: Fix failing test.")]
+        [Fact(Skip = "TODO: Fix failing test.")]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -386,7 +395,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
         {
             RunPowerShellTest("Run-WebsiteTest {Test-NewAzureWebSiteUpdateGit} 'TestNewAzureWebSiteUpdateGit'");
         }
-        #endregion
+
+        #endregion AzureWebSiteGitHubAllParms Scenario Tests
 
         #region Set-AzureWebSite Scenario Tests
 
@@ -401,7 +411,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Run-WebsiteTest {Test-SetAzureWebsite} 'TestSetAzureWebsite'");
         }
 
-        #endregion
+        #endregion Set-AzureWebSite Scenario Tests
 
         #region WebJob Scenario Tests
 
@@ -414,7 +424,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Run-WebsiteTest {Test-RemoveAzureWebsiteTriggeredJob} 'TestRemoveAzureWebsiteTriggeredJob'");
         }
 
-        [Fact (Skip = "TODO: Fix failing test.")]
+        [Fact(Skip = "TODO: Fix failing test.")]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
@@ -468,6 +478,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
             RunPowerShellTest("Run-WebsiteTest {Test-GettingJobHistory} 'TestGetsJobHistory'");
         }
 
-        #endregion
+        #endregion WebJob Scenario Tests
     }
 }

@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ManagedCache.Models;
-
 namespace Microsoft.Azure.Commands.ManagedCache
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ManagedCache.Models;
+
     [Cmdlet(VerbsCommon.Get, "AzureManagedCache"), OutputType(typeof(List<PSCacheService>))]
     public class GetAzureManagedCache : ManagedCacheCmdletBase
     {

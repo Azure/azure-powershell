@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestWikipediaSamplePipeline()
+        public void TestPipeline()
         {
-            RunPowerShellTest("Test-WikipediaSamplePipeline");
+            RunPowerShellTest("Test-Pipeline");
         }
     }
 }

@@ -104,3 +104,24 @@ function Test-GetDataFactoryWithWhiteSpaceName
     # Test
     Assert-ThrowsContains { Get-AzureDataFactory -ResourceGroupName $rgname -Name $dfname } "Value cannot be null"    
 }
+
+<#
+.SYNOPSIS
+Test piping support.
+#>
+function Test-DataFactoryPiping
+{	
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+    
+    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
+
+    New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+
+    Get-AzureDataFactory -ResourceGroupName $rgname | Remove-AzureDataFactory -Force
+
+    # Test the data factory no longer exists
+    Assert-ThrowsContains { Get-AzureDataFactory -ResourceGroupName $rgname -Name $dfname } "ResourceNotFound"
+}

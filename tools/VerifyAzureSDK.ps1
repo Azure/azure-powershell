@@ -12,11 +12,11 @@ Write-Host "Testing Caching role with MemCacheShim package, Node Web Role, and r
 #detect nodejs for x86 is installed, if not install it
 
 # create testing folder
-$testFolder = "$env:AzurePSRoot\src\Package\Debug\SDKTest" + [System.IO.Path]::GetRandomFileName()
+$testFolder = "$env:AzurePSRoot\src\Package\" + [System.IO.Path]::GetRandomFileName()
 md $testFolder
 cd $testFolder 
 
-New-AzureServiceProject MemCacheTestWithNode
+New-AzureServiceProject Cache
 # the 'ClientRole' is coupled with the client script, do not change it unless you update the script as well 
 Add-AzureNodeWebRole ClientRole
 Add-AzureCacheWorkerRole CacheRole
@@ -24,25 +24,19 @@ Enable-AzureMemcacheRole ClientRole CacheRole
 
 md "temp"
 Copy-Item "$env:AzurePSRoot\src\Common\Commands.ScenarioTest\Resources\CloudService\Cache\*.js" ".\ClientRole\"  -Force -Recurse
-cd "$testFolder\MemCacheTestWithNode\ClientRole"
+cd "$testFolder\Cache\ClientRole"
 Start-Process "npm" "install $env:AzurePSRoot\src\Common\Commands.ScenarioTest\Resources\CloudService\Cache\mc.tgz $env:AzurePSRoot\src\Common\Commands.ScenarioTest\Resources\CloudService\Cache\connman.tgz" -Wait
 
-cd "$testFolder\MemCacheTestWithNode"
+cd "$testFolder\Cache"
 Start-AzureEmulator -v
 
 Write-Host "You can do some testing by loading role url in the browser and adding some key/value to mem cache emulators" -ForegroundColor "Yellow"
 Write-Host "Press any key to continue to the next testing"
 $keyPressed = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
-# testing full emulator
-Start-AzureEmulator -mode Full -v
-Write-Host "You can do similar testing like you did just now. The only context difference is you are using a full emulator this time" -ForegroundColor "Yellow"
-Write-Host "Press any key to continue to the next testing"
-$keyPressed = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
 Write-Host "Testing PHP web & worker roles with emulator" -ForegroundColor "Green" 
 cd $testFolder
-New-AzureServiceProject MyPHPTest
+New-AzureServiceProject PHPTest
 Add-AzurePHPWebRole
 Add-AzurePHPWorkerRole
 Start-AzureEmulator -v
@@ -53,7 +47,7 @@ $keyPressed = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 Write-Host "Testing Django web roles" -ForegroundColor "Green"
 cd $testFolder
-New-AzureServiceProject MyDjangoTest
+New-AzureServiceProject DjangoTest
 Add-AzureDjangoWebRole
 Start-AzureEmulator -v 
 Write-Host "You can do some testing by loading role url in the browser and make sure default django page loads fine " -ForegroundColor "Yellow"

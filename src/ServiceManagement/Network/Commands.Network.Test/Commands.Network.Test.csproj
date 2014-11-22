@@ -38,8 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Utilities.HttpRecorder">
-      <HintPath>..\..\..\packages\Hydra.HttpRecorder.1.0.5406.28672-prerelease\lib\net45\Microsoft.Azure.Utilities.HttpRecorder.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Utilities.HttpRecorder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Hydra.HttpRecorder.1.0.5417.13285-prerelease\lib\net45\Microsoft.Azure.Utilities.HttpRecorder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -108,10 +109,9 @@
     <Reference Include="Microsoft.WindowsAzure.Management.WebSites">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.WebSites.3.0.0\lib\net40\Microsoft.WindowsAzure.Management.WebSites.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Testing">
+    <Reference Include="Microsoft.WindowsAzure.Testing, Version=1.0.5417.13285, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Hydra.SpecTestSupport.1.0.5406.28672-prerelease\lib\net45\Microsoft.WindowsAzure.Testing.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Hydra.SpecTestSupport.1.0.5417.13285-prerelease\lib\net45\Microsoft.WindowsAzure.Testing.dll</HintPath>
     </Reference>
     <Reference Include="Moq, Version=4.2.1402.2112, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

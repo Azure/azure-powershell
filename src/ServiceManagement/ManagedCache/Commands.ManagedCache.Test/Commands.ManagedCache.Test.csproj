@@ -40,7 +40,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Utilities.HttpRecorder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Hydra.HttpRecorder.1.0.5406.28672-prerelease\lib\net45\Microsoft.Azure.Utilities.HttpRecorder.dll</HintPath>
+      <HintPath>..\..\..\packages\Hydra.HttpRecorder.1.0.5417.13285-prerelease\lib\net45\Microsoft.Azure.Utilities.HttpRecorder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -80,9 +80,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Testing, Version=1.0.5406.28672, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Testing, Version=1.0.5417.13285, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Hydra.SpecTestSupport.1.0.5406.28672-prerelease\lib\net45\Microsoft.WindowsAzure.Testing.dll</HintPath>
+      <HintPath>..\..\..\packages\Hydra.SpecTestSupport.1.0.5417.13285-prerelease\lib\net45\Microsoft.WindowsAzure.Testing.dll</HintPath>
     </Reference>
     <Reference Include="Moq, Version=4.2.1402.2112, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -146,11 +146,24 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ManagedCache.Test.ScenarioTests.ManagedCacheTests\ManagedCacheEndToEndTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ManagedCache.Test.ScenarioTests.ManagedCacheTests\TestManagedCacheNamedCacheBasic.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ManagedCache.Test.ScenarioTests.ManagedCacheTests\TestManagedCacheNamedCacheDoNotExists.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ManagedCache.Test.ScenarioTests.ManagedCacheTests\TestManagedCacheNamedCacheStandard.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Test\Commands.Common.Test.csproj">
+      <Project>{3b48a77b-5956-4a62-9081-92ba04b02b27}</Project>
+      <Name>Commands.Common.Test</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
@@ -158,6 +171,18 @@
     <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
       <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
       <Name>Commands.ScenarioTests.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Commands.Test.Utilities\Commands.Test.Utilities.csproj">
+      <Project>{bc420543-c04e-4bf3-96e1-cd81b823bdd7}</Project>
+      <Name>Commands.Test.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Commands.Utilities\Commands.Utilities.csproj">
+      <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>
+      <Name>Commands.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Commands\Commands.csproj">
+      <Project>{cd5aa507-f5ef-473d-855b-84b91a1abe54}</Project>
+      <Name>Commands</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.ManagedCache\Commands.ManagedCache.csproj">
       <Project>{46c06ed8-43d9-41fd-b73b-41547d9c04e1}</Project>

@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
         public const string ServerPolicyId = "c3d905bb-e460-48bb-884d-75fac8f63e11";
 
         // types of storage keys
-       public enum StorageKeyTypes {Primary, Secondary}; 
+        public enum StorageKeyTypes {Primary, Secondary};
+
+        public const string Primary = "Primary";
+        public const string Secondary = "Secondary";
     }
 }

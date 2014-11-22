@@ -14,9 +14,10 @@
 
 <#
 .SYNOPSIS
-An E2E test to create and monitor a Wikipedia sample pipeline.
+Create a sample pipeline with all of its dependencies. Then test overwrite the pipeline and then
+delete the pipeline with piping.
 #>
-function Test-WikipediaSamplePipeline
+function Test-Pipeline
 {
     $dfname = Get-DataFactoryName
     $rgname = Get-ResourceGroupName
@@ -25,53 +26,48 @@ function Test-WikipediaSamplePipeline
 
     $endDate = [DateTime]::Parse("9/8/2014")
     $startDate = $endDate.AddHours(-1)
-    $folder = ".\Resources\WikiSamplePipeline\"
         
     New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        #create datafactory
-        $df = New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation
+        $df = New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+     
+        New-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
 
-        #create linked services
-        $lsCurated = New-AzureDataFactoryLinkedService  -ResourceGroupName $rgname -DataFactoryName $dfname -File $folder"LinkedService_CuratedWikiData.json"
-	    $lsHDI = New-AzureDataFactoryLinkedService  -ResourceGroupName $rgname -Name HDILinkedService -DataFactoryName $dfname -File $folder"LinkedService_HDIBYOC.json"
-	    $lsAggregated = New-AzureDataFactoryLinkedService  -ResourceGroupName $rgname -Name LinkedService-WikiAggregatedData -DataFactoryName $dfname -File $folder"LinkedService_WikiAggregatedData.json"
-	    $lsClicked = New-AzureDataFactoryLinkedService  -ResourceGroupName $rgname -Name LinkedService-WikipediaClickEvents -DataFactoryName $dfname -File $folder"LinkedService_WikipediaClickEvents.json"
-	
-        #create tables
-        $tbAggregated = New-AzureDataFactoryTable  -ResourceGroupName $rgname DA_WikiAggregatedData -DataFactoryName $dfname -File $folder"DA_WikiAggregatedData.json"
-	    $tbClick = New-AzureDataFactoryTable  -ResourceGroupName $rgname -Name DA_WikipediaClickEvents -DataFactoryName $dfname -File $folder"DA_WikipediaClickEvents.json"
-	    $tbCurated = New-AzureDataFactoryTable  -ResourceGroupName $rgname -Name DA_CuratedWikiData -DataFactoryName $dfname -File $folder"DA_CuratedWikiData.json"
-	
-        #create pipeline
-        $actualPipeline = New-AzureDataFactoryPipeline  -ResourceGroupName $rgname -Name DP_WikipediaSamplePipeline -DataFactoryName $dfname -File $folder"DP_Wikisamplev2json.json" -Force
-        $expectedPipeline = Get-AzureDataFactoryPipeline -ResourceGroupName $rgname -Name DP_WikipediaSamplePipeline -DataFactoryName $dfname
-
-        Assert-AreEqual $actualPipeline.ResourceGroupName $expectedPipeline.ResourceGroupName
-        Assert-AreEqual $actualPipeline.DataFactoryName $expectedPipeline.DataFactoryName
-	    Assert-AreEqual $actualPipeline.PipelineName $expectedPipeline.PipelineName
+        New-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name inputTable -File .\Resources\table.json -Force
+        New-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name outputTable -File .\Resources\table.json -Force
         
-        #set pipeline active period
-        Set-AzureDataFactoryPipelineActivePeriod  -Name DP_WikipediaSamplePipeline -ResourceGroupName $rgname -DataFactoryName $dfname -StartDateTime $startDate -EndDateTime $endDate -Force
-		
-        $slices = Get-AzureDataFactorySlice -ResourceGroupName $rgname -DataFactoryName $dfname -TableName DA_WikiAggregatedData -StartDateTime $startDate -EndDateTime $endDate
-        Assert-AreEqual $slices.Count 1
+        $pipelineName = "samplePipeline"        
+        #create pipeline will return a failed provisioning state because we are not really feed the json with valid credentials.
+        #we can still continue the test with a Get operation though.
+        Assert-Throws { New-AzureDataFactoryPipeline  -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname -File ".\Resources\pipeline.json" -Force }
+        $expectedPipeline = Get-AzureDataFactoryPipeline -ResourceGroupName $rgname -Name $pipelineName -DataFactoryName $dfname
 
-        #overwrite the pipeline again with -DataFactory parameter
-        $actualPipeline = New-AzureDataFactoryPipeline -DataFactory $df -File $folder"DP_Wikisamplev2json.json" -Force
-        $expectedPipeline = Get-AzureDataFactoryPipeline -DataFactory $df -Name DP_WikipediaSamplePipeline
+        Assert-AreEqual $rgname $expectedPipeline.ResourceGroupName
+        Assert-AreEqual $dfname $expectedPipeline.DataFactoryName
+	    Assert-AreEqual $pipelineName $expectedPipeline.PipelineName
+        Assert-AreEqual "Failed" $expectedPipeline.ProvisioningState
+                
+        #overwrite the pipeline again with -DataFactory parameter (provisioning will still fail as we are not using valid credentials)
+        Assert-Throws { New-AzureDataFactoryPipeline -DataFactory $df -File ".\Resources\pipeline.json" -Force }
+        $expectedPipeline = Get-AzureDataFactoryPipeline -DataFactory $df -Name $pipelineName
 
-        Assert-AreEqual $actualPipeline.ResourceGroupName $expectedPipeline.ResourceGroupName
-        Assert-AreEqual $actualPipeline.DataFactoryName $expectedPipeline.DataFactoryName
-	    Assert-AreEqual $actualPipeline.PipelineName $expectedPipeline.PipelineName
+        Assert-AreEqual $rgname $expectedPipeline.ResourceGroupName
+        Assert-AreEqual $dfname $expectedPipeline.DataFactoryName
+	    Assert-AreEqual $pipelineName $expectedPipeline.PipelineName
+        Assert-AreEqual "Failed" $expectedPipeline.ProvisioningState
 
-        #remove the pipeline
-        Remove-AzureDataFactoryPipeline -ResourceGroupName $rgname -DataFactoryName $dfname -Name DP_WikipediaSamplePipeline -Force
-        
+        #remove the pipeline through piping
+        Get-AzureDataFactoryPipeline -DataFactory $df -Name $pipelineName | Remove-AzureDataFactoryPipeline -Force
+
+        #test the pipeline no longer exists
+        Assert-ThrowsContains { Get-AzureDataFactoryPipeline -DataFactory $df -Name $pipelineName } "PipelineNotFound"
+                
         #remove the pipeline again should not throw
-        Remove-AzureDataFactoryPipeline -DataFactory $df -Name DP_WikipediaSamplePipeline -Force
+        Remove-AzureDataFactoryPipeline -ResourceGroupName $rgname -DataFactoryName $dfname -Name $pipelineName -Force
+
+        Remove-AzureDataFactoryPipeline -DataFactory $df -Name $pipelineName -Force
     }
     finally
     {

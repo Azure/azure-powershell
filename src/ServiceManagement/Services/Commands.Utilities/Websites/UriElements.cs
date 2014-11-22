@@ -159,6 +159,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         public const string AzureDriveTraceLevel = "AzureDriveTraceLevel";
         public const string AzureTableTraceEnabled = "AzureTableEnabled";
         public const string AzureTableTraceLevel = "AzureTableTraceLevel";
+        public const string AzureBlobTraceEnabled = "AzureBlobEnabled";
+        public const string AzureBlobTraceLevel = "AzureBlobTraceLevel";
 
         public const string LogPaths = "vfs/LogFiles";
         public const string DiagnosticsSettings = "diagnostics/settings";

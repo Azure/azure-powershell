@@ -101,8 +101,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             {
                 var invalidOperationException = aggregateException.GetBaseException() as InvalidOperationException;
                 Assert.IsNotNull(invalidOperationException);
-                Assert.AreEqual("Query text contains restricted character '%', please upload the query to a file in storage and re-submit the job using the -File parameter",
-                    invalidOperationException.Message);
+                Assert.IsTrue(invalidOperationException.Message.Contains("Query contains restricted character :'%'"), "Exception not thrown for special character");
             }
         }
 
@@ -228,8 +227,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             {
                 var invalidOperationException = aggregateException.GetBaseException() as InvalidOperationException;
                 Assert.IsNotNull(invalidOperationException);
-                Assert.AreEqual("Query text contains restricted character '%', please upload the query to a file in storage and re-submit the job using the -File parameter",
-                    invalidOperationException.Message);
+                Assert.IsTrue(invalidOperationException.Message.Contains("Query contains restricted character :'%'"), "Exception not thrown for special character");
             }
         }
 
@@ -424,8 +422,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             {
                 var invalidOperationException = aggregateException.GetBaseException() as InvalidOperationException;
                 Assert.IsNotNull(invalidOperationException);
-                Assert.AreEqual("Command text contains restricted character '%', please upload the query to a file in storage and re-submit the job using the -File parameter",
-                    invalidOperationException.Message);
+                Assert.IsTrue(invalidOperationException.Message.Contains("Query contains restricted character :'%'"), "Exception not thrown for special character");
             }
         }
 

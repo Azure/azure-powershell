@@ -26,7 +26,9 @@ namespace Microsoft.WindowsAzure.Commands.Websites
     {
         private const string FileParameterSetName = "FileParameterSet";
 
-        private const string StorageParameterSetName = "StorageParameterSet";
+        private const string TableStorageParameterSetName = "TableStorageParameterSet";
+
+        private const string BlobStorageParameterSetName = "BlobStorageParameterSet";
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -34,15 +36,26 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         [Parameter(Mandatory = true, ParameterSetName = FileParameterSetName)]
         public SwitchParameter File { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = StorageParameterSetName)]
-        public SwitchParameter Storage { get; set; }
+        [Parameter(Mandatory = true, ParameterSetName = TableStorageParameterSetName)]
+        public SwitchParameter TableStorage { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = BlobStorageParameterSetName)]
+        public SwitchParameter BlobStorage { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = FileParameterSetName)]
-        [Parameter(Mandatory = true, ParameterSetName = StorageParameterSetName)]
+        [Parameter(Mandatory = true, ParameterSetName = TableStorageParameterSetName)]
+        [Parameter(Mandatory = true, ParameterSetName = BlobStorageParameterSetName)]
         public LogEntryType LogLevel { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = StorageParameterSetName)]
+        [Parameter(Mandatory = false, ParameterSetName = TableStorageParameterSetName)]
+        [Parameter(Mandatory = false, ParameterSetName = BlobStorageParameterSetName)]
         public string StorageAccountName { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = TableStorageParameterSetName)]
+        public string StorageTableName { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = BlobStorageParameterSetName)]
+        public string StorageBlobContainerName { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -53,12 +66,27 @@ namespace Microsoft.WindowsAzure.Commands.Websites
             {
                 WebsitesClient.EnableApplicationDiagnostic(Name, WebsiteDiagnosticOutput.FileSystem, properties, Slot);
             }
-            else if (Storage.IsPresent)
+            else if (TableStorage.IsPresent || BlobStorage.IsPresent)
             {
-                string storageName = string.IsNullOrEmpty(StorageAccountName) ?
+                properties[DiagnosticProperties.StorageAccountName] = string.IsNullOrEmpty(StorageAccountName) ?
                     CurrentContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount) : StorageAccountName;
-                properties[DiagnosticProperties.StorageAccountName] = storageName;
-                WebsitesClient.EnableApplicationDiagnostic(Name, WebsiteDiagnosticOutput.StorageTable, properties, Slot);
+
+                if (TableStorage.IsPresent)
+                {
+                    properties[DiagnosticProperties.StorageTableName] = string.IsNullOrEmpty(StorageTableName)
+                        ? "websitesapplogs" + Name.ToLowerInvariant() : StorageTableName.ToLowerInvariant();
+
+                    WebsitesClient.EnableApplicationDiagnostic(Name, WebsiteDiagnosticOutput.StorageTable, properties, Slot);
+                }
+                else
+                {
+                    // Blob storage
+
+                    properties[DiagnosticProperties.StorageBlobContainerName] = string.IsNullOrEmpty(StorageBlobContainerName)
+                        ? "websitesapplogs-" + Name.ToLowerInvariant() : StorageBlobContainerName.ToLowerInvariant();
+
+                    WebsitesClient.EnableApplicationDiagnostic(Name, WebsiteDiagnosticOutput.StorageBlob, properties, Slot);
+                }
             }
             else
             {

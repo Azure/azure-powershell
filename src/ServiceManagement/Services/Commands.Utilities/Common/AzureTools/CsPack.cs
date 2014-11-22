@@ -30,6 +30,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools
     /// </summary>
     public class CsPack
     {
+        //test seam
+        public ProcessHelper ProcessUtil { get; set; }
+
         /// <summary>
         /// Create a .cspkg package by calling the CsPack.exe tool.
         /// </summary>
@@ -101,13 +104,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools
                     roles,
                     sites);
 
-                // Run CsPack to generate the package
-                ProcessHelper.StartAndWaitForProcess(
-                    new ProcessStartInfo(
-                        Path.Combine(azureSdkBinDirectory, Resources.CsPackExe),
-                        args),
-                    out standardOutput,
-                    out standardError);
+                if (ProcessUtil == null)
+                {
+                    ProcessUtil = new ProcessHelper();
+                }
+                // Run CsPack to generate the package              
+                ProcessUtil.StartAndWaitForProcess(Path.Combine(azureSdkBinDirectory, Resources.CsPackExe), args);
+                standardOutput = ProcessUtil.StandardOutput;
+                standardError = ProcessUtil.StandardError;
+                standardError = GetRightError(standardOutput, standardError, ProcessUtil.ExitCode);
             }
             finally
             {
@@ -116,6 +121,21 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools
             }
         }
 
+        private static string GetRightError(string standardOutput, string standardError, int processExitCode)
+        {
+            if (processExitCode != 0 && string.IsNullOrWhiteSpace(standardError))
+            {
+                if (!string.IsNullOrWhiteSpace(standardOutput))
+                {
+                    standardError = standardOutput;
+                }
+                else
+                {
+                    standardError = Resources.CsPackExeGenericFailure;
+                }
+            }
+            return standardError;
+        }
         /// <summary>
         /// Get or create a path to the role.  This is used to sanitize the
         /// contents of a role before it's packaged if it contains files that

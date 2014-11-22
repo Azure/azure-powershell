@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Management.Automation;
 using System.Threading.Tasks;
 using Microsoft.Hadoop.Client;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInterfaces;
@@ -67,6 +68,12 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             set { this.hiveJobDefinition.Query = value; }
         }
 
+        public SwitchParameter RunAsFileJob
+        {
+            get { return this.hiveJobDefinition.RunAsFileJob; }
+            set { this.hiveJobDefinition.RunAsFileJob = true; }
+        }
+
         public override string StatusFolder
         {
             get { return this.hiveJobDefinition.StatusFolder; }
@@ -84,6 +91,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             hiveJob.JobName = this.JobName;
             hiveJob.Query = this.Query;
             hiveJob.File = this.File;
+            hiveJob.RunAsFileJob = this.RunAsFileJob.ToBool();
 
             if (hiveJob.Query.IsNullOrEmpty())
             {
