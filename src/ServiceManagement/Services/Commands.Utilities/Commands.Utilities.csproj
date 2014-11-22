@@ -119,7 +119,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Scheduler, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.3.0.2\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.4.1.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.ServiceBus">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.ServiceBus.0.15.0-preview\lib\net40\Microsoft.WindowsAzure.Management.ServiceBus.dll</HintPath>
@@ -246,6 +246,9 @@
     <Compile Include="Scheduler\Common\Constants.cs" />
     <Compile Include="Scheduler\Common\ExtensionMethods.cs" />
     <Compile Include="Scheduler\Common\SchedulerUtils.cs" />
+    <Compile Include="Scheduler\Model\PSAADOAuthenticationJobDetail.cs" />
+    <Compile Include="Scheduler\Model\PSBasicAuthenticationJobDetail.cs" />
+    <Compile Include="Scheduler\Model\PSClientCertAuthenticationJobDetail.cs" />
     <Compile Include="Scheduler\Model\PSCreateJobCollectionParams.cs" />
     <Compile Include="Scheduler\Model\PSCreateJobParams.cs" />
     <Compile Include="Scheduler\Model\PSHttpJobDetail.cs" />

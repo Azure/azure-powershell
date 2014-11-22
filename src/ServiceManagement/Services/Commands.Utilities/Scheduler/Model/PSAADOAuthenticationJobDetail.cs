@@ -14,17 +14,33 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model
 {
-    public class PSHttpJobDetail : PSJobDetail
+    public class PSAADOAuthenticationJobDetail : PSHttpJobDetail
     {
-        public string Method { get; internal set; }
+        public string AuthenticationType = "AAD OAuthentication";
 
-        public Uri Uri { get; internal set; }
+        public string Tenant { get; internal set; }
 
-        public string Body { get; internal set; }
+        public string Audience { get; internal set; }
 
-        public IDictionary<string, string> Headers { get; internal set; }
+        public string ClientId { get; internal set; }
+
+        public PSAADOAuthenticationJobDetail (PSHttpJobDetail jobDetail)
+        {
+            foreach(PropertyInfo prop in jobDetail.GetType().GetProperties())
+            {
+                GetType().GetProperty(prop.Name).SetValue(this, prop.GetValue(jobDetail, null), null);
+            }
+        }
+
+        public PSAADOAuthenticationJobDetail()
+        {            
+        }
     }
 }
