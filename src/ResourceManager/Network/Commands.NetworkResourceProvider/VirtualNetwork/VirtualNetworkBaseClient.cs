@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         public PSVirtualNetwork GetVirtualNetwork(string resourceGroupName, string name)
         {
-            var getNetworkInterfaceResponse = this.VirtualNetworkClient.Get(this.ResourceGroupName, this.Name);
+            var getNetworkInterfaceResponse = this.VirtualNetworkClient.Get(resourceGroupName, name);
 
             var virtualNetwork = Mapper.Map<PSVirtualNetwork>(getNetworkInterfaceResponse.VirtualNetwork);
-            virtualNetwork.ResourceGroupName = this.ResourceGroupName;
+            virtualNetwork.ResourceGroupName = resourceGroupName;
 
             return virtualNetwork;
         }

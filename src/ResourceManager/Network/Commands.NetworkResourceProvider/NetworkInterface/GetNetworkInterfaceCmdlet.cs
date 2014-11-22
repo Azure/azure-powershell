@@ -25,6 +25,19 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     [Cmdlet(VerbsCommon.Get, NetworkInterfaceCmdletName)]
     public class GetNetworkInterfaceCmdlet : NetworkInterfaceBaseClient
     {
+        [Alias("ResourceName")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceGroupName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

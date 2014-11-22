@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         public PSNetworkInterface GetNetworkInterface(string resourceGroupName, string name)
         {
-            var getNetworkInterfaceResponse = this.NetworkInterfaceClient.Get(this.ResourceGroupName, this.Name);
+            var getNetworkInterfaceResponse = this.NetworkInterfaceClient.Get(resourceGroupName, name);
 
             var networkInterface = Mapper.Map<PSNetworkInterface>(getNetworkInterfaceResponse.NetworkInterface);
-            networkInterface.ResourceGroupName = this.ResourceGroupName;
+            networkInterface.ResourceGroupName = resourceGroupName;
 
             return networkInterface;
         }

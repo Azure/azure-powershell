@@ -24,34 +24,25 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     public class SetPublicIpAddressCmdlet : PublicIpAddressBaseClient
     {
         [Parameter(
-            DontShow = true)]
-        public override string Name { get; set; }
-
-        [Parameter(
-           DontShow = true)]
-        public override string ResourceGroupName { get; set; }
-
-        [Parameter(
                     Mandatory = true,
-                    ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The PublicIpAddress")]
-        public PSPublicIpAddress PsPublicIpAddress { get; set; }
+        public PSPublicIpAddress PublicIpAddress { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            if (!this.IsPublicIpAddressPresent(this.PsPublicIpAddress.ResourceGroupName, this.PsPublicIpAddress.Name))
+            if (!this.IsPublicIpAddressPresent(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name))
             {
                 throw new ArgumentException(ResourceNotFound);
             }
 
             // Map to the sdk object
-            var publicIpModel = Mapper.Map<MNM.PublicIpAddressCreateOrUpdateParameters>(this.PsPublicIpAddress);
+            var publicIpModel = Mapper.Map<MNM.PublicIpAddressCreateOrUpdateParameters>(this.PublicIpAddress);
 
-            this.PublicIpAddressClient.CreateOrUpdate(this.PsPublicIpAddress.ResourceGroupName, this.PsPublicIpAddress.Name, publicIpModel);
+            this.PublicIpAddressClient.CreateOrUpdate(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name, publicIpModel);
 
-            var getPublicIp = this.GetPublicIpAddress(this.PsPublicIpAddress.ResourceGroupName, this.PsPublicIpAddress.Name);
+            var getPublicIp = this.GetPublicIpAddress(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name);
 
             WriteObject(getPublicIp);
         }

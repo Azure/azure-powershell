@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             return true;
         }
 
-        public PSNetworkInterface GetPublicIpAddress(string resourceGroupName, string name)
+        public PSPublicIpAddress GetPublicIpAddress(string resourceGroupName, string name)
         {
-            var getPublicIpAddressResponse = this.PublicIpAddressClient.Get(this.ResourceGroupName, this.Name);
+            var getPublicIpAddressResponse = this.PublicIpAddressClient.Get(resourceGroupName, name);
 
-            var publicIpAddress = Mapper.Map<PSNetworkInterface>(getPublicIpAddressResponse.PublicIpAddress);
-            publicIpAddress.ResourceGroupName = this.ResourceGroupName;
+            var publicIpAddress = Mapper.Map<PSPublicIpAddress>(getPublicIpAddressResponse.PublicIpAddress);
+            publicIpAddress.ResourceGroupName = resourceGroupName;
 
             return publicIpAddress;
         }

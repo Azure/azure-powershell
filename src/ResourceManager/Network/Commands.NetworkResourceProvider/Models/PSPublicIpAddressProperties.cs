@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
         public PSResourceId IpConfiguration { get; set; }
 
         public PSPublicIpAddressDnsSettings DnsSettings { get; set; }
+
         public string IpAddress { get; set; }
 
         public string IdleTimeoutInMinutes { get; set; }

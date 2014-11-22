@@ -16,7 +16,6 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.WindowsAzure;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -29,7 +28,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             Mandatory = false,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
+        public virtual string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {

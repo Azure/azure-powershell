@@ -24,35 +24,26 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     public class SetVirtualNetworkCmdlet : VirtualNetworkBaseClient
     {
         [Parameter(
-            DontShow = true)]
-        public override string Name { get; set; }
-
-        [Parameter(
-           DontShow = true)]
-        public override string ResourceGroupName { get; set; }
-
-        [Parameter(
                     Mandatory = true,
-                    ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The virtualNetwork")]
-        public PSVirtualNetwork PsVirtualNetwork { get; set; }
+        public PSVirtualNetwork VirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            if (!this.IsVirtualNetworkPresent(this.PsVirtualNetwork.ResourceGroupName, this.PsVirtualNetwork.Name))
+            if (!this.IsVirtualNetworkPresent(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name))
             {
                 throw new ArgumentException(ResourceNotFound);
             }
             
             // Map to the sdk object
-            var vnetModel = Mapper.Map<MNM.VirtualNetworkCreateOrUpdateParameters>(this.PsVirtualNetwork);
+            var vnetModel = Mapper.Map<MNM.VirtualNetworkCreateOrUpdateParameters>(this.VirtualNetwork);
 
             // Execute the Create VirtualNetwork call
-            this.VirtualNetworkClient.CreateOrUpdate(this.PsVirtualNetwork.ResourceGroupName, this.PsVirtualNetwork.Name, vnetModel);
+            this.VirtualNetworkClient.CreateOrUpdate(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, vnetModel);
 
-            var getVirtualNetwork = this.GetVirtualNetwork(this.PsVirtualNetwork.ResourceGroupName, this.PsVirtualNetwork.Name);
+            var getVirtualNetwork = this.GetVirtualNetwork(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name);
             WriteObject(getVirtualNetwork);
         }
     }

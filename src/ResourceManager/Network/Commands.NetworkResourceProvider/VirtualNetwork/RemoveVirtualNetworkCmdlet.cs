@@ -23,6 +23,18 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
      [Cmdlet(VerbsCommon.Remove, VirtualNetworkCmdletName)]
     public class RemoveVirtualNetworkCmdlet : VirtualNetworkBaseClient
     {
+        [Alias("ResourceName")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {

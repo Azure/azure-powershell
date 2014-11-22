@@ -25,16 +25,27 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     [Cmdlet(VerbsCommon.New, PublicIpAddressCmdletName)]
     public class NewPublicIpAddressCmdlet : PublicIpAddressBaseClient
     {
+        [Alias("ResourceName")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The public IP address location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP address allocation method.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(MNM.IpAllocationMethod.Dynamic, IgnoreCase = true)]
@@ -42,7 +53,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Domain Name label.")]
         [ValidateNotNullOrEmpty]
         public string DomainNameLabel { get; set; }

@@ -20,19 +20,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public const string ResourceNotFound = "ResourceNotFound";
         public const string ResourceAlreadyPresent = "ResourceAlreadyPresent";
 
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

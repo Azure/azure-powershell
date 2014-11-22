@@ -24,6 +24,19 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     [Cmdlet(VerbsCommon.New, VirtualNetworkCmdletName)]
     public class NewVirtualNetworkCmdlet : VirtualNetworkBaseClient
     {
+        [Alias("ResourceName")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceGroupName { get; set; }
+
         [Parameter(
          Mandatory = true,
          HelpMessage = "location.")]

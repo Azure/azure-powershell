@@ -24,34 +24,25 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     public class SetNetworkInterfaceCmdlet : NetworkInterfaceBaseClient
     {
         [Parameter(
-            DontShow = true)]
-        public override string Name { get; set; }
-
-        [Parameter(
-           DontShow = true)]
-        public override string ResourceGroupName { get; set; }
-
-        [Parameter(
                     Mandatory = true,
-                    ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The NetworkInterface")]
-        public PSNetworkInterface PsNetworkInterface { get; set; }
+        public PSNetworkInterface NetworkInterface { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            if (!this.IsNetworkInterfacePresent(this.PsNetworkInterface.ResourceGroupName, this.PsNetworkInterface.Name))
+            if (!this.IsNetworkInterfacePresent(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name))
             {
                 throw new ArgumentException(ResourceNotFound);
             }
 
             // Map to the sdk object
-            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterfaceCreateOrUpdateParameters>(this.PsNetworkInterface);
+            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterfaceCreateOrUpdateParameters>(this.NetworkInterface);
 
-            this.NetworkInterfaceClient.CreateOrUpdate(this.PsNetworkInterface.ResourceGroupName, this.PsNetworkInterface.Name, networkInterfaceModel);
+            this.NetworkInterfaceClient.CreateOrUpdate(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name, networkInterfaceModel);
 
-            var getNetworkInterface = this.GetNetworkInterface(this.PsNetworkInterface.ResourceGroupName, this.PsNetworkInterface.Name);
+            var getNetworkInterface = this.GetNetworkInterface(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name);
             WriteObject(getNetworkInterface);
         }
     }
