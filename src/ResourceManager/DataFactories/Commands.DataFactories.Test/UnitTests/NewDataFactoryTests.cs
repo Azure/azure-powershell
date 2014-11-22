@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Management.DataFactories.Models;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
@@ -52,7 +53,8 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
             DataFactory expected = new DataFactory()
             {
                 Name = DataFactoryName,
-                Location = Location
+                Location = Location,
+                Properties = new DataFactoryProperties() { ProvisioningState = "Succeeded" }
             };
 
             dataFactoriesClientMock.Setup(
@@ -87,6 +89,42 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                                 df.DataFactoryName == expected.Name && 
                                 df.Location == expected.Location)),
                 Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanThrowIfDataFactoryProvisioningFailed()
+        {
+            // Arrange
+            DataFactory expected = new DataFactory()
+            {
+                Name = DataFactoryName,
+                Location = Location,
+                Properties = new DataFactoryProperties() { ProvisioningState = "Failed" }
+            };
+
+            dataFactoriesClientMock.Setup(
+                f =>
+                    f.CreatePSDataFactory(
+                        It.Is<CreatePSDataFactoryParameters>(
+                            parameters =>
+                                parameters.ResourceGroupName == ResourceGroupName &&
+                                parameters.DataFactoryName == DataFactoryName &&
+                                parameters.Location == Location)))
+                .CallBase()
+                .Verifiable();
+
+            dataFactoriesClientMock.Setup(
+                f => f.CreateOrUpdateDataFactory(ResourceGroupName, DataFactoryName, Location, tags))
+                .Returns(expected)
+                .Verifiable();
+
+            // Action
+            cmdlet.Tags = tags.ToHashtable();
+            cmdlet.Force = true;
+
+            // Assert
+            Assert.Throws<ProvisioningFailedException>(() => cmdlet.ExecuteCmdlet());
         }
     }
 }

@@ -45,6 +45,18 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             Communicator = new EndpointsCommunicator(subscription);
             IgnoreStorage = false;
         }
+
+        /// <summary>
+        /// Returns the storage account name of the given database server
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resouce group to which the server belongs</param>
+        /// <param name="serverName">The server's name</param>
+        /// <param name="requestId">The Id to use in the request</param>
+        /// <returns>The name of the storage accunt, null if it doesn't exist</returns>
+        public string GetServerStorageAccount(string resourceGroupName, string serverName, string requestId)
+        {
+            return Communicator.GetServerSecurityPolicy(resourceGroupName, serverName, requestId).Properties.StorageAccountName;
+        }
         
         public AuditingPolicy GetDatabaseAuditingPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
         {
@@ -71,11 +83,21 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             DatabaseSecurityPolicyProperties properties = policy.Properties;
             wrapper.UseServerDefault = properties.UseServerDefault;
             wrapper.IsEnabled = properties.IsAuditingEnabled;
-            wrapper.StorageAccountName = properties.StorageAccountName;
+            wrapper.DirectAccessEnabled = !properties.IsBlockDirectAccessEnabled;
+            addStorageInfoToWrapperFromPolicy(wrapper, properties);
             AddEventTypesToWrapperFromPolicy(wrapper, properties);
             AddConnectionStringsToWrapperFromPolicy(wrapper, properties);
             this.FetchedProperties = properties;           
             return wrapper;
+        }
+
+        private void addStorageInfoToWrapperFromPolicy(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
+        {
+            wrapper.StorageAccountName = properties.StorageAccountName;
+            if (properties.StorageAccountKey != null) 
+                wrapper.StorageKeyType = Constants.StorageKeyTypes.Primary; // TODO - until we have in prodcution the secondary field - handle as alway primary
+            if (properties.SecondaryStorageAccountKey != null) 
+                wrapper.StorageKeyType = Constants.StorageKeyTypes.Secondary;
         }
 
         private void AddConnectionStringsToWrapperFromPolicy(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
@@ -122,8 +144,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             properties.RetentionDays = 90;
             properties.IsAuditingEnabled = policy.IsEnabled;
             properties.UseServerDefault = policy.UseServerDefault;
+            properties.IsBlockDirectAccessEnabled = !policy.DirectAccessEnabled;
             UpdateEventTypes(policy, properties);
-            UpdateStorage(policy.StorageAccountName, properties);
+            UpdateStorage(policy, properties);
             return updateParameters;
         }
 
@@ -164,8 +187,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// <summary>
         /// Updates the storage properties of the policy that this object operates on
         /// </summary>
-        private void UpdateStorage(string storageAccountName, DatabaseSecurityPolicyProperties properties)
+        private void UpdateStorage(AuditingPolicy policy, DatabaseSecurityPolicyProperties properties)
         {
+            string storageAccountName = policy.StorageAccountName;
             if (storageAccountName != null)
                 properties.StorageAccountName = storageAccountName;
 
@@ -191,8 +215,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             if (!IgnoreStorage)
             {
                 // storage keys are not sent when fetching the policy, so if they are needed, they should be fetched 
-                Dictionary<Constants.StorageKeyTypes, string> keys = Communicator.GetStorageKeys(properties.StorageAccountName);
-                properties.StorageAccountKey = keys[Constants.StorageKeyTypes.Primary];
+                Dictionary<Constants.StorageKeyTypes, string> keys = Communicator.GetStorageKeys(properties.StorageAccountResourceGroupName, properties.StorageAccountName);
+                if (policy.StorageKeyType == Constants.StorageKeyTypes.Primary)
+                    properties.StorageAccountKey = keys[Constants.StorageKeyTypes.Primary];
+                else
+                    properties.SecondaryStorageAccountKey = keys[Constants.StorageKeyTypes.Secondary];
             }
         }
 

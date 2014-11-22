@@ -22,7 +22,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.Pipeline), OutputType(typeof(PSPipeline))]
+    [Cmdlet(VerbsCommon.New, Constants.Pipeline, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSPipeline))]
 
     public class NewAzureDataFactoryPipelineCommand : DataFactoryBaseCmdlet
     {

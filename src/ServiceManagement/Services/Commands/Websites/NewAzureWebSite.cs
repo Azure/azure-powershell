@@ -382,15 +382,8 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                 {
                     createdWebsite = WebsitesClient.GetWebsite(website.Name);
 
-                    // Make sure that the website is in Standard mode
-                    if (createdWebsite.Sku == SkuOptions.Standard)
-                    {
-                        WebsitesClient.CreateWebsite(webspace.Name, website, Slot);
-                    }
-                    else
-                    {
-                        throw new Exception("Can not create slot in a website not in Standard mode");
-                    }
+                    // API makes sure site is in Standard mode
+                    WebsitesClient.CreateWebsite(createdWebsite.WebSpace, website, Slot);
                 }
                 else
                 {

@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ManagedCache.Models;
-
 namespace Microsoft.Azure.Commands.ManagedCache.Models
 {
+    using Microsoft.Azure.Management.ManagedCache.Models;
+
     public class PSCacheService
     {
         public PSCacheService(CloudServiceResource resource)

@@ -14,7 +14,6 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
-using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
@@ -22,10 +21,10 @@ using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.DeploymentEntities;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Moq;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
-    
     public class EnableAzureWebsiteApplicationDiagnosticTests : WebsitesTestBase
     {
         private const string websiteName = "website1";
@@ -83,7 +82,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         {
             // Setup
             string storageName = "MyStorage";
+            string tableName = "MyTable";
             properties[DiagnosticProperties.StorageAccountName] = storageName;
+            properties[DiagnosticProperties.StorageTableName] = tableName.ToLowerInvariant();
             websitesClientMock.Setup(f => f.EnableApplicationDiagnostic(
                 websiteName,
                 WebsiteDiagnosticOutput.StorageTable,
@@ -94,9 +95,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = websiteName,
                 WebsitesClient = websitesClientMock.Object,
-                Storage = true,
+                TableStorage = true,
                 LogLevel = LogEntryType.Information,
-                StorageAccountName = storageName
+                StorageAccountName = storageName,
+                StorageTableName = tableName
             };
 
             AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
@@ -118,7 +120,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         {
             // Setup
             string storageName = "MyStorage";
+            string tableName = "MyTable";
             properties[DiagnosticProperties.StorageAccountName] = storageName;
+            properties[DiagnosticProperties.StorageTableName] = tableName.ToLowerInvariant();
             websitesClientMock.Setup(f => f.EnableApplicationDiagnostic(
                 websiteName,
                 WebsiteDiagnosticOutput.StorageTable,
@@ -129,8 +133,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = websiteName,
                 WebsitesClient = websitesClientMock.Object,
-                Storage = true,
+                TableStorage = true,
                 LogLevel = LogEntryType.Information,
+                StorageTableName = tableName
             };
 
             AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
@@ -143,6 +148,82 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
                 websiteName,
                 WebsiteDiagnosticOutput.StorageTable,
+                properties, null), Times.Once());
+
+            commandRuntimeMock.Verify(f => f.WriteObject(true), Times.Never());
+        }
+
+        [Fact]
+        public void EnableAzureWebsiteApplicationDiagnosticApplicationBlobLog()
+        {
+            // Setup
+            string storageName = "MyStorage";
+            string blobContainerName = "MyBlobContainer";
+            properties[DiagnosticProperties.StorageAccountName] = storageName;
+            properties[DiagnosticProperties.StorageBlobContainerName] = blobContainerName.ToLowerInvariant();
+            websitesClientMock.Setup(f => f.EnableApplicationDiagnostic(
+                websiteName,
+                WebsiteDiagnosticOutput.StorageBlob,
+                properties, null));
+
+            enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = websiteName,
+                WebsitesClient = websitesClientMock.Object,
+                BlobStorage = true,
+                LogLevel = LogEntryType.Information,
+                StorageAccountName = storageName,
+                StorageBlobContainerName = blobContainerName
+            };
+
+            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
+
+            // Test
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+
+            // Assert
+            websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
+                websiteName,
+                WebsiteDiagnosticOutput.StorageBlob,
+                properties, null), Times.Once());
+
+            commandRuntimeMock.Verify(f => f.WriteObject(true), Times.Never());
+        }
+
+        [Fact]
+        public void EnableAzureWebsiteApplicationDiagnosticApplicationBlobLogUseCurrentStorageAccount()
+        {
+            // Setup
+            string storageName = "MyStorage";
+            string blobContainerName = "MyBlobContainer";
+            properties[DiagnosticProperties.StorageAccountName] = storageName;
+            properties[DiagnosticProperties.StorageBlobContainerName] = blobContainerName.ToLowerInvariant();
+            websitesClientMock.Setup(f => f.EnableApplicationDiagnostic(
+                websiteName,
+                WebsiteDiagnosticOutput.StorageBlob,
+                properties, null));
+
+            enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = websiteName,
+                WebsitesClient = websitesClientMock.Object,
+                BlobStorage = true,
+                LogLevel = LogEntryType.Information,
+                StorageBlobContainerName = blobContainerName
+            };
+
+            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
+            AzureSession.CurrentContext.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
+
+            // Test
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+
+            // Assert
+            websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
+                websiteName,
+                WebsiteDiagnosticOutput.StorageBlob,
                 properties, null), Times.Once());
 
             commandRuntimeMock.Verify(f => f.WriteObject(true), Times.Never());

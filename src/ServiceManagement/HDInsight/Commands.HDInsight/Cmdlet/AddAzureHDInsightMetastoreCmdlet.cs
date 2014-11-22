@@ -61,6 +61,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 this.command.Config.ClusterSizeInNodes = value.ClusterSizeInNodes;
                 this.command.Config.DefaultStorageAccount = value.DefaultStorageAccount;
                 this.command.Config.AdditionalStorageAccounts.AddRange(value.AdditionalStorageAccounts);
+                this.command.Config.ConfigActions.AddRange(value.ConfigActions);
                 if (value.HiveMetastore.IsNotNull())
                 {
                     this.command.Config.HiveMetastore = value.HiveMetastore;

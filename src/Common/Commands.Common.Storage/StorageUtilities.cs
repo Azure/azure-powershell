@@ -3,6 +3,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
@@ -40,6 +42,38 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                 queueEndpoint,
                 tableEndpoint,
                 fileEndpoint);
+        }
+
+        public static string GenerateTableStorageSasUrl(string connectionString, string tableName, DateTime expiryTime, SharedAccessTablePermissions permissions)
+        {
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
+            CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+            CloudTable tableReference = tableClient.GetTableReference(tableName);
+            tableReference.CreateIfNotExists();
+            var sasToken = tableReference.GetSharedAccessSignature(
+                new SharedAccessTablePolicy()
+                {
+                    SharedAccessExpiryTime = expiryTime,
+                    Permissions = permissions
+                });
+
+            return tableReference.Uri + sasToken;
+        }
+
+        public static string GenerateBlobStorageSasUrl(string connectionString, string blobContainerName, DateTime expiryTime, SharedAccessBlobPermissions permissions)
+        {
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer blobContainer = blobClient.GetContainerReference(blobContainerName);
+            blobContainer.CreateIfNotExists();
+            var sasToken = blobContainer.GetSharedAccessSignature(
+                new SharedAccessBlobPolicy()
+                {
+                    SharedAccessExpiryTime = expiryTime,
+                    Permissions = permissions
+                });
+
+            return blobContainer.Uri + sasToken;
         }
     }
 }

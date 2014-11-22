@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Get, Constants.Table), OutputType(typeof(List<PSTable>), typeof(PSTable))]
+    [Cmdlet(VerbsCommon.Get, Constants.Table, DefaultParameterSetName = ByFactoryName), OutputType(typeof(List<PSTable>), typeof(PSTable))]
     public class GetAzureDataFactoryTableCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

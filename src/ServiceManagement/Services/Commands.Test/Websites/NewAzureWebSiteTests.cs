@@ -149,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
 
 
             clientMock.Setup(f => f.WebsiteExists(websiteName)).Returns(true);
-            clientMock.Setup(f => f.GetWebsite(websiteName)).Returns(new Site() { Name = websiteName, Sku = SkuOptions.Standard });
+            clientMock.Setup(f => f.GetWebsite(websiteName)).Returns(new Site() { Name = websiteName, Sku = SkuOptions.Standard, WebSpace = webspaceName });
 
             // Test
             MockCommandRuntime mockRuntime = new MockCommandRuntime();

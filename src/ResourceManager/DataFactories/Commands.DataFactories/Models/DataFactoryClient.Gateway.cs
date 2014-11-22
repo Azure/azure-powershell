@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.Azure.Management.DataFactories;
 
@@ -33,7 +34,15 @@ namespace Microsoft.Azure.Commands.DataFactories
             var response = DataPipelineManagementClient.Gateways.CreateOrUpdate(
                 resourceGroupName, dataFactoryName, new GatewayCreateOrUpdateParameters { Gateway = gateway.ToGatewayDefinition() });
 
-            return new PSDataFactoryGateway(response.Gateway);
+            Gateway createdGateway = response.Gateway;
+            if (createdGateway.Properties != null &&
+                !DataFactoryCommonUtilities.IsSucceededProvisioningState(createdGateway.Properties.ProvisioningState))
+            {
+                // ToDo: service side should set the error message for provisioning failures.
+                throw new ProvisioningFailedException(Resources.GatewayProvisioningFailed);
+            }
+
+            return new PSDataFactoryGateway(createdGateway);
         }
 
         public virtual PSDataFactoryGateway PatchGateway(string resourceGroupName, string dataFactoryName, PSDataFactoryGateway gateway)

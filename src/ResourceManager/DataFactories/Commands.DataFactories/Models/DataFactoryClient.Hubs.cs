@@ -94,6 +94,12 @@ namespace Microsoft.Azure.Commands.DataFactories
                     createHub);
             }
 
+            if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(hub.ProvisioningState))
+            {
+                // ToDo: service side should set the error message for provisioning failures.
+                throw new ProvisioningFailedException(Resources.HubProvisioningFailed);
+            }
+
             return hub;
         }
 

@@ -1900,18 +1900,18 @@ namespace Microsoft.Azure.Management.ManagedCache
                                 
                                 if (namedCachesItem.ExpirationSettingsSection != null)
                                 {
-                                    XElement expirationSettingsSectionElement = new XElement(XName.Get("ExpirationSettingsSection", ""));
-                                    namedCacheElement.Add(expirationSettingsSectionElement);
+                                    XElement expirationSettingsElement = new XElement(XName.Get("ExpirationSettings", ""));
+                                    namedCacheElement.Add(expirationSettingsElement);
                                     
                                     XElement timeToLiveInMinutesElement = new XElement(XName.Get("TimeToLiveInMinutes", ""));
                                     timeToLiveInMinutesElement.Value = namedCachesItem.ExpirationSettingsSection.TimeToLiveInMinutes.ToString();
-                                    expirationSettingsSectionElement.Add(timeToLiveInMinutesElement);
+                                    expirationSettingsElement.Add(timeToLiveInMinutesElement);
                                     
                                     if (namedCachesItem.ExpirationSettingsSection.Type != null)
                                     {
                                         XElement typeElement2 = new XElement(XName.Get("Type", ""));
                                         typeElement2.Value = namedCachesItem.ExpirationSettingsSection.Type;
-                                        expirationSettingsSectionElement.Add(typeElement2);
+                                        expirationSettingsElement.Add(typeElement2);
                                     }
                                 }
                             }
@@ -1988,18 +1988,18 @@ namespace Microsoft.Azure.Management.ManagedCache
                                 
                                 if (namedCachesItem2.ExpirationSettingsSection != null)
                                 {
-                                    XElement expirationSettingsSectionElement2 = new XElement(XName.Get("ExpirationSettingsSection", ""));
-                                    namedCacheElement2.Add(expirationSettingsSectionElement2);
+                                    XElement expirationSettingsElement2 = new XElement(XName.Get("ExpirationSettings", ""));
+                                    namedCacheElement2.Add(expirationSettingsElement2);
                                     
                                     XElement timeToLiveInMinutesElement2 = new XElement(XName.Get("TimeToLiveInMinutes", ""));
                                     timeToLiveInMinutesElement2.Value = namedCachesItem2.ExpirationSettingsSection.TimeToLiveInMinutes.ToString();
-                                    expirationSettingsSectionElement2.Add(timeToLiveInMinutesElement2);
+                                    expirationSettingsElement2.Add(timeToLiveInMinutesElement2);
                                     
                                     if (namedCachesItem2.ExpirationSettingsSection.Type != null)
                                     {
                                         XElement typeElement3 = new XElement(XName.Get("Type", ""));
                                         typeElement3.Value = namedCachesItem2.ExpirationSettingsSection.Type;
-                                        expirationSettingsSectionElement2.Add(typeElement3);
+                                        expirationSettingsElement2.Add(typeElement3);
                                     }
                                 }
                             }
@@ -3700,24 +3700,24 @@ namespace Microsoft.Azure.Management.ManagedCache
                                                     namedCacheInstance.EvictionPolicy = evictionPolicyInstance;
                                                 }
                                                 
-                                                XElement expirationSettingsSectionElement = namedCachesElement.Element(XName.Get("ExpirationSettingsSection", ""));
-                                                if (expirationSettingsSectionElement != null)
+                                                XElement expirationSettingsElement = namedCachesElement.Element(XName.Get("ExpirationSettings", ""));
+                                                if (expirationSettingsElement != null)
                                                 {
-                                                    IntrinsicSettings.CacheServiceInput.NamedCache.ExpirationSettings expirationSettingsSectionInstance = new IntrinsicSettings.CacheServiceInput.NamedCache.ExpirationSettings();
-                                                    namedCacheInstance.ExpirationSettingsSection = expirationSettingsSectionInstance;
+                                                    IntrinsicSettings.CacheServiceInput.NamedCache.ExpirationSettings expirationSettingsInstance = new IntrinsicSettings.CacheServiceInput.NamedCache.ExpirationSettings();
+                                                    namedCacheInstance.ExpirationSettingsSection = expirationSettingsInstance;
                                                     
-                                                    XElement timeToLiveInMinutesElement = expirationSettingsSectionElement.Element(XName.Get("TimeToLiveInMinutes", ""));
+                                                    XElement timeToLiveInMinutesElement = expirationSettingsElement.Element(XName.Get("TimeToLiveInMinutes", ""));
                                                     if (timeToLiveInMinutesElement != null)
                                                     {
                                                         int timeToLiveInMinutesInstance = int.Parse(timeToLiveInMinutesElement.Value, CultureInfo.InvariantCulture);
-                                                        expirationSettingsSectionInstance.TimeToLiveInMinutes = timeToLiveInMinutesInstance;
+                                                        expirationSettingsInstance.TimeToLiveInMinutes = timeToLiveInMinutesInstance;
                                                     }
                                                     
-                                                    XElement typeElement2 = expirationSettingsSectionElement.Element(XName.Get("Type", ""));
+                                                    XElement typeElement2 = expirationSettingsElement.Element(XName.Get("Type", ""));
                                                     if (typeElement2 != null)
                                                     {
                                                         string typeInstance2 = typeElement2.Value;
-                                                        expirationSettingsSectionInstance.Type = typeInstance2;
+                                                        expirationSettingsInstance.Type = typeInstance2;
                                                     }
                                                 }
                                             }
@@ -4073,24 +4073,24 @@ namespace Microsoft.Azure.Management.ManagedCache
                                                         namedCacheInstance.EvictionPolicy = evictionPolicyInstance;
                                                     }
                                                     
-                                                    XElement expirationSettingsSectionElement = namedCachesElement.Element(XName.Get("ExpirationSettingsSection", ""));
-                                                    if (expirationSettingsSectionElement != null)
+                                                    XElement expirationSettingsElement = namedCachesElement.Element(XName.Get("ExpirationSettings", ""));
+                                                    if (expirationSettingsElement != null)
                                                     {
-                                                        IntrinsicSettings.CacheServiceInput.NamedCache.ExpirationSettings expirationSettingsSectionInstance = new IntrinsicSettings.CacheServiceInput.NamedCache.ExpirationSettings();
-                                                        namedCacheInstance.ExpirationSettingsSection = expirationSettingsSectionInstance;
+                                                        IntrinsicSettings.CacheServiceInput.NamedCache.ExpirationSettings expirationSettingsInstance = new IntrinsicSettings.CacheServiceInput.NamedCache.ExpirationSettings();
+                                                        namedCacheInstance.ExpirationSettingsSection = expirationSettingsInstance;
                                                         
-                                                        XElement timeToLiveInMinutesElement = expirationSettingsSectionElement.Element(XName.Get("TimeToLiveInMinutes", ""));
+                                                        XElement timeToLiveInMinutesElement = expirationSettingsElement.Element(XName.Get("TimeToLiveInMinutes", ""));
                                                         if (timeToLiveInMinutesElement != null)
                                                         {
                                                             int timeToLiveInMinutesInstance = int.Parse(timeToLiveInMinutesElement.Value, CultureInfo.InvariantCulture);
-                                                            expirationSettingsSectionInstance.TimeToLiveInMinutes = timeToLiveInMinutesInstance;
+                                                            expirationSettingsInstance.TimeToLiveInMinutes = timeToLiveInMinutesInstance;
                                                         }
                                                         
-                                                        XElement typeElement2 = expirationSettingsSectionElement.Element(XName.Get("Type", ""));
+                                                        XElement typeElement2 = expirationSettingsElement.Element(XName.Get("Type", ""));
                                                         if (typeElement2 != null)
                                                         {
                                                             string typeInstance2 = typeElement2.Value;
-                                                            expirationSettingsSectionInstance.Type = typeInstance2;
+                                                            expirationSettingsInstance.Type = typeInstance2;
                                                         }
                                                     }
                                                 }

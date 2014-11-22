@@ -28,6 +28,7 @@ using Microsoft.Build.Logging;
 using Microsoft.Web.Deployment;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
@@ -37,6 +38,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebJobs;
 using Microsoft.WindowsAzure.Commands.Websites.WebJobs;
 using Microsoft.WindowsAzure.Management.WebSites;
 using Microsoft.WindowsAzure.Management.WebSites.Models;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.Table;
 using Microsoft.WindowsAzure.WebSitesExtensions;
 using Microsoft.WindowsAzure.WebSitesExtensions.Models;
 using Newtonsoft.Json.Linq;
@@ -44,7 +47,6 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 {
     using Utilities = Services.WebEntities;
-
 
     public class WebsitesClient : IWebsitesClient
     {
@@ -156,15 +158,45 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                         diagnosticsSettings.AzureTableTraceEnabled = setFlag;
                         if (setFlag)
                         {
-                            const string storageTableName = "CLOUD_STORAGE_ACCOUNT";
                             string storageAccountName = (string)properties[DiagnosticProperties.StorageAccountName];
-                            string connectionString = cloudServiceClient.GetStorageServiceConnectionString(
-                                storageAccountName);
-                            SetConnectionString(website.Name, storageTableName, connectionString, Utilities.DatabaseType.Custom);
+                            string storageTableName = (string)properties[DiagnosticProperties.StorageTableName];
+                            string connectionString = cloudServiceClient.GetStorageServiceConnectionString(storageAccountName);
+
+                            string tableStorageSasUrl =
+                                StorageUtilities.GenerateTableStorageSasUrl(
+                                    connectionString,
+                                    storageTableName,
+                                    DateTime.Now.AddYears(1000),
+                                    SharedAccessTablePermissions.Add | SharedAccessTablePermissions.Query | SharedAccessTablePermissions.Delete | SharedAccessTablePermissions.Update);
+
+                            SetAppSetting(name, "DIAGNOSTICS_AZURETABLESASURL", tableStorageSasUrl);
 
                             diagnosticsSettings.AzureTableTraceLevel = setFlag ?
                                 (Services.DeploymentEntities.LogEntryType)properties[DiagnosticProperties.LogLevel] :
                                 diagnosticsSettings.AzureTableTraceLevel;
+                        }
+                        break;
+
+                    case WebsiteDiagnosticOutput.StorageBlob:
+                        diagnosticsSettings.AzureBlobTraceEnabled = setFlag;
+                        if (setFlag)
+                        {
+                            string storageAccountName = (string)properties[DiagnosticProperties.StorageAccountName];
+                            string storageBlobContainerName = (string)properties[DiagnosticProperties.StorageBlobContainerName];
+                            string connectionString = cloudServiceClient.GetStorageServiceConnectionString(storageAccountName);
+
+                            string blobStorageSasUrl =
+                                StorageUtilities.GenerateBlobStorageSasUrl(
+                                    connectionString,
+                                    storageBlobContainerName,
+                                    DateTime.Now.AddYears(1000),
+                                    SharedAccessBlobPermissions.Delete | SharedAccessBlobPermissions.List | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Write);
+
+                            SetAppSetting(name, "DIAGNOSTICS_AZUREBLOBCONTAINERSASURL", blobStorageSasUrl);
+
+                            diagnosticsSettings.AzureBlobTraceLevel = setFlag ?
+                                (Services.DeploymentEntities.LogEntryType)properties[DiagnosticProperties.LogLevel] :
+                                diagnosticsSettings.AzureBlobTraceLevel;
                         }
                         break;
 
@@ -175,12 +207,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 // Check if there is null fields for diagnostics settings. If there is, default to false. (Same as defaulted on portal)
                 diagnosticsSettings.AzureDriveTraceEnabled = diagnosticsSettings.AzureDriveTraceEnabled ?? false;
                 diagnosticsSettings.AzureTableTraceEnabled = diagnosticsSettings.AzureTableTraceEnabled ?? false;
+                diagnosticsSettings.AzureBlobTraceEnabled = diagnosticsSettings.AzureBlobTraceEnabled ?? false;
 
                 JObject json = new JObject(
                     new JProperty(UriElements.AzureDriveTraceEnabled, diagnosticsSettings.AzureDriveTraceEnabled),
                     new JProperty(UriElements.AzureDriveTraceLevel, diagnosticsSettings.AzureDriveTraceLevel.ToString()),
                     new JProperty(UriElements.AzureTableTraceEnabled, diagnosticsSettings.AzureTableTraceEnabled),
-                    new JProperty(UriElements.AzureTableTraceLevel, diagnosticsSettings.AzureTableTraceLevel.ToString()));
+                    new JProperty(UriElements.AzureTableTraceLevel, diagnosticsSettings.AzureTableTraceLevel.ToString()),
+                    new JProperty(UriElements.AzureBlobTraceEnabled, diagnosticsSettings.AzureBlobTraceEnabled),
+                    new JProperty(UriElements.AzureBlobTraceLevel, diagnosticsSettings.AzureBlobTraceLevel.ToString()));
                 client.PostJson(UriElements.DiagnosticsSettings, json, Logger);
             }
         }
@@ -783,7 +818,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
             Utilities.Site website = GetWebsite(name);
             var update = WebsiteManagementClient.WebSites.GetConfiguration(website.WebSpace, website.Name).ToUpdate();
 
-            update.AppSettings[name] = key;
+            update.AppSettings[key] = value;
 
             WebsiteManagementClient.WebSites.UpdateConfiguration(website.WebSpace, website.Name, update);
         }
@@ -946,7 +981,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 .Users.Select(u => u.Name).Where(n => !string.IsNullOrEmpty(n)).ToList();
         }
 
-
         /// <summary>
         /// Get a list of historic metrics for the site.
         /// </summary>
@@ -957,7 +991,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="endTime">End date of the requested period</param>
         /// <param name="timeGrain">Time grains for the metrics.</param>
         /// <param name="instanceDetails">Include details for the server instances in which the site is running.</param>
-        /// <param name="slotView">Represent the metrics for the hostnames that receive the traffic at the current slot. 
+        /// <param name="slotView">Represent the metrics for the hostnames that receive the traffic at the current slot.
         /// If swap occured in the middle of the period mereics will be merged</param>
         /// <returns>The list of site metrics for the specified period.</returns>
         public IList<Utilities.MetricResponse> GetHistoricalUsageMetrics(string siteName, string slot, IList<string> metricNames,
@@ -1176,15 +1210,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="slot">The name of the slot.</param>
         /// <param name="package">The WebDeploy package.</param>
         /// <param name="connectionStrings">The connection strings to overwrite the ones in the Web.config file.</param>
-        public void PublishWebProject(string websiteName, string slot, string package, Hashtable connectionStrings)
+        /// <param name="skipAppData">Skip app data</param>
+        /// <param name="doNotDelete">Do not delete files at destination</param>
+        public void PublishWebProject(string websiteName, string slot, string package, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
         {
             if (File.GetAttributes(package).HasFlag(FileAttributes.Directory))
             {
-                PublishWebProjectFromPackagePath(websiteName, slot, package, connectionStrings);
+                PublishWebProjectFromPackagePath(websiteName, slot, package, connectionStrings, skipAppData, doNotDelete);
             }
             else
             {
-                PublishWebProjectFromPackageFile(websiteName, slot, package, connectionStrings);
+                PublishWebProjectFromPackageFile(websiteName, slot, package, connectionStrings, skipAppData, doNotDelete);
             }
         }
 
@@ -1195,10 +1231,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="slot">The name of the slot.</param>
         /// <param name="package">The WebDeploy package zip file.</param>
         /// <param name="connectionStrings">The connection strings to overwrite the ones in the Web.config file.</param>
-        private void PublishWebProjectFromPackageFile(string websiteName, string slot, string package, Hashtable connectionStrings)
+        /// <param name="skipAppData">Skip app data</param>
+        /// <param name="doNotDelete">Do not delete files at destination</param>
+        private void PublishWebProjectFromPackageFile(string websiteName, string slot, string package, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
         {
             DeploymentBaseOptions remoteBaseOptions = CreateRemoteDeploymentBaseOptions(websiteName, slot);
             DeploymentBaseOptions localBaseOptions = new DeploymentBaseOptions();
+
+            SetWebDeployToSkipAppData(skipAppData, localBaseOptions, remoteBaseOptions);
 
             DeploymentProviderOptions remoteProviderOptions = new DeploymentProviderOptions(DeploymentWellKnownProvider.Auto);
 
@@ -1226,7 +1266,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 // Replace the connection strings in Web.config with the ones user specifies from the cmdlet.
                 ReplaceConnectionStrings(deployment, connectionStrings);
 
-                DeploymentSyncOptions syncOptions = new DeploymentSyncOptions();
+                DeploymentSyncOptions syncOptions = new DeploymentSyncOptions
+                {
+                    DoNotDelete = doNotDelete
+                };
 
                 deployment.SyncTo(remoteProviderOptions, remoteBaseOptions, syncOptions);
             }
@@ -1239,16 +1282,33 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="slot">The name of the slot.</param>
         /// <param name="package">The WebDeploy package zip file.</param>
         /// <param name="connectionStrings">The connection strings to overwrite the ones in the Web.config file.</param>
-        private void PublishWebProjectFromPackagePath(string websiteName, string slot, string package, Hashtable connectionStrings)
+        /// <param name="skipAppData">Skip app data</param>
+        /// <param name="doNotDelete">Do not delete files at destination</param>
+        private void PublishWebProjectFromPackagePath(string websiteName, string slot, string package, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
         {
             DeploymentBaseOptions remoteBaseOptions = CreateRemoteDeploymentBaseOptions(websiteName, slot);
             DeploymentBaseOptions localBaseOptions = new DeploymentBaseOptions();
 
+            SetWebDeployToSkipAppData(skipAppData, localBaseOptions, remoteBaseOptions);
+
             using (var deployment = DeploymentManager.CreateObject(DeploymentWellKnownProvider.ContentPath, package, localBaseOptions))
             {
                 ReplaceConnectionStrings(deployment, connectionStrings);
-                DeploymentSyncOptions syncOptions = new DeploymentSyncOptions();
+                DeploymentSyncOptions syncOptions = new DeploymentSyncOptions
+                {
+                    DoNotDelete = doNotDelete
+                };
                 deployment.SyncTo(DeploymentWellKnownProvider.ContentPath, SetWebsiteNameForWebDeploy(websiteName, slot), remoteBaseOptions, syncOptions);
+            }
+        }
+
+        private static void SetWebDeployToSkipAppData(bool skipAppData, DeploymentBaseOptions localBaseOptions, DeploymentBaseOptions remoteBaseOptions)
+        {
+            if (skipAppData)
+            {
+                var skipAppDataDirective = new DeploymentSkipDirective("skipAppData", @"objectName=dirPath,absolutePath=.*app_data", true);
+                localBaseOptions.SkipDirectives.Add(skipAppDataDirective);
+                remoteBaseOptions.SkipDirectives.Add(skipAppDataDirective);
             }
         }
 
@@ -1667,6 +1727,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                     IncludeInstanceBreakdown = instanceDetails,
                 }).ToMetricResponses();
         }
-        #endregion
+
+        #endregion WebHosting Plans
     }
 }

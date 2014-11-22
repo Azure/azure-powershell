@@ -122,7 +122,7 @@
     <value>..\Resources\Azure.publishsettings;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="CacheRuntimeUrl" xml:space="preserve">
-    <value>http://az413943.vo.msecnd.net/cache/2.4.1.exe</value>
+    <value>http://az413943.vo.msecnd.net/cache/2.5.2.exe</value>
   </data>
   <data name="InvalidProfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\InvalidProfile.PublishSettings;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

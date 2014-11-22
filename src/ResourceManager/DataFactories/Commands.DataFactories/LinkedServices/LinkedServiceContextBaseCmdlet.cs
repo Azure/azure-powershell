@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The linked service name.")]
+        [Alias("LinkedServiceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
     }
