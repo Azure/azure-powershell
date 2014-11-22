@@ -75,6 +75,7 @@ NestedModules = @(
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',
     '.\Batch\Microsoft.Azure.Commands.Batch.dll'
+    '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.dll'
 )
 
 # Functions to export from this module
