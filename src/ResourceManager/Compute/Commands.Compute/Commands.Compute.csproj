@@ -60,6 +60,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.11.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.Management.Compute, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Microsoft.Azure.Management.Compute.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Monitoring">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Monitoring.2.2.0-preview\lib\net40\Microsoft.Azure.Monitoring.dll</HintPath>
@@ -126,10 +130,6 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Compute, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.0.2.0-preview\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.NetworkResourceProvider, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\Microsoft.WindowsAzure.Management.NetworkResourceProvider.dll</HintPath>
@@ -141,7 +141,6 @@
   <ItemGroup>
     <Compile Include="Common\TagsConversionHelper.cs" />
     <Compile Include="Common\ComputeClient.cs" />
-    <Compile Include="Common\ComputeManagementProfile.cs" />
     <Compile Include="StorageAccount\StorageManagementClient.cs" />
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkManagementProfile.cs" />

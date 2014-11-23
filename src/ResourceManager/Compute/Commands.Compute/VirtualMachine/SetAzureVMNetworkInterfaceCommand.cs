@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -42,22 +43,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMNetworkInterfaceName)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMPublicIPAddressName)]
-        [ValidateNotNullOrEmpty]
-        public string PublicIPAddressName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMPublicIPAddressName)]
@@ -74,28 +59,10 @@ namespace Microsoft.Azure.Commands.Compute
                 };
             }
 
-            var items = this.VMProfile.NetworkProfile.NetworkInterfaces.ToList();
-            items.RemoveAll(t => string.Equals(t.Name, this.Name));
-            items.Add(new NetworkInterface
+            this.VMProfile.NetworkProfile.NetworkInterfaces.Add(new NetworkInterface
             {
-                Name = this.Name,
-                Properties = new NetworkInterfaceProperties
-                {
-                    IPConfigurations = new List<IPConfiguration>
-                    {
-                        new IPConfiguration
-                        {
-                            Name = this.PublicIPAddressName,
-                            PublicIPAddress = new PublicIPAddress
-                            {
-                                ReferenceUri = this.PublicIPAddressReferenceUri
-                            }
-                        }
-                    }
-                }
+                Id = this.PublicIPAddressReferenceUri
             });
-
-            this.VMProfile.NetworkProfile.NetworkInterfaces = items;
 
             WriteObject(this.VMProfile);
         }

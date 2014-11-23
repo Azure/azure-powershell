@@ -14,11 +14,11 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using System.Management.Automation;
-using PSM = Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Set, ProfileNouns.VirtualMachine), OutputType(typeof(PSM.VirtualMachine))]
+    [Cmdlet(VerbsCommon.Set, ProfileNouns.VirtualMachine), OutputType(typeof(VirtualMachine))]
     public class SetAzureVMCommand : NewAzureVMCommand
     {
     }

@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -92,7 +93,10 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Caching = CachingType.ReadWrite,
                     Name = this.OSDiskName,
-                    VhdUri = string.IsNullOrEmpty(this.OSDiskVHDUri) ? null : new Uri(this.OSDiskVHDUri)
+                    VhdUri = new VhdUri
+                    {
+                        Uri = string.IsNullOrEmpty(this.OSDiskVHDUri) ? null : new Uri(this.OSDiskVHDUri)
+                    }
                 },
                 DataDisks = null,
                 DestinationVhdsContainer = string.IsNullOrEmpty(this.VHDContainer) ? null : new Uri(this.VHDContainer)

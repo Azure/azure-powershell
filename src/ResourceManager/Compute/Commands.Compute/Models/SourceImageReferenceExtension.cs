@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Compute.Models;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Models

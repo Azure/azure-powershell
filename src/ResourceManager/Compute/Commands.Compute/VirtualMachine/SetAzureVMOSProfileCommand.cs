@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 ComputerName = this.ComputerName,
                 AdminUsername = this.Credential.UserName,
-                AdminPassword = this.Credential.Password
+                AdminPassword = SecureStringExtension.ConvertToUnsecureString(this.Credential.Password)
             };
 
             WriteObject(this.VMProfile);

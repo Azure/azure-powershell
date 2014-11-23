@@ -70,8 +70,6 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            ComputeManagementProfile.Initialize();
         }
     }
 }

@@ -12,14 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Commands.Compute.Models;
-using MCM = Microsoft.Azure.Management.Compute.Models;
-
+using Microsoft.Azure.Management.Compute.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -41,14 +38,12 @@ namespace Microsoft.Azure.Commands.Compute
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var result = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
-                var vm = Mapper.Map<VirtualMachine>(result.VirtualMachine);
-                WriteObject(vm);
+                WriteObject(result);
             }
             else
             {
                 var result = this.VirtualMachineClient.List(this.ResourceGroupName);
-                var vmList = Mapper.Map<List<VirtualMachine>>(result.VirtualMachines);
-                WriteObject(vmList, true);
+                WriteObject(result, true);
             }
         }
     }

@@ -13,19 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure;
-using PSM = Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
     /// Creates a new resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine), OutputType(typeof(PSM.VirtualMachine))]
+    [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine), OutputType(typeof(VirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
 
@@ -42,13 +41,19 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The VM Profile.")]
         [ValidateNotNullOrEmpty]
-        public PSM.PSVirtualMachineProfile VMProfile { get; set; }
+        public PSVirtualMachineProfile VMProfile { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            VirtualMachineProperties vmProps = Mapper.Map<VirtualMachineProperties>(this.VMProfile);
+            VirtualMachineProperties vmProps = new VirtualMachineProperties
+            {
+                HardwareProfile = this.VMProfile.HardwareProfile,
+                StorageProfile = this.VMProfile.StorageProfile,
+                NetworkProfile = this.VMProfile.NetworkProfile,
+                OSProfile = this.VMProfile.OSProfile
+            };
 
             var parameters = new VirtualMachineCreateOrUpdateParameters
             {
@@ -60,7 +65,8 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             };
 
-            this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);
+            var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);
+            WriteObject(op);
         }
     }
 }
