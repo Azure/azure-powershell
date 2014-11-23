@@ -14,7 +14,7 @@
 
 function getimg($query, $loca)
 {
-    $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201408.01-en.us-127GB.vhd';
+    $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201410.01-en.us-127GB.vhd';
     <#
     try
     {
@@ -55,6 +55,7 @@ function Test-VirtualMachine
         $p = New-AzureVMProfile;
 
         # Network
+        <#
         $ipname = 'ip' + $rgname;
         New-AzurePublicIPAddress -Location $loc -AllocationMethod Dynamic -Name $ipname -ResourceGroupName $rgname;
         $publicIP = Get-AzurePublicIPAddress -ResourceGroupName $rgname -Name $ipname;
@@ -68,6 +69,7 @@ function Test-VirtualMachine
         
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id.ToString() $ipRefUri;
+        #>
 
         # NRP
         $subnet = New-SubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DnsServer "10.1.1.1";
