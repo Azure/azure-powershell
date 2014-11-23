@@ -63,13 +63,29 @@ function Test-VirtualMachine
         $publicIPName = $ipname + 'name1';
 
         $p = Set-AzureVMNetworkProfile -VMProfile $p;
-        $p = Set-AzureVMNetworkInterface -VMProfile $p -Name $nicName -PublicIPAddressName $publicIPName -PublicIPAddressReferenceUri $ipRefUri;
+        $p.NetworkProfile.NetworkInterfaces.Clear();
+        $p = Set-AzureVMNetworkInterface -VMProfile $p -PublicIPAddressReferenceUri $ipRefUri;
         
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Name $nicName;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Properties.IPConfigurations.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Properties.IPConfigurations[0].Name $publicIPName;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Properties.IPConfigurations[0].PublicIPAddress.ReferenceUri.ToString() $ipRefUri;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id.ToString() $ipRefUri;
+
+        # NRP
+        $subnet = New-SubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DnsServer "10.1.1.1";
+        $vnet = New-AzureNrpVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureNrpVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Properties.Subnets[0].Id;
+        $pubip = New-AzureNrpPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureNrpPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzureNrpNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureNrpNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Set-AzureVMNetworkProfile -VMProfile $p;
+        $p.NetworkProfile.NetworkInterfaces.Clear();
+        $p = Set-AzureVMNetworkInterface -VMProfile $p -PublicIPAddressReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id.ToString() $nicId;
 
         # Storage
         $stoname = 'sto' + $rgname;
@@ -90,16 +106,16 @@ function Test-VirtualMachine
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching 'ReadWrite';
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VhdUri.ToString() $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.VhdUri.Uri.ToString() $osDiskVhdUri;
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].VhdUri.ToString() $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].VhdUri.Uri.ToString() $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].VhdUri.ToString() $dataDiskVhdUri2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].VhdUri.Uri.ToString() $dataDiskVhdUri2;
 
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
         $p = Set-AzureVMStorageProfile -VMProfile $p -VHDContainer $vhdContainer -SourceImageName $img;
@@ -118,7 +134,7 @@ function Test-VirtualMachine
         
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
-        Assert-AreEqual ([System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($p.OSProfile.AdminPassword))) $password;
+        Assert-AreEqual $p.OSProfile.AdminPassword $password;
 
         # Hardware
         $vmsize = 'Standard_A2';
