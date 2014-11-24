@@ -46,7 +46,7 @@ function Test-VirtualMachine
     try
     {
         # Common
-        $img = getimg "*Windows*" $loc;
+        $img = getimg "*Windows*Server*DataCenter*" $loc;
         $loc = 'East US';
         New-AzureResourceGroup -Name $rgname -Location $loc;
 
