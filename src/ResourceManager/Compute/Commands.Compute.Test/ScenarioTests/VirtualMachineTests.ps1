@@ -46,11 +46,10 @@ function Test-VirtualMachine
     try
     {
         # Common
-        $img = getimg "*Windows*Server*DataCenter*" $loc;
-        $loc = 'East US';
+        $loc = 'West US';
         New-AzureResourceGroup -Name $rgname -Location $loc;
 
-
+        $img = getimg "*Windows*Server*DataCenter*" $loc;
 
         $p = New-AzureVMProfile;
 
@@ -87,7 +86,7 @@ function Test-VirtualMachine
         $p.NetworkProfile.NetworkInterfaces.Clear();
         $p = Set-AzureVMNetworkInterface -VMProfile $p -PublicIPAddressReferenceUri $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id.ToString() $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
 
         # Storage
         $stoname = 'sto' + $rgname;
@@ -108,16 +107,16 @@ function Test-VirtualMachine
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching 'ReadWrite';
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VhdUri.Uri.ToString() $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri.ToString() $osDiskVhdUri;
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].VhdUri.Uri.ToString() $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri.ToString() $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].VhdUri.Uri.ToString() $dataDiskVhdUri2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri.ToString() $dataDiskVhdUri2;
 
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
         $p = Set-AzureVMStorageProfile -VMProfile $p -VHDContainer $vhdContainer -SourceImageName $img;
@@ -150,39 +149,30 @@ function Test-VirtualMachine
         New-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname -VMProfile $p;
 
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
-        $p = $vm1.VMProfile;
         Assert-AreEqual $vm1.Name $vmname;
-        Assert-AreEqual $vm1.Type 'Microsoft.Compute/virtualMachines';
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Name $nicName;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Properties.IPConfigurations.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Properties.IPConfigurations[0].Name $publicIPName;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Properties.IPConfigurations[0].PublicIPAddress.ReferenceUri.ToString() $ipRefUri;
-        Assert-AreEqual $p.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
-        Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
-        Assert-AreEqual $p.OSProfile.AdminUsername $user;
-        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
+        Assert-AreEqual $vm1.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
+        Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
+        Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
 
         Start-AzureVM -Name $vmname -ResourceGroupName $rgname;
         Restart-AzureVM -Name $vmname -ResourceGroupName $rgname;
-        Stop-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        Stop-AzureVM -Name $vmname -ResourceGroupName $rgname -Force;
 
         # Update
         Set-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname -VMProfile $p;
 
         $vm2 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
-        $p = $vm2.VMProfile;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Name $nicName;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Properties.IPConfigurations.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Properties.IPConfigurations[0].Name $publicIPName;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Properties.IPConfigurations[0].PublicIPAddress.ReferenceUri.ToString() $ipRefUri;
-        Assert-AreEqual $p.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
-        Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
-        Assert-AreEqual $p.OSProfile.AdminUsername $user;
-        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm2.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
+        Assert-AreEqual $vm2.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
+        Assert-AreEqual $vm2.OSProfile.AdminUsername $user;
+        Assert-AreEqual $vm2.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $vm2.HardwareProfile.VirtualMachineSize $vmsize;
 
         # Remove
         Remove-AzureVM -Name $vmname -ResourceGroupName $rgname -Force;
