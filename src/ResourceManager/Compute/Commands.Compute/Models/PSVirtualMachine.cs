@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
@@ -105,13 +106,13 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
         }
 
-        public IList<NetworkInterfaceReference> NetworkInterfaces
+        public IList<string> NetworkInterfaces
         {
             get
             {
                 if (this.NetworkProfile != null && this.NetworkProfile.NetworkInterfaces != null)
                 {
-                    return this.NetworkProfile.NetworkInterfaces;
+                    return this.NetworkProfile.NetworkInterfaces.Select(t => t.ReferenceUri).ToList();
                 }
 
                 return null;

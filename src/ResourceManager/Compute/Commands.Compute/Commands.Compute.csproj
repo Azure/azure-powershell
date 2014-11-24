@@ -130,10 +130,6 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.NetworkResourceProvider, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Microsoft.WindowsAzure.Management.NetworkResourceProvider.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Srp">
       <HintPath>..\..\..\lib\Microsoft.WindowsAzure.Management.Srp.dll</HintPath>
     </Reference>
@@ -143,13 +139,9 @@
     <Compile Include="Common\ComputeClient.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="StorageAccount\StorageManagementClient.cs" />
-    <Compile Include="Common\NetworkClient.cs" />
-    <Compile Include="Common\NetworkManagementProfile.cs" />
     <Compile Include="Common\SecureStringExtension.cs" />
     <Compile Include="Models\PSPublicIPAddress.cs" />
     <Compile Include="Models\SourceImageReferenceExtension.cs" />
-    <Compile Include="Network\NetworkBaseCmdlet.cs" />
-    <Compile Include="Network\PublicIPAddressBaseCmdlet.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccountKey.cs" />
     <Compile Include="StorageAccount\NewAzureStorageAccount.cs" />
@@ -164,10 +156,6 @@
     <Compile Include="VirtualMachine\VirtualMachineBaseCmdlet.cs" />
     <Compile Include="Common\ConstantStringTypes.cs" />
     <Compile Include="Models\PSVirtualMachine.cs" />
-    <Compile Include="Network\SetAzurePublicIPAddressCommand.cs" />
-    <Compile Include="Network\GetAzurePublicIPAddressCommand.cs" />
-    <Compile Include="Network\RemoveAzurePublicIPAddressCommand.cs" />
-    <Compile Include="Network\NewAzurePublicIPAddressCommand.cs" />
     <Compile Include="VirtualMachine\Operation\NewAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Action\StartAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Action\StopAzureVMCommand.cs" />
