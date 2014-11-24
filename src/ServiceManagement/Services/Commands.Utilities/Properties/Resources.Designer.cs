@@ -3460,6 +3460,24 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A valid value for Tenant, Secret, Audience and Clientid parameters are required for Http scheduler jobs with ActiveDirectoryOAuth authentication type..
+        /// </summary>
+        public static string SchedulerInvalidAADOAuthRequest {
+            get {
+                return ResourceManager.GetString("SchedulerInvalidAADOAuthRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid value for Username and Password parameters are required for Http scheduler jobs with Basic authentication type..
+        /// </summary>
+        public static string SchedulerInvalidBasicAuthRequest {
+            get {
+                return ResourceManager.GetString("SchedulerInvalidBasicAuthRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A valid value for ClientCertificatePfx and ClientCertificatePassword parameters are required for Http scheduler jobs with ClientCertificate authentication type..
         /// </summary>
         public static string SchedulerInvalidClientCertAuthRequest {
@@ -3478,7 +3496,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For None authentication type, both ClientCertificatePfx and ClientCertificatePassword parameters should be null.
+        ///   Looks up a localized string similar to For None authentication type, all authentication related parameters should be null.
         /// </summary>
         public static string SchedulerInvalidNoneAuthRequest {
             get {
