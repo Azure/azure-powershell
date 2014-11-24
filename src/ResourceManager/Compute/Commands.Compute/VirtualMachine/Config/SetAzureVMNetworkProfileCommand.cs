@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             this.VMProfile.NetworkProfile = new NetworkProfile
             {
-                NetworkInterfaces = new List<NetworkInterface>()
+                NetworkInterfaces = new List<NetworkInterfaceReference>()
             };
 
             WriteObject(this.VMProfile);

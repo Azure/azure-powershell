@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
         }
 
-        public IList<NetworkInterface> NetworkInterfaces
+        public IList<NetworkInterfaceReference> NetworkInterfaces
         {
             get
             {

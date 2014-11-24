@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Caching = CachingType.ReadWrite,
                     Name = this.OSDiskName,
-                    VhdUri = new VhdUri
+                    Vhd = new VirtualHardDisk
                     {
-                        Uri = string.IsNullOrEmpty(this.OSDiskVHDUri) ? null : new Uri(this.OSDiskVHDUri)
+                        Uri = this.OSDiskVHDUri
                     }
                 },
                 DataDisks = null,

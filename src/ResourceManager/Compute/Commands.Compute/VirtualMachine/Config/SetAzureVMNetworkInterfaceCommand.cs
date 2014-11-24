@@ -55,14 +55,15 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 this.VMProfile.NetworkProfile = new NetworkProfile
                 {
-                    NetworkInterfaces = new List<NetworkInterface>()
+                    NetworkInterfaces = new List<NetworkInterfaceReference>()
                 };
             }
 
-            this.VMProfile.NetworkProfile.NetworkInterfaces.Add(new NetworkInterface
-            {
-                Id = this.PublicIPAddressReferenceUri
-            });
+            this.VMProfile.NetworkProfile.NetworkInterfaces.Add(
+                new NetworkInterfaceReference
+                {
+                    ReferenceUri = this.PublicIPAddressReferenceUri
+                });
 
             WriteObject(this.VMProfile);
         }
