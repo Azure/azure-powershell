@@ -141,6 +141,7 @@
   <ItemGroup>
     <Compile Include="Common\TagsConversionHelper.cs" />
     <Compile Include="Common\ComputeClient.cs" />
+    <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="StorageAccount\StorageManagementClient.cs" />
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkManagementProfile.cs" />
@@ -156,34 +157,34 @@
     <Compile Include="StorageAccount\RemoveAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\SetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\StorageAccountBaseCmdlet.cs" />
-    <Compile Include="VirtualMachine\GetAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\SetAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\RestartAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\RemoveAzureVMDataDiskProfileCommand.cs" />
+    <Compile Include="VirtualMachine\Operation\GetAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Operation\SetAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Action\RestartAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskProfileCommand.cs" />
     <Compile Include="VirtualMachine\VirtualMachineBaseCmdlet.cs" />
     <Compile Include="Common\ConstantStringTypes.cs" />
-    <Compile Include="Models\PSVirtualMachineProfile.cs" />
+    <Compile Include="Models\PSVirtualMachine.cs" />
     <Compile Include="Network\SetAzurePublicIPAddressCommand.cs" />
     <Compile Include="Network\GetAzurePublicIPAddressCommand.cs" />
     <Compile Include="Network\RemoveAzurePublicIPAddressCommand.cs" />
     <Compile Include="Network\NewAzurePublicIPAddressCommand.cs" />
-    <Compile Include="VirtualMachine\NewAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\StartAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\StopAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\RemoveAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\NewAzureVMProfileCommand.cs" />
+    <Compile Include="VirtualMachine\Operation\NewAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Action\StartAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Action\StopAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Operation\RemoveAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Config\NewAzureVMProfileCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="VirtualMachine\SetAzureVMHardwareProfileCommand.cs" />
-    <Compile Include="VirtualMachine\SetAzureVMNetworkProfileCommand.cs" />
-    <Compile Include="VirtualMachine\SetAzureVMOSProfileCommand.cs" />
-    <Compile Include="VirtualMachine\AddAzureVMDataDiskProfileCommand.cs" />
-    <Compile Include="VirtualMachine\SetAzureVMNetworkInterfaceCommand.cs" />
-    <Compile Include="VirtualMachine\SetAzureVMStorageProfileCommand.cs" />
+    <Compile Include="VirtualMachine\Config\SetAzureVMHardwareProfileCommand.cs" />
+    <Compile Include="VirtualMachine\Config\SetAzureVMNetworkProfileCommand.cs" />
+    <Compile Include="VirtualMachine\Config\SetAzureVMOSProfileCommand.cs" />
+    <Compile Include="VirtualMachine\Config\AddAzureVMDataDiskProfileCommand.cs" />
+    <Compile Include="VirtualMachine\Config\SetAzureVMNetworkInterfaceCommand.cs" />
+    <Compile Include="VirtualMachine\Config\SetAzureVMStorageProfileCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">

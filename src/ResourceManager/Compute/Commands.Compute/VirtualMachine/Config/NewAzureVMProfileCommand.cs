@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.New,
         ProfileNouns.VirtualMachineProfile),
     OutputType(
-        typeof(PSVirtualMachineProfile))]
+        typeof(PSVirtualMachine))]
     public class NewAzureVMProfileCommand : AzurePSCmdlet
     {
         public override void ExecuteCmdlet()
         {
-            WriteObject(new PSVirtualMachineProfile());
+            WriteObject(new PSVirtualMachine());
         }
     }
 }

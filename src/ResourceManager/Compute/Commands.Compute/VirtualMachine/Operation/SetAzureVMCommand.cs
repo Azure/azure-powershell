@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
-using System.Management.Automation;
 using Microsoft.Azure.Management.Compute.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {

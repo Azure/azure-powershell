@@ -15,16 +15,29 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Commands.Compute.Properties;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine)]
     public class StopAzureVMCommand : VirtualMachineBaseCmdlet
     {
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "To force the stopping.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var op = this.VirtualMachineClient.Stop(this.ResourceGroupName, this.Name);
-            WriteObject(op);
+            base.ExecuteCmdlet();
+
+            if (this.Force.IsPresent
+             || this.ShouldContinue(Resources.VirtualMachineStoppingConfirmation, Resources.VirtualMachineStoppingCaption))
+            {
+                var op = this.VirtualMachineClient.Stop(this.ResourceGroupName, this.Name);
+                WriteObject(op);
+            }
         }
     }
 }

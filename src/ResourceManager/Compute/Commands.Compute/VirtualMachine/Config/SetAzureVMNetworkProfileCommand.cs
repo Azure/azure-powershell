@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.Set,
         ProfileNouns.Network),
     OutputType(
-        typeof(PSVirtualMachineProfile))]
+        typeof(PSVirtualMachine))]
     public class SetAzureVMNetworkProfileCommand : AzurePSCmdlet
     {
         [Parameter(
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMProfile)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachineProfile VMProfile { get; set; }
+        public PSVirtualMachine VMProfile { get; set; }
 
         public override void ExecuteCmdlet()
         {

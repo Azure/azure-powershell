@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.Set,
         ProfileNouns.Storage),
     OutputType(
-        typeof(PSVirtualMachineProfile))]
+        typeof(PSVirtualMachine))]
     public class SetAzureVMStorageProfileCommand : AzurePSCmdlet
     {
         protected const string OSDiskNameParamSet = "OSDiskName";
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMProfile)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachineProfile VMProfile { get; set; }
+        public PSVirtualMachine VMProfile { get; set; }
 
         [Parameter(
             ParameterSetName = SourceImageNameParamSet,

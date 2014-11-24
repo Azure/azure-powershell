@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.Azure.Commands.Compute.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The VM Profile.")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachineProfile VMProfile { get; set; }
+        public PSVirtualMachine VMProfile { get; set; }
 
         public override void ExecuteCmdlet()
         {

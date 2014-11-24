@@ -13,22 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachine)]
-    [OutputType(typeof(VirtualMachine))]
+    [OutputType(typeof(PSVirtualMachine))]
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
     {
-        [Alias("ResourceName")]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The virtual machine name.")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceName", "VMName")]
         public override string Name { get; set; }
 
         public override void ExecuteCmdlet()
@@ -38,12 +37,12 @@ namespace Microsoft.Azure.Commands.Compute
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var result = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
-                WriteObject(result);
+                WriteObject(result.ToPSVirtualMachine(this.ResourceGroupName));
             }
             else
             {
                 var result = this.VirtualMachineClient.List(this.ResourceGroupName);
-                WriteObject(result, true);
+                WriteObject(result.ToPSVirtualMachineList(this.ResourceGroupName), true);
             }
         }
     }
