@@ -353,7 +353,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 }
                 catch (ArgumentException e)
                 {
-                    throw new ArgumentException(e.Message + String.Format(CultureInfo.CurrentCulture, Resources.ValidEnvironmentName, EnvironmentName.AzureCloud, EnvironmentName.AzureChinaCloud)); 
+                    throw new ArgumentException(e.Message + " " + String.Format(CultureInfo.CurrentCulture, Resources.ValidEnvironmentName, EnvironmentName.AzureCloud, EnvironmentName.AzureChinaCloud)); 
                 }
             }
 
