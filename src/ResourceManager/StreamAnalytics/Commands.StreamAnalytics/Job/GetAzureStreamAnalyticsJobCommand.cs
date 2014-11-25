@@ -22,37 +22,32 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
     [Cmdlet(VerbsCommon.Get, Constants.StreamAnalyticsJob), OutputType(typeof(List<PSJob>), typeof(PSJob))]
     public class GetAzureStreamAnalyticsJobCommand : StreamAnalyticsBaseCmdlet
     {
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = StreamAnalyticsObjectsInResourceGroup, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
-        [Parameter(ParameterSetName = StreamAnalyticsObjectsList, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = StreamAnalyticsObjectsInSubscription, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = StreamAnalyticsObjectsInResourceGroup, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The azure stream analytics job name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = SingleStreamAnalyticsObject, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = StreamAnalyticsObjectsInResourceGroup, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The switch to specify whether the job entity should be expanded.")]
-        [Parameter(ParameterSetName = StreamAnalyticsObjectsList, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = StreamAnalyticsObjectsInSubscription, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The switch to specify whether the job entity should be expanded.")]
         public SwitchParameter NoExpand { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == SingleStreamAnalyticsObject)
+            if (ParameterSetName == StreamAnalyticsObjectsInResourceGroup)
             {
                 if (ResourceGroupName != null && string.IsNullOrWhiteSpace(ResourceGroupName))
                 {
                     throw new PSArgumentNullException("ResourceGroupName");
-                }
-
-                if (Name != null && string.IsNullOrWhiteSpace(Name))
-                {
-                    throw new PSArgumentNullException("Name");
                 }
             }
 

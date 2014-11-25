@@ -124,7 +124,7 @@ Timestamp (Utc):{4}</value>
     <value>Failed to parse input JSON file. {0}. Please correct the error in the JSON file and re-deploy {1} again.</value>
   </data>
   <data name="ExtractedNameFromJsonMismatchWarning" xml:space="preserve">
-    <value>{0} name provided using -Name switch: '{1}' in cmdlet doesn't match with {0} name: '{2}' in JSON file. {0} will be created with name: '{1}'</value>
+    <value>{0} name provided using -Name: '{1}' in cmdlet doesn't match with {0} name: '{2}' in JSON file. {0} will be created with name: '{1}'</value>
   </data>
   <data name="JobExists" xml:space="preserve">
     <value>A job with the name {0} in the resource group {1} already exists. 
