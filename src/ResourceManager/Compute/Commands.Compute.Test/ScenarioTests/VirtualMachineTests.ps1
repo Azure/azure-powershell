@@ -53,23 +53,6 @@ function Test-VirtualMachine
 
         $p = New-AzureVMProfile;
 
-        # Network
-        <#
-        $ipname = 'ip' + $rgname;
-        New-AzurePublicIPAddress -Location $loc -AllocationMethod Dynamic -Name $ipname -ResourceGroupName $rgname;
-        $publicIP = Get-AzurePublicIPAddress -ResourceGroupName $rgname -Name $ipname;
-        $ipRefUri = $publicIP.Id;
-        $nicName = $ipname + 'nic1';
-        $publicIPName = $ipname + 'name1';
-
-        $p = Set-AzureVMNetworkProfile -VMProfile $p;
-        $p.NetworkProfile.NetworkInterfaces.Clear();
-        $p = Set-AzureVMNetworkInterface -VMProfile $p -PublicIPAddressReferenceUri $ipRefUri;
-        
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id.ToString() $ipRefUri;
-        #>
-
         # NRP
         $subnet = New-SubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DnsServer "10.1.1.1";
         $vnet = New-AzureNrpVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
@@ -107,16 +90,16 @@ function Test-VirtualMachine
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching 'ReadWrite';
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri.ToString() $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri.ToString() $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri.ToString() $dataDiskVhdUri2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
 
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
         $p = Set-AzureVMStorageProfile -VMProfile $p -VHDContainer $vhdContainer -SourceImageName $img;
