@@ -144,7 +144,6 @@
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="StorageAccount\StorageManagementClient.cs" />
     <Compile Include="Common\SecureStringExtension.cs" />
-    <Compile Include="Models\PSPublicIPAddress.cs" />
     <Compile Include="Models\SourceImageReferenceExtension.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccountKey.cs" />

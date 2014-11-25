@@ -19,15 +19,13 @@ Test Virtual Machines
 function Test-VirtualMachine
 {
     # Setup
-    $rgname = Get-ResourceGroupName
+    $rgname = Get-ComputeTestResourceGroupName
 
     try
     {
         # Common
         $loc = 'West US';
         New-AzureResourceGroup -Name $rgname -Location $loc;
-
-        $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201410.01-en.us-127GB.vhd';
 
         $p = New-AzureVMProfile;
 
@@ -53,6 +51,7 @@ function Test-VirtualMachine
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
         New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Wait-Seconds 300;
 
         $osDiskName = 'osDisk';
         $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
@@ -80,6 +79,7 @@ function Test-VirtualMachine
         Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
 
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+        $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201410.01-en.us-127GB.vhd';
         $p = Set-AzureVMStorageProfile -VMProfile $p -VHDContainer $vhdContainer -SourceImageName $img;
 
         Assert-AreEqual $p.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
@@ -107,8 +107,6 @@ function Test-VirtualMachine
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # Virtual Machine
-        # $avsetid = '/subscriptions/84fffc2f-5d77-449a-bc7f-58c363f2a6b9/resourceGroups/pstestrg1124uw4/providers/Microsoft.Compute/availabilitySets/avset1'
-        # New-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname -VMProfile $p -AvailabilitySetId $avsetid;
         New-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname -VMProfile $p;
 
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
@@ -121,9 +119,13 @@ function Test-VirtualMachine
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
 
+        Wait-Seconds 300;
         Start-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        Wait-Seconds 300;
         Restart-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        Wait-Seconds 300;
         Stop-AzureVM -Name $vmname -ResourceGroupName $rgname -Force;
+        Wait-Seconds 300;
 
         # Update
         Set-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname -VMProfile $p;
@@ -136,12 +138,38 @@ function Test-VirtualMachine
         Assert-AreEqual $vm2.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm2.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm2.HardwareProfile.VirtualMachineSize $vmsize;
+        
+        $vms = Get-AzureVM -ResourceGroupName $rgname;
+        Assert-AreNotEqual $vms $null;
 
-        # Remove
-        Remove-AzureVM -Name $vmname -ResourceGroupName $rgname -Force;
-
+        # Remove All VMs
         Get-AzureVM -ResourceGroupName $rgname | Remove-AzureVM -ResourceGroupName $rgname -Force;
         $vms = Get-AzureVM -ResourceGroupName $rgname;
+        Assert-AreEqual $vms $null;
+
+        # Availability Set
+        $asetName = 'aset' + $rgname;
+        New-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc;
+
+        $asets = Get-AzureAvailabilitySet -ResourceGroupName $rgname;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
+
+        $aset = Get-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        Assert-NotNull $aset;
+        Assert-AreEqual $asetName $aset.Name;
+
+        $asetId = ('/subscriptions/' + (Get-AzureSubscription -Current).SubscriptionId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/availabilitySets/' + $asetName);
+
+        $vmname2 = $vmname + '2'
+        New-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname2 -VMProfile $p -AvailabilitySetId $asetId;
+
+        $vm2 = Get-AzureVM -Name $vmname2 -ResourceGroupName $rgname;
+        Assert-NotNull $vm2;
+        
+        # Remove
+        Remove-AzureVM -Name $vmname2 -ResourceGroupName $rgname -Force;
+
     }
     finally
     {
