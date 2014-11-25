@@ -164,9 +164,6 @@ function Test-VirtualMachine
 
         Get-AzureVM -ResourceGroupName $rgname | Remove-AzureVM -ResourceGroupName $rgname -Force;
         $vms = Get-AzureVM -ResourceGroupName $rgname;
-
-        # Get-AzurePublicIPAddress -ResourceGroupName $rgname | Remove-AzurePublicIPAddress -ResourceGroupName $rgname
-        # Remove-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {

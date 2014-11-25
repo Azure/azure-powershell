@@ -150,6 +150,7 @@
     <Compile Include="ScenarioTests\ComputeTestController.cs" />
     <Compile Include="ScenarioTests\StorageAccountTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineProfileTests.cs" />
+    <Compile Include="ScenarioTests\AvailabilitySetTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineTests.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -204,8 +205,17 @@
     <None Include="ScenarioTests\VirtualMachineProfileTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\AvailabilitySetTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ComputeTestCommon.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\VirtualMachineTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AvailabilitySetTests\TestAvailabilitySet.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StorageAccountTests\TestGetAzureStorageAccount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
