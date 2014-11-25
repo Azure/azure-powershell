@@ -12,28 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function getImage($query, $loca)
-{
-    $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201410.01-en.us-127GB.vhd';
-    <#
-    try
-    {
-        Switch-AzureMode -Name AzureResourceManager;
-        $d = (Get-AzureVMImage | where {$_.ImageName -like $query -and ($_.Location -like "*;$loca;*" -or $_.Location -like "$loca;*" -or $_.Location -like "*;$loca" -or $_.Location -eq "$loca")});
-
-        if ($d -ne $null)
-        {
-            $img = $d[-1].ImageName;
-        }
-    }
-    finally
-    {
-        Switch-AzureMode -Name AzureServiceManagement;
-    }
-    #>
-    return $img;
-}
-
 <#
 .SYNOPSIS
 Test Virtual Machines
@@ -49,20 +27,20 @@ function Test-VirtualMachine
         $loc = 'West US';
         New-AzureResourceGroup -Name $rgname -Location $loc;
 
-        $img = getImage "*Windows*Server*DataCenter*" $loc;
+        $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201410.01-en.us-127GB.vhd';
 
         $p = New-AzureVMProfile;
 
         # NRP
-        $subnet = New-SubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DnsServer "10.1.1.1";
-        $vnet = New-AzureNrpVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
-        $vnet = Get-AzureNrpVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DnsServer "10.1.1.1";
+        $vnet = New-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Properties.Subnets[0].Id;
-        $pubip = New-AzureNrpPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureNrpPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureNrpNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureNrpNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic  -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
         $p = Set-AzureVMNetworkProfile -VMProfile $p;
