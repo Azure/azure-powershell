@@ -68,8 +68,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 ? nameExtractedFromJson
                 : nameFromCmdletContext;
 
-            // Show a message that if names do not match, name specified with -Name parameter will be used.
-            if (string.Compare(resolvedResourceName, nameExtractedFromJson, StringComparison.OrdinalIgnoreCase) != 0)
+            // Show a message that if name from json is not null or empty and names do not match, name specified with -Name parameter will be used.
+            if (!string.IsNullOrEmpty(nameExtractedFromJson) && string.Compare(resolvedResourceName, nameExtractedFromJson, StringComparison.OrdinalIgnoreCase) != 0)
             {
                 WriteVerbose(string.Format(
                     CultureInfo.InvariantCulture,
