@@ -20,8 +20,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Add, "AzureLoadBalancerRuleConfigCmdlet")]
-    public class AddProbeConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.Add, "AzureLoadBalancerProbeConfigCmdlet")]
+    public class AddAzureLoadBalancerProbeConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,

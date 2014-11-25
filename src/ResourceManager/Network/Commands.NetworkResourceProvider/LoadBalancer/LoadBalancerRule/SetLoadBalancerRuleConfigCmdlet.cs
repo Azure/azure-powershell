@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerRuleConfigCmdlet")]
-    public class SetLoadBalancerRuleConfigCmdlet : NetworkBaseClient
+    public class SetAzureLoadBalancerRuleConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,

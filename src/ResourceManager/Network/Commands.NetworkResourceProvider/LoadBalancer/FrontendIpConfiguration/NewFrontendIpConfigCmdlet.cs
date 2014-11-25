@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     [Cmdlet(VerbsCommon.New, "AzureLoadBalancerFrontendIpConfig")]
-    public class NewLoadBalancerFrontendIpConfigCmdlet : NetworkBaseClient
+    public class NewAzureLoadBalancerFrontendIpConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
