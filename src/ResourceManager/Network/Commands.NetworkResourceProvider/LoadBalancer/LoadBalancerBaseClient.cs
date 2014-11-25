@@ -21,23 +21,23 @@ using Microsoft.WindowsAzure;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    public abstract class NetworkInterfaceBaseClient : NetworkResourceBaseClient
+    public abstract class LoadBalancerBaseClient : NetworkResourceBaseClient
     {
-        public const string NetworkInterfaceCmdletName = "AzureNetworkInterface";
-        
-        public INetworkInterfaceOperations NetworkInterfaceClient
+        public const string LoadBalancerCmdletName = "AzureLoadBalancer";
+
+        public ILoadBalancerOperations LoadBalancerClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.NetworkInterfaces;
+                return NetworkClient.NetworkResourceProviderClient.LoadBalancers;
             }
         }
 
-        public bool IsNetworkInterfacePresent(string resourceGroupName, string name)
+        public bool IsLoadBalancerPresent(string resourceGroupName, string name)
         {
             try
             {
-                GetNetworkInterface(resourceGroupName, name);
+                GetLoadBalancer(resourceGroupName, name);
             }
             catch (CloudException exception)
             {
@@ -53,14 +53,14 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             return true;
         }
 
-        public PSNetworkInterface GetNetworkInterface(string resourceGroupName, string name)
+        public PSLoadBalancer GetLoadBalancer(string resourceGroupName, string name)
         {
-            var getNetworkInterfaceResponse = this.NetworkInterfaceClient.Get(resourceGroupName, name);
+            var getLoadBalancerResponse = this.LoadBalancerClient.Get(resourceGroupName, name);
 
-            var networkInterface = Mapper.Map<PSNetworkInterface>(getNetworkInterfaceResponse.NetworkInterface);
-            networkInterface.ResourceGroupName = resourceGroupName;
+            var loadBalancer = Mapper.Map<PSLoadBalancer>(getLoadBalancerResponse.LoadBalancer);
+            loadBalancer.ResourceGroupName = resourceGroupName;
 
-            return networkInterface;
+            return loadBalancer;
         }
     }
 }

@@ -18,18 +18,18 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkSubnetConfig")]
-    public class GetAzureVirtualNetworkSubnetConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.Get, "AzureLoadBalancerFrontendIpConfig")]
+    public class GetAzureLoadBalancerFrontendIpConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the subnet")]
+            HelpMessage = "The name of the FrontendIpConfig")]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The virtualNetwork")]
-        public PSVirtualNetwork VirtualNetwork { get; set; }
+            HelpMessage = "The loadbalancer")]
+        public PSLoadBalancer LoadBalancer { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -37,17 +37,17 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var subnet =
-                    this.VirtualNetwork.Properties.Subnets.Where(
+                var frontendIpConfiguration =
+                    this.LoadBalancer.Properties.FrontendIpConfigurations.Where(
                         resource =>
                             string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-                WriteObject(subnet);
+                WriteObject(frontendIpConfiguration);
             }
             else
             {
-                var subnets = this.VirtualNetwork.Properties.Subnets;
-                WriteObject(subnets, true);
+                var frontendIpConfigurations = this.LoadBalancer.Properties.FrontendIpConfigurations;
+                WriteObject(frontendIpConfigurations, true);
             }
             
         }

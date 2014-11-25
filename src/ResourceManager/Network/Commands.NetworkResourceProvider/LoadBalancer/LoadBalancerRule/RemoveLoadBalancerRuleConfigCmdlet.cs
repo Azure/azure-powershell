@@ -18,38 +18,32 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkSubnetConfig")]
-    public class GetAzureVirtualNetworkSubnetConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.Remove, "AzureLoadBalancerRuleConfig")]
+    public class RemoveAzureLoadBalancerRuleCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the subnet")]
+            HelpMessage = "The name of the load balancer rule")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The virtualNetwork")]
-        public PSVirtualNetwork VirtualNetwork { get; set; }
+             Mandatory = true,
+             HelpMessage = "The loadbalancer")]
+        public PSLoadBalancer LoadBalancer { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
-            if (!string.IsNullOrEmpty(this.Name))
-            {
-                var subnet =
-                    this.VirtualNetwork.Properties.Subnets.Where(
-                        resource =>
-                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-                WriteObject(subnet);
-            }
-            else
+            var lbRule = this.LoadBalancer.Properties.LoadBalancingRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+            if (lbRule != null)
             {
-                var subnets = this.VirtualNetwork.Properties.Subnets;
-                WriteObject(subnets, true);
+                this.LoadBalancer.Properties.LoadBalancingRules.Remove(lbRule);
             }
-            
+
+            WriteObject(this.LoadBalancer);
         }
     }
 }

@@ -19,7 +19,6 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.WindowsAzure;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -55,14 +54,28 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         [Parameter(
             Mandatory = true,
+            ParameterSetName = "id",
             HelpMessage = "SubnetId")]
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            ParameterSetName = "object",
+            HelpMessage = "Subnet")]
+        public PSSubnet Subnet { get; set; }
+
+        [Parameter(
             Mandatory = false,
+            ParameterSetName = "id",
             HelpMessage = "PublicIpAddressId")]
         public string PublicIpAddressId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "object",
+            HelpMessage = "PublicIpAddress")]
+        public PSPublicIpAddress PublicIpAddress { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -71,6 +84,17 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             if (this.IsNetworkInterfacePresent(this.ResourceGroupName, this.Name))
             {
                 throw new ArgumentException(ResourceAlreadyPresent);
+            }
+
+            // Get the subnetId and publicIpAddressId from the object if specified
+            if (string.Equals(ParameterSetName, "id"))
+            {
+                this.SubnetId = this.Subnet.Id;
+
+                if (PublicIpAddress != null)
+                {
+                    this.PublicIpAddressId = this.PublicIpAddress.Id;
+                }
             }
 
             var networkInterface = new PSNetworkInterface();

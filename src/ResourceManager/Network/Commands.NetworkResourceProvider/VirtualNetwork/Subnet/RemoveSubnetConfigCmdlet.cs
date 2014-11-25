@@ -18,35 +18,33 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Remove, "SubnetConfig")]
-    public class RemoveSubnetConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.Remove, "AzureVirtualNetworkSubnetConfig")]
+    public class RemoveAzureVirtualNetworkSubnetConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the subnet")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-                    Mandatory = true,
-                    ValueFromPipelineByPropertyName = true,
-                    HelpMessage = "The virtualNetwork")]
-        public PSVirtualNetwork PsVirtualNetwork { get; set; }
+             Mandatory = true,
+             HelpMessage = "The virtualNetwork")]
+        public PSVirtualNetwork VirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             // Verify if the subnet exists in the VirtualNetwork
-            var subnet = this.PsVirtualNetwork.Properties.Subnets.SingleOrDefault(sub => System.String.Compare(sub.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase) == 0);
+            var subnet = this.VirtualNetwork.Properties.Subnets.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (subnet != null)
             {
-                this.PsVirtualNetwork.Properties.Subnets.Remove(subnet);
+                this.VirtualNetwork.Properties.Subnets.Remove(subnet);
             }
 
-            WriteObject(this.PsVirtualNetwork);
+            WriteObject(this.VirtualNetwork);
         }
     }
 }
