@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine), OutputType(typeof(VirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
-
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -42,6 +41,12 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VMProfile { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Availability Set Id.")]
+        [ValidateNotNullOrEmpty]
+        public string AvailabilitySetId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -51,7 +56,11 @@ namespace Microsoft.Azure.Commands.Compute
                 HardwareProfile = this.VMProfile.HardwareProfile,
                 StorageProfile = this.VMProfile.StorageProfile,
                 NetworkProfile = this.VMProfile.NetworkProfile,
-                OSProfile = this.VMProfile.OSProfile
+                OSProfile = this.VMProfile.OSProfile,
+                AvailabilitySetReference = new AvailabilitySetReference
+                {
+                    ReferenceUri = this.AvailabilitySetId
+                }
             };
 
             var parameters = new VirtualMachineCreateOrUpdateParameters

@@ -135,6 +135,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvailabilitySets\RemoveAzureAvailabilitySetCommand.cs" />
+    <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
+    <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
+    <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
     <Compile Include="Common\TagsConversionHelper.cs" />
     <Compile Include="Common\ComputeClient.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />

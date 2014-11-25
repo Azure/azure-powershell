@@ -129,6 +129,8 @@ function Test-VirtualMachine
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # Virtual Machine
+        # $avsetid = '/subscriptions/84fffc2f-5d77-449a-bc7f-58c363f2a6b9/resourceGroups/pstestrg1124uw4/providers/Microsoft.Compute/availabilitySets/avset1'
+        # New-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname -VMProfile $p -AvailabilitySetId $avsetid;
         New-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname -VMProfile $p;
 
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
