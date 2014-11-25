@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function getimg($query, $loca)
+function getImage($query, $loca)
 {
     $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201410.01-en.us-127GB.vhd';
     <#
@@ -49,7 +49,7 @@ function Test-VirtualMachine
         $loc = 'West US';
         New-AzureResourceGroup -Name $rgname -Location $loc;
 
-        $img = getimg "*Windows*Server*DataCenter*" $loc;
+        $img = getImage "*Windows*Server*DataCenter*" $loc;
 
         $p = New-AzureVMProfile;
 

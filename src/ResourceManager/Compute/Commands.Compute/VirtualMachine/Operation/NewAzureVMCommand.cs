@@ -57,10 +57,11 @@ namespace Microsoft.Azure.Commands.Compute
                 StorageProfile = this.VMProfile.StorageProfile,
                 NetworkProfile = this.VMProfile.NetworkProfile,
                 OSProfile = this.VMProfile.OSProfile,
-                AvailabilitySetReference = new AvailabilitySetReference
-                {
-                    ReferenceUri = this.AvailabilitySetId
-                }
+                AvailabilitySetReference = string.IsNullOrEmpty(this.AvailabilitySetId) ? null
+                                         : new AvailabilitySetReference
+                                           {
+                                               ReferenceUri = this.AvailabilitySetId
+                                           }
             };
 
             var parameters = new VirtualMachineCreateOrUpdateParameters
