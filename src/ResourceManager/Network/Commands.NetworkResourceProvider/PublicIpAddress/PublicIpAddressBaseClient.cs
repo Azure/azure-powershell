@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     public abstract class PublicIpAddressBaseClient : NetworkResourceBaseClient
     {
-        public const string PublicIpAddressCmdletName = "AzureNrpPublicIpAddress";
+        public const string PublicIpAddressCmdletName = "AzurePublicIpAddress";
 
         public IPublicIpAddressOperations PublicIpAddressClient
         {
@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
         }
 
-        public bool IsPublicIpAddressPresent(string resrouceGroupName, string name)
+        public bool IsPublicIpAddressPresent(string resourceGroupName, string name)
         {
             try
             {
-                GetPublicIpAddress(resrouceGroupName, name);
+                GetPublicIpAddress(resourceGroupName, name);
             }
             catch (CloudException exception)
             {

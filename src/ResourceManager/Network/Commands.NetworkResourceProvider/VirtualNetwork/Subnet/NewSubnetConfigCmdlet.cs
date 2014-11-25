@@ -18,26 +18,23 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, "SubnetConfig")]
-    public class NewSubnetConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.New, "AzureVirtualNetworkSubnetConfig")]
+    public class NewAzureVirtualNetworkSubnetConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the subnet")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefix of the subnet")]
         [ValidateNotNullOrEmpty]
         public string AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of Dns Servers")]
         public List<string> DnsServer { get; set; }
 

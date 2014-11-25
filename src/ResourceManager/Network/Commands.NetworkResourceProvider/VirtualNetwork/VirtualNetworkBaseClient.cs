@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     public abstract class VirtualNetworkBaseClient : NetworkResourceBaseClient
     {
-        public const string VirtualNetworkCmdletName = "AzureNrpVirtualNetwork";
+        public const string VirtualNetworkCmdletName = "AzureVirtualNetwork";
 
         public IVirtualNetworkOperations VirtualNetworkClient
         {
@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
         }
 
-        public bool IsVirtualNetworkPresent(string resrouceGroupName, string name)
+        public bool IsVirtualNetworkPresent(string resourceGroupName, string name)
         {
             try
             {
-                GetVirtualNetwork(resrouceGroupName, name);
+                GetVirtualNetwork(resourceGroupName, name);
             }
             catch (CloudException exception)
             {

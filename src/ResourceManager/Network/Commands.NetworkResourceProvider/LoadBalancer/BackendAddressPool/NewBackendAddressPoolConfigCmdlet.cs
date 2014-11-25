@@ -12,44 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkSubnetConfig")]
-    public class GetAzureVirtualNetworkSubnetConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerBackendAddressPoolConfigCmdlet")]
+    public class NewBackendAddressPoolConfigCmdletCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the subnet")]
+            HelpMessage = "The name of the BackendAddressPool")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The virtualNetwork")]
-        public PSVirtualNetwork VirtualNetwork { get; set; }
+            HelpMessage = "IPConfig IDs of NetworkInterfaces")]
+        [ValidateNotNullOrEmpty]
+        public List<string> BackendIpConfigurationId { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
-            if (!string.IsNullOrEmpty(this.Name))
-            {
-                var subnet =
-                    this.VirtualNetwork.Properties.Subnets.Where(
-                        resource =>
-                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-                WriteObject(subnet);
-            }
-            else
+            var backendAddressPool = new PSBackendAddressPool();
+            backendAddressPool.Name = this.Name;
+            backendAddressPool.Properties = new PSBackendAddressPoolProperties();
+            backendAddressPool.Properties.BackendIpConfigurations = new List<PSResourceId>();
+
+            foreach (var backendIpConfigurationId in this.BackendIpConfigurationId)
             {
-                var subnets = this.VirtualNetwork.Properties.Subnets;
-                WriteObject(subnets, true);
+                var resourceId = new PSResourceId();
+                resourceId.Id = backendIpConfigurationId;
+                backendAddressPool.Properties.BackendIpConfigurations.Add(resourceId);
             }
-            
+
+            WriteObject(backendAddressPool);
         }
     }
 }

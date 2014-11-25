@@ -20,45 +20,41 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Set, "SubnetConfig")]
-    public class SetSubnetConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.Set, "AzureVirtualNetworkSubnetConfig")]
+    public class SetAzureVirtualNetworkSubnetConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the subnet")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefix of the subnet")]
         [ValidateNotNullOrEmpty]
         public string AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of Dns Servers")]
         public List<string> DnsServer { get; set; }
 
         [Parameter(
-                    Mandatory = true,
-                    ValueFromPipelineByPropertyName = true,
-                    HelpMessage = "The virtualNetwork")]
-        public PSVirtualNetwork PsVirtualNetwork { get; set; }
+            Mandatory = true,
+            HelpMessage = "The virtualNetwork")]
+        public PSVirtualNetwork VirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             // Verify if the subnet exists in the VirtualNetwork
-            var subnet = this.PsVirtualNetwork.Properties.Subnets.SingleOrDefault(sub => System.String.Compare(sub.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase) == 0);
+            var subnet = this.VirtualNetwork.Properties.Subnets.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
 
             if (subnet == null)
             {
-                throw new ArgumentException("Subnet with the specified name does not exists");
+                throw new ArgumentException("Subnet with the specified name does not exist");
             }
 
             subnet.Properties = new PSSubnetProperties();
@@ -66,7 +62,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             subnet.Properties.DhcpOptions = new PSDhcpOptions();
             subnet.Properties.DhcpOptions.DnsServers = this.DnsServer;
 
-            WriteObject(this.PsVirtualNetwork);
+            WriteObject(this.VirtualNetwork);
         }
     }
 }

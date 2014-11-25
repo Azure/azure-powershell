@@ -18,38 +18,32 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkSubnetConfig")]
-    public class GetAzureVirtualNetworkSubnetConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.Remove, "AzureLoadBalancerProbeConfig")]
+    public class RemoveAzureLoadBalancerProbeCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the subnet")]
+            HelpMessage = "The name of the load balancer probe")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The virtualNetwork")]
-        public PSVirtualNetwork VirtualNetwork { get; set; }
+             Mandatory = true,
+             HelpMessage = "The loadbalancer")]
+        public PSLoadBalancer LoadBalancer { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
-            if (!string.IsNullOrEmpty(this.Name))
-            {
-                var subnet =
-                    this.VirtualNetwork.Properties.Subnets.Where(
-                        resource =>
-                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-                WriteObject(subnet);
-            }
-            else
+            var probe = this.LoadBalancer.Properties.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+            if (probe != null)
             {
-                var subnets = this.VirtualNetwork.Properties.Subnets;
-                WriteObject(subnets, true);
+                this.LoadBalancer.Properties.Probes.Remove(probe);
             }
-            
+
+            WriteObject(this.LoadBalancer);
         }
     }
 }

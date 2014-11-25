@@ -12,44 +12,50 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
+using System.Collections.Generic;
 using System.Management.Automation;
+using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkSubnetConfig")]
-    public class GetAzureVirtualNetworkSubnetConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.Get, LoadBalancerCmdletName)]
+    public class GetLoadBalancerCmdlet : LoadBalancerBaseClient
     {
+        [Alias("ResourceName")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the subnet")]
-        public string Name { get; set; }
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The virtualNetwork")]
-        public PSVirtualNetwork VirtualNetwork { get; set; }
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var subnet =
-                    this.VirtualNetwork.Properties.Subnets.Where(
-                        resource =>
-                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+                var loadBalancer = this.GetLoadBalancer(this.ResourceGroupName, this.Name);
+                loadBalancer.ResourceGroupName = this.ResourceGroupName;
 
-                WriteObject(subnet);
+                WriteObject(loadBalancer);
             }
             else
             {
-                var subnets = this.VirtualNetwork.Properties.Subnets;
-                WriteObject(subnets, true);
+                var getLoadBalancerResponse = this.LoadBalancerClient.List(this.ResourceGroupName);
+
+                var loadBalancers = Mapper.Map<List<PSPublicIpAddress>>(getLoadBalancerResponse.LoadBalancers);
+
+                WriteObject(loadBalancers, true);
             }
-            
         }
     }
 }
+
+ 
