@@ -141,7 +141,12 @@
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
     <Compile Include="Common\TagsConversionHelper.cs" />
     <Compile Include="Common\ComputeClient.cs" />
-    <Compile Include="Models\PSVirtualMachineExtension.cs" />
+    <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
+    <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
+    <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
+    <Compile Include="Models\PSVirtualMachineInstanceViewConversions.cs" />
+    <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
+    <Compile Include="Models\PSVirtualMachineConversions.cs" />
     <Compile Include="StorageAccount\StorageManagementClient.cs" />
     <Compile Include="Common\SecureStringExtension.cs" />
     <Compile Include="Models\SourceImageReferenceExtension.cs" />
@@ -156,6 +161,7 @@
     <Compile Include="VirtualMachine\Operation\SetAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Action\RestartAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskProfileCommand.cs" />
+    <Compile Include="VirtualMachine\VirtualMachineExtensionBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\VirtualMachineBaseCmdlet.cs" />
     <Compile Include="Common\ConstantStringTypes.cs" />
     <Compile Include="Models\PSVirtualMachine.cs" />

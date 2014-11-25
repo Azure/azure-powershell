@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="VirtualMachineExtensionRemovalCaption" xml:space="preserve">
+    <value>Virtual machine extension removal operation</value>
+  </data>
+  <data name="VirtualMachineExtensionRemovalConfirmation" xml:space="preserve">
+    <value>This cmdlet will remove the specified virtual machine extension. Do you want to continue?</value>
+  </data>
   <data name="VirtualMachineRemovalCaption" xml:space="preserve">
     <value>Virtual machine removal operation</value>
   </data>

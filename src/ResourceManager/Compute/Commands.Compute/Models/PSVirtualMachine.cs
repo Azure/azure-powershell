@@ -21,10 +21,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSVirtualMachine
     {
-        public PSVirtualMachine()
-        {
-        }
-
         public string ResourceGroupName { get; set; }
 
         public string Name { get; set; }

@@ -61,6 +61,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Virtual machine extension removal operation.
+        /// </summary>
+        public static string VirtualMachineExtensionRemovalCaption {
+            get {
+                return ResourceManager.GetString("VirtualMachineExtensionRemovalCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the specified virtual machine extension. Do you want to continue?.
+        /// </summary>
+        public static string VirtualMachineExtensionRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("VirtualMachineExtensionRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Virtual machine removal operation.
         /// </summary>
         public static string VirtualMachineRemovalCaption {

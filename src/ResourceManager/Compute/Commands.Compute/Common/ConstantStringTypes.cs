@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string DataDisk = "AzureVMDataDiskProfile";
         public const string NetworkInterface = "AzureVMNetworkInterface";
         public const string VirtualMachine = "AzureVM";
+        public const string VirtualMachineExtension = "AzureVMExtension";
         public const string VirtualMachineProfile = "AzureVMProfile";
         public const string PublicIpAddress = "AzurePublicIPAddress";
     }

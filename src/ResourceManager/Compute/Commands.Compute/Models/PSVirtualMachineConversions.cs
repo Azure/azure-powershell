@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public static class PSVirtualMachineExtension
+    public static class PSVirtualMachineConversions
     {
         public static PSVirtualMachine ToPSVirtualMachine(
             this VirtualMachineGetResponse response,

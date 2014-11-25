@@ -19,16 +19,37 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachine)]
-    [OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachine, DefaultParameterSetName = ListVirtualMachineParamSet)]
+    [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
     {
+        protected const string GetVirtualMachineParamSet = "GetVirtualMachineParamSet";
+        protected const string ListVirtualMachineParamSet = "ListVirtualMachineParamSet";
+
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual machine name.")]
+           Mandatory = true,
+           Position = 0,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
-        [Alias("ResourceName", "VMName")]
+        public override string ResourceGroupName { get; set; }
+
+        [Alias("ResourceName")]
+        [Parameter(
+            Position = 1,
+            ParameterSetName = GetVirtualMachineParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
+
+        [Parameter(
+            Position = 2,
+            ParameterSetName = GetVirtualMachineParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "To show the status.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Status { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -36,8 +57,16 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var result = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
-                WriteObject(result.ToPSVirtualMachine(this.ResourceGroupName));
+                if (Status)
+                {
+                    var result = this.VirtualMachineClient.GetInstanceView(this.ResourceGroupName, this.Name);
+                    WriteObject(result.ToPSVirtualMachineInstanceView(this.ResourceGroupName));
+                }
+                else
+                {
+                    var result = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
+                    WriteObject(result.ToPSVirtualMachine(this.ResourceGroupName));
+                }
             }
             else
             {
