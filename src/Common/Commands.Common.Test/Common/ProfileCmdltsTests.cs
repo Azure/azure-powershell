@@ -150,6 +150,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        public void DeleteCorruptedTokenCache()
+        {
+            //setup
+            string testFileName = @"c:\foobar\TokenCache.dat";
+            ProfileClient.DataStore.WriteFile(testFileName, new byte[] { 0, 1 });
+            
+            //Act
+            ProtectedFileTokenCache tokenCache = new ProtectedFileTokenCache(testFileName);
+
+            //Assert
+            Assert.False(ProfileClient.DataStore.FileExists(testFileName));
+        }
+
+        [Fact]
         public void SetAzureSubscriptionAddsSubscriptionWithCertificate()
         {
             SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
