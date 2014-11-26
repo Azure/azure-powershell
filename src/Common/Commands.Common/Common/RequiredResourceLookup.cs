@@ -64,6 +64,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 return new[] { "Microsoft.DataFactory" };
             }
 
+            if (string.Equals(typeof(T).Name, "DnsManagementClient", System.StringComparison.OrdinalIgnoreCase))
+            {
+                return new[] { "microsoft.dns" };
+            }
 
             return new string[0];
         }

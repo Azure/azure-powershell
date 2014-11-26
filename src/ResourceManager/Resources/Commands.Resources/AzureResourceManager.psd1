@@ -74,7 +74,8 @@ NestedModules = @(
     '.\Sql\Microsoft.Azure.Commands.Sql.dll',
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',
-    '.\Batch\Microsoft.Azure.Commands.Batch.dll'
+    '.\Batch\Microsoft.Azure.Commands.Batch.dll',
+    '.\Dns\Microsoft.Azure.Commands.Dns.dll'
 )
 
 # Functions to export from this module
