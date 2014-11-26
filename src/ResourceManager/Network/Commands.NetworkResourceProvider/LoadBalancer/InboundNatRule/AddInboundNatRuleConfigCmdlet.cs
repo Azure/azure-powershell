@@ -23,52 +23,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     [Cmdlet(VerbsCommon.Add, "AzureLoadBalancerInboundNatRuleConfigCmdlet")]
-    public class AddAzureLoadBalancerInboundNatRuleConfigCmdlet : NetworkBaseClient
+    public class AddAzureLoadBalancerInboundNatRuleConfigCmdlet : CommonAzureLoadBalancerInboundNatRuleConfig
     {
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the Inbound NAT rule")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "IDs of the FrontendIpConfigurations")]
-        [ValidateNotNullOrEmpty]
-        public List<string> FrontendIPConfigurationId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "IPConfig ID of NetworkInterface")]
-        [ValidateNotNullOrEmpty]
-        public string BackendIpConfigurationId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The transport protocol for the external endpoint.")]
-        [ValidateSet(MNM.TransportProtocol.Tcp, MNM.TransportProtocol.Udp, IgnoreCase = true)]
-        public string Protocol { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The frontend port")]
-        public int FrontendPort { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The frontend port")]
-        public int BackendPort { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "IdleTimeoutInSeconds")]
-        public int IdleTimeoutInSeconds { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "EnableFloatingIP")]
-        public SwitchParameter EnableFloatingIP { get; set; }
-
         [Parameter(
             Mandatory = true,
             HelpMessage = "The load balancer")]

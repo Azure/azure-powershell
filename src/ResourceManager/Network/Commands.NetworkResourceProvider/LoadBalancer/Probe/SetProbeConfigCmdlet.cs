@@ -21,41 +21,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerProbeConfig")]
-    public class SetAzureLoadBalancerProbeConfigCmdlet : NetworkBaseClient
+    public class SetAzureLoadBalancerProbeConfig : CommonAzureLoadBalancerProbeConfig
     {
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the Inbound NAT rule")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Request path")]
-        [ValidateNotNullOrEmpty]
-        public string RequestPath { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The transport protocol for the external endpoint.")]
-        [ValidateSet(MNM.ProbeProtocol.Tcp, MNM.ProbeProtocol.Http, IgnoreCase = true)]
-        public string Protocol { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The probe port")]
-        public int Port { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "IntervalInSeconds")]
-        public int IntervalInSeconds { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "NumberOfProbes")]
-        public int ProbeCount { get; set; }
-
         [Parameter(
             Mandatory = true,
             HelpMessage = "The load balancer")]

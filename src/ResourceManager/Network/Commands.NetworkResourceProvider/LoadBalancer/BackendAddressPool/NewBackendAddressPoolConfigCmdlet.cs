@@ -20,20 +20,8 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     [Cmdlet(VerbsCommon.New, "AzureLoadBalancerBackendAddressPoolConfigCmdlet")]
-    public class NewAzureLoadBalancerBackendAddressPoolConfigCmdletCmdlet : NetworkBaseClient
+    public class NewAzureLoadBalancerBackendAddressPoolConfigCmdlet : CommonAzureLoadBalancerBackendAddressPoolConfig
     {
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the BackendAddressPool")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "IPConfig IDs of NetworkInterfaces")]
-        [ValidateNotNullOrEmpty]
-        public List<string> BackendIpConfigurationId { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

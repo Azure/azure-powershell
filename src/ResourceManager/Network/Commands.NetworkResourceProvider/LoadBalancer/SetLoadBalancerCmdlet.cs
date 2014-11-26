@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     public class SetLoadBalancerCmdlet : LoadBalancerBaseClient
     {
         [Parameter(
-                    Mandatory = true,
-                    HelpMessage = "The loadBalancer")]
+             Mandatory = true,
+             HelpMessage = "The loadBalancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
         public override void ExecuteCmdlet()
