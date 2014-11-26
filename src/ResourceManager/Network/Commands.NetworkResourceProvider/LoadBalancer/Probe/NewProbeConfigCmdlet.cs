@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Parameter(
             Mandatory = false,
             HelpMessage = "The transport protocol for the external endpoint.")]
-        [ValidateSet(MNM.TransportProtocol.Tcp, MNM.TransportProtocol.Udp, IgnoreCase = true)]
+        [ValidateSet(MNM.ProbeProtocol.Tcp, MNM.ProbeProtocol.Http, IgnoreCase = true)]
         public string Protocol { get; set; }
 
         [Parameter(
@@ -66,7 +67,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             probe.Properties.RequestPath = this.RequestPath;
             probe.Properties.IntervalInSeconds = this.IntervalInSeconds;
             probe.Properties.NumberOfProbes = this.ProbeCount;
-            
+
+            probe.Id =
+                ChildResourceHelper.GetResourceNotSetId(
+                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    Resources.LoadBalancerProbeName,
+                    this.Name);
+
             WriteObject(probe);
         }
     }

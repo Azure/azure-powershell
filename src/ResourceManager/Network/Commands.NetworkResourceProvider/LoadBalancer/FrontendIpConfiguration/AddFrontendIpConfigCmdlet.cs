@@ -16,6 +16,7 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
@@ -96,12 +97,19 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             frontendIpConfig.Properties.Subnet = new PSResourceId();
             frontendIpConfig.Properties.Subnet.Id = this.SubnetId;
 
-
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
             {
                 frontendIpConfig.Properties.PublicIpAddress = new PSResourceId();
                 frontendIpConfig.Properties.PublicIpAddress.Id = this.PublicIpAddressId;
             }
+
+            frontendIpConfig.Id =
+                ChildResourceHelper.GetResourceId(
+                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.LoadBalancer.ResourceGroupName, 
+                    this.LoadBalancer.Name,
+                    Resources.LoadBalancerFrontendIpConfigName, 
+                    this.Name);
 
             this.LoadBalancer.Properties.FrontendIpConfigurations.Add(frontendIpConfig);
 

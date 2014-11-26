@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Parameter(
             Mandatory = true,
             HelpMessage = "EnableFloatingIP")]
-        public bool EnableFloatingIP { get; set; }
+        public SwitchParameter EnableFloatingIP { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             inboundNatRule.Properties.FrontendPort = this.FrontendPort;
             inboundNatRule.Properties.BackendPort = this.BackendPort;
             inboundNatRule.Properties.IdleTimeoutInMinutes = this.IdleTimeoutInSeconds;
-            inboundNatRule.Properties.EnableFloatingIP = this.EnableFloatingIP;
+            inboundNatRule.Properties.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
             inboundNatRule.Properties.BackendIPConfiguration = new PSResourceId();
             inboundNatRule.Properties.BackendIPConfiguration.Id = this.BackendIpConfigurationId;
             inboundNatRule.Properties.FrontendIPConfigurations = new List<PSResourceId>();
@@ -102,6 +103,14 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 resourceId.Id = frontendIPConfigurationId;
                 inboundNatRule.Properties.FrontendIPConfigurations.Add(resourceId);
             }
+
+            inboundNatRule.Id =
+                ChildResourceHelper.GetResourceId(
+                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.LoadBalancer.ResourceGroupName,
+                    this.LoadBalancer.Name,
+                    Resources.LoadBalancerInBoundNatRuleName,
+                    this.Name);
 
             this.LoadBalancer.Properties.InboundNatRules.Add(inboundNatRule);
 

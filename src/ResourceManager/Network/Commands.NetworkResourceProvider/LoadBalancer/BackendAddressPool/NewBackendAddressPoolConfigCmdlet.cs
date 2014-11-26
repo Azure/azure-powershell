@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
@@ -48,6 +49,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 resourceId.Id = backendIpConfigurationId;
                 backendAddressPool.Properties.BackendIpConfigurations.Add(resourceId);
             }
+
+            backendAddressPool.Id =
+                ChildResourceHelper.GetResourceNotSetId(
+                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    Resources.LoadBalancerBackendAddressPoolName,
+                    this.Name);
 
             WriteObject(backendAddressPool);
         }

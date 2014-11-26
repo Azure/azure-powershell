@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Parameter(
             Mandatory = true,
             HelpMessage = "EnableFloatingIP")]
-        public bool EnableFloatingIP { get; set; }
+        public SwitchParameter EnableFloatingIP { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -97,7 +98,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             loadBalancingRule.Properties.FrontendPort = this.FrontendPort;
             loadBalancingRule.Properties.BackendPort = this.BackendPort;
             loadBalancingRule.Properties.IdleTimeoutInMinutes = this.IdleTimeoutInSeconds;
-            loadBalancingRule.Properties.EnableFloatingIP = this.EnableFloatingIP;
+            loadBalancingRule.Properties.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
             loadBalancingRule.Properties.BackendAddressPool = new PSResourceId();
             loadBalancingRule.Properties.BackendAddressPool.Id = this.BackendAddressPoolId;
             loadBalancingRule.Properties.Probe = new PSResourceId();
@@ -111,6 +112,14 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 resourceId.Id = frontendIPConfigurationId;
                 loadBalancingRule.Properties.FrontendIPConfigurations.Add(resourceId);
             }
+
+            loadBalancingRule.Id =
+                ChildResourceHelper.GetResourceId(
+                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.LoadBalancer.ResourceGroupName,
+                    this.LoadBalancer.Name,
+                    Resources.LoadBalancerRuleName,
+                    this.Name);
 
             this.LoadBalancer.Properties.LoadBalancingRules.Add(loadBalancingRule);
 

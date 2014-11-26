@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Parameter(
             Mandatory = true,
             HelpMessage = "EnableFloatingIP")]
-        public bool EnableFloatingIP { get; set; }
+        public SwitchParameter EnableFloatingIP { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             inboundNatRule.Properties.FrontendPort = this.FrontendPort;
             inboundNatRule.Properties.BackendPort = this.BackendPort;
             inboundNatRule.Properties.IdleTimeoutInMinutes = this.IdleTimeoutInSeconds;
-            inboundNatRule.Properties.EnableFloatingIP = this.EnableFloatingIP;
+            inboundNatRule.Properties.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
             inboundNatRule.Properties.BackendIPConfiguration = new PSResourceId();
             inboundNatRule.Properties.BackendIPConfiguration.Id = this.BackendIpConfigurationId;
             inboundNatRule.Properties.FrontendIPConfigurations = new List<PSResourceId>();

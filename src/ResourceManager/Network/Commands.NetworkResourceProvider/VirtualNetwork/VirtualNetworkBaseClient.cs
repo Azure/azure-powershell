@@ -13,7 +13,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Management.Network;
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
             catch (CloudException exception)
             {
-                if (string.Equals(exception.ErrorCode, ResourceNotFound, StringComparison.OrdinalIgnoreCase))
+                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
                     // Resource is not present
                     return false;

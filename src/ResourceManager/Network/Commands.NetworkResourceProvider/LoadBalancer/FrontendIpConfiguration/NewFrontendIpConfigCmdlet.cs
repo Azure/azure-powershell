@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             base.ExecuteCmdlet();
 
             // Get the subnetId and publicIpAddressId from the object if specified
-            if (string.Equals(ParameterSetName, "id"))
+            if (string.Equals(ParameterSetName, "object"))
             {
                 this.SubnetId = this.Subnet.Id;
 
@@ -87,6 +88,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 frontendIpConfig.Properties.PublicIpAddress = new PSResourceId();
                 frontendIpConfig.Properties.PublicIpAddress.Id = this.PublicIpAddressId;
             }
+
+            frontendIpConfig.Id =
+                ChildResourceHelper.GetResourceNotSetId(
+                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    Resources.LoadBalancerFrontendIpConfigName,
+                    this.Name);
 
             WriteObject(frontendIpConfig);
 

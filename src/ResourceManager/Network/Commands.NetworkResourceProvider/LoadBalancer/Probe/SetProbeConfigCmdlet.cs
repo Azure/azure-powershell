@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadProbeConfigCmdlet")]
+    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerProbeConfig")]
     public class SetAzureLoadBalancerProbeConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Parameter(
             Mandatory = false,
             HelpMessage = "The transport protocol for the external endpoint.")]
-        [ValidateSet(MNM.TransportProtocol.Tcp, MNM.TransportProtocol.Udp, IgnoreCase = true)]
+        [ValidateSet(MNM.ProbeProtocol.Tcp, MNM.ProbeProtocol.Http, IgnoreCase = true)]
         public string Protocol { get; set; }
 
         [Parameter(
