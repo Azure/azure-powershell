@@ -54,9 +54,15 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             {
                 var vnetGetResponse = this.VirtualNetworkClient.List(this.ResourceGroupName);
 
-                var vnet = Mapper.Map<List<PSVirtualNetwork>>(vnetGetResponse.VirtualNetworks);
+                var vnets = Mapper.Map<List<PSVirtualNetwork>>(vnetGetResponse.VirtualNetworks);
 
-                WriteObject(vnet, true);
+                // populate the virtualNetworks with the ResourceGroupName
+                foreach (var vnet in vnets)
+                {
+                    vnet.ResourceGroupName = this.ResourceGroupName;
+                }
+
+                WriteObject(vnets, true);
             }
         }
     }

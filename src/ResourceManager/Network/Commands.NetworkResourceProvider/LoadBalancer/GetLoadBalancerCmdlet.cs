@@ -50,7 +50,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             {
                 var getLoadBalancerResponse = this.LoadBalancerClient.List(this.ResourceGroupName);
 
-                var loadBalancers = Mapper.Map<List<PSPublicIpAddress>>(getLoadBalancerResponse.LoadBalancers);
+                var loadBalancers = Mapper.Map<List<PSLoadBalancer>>(getLoadBalancerResponse.LoadBalancers);
+
+                // populate the loadbalancers with the ResourceGroupName
+                foreach (var loadBalancer in loadBalancers)
+                {
+                    loadBalancer.ResourceGroupName = this.ResourceGroupName;
+                }
 
                 WriteObject(loadBalancers, true);
             }

@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSInboundNatRule : PSResource
+    public class PSInboundNatRule : PSChildResource
     {
         public PSInboundNatRuleProperties Properties { get; set; }
     }

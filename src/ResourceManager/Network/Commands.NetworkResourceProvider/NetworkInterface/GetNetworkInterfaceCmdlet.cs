@@ -55,6 +55,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
                 var networkInterfaces = Mapper.Map<List<PSNetworkInterface>>(getNetworkInterfaceResponse.NetworkInterfaces);
 
+                // populate the networkInterfaces with the ResourceGroupName
+                foreach (var networkInterface in networkInterfaces)
+                {
+                    networkInterface.ResourceGroupName = this.ResourceGroupName;
+                }
+
                 WriteObject(networkInterfaces, true);
             }
         }

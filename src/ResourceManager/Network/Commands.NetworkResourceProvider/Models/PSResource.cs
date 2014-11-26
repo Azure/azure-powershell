@@ -16,17 +16,11 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSResource
+    public class PSResource : PSChildResource
     {
         public string ResourceGroupName { get; set; }
 
-        public string Name { get; set; }
-
-        public string Id { get; set; }
-
         public string Location { get; set; }
-
-        public string Etag { get; set; }
 
         public Dictionary<string, string> Tags { get; set; }
     }

@@ -154,6 +154,7 @@
     <Compile Include="Models\PSPublicIpAddress.cs" />
     <Compile Include="Models\PSPublicIpAddressDnsSettings.cs" />
     <Compile Include="Models\PSPublicIpAddressProperties.cs" />
+    <Compile Include="Models\PSChildResource.cs" />
     <Compile Include="Models\PSResource.cs" />
     <Compile Include="Models\PSResourceId.cs" />
     <Compile Include="Models\PSResourceProperties.cs" />

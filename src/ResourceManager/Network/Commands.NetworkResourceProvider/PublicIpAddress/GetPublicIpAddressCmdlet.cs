@@ -52,6 +52,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
                 var publicIps = Mapper.Map<List<PSPublicIpAddress>>(getPublicIpResponse.PublicIpAddresses);
 
+                // populate the publicIpAddresses with the ResourceGroupName
+                foreach (var publicIp in publicIps)
+                {
+                    publicIp.ResourceGroupName = this.ResourceGroupName;
+                }
+
                 WriteObject(publicIps, true);
             }
         }
