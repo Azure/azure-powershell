@@ -15,10 +15,9 @@
 namespace Microsoft.Azure.Commands.Network.Gateway
 {
     using System.Management.Automation;
-    using WindowsAzure.Commands.Utilities.Common;
     using WindowsAzure.Management.Network.Models;
 
-    [Cmdlet(VerbsCommon.Resize, "AzureVNetGateway"), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsCommon.Resize, "AzureVNetGateway"), OutputType(typeof(GatewayGetOperationStatusResponse))]
     public class ResizeAzureVNetGateway : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network name.")]
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network.Gateway
         }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The SKU that the existing gateway will be resized to.")]
-        public GatewaySKU GatewaySKU
+        public string GatewaySKU
         {
             get;
             set;
