@@ -222,6 +222,10 @@
       <Project>{d470e50a-9607-48d6-a924-4f9f86502704}</Project>
       <Name>Commands.Batch</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\KeyVault\Commands.KeyVault\Commands.KeyVault.csproj">
+      <Project>{9ffc40cc-a341-4d0c-a25d-dc6b78ef6c94}</Project>
+      <Name>Commands.KeyVault</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\RedisCache\Commands.RedisCache\Commands.RedisCache.csproj">
       <Project>{c972e3ef-4461-4758-ba31-93e0947b1253}</Project>
       <Name>Commands.RedisCache</Name>
