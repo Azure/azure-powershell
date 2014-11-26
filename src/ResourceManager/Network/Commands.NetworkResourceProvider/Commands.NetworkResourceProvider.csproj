@@ -93,12 +93,14 @@
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
     <Compile Include="Common\NetworkResourceBaseClient.cs" />
+    <Compile Include="LoadBalancer\BackendAddressPool\CommonBackendAddressPoolConfig.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\SetBackendAddressPoolConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\GetBackendAddressPoolConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\AddBackendAddressPoolConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\NewBackendAddressPoolConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\RemoveBackendAddressPoolConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\ChildResourceHelper.cs" />
+    <Compile Include="LoadBalancer\FrontendIpConfiguration\CommonFrontendIpConfig.cs" />
     <Compile Include="LoadBalancer\FrontendIpConfiguration\SetFrontendIpConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\FrontendIpConfiguration\GetFrontendIpConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\FrontendIpConfiguration\AddFrontendIpConfigCmdlet.cs" />

@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -27,17 +28,29 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            ParameterSetName = "id",
             HelpMessage = "IDs of the FrontendIpConfigurations")]
         [ValidateNotNullOrEmpty]
         public List<string> FrontendIPConfigurationId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            ParameterSetName = "id",
             HelpMessage = "IPConfig ID of NetworkInterface")]
         [ValidateNotNullOrEmpty]
         public string BackendIpConfigurationId { get; set; }
 
+        [Parameter(
+             ParameterSetName = "object",
+             HelpMessage = "The list of frontend Ip config")]
+        [ValidateNotNullOrEmpty]
+        public List<PSFrontendIpConfiguration> FrontendIpConfiguration { get; set; }
+
+        [Parameter(
+            ParameterSetName = "object",
+            HelpMessage = "IPConfig of NetworkInterface")]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkInterfaceIpConfiguration BackendIpConfiguration { get; set; }
+        
         [Parameter(
             Mandatory = false,
             HelpMessage = "The transport protocol for the external endpoint.")]
@@ -63,5 +76,22 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             Mandatory = true,
             HelpMessage = "EnableFloatingIP")]
         public SwitchParameter EnableFloatingIP { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+
+            if (string.Equals(ParameterSetName, "object"))
+            {
+                this.BackendIpConfigurationId = this.BackendIpConfiguration.Id;
+                
+                this.FrontendIPConfigurationId = new List<string>();
+
+                foreach (var frontendIpConfiguration in this.FrontendIpConfiguration)
+                {
+                    this.FrontendIPConfigurationId.Add(frontendIpConfiguration.Id);
+                }
+            }
+        }
     }
 }

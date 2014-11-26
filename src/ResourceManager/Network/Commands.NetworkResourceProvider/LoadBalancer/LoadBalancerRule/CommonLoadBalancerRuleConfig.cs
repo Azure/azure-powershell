@@ -28,38 +28,35 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            ParameterSetName = "id",
             HelpMessage = "IDs of the FrontendIpConfigurations")]
         [ValidateNotNullOrEmpty]
         public List<string> FrontendIPConfigurationId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            ParameterSetName = "id",
             HelpMessage = "ID of the BackendAddressPool")]
         [ValidateNotNullOrEmpty]
         public string BackendAddressPoolId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            ParameterSetName = "id",
             HelpMessage = "ID of the Probe")]
         [ValidateNotNullOrEmpty]
         public string ProbeId { get; set; }
 
         [Parameter(
-             Mandatory = false,
              ParameterSetName = "object",
              HelpMessage = "The list of frontend Ip config")]
         [ValidateNotNullOrEmpty]
         public List<PSFrontendIpConfiguration> FrontendIpConfiguration { get; set; }
 
         [Parameter(
-             Mandatory = false,
              ParameterSetName = "object",
              HelpMessage = "The list of frontend Ip config")]
         public PSBackendAddressPool BackendAddressPool { get; set; }
 
         [Parameter(
-             Mandatory = false,
              ParameterSetName = "object",
              HelpMessage = "The list of frontend Ip config")]
         public PSProbe Probe { get; set; }
@@ -89,5 +86,22 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             Mandatory = true,
             HelpMessage = "EnableFloatingIP")]
         public SwitchParameter EnableFloatingIP { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+
+            if (string.Equals(ParameterSetName, "object"))
+            {
+                this.BackendAddressPoolId = this.BackendAddressPool.Id;
+                this.ProbeId = this.Probe.Id;
+                this.FrontendIPConfigurationId = new List<string>();
+
+                foreach (var frontendIpConfiguration in this.FrontendIpConfiguration)
+                {
+                    this.FrontendIPConfigurationId.Add(frontendIpConfiguration.Id);
+                }
+            }
+        }
     }
 }

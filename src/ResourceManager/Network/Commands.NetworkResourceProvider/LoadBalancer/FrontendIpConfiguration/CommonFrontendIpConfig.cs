@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
@@ -33,28 +34,42 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public string AllocationMethod { get; set; }
 
         [Parameter(
-            Mandatory = true,
             ParameterSetName = "id",
             HelpMessage = "SubnetId")]
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
         [Parameter(
-            Mandatory = true,
             ParameterSetName = "object",
             HelpMessage = "Subnet")]
         public PSSubnet Subnet { get; set; }
 
         [Parameter(
-            Mandatory = false,
             ParameterSetName = "id",
             HelpMessage = "PublicIpAddressId")]
         public string PublicIpAddressId { get; set; }
 
         [Parameter(
-            Mandatory = false,
             ParameterSetName = "object",
             HelpMessage = "PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
+        
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+
+            if (string.Equals(ParameterSetName, "object"))
+            {
+                if (this.Subnet != null)
+                {
+                    this.SubnetId = this.Subnet.Id;
+                }
+
+                if (this.PublicIpAddress != null)
+                {
+                    this.PublicIpAddressId = this.PublicIpAddress.Id;
+                }
+            }
+        }
     }
 }

@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
@@ -26,9 +27,29 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
             HelpMessage = "IPConfig IDs of NetworkInterfaces")]
         [ValidateNotNullOrEmpty]
         public List<string> BackendIpConfigurationId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "object",
+            HelpMessage = "IPConfig of NetworkInterface")]
+        [ValidateNotNullOrEmpty]
+        public List<PSNetworkInterfaceIpConfiguration> BackendIpConfiguration { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+
+            if (string.Equals(ParameterSetName, "object"))
+            {
+                this.BackendIpConfigurationId = new List<string>();
+
+                foreach (var backendIpConfiguration in this.BackendIpConfiguration)
+                {
+                    this.BackendIpConfigurationId.Add(backendIpConfiguration.Id);
+                }
+            }
+        }
     }
 }
