@@ -107,6 +107,7 @@ Run-TestProtected { Test-UpdateStorageAccount } "Test-UpdateStorageAccount"
 $serviceCommands | % { Run-TestProtected $_  $_.ToString() }
 Write-Host -ForegroundColor Green "STARTING RESOURCE MANAGER TESTS"
 Switch-AzureMode AzureResourceManager > $null
+Run-TestProtected { Test-GetBatchAccountWithSubscriptionDataFile $credential} "Test-GetBatchAccountWithSubscriptionDataFile"
 $resourceCommands | % { Run-TestProtected $_  $_.ToString() }
 Write-Host
 Write-Host -ForegroundColor Green "$global:passedCount / $global:totalCount Installation Tests Pass"
