@@ -28,8 +28,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <param name="tenant"></param>
         /// <param name="password"></param>
         /// <param name="promptBehavior"></param>
-        /// <returns></returns>
-        IAccessToken Authenticate(AzureAccount account, AzureEnvironment environment, string tenant, SecureString password, ShowDialog promptBehavior);
+        /// <returns></returns>        
+        IAccessToken Authenticate(AzureAccount account, AzureEnvironment environment, string tenant, SecureString password, ShowDialog promptBehavior, 
+            AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
 
         SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context);
     }

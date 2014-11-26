@@ -97,6 +97,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
                         { AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, AzureEnvironmentConstants.AzureSqlDatabaseDnsSuffix },
                         { AzureEnvironment.Endpoint.Graph, AzureEnvironmentConstants.AzureGraphEndpoint },
                         { AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, AzureEnvironmentConstants.AzureTrafficManagerDnsSuffix },
+                        { AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, AzureEnvironmentConstants.AzureKeyVaultDnsSuffix },
+                        { AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId },                        
                     }
                 }
             },
@@ -255,7 +257,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
 
         public enum Endpoint
         {
-            ActiveDirectoryServiceEndpointResourceId,
+            ActiveDirectoryServiceEndpointResourceId,           
 
             AdTenant,
 
@@ -278,6 +280,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Models
             Graph,
 
             TrafficManagerDnsSuffix,
+
+            AzureKeyVaultDnsSuffix,
+
+            AzureKeyVaultServiceEndpointResourceId,
         }
     }
 }
