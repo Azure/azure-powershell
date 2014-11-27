@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-     [Cmdlet(VerbsCommon.Get, VirtualNetworkCmdletName)]
+     [Cmdlet(VerbsCommon.Get, VirtualNetworkCmdletName), OutputType(typeof(PSVirtualNetwork))]
     public class GetVirtualNetworkCmdlet : VirtualNetworkBaseClient
     {
         [Alias("ResourceName")]

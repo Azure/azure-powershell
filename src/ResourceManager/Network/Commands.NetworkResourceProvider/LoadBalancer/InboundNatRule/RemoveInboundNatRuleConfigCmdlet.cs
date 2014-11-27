@@ -18,11 +18,12 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureLoadBalancerInboundNatRuleConfig")]
+    [Cmdlet(VerbsCommon.Remove, "AzureLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSFrontendIpConfiguration))]
     public class RemoveAzureLoadBalancerInboundNatRuleCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
+            ValueFromPipeline = true,
             HelpMessage = "The name of the InboundNat rule")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

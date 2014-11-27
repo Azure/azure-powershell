@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, NetworkInterfaceCmdletName)]
+    [Cmdlet(VerbsCommon.Get, NetworkInterfaceCmdletName), OutputType(typeof(PSNetworkInterface))]
     public class GetNetworkInterfaceCmdlet : NetworkInterfaceBaseClient
     {
         [Alias("ResourceName")]

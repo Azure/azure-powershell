@@ -19,11 +19,12 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerFrontendIpConfig")]
+    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerFrontendIpConfig"), OutputType(typeof(PSBackendAddressPool))]
     public class SetAzureLoadBalancerFrontendIpConfigCmdlet : CommonAzureLoadBalancerFrontendIpConfig
     {
         [Parameter(
             Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 

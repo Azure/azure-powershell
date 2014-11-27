@@ -18,11 +18,12 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureLoadBalancerBackendAddressPoolConfig")]
+    [Cmdlet(VerbsCommon.Get, "AzureLoadBalancerBackendAddressPoolConfig"), OutputType(typeof(PSBackendAddressPool))]
     public class GetAzureLoadBalancerBackendAddressPoolConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
+            ValueFromPipeline = true,
             HelpMessage = "The name of the BackendAddressPool")]
         public string Name { get; set; }
 

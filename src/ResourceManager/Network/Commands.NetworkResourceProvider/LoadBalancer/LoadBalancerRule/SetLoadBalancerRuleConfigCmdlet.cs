@@ -21,11 +21,12 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerRuleConfigCmdlet")]
+    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerRuleConfigCmdlet"), OutputType(typeof(PSLoadBalancer))]
     public class SetAzureLoadBalancerRuleConfigCmdlet : CommonAzureLoadBalancerRuleConfig
     {
         [Parameter(
             Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 

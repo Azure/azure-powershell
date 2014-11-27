@@ -21,11 +21,12 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerInboundNatRuleConfigCmdlet")]
+    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerInboundNatRuleConfigCmdlet"), OutputType(typeof(PSFrontendIpConfiguration))]
     public class SetAzureLoadBalancerInboundNatRuleConfigCmdlet : CommonAzureLoadBalancerInboundNatRuleConfig
     {
         [Parameter(
             Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 

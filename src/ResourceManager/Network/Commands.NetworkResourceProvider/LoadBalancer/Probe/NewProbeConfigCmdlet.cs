@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerProbeConfigCmdlet")]
+    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerProbeConfigCmdlet"), OutputType(typeof(PSProbe))]
     public class NewAzureLoadBalancerProbeConfig : CommonAzureLoadBalancerProbeConfig
     {
         public override void ExecuteCmdlet()

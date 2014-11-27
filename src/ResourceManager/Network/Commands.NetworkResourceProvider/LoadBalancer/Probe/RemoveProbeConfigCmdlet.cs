@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureLoadBalancerProbeConfig")]
+    [Cmdlet(VerbsCommon.Remove, "AzureLoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancingRule))]
     public class RemoveAzureLoadBalancerProbeCmdlet : NetworkBaseClient
     {
         [Parameter(
@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         [Parameter(
              Mandatory = true,
+             ValueFromPipeline = true,
              HelpMessage = "The loadbalancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 

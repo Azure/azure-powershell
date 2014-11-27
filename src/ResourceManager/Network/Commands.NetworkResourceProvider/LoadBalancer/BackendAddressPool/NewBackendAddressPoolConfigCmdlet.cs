@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerBackendAddressPoolConfigCmdlet")]
+    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerBackendAddressPoolConfigCmdlet"), OutputType(typeof(PSBackendAddressPool))]
     public class NewAzureLoadBalancerBackendAddressPoolConfigCmdlet : CommonAzureLoadBalancerBackendAddressPoolConfig
     {
         public override void ExecuteCmdlet()

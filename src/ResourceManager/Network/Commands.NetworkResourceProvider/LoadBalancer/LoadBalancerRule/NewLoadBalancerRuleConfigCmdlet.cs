@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerRuleConfigCmdlet")]
+    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerRuleConfigCmdlet"), OutputType(typeof(PSLoadBalancingRule))]
     public class NewAzureLoadBalancerRuleConfigCmdlet : CommonAzureLoadBalancerRuleConfig
     {
         public override void ExecuteCmdlet()

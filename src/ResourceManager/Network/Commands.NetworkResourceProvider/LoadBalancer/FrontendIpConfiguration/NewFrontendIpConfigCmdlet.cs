@@ -18,15 +18,9 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerFrontendIpConfig")]
+    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerFrontendIpConfig"), OutputType(typeof(PSFrontendIpConfiguration))]
     public class NewAzureLoadBalancerFrontendIpConfigCmdlet : CommonAzureLoadBalancerFrontendIpConfig
     {
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "object",
-            HelpMessage = "PublicIpAddress")]
-        public PSPublicIpAddress PublicIpAddress { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

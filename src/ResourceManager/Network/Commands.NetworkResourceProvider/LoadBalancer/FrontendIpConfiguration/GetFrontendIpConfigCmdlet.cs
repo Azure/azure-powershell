@@ -18,11 +18,12 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureLoadBalancerFrontendIpConfig")]
+    [Cmdlet(VerbsCommon.Get, "AzureLoadBalancerFrontendIpConfig"), OutputType(typeof(PSFrontendIpConfiguration))]
     public class GetAzureLoadBalancerFrontendIpConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
+            ValueFromPipeline = true,
             HelpMessage = "The name of the FrontendIpConfig")]
         public string Name { get; set; }
 

@@ -20,12 +20,13 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Set, PublicIpAddressCmdletName)]
+    [Cmdlet(VerbsCommon.Set, PublicIpAddressCmdletName), OutputType(typeof(PSPublicIpAddress))]
     public class SetPublicIpAddressCmdlet : PublicIpAddressBaseClient
     {
         [Parameter(
-                    Mandatory = true,
-                    HelpMessage = "The PublicIpAddress")]
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
         public override void ExecuteCmdlet()

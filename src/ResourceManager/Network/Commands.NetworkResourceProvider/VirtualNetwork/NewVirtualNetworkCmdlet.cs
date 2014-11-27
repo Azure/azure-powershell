@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, VirtualNetworkCmdletName)]
+    [Cmdlet(VerbsCommon.New, VirtualNetworkCmdletName), OutputType(typeof(PSVirtualNetwork))]
     public class NewVirtualNetworkCmdlet : VirtualNetworkBaseClient
     {
         [Alias("ResourceName")]

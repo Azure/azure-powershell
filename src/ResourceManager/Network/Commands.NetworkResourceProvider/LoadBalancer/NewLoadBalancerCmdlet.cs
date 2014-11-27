@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, LoadBalancerCmdletName)]
+    [Cmdlet(VerbsCommon.New, LoadBalancerCmdletName), OutputType(typeof(PSLoadBalancer))]
     public class NewLoadBalancerCmdlet : LoadBalancerBaseClient
     {
         [Alias("ResourceName")]
