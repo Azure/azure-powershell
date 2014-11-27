@@ -18,11 +18,12 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureLoadBalancerProbeConfig")]
+    [Cmdlet(VerbsCommon.Get, "AzureLoadBalancerProbeConfig"), OutputType(typeof(PSProbe))]
     public class GetAzureLoadBalancerProbeCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
+            ValueFromPipeline = true,
             HelpMessage = "The name of the Probe")]
         public string Name { get; set; }
 

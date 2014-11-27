@@ -20,12 +20,13 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Set, NetworkInterfaceCmdletName)]
+    [Cmdlet(VerbsCommon.Set, NetworkInterfaceCmdletName), OutputType(typeof(PSNetworkInterface))]
     public class SetNetworkInterfaceCmdlet : NetworkInterfaceBaseClient
     {
         [Parameter(
-                    Mandatory = true,
-                    HelpMessage = "The NetworkInterface")]
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The NetworkInterface")]
         public PSNetworkInterface NetworkInterface { get; set; }
 
         public override void ExecuteCmdlet()

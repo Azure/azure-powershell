@@ -93,34 +93,42 @@
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
     <Compile Include="Common\NetworkResourceBaseClient.cs" />
+    <Compile Include="LoadBalancer\BackendAddressPool\CommonBackendAddressPoolConfig.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\SetBackendAddressPoolConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\GetBackendAddressPoolConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\AddBackendAddressPoolConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\NewBackendAddressPoolConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\RemoveBackendAddressPoolConfigCmdlet.cs" />
+    <Compile Include="LoadBalancer\ChildResourceHelper.cs" />
+    <Compile Include="LoadBalancer\FrontendIpConfiguration\CommonFrontendIpConfig.cs" />
     <Compile Include="LoadBalancer\FrontendIpConfiguration\SetFrontendIpConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\FrontendIpConfiguration\GetFrontendIpConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\FrontendIpConfiguration\AddFrontendIpConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\FrontendIpConfiguration\NewFrontendIpConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\FrontendIpConfiguration\RemoveFrontendIpConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\GetLoadBalancerCmdlet.cs" />
+    <Compile Include="LoadBalancer\InboundNatRule\CommonInboundNatRuleConfig.cs" />
     <Compile Include="LoadBalancer\InboundNatRule\SetInboundNatRuleConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\InboundNatRule\GetInboundNatRuleConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\InboundNatRule\AddInboundNatRuleConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\InboundNatRule\NewInboundNatRuleConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\InboundNatRule\RemoveInboundNatRuleConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\LoadBalancerBaseClient.cs" />
+    <Compile Include="LoadBalancer\LoadBalancerRule\CommonLoadBalancerRuleConfig.cs" />
     <Compile Include="LoadBalancer\LoadBalancerRule\SetLoadBalancerRuleConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\LoadBalancerRule\GetLoadBalancerRuleConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\LoadBalancerRule\AddLoadBalancerRuleConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\LoadBalancerRule\NewLoadBalancerRuleConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\LoadBalancerRule\RemoveLoadBalancerRuleConfigCmdlet.cs" />
+    <Compile Include="LoadBalancer\NewLoadBalancerCmdlet.cs" />
+    <Compile Include="LoadBalancer\Probe\CommonProbeConfig.cs" />
     <Compile Include="LoadBalancer\Probe\SetProbeConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\Probe\GetProbeConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\Probe\AddProbeConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\Probe\NewProbeConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\Probe\RemoveProbeConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\RemoveLoadBalancerCmdlet.cs" />
+    <Compile Include="LoadBalancer\SetLoadBalancerCmdlet.cs" />
     <Compile Include="Models\PSBackendAddressPool.cs" />
     <Compile Include="Models\PSBackendAddressPoolProperties.cs" />
     <Compile Include="Models\PSFrontendIpConfiguration.cs" />
@@ -146,6 +154,7 @@
     <Compile Include="Models\PSPublicIpAddress.cs" />
     <Compile Include="Models\PSPublicIpAddressDnsSettings.cs" />
     <Compile Include="Models\PSPublicIpAddressProperties.cs" />
+    <Compile Include="Models\PSChildResource.cs" />
     <Compile Include="Models\PSResource.cs" />
     <Compile Include="Models\PSResourceId.cs" />
     <Compile Include="Models\PSResourceProperties.cs" />
@@ -160,8 +169,8 @@
     <Compile Include="NetworkInterface\NewNetworkInterfaceCmdlet.cs" />
     <Compile Include="NetworkInterface\SetNetworkInterfaceCmdlet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\NetworkResourceProvider.Designer.cs">
-      <DependentUpon>NetworkResourceProvider.resx</DependentUpon>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -197,9 +206,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Properties\NetworkResourceProvider.resx">
+    <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NetworkResourceProvider.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

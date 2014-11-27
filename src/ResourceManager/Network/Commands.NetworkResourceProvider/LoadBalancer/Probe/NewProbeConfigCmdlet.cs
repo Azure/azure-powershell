@@ -14,46 +14,14 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerProbeConfigCmdlet")]
-    public class NewAzureLoadBalancerProbeConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerProbeConfigCmdlet"), OutputType(typeof(PSProbe))]
+    public class NewAzureLoadBalancerProbeConfig : CommonAzureLoadBalancerProbeConfig
     {
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the Inbound NAT rule")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Request path")]
-        [ValidateNotNullOrEmpty]
-        public string RequestPath { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The transport protocol for the external endpoint.")]
-        [ValidateSet(MNM.TransportProtocol.Tcp, MNM.TransportProtocol.Udp, IgnoreCase = true)]
-        public string Protocol { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The probe port")]
-        public int Port { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "IntervalInSeconds")]
-        public int IntervalInSeconds { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "NumberOfProbes")]
-        public int ProbeCount { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -66,7 +34,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             probe.Properties.RequestPath = this.RequestPath;
             probe.Properties.IntervalInSeconds = this.IntervalInSeconds;
             probe.Properties.NumberOfProbes = this.ProbeCount;
-            
+
+            probe.Id =
+                ChildResourceHelper.GetResourceNotSetId(
+                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    Resources.LoadBalancerProbeName,
+                    this.Name);
+
             WriteObject(probe);
         }
     }

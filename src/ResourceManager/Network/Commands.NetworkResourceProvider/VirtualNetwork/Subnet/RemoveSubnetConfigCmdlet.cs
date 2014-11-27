@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureVirtualNetworkSubnetConfig")]
+    [Cmdlet(VerbsCommon.Remove, "AzureVirtualNetworkSubnetConfig"), OutputType(typeof(PSVirtualNetwork))]
     public class RemoveAzureVirtualNetworkSubnetConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         [Parameter(
              Mandatory = true,
+             ValueFromPipeline = true,
              HelpMessage = "The virtualNetwork")]
         public PSVirtualNetwork VirtualNetwork { get; set; }
 

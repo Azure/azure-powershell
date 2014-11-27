@@ -20,23 +20,12 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerBackendAddressPoolConfigCmdlet")]
-    public class SetAzureLoadBalancerBackendAddressPoolConfigCmdletCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerBackendAddressPoolConfigCmdlet"), OutputType(typeof(PSLoadBalancer))]
+    public class SetAzureLoadBalancerBackendAddressPoolConfigCmdletCmdlet : CommonAzureLoadBalancerBackendAddressPoolConfig
     {
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the BackendAddressPool")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
             Mandatory = true,
-            HelpMessage = "IPConfig IDs of NetworkInterfaces")]
-        [ValidateNotNullOrEmpty]
-        public List<string> BackendIpConfigurationId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 

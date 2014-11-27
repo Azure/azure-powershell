@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSSubnet : PSResource
+    public class PSSubnet : PSChildResource
     {
        public PSSubnetProperties Properties { get; set; }
     }

@@ -16,13 +16,9 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSNetworkInterfaceProperties
+    public class PSNetworkInterfaceProperties : PSResourceProperties
     {
-        public string Etag { get; set; }
-
         public PSResourceId VirtualMachine { get; set; }
-
-        public string ProvisioningState { get; set; }
 
         public List<PSNetworkInterfaceIpConfiguration> IpConfigurations { get; set; }
 

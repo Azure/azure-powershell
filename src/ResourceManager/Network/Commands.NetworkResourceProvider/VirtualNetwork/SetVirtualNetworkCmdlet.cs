@@ -20,12 +20,13 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Set, VirtualNetworkCmdletName)]
+    [Cmdlet(VerbsCommon.Set, VirtualNetworkCmdletName), OutputType(typeof(PSVirtualNetwork))]
     public class SetVirtualNetworkCmdlet : VirtualNetworkBaseClient
     {
         [Parameter(
-                    Mandatory = true,
-                    HelpMessage = "The virtualNetwork")]
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The virtualNetwork")]
         public PSVirtualNetwork VirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()

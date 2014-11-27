@@ -12,43 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualNetworkSubnetConfig"), OutputType(typeof(PSSubnet))]
-    public class NewAzureVirtualNetworkSubnetConfigCmdlet : NetworkBaseClient
+    public class CommonAzureLoadBalancerProbeConfig : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the subnet")]
+            HelpMessage = "The name of the Inbound NAT rule")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The address prefix of the subnet")]
+            Mandatory = true,
+            HelpMessage = "Request path")]
         [ValidateNotNullOrEmpty]
-        public string AddressPrefix { get; set; }
+        public string RequestPath { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of Dns Servers")]
-        public List<string> DnsServer { get; set; }
+            HelpMessage = "The transport protocol for the external endpoint.")]
+        [ValidateSet(MNM.ProbeProtocol.Tcp, MNM.ProbeProtocol.Http, IgnoreCase = true)]
+        public string Protocol { get; set; }
 
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The probe port")]
+        public int Port { get; set; }
 
-            var subnet = new PSSubnet();
-            subnet.Name = this.Name;
-            subnet.Properties = new PSSubnetProperties();
-            subnet.Properties.AddressPrefix = this.AddressPrefix;
-            subnet.Properties.DhcpOptions = new PSDhcpOptions();
-            subnet.Properties.DhcpOptions.DnsServers = this.DnsServer;
-            WriteObject(subnet);
-        }
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "IntervalInSeconds")]
+        public int IntervalInSeconds { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "NumberOfProbes")]
+        public int ProbeCount { get; set; }
     }
 }

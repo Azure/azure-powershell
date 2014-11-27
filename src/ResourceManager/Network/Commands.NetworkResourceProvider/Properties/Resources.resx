@@ -117,4 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LoadBalancerBackendAddressPoolName" xml:space="preserve">
+    <value>backendAddressPools</value>
+  </data>
+  <data name="LoadBalancerChildResourceId" xml:space="preserve">
+    <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}</value>
+    <comment>The ID of a load balancer child resource</comment>
+  </data>
+  <data name="LoadBalancerFrontendIpConfigName" xml:space="preserve">
+    <value>frontendIPConfigurations</value>
+  </data>
+  <data name="LoadBalancerInBoundNatRuleName" xml:space="preserve">
+    <value>inboundNatRules</value>
+  </data>
+  <data name="LoadBalancerNameNotSet" xml:space="preserve">
+    <value>LoadBalancerNameNotSet</value>
+  </data>
+  <data name="LoadBalancerProbeName" xml:space="preserve">
+    <value>probes</value>
+  </data>
+  <data name="LoadBalancerRuleName" xml:space="preserve">
+    <value>loadBalancingRules</value>
+  </data>
+  <data name="ResourceGroupNotSet" xml:space="preserve">
+    <value>ResourceGroupNotSet</value>
+  </data>
 </root>

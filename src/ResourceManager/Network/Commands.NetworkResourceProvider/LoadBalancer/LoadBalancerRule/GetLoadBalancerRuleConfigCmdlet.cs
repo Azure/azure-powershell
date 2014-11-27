@@ -18,11 +18,12 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureLoadBalancerRuleConfig")]
+    [Cmdlet(VerbsCommon.Get, "AzureLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancingRule))]
     public class GetAzureLoadBalancerRuleConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
+            ValueFromPipeline = true,
             HelpMessage = "The name of the LoadBalancing Rule")]
         public string Name { get; set; }
 

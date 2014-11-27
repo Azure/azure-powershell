@@ -12,45 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureLoadBalancerFrontendIpConfig"), OutputType(typeof(PSFrontendIpConfiguration))]
-    public class GetAzureLoadBalancerFrontendIpConfigCmdlet : NetworkBaseClient
+    public class CommonAzureLoadBalancerBackendAddressPoolConfig : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
-            ValueFromPipeline = true,
-            HelpMessage = "The name of the FrontendIpConfig")]
+            HelpMessage = "The name of the BackendAddressPool")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The loadbalancer")]
-        public PSLoadBalancer LoadBalancer { get; set; }
+            HelpMessage = "IPConfig IDs of NetworkInterfaces")]
+        [ValidateNotNullOrEmpty]
+        public List<string> BackendIpConfigurationId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "object",
+            HelpMessage = "IPConfig of NetworkInterface")]
+        [ValidateNotNullOrEmpty]
+        public List<PSNetworkInterfaceIpConfiguration> BackendIpConfiguration { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
-            if (!string.IsNullOrEmpty(this.Name))
-            {
-                var frontendIpConfiguration =
-                    this.LoadBalancer.Properties.FrontendIpConfigurations.Where(
-                        resource =>
-                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-                WriteObject(frontendIpConfiguration);
-            }
-            else
+            if (string.Equals(ParameterSetName, "object"))
             {
-                var frontendIpConfigurations = this.LoadBalancer.Properties.FrontendIpConfigurations;
-                WriteObject(frontendIpConfigurations, true);
+                this.BackendIpConfigurationId = new List<string>();
+
+                foreach (var backendIpConfiguration in this.BackendIpConfiguration)
+                {
+                    this.BackendIpConfigurationId.Add(backendIpConfiguration.Id);
+                }
             }
-            
         }
     }
 }

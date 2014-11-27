@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, NetworkInterfaceCmdletName)]
+    [Cmdlet(VerbsCommon.Get, NetworkInterfaceCmdletName), OutputType(typeof(PSNetworkInterface))]
     public class GetNetworkInterfaceCmdlet : NetworkInterfaceBaseClient
     {
         [Alias("ResourceName")]
@@ -54,6 +54,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 var getNetworkInterfaceResponse = this.NetworkInterfaceClient.List(this.ResourceGroupName);
 
                 var networkInterfaces = Mapper.Map<List<PSNetworkInterface>>(getNetworkInterfaceResponse.NetworkInterfaces);
+
+                // populate the networkInterfaces with the ResourceGroupName
+                foreach (var networkInterface in networkInterfaces)
+                {
+                    networkInterface.ResourceGroupName = this.ResourceGroupName;
+                }
 
                 WriteObject(networkInterfaces, true);
             }

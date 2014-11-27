@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSBackendAddressPool : PSResource
+    public class PSBackendAddressPool : PSChildResource
     {
         public PSBackendAddressPoolProperties Properties { get; set; }
     }

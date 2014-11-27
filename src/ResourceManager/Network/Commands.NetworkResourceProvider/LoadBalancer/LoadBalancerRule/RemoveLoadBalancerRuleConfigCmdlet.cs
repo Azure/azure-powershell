@@ -18,11 +18,12 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureLoadBalancerRuleConfig")]
+    [Cmdlet(VerbsCommon.Remove, "AzureLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancer))]
     public class RemoveAzureLoadBalancerRuleCmdlet : NetworkBaseClient
     {
         [Parameter(
             Mandatory = false,
+            ValueFromPipeline = true,
             HelpMessage = "The name of the load balancer rule")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

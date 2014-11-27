@@ -19,49 +19,12 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerFrontendIpConfig")]
-    public class SetAzureLoadBalancerFrontendIpConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerFrontendIpConfig"), OutputType(typeof(PSBackendAddressPool))]
+    public class SetAzureLoadBalancerFrontendIpConfigCmdlet : CommonAzureLoadBalancerFrontendIpConfig
     {
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the FrontendIpConfiguration")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
             Mandatory = true,
-            HelpMessage = "The public IP address allocation method.")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(Management.Network.Models.IpAllocationMethod.Dynamic, IgnoreCase = true)]
-        public string AllocationMethod { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = "id",
-            HelpMessage = "SubnetId")]
-        [ValidateNotNullOrEmpty]
-        public string SubnetId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = "object",
-            HelpMessage = "Subnet")]
-        public PSSubnet Subnet { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "id",
-            HelpMessage = "PublicIpAddressId")]
-        public string PublicIpAddressId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "object",
-            HelpMessage = "PublicIpAddress")]
-        public PSPublicIpAddress PublicIpAddress { get; set; }
-
-        [Parameter(
-            Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 

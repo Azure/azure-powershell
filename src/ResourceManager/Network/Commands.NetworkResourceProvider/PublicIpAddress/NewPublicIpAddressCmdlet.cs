@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, PublicIpAddressCmdletName)]
+    [Cmdlet(VerbsCommon.New, PublicIpAddressCmdletName), OutputType(typeof(PSPublicIpAddress))]
     public class NewPublicIpAddressCmdlet : PublicIpAddressBaseClient
     {
         [Alias("ResourceName")]
