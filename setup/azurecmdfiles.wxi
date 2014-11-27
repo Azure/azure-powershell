@@ -64,9 +64,6 @@
                         <Component Id="cmp9F0624F1A60FEC6C92BD00C0FF6D3687" Guid="*">
                             <File Id="fil0F1880F9AF225B647105636C1209B2AD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Compute\AutoMapper.dll" />
                         </Component>
-                        <Component Id="cmp8114720BD4403889B36408A1E7F419B1" Guid="*">
-                            <File Id="fil5A8265B48813A0104CB5DEEDA9CEAEAA" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Compute\AutoMapper.Net4.dll" />
-                        </Component>
                         <Component Id="cmpEDFE5B7CD43B10FD4C5F82D443DA0C5D" Guid="*">
                             <File Id="fil3E1AD32F04CFF244686C4DD4C07D2F19" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Compute\Microsoft.Azure.Commands.Compute.dll" />
                         </Component>
@@ -257,9 +254,6 @@
                         <Component Id="cmp0013FA46371D26D810D34C3020ADCA8A" Guid="*">
                             <File Id="fil5D6E2A0C83D8823844A2A8819D7E6C7A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\NetworkResourceProvider\AutoMapper.dll" />
                         </Component>
-                        <Component Id="cmpE6890230E9734B840B373ED82DFBA468" Guid="*">
-                            <File Id="fil0AAE18D3A35F16DA87C896FC6CA96B3C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\NetworkResourceProvider\AutoMapper.Net4.dll" />
-                        </Component>
                         <Component Id="cmp2D9806B2F9AE5628C033BDD20B341A63" Guid="*">
                             <File Id="fil857C38BEA1B4C2E6143D1815CE52010B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.dll" />
                         </Component>
@@ -369,9 +363,6 @@
                         </Component>
                     </Directory>
                     <Directory Id="dir373C860472263629CD07E0A04D948706" Name="Resources">
-                        <Component Id="cmp5AD16BC119CB68D434C0438493948926" Guid="*">
-                            <File Id="filFA72B6D0ED7DD12623D2F186EC66315C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Resources\AutoMapper.Net4.dll" />
-                        </Component>
                         <Component Id="cmp52B4C6C34E55FFC84846006FBFF66323" Guid="*">
                             <File Id="fil5CD22B4406C5EBE89BC1D35703AA94A9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Resources\Microsoft.Azure.Commands.Batch.dll" />
                         </Component>
@@ -2177,7 +2168,6 @@
             <ComponentRef Id="cmp23BAA5F27F989B6A570DA6BAB5AF6468" />
             <ComponentRef Id="cmpEE1426977F06792DC1DF6EC28AA3443B" />
             <ComponentRef Id="cmp9F0624F1A60FEC6C92BD00C0FF6D3687" />
-            <ComponentRef Id="cmp8114720BD4403889B36408A1E7F419B1" />
             <ComponentRef Id="cmpEDFE5B7CD43B10FD4C5F82D443DA0C5D" />
             <ComponentRef Id="cmp62942A24352ADC631A6C9DAE39D62F70" />
             <ComponentRef Id="cmp0E38816FE542D1F9479E2BCD0AA15C8C" />
@@ -2240,7 +2230,6 @@
             <ComponentRef Id="cmpBFF3EE7A4627288C2D2424BA1DF0FCE1" />
             <ComponentRef Id="cmpC04498A4FB0FD84163A4FABEFAFC86C4" />
             <ComponentRef Id="cmp0013FA46371D26D810D34C3020ADCA8A" />
-            <ComponentRef Id="cmpE6890230E9734B840B373ED82DFBA468" />
             <ComponentRef Id="cmp2D9806B2F9AE5628C033BDD20B341A63" />
             <ComponentRef Id="cmp02282C55620BE455F3DA6F0140F930DB" />
             <ComponentRef Id="cmp143934D4D6CF1D6494CCBEAB5587D90C" />
@@ -2276,7 +2265,6 @@
             <ComponentRef Id="cmp0E413D6D37193329AE9010F9FA2890C5" />
             <ComponentRef Id="cmpB0B297F0299FD28B4E6A8D7DD9C09488" />
             <ComponentRef Id="cmp5213FD510F56FD8BB9F7937D8F0F4B7E" />
-            <ComponentRef Id="cmp5AD16BC119CB68D434C0438493948926" />
             <ComponentRef Id="cmp52B4C6C34E55FFC84846006FBFF66323" />
             <ComponentRef Id="cmp7F1D26F455AA981C1C86ACFA401241D3" />
             <ComponentRef Id="cmpBC5FC2169331517CC80DA5FEB5DE1FBA" />
