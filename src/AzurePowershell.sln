@@ -149,6 +149,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.NetworkResourceProvider", "ResourceManager\Network\Commands.NetworkResourceProvider\Commands.NetworkResourceProvider.csproj", "{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.NetworkResourceProvider.Test", "ResourceManager\Network\Commands.NetworkResourceProvider.Test\Commands.NetworkResourceProvider.Test.csproj", "{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -355,6 +357,10 @@ Global
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -384,5 +390,6 @@ Global
 		{F4ABAD68-64A5-4B23-B09C-42559A7524DE} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{FDB897BD-FCB4-44A1-8D66-AC99F22EC737} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{A415F75B-EB6A-49A6-934E-5BA71B83D6EB} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal
