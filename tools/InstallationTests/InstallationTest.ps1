@@ -42,3 +42,13 @@ function Test-UpdateStorageAccount
   $storageAccountName = $(Get-AzureStorageContainer)[0].Context.StorageAccountName
   Assert-AreEqual $storageAccountName $accounts[1].StorageAccountName
 }
+
+function Test-GetBatchAccountWithSubscriptionDataFile
+{
+  param([PSCredential] $credential)
+  Get-AzureSubscription | Remove-AzureSubscription -Force
+  $account = Add-AzureAccount -Credential $credential -SubscriptionDataFile "File.txt"
+  Select-AzureSubscription -SubscriptionId $account.Subscriptions.Split("`r`n")[0] -SubscriptionDataFile "File.txt"
+  Get-AzureBatchAccount
+  Add-AzureAccount -Credential $credential
+}
