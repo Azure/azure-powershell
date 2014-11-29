@@ -47,6 +47,13 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string AvailabilitySetId { get; set; }
 
+        
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Provision VM Agent.")]
+        [ValidateNotNullOrEmpty]
+        public bool? ProvisionVMAgent { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -63,6 +70,14 @@ namespace Microsoft.Azure.Commands.Compute
                                                ReferenceUri = this.AvailabilitySetId
                                            }
             };
+
+            if (ProvisionVMAgent.HasValue)
+            {
+                vmProps.OSProfile.WindowsConfiguration = new WindowsConfiguration
+                {
+                    ProvisionVMAgent = this.ProvisionVMAgent
+                };
+            }
 
             var parameters = new VirtualMachineCreateOrUpdateParameters
             {
