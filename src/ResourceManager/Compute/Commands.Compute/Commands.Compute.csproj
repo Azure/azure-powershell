@@ -144,9 +144,7 @@
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
-    <Compile Include="Models\PSVirtualMachineInstanceViewConversions.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
-    <Compile Include="Models\PSVirtualMachineConversions.cs" />
     <Compile Include="StorageAccount\StorageManagementClient.cs" />
     <Compile Include="Common\SecureStringExtension.cs" />
     <Compile Include="Models\SourceImageReferenceExtension.cs" />

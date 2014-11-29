@@ -38,4 +38,41 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public IList<InstanceViewStatus> Statuses { get; set; }
     }
+
+    public static class PSVirtualMachineInstanceViewExtension
+    {
+        public static PSVirtualMachineInstanceView ToPSVirtualMachineInstanceView(
+            this VirtualMachineInstanceView virtualMachineInstanceView,
+            string resourceGroupName = null,
+            string vmName = null)
+        {
+            PSVirtualMachineInstanceView result = new PSVirtualMachineInstanceView
+            {
+                ResourceGroupName = resourceGroupName,
+                Name = vmName,
+                Disks = virtualMachineInstanceView.Disks,
+                Extensions = virtualMachineInstanceView.Extensions,
+                Statuses = virtualMachineInstanceView.Statuses,
+                PlatformFaultDomain = virtualMachineInstanceView.PlatformFaultDomain,
+                PlatformUpdateDomain = virtualMachineInstanceView.PlatformUpdateDomain,
+                RemoteDesktopThumbprint = virtualMachineInstanceView.RemoteDesktopThumbprint,
+                VMAgent = virtualMachineInstanceView.VMAgent
+            };
+
+            return result;
+        }
+
+        public static PSVirtualMachineInstanceView ToPSVirtualMachineInstanceView(
+            this VirtualMachineGetInstanceViewResponse response,
+            string resourceGroupName = null,
+            string vmName = null)
+        {
+            if (response == null)
+            {
+                return null;
+            }
+
+            return response.VirtualMachineInstanceView.ToPSVirtualMachineInstanceView(resourceGroupName, vmName);
+        }
+    }
 }
