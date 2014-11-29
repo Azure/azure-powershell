@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
@@ -76,6 +78,30 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             dataFactoriesClientMock.VerifyAll();
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetHubWithEmptyName()
+        {
+            // Action
+            cmdlet.Name = String.Empty;
+            Exception exception = Assert.Throws<PSArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
+            // Assert
+            Assert.Contains("Value cannot be null", exception.Message);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetHubWithWhiteSpaceName()
+        {
+            // Action
+            cmdlet.Name = "   ";
+            Exception exception = Assert.Throws<PSArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
+            // Assert
+            Assert.Contains("Value cannot be null", exception.Message);
         }
 
         [Fact]
