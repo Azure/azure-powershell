@@ -12,45 +12,40 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
+using System;
 using System.Management.Automation;
+using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureLoadBalancerFrontendIpConfig"), OutputType(typeof(PSFrontendIpConfiguration))]
-    public class GetAzureLoadBalancerFrontendIpConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.Set, LoadBalancerCmdletName), OutputType(typeof(PSLoadBalancer))]
+    public class SetLoadBalancerCmdlet : LoadBalancerBaseClient
     {
         [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
-            HelpMessage = "The name of the FrontendIpConfig")]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The loadbalancer")]
+             Mandatory = true,
+             ValueFromPipeline = true,
+             HelpMessage = "The loadBalancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
-            if (!string.IsNullOrEmpty(this.Name))
-            {
-                var frontendIpConfiguration =
-                    this.LoadBalancer.Properties.FrontendIpConfigurations.Where(
-                        resource =>
-                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-                WriteObject(frontendIpConfiguration);
-            }
-            else
+            if (!this.IsLoadBalancerPresent(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name))
             {
-                var frontendIpConfigurations = this.LoadBalancer.Properties.FrontendIpConfigurations;
-                WriteObject(frontendIpConfigurations, true);
+                throw new ArgumentException(ResourceNotFound);
             }
             
+            // Map to the sdk object
+            var lbModel = Mapper.Map<MNM.LoadBalancerCreateOrUpdateParameters>(this.LoadBalancer);
+
+            // Execute the Create VirtualNetwork call
+            this.LoadBalancerClient.CreateOrUpdate(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name, lbModel);
+
+            var getLoadBalancer = this.GetLoadBalancer(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name);
+            WriteObject(getLoadBalancer);
         }
     }
 }

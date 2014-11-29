@@ -14,57 +14,19 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerFrontendIpConfig")]
-    public class NewAzureLoadBalancerFrontendIpConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerFrontendIpConfig"), OutputType(typeof(PSFrontendIpConfiguration))]
+    public class NewAzureLoadBalancerFrontendIpConfigCmdlet : CommonAzureLoadBalancerFrontendIpConfig
     {
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the FrontendIpConfiguration")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The public IP address allocation method.")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(Management.Network.Models.IpAllocationMethod.Dynamic, IgnoreCase = true)]
-        public string AllocationMethod { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = "id",
-            HelpMessage = "SubnetId")]
-        [ValidateNotNullOrEmpty]
-        public string SubnetId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = "object",
-            HelpMessage = "Subnet")]
-        public PSSubnet Subnet { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "id",
-            HelpMessage = "PublicIpAddressId")]
-        public string PublicIpAddressId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "object",
-            HelpMessage = "PublicIpAddress")]
-        public PSPublicIpAddress PublicIpAddress { get; set; }
-
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             // Get the subnetId and publicIpAddressId from the object if specified
-            if (string.Equals(ParameterSetName, "id"))
+            if (string.Equals(ParameterSetName, "object"))
             {
                 this.SubnetId = this.Subnet.Id;
 
@@ -87,6 +49,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 frontendIpConfig.Properties.PublicIpAddress = new PSResourceId();
                 frontendIpConfig.Properties.PublicIpAddress.Id = this.PublicIpAddressId;
             }
+
+            frontendIpConfig.Id =
+                ChildResourceHelper.GetResourceNotSetId(
+                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    Resources.LoadBalancerFrontendIpConfigName,
+                    this.Name);
 
             WriteObject(frontendIpConfig);
 

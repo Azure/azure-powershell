@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSFrontendIpConfiguration : PSResource
+    public class PSFrontendIpConfiguration : PSChildResource
     {
         public PSFrontendIpConfigurationProperties Properties { get; set; }
     }

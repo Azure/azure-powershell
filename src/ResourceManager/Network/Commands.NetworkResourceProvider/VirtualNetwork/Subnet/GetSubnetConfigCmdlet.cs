@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkSubnetConfig")]
+    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkSubnetConfig"), OutputType(typeof(PSSubnet))]
     public class GetAzureVirtualNetworkSubnetConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "The virtualNetwork")]
         public PSVirtualNetwork VirtualNetwork { get; set; }
 

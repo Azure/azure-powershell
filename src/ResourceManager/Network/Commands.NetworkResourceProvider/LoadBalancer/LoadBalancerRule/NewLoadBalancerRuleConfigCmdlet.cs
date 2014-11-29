@@ -15,63 +15,14 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerRuleConfigCmdlet")]
-    public class NewAzureLoadBalancerRuleConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerRuleConfigCmdlet"), OutputType(typeof(PSLoadBalancingRule))]
+    public class NewAzureLoadBalancerRuleConfigCmdlet : CommonAzureLoadBalancerRuleConfig
     {
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the Inbound NAT rule")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "IDs of the FrontendIpConfigurations")]
-        [ValidateNotNullOrEmpty]
-        public List<string> FrontendIPConfigurationId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "ID of the BackendAddressPool")]
-        [ValidateNotNullOrEmpty]
-        public string BackendAddressPoolId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "ID of the Probe")]
-        [ValidateNotNullOrEmpty]
-        public string ProbeId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The transport protocol for the external endpoint.")]
-        [ValidateSet(MNM.TransportProtocol.Tcp, MNM.TransportProtocol.Udp, IgnoreCase = true)]
-        public string Protocol { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The frontend port")]
-        public int FrontendPort { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The frontend port")]
-        public int BackendPort { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "IdleTimeoutInSeconds")]
-        public int IdleTimeoutInSeconds { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "EnableFloatingIP")]
-        public bool EnableFloatingIP { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -83,7 +34,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             loadBalancingRule.Properties.FrontendPort = this.FrontendPort;
             loadBalancingRule.Properties.BackendPort = this.BackendPort;
             loadBalancingRule.Properties.IdleTimeoutInMinutes = this.IdleTimeoutInSeconds;
-            loadBalancingRule.Properties.EnableFloatingIP = this.EnableFloatingIP;
+            loadBalancingRule.Properties.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
             loadBalancingRule.Properties.BackendAddressPool = new PSResourceId();
             loadBalancingRule.Properties.BackendAddressPool.Id = this.BackendAddressPoolId;
             loadBalancingRule.Properties.Probe = new PSResourceId();
@@ -97,6 +48,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 resourceId.Id = frontendIPConfigurationId;
                 loadBalancingRule.Properties.FrontendIPConfigurations.Add(resourceId);
             }
+
+            loadBalancingRule.Id =
+                ChildResourceHelper.GetResourceNotSetId(
+                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    Resources.LoadBalancerRuleName,
+                    this.Name);
 
             WriteObject(loadBalancingRule);
         }

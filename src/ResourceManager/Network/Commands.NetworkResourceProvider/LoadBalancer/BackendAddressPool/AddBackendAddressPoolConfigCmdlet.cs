@@ -17,26 +17,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Add, "AzureLoadBalancerBackendAddressPoolConfigCmdlet")]
-    public class AddAzureLoadBalancerBackendAddressPoolConfigCmdletCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.Add, "AzureLoadBalancerBackendAddressPoolConfigCmdlet"), OutputType(typeof(PSLoadBalancer))]
+    public class AddAzureLoadBalancerBackendAddressPoolConfigCmdlet : CommonAzureLoadBalancerBackendAddressPoolConfig
     {
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the BackendAddressPool")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
             Mandatory = true,
-            HelpMessage = "IPConfig IDs of NetworkInterfaces")]
-        [ValidateNotNullOrEmpty]
-        public List<string> BackendIpConfigurationId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
@@ -62,6 +52,14 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 resourceId.Id = backendIpConfigurationId;
                 backendAddressPool.Properties.BackendIpConfigurations.Add(resourceId);
             }
+
+            backendAddressPool.Id =
+                ChildResourceHelper.GetResourceId(
+                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.LoadBalancer.ResourceGroupName,
+                    this.LoadBalancer.Name,
+                    Resources.LoadBalancerBackendAddressPoolName,
+                    this.Name);
 
             this.LoadBalancer.Properties.BackendAddressPools.Add(backendAddressPool);
 

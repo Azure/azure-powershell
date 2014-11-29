@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, LoadBalancerCmdletName)]
+    [Cmdlet(VerbsCommon.Get, LoadBalancerCmdletName), OutputType(typeof(PSLoadBalancer))]
     public class GetLoadBalancerCmdlet : LoadBalancerBaseClient
     {
         [Alias("ResourceName")]
@@ -50,7 +50,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             {
                 var getLoadBalancerResponse = this.LoadBalancerClient.List(this.ResourceGroupName);
 
-                var loadBalancers = Mapper.Map<List<PSPublicIpAddress>>(getLoadBalancerResponse.LoadBalancers);
+                var loadBalancers = Mapper.Map<List<PSLoadBalancer>>(getLoadBalancerResponse.LoadBalancers);
+
+                // populate the loadbalancers with the ResourceGroupName
+                foreach (var loadBalancer in loadBalancers)
+                {
+                    loadBalancer.ResourceGroupName = this.ResourceGroupName;
+                }
 
                 WriteObject(loadBalancers, true);
             }
