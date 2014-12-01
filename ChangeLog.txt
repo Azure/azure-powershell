@@ -4,7 +4,6 @@
   * Select-AzureSubscription: fixed output types in default and PassThru mode
 * Compute
   * Get-AzureVMSqlServerExtension
-  * New-AzureVMSqlServerExtension
   * Set-AzureVMSqlServerExtension
   * Remove-AzureVMSqlServerExtension
 * HDInsight

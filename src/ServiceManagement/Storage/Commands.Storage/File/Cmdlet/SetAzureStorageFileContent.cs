@@ -52,9 +52,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public CloudFileDirectory Directory { get; set; }
 
+        [Alias("FullName")]
         [Parameter(
             Position = 1,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Path to the local file to be uploaded.")]
         [ValidateNotNullOrEmpty]
         public string Source { get; set; }
