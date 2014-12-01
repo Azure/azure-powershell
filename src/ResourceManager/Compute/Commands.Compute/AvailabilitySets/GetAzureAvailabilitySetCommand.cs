@@ -24,6 +24,15 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSAvailabilitySet))]
     public class GetAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
+
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
         [Alias("ResourceName", "AvailabilitySetName")]
         [Parameter(
             Position = 1,
@@ -39,12 +48,12 @@ namespace Microsoft.Azure.Commands.Compute
             if (string.IsNullOrEmpty(this.Name))
             {
                 var op = this.AvailabilitySetClient.List(this.ResourceGroupName);
-                WriteObject(op.ToPSAvailabilitySetList(), true);
+                WriteObject(op.ToPSAvailabilitySetList(this.ResourceGroupName), true);
             }
             else
             {
                 var op = this.AvailabilitySetClient.Get(this.ResourceGroupName, this.Name);
-                WriteObject(op.ToPSAvailabilitySet());
+                WriteObject(op.ToPSAvailabilitySet(this.ResourceGroupName));
             }
         }
     }

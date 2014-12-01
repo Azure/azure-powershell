@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string Id { get; set; }
 
         public string Properties { get; set; }
+
         public string ProvisioningState { get; set; }
 
         public IList<InstanceViewStatus> Statuses { get; set; }
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Id = ext.Id,
                 Properties = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.ProtectedSettings,
                 ProvisioningState = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.ProvisioningState,
-                Statuses = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.InstanceView.Statuses
+                Statuses = ext.VirtualMachineExtensionProperties == null || ext.VirtualMachineExtensionProperties.InstanceView == null ? null : ext.VirtualMachineExtensionProperties.InstanceView.Statuses
             };
 
             return result;

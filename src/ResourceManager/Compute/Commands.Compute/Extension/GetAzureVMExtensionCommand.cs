@@ -23,7 +23,36 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSVirtualMachineExtension))]
     public class GetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "To show the status.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
+        [Alias("ResourceName")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The virtual machine name.")]
+        [ValidateNotNullOrEmpty]
+        public override string VMName { get; set; }
+
+        [Alias("ExtensionName")]
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extension name.")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
+        [Parameter(
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "To show the status.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Status { get; set; }
 
@@ -34,12 +63,12 @@ namespace Microsoft.Azure.Commands.Compute
             if (Status)
             {
                 var result = this.VirtualMachineExtensionClient.GetInstanceView(this.ResourceGroupName, this.VMName, this.Name);
-                WriteObject(result.ToPSVirtualMachineExtension());
+                WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName));
             }
             else
             {
                 var result = this.VirtualMachineExtensionClient.Get(this.ResourceGroupName, this.VMName, this.Name);
-                WriteObject(result.ToPSVirtualMachineExtension());
+                WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName));
             }
         }
     }
