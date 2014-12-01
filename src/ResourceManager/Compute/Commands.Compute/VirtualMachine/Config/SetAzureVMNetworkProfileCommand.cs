@@ -43,10 +43,12 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            this.VMProfile.NetworkProfile = new NetworkProfile
+            var networkProfile = new NetworkProfile
             {
                 NetworkInterfaces = new List<NetworkInterfaceReference>()
             };
+
+            this.VMProfile.SetNetworkProfile(networkProfile);
 
             WriteObject(this.VMProfile);
         }

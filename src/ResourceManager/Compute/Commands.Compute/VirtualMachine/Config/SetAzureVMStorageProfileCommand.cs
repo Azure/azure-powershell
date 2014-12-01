@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            this.VMProfile.StorageProfile = new StorageProfile
+            var storageProfile = new StorageProfile
             {
                 SourceImage = string.IsNullOrEmpty(this.SourceImageName) ? null :
                               new SourceImageReference
@@ -101,6 +101,8 @@ namespace Microsoft.Azure.Commands.Compute
                 DataDisks = null,
                 DestinationVhdsContainer = string.IsNullOrEmpty(this.VHDContainer) ? null : new Uri(this.VHDContainer)
             };
+
+            this.VMProfile.SetStorageProfile(storageProfile);
 
             WriteObject(this.VMProfile);
         }

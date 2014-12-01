@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -82,17 +80,19 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            if (this.VMProfile.StorageProfile == null)
+            var storageProfile = this.VMProfile.GetStorageProfile();
+
+            if (storageProfile == null)
             {
-                this.VMProfile.StorageProfile = new StorageProfile();
+                storageProfile = new StorageProfile();
             }
 
-            if (this.VMProfile.StorageProfile.DataDisks == null)
+            if (storageProfile.DataDisks == null)
             {
-                this.VMProfile.StorageProfile.DataDisks = new List<DataDisk>();
+                storageProfile.DataDisks = new List<DataDisk>();
             }
 
-            this.VMProfile.StorageProfile.DataDisks.Add(new DataDisk
+            storageProfile.DataDisks.Add(new DataDisk
             {
                 Name = this.Name,
                 Caching = this.Caching,
@@ -103,6 +103,8 @@ namespace Microsoft.Azure.Commands.Compute
                     Uri = this.VhdUri.ToString()
                 }
             });
+
+            this.VMProfile.SetStorageProfile(storageProfile);
 
             WriteObject(this.VMProfile);
         }

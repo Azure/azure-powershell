@@ -51,19 +51,23 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            if (this.VMProfile.NetworkProfile == null)
+            var networkProfile = this.VMProfile.GetNetworkProfile();
+
+            if (networkProfile == null)
             {
-                this.VMProfile.NetworkProfile = new NetworkProfile
+                networkProfile = new NetworkProfile
                 {
                     NetworkInterfaces = new List<NetworkInterfaceReference>()
                 };
             }
 
-            this.VMProfile.NetworkProfile.NetworkInterfaces.Add(
+            networkProfile.NetworkInterfaces.Add(
                 new NetworkInterfaceReference
                 {
                     ReferenceUri = this.PublicIPAddressReferenceUri
                 });
+
+            this.VMProfile.SetNetworkProfile(networkProfile);
 
             WriteObject(this.VMProfile);
         }

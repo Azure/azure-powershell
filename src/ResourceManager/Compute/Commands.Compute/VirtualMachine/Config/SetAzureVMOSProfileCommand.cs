@@ -58,12 +58,14 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            this.VMProfile.OSProfile = new OSProfile
+            var osProfile = new OSProfile
             {
                 ComputerName = this.ComputerName,
                 AdminUsername = this.Credential.UserName,
                 AdminPassword = SecureStringExtension.ConvertToUnsecureString(this.Credential.Password)
             };
+
+            this.VMProfile.SetOSProfile(osProfile);
 
             WriteObject(this.VMProfile);
         }
