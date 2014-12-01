@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Management.Network.Models;
+
 namespace Microsoft.Azure.Commands.Network.Gateway
 {
-    using System.Management.Automation;
-    using WindowsAzure.Management.Network.Models;
-
     [Cmdlet(VerbsCommon.Get, "AzureVNetGatewayIPsecParameters"), OutputType(typeof(IPsecParameters))]
     public class GetAzureVNetGatewayIPsecParameters : NetworkCmdletBase
     {
