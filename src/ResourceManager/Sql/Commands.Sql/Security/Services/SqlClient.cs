@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.Commands.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
@@ -65,6 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             wrapper.ResourceGroupName = resourceGroup;
             wrapper.ServerName = serverName;
             wrapper.DatabaseName = databaseName;
+            AddConnectionStringsToWrapperFromPolicy(wrapper, policy.Properties);
             return wrapper;
         }
 
@@ -86,7 +88,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             wrapper.DirectAccessEnabled = !properties.IsBlockDirectAccessEnabled;
             addStorageInfoToWrapperFromPolicy(wrapper, properties);
             AddEventTypesToWrapperFromPolicy(wrapper, properties);
-            AddConnectionStringsToWrapperFromPolicy(wrapper, properties);
             this.FetchedProperties = properties;           
             return wrapper;
         }
@@ -102,10 +103,69 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
 
         private void AddConnectionStringsToWrapperFromPolicy(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
         {
-            wrapper.ConnectionStrings.AdoNetConnectionString = properties.AdoNetConnectionString;
-            wrapper.ConnectionStrings.OdbcConnectionString = properties.OdbcConnectionString;
-            wrapper.ConnectionStrings.JdbcConnectionString = properties.JdbcConnectionString;
-            wrapper.ConnectionStrings.PhpConnectionString = properties.PhpConnectionString;
+            wrapper.ConnectionStrings.AdoNetConnectionString = ConstructAdoNetConnectionString(wrapper, properties);
+            wrapper.ConnectionStrings.OdbcConnectionString = ConstructOdbcConnectionString(wrapper, properties);
+            wrapper.ConnectionStrings.JdbcConnectionString = ConstructJdbcConnectionString(wrapper, properties);
+            wrapper.ConnectionStrings.PhpConnectionString = ConstructPhpConnectionString(wrapper, properties);
+        }
+
+        private string ConstructPhpConnectionString(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
+        {
+            string enterUser = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterUserId;
+            string enterPassword = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterPassword;
+            string pdoTitle = Microsoft.Azure.Commands.Sql.Properties.Resources.PdoTitle;
+            string sqlServerSampleTitle = Microsoft.Azure.Commands.Sql.Properties.Resources.sqlSampleTitle;
+            string connectionError = Microsoft.Azure.Commands.Sql.Properties.Resources.PhpConnectionError;
+            StringBuilder sb = new StringBuilder();
+            sb.Append(string.Format("Server: {0}, {1}", properties.ProxyDnsName, properties.ProxyPort)).Append(Environment.NewLine);
+            sb.Append(string.Format("SQL Database: {0}",  wrapper.DatabaseName)).Append(Environment.NewLine);
+            sb.Append(string.Format("User Name: {0}", enterUser)).Append(Environment.NewLine).Append(Environment.NewLine);
+            sb.Append(pdoTitle).Append(Environment.NewLine);
+            sb.Append("try{").Append(Environment.NewLine);
+            sb.Append(string.Format("$conn = new PDO ( \"sqlsrv:server = tcp:{0},{1}; Database = \"{2}\", \"{3}\", \"{4}\");", 
+                                                properties.ProxyDnsName, properties.ProxyPort, wrapper.DatabaseName, enterUser, enterPassword)).Append(Environment.NewLine);
+            sb.Append("$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );").Append(Environment.NewLine);
+            sb.Append("}").Append(Environment.NewLine);
+            sb.Append("catch ( PDOException $e ) {").Append(Environment.NewLine);
+            sb.Append(string.Format("print( \"{0}\" );", connectionError)).Append(Environment.NewLine);
+            sb.Append("die(print_r($e));").Append(Environment.NewLine);
+            sb.Append("}").Append(Environment.NewLine);
+            sb.Append(sqlServerSampleTitle).Append(Environment.NewLine).Append(Environment.NewLine);
+            sb.Append(string.Format("connectionInfo = array(\"UID\" => \"{0}@{1}\", \"pwd\" => \"{2}\", \"Database\" => \"{3}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1);", 
+                                                enterUser, wrapper.ServerName, enterPassword, wrapper.DatabaseName)).Append(Environment.NewLine);
+            sb.Append(string.Format("$serverName = \"tcp:{0},{1}\";", properties.ProxyDnsName, properties.ProxyPort)).Append(Environment.NewLine);
+            sb.Append("$conn = sqlsrv_connect($serverName, $connectionInfo);");
+            return sb.ToString();
+        }
+
+        private string ConstructOdbcConnectionString(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
+        {
+            string enterUser = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterUserId;
+            string enterPassword = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterPassword;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Driver={SQL Server Native Client 11.0};");
+            sb.Append(string.Format("Server=tcp:{0},{1};", properties.ProxyDnsName, properties.ProxyPort));
+            sb.Append(string.Format("Database={0};", wrapper.DatabaseName));
+            sb.Append(string.Format("Uid={0}@{1};", enterUser, wrapper.ServerName));
+            sb.Append(string.Format("Pwd={0};", enterPassword));
+            sb.Append("Encrypt=yes;Connection Timeout=30;");
+            return sb.ToString();
+        }
+
+        private string ConstructJdbcConnectionString(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
+        {
+            string enterUser = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterUserId;
+            string enterPassword = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterPassword;
+            return string.Format("jdbc:sqlserver://{0}:{1};database={2};user={3}@{4};password={5};encrypt=true;hostNameInCertificate=*.database.secure.windows.net;loginTimeout=30;",
+                properties.ProxyDnsName, properties.ProxyPort, wrapper.DatabaseName, enterUser, wrapper.ServerName, enterPassword);
+        }
+
+        private string ConstructAdoNetConnectionString(AuditingPolicy wrapper,DatabaseSecurityPolicyProperties properties)
+        {
+            string enterUser = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterUserId;
+            string enterPassword = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterPassword;
+            return string.Format("Server=tcp:{0},{1};Database={2};User ID={3}@{4};Password={5};Trusted_Connection=False;Encrypt=True;Connection Timeout=30", 
+                properties.ProxyDnsName, properties.ProxyPort, wrapper.DatabaseName, enterUser, wrapper.ServerName, enterPassword);
         }
 
         private void AddEventTypesToWrapperFromPolicy(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
