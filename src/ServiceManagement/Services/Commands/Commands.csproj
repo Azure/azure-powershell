@@ -211,6 +211,7 @@
     <Compile Include="MediaServices\NewAzureMediaServiceCommand.cs" />
     <Compile Include="MediaServices\NewAzureMediaServiceKeyCommand.cs" />
     <Compile Include="MediaServices\RemoveAzureMediaServiceCommand.cs" />
+    <Compile Include="DataFactories\NewAzureDataFactoryStubCommand.cs" />
     <Compile Include="Scheduler\GetSchedulerJobCollectionCommand.cs" />
     <Compile Include="Scheduler\GetSchedulerJobCommand.cs" />
     <Compile Include="Scheduler\GetSchedulerJobHistoryCommand.cs" />
