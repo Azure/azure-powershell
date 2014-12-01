@@ -14,17 +14,29 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model
 {
-    public class PSHttpJobDetail : PSJobDetail
+    public class PSBasicAuthenticationJobDetail : PSHttpJobDetail
     {
-        public string Method { get; internal set; }
+        public string AuthenticationType = "Basic Authentication";
 
-        public Uri Uri { get; internal set; }
+        public string Username { get; internal set; }
 
-        public string Body { get; internal set; }
+        public PSBasicAuthenticationJobDetail (PSHttpJobDetail jobDetail)
+        {
+            foreach(PropertyInfo prop in jobDetail.GetType().GetProperties())
+            {
+                GetType().GetProperty(prop.Name).SetValue(this, prop.GetValue(jobDetail, null), null);
+            }
+        }
 
-        public IDictionary<string, string> Headers { get; internal set; }
+        public PSBasicAuthenticationJobDetail()
+        {            
+        }
     }
 }

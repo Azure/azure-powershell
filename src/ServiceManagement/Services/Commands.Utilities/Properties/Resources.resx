@@ -1602,6 +1602,12 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
     <value>A valid value for ClientCertificatePfx and ClientCertificatePassword parameters are required for Http scheduler jobs with ClientCertificate authentication type.</value>
   </data>
   <data name="SchedulerInvalidNoneAuthRequest" xml:space="preserve">
-    <value>For None authentication type, both ClientCertificatePfx and ClientCertificatePassword parameters should be null</value>
+    <value>For None authentication type, all authentication related parameters should be null</value>
+  </data>
+  <data name="SchedulerInvalidAADOAuthRequest" xml:space="preserve">
+    <value>A valid value for Tenant, Secret, Audience and Clientid parameters are required for Http scheduler jobs with ActiveDirectoryOAuth authentication type.</value>
+  </data>
+  <data name="SchedulerInvalidBasicAuthRequest" xml:space="preserve">
+    <value>A valid value for Username and Password parameters are required for Http scheduler jobs with Basic authentication type.</value>
   </data>
 </root>
