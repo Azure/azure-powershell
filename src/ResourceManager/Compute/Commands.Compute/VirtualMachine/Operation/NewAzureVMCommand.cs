@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Creates a new resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine), OutputType(typeof(VirtualMachine))]
+    [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine)]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         [Parameter(

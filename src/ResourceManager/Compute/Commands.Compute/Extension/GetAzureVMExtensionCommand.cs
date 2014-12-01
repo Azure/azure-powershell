@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtension)]
-    [OutputType(typeof(object))]
+    [OutputType(typeof(PSVirtualMachineExtension))]
     public class GetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "To show the status.")]
@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Commands.Compute
             if (Status)
             {
                 var result = this.VirtualMachineExtensionClient.GetInstanceView(this.ResourceGroupName, this.VMName, this.Name);
-                WriteObject(result);
+                WriteObject(result.ToPSVirtualMachineExtension());
             }
             else
             {
                 var result = this.VirtualMachineExtensionClient.Get(this.ResourceGroupName, this.VMName, this.Name);
-                WriteObject(result);
+                WriteObject(result.ToPSVirtualMachineExtension());
             }
         }
     }

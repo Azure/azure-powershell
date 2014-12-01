@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureAvailabilitySet")]
+    [Cmdlet(VerbsCommon.Remove, ProfileNouns.AvailabilitySet)]
     public class RemoveAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         public override void ExecuteCmdlet()

@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.New, "AzureAvailabilitySet")]
+    [Cmdlet(VerbsCommon.New, ProfileNouns.AvailabilitySet)]
     public class NewAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         [Parameter(

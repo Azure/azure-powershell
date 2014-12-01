@@ -14,12 +14,14 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Properties;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, "AzureAvailabilitySet")]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.AvailabilitySet)]
+    [OutputType(typeof(PSAvailabilitySet))]
     public class GetAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         [Alias("ResourceName", "AvailabilitySetName")]
@@ -37,12 +39,12 @@ namespace Microsoft.Azure.Commands.Compute
             if (string.IsNullOrEmpty(this.Name))
             {
                 var op = this.AvailabilitySetClient.List(this.ResourceGroupName);
-                WriteObject(op);
+                WriteObject(op.ToPSAvailabilitySetList(), true);
             }
             else
             {
                 var op = this.AvailabilitySetClient.Get(this.ResourceGroupName, this.Name);
-                WriteObject(op);
+                WriteObject(op.ToPSAvailabilitySet());
             }
         }
     }

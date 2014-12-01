@@ -13,12 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Set, ProfileNouns.VirtualMachine), OutputType(typeof(VirtualMachine))]
+    [Cmdlet(VerbsCommon.Set, ProfileNouns.VirtualMachine)]
     public class SetAzureVMCommand : NewAzureVMCommand
     {
     }
