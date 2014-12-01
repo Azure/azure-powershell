@@ -170,10 +170,14 @@
     <Compile Include="Service\MockStorageQueueManagement.cs" />
     <Compile Include="Service\MockStorageTableManagement.cs" />
     <Compile Include="StorageTestBase.cs" />
+    <Compile Include="Table\GetAzureStorageTableStoredAccessPolicyTest.cs" />
     <Compile Include="Table\GetAzureStorageTableTest.cs" />
     <Compile Include="Table\NewAzureStorageTableSasTest.cs" />
+    <Compile Include="Table\NewAzureStorageTableStoredAccessPolicyTest.cs" />
     <Compile Include="Table\NewAzureStorageTableTest.cs" />
+    <Compile Include="Table\RemoveAzureStorageTableStoredAccessPolicyTest.cs" />
     <Compile Include="Table\RemoveAzureStorageTableTest.cs" />
+    <Compile Include="Table\SetAzureStorageTableStoredAccessPolicyTest.cs" />
     <Compile Include="Table\StorageTableStorageTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
