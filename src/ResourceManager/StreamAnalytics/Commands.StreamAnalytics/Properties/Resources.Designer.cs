@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to parse input JSON file. &apos;{0}&apos;. Please correct the error in the JSON file and re-deploy {1} again..
+        ///   Looks up a localized string similar to Failed to parse input JSON file. &apos;{0}&apos;. Please correct the error in the JSON file and try again..
         /// </summary>
         internal static string InvalidJson {
             get {

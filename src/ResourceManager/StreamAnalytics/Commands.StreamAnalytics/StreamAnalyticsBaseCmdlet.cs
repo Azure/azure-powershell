@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 
         protected string ResolveResourceName(string rawJsonContent, string nameFromCmdletContext, string resourceType)
         {
-            string nameExtractedFromJson = StreamAnalyticsCommonUtilities.ExtractNameFromJson(rawJsonContent, resourceType);
+            string nameExtractedFromJson = StreamAnalyticsCommonUtilities.ExtractNameFromJson(rawJsonContent);
 
             // Read the name from the JSON content if user didn't provide name with -Name parameter
             string resolvedResourceName = string.IsNullOrWhiteSpace(nameFromCmdletContext)
