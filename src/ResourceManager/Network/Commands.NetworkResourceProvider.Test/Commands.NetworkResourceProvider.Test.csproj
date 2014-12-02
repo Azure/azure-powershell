@@ -129,6 +129,9 @@
     <None Include="ScenarioTests\PublicIpAddressTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
