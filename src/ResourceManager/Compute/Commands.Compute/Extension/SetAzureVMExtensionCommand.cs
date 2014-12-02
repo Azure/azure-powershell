@@ -78,6 +78,20 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Position = 6,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The settings.")]
+        [ValidateNotNullOrEmpty]
+        public string Settings { get; set; }
+
+        [Parameter(
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The protected settings.")]
+        [ValidateNotNullOrEmpty]
+        public string ProtectedSettings { get; set; }
+
+        [Parameter(
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -97,7 +111,9 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         Publisher = this.Publisher,
                         Type = this.Type,
-                        TypeHandlerVersion = this.TypeHandlerVersion
+                        TypeHandlerVersion = this.TypeHandlerVersion,
+                        Settings = this.Settings,
+                        ProtectedSettings = this.ProtectedSettings
                     }
                 }
             };
