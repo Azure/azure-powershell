@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Location = this.Location,
                     Name = this.Name,
-                    Type = "Microsoft.Compute/virtualMachines/extensions",
+                    Type = VirtualMachineExtensionType,
                     VirtualMachineExtensionProperties = new VirtualMachineExtensionProperties
                     {
                         Publisher = this.Publisher,
