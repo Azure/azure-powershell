@@ -23,15 +23,13 @@ namespace Microsoft.Azure.Commands.Network.Gateway
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network name.")]
         public string VNetName
         {
-            get;
-            set;
+            get; set;
         }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The SKU that the existing gateway will be resized to.")]
         public string GatewaySKU
         {
-            get;
-            set;
+            get; set;
         }
 
         public override void ExecuteCmdlet()

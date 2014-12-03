@@ -24,16 +24,14 @@ namespace Microsoft.Azure.Commands.Network.Gateway
         [ValidateNotNullOrEmpty]
         public string VNetName
         {
-            get;
-            set;
+            get; set;
         }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The local network site name.")]
         [ValidateNotNullOrEmpty]
         public string LocalNetworkSiteName
         {
-            get;
-            set;
+            get; set;
         }
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "The type of encryption that will " +
@@ -41,8 +39,7 @@ namespace Microsoft.Azure.Commands.Network.Gateway
             "Valid values are RequireEncryption and NoEncryption.")]
         public string EncryptionType
         {
-            get;
-            set;
+            get; set;
         }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The PFS gruop that will be used " +
@@ -50,8 +47,7 @@ namespace Microsoft.Azure.Commands.Network.Gateway
             "values are RequireEncryption and NoEncryption.")]
         public string PfsGroup
         {
-            get;
-            set;
+            get; set;
         }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The SA Data Size Kilobytes value " +
@@ -59,8 +55,7 @@ namespace Microsoft.Azure.Commands.Network.Gateway
             "connection will be renegotiated.")]
         public int SADataSizeKilobytes
         {
-            get;
-            set;
+            get; set;
         }
 
         [Parameter(Position = 5, Mandatory = false, HelpMessage = "The SA Lifetime Seconds value " +
@@ -68,8 +63,7 @@ namespace Microsoft.Azure.Commands.Network.Gateway
             "a new SA will be negotiated.")]
         public int SALifetimeSeconds
         {
-            get;
-            set;
+            get; set;
         }
 
         public override void ExecuteCmdlet()

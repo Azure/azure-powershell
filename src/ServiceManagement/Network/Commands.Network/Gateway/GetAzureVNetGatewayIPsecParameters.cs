@@ -24,16 +24,14 @@ namespace Microsoft.Azure.Commands.Network.Gateway
         [ValidateNotNullOrEmpty]
         public string VNetName
         {
-            get;
-            set;
+            get; set;
         }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The local network site name.")]
         [ValidateNotNullOrEmpty]
         public string LocalNetworkSiteName
         {
-            get;
-            set;
+            get; set;
         }
 
         public override void ExecuteCmdlet()
