@@ -80,10 +80,10 @@ namespace Microsoft.Azure.Commands.Compute
 
             VirtualMachineProperties vmProps = new VirtualMachineProperties
             {
-                HardwareProfile = this.VMProfile.GetHardwareProfile(),
-                StorageProfile = this.VMProfile.GetStorageProfile(),
-                NetworkProfile = this.VMProfile.GetNetworkProfile(),
-                OSProfile = this.VMProfile.GetOSProfile(),
+                HardwareProfile = this.VMProfile.HardwareProfile,
+                StorageProfile = this.VMProfile.StorageProfile,
+                NetworkProfile = this.VMProfile.NetworkProfile,
+                OSProfile = this.VMProfile.OSProfile,
                 AvailabilitySetReference = string.IsNullOrEmpty(this.AvailabilitySetId) ? null
                                          : new AvailabilitySetReference
                                            {

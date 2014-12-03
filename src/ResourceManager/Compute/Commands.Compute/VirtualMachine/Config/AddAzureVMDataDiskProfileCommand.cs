@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            var storageProfile = this.VMProfile.GetStorageProfile();
+            var storageProfile = this.VMProfile.StorageProfile;
 
             if (storageProfile == null)
             {
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             });
 
-            this.VMProfile.SetStorageProfile(storageProfile);
+            this.VMProfile.StorageProfile = storageProfile;
 
             WriteObject(this.VMProfile);
         }

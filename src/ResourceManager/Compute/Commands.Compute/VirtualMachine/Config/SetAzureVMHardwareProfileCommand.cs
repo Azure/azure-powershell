@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute
                 VirtualMachineSize = this.VMSize
             };
 
-            this.VMProfile.SetHardwareProfile(hardwareProfile);
+            this.VMProfile.HardwareProfile = hardwareProfile;
 
             WriteObject(this.VMProfile);
         }

@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Compute
                 DestinationVhdsContainer = string.IsNullOrEmpty(this.VHDContainer) ? null : new Uri(this.VHDContainer)
             };
 
-            this.VMProfile.SetStorageProfile(storageProfile);
+            this.VMProfile.StorageProfile = storageProfile;
 
             WriteObject(this.VMProfile);
         }

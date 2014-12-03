@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get
             {
-                if (this.hardwareProfile != null)
+                if (this.HardwareProfile != null)
                 {
-                    return this.hardwareProfile.VirtualMachineSize;
+                    return this.HardwareProfile.VirtualMachineSize;
                 }
 
                 return null;
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get
             {
-                return this.osProfile;
+                return this.OSProfile;
             }
         }
 
@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get
             {
-                if (this.storageProfile != null && this.storageProfile.SourceImage != null)
+                if (this.StorageProfile != null && this.StorageProfile.SourceImage != null)
                 {
-                    return this.storageProfile.SourceImage.ReferenceUri;
+                    return this.StorageProfile.SourceImage.ReferenceUri;
                 }
 
                 return null;
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get
             {
-                if (this.storageProfile != null && this.storageProfile.DestinationVhdsContainer != null)
+                if (this.StorageProfile != null && this.StorageProfile.DestinationVhdsContainer != null)
                 {
-                    return this.storageProfile.DestinationVhdsContainer;
+                    return this.StorageProfile.DestinationVhdsContainer;
                 }
 
                 return null;
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get
             {
-                if (this.storageProfile != null && this.storageProfile.OSDisk != null)
+                if (this.StorageProfile != null && this.StorageProfile.OSDisk != null)
                 {
-                    return this.storageProfile.OSDisk;
+                    return this.StorageProfile.OSDisk;
                 }
 
                 return null;
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get
             {
-                if (this.storageProfile != null && this.storageProfile.DataDisks != null)
+                if (this.StorageProfile != null && this.StorageProfile.DataDisks != null)
                 {
-                    return this.storageProfile.DataDisks;
+                    return this.StorageProfile.DataDisks;
                 }
 
                 return null;
@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get
             {
-                if (this.networkProfile != null && this.networkProfile.NetworkInterfaces != null)
+                if (this.NetworkProfile != null && this.NetworkProfile.NetworkInterfaces != null)
                 {
-                    return this.networkProfile.NetworkInterfaces.Select(t => t.ReferenceUri).ToList();
+                    return this.NetworkProfile.NetworkInterfaces.Select(t => t.ReferenceUri).ToList();
                 }
 
                 return null;
@@ -118,53 +118,13 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public VirtualMachineSubResources Resources { get; set; }
         public VirtualMachineInstanceView Status { get; set; }
 
-        private HardwareProfile hardwareProfile { get; set; }
+        public HardwareProfile HardwareProfile { get; set; }
+
+        public NetworkProfile NetworkProfile { get; set; }
         
-        public void SetHardwareProfile(HardwareProfile hardwareProfile)
-        {
-            this.hardwareProfile = hardwareProfile;
-        }
+        public OSProfile OSProfile { get; set; }
 
-        public HardwareProfile GetHardwareProfile()
-        {
-            return this.hardwareProfile;
-        }
-
-        private NetworkProfile networkProfile { get; set; }
-        
-        public void SetNetworkProfile(NetworkProfile networkProfile)
-        {
-            this.networkProfile = networkProfile;
-        }
-
-        public NetworkProfile GetNetworkProfile()
-        {
-            return this.networkProfile;
-        }
-
-        private OSProfile osProfile { get; set; }
-
-        public void SetOSProfile(OSProfile osProfile)
-        {
-            this.osProfile = osProfile;
-        }
-
-        public OSProfile GetOSProfile()
-        {
-            return this.osProfile;
-        }
-
-        private StorageProfile storageProfile { get; set; }
-
-        public void SetStorageProfile(StorageProfile storageProfile)
-        {
-            this.storageProfile = storageProfile;
-        }
-
-        public StorageProfile GetStorageProfile()
-        {
-            return this.storageProfile;
-        }
+        public StorageProfile StorageProfile { get; set; }
     }
 
     public static class PSVirtualMachineConversions
@@ -191,10 +151,10 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Status = null, // TODO: VM response does not return Status info yet
             };
 
-            result.SetOSProfile(virtualMachine.VirtualMachineProperties.OSProfile);
-            result.SetHardwareProfile(virtualMachine.VirtualMachineProperties.HardwareProfile);
-            result.SetStorageProfile(virtualMachine.VirtualMachineProperties.StorageProfile);
-            result.SetNetworkProfile(virtualMachine.VirtualMachineProperties.NetworkProfile);
+            result.OSProfile = virtualMachine.VirtualMachineProperties.OSProfile;
+            result.HardwareProfile = virtualMachine.VirtualMachineProperties.HardwareProfile;
+            result.StorageProfile = virtualMachine.VirtualMachineProperties.StorageProfile;
+            result.NetworkProfile = virtualMachine.VirtualMachineProperties.NetworkProfile;
 
             return result;
         }

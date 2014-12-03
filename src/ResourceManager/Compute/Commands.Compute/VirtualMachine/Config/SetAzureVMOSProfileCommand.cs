@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute
                 AdminPassword = SecureStringExtension.ConvertToUnsecureString(this.Credential.Password)
             };
 
-            this.VMProfile.SetOSProfile(osProfile);
+            this.VMProfile.OSProfile = osProfile;
 
             WriteObject(this.VMProfile);
         }

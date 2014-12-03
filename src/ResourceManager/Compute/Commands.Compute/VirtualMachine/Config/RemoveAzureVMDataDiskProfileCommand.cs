@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            var storageProfile = this.VMProfile.GetStorageProfile();
+            var storageProfile = this.VMProfile.StorageProfile;
 
             if (storageProfile == null)
             {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Compute
             disks.RemoveAll(d => string.Equals(d.Name, this.Name, comp));
             storageProfile.DataDisks = disks;
 
-            this.VMProfile.SetStorageProfile(storageProfile);
+            this.VMProfile.StorageProfile = storageProfile;
             
             WriteObject(this.VMProfile);
         }
