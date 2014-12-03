@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
+        [Alias("HandlerVersion", "Version")]
         [Parameter(
             Mandatory = true,
             Position = 5,

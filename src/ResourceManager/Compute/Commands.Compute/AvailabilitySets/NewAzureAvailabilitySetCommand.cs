@@ -23,6 +23,23 @@ namespace Microsoft.Azure.Commands.Compute
     public class NewAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
+        [Alias("ResourceName", "AvailabilitySetName")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
+        [Parameter(
             Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
