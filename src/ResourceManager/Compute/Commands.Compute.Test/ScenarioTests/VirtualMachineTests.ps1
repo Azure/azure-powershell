@@ -51,7 +51,7 @@ function Test-VirtualMachine
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
         New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        Wait-Seconds 300;
+        Retry-IfException { $global:stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname; }
 
         $osDiskName = 'osDisk';
         $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
@@ -107,7 +107,8 @@ function Test-VirtualMachine
         Assert-AreEqual $p.GetHardwareProfile().VirtualMachineSize $vmsize;
 
         # Virtual Machine
-        New-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname -VMProfile $p;
+        # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
+        Retry-IfException { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VMProfile $p; }
 
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
@@ -119,16 +120,12 @@ function Test-VirtualMachine
         Assert-AreEqual $vm1.GetOSProfile().ComputerName $computerName;
         Assert-AreEqual $vm1.GetHardwareProfile().VirtualMachineSize $vmsize;
 
-        Wait-Seconds 300;
-        Start-AzureVM -Name $vmname -ResourceGroupName $rgname;
-        Wait-Seconds 300;
-        Restart-AzureVM -Name $vmname -ResourceGroupName $rgname;
-        Wait-Seconds 300;
-        Stop-AzureVM -Name $vmname -ResourceGroupName $rgname -Force;
-        Wait-Seconds 300;
+        Retry-IfException { Start-AzureVM -Name $vmname -ResourceGroupName $rgname; }
+        Retry-IfException { Restart-AzureVM -Name $vmname -ResourceGroupName $rgname; }
+        Retry-IfException { Stop-AzureVM -Name $vmname -ResourceGroupName $rgname -Force; }
 
         # Update
-        Set-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname -VMProfile $p;
+        Retry-IfException { Set-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname -VMProfile $p; }
 
         $vm2 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm2.GetNetworkProfile().NetworkInterfaces.Count 1;

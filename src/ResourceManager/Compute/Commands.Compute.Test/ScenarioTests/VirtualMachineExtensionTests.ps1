@@ -47,29 +47,11 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $p.GetNetworkProfile().NetworkInterfaces.Count 1;
         Assert-AreEqual $p.GetNetworkProfile().NetworkInterfaces[0].ReferenceUri $nicId;
 
-        # Storage
+        # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
         New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = $null;
-        $NUM_MAX_RETRY = 10;
-        $iRetry = 0;
-        While (($stoaccount -eq $null) -and ($iRetry -le $NUM_MAX_RETRY))
-        {
-            Wait-Seconds 5;
-
-            Try
-            {
-                $stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname;
-            }
-            Catch
-            {
-                # Do nothing
-            }
-
-            $iRetry++;
-        }
-
+        Retry-IfException { $global:stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         $stokey = (Get-AzureStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
         $osDiskName = 'osDisk';
@@ -126,7 +108,8 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $p.GetHardwareProfile().VirtualMachineSize $vmsize;
 
         # Virtual Machine
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VMProfile $p -ProvisionVMAgent $true;
+        # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
+        Retry-IfException { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VMProfile $p -ProvisionVMAgent $true; }
 
         # Virtual Machine Extension
         $extname = 'csetest';

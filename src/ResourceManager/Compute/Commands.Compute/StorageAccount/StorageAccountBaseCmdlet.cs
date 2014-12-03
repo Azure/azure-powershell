@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
     {
         private StorageManagementClient storageClient;
 
-        protected const string alphaApiVersion = "2014-08-01-alpha";
+        protected const string alphaApiVersion = "2014-12-01-preview";
         protected const string authorizationToken = "none";
         protected const string validating = null;
 
@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         protected const string StorageAccountTypeAlias = "StorageAccountType";
         protected const string AccountTypeAlias = "AccountType";
-        
 
         public StorageManagementClient StorageClient
         {
