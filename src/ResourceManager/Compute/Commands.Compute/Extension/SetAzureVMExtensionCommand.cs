@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -81,14 +82,14 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The settings.")]
         [ValidateNotNullOrEmpty]
-        public string Settings { get; set; }
+        public Hashtable Settings { get; set; }
 
         [Parameter(
             Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protected settings.")]
         [ValidateNotNullOrEmpty]
-        public string ProtectedSettings { get; set; }
+        public Hashtable ProtectedSettings { get; set; }
 
         [Parameter(
             Position = 8,
@@ -113,8 +114,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Publisher = this.Publisher,
                         Type = this.Type,
                         TypeHandlerVersion = this.TypeHandlerVersion,
-                        Settings = this.Settings,
-                        ProtectedSettings = this.ProtectedSettings
+                        Settings = new JsonSettingBuilder(this.Settings).ToString(),
+                        ProtectedSettings = new JsonSettingBuilder(this.ProtectedSettings).ToString()
                     }
                 }
             };

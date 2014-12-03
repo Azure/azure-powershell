@@ -139,6 +139,7 @@
     <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
+    <Compile Include="Common\ExtensionSettingBuilder.cs" />
     <Compile Include="Common\TagsConversionHelper.cs" />
     <Compile Include="Common\ComputeClient.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />

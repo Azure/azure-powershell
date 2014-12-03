@@ -116,8 +116,8 @@ function Test-VirtualMachineExtension
         $publisher = 'Microsoft.Compute';
         $exttype = 'CustomScriptExtension';
         $extver = '1.1';
-        $settings = '{"fileUris":[],"commandToExecute":""}';
-        $protectedsettings = '{"storageAccountName": "' + $stoname + '", "storageAccountKey": "' + $stokey + '"}';
+        $settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
+        $protectedsettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
         Set-AzureVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -Settings $settings -ProtectedSettings $protectedsettings;
 
         # Get VM Extension
