@@ -22,6 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "Name of the file share to be created.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
