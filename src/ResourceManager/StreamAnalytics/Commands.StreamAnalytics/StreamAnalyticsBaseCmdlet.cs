@@ -13,13 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.StreamAnalytics.Models;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
