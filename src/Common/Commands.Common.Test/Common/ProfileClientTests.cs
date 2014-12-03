@@ -109,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             Assert.Equal("https://api-dogfood.resources.windows-int.net", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ResourceManager]);
             Assert.Equal("https://management-preview.core.windows-int.net/", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.ServiceManagement]);
             Assert.Equal(".database.windows.net", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix]);
-            
+
             // Verify subscriptions
             Assert.Equal(3, client.Profile.Subscriptions.Count);
             Assert.False(client.Profile.Subscriptions.ContainsKey(new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E")));
@@ -157,7 +157,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             // Verify Environment migration
             Assert.Equal(2, client.Profile.Environments.Count);
-            
+
             // Verify subscriptions
             Assert.Equal(3, client.Profile.Subscriptions.Count);
             Assert.True(client.Profile.Subscriptions.ContainsKey(new Guid("06E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1F")));
@@ -168,7 +168,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             Assert.True(client.Profile.Subscriptions.ContainsKey(new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")));
             Assert.Equal("Test Bad Cert", client.Profile.Subscriptions[new Guid("d1e52cbc-b073-42e2-a0a0-c2f547118a6f")].Name);
-            
+
             // Verify accounts
             Assert.Equal(2, client.Profile.Accounts.Count);
             Assert.Equal("test@mail.com", client.Profile.Accounts["test@mail.com"].Id);
@@ -204,10 +204,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             // Verify Environment migration
             Assert.Equal(2, client.Profile.Environments.Count);
-            
+
             // Verify subscriptions
             Assert.Equal(0, client.Profile.Subscriptions.Count);
-            
+
             // Verify accounts
             Assert.Equal(0, client.Profile.Accounts.Count);
 
@@ -258,7 +258,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             ProfileClient.DataStore = dataStore;
             ProfileClient client = new ProfileClient();
 
-            var account = client.AddAccountAndLoadSubscriptions(new AzureAccount { Id = "test", Type = AzureAccount.AccountType.User }, AzureEnvironment.PublicEnvironments[ EnvironmentName.AzureCloud], null);
+            var account = client.AddAccountAndLoadSubscriptions(new AzureAccount { Id = "test", Type = AzureAccount.AccountType.User }, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], null);
 
             Assert.Equal("test", account.Id);
             Assert.Equal(3, account.GetSubscriptions(client.Profile).Count);
@@ -603,7 +603,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             Assert.Equal(2, client.Profile.Environments.Count);
 
             Assert.Throws<ArgumentNullException>(() => client.AddOrSetEnvironment(null));
-            
+
             var env2 = client.AddOrSetEnvironment(azureEnvironment);
             Assert.Equal(env2.Name, azureEnvironment.Name);
             Assert.NotNull(env2.Endpoints[AzureEnvironment.Endpoint.ServiceManagement]);
@@ -672,7 +672,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             Assert.Equal(subscription, azureSubscription1);
             Assert.Throws<ArgumentNullException>(() => client.AddOrSetSubscription(null));
             Assert.Throws<ArgumentNullException>(() => client.AddOrSetSubscription(
-                new AzureSubscription { Id = new Guid(), Environment = null, Name = "foo"}));
+                new AzureSubscription { Id = new Guid(), Environment = null, Name = "foo" }));
         }
 
         [Fact]
@@ -792,7 +792,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             MockDataStore dataStore = new MockDataStore();
             ProfileClient.DataStore = dataStore;
             ProfileClient client = new ProfileClient();
-            
+
             client.Profile.Accounts[azureAccount.Id] = azureAccount;
 
             var subscriptions = client.RefreshSubscriptions(client.Profile.Environments[EnvironmentName.AzureChinaCloud]);
@@ -1074,6 +1074,73 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             Assert.True(subscriptions.All(s => s.Environment == azureEnvironment.Name));
             Assert.Equal(6, subscriptions.Count);
             Assert.Equal(7, client.Profile.Subscriptions.Count);
+        }
+
+        [Fact]
+        public void SelectAzureSubscriptionByIdWorks()
+        {
+            MockDataStore dataStore = new MockDataStore();
+            ProfileClient.DataStore = dataStore;
+            ProfileClient client = new ProfileClient();
+
+            var tempSubscriptions = new List<AzureSubscription>
+            {
+                new AzureSubscription
+                {
+                    Id = new Guid("11111111-1383-4740-8A69-748C5B63ADBA"),
+                    Name = "Same Name Subscription",
+                    Environment = azureEnvironment.Name,
+                    Account = azureAccount.Id,
+                    Properties = new Dictionary<AzureSubscription.Property, string>
+                    {
+                        { AzureSubscription.Property.Default, "True" } 
+                    }
+                },
+
+                new AzureSubscription
+                {
+                    Id = new Guid("22222222-1383-4740-8A69-748C5B63ADBA"),
+                    Name = "Same Name Subscription",
+                    Environment = azureEnvironment.Name,
+                    Account = azureAccount.Id,
+                    Properties = new Dictionary<AzureSubscription.Property, string>()
+                },
+
+                new AzureSubscription
+                {
+                    Id = new Guid("33333333-1383-4740-8A69-748C5B63ADBA"),
+                    Name = "Same Name Subscription",
+                    Environment = azureEnvironment.Name,
+                    Account = azureAccount.Id,
+                    Properties = new Dictionary<AzureSubscription.Property, string>()
+                }
+            };
+
+            client.Profile.Accounts[azureAccount.Id] = azureAccount;
+            client.AddOrSetEnvironment(azureEnvironment);
+
+            foreach (var s in tempSubscriptions)
+            {
+                client.AddOrSetSubscription(s);
+            }
+
+            client.SetSubscriptionAsCurrent(tempSubscriptions[0].Name, tempSubscriptions[0].Account);
+            client.Profile.Save();
+
+            Assert.Equal(tempSubscriptions[0].Id, AzureSession.CurrentContext.Subscription.Id);
+
+            var cmdlt = new SelectAzureSubscriptionCommand();
+
+            cmdlt.CommandRuntime = new MockCommandRuntime();
+            cmdlt.SubscriptionId = tempSubscriptions[2].Id.ToString();
+            cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+            
+            Assert.Equal(tempSubscriptions[2].Id, AzureSession.CurrentContext.Subscription.Id);
         }
 
         [Fact]
