@@ -878,7 +878,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             Assert.Equal(azureSubscription2.Id, client.Profile.DefaultSubscription.Id);
             Assert.Equal(azureSubscription2.Id, AzureSession.CurrentContext.Subscription.Id);
             Assert.Throws<ArgumentException>(() => client.SetSubscriptionAsDefault("bad", null));
-            Assert.Throws<ArgumentNullException>(() => client.SetSubscriptionAsDefault(null, null));
+            Assert.Throws<ArgumentException>(() => client.SetSubscriptionAsDefault(null, null));
         }
 
         [Fact]
@@ -917,7 +917,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             Assert.Equal(azureSubscription2.Id, AzureSession.CurrentContext.Subscription.Id);
             Assert.Throws<ArgumentException>(() => client.SetSubscriptionAsCurrent("bad", null));
-            Assert.Throws<ArgumentNullException>(() => client.SetSubscriptionAsCurrent(null, null));
+            Assert.Throws<ArgumentException>(() => client.SetSubscriptionAsCurrent(null, null));
         }
 
         [Fact]
