@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
@@ -42,14 +43,25 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 JobName = Name
             };
 
-            HttpStatusCode statusCode = StreamAnalyticsClient.StopPSJob(parameter);
-            if (statusCode == HttpStatusCode.NoContent)
+            try
             {
-                WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.JobNotFound, Name, ResourceGroupName));
+                HttpStatusCode statusCode = StreamAnalyticsClient.StopPSJob(parameter);
+                if (statusCode == HttpStatusCode.OK)
+                {
+                    WriteObject(true);
+                }
+                else if (statusCode == HttpStatusCode.NoContent)
+                {
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.JobNotFound, Name, ResourceGroupName));
+                }
+                else
+                {
+                    WriteObject(false);
+                }
             }
-            else
+            catch
             {
-                WriteObject(true);
+                WriteObject(false);
             }
         }
     }
