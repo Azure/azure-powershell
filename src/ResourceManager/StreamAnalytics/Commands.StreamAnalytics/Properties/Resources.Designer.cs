@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating input &apos;{0}&apos; in stream analytics job {1} in resource group &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Creating input &apos;{0}&apos; in stream analytics job &apos;{1}&apos; in resource group &apos;{2}&apos;..
         /// </summary>
         internal static string InputCreating {
             get {
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An input with the name {0} in the stream analytics job {1} in the resource group {2} already exists. 
+        ///   Looks up a localized string similar to An input with the name &apos;{0}&apos; in the stream analytics job &apos;{1}&apos; in the resource group &apos;{2}&apos; already exists. 
         ///Continuing execution may overwrite the exisiting one. 
         ///Are you sure you want to continue?.
         /// </summary>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input &apos;{0}&apos; does not exist in the stream analytics job {1} in the resource group &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Input &apos;{0}&apos; does not exist in the stream analytics job &apos;{1}&apos; in the resource group &apos;{2}&apos;..
         /// </summary>
         internal static string InputNotFound {
             get {
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the stream analytics input &apos;{0}&apos; in the stream analytics job {1} in the resource group &apos;{2}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove the input &apos;{0}&apos; in the stream analytics job &apos;{1}&apos; in the resource group &apos;{2}&apos;?.
         /// </summary>
         internal static string InputRemovalConfirmationMessage {
             get {
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing the stream analytics input &apos;{0}&apos; in the stream analytics job {1} in the resource group &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Removing the input &apos;{0}&apos; in the stream analytics job &apos;{1}&apos; in the resource group &apos;{2}&apos;..
         /// </summary>
         internal static string InputRemoving {
             get {
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to parse input JSON file. {0}. Please correct the error in the JSON file and re-deploy {1} again..
+        ///   Looks up a localized string similar to Failed to parse input JSON file. &apos;{0}&apos;. Please correct the error in the JSON file and try again..
         /// </summary>
         internal static string InvalidJson {
             get {
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating job &apos;{0}&apos; in resource group &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Creating stream analytics job &apos;{0}&apos; in resource group &apos;{1}&apos;..
         /// </summary>
         internal static string JobCreating {
             get {
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A job with the name {0} in the resource group {1} already exists. 
+        ///   Looks up a localized string similar to A stream analytics job with the name &apos;{0}&apos; in the resource group &apos;{1}&apos; already exists. 
         ///Continuing execution may overwrite the exisiting one. 
         ///Are you sure you want to continue?.
         /// </summary>
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating output &apos;{0}&apos; in stream analytics job {1} in resource group &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Creating output &apos;{0}&apos; in stream analytics job &apos;{1}&apos; in resource group &apos;{2}&apos;..
         /// </summary>
         internal static string OutputCreating {
             get {
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An output with the name {0} in the stream analytics job {1} in the resource group {2} already exists. 
+        ///   Looks up a localized string similar to An output with the name &apos;{0}&apos; in the stream analytics job &apos;{1}&apos; in the resource group &apos;{2}&apos; already exists. 
         ///Continuing execution may overwrite the exisiting one. 
         ///Are you sure you want to continue?.
         /// </summary>
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Output &apos;{0}&apos; does not exist in the stream analytics job {1} in the resource group &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Output &apos;{0}&apos; does not exist in the stream analytics job &apos;{1}&apos; in the resource group &apos;{2}&apos;..
         /// </summary>
         internal static string OutputNotFound {
             get {
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the stream analytics output &apos;{0}&apos; in the stream analytics job {1} in the resource group &apos;{2}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove the output &apos;{0}&apos; in the stream analytics job &apos;{1}&apos; in the resource group &apos;{2}&apos;?.
         /// </summary>
         internal static string OutputRemovalConfirmationMessage {
             get {
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing the stream analytics output &apos;{0}&apos; in the stream analytics job {1} in the resource group &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Removing the output &apos;{0}&apos; in the stream analytics job &apos;{1}&apos; in the resource group &apos;{2}&apos;..
         /// </summary>
         internal static string OutputRemoving {
             get {
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating transformation &apos;{0}&apos; in stream analytics job {1} in resource group &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Creating transformation &apos;{0}&apos; in stream analytics job &apos;{1}&apos; in resource group &apos;{2}&apos;..
         /// </summary>
         internal static string TransformationCreating {
             get {
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An transformation with the name {0} in the stream analytics job {1} in the resource group {2} already exists. 
+        ///   Looks up a localized string similar to An transformation with the name &apos;{0}&apos; in the stream analytics job &apos;{1}&apos; in the resource group &apos;{2}&apos; already exists. 
         ///Continuing execution may overwrite the exisiting one. 
         ///Are you sure you want to continue?.
         /// </summary>
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Transformation &apos;{0}&apos; does not exist in the stream analytics job {1} in the resource group &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Transformation &apos;{0}&apos; does not exist in the stream analytics job &apos;{1}&apos; in the resource group &apos;{2}&apos;..
         /// </summary>
         internal static string TransformationNotFound {
             get {

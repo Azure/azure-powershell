@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     public static class StreamAnalyticsCommonUtilities
     {
-        public static string ExtractNameFromJson(string jsonText, string resourceType)
+        public static string ExtractNameFromJson(string jsonText)
         {
             Dictionary<string, object> jsonKeyValuePairs;
 
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
             }
             catch (Exception exception)
             {
-                throw new JsonSerializationException(string.Format(CultureInfo.InvariantCulture, Resources.InvalidJson, exception.Message, resourceType));
+                throw new JsonSerializationException(string.Format(CultureInfo.InvariantCulture, Resources.InvalidJson, exception.Message));
             }
 
             const string NameTagInJson = "Name";

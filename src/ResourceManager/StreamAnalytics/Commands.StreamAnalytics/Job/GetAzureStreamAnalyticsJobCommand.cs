@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
     {
         [Parameter(ParameterSetName = StreamAnalyticsObjectsInResourceGroup, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
-        [Parameter(ParameterSetName = StreamAnalyticsObjectsInSubscription, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

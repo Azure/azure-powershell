@@ -12,11 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
+using Microsoft.Azure.Management.StreamAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
@@ -49,16 +51,37 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 throw new PSArgumentNullException("Name");
             }
 
-            HttpStatusCode statusCode = StreamAnalyticsClient.TestPSOutput(ResourceGroupName, JobName, Name);
-            if (statusCode == HttpStatusCode.OK)
+            try
             {
-                WriteObject(true);
+                DataSourceTestConnectionResponse response = StreamAnalyticsClient.TestPSOutput(ResourceGroupName, JobName, Name);
+                if (response.StatusCode == HttpStatusCode.OK && response.DataSourceTestStatus == DataSourceTestStatus.TestSucceeded)
+                {
+                    WriteObject(true);
+                }
+                else if (response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.OutputNotFound, Name, JobName, ResourceGroupName));
+                }
+                else
+                {
+                    string errorId = null;
+                    string errorMessage = null;
+                    string innerErrorMessage = null;
+                    if (response.Error != null)
+                    {
+                        errorId = response.Error.Code;
+                        errorMessage = response.Error.Message;
+                        if (response.Error.Details != null)
+                        {
+                            innerErrorMessage = response.Error.Details.Message;
+                        }
+                    }
+
+                    Exception ex = new Exception(errorMessage, new Exception(innerErrorMessage));
+                    WriteError(new ErrorRecord(ex, errorId, ErrorCategory.ConnectionError, null));
+                }
             }
-            else if (statusCode == HttpStatusCode.NoContent)
-            {
-                WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.OutputNotFound, Name, JobName, ResourceGroupName));
-            }
-            else
+            catch
             {
                 WriteObject(false);
             }

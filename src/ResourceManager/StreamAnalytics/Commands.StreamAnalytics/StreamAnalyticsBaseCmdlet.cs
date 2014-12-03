@@ -13,13 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.StreamAnalytics.Models;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
@@ -61,7 +58,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 
         protected string ResolveResourceName(string rawJsonContent, string nameFromCmdletContext, string resourceType)
         {
-            string nameExtractedFromJson = StreamAnalyticsCommonUtilities.ExtractNameFromJson(rawJsonContent, resourceType);
+            string nameExtractedFromJson = StreamAnalyticsCommonUtilities.ExtractNameFromJson(rawJsonContent);
 
             // Read the name from the JSON content if user didn't provide name with -Name parameter
             string resolvedResourceName = string.IsNullOrWhiteSpace(nameFromCmdletContext)
