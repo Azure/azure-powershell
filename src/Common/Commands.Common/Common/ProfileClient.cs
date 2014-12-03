@@ -372,7 +372,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         #endregion
 
-        #region Subscripton management
+        #region Subscription management
 
         public AzureSubscription AddOrSetSubscription(AzureSubscription subscription)
         {
@@ -521,31 +521,31 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
         }
 
+        public AzureSubscription SetSubscriptionAsCurrent(string name, string accountName)
+        {
+            var subscription = Profile.Subscriptions.Values.FirstOrDefault(s => s.Name == name);
+
+            if (subscription == null)
+            {
+                throw new ArgumentException(string.Format(Resources.InvalidSubscriptionName, name), "name");
+            }
+
+            return SetSubscriptionAsCurrent(subscription.Id, accountName);
+        }
+
         public AzureSubscription SetSubscriptionAsCurrent(Guid id, string accountName)
         {
+            if (Guid.Empty == id)
+            {
+                throw new ArgumentNullException("id", string.Format(Resources.InvalidSubscriptionId, id));
+            }
+
+            AzureSubscription currentSubscription = null;
             var subscription = Profile.Subscriptions.Values.FirstOrDefault(s => s.Id == id);
 
             if (subscription == null)
             {
                 throw new ArgumentException(string.Format(Resources.InvalidSubscriptionId, id), "id");
-            }
-
-            return SetSubscriptionAsCurrent(subscription.Name, accountName);
-        }
-
-        public AzureSubscription SetSubscriptionAsCurrent(string name, string accountName)
-        {
-            if (string.IsNullOrEmpty(name))
-            {
-                throw new ArgumentNullException("name", string.Format(Resources.InvalidSubscription, name));
-            }
-
-            AzureSubscription currentSubscription = null;
-            var subscription = Profile.Subscriptions.Values.FirstOrDefault(s => s.Name == name);
-
-            if (subscription == null)
-            {
-                throw new ArgumentException(string.Format(Resources.InvalidSubscription, name), "name");
             }
             else
             {
@@ -561,21 +561,21 @@ namespace Microsoft.WindowsAzure.Commands.Common
             return currentSubscription;
         }
 
-        public AzureSubscription SetSubscriptionAsDefault(Guid id, string accountName)
+        public AzureSubscription SetSubscriptionAsDefault(string name, string accountName)
         {
-            var subscription = Profile.Subscriptions.Values.FirstOrDefault(s => s.Id == id);
+            var subscription = Profile.Subscriptions.Values.FirstOrDefault(s => s.Name == name);
 
             if (subscription == null)
             {
-                throw new ArgumentException(string.Format(Resources.InvalidSubscriptionId, id), "id");
+                throw new ArgumentException(string.Format(Resources.InvalidSubscriptionName, name), "name");
             }
 
-            return SetSubscriptionAsDefault(subscription.Name, accountName);
+            return SetSubscriptionAsDefault(subscription.Id, accountName);
         }
 
-        public AzureSubscription SetSubscriptionAsDefault(string name, string accountName)
+        public AzureSubscription SetSubscriptionAsDefault(Guid id, string accountName)
         {
-            AzureSubscription subscription = SetSubscriptionAsCurrent(name, accountName);
+            AzureSubscription subscription = SetSubscriptionAsCurrent(id, accountName);
 
             if (subscription != null)
             {
