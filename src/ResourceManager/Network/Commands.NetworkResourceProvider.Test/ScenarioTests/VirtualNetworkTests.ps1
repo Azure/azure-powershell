@@ -22,7 +22,6 @@ function Test-VirtualNetworkCRUD
     $rgname = Get-ResourceGroupName
     $vnetName = Get-ResourceName
     $subnetName = Get-ResourceName
-    $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
     $location = Get-ProviderLocation $resourceTypeParent

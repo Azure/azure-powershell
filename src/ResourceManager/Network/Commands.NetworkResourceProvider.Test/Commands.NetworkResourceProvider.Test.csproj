@@ -118,6 +118,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NetworkResourcesController.cs" />
+    <Compile Include="ScenarioTests\NetworkInterfaceTests.cs" />
+    <Compile Include="ScenarioTests\LoadBalancerTests.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkTests.cs" />
     <Compile Include="ScenarioTests\PublicIpAddressTests.cs" />
   </ItemGroup>
@@ -125,6 +127,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="ScenarioTests\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\NetworkInterfaceTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\LoadBalancerTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\VirtualNetworkTests.ps1">
@@ -136,8 +144,18 @@
     <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkCRUD.json" />
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkSubnetCRUD.json" />
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkSubnetCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceNoPublicIpAddress.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
