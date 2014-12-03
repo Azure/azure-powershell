@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName")]
+        [Alias("ResourceName", "VMName")]
         [Parameter(
             Mandatory = true,
             Position = 1,

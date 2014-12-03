@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName")]
+        [Alias("ResourceName", "VMName")]
         [Parameter(
             Position = 1,
             ParameterSetName = GetVirtualMachineParamSet,

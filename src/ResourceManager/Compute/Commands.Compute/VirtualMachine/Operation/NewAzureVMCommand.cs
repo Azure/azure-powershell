@@ -27,7 +27,25 @@ namespace Microsoft.Azure.Commands.Compute
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
+        [Alias("ResourceName", "VMName")]
+        [Parameter(
             Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Location.")]
         [ValidateNotNullOrEmpty]
@@ -35,6 +53,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = true,
+            Position = 3,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The VM Profile.")]
@@ -42,13 +61,14 @@ namespace Microsoft.Azure.Commands.Compute
         public PSVirtualMachine VMProfile { get; set; }
 
         [Parameter(
+            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Availability Set Id.")]
         [ValidateNotNullOrEmpty]
         public string AvailabilitySetId { get; set; }
 
-        
         [Parameter(
+            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Provision VM Agent.")]
         [ValidateNotNullOrEmpty]

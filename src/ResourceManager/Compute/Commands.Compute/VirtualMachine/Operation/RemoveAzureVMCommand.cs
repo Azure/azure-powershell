@@ -23,7 +23,24 @@ namespace Microsoft.Azure.Commands.Compute
     public class RemoveAzureVMCommand : VirtualMachineBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+           Mandatory = true,
+           Position = 0,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
+        [Alias("ResourceName", "VMName")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
+        [Parameter(
+            Position = 2,
             HelpMessage = "To force the removal.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
