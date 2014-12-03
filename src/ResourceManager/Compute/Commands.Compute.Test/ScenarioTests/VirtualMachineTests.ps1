@@ -163,6 +163,7 @@ function Test-VirtualMachine
 
         $vm2 = Get-AzureVM -Name $vmname2 -ResourceGroupName $rgname;
         Assert-NotNull $vm2;
+        Assert-AreEqual $vm2.AvailabilitySetId $asetId;
         
         # Remove
         Remove-AzureVM -Name $vmname2 -ResourceGroupName $rgname -Force;

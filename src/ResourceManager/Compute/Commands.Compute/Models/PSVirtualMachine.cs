@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
 
         public IDictionary<string, string> Tags { get; set; }
-        public Uri AvailabilitySetId { get; set; }
+        public string AvailabilitySetId { get; set; }
         public string ProvisioningState { get; set; }
 
         public OSProfile OSConfiguration
@@ -150,6 +150,12 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Resources = virtualMachine.VirtualMachineSubResources,
                 Status = null, // TODO: VM response does not return Status info yet
             };
+
+            var asetRef = virtualMachine.VirtualMachineProperties.AvailabilitySetReference;
+            if (asetRef != null)
+            {
+                result.AvailabilitySetId = virtualMachine.VirtualMachineProperties.AvailabilitySetReference.ReferenceUri;
+            }
 
             result.OSProfile = virtualMachine.VirtualMachineProperties.OSProfile;
             result.HardwareProfile = virtualMachine.VirtualMachineProperties.HardwareProfile;
