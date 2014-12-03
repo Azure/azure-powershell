@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, "AzureKeyVaultSecret",
         DefaultParameterSetName = ByVaultNameParameterSet)]
-    [OutputType(typeof(List<Secret>))]
+    [OutputType(typeof(List<SecretIdentityItem>), typeof(Secret))]
     public class GetAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
         {
             get;
             set;
-        }       
+        }
 
         /// <summary>
         /// Secret name
@@ -71,6 +71,22 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             set;
         }
 
+        /// <summary>
+        /// Secret version
+        /// </summary>
+        [Parameter(Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = BySecretNameParameterSet,
+            HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("SecretVersion")]
+        public string Version
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         public override void ExecuteCmdlet()
@@ -80,7 +96,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
                 switch (ParameterSetName)
                 {
                     case BySecretNameParameterSet:
-                        var secret = DataServiceClient.GetSecret(VaultName, Name);
+                        var secret = DataServiceClient.GetSecret(VaultName, Name, Version);
                         WriteObject(secret);
                         break;
 
@@ -97,6 +113,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             {
                 this.WriteErrorDetails(ex);
             }
-        }        
+        }
     }
 }

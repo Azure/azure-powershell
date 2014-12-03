@@ -19,10 +19,10 @@ using Client = Microsoft.KeyVault.Client;
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class KeyAttributes
-    {        
+    {
         public KeyAttributes()
         { }
-       
+
         internal KeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType, string[] keyOps)
         {
             this.Enabled = enabled;
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.KeyOps = keyOps;
         }
 
-        internal KeyAttributes(bool? enabled, int? expires, int? notBefore, string keyType, string[] keyOps) :
+        internal KeyAttributes(bool? enabled, int? expires, int? notBefore, string keyType = null, string[] keyOps = null) :
             this(enabled, FromUnixTime(expires), FromUnixTime(notBefore), keyType, keyOps)
         { }
 
@@ -73,21 +73,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         private static int? ToUnixTime(DateTime? utcTime)
-        { 
+        {
             if (!utcTime.HasValue)
             {
                 return null;
             }
-            return Client.UnixEpoch.ToUnixTime(utcTime.Value);               
+            return Client.UnixEpoch.ToUnixTime(utcTime.Value);
         }
 
         private static DateTime? FromUnixTime(int? utcTime)
         {
             if (!utcTime.HasValue)
-            { 
-                return null; 
+            {
+                return null;
             }
             return Client.UnixEpoch.FromUnixTime(utcTime.Value);
-        }        
-    }    
+        }
+    }
 }

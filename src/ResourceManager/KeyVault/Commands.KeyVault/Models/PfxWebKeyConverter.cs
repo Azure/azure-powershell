@@ -48,8 +48,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         private bool CanProcess(FileInfo fileInfo, SecureString password)
         {
             if (fileInfo == null ||
-                string.IsNullOrEmpty(fileInfo.Extension) ||
-                password == null)
+                string.IsNullOrEmpty(fileInfo.Extension))
             {
                 return false;
             }
@@ -59,7 +58,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private JsonWebKey Convert(string pfxFileName, SecureString pfxPassword)
         {
-            var certificate = new X509Certificate2(pfxFileName, pfxPassword, X509KeyStorageFlags.Exportable);
+            X509Certificate2 certificate;
+
+            if (pfxPassword != null)
+            {
+                certificate = new X509Certificate2(pfxFileName, pfxPassword, X509KeyStorageFlags.Exportable);
+            }
+            else
+            {
+                certificate = new X509Certificate2(pfxFileName);
+            }
 
             if (!certificate.HasPrivateKey)
             {

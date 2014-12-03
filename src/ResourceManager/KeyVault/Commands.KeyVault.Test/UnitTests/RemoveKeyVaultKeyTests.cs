@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, "HSM", new string[]{"All"});
             webKey = new Microsoft.KeyVault.WebKey.JsonWebKey();
-            keyBundle = new KeyBundle() { Attributes = keyAttributes, Key = webKey, KeyName = KeyName, VaultName = VaultName };
+            keyBundle = new KeyBundle() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName };
         }
 
         [Fact]

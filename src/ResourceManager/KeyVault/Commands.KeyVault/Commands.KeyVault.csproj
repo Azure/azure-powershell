@@ -66,11 +66,13 @@
     <Compile Include="Models\IWebKeyConverter.cs" />
     <Compile Include="Models\KeyAttributes.cs" />
     <Compile Include="Models\KeyBundle.cs" />
-    <Compile Include="Models\KeyCreationAttributes.cs" />
+    <Compile Include="Models\KeyIdentityItem.cs" />
     <Compile Include="Models\KeyVaultCmdletBase.cs" />
     <Compile Include="Models\KeyVaultExceptionHandler.cs" />
+    <Compile Include="Models\ObjectIdentifier.cs" />
     <Compile Include="Models\PfxWebKeyConverter.cs" />
     <Compile Include="Models\Secret.cs" />
+    <Compile Include="Models\SecretIdentityItem.cs" />
     <Compile Include="Models\SecureStringExtension.cs" />
     <Compile Include="Models\VaultUriHelper.cs" />
     <Compile Include="Models\KeyVaultDataServiceClient.cs" />
@@ -83,12 +85,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.KeyVault.Client">
-      <HintPath>..\..\..\packages\Microsoft.KeyVault.Client.1.0.0.20\lib\net45\Microsoft.KeyVault.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.KeyVault.WebKey">
-      <HintPath>..\..\..\packages\Microsoft.KeyVault.WebKey.1.0.0.10\lib\net45\Microsoft.KeyVault.WebKey.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.7.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -101,6 +97,14 @@
     </Reference>
     <Reference Include="Microsoft.Data.Services.Client, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.KeyVault.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.KeyVault.Client.1.0.0.26\lib\net45\Microsoft.KeyVault.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.KeyVault.WebKey, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.KeyVault.WebKey.1.0.0.18\lib\net45\Microsoft.KeyVault.WebKey.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -151,6 +155,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Microsoft.Azure.Commands.KeyVault.dll-Help.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

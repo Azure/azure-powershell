@@ -13,18 +13,28 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.ObjectModel;
+using Client = Microsoft.KeyVault.Client;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyCreationAttributes : KeyAttributes
+    public class ObjectIdentifier
     {
-        public KeyCreationAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, bool? hsm, string[] keyOps) :
-            base(enabled, expires, notBefore, null, keyOps)
+        internal void SetObjectIdentifier(VaultUriHelper vaultUriHelper, Client.ObjectIdentifier identifier)
         {
-            this.Hsm = hsm;           
+            if (vaultUriHelper == null)
+            {
+                throw new ArgumentNullException("vaultUriHelper");
+            }
+
+            VaultName = vaultUriHelper.GetVaultName(identifier.Identifier);
+            Name = identifier.Name;
+            Version = identifier.Version;
         }
 
-        public bool? Hsm { get; private set; }        
+        public string VaultName { get; set; }
+
+        public string Name { get; set; }
+
+        public string Version { get; set; }
     }
 }

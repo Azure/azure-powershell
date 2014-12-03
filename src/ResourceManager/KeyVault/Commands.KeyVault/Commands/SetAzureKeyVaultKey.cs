@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The expiration time of a key in UTC time. If not present, key will not expire.")]
+            HelpMessage = "The expiration time of a key in UTC time. If not present, no change on current key expiration time.")]
         public DateTime? Expires
         {
             get;
@@ -86,13 +86,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The UTC time before which key can't be used. If not present, no limitation.")]
+            HelpMessage = "The UTC time before which key can't be used. If not present, no change on current key NotBefore attribute")]
         public DateTime? NotBefore
         {
             get;
             set;
-        }        
-        
+        }
+
+        /// <summary>
+        /// Key operations 
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The operations that can be performed with the key. If not present, no change on current key permitted operations.")]
+        public string[] KeyOps
+        {
+            get;
+            set;
+        }
 
         #endregion
 
@@ -104,7 +115,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
                 {
                     Enabled = this.Enable,
                     Expires = this.Expires,
-                    NotBefore = this.NotBefore
+                    NotBefore = this.NotBefore,
+                    KeyOps = this.KeyOps
                 };
 
                 WriteObject(DataServiceClient.SetKey(VaultName, Name, attributes));

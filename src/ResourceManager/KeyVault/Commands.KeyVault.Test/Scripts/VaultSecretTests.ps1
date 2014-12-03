@@ -131,6 +131,38 @@ function Test_GetAllSecrets
 
 <#
 .SYNOPSIS
+Tests get previous version of a secret from key vault
+#>
+
+function Test_GetPreviousVersionOfSecret
+{
+    $keyVault = Get-KeyVault
+    $secretname= Get-SecretName 'getversion'
+
+    # set secret for the first time
+    $sec1=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $securedata
+    Assert-NotNull $sec1
+    $global:createdSecrets += $secretname   
+    Assert-AreEqual $sec1.SecretValueText $data    
+
+    # set the same secret with new values but with new version
+    $sec2=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $newsecuredata
+    Assert-NotNull $sec2  
+    Assert-AreEqual $sec2.SecretValueText $newdata    
+
+    # Get the older version of the secret
+    $sec3=Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -Version $sec1.Version
+    Assert-NotNull $sec3
+    Assert-AreEqual $sec3.SecretValueText $data
+
+    # Get the newer version of the secret
+    $sec4=Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -Version $sec2.Version
+    Assert-NotNull $sec4
+    Assert-AreEqual $sec4.SecretValueText $newdata  
+}
+
+<#
+.SYNOPSIS
 Tests Get-AzureKeyVaultSecret with positional parameter
 #>
 function Test_GetSecretPositionalParameter

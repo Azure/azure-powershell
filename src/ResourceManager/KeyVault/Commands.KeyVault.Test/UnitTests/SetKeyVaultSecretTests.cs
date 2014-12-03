@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         public void CanSetSecretTest()
         {
             SecureString secureSecretValue = SecretValue.ToSecureString();
-            Secret expected = new Secret() { SecretName = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
+            Secret expected = new Secret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue, Version = SecretVersion };
             keyVaultClientMock.Setup(kv => kv.SetSecret(VaultName, SecretName, secureSecretValue)).Returns(expected).Verifiable();
 
             cmdlet.Name = SecretName;

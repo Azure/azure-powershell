@@ -13,17 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Text;
 using System.Net.Http;
 using System.Security;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Common.Internals;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Client = Microsoft.KeyVault.Client;
 using Microsoft.KeyVault.WebKey;
@@ -51,18 +48,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("httpClient");
             }
 
-            var credential = new DataServiceCredential(authFactory, context);            
+            var credential = new DataServiceCredential(authFactory, context);
             this.keyVaultClient = new Client.KeyVaultClient(
                 credential.OnAuthentication,
                 SendRequestCallback,
                 ReceiveResponseCallback,
                 httpClient);
 
-            
+
             this.vaultUriHelper = new VaultUriHelper(
                 context.Environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix]);
-        }  
-        
+        }
+
         /// <summary>
         /// Parameterless constructor for Mocking.
         /// </summary>
@@ -70,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
         }
 
-        public KeyBundle CreateKey(string vaultName, string keyName, KeyCreationAttributes keyAttributes)
+        public KeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
             {
@@ -87,20 +84,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
             Client.KeyAttributes clientAttributes = (Client.KeyAttributes)keyAttributes;
-            clientAttributes.Hsm = keyAttributes.Hsm;                 
-            string keyType = JsonWebKeyType.Rsa;
-            if (keyAttributes.Hsm.HasValue && keyAttributes.Hsm.Value) 
-            {
-                keyType = JsonWebKeyType.RsaHsm;
-            }          
 
-            Client.KeyBundle clientKeyBundle = this.keyVaultClient.CreateKeyAsync(
-                vaultAddress, keyName, keyType, keyAttributes.KeyOps, clientAttributes).GetAwaiter().GetResult();
+            Client.KeyBundle clientKeyBundle = 
+                this.keyVaultClient.CreateKeyAsync(
+                    vaultAddress,
+                    keyName,
+                    keyAttributes.KeyType,
+                    key_ops: keyAttributes.KeyOps,
+                    keyAttributes: clientAttributes).GetAwaiter().GetResult();
 
             return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
         }
 
-        public KeyBundle ImportKey(string vaultName, string keyName, KeyCreationAttributes keyAttributes, JsonWebKey webKey)
+        public KeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm)
         {
             if (string.IsNullOrEmpty(vaultName))
             {
@@ -118,16 +114,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 throw new ArgumentNullException("webKey");
             }
-            if (keyAttributes.Hsm.HasValue && !keyAttributes.Hsm.Value &&
-                JsonWebKeyType.RsaHsm.Equals(webKey.Kty))
-            {
-                // Importing HSMRSA key blob as RSA key is not allowed            
-                throw new ArgumentException(Resources.InvalidKeyDestination);
-            }
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
             Client.KeyAttributes clientAttributes = (Client.KeyAttributes)keyAttributes;
-            clientAttributes.Hsm = keyAttributes.Hsm;
+
             webKey.KeyOps = keyAttributes.KeyOps;
             Client.KeyBundle clientKeyBundle = new Client.KeyBundle()
             {
@@ -135,11 +126,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 Key = webKey
             };
 
-            clientKeyBundle = this.keyVaultClient.ImportKeyAsync(vaultAddress, keyName, clientKeyBundle).GetAwaiter().GetResult();
+            clientKeyBundle = this.keyVaultClient.ImportKeyAsync(vaultAddress, keyName, clientKeyBundle, importToHsm).GetAwaiter().GetResult();
 
             return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
-        }      
-       
+        }
+
         public KeyBundle SetKey(string vaultName, string keyName, KeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
@@ -154,15 +145,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 throw new ArgumentNullException("keyAttributes");
             }
-          
-            string keyId = this.vaultUriHelper.CreateKeyAddress(vaultName, keyName);
+
             Client.KeyAttributes clientAttributes = (Client.KeyAttributes)keyAttributes;
 
-            var clientKeyBundle = this.keyVaultClient.UpdateKeyAsync(keyId, clientAttributes).GetAwaiter().GetResult();
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            var clientKeyBundle = this.keyVaultClient.UpdateKeyAsync(vaultAddress, keyName, keyAttributes.KeyOps, attributes: clientAttributes).GetAwaiter().GetResult();
 
             return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
         }
-        public KeyBundle GetKey(string vaultName, string keyName)
+
+        public KeyBundle GetKey(string vaultName, string keyName, string keyVersion)
         {
             if (string.IsNullOrEmpty(vaultName))
             {
@@ -173,14 +166,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("keyName");
             }
 
-            string keyId = this.vaultUriHelper.CreateKeyAddress(vaultName, keyName);
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            Client.KeyBundle clientKeyBundle = this.keyVaultClient.GetKeyAsync(keyId).GetAwaiter().GetResult();
+            Client.KeyBundle clientKeyBundle = this.keyVaultClient.GetKeyAsync(vaultAddress, keyName, keyVersion).GetAwaiter().GetResult();
 
             return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
         }
 
-        public IEnumerable<KeyBundle> GetKeys(string vaultName)
+        public IEnumerable<KeyIdentityItem> GetKeys(string vaultName)
         {
             if (string.IsNullOrEmpty(vaultName))
             {
@@ -190,9 +183,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
             return (this.keyVaultClient.GetKeysAsync(vaultAddress).GetAwaiter().GetResult()).
-                Select( (bundle) => {return new KeyBundle(bundle, this.vaultUriHelper);} );       
+                Select((keyItem) => { return new KeyIdentityItem(keyItem, this.vaultUriHelper); });
         }
-        
+
         public KeyBundle DeleteKey(string vaultName, string keyName)
         {
             if (string.IsNullOrEmpty(vaultName))
@@ -204,9 +197,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("keyName");
             }
 
-            string keyId = this.vaultUriHelper.CreateKeyAddress(vaultName, keyName);
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            Client.KeyBundle clientKeyBundle = this.keyVaultClient.DeleteKeyAsync(keyId).GetAwaiter().GetResult();
+            Client.KeyBundle clientKeyBundle = this.keyVaultClient.DeleteKeyAsync(vaultAddress, keyName).GetAwaiter().GetResult();
 
             return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
         }
@@ -234,7 +227,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new Secret(clientSecret, this.vaultUriHelper);
         }
 
-        public Secret GetSecret(string vaultName, string secretName)
+        public Secret GetSecret(string vaultName, string secretName, string secretVersion)
         {
             if (string.IsNullOrEmpty(vaultName))
             {
@@ -245,24 +238,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("secretName");
             }
 
-            string secretAddress = this.vaultUriHelper.CreateSecretAddress(vaultName, secretName);
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            Client.Secret clientSecret = this.keyVaultClient.GetSecretAsync(secretAddress).GetAwaiter().GetResult();
+            var secretIdentifier = new Client.SecretIdentifier(vaultAddress, secretName, secretVersion);
+            Client.Secret clientSecret = this.keyVaultClient.GetSecretAsync(secretIdentifier.Identifier).GetAwaiter().GetResult();
 
             return new Secret(clientSecret, this.vaultUriHelper);
         }
 
-        public IEnumerable<Secret> GetSecrets(string vaultName)
+        public IEnumerable<SecretIdentityItem> GetSecrets(string vaultName)
         {
             if (string.IsNullOrEmpty(vaultName))
             {
                 throw new ArgumentNullException("vaultName");
-            }          
+            }
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
             return (this.keyVaultClient.GetSecretsAsync(vaultAddress).GetAwaiter().GetResult()).
-                Select((clientSecret) => { return new Secret(clientSecret, this.vaultUriHelper); });       
+                Select((secretItem) => { return new SecretIdentityItem(secretItem, this.vaultUriHelper); });
         }
 
         public Secret DeleteSecret(string vaultName, string secretName)
@@ -276,13 +270,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("secretName");
             }
 
-            string secretAddress = this.vaultUriHelper.CreateSecretAddress(vaultName, secretName);
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            Client.Secret clientSecret = this.keyVaultClient.DeleteSecretAsync(secretAddress).GetAwaiter().GetResult();
+            Client.Secret clientSecret = this.keyVaultClient.DeleteSecretAsync(vaultAddress, secretName).GetAwaiter().GetResult();
 
             return new Secret(clientSecret, this.vaultUriHelper);
         }
-                
+
         private void SendRequestCallback(string correlationId, HttpRequestMessage request)
         {
             if (CloudContext.Configuration.Tracing.IsEnabled)
@@ -300,6 +294,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         private VaultUriHelper vaultUriHelper;
-        private Client.KeyVaultClient keyVaultClient;        
+        private Client.KeyVaultClient keyVaultClient;
     }
 }

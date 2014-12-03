@@ -20,23 +20,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public interface IKeyVaultDataServiceClient
     {
-        KeyBundle CreateKey(string vaultName, string keyName, KeyCreationAttributes keyAttributes);
+        KeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes);
 
-        KeyBundle ImportKey(string vaultName, string keyName, KeyCreationAttributes keyAttributes, JsonWebKey webKey);     
+        KeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);     
        
         KeyBundle SetKey(string vaultName, string keyName, KeyAttributes keyAttributes);
 
-        KeyBundle GetKey(string vaultName, string keyName);
+        KeyBundle GetKey(string vaultName, string keyName, string keyVersion);
 
-        IEnumerable<KeyBundle> GetKeys(string vaultName);
+        IEnumerable<KeyIdentityItem> GetKeys(string vaultName);
         
         KeyBundle DeleteKey(string vaultName, string keyName);
 
         Secret SetSecret(string vaultName, string secretName, SecureString secretValue);
 
-        Secret GetSecret(string vaultName, string secretName);
+        Secret GetSecret(string vaultName, string secretName, string secretVersion);
 
-        IEnumerable<Secret> GetSecrets(string vaultName);
+        IEnumerable<SecretIdentityItem> GetSecrets(string vaultName);
 
         Secret DeleteSecret(string vaultName, string secretName);
     }
