@@ -17,6 +17,7 @@ using System.Management.Automation;
 using System.Net;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
+using Microsoft.Azure.Management.StreamAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
@@ -49,12 +50,12 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 throw new PSArgumentNullException("Name");
             }
 
-            HttpStatusCode statusCode = StreamAnalyticsClient.TestPSInput(ResourceGroupName, JobName, Name);
-            if (statusCode == HttpStatusCode.OK)
+            DataSourceTestConnectionResponse response = StreamAnalyticsClient.TestPSInput(ResourceGroupName, JobName, Name);
+            if (response.StatusCode == HttpStatusCode.OK && response.DataSourceTestStatus == DataSourceTestStatus.TestSucceeded)
             {
                 WriteObject(true);
             }
-            else if (statusCode == HttpStatusCode.NoContent)
+            else if (response.StatusCode == HttpStatusCode.NoContent)
             {
                 WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.InputNotFound, Name, JobName, ResourceGroupName));
             }

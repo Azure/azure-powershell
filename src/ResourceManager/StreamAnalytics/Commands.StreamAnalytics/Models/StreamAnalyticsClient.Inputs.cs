@@ -164,11 +164,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             return response.StatusCode;
         }
 
-        public virtual HttpStatusCode TestPSInput(string resourceGroupName, string jobName, string inputName)
+        public virtual DataSourceTestConnectionResponse TestPSInput(string resourceGroupName, string jobName, string inputName)
         {
-            OperationResponse response = StreamAnalyticsManagementClient.Inputs.TestConnection(resourceGroupName, jobName, inputName);
-
-            return response.StatusCode;
+            return StreamAnalyticsManagementClient.Inputs.TestConnection(resourceGroupName, jobName, inputName);
         }
 
         private bool CheckInputExists(string resourceGroupName, string jobName, string inputName)
