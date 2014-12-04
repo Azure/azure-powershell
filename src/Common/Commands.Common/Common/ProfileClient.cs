@@ -481,10 +481,10 @@ namespace Microsoft.WindowsAzure.Commands.Common
             foreach (var subscription in subscriptionsFromServer)
             {
                 // Resetting back default account
-                if (Profile.Subscriptions.ContainsKey(subscription.Id))
-                {
-                    subscription.Account = Profile.Subscriptions[subscription.Id].Account;
-                }
+                //if (Profile.Subscriptions.ContainsKey(subscription.Id))
+                //{
+                //    subscription.Account = Profile.Subscriptions[subscription.Id].Account;
+                //}
                 AddOrSetSubscription(subscription);
             }
 
@@ -705,8 +705,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 // Set user ID
                 foreach (var subscription in mergedSubscriptions)
                 {
-                    subscription.Environment = environment.Name;
-                    subscription.Account = account.Id;
                     account.SetOrAppendProperty(AzureAccount.Property.Subscriptions, subscription.Id.ToString());
                 }
 
