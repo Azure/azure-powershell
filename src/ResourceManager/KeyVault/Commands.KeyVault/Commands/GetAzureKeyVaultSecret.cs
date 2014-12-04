@@ -49,11 +49,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             ParameterSetName = ByVaultNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        public string VaultName
-        {
-            get;
-            set;
-        }
+        public string VaultName { get; set; }
 
         /// <summary>
         /// Secret name
@@ -65,11 +61,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
         [Alias("SecretName")]
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// Secret version
@@ -81,11 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
         [ValidateNotNullOrEmpty]
         [Alias("SecretVersion")]
-        public string Version
-        {
-            get;
-            set;
-        }
+        public string Version { get; set; }
 
         #endregion
 

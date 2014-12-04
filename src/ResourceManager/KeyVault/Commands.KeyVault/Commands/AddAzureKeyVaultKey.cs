@@ -62,11 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        public string VaultName
-        {
-            get;
-            set;
-        }
+        public string VaultName { get; set; }
 
         /// <summary>
         /// key name
@@ -81,11 +77,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "key name")]
         [ValidateNotNullOrEmpty]
         [Alias("KeyName")]
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// Path to the local file containing to-be-imported key material.
@@ -97,11 +89,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ImportParameterSet,
             HelpMessage = "Path to the local file containing to-be-imported key material")]
         [ValidateNotNullOrEmpty]
-        public string KeyFilePath
-        {
-            get;
-            set;
-        }
+        public string KeyFilePath { get; set; }
 
         /// <summary>
         /// Password of the imported file. 
@@ -111,11 +99,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ImportParameterSet,
             HelpMessage = "Password of the imported key file")]
         [ValidateNotNullOrEmpty]
-        public SecureString KeyFilePassword
-        {
-            get;
-            set;
-        }
+        public SecureString KeyFilePassword { get; set; }
 
         /// <summary>
         /// Destination of the key
@@ -127,11 +111,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ImportParameterSet,
             HelpMessage = "Destination of the key")]
         [ValidateSetAttribute(new string[] { HsmDestination, SoftwareDestination })]
-        public string Destination
-        {
-            get;
-            set;
-        }
+        public string Destination { get; set; }
 
         /// <summary>
         /// Set key in disabled state if present       
@@ -142,11 +122,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ImportParameterSet,
             HelpMessage = "Set key in disabled state if present. If not present, key is enabled.")]
-        public SwitchParameter Disable
-        {
-            get;
-            set;
-        }
+        public SwitchParameter Disable { get; set; }
 
         /// <summary>
         /// Key operations 
@@ -159,11 +135,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ImportParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The operations that can be performed with the key. If not present, all operations can be performed.")]
-        public string[] KeyOps
-        {
-            get;
-            set;
-        }
+        public string[] KeyOps { get; set; }
 
         /// <summary>
         /// Key expires time in UTC time
@@ -176,11 +148,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ImportParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The expiration time of a key in UTC time. If not present, key will not expire.")]
-        public DateTime? Expires
-        {
-            get;
-            set;
-        }
+        public DateTime? Expires { get; set; }
 
         /// <summary>
         /// The UTC time before which key can't be used 
@@ -193,11 +161,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ImportParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The UTC time before which key can't be used. If not present, no limitation.")]
-        public DateTime? NotBefore
-        {
-            get;
-            set;
-        }
+        public DateTime? NotBefore { get; set; }
 
         #endregion
 
