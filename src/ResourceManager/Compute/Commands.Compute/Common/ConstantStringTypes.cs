@@ -55,5 +55,6 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineExtension = "AzureVMExtension";
         public const string VirtualMachineProfile = "AzureVMProfile";
         public const string AvailabilitySet = "AzureAvailabilitySet";
+        public const string VirtualMachineConfig = "AzureVMConfig";
     }
 }

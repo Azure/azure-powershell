@@ -12,33 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Management.Automation;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    /// <summary>
-    /// Setup a hardware profile.
-    /// </summary>
     [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.Hardware),
+        VerbsCommon.New,
+        ProfileNouns.VirtualMachineConfig),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class SetAzureVMHardwareProfileCommand : AzurePSCmdlet
+    public class NewAzureVMConfigCommand : AzurePSCmdlet
     {
-        [Alias("VMProfile")]
+        [Alias("ResourceName", "VMName")]
         [Parameter(
             Mandatory = true,
             Position = 0,
-            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMProfile)]
+            HelpMessage = "The VM name.")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachine VM { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -48,16 +44,28 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string VMSize { get; set; }
 
+        [Parameter(
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Availability Set Id.")]
+        [ValidateNotNullOrEmpty]
+        public string AvailabilitySetId { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var hardwareProfile = new HardwareProfile
+            var vm = new PSVirtualMachine
             {
-                VirtualMachineSize = this.VMSize
+                Name = this.Name,
+                AvailabilitySetId = this.AvailabilitySetId
             };
 
-            this.VM.HardwareProfile = hardwareProfile;
+            if (!string.IsNullOrEmpty(this.VMSize))
+            {
+                vm.HardwareProfile = new HardwareProfile();
+                vm.HardwareProfile.VirtualMachineSize = this.VMSize;
+            }
 
-            WriteObject(this.VM);
+            WriteObject(vm);
         }
     }
 }

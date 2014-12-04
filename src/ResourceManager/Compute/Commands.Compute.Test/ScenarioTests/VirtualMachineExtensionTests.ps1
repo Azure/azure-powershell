@@ -26,8 +26,12 @@ function Test-VirtualMachineExtension
         # Common
         $loc = 'West US';
         New-AzureResourceGroup -Name $rgname -Location $loc;
-
-        $p = New-AzureVMProfile;
+        
+        # VM Profile & Hardware
+        $vmsize = 'Standard_A2';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzureVMConfig -Name $vmname -VMSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
         $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DnsServer "10.1.1.1";
@@ -97,14 +101,6 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
 
-        # Hardware
-        $vmsize = 'Standard_A2';
-        $vmname = 'vm' + $rgname;
-
-        $p = Set-AzureVMHardwareProfile -VM $p -VMSize $vmsize;
-        
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
-
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
         Retry-IfException { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p -ProvisionVMAgent $true; }
@@ -148,6 +144,7 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+
         # Check Extensions in VM
         Assert-AreEqual $vm1.Resources.Extensions.Count 1;
         Assert-AreEqual $vm1.Resources.Extensions[0].Name $extname;

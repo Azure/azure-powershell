@@ -34,18 +34,9 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName", "VMName")]
         [Parameter(
             Mandatory = true,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Location.")]
         [ValidateNotNullOrEmpty]
@@ -54,22 +45,23 @@ namespace Microsoft.Azure.Commands.Compute
         [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
-            Position = 3,
+            Position = 2,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The VM Profile.")]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
+        [Alias("ResourceName", "VMName")]
         [Parameter(
-            Position = 4,
+            Position = 3,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Availability Set Id.")]
+            HelpMessage = "The VM name.")]
         [ValidateNotNullOrEmpty]
-        public string AvailabilitySetId { get; set; }
+        public override string Name { get; set; }
 
         [Parameter(
-            Position = 5,
+            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Provision VM Agent.")]
         [ValidateNotNullOrEmpty]
@@ -85,10 +77,10 @@ namespace Microsoft.Azure.Commands.Compute
                 StorageProfile = this.VM.StorageProfile,
                 NetworkProfile = this.VM.NetworkProfile,
                 OSProfile = this.VM.OSProfile,
-                AvailabilitySetReference = string.IsNullOrEmpty(this.AvailabilitySetId) ? null
+                AvailabilitySetReference = string.IsNullOrEmpty(this.VM.AvailabilitySetId) ? null
                                          : new AvailabilitySetReference
                                            {
-                                               ReferenceUri = this.AvailabilitySetId
+                                               ReferenceUri = this.VM.AvailabilitySetId
                                            }
             };
 
@@ -106,7 +98,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     VirtualMachineProperties = vmProps,
                     Location = this.Location,
-                    Name = this.Name
+                    Name = !string.IsNullOrEmpty(this.Name) ? this.Name : this.VM.Name
                 }
             };
 

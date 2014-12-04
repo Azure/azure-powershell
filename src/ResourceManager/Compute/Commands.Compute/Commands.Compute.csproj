@@ -171,14 +171,13 @@
     <Compile Include="VirtualMachine\Action\StartAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Action\StopAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Operation\RemoveAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\Config\NewAzureVMProfileCommand.cs" />
+    <Compile Include="VirtualMachine\Config\NewAzureVMConfigCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="VirtualMachine\Config\SetAzureVMHardwareProfileCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMOSProfileCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMDataDiskProfileCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMNetworkInterfaceCommand.cs" />

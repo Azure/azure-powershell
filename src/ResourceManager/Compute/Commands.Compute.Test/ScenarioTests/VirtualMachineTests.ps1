@@ -26,8 +26,12 @@ function Test-VirtualMachine
         # Common
         $loc = 'West US';
         New-AzureResourceGroup -Name $rgname -Location $loc;
-
-        $p = New-AzureVMProfile;
+        
+        # VM Profile & Hardware
+        $vmsize = 'Standard_A2';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzureVMConfig -Name $vmname -VMSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
         $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DnsServer "10.1.1.1";
@@ -96,14 +100,6 @@ function Test-VirtualMachine
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
 
-        # Hardware
-        $vmsize = 'Standard_A2';
-        $vmname = 'vm' + $rgname;
-
-        $p = Set-AzureVMHardwareProfile -VM $p -VMSize $vmsize;
-        
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
-
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
         Retry-IfException { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p; }
@@ -155,9 +151,13 @@ function Test-VirtualMachine
         Assert-AreEqual $asetName $aset.Name;
 
         $asetId = ('/subscriptions/' + (Get-AzureSubscription -Current).SubscriptionId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/availabilitySets/' + $asetName);
-
-        $vmname2 = $vmname + '2'
-        New-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname2 -VM $p -AvailabilitySetId $asetId;
+        $vmname2 = $vmname + '2';
+        $p2 = New-AzureVMConfig -Name $vmname2 -VMSize $vmsize -AvailabilitySetId $asetId;
+        $p2.HardwareProfile = $p.HardwareProfile;
+        $p2.OSProfile = $p.OSProfile;
+        $p2.NetworkProfile = $p.NetworkProfile;
+        $p2.StorageProfile = $p.StorageProfile;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p2;
 
         $vm2 = Get-AzureVM -Name $vmname2 -ResourceGroupName $rgname;
         Assert-NotNull $vm2;

@@ -21,8 +21,12 @@ function Test-VirtualMachineProfile
     # Common
     $img = 'testvmimagename';
     $loc = 'East US';
-
-    $p = New-AzureVMProfile;
+    
+    # VM Profile & Hardware
+    $vmsize = 'Standard_A2';
+    $vmname = 'pstestvm' + ((Get-Random) % 10000);
+    $p = New-AzureVMConfig -Name $vmname -VMSize $vmsize;
+    Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
     # Network
     $ipname = 'hpfip' + ((Get-Random) % 10000);
@@ -82,12 +86,4 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;
     Assert-AreEqual $p.OSProfile.AdminPassword $password;
-
-    # Hardware
-    $vmsize = 'Standard_A2';
-    $vmname = 'hpftestvm' + ((Get-Random) % 10000);
-
-    $p = Set-AzureVMHardwareProfile -VM $p -VMSize $vmsize;
-        
-    Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 }
