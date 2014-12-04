@@ -185,7 +185,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     ep1ProbeInterval,
                     ep1ProbeTimeout,
                     ep1AclObj,
-                    ep1DirectServerReturn);
+                    ep1DirectServerReturn,
+                    null,
+                    null,
+                    LoadBalancerDistribution.SourceIP);
 
                 azureEndPointConfigInfo1.Vm = vm;
                 vm = vmPowershellCmdlets.AddAzureEndPoint(azureEndPointConfigInfo1);

@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-
 namespace Microsoft.Azure.Commands.ManagedCache
 {
+    using System.Management.Automation;
+
     [Cmdlet(VerbsCommon.Remove, "AzureManagedCache"), OutputType(typeof(bool))]
     public class RemoveAzureManagedCache : ManagedCacheCmdletBase
     {

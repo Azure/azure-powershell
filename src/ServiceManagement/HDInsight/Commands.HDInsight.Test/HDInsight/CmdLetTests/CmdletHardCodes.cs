@@ -18,6 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
         public const string AddAzureHDInsightConfigValues = "Add-AzureHDInsightConfigValues";
         public const string AddAzureHDInsightMetastore = "Add-AzureHDInsightMetastore";
         public const string AddAzureHDInsightStorage = "Add-AzureHDInsightStorage";
+        public const string AddAzureHDInsightScriptAction = "Add-AzureHDInsightScriptAction";
         public const string Arguments = "Args";
         public const string Certificate = "Certificate";
         public const string ClassName = "Class";
@@ -77,11 +78,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
         public const string Reducer = "Reducer";
         public const string RemoveAzureHDInsightCluster = "Remove-AzureHDInsightCluster";
         public const string RevokeAzureHDInsightHttpAccess = "Revoke-AzureHDInsightHttpServicesAccess";
+        public const string SetAzureHDInsightClusterSize = "Set-AzureHDInsightClusterSize";
         public const string SetAzureHDInsightDefaultStorage = "Set-AzureHDInsightDefaultStorage";
         public const string Show = "Show";
         public const string Skip = "Skip";
         public const string SqlAzureServerName = "SqlAzureServerName";
         public const string StartAzureHDInsightJob = "Start-AzureHDInsightJob";
+        public const string ConfigActionName = "Name";  
+        public const string ConfigActionClusterRoleCollection = "ClusterRoleCollection";  
+        public const string ScriptActionUri = "Uri";  
+        public const string ScriptActionParameters = "Parameters"; 
         public const string StatusFolder = "StatusFolder";
         public const string YarnConfig = "Yarn";
         public const string StormConfig = "Storm";

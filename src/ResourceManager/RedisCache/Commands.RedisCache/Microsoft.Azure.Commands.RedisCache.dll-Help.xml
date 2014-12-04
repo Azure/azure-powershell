@@ -98,10 +98,6 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
-      <maml:title />
-      <maml:alert>
-        <maml:para>The Get-AzureRedisCache cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.10.1.</maml:para>
-      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -316,7 +312,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>MaxMemoryPolicy</maml:name>
           <maml:description>
-            <maml:para>MaxMemoryPolicy used by the redis cache. The default value is null. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL</maml:para>
+            <maml:para>MaxMemoryPolicy used by the redis cache. The default value is VolatileLRU. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -401,7 +397,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>MaxMemoryPolicy</maml:name>
         <maml:description>
-          <maml:para>MaxMemoryPolicy used by the redis cache. By default the value is null. All possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL.</maml:para>
+          <maml:para>MaxMemoryPolicy used by the redis cache. By default the value is VolatileLRU. All possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -444,10 +440,6 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
-      <maml:title />
-      <maml:alert>
-        <maml:para>The New-AzureRedisCache cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.10.1.</maml:para>
-      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -658,10 +650,6 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
-      <maml:title />
-      <maml:alert>
-        <maml:para>The Remove-AzureRedisCache cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.10.1.</maml:para>
-      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -806,10 +794,6 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
-      <maml:title />
-      <maml:alert>
-        <maml:para>The Get-AzureRedisCacheKey cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.10.1.</maml:para>
-      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -968,17 +952,13 @@
           </maml:description>
         </dev:type>
         <maml:description>
-          <maml:para>Returns primary and secondary access key of redis caches.</maml:para>
+          <maml:para>Returns the primary and secondary access key of redis caches.</maml:para>
         </maml:description>
       </command:returnValue>
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
-      <maml:title />
-      <maml:alert>
-        <maml:para>The New-AzureRedisCacheKey cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.10.1.</maml:para>
-      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -1069,7 +1049,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>MaxMemoryPolicy</maml:name>
           <maml:description>
-            <maml:para>MaxMemoryPolicy used by the redis cache. The default value is null. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL.</maml:para>
+            <maml:para>MaxMemoryPolicy used by the redis cache. The default value is VolatileLRU. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1105,7 +1085,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>MaxMemoryPolicy</maml:name>
         <maml:description>
-          <maml:para>MaxMemoryPolicy used by the redis cache. The default value is null. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL.</maml:para>
+          <maml:para>MaxMemoryPolicy used by the redis cache. The default value is VolatileLRU. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1148,10 +1128,6 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
-      <maml:title />
-      <maml:alert>
-        <maml:para>The Set-AzureRedisCache cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.10.1.</maml:para>
-      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>

@@ -49,7 +49,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.11.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataFactories">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.0.11.2-preview\lib\net40\Microsoft.Azure.Management.DataFactories.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.0.11.4-preview\lib\net40\Microsoft.Azure.Management.DataFactories.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Monitoring">
       <HintPath>..\..\..\packages\Microsoft.Azure.Monitoring.2.2.0-preview\lib\net40\Microsoft.Azure.Monitoring.dll</HintPath>
@@ -61,7 +61,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Utilities.HttpRecorder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Hydra.HttpRecorder.1.0.5406.28672-prerelease\lib\net45\Microsoft.Azure.Utilities.HttpRecorder.dll</HintPath>
+      <HintPath>..\..\..\packages\Hydra.HttpRecorder.1.0.5417.13285-prerelease\lib\net45\Microsoft.Azure.Utilities.HttpRecorder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.DataFactories.Runtime">
       <HintPath>..\..\..\packages\Microsoft.DataFactories.Runtime.0.11.1-preview\lib\net45\Microsoft.DataFactories.Runtime.dll</HintPath>
@@ -87,11 +87,11 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Common.NetFramework">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -101,9 +101,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\WindowsAzure.Storage.4.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Testing, Version=1.0.5406.28672, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Testing, Version=1.0.5417.13285, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Hydra.SpecTestSupport.1.0.5406.28672-prerelease\lib\net45\Microsoft.WindowsAzure.Testing.dll</HintPath>
+      <HintPath>..\..\..\packages\Hydra.SpecTestSupport.1.0.5417.13285-prerelease\lib\net45\Microsoft.WindowsAzure.Testing.dll</HintPath>
     </Reference>
     <Reference Include="Moq, Version=4.2.1402.2112, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -159,6 +159,7 @@
     <Compile Include="UnitTests\NewDataFactoryGatewayTests.cs" />
     <Compile Include="UnitTests\NewLinkedServiceTests.cs" />
     <Compile Include="UnitTests\NewDataFactoryTests.cs" />
+    <Compile Include="UnitTests\NewPipelineTests.cs" />
     <Compile Include="UnitTests\RemoveAzureDataFactoryGatewayTests.cs" />
     <Compile Include="UnitTests\NewTableTests.cs" />
     <Compile Include="UnitTests\RemoveHubTests.cs" />
@@ -184,30 +185,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\table.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\WikiSamplePipeline\DA_CuratedWikiData.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\WikiSamplePipeline\DA_WikiAggregatedData.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\WikiSamplePipeline\DA_WikipediaClickEvents.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\WikiSamplePipeline\DP_Wikisamplev2json.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\WikiSamplePipeline\LinkedService_CuratedWikiData.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\WikiSamplePipeline\LinkedService_HDIBYOC.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\WikiSamplePipeline\LinkedService_WikiAggregatedData.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\WikiSamplePipeline\LinkedService_WikipediaClickEvents.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Common.ps1">
@@ -243,6 +220,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestCreateDataFactory.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestDataFactoryPiping.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestDeleteDataFactoryWithDataFactoryParameter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -258,6 +238,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.HubTests\TestHub.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.HubTests\TestHubPiping.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.HubTests\TestHubWithDataFactoryParameter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -270,10 +253,13 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.LinkedServiceTests\TestLinkedService.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.LinkedServiceTests\TestLinkedServicePiping.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.LinkedServiceTests\TestLinkedServiceWithDataFactoryParameter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.PipelineTests\TestWikipediaSamplePipeline.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.PipelineTests\TestPipeline.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.TableTests\TestGetTableWithEmptyName.json">
@@ -283,6 +269,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.TableTests\TestTable.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.TableTests\TestTablePiping.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.TableTests\TestTableWithDataFactoryParameter.json">

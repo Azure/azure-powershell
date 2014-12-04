@@ -96,6 +96,11 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
             internal set { _gateway.Properties.ExpiryTime = value; }
         }
 
+        public string ProvisioningState
+        {
+            get { return _gateway.Properties == null ? string.Empty : _gateway.Properties.ProvisioningState; }
+        }
+
         internal string Key
         {
             get { return _gateway.Properties.Key; }

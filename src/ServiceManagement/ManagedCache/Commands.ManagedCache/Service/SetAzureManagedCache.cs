@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ManagedCache.Models;
-using Microsoft.Azure.Management.ManagedCache.Models;
-
 namespace Microsoft.Azure.Commands.ManagedCache
 {
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ManagedCache.Models;
+    using Microsoft.Azure.Management.ManagedCache.Models;
+
     /// <summary>
     /// Retrieves a list of Microsoft Azure SQL Database servers in the selected subscription.
     /// </summary>

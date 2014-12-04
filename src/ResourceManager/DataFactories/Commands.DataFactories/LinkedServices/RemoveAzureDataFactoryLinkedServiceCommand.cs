@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.LinkedService)]
+    [Cmdlet(VerbsCommon.Remove, Constants.LinkedService, DefaultParameterSetName = ByFactoryName)]
     public class RemoveAzureDataFactoryLinkedServiceCommand : LinkedServiceContextBaseCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]

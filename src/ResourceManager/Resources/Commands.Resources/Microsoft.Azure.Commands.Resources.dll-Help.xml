@@ -712,10 +712,6 @@
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The Get-AzureLocation cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -972,10 +968,6 @@ C:\&gt;New-AzureResource -Name MyWebSite -Location &apos;North Central US&apos; 
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The Get-AzureResource cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -1272,10 +1264,6 @@ Tags:
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The Get-AzureResourceGroup cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -1517,10 +1505,6 @@ Tags:
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The Get-AzureResourceGroupDeployment cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -1779,10 +1763,6 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The Get-AzureResourceGroupGalleryTemplate cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -1996,10 +1976,6 @@ Summary     : Help desk and service management software that empowers you to pro
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The Get-AzureResourceGroupLog cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -3215,10 +3191,6 @@ PS C:\&gt;Get-AzureResourceGroupLog -Name ContosoLabsRG -DeploymentName LabDeplo
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The New-AzureResource cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -4075,10 +4047,6 @@ PS C:\&gt;New-AzureResource –Name sqldb03 –ResourceType &quot;Microsoft.Sql/
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The New-AzureResourceGroup cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -4739,10 +4707,6 @@ Resources         :
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The New-AzureResourceGroupDeployment cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -5727,10 +5691,6 @@ PS C:\&gt;New-AzureResourceGroupDeployment -ResourceGroupName ContosoRG01 -Templ
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The Remove-AzureResource cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -5919,10 +5879,6 @@ True</dev:code>
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The Remove-AzureResourceGroup cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -7005,10 +6961,6 @@ True</dev:code>
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The Save-AzureResourceGroupGalleryTemplate cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -7262,10 +7214,6 @@ PS C:\&gt;New-AzureResourceGroup -Name ContosoRG02 -Location &apos;South Central
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The Set-AzureResource cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -7679,10 +7627,6 @@ Tags:
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The Stop-AzureResourceGroupDeployment cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
@@ -8154,10 +8098,6 @@ True</dev:code>
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>The Test-AzureResourceGroupGalleryTemplate cmdlet is included in the Azure Resource Manager module beginning in module version 0.8.0.</maml:para>
-		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>

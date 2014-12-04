@@ -33477,4 +33477,1108 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
     </maml:navigationLink>
   </maml:relatedLinks>
 </command:command>
+
+ <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureVMSqlServerExtension
+      </command:name>
+      <maml:description>
+        <maml:para>Gets the settings of the SQL Server IaaS Agent on a particular VM.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureVMSqlServerExtension</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Gets the settings of the SQL Server IaaS Agent on a particular virtual machine.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureVMSqlServerExtension</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The virtual machine to get the settings from.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+          <maml:name>Version</maml:name>
+          <maml:description>
+            <maml:para>The specific version of the SQL Server IaaS Agent.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+        <maml:name>Version</maml:name>
+        <maml:description>
+          <maml:para>The specific version of the SQL Server IaaS Agent.</maml:para>
+         </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+        <maml:name>VM</maml:name>
+        <maml:description>
+          <maml:para>The virtual machine to get the settings from.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+        <dev:type>
+          <maml:name>IPersistentVM</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          C:\PS&gt; Get-AzureVMSqlServerExtension-VM $vm
+
+          ExtensionName        : SqlIaaSAgent
+          Publisher            : Microsoft.SqlServer.Management
+          Version              : 1.0
+          State                : Enable
+          RoleName             : vmname
+          AutoPatchingSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoPatchingSettings
+          AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Gets the settings of the Sql Server extension on a particular virtual machine.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          C:\PS&gt; Get-AzureVM -ServiceName &quot;service&quot; -Name &quot;vmname&quot; | Get-AzureVMSqlServerExtension
+
+          ExtensionName        : SqlIaaSAgent
+          Publisher            : Microsoft.SqlServer.Management
+          Version              : 1.0
+          State                : Enable
+          RoleName             : vmname
+          AutoPatchingSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoPatchingSettings
+          AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Gets the settings of the SQL Server IaaS Agent on a particular virtual machine using piped input.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 3 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          C:\PS&gt; Get-AzureVMSqlServerExtension -VM $vm -Version &quot;1.0&quot;
+
+          ExtensionName        : SqlIaaSAgent
+          Publisher            : Microsoft.SqlServer.Management
+          Version              : 1.0
+          State                : Enable
+          RoleName             : vmname
+          AutoPatchingSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoPatchingSettings
+          AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Gets the settings of the particular version of SQL Server IaaS Agent on a virtual machine.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureVMSqlServerExtension</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureVMSqlServerExtension</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+
+ <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        New-AzureVMSqlServerAutoPatchingConfig
+      </command:name>
+      <maml:description>
+        <maml:para>Creates configuration object for virtual machine automatic patching </maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>New</command:verb>
+      <command:noun>AzureVMSqlServerAutoPatchingConfig</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Creates configuration object for virtual machine automatic patching</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-AzureVMSqlServerAutoPatchingConfig</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Enable</maml:name>
+          <maml:description>
+            <maml:para>Enables or disables automated patching for the virtual machine. Enabling automated patching will put Windows Update into interactive mode. Disabling automated patching does not changes Windows Update settings.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DayOfWeek</maml:name>
+          <maml:description>
+            <maml:para>Specifies the day of the week when updates should be installed. Can be specified any single day of the week or every day.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MaintenanceWindowStartingHour</maml:name>
+          <maml:description>
+            <maml:para>Specifies the hour of the day when maintenance window starts. This time defines when updates start installing. Rounded to the hour.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MaintenanceWindowDuration</maml:name>
+          <maml:description>
+            <maml:para>Specifies the duration of the maintenance window. Automated patching will avoid performing an action that can impact a machine availability outside of that window. Only 30 minutes increments are allowed.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>PatchCategory</maml:name>
+          <maml:description>
+            <maml:para>Defines if recommended updates should be included.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DayOfWeek</maml:name>
+        <maml:description>
+          <maml:para>Specifies the day of the week when updates should be installed. Can be specified any single day of the week or every day.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Enable</maml:name>
+        <maml:description>
+          <maml:para>Enables or disables automated patching for the virtual machine. Enabling automated patching will put Windows Update into interactive mode. Disabling automated patching does not changes Windows Update settings.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
+        <dev:type>
+          <maml:name>bool</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>True</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaintenanceWindowStartingHour</maml:name>
+        <maml:description>
+          <maml:para>Specifies the hour of the day when maintenance window starts. This time defines when updates start installing.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>3</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaintenanceWindowDuration</maml:name>
+        <maml:description>
+          <maml:para>Specifies the duration of the maintenance window. Automated patching will avoid performing an action that can impact a machine availability outside of that window. Only 30 minutes increments are allowed.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>120</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>PatchCategory</maml:name>
+        <maml:description>
+          <maml:para>Defines if recommended updates should be included.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>Optional</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>AutoPatchingSettings</maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            Returns object contains settings for automated patching.
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          C:\PS&gt; $aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek &quot;Thursday&quot; -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory &quot;Optional&quot;
+
+          PS C:\&gt; $aps
+          Enable                        : True
+          DayOfWeek                     : Thursday
+          MaintenanceWindowStartingHour : 11
+          MaintenanceWindowDuration     : 120
+          PatchCategory                 : Optional
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command creates configuration object that can be used to configure automatic patching using Set-AzureVMSqlServerExtension</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureVMSqlServerExtension</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureVMSqlServerExtension</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+
+ <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>
+                   New-AzureVMSqlServerAutoBackupConfig
+        </command:name>
+        <maml:description>
+            <maml:para>Creates configuration object for SQL Server Automatic Backup </maml:para>
+        </maml:description>
+        <maml:copyright>
+            <maml:para></maml:para>
+        </maml:copyright>
+        <command:verb>New</command:verb>
+        <command:noun>AzureVMSqlServerAutoBackupConfig</command:noun>
+        <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+        <maml:para>Creates  configuration object for SQL Server automatic backup </maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>New-AzureVMSqlServerAutoBackupConfig</maml:name>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+                <maml:name>Enable</maml:name>
+                <maml:description>
+                    <maml:para>Enables or disables automated backup for the SQL Server Virtual Machine. Enabling automated backup will set a backup schedule for all of your existing and new databases. This will update your Managed Backup settings to follow this schedule.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+                <maml:name>StorageContext</maml:name>
+                <maml:description>
+                    <maml:para>Specifies the storage account to be used to store backups. Default will be storage account associated with the SQL Server VM.</maml:para>
+        </maml:description>
+                <command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+                <maml:name>RetentionPeriod</maml:name>
+                <maml:description>
+                    <maml:para>Backup Retention period in days. 1 day minimum, 30 day maximum. Default is 30 days.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+                <maml:name>EncryptionEnabled</maml:name>
+                <maml:description>
+                    <maml:para>Enable backup encryption. If enabled, the certificate will be automatically generated and stored in the same storage account as the backups, and password protected.</maml:para>
+        </maml:description>
+                <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
+                <maml:name>CertificatePassword</maml:name>
+                <maml:description>
+                    <maml:para>Password to encrypt the certificate that is used to perform SQL Server encrypted backups</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+            <maml:name>Enable</maml:name>
+            <maml:description>
+                <maml:para>Enables or disables automated backup for the SQL Server Virtual Machine. Enabling automated backup will set a backup schedule for all of your existing and new databases. This will update your Managed Backup settings to follow this schedule.</maml:para>
+      </maml:description>
+            <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
+            <dev:type>
+                <maml:name>bool</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue>True</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+            <maml:name>EncryptionEnabled</maml:name>
+            <maml:description>
+                <maml:para>Enable backup encryption. If enabled, the certificate will be automatically generated and stored in the same storage account as the backups, and password protected.</maml:para>
+      </maml:description>
+            <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
+            <dev:type>
+                <maml:name>bool</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
+            <maml:name>CertificatePassword</maml:name>
+            <maml:description>
+                <maml:para>Password to encrypt the certificate that is used to perform SQL Server encrypted backups</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+            <dev:type>
+                <maml:name>SecureString</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+            <maml:name>RetentionPeriod</maml:name>
+            <maml:description>
+                <maml:para>Backup Retention period in days. 1 day minimum, 30 day maximum. Default is 30 days.</maml:para>
+      </maml:description>
+            <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+            <dev:type>
+                <maml:name>int</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+            <maml:name>StorageContext</maml:name>
+            <maml:description>
+                <maml:para>Specifies the storage account to be used to store backups. Default will be storage account associated with the SQL Server VM.</maml:para>
+       </maml:description>
+            <command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+            <dev:type>
+                <maml:name>AzureStorageContext</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+        <command:inputType>
+            <dev:type>
+                <maml:name></maml:name>
+                <maml:uri/>
+                <maml:description />
+            </dev:type>
+            <maml:description>
+                <maml:para>
+                    <!-- description  -->
+        </maml:para>
+            </maml:description>
+        </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name></maml:name>
+                <maml:uri />
+                <maml:description />
+            </dev:type>   
+            <maml:description>
+                <maml:para>
+                    <!-- description  -->
+        </maml:para>
+            </maml:description> 
+        </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+        <!-- Notes section  -->
+    <maml:alertSet>
+        <maml:title></maml:title>
+        <maml:alert>
+            <maml:para>
+      </maml:para>
+        </maml:alert>
+        <maml:alert>
+            <maml:para></maml:para>
+        </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  --> 
+    <command:examples>
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 1 --------------------------
+            </maml:title> 
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+              <dev:code>
+$abs = New-AzureVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri $storageUrl -StorageKey $storageAccountKeySecure
+
+Enable                : True
+EnableEncryption      : False
+RetentionPeriodInDays : 10                        </dev:code>
+        <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                                <maml:para>Creates a auto-backup config object by specifying storage uri and account key.</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+              </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 2 --------------------------
+            </maml:title> 
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+      <dev:code>
+$abs = New-AzureVMSqlServerAutoBackupConfig -StorageContext $storageContext -Enable -RetentionPeriod 10
+
+Enable                : True
+EnableEncryption      : False
+RetentionPeriodInDays : 10                        </dev:code>
+      <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                      <maml:para>Creates an auto-backup config object by specifying Storage context.</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+              </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 3 --------------------------
+            </maml:title>
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+      <dev:code>
+$abs = New-AzureVMSqlServerAutoBackupConfig -StorageContext $storageContext -Enable -RetentionPeriod 10 -EnableEncryption -CertificatePassword $certPasswd
+
+Enable                : True
+EnableEncryption      : True
+RetentionPeriodInDays : 10                        </dev:code>
+      <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                          <maml:para>Creates an auto-backup config object by specifying Storage context and enabling encryption option with password.</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+      </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+        <maml:navigationLink>
+            <maml:linkText></maml:linkText>
+            <maml:uri/>
+        </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+ <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Remove-AzureVMSqlServerExtension
+      </command:name>
+      <maml:description>
+        <maml:para>Remove Azure VM Sql Server extension from a VM object.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>AzureVMSqlServerExtension</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Remove Azure VM Sql Server extension from a VM object.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureVMSqlServerExtension</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The Virtual Machine to get the settings from.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
+        <maml:name>VM</maml:name>
+        <maml:description>
+          <maml:para>The Virtual Machine to get the settings from.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+        <dev:type>
+          <maml:name>IPersistentVM</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+
+ <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+        <command:name>
+                   Set-AzureVMSqlServerExtension
+        </command:name>
+        <maml:description>
+            <maml:para>Configure the Sql Server extension on a VM.</maml:para>
+        </maml:description>
+        <maml:copyright>
+            <maml:para></maml:para>
+        </maml:copyright>
+        <command:verb>Set</command:verb>
+        <command:noun>AzureVMSqlServerExtension</command:noun>
+        <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+        <maml:para>Configure the Sql Server extension on a VM.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+        <command:syntaxItem>
+            <maml:name>Set-AzureVMSqlServerExtension</maml:name>
+            <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+                <maml:name>VM</maml:name>
+                <maml:description>
+                    <maml:para>The Virtual Machine to get the settings from.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+                <maml:name>Version</maml:name>
+                <maml:description>
+                    <maml:para>The specific version of the SQL Server extension that Get-AzureVMSqlServerExtension will get the settings from.</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                <maml:name>AutoBackupSettings</maml:name>
+                <maml:description>
+                    <maml:para>Automatic SQL Server backup settings</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">AutoBackupSettings</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                <maml:name>AutoPatchingSetttings</maml:name>
+                <maml:description>
+                    <maml:para>Automatic patching settings</maml:para>
+                </maml:description>
+                <command:parameterValue required="true" variableLength="false">AutoPatchingSetttings</command:parameterValue>
+            </command:parameter>
+            <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+                <maml:name>Confirm</maml:name>
+                <maml:description>
+                <maml:para>Prompts you for confirmation before executing the command.</maml:para>
+                </maml:description>
+            </command:parameter>
+            <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+                <maml:name>WhatIf</maml:name>
+                <maml:description>
+                <maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+                </maml:description>
+            </command:parameter>
+        </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>AutoBackupSettings</maml:name>
+            <maml:description>
+                <maml:para>Automatic SQL Server backup settings</maml:para>
+      </maml:description>
+            <command:parameterValue required="true" variableLength="false">AutoBackupSettings</command:parameterValue>
+            <dev:type>
+                <maml:name>AutoBackupSettings</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+            <maml:name>AutoPatchingSetttings</maml:name>
+            <maml:description>
+                <maml:para>Automatic patching settings</maml:para>
+      </maml:description>
+            <command:parameterValue required="true" variableLength="false">AutoPatchingSetttings</command:parameterValue>
+            <dev:type>
+                <maml:name>AutoPatchingSetttings</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+            <maml:name>Version</maml:name>
+            <maml:description>
+                <maml:para>The specific version of the SQL Server extension that Get-AzureVMSqlServerExtension will get the settings from.</maml:para>
+                                
+            </maml:description>
+            <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+            <dev:type>
+                <maml:name>string</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+            <maml:name>VM</maml:name>
+            <maml:description>
+                <maml:para>The Virtual Machine to get the settings from.</maml:para>
+      </maml:description>
+            <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+            <dev:type>
+                <maml:name>IPersistentVM</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
+            <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+                <maml:name>Confirm</maml:name>
+                <maml:description>
+                <maml:para>Prompts you for confirmation before executing the command.</maml:para>
+                </maml:description>
+                <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>    
+                <dev:type>
+                  <maml:name>SwitchParameter</maml:name> 
+                    <maml:uri /> 
+                    </dev:type>
+             <dev:defaultValue /> 
+            </command:parameter>
+            <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+                <maml:name>WhatIf</maml:name>
+                <maml:description>
+                <maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+                </maml:description>
+                <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>    
+                <dev:type>
+                  <maml:name>SwitchParameter</maml:name> 
+                    <maml:uri /> 
+                    </dev:type>
+             <dev:defaultValue /> 
+            </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+        <command:inputType>
+            <dev:type>
+                <maml:name></maml:name>
+                <maml:uri/>
+                <maml:description />
+            </dev:type>
+            <maml:description>
+                <maml:para>
+                    <!-- description  -->
+                    
+                </maml:para>
+            </maml:description>
+        </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+        <command:returnValue>
+            <dev:type>
+                <maml:name></maml:name>
+                <maml:uri />
+                <maml:description />
+            </dev:type>   
+            <maml:description>
+                <maml:para>
+                    <!-- description  -->
+                    
+                </maml:para>
+            </maml:description> 
+        </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+        <!-- Notes section  -->
+    <maml:alertSet>
+        <maml:title></maml:title>
+        <maml:alert>
+            <maml:para>
+                          
+                        </maml:para>
+        </maml:alert>
+        <maml:alert>
+            <maml:para></maml:para>
+        </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  --> 
+    <command:examples>
+
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 1 --------------------------
+            </maml:title> 
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+              <dev:code>
+Get-AzureVM -ServiceName serviceName -Name vmName | Set-AzureVMSqlServerExtension -AutoPatchingSettings $aps  | Update-AzureVM                        </dev:code>
+                   <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                      <maml:para>Sets auto-patching settings on Azure VM.</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+              </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 2 --------------------------
+            </maml:title> 
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+              <dev:code>
+Get-AzureVM -ServiceName serviceName -Name vmName | Set-AzureVMSqlServerExtension -AutoBackupSettings $abs | Update-AzureVM                        </dev:code>
+                   <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                      <maml:para>Sets auto-backup settings on Azure VM.</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+              </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 3 --------------------------
+            </maml:title> 
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+              <dev:code>
+Get-AzureVM -ServiceName service -Name vmName|  Set-AzureVMSqlServerExtension -Disable                        </dev:code>
+                   <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                      <maml:para>Disables SQL Server VM extension on a given VM</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+              </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+
+        <command:example>
+            <maml:title>
+                -------------------------- EXAMPLE 4 --------------------------
+            </maml:title> 
+            <maml:introduction>
+                <maml:para>C:\PS&gt;</maml:para>
+            </maml:introduction> 
+              <dev:code>
+          Get-AzureVM -ServiceName service -Name vmName|  Set-AzureVMSqlServerExtension -Uninstall
+        </dev:code>
+                   <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                      <maml:para>Uninstalls SQL Server VM extension on a given VM</maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+                            <maml:para></maml:para>
+              </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText></command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+        <maml:navigationLink>
+            <maml:linkText></maml:linkText>
+            <maml:uri/>
+        </maml:navigationLink>
+    </maml:relatedLinks>
+</command:command>
+
+
 </helpItems>

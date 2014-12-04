@@ -9682,7 +9682,6 @@
           <maml:uri></maml:uri>
         </maml:navigationLink> cmdlet.
       </maml:para>
-      <maml:para>This topic describes the cmdlet in the 0.8.2 version of the Microsoft Azure PowerShell module. To find the version of the module you're using, in the Azure PowerShell console, type (Get-Module -Name Azure).Version.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -9882,7 +9881,7 @@
 
         </dev:code>
         <dev:remarks>
-          <maml:para>The commands in this example use the Instances property of an Azure website to get information about currently running website instances. The Instances property was added to the SiteWithConfig object in version 0.8.3 of the Azure module. </maml:para>
+          <maml:para>The commands in this example use the Instances property of an Azure website to get information about currently running website instances. </maml:para>
           <maml:para>The first command gets the instance IDs of all currently running instances of a website. The second command gets the number of running instances of the website. (You can use the Count property on any array.)</maml:para>
         </dev:remarks>
         <command:commandLines>

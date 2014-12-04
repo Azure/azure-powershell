@@ -215,12 +215,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="endTime">End date of the requested period</param>
         /// <param name="timeGrain">Time grains for the metrics.</param>
         /// <param name="instanceDetails">Include details for the server instances in which the site is running.</param>
-        /// <param name="slotView">Represent the metrics for the hostnames that receive the traffic at the current slot. 
+        /// <param name="slotView">Represent the metrics for the hostnames that receive the traffic at the current slot.
         /// If swap occured in the middle of the period mereics will be merged</param>
         /// <returns>The list of site metrics for the specified period.</returns>
-        IList<Utilities.MetricResponse> GetHistoricalUsageMetrics(string siteName, string slot, IList<string> metricNames, DateTime? starTime, 
+        IList<Utilities.MetricResponse> GetHistoricalUsageMetrics(string siteName, string slot, IList<string> metricNames, DateTime? starTime,
             DateTime? endTime, string timeGrain, bool instanceDetails, bool slotView);
-        
+
         /// <summary>
         /// Enables site diagnostic.
         /// </summary>
@@ -447,7 +447,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="slot">The name of the slot.</param>
         /// <param name="package">The WebDeploy package.</param>
         /// <param name="connectionStrings">The connection strings to overwrite the ones in the Web.config file.</param>
-        void PublishWebProject(string websiteName, string slot, string package, Hashtable connectionStrings);
+        /// <param name="skipAppData">Skip app data</param>
+        /// <param name="doNotDelete">Do not delete files at destination</param>
+        void PublishWebProject(string websiteName, string slot, string package, Hashtable connectionStrings, bool skipAppData, bool doNotDelete);
 
         /// <summary>
         /// Parse the Web.config files to get the connection string names.
@@ -602,13 +604,16 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
     public enum WebsiteDiagnosticOutput
     {
         FileSystem,
-        StorageTable
+        StorageTable,
+        StorageBlob
     }
 
     public enum DiagnosticProperties
     {
         StorageAccountName,
-        LogLevel
+        LogLevel,
+        StorageTableName,
+        StorageBlobContainerName
     }
 
     public enum WebsiteSlotName

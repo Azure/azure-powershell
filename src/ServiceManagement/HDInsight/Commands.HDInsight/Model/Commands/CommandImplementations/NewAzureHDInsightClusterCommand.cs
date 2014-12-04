@@ -29,6 +29,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
         public NewAzureHDInsightClusterCommand()
         {
             this.AdditionalStorageAccounts = new List<AzureHDInsightStorageAccount>();
+            this.ConfigActions = new List<AzureHDInsightConfigAction>();
             this.CoreConfiguration = new ConfigValuesCollection();
             this.YarnConfiguration = new ConfigValuesCollection();
             this.HdfsConfiguration = new ConfigValuesCollection();
@@ -93,6 +94,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
         /// <inheritdoc />
         public HBaseConfiguration HBaseConfiguration { get; set; }
 
+        public ICollection<AzureHDInsightConfigAction> ConfigActions { get; set; }
+
         public ClusterState State { get; private set; }
 
         public ClusterType ClusterType { get; set; }
@@ -151,6 +154,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             }
             createClusterRequest.AdditionalStorageAccounts.AddRange(
                 this.AdditionalStorageAccounts.Select(act => new WabStorageAccountConfiguration(act.StorageAccountName, act.StorageAccountKey)));
+            createClusterRequest.ConfigActions.AddRange(this.ConfigActions.Select(ca => ca.ToSDKConfigAction()));
             if (this.HiveMetastore.IsNotNull())
             {
                 createClusterRequest.HiveMetastore = new Metastore(

@@ -335,6 +335,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string SetAzureVMDscExtensionCmdletName = "Set-AzureVMDscExtension";
         public const string GetAzureVMDscExtensionCmdletName = "Get-AzureVMDscExtension";
         public const string RemoveAzureVMDscExtensionCmdletName = "Remove-AzureVMDscExtension";
+
+        // SqlServer extension
+        public const string SetAzureVMSqlServerExtensionCmdletName = "Set-AzureVMSqlServerExtension";
+        public const string GetAzureVMSqlServerExtensionCmdletName = "Get-AzureVMSqlServerExtension";
+        public const string RemoveAzureVMSqlServerExtensionCmdletName = "Remove-AzureVMSqlServerExtension";
         #endregion
 
         private static ServiceManagementCmdletTestHelper vmPowershellCmdlets = new ServiceManagementCmdletTestHelper();

@@ -22,7 +22,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Set, Constants.PipelineActivePeriod), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Set, Constants.PipelineActivePeriod, DefaultParameterSetName = ByFactoryName), OutputType(typeof(bool))]
     public class SetAzureDataFactoryPipelineActivePeriodCommand : DataFactoryBaseCmdlet
     {
         private DateTime _endDateTime;

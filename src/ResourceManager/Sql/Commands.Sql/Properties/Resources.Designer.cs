@@ -70,15 +70,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot use a server&apos;s auditing policy before it is configured..
-        /// </summary>
-        internal static string NoServerStorageAccount {
-            get {
-                return ResourceManager.GetString("NoServerStorageAccount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot set auditing policy without a storage account name..
         /// </summary>
         internal static string NoStorageAccountWhenConfiguringAuditingPolicy {
@@ -93,6 +84,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string StorageAccountNotFound {
             get {
                 return ResourceManager.GetString("StorageAccountNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot use a server&apos;s auditing policy before it is configured..
+        /// </summary>
+        internal static string UseServerWithoutStorageAccount {
+            get {
+                return ResourceManager.GetString("UseServerWithoutStorageAccount", resourceCulture);
             }
         }
     }

@@ -21,7 +21,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsLifecycle.Suspend, Constants.Pipeline), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Suspend, Constants.Pipeline, DefaultParameterSetName = ByFactoryName), OutputType(typeof(bool))]
     public class SuspendAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]

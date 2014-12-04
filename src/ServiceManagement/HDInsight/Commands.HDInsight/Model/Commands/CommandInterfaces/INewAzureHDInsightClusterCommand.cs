@@ -27,6 +27,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInt
     {
         ICollection<AzureHDInsightStorageAccount> AdditionalStorageAccounts { get; }
 
+        ICollection<AzureHDInsightConfigAction> ConfigActions { get; }
+
         ConfigValuesCollection CoreConfiguration { get; set; }
 
         ConfigValuesCollection YarnConfiguration { get; set; }

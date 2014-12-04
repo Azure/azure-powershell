@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -67,7 +65,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
             LinkedService expected = new LinkedService()
             {
                 Name = linkedServiceName,
-                Properties = null
+                Properties = new HDInsightBYOCLinkedService() { ProvisioningState = "Succeeded" }
             };
 
             dataFactoriesClientMock.Setup(c => c.ReadJsonFileContent(It.IsAny<string>()))
@@ -111,6 +109,46 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                 Times.Once());
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanThrowIfLinkedServiceProvisioningFailed()
+        {
+            // Arrange
+            LinkedService expected = new LinkedService()
+            {
+                Name = linkedServiceName,
+                Properties = new HDInsightBYOCLinkedService() { ProvisioningState = "Failed" }
+            };
+
+            dataFactoriesClientMock.Setup(c => c.ReadJsonFileContent(It.IsAny<string>()))
+                .Returns(rawJsonContent)
+                .Verifiable();
+
+            dataFactoriesClientMock.Setup(
+                c =>
+                    c.CreatePSLinkedService(
+                        It.Is<CreatePSLinkedServiceParameters>(
+                            parameters =>
+                                parameters.Name == linkedServiceName &&
+                                parameters.ResourceGroupName == ResourceGroupName &&
+                                parameters.DataFactoryName == DataFactoryName)))
+                .CallBase()
+                .Verifiable();
+
+            dataFactoriesClientMock.Setup(
+                c =>
+                    c.CreateOrUpdateLinkedService(ResourceGroupName, DataFactoryName, linkedServiceName, rawJsonContent))
+                .Returns(expected)
+                .Verifiable();
+
+            // Action
+            cmdlet.File = filePath;
+            cmdlet.Force = true;
+            
+            // Assert
+            Assert.Throws<ProvisioningFailedException>(() => cmdlet.ExecuteCmdlet());
+        }
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InvalidJsonLinkedService()

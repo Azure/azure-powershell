@@ -89,22 +89,23 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
+            AzureSubscription azureSubscription = null;
             switch (ParameterSetName)
             {
                 case SelectSubscriptionByNameParameterSet:
-                    WriteObject(ProfileClient.SetSubscriptionAsCurrent(SubscriptionName, Account));
+                    azureSubscription = ProfileClient.SetSubscriptionAsCurrent(SubscriptionName, Account);
                     break;
 
                 case SelectSubscriptionByIdParameterSet:
-                    WriteObject(ProfileClient.SetSubscriptionAsCurrent(SubscriptionIdAsGuid(), Account));
+                    azureSubscription = ProfileClient.SetSubscriptionAsCurrent(SubscriptionIdAsGuid(), Account);
                     break;
 
                 case SelectDefaultSubscriptionByNameParameterSet:
-                    WriteObject(ProfileClient.SetSubscriptionAsDefault(SubscriptionName, Account));
+                    azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionName, Account);
                     break;
 
                 case SelectDefaultSubscriptionByIdParameterSet:
-                    WriteObject(ProfileClient.SetSubscriptionAsDefault(SubscriptionIdAsGuid(), Account));
+                    azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionIdAsGuid(), Account);
                     break;
 
                 case NoCurrentSubscriptionParameterSet:
@@ -116,9 +117,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                     break;
             }
 
-            if (PassThru.IsPresent)
+            if (PassThru.IsPresent && azureSubscription != null)
             {
-                WriteObject(true);
+                WriteObject(azureSubscription);
             }
         }
 

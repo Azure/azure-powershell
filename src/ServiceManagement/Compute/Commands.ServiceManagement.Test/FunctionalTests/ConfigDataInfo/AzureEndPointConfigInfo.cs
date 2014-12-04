@@ -37,19 +37,28 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public string ServiceName { get; set; }
         public string InternalLoadBalancerName { get; set; }
 
+        public string LoadBalancerDistribution { get; set; }
+
         public AzureEndPointConfigInfo()
         {
         }
 
         // NoLB parameter set
-        public AzureEndPointConfigInfo(ParameterSet paramset, ProtocolInfo endpointProtocol, int endpointLocalPort,
-            int endpointPublicPort, string endpointName, NetworkAclObject aclObj = null, bool directServerReturn = false,
-            string internalLoadBalancer = null, string serviceName = null)
+        public AzureEndPointConfigInfo(ParameterSet paramset,
+            ProtocolInfo endpointProtocol,
+            int endpointLocalPort,
+            int endpointPublicPort,
+            string endpointName,
+            NetworkAclObject aclObj = null,
+            bool directServerReturn = false,
+            string internalLoadBalancer = null,
+            string serviceName = null,
+            string loadBalancerDistribution = null)
         {
             this.Initialize(
-                endpointProtocol, 
-                endpointLocalPort, 
-                endpointPublicPort, 
+                endpointProtocol,
+                endpointLocalPort,
+                endpointPublicPort,
                 endpointName, 
                 string.Empty, 
                 0, 
@@ -61,13 +70,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 aclObj,
                 directServerReturn,
                 internalLoadBalancer,
-                serviceName);
+                serviceName,
+                loadBalancerDistribution);
         }
 
         // LoadBalancedNoProbe/DefaultProbe parameter set
-        public AzureEndPointConfigInfo(ParameterSet paramset, ProtocolInfo endpointProtocol, int endpointLocalPort,
-            int endpointPublicPort, string endpointName, string lBSetName, NetworkAclObject aclObj = null, bool directServerReturn = false,
-            string internalLoadBalancer = null,string serviceName = null)
+        public AzureEndPointConfigInfo(
+            ParameterSet paramset,
+            ProtocolInfo endpointProtocol,
+            int endpointLocalPort,
+            int endpointPublicPort,
+            string endpointName,
+            string lBSetName,
+            NetworkAclObject aclObj = null,
+            bool directServerReturn = false,
+            string internalLoadBalancer = null,
+            string serviceName = null,
+            string loadBalancerDistribution = null)
         {
             if ( (paramset == ParameterSet.LoadBalancedNoProbe) || (paramset == ParameterSet.DefaultProbe) )
             {
@@ -86,17 +105,30 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     aclObj,
                     directServerReturn,
                     internalLoadBalancer,
-                    serviceName);
+                    serviceName,
+                    loadBalancerDistribution);
             }
         }
 
         // CustomProbe parameter set
-        public AzureEndPointConfigInfo(ParameterSet paramset, ProtocolInfo endpointProtocol, int endpointLocalPort, 
-            int endpointPublicPort, string endpointName, string lBSetName, int probePort,
-            ProtocolInfo probeProtocol, string probePath, int? probeInterval, int? probeTimeout, NetworkAclObject aclObj = null, bool directServerReturn = false,
-            string internalLoadBalancer= null,string serviceName = null)
+        public AzureEndPointConfigInfo(
+            ParameterSet paramset,
+            ProtocolInfo endpointProtocol,
+            int endpointLocalPort,
+            int endpointPublicPort,
+            string endpointName,
+            string lBSetName,
+            int probePort,
+            ProtocolInfo probeProtocol,
+            string probePath,
+            int? probeInterval,
+            int? probeTimeout,
+            NetworkAclObject aclObj = null,
+            bool directServerReturn = false,
+            string internalLoadBalancer= null,
+            string serviceName = null,
+            string loadBalancerDistribution = null)
         {
-            
                 this.Initialize(
                     endpointProtocol,
                     endpointLocalPort,
@@ -112,9 +144,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     aclObj,
                     directServerReturn,
                     internalLoadBalancer,
-                    serviceName);            
+                    serviceName,
+                    loadBalancerDistribution);
         }
-
 
         public AzureEndPointConfigInfo(AzureEndPointConfigInfo other)
         {
@@ -133,14 +165,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 other.Acl,
                 other.DirectServerReturn,
                 other.InternalLoadBalancerName,
-                other.ServiceName);
+                other.ServiceName,
+                other.LoadBalancerDistribution);
         }
 
-
-        private void Initialize(ProtocolInfo protocol, int internalPort,
-            int? externalPort, string endpointName, string lBSetName, int probePort,
-            ProtocolInfo probeProtocol, string probePath, 
-            int? probeInterval, int? probeTimeout, ParameterSet paramSet, NetworkAclObject aclObj, bool directServerReturn,string internalLoadBalancer,string serviceName)
+        private void Initialize(
+            ProtocolInfo protocol,
+            int internalPort,
+            int? externalPort,
+            string endpointName,
+            string lBSetName,
+            int probePort,
+            ProtocolInfo probeProtocol,
+            string probePath,
+            int? probeInterval,
+            int? probeTimeout,
+            ParameterSet paramSet,
+            NetworkAclObject aclObj,
+            bool directServerReturn,
+            string internalLoadBalancer,
+            string serviceName,
+            string loadBalancerDistribution)
         {
             this.EndpointLocalPort = internalPort;
             this.EndpointProtocol = protocol;
@@ -148,7 +193,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             this.EndpointName = endpointName;
             this.LBSetName = lBSetName;
             this.ProbePort = probePort;
-            this.ProbeProtocol = probeProtocol;            
+            this.ProbeProtocol = probeProtocol;
             this.ProbeInterval = probeInterval;
             this.ProbeTimeout = probeTimeout;
             this.ParamSet = paramSet;
@@ -158,6 +203,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 this.ProbePath = probePath;
             this.InternalLoadBalancerName = internalLoadBalancer;
             this.ServiceName = serviceName;
+            this.LoadBalancerDistribution = loadBalancerDistribution;
         }
 
         public bool CheckInputEndpointContext(InputEndpointContext context)

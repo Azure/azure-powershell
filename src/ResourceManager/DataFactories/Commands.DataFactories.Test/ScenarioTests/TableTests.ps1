@@ -122,3 +122,36 @@ function Test-GetTableWithWhiteSpaceName
     # Test
     Assert-ThrowsContains { Get-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name $tblname } "null"      
 }
+
+<#
+.SYNOPSIS
+Test piping support.
+#>
+function Test-TablePiping
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+        
+    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+     
+        New-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
+   
+        $tblname = "foo2"
+        New-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name $tblname -File .\Resources\table.json -Force
+        
+        Get-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name $tblname | Remove-AzureDataFactoryTable -Force
+
+        # Test the table no longer exists
+        Assert-ThrowsContains { Get-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name $tblname } "TableNotFound"
+    }
+    finally
+    {
+        Clean-DataFactory $rgname $dfname
+    }
+}

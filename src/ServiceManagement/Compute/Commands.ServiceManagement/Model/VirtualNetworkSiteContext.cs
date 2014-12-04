@@ -21,6 +21,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
     {
         public IEnumerable<string> AddressSpacePrefixes { get; set; }
 
+        public string Location { get; set; }
+
         public string AffinityGroup { get; set; }
 
         public IEnumerable<DnsServer> DnsServers { get; set; }

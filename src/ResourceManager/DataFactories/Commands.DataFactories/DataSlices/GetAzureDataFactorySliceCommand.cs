@@ -22,7 +22,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Get, Constants.DataSlice), OutputType(typeof(List<PSDataSlice>))]
+    [Cmdlet(VerbsCommon.Get, Constants.DataSlice, DefaultParameterSetName = ByFactoryName), OutputType(typeof(List<PSDataSlice>))]
     public class GetAzureDataFactorySliceCommand : DataSliceContextBaseCmdlet
     {
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]

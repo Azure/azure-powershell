@@ -23,8 +23,12 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
@@ -89,20 +93,52 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             ISecurityOperations operations = GetCurrentSqlClient(clientRequestId).DatabaseSecurity;
             operations.Update(resourceGroupName, serverName, Constants.ServerPolicyId, parameters);
         }
+
+
+        public async Task<Dictionary<Constants.StorageKeyTypes, string>> GetStorageKeysAsync(string resourceGroupName, string storageAccountName)
+        {
+            SqlManagementClient client = GetCurrentSqlClient("none");
+
+            string url = "https://management.azure.com";
+            url = url + "/subscriptions/" + (client.Credentials.SubscriptionId != null ? client.Credentials.SubscriptionId.Trim() : "");
+            url = url + "/resourceGroups/" + resourceGroupName;
+            url = url + "/providers/Microsoft.ClassicStorage/storageAccounts/" + storageAccountName;
+            url = url + "/listKeys?api-version=2014-06-01";
+
+
+
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = HttpMethod.Post;
+            httpRequest.RequestUri = new Uri(url);
+
+            await client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
+            HttpResponseMessage httpResponse = await client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
+            string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+            JToken responseDoc = JToken.Parse(responseContent);
+
+            Dictionary<Constants.StorageKeyTypes, String> result = new Dictionary<Constants.StorageKeyTypes, String>();
+            string primaryKey = (string)responseDoc["primaryKey"];
+            string secondaryKey = (string)responseDoc["secondaryKey"];
+            if(string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
+                throw new Exception(); // this is caught by the synced wrapper 
+            result.Add(Constants.StorageKeyTypes.Primary, primaryKey);
+            result.Add(Constants.StorageKeyTypes.Secondary, secondaryKey);
+            return result;
+        }
+
         
         /// <summary>
         /// Gets the storage keys for the given storage account. 
         /// </summary>
-        public Dictionary<Constants.StorageKeyTypes, string> GetStorageKeys(string storageAccountName)
+        public Dictionary<Constants.StorageKeyTypes, string> GetStorageKeys(string resourceGroupName, string storageAccountName)
         {
             try
             {
-                // intentionally returning a dictinary and not the response object to allow callees not to depand upon the storage module
-                StorageAccountGetKeysResponse keys = GetCurrentStorageClient().StorageAccounts.GetKeys(storageAccountName);
-                Dictionary<Constants.StorageKeyTypes, String> result = new Dictionary<Constants.StorageKeyTypes, String>();
-                result.Add(Constants.StorageKeyTypes.Primary, keys.PrimaryKey);
-                result.Add(Constants.StorageKeyTypes.Secondary, keys.SecondaryKey);
-                return result;
+                return Task.Factory.StartNew((object epc) =>
+                {
+                    return ((EndpointsCommunicator)epc).GetStorageKeysAsync(resourceGroupName, storageAccountName);
+                }
+                , this, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
             catch
             {

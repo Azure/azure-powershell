@@ -177,4 +177,37 @@
   <data name="PromptOnCachePlanChange" xml:space="preserve">
     <value>Are you sure you want to reduce the cache offering? All cache data will be lost.</value>
   </data>
+  <data name="NamedCacheDoNotExists" xml:space="preserve">
+    <value>Cache service '{0}' do not have named cache with name '{1}'.</value>
+  </data>
+  <data name="NamedCacheExists" xml:space="preserve">
+    <value>Cache service '{0}' already has named cache with name '{1}'.</value>
+  </data>
+  <data name="NoAddInAllSku" xml:space="preserve">
+    <value>It is not possible to create more than 10 named caches.</value>
+  </data>
+  <data name="NoAddInBasicSku" xml:space="preserve">
+    <value>It is not possible to create named cache in Basic Sku.</value>
+  </data>
+  <data name="HighAvailabilityNotAvailable" xml:space="preserve">
+    <value>Parameter 'WithHighAvailability' is not available for cache with Basic sku.</value>
+  </data>
+  <data name="NotificationsNotAvailable" xml:space="preserve">
+    <value>Parameter 'WithNotifications' is not available for cache with Basic sku.</value>
+  </data>
+  <data name="RemoveNamedCacheWarning" xml:space="preserve">
+    <value>Removing named cache will cause data loss. Do you still want to remove it?</value>
+  </data>
+  <data name="RemovingNamedCache" xml:space="preserve">
+    <value>Removing named cache…</value>
+  </data>
+  <data name="UpdateNamedCacheWarning" xml:space="preserve">
+    <value>Updating named cache will cause data loss. Do you still want to update it?</value>
+  </data>
+  <data name="UpdatingNamedCache" xml:space="preserve">
+    <value>Updating named cache…</value>
+  </data>
+  <data name="DoNotRemoveDefaultNamedCache" xml:space="preserve">
+    <value>It is not possible to remove 'default' named cache.</value>
+  </data>
 </root>

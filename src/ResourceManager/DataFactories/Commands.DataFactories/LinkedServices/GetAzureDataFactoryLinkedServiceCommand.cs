@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Get, Constants.LinkedService), OutputType(typeof(List<PSLinkedService>), typeof(PSLinkedService))]
+    [Cmdlet(VerbsCommon.Get, Constants.LinkedService, DefaultParameterSetName = ByFactoryName), OutputType(typeof(List<PSLinkedService>), typeof(PSLinkedService))]
     public class GetAzureDataFactoryLinkedServiceCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Table)]
+    [Cmdlet(VerbsCommon.Remove, Constants.Table, DefaultParameterSetName = ByFactoryName)]
     public class RemoveAzureDataFactoryTableCommand : TableContextBaseCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]

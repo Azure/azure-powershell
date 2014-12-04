@@ -27,15 +27,19 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "File switch.")]
         public SwitchParameter File { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Storage switch.")]
-        public SwitchParameter Storage { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Table storage switch.")]
+        public SwitchParameter TableStorage { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Blob storage switch.")]
+        public SwitchParameter BlobStorage { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!File.IsPresent && !Storage.IsPresent)
+            if (!File.IsPresent && !TableStorage.IsPresent && !BlobStorage.IsPresent)
             {
                 WebsitesClient.DisableApplicationDiagnostic(Name, WebsiteDiagnosticOutput.FileSystem);
                 WebsitesClient.DisableApplicationDiagnostic(Name, WebsiteDiagnosticOutput.StorageTable);
+                WebsitesClient.DisableApplicationDiagnostic(Name, WebsiteDiagnosticOutput.StorageBlob);
             }
             else
             {
@@ -44,9 +48,14 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                     WebsitesClient.DisableApplicationDiagnostic(Name, WebsiteDiagnosticOutput.FileSystem, Slot);
                 }
 
-                if (Storage.IsPresent)
+                if (TableStorage.IsPresent)
                 {
                     WebsitesClient.DisableApplicationDiagnostic(Name, WebsiteDiagnosticOutput.StorageTable, Slot);
+                }
+
+                if (BlobStorage.IsPresent)
+                {
+                    WebsitesClient.DisableApplicationDiagnostic(Name, WebsiteDiagnosticOutput.StorageBlob, Slot);
                 }
             }
 

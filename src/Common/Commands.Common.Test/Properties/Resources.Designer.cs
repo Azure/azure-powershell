@@ -71,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://az413943.vo.msecnd.net/cache/2.4.1.exe.
+        ///   Looks up a localized string similar to http://az413943.vo.msecnd.net/cache/2.5.2.exe.
         /// </summary>
         public static string CacheRuntimeUrl {
             get {

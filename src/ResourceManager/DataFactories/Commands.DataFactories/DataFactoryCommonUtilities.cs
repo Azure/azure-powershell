@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Commands.DataFactories.Properties;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 
@@ -103,6 +104,13 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
 
             return equal;
+        }
+        
+        public static bool IsSucceededProvisioningState(string provisioningState)
+        {
+            return
+                string.Compare(provisioningState, OperationStatus.Succeeded.ToString(),
+                    StringComparison.OrdinalIgnoreCase) == 0;
         }
     }
 }

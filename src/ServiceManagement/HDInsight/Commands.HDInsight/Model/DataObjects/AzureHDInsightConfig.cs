@@ -29,6 +29,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         {
             this.DefaultStorageAccount = new AzureHDInsightDefaultStorageAccount();
             this.AdditionalStorageAccounts = new List<AzureHDInsightStorageAccount>();
+            this.ConfigActions = new List<AzureHDInsightConfigAction>();
             this.CoreConfiguration = new ConfigValuesCollection();
             this.YarnConfiguration = new ConfigValuesCollection();
             this.HdfsConfiguration = new ConfigValuesCollection();
@@ -103,6 +104,11 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         ///     Gets or sets the Hive Metastore.
         /// </summary>
         public AzureHDInsightMetastore HiveMetastore { get; set; }
+
+        /// <summary>  
+        ///     Gets the config actions for the HDInsight cluster.  
+        /// </summary>  
+        public ICollection<AzureHDInsightConfigAction> ConfigActions { get; private set; }  
 
         /// <summary>
         ///     Gets a collection of configuration properties to customize the MapReduce Hadoop service.

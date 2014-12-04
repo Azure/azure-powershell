@@ -32,5 +32,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.Deployment
 
         [JsonProperty]
         public LogEntryType AzureTableTraceLevel { get; set; }
+
+        [JsonProperty(PropertyName = "AzureBlobEnabled")]
+        public bool? AzureBlobTraceEnabled { get; set; }
+
+        [JsonProperty]
+        public LogEntryType AzureBlobTraceLevel { get; set; }
     }
 }

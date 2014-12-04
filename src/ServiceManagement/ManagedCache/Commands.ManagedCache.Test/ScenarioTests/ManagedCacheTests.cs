@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Testing;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.ManagedCache.Test.ScenarioTests
@@ -31,6 +32,27 @@ namespace Microsoft.Azure.Commands.ManagedCache.Test.ScenarioTests
         public void ListLocationsTest()
         {
             this.RunPowerShellTest("Test-ListLocationsSupportCaching");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedCacheNamedCacheStandard()
+        {
+            this.RunPowerShellTest("Test-ManagedCacheNamedCacheStandard");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedCacheNamedCacheBasic()
+        {
+            this.RunPowerShellTest("Test-ManagedCacheNamedCacheBasic");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedCacheNamedCacheDoNotExists()
+        {
+            this.RunPowerShellTest("Test-ManagedCacheNamedCacheDoNotExists");
         }
     }
 }

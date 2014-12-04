@@ -147,7 +147,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
 
                 Testing.AssertThrows<Exception>(
                     () => cmdlet.ExecuteCmdlet(),
-                    string.Format(Resources.CacheMismatchMessage, "WebRole1", "2.4.0"));
+                    string.Format(Resources.CacheMismatchMessage, "WebRole1", "2.5.0"));
             }
         }
     }
