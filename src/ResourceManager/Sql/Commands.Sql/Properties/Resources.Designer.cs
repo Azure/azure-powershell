@@ -61,6 +61,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {your_password_here}.
+        /// </summary>
+        internal static string EnterPassword {
+            get {
+                return ResourceManager.GetString("EnterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {your_user_id_here}.
+        /// </summary>
+        internal static string EnterUserId {
+            get {
+                return ResourceManager.GetString("EnterUserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot use the &apos;{0}&apos; option with other event types..
         /// </summary>
         internal static string InvalidEventTypeSet {
@@ -75,6 +93,33 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string NoStorageAccountWhenConfiguringAuditingPolicy {
             get {
                 return ResourceManager.GetString("NoStorageAccountWhenConfiguringAuditingPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PHP Data Objects(PDO) Sample Code:.
+        /// </summary>
+        internal static string PdoTitle {
+            get {
+                return ResourceManager.GetString("PdoTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error connecting to SQL Server.
+        /// </summary>
+        internal static string PhpConnectionError {
+            get {
+                return ResourceManager.GetString("PhpConnectionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SQL Server Extension Sample Code:.
+        /// </summary>
+        internal static string sqlSampleTitle {
+            get {
+                return ResourceManager.GetString("sqlSampleTitle", resourceCulture);
             }
         }
         

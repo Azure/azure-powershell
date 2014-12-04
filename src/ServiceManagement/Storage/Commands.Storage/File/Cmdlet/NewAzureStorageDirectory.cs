@@ -50,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(
             Position = 1,
             Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "Path of the directory to be created.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }

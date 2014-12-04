@@ -5258,7 +5258,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public string CompanyName { get; set; }
 
         #region IExtensibleDataObject Members
-        ExtensionDataObject IExtensibleDataObject.ExtensionData { get; set; }
+        public ExtensionDataObject ExtensionData { get; set; }
         #endregion
     }
 
