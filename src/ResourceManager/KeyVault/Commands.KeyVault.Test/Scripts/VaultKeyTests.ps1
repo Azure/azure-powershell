@@ -644,7 +644,7 @@ function Test_RemoveKeyWhatIf
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
-    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname  -WhatIf
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname  -WhatIf -Force
     
     $key=Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
     Assert-NotNull $key    

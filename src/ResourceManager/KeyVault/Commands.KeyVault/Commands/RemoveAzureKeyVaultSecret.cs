@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 {
@@ -66,11 +67,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             try
             {
                 Secret secret = null;
-                ConfirmOperation(
-                   Resources.RemoveSecretWhatIfMessage,
-                   Name,
-                   Resources.RemoveSecretWarning,
-                   Force.IsPresent,
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveSecretWarning,
+                        Name),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveSecretWhatIfMessage,
+                        Name),
+                    Name,
                    () => { secret = DataServiceClient.DeleteSecret(VaultName, Name); });
                                 
                 if (PassThru.IsPresent)

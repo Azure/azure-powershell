@@ -259,7 +259,7 @@ function Test_RemoveSecretWhatIf
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
        
-    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -WhatIf
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -WhatIf -Force
     
     $sec=Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname
     Assert-NotNull $sec        

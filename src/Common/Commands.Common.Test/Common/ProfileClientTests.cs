@@ -1202,6 +1202,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                     { AzureEnvironment.Endpoint.ActiveDirectory, "https://login.windows-ppe.net/" },
                     { AzureEnvironment.Endpoint.Gallery, "https://current.gallery.azure-test.net" },
                     { AzureEnvironment.Endpoint.ResourceManager, "https://api-current.resources.windows-int.net/" },
+                    { AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, "vault-int.azure-int.net"},
+                    { AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, "https://vault-int.azure-int.net/"}
                 }
             };
             azureAccount = new AzureAccount

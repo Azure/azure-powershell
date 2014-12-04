@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 {
@@ -65,11 +66,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             try
             {
                 KeyBundle keyBundle = null;
-                ConfirmOperation(
-                    Resources.RemoveKeyWhatIfMessage,
-                    Name,
-                    Resources.RemoveKeyWarning,
+                ConfirmAction(
                     Force.IsPresent,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveKeyWarning,
+                        Name),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveKeyWhatIfMessage,
+                        Name),
+                    Name,
                     () => { keyBundle = DataServiceClient.DeleteKey(VaultName, Name); });
                 
                 if (PassThru.IsPresent)
