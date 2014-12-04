@@ -30,9 +30,9 @@ function Test-VirtualMachineProfile
     $nicName = $ipname + 'nic1';
     $publicIPName = $ipname + 'name1';
 
-    $p = Set-AzureVMNetworkProfile -VMProfile $p;
+    $p = Set-AzureVMNetworkProfile -VM $p;
     $p.NetworkProfile.NetworkInterfaces.Clear();
-    $p = Set-AzureVMNetworkInterface -VMProfile $p -PublicIPAddressReferenceUri $ipRefUri;
+    $p = Add-AzureVMNetworkInterface -VM $p -Id $ipRefUri;
         
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $ipRefUri;
@@ -47,11 +47,11 @@ function Test-VirtualMachineProfile
     $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
     $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-    $p = Set-AzureVMStorageProfile -VMProfile $p -OSDiskName $osDiskName -OSDiskVHDUri $osDiskVhdUri;
-    $p = Add-AzureVMDataDiskProfile -VMProfile $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1;
-    $p = Add-AzureVMDataDiskProfile -VMProfile $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2;
-    $p = Add-AzureVMDataDiskProfile -VMProfile $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3;
-    $p = Remove-AzureVMDataDiskProfile -VMProfile $p -Name 'testDataDisk3';
+    $p = Set-AzureVMStorageProfile -VM $p -OSDiskName $osDiskName -OSDiskVHDUri $osDiskVhdUri;
+    $p = Add-AzureVMDataDiskProfile -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1;
+    $p = Add-AzureVMDataDiskProfile -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2;
+    $p = Add-AzureVMDataDiskProfile -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3;
+    $p = Remove-AzureVMDataDiskProfile -VM $p -Name 'testDataDisk3';
         
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching 'ReadWrite';
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -67,7 +67,7 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
 
     $vhdContainer = "https://$stoname.blob.core.windows.net/test";
-    $p = Set-AzureVMStorageProfile -VMProfile $p -VHDContainer $vhdContainer -SourceImageName $img;
+    $p = Set-AzureVMStorageProfile -VM $p -VHDContainer $vhdContainer -SourceImageName $img;
 
     Assert-AreEqual $p.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
     Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
@@ -79,7 +79,7 @@ function Test-VirtualMachineProfile
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
         
-    $p = Set-AzureVMOSProfile -VMProfile $p -ComputerName $computerName -Credential $cred;
+    $p = Set-AzureVMOSProfile -VM $p -ComputerName $computerName -Credential $cred;
         
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -89,7 +89,7 @@ function Test-VirtualMachineProfile
     $vmsize = 'Standard_A2';
     $vmname = 'hpftestvm' + ((Get-Random) % 10000);
 
-    $p = Set-AzureVMHardwareProfile -VMProfile $p -VMSize $vmsize;
+    $p = Set-AzureVMHardwareProfile -VM $p -VMSize $vmsize;
         
     Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 }

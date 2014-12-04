@@ -159,6 +159,7 @@
     <Compile Include="StorageAccount\SetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\StorageAccountBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Operation\GetAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Operation\UpdateAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Operation\SetAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Action\RestartAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskProfileCommand.cs" />
@@ -181,7 +182,7 @@
     <Compile Include="VirtualMachine\Config\SetAzureVMNetworkProfileCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMOSProfileCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMDataDiskProfileCommand.cs" />
-    <Compile Include="VirtualMachine\Config\SetAzureVMNetworkInterfaceCommand.cs" />
+    <Compile Include="VirtualMachine\Config\AddAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMStorageProfileCommand.cs" />
   </ItemGroup>
   <ItemGroup>

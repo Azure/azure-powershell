@@ -22,9 +22,6 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    /// <summary>
-    /// Creates a new resource.
-    /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.Storage),
@@ -35,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string OSDiskNameParamSet = "OSDiskName";
         protected const string SourceImageNameParamSet = "SourceImageName";
 
+        [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
             Position = 0,
@@ -42,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMProfile)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachine VMProfile { get; set; }
+        public PSVirtualMachine VM { get; set; }
 
         [Parameter(
             ParameterSetName = SourceImageNameParamSet,
@@ -102,9 +100,9 @@ namespace Microsoft.Azure.Commands.Compute
                 DestinationVhdsContainer = string.IsNullOrEmpty(this.VHDContainer) ? null : new Uri(this.VHDContainer)
             };
 
-            this.VMProfile.StorageProfile = storageProfile;
+            this.VM.StorageProfile = storageProfile;
 
-            WriteObject(this.VMProfile);
+            WriteObject(this.VM);
         }
     }
 }

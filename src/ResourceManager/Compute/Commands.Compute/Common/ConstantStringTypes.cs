@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMDataDiskLun = "The virtual machine data disk's Lun.";
 
         public const string VMNetworkInterfaceName = "The virtual machine network interface's name.";
+        public const string VMNetworkInterfaceID = "The virtual machine network interface's ID.";
         public const string VMPublicIPAddressName = "The virtual machine public IP address's name.";
         public const string VMPublicIPAddressReferenceUri = "The virtual machine public IP address's reference Uri.";
     }

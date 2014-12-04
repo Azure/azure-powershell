@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
             Position = 3,
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The VM Profile.")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachine VMProfile { get; set; }
+        public PSVirtualMachine VM { get; set; }
 
         [Parameter(
             Position = 4,
@@ -80,10 +81,10 @@ namespace Microsoft.Azure.Commands.Compute
 
             VirtualMachineProperties vmProps = new VirtualMachineProperties
             {
-                HardwareProfile = this.VMProfile.HardwareProfile,
-                StorageProfile = this.VMProfile.StorageProfile,
-                NetworkProfile = this.VMProfile.NetworkProfile,
-                OSProfile = this.VMProfile.OSProfile,
+                HardwareProfile = this.VM.HardwareProfile,
+                StorageProfile = this.VM.StorageProfile,
+                NetworkProfile = this.VM.NetworkProfile,
+                OSProfile = this.VM.OSProfile,
                 AvailabilitySetReference = string.IsNullOrEmpty(this.AvailabilitySetId) ? null
                                          : new AvailabilitySetReference
                                            {

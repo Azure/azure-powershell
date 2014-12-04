@@ -41,9 +41,9 @@ function Test-VirtualMachineExtension
         $nic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Set-AzureVMNetworkProfile -VMProfile $p;
+        $p = Set-AzureVMNetworkProfile -VM $p;
         $p.NetworkProfile.NetworkInterfaces.Clear();
-        $p = Set-AzureVMNetworkInterface -VMProfile $p -PublicIPAddressReferenceUri $nicId;
+        $p = Add-AzureVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
 
@@ -60,11 +60,11 @@ function Test-VirtualMachineExtension
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureVMStorageProfile -VMProfile $p -OSDiskName $osDiskName -OSDiskVHDUri $osDiskVhdUri;
-        $p = Add-AzureVMDataDiskProfile -VMProfile $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1;
-        $p = Add-AzureVMDataDiskProfile -VMProfile $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2;
-        $p = Add-AzureVMDataDiskProfile -VMProfile $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3;
-        $p = Remove-AzureVMDataDiskProfile -VMProfile $p -Name 'testDataDisk3';
+        $p = Set-AzureVMStorageProfile -VM $p -OSDiskName $osDiskName -OSDiskVHDUri $osDiskVhdUri;
+        $p = Add-AzureVMDataDiskProfile -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1;
+        $p = Add-AzureVMDataDiskProfile -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2;
+        $p = Add-AzureVMDataDiskProfile -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3;
+        $p = Remove-AzureVMDataDiskProfile -VM $p -Name 'testDataDisk3';
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching 'ReadWrite';
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -81,7 +81,7 @@ function Test-VirtualMachineExtension
 
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201410.01-en.us-127GB.vhd';
-        $p = Set-AzureVMStorageProfile -VMProfile $p -VHDContainer $vhdContainer -SourceImageName $img;
+        $p = Set-AzureVMStorageProfile -VM $p -VHDContainer $vhdContainer -SourceImageName $img;
 
         Assert-AreEqual $p.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
         Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
@@ -93,7 +93,7 @@ function Test-VirtualMachineExtension
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         
-        $p = Set-AzureVMOSProfile -VMProfile $p -ComputerName $computerName -Credential $cred;
+        $p = Set-AzureVMOSProfile -VM $p -ComputerName $computerName -Credential $cred;
         
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -103,13 +103,13 @@ function Test-VirtualMachineExtension
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
 
-        $p = Set-AzureVMHardwareProfile -VMProfile $p -VMSize $vmsize;
+        $p = Set-AzureVMHardwareProfile -VM $p -VMSize $vmsize;
         
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        Retry-IfException { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VMProfile $p -ProvisionVMAgent $true; }
+        Retry-IfException { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p -ProvisionVMAgent $true; }
 
         # Virtual Machine Extension
         $extname = 'csetest';

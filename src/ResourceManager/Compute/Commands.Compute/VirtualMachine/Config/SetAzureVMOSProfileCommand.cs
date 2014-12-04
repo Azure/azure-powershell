@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Compute
         typeof(PSVirtualMachine))]
     public class SetAzureVMOSProfileCommand : AzurePSCmdlet
     {
+        [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
             Position = 0,
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMProfile)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachine VMProfile { get; set; }
+        public PSVirtualMachine VM { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -65,9 +66,9 @@ namespace Microsoft.Azure.Commands.Compute
                 AdminPassword = SecureStringExtension.ConvertToUnsecureString(this.Credential.Password)
             };
 
-            this.VMProfile.OSProfile = osProfile;
+            this.VM.OSProfile = osProfile;
 
-            WriteObject(this.VMProfile);
+            WriteObject(this.VM);
         }
     }
 }

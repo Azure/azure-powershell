@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
         typeof(PSVirtualMachine))]
     public class SetAzureVMNetworkProfileCommand : AzurePSCmdlet
     {
+        [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
             Position = 0,
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMProfile)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachine VMProfile { get; set; }
+        public PSVirtualMachine VM { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -48,9 +49,9 @@ namespace Microsoft.Azure.Commands.Compute
                 NetworkInterfaces = new List<NetworkInterfaceReference>()
             };
 
-            this.VMProfile.NetworkProfile = networkProfile;
+            this.VM.NetworkProfile = networkProfile;
 
-            WriteObject(this.VMProfile);
+            WriteObject(this.VM);
         }
     }
 }

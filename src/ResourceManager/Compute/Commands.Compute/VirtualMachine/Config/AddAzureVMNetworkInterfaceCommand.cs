@@ -26,12 +26,13 @@ namespace Microsoft.Azure.Commands.Compute
     /// Setup the network interface.
     /// </summary>
     [Cmdlet(
-        VerbsCommon.Set,
+        VerbsCommon.Add,
         ProfileNouns.NetworkInterface),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class SetAzureVMNetworkInterfaceCommand : AzurePSCmdlet
+    public class AddAzureVMNetworkInterfaceCommand : AzurePSCmdlet
     {
+        [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
             Position = 0,
@@ -39,19 +40,20 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMProfile)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachine VMProfile { get; set; }
+        public PSVirtualMachine VM { get; set; }
 
+        [Alias("NicId", "NetworkInterfaceId")]
         [Parameter(
             Mandatory = true,
-            Position = 3,
+            Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMPublicIPAddressName)]
+            HelpMessage = HelpMessages.VMNetworkInterfaceID)]
         [ValidateNotNullOrEmpty]
-        public string PublicIPAddressReferenceUri { get; set; }
+        public string Id { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var networkProfile = this.VMProfile.NetworkProfile;
+            var networkProfile = this.VM.NetworkProfile;
 
             if (networkProfile == null)
             {
@@ -64,12 +66,12 @@ namespace Microsoft.Azure.Commands.Compute
             networkProfile.NetworkInterfaces.Add(
                 new NetworkInterfaceReference
                 {
-                    ReferenceUri = this.PublicIPAddressReferenceUri
+                    ReferenceUri = this.Id
                 });
 
-            this.VMProfile.NetworkProfile = networkProfile;
+            this.VM.NetworkProfile = networkProfile;
 
-            WriteObject(this.VMProfile);
+            WriteObject(this.VM);
         }
     }
 }

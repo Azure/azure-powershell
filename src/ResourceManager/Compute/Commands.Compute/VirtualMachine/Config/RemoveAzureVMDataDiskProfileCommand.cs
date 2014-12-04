@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
         typeof(PSVirtualMachine))]
     public class RemoveAzureVMDataDiskProfileCommand : AzurePSCmdlet
     {
+        [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
             Position = 0,
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMProfile)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachine VMProfile { get; set; }
+        public PSVirtualMachine VM { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            var storageProfile = this.VMProfile.StorageProfile;
+            var storageProfile = this.VM.StorageProfile;
 
             if (storageProfile == null)
             {
@@ -66,9 +67,9 @@ namespace Microsoft.Azure.Commands.Compute
             disks.RemoveAll(d => string.Equals(d.Name, this.Name, comp));
             storageProfile.DataDisks = disks;
 
-            this.VMProfile.StorageProfile = storageProfile;
+            this.VM.StorageProfile = storageProfile;
             
-            WriteObject(this.VMProfile);
+            WriteObject(this.VM);
         }
     }
 }
