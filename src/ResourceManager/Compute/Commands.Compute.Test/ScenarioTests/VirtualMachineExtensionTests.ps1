@@ -41,8 +41,6 @@ function Test-VirtualMachineExtension
         $nic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Set-AzureVMNetworkProfile -VM $p;
-        $p.NetworkProfile.NetworkInterfaces.Clear();
         $p = Add-AzureVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;

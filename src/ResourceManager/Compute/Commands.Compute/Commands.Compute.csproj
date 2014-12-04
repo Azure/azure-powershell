@@ -179,7 +179,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="VirtualMachine\Config\SetAzureVMHardwareProfileCommand.cs" />
-    <Compile Include="VirtualMachine\Config\SetAzureVMNetworkProfileCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMOSProfileCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMDataDiskProfileCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMNetworkInterfaceCommand.cs" />

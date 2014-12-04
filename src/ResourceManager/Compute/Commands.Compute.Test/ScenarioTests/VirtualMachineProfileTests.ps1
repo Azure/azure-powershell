@@ -30,8 +30,6 @@ function Test-VirtualMachineProfile
     $nicName = $ipname + 'nic1';
     $publicIPName = $ipname + 'name1';
 
-    $p = Set-AzureVMNetworkProfile -VM $p;
-    $p.NetworkProfile.NetworkInterfaces.Clear();
     $p = Add-AzureVMNetworkInterface -VM $p -Id $ipRefUri;
         
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;

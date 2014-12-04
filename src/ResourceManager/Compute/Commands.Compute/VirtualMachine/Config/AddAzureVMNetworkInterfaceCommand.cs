@@ -63,6 +63,11 @@ namespace Microsoft.Azure.Commands.Compute
                 };
             }
 
+            if (networkProfile.NetworkInterfaces == null)
+            {
+                networkProfile.NetworkInterfaces = new List<NetworkInterfaceReference>();
+            }
+
             networkProfile.NetworkInterfaces.Add(
                 new NetworkInterfaceReference
                 {
