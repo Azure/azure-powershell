@@ -42,12 +42,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
             set { _gateway.Name = value; }
         }
 
-        public string Location
-        {
-            get { return _gateway.Location; }
-            set { _gateway.Location = value; }
-        }
-
         public string Description
         {
             get { return _gateway.Properties.Description; }
