@@ -158,12 +158,11 @@
     <Compile Include="StorageAccount\RemoveAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\SetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\StorageAccountBaseCmdlet.cs" />
+    <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMOSDiskCommand.cs" />
     <Compile Include="VirtualMachine\Operation\GetAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Operation\UpdateAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\Operation\SetAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Action\RestartAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskProfileCommand.cs" />
     <Compile Include="VirtualMachine\VirtualMachineExtensionBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\VirtualMachineBaseCmdlet.cs" />
     <Compile Include="Common\ConstantStringTypes.cs" />
@@ -180,7 +179,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="VirtualMachine\Config\SetAzureVMOperatingSystemCommand.cs" />
-    <Compile Include="VirtualMachine\Config\AddAzureVMDataDiskProfileCommand.cs" />
+    <Compile Include="VirtualMachine\Config\AddAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMNetworkInterfaceCommand.cs" />
   </ItemGroup>
   <ItemGroup>

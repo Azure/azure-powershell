@@ -12,60 +12,55 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Management.Compute.Models;
+using System;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
-        VerbsCommon.New,
-        ProfileNouns.VirtualMachineConfig),
+        VerbsCommon.Remove,
+        ProfileNouns.DataDisk),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class NewAzureVMConfigCommand : AzurePSCmdlet
+    public class RemoveAzureVMDataDiskCommand : AzurePSCmdlet
     {
-        [Alias("ResourceName", "Name")]
+        [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
             Position = 0,
+            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The VM name.")]
+            HelpMessage = HelpMessages.VMProfile)]
         [ValidateNotNullOrEmpty]
-        public string VMName { get; set; }
+        public PSVirtualMachine VM { get; set; }
 
         [Parameter(
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMSize)]
+            HelpMessage = HelpMessages.VMDataDiskName)]
         [ValidateNotNullOrEmpty]
-        public string VMSize { get; set; }
-
-        [Parameter(
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Availability Set Id.")]
-        [ValidateNotNullOrEmpty]
-        public string AvailabilitySetId { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var vm = new PSVirtualMachine
-            {
-                Name = this.VMName,
-                AvailabilitySetId = this.AvailabilitySetId
-            };
+            var storageProfile = this.VM.StorageProfile;
 
-            if (!string.IsNullOrEmpty(this.VMSize))
+            if (storageProfile != null && storageProfile.DataDisks != null)
             {
-                vm.HardwareProfile = new HardwareProfile();
-                vm.HardwareProfile.VirtualMachineSize = this.VMSize;
+                var disks = storageProfile.DataDisks.ToList();
+                var comp = StringComparison.OrdinalIgnoreCase;
+                disks.RemoveAll(d => string.Equals(d.Name, this.Name, comp));
+                storageProfile.DataDisks = disks;
             }
 
-            WriteObject(vm);
+            this.VM.StorageProfile = storageProfile;
+            
+            WriteObject(this.VM);
         }
     }
 }

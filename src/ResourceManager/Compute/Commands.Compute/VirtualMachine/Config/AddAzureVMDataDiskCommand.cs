@@ -16,19 +16,17 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
-        VerbsCommon.Remove,
+        VerbsCommon.Add,
         ProfileNouns.DataDisk),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class RemoveAzureVMDataDiskProfileCommand : AzurePSCmdlet
+    public class AddAzureVMDataDiskCommand : AzurePSCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -48,6 +46,39 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMDataDiskVhdUri)]
+        [ValidateNotNullOrEmpty]
+        public string VhdUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMDataDiskCaching)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(ValidateSetValues.ReadOnly, ValidateSetValues.ReadWrite)]
+        public string Caching { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMDataDiskSizeInGB)]
+        [ValidateNotNullOrEmpty]
+        public int? DiskSizeInGB { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMDataDiskLun)]
+        [ValidateNotNullOrEmpty]
+        public int? Lun { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var storageProfile = this.VM.StorageProfile;
@@ -62,13 +93,20 @@ namespace Microsoft.Azure.Commands.Compute
                 storageProfile.DataDisks = new List<DataDisk>();
             }
 
-            var disks = storageProfile.DataDisks.ToList();
-            var comp = StringComparison.OrdinalIgnoreCase;
-            disks.RemoveAll(d => string.Equals(d.Name, this.Name, comp));
-            storageProfile.DataDisks = disks;
+            storageProfile.DataDisks.Add(new DataDisk
+            {
+                Name = this.Name,
+                Caching = this.Caching,
+                DiskSizeGB = this.DiskSizeInGB,
+                Lun = this.Lun == null ? 0 : this.Lun.Value,
+                VirtualHardDisk = new VirtualHardDisk
+                {
+                    Uri = this.VhdUri.ToString()
+                }
+            });
 
             this.VM.StorageProfile = storageProfile;
-            
+
             WriteObject(this.VM);
         }
     }

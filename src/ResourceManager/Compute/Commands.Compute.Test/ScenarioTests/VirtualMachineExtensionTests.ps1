@@ -30,7 +30,7 @@ function Test-VirtualMachineExtension
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureVMConfig -Name $vmname -VMSize $vmsize;
+        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
@@ -64,10 +64,10 @@ function Test-VirtualMachineExtension
 
         $p = Set-AzureVMOSDisk -VM $p -OSDiskName $osDiskName -OSDiskVHDUri $osDiskVhdUri;
 
-        $p = Add-AzureVMDataDiskProfile -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1;
-        $p = Add-AzureVMDataDiskProfile -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2;
-        $p = Add-AzureVMDataDiskProfile -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3;
-        $p = Remove-AzureVMDataDiskProfile -VM $p -Name 'testDataDisk3';
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3;
+        $p = Remove-AzureVMDataDisk -VM $p -Name 'testDataDisk3';
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching 'ReadWrite';
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;

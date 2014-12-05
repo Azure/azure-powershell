@@ -45,17 +45,23 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
     public static class ProfileNouns
     {
-        public const string OS = "AzureVMOSProfile";
+        public const string VirtualMachineProfile = "AzureVMProfile";
+
+        public const string OSProfile = "AzureVMOSProfile";
+        public const string StorageProfile = "AzureVMStorageProfile";
+        public const string HardwareProfile = "AzureVMHardwareProfile";
+        public const string NetworkProfile = "AzureVMNetworkProfile";
+
         public const string OperatingSystem = "AzureVMOperatingSystem";
-        public const string Storage = "AzureVMStorageProfile";
-        public const string Hardware = "AzureVMHardwareProfile";
-        public const string Network = "AzureVMNetworkProfile";
-        public const string DataDisk = "AzureVMDataDiskProfile";
+
+        public const string DataDisk = "AzureVMDataDisk";
         public const string OSDisk = "AzureVMOSDisk";
+
         public const string NetworkInterface = "AzureVMNetworkInterface";
+
         public const string VirtualMachine = "AzureVM";
         public const string VirtualMachineExtension = "AzureVMExtension";
-        public const string VirtualMachineProfile = "AzureVMProfile";
+
         public const string AvailabilitySet = "AzureAvailabilitySet";
         public const string VirtualMachineConfig = "AzureVMConfig";
     }
