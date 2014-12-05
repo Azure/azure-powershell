@@ -205,6 +205,7 @@
     <Compile Include="IaaS\Extensions\MicrosoftAntimalware\SetAzureVMMicrosoftAntimalwareExtension.cs" />
     <Compile Include="IaaS\Extensions\MicrosoftAntimalware\VirtualMachineMicrosoftAntimalwareExtensionCmdletBase.cs" />
     <Compile Include="IaaS\Extensions\MicrosoftAntimalware\VirtualMachineMicrosoftAntimalwareExtensionContext.cs" />
+    <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerAutoTelemetrySettings.cs" />
     <Compile Include="IaaS\Extensions\SqlServer\GetAzureVMSqlServerExtension.cs" />
     <Compile Include="IaaS\Extensions\SqlServer\NewAzureVMSqlServerAutoBackupConfig.cs" />
     <Compile Include="IaaS\Extensions\SqlServer\NewAzureVMSqlServerAutoPatchingConfig.cs" />
