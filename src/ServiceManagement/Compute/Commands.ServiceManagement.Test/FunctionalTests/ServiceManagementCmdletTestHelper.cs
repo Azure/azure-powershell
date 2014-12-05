@@ -1356,11 +1356,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #region AzureVMImage
 
-        public SM.OSImageContext AddAzureVMImage(string imageName, string mediaLocation, OS os, string label = null, string recommendedSize = null)
+        public SM.OSImageContext AddAzureVMImage(string imageName, string mediaLocation, OS os, string label = null, string recommendedSize = null, string iconUri = null, string smallIconUri = null, bool showInGui = false)
         {
             SM.OSImageContext result = new SM.OSImageContext();
             Utilities.RetryActionUntilSuccess(
-                () => result = RunPSCmdletAndReturnFirst<SM.OSImageContext>(new AddAzureVMImageCmdletInfo(imageName, mediaLocation, os, label, recommendedSize)),
+                () => result = RunPSCmdletAndReturnFirst<SM.OSImageContext>(new AddAzureVMImageCmdletInfo(imageName, mediaLocation, os, label, recommendedSize, iconUri, smallIconUri, showInGui)),
                 "409", 3, 60);
             return result;
         }
