@@ -12,29 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Gateway
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model
 {
-    using System.Management.Automation;
-    using WindowsAzure.Management.Network.Models;
-
-    [Cmdlet(VerbsCommon.Resize, "AzureVNetGateway"), OutputType(typeof(GatewayGetOperationStatusResponse))]
-    public class ResizeAzureVNetGateway : NetworkCmdletBase
+    public class PSBasicAuthenticationJobDetail : PSHttpJobDetail
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network name.")]
-        public string VNetName
+        public string AuthenticationType = "Basic Authentication";
+
+        public string Username { get; internal set; }
+
+        public PSBasicAuthenticationJobDetail (PSHttpJobDetail jobDetail)
         {
-            get; set;
+            foreach(PropertyInfo prop in jobDetail.GetType().GetProperties())
+            {
+                GetType().GetProperty(prop.Name).SetValue(this, prop.GetValue(jobDetail, null), null);
+            }
         }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The SKU that the existing gateway will be resized to.")]
-        public string GatewaySKU
-        {
-            get; set;
-        }
-
-        public override void ExecuteCmdlet()
-        {
-            WriteObject(Client.ResizeGateway(VNetName, GatewaySKU));
+        public PSBasicAuthenticationJobDetail()
+        {            
         }
     }
 }

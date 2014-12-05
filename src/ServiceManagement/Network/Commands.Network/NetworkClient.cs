@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Network
             return client.Gateways.SetSharedKey(vnetName, localNetworkSiteName, sharedKeyParameters);
         }
 
-        public GatewayGetOperationStatusResponse CreateGateway(string vnetName, GatewayType gatewayType, GatewaySKU gatewaySKU)
+        public GatewayGetOperationStatusResponse CreateGateway(string vnetName, string gatewayType, string gatewaySKU)
         {
             GatewayCreateParameters parameters = new GatewayCreateParameters()
             {
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.Network
             return client.Gateways.Delete(vnetName);
         }
 
-        public GatewayGetOperationStatusResponse ResizeGateway(string vnetName, GatewaySKU gatewaySKU)
+        public GatewayGetOperationStatusResponse ResizeGateway(string vnetName, string gatewaySKU)
         {
             ResizeGatewayParameters parameters = new ResizeGatewayParameters()
             {
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Network
         }
         public GatewayGetOperationStatusResponse StartDiagnostics(string vnetName, int captureDurationInSeconds, string containerName, string customerStorageKey, string customerStorageName)
         {
-            UpdateGatewayPublicDiagnostics parameters = new UpdateGatewayPublicDiagnostics()
+            StartGatewayPublicDiagnosticsParameters parameters = new StartGatewayPublicDiagnosticsParameters()
             {
                 CaptureDurationInSeconds = captureDurationInSeconds.ToString(),
                 ContainerName = containerName,
@@ -191,17 +191,17 @@ namespace Microsoft.Azure.Commands.Network
                 Operation = UpdateGatewayPublicDiagnosticsOperation.StartDiagnostics,
             };
 
-            return client.Gateways.UpdateDiagnostics(vnetName, parameters);
+            return client.Gateways.StartDiagnostics(vnetName, parameters);
         }
 
-        public GatewayGetOperationStatusResponse StopDiagnostics(string vnetName)
+        public GatewayOperationResponse StopDiagnostics(string vnetName)
         {
-            UpdateGatewayPublicDiagnostics parameters = new UpdateGatewayPublicDiagnostics()
+            StopGatewayPublicDiagnosticsParameters parameters = new StopGatewayPublicDiagnosticsParameters()
             {
                 Operation = UpdateGatewayPublicDiagnosticsOperation.StopDiagnostics,
             };
 
-            return client.Gateways.UpdateDiagnostics(vnetName, parameters);
+            return client.Gateways.StopDiagnostics(vnetName, parameters);
         }
 
         public GatewayGetOperationStatusResponse SetDefaultSite(string vnetName, string defaultSiteName)
@@ -217,6 +217,27 @@ namespace Microsoft.Azure.Commands.Network
         public GatewayGetOperationStatusResponse RemoveDefaultSite(string vnetName)
         {
             return client.Gateways.RemoveDefaultSites(vnetName);
+        }
+
+        public GatewayGetOperationStatusResponse SetIPsecParameters(string vnetName, string localNetworkName, string encryptionType, string pfsGroup, int saDataSizeKilobytes, int saLifetimeSeconds)
+        {
+            GatewaySetIPsecParametersParameters parameters = new GatewaySetIPsecParametersParameters()
+            {
+                Parameters = new IPsecParameters()
+                {
+                    EncryptionType = encryptionType,
+                    PfsGroup = pfsGroup,
+                    SADataSizeKilobytes = saDataSizeKilobytes,
+                    SALifeTimeSeconds = saLifetimeSeconds,
+                },
+            };
+
+            return client.Gateways.SetIPsecParameters(vnetName, localNetworkName, parameters);
+        }
+
+        public IPsecParameters GetIPsecParameters(string vnetName, string localNetworkName)
+        {
+            return client.Gateways.GetIPsecParameters(vnetName, localNetworkName).IPsecParameters;
         }
 
         public RouteTable GetRouteTable(string routeTableName, string detailLevel)

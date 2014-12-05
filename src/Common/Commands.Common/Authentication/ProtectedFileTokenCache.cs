@@ -45,19 +45,36 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
         // If the file is already present, it loads its content in the ADAL cache
         private ProtectedFileTokenCache()
         {
+            Initialize(CacheFileName);
+        }
+
+        private void Initialize(string fileName)
+        {
             AfterAccess = AfterAccessNotification;
             BeforeAccess = BeforeAccessNotification;
             lock (fileLock)
             {
-                if (ProfileClient.DataStore.FileExists(CacheFileName))
+                if (ProfileClient.DataStore.FileExists(fileName))
                 {
-                    var existingData = ProfileClient.DataStore.ReadFileAsBytes(CacheFileName);
+                    var existingData = ProfileClient.DataStore.ReadFileAsBytes(fileName);
                     if (existingData != null)
                     {
-                        Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        try
+                        {
+                            Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        }
+                        catch (CryptographicException)
+                        {
+                            ProfileClient.DataStore.DeleteFile(fileName);
+                        }
                     }
                 }
             }
+        }
+
+        public ProtectedFileTokenCache(string cacheFile)
+        {
+            Initialize(cacheFile);
         }
 
         // Empties the persistent store.
@@ -81,7 +98,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication
                     var existingData = ProfileClient.DataStore.ReadFileAsBytes(CacheFileName);
                     if (existingData != null)
                     {
-                        Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        try
+                        {
+                            Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        }
+                        catch (CryptographicException)
+                        {
+                            ProfileClient.DataStore.DeleteFile(CacheFileName);
+                        }
                     }
                 }
             }

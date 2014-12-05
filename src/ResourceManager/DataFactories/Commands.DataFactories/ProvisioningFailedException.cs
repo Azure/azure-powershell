@@ -16,6 +16,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
+    [Serializable]
     internal class ProvisioningFailedException : Exception
     {
         public ProvisioningFailedException(string errorMessage)
