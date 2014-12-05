@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Profile
@@ -25,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Profile
     /// </summary>
     public abstract class SubscriptionCmdletBase : AzurePSCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "File storing subscription data, if not set uses default.")]
+        [Parameter(Mandatory = false, HelpMessage = "[Deprecated]: File storing subscription data, if not set uses default.")]
         public string SubscriptionDataFile { get; set; }
 
         private readonly bool _saveProfile;
@@ -40,6 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Profile
             if (!string.IsNullOrEmpty(SubscriptionDataFile))
             {
                 ProfileClient = new ProfileClient(SubscriptionDataFile);
+                WriteWarning(Resources.SubscriptionDataFileDeprecated);
             }
             else
             {

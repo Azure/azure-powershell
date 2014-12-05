@@ -3928,6 +3928,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information..
+        /// </summary>
+        public static string SubscriptionDataFileDeprecated {
+            get {
+                return ResourceManager.GetString("SubscriptionDataFileDeprecated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DefaultSubscriptionData.xml.
         /// </summary>
         public static string SubscriptionDataFileName {
