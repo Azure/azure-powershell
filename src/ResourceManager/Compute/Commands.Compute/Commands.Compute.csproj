@@ -158,6 +158,7 @@
     <Compile Include="StorageAccount\RemoveAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\SetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\StorageAccountBaseCmdlet.cs" />
+    <Compile Include="VirtualMachine\Config\SetAzureVMOSDiskCommand.cs" />
     <Compile Include="VirtualMachine\Operation\GetAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Operation\UpdateAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Operation\SetAzureVMCommand.cs" />
@@ -178,10 +179,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="VirtualMachine\Config\SetAzureVMOSProfileCommand.cs" />
+    <Compile Include="VirtualMachine\Config\SetAzureVMOperatingSystemCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMDataDiskProfileCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMNetworkInterfaceCommand.cs" />
-    <Compile Include="VirtualMachine\Config\SetAzureVMStorageProfileCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">

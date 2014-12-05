@@ -46,10 +46,12 @@ namespace Microsoft.Azure.Commands.Compute.Common
     public static class ProfileNouns
     {
         public const string OS = "AzureVMOSProfile";
+        public const string OperatingSystem = "AzureVMOperatingSystem";
         public const string Storage = "AzureVMStorageProfile";
         public const string Hardware = "AzureVMHardwareProfile";
         public const string Network = "AzureVMNetworkProfile";
         public const string DataDisk = "AzureVMDataDiskProfile";
+        public const string OSDisk = "AzureVMOSDisk";
         public const string NetworkInterface = "AzureVMNetworkInterface";
         public const string VirtualMachine = "AzureVM";
         public const string VirtualMachineExtension = "AzureVMExtension";
