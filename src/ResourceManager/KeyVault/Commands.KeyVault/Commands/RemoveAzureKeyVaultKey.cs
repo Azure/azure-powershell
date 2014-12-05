@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 {
@@ -35,11 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        public string VaultName
-        {
-            get;
-            set;
-        }
+        public string VaultName { get; set; }
 
         /// <summary>
         /// key name
@@ -50,11 +47,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias("KeyName")]
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
@@ -73,11 +66,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             try
             {
                 KeyBundle keyBundle = null;
-                ConfirmOperation(
-                    Resources.RemoveKeyWhatIfMessage,
-                    Name,
-                    Resources.RemoveKeyWarning,
+                ConfirmAction(
                     Force.IsPresent,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveKeyWarning,
+                        Name),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveKeyWhatIfMessage,
+                        Name),
+                    Name,
                     () => { keyBundle = DataServiceClient.DeleteKey(VaultName, Name); });
                 
                 if (PassThru.IsPresent)

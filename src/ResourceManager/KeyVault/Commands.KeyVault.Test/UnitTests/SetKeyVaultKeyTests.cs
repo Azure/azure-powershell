@@ -35,14 +35,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, null, null);
             webKey = new Microsoft.KeyVault.WebKey.JsonWebKey();
-            keyBundle = new KeyBundle() { Attributes = keyAttributes, Key = webKey, KeyName = KeyName, VaultName = VaultName };
+            keyBundle = new KeyBundle() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName, Version = KeyVersion };
 
             cmdlet = new SetAzureKeyVaultKey()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 DataServiceClient = keyVaultClientMock.Object,
                 VaultName = VaultName,
-                Enable = keyAttributes.Enabled,
+                Enable = (bool)keyAttributes.Enabled,
                 Expires = keyAttributes.Expires,
                 NotBefore = keyAttributes.NotBefore,
                 Name = KeyName

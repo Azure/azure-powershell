@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// attributes
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureKeyVaultKey",
-        DefaultParameterSetName=CreateParameterSet)]
+        DefaultParameterSetName = CreateParameterSet)]
     [OutputType(typeof(KeyBundle))]
     public class AddAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string CreateParameterSet = "Create";
         private const string ImportParameterSet = "Import";
-        
+
         #endregion
 
         #region Input Parameter Definitions
@@ -55,18 +55,14 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = CreateParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]        
+            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ImportParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ValidateNotNullOrEmpty]        
-        public string VaultName
-        {
-            get;
-            set;
-        }
+        [ValidateNotNullOrEmpty]
+        public string VaultName { get; set; }
 
         /// <summary>
         /// key name
@@ -81,11 +77,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "key name")]
         [ValidateNotNullOrEmpty]
         [Alias("KeyName")]
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// Path to the local file containing to-be-imported key material.
@@ -96,12 +88,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = ImportParameterSet,
             HelpMessage = "Path to the local file containing to-be-imported key material")]
-        [ValidateNotNullOrEmpty]        
-        public string KeyFilePath
-        {
-            get;
-            set;
-        }
+        [ValidateNotNullOrEmpty]
+        public string KeyFilePath { get; set; }
 
         /// <summary>
         /// Password of the imported file. 
@@ -111,27 +99,19 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ImportParameterSet,
             HelpMessage = "Password of the imported key file")]
         [ValidateNotNullOrEmpty]
-        public SecureString KeyFilePassword
-        {
-            get;
-            set;
-        }
+        public SecureString KeyFilePassword { get; set; }
 
         /// <summary>
         /// Destination of the key
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             ParameterSetName = CreateParameterSet,
-            HelpMessage = "Destination of the key")]        
+            HelpMessage = "Destination of the key")]
         [Parameter(Mandatory = false,
             ParameterSetName = ImportParameterSet,
             HelpMessage = "Destination of the key")]
         [ValidateSetAttribute(new string[] { HsmDestination, SoftwareDestination })]
-        public string Destination
-        {
-            get;
-            set;
-        }
+        public string Destination { get; set; }
 
         /// <summary>
         /// Set key in disabled state if present       
@@ -142,11 +122,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ImportParameterSet,
             HelpMessage = "Set key in disabled state if present. If not present, key is enabled.")]
-        public SwitchParameter Disable
-        {
-            get;
-            set;
-        }
+        public SwitchParameter Disable { get; set; }
 
         /// <summary>
         /// Key operations 
@@ -154,16 +130,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = CreateParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The operations that can performs with the key. If not present, all operations can be performed.")]
+            HelpMessage = "The operations that can be performed with the key. If not present, all operations can be performed.")]
         [Parameter(Mandatory = false,
             ParameterSetName = ImportParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The operations that can performs with the key. If not present, all operations can be performed.")]
-        public string[] KeyOps
-        {
-            get;
-            set;
-        }
+            HelpMessage = "The operations that can be performed with the key. If not present, all operations can be performed.")]
+        public string[] KeyOps { get; set; }
 
         /// <summary>
         /// Key expires time in UTC time
@@ -176,11 +148,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ImportParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The expiration time of a key in UTC time. If not present, key will not expire.")]
-        public DateTime? Expires
-        {
-            get;
-            set;
-        }
+        public DateTime? Expires { get; set; }
 
         /// <summary>
         /// The UTC time before which key can't be used 
@@ -193,14 +161,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ImportParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The UTC time before which key can't be used. If not present, no limitation.")]
-        public DateTime? NotBefore
-        {
-            get;
-            set;
-        }
+        public DateTime? NotBefore { get; set; }
 
         #endregion
-        
+
         public override void ExecuteCmdlet()
         {
             try
@@ -208,17 +172,20 @@ namespace Microsoft.Azure.Commands.KeyVault
                 KeyBundle keyBundle;
                 switch (ParameterSetName)
                 {
-                    case CreateParameterSet:                        
+                    case CreateParameterSet:
                         keyBundle = this.DataServiceClient.CreateKey(
-                            VaultName, Name, 
-                            CreateKeyAttributes(false));
+                            VaultName,
+                            Name,
+                            CreateKeyAttributes());
                         break;
 
-                    case ImportParameterSet:                        
+                    case ImportParameterSet:
+                        bool? importToHsm = null;
                         keyBundle = this.DataServiceClient.ImportKey(
-                            VaultName, Name, 
-                            CreateKeyAttributes(), 
-                            CreateWebKeyFromFile());
+                            VaultName, Name,
+                            CreateKeyAttributes(),
+                            CreateWebKeyFromFile(),
+                            string.IsNullOrEmpty(Destination) ? importToHsm : HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase));
                         break;
 
                     default:
@@ -228,21 +195,25 @@ namespace Microsoft.Azure.Commands.KeyVault
                 this.WriteObject(keyBundle);
             }
             catch (Exception ex)
-            {               
+            {
                 this.WriteErrorDetails(ex);
             }
         }
 
-        internal KeyCreationAttributes CreateKeyAttributes(bool? hsmDefault=null)
+        internal KeyAttributes CreateKeyAttributes()
         {
-            bool? isHsm = string.IsNullOrEmpty(Destination) ? hsmDefault :
-                HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase);
+            string keyType = string.Empty;
 
-            return new KeyCreationAttributes(
+            if (!string.IsNullOrEmpty(Destination))
+            {
+                keyType = (HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase)) ? JsonWebKeyType.RsaHsm : JsonWebKeyType.Rsa;
+            }
+
+            return new KeyAttributes(
                 !Disable.IsPresent,
                 Expires,
                 NotBefore,
-                isHsm,
+                keyType,
                 KeyOps);
         }
 
@@ -259,6 +230,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
 
         private const string HsmDestination = "HSM";
-        private const string SoftwareDestination = "Software";       
+        private const string SoftwareDestination = "Software";
     }
 }

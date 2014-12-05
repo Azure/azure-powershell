@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
         protected const string KeyName2 = "keyfoo2";
 
+        protected const string KeyVersion = "keyVersion";
+
         protected const string SecretValue = "secval";
 
         protected const string SecretValue2 = "secval2";
@@ -39,6 +41,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         protected const string SecretName = "secfoo";
 
         protected const string SecretName2 = "secfoo2";
+
+        protected const string SecretVersion = "secretVersion";
 
         protected Mock<IKeyVaultDataServiceClient> keyVaultClientMock;
 

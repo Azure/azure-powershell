@@ -18,7 +18,7 @@ using Client = Microsoft.KeyVault.Client;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class Secret
+    public class Secret : ObjectIdentifier
     {
         public Secret()
         { }
@@ -34,28 +34,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 throw new ArgumentNullException("clientSecret");
             }
-            if (vaultUriHelper == null)
-            {
-                throw new ArgumentNullException("vaultUriHelper");
-            }
 
-            VaultName = vaultUriHelper.GetVaultName(clientSecret.Id);
-            SecretName = vaultUriHelper.GetSecretName(clientSecret.Id);
+            SetObjectIdentifier(vaultUriHelper, new Client.SecretIdentifier(clientSecret.Id));
             SecretValue = clientSecret.Value.ToSecureString();
             SecretValueText = clientSecret.Value;
-            // TODO: trace vaultUriHelper.KeyVaultDnsSuffix;             
-
         }
 
-        public string VaultName { get; set; }
-
-        public string SecretName { get; set; }
-
-        public SecureString SecretValue 
+        public SecureString SecretValue
         {
-            get 
-            { 
-                return secretValue;  
+            get
+            {
+                return secretValue;
             }
             set
             {
@@ -73,7 +62,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         private SecureString secretValue;
 
         public string SecretValueText { get; private set; }
-
-
     }
 }

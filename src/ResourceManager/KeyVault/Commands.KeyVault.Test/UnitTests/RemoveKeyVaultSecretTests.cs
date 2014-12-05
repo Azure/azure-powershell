@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         public void CanRemoveSecretWithPassThruTest()
         {
             SecureString secureSecretValue = SecretValue.ToSecureString();
-            Secret expected = new Secret() { SecretName = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
+            Secret expected = new Secret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
             keyVaultClientMock.Setup(kv => kv.DeleteSecret(VaultName, SecretName)).Returns(expected).Verifiable();
 
             // Mock the should process to return true
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         public void CanRemoveSecretWithNoPassThruTest()
         {
             SecureString secureSecretValue = SecretValue.ToSecureString();
-            Secret expected = new Secret() { SecretName = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
+            Secret expected = new Secret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
             keyVaultClientMock.Setup(kv => kv.DeleteSecret(VaultName, SecretName)).Returns(expected).Verifiable();
 
             // Mock the should process to return true

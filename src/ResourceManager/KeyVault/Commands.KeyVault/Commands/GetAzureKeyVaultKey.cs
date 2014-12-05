@@ -22,16 +22,16 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",
-        DefaultParameterSetName=ByVaultNameParameterSet)]
-    [OutputType(typeof(List<KeyBundle>), typeof(KeyBundle))]
+        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [OutputType(typeof(List<KeyIdentityItem>), typeof(KeyBundle))]
     public class GetAzureKeyVaultKey : KeyVaultCmdletBase
     {
 
         #region Parameter Set Names
 
         private const string ByKeyNameParameterSet = "ByKeyName";
-        private const string ByVaultNameParameterSet = "ByVaultName";   
-     
+        private const string ByVaultNameParameterSet = "ByVaultName";
+
         #endregion
 
         #region Input Parameter Definitions
@@ -49,13 +49,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ByVaultNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-       
+
         [ValidateNotNullOrEmpty]
-        public string VaultName
-        {
-            get;
-            set;
-        }      
+        public string VaultName { get; set; }
 
         /// <summary>
         /// Key name.
@@ -63,18 +59,26 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
         [Parameter(Mandatory = true,
             ParameterSetName = ByKeyNameParameterSet,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,            
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias("KeyName")]
-        public string Name
-        {
-            get;
-            set;
-        }       
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Key version.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByKeyNameParameterSet,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("KeyVersion")]
+        public string Version { get; set; }
 
         #endregion
-      
+
         public override void ExecuteCmdlet()
         {
             try
@@ -82,12 +86,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
                 switch (ParameterSetName)
                 {
                     case ByKeyNameParameterSet:
-                        var keyBundle = DataServiceClient.GetKey(VaultName, Name);
+                        var keyBundle = DataServiceClient.GetKey(VaultName, Name, Version);
                         WriteObject(keyBundle);
                         break;
 
                     case ByVaultNameParameterSet:
-                        IEnumerable<KeyBundle> keyBundles = DataServiceClient.GetKeys(VaultName);
+                        IEnumerable<KeyIdentityItem> keyBundles = DataServiceClient.GetKeys(VaultName);
                         WriteObject(keyBundles, true);
                         break;
 
@@ -100,6 +104,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
                 this.WriteErrorDetails(ex);
             }
         }
-       
+
     }
 }

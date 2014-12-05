@@ -51,17 +51,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        protected void ConfirmOperation(string whatIfMessage, string target, string warningMessage, bool force, Action action)
-        {
-            if (ShouldProcess(target, whatIfMessage))
-            {
-                if (force || ShouldContinue(string.Format(warningMessage, target),""))
-                {
-                    action();
-                }
-            }            
-        }
-
         private IKeyVaultDataServiceClient dataServiceClient;
     }
 }

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, "AzureKeyVaultSecret",
         DefaultParameterSetName = ByVaultNameParameterSet)]
-    [OutputType(typeof(List<Secret>))]
+    [OutputType(typeof(List<SecretIdentityItem>), typeof(Secret))]
     public class GetAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -49,11 +49,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             ParameterSetName = ByVaultNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        public string VaultName
-        {
-            get;
-            set;
-        }       
+        public string VaultName { get; set; }
 
         /// <summary>
         /// Secret name
@@ -65,11 +61,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
         [Alias("SecretName")]
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Secret version
+        /// </summary>
+        [Parameter(Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = BySecretNameParameterSet,
+            HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("SecretVersion")]
+        public string Version { get; set; }
 
         #endregion
 
@@ -80,7 +84,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
                 switch (ParameterSetName)
                 {
                     case BySecretNameParameterSet:
-                        var secret = DataServiceClient.GetSecret(VaultName, Name);
+                        var secret = DataServiceClient.GetSecret(VaultName, Name, Version);
                         WriteObject(secret);
                         break;
 
@@ -97,6 +101,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             {
                 this.WriteErrorDetails(ex);
             }
-        }        
+        }
     }
 }

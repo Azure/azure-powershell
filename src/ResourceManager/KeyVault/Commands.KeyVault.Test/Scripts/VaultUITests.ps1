@@ -12,7 +12,7 @@ function Test_RemoveKeyWithTwoConfirmations
     Write-Host "Type 'Yes' twice"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
@@ -33,7 +33,7 @@ function Test_RemoveKeyWithOneConfirmations
     Write-Host "Type 'Yes' once"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
@@ -54,7 +54,7 @@ function Test_CancelKeyRemovalOnce
     Write-Host "Type 'No' once"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
@@ -76,7 +76,7 @@ function Test_ConfirmThenCancelKeyRemoval
     Write-Host "Type 'Yes' first. Then type 'No'"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     

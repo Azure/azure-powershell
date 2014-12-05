@@ -19,36 +19,35 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyBundle : ObjectIdentifier
+    public class KeyIdentityItem : ObjectIdentifier
     {
-        public KeyBundle()
-        { }
-
-        internal KeyBundle(Client.KeyBundle clientKeyBundle, VaultUriHelper vaultUriHelper)
+        internal KeyIdentityItem(Client.KeyItem clientKeyItem, VaultUriHelper vaultUriHelper)
         {
-            if (clientKeyBundle == null)
+            if (clientKeyItem == null)
             {
-                throw new ArgumentNullException("clientKeyBundle");
-            }            
-            if (clientKeyBundle.Key == null || clientKeyBundle.Attributes == null)
+                throw new ArgumentNullException("clientKeyItem");
+            }
+            if (String.IsNullOrEmpty(clientKeyItem.Kid) || clientKeyItem.Attributes == null)
             {
                 throw new ArgumentException(Resources.InvalidKeyBundle);
             }
 
-            SetObjectIdentifier(vaultUriHelper, new Client.KeyIdentifier(clientKeyBundle.Key.Kid));
+            SetObjectIdentifier(vaultUriHelper, new Client.KeyIdentifier(clientKeyItem.Kid));
 
-            Key = clientKeyBundle.Key;
-            Attributes = new KeyAttributes(
-                clientKeyBundle.Attributes.Enabled,
-                clientKeyBundle.Attributes.Expires, 
-                clientKeyBundle.Attributes.NotBefore, 
-                clientKeyBundle.Key.Kty, 
-                clientKeyBundle.Key.KeyOps);                   
+            var attribute = new KeyAttributes(
+                clientKeyItem.Attributes.Enabled,
+                clientKeyItem.Attributes.Expires,
+                clientKeyItem.Attributes.NotBefore);
+
+            Enabled = attribute.Enabled;
+            Expires = attribute.Expires;
+            NotBefore = attribute.NotBefore;
         }
 
-        public KeyAttributes Attributes { get; set; }
+        public bool? Enabled { get; set; }
 
-        public JsonWebKey Key { get; set; }
-        
+        public DateTime? Expires { get; set; }
+
+        public DateTime? NotBefore { get; set; }
     }
 }
