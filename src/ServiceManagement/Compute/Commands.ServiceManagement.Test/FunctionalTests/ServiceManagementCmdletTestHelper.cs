@@ -55,6 +55,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
     public class ServiceManagementCmdletTestHelper
     {
+        private T RunPSCmdletAndReturnFirst<T>(PowershellCore.CmdletsInfo cmdlet, bool debug = false, bool retryOnConflict = true)
+        {
+            var result = default(T);
+            if (retryOnConflict)
+            {
+                Utilities.RetryActionUntilSuccess(
+                   () => result = RunPSCmdletAndReturnFirstHelper<T>(cmdlet),
+                   "ConflictError", 3, 60);
+            }
+            else
+            {
+                result = RunPSCmdletAndReturnFirstHelper<T>(cmdlet);
+            }
+            return result;
+
+        }
+
         /// <summary>
         /// Run a powershell cmdlet that returns the first PSObject as a return value.
         /// </summary>
@@ -62,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         /// <param name="cmdlet"></param>
         /// <param name="debug"></param>
         /// <returns></returns>
-        private T RunPSCmdletAndReturnFirst<T>(PowershellCore.CmdletsInfo cmdlet, bool debug = false)
+        private T RunPSCmdletAndReturnFirstHelper<T>(PowershellCore.CmdletsInfo cmdlet, bool debug = false)
         {
             var azurePowershellCmdlet = new WindowsAzurePowershellCmdlet(cmdlet);
             Collection<PSObject> result = azurePowershellCmdlet.Run(debug);
@@ -91,6 +108,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return default(T);
         }
 
+        private Collection<T> RunPSCmdletAndReturnAll<T>(PowershellCore.CmdletsInfo cmdlet, bool debug = false, bool retryOnConflict = true)
+        {
+            var result = new Collection<T>();
+            if (retryOnConflict)
+            {
+                Utilities.RetryActionUntilSuccess(
+                   () => result = RunPSCmdletAndReturnAllHelper<T>(cmdlet),
+                   "ConflictError", 3, 60);
+            }
+            else
+            {
+                result = RunPSCmdletAndReturnAllHelper<T>(cmdlet);
+            }
+            return result;
+        }
+
+
         /// <summary>
         /// Run a powershell cmdlet that returns a collection of PSObjects as a return value.
         /// </summary>
@@ -98,7 +132,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         /// <param name="cmdlet"></param>
         /// <param name="debug"></param>
         /// <returns></returns>
-        private Collection<T> RunPSCmdletAndReturnAll<T>(PowershellCore.CmdletsInfo cmdlet, bool debug = false)
+        private Collection<T> RunPSCmdletAndReturnAllHelper<T>(PowershellCore.CmdletsInfo cmdlet, bool debug = false)
         {
             var azurePowershellCmdlet = new WindowsAzurePowershellCmdlet(cmdlet);
             Collection<PSObject> result = azurePowershellCmdlet.Run(debug);
@@ -1314,9 +1348,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public ManagementOperationContext UpdateAzureVM(string vmName, string serviceName, SM.PersistentVM persistentVM)
         {
             ManagementOperationContext result = new ManagementOperationContext();
-            Utilities.RetryActionUntilSuccess(
-                () => result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new UpdateAzureVMCmdletInfo(vmName, serviceName, persistentVM)),
-                "409", 3, 60);
+            result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new UpdateAzureVMCmdletInfo(vmName, serviceName, persistentVM));
             return result;
         }
 
