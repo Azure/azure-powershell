@@ -352,6 +352,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Console.WriteLine("------------------------------Try to save the OS image with an existing os image name: Completed---------------------------------");
                 //e.	Save the OS image with a new image name.
                 Console.WriteLine("------------------------------Save the OS image with a new image name.---------------------------------");
+                vmPowershellCmdlets.StopAzureVM(vm, serviceName, true);
                 vmPowershellCmdlets.SaveAzureVMImage(serviceName, vmName, newLabel);
                 Console.WriteLine("------------------------------Save the OS image with a new image name: Completed---------------------------------");
                 //f.	Deploy a new IaaS VM
