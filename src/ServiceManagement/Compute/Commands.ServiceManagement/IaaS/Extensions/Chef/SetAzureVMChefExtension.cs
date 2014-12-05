@@ -80,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Flag to opt for auto chef-client update. Chef-client update is false by default.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter EnableAutoUpdateClient { get; set; }
+        public SwitchParameter AutoUpdateClient { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -147,7 +147,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             bool IsChefServerUrlEmpty = string.IsNullOrEmpty(this.ChefServerUrl);
             bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
             bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
-            string AutoUpdateClient = this.EnableAutoUpdateClient.IsPresent ? "true" : "false";
+            string AutoUpdateClient = this.AutoUpdateClient.IsPresent ? "true" : "false";
 
             //Cases handled:
             // 1. When clientRb given by user and:
