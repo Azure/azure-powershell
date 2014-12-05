@@ -2602,6 +2602,7 @@
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
+
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -2621,7 +2622,10 @@
       <dev:version></dev:version>
     </command:details>
     <maml:description>
-      <maml:para></maml:para>
+      <maml:para>
+        The Remove-AzureStreamAnalyticsInput cmdlet asynchronously deletes a specific input from a Stream Analytics job in Microsoft Azure.
+        If you specify -Force parameter the input will be deleted without confirmation.
+      </maml:para>
     </maml:description>
     <!-- Cmdlet syntax section-->
     <command:syntax>
@@ -2779,11 +2783,45 @@
     </maml:alertSet>
     <!-- Example section  -->
     <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Remove-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-West-US -JobName StreamingJob -Name EventStream
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>This command removes the input EventStream from StreamingJob</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
     </command:examples>
     <!-- Link section  -->
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText></maml:linkText>
+        <maml:linkText>New-AzureStreamAnalyticsInput</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureStreamAnalyticsInput</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Test-AzureStreamAnalyticsInput</maml:linkText>
         <maml:uri/>
       </maml:navigationLink>
     </maml:relatedLinks>
