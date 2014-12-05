@@ -141,6 +141,9 @@
     <None Include="ScenarioTests\PublicIpAddressTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceSet.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -154,6 +157,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceNoPublicIpAddress.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerChildResource.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDUsingId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerSet.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

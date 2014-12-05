@@ -23,8 +23,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     public abstract class VirtualNetworkBaseClient : NetworkResourceBaseClient
     {
-        public const string VirtualNetworkCmdletName = "AzureVirtualNetwork";
-
         public IVirtualNetworkOperations VirtualNetworkClient
         {
             get

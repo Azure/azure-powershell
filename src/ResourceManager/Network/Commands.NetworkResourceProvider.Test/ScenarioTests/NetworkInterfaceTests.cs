@@ -32,5 +32,12 @@ namespace Commands.NetworkResourceProvider.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceNoPublicIpAddress");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceSet()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceSet");
+        }
     }
 }

@@ -25,5 +25,26 @@ namespace Commands.NetworkResourceProvider.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerCRUDUsingId()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUDUsingId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerChildResource()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerChildResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerSet()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerSet");
+        }
     }
 }

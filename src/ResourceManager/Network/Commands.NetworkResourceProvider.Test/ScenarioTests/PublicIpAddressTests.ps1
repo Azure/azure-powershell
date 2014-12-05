@@ -32,8 +32,8 @@ function Test-PublicIpAddressCRUD
       $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
       
       # Create publicIpAddres
-      $actual = New-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
-      $expected = Get-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname
+      $actual = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+      $expected = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual $expected.Location $actual.Location
@@ -42,7 +42,7 @@ function Test-PublicIpAddressCRUD
       Assert-AreEqual $domainNameLabel $expected.Properties.DnsSettings.DomainNameLabel
       
       # list
-      $list = Get-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      $list = Get-AzurePublicIpAddress -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actual.Name	
@@ -52,9 +52,8 @@ function Test-PublicIpAddressCRUD
       Assert-AreEqual $domainNameLabel $list[0].Properties.DnsSettings.DomainNameLabel
       
       # delete
-      $delete = Remove-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname
-      Assert-AreEqual "Succeeded" $delete.Status
-      Assert-AreEqual "OK" $delete.StatusCode
+      $delete = Remove-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      Assert-AreEqual true $delete
       
       $list = Get-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
