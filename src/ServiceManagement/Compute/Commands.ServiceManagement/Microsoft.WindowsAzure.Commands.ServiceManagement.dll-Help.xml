@@ -33136,7 +33136,7 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>PatchCategory</maml:name>
           <maml:description>
-            <maml:para>Defines if recommended updates should be included.</maml:para>
+            <maml:para>Defines if Important updates should be included.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
@@ -33195,7 +33195,7 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>PatchCategory</maml:name>
         <maml:description>
-          <maml:para>Defines if recommended updates should be included.</maml:para>
+          <maml:para>Defines if important updates should be included.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
@@ -33261,14 +33261,14 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          C:\PS&gt; $aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek &quot;Thursday&quot; -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory &quot;Optional&quot;
+          C:\PS&gt; $aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek &quot;Thursday&quot; -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory &quot;Important&quot;
 
           PS C:\&gt; $aps
           Enable                        : True
           DayOfWeek                     : Thursday
           MaintenanceWindowStartingHour : 11
           MaintenanceWindowDuration     : 120
-          PatchCategory                 : Optional
+          PatchCategory                 : Important
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates configuration object that can be used to configure automatic patching using Set-AzureVMSqlServerExtension</maml:para>
