@@ -16,6 +16,7 @@ using System;
 using System.Security;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.DataTransfer.Gateway.Encryption;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 resourceGroupName, dataFactoryName);
         }
 
-        public virtual string OnPremisesEncryptString(SecureString value, string resourceGroupName, string dataFactoryName, string gatewayName)
+        public virtual string OnPremisesEncryptString(SecureString value, string resourceGroupName, string dataFactoryName, string gatewayName, PSCredential windowsCredential)
         {
             if (value == null)
             {
@@ -46,12 +47,16 @@ namespace Microsoft.Azure.Commands.DataFactories
                         {
                             ServiceToken = response.ConnectionInfo.ServiceToken,
                             IdentityCertThumbprint = response.ConnectionInfo.IdentityCertThumbprint,
-                            HostServiceUri = response.ConnectionInfo.HostServiceUri
+                            HostServiceUri = response.ConnectionInfo.HostServiceUri,
+                            InstanceVersionString = response.ConnectionInfo.Version 
                         }
                 };
 
+            string userName = windowsCredential != null ? windowsCredential.UserName : null;
+            SecureString password = windowsCredential != null ? windowsCredential.Password : null;
+            UserInputConnectionString connectionString = new UserInputConnectionString(value, userName, password);
             var gatewayEncryptionClient = new GatewayEncryptionClient();
-            return gatewayEncryptionClient.Encrypt(value, gatewayEncryptionInfos);
+            return gatewayEncryptionClient.Encrypt(connectionString, gatewayEncryptionInfos);
         }
     }
 }
