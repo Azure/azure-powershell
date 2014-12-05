@@ -63,7 +63,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Scheduler, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\azure-sdk-tools\src\packages\Microsoft.WindowsAzure.Management.Scheduler.4.1.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.3.0.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Testing">
       <HintPath>..\..\..\packages\Hydra.SpecTestSupport.1.0.5417.13285-prerelease\lib\net45\Microsoft.WindowsAzure.Testing.dll</HintPath>
