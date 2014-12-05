@@ -54,7 +54,9 @@ RequiredAssemblies = @()
 ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+TypesToProcess = @(
+    '.\Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml'
+)
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
@@ -63,7 +65,8 @@ FormatsToProcess = @(
     '.\Resources\Microsoft.WindowsAzure.Commands.Profile.format.ps1xml',
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',
-    '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml'
+    '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',
+    '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
@@ -74,7 +77,9 @@ NestedModules = @(
     '.\Sql\Microsoft.Azure.Commands.Sql.dll',
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',
-    '.\Batch\Microsoft.Azure.Commands.Batch.dll'
+    '.\Batch\Microsoft.Azure.Commands.Batch.dll',
+    '.\Compute\Microsoft.Azure.Commands.Compute.dll',
+    '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.dll'
 )
 
 # Functions to export from this module

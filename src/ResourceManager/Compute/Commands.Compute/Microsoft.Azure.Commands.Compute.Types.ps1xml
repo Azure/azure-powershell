@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <Type>
+    <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine</Name>
+    <Members>
+      <MemberSet>
+        <Name>PSStandardMembers</Name>
+        <Members>
+          <PropertySet>
+            <Name>DefaultDisplayPropertySet</Name>
+            <ReferencedProperties>
+              <Name>ResourceGroupName</Name>
+              <Name>Name</Name>
+              <Name>VMSize</Name>
+              <Name>Tags</Name>
+              <Name>AvailabilitySetId</Name>
+              <Name>ProvisioningState</Name>
+              <Name>OSConfiguration</Name>
+              <Name>SourceImageId</Name>
+              <Name>DestinationVHDsContainer</Name>
+              <Name>OSDisk</Name>
+              <Name>DataDisks</Name>
+              <Name>NetworkInterfaces</Name>
+              <Name>Resources</Name>
+              <Name>Status</Name>
+            </ReferencedProperties>
+          </PropertySet>
+        </Members>
+      </MemberSet>
+    </Members>
+  </Type>
+</Types>
