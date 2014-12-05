@@ -12,36 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Security;
+
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     /// <summary>
-    /// AutoPatching settings to configure auto-patching on SQL VM
+    /// AutoTelemetry settings to configure telemetry collection on SQL VM
     /// </summary>
-    public class AutoPatchingSettings
+    public class AutoTelemetrySettings
     {
         /// <summary>
-        /// Enable / Disable auto patching
+        /// The name of the region the VM is running in.
         /// </summary>
-        public bool Enable { get; set; }
-
-        /// <summary>
-        /// Day of the week
-        /// </summary>
-        public string DayOfWeek { get; set; }
-
-        /// <summary>
-        /// Maintainance Windows Start hour ( 0 to 23 ) 
-        /// </summary>
-        public int MaintenanceWindowStartingHour { get; set; }
-
-        /// <summary>
-        /// Maintainance window duration in minutes
-        /// </summary>
-        public int MaintenanceWindowDuration { get; set; }
-
-        /// <summary>
-        /// Patch category returned as string
-        /// </summary>
-        public string PatchCategory { get; set; }
+        public string Region { get; set; }
     }
 }
