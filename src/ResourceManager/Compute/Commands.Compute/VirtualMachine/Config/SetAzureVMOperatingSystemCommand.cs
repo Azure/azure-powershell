@@ -83,20 +83,6 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Position = 4,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Source Image Name")]
-        [ValidateNotNullOrEmpty]
-        public string SourceImageName { get; set; }
-        
-        [Parameter(
-            Position = 5,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Destination Container for VHDs")]
-        [ValidateNotNullOrEmpty]
-        public Uri DestinationVHDsContainer { get; set; }
-
-        [Parameter(
-            Position = 6,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Provision VM Agent.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter ProvisionVMAgent { get; set; }
@@ -104,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             DontShow = true, /* Not in the client library yet */
             ParameterSetName = LinuxParamSet,
-            Position = 7,
+            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "SSH Public Keys")]
         [ValidateNotNullOrEmpty]
@@ -123,22 +109,6 @@ namespace Microsoft.Azure.Commands.Compute
                     ProvisionVMAgent = this.ProvisionVMAgent.IsPresent ? (bool?)true : null
                 }
             };
-
-            // Storage Profile
-            if (this.VM.StorageProfile == null)
-            {
-                this.VM.StorageProfile = new StorageProfile();
-            }
-
-            this.VM.StorageProfile.DestinationVhdsContainer = this.DestinationVHDsContainer;
-
-            if (!string.IsNullOrEmpty(this.SourceImageName))
-            {
-                this.VM.StorageProfile.SourceImage = new SourceImageReference
-                {
-                    ReferenceUri = this.SourceImageName
-                }.Normalize(this.CurrentContext.Subscription.Id.ToString());
-            }
 
             WriteObject(this.VM);
         }

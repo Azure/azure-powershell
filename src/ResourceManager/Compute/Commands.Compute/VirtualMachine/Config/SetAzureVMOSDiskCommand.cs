@@ -24,11 +24,15 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.OSDisk),
+        ProfileNouns.OSDisk,
+        DefaultParameterSetName = SourceImageNameParamSet),
     OutputType(
         typeof(PSVirtualMachine))]
     public class SetAzureVMOSDiskCommand : AzurePSCmdlet
     {
+        protected const string SourceImageNameParamSet = "SourceImageName";
+        protected const string OSDiskNameParamSet = "OSDiskName";
+
         [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
@@ -40,6 +44,25 @@ namespace Microsoft.Azure.Commands.Compute
         public PSVirtualMachine VM { get; set; }
 
         [Parameter(
+            ParameterSetName = SourceImageNameParamSet,
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMVHDContainer)]
+        [ValidateNotNullOrEmpty]
+        public string DestinationVhdsContainer { get; set; }
+
+        [Parameter(
+            ParameterSetName = SourceImageNameParamSet,
+            Mandatory = true,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMSourceImageName)]
+        [ValidateNotNullOrEmpty]
+        public string SourceImageName { get; set; }
+
+        [Parameter(
+            ParameterSetName = OSDiskNameParamSet,
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
@@ -48,6 +71,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string OSDiskName { get; set; }
 
         [Parameter(
+            ParameterSetName = OSDiskNameParamSet,
             Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
@@ -62,15 +86,23 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.StorageProfile = new StorageProfile();
             }
 
-            this.VM.StorageProfile.OSDisk = new OSDisk
-            {
-                Caching = CachingType.ReadWrite,
-                Name = this.OSDiskName,
-                VirtualHardDisk = new VirtualHardDisk
+            this.VM.StorageProfile.SourceImage = string.IsNullOrEmpty(this.SourceImageName) ? null :
+                              new SourceImageReference
+                              {
+                                  ReferenceUri = this.SourceImageName
+                              }.Normalize(this.CurrentContext.Subscription.Id.ToString());
+
+            this.VM.StorageProfile.OSDisk = !string.IsNullOrEmpty(this.SourceImageName) ? null : new OSDisk
                 {
-                    Uri = this.OSDiskVHDUri
-                }
-            };
+                    Caching = CachingType.ReadWrite,
+                    Name = this.OSDiskName,
+                    VirtualHardDisk = new VirtualHardDisk
+                    {
+                        Uri = this.OSDiskVHDUri
+                    }
+                };
+
+            this.VM.StorageProfile.DestinationVhdsContainer = string.IsNullOrEmpty(this.DestinationVhdsContainer) ? null : new Uri(this.DestinationVhdsContainer);
 
             WriteObject(this.VM);
         }
