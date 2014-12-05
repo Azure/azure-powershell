@@ -140,7 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ScenarioTests\HubTests.cs" />
-    <Compile Include="ScenarioTests\PipelineTests.cs" />
     <Compile Include="UnitTests\GetHubTests.cs" />
     <Compile Include="UnitTests\NewDataFactoryEncryptValueTests.cs" />
     <Compile Include="ScenarioTests\DataFactoryGatewayTests.cs" />
