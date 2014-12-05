@@ -34,19 +34,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 throw new PSArgumentNullException("Location");
             }
 
-            List<PSQuota> quotas = StreamAnalyticsClient.GetQuotas(Location);
-
-            if (quotas != null)
-            {
-                if (quotas.Count == 1 && Location != null)
-                {
-                    WriteObject(quotas[0]);
-                }
-                else
-                {
-                    WriteObject(quotas, true);
-                }
-            }
+            WriteObject(StreamAnalyticsClient.GetQuotas(Location), true);
         }
     }
 }

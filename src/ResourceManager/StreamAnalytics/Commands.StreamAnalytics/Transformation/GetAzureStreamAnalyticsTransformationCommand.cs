@@ -48,8 +48,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 throw new PSArgumentNullException("Name");
             }
 
-            PSTransformation transformation = StreamAnalyticsClient.GetTransformation(ResourceGroupName, JobName, Name);
-            WriteObject(transformation);
+            WriteObject(StreamAnalyticsClient.GetTransformation(ResourceGroupName, JobName, Name));
         }
     }
 }

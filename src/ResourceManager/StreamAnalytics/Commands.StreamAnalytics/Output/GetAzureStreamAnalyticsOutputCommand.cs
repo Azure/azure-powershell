@@ -55,19 +55,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 ResourceGroupName = ResourceGroupName
             };
 
-            List<PSOutput> outputs = StreamAnalyticsClient.FilterPSOutputs(filterOptions);
-
-            if (outputs != null)
-            {
-                if (outputs.Count == 1 && Name != null)
-                {
-                    WriteObject(outputs[0]);
-                }
-                else
-                {
-                    WriteObject(outputs, true);
-                }
-            }
+            WriteObject(StreamAnalyticsClient.FilterPSOutputs(filterOptions), true);
         }
     }
 }

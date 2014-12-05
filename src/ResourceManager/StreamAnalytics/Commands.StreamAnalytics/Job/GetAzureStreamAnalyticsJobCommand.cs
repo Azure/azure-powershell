@@ -62,19 +62,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 PropertiesToExpand = propertiesToExpand
             };
 
-            List<PSJob> jobs = StreamAnalyticsClient.FilterPSJobs(filterOptions);
-
-            if (jobs != null)
-            {
-                if (jobs.Count == 1 && Name != null)
-                {
-                    WriteObject(jobs[0]);
-                }
-                else
-                {
-                    WriteObject(jobs, true);
-                }
-            }
+            WriteObject(StreamAnalyticsClient.FilterPSJobs(filterOptions), true);
         }
     }
 }
