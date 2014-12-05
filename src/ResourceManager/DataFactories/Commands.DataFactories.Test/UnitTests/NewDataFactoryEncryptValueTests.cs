@@ -66,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
             string expectedOutput = "My encrypted string " + Guid.NewGuid();
             string winAuthUserName = "foo";
             SecureString winAuthPassword = new SecureString();
-            PSCredential windowsCredential = new PSCredential(winAuthUserName, winAuthPassword);
+            PSCredential credential = new PSCredential(winAuthUserName, winAuthPassword);
 
             var cmdlet = new NewAzureDataFactoryEncryptValueCommand
             {
@@ -76,17 +76,17 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = DataFactoryName,
                 GatewayName = GatewayName,
-                WindowsCredential = windowsCredential
+                Credential = credential
             };
 
             // Arrange
-            this.dataFactoriesClientMock.Setup(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, windowsCredential)).Returns(expectedOutput);
+            this.dataFactoriesClientMock.Setup(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, credential)).Returns(expectedOutput);
 
             // Action
             cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.dataFactoriesClientMock.Verify(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, windowsCredential), Times.Once());
+            this.dataFactoriesClientMock.Verify(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, credential), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(expectedOutput), Times.Once());
         }
     }

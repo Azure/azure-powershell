@@ -2082,9 +2082,9 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
-          <maml:name>WindowsCredential</maml:name>
+          <maml:name>Credential</maml:name>
           <maml:description>
-            <maml:para>Specifies the windows authentication credential user name and password. This cmdlet encrypts the credential data that this parameter specifies.</maml:para>
+            <maml:para>Specifies the Windows authentication credentials (user name and password) to be used. This cmdlet encrypts the credential data you specify here.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         </command:parameter>
@@ -2120,9 +2120,9 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
-          <maml:name>WindowsCredential</maml:name>
+          <maml:name>Credential</maml:name>
           <maml:description>
-            <maml:para>Specifies the windows authentication credential user name and password. This cmdlet encrypts the credential data that this parameter specifies.</maml:para>
+            <maml:para>Specifies the Windows authentication credentials (user name and password) to be used. This cmdlet encrypts the credential data you specify here.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         </command:parameter>
@@ -2190,9 +2190,9 @@
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
-        <maml:name>WindowsCredential</maml:name>
+        <maml:name>Credential</maml:name>
         <maml:description>
-          <maml:para>Specifies the windows authentication credential user name and password. This cmdlet encrypts the credential data that this parameter specifies.</maml:para>
+          <maml:para>Specifies the Windows authentication credentials (user name and password) to be used. This cmdlet encrypts the credential data you specify here.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         <dev:type>
@@ -2277,7 +2277,7 @@
         <dev:code>
           PS C:\&gt; $Value = ConvertTo-SecureString "Data Source=ContosoServer;Initial Catalog=catelog;Integrated Security=True" -AsPlainText -Force
           PS C:\&gt; $Credential = Get-Credential
-          PS C:\&gt; New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -WindowsCredential $Credential
+          PS C:\&gt; New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential
           data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
         </dev:code>
         <dev:remarks>
