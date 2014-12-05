@@ -110,6 +110,33 @@ function Test-VirtualMachineExtension
         $publisher = 'Microsoft.Compute';
         $exttype = 'CustomScriptExtension';
         $extver = '1.1';
+
+        # Set extension settings by raw strings
+        $settingstr = '{"fileUris":[],"commandToExecute":""}';
+        $protectedsettingstr = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
+        Set-AzureVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr;
+        
+        # Get VM Extension
+        $ext = Get-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
+        Assert-AreEqual $ext.ResourceGroupName $rgname;
+        Assert-AreEqual $ext.Name $extname;
+        Assert-AreEqual $ext.Publisher $publisher;
+        Assert-AreEqual $ext.Type $exttype;
+        Assert-AreEqual $ext.TypeHandlerVersion $extver;
+        Assert-AreEqual $ext.ResourceGroupName $rgname;
+        Assert-NotNull $ext.ProvisioningState;
+        
+        $ext = Get-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
+        Assert-AreEqual $ext.ResourceGroupName $rgname;
+        Assert-AreEqual $ext.Name $extname;
+        Assert-AreEqual $ext.Publisher $publisher;
+        Assert-AreEqual $ext.Type $exttype;
+        Assert-AreEqual $ext.TypeHandlerVersion $extver;
+        Assert-AreEqual $ext.ResourceGroupName $rgname;
+        Assert-NotNull $ext.ProvisioningState;
+        Assert-NotNull $ext.Statuses;
+        
+        # Set extension settings by hash table
         $settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
         $protectedsettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
         Set-AzureVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -Settings $settings -ProtectedSettings $protectedsettings;

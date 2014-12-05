@@ -21,10 +21,15 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Set, ProfileNouns.VirtualMachineExtension)]
+    [Cmdlet(
+        VerbsCommon.Set,
+        ProfileNouns.VirtualMachineExtension,
+        DefaultParameterSetName = SettingsParamSet)]
     [OutputType(typeof(object))]
     public class SetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
+        protected const string SettingStringParamSet = "SettingString";
+        protected const string SettingsParamSet = "Settings";
 
         [Parameter(
            Mandatory = true,
@@ -78,6 +83,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string TypeHandlerVersion { get; set; }
 
         [Parameter(
+            ParameterSetName = SettingsParamSet,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The settings.")]
@@ -85,11 +91,28 @@ namespace Microsoft.Azure.Commands.Compute
         public Hashtable Settings { get; set; }
 
         [Parameter(
+            ParameterSetName = SettingsParamSet,
             Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protected settings.")]
         [ValidateNotNullOrEmpty]
         public Hashtable ProtectedSettings { get; set; }
+
+        [Parameter(
+            ParameterSetName = SettingStringParamSet,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The setting raw string.")]
+        [ValidateNotNullOrEmpty]
+        public string SettingString { get; set; }
+
+        [Parameter(
+            ParameterSetName = SettingStringParamSet,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The protected setting raw string.")]
+        [ValidateNotNullOrEmpty]
+        public string ProtectedSettingString { get; set; }
 
         [Parameter(
             Position = 8,
@@ -101,6 +124,12 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (this.Settings != null)
+            {
+                this.SettingString = new JsonSettingBuilder(this.Settings).ToString();
+                this.ProtectedSettingString = new JsonSettingBuilder(this.ProtectedSettings).ToString();
+            }
 
             var parameters = new VirtualMachineExtensionCreateOrUpdateParameters
             {
@@ -114,8 +143,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Publisher = this.Publisher,
                         Type = this.Type,
                         TypeHandlerVersion = this.TypeHandlerVersion,
-                        Settings = new JsonSettingBuilder(this.Settings).ToString(),
-                        ProtectedSettings = new JsonSettingBuilder(this.ProtectedSettings).ToString()
+                        Settings = this.SettingString,
+                        ProtectedSettings = this.ProtectedSettingString
                     }
                 }
             };
