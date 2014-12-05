@@ -586,7 +586,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 }
                 catch (Exception e)
                 {
-                    if (e.ToString().Contains(errorMessage))
+                    if (e.ToString().Contains(errorMessage) || (e.InnerException != null && e.InnerException.ToString().Contains(errorMessage)))
                     {
                         Console.WriteLine("{0} error occurs! retrying ...", errorMessage);
                         if (e.InnerException != null)
