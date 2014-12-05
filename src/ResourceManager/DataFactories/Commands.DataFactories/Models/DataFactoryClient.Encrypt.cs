@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 resourceGroupName, dataFactoryName);
         }
 
-        public virtual string OnPremisesEncryptString(SecureString value, string resourceGroupName, string dataFactoryName, string gatewayName, PSCredential windowsCredential)
+        public virtual string OnPremisesEncryptString(SecureString value, string resourceGroupName, string dataFactoryName, string gatewayName, PSCredential credential)
         {
             if (value == null)
             {
@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Commands.DataFactories
                         }
                 };
 
-            string userName = windowsCredential != null ? windowsCredential.UserName : null;
-            SecureString password = windowsCredential != null ? windowsCredential.Password : null;
+            string userName = credential != null ? credential.UserName : null;
+            SecureString password = credential != null ? credential.Password : null;
             UserInputConnectionString connectionString = new UserInputConnectionString(value, userName, password);
             var gatewayEncryptionClient = new GatewayEncryptionClient();
             return gatewayEncryptionClient.Encrypt(connectionString, gatewayEncryptionInfos);
