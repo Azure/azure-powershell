@@ -43,6 +43,25 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
+        public AddAzureVMImageCmdletInfo(string imageName, string mediaLocation, OS os, string label, string recommendedSize, string iconUri, string smallIconUri, bool showInGui)
+            : this(imageName, mediaLocation, os, label, recommendedSize)
+        {
+            if (!string.IsNullOrEmpty(iconUri))
+            {
+                cmdletParams.Add(new CmdletParam("IconUri", iconUri));
+            }
+
+            if (!string.IsNullOrEmpty(iconUri))
+            {
+                cmdletParams.Add(new CmdletParam("SmallIconUri", smallIconUri));
+            }
+
+            if (showInGui)
+            {
+                cmdletParams.Add(new CmdletParam("ShowInGui"));
+            }
+        }
+
         public AddAzureVMImageCmdletInfo(
             string imageName,
             string mediaLocation,
