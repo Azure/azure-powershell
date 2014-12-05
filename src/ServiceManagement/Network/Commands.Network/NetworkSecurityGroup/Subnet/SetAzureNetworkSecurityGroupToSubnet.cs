@@ -72,6 +72,10 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
                             }
                         });
                 }
+                else
+                {
+                    throw;
+                }
             }
         }
     }
