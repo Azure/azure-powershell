@@ -64,7 +64,7 @@ FormatsToProcess = @(
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',
     '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',
-	'.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml'
+    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
