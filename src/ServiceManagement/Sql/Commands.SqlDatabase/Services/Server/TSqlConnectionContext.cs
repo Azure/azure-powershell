@@ -27,7 +27,12 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// <summary>
         /// Timeout duration for commands
         /// </summary>
-        private static int connectionTimeout = 60;
+        private static int commandTimeout = 300;
+
+        /// <summary>
+        /// Timeout duration for connections
+        /// </summary>
+        private static int connectionTimeout = 30;
 
         /// <summary>
         /// Set this to override the SQL Connection with a mock version
@@ -248,7 +253,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             using (var connection = CreateConnection())
             {
                 using (DbCommand command = connection.CreateCommand())
-                //using (SqlCommand command = new SqlCommand(getDatabaseQuery, connection))
                 {
                     command.CommandTimeout = connectionTimeout;
                     command.CommandText = getDatabaseQuery;
@@ -259,7 +263,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
 
                     connection.Open();
 
-                    //using (SqlDataReader reader = command.ExecuteReader())
                     using (DbDataReader reader = command.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -276,15 +279,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                     }
                 }
             }
-
-            //db.ServiceObjectiveName;
-            //db.serviceobjectiveid
-            //db.SLOAssignment*
-
-            //db.Server;
-            //db.ServiceObjective;
-            //db.DatabaseCopies;
-            //db.DatabaseMetrics;
 
             GetDatabaseProperties(db);
             db.ServiceObjective = GetServiceObjective(db.ServiceObjectiveName);
@@ -399,7 +393,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             {
                 using (DbCommand command = connection.CreateCommand())
                 {
-                    command.CommandTimeout = connectionTimeout;
+                    command.CommandTimeout = commandTimeout;
                     command.CommandText = commandText;
                     connection.Open();
 
@@ -513,6 +507,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                 {
                     connection.Open();
                     command.CommandText = commandText;
+                    command.CommandTimeout = commandTimeout;
 
                     command.ExecuteNonQuery();
                 }
@@ -637,37 +632,37 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
 
         public Model.DatabaseCopy[] GetDatabaseCopy(string databaseName, string partnerServer, string partnerDatabaseName)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public Model.DatabaseCopy GetDatabaseCopy(Model.DatabaseCopy databaseCopy)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public Model.DatabaseCopy StartDatabaseCopy(string databaseName, string partnerServer, string partnerDatabaseName, bool continuousCopy, bool isOfflineSecondary)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public void StopDatabaseCopy(Model.DatabaseCopy databaseCopy, bool forcedTermination)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public RestorableDroppedDatabase[] GetRestorableDroppedDatabases()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public RestorableDroppedDatabase GetRestorableDroppedDatabase(string databaseName, DateTime deletionDate)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public RestoreDatabaseOperation RestoreDatabase(string sourceDatabaseName, DateTime? sourceDatabaseDeletionDate, string targetServerName, string targetDatabaseName, DateTime? pointInTime)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         #region Helpers
@@ -740,7 +735,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                 {
                     using (DbCommand command = connection.CreateCommand())
                     {
-                        command.CommandTimeout = connectionTimeout;
+                        command.CommandTimeout = commandTimeout;
                         command.CommandText = commandText;
                         DbParameter param = command.CreateParameter();
                         param.ParameterName = "@name";
@@ -830,7 +825,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             {
                 using (DbCommand command = connection.CreateCommand())
                 {
-                    command.CommandTimeout = connectionTimeout;
+                    command.CommandTimeout = commandTimeout;
                     command.CommandText = commandText;
                     connection.Open();
 
@@ -862,7 +857,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             {
                 using (DbCommand command = connection.CreateCommand())
                 {
-                    command.CommandTimeout = connectionTimeout;
+                    command.CommandTimeout = commandTimeout;
                     command.CommandText = commandText;
                     connection.Open();
 

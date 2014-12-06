@@ -89,10 +89,10 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// <summary>
         /// Gets or sets the management site data connection fully qualified server name.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 0, 
+        [Parameter(Mandatory = true, Position = 0,
             ParameterSetName = FullyQualifiedServerNameWithSqlAuthParamSet,
             HelpMessage = "The fully qualified server name")]
-        [Parameter(Mandatory = true, Position = 0, 
+        [Parameter(Mandatory = true, Position = 0,
             ParameterSetName = FullyQualifiedServerNameWithCertAuthParamSet,
             HelpMessage = "The fully qualified server name")]
         [ValidateNotNull]
@@ -109,13 +109,13 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// <summary>
         /// Gets or sets the server credentials
         /// </summary>
-        [Parameter(Mandatory = true, Position = 1, 
+        [Parameter(Mandatory = true, Position = 1,
             ParameterSetName = ServerNameWithSqlAuthParamSet,
             HelpMessage = "The credentials for the server")]
-        [Parameter(Mandatory = true, Position = 1, 
+        [Parameter(Mandatory = true, Position = 1,
             ParameterSetName = FullyQualifiedServerNameWithSqlAuthParamSet,
             HelpMessage = "The credentials for the server")]
-        [Parameter(Mandatory = true, Position = 1, 
+        [Parameter(Mandatory = true, Position = 1,
             ParameterSetName = ManageUrlWithSqlAuthParamSet,
             HelpMessage = "The credentials for the server")]
         [ValidateNotNull]
@@ -124,10 +124,10 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// <summary>
         /// Gets or sets whether or not the current subscription should be used for authentication
         /// </summary>
-        [Parameter(Mandatory = true, Position = 1, 
+        [Parameter(Mandatory = true, Position = 1,
             ParameterSetName = ServerNameWithCertAuthParamSet,
             HelpMessage = "Use certificate authentication")]
-        [Parameter(Mandatory = true, Position = 1, 
+        [Parameter(Mandatory = true, Position = 1,
             ParameterSetName = FullyQualifiedServerNameWithCertAuthParamSet,
             HelpMessage = "Use certificate authentication")]
         public SwitchParameter UseSubscription { get; set; }
@@ -139,13 +139,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
              ParameterSetName = FullyQualifiedServerNameWithCertAuthParamSet,
              HelpMessage = "The subscription to use, or uses the current subscription if not specified")]
         public string SubscriptionName { get; set; }
-
-        /// <summary>
-        /// Switch to indiciate the the server is an ESA server
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "Indicates the server version being targeted.  Valid values [2.0, 12.0].  Default = 2.0")]
-        public float Version { get; set; }
 
         #endregion
 
@@ -188,63 +181,20 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             IServerDataServiceContext context = null;
             Guid sessionActivityId = Guid.NewGuid();
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("Version"))
+            try
             {
-                if (this.Version == 12.0f)
-                {
-                    try
-                    {
-                        context = new TSqlConnectionContext(
-                            sessionActivityId,
-                            manageUrl.Host,
-                            credentials.UserName,
-                            credentials.Password);
-                    }
-                    catch (Exception ex)
-                    {
-                        SqlDatabaseExceptionHandler.WriteErrorDetails(
-                            this,
-                            sessionActivityId.ToString(),
-                            ex);
+                context = SqlAuthContextFactory.GetContext(this, serverName, manageUrl, credentials, sessionActivityId, managementServiceUri);
+            }
+            catch (Exception ex)
+            {
+                SqlDatabaseExceptionHandler.WriteErrorDetails(
+                    this,
+                    sessionActivityId.ToString(),
+                    ex);
 
-                        // The context is not in an valid state because of the error, set the context 
-                        // back to null.
-                        context = null;
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        context = ServerDataServiceSqlAuth.Create(
-                            managementServiceUri,
-                            sessionActivityId,
-                            credentials,
-                            serverName);
-
-                        // Retrieve $metadata to verify model version compatibility
-                        XDocument metadata = ((ServerDataServiceSqlAuth)context).RetrieveMetadata();
-                        XDocument filteredMetadata = DataConnectionUtility.FilterMetadataDocument(metadata);
-                        string metadataHash = DataConnectionUtility.GetDocumentHash(filteredMetadata);
-                        if (!((ServerDataServiceSqlAuth)context).metadataHashes.Any(knownHash => metadataHash == knownHash))
-                        {
-                            this.WriteWarning(Resources.WarningModelOutOfDate);
-                        }
-
-                        ((ServerDataServiceSqlAuth)context).MergeOption = MergeOption.PreserveChanges;
-                    }
-                    catch (Exception ex)
-                    {
-                        SqlDatabaseExceptionHandler.WriteErrorDetails(
-                            this,
-                            sessionActivityId.ToString(),
-                            ex);
-
-                        // The context is not in an valid state because of the error, set the context 
-                        // back to null.
-                        context = null;
-                    }
-                }
+                // The context is not in an valid state because of the error, set the context 
+                // back to null.
+                context = null;
             }
 
             return context;

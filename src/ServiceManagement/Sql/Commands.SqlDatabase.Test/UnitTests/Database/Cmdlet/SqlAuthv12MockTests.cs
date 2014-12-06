@@ -1,4 +1,18 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ---
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql;
 using System;
@@ -35,11 +49,9 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
         [TestMethod]
         public void NewAzureSqlDatabaseWithSqlAuthv12()
         {
-
             using (System.Management.Automation.PowerShell powershell =
                 System.Management.Automation.PowerShell.Create())
             {
-
                 // Create a context
                 NewAzureSqlDatabaseServerContextTests.CreateServerContextSqlAuthV2(
                     powershell,
