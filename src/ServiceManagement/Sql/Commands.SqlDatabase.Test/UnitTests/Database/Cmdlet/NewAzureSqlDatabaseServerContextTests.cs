@@ -365,8 +365,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                         CultureInfo.InvariantCulture,
                         @"{1} = New-AzureSqlDatabaseServerContext " +
                         @"-ManageUrl {0} " +
-                        @"-Credential $credential " +
-                        @"-Version 12.0 ",
+                        @"-Credential $credential ",
                         manageUrl,
                         contextVariable),
                     contextVariable);

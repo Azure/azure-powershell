@@ -25,7 +25,6 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
-    [RecordMockDataResults("./")]
     [TestClass]
     public class SqlAuthv12MockTests
     {
@@ -36,8 +35,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
         [TestInitialize]
         public void Setup()
         {
-            var mockConn = new MockSqlConnection();
-            TSqlConnectionContext.MockSqlConnection = mockConn;
         }
 
         [TestCleanup]
@@ -46,9 +43,13 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
             // Do any test clean up here.
         }
 
+        //[RecordMockDataResults("./")]
         [TestMethod]
         public void NewAzureSqlDatabaseWithSqlAuthv12()
         {
+            var mockConn = new MockSqlConnection();
+            TSqlConnectionContext.MockSqlConnection = mockConn;
+
             using (System.Management.Automation.PowerShell powershell =
                 System.Management.Automation.PowerShell.Create())
             {
@@ -121,6 +122,171 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
         }
 
 
+        //[RecordMockDataResults("./")]
+        [TestMethod]
+        public void GetAzureSqlDatabaseWithSqlAuthv12()
+        {
+            var mockConn = new MockSqlConnection();
+            TSqlConnectionContext.MockSqlConnection = mockConn;
+
+            using (System.Management.Automation.PowerShell powershell =
+                System.Management.Automation.PowerShell.Create())
+            {
+                // Create a context
+                NewAzureSqlDatabaseServerContextTests.CreateServerContextSqlAuthV2(
+                    powershell,
+                    manageUrl,
+                    username,
+                    password,
+                    "$context");
+
+                Collection<PSObject> database1, database2, database3;
+
+                database1 = powershell.InvokeBatchScript(
+                    @"$testdb1 = Get-AzureSqlDatabase " +
+                    @"-Context $context " +
+                    @"-DatabaseName testdb1 ",
+                    @"$testdb1");
+                database2 = powershell.InvokeBatchScript(
+                    @"$testdb2 = Get-AzureSqlDatabase " +
+                    @"-Context $context " +
+                    @"-Database $testdb1 ",
+                    @"$testdb2");
+                database3 = powershell.InvokeBatchScript(
+                    @"$testdb3 = Get-AzureSqlDatabase " +
+                    @"-Context $context ",
+                    @"$testdb3");
+
+                Assert.AreEqual(0, powershell.Streams.Error.Count, "Errors during run!");
+                Assert.AreEqual(0, powershell.Streams.Warning.Count, "Warnings during run!");
+                powershell.Streams.ClearStreams();
+
+                Services.Server.Database database = database1.Single().BaseObject as Services.Server.Database;
+                Assert.IsTrue(database != null, "Expecting a Database object");
+                ValidateDatabaseProperties(database, "testdb1", "Standard", 250, 268435456000L, "SQL_Latin1_General_CP1_CI_AS", false, DatabaseTestHelper.StandardS0SloGuid);
+
+                database = database2.Single().BaseObject as Services.Server.Database;
+                Assert.IsTrue(database != null, "Expecting a Database object");
+                ValidateDatabaseProperties(database, "testdb1", "Standard", 250, 268435456000L, "SQL_Latin1_General_CP1_CI_AS", false, DatabaseTestHelper.StandardS0SloGuid);
+
+                Assert.IsTrue(database3.Count == 5);
+                foreach (var entry in database3)
+                {
+                    var db = entry.BaseObject as Services.Server.Database;
+                    Assert.IsTrue(db != null, "Expecting a Database object");
+                }
+            }
+        }
+
+        //[RecordMockDataResults("./")]
+        [TestMethod]
+        public void SetAzureSqlDatabaseWithSqlAuthv12()
+        {
+            var mockConn = new MockSqlConnection();
+            TSqlConnectionContext.MockSqlConnection = mockConn;
+
+            using (System.Management.Automation.PowerShell powershell =
+                System.Management.Automation.PowerShell.Create())
+            {
+                // Create a context
+                NewAzureSqlDatabaseServerContextTests.CreateServerContextSqlAuthV2(
+                    powershell,
+                    manageUrl,
+                    username,
+                    password,
+                    "$context");
+
+                Collection<PSObject> database1, database2, database3, database4;
+
+                database1 = powershell.InvokeBatchScript(
+                    @"$testdb1 = Set-AzureSqlDatabase " +
+                    @"-Context $context " +
+                    @"-DatabaseName testdb1 " +
+                    @"-Edition Basic " +
+                    @"-MaxSizeGb 1 " +
+                    @"-Force " +
+                    @"-PassThru ",
+                    @"$testdb1");
+                database2 = powershell.InvokeBatchScript(
+                    @"$testdb2 = Set-AzureSqlDatabase " +
+                    @"-Context $context " +
+                    @"-DatabaseName testdb2 " +
+                    @"-Edition Standard " +
+                    @"-MaxSizeBytes 107374182400 " +
+                    @"-Force " +
+                    @"-PassThru ",
+                    @"$testdb2");
+                database3 = powershell.InvokeBatchScript(
+                    @"$testdb3 = Set-AzureSqlDatabase " +
+                    @"-Context $context " +
+                    @"-DatabaseName testdb3 " +
+                    @"-NewDatabaseName testdb3alt " +
+                    @"-Force " +
+                    @"-PassThru ",
+                    @"$testdb3");
+                var slo = powershell.InvokeBatchScript(
+                    @"$so = Get-AzureSqlDatabaseServiceObjective " +
+                    @"-Context $context " +
+                    @"-ServiceObjectiveName S0 ",
+                    @"$so");
+                database4 = powershell.InvokeBatchScript(
+                    @"$testdb4 = Set-AzureSqlDatabase " +
+                    @"-Context $context " +
+                    @"-DatabaseName testdb4 " +
+                    @"-ServiceObjective $so " +
+                    @"-Force " +
+                    @"-PassThru ",
+                    @"$testdb4");
+
+                //
+                // Wait for operations to complete
+                //
+
+                database1 = powershell.InvokeBatchScript(
+                    @"$testdb1 = Get-AzureSqlDatabase " +
+                    @"-Context $context " +
+                    @"-DatabaseName testdb1 ",
+                    @"$testdb1");
+                database2 = powershell.InvokeBatchScript(
+                    @"$testdb2 = Get-AzureSqlDatabase " +
+                    @"-Context $context " +
+                    @"-DatabaseName testdb2 ",
+                    @"$testdb2");
+                database3 = powershell.InvokeBatchScript(
+                    @"$testdb3 = Get-AzureSqlDatabase " +
+                    @"-Context $context " +
+                    @"-DatabaseName testdb3alt ",
+                    @"$testdb3");
+                database4 = powershell.InvokeBatchScript(
+                    @"$testdb4 = Get-AzureSqlDatabase " +
+                    @"-Context $context " +
+                    @"-DatabaseName testdb4 ",
+                    @"$testdb4");
+
+                Assert.AreEqual(0, powershell.Streams.Error.Count, "Errors during run!");
+                Assert.AreEqual(0, powershell.Streams.Warning.Count, "Warnings during run!");
+                powershell.Streams.ClearStreams();
+
+                Services.Server.Database database = database1.Single().BaseObject as Services.Server.Database;
+                Assert.IsTrue(database != null, "Expecting a Database object");
+                ValidateDatabaseProperties(database, "testdb1", "Basic", 1, 1073741824L, "SQL_Latin1_General_CP1_CI_AS", false, DatabaseTestHelper.BasicSloGuid);
+
+                database = database2.Single().BaseObject as Services.Server.Database;
+                Assert.IsTrue(database != null, "Expecting a Database object");
+                ValidateDatabaseProperties(database, "testdb2", "Standard", 100, 107374182400L, "Japanese_CI_AS", false, DatabaseTestHelper.StandardS0SloGuid);
+
+                database = database3.Single().BaseObject as Services.Server.Database;
+                Assert.IsTrue(database != null, "Expecting a Database object");
+                ValidateDatabaseProperties(database, "testdb3alt", "Standard", 100, 107374182400L, "SQL_Latin1_General_CP1_CI_AS", false, DatabaseTestHelper.StandardS0SloGuid);
+
+                database = database4.Single().BaseObject as Services.Server.Database;
+                Assert.IsTrue(database != null, "Expecting a Database object");
+                ValidateDatabaseProperties(database, "testdb4", "Standard", 250, 268435456000L, "SQL_Latin1_General_CP1_CI_AS", false, DatabaseTestHelper.StandardS0SloGuid);
+            }
+        }
+
+        #region Helpers
+
         /// <summary>
         /// Validate the properties of a database against the expected values supplied as input.
         /// </summary>
@@ -148,5 +314,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
             Assert.AreEqual(isSystem, database.IsSystemObject);
             // Assert.AreEqual(slo, database.ServiceObjectiveId);
         }
+
+        #endregion
     }
 }

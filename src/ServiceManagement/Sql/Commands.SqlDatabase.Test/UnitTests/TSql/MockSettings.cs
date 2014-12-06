@@ -26,6 +26,9 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
 {
     internal sealed class MockSettings
     {
+        /// <summary>
+        /// Gets or sets the id for the mock
+        /// </summary>
         private string mockId;
 
         /// <summary>
@@ -143,8 +146,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
             if (testMethodFrame != null)
             {
                 settings.mockId = GetMockId(testMethodFrame);
-                //settings.initializeMethod = FindMockSetupMethod<RecordMockInitializeAttribute>(testMethodFrame);
-                //settings.cleanupMethod = FindMockSetupMethod<RecordMockCleanupAttribute>(testMethodFrame);
 
                 RecordMockDataResultsAttribute recordAttr = FindRecordMockDataResultsAttribute(testMethodFrame);
                 if (recordAttr != null)
@@ -197,40 +198,16 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
             return recordAttr;
         }
 
-        //private static SetupMethodDelegate FindMockSetupMethod<T>(StackFrame testMethodFrame)
-        //    where T : Attribute
-        //{
-        //    Type declaringType = testMethodFrame.GetMethod().DeclaringType;
-        //    MethodInfo[] methods = declaringType.GetMethods();
-
-        //    foreach (MethodInfo method in methods)
-        //    {
-        //        if (method.GetCustomAttribute<T>() != null)
-        //        {
-        //            if (!method.IsStatic)
-        //            {
-        //                throw new NotSupportedException("Non-static mock setup method are not supported.");
-        //            }
-
-        //            return delegate(SqlConnection connection)
-        //            {
-        //                method.Invoke(null, new object[] { connection });
-        //            };
-        //        }
-        //    }
-
-        //    return null;
-        //}
-
         private static string GetMockId(StackFrame testMethodFrame)
         {
             List<string> parts = new List<string>();
 
+            parts.Insert(0, testMethodFrame.GetMethod().Name);
             for (Type type = testMethodFrame.GetMethod().DeclaringType; type != null; type = type.DeclaringType)
             {
                 parts.Insert(0, type.Name);
             }
-
+            
             return String.Join(".", parts.ToArray());
         }
     }

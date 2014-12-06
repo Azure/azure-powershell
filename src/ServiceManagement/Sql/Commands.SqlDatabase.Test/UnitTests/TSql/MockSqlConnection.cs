@@ -53,15 +53,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
         /// </summary>
         private void InitializeMockEnvironment()
         {
-            //if (this.settings.RecordingMode && this.settings.InitializeMethod != null)
-            //{
-            //    using (SqlConnection connection = new SqlConnection(this.settings.SqlConnectionString))
-            //    {
-            //        connection.Open();
-
-            //        this.settings.InitializeMethod(connection);
-            //    }
-            //}
         }
 
         /// <summary>
@@ -69,15 +60,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
         /// </summary>
         private void CleanupMockEnvironment()
         {
-            //if (this.settings.RecordingMode && this.settings.CleanupMethod != null)
-            //{
-            //    using (SqlConnection connection = new SqlConnection(this.settings.SqlConnectionString))
-            //    {
-            //        connection.Open();
-
-            //        this.settings.CleanupMethod(connection);
-            //    }
-            //}
         }
 
         /// <summary>

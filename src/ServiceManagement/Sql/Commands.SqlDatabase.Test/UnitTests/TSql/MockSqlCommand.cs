@@ -173,24 +173,28 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
         protected override DbDataReader ExecuteDbDataReader(CommandBehavior behavior)
         {
             Assert.IsTrue((this.Connection.State & ConnectionState.Open) == ConnectionState.Open, "Connection has to be opened when executing a command");
+            
+            MockQueryResult mockResult = null;
 
-            string commandKey = this.GetCommandKey();
-            MockQueryResult mockResult = FindMockResult(this.settings.MockId, this.Connection.Database, commandKey, this.settings.IsolatedQueries);
-
-            if (mockResult == null && this.settings.RecordingMode)
+            if (this.settings.RecordingMode)
             {
                 mockResult = this.RecordExecuteDbDataReader();
             }
-
-            if (mockResult == null || mockResult.DataSetResult == null)
+            else
             {
-                if (mockResult != null && mockResult.ExceptionResult != null)
+                string commandKey = this.GetCommandKey();
+                mockResult = FindMockResult(this.settings.MockId, this.Connection.Database, commandKey, this.settings.IsolatedQueries);
+
+                if (mockResult == null || mockResult.DataSetResult == null)
                 {
-                    throw mockResult.ExceptionResult.Exception;
-                }
-                else
-                {
-                    throw new NotSupportedException(string.Format("Mock SqlConnection does not know how to handle query: '{0}'", commandKey));
+                    if (mockResult != null && mockResult.ExceptionResult != null)
+                    {
+                        throw mockResult.ExceptionResult.Exception;
+                    }
+                    else
+                    {
+                        throw new NotSupportedException(string.Format("Mock SqlConnection does not know how to handle query: '{0}'", commandKey));
+                    }
                 }
             }
 
@@ -244,12 +248,16 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
         {
             Assert.IsTrue((this.Connection.State & ConnectionState.Open) == ConnectionState.Open, "Connection has to be opened when executing command");
 
-            string commandKey = this.GetCommandKey();
-            MockQueryResult mockResult = FindMockResult(this.settings.MockId, this.Connection.Database, commandKey, this.settings.IsolatedQueries);
+            MockQueryResult mockResult = null;
 
-            if (mockResult == null && this.settings.RecordingMode)
+            if (this.settings.RecordingMode)
             {
                 mockResult = this.RecordExecuteScalar();
+            }
+            else
+            {
+                string commandKey = this.GetCommandKey();
+                FindMockResult(this.settings.MockId, this.Connection.Database, commandKey, this.settings.IsolatedQueries);
             }
 
             return mockResult != null ? mockResult.ScalarResult : null;
@@ -350,7 +358,14 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
                     foreach (DbParameter param in this.Parameters)
                     {
                         SqlParameter sqlParam = new SqlParameter(param.ParameterName, param.DbType);
-                        sqlParam.Value = param.Value;
+                        if (param.Value == null)
+                        {
+                            sqlParam.Value = DBNull.Value;
+                        }
+                        else
+                        {
+                            sqlParam.Value = param.Value;
+                        }
                         cmd.Parameters.Add(sqlParam);
                     }
 
@@ -473,7 +488,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
                 key = key.Replace(parameter.ParameterName, value);
             }
 
-            key = key.Replace("\r", string.Empty).Replace("\n", Environment.NewLine);
+            //key = key.Replace("\r", string.Empty).Replace("\n", Environment.NewLine);
 
             key = TempTableNameRegex.Replace(key, TempTableName);
 
@@ -599,25 +614,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
                     }
                 }
             }
-
-            //foreach (string rn in resourceNames)
-            //{
-            //    using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(rn))
-            //    {
-            //        if (stream.Length > 0)
-            //        {
-            //            MockQueryResultSet mockResultSet = MockQueryResultSet.Deserialize(stream);
-
-            //            if (mockResultSet.CommandResults != null)
-            //            {
-            //                foreach (MockQueryResult mockResult in mockResultSet.CommandResults)
-            //                {
-            //                    AddMockResult(mockResult);
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
         }
 
         #endregion
