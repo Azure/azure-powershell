@@ -31,14 +31,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Factories
         }
 
         public ITokenProvider TokenProvider { get; set; }
+     
 
-        public IAccessToken Authenticate(AzureAccount account, AzureEnvironment environment, string tenant, SecureString password, ShowDialog promptBehavior)
+        public IAccessToken Authenticate(AzureAccount account, AzureEnvironment environment, string tenant, SecureString password, ShowDialog promptBehavior, 
+            AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            var token = TokenProvider.GetAccessToken(GetAdalConfiguration(environment, tenant), promptBehavior, account.Id, password, account.Type);
+            var token = TokenProvider.GetAccessToken(GetAdalConfiguration(environment, tenant, resourceId), promptBehavior, account.Id, password, account.Type);
             account.Id = token.UserId;
             return token;
         }
-
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
         {
             if (context.Subscription == null)
@@ -76,20 +77,21 @@ namespace Microsoft.WindowsAzure.Commands.Common.Factories
                 throw new ArgumentException(Resources.InvalidSubscriptionState, ex);
             }
         }
-
-        private AdalConfiguration GetAdalConfiguration(AzureEnvironment environment, string tenantId)
+       
+        
+        private AdalConfiguration GetAdalConfiguration(AzureEnvironment environment, string tenantId,
+            AzureEnvironment.Endpoint resourceId)
         {
             if (environment == null)
             {
                 throw new ArgumentNullException("environment");
             }
             var adEndpoint = environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory];
-            var adResourceId = environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId];
-
+            
             return new AdalConfiguration
             {
                 AdEndpoint = adEndpoint,
-                ResourceClientUri = adResourceId,
+                ResourceClientUri = environment.Endpoints[resourceId],
                 AdDomain = tenantId
             };
         }

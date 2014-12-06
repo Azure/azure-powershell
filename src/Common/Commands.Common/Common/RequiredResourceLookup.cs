@@ -52,7 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     "microsoft.visualstudio",
                     "microsoft.insights",
                     "successbricks.cleardb",
-                    "microsoft.cache" };
+                    "microsoft.cache",
+                    "Microsoft.KeyVault"};
             }
             if (typeof(T).FullName.EndsWith("BatchManagementClient"))
             {
