@@ -339,5 +339,47 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                 contextPsObject.BaseObject is ServerDataServiceSqlAuth,
                 "Expecting a ServerDataServiceSqlAuth object");
         }
+
+        /// <summary>
+        /// Common helper method for other tests to create a context for ESA server.
+        /// </summary>
+        /// <param name="contextVariable">The variable name that will hold the new context.</param>
+        public static void CreateServerContextSqlAuthV2(
+            System.Management.Automation.PowerShell powershell,
+            string manageUrl,
+            string username,
+            string password,
+            string contextVariable)
+        {
+            UnitTestHelper.ImportAzureModule(powershell);
+            UnitTestHelper.CreateTestCredential(
+                powershell,
+                username,
+                password);
+
+            Collection<PSObject> serverContext;
+            using (AsyncExceptionManager exceptionManager = new AsyncExceptionManager())
+            {
+                serverContext = powershell.InvokeBatchScript(
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        @"{1} = New-AzureSqlDatabaseServerContext " +
+                        @"-ManageUrl {0} " +
+                        @"-Credential $credential " +
+                        @"-Version 12.0 ",
+                        manageUrl,
+                        contextVariable),
+                    contextVariable);
+            }
+
+            Assert.AreEqual(0, powershell.Streams.Error.Count, "Errors during run!");
+            Assert.AreEqual(0, powershell.Streams.Warning.Count, "Warnings during run!");
+            powershell.Streams.ClearStreams();
+
+            PSObject contextPsObject = serverContext.Single();
+            Assert.IsTrue(
+                contextPsObject.BaseObject is TSqlConnectionContext,
+                "Expecting a TSqlConnectionContext object");
+        }
     }
 }

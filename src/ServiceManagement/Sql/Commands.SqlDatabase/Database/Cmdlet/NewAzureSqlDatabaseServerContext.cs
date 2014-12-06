@@ -140,6 +140,13 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
              HelpMessage = "The subscription to use, or uses the current subscription if not specified")]
         public string SubscriptionName { get; set; }
 
+        /// <summary>
+        /// Switch to indiciate the the server is an ESA server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Indicates the server version being targeted.  Valid values [2.0, 12.0].  Default = 2.0")]
+        public float Version { get; set; }
+
         #endregion
 
         #region Current Subscription Management
@@ -172,43 +179,72 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// <param name="credentials">The SQL Authentication credentials for the server.</param>
         /// <returns>A new <see cref="ServerDataServiceSqlAuth"/> context,
         /// or <c>null</c> if an error occurred.</returns>
-        internal ServerDataServiceSqlAuth GetServerDataServiceBySqlAuth(
+        internal IServerDataServiceContext GetServerDataServiceBySqlAuth(
             string serverName,
             Uri managementServiceUri,
-            SqlAuthenticationCredentials credentials)
+            SqlAuthenticationCredentials credentials,
+            Uri manageUrl)
         {
-            ServerDataServiceSqlAuth context = null;
-
+            IServerDataServiceContext context = null;
             Guid sessionActivityId = Guid.NewGuid();
-            try
-            {
-                context = ServerDataServiceSqlAuth.Create(
-                    managementServiceUri,
-                    sessionActivityId,
-                    credentials,
-                    serverName);
 
-                // Retrieve $metadata to verify model version compatibility
-                XDocument metadata = context.RetrieveMetadata();
-                XDocument filteredMetadata = DataConnectionUtility.FilterMetadataDocument(metadata);
-                string metadataHash = DataConnectionUtility.GetDocumentHash(filteredMetadata);
-                if (!context.metadataHashes.Any(knownHash => metadataHash == knownHash))
+            if (this.MyInvocation.BoundParameters.ContainsKey("Version"))
+            {
+                if (this.Version == 12.0f)
                 {
-                    this.WriteWarning(Resources.WarningModelOutOfDate);
+                    try
+                    {
+                        context = new TSqlConnectionContext(
+                            sessionActivityId,
+                            manageUrl.Host,
+                            credentials.UserName,
+                            credentials.Password);
+                    }
+                    catch (Exception ex)
+                    {
+                        SqlDatabaseExceptionHandler.WriteErrorDetails(
+                            this,
+                            sessionActivityId.ToString(),
+                            ex);
+
+                        // The context is not in an valid state because of the error, set the context 
+                        // back to null.
+                        context = null;
+                    }
                 }
+                else
+                {
+                    try
+                    {
+                        context = ServerDataServiceSqlAuth.Create(
+                            managementServiceUri,
+                            sessionActivityId,
+                            credentials,
+                            serverName);
 
-                context.MergeOption = MergeOption.PreserveChanges;
-            }
-            catch (Exception ex)
-            {
-                SqlDatabaseExceptionHandler.WriteErrorDetails(
-                    this,
-                    sessionActivityId.ToString(),
-                    ex);
+                        // Retrieve $metadata to verify model version compatibility
+                        XDocument metadata = ((ServerDataServiceSqlAuth)context).RetrieveMetadata();
+                        XDocument filteredMetadata = DataConnectionUtility.FilterMetadataDocument(metadata);
+                        string metadataHash = DataConnectionUtility.GetDocumentHash(filteredMetadata);
+                        if (!((ServerDataServiceSqlAuth)context).metadataHashes.Any(knownHash => metadataHash == knownHash))
+                        {
+                            this.WriteWarning(Resources.WarningModelOutOfDate);
+                        }
 
-                // The context is not in an valid state because of the error, set the context 
-                // back to null.
-                context = null;
+                        ((ServerDataServiceSqlAuth)context).MergeOption = MergeOption.PreserveChanges;
+                    }
+                    catch (Exception ex)
+                    {
+                        SqlDatabaseExceptionHandler.WriteErrorDetails(
+                            this,
+                            sessionActivityId.ToString(),
+                            ex);
+
+                        // The context is not in an valid state because of the error, set the context 
+                        // back to null.
+                        context = null;
+                    }
+                }
             }
 
             return context;
@@ -250,7 +286,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// <returns>A new operation context for the server.</returns>
         internal IServerDataServiceContext CreateServerDataServiceContext(
             string serverName,
-            Uri managementServiceUri)
+            Uri managementServiceUri,
+            Uri manageUrl)
         {
             switch (this.ParameterSetName)
             {
@@ -262,7 +299,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     return this.GetServerDataServiceBySqlAuth(
                         serverName,
                         managementServiceUri,
-                        credentials);
+                        credentials,
+                        manageUrl);
 
                 case FullyQualifiedServerNameWithCertAuthParamSet:
                 case ServerNameWithCertAuthParamSet:
@@ -293,7 +331,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 
                 // Creates a new Server Data Service Context for the service
                 IServerDataServiceContext operationContext =
-                    this.CreateServerDataServiceContext(serverName, managementServiceUri);
+                    this.CreateServerDataServiceContext(serverName, managementServiceUri, manageUrl);
 
                 if (operationContext != null)
                 {

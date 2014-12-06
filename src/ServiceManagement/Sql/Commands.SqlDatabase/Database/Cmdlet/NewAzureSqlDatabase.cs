@@ -177,7 +177,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     ServerDataServiceCertAuth.Create(this.ServerName, subscription);
 
                 GetClientRequestId = () => context.ClientRequestId;
-                
+
                 Services.Server.Database response = context.CreateNewDatabase(
                     this.DatabaseName,
                     maxSizeGb,
@@ -185,7 +185,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     this.Collation,
                     this.Edition,
                     this.ServiceObjective);
-
+                
                 response = CmdletCommon.WaitForDatabaseOperation(this, context, response, this.DatabaseName, true);
 
                 // Retrieve the database with the specified name

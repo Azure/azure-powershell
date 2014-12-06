@@ -270,6 +270,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
         /// <param name="powershell">An instance of the <see cref="PowerShell"/> object.</param>
         public static void CreateTestCredential(System.Management.Automation.PowerShell powershell, string username, string password)
         {
+            password = password.Replace("$", "`$");
+
             // Create the test credential
             powershell.InvokeBatchScript(
                 string.Format(@"$user = ""{0}""", username),
