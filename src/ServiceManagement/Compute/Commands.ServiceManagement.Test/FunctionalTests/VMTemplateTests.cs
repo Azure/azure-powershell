@@ -473,9 +473,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 string testImageName = Utilities.GetUniqueShortName(vmNamePrefix);
                 Console.WriteLine("------------------------------Stop the VM (for 2nd VM): completed---------------------------------");
                 //f.	Try to save the VM image with the existing name (must fail)
-                Console.WriteLine("------------------------------Save the VM image (must fail)---------------------------------");
-                Utilities.VerifyFailure(() => vmPowershellCmdlets.SaveAzureVMImage(serviceName, vmName1, vmImageName, CONSTANT_SPECIALIZED, vmImageName),ConflictErrorException);
-                Console.WriteLine("------------------------------Save the VM image: completed---------------------------------");
+                Console.WriteLine("------------------------------Save the VM image with the existing name (must fail)---------------------------------");
+                Utilities.VerifyFailure(() => vmPowershellCmdlets.SaveAzureVMImage(serviceName, vmName1, vmImageName, CONSTANT_SPECIALIZED, vmImageName, false, false), ConflictErrorException);
+                Console.WriteLine("------------------------------Save the VM image with the existing name (must fail): completed---------------------------------");
                 //g.	Try to save the VM image with the wrong vm name (must fail)
                 Console.WriteLine("------------------------------Save the VM image (must fail)---------------------------------");
                 Utilities.VerifyFailure(() => vmPowershellCmdlets.SaveAzureVMImage(serviceName, Utilities.GetUniqueShortName(vmNamePrefix), testImageName, CONSTANT_SPECIALIZED, testImageName), ResourceNotFoundException);
