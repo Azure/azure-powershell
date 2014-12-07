@@ -234,6 +234,10 @@
       <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
       <Name>Commands.Tags</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\StreamAnalytics\Commands.StreamAnalytics\Commands.StreamAnalytics.csproj">
+      <Project>{F49A314A-A235-47D3-A654-1EC19ACA366C}</Project>
+      <Name>Commands.StreamAnalytics</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Resources.dll-Help.xml">
