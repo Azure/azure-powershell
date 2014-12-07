@@ -172,6 +172,41 @@
       ContinueOnError="false" />
   </Target>
 
+  <Target Name="AzureRTRepeat10" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+    <Message Importance="high" Text="Running a specific tests..." />
+    <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
+    <Exec
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug1.trx"
+      ContinueOnError="false" />
+    <Exec
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug2.trx"
+      ContinueOnError="false" />
+    <Exec
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug3.trx"
+      ContinueOnError="false" />
+    <Exec
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug4.trx"
+      ContinueOnError="false" />
+    <Exec
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug5.trx"
+      ContinueOnError="false" />
+    <Exec
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug6.trx"
+      ContinueOnError="false" />
+    <Exec
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug7.trx"
+      ContinueOnError="false" />
+    <Exec
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug8.trx"
+      ContinueOnError="false" />
+    <Exec
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug9.trx"
+      ContinueOnError="false" />
+    <Exec
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug10.trx"
+      ContinueOnError="false" />
+  </Target>
+  
   <Target Name="AzureRTMulti" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
     <Message Importance="high" Text="Running tests:" />
     <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
