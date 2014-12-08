@@ -13,6 +13,7 @@
 // ---
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql;
 using System;
@@ -30,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
     {
         public static string username = "testlogin";
         public static string password = "MyS3curePa$$w0rd";
-        public static string manageUrl = "https://mysvr2.adamkr-vm04.onebox.xdb.mscds.com";
+        public static string manageUrl = "https://mysvr2.database.windows.net";
 
         [TestInitialize]
         public void Setup()
@@ -54,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                 System.Management.Automation.PowerShell.Create())
             {
                 // Create a context
-                NewAzureSqlDatabaseServerContextTests.CreateServerContextSqlAuthV2(
+                NewAzureSqlDatabaseServerContextTests.CreateServerContextSqlAuthV12(
                     powershell,
                     manageUrl,
                     username,
@@ -121,7 +122,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
             }
         }
 
-
         //[RecordMockDataResults("./")]
         [TestMethod]
         public void GetAzureSqlDatabaseWithSqlAuthv12()
@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                 System.Management.Automation.PowerShell.Create())
             {
                 // Create a context
-                NewAzureSqlDatabaseServerContextTests.CreateServerContextSqlAuthV2(
+                NewAzureSqlDatabaseServerContextTests.CreateServerContextSqlAuthV12(
                     powershell,
                     manageUrl,
                     username,
@@ -189,7 +189,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                 System.Management.Automation.PowerShell.Create())
             {
                 // Create a context
-                NewAzureSqlDatabaseServerContextTests.CreateServerContextSqlAuthV2(
+                NewAzureSqlDatabaseServerContextTests.CreateServerContextSqlAuthV12(
                     powershell,
                     manageUrl,
                     username,

@@ -488,8 +488,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
                 key = key.Replace(parameter.ParameterName, value);
             }
 
-            //key = key.Replace("\r", string.Empty).Replace("\n", Environment.NewLine);
-
             key = TempTableNameRegex.Replace(key, TempTableName);
 
             return key;

@@ -162,7 +162,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 
         #endregion
 
-
         /// <summary>
         /// Connect to a Azure SQL Server with the given ManagementService Uri using
         /// SQL authentication credentials.

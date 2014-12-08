@@ -407,8 +407,17 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             return GetDatabase(databaseName);
         }
 
+        /// <summary>
+        /// Checks to make sure the collation only contains alphanumeric characters and '_'
+        /// </summary>
+        /// <param name="databaseCollation">The string to verify</param>
         private void SqlCollationCheck(string databaseCollation)
         {
+            if(string.IsNullOrEmpty (databaseCollation))
+            {
+                return;
+            }
+
             bool isValid = databaseCollation.All( (c) =>
                 {
                     if(!char.IsLetterOrDigit(c) && c != '_')
