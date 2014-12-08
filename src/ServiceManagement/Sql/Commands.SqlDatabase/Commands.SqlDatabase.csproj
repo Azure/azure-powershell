@@ -190,6 +190,8 @@
     <Compile Include="Services\Server\ServerDataServiceEnums.cs" />
     <Compile Include="Services\Server\ServerDataServiceSqlAuth.cs" />
     <Compile Include="Services\Server\ServerContextInternal.cs" />
+    <Compile Include="Services\Server\SqlAuthContextFactory.cs" />
+    <Compile Include="Services\Server\TSqlConnectionContext.cs" />
     <Compile Include="Services\ServiceResourceError.cs" />
     <Compile Include="Services\SqlDatabaseManagementError.cs" />
     <Compile Include="SqlDatabaseCmdletBase.cs" />
