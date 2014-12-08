@@ -35,6 +35,21 @@ function Set-DefaultResource
 
 <#
 .SYNOPSIS
+Returns default values for the test
+#>
+function Get-DefaultValue ($key)
+{
+    $defaults = @{
+		StorageAccountName = "storsimple1htg67zmg7",
+		StorageAccountPrimaryAccessKey = "Xk12mx7wGl4uCc2yEYvNXkGXHR9/jUyVDmVT4rVS+1EFEUcdKynl1w8/cUc03ZMjkw3ooPpi0yTBmwyPrxGyNg==",
+		StorageAccountSecondaryAccessKey = "HSXNE9BMSWa0rjX77svBkNI2PBng0UVVF1HOxCLvQloV0zePzxLQc3Fy5h51Tou22ojBUj+LqCrg+01D1JS0mQ=="
+	}
+
+	return $defaults[key];
+}
+
+<#
+.SYNOPSIS
 Tests create, get and delete of ACR.
 #>
 function Test-CreateGetDeleteAccessControlRecord
@@ -88,9 +103,9 @@ Tests create, get and delete of SAC.
 #>
 function Test-CreateGetDeleteStorageAccountCredential
 {
-    $storageAccountName = ""
-    $storageAccountKey = ""
-
+    $storageAccountName = Get-DefaultValye -key "StorageAccountName"
+    $storageAccountKey = Get-DefaultValue -Key "StorageAccountPrimaryAccessKey"
+	
     #Pre-req
     Set-DefaultResource
     
@@ -109,9 +124,9 @@ Tests create, update and delete of ACR.
 #>
 function Test-CreateUpdateDeleteStorageAccountCredential
 {
-    $storageAccountName = ""
-    $storageAccountKey = ""
-    $storageAccountSecondaryKey = ""
+    $storageAccountName = Get-DefaultValye -key "StorageAccountName"
+    $storageAccountKey = Get-DefaultValue -Key "StorageAccountPrimaryAccessKey"
+    $storageAccountSecondaryKey = Get-DefaultValue -Key "StorageAccountSecondaryAccessKey"
 
     #Pre-req
     Set-DefaultResource

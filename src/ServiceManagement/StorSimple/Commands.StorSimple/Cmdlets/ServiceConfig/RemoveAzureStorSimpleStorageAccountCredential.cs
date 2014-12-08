@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByObject, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageSACObject)]
         [ValidateNotNullOrEmpty]
-        public StorageAccountCredential SAC { get; set; }
+        public StorageAccountCredentialResponse SAC { get; set; }
 
         [Parameter(Position = 1, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                           {
                               try
                               {
-                                  StorageAccountCredential existingSac = null;
+                                  StorageAccountCredentialResponse existingSac = null;
                                   switch (ParameterSetName)
                                   {
                                       case StorSimpleCmdletParameterSet.IdentifyByName:

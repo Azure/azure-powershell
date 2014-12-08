@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return sc.AcrChangeList.Updated;
         }
 
-        public IList<StorageAccountCredential> GetAllStorageAccountCredentials()
+        public IList<StorageAccountCredentialResponse> GetAllStorageAccountCredentials()
         {
             var sc = GetStorSimpleClient().ServiceConfig.Get(GetCustomRequestHeaders());
             if (sc == null || sc.CredentialChangeList == null)

@@ -47,7 +47,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     WriteVerbose(Resources.NotFoundMessageStorageAccount);
                     return;
                 }
-                
+
+                String encryptedKey = null;
+                StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(this);
+                if (!String.IsNullOrEmpty(StorageAccountKey))
+                {
+                    storSimpleCryptoManager.EncryptSecretWithRakPub(StorageAccountKey, out encryptedKey);
+                }
+
                 var serviceConfig = new ServiceConfiguration()
                 {
                     AcrChangeList = new AcrChangeList(),
@@ -59,14 +66,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         {
                             new StorageAccountCredential()
                             {
+                                InstanceId = existingSac.InstanceId,
                                 CloudType = existingSac.CloudType,
                                 Hostname = existingSac.Hostname,
                                 Login = existingSac.Login,
-                                Password = StorageAccountKey ?? existingSac.Password,
+                                Password = encryptedKey ?? existingSac.Password,
                                 UseSSL = UseSSL ?? existingSac.UseSSL,
                                 VolumeCount = existingSac.VolumeCount,
                                 Name = existingSac.Name,
-                                PasswordEncryptionCertThumbprint = existingSac.PasswordEncryptionCertThumbprint
+                                IsDefault = existingSac.IsDefault,
+                                PasswordEncryptionCertThumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint()
                             },
                         }
                     }

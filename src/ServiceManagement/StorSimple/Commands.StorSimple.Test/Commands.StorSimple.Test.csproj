@@ -53,6 +53,14 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Commands.Common, Version=0.8.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Common\Commands.Common\bin\Debug\Microsoft.WindowsAzure.Commands.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Commands.ScenarioTest.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Common\Commands.ScenarioTests.Common\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Common">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
@@ -117,14 +125,6 @@
     <Compile Include="ScenarioTests\VolumeTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5EE72C53-1720-4309-B54B-5FB79703195F}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
-      <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
-      <Name>Commands.ScenarioTests.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Commands.StorSimple\Commands.StorSimple.csproj">
       <Project>{11524d98-6c40-4091-a8e1-86463fee607c}</Project>
       <Name>Commands.StorSimple</Name>

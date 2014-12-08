@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Alias("StorageAccount")]
         [Parameter(Position = 2, Mandatory = true, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageSACObject)]
         [ValidateNotNullOrEmpty]
-        public StorageAccountCredential PrimaryStorageAccountCredential { get; set; }
+        public StorageAccountCredentialResponse PrimaryStorageAccountCredential { get; set; }
 
         [Alias("CloudBandwidth")]
         [Parameter(Position = 3, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDataContainerBandwidth)]
