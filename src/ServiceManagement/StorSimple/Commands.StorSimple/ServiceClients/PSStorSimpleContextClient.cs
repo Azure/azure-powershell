@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.WindowsAzure;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.StorSimple;
+using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
@@ -73,14 +74,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 return Resources.NotFoundMessageResource;
             }
 
-
             StorSimpleContext.ResourceId = resCred.ResourceId;
             StorSimpleContext.StampId = resCred.BackendStampId;
             StorSimpleContext.CloudServiceName = resCred.CloudServiceName;
             StorSimpleContext.ResourceType = resCred.ResourceType;
             StorSimpleContext.ResourceName = resCred.ResourceName;
             StorSimpleContext.ResourceProviderNameSpace = resCred.ResourceNameSpace;
-
+            StorSimpleContext.KeyManager = new StorSimpleKeyManager(resCred.ResourceId);
+            
             return Resources.SuccessMessageSetResourceContext;
         }
 
@@ -88,7 +89,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         {
             return new StorSimpleResourceContext(StorSimpleContext.ResourceId, StorSimpleContext.ResourceName,
                 StorSimpleContext.StampId, StorSimpleContext.CloudServiceName, StorSimpleContext.ResourceProviderNameSpace,
-                StorSimpleContext.ResourceType);
+                StorSimpleContext.ResourceType, StorSimpleContext.KeyManager);
         }
     }
 
@@ -100,9 +101,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public string ResourceProviderNameSpace { get; set; }
         public string ResourceType { get; set; }
         public string ResourceName { get; set; }
+        public StorSimpleKeyManager StorSimpleKeyManager { get; set; }
 
         public StorSimpleResourceContext(string resourceId, string resourceName, string stampId,
-            string cloudServiceName, string resourceProviderNameSpace, string resourceType)
+            string cloudServiceName, string resourceProviderNameSpace, string resourceType, StorSimpleKeyManager keyManager)
         {
             this.ResourceId = resourceId;
             this.ResourceName = resourceName;
@@ -110,6 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             this.ResourceProviderNameSpace = resourceProviderNameSpace;
             this.StampId = stampId;
             this.CloudServiceName = cloudServiceName;
+            this.StorSimpleKeyManager = keyManager;
         }
 
 

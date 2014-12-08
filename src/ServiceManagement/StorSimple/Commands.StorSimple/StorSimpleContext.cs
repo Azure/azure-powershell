@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
@@ -12,5 +13,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public static string ResourceProviderNameSpace { get; set; }
         public static string ResourceType { get; set; }
         public static string ResourceName { get; set; }
+        public static StorSimpleKeyManager KeyManager { get; set; }
     }
 }
