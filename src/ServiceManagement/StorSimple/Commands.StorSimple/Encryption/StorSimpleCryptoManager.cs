@@ -49,6 +49,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
             return CryptoHelper.DecryptCipherAES(encryptedRAKPub, cik);
         }
 
+        public string GetSecretsEncryptionThumbprint()
+        {
+            var key = StorSimpleClient.GetResourceEncryptionKey();
+            return key.ResourceEncryptionKeys.Thumbprint;
+       }
+
         private string GetEncryptedRAKPub()
         {
             //TODO: should use some other method OR is this fine?

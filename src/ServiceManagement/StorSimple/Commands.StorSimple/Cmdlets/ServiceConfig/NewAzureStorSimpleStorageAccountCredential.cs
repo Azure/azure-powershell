@@ -4,6 +4,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
+using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System.Collections.Generic;
 using System.Net;
@@ -41,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             try
             {
                 String encryptedKey = null;
-                StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(this);
+                StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(StorSimpleClient);
                 storSimpleCryptoManager.EncryptSecretWithRakPub(StorageAccountKey, out encryptedKey);
 
                 var serviceConfig = new ServiceConfiguration()
