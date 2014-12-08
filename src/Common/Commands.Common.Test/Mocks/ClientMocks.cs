@@ -58,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         }
 
         public static CloudException Make404Exception()
-        {
+    {
             return CloudException.Create(
                 new HttpRequestMessage(),
                 null,
@@ -75,18 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                     Subscriptions = subscriptions
                 }));
 
-            var tenantOperationsMock = new Mock<Azure.Subscriptions.ITenantOperations>();
-            tenantOperationsMock.Setup(f => f.ListAsync(new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new Azure.Subscriptions.Models.TenantListResult
-                {
-                    TenantIds = new[] { new Azure.Subscriptions.Models.TenantIdDescription
-                    {
-                        Id = "1", TenantId = "1"
-                    }}.ToList()
-                }));
-
             CsmSubscriptionClientMock.Setup(f => f.Subscriptions).Returns(subscriptionOperationsMock.Object);
-            CsmSubscriptionClientMock.Setup(f => f.Tenants).Returns(tenantOperationsMock.Object);
         }
 
         public void LoadRdfeSubscriptions(List<WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription> subscriptions)
@@ -99,6 +88,27 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 }));
 
             RdfeSubscriptionClientMock.Setup(f => f.Subscriptions).Returns(subscriptionOperationsMock.Object);
+        }
+
+        public void LoadTenants(List<Azure.Subscriptions.Models.TenantIdDescription> tenantIds = null)
+        {
+
+            tenantIds = tenantIds ?? new[]
+            {
+                new Azure.Subscriptions.Models.TenantIdDescription
+                {
+                    Id = "Common",
+                    TenantId = "Common"
+                }
+            }.ToList();
+            var tenantOperationsMock = new Mock<Azure.Subscriptions.ITenantOperations>();
+            tenantOperationsMock.Setup(f => f.ListAsync(new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => new Azure.Subscriptions.Models.TenantListResult
+                {
+                    TenantIds = tenantIds
+                }));
+            
+            CsmSubscriptionClientMock.Setup(f => f.Tenants).Returns(tenantOperationsMock.Object);
         }
     }
 }

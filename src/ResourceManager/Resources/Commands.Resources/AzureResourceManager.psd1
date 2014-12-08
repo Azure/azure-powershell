@@ -66,7 +66,11 @@ FormatsToProcess = @(
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',
     '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',
+<<<<<<< HEAD
     '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml'
+=======
+    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml'
+>>>>>>> 68a464556478c96f0fea6bb6c344a499646448ab
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
@@ -78,8 +82,12 @@ NestedModules = @(
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',
     '.\Batch\Microsoft.Azure.Commands.Batch.dll',
+<<<<<<< HEAD
     '.\Compute\Microsoft.Azure.Commands.Compute.dll',
     '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.dll'
+=======
+    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll'
+>>>>>>> 68a464556478c96f0fea6bb6c344a499646448ab
 )
 
 # Functions to export from this module
