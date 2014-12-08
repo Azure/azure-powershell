@@ -55,17 +55,17 @@ ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
 TypesToProcess = @(
-    '.\Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml'
+    '.\Microsoft.Azure.Commands.Compute.Types.ps1xml'
 )
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
-    '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml'
+    '.\Microsoft.Azure.Commands.Compute.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
-    '.\Compute\Microsoft.Azure.Commands.Compute.dll'
+    '.\Microsoft.Azure.Commands.Compute.dll'
 )
 
 # Functions to export from this module
