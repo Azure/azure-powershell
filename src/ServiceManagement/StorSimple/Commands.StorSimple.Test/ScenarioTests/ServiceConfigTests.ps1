@@ -110,12 +110,12 @@ function Test-CreateGetDeleteStorageAccountCredential
     Set-DefaultResource
     
     # Test
-    New-AzureStorSimpleStorageAccountCredential -Name $stoargeAccountName -Key $storageAccountKey -UseSSL $true -WaitForComplete
+    New-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Key $storageAccountKey -UseSSL $true -WaitForComplete
     
     $sacCreated = Get-AzureStorSimpleStorageAccountCredential -Name $storageAccountName
     Assert-NotNull $sacCreated
     
-    Remove-AzureStorSimpleStorageAccountCrdential -Name $storageAccountName -Force -WaitForComplete
+    Remove-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Force -WaitForComplete
 }
 
 <#

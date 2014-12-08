@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
             //reading from keystore
             string cik = null;
             KeyStoreOperationStatus status = keyManager.RetrieveCIK(out cik);
-            if (status != KeyStoreOperationStatus.PERSIST_SUCCESS)
+            if (status != KeyStoreOperationStatus.RETRIEVE_SUCCESS)
             {
                 return status;
             }
