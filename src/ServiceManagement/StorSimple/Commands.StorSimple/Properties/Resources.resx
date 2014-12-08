@@ -238,10 +238,7 @@
     <value>Provide valid dateTime for StartFrom parameter</value>
   </data>
   <data name="CloudExceptionMessage" xml:space="preserve">
-    <value>Call to service with RequestId: {0} failed.</value>
-  </data>
-  <data name="WebExceptionMessage" xml:space="preserve">
-    <value>Network error occurred, RequestId: {0}.</value>
+    <value>Call to service failed with error code: {0}</value>
   </data>
   <data name="FailureMessageCompleteJob" xml:space="preserve">
     <value>The {0} operation failed, please check the job status for more details.</value>

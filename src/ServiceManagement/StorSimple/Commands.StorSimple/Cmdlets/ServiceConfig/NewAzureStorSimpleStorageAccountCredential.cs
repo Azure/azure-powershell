@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System.Collections.Generic;
 using System.Net;
@@ -39,6 +40,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
+                String encryptedKey = null;
+                StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(this);
+                storSimpleCryptoManager.EncryptSecretWithRakPub(StorageAccountKey, out encryptedKey);
+
                 var serviceConfig = new ServiceConfiguration()
                 {
                     AcrChangeList = new AcrChangeList(),
@@ -49,13 +54,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             new StorageAccountCredential()
                             {
                                 CloudType = CloudType.Azure,
-                                Hostname = string.Empty,
-                                Login = string.Empty,
-                                Password = StorageAccountKey,
+                                Hostname = Constants.HostName,
+                                Login = StorageAccountName,
+                                Password = encryptedKey,
+                                PasswordEncryptionCertThumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint(),
                                 UseSSL = UseSSL,
-                                VolumeCount = 0,
-                                Name = StorageAccountName,
-                                PasswordEncryptionCertThumbprint = string.Empty
+                                Name = StorageAccountName
                             },
                         },
                         Deleted = new List<string>(),

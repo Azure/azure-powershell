@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             //reading from keystore
             String keyPersisted = null;
             KeyStoreOperationStatus getKeyFromStoreOutput = keyManager.RetrieveKey(out keyPersisted, ONESDK_KEYSTORE);
-            if (getKeyFromStoreOutput != KeyStoreOperationStatus.PERSIST_SUCCESS)
+            if (getKeyFromStoreOutput != KeyStoreOperationStatus.RETRIEVE_SUCCESS)
             {
                 return getKeyFromStoreOutput;
             }
@@ -43,6 +43,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             encryptedSecret = CryptoHelper.EncryptSecretRSAPKCS(secret, decryptedRAKPub);
 
             return KeyStoreOperationStatus.SUCCESS;
+        }
+
+        public string GetSecretsEncryptionThumbprint()
+        {
+            var key = storSimpleBase.StorSimpleClient.GetResourceEncryptionKey();
+            return key.ResourceEncryptionKeys.Thumbprint;
         }
     }
 }

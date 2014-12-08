@@ -53,10 +53,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     return;
                 }
 
-                if(EncryptionEnabled == true && EncryptionKey == null)
+                if(EncryptionEnabled == true && String.IsNullOrEmpty(EncryptionKey))
                 {
                     throw new ArgumentNullException("EncryptionKey");
                 }
+
+                String encryptedKey = null;
+                StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(this);
+                storSimpleCryptoManager.EncryptSecretWithRakPub(EncryptionKey, out encryptedKey);
 
                 var dc = new DataContainerRequest
                 {
@@ -64,9 +68,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     Name = VolumeContainerName,
                     BandwidthRate = BandWidthRate,
                     IsEncryptionEnabled = EncryptionEnabled ?? false,
-                    EncryptionKey = EncryptionKey,
+                    EncryptionKey = encryptedKey,
                     VolumeCount = 0,
-                    PrimaryStorageAccountCredential = PrimaryStorageAccountCredential
+                    PrimaryStorageAccountCredential = PrimaryStorageAccountCredential,
+                    SecretsEncryptionThumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint()
                 };
 
                 if (WaitForComplete.IsPresent)
