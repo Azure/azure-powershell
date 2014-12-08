@@ -76,8 +76,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 string[] parts = RegistrationKey.Split(new char[] {':'});
                 this.WriteVerbose("RegistrationKey #parts:" + parts.Length);
-                this.WriteVerbose("Using part: " + parts[2]);
-                return parts[2];
+                //this.WriteVerbose("Using part: " + parts[2]);
+                return parts[2].Split(new char[] {'#'})[0];
             }
             catch (Exception ex)
             {

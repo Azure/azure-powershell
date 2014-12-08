@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
         #region privates
         private KeyStoreOperationStatus PersistKey(string keyValue, string filepath)
         {
-            string folderPath = Directory.GetDirectoryRoot(filepath);
+            string folderPath = Path.GetDirectoryName(filepath);
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
