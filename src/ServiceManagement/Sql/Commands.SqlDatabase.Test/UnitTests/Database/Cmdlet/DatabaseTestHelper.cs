@@ -47,6 +47,11 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
         public static readonly Guid StandardS1SloGuid = new Guid("1b1ebd4d-d903-4baa-97f9-4ea675f5e928");
 
         /// <summary>
+        /// The unique GUID for identifying the Standard S0 SLO.
+        /// </summary>
+        public static readonly Guid StandardS0SloGuid = new Guid("f1173c43-91bd-4aaa-973c-54e79e15235b");
+
+        /// <summary>
         /// The unique GUID for identifying the Premium P1 SLO.
         /// </summary>
         public static readonly Guid PremiumP1SloGuid = new Guid("7203483a-c4fb-4304-9e9f-17c71c904f5d");
