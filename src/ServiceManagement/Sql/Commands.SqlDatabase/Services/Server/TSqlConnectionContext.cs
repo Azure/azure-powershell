@@ -381,10 +381,12 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                 }
             }
 
+            SqlCollationCheck(databaseCollation);
+            
             commandText = string.Format(
                 commandText,
                 SqlEscape(databaseName),
-                SqlEscape(databaseCollation),
+                databaseCollation,
                 SqlEscape(maxSizeVal),
                 SqlEscape(databaseEdition.ToString()),
                 SqlEscape(serviceObjectiveName));
@@ -403,6 +405,23 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             }
 
             return GetDatabase(databaseName);
+        }
+
+        private void SqlCollationCheck(string databaseCollation)
+        {
+            bool isValid = databaseCollation.All( (c) =>
+                {
+                    if(!char.IsLetterOrDigit(c) && c != '_')
+                    {
+                        return false;
+                    }
+                    return true;
+                });
+
+            if(!isValid)
+            {
+                throw new ArgumentException("Invalid Collation", "Collation");
+            }
         }
 
         /// <summary>
