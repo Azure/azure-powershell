@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -109,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     catch (Exception)
                     {
                         
-                    }
+                    } 
                     
                     errorRecord = new ErrorRecord(cloudEx, string.Empty, ErrorCategory.InvalidOperation, null);
                     break;
@@ -136,6 +137,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     if (argEx == null)
                         break;
                     errorRecord = new ErrorRecord(argEx, string.Empty, ErrorCategory.InvalidArgument, null);
+                    break;
+                }
+                else if (exType == typeof(StorSimpleSecretManagementException))
+                {
+                    var keyManagerEx = ex as StorSimpleSecretManagementException;
+                    if (keyManagerEx == null)
+                        break;
+                    errorRecord = new ErrorRecord(keyManagerEx, string.Empty, ErrorCategory.SecurityError, null);
                     break;
                 }
 

@@ -137,6 +137,9 @@
     <Compile Include="Cmdlets\Volume\RemoveAzureStorSimpleDeviceVolume .cs" />
     <Compile Include="Cmdlets\Volume\SetAzureStorSimpleDeviceVolume.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Encryption\EncryptionCmdLetHelper.cs" />
+    <Compile Include="Encryption\StorSimpleKeyManager.cs" />
+    <Compile Include="Encryption\StorSimpleSecretManagementException.cs" />
     <Compile Include="Models\PSContracts.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -157,7 +160,7 @@
     <Compile Include="StorSimpleCmdletHelpMessage.cs" />
     <Compile Include="StorSimpleCmdletParameterSet.cs" />
     <Compile Include="StorSimpleContext.cs" />
-    <Compile Include="StorSimpleCryptoManager.cs" />
+    <Compile Include="Encryption\StorSimpleCryptoManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Commands.StorSimple.Library\Commands.StorSimple.Library.csproj">

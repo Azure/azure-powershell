@@ -13,7 +13,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library
     /// </summary>
     public interface IKeyManager
     {
-        KeyStoreOperationStatus PersistKey(String keyValue, String fileName);
-        KeyStoreOperationStatus RetrieveKey(out String keyValue, String fileName);
+        KeyStoreOperationStatus PersistKey(String keyValue);
+        KeyStoreOperationStatus RetrieveKey(out String keyValue);
     }
 }
