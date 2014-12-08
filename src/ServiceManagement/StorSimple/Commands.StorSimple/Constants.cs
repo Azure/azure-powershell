@@ -17,5 +17,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
     public class Constants
     {
         public const string RequestIdHeaderName = "x-ms-request-id";
+        public const string HostName = "blob.core.windows.net";
     }
 }

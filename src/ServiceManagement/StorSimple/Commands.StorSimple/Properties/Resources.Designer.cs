@@ -124,7 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Call to service with RequestId: {0} failed..
+        ///   Looks up a localized string similar to Call to service failed with error code: {0}.
         /// </summary>
         internal static string CloudExceptionMessage {
             get {
@@ -507,15 +507,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string SuccessMessageSubmitJob {
             get {
                 return ResourceManager.GetString("SuccessMessageSubmitJob", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Network error occurred, RequestId: {0}..
-        /// </summary>
-        internal static string WebExceptionMessage {
-            get {
-                return ResourceManager.GetString("WebExceptionMessage", resourceCulture);
             }
         }
     }

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
+using System.Xml.Linq;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Net;
@@ -76,6 +77,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             WriteVerbose(msg);
         }
 
+        private static void StripNamespaces(XDocument doc)
+        {
+            var elements = doc.Descendants();
+            elements.Attributes().Where(attr => attr.IsNamespaceDeclaration).Remove();
+            foreach (var element in elements)
+            {
+                element.Name = element.Name.LocalName;
+            }
+        }
+
         internal virtual void HandleException(Exception exception)
         {
             ErrorRecord errorRecord = null;
@@ -89,12 +100,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     if (cloudEx == null)
                         break;
                     var response = cloudEx.Response;
-                    string requestId = string.Empty;
-                    if (response.Headers != null && response.Headers.ContainsKey(Constants.RequestIdHeaderName))
+                    try
                     {
-                        requestId = response.Headers[Constants.RequestIdHeaderName].FirstOrDefault();
-                        WriteWarning(String.Format(Resources.CloudExceptionMessage, requestId));
+                        XDocument xDoc = XDocument.Parse(response.Content);
+                        StripNamespaces(xDoc);
+                        string cloudErrorCode = xDoc.Descendants("ErrorCode").FirstOrDefault().Value;
+                        WriteVerbose(String.Format(Resources.CloudExceptionMessage, cloudErrorCode));
+                    }
+                    catch (Exception)
+                    {
+                        
                     } 
+                    
                     errorRecord = new ErrorRecord(cloudEx, string.Empty, ErrorCategory.InvalidOperation, null);
                     break;
                 }
@@ -103,13 +120,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     var webEx = ex as WebException;
                     if (webEx == null)
                         break;
-                    var response = webEx.Response;
-                    string requestId = string.Empty;
-                    if (response.Headers != null)
-                    {
-                        requestId = response.Headers[Constants.RequestIdHeaderName];
-                        WriteWarning(String.Format(Resources.WebExceptionMessage, requestId));
-                    }
                     errorRecord = new ErrorRecord(webEx, string.Empty, ErrorCategory.ConnectionError, null);
                     break;
                 }

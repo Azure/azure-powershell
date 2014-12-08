@@ -53,6 +53,14 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Commands, Version=0.8.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Package\Debug\ServiceManagement\Azure\Services\Microsoft.WindowsAzure.Commands.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Commands.Common, Version=0.8.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Common\Commands.Common\bin\Debug\Microsoft.WindowsAzure.Commands.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Common">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
@@ -158,14 +166,6 @@
     <ProjectReference Include="..\..\..\Commands.StorSimple.Library\Commands.StorSimple.Library.csproj">
       <Project>{b0e9c13f-4e03-4df0-91fa-9a8c76e7422d}</Project>
       <Name>Commands.StorSimple.Library</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Services\Commands\Commands.csproj">
-      <Project>{cd5aa507-f5ef-473d-855b-84b91a1abe54}</Project>
-      <Name>Commands</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
