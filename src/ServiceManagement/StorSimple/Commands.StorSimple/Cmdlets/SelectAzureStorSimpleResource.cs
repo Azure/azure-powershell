@@ -30,6 +30,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             set { this.registrationKey = value; }
         }
 
+        protected override void BeginProcessing()
+        {
+            return;
+        }
+
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>

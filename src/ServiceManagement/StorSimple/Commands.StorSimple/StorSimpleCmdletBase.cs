@@ -159,5 +159,32 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
             WriteError(errorRecord);
         }
+
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            VerifyResourceContext();
+        }
+        private void VerifyResourceContext()
+        {
+            if (!CheckResourceContextPresent())
+            {
+                Exception ex = new Exception("Resource Context not set. Please set the resourcename using Select-AzureStorSimpleResource commandlet");
+                ErrorRecord resourceNotSetRecord = new ErrorRecord(ex, "RESOURCE_NOT_SET", ErrorCategory.InvalidOperation, null);
+                this.ThrowTerminatingError(resourceNotSetRecord);
+            }
+        }
+
+        private bool CheckResourceContextPresent()
+        {
+            var resourceContext = StorSimpleClient.GetResourceContext();
+            if (resourceContext == null
+                || String.IsNullOrEmpty(resourceContext.ResourceId)
+                || String.IsNullOrEmpty(resourceContext.ResourceName))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

@@ -7,6 +7,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureStorSimpleResource"), OutputType(typeof(IEnumerable<ResourceCredentials>))]
     public class GetAzureStorSimpleResource : StorSimpleCmdletBase
     {
+        protected override void BeginProcessing()
+        {
+            return;
+        }
+
         public override void ExecuteCmdlet()
         {
             try
