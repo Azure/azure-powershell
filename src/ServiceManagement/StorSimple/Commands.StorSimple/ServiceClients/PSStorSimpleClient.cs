@@ -25,6 +25,8 @@ using Microsoft.WindowsAzure.Management.Scheduler.Models;
     public partial class PSStorSimpleClient
     {
         private CloudServiceManagementClient cloudServicesClient;
+
+        public string ClientRequestId;
         
         private ObjectCache Resourcecache = MemoryCache.Default;
 
@@ -94,13 +96,15 @@ using Microsoft.WindowsAzure.Management.Scheduler.Models;
         
         private CustomRequestHeaders GetCustomRequestHeaders()
         {
-            return new CustomRequestHeaders()
+            var hdrs = new CustomRequestHeaders()
             {
                 // ClientRequestId is a unique ID for every request to StorSimple .
                 // It is useful when diagnosing failures in API calls.
-                ClientRequestId = Guid.NewGuid().ToString("D") + "_PS",
+                ClientRequestId = this.ClientRequestId,
                 Language = "en-US"
             };
+
+            return hdrs;
         }
 
         private static bool IgnoreCertificateErrorHandler

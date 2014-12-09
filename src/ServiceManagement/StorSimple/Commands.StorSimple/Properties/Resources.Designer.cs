@@ -124,6 +124,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ClientRequestId: {0}.
+        /// </summary>
+        internal static string ClientRequestIdMessage {
+            get {
+                return ResourceManager.GetString("ClientRequestIdMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Call to service failed with error code: {0}.
         /// </summary>
         internal static string CloudExceptionMessage {

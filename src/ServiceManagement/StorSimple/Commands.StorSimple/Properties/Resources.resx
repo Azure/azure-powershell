@@ -267,4 +267,7 @@
   <data name="ReturnedCountVolumeMessage" xml:space="preserve">
     <value># of volumes returned: {0}</value>
   </data>
+  <data name="ClientRequestIdMessage" xml:space="preserve">
+    <value>ClientRequestId: {0}</value>
+  </data>
 </root>
