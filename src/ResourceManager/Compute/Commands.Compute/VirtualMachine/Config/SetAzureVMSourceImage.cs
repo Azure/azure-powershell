@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.OSDisk),
+        ProfileNouns.SourceImage),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class SetAzureVMOSDiskCommand : AzurePSCmdlet
+    public class SetAzureVMSourceImageCommand : AzurePSCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -39,22 +39,21 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
-        [Alias("OSDiskName", "DiskName")]
+        [Alias("SourceImageName", "ImageName")]
         [Parameter(
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMOSDiskName)]
+            HelpMessage = HelpMessages.VMSourceImageName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Alias("OSDiskVhdUri", "DiskVhdUri")]
         [Parameter(
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMOSDiskVhdUri)]
+            HelpMessage = HelpMessages.VMVHDContainer)]
         [ValidateNotNullOrEmpty]
-        public string VhdUri { get; set; }
+        public string DestinationVhdsContainer { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -63,15 +62,13 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.StorageProfile = new StorageProfile();
             }
 
-            this.VM.StorageProfile.OSDisk = new OSDisk
-            {
-                Caching = CachingType.ReadWrite,
-                Name = this.Name,
-                VirtualHardDisk = new VirtualHardDisk
+            this.VM.StorageProfile.SourceImage = string.IsNullOrEmpty(this.Name) ? null :
+                new SourceImageReference
                 {
-                    Uri = this.VhdUri
-                }
-            };
+                    ReferenceUri = this.Name
+                }.Normalize(this.CurrentContext.Subscription.Id.ToString());
+
+            this.VM.StorageProfile.DestinationVhdsContainer = string.IsNullOrEmpty(this.DestinationVhdsContainer) ? null : new Uri(this.DestinationVhdsContainer);
 
             WriteObject(this.VM);
         }
