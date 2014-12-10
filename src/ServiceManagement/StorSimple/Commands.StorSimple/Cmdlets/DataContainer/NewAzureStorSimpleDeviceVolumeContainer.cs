@@ -61,7 +61,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 String encryptedKey = null;
                 StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(StorSimpleClient);
-                storSimpleCryptoManager.EncryptSecretWithRakPub(EncryptionKey, out encryptedKey);
+                if (EncryptionEnabled == true)
+                {
+                    WriteVerbose(Resources.EncryptionInProgressMessage);
+                    storSimpleCryptoManager.EncryptSecretWithRakPub(EncryptionKey, out encryptedKey);
+                }
 
                 var dc = new DataContainerRequest
                 {

@@ -142,6 +142,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Encryption in progress....
+        /// </summary>
+        internal static string EncryptionInProgressMessage {
+            get {
+                return ResourceManager.GetString("EncryptionInProgressMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} operation failed, please check the job status for more details..
         /// </summary>
         internal static string FailureMessageCompleteJob {

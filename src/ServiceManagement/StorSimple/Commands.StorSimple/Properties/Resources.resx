@@ -270,4 +270,7 @@
   <data name="ClientRequestIdMessage" xml:space="preserve">
     <value>ClientRequestId: {0}</value>
   </data>
+  <data name="EncryptionInProgressMessage" xml:space="preserve">
+    <value>Encryption in progress...</value>
+  </data>
 </root>
