@@ -210,7 +210,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                     command.CommandText = getDatabaseQuery;
                     DbParameter param = command.CreateParameter();
                     param.ParameterName = "@name";
-                    param.Value = null;
+                    param.Value = DBNull.Value;
 
                     command.Parameters.Add(param);
 
