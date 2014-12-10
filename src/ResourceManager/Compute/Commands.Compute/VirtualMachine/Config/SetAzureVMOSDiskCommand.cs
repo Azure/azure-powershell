@@ -24,11 +24,15 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.OSDisk),
+        ProfileNouns.OSDisk,
+        DefaultParameterSetName = WindowsParamSet),
     OutputType(
         typeof(PSVirtualMachine))]
     public class SetAzureVMOSDiskCommand : AzurePSCmdlet
     {
+        protected const string WindowsParamSet = "WindowsParamSet";
+        protected const string LinuxParamSet = "LinuxParamSet";
+
         [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
@@ -56,6 +60,28 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string VhdUri { get; set; }
 
+        [Parameter(
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskCaching)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(ValidateSetValues.ReadOnly, ValidateSetValues.ReadWrite)]
+        public string Caching { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsParamSet,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskWindowsOSType)]
+        public SwitchParameter Windows { get; set; }
+
+        [Parameter(
+            ParameterSetName = LinuxParamSet,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+        public SwitchParameter Linux { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
@@ -65,8 +91,9 @@ namespace Microsoft.Azure.Commands.Compute
 
             this.VM.StorageProfile.OSDisk = new OSDisk
             {
-                Caching = CachingType.ReadWrite,
+                Caching = this.Caching,
                 Name = this.Name,
+                OperatingSystemType = this.Windows.IsPresent ? OperatingSystemType.Windows : this.Linux.IsPresent ? OperatingSystemType.Linux : null,
                 VirtualHardDisk = new VirtualHardDisk
                 {
                     Uri = this.VhdUri
