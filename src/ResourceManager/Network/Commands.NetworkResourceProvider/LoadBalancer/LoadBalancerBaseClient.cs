@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     public abstract class LoadBalancerBaseClient : NetworkResourceBaseClient
     {
-        public const string LoadBalancerCmdletName = "AzureLoadBalancer";
-
         public ILoadBalancerOperations LoadBalancerClient
         {
             get

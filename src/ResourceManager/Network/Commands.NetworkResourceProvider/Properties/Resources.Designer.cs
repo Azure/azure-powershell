@@ -124,11 +124,47 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing resource ....
+        /// </summary>
+        public static string RemoveResourceMessage {
+            get {
+                return ResourceManager.GetString("RemoveResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove resource &apos;{0}&apos;.
+        /// </summary>
+        public static string RemovingResource {
+            get {
+                return ResourceManager.GetString("RemovingResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ResourceGroupNotSet.
         /// </summary>
         public static string ResourceGroupNotSet {
             get {
                 return ResourceManager.GetString("ResourceGroupNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SetByResource.
+        /// </summary>
+        public static string SetByResource {
+            get {
+                return ResourceManager.GetString("SetByResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SetByResourceId.
+        /// </summary>
+        public static string SetByResourceId {
+            get {
+                return ResourceManager.GetString("SetByResourceId", resourceCulture);
             }
         }
     }

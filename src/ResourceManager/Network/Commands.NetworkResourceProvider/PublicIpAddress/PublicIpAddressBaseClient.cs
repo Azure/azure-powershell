@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     public abstract class PublicIpAddressBaseClient : NetworkResourceBaseClient
     {
-        public const string PublicIpAddressCmdletName = "AzurePublicIpAddress";
-
         public IPublicIpAddressOperations PublicIpAddressClient
         {
             get

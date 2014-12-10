@@ -139,7 +139,19 @@
   <data name="LoadBalancerRuleName" xml:space="preserve">
     <value>loadBalancingRules</value>
   </data>
+  <data name="RemoveResourceMessage" xml:space="preserve">
+    <value>Removing resource ...</value>
+  </data>
+  <data name="RemovingResource" xml:space="preserve">
+    <value>Are you sure you want to remove resource '{0}'</value>
+  </data>
   <data name="ResourceGroupNotSet" xml:space="preserve">
     <value>ResourceGroupNotSet</value>
+  </data>
+  <data name="SetByResource" xml:space="preserve">
+    <value>SetByResource</value>
+  </data>
+  <data name="SetByResourceId" xml:space="preserve">
+    <value>SetByResourceId</value>
   </data>
 </root>
