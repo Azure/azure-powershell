@@ -55,6 +55,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
     public class ServiceManagementCmdletTestHelper
     {
+        private T RunPSCmdletAndReturnFirst<T>(PowershellCore.CmdletsInfo cmdlet, bool debug = false, bool retryOnConflict = true)
+        {
+            var result = default(T);
+            if (retryOnConflict)
+            {
+                Utilities.RetryActionUntilSuccess(
+                   () => result = RunPSCmdletAndReturnFirstHelper<T>(cmdlet),
+                   "ConflictError", 3, 60);
+            }
+            else
+            {
+                result = RunPSCmdletAndReturnFirstHelper<T>(cmdlet);
+            }
+            return result;
+
+        }
+
         /// <summary>
         /// Run a powershell cmdlet that returns the first PSObject as a return value.
         /// </summary>
@@ -62,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         /// <param name="cmdlet"></param>
         /// <param name="debug"></param>
         /// <returns></returns>
-        private T RunPSCmdletAndReturnFirst<T>(PowershellCore.CmdletsInfo cmdlet, bool debug = false)
+        private T RunPSCmdletAndReturnFirstHelper<T>(PowershellCore.CmdletsInfo cmdlet, bool debug = false)
         {
             var azurePowershellCmdlet = new WindowsAzurePowershellCmdlet(cmdlet);
             Collection<PSObject> result = azurePowershellCmdlet.Run(debug);
@@ -91,6 +108,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return default(T);
         }
 
+        private Collection<T> RunPSCmdletAndReturnAll<T>(PowershellCore.CmdletsInfo cmdlet, bool debug = false, bool retryOnConflict = true)
+        {
+            var result = new Collection<T>();
+            if (retryOnConflict)
+            {
+                Utilities.RetryActionUntilSuccess(
+                   () => result = RunPSCmdletAndReturnAllHelper<T>(cmdlet),
+                   "ConflictError", 3, 60);
+            }
+            else
+            {
+                result = RunPSCmdletAndReturnAllHelper<T>(cmdlet);
+            }
+            return result;
+        }
+
+
         /// <summary>
         /// Run a powershell cmdlet that returns a collection of PSObjects as a return value.
         /// </summary>
@@ -98,7 +132,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         /// <param name="cmdlet"></param>
         /// <param name="debug"></param>
         /// <returns></returns>
-        private Collection<T> RunPSCmdletAndReturnAll<T>(PowershellCore.CmdletsInfo cmdlet, bool debug = false)
+        private Collection<T> RunPSCmdletAndReturnAllHelper<T>(PowershellCore.CmdletsInfo cmdlet, bool debug = false)
         {
             var azurePowershellCmdlet = new WindowsAzurePowershellCmdlet(cmdlet);
             Collection<PSObject> result = azurePowershellCmdlet.Run(debug);
@@ -1314,9 +1348,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public ManagementOperationContext UpdateAzureVM(string vmName, string serviceName, SM.PersistentVM persistentVM)
         {
             ManagementOperationContext result = new ManagementOperationContext();
-            Utilities.RetryActionUntilSuccess(
-                () => result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new UpdateAzureVMCmdletInfo(vmName, serviceName, persistentVM)),
-                "409", 3, 60);
+            result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new UpdateAzureVMCmdletInfo(vmName, serviceName, persistentVM));
             return result;
         }
 
@@ -1324,11 +1356,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #region AzureVMImage
 
-        public SM.OSImageContext AddAzureVMImage(string imageName, string mediaLocation, OS os, string label = null, string recommendedSize = null)
+        public SM.OSImageContext AddAzureVMImage(string imageName, string mediaLocation, OS os, string label = null, string recommendedSize = null, string iconUri = null, string smallIconUri = null, bool showInGui = false)
         {
             SM.OSImageContext result = new SM.OSImageContext();
             Utilities.RetryActionUntilSuccess(
-                () => result = RunPSCmdletAndReturnFirst<SM.OSImageContext>(new AddAzureVMImageCmdletInfo(imageName, mediaLocation, os, label, recommendedSize)),
+                () => result = RunPSCmdletAndReturnFirst<SM.OSImageContext>(new AddAzureVMImageCmdletInfo(imageName, mediaLocation, os, label, recommendedSize, iconUri, smallIconUri, showInGui)),
                 "409", 3, 60);
             return result;
         }
@@ -1365,9 +1397,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return result;
         }
 
-        public void SaveAzureVMImage(string serviceName, string vmName, string newImageName, string osState = null,string newImageLabel = null)
+        public void SaveAzureVMImage(string serviceName, string vmName, string newImageName, string osState = null, string newImageLabel = null, bool debug = false, bool retryOnConflict = false)
         {
-            RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SaveAzureVMImageCmdletInfo(serviceName, vmName, newImageName, newImageLabel, osState));
+            RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SaveAzureVMImageCmdletInfo(serviceName, vmName, newImageName, newImageLabel, osState), debug, retryOnConflict);
         }
 
         public Collection<SM.OSImageContext> GetAzureVMImage(string imageName = null)

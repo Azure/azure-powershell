@@ -352,6 +352,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Console.WriteLine("------------------------------Try to save the OS image with an existing os image name: Completed---------------------------------");
                 //e.	Save the OS image with a new image name.
                 Console.WriteLine("------------------------------Save the OS image with a new image name.---------------------------------");
+                vmPowershellCmdlets.StopAzureVM(vm, serviceName, true);
                 vmPowershellCmdlets.SaveAzureVMImage(serviceName, vmName, newLabel);
                 Console.WriteLine("------------------------------Save the OS image with a new image name: Completed---------------------------------");
                 //f.	Deploy a new IaaS VM
@@ -467,30 +468,30 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm });
                 Console.WriteLine("------------------------------Deploy another new IaaS VM: completed---------------------------------");
                 //e.	Stop the VM
-                Console.WriteLine("------------------------------Deleted the VM image---------------------------------");
+                Console.WriteLine("------------------------------Stop the VM (for 2nd VM)---------------------------------");
                 vmPowershellCmdlets.StopAzureVM(vm, serviceName,force:true);
                 string testImageName = Utilities.GetUniqueShortName(vmNamePrefix);
-                Console.WriteLine("------------------------------Deleted the VM image---------------------------------");
+                Console.WriteLine("------------------------------Stop the VM (for 2nd VM): completed---------------------------------");
                 //f.	Try to save the VM image with the existing name (must fail)
-                Console.WriteLine("------------------------------Deleted the VM image---------------------------------");
-                Utilities.VerifyFailure(() => vmPowershellCmdlets.SaveAzureVMImage(serviceName, vmName1, vmImageName, CONSTANT_SPECIALIZED, vmImageName),ConflictErrorException);
-                Console.WriteLine("------------------------------Deleted the VM image---------------------------------");
+                Console.WriteLine("------------------------------Save the VM image with the existing name (must fail)---------------------------------");
+                Utilities.VerifyFailure(() => vmPowershellCmdlets.SaveAzureVMImage(serviceName, vmName1, vmImageName, CONSTANT_SPECIALIZED, vmImageName, false, false), ConflictErrorException);
+                Console.WriteLine("------------------------------Save the VM image with the existing name (must fail): completed---------------------------------");
                 //g.	Try to save the VM image with the wrong vm name (must fail)
-                Console.WriteLine("------------------------------Deleted the VM image---------------------------------");
+                Console.WriteLine("------------------------------Save the VM image (must fail)---------------------------------");
                 Utilities.VerifyFailure(() => vmPowershellCmdlets.SaveAzureVMImage(serviceName, Utilities.GetUniqueShortName(vmNamePrefix), testImageName, CONSTANT_SPECIALIZED, testImageName), ResourceNotFoundException);
-                Console.WriteLine("------------------------------Deleted the VM image---------------------------------");
+                Console.WriteLine("------------------------------Save the VM image (must fail): completed---------------------------------");
                 //h.	Try to save the VM image with the wrong service name (must fail)
-                Console.WriteLine("------------------------------Deleted the VM image---------------------------------");
+                Console.WriteLine("------------------------------Save the VM image with wrong name (must fail)---------------------------------");
                 string testVMIMage = Utilities.GetUniqueShortName("VMImage");
                 vmPowershellCmdlets.SaveAzureVMImage(Utilities.GetUniqueShortName(vmNamePrefix), vmName1, testVMIMage, CONSTANT_SPECIALIZED, testVMIMage);
                 Utilities.VerifyFailure(() => vmPowershellCmdlets.GetAzureVMImage(testVMIMage),ResourceNotFoundException);
-                Console.WriteLine("------------------------------Deleted the VM image---------------------------------");
+                Console.WriteLine("------------------------------Save the VM image with wrong name (must fail): completed---------------------------------");
                 //i.	Try to save the VM image with the label longer than maximum length of string (must fail)
-                Console.WriteLine("------------------------------Deleted the VM image---------------------------------");
+                Console.WriteLine("------------------------------Save the VM image with long name (must fail)---------------------------------");
                 string LongImageName = Utilities.GetUniqueShortName(length:30) + Utilities.GetUniqueShortName(length:30)+  Guid.NewGuid().ToString() + Guid.NewGuid().ToString() ;
                 Console.WriteLine("Attempting to save a VMImage with name {0} of {1} characters and expecting it to fail.", LongImageName,LongImageName.Length);
                 Utilities.VerifyFailure(() => vmPowershellCmdlets.SaveAzureVMImage(serviceName, vmName1, testImageName, CONSTANT_SPECIALIZED, LongImageName), BadRequestException);
-                Console.WriteLine("------------------------------Deleted the VM image---------------------------------");
+                Console.WriteLine("------------------------------Save the VM image with long name (must fail): completed---------------------------------");
                 pass = true;
             }
             catch (Exception ex)
@@ -500,9 +501,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
             finally
             {
-                Console.WriteLine("------------------------------Delete the VM image---------------------------------");
+                Console.WriteLine("------------------------------Delete the VM image (cleanup)---------------------------------");
                 DeleteVMImageIfExists(vmImageName);
-                Console.WriteLine("------------------------------Deleted the VM image---------------------------------");
+                Console.WriteLine("------------------------------Deleted the VM image (cleanup): completed---------------------------------");
             }
         }
 

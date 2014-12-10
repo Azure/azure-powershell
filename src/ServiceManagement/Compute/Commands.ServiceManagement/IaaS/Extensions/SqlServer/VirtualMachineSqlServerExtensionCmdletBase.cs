@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <summary>
         /// Extension's default version 
         /// </summary>
-        protected const string ExtensionDefaultVersion = "1.0";
+        protected const string ExtensionDefaultVersion = "1.*";
 
         /// <summary>
         /// value of Auto-patching settings object that can be set by derived classes
@@ -48,6 +48,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// value of Auto-backup settings object that can be set by derived classes
         /// </summary>
         public virtual AutoBackupSettings AutoBackupSettings { get; set; }
+
+        /// <summary>
+        /// value of Auto-telemetry settings object that can be set by derived classes
+        /// </summary>
+        public virtual AutoTelemetrySettings AutoTelemetrySettings { get; set; }
 
         /// <summary>
         /// Sets extension's publisher and name
@@ -68,7 +73,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                new SqlServerPublicSettings
                {
                    AutoPatchingSettings = this.AutoPatchingSettings,
-                   AutoBackupSettings = this.AutoBackupSettings
+                   AutoBackupSettings = this.AutoBackupSettings,
+                   AutoTelemetrySettings = this.AutoTelemetrySettings
                }));
         }
 
@@ -81,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             return JsonUtilities.TryFormatJson(JsonConvert.SerializeObject(
                        new SqlServerPrivateSettings
                        {
-                           StorageUrl = (this.AutoBackupSettings == null)? string.Empty: this.AutoBackupSettings.StorageUrl,
+                           StorageUrl = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.StorageUrl,
                            StorageAccessKey = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.StorageAccessKey,
                            Password = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.Password
                        }));

@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.8.8'
+ModuleVersion = '0.8.11'
 
 # ID used to uniquely identify this module
 GUID = 'B37DCEB6-F8A8-4C76-B1FC-9C35DFE08977'
@@ -54,14 +54,18 @@ RequiredAssemblies = @()
 ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+TypesToProcess = @(
+    '.\Microsoft.Azure.Commands.Compute.Types.ps1xml'
+)
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = @()
+FormatsToProcess = @(
+    '.\Microsoft.Azure.Commands.Compute.format.ps1xml'
+)
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
-    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Compute\Microsoft.Azure.Commands.Compute.dll'
+    '.\Microsoft.Azure.Commands.Compute.dll'
 )
 
 # Functions to export from this module

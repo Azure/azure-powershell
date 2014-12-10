@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.8.11'
+ModuleVersion = '0.8.12'
 
 # ID used to uniquely identify this module
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'
@@ -66,6 +66,7 @@ FormatsToProcess = @(
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',
     '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',
+    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',
     '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml'
 )
 
@@ -78,6 +79,7 @@ NestedModules = @(
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',
     '.\Batch\Microsoft.Azure.Commands.Batch.dll',
+    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',
     '.\Compute\Microsoft.Azure.Commands.Compute.dll',
     '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.dll'
 )

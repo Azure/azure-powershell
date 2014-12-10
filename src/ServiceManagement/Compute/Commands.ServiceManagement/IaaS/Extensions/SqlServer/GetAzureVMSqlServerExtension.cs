@@ -76,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 PrivateConfiguration = SecureStringHelper.GetSecureString(PrivateConfiguration),
                 RoleName = VM.GetInstance().RoleName,
             };
-            
+
             // gather extension status messages
             List<string> statusMessageList = new List<string>();
 
@@ -155,7 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         NSM.DeploymentSlot.Production);
                 }
                 catch (CloudException e)
-                {
+                {  
                     if (e.Response.StatusCode != HttpStatusCode.NotFound)
                     {
                         throw;
@@ -188,13 +188,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         private AutoPatchingSettings DeSerializeAutoPatchingSettings(string category, string input)
         {
             AutoPatchingSettings aps = new AutoPatchingSettings();
-            
+
             if (!string.IsNullOrEmpty(input))
             {
                 try
                 {
                     aps = JsonConvert.DeserializeObject<AutoPatchingSettings>(input);
-                    aps.UpdatePatchingCategory(this.ResolvePatchCategoryStringforPowerShell(aps.PatchCategory));
+                    aps.PatchCategory = this.ResolvePatchCategoryStringforPowerShell(aps.PatchCategory);
                 }
                 catch (JsonReaderException jre)
                 {
@@ -231,28 +231,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <summary>
         /// Map strings Auto-patching public settings -> Powershell API
         ///      "WindowsMandatoryUpdates" -> "Important"
-        ///       "MicrosoftOptionalUpdates" -> "Optional"
         /// </summary>
         /// <param name="patchCategory"></param>
         /// <returns></returns>
-        private AzureVMSqlServerAutoPatchingPatchCategoryEnum ResolvePatchCategoryStringforPowerShell(string category)
+        private string ResolvePatchCategoryStringforPowerShell(string category)
         {
-            AzureVMSqlServerAutoPatchingPatchCategoryEnum patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Important;
+            string patchCategory = string.Empty;
 
             if (!string.IsNullOrEmpty(category))
             {
                 switch (category.ToLower())
                 {
                     case "windowsmandatoryupdates":
-                        patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Important;
-                        break;
-
-                    case "microsoftoptionalupdates":
-                        patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Optional;
+                        patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Important.ToString("G");
                         break;
 
                     default:
-                        patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Unknown;
                         break;
                 }
             }

@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.Azure.Subscriptions.Models;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Profile;
@@ -46,6 +47,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         private AzureSubscription azureSubscription3withoutUser;
         private AzureEnvironment azureEnvironment;
         private AzureAccount azureAccount;
+        private TenantIdDescription commonTenant;
+        private TenantIdDescription guestTenant;
+        private Subscriptions.Models.SubscriptionListOperationResponse.Subscription guestRdfeSubscription;
+        private Subscription guestCsmSubscription;
 
         public ProfileClientTests()
         {
@@ -283,6 +288,80 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId)));
             Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(rdfeSubscription2.SubscriptionId)));
             Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
+        }
+
+        [Fact]
+        public void AddAzureAccountWithImpersonatedGuestWithNoSubscriptions()
+        {
+            SetMocks(new[] { rdfeSubscription1 }.ToList(), new List<Azure.Subscriptions.Models.Subscription>(),
+                new[] { commonTenant, guestTenant }.ToList(),
+                (userAccount, environment, tenant) =>
+                {
+                    var token = new MockAccessToken
+                    {
+                        UserId = tenant == commonTenant.TenantId ? userAccount.Id : "UserB",
+                        AccessToken = "def",
+                        LoginType = LoginType.OrgId
+                    };
+                    userAccount.Id = token.UserId;
+                    return token;
+                });
+            MockDataStore dataStore = new MockDataStore();
+            dataStore.VirtualStore[oldProfileDataPath] = oldProfileData;
+            ProfileClient.DataStore = dataStore;
+            ProfileClient client = new ProfileClient();
+
+            var account = client.AddAccountAndLoadSubscriptions(new AzureAccount { Id = "UserA", Type = AzureAccount.AccountType.User }, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], null);
+
+            Assert.Equal("UserA", account.Id);
+            Assert.Equal(1, account.GetSubscriptions(client.Profile).Count);
+            var subrdfe1 = account.GetSubscriptions(client.Profile).FirstOrDefault(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId));
+            var userA = client.GetAccount("UserA");
+            var userB = client.GetAccount("UserB");
+            Assert.NotNull(userA);
+            Assert.NotNull(userB);
+            Assert.Contains<string>(rdfeSubscription1.SubscriptionId, userA.GetPropertyAsArray(AzureAccount.Property.Subscriptions), StringComparer.OrdinalIgnoreCase);
+            Assert.False(userB.HasSubscription(new Guid(rdfeSubscription1.SubscriptionId)));
+            Assert.NotNull(subrdfe1);
+            Assert.Equal("UserA", subrdfe1.Account);
+        }
+
+        [Fact]
+        public void AddAzureAccountWithImpersonatedGuestWithSubscriptions()
+        {
+            SetMocks(new[] { rdfeSubscription1, guestRdfeSubscription }.ToList(), new List<Azure.Subscriptions.Models.Subscription>(), new[] { commonTenant, guestTenant }.ToList(),
+                    (userAccount, environment, tenant) =>
+                {
+                    var token = new MockAccessToken
+                    {
+                        UserId = tenant == commonTenant.TenantId ? userAccount.Id : "UserB",
+                        AccessToken = "def",
+                        LoginType = LoginType.OrgId
+                    };
+                    userAccount.Id = token.UserId;
+                    return token;
+                });
+            MockDataStore dataStore = new MockDataStore();
+            dataStore.VirtualStore[oldProfileDataPath] = oldProfileData;
+            ProfileClient.DataStore = dataStore;
+            ProfileClient client = new ProfileClient();
+
+            var account = client.AddAccountAndLoadSubscriptions(new AzureAccount { Id = "UserA", Type = AzureAccount.AccountType.User }, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], null);
+
+            Assert.Equal("UserA", account.Id);
+            Assert.Equal(1, account.GetSubscriptions(client.Profile).Count);
+            var subrdfe1 = account.GetSubscriptions(client.Profile).FirstOrDefault(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId));
+            var userA = client.GetAccount("UserA");
+            var userB = client.GetAccount("UserB");
+             var subGuest = userB.GetSubscriptions(client.Profile).FirstOrDefault(s => s.Id == new Guid(guestRdfeSubscription.SubscriptionId));
+            Assert.NotNull(userA);
+            Assert.NotNull(userB);
+            Assert.Contains<string>(rdfeSubscription1.SubscriptionId, userA.GetPropertyAsArray(AzureAccount.Property.Subscriptions), StringComparer.OrdinalIgnoreCase);
+            Assert.Contains<string>(guestRdfeSubscription.SubscriptionId, userB.GetPropertyAsArray(AzureAccount.Property.Subscriptions), StringComparer.OrdinalIgnoreCase);
+            Assert.NotNull(subrdfe1);
+            Assert.NotNull(subGuest);
+            Assert.Equal("UserA", subrdfe1.Account);
+            Assert.Equal("UserB", subGuest.Account);
         }
 
         [Fact]
@@ -1139,7 +1218,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
-            
+
             Assert.Equal(tempSubscriptions[2].Id, AzureSession.CurrentContext.Subscription.Id);
         }
 
@@ -1184,21 +1263,40 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         private void SetMocks(List<WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription> rdfeSubscriptions,
-            List<Azure.Subscriptions.Models.Subscription> csmSubscriptions)
+            List<Azure.Subscriptions.Models.Subscription> csmSubscriptions,
+            List<Azure.Subscriptions.Models.TenantIdDescription> tenants = null,
+            Func<AzureAccount, AzureEnvironment, string, IAccessToken> tokenProvider = null)
         {
             ClientMocks clientMocks = new ClientMocks(new Guid(defaultSubscription));
 
             clientMocks.LoadRdfeSubscriptions(rdfeSubscriptions);
             clientMocks.LoadCsmSubscriptions(csmSubscriptions);
+            clientMocks.LoadTenants(tenants);
 
             AzureSession.ClientFactory = new MockClientFactory(new object[] { clientMocks.RdfeSubscriptionClientMock.Object,
                 clientMocks.CsmSubscriptionClientMock.Object });
 
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            var mockFactory = new MockTokenAuthenticationFactory();
+            if (tokenProvider != null)
+            {
+                mockFactory.TokenProvider = tokenProvider;
+            }
+
+            AzureSession.AuthenticationFactory = mockFactory;
         }
 
         private void SetMockData()
         {
+            commonTenant = new TenantIdDescription
+            {
+                Id = "Common",
+                TenantId = "Common"
+            };
+            guestTenant = new TenantIdDescription
+            {
+                Id = "Guest",
+                TenantId = "Guest"
+            };
             rdfeSubscription1 = new Subscriptions.Models.SubscriptionListOperationResponse.Subscription
             {
                 SubscriptionId = "16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
@@ -1212,6 +1310,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 SubscriptionName = "RdfeSub2",
                 SubscriptionStatus = Subscriptions.Models.SubscriptionStatus.Active,
                 ActiveDirectoryTenantId = "Common"
+            };
+            guestRdfeSubscription = new Subscriptions.Models.SubscriptionListOperationResponse.Subscription
+            {
+                SubscriptionId = "26E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1C",
+                SubscriptionName = "RdfeSub2",
+                SubscriptionStatus = Subscriptions.Models.SubscriptionStatus.Active,
+                ActiveDirectoryTenantId = "Guest"
             };
             csmSubscription1 = new Azure.Subscriptions.Models.Subscription
             {
@@ -1233,6 +1338,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 DisplayName = "CsmSub2",
                 State = "Active",
                 SubscriptionId = "46E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E"
+            };
+            guestCsmSubscription = new Azure.Subscriptions.Models.Subscription
+            {
+                Id = "Subscriptions/76E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1D",
+                DisplayName = "CsmGuestSub",
+                State = "Active",
+                SubscriptionId = "76E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1D"
             };
             azureSubscription1 = new AzureSubscription
             {

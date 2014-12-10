@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     public abstract class NetworkInterfaceBaseClient : NetworkResourceBaseClient
     {
-        public const string NetworkInterfaceCmdletName = "AzureNetworkInterface";
-        
         public INetworkInterfaceOperations NetworkInterfaceClient
         {
             get

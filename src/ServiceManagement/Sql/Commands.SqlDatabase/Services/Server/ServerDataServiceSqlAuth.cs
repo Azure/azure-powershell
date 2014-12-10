@@ -338,7 +338,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             {
                 database.MaxSizeGB = (int)databaseMaxSizeGb;
             }
-            if(databaseMaxSizeBytes != null)
+            if (databaseMaxSizeBytes != null)
             {
                 database.MaxSizeBytes = (long)databaseMaxSizeBytes;
             }

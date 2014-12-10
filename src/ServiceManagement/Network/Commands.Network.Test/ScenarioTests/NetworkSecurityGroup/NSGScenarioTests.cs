@@ -99,6 +99,14 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
             this.RunPowerShellTest("Test-RemoveNetworkSecurityGroupFromSubnet");
         }
 
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetNSGToSubnetInDiffRegion()
+        {
+            this.RunPowerShellTest("Test-SetNetworkSecurityGroupToSubnetInDifferentRegion");
+        }
+        
         #region Test setup
         protected void SetupManagementClients()
         {
