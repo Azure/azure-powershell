@@ -44,15 +44,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         break;
                     case StorSimpleCmdletParameterSet.IdentifyByName:
                         var volumeInfo = StorSimpleClient.GetVolumeByName(deviceId, VolumeName);
-                        if(volumeInfo != null && volumeInfo.VirtualDiskInfo != null)
+                        if (volumeInfo != null 
+                            && volumeInfo.VirtualDiskInfo != null 
+                            && volumeInfo.VirtualDiskInfo.InstanceId != null)
                         {
                             WriteVerbose(String.Format(Resources.FoundVolumeMessage, VolumeName));
+                            WriteObject(volumeInfo.VirtualDiskInfo);
                         }
                         else
                         {
                             WriteVerbose(String.Format(Resources.NotFoundVolumeMessage, VolumeName));
                         }
-                        WriteObject(volumeInfo.VirtualDiskInfo);
                         break;
                 }
             }

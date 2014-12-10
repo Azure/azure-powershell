@@ -42,15 +42,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 else
                 {
                     var dataContainer = StorSimpleClient.GetDataContainer(deviceid, VolumeContainerName);
-                    if(dataContainer != null && dataContainer.DataContainerInfo != null)
+                    if(dataContainer != null 
+                        && dataContainer.DataContainerInfo != null
+                        && dataContainer.DataContainerInfo.InstanceId != null)
                     {
                         WriteVerbose(String.Format(Resources.FoundDataContainerMessage, VolumeContainerName));
+                        WriteObject(dataContainer.DataContainerInfo);
                     }
                     else
                     {
                         WriteVerbose(String.Format(Resources.NotFoundDataContainerMessage, VolumeContainerName));
                     }
-                    WriteObject(dataContainer.DataContainerInfo);
                 }
             }
             catch (Exception exception)
