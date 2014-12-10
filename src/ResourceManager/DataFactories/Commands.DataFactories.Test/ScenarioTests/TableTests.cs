@@ -46,5 +46,12 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         {
             RunPowerShellTest("Test-GetTableWithWhiteSpaceName");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTablePiping()
+        {
+            RunPowerShellTest("Test-TablePiping");
+        }
     }
 }

@@ -185,6 +185,7 @@
     <Compile Include="CloudService\TestAzureNameTests.cs" />
     <Compile Include="CloudService\Utilities\AzureServiceTests.cs" />
     <Compile Include="CloudService\Utilities\CloudServiceClientTests.cs" />
+    <Compile Include="CloudService\Utilities\CsPackUtilTests.cs" />
     <Compile Include="CloudService\Utilities\GeneralTests.cs" />
     <Compile Include="CloudService\Utilities\CsPackTests.cs" />
     <Compile Include="CloudService\Utilities\CsRunTests.cs" />

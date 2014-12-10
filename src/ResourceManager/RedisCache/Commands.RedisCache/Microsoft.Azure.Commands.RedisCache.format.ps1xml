@@ -47,6 +47,10 @@
                 <PropertyName>MaxMemoryPolicy</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>EnableNonSslPort</Label>
+                <PropertyName>EnableNonSslPort</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>RedisVersion</Label>
                 <PropertyName>RedisVersion</PropertyName>
               </ListItem>
@@ -111,6 +115,10 @@
               <ListItem>
                 <Label>MaxMemoryPolicy</Label>
                 <PropertyName>MaxMemoryPolicy</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnableNonSslPort</Label>
+                <PropertyName>EnableNonSslPort</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>RedisVersion</Label>

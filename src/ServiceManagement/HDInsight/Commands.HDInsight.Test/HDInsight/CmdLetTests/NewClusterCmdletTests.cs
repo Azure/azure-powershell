@@ -524,6 +524,83 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
         [TestCategory("CheckIn")]
         [TestCategory("Integration")]
         [TestCategory("PowerShell")]
+        public void ICanCreateAClusterUsingPowerShellAndConfig_New_Set_Add_ScriptAction()
+        {
+            AzureTestCredentials creds = GetCredentials(TestCredentialsNames.Default);
+
+            string dnsName = this.GetRandomClusterName();
+            using (IRunspace runspace = this.GetPowerShellRunspace())
+            {
+                IGetAzureHDInsightClusterCommand getCommand = ServiceLocator.Instance.Locate<IAzureHDInsightCommandFactory>().CreateGet();
+                getCommand = ServiceLocator.Instance.Locate<IAzureHDInsightCommandFactory>().CreateGet();
+                getCommand.CurrentSubscription = GetCurrentSubscription();
+
+                getCommand.EndProcessing();
+                int expected = getCommand.Output.Count();
+
+                IPipelineResult results =
+                    runspace.NewPipeline()
+                            .AddCommand(CmdletConstants.NewAzureHDInsightClusterConfig)
+                            .WithParameter(CmdletConstants.ClusterSizeInNodes, 3)
+                            .AddCommand(CmdletConstants.SetAzureHDInsightDefaultStorage)
+                            .WithParameter(CmdletConstants.StorageAccountName, creds.Environments[0].DefaultStorageAccount.Name)
+                            .WithParameter(CmdletConstants.StorageAccountKey, creds.Environments[0].DefaultStorageAccount.Key)
+                            .WithParameter(CmdletConstants.StorageContainerName, creds.Environments[0].DefaultStorageAccount.Container)
+                            .AddCommand(CmdletConstants.AddAzureHDInsightStorage)
+                            .WithParameter(CmdletConstants.StorageAccountName, creds.Environments[0].AdditionalStorageAccounts[0].Name)
+                            .WithParameter(CmdletConstants.StorageAccountKey, creds.Environments[0].AdditionalStorageAccounts[0].Key)
+                            .AddCommand(CmdletConstants.AddAzureHDInsightScriptAction)
+                            .WithParameter(CmdletConstants.ConfigActionName, "test1")
+                            .WithParameter(CmdletConstants.ConfigActionClusterRoleCollection, "HeadNode")
+                            .WithParameter(CmdletConstants.ScriptActionUri, "http://test1.com")
+                            .WithParameter(CmdletConstants.ScriptActionParameters, "test1parameters")
+                            .AddCommand(CmdletConstants.AddAzureHDInsightScriptAction)
+                            .WithParameter(CmdletConstants.ConfigActionName, "test2")
+                            .WithParameter(CmdletConstants.ConfigActionClusterRoleCollection, "HeadNode")
+                            .WithParameter(CmdletConstants.ScriptActionUri, "http://test2.com")
+                            .WithParameter(CmdletConstants.ScriptActionParameters, "test2parameters")
+                            .AddCommand(CmdletConstants.NewAzureHDInsightCluster)
+                            .WithParameter(CmdletConstants.Name, dnsName)
+                            .WithParameter(CmdletConstants.Location, CmdletConstants.EastUs)
+                            .WithParameter(CmdletConstants.Credential, GetPSCredential("hadoop", this.GetRandomValidPassword()))
+                            .Invoke();
+
+                ClusterCreateParameters request = AzureHDInsightClusterManagementClientSimulator.LastCreateRequest;
+                Assert.IsTrue(request.ConfigActions != null && request.ConfigActions.Count == 2);
+                Assert.IsTrue(
+                    request.ConfigActions.ElementAt(0).Name == "test1" &&
+                    request.ConfigActions.ElementAt(1).Name == "test2");
+                Assert.IsTrue(
+                    request.ConfigActions.ElementAt(0).ClusterRoleCollection.Count == 1 &&
+                    request.ConfigActions.ElementAt(1).ClusterRoleCollection.Count == 1);
+
+                Assert.AreEqual(1, results.Results.Count);
+                Assert.AreEqual(dnsName, results.Results.ToEnumerable<AzureHDInsightCluster>().First().Name);
+                getCommand = ServiceLocator.Instance.Locate<IAzureHDInsightCommandFactory>().CreateGet();
+                getCommand.CurrentSubscription = GetCurrentSubscription();
+                getCommand.Name = dnsName;
+
+                getCommand.EndProcessing();
+                Assert.AreEqual(1, getCommand.Output.Count);
+                Assert.AreEqual(dnsName, getCommand.Output.ElementAt(0).Name);
+
+                results = runspace.NewPipeline().AddCommand(CmdletConstants.RemoveAzureHDInsightCluster)
+                                  .WithParameter(CmdletConstants.Name, dnsName)
+                                  .Invoke();
+
+                Assert.AreEqual(0, results.Results.Count);
+                getCommand = ServiceLocator.Instance.Locate<IAzureHDInsightCommandFactory>().CreateGet();
+                getCommand.CurrentSubscription = GetCurrentSubscription();
+
+                getCommand.EndProcessing();
+                Assert.AreEqual(expected, getCommand.Output.Count);
+            }
+        }  
+
+        [TestMethod]
+        [TestCategory("CheckIn")]
+        [TestCategory("Integration")]
+        [TestCategory("PowerShell")]
         public void ICanCreateAClusterUsingPowerShellAndConfig_WithDebug()
         {
             IHDInsightCertificateCredential creds = GetValidCredentials();

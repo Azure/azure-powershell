@@ -714,10 +714,10 @@ Please follow these steps in the portal:
     <value>uri</value>
   </data>
   <data name="ManifestUri" xml:space="preserve">
-    <value>http://az413943.vo.msecnd.net/node/runtimemanifest_0.7.4.1.xml</value>
+    <value>http://az413943.vo.msecnd.net/node/runtimemanifest_0.7.5.2.xml</value>
   </data>
   <data name="MaxSupportAzureSdkVersion" xml:space="preserve">
-    <value>v2.4</value>
+    <value>v2.5</value>
   </data>
   <data name="MemcacheEndpointName" xml:space="preserve">
     <value>memcache_default</value>
@@ -726,7 +726,7 @@ Please follow these steps in the portal:
     <value>11211</value>
   </data>
   <data name="MinSupportAzureSdkVersion" xml:space="preserve">
-    <value>v2.4</value>
+    <value>v2.5</value>
   </data>
   <data name="MissingPythonPreReq" xml:space="preserve">
     <value>Python 2.7 is not installed.  Please install it as well as Django 1.4.</value>
@@ -1566,5 +1566,11 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   </data>
   <data name="ServiceKeyNotFound" xml:space="preserve">
     <value>Unable to retrieve service key for ServicePrincipal account {0}. Please run the Add-AzureAccount cmdlet to supply the credentials for this service principal.</value>
+  </data>
+  <data name="RemoveProfileConfirmation" xml:space="preserve">
+    <value>Removing the Azure profile will remove all associated environments, subscriptions, and accounts. Are you sure you want to remove the Azure profile?</value>
+  </data>
+  <data name="RemoveProfileMessage" xml:space="preserve">
+    <value>Removing the Azure profile</value>
   </data>
 </root>

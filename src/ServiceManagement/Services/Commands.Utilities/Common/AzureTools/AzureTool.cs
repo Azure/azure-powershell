@@ -109,10 +109,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools
             }
             catch (InvalidOperationException)
             {
-                //temporary workaround: catch exception and fall back to v2.4
+                //temporary workaround: catch exception and fall back to v2.5
                 if (IgnoreMissingSDKError)
                 {
-                    version = "v2.4";
+                    version = "v2.5";
                 }
                 else
                 {

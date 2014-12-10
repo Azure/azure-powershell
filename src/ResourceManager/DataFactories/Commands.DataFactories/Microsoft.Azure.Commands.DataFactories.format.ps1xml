@@ -26,6 +26,10 @@
                 <Label>Properties</Label>
                 <PropertyName>Properties</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -76,6 +80,10 @@
                 <Label>Properties</Label>
                 <PropertyName>Properties</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -106,10 +114,48 @@
                 <Label>Properties</Label>
                 <PropertyName>Properties</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
       </ListControl>
-    </View>  
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.DataFactories.Models.PSHub</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.DataFactories.Models.PSHub</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>HubName</Label>
+                <PropertyName>HubName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DataFactoryName</Label>
+                <PropertyName>DataFactoryName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Properties</Label>
+                <PropertyName>Properties</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

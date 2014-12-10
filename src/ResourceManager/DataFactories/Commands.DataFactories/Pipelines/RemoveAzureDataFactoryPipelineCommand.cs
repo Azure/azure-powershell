@@ -22,7 +22,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Pipeline)]
+    [Cmdlet(VerbsCommon.Remove, Constants.Pipeline, DefaultParameterSetName = ByFactoryName)]
     public class RemoveAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]

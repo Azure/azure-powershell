@@ -96,6 +96,13 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             set { this.command.Query = value; }
         }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run the query as a file.")]
+        public SwitchParameter RunAsFileJob
+        {
+            get { return this.command.RunAsFileJob; }
+            set { this.command.RunAsFileJob = value; }
+        }
+
         /// <inheritdoc />
         [Parameter(Mandatory = false, HelpMessage = "The output location to use for the job.")]
         public string StatusFolder

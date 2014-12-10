@@ -48,5 +48,10 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         ///     Gets or sets the query to use for a hive jobDetails.
         /// </summary>
         public string Query { get; set; }
+
+        /// <summary>
+        /// Gets or sets the switch to run queries as files.
+        /// </summary>
+        public bool RunAsFileJob { get; set; }
     }
 }

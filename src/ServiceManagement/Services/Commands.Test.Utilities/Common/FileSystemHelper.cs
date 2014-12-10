@@ -214,7 +214,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         /// Create a random directory name that doesn't yet exist on disk.
         /// </summary>
         /// <returns>A random, non-existant directory name.</returns>
-        private static string GetTemporaryDirectoryName()
+        public static string GetTemporaryDirectoryName()
         {
             string path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
             while (Directory.Exists(path))

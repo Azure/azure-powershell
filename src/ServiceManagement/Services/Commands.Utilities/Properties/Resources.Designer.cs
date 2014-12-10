@@ -872,6 +872,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to cspack.exe failed with no detail error information..
+        /// </summary>
+        public static string CsPackExeGenericFailure {
+            get {
+                return ResourceManager.GetString("CsPackExeGenericFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;{0}\ServiceDefinition.csdef&quot; /out:&quot;{0}\local_package.csx&quot; {1} {2} /copyOnly.
         /// </summary>
         public static string CsPackLocalArg {
@@ -992,7 +1001,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Setting: {0} as the default and current subscription. To view other subscriptions use Get-AzureSubscription.
         /// </summary>
-        public static string DefaultAndCurrentSubscription {
+        public static string DefaultAndCurrentContext_Subscription {
             get {
                 return ResourceManager.GetString("DefaultAndCurrentContext.Subscription", resourceCulture);
             }
@@ -1346,6 +1355,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Properties {
         public static string FailedToCleanUpLocalPackage {
             get {
                 return ResourceManager.GetString("FailedToCleanUpLocalPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to generate package. Error: {0}.&quot;.
+        /// </summary>
+        public static string FailedToCreatePackage {
+            get {
+                return ResourceManager.GetString("FailedToCreatePackage", resourceCulture);
             }
         }
         
@@ -2084,7 +2102,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to v2.4.
+        ///   Looks up a localized string similar to v2.5.
         /// </summary>
         public static string MaxSupportAzureSdkVersion {
             get {
@@ -2111,7 +2129,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to v2.4.
+        ///   Looks up a localized string similar to v2.5.
         /// </summary>
         public static string MinSupportAzureSdkVersion {
             get {
@@ -2949,9 +2967,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The current subscription is being removed. Use Select-Subscription &lt;subscriptionName&gt; to select a new current subscription..
         /// </summary>
-        public static string RemoveCurrentSubscription {
+        public static string RemoveCurrentContext_Subscription {
             get {
-                return ResourceManager.GetString("RemoveCurrentSubscription", resourceCulture);
+                return ResourceManager.GetString("RemoveCurrentContext.Subscription", resourceCulture);
             }
         }
         

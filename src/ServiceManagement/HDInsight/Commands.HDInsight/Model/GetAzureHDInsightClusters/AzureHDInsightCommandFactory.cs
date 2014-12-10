@@ -30,6 +30,11 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             return Help.SafeCreate<AddAzureHDInsightMetastoreCommand>();
         }
 
+        public IAddAzureHDInsightScriptActionCommand CreateAddScriptAction()  
+        {  
+            return Help.SafeCreate<AddAzureHDInsightScriptActionCommand>();  
+        }  
+
         public IAddAzureHDInsightStorageCommand CreateAddStorage()
         {
             return new AddAzureHDInsightStorageCommand();
@@ -105,6 +110,11 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             return Help.SafeCreate<NewAzureHDInsightStreamingJobDefinitionCommand>();
         }
 
+        public ISetAzureHDInsightClusterSizeCommand CreateSetClusterSize()
+        {
+            return Help.SafeCreate<SetAzureHdInsightClusterSizeCommand>();
+        }
+        
         public ISetAzureHDInsightDefaultStorageCommand CreateSetDefaultStorage()
         {
             return Help.SafeCreate<SetAzureHDInsightDefaultStorageCommand>();

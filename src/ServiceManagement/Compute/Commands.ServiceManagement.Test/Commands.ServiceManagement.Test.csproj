@@ -101,6 +101,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.4.0.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.3.1.0\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
@@ -178,6 +182,7 @@
     <Compile Include="FunctionalTests\Constants.cs" />
     <Compile Include="FunctionalTests\CredentialHelper.cs" />
     <Compile Include="FunctionalTests\ExtensionTests\AzureVMAccessExtensionTests.cs" />
+    <Compile Include="FunctionalTests\ExtensionTests\AzureVMSqlServerExtensionTests.cs" />
     <Compile Include="FunctionalTests\ExtensionTests\AzureVMBGInfoExtensionTests.cs" />
     <Compile Include="FunctionalTests\ExtensionTests\CustomScriptExtensionTests.cs" />
     <Compile Include="FunctionalTests\ExtensionTests\DscExtensionTests.cs" />
@@ -205,6 +210,9 @@
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\CustomScript\SetAzureVMCustomScriptExtensionCmdletParmaterSetType.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\Dsc\GetAzureVMDscExtensionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\Dsc\RemoveAzureVMDscExtensionCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\SqlServer\GetAzureVMSqlServerExtensionCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\SqlServer\RemoveAzureVMSqlServerExtensionCmdleteInfo.cs" />
+    <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\SqlServer\SetAzureVMSqlServerExtensionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\VMAccess\GetAzureVMAccessExtensionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\VMAccess\RemoveAzureVMAccessExtensionCmdleteInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\VMAccess\SetAzureVMAccessExtensionCmdletInfo.cs" />
@@ -402,6 +410,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FunctionalTests\ExtensionTests\MicrosoftAntimalware\AzureVMMicrosoftAntimalwareExtensionFunctionalTests.ps1" />
+    <None Include="AzureRTBVTs.playlist" />
+    <None Include="AzureRTComplete.playlist" />
+    <None Include="AzureRTComplete_Full_Diff.playlist" />
+    <None Include="AzureRTExtensions.playlist" />
+    <None Include="AzureRTFull.playlist" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="Resources\affinityGroupData.csv" />

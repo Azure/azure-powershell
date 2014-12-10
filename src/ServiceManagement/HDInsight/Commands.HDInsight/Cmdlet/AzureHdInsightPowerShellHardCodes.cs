@@ -58,6 +58,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         public const string AzureHDInsightMapReduceJobDefinition = "AzureHDInsightMapReduceJobDefinition";
         public const string AzureHDInsightMetastore = "AzureHDInsightMetastore";
         public const string AzureHDInsightPigJobDefinition = "AzureHDInsightPigJobDefinition";
+        public const string AzureHDInsightScriptAction = "AzureHDInsightScriptAction";
         public const string AzureHDInsightProperties = "AzureHDInsightProperties";
         public const string AzureHDInsightSqoopJobDefinition = "AzureHDInsightSqoopJobDefinition";
         public const string AzureHDInsightStorage = "AzureHDInsightStorage";
@@ -75,6 +76,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
 
         public const string ParameterSetAddMetastore = "Add Metastore";
         public const string ParameterSetAddStorageAccount = "Add Storage Account";
+        public const string ParameterSetAddScriptAction = "Add Script Action";
 
         public const string ParameterSetClusterByConfigWithSpecificSubscriptionCredentials =
             "Cluster By Config (with Specific Subscription Credential)";
@@ -84,6 +86,9 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         public const string ParameterSetDefaultStorageAccount = "Set Default Storage Account";
         public const string ParameterSetJobHistoryByName = "Get jobDetails History of a HDInsight Cluster";
         public const string ParameterSetJobHistoryByNameAndJobId = "Get jobDetails History for a specific jobDetails in a HDInsight Cluster";
+
+        public const string ParameterSetResizingWithName = "Set cluster size in nodes with name.";
+        public const string ParameterSetResizingWithPiping = "Set cluster size in nodes with cluster from pipeline.";
 
         public const string ParameterSetJobHistoryByNameWithSpecificSubscriptionCredentials =
             "Get jobDetails History of a HDInsight Cluster (with Specific Subscription Credential)";

@@ -121,6 +121,17 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             {
                 this.command.Logger = this.Logger;
                 this.command.CurrentSubscription = this.GetCurrentSubscription(this.Subscription, this.Certificate);
+                AzureHDInsightHiveJobDefinition jobDef = this.command.JobDefinition as AzureHDInsightHiveJobDefinition;
+                //If the credential is null then they are connected to the subscription.
+                if(jobDef.IsNotNull() && jobDef.Query.IsNotNullOrEmpty() && !jobDef.RunAsFileJob && this.Credential.IsNull())
+                {
+                    this.WriteWarning("When submitting a query use the -RunAsFile switch to prevent errors with query lengths or special characters");
+                }
+                else if(jobDef.IsNotNull() && jobDef.Query.IsNotNullOrEmpty() && this.Credential.IsNotNull())
+                {
+                    //If they are only connected to the cluster, then they should submit via file.
+                    this.WriteWarning("Running queries is deprecated due to inability to process special characters and multiple lines. Please upload the query to a file in storage and re-submit the job using the -File parameter");
+                }
                 Task task = this.command.EndProcessing();
                 CancellationToken token = this.command.CancellationToken;
                 while (!task.IsCompleted)

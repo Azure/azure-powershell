@@ -14,13 +14,12 @@
 
 using System;
 using System.ComponentModel;
-using Xunit;
 using Microsoft.WindowsAzure.Commands.Websites.WebJobs;
 using Microsoft.WindowsAzure.WebSitesExtensions.Models;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
-    
     public class WebJobWrapperTest
     {
         [Fact]
@@ -45,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             // Assert
             Assert.Equal(webJob.ExtraInfoUrl, wrapper.ExtraInfoUrl);
             Assert.Equal(webJob.HistoryUrl, wrapper.HistoryUrl);
-            Assert.Equal(webJob.LatestRun, wrapper.LatestRun);
+            Assert.Equal(new PSTriggeredWebJobRun(webJob.LatestRun).ToString(), wrapper.LatestRun.ToString());
             Assert.Equal(webJob.Name, wrapper.JobName);
             Assert.Equal(webJob.RunCommand, wrapper.RunCommand);
             Assert.Equal(webJob.Type, wrapper.JobType);
@@ -85,7 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             Assert.Equal(jobType, wrapper.JobType);
             Assert.Equal(extraInfoUrl, wrapper.ExtraInfoUrl);
             Assert.Equal(historyUrl, wrapper.HistoryUrl);
-            Assert.Equal(latestRun, wrapper.LatestRun);
+            Assert.Equal(new PSTriggeredWebJobRun(latestRun).ToString(), wrapper.LatestRun.ToString());
             Assert.Equal(runCommand, wrapper.RunCommand);
             Assert.Equal(url, wrapper.Url);
             Assert.Equal(jobName, webJob.Name);

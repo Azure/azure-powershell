@@ -20,26 +20,14 @@ namespace Microsoft.WindowsAzure.Commands.Websites.WebJobs
 
         public string HistoryUrl
         {
-            get
-            {
-                return WebJob.HistoryUrl;
-            }
-            set
-            {
-                WebJob.HistoryUrl = value;
-            }
+            get { return WebJob.HistoryUrl; }
+            set { WebJob.HistoryUrl = value; }
         }
 
         public TriggeredWebJobRun LatestRun
         {
-            get
-            {
-                return WebJob.LatestRun;
-            }
-            set
-            {
-                WebJob.LatestRun = value;
-            }
+            get { return new PSTriggeredWebJobRun(WebJob.LatestRun); }
+            set { WebJob.LatestRun = value; }
         }
     }
 }

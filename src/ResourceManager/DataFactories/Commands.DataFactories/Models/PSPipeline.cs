@@ -66,5 +66,10 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
                 this._pipeline.Properties = value;
             }
         }
+
+        public string ProvisioningState
+        {
+            get { return Properties == null ? string.Empty : Properties.ProvisioningState; }
+        }
     }
 }

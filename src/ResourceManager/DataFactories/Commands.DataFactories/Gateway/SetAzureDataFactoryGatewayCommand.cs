@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Set, Constants.Gateway), OutputType(typeof(PSDataFactoryGateway))]
+    [Cmdlet(VerbsCommon.Set, Constants.Gateway, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGateway))]
     public class SetAzureDataFactoryGatewayCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

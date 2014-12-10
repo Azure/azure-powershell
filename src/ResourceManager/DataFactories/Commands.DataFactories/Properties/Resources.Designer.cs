@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Properties {
                 return ResourceManager.GetString("DataFactoryConfirmationMessage", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Creating data factory &apos;{0}&apos; in resource group &apos;{1}&apos;..
         /// </summary>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Properties {
                 return ResourceManager.GetString("DataFactoryCreating", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to A data factory with the name {0} in the resource group {1} exists. 
         ///Continuing execution may overwrite the exisiting one. 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Properties {
                 return ResourceManager.GetString("DataFactoryExists", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the gateway &apos;{0}&apos; in the data factory &apos;{1}&apos;?.
         /// </summary>
@@ -193,14 +193,15 @@ namespace Microsoft.Azure.Commands.DataFactories.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to parse input JSON file. {0}. Please correct the error in the JSON file and re-deploy {1} again..
+        ///   Looks up a localized string similar to Failed to provision the gateway.  Please check if there is any error in the gateway properties before re-create it again..
         /// </summary>
-        internal static string InvalidJson {
+        internal static string GatewayProvisioningFailed {
             get {
-                return ResourceManager.GetString("InvalidJson", resourceCulture);
+                return ResourceManager.GetString("GatewayProvisioningFailed", resourceCulture);
             }
         }
-
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove hub &apos;{0}&apos; in data factory &apos;{1}&apos;?.
         /// </summary>
         internal static string HubConfirmationMessage {
@@ -239,11 +240,29 @@ namespace Microsoft.Azure.Commands.DataFactories.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to provision the hub.  Please check if there is any error in the hub properties before re-create it again..
+        /// </summary>
+        internal static string HubProvisioningFailed {
+            get {
+                return ResourceManager.GetString("HubProvisioningFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing hub &apos;{0}&apos; in data factory &apos;{1}&apos;..
         /// </summary>
         internal static string HubRemoving {
             get {
                 return ResourceManager.GetString("HubRemoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to parse input JSON file. {0}. Please correct the error in the JSON file and re-deploy {1} again..
+        /// </summary>
+        internal static string InvalidJson {
+            get {
+                return ResourceManager.GetString("InvalidJson", resourceCulture);
             }
         }
         
@@ -304,7 +323,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No access to write for the specified directory {0}..
+        ///   Looks up a localized string similar to No access to write for the specified directory {0} or the directory does not exist..
         /// </summary>
         internal static string NoWriteAccessToDirectory {
             get {

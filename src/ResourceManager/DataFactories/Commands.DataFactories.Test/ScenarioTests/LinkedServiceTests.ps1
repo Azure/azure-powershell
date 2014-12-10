@@ -120,3 +120,35 @@ function Test-GetLinkedServiceWithWhiteSpaceName
     # Test
     Assert-ThrowsContains { Get-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname } "null"    
 }
+
+<#
+.SYNOPSIS
+Test piping support.
+#>
+function Test-LinkedServicePiping
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+        
+    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+     
+        $lsname = "foo"
+   
+        New-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -File .\Resources\linkedService.json -Force
+        
+        Get-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname | Remove-AzureDataFactoryLinkedService -Force
+                
+        # Test the linked service no longer exists
+        Assert-ThrowsContains { Get-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname } "LinkedServiceNotFound"
+    }
+    finally
+    {
+        Clean-DataFactory $rgname $dfname
+    }
+}
