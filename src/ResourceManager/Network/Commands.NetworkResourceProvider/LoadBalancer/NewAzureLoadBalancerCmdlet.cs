@@ -18,6 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -70,15 +71,32 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
              HelpMessage = "The list of frontend Ip config")]
         public List<PSLoadBalancingRule> LoadBalancingRule { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             if (this.IsLoadBalancerPresent(this.ResourceGroupName, this.Name))
             {
-                throw new ArgumentException(ResourceAlreadyPresent);
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.OverwritingResource, Name),
+                    Resources.OverwritingResourceMessage,
+                    Name,
+                    () => CreateLoadBalancer());
             }
-            
+
+            var loadBalancer = this.CreateLoadBalancer();
+
+            WriteObject(loadBalancer);
+        }
+
+        private PSLoadBalancer CreateLoadBalancer()
+        {
             var loadBalancer = new PSLoadBalancer();
             loadBalancer.Name = this.Name;
             loadBalancer.ResourceGroupName = this.ResourceGroupName;
@@ -117,13 +135,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             // Map to the sdk object
             var lbModel = Mapper.Map<MNM.LoadBalancerCreateOrUpdateParameters>(loadBalancer);
-            
+
             // Execute the Create VirtualNetwork call
             this.LoadBalancerClient.CreateOrUpdate(this.ResourceGroupName, this.Name, lbModel);
 
             var getLoadBalancer = this.GetLoadBalancer(this.ResourceGroupName, this.Name);
 
-            WriteObject(getLoadBalancer);
+            return getLoadBalancer;
         }
     }
 }

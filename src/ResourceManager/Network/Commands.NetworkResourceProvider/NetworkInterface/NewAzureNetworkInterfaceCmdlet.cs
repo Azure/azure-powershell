@@ -78,15 +78,32 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             HelpMessage = "PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             if (this.IsNetworkInterfacePresent(this.ResourceGroupName, this.Name))
             {
-                throw new ArgumentException(ResourceAlreadyPresent);
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.OverwritingResource, Name),
+                    Resources.OverwritingResourceMessage,
+                    Name,
+                    () => CreateNetworkInterface());
             }
 
+            var networkInterface = CreateNetworkInterface();
+            
+            WriteObject(networkInterface);
+        }
+
+        private PSNetworkInterface CreateNetworkInterface()
+        {
             // Get the subnetId and publicIpAddressId from the object if specified
             if (string.Equals(ParameterSetName, Resources.SetByResource))
             {
@@ -121,10 +138,10 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterfaceCreateOrUpdateParameters>(networkInterface);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);
-            
+
             var getNetworkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
-            
-            WriteObject(getNetworkInterface);
+
+            return getNetworkInterface;
         }
     }
 }
