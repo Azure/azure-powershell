@@ -178,7 +178,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 var availabilityContext = vmPowershellCmdlets.TestAzureStaticVNetIP(vnet1, nonStaticIpAddress);
 
-                Assert.IsTrue(availabilityContext.IsAvailable,"Non static IpAddress {0} is not realesed.",nonStaticIpAddress);
+                Utilities.RetryActionUntilSuccess(
+                    () => Assert.IsTrue(availabilityContext.IsAvailable, "Non static IpAddress {0} is not realesed.",nonStaticIpAddress),
+                    "Non static IpAddress", 3, 60);
+                //Assert.IsTrue(availabilityContext.IsAvailable, "Non static IpAddress {0} is not realesed.",nonStaticIpAddress);
                 Utilities.PrintContext(availabilityContext);
                 pass = true;
             }

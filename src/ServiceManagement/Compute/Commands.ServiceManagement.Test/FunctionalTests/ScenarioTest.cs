@@ -225,16 +225,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             try
             {
-                Utilities.RetryActionUntilSuccess(() =>
-                {
-                    if (vmPowershellCmdlets.TestAzureServiceName(serviceName))
-                    {
-                        var op = vmPowershellCmdlets.RemoveAzureService(serviceName);
-                    }
-
-                    vmPowershellCmdlets.NewAzureQuickVM(OS.Linux, newAzureLinuxVMName, serviceName, linuxImageName, "user", password, locationName);
-                }, "Windows Azure is currently performing an operation on this hosted service that requires exclusive access.", 10, 30);
-
+                vmPowershellCmdlets.NewAzureQuickVM(OS.Linux, newAzureLinuxVMName, serviceName, linuxImageName, "user", password, locationName);
                 // Verify
                 PersistentVMRoleContext vmRoleCtxt = vmPowershellCmdlets.GetAzureVM(newAzureLinuxVMName, serviceName);
                 Assert.AreEqual(newAzureLinuxVMName, vmRoleCtxt.Name, true);
