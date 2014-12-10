@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
         public const string DataDisk = "AzureVMDataDisk";
         public const string OSDisk = "AzureVMOSDisk";
+        public const string SourceImage = "AzureVMSourceImage";
 
         public const string NetworkInterface = "AzureVMNetworkInterface";
 
