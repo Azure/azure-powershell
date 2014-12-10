@@ -719,30 +719,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         public ManagementOperationContext NewAzureQuickVM(OS os, string name, string serviceName, string imageName,
-            string userName, string password, string locationName, string instanceSize, string disableWinRMHttps, string reservedIpName = null, string vnetName = null)
+            string userName, string password, string locationName, string instanceSize, string disableWinRMHttps,
+            string reservedIpName = null, string vnetName = null)
         {
             var result = new ManagementOperationContext();
             try
             {
-                result =
-                    RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(os, name,
-                        serviceName, imageName, userName, password, locationName, instanceSize, disableWinRMHttps, reservedIpName, vnetName));
+                result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(
+                    os, name, serviceName, imageName, userName, password, locationName,
+                    instanceSize, disableWinRMHttps, reservedIpName, vnetName));
             }
             catch (Exception e)
             {
-                if (e.ToString().Contains("409"))
+                if (e.ToString().Contains("Service already exists") ||
+                    (e.InnerException != null && e.InnerException.ToString().Contains("Service already exists")))
                 {
-                    Utilities.RetryActionUntilSuccess(
-                        () =>
-                            result =
-                                RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(os,
-                                    name, serviceName, imageName, userName, password, null, instanceSize,
-                                    disableWinRMHttps, reservedIpName, vnetName)),
-                        "409", 4, 60);
+                    RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(
+                        os, name, serviceName, imageName, userName, password, null,
+                        instanceSize, disableWinRMHttps, reservedIpName, vnetName));
                 }
                 else
                 {
-                    Console.WriteLine(e.InnerException.ToString());
+                    Console.WriteLine(e.ToString());
+                    if (e.InnerException != null)
+                    {
+                        Console.WriteLine(e.InnerException.ToString());
+                    }
                     throw;
                 }
             }
@@ -755,25 +757,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return NewAzureQuickVM(os, name, serviceName, imageName, userName, password, locationName, null);
         }
 
-        public ManagementOperationContext NewAzureQuickVM(OS os, string name, string serviceName, string imageName,
-            string[] subnetNames, InstanceSize instanceSize, string userName, string password, string vNetName, string affinityGroup, string reservedIP = null)
+        public ManagementOperationContext NewAzureQuickVM(OS os, string name, string serviceName, string imageName, string[] subnetNames,
+            InstanceSize instanceSize, string userName, string password, string vNetName, string affinityGroup, string reservedIP = null)
         {
             var result = new ManagementOperationContext();
             try
             {
-                result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(os, name, serviceName, imageName, instanceSize.ToString(), userName, password, vNetName, subnetNames, affinityGroup, reservedIP));
+                result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(
+                    os, name, serviceName, imageName, instanceSize.ToString(), userName, password,
+                    vNetName, subnetNames, affinityGroup, reservedIP));
             }
             catch (Exception e)
             {
-                if (e.ToString().Contains("409"))
+                if (e.ToString().Contains("Service already exists") ||
+                    (e.InnerException != null && e.InnerException.ToString().Contains("Service already exists")))
                 {
-                    Utilities.RetryActionUntilSuccess(
-                        () => result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(os, name, serviceName, imageName, userName, password, null, instanceSize.ToString())),
-                        "409", 4, 60);
+                    RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(
+                        os, name, serviceName, imageName, instanceSize.ToString(), userName, password,
+                        vNetName, subnetNames, null, reservedIP));
                 }
                 else
                 {
-                    Console.WriteLine(e.InnerException.ToString());
+                    Console.WriteLine(e.ToString());
+                    if (e.InnerException != null)
+                    {
+                        Console.WriteLine(e.InnerException.ToString());
+                    }
                     throw;
                 }
             }
