@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMVHDContainer = "The virtual machine's Vhd container.";
         public const string VMOSDiskName = "The virtual machine OS disk's name.";
         public const string VMOSDiskVhdUri = "The virtual machine OS disk's Vhd Uri.";
+        public const string VMOSDiskCaching = "The virtual machine OS disk's caching.";
+        public const string VMOSDiskWindowsOSType = "The virtual machine disk's OS is Windows.";
+        public const string VMOSDiskLinuxOSType = "The virtual machine disk's OS is Linux.";
 
         public const string VMDataDiskName = "The virtual machine data disk's name.";
         public const string VMDataDiskVhdUri = "The virtual machine data disk's Vhd Uri.";
