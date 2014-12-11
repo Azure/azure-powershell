@@ -28,11 +28,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// The get schedule by schedule id parameter set.
-        /// </summary>
-        private const string ByScheduleId = "ByScheduleId";
-
-        /// <summary>
         /// The get schedule by schedule name parameter set.
         /// </summary>
         private const string ByScheduleName = "ByScheduleName";
@@ -41,13 +36,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// The get all parameter set.
         /// </summary>
         private const string ByAll = "ByAll";
-
-        /// <summary>
-        /// Gets or sets the schedule id.
-        /// </summary>
-        [Parameter(ParameterSetName = ByScheduleId, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule id.")]
-        public Guid? Id { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule name.
@@ -63,17 +51,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationExecuteCmdlet()
         {
             IEnumerable<Schedule> schedules;
-            if (this.Id.HasValue)
-            {
-                // ByScheduleId
-                schedules = new List<Schedule>
-                                {
-                                    this.AutomationClient.GetSchedule(
-                                        this.AutomationAccountName, this.Id.Value)
-                                };
-
-            }
-            else if (this.Name != null)
+            if (this.Name != null)
             {
                 // ByScheduleName
                 schedules = new List<Schedule>
@@ -92,7 +70,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
 
         /// <summary>
-        /// Writes a OneTimeSchedule, DailySchedule or HourlySchedule to the pipeline.
+        /// Writes the schedule to the pipeline.
         /// </summary>
         /// <param name="schedules">
         /// The schedules.
@@ -101,25 +79,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             foreach (var schedule in schedules)
             {
-                var dailySchedule = schedule as DailySchedule;
-                if (dailySchedule != null)
-                {
-                    this.WriteObject(dailySchedule);
-                    continue;
-                }
-
-                var hourlySchedule = schedule as HourlySchedule;
-                if (hourlySchedule != null)
-                {
-                    this.WriteObject(hourlySchedule);
-                    continue;
-                }
-
-                var oneTimeSchedule = schedule as OneTimeSchedule;
-                if (oneTimeSchedule != null)
-                {
-                    this.WriteObject(oneTimeSchedule);
-                }
+                this.WriteObject(schedule);
             }
         }
     }

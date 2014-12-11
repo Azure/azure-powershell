@@ -46,24 +46,6 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void GetAzureAutomationScheduleByIdSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            var scheduleId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.GetSchedule(accountName, scheduleId));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = scheduleId;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.GetSchedule(accountName, scheduleId), Times.Once());
-        }
-
-        [TestMethod]
         public void GetAzureAutomationScheduleByNameSuccessfull()
         {
             // Setup

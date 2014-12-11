@@ -54,7 +54,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Automation, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.0.12.1-preview\lib\net40\Microsoft.Azure.Management.Automation.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.1.0.0-preview\lib\net40\Microsoft.Azure.Management.Automation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -100,29 +100,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
-    <Compile Include="Cmdlet\GetAzureAutomationAccount.cs" />
-    <Compile Include="Cmdlet\GetAzureAutomationJob.cs" />
-    <Compile Include="Cmdlet\GetAzureAutomationJobOutput.cs" />
-    <Compile Include="Cmdlet\GetAzureAutomationRunbook.cs" />
-    <Compile Include="Cmdlet\GetAzureAutomationRunbookDefinition.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationSchedule.cs" />
-    <Compile Include="Cmdlet\NewAzureAutomationRunbook.cs" />
-    <Compile Include="Cmdlet\NewAzureAutomationSchedule.cs" />
-    <Compile Include="Cmdlet\PublishAzureAutomationRunbook.cs" />
-    <Compile Include="Cmdlet\RegisterAzureAutomationScheduledRunbook.cs" />
-    <Compile Include="Cmdlet\RemoveAzureAutomationRunbook.cs" />
-    <Compile Include="Cmdlet\RemoveAzureAutomationSchedule.cs" />
-    <Compile Include="Cmdlet\ResumeAzureAutomationJob.cs" />
-    <Compile Include="Cmdlet\SetAzureAutomationRunbook.cs" />
-    <Compile Include="Cmdlet\SetAzureAutomationRunbookDefinition.cs" />
-    <Compile Include="Cmdlet\SetAzureAutomationSchedule.cs" />
-    <Compile Include="Cmdlet\StartAzureAutomationRunbook.cs" />
-    <Compile Include="Cmdlet\StartAzureAutomationRunbookBase.cs" />
-    <Compile Include="Cmdlet\StopAzureAutomationJob.cs" />
-    <Compile Include="Cmdlet\SuspendAzureAutomationJob.cs" />
-    <Compile Include="Cmdlet\UnregisterAzureAutomationScheduledRunbook.cs" />
     <Compile Include="Common\AutomationClient.cs" />
-    <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\IAutomationClient.cs" />
     <Compile Include="Common\Requires.cs" />
     <Compile Include="Common\RequiresExtensions.cs" />
@@ -130,18 +109,8 @@
     <Compile Include="DataContract\ErrorResponse.cs" />
     <Compile Include="DataContract\OdataError.cs" />
     <Compile Include="DataContract\OdataErrorMessage.cs" />
-    <Compile Include="Model\AutomationAccount.cs" />
-    <Compile Include="Model\DailySchedule.cs" />
-    <Compile Include="Model\HourlySchedule.cs" />
-    <Compile Include="Model\Job.cs" />
-    <Compile Include="Model\JobParameter.cs" />
-    <Compile Include="Model\JobStreamItem.cs" />
-    <Compile Include="Model\OneTimeSchedule.cs" />
-    <Compile Include="Model\Runbook.cs" />
-    <Compile Include="Model\RunbookDefinition.cs" />
-    <Compile Include="Model\RunbookParameter.cs" />
-    <Compile Include="Model\RunbookVersion.cs" />
     <Compile Include="Model\Schedule.cs" />
+    <Compile Include="Model\ScheduleFrequency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
