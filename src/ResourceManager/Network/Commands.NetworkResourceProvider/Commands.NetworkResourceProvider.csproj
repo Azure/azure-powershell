@@ -208,7 +208,6 @@
     <Compile Include="VirtualNetwork\NewAzureVirtualNetworkCmdlet.cs" />
     <Compile Include="VirtualNetwork\VirtualNetworkBaseClient.cs" />
     <Content Include="Microsoft.Azure.Commands.NetworkResourceProvider.format.ps1xml">
-      <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="MSSharedLibKey.snk" />
