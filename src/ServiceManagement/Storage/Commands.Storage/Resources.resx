@@ -661,4 +661,8 @@ Failed: {2}.</value>
   <data name="TransmitCancelled" xml:space="preserve">
     <value>Transmit cancelled by user.</value>
   </data>
+  <data name="ValidEnvironmentName" xml:space="preserve">
+    <value>Valid environment names are: '{0}' and '{1}'</value>
+    <comment>0 and 1 are for the correct Environment names</comment>
+  </data>
 </root>

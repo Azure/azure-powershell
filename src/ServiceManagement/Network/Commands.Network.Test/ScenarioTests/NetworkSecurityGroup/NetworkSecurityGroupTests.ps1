@@ -174,6 +174,24 @@ function Test-SetAndGetNetworkSecurityGroupForSubnet
     Assert-AreEqual $securityGroupFromSubnet.Name $securityGroupName
 }
 
+<#
+.SYNOPSIS
+Tests Set and Get-AzureNetworkSecurityGroupForSubnet
+#>
+function Test-SetNetworkSecurityGroupToSubnetInDifferentRegion
+{
+    # Setup
+    $securityGroupName = Get-SecurityGroupName
+    $securityRuleName = Get-SecurityRuleName
+    $securityGroupLocation = $locations[1].Name
+    $createdSecurityGroup = New-NetworkSecurityGroup $securityGroupName $securityGroupLocation
+    Set-AzureVNetConfig ($(Get-Location).Path +  "\TestData\SimpleNetworkConfiguration.xml")
+
+    # Assert
+    $expectedMessage = "BadRequest : The region europewest specified for the Network Security Group $securityGroupName is different than the region europenorth that Virtual Network $VirtualNetworkName belongs to, they need to belong to the same region."
+    Assert-Throws { Set-AzureNetworkSecurityGroupToSubnet -Name $securityGroupName -VirtualNetwork $VirtualNetworkName -Subnet $SubnetName -Force } $expectedMessage
+}
+
 ########################## Remove Network Security Group for Subnet Tests #############################
 
 <#

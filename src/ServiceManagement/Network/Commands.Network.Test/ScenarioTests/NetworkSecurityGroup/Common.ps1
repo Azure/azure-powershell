@@ -62,7 +62,7 @@ Creates a Security Group.
 #>
 function New-NetworkSecurityGroup
 {
-    param([string] $securityGroupName)
+    param([string] $securityGroupName, [string] $location = $location)
 
     New-AzureNetworkSecurityGroup -Name $securityGroupName -Location $location -Label $NSGLabel
 }

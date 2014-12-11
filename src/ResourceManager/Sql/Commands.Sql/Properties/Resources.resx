@@ -117,11 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>{your_password_here}</value>
+  </data>
+  <data name="EnterUserId" xml:space="preserve">
+    <value>{your_user_id_here}</value>
+  </data>
   <data name="InvalidEventTypeSet" xml:space="preserve">
     <value>Cannot use the '{0}' option with other event types.</value>
   </data>
   <data name="NoStorageAccountWhenConfiguringAuditingPolicy" xml:space="preserve">
     <value>Cannot set auditing policy without a storage account name.</value>
+  </data>
+  <data name="PdoTitle" xml:space="preserve">
+    <value>PHP Data Objects(PDO) Sample Code:</value>
+  </data>
+  <data name="PhpConnectionError" xml:space="preserve">
+    <value>Error connecting to SQL Server</value>
+  </data>
+  <data name="sqlSampleTitle" xml:space="preserve">
+    <value>SQL Server Extension Sample Code:</value>
   </data>
   <data name="StorageAccountNotFound" xml:space="preserve">
     <value>Cannot find a storage account with the name '{0}'. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it.</value>
