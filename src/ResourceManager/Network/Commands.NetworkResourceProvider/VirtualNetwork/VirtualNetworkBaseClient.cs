@@ -18,6 +18,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var virtualNetwork = Mapper.Map<PSVirtualNetwork>(getNetworkInterfaceResponse.VirtualNetwork);
             virtualNetwork.ResourceGroupName = resourceGroupName;
+            virtualNetwork.PropertiesText = JsonConvert.SerializeObject(virtualNetwork.Properties, Formatting.Indented);
 
             return virtualNetwork;
         }

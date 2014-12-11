@@ -19,6 +19,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var publicIpAddress = Mapper.Map<PSPublicIpAddress>(getPublicIpAddressResponse.PublicIpAddress);
             publicIpAddress.ResourceGroupName = resourceGroupName;
-
+            publicIpAddress.PropertiesText = JsonConvert.SerializeObject(publicIpAddress.Properties, Formatting.Indented);
             return publicIpAddress;
         }
     }

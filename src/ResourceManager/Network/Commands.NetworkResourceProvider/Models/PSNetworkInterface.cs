@@ -17,5 +17,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
     public class PSNetworkInterface : PSResource
     {
         public PSNetworkInterfaceProperties Properties { get; set; }
+
+        public string PropertiesText { get; set; }
     }
 }

@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Newtonsoft.Json;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -41,12 +42,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             base.ExecuteCmdlet();
             if (!string.IsNullOrEmpty(this.Name))
             {
-                // Execute the Get VirtualNetwork call
-                var vnetGetResponse = this.VirtualNetworkClient.Get(this.ResourceGroupName, this.Name);
-
-                var vnet = Mapper.Map<PSVirtualNetwork>(vnetGetResponse.VirtualNetwork);
-                vnet.Properties.DhcpOptions = new PSDhcpOptions();
-                vnet.ResourceGroupName = this.ResourceGroupName;
+                var vnet = this.GetVirtualNetwork(this.ResourceGroupName, this.Name);
 
                 WriteObject(vnet);
             }
