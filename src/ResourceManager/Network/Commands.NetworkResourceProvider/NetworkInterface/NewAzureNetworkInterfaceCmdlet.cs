@@ -50,8 +50,17 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             Mandatory = true,
             HelpMessage = "The public IP address allocation method.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(MNM.IpAllocationMethod.Dynamic, IgnoreCase = true)]
+        [ValidateSet(
+            MNM.IpAllocationMethod.Dynamic, 
+            MNM.IpAllocationMethod.Static, 
+            IgnoreCase = true)]
         public string AllocationMethod { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The private ip address of the Network Interface " +
+                          "if static allocation is specified.")]
+        public string PrivateIpAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -122,9 +131,20 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             networkInterface.Properties.IpConfigurations = new List<PSNetworkInterfaceIpConfiguration>();
 
             var nicIpConfiguration = new PSNetworkInterfaceIpConfiguration();
-            nicIpConfiguration.Name = "ipconfig";
+            nicIpConfiguration.Name = "ipconfig1";
             nicIpConfiguration.Properties = new PSNetworkInterfaceIpConfigurationProperties();
             nicIpConfiguration.Properties.PrivateIpAllocationMethod = this.AllocationMethod;
+
+            if (this.AllocationMethod.Equals(MNM.IpAllocationMethod.Static, StringComparison.OrdinalIgnoreCase))
+            {
+                if (string.IsNullOrEmpty(this.PrivateIpAddress))
+                {
+                    throw new ArgumentException(Resources.StaticIpAddressErrorMessage);
+                }
+
+                nicIpConfiguration.Properties.PrivateIpAddress = this.PrivateIpAddress;
+            }
+
             nicIpConfiguration.Properties.Subnet = new PSResourceId();
             nicIpConfiguration.Properties.Subnet.Id = this.SubnetId;
 

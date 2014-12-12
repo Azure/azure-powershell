@@ -185,5 +185,14 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Properties {
                 return ResourceManager.GetString("SetByResourceId", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PrivateIpAddress needs to be specified in Static allocation.
+        /// </summary>
+        public static string StaticIpAddressErrorMessage {
+            get {
+                return ResourceManager.GetString("StaticIpAddressErrorMessage", resourceCulture);
+            }
+        }
     }
 }

@@ -58,6 +58,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var virtualNetwork = Mapper.Map<PSVirtualNetwork>(getNetworkInterfaceResponse.VirtualNetwork);
             virtualNetwork.ResourceGroupName = resourceGroupName;
+
+            // Initialize DhcpOptions if it is empty
+            if (virtualNetwork.Properties.DhcpOptions == null)
+            {
+                virtualNetwork.Properties.DhcpOptions = new PSDhcpOptions();
+            }
+
             virtualNetwork.PropertiesText = JsonConvert.SerializeObject(virtualNetwork.Properties, Formatting.Indented);
 
             return virtualNetwork;

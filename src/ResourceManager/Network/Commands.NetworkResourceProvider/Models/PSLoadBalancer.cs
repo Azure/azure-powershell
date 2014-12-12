@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSLoadBalancer : PSResource
+    public class PSLoadBalancer : PSTopLevelResource
      {
         public PSLoadBalancerProperties Properties { get; set; }
 

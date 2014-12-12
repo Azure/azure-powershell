@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSPublicIpAddress : PSResource
+    public class PSPublicIpAddress : PSTopLevelResource
     {
         public PSPublicIpAddressProperties Properties { get; set; }
 

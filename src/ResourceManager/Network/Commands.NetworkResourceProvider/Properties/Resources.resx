@@ -160,4 +160,7 @@
   <data name="SetByResourceId" xml:space="preserve">
     <value>SetByResourceId</value>
   </data>
+  <data name="StaticIpAddressErrorMessage" xml:space="preserve">
+    <value>PrivateIpAddress needs to be specified in Static allocation</value>
+  </data>
 </root>

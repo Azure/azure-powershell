@@ -59,6 +59,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var publicIpAddress = Mapper.Map<PSPublicIpAddress>(getPublicIpAddressResponse.PublicIpAddress);
             publicIpAddress.ResourceGroupName = resourceGroupName;
+
+            if (publicIpAddress.Properties.DnsSettings == null)
+            {
+                publicIpAddress.Properties.DnsSettings = new PSPublicIpAddressDnsSettings();
+            }
+            
             publicIpAddress.PropertiesText = JsonConvert.SerializeObject(publicIpAddress.Properties, Formatting.Indented);
             return publicIpAddress;
         }
