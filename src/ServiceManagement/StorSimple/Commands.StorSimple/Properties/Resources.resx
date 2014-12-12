@@ -117,14 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BackupPoliciesReturnedCount" xml:space="preserve">
-    <value>{0} backup policies found!</value>
+  <data name="BackupPolicyGet_StatusMessage" xml:space="preserve">
+    <value>{0} backup polic{1} found!</value>
   </data>
   <data name="BackupPolicyFound" xml:space="preserve">
     <value>BackupPolicy with id {0} found!</value>
   </data>
-  <data name="BackupPolicyNotFound" xml:space="preserve">
-    <value>No BackupPolicy was found with the given name. Try giving a different name or remove the Name paramter altogether to get all backuppolicies on the device</value>
+  <data name="NoBackupPolicyWithGivenNameFound" xml:space="preserve">
+    <value>No backuppolicy with name : {0} found in your device: {1} !</value>
   </data>
   <data name="FailureMessageSubmitJob" xml:space="preserve">
     <value>The {0} job failed to submit. </value>

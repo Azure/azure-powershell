@@ -9,6 +9,9 @@ using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
+    /// <summary>
+    /// this commandlet will let you create a new backuppolicy with schedules
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureStorSimpleDeviceBackupPolicy")]
     public class NewAzureStorSimpleDeviceBackupPolicy:StorSimpleCmdletBase
     {
@@ -69,7 +72,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             deviceId = StorSimpleClient.GetDeviceId(DeviceName);
             if (deviceId == null)
             {
-                WriteVerbose(Resources.NotFoundMessageDevice);
+                WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                WriteObject(null);
+                return;
             }
 
             ProcessAddSchedules();

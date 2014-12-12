@@ -88,15 +88,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} backup policies found!.
-        /// </summary>
-        internal static string BackupPoliciesReturnedCount {
-            get {
-                return ResourceManager.GetString("BackupPoliciesReturnedCount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to BackupPolicy with id {0} found!.
         /// </summary>
         internal static string BackupPolicyFound {
@@ -106,11 +97,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No BackupPolicy was found with the given name. Try giving a different name or remove the Name paramter altogether to get all backuppolicies on the device.
+        ///   Looks up a localized string similar to {0} backup polic{1} found!.
         /// </summary>
-        internal static string BackupPolicyNotFound {
+        internal static string BackupPolicyGet_StatusMessage {
             get {
-                return ResourceManager.GetString("BackupPolicyNotFound", resourceCulture);
+                return ResourceManager.GetString("BackupPolicyGet_StatusMessage", resourceCulture);
             }
         }
         
@@ -318,6 +309,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string IscsiConnectionGet_StatusMessage {
             get {
                 return ResourceManager.GetString("IscsiConnectionGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No backuppolicy with name : {0} found in your device: {1} !.
+        /// </summary>
+        internal static string NoBackupPolicyWithGivenNameFound {
+            get {
+                return ResourceManager.GetString("NoBackupPolicyWithGivenNameFound", resourceCulture);
             }
         }
         

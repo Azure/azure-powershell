@@ -8,6 +8,9 @@ using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
+    /// <summary>
+    /// this commandlet will help in creating a new Addconfig that can be used to create a new BackupPolicy subsequently
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureStorSimpleDeviceBackupScheduleAddConfig"),OutputType(typeof(BackupScheduleBase))]
     public class NewAzureStorSimpleDeviceBackupScheduleAddConfig : StorSimpleCmdletBase 
     {
