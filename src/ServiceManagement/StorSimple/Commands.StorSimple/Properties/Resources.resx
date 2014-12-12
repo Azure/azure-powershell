@@ -291,4 +291,19 @@
   <data name="StorageAccountNotFoundMessage" xml:space="preserve">
     <value>Could not find storage account with name: {0}</value>
   </data>
+  <data name="NoDeviceRegisteredMessage" xml:space="preserve">
+    <value>No StorSimple device is currently registered with this resource. Please register at least one device to the resource and rerun this command.</value>
+  </data>
+  <data name="RegistrationKeyNotPassedMessage" xml:space="preserve">
+    <value>Registrtion key not passed - validating that the secrets are already initialized</value>
+  </data>
+  <data name="RegistrationKeyPassedMessage" xml:space="preserve">
+    <value>Registration key passed - initializing secrets</value>
+  </data>
+  <data name="ResourceContextInitializeMessage" xml:space="preserve">
+    <value>Initializing resource context</value>
+  </data>
+  <data name="SecretsValidationCompleteMessage" xml:space="preserve">
+    <value>Secrets validation complete</value>
+  </data>
 </root>

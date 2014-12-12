@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
@@ -42,32 +43,38 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                this.WriteVerbose("Initializing resource context");
-                StorSimpleResourceContext currentContext = null;
-                var status = StorSimpleClient.SetResourceContext(resourceName);
-                if (status.Equals(Resources.NotFoundMessageResource))
+                this.WriteVerbose(Resources.ResourceContextInitializeMessage);
+                var resCred = StorSimpleClient.GetResourceDetails(resourceName);
+                if (resCred == null)
                 {
-                    this.WriteVerbose(status);
+                    this.WriteVerbose(Resources.NotFoundMessageResource);
                     return;
                 }
-                else
+                
+                StorSimpleClient.SetResourceContext(resCred);
+                var deviceInfos = StorSimpleClient.GetAllDevices();
+                if (!deviceInfos.Any())
                 {
-                    this.WriteVerbose(status);
-                    currentContext = StorSimpleClient.GetResourceContext();
-                    this.WriteObject(currentContext);
+                    WriteWarning(Resources.NoDeviceRegisteredMessage);
+                    StorSimpleClient.ResetResourceContext();
+                    return;
                 }
-
+                
                 if (string.IsNullOrEmpty(RegistrationKey))
                 {
-                    this.WriteVerbose("Registrtion key not passed - validating that the secrets are already initialized.");
+                    this.WriteVerbose(Resources.RegistrationKeyNotPassedMessage);
                 }
                 else
                 {
-                    this.WriteVerbose("Registration key passed - initializing secrets");
-                    EncryptionCmdLetHelper.PersistCIK(this, currentContext.ResourceId, ParseCIKFromRegistrationKey());
+                    this.WriteVerbose(Resources.RegistrationKeyPassedMessage);
+                    EncryptionCmdLetHelper.PersistCIK(this, resCred.ResourceId, ParseCIKFromRegistrationKey());
                 }
-                EncryptionCmdLetHelper.ValidatePersistedCIK(this, currentContext.ResourceId);
-                this.WriteVerbose("Secrets validation complete");
+                EncryptionCmdLetHelper.ValidatePersistedCIK(this, resCred.ResourceId);
+                this.WriteVerbose(Resources.SecretsValidationCompleteMessage);
+
+                this.WriteVerbose(Resources.SuccessMessageSetResourceContext);
+                var currentContext = StorSimpleClient.GetResourceContext();
+                this.WriteObject(currentContext);
             }
             catch(Exception exception)
             {

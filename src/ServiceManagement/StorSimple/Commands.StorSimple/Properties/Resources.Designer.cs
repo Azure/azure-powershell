@@ -277,6 +277,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No StorSimple device is currently registered with this resource. Please register at least one device to the resource and rerun this command..
+        /// </summary>
+        internal static string NoDeviceRegisteredMessage {
+            get {
+                return ResourceManager.GetString("NoDeviceRegisteredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide the EncryptionKey..
         /// </summary>
         internal static string NotAllowedErrorDataContainerEncryption {
@@ -345,6 +354,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string NotFoundVolumeMessage {
             get {
                 return ResourceManager.GetString("NotFoundVolumeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registrtion key not passed - validating that the secrets are already initialized.
+        /// </summary>
+        internal static string RegistrationKeyNotPassedMessage {
+            get {
+                return ResourceManager.GetString("RegistrationKeyNotPassedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration key passed - initializing secrets.
+        /// </summary>
+        internal static string RegistrationKeyPassedMessage {
+            get {
+                return ResourceManager.GetString("RegistrationKeyPassedMessage", resourceCulture);
             }
         }
         
@@ -457,6 +484,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Initializing resource context.
+        /// </summary>
+        internal static string ResourceContextInitializeMessage {
+            get {
+                return ResourceManager.GetString("ResourceContextInitializeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to # of volume containers returned: {0}.
         /// </summary>
         internal static string ReturnedCountDataContainerMessage {
@@ -471,6 +507,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string ReturnedCountVolumeMessage {
             get {
                 return ResourceManager.GetString("ReturnedCountVolumeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secrets validation complete.
+        /// </summary>
+        internal static string SecretsValidationCompleteMessage {
+            get {
+                return ResourceManager.GetString("SecretsValidationCompleteMessage", resourceCulture);
             }
         }
         
