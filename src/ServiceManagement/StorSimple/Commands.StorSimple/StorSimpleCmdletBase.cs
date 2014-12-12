@@ -125,14 +125,32 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     var webEx = ex as WebException;
                     if (webEx == null)
                         break;
+                    try
+                    {
+                        HttpWebResponse response = webEx.Response as HttpWebResponse;
+                        WriteVerbose(String.Format(Resources.WebExceptionMessage, response.StatusCode));
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
                     errorRecord = new ErrorRecord(webEx, string.Empty, ErrorCategory.ConnectionError, null);
                     break;
+                }
+                else if (exType == typeof (FormatException))
+                {
+                    var formEx = ex as FormatException;
+                    if (formEx == null)
+                        break;
+                    WriteVerbose(string.Format(Resources.InvalidInputMessage, ex.Message));
+                    errorRecord = new ErrorRecord(formEx, string.Empty, ErrorCategory.InvalidData, null);
                 }
                 else if (exType == typeof(NullReferenceException))
                 {
                     var nullEx = ex as NullReferenceException;
                     if (nullEx == null)
                         break;
+                    WriteVerbose(string.Format(Resources.InvalidInputMessage, ex.Message));
                     errorRecord = new ErrorRecord(nullEx, string.Empty, ErrorCategory.InvalidData, null);
                     break;
                 }
@@ -141,7 +159,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     var argEx = ex as ArgumentNullException;
                     if (argEx == null)
                         break;
-                    errorRecord = new ErrorRecord(argEx, string.Empty, ErrorCategory.InvalidArgument, null);
+                    WriteVerbose(string.Format(Resources.InvalidInputMessage, ex.Message));
+                    errorRecord = new ErrorRecord(argEx, string.Empty, ErrorCategory.InvalidData, null);
                     break;
                 }
                 else if (exType == typeof(StorSimpleSecretManagementException))
@@ -192,6 +211,67 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return true;
         }
 
+        internal bool ValidStorageAccountCred(string storageAccountName, string storageAccountKey)
+        {
+            using (System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create())
+            {
+                Random rnd = new Random();
+                string testContainerName = String.Format("storsimplevalidationcontainer{0}", rnd.Next());
+                string script = String.Format(
+                                  @"$context = New-AzureStorageContext -StorageAccountName {0} -StorageAccountKey {1};"
+                                + @"New-AzureStorageContainer -Name {2} -Context $context;"
+                                + @"Remove-AzureStorageContainer -Name {2} -Context $context -Force;",
+                                storageAccountName, storageAccountKey, testContainerName);
+                ps.AddScript(script);
+                ps.Invoke();
+                if (ps.HadErrors)
+                {
+                    HandleException(ps.Streams.Error[0].Exception);
+                    return false;
+                }
+                return true;
+            }
+        }
+
+
+        internal String GetStorageAccountLocation(string storageAccountName, out bool exist)
+        {
+            using (System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create())
+            {
+                String location = null;
+                exist = false;
+
+                string script = String.Format(@"Get-AzureStorageAccount -StorageAccountName {0}", storageAccountName);
+                ps.AddScript(script);
+                var result = ps.Invoke();
+                
+                if (ps.HadErrors)
+                {
+                    HandleException(ps.Streams.Error[0].Exception);
+                    WriteVerbose(String.Format(Resources.StorageAccountNotFoundMessage, storageAccountName));
+                }
+                
+                if (result != null && result.Count > 0)
+                {
+                    exist = true;
+                    WriteVerbose(string.Format(Resources.StorageAccountFoundMessage, storageAccountName));
+                    script = String.Format(@"Get-AzureStorageAccount -StorageAccountName {0}"
+                                           + @"| Select-Object -ExpandProperty Location", storageAccountName);
+                    ps.AddScript(script);
+                    result = ps.Invoke();
+                    if (ps.HadErrors)
+                    {
+                        HandleException(ps.Streams.Error[0].Exception);
+                    }
+                    if (result.Count > 0)
+                    {
+                        location = result[0].ToString();
+                    }
+                }
+                return location;
+            }
+        }
+	
         /// <summary>
         /// this method verifies that the devicename parameter specified is completely configured
         /// no operation should be allowed to perform on a non-configured device

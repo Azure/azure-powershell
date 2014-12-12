@@ -268,6 +268,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid input : {0}.
+        /// </summary>
+        internal static string InvalidInputMessage {
+            get {
+                return ResourceManager.GetString("InvalidInputMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provide valid datetime string for To parameter!.
         /// </summary>
         internal static string InvalidToMessage {
@@ -628,6 +637,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Found storage account with name : {0}.
+        /// </summary>
+        internal static string StorageAccountFoundMessage {
+            get {
+                return ResourceManager.GetString("StorageAccountFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find storage account with name: {0}.
+        /// </summary>
+        internal static string StorageAccountNotFoundMessage {
+            get {
+                return ResourceManager.GetString("StorageAccountNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your resource has seen selected successfully. To change to another resource please use Select-AzureStorSimpleResource commandlet!.
         /// </summary>
         internal static string SuccessfulResourceSelection {
@@ -669,6 +696,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string ValidationSuccessfulRegistrationKey {
             get {
                 return ResourceManager.GetString("ValidationSuccessfulRegistrationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web exception encountered with StatusCode: {0}.
+        /// </summary>
+        internal static string WebExceptionMessage {
+            get {
+                return ResourceManager.GetString("WebExceptionMessage", resourceCulture);
             }
         }
     }

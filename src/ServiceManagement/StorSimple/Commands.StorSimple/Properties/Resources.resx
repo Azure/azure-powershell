@@ -321,4 +321,16 @@
   <data name="ValidationSuccessfulRegistrationKey" xml:space="preserve">
     <value>The registration key has been validated successfully! </value>
   </data>
+  <data name="InvalidInputMessage" xml:space="preserve">
+    <value>Invalid input : {0}</value>
+  </data>
+  <data name="StorageAccountFoundMessage" xml:space="preserve">
+    <value>Found storage account with name : {0}</value>
+  </data>
+  <data name="StorageAccountNotFoundMessage" xml:space="preserve">
+    <value>Could not find storage account with name: {0}</value>
+  </data>
+  <data name="WebExceptionMessage" xml:space="preserve">
+    <value>Web exception encountered with StatusCode: {0}</value>
+  </data>
 </root>
