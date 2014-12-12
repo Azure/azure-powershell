@@ -60,9 +60,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var deviceInfos = StorSimpleClient.GetAllDevices();
                 if (!deviceInfos.Any())
                 {
-                    WriteWarning(Resources.NoDeviceRegisteredMessage);
                     StorSimpleClient.ResetResourceContext();
-                    return;
+                    throw new NoDeviceRegisteredException();
                 }
 
                 //now check for the key

@@ -140,6 +140,7 @@
     <Compile Include="Encryption\EncryptionCmdLetHelper.cs" />
     <Compile Include="Encryption\StorSimpleKeyManager.cs" />
     <Compile Include="Exceptions\DeviceNotYetConfiguredException.cs" />
+    <Compile Include="Exceptions\NoDeviceRegisteredException.cs" />
     <Compile Include="Exceptions\RegistrationKeyException.cs" />
     <Compile Include="Exceptions\StorSimpleDeviceNotFoundException.cs" />
     <Compile Include="Exceptions\StorSimpleJobNotFoundException.cs" />

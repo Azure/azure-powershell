@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
@@ -215,21 +216,51 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         {
             using (System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create())
             {
+                bool valid = true;
                 Random rnd = new Random();
-                string testContainerName = String.Format("storsimplevalidationcontainer{0}", rnd.Next());
-                string script = String.Format(
+                string testContainerName = String.Format("storsimplesdkvalidation{0}", rnd.Next());
+                //create a storage container and then delete it
+                string validateScript = String.Format(
                                   @"$context = New-AzureStorageContext -StorageAccountName {0} -StorageAccountKey {1};"
                                 + @"New-AzureStorageContainer -Name {2} -Context $context;"
                                 + @"Remove-AzureStorageContainer -Name {2} -Context $context -Force;",
                                 storageAccountName, storageAccountKey, testContainerName);
-                ps.AddScript(script);
+                ps.AddScript(validateScript);
                 ps.Invoke();
                 if (ps.HadErrors)
                 {
-                    HandleException(ps.Streams.Error[0].Exception);
-                    return false;
+                    var exception = ps.Streams.Error[0].Exception;
+                    string getScript = String.Format(
+                                  @"$context = New-AzureStorageContext -StorageAccountName {0} -StorageAccountKey {1};"
+                                + @"Get-AzureStorageContainer -Name {2} -Context $context;",
+                                storageAccountName, storageAccountKey, testContainerName);
+                    ps.AddScript(getScript);
+                    var result = ps.Invoke();
+                    if (result != null && result.Count > 0)
+                    {
+                        //storage container successfully created and still exists, retry deleting it
+                        int retryCount = 1;
+                        string removeScript = String.Format(
+                                  @"$context = New-AzureStorageContext -StorageAccountName {0} -StorageAccountKey {1};"
+                                + @"Remove-AzureStorageContainer -Name {2} -Context $context -Force;",
+                                storageAccountName, storageAccountKey, testContainerName);
+                        do
+                        {
+                            WriteVerbose(string.Format(Resources.StorageAccountCleanupRetryMessage, retryCount));
+                            ps.AddScript(removeScript);
+                            ps.Invoke();
+                            Thread.Sleep(retryCount * 1000);
+                            ps.AddScript(getScript);
+                            result = ps.Invoke();
+                        } while (result != null && result.Count > 0 && ++retryCount <= 5);
+                    }
+                    else
+                    {
+                        valid = false;
+                        HandleException(exception);
+                    }
                 }
-                return true;
+                return valid;
             }
         }
 

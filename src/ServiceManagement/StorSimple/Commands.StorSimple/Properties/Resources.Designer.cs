@@ -358,15 +358,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No StorSimple device is currently registered with this resource. Please register at least one device to the resource and rerun this command..
-        /// </summary>
-        internal static string NoDeviceRegisteredMessage {
-            get {
-                return ResourceManager.GetString("NoDeviceRegisteredMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to No resource found in your subscription!.
         /// </summary>
         internal static string NoResourceFoundInSubscriptionMessage {
@@ -687,6 +678,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string StartFromDateForBackupNotValid {
             get {
                 return ResourceManager.GetString("StartFromDateForBackupNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cleaning up objects, retry count: {0}.
+        /// </summary>
+        internal static string StorageAccountCleanupRetryMessage {
+            get {
+                return ResourceManager.GetString("StorageAccountCleanupRetryMessage", resourceCulture);
             }
         }
         
