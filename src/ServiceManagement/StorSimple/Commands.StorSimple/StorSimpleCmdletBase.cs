@@ -12,6 +12,8 @@ using Microsoft.WindowsAzure;
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
     using Properties;
+    using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
+    using Microsoft.WindowsAzure.Commands.StorSimple.Models;
 
     public class StorSimpleCmdletBase : AzurePSCmdlet
     {
@@ -63,16 +65,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         internal virtual void HandleSyncJobResponse(JobStatusInfo jobStatus, string operationName)
         {
             string msg = string.Empty;
+            JobReport jobReport = new JobReport(jobStatus);
 
-            if (jobStatus.TaskResult != TaskResult.Succeeded)
+            if (jobStatus.TaskResult !=TaskResult.Succeeded)
             {
                 msg = string.Format(Resources.FailureMessageCompleteJob, operationName);
-                WriteObject(jobStatus);
+                WriteObject(jobReport);
             }
 
             else
             {
                 msg = string.Format(Resources.SuccessMessageCompleteJob, operationName);
+                WriteObject(jobReport);
             }
 
             WriteVerbose(msg);
@@ -165,13 +169,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             base.BeginProcessing();
             VerifyResourceContext();
         }
+        /// <summary>
+        /// this method verifies that a resource has been selected before this commandlet is executed
+        /// </summary>
         private void VerifyResourceContext()
         {
             if (!CheckResourceContextPresent())
             {
-                Exception ex = new Exception("Resource Context not set. Please set the resourcename using Select-AzureStorSimpleResource commandlet");
-                ErrorRecord resourceNotSetRecord = new ErrorRecord(ex, "RESOURCE_NOT_SET", ErrorCategory.InvalidOperation, null);
-                this.ThrowTerminatingError(resourceNotSetRecord);
+                throw new ResourceContextNotFoundException();
             }
         }
 
@@ -185,6 +190,28 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// this method verifies that the devicename parameter specified is completely configured
+        /// no operation should be allowed to perform on a non-configured device
+        /// </summary>
+        public void VerifyDeviceConfigurationCompleteForDevice(String deviceId)
+        {
+            DeviceDetails details = storSimpleClient.GetDeviceDetails(deviceId);
+            bool data0Configured = false;
+
+            if(details.NetInterfaceList!=null)
+            {
+                NetInterface data0 = details.NetInterfaceList.Where(x => x.InterfaceId == NetInterfaceId.Data0).ToList<NetInterface>().First<NetInterface>();
+                if (data0 != null
+                    && data0.IsEnabled
+                    && data0.NicIPv4Settings != null
+                    && !String.IsNullOrEmpty(data0.NicIPv4Settings.Controller0IPv4Address))
+                    data0Configured = true;
+            }
+            if (!data0Configured)
+                throw new DeviceNotYetConfiguredException();
         }
     }
 }

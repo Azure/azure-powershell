@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BackupPoliciesReturnedCount" xml:space="preserve">
-    <value># of backup policies returned : {0}</value>
+    <value>{0} backup policies found!</value>
   </data>
   <data name="BackupPolicyFound" xml:space="preserve">
     <value>BackupPolicy with id {0} found!</value>
@@ -133,7 +133,7 @@
     <value>Please provide the EncryptionKey.</value>
   </data>
   <data name="NotFoundMessageACR" xml:space="preserve">
-    <value>The specified access control record does not exist.</value>
+    <value>Access control record with the specified name does not exist.</value>
   </data>
   <data name="NotFoundMessageDevice" xml:space="preserve">
     <value>The specified device does not exist.</value>
@@ -142,7 +142,7 @@
     <value>The specified resource does not exist.</value>
   </data>
   <data name="NotFoundMessageStorageAccount" xml:space="preserve">
-    <value>The specified storage account does not exist.</value>
+    <value>Storage account with the specified name does not exist.</value>
   </data>
   <data name="RemoveASSDBackupMessage" xml:space="preserve">
     <value>Removing backup with backupId {0}...</value>
@@ -244,10 +244,10 @@
     <value>The {0} operation failed, please check the job status for more details.</value>
   </data>
   <data name="SuccessMessageCompleteJob" xml:space="preserve">
-    <value>The {0} operation completed successfully.</value>
+    <value>The job created for your {0} operation has completed successfully.</value>
   </data>
   <data name="BackupsReturnedCount" xml:space="preserve">
-    <value># of backups returned : {0}</value>
+    <value>{0} backups found!</value>
   </data>
   <data name="FoundDataContainerMessage" xml:space="preserve">
     <value>Volume container with name: {0} is found.</value>
@@ -262,12 +262,63 @@
     <value>Volume with name: {0} is not found.</value>
   </data>
   <data name="ReturnedCountDataContainerMessage" xml:space="preserve">
-    <value># of volume containers returned: {0}</value>
+    <value>{0} volume containers found!</value>
   </data>
   <data name="ReturnedCountVolumeMessage" xml:space="preserve">
-    <value># of volumes returned: {0}</value>
+    <value>{0} volumes found for your volume container!</value>
   </data>
   <data name="ClientRequestIdMessage" xml:space="preserve">
     <value>ClientRequestId: {0}</value>
+  </data>
+  <data name="DeviceWithNameNotFoundInResourceMessage" xml:space="preserve">
+    <value>Device with device name {0} not found under resource {1}</value>
+  </data>
+  <data name="DeviceGet_StatusMessage" xml:space="preserve">
+    <value>{0} StorSimple device{1} found!</value>
+  </data>
+  <data name="IncorrectFormatInRegistrationKey" xml:space="preserve">
+    <value>The Registration key specified appears to be in an incorrect format. Please verify that the exact key is copied from the portal!</value>
+  </data>
+  <data name="IscsiConnectionGet_StatusMessage" xml:space="preserve">
+    <value>{0} Iscsi Connection{1} found!</value>
+  </data>
+  <data name="NoDeviceFoundInResourceMessage" xml:space="preserve">
+    <value>No device found in your currently selected resource : {0}!</value>
+  </data>
+  <data name="NoDeviceFoundWithGivenIdInResourceMessage" xml:space="preserve">
+    <value>No device found in your currently selected resource : {0} with id : {1}!</value>
+  </data>
+  <data name="NoDeviceFoundWithGivenModelInResourceMessage" xml:space="preserve">
+    <value>No device found in your currently selected resource : {0} with ModelDescription : {1}!</value>
+  </data>
+  <data name="NoDeviceFoundWithGivenNameInResourceMessage" xml:space="preserve">
+    <value>No device found in your currently selected resource : {0} with name : {1}!</value>
+  </data>
+  <data name="NoDeviceFoundWithGivenTypeInResourceMessage" xml:space="preserve">
+    <value>No device found in your currently selected resource : {0} with Type : {1}!</value>
+  </data>
+  <data name="NoResourceFoundInSubscriptionMessage" xml:space="preserve">
+    <value>No resource found in your subscription!</value>
+  </data>
+  <data name="NoResourceFoundWithGivenNameInSubscriptionMessage" xml:space="preserve">
+    <value>No resource found in your subscription with name : {0}!</value>
+  </data>
+  <data name="NotProvidedWarningRegistrationKey" xml:space="preserve">
+    <value>Registration key parameter is not passed. Validating whether a registration key is already persisted for this resource!</value>
+  </data>
+  <data name="ProvidedRegistrationKey" xml:space="preserve">
+    <value>Registration key is provided. Persisting for later use!</value>
+  </data>
+  <data name="ResourceContextFound" xml:space="preserve">
+    <value>You have a resource selected. Resource Name: {0} Id: {1}</value>
+  </data>
+  <data name="ResourceGet_StatusMessage" xml:space="preserve">
+    <value>{0} StorSimple resource{1} found!</value>
+  </data>
+  <data name="SuccessfulResourceSelection" xml:space="preserve">
+    <value>Your resource has seen selected successfully. To change to another resource please use Select-AzureStorSimpleResource commandlet!</value>
+  </data>
+  <data name="ValidationSuccessfulRegistrationKey" xml:space="preserve">
+    <value>The registration key has been validated successfully! </value>
   </data>
 </root>

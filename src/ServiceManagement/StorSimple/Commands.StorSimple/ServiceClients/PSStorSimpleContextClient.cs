@@ -87,9 +87,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
         public StorSimpleResourceContext GetResourceContext()
         {
-            return new StorSimpleResourceContext(StorSimpleContext.ResourceId, StorSimpleContext.ResourceName,
-                StorSimpleContext.StampId, StorSimpleContext.CloudServiceName, StorSimpleContext.ResourceProviderNameSpace,
-                StorSimpleContext.ResourceType, StorSimpleContext.KeyManager);
+            if (String.IsNullOrEmpty(StorSimpleContext.ResourceId)
+                || String.IsNullOrEmpty(StorSimpleContext.ResourceName)
+                || String.IsNullOrEmpty(StorSimpleContext.ResourceType))
+                return null;
+            else
+            {
+                return new StorSimpleResourceContext(StorSimpleContext.ResourceId, StorSimpleContext.ResourceName,
+                    StorSimpleContext.StampId, StorSimpleContext.CloudServiceName, StorSimpleContext.ResourceProviderNameSpace,
+                    StorSimpleContext.ResourceType, StorSimpleContext.KeyManager);
+            }
         }
     }
 

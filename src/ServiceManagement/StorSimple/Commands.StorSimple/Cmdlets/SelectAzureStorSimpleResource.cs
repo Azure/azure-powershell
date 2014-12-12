@@ -3,9 +3,13 @@ using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
+    /// <summary>
+    /// this commandlet will set a particular resource to the current context
+    /// </summary>
     [Cmdlet(VerbsCommon.Select, "AzureStorSimpleResource"),OutputType(typeof(StorSimpleResourceContext))]
     public class SelectAzureStorSimpleResource : StorSimpleCmdletBase
     {
@@ -32,6 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
         protected override void BeginProcessing()
         {
+            //we dont have to verify that resource is selected
             return;
         }
 
@@ -42,13 +47,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                this.WriteVerbose("Initializing resource context");
                 StorSimpleResourceContext currentContext = null;
                 var status = StorSimpleClient.SetResourceContext(resourceName);
                 if (status.Equals(Resources.NotFoundMessageResource))
                 {
-                    this.WriteVerbose(status);
-                    return;
+                    throw new StorSimpleResourceNotFoundException();
                 }
                 else
                 {
@@ -57,17 +60,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     this.WriteObject(currentContext);
                 }
 
+                //now check for the key
                 if (string.IsNullOrEmpty(RegistrationKey))
                 {
-                    this.WriteVerbose("Registrtion key not passed - validating that the secrets are already initialized.");
+                    this.WriteVerbose(Resources.NotProvidedWarningRegistrationKey);
                 }
                 else
                 {
-                    this.WriteVerbose("Registration key passed - initializing secrets");
+                    this.WriteVerbose(Resources.ProvidedRegistrationKey);
                     EncryptionCmdLetHelper.PersistCIK(this, currentContext.ResourceId, ParseCIKFromRegistrationKey());
                 }
                 EncryptionCmdLetHelper.ValidatePersistedCIK(this, currentContext.ResourceId);
-                this.WriteVerbose("Secrets validation complete");
+                this.WriteVerbose(Resources.ValidationSuccessfulRegistrationKey);
+                this.WriteVerbose(Resources.SuccessfulResourceSelection);
             }
             catch(Exception exception)
             {
@@ -75,18 +80,21 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
         }
 
+        /// <summary>
+        /// The CIK has to be parsed from the registration key
+        /// </summary>
+        /// <returns></returns>
         private string ParseCIKFromRegistrationKey()
         {
             try
             {
                 string[] parts = RegistrationKey.Split(new char[] {':'});
                 this.WriteVerbose("RegistrationKey #parts:" + parts.Length);
-                //this.WriteVerbose("Using part: " + parts[2]);
                 return parts[2].Split(new char[] {'#'})[0];
             }
             catch (Exception ex)
             {
-                throw new ArgumentException("RegistrationKey is not of the right format", "RegistrationKey", ex);
+                throw new RegistrationKeyException(Resources.IncorrectFormatInRegistrationKey, ex);
             }
         }
     }

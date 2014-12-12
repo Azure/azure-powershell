@@ -5,6 +5,7 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
+using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
 {
@@ -50,19 +51,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
                 status == KeyStoreOperationStatus.RETRIEVE_FILESTREAM_INVALID)
             {
                 // CIK was persisted, but has been corrupted
-                throw new StorSimpleSecretManagementException("Secret was persisted earlier, but seems to have been corrupted", status);
+                throw new StorSimpleSecretManagementException("Secret was persisted earlier, but seems to have been corrupted. Please use Select-AzureStorSimpleResource and provide the Registration key once again.", status);
             }
 
             if (status == KeyStoreOperationStatus.RETRIEVE_FILE_DOES_NOT_EXIST)
             {
                 // CIK was never persisted
-                throw new StorSimpleSecretManagementException("Could not find the persisted secret.", status);
+                throw new StorSimpleSecretManagementException("Could not find the persisted secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again.", status);
             }
 
             // other error codes are NOT expected - those validations have been done already
             if (status != KeyStoreOperationStatus.RETRIEVE_SUCCESS)
             {
-                throw new StorSimpleSecretManagementException("Could not reteive secret.", status);
+                throw new StorSimpleSecretManagementException("Could not retrieve secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again.", status);
             }
 
             if (string.IsNullOrEmpty(cik))
