@@ -151,8 +151,14 @@
   <data name="RemovingResource" xml:space="preserve">
     <value>Are you sure you want to remove resource '{0}'</value>
   </data>
+  <data name="ResourceAlreadyPresent" xml:space="preserve">
+    <value>Resource : {0}, Already present</value>
+  </data>
   <data name="ResourceGroupNotSet" xml:space="preserve">
     <value>ResourceGroupNotSet</value>
+  </data>
+  <data name="ResourceNotFound" xml:space="preserve">
+    <value>Resource : {0}, not found</value>
   </data>
   <data name="SetByResource" xml:space="preserve">
     <value>SetByResource</value>

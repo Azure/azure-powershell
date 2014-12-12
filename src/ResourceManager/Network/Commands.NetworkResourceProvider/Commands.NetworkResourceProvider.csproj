@@ -196,6 +196,7 @@
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCmdlet.cs" />
     <Compile Include="PublicIpAddress\PublicIpAddressBaseClient.cs" />
     <Compile Include="PublicIpAddress\SetAzurePublicIpAddressCmdlet.cs" />
+    <Compile Include="SubscriptionRegistration\RegisterSubscription.cs" />
     <Compile Include="VirtualNetwork\RemoveAzureVirtualNetworkCmdlet.cs" />
     <Compile Include="VirtualNetwork\SetAzureVirtualNetworkCmdlet.cs" />
     <Compile Include="VirtualNetwork\Subnet\CommonAzureVirtualNetworkSubnetConfigCmdlet.cs" />

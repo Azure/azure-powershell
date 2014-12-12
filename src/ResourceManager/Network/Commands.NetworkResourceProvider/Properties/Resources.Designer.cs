@@ -160,11 +160,29 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resource : {0}, Already present.
+        /// </summary>
+        public static string ResourceAlreadyPresent {
+            get {
+                return ResourceManager.GetString("ResourceAlreadyPresent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ResourceGroupNotSet.
         /// </summary>
         public static string ResourceGroupNotSet {
             get {
                 return ResourceManager.GetString("ResourceGroupNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource : {0}, not found.
+        /// </summary>
+        public static string ResourceNotFound {
+            get {
+                return ResourceManager.GetString("ResourceNotFound", resourceCulture);
             }
         }
         
