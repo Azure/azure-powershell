@@ -16,44 +16,59 @@ using System;
 using System.Management.Automation;
 using System.Net.Http;
 using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Join, "AzureCoreResourceProvider"), OutputType(typeof(PSPublicIpAddress))]
+    [Cmdlet(VerbsCommon.Join, "AzureCoreResourceProvider")]
     public class JoinAzureCoreResourceProvider : NetworkBaseClient
     {
         [Alias("ResourceProviderName")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet("Mircosoft.Network",
+                     "Mircosoft.Compute",
+                     "Mircosoft.Storage",
+                     IgnoreCase = true)]
         public virtual string Name { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The CSM environment")]
+        [ValidateSet("production",
+                     "dogfood",
+                     IgnoreCase = true)]
+        public virtual string Environment { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Register with Network, Storage and Compute resource provider")]
         public SwitchParameter All { get; set; }
-
+        
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             var credentials = (AccessTokenCredential)NetworkClient.NetworkResourceProviderClient.Credentials;
 
+            string host = "https://management.azure.com/";
+
+            if (string.Equals(this.Environment, "dogfood", StringComparison.OrdinalIgnoreCase))
+            {
+                host = "https://api-dogfood.resources.windows-int.net";
+            }
+
             if (All.IsPresent)
             {
-                RegisterResourceProvider(credentials, "Microsoft.Network");
-                RegisterResourceProvider(credentials, "Microsoft.Compute");
-                RegisterResourceProvider(credentials, "Microsoft.Storage");
+                RegisterResourceProvider(credentials, host, "Microsoft.Network");
+                RegisterResourceProvider(credentials, host, "Microsoft.Compute");
+                RegisterResourceProvider(credentials, host, "Microsoft.Storage");
             }
             else if (!string.IsNullOrEmpty(this.Name))
             {
-                RegisterResourceProvider(credentials, this.Name);
+                RegisterResourceProvider(credentials, host, this.Name);
             }
             else
             {
@@ -61,11 +76,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
         }
 
-        private void RegisterResourceProvider(AccessTokenCredential credentials, string resourceProvider)
+        private void RegisterResourceProvider(AccessTokenCredential credentials, string host, string resourceProvider)
         {
             var uriString =
                 string.Format(
-                    "https://api-dogfood.resources.windows-int.net/subscriptions/{0}/providers/{1}/register?api-version=2014-04-01", credentials.SubscriptionId, resourceProvider);
+                    "{0}/subscriptions/{1}/providers/{2}/register?api-version=2014-04-01", host, credentials.SubscriptionId, resourceProvider);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, uriString);
 
