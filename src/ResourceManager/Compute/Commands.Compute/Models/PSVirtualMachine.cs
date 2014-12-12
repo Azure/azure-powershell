@@ -76,16 +76,16 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
         }
 
-        public OSDisk OSDisk
+        public string OSDisk
         {
             get
             {
                 if (this.StorageProfile != null && this.StorageProfile.OSDisk != null)
                 {
-                    return this.StorageProfile.OSDisk;
+                    return this.StorageProfile.OSDisk.Name;
                 }
 
-                return null;
+                return string.Empty;
             }
         }
 

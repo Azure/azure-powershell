@@ -119,7 +119,7 @@ function Test-VirtualMachine
         Retry-IfException { Stop-AzureVM -Name $vmname -ResourceGroupName $rgname -Force; }
 
         # Update
-        Retry-IfException { Update-AzureVM -ResourceGroupName $rgname -Location $loc  -Name $vmname -VM $p; }
+        Retry-IfException { Update-AzureVM -ResourceGroupName $rgname -Name $vmname -VM $p; }
 
         $vm2 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces.Count 1;
