@@ -17,6 +17,7 @@ using System.Net;
 using System.Net.Http;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -39,7 +40,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     this.dataServiceClient = new KeyVaultDataServiceClient(
                         AzureSession.AuthenticationFactory,
                         AzureSession.CurrentContext,
-                        // TODO: determine HttpClient creation model after fully understand testing framework
                         new HttpClient());
                 }
 
@@ -49,6 +49,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 this.dataServiceClient = value;
             }
+        }
+
+        internal string ResolvePath(string filePath, string notFoundMessage)
+        {
+            FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(filePath));
+            if (!keyFile.Exists)
+            {
+                throw new FileNotFoundException(string.Format(notFoundMessage, filePath));
+            }
+            return keyFile.FullName;
         }
 
         private IKeyVaultDataServiceClient dataServiceClient;

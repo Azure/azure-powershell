@@ -39,5 +39,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         IEnumerable<SecretIdentityItem> GetSecrets(string vaultName);
 
         Secret DeleteSecret(string vaultName, string secretName);
+
+        string BackupKey(string vaultName, string keyName, string outputBlobPath);
+
+        KeyBundle RestoreKey(string vaultName, string inputBlobPath);
     }
 }

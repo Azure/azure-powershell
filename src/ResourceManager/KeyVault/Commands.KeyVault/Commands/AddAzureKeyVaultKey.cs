@@ -70,11 +70,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = CreateParameterSet,
             Position = 1,
-            HelpMessage = "key name")]
+            HelpMessage = "key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ImportParameterSet,
             Position = 1,
-            HelpMessage = "key name")]
+            HelpMessage = "key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias("KeyName")]
         public string Name { get; set; }

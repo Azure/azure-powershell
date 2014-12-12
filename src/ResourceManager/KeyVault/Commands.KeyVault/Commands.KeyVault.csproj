@@ -53,11 +53,13 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <Compile Include="Commands\BackupAzureKeyVaultKey.cs" />
     <Compile Include="Commands\GetAzureKeyVaultKey.cs" />
     <Compile Include="Commands\GetAzureKeyVaultSecret.cs" />
     <Compile Include="Commands\AddAzureKeyVaultKey.cs" />
     <Compile Include="Commands\RemoveAzureKeyVaultKey.cs" />
     <Compile Include="Commands\RemoveAzureKeyVaultSecret.cs" />
+    <Compile Include="Commands\RestoreAzureKeyVaultKey.cs" />
     <Compile Include="Commands\SetAzureKeyVaultKey.cs" />
     <Compile Include="Commands\SetAzureKeyVaultSecret.cs" />
     <Compile Include="Models\ByokWebKeyConverter.cs" />

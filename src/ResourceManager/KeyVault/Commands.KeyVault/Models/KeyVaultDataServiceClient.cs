@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Client = Microsoft.KeyVault.Client;
 using Microsoft.KeyVault.WebKey;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
             Client.KeyAttributes clientAttributes = (Client.KeyAttributes)keyAttributes;
 
-            Client.KeyBundle clientKeyBundle = 
+            Client.KeyBundle clientKeyBundle =
                 this.keyVaultClient.CreateKeyAsync(
                     vaultAddress,
                     keyName,
@@ -275,6 +276,50 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Client.Secret clientSecret = this.keyVaultClient.DeleteSecretAsync(vaultAddress, secretName).GetAwaiter().GetResult();
 
             return new Secret(clientSecret, this.vaultUriHelper);
+        }
+
+        public string BackupKey(string vaultName, string keyName, string outputBlobPath)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+            {
+                throw new ArgumentNullException("vaultName");
+            }
+            if (string.IsNullOrEmpty(keyName))
+            {
+                throw new ArgumentNullException("keyName");
+            }
+            if (string.IsNullOrEmpty(outputBlobPath))
+            {
+                throw new ArgumentNullException("outputBlobPath");
+            }
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            var backupBlob = this.keyVaultClient.BackupKeyAsync(vaultAddress, keyName).GetAwaiter().GetResult();
+
+            File.WriteAllText(outputBlobPath, backupBlob);
+
+            return outputBlobPath;
+        }
+
+        public KeyBundle RestoreKey(string vaultName, string inputBlobPath)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+            {
+                throw new ArgumentNullException("vaultName");
+            }
+            if (string.IsNullOrEmpty(inputBlobPath))
+            {
+                throw new ArgumentNullException("inputBlobPath");
+            }
+
+            var backupBlob = File.ReadAllText(inputBlobPath);
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            var clientKeyBundle = this.keyVaultClient.RestoreKeyAsync(vaultAddress, backupBlob).GetAwaiter().GetResult();
+
+            return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
         }
 
         private void SendRequestCallback(string correlationId, HttpRequestMessage request)

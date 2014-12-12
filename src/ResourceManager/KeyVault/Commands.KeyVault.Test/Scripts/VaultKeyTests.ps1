@@ -697,7 +697,7 @@ function Test_RemoveKeyInNonExistVault
 
 <#
 .SYNOPSIS
-Tests get a non-exist key
+Tests remove a non-exist key
 #>
 function Test_RemoveNonExistKey
 {
@@ -715,6 +715,62 @@ function Test_RemoveKeyInNoPermissionVault
     $keyVault = Get-KeyVault $false
     $keyname= Get-KeyName 'nopermission'
     Assert-Throws {Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Enable $true -Force -Confirm:$false}
+}
+
+<#
+.SYNOPSIS
+Tests backup and restore a key
+#>
+function Test_BackupRestoreKey
+{
+    $keyVault = Get-KeyVault
+    $keyname=Get-KeyName 'backuprestore'   
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    Assert-NotNull $key                 
+    $global:createdKeys += $keyname
+
+    $backupblob = Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname           
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false
+    $restoredKey = Restore-AzureKeyVaultKey -VaultName $keyVault -InputFile $backupblob
+    Assert-KeyAttributes $restoredKey.Attributes 'RSA' $true $null $null $null
+}
+
+<#
+.SYNOPSIS
+Tests backup a none existing key
+#>
+function Test_BackupNonExisitingKey
+{
+    $keyVault = Get-KeyVault
+    $keyname=Get-KeyName 'backupnonexisting'
+
+    Assert-Throws { Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname }
+}
+
+<#
+.SYNOPSIS
+Tests backup a key to a none existing file
+#>
+function Test_BackupToNonExisitingFile
+{
+    $keyVault = Get-KeyVault
+    $keyname=Get-KeyName 'backupnonexisting'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    Assert-NotNull $key                 
+    $global:createdKeys += $keyname
+
+    Assert-Throws { Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile c:\nonexisting.blob }
+}
+
+<#
+.SYNOPSIS
+Tests restore a key from a none existing file
+#>
+function Test_RestoreFromNonExistingFile
+{
+    $keyVault = Get-KeyVault
+
+    Assert-Throws { Restore-AzureKeyVaultKey -VaultName $keyVault -InputFile c:\nonexisting.blob }
 }
 
 <#
