@@ -141,8 +141,8 @@
   <data name="NotFoundMessageResource" xml:space="preserve">
     <value>The specified resource does not exist.</value>
   </data>
-  <data name="NotFoundMessageStorageAccount" xml:space="preserve">
-    <value>The specified storage account does not exist.</value>
+  <data name="NotFoundMessageStorageAccountCredential" xml:space="preserve">
+    <value>The specified storage account does not exist in current resource context.</value>
   </data>
   <data name="RemoveASSDBackupMessage" xml:space="preserve">
     <value>Removing backup with backupId {0}...</value>
@@ -272,5 +272,23 @@
   </data>
   <data name="EncryptionInProgressMessage" xml:space="preserve">
     <value>Encryption in progress...</value>
+  </data>
+  <data name="WebExceptionMessage" xml:space="preserve">
+    <value>Web exception encountered with StatusCode: {0}</value>
+  </data>
+  <data name="InvalidInputMessage" xml:space="preserve">
+    <value>Invalid input : {0}</value>
+  </data>
+  <data name="StorageCredentialVerificationFailureMessage" xml:space="preserve">
+    <value>Storage credential verification failed.</value>
+  </data>
+  <data name="StorageCredentialVerificationSuccessMessage" xml:space="preserve">
+    <value>Storage credential verification succeeded.</value>
+  </data>
+  <data name="StorageAccountFoundMessage" xml:space="preserve">
+    <value>Found storage account with name : {0}</value>
+  </data>
+  <data name="StorageAccountNotFoundMessage" xml:space="preserve">
+    <value>Could not find storage account with name: {0}</value>
   </data>
 </root>

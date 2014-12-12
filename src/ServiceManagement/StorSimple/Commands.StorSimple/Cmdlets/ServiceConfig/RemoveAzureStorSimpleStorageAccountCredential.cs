@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                   }
                                   if (existingSac == null)
                                   {
-                                      WriteVerbose(Resources.NotFoundMessageStorageAccount);
+                                      WriteVerbose(Resources.NotFoundMessageStorageAccountCredential);
                                       return;
                                   }
                                   

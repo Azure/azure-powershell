@@ -250,6 +250,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid input : {0}.
+        /// </summary>
+        internal static string InvalidInputMessage {
+            get {
+                return ResourceManager.GetString("InvalidInputMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provide valid datetime string for To parameter!.
         /// </summary>
         internal static string InvalidToMessage {
@@ -313,11 +322,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The specified storage account does not exist..
+        ///   Looks up a localized string similar to The specified storage account does not exist in current resource context..
         /// </summary>
-        internal static string NotFoundMessageStorageAccount {
+        internal static string NotFoundMessageStorageAccountCredential {
             get {
-                return ResourceManager.GetString("NotFoundMessageStorageAccount", resourceCulture);
+                return ResourceManager.GetString("NotFoundMessageStorageAccountCredential", resourceCulture);
             }
         }
         
@@ -502,6 +511,42 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Found storage account with name : {0}.
+        /// </summary>
+        internal static string StorageAccountFoundMessage {
+            get {
+                return ResourceManager.GetString("StorageAccountFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find storage account with name: {0}.
+        /// </summary>
+        internal static string StorageAccountNotFoundMessage {
+            get {
+                return ResourceManager.GetString("StorageAccountNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage credential verification failed..
+        /// </summary>
+        internal static string StorageCredentialVerificationFailureMessage {
+            get {
+                return ResourceManager.GetString("StorageCredentialVerificationFailureMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage credential verification succeeded..
+        /// </summary>
+        internal static string StorageCredentialVerificationSuccessMessage {
+            get {
+                return ResourceManager.GetString("StorageCredentialVerificationSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} operation completed successfully..
         /// </summary>
         internal static string SuccessMessageCompleteJob {
@@ -525,6 +570,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string SuccessMessageSubmitJob {
             get {
                 return ResourceManager.GetString("SuccessMessageSubmitJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web exception encountered with StatusCode: {0}.
+        /// </summary>
+        internal static string WebExceptionMessage {
+            get {
+                return ResourceManager.GetString("WebExceptionMessage", resourceCulture);
             }
         }
     }

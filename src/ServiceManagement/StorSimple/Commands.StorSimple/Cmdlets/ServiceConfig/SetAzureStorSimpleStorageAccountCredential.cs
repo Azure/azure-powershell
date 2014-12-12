@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var existingSac = allSACs.Where(x => x.Name.Equals(StorageAccountName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (existingSac == null)
                 {
-                    WriteVerbose(Resources.NotFoundMessageStorageAccount);
+                    WriteVerbose(Resources.NotFoundMessageStorageAccountCredential);
                     return;
                 }
 
@@ -53,6 +53,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(StorSimpleClient);
                 if (!String.IsNullOrEmpty(StorageAccountKey))
                 {
+                    //validate storage account credentials
+                    if (!ValidStorageAccountCred(StorageAccountName, StorageAccountKey))
+                    {
+                        WriteVerbose(Resources.StorageCredentialVerificationFailureMessage);
+                        return;
+                    }
+                    WriteVerbose(Resources.StorageCredentialVerificationSuccessMessage);
                     WriteVerbose(Resources.EncryptionInProgressMessage);
                     storSimpleCryptoManager.EncryptSecretWithRakPub(StorageAccountKey, out encryptedKey);
                 }
@@ -77,7 +84,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                 VolumeCount = existingSac.VolumeCount,
                                 Name = existingSac.Name,
                                 IsDefault = existingSac.IsDefault,
-                                PasswordEncryptionCertThumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint()
+                                PasswordEncryptionCertThumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint(),
+                                Location = existingSac.Location
                             },
                         }
                     }
