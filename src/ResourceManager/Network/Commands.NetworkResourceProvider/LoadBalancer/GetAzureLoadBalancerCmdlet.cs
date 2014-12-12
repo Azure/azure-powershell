@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Newtonsoft.Json;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -42,8 +43,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var loadBalancer = this.GetLoadBalancer(this.ResourceGroupName, this.Name);
-                loadBalancer.ResourceGroupName = this.ResourceGroupName;
-
+                
                 WriteObject(loadBalancer);
             }
             else

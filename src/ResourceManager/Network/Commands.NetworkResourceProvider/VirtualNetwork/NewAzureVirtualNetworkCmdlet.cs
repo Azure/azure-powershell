@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -58,10 +59,32 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
              HelpMessage = "The list of subnets")]
         public List<PSSubnet> Subnet { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
+            if (this.IsVirtualNetworkPresent(this.ResourceGroupName, this.Name))
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.OverwritingResource, Name),
+                    Resources.OverwritingResourceMessage,
+                    Name,
+                    () => CreateVirtualNetwork());
+            }
+
+            var virtualNetwork = CreateVirtualNetwork();
+
+            WriteObject(virtualNetwork);
+        }
+
+        private PSVirtualNetwork CreateVirtualNetwork()
+        {
             var vnet = new PSVirtualNetwork();
             vnet.Name = this.Name;
             vnet.ResourceGroupName = this.ResourceGroupName;
@@ -82,7 +105,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             this.VirtualNetworkClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetModel);
 
             var getVirtualNetwork = this.GetVirtualNetwork(this.ResourceGroupName, this.Name);
-            WriteObject(getVirtualNetwork);
+
+            return getVirtualNetwork;
         }
     }
 }

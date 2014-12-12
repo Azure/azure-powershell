@@ -171,7 +171,7 @@
     <Compile Include="Models\PSPublicIpAddressDnsSettings.cs" />
     <Compile Include="Models\PSPublicIpAddressProperties.cs" />
     <Compile Include="Models\PSChildResource.cs" />
-    <Compile Include="Models\PSResource.cs" />
+    <Compile Include="Models\PSTopLevelResource.cs" />
     <Compile Include="Models\PSResourceId.cs" />
     <Compile Include="Models\PSResourceProperties.cs" />
     <Compile Include="Models\PSSubnet.cs" />
@@ -207,6 +207,9 @@
     <Compile Include="VirtualNetwork\GetAzureVirtualNetworkCmdlet.cs" />
     <Compile Include="VirtualNetwork\NewAzureVirtualNetworkCmdlet.cs" />
     <Compile Include="VirtualNetwork\VirtualNetworkBaseClient.cs" />
+    <None Include="Microsoft.Azure.Commands.NetworkResourceProvider.format.ps1xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>

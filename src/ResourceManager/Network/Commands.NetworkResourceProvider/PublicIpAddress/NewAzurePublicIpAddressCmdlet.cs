@@ -18,6 +18,7 @@ using System;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -54,8 +55,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Parameter(
             Mandatory = false,
             HelpMessage = "The Domain Name label.")]
-        [ValidateNotNullOrEmpty]
         public string DomainNameLabel { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -63,16 +68,32 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             if (this.IsPublicIpAddressPresent(this.ResourceGroupName, this.Name))
             {
-                throw new ArgumentException(ResourceAlreadyPresent);
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.OverwritingResource, Name),
+                    Resources.OverwritingResourceMessage,
+                    Name,
+                    () => CreatePublicIpAddress());
             }
 
+            var publicIp = CreatePublicIpAddress();
+
+            WriteObject(publicIp);
+        }
+
+        private PSPublicIpAddress CreatePublicIpAddress()
+        {
             var publicIp = new PSPublicIpAddress();
             publicIp.Name = this.Name;
             publicIp.Location = this.Location;
             publicIp.Properties = new PSPublicIpAddressProperties();
             publicIp.Properties.PublicIpAllocationMethod = this.AllocationMethod;
-            publicIp.Properties.DnsSettings = new PSPublicIpAddressDnsSettings();
-            publicIp.Properties.DnsSettings.DomainNameLabel = this.DomainNameLabel;
+
+            if (!string.IsNullOrEmpty(this.DomainNameLabel))
+            {
+                publicIp.Properties.DnsSettings = new PSPublicIpAddressDnsSettings();
+                publicIp.Properties.DnsSettings.DomainNameLabel = this.DomainNameLabel;
+            }
 
             var publicIpModel = Mapper.Map<MNM.PublicIpAddressCreateOrUpdateParameters>(publicIp);
 
@@ -80,7 +101,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var getPublicIp = this.GetPublicIpAddress(this.ResourceGroupName, this.Name);
 
-            WriteObject(getPublicIp);
+            return getPublicIp;
         }
     }
 }

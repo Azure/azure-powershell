@@ -124,6 +124,24 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to overwriteresource &apos;{0}&apos;.
+        /// </summary>
+        public static string OverwritingResource {
+            get {
+                return ResourceManager.GetString("OverwritingResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwriting resource ....
+        /// </summary>
+        public static string OverwritingResourceMessage {
+            get {
+                return ResourceManager.GetString("OverwritingResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing resource ....
         /// </summary>
         public static string RemoveResourceMessage {
@@ -165,6 +183,15 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Properties {
         public static string SetByResourceId {
             get {
                 return ResourceManager.GetString("SetByResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PrivateIpAddress needs to be specified in Static allocation.
+        /// </summary>
+        public static string StaticIpAddressErrorMessage {
+            get {
+                return ResourceManager.GetString("StaticIpAddressErrorMessage", resourceCulture);
             }
         }
     }

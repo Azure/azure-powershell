@@ -14,12 +14,10 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSChildResource
+    public class PSChildResource : PSResourceId
     {
         public string Name { get; set; }
 
-        public string Id { get; set; }
-        
         public string Etag { get; set; }
     }
 }
