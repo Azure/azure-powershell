@@ -357,4 +357,7 @@
   <data name="StorageAccountCleanupRetryMessage" xml:space="preserve">
     <value>Cleaning up objects, retry count: {0}</value>
   </data>
+  <data name="InlineSacCreationMessage" xml:space="preserve">
+    <value>Creating StorageAccountCredential inline</value>
+  </data>
 </root>

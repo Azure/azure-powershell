@@ -223,6 +223,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating StorageAccountCredential inline.
+        /// </summary>
+        internal static string InlineSacCreationMessage {
+            get {
+                return ResourceManager.GetString("InlineSacCreationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Specify valid string for BackupId parameter.
         /// </summary>
         internal static string InvalidBackupIdParameter {

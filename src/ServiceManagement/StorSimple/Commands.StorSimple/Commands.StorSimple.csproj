@@ -127,6 +127,7 @@
     <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\SelectAzureStorSimpleResource.cs" />
     <Compile Include="Cmdlets\ServiceConfig\GetAzureStorSimpleAccessControlRecord.cs" />
+    <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleInlineStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\RemoveAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\ServiceConfig\RemoveAzureStorSimpleStorageAccountCredential.cs" />

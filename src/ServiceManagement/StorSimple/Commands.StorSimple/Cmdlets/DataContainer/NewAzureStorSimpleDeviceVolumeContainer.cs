@@ -67,6 +67,31 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     storSimpleCryptoManager.EncryptSecretWithRakPub(EncryptionKey, out encryptedKey);
                 }
 
+                if (string.IsNullOrEmpty(PrimaryStorageAccountCredential.InstanceId))
+                {
+                    WriteVerbose(Resources.InlineSacCreationMessage);
+
+                    var sac = PrimaryStorageAccountCredential;
+
+                    //validate storage account credentials
+                    bool storageAccountPresent;
+                    String location = GetStorageAccountLocation(sac.Name, out storageAccountPresent);
+                    if (!storageAccountPresent || !ValidStorageAccountCred(sac.Name, sac.Password))
+                    {
+                        WriteVerbose(Resources.StorageCredentialVerificationFailureMessage);
+                        return;
+                    }
+                    WriteVerbose(Resources.StorageCredentialVerificationSuccessMessage);
+
+                    String encryptedPassword = null;
+                    WriteVerbose(Resources.EncryptionInProgressMessage);
+                    storSimpleCryptoManager.EncryptSecretWithRakPub(sac.Password, out encryptedPassword);
+
+                    sac.Password = encryptedPassword;
+                    sac.PasswordEncryptionCertThumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint();
+                    sac.Location = location;
+                }
+
                 var dc = new DataContainerRequest
                 {
                     IsDefault = false,
