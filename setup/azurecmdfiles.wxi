@@ -174,12 +174,6 @@
                         <Component Id="cmp1CF758FE0016953D21E5F77BDBACAD67" Guid="*">
                             <File Id="filF0F2384641B1265D7C3EE17F535C5AB6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\KeyVault\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
                         </Component>
-                        <Component Id="cmp364F3DC26F39423F9A6425347B37F531" Guid="*">
-                            <File Id="filE8052090F25525C434ACFB1EA51DC012" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\KeyVault\Microsoft.KeyVault.Client.dll" />
-                        </Component>
-                        <Component Id="cmpB74605FD32BFDC06540E3370F2DFD288" Guid="*">
-                            <File Id="fil24F3CCC97138E8E936DF53D7CFA1AB3D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\KeyVault\Microsoft.KeyVault.WebKey.dll" />
-                        </Component>
                         <Component Id="cmp9769FB9AE18A4E4577D1BD7E3403CB34" Guid="*">
                             <File Id="fil2CEB17E423541A3D671422B358DDE064" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\KeyVault\Microsoft.Threading.Tasks.dll" />
                         </Component>
@@ -363,12 +357,6 @@
                         </Component>
                         <Component Id="cmpE7396D3C1C29168AEE4870C9146437BD" Guid="*">
                             <File Id="fil0E08B214ECA57F6568B57B9D0DD2AE45" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Resources\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
-                        </Component>
-                        <Component Id="cmp849F8F09072CD3F5BDB735EA3F01C201" Guid="*">
-                            <File Id="filDAB62233F1E63875A75ACCCC6A9432AD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Resources\Microsoft.KeyVault.Client.dll" />
-                        </Component>
-                        <Component Id="cmp1B9313BAE4F0C674D5BF23ACDEF01F7E" Guid="*">
-                            <File Id="filD005E159825AE205F602D260E923E5EB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Resources\Microsoft.KeyVault.WebKey.dll" />
                         </Component>
                         <Component Id="cmpEFA6723DE788649C36CFD4875ED618EA" Guid="*">
                             <File Id="fil78AAA3947F601D3ADDB76B379E3EBF8E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Resources\Microsoft.Threading.Tasks.dll" />
@@ -2148,8 +2136,6 @@
             <ComponentRef Id="cmp8885D62E14E2D7967F6F1C56F44E4821" />
             <ComponentRef Id="cmpF688538124E45386E4034F5FBC575335" />
             <ComponentRef Id="cmp1CF758FE0016953D21E5F77BDBACAD67" />
-            <ComponentRef Id="cmp364F3DC26F39423F9A6425347B37F531" />
-            <ComponentRef Id="cmpB74605FD32BFDC06540E3370F2DFD288" />
             <ComponentRef Id="cmp9769FB9AE18A4E4577D1BD7E3403CB34" />
             <ComponentRef Id="cmpB9D75E456981F55A2AD9326C06FA5569" />
             <ComponentRef Id="cmp44B0C78318DD9232407385356323964F" />
@@ -2210,8 +2196,6 @@
             <ComponentRef Id="cmpBF4C7868DB8CE8B4B50CAF51B647E2B1" />
             <ComponentRef Id="cmp3F61F18D6C072A4C001EB2E9AC4DA285" />
             <ComponentRef Id="cmpE7396D3C1C29168AEE4870C9146437BD" />
-            <ComponentRef Id="cmp849F8F09072CD3F5BDB735EA3F01C201" />
-            <ComponentRef Id="cmp1B9313BAE4F0C674D5BF23ACDEF01F7E" />
             <ComponentRef Id="cmpEFA6723DE788649C36CFD4875ED618EA" />
             <ComponentRef Id="cmp460A69220930FF8C24C3EF4152E98389" />
             <ComponentRef Id="cmp7ED34ED999B020C904F2E11980F66271" />

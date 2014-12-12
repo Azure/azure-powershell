@@ -12,28 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.Properties;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Security;
-using Client = Microsoft.Azure.Commands.KeyVault.Client;
 
-namespace Microsoft.Azure.Commands.KeyVault.Models
+namespace Microsoft.Azure.Commands.KeyVault.Client
 {
-    public class SecretIdentityItem : ObjectIdentifier
+    class SecureStringConverter : JsonConverter
     {
-        internal SecretIdentityItem(Client.SecretItem clientSecretItem, VaultUriHelper vaultUriHelper)
+
+        public override bool CanConvert(Type objectType)
         {
-            if (clientSecretItem == null)
+            if (objectType == typeof(SecureString))
+                return true;
+
+            return false;
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            var value = serializer.Deserialize<string>(reader);
+
+            if (value != null)
             {
-                throw new ArgumentNullException("clientSecretItem");
+                return value.ConvertToSecureString();
             }
 
-            if (String.IsNullOrEmpty(clientSecretItem.Id))
-            {
-                throw new ArgumentException(Resources.InvalidSecretUri);
-            }
+            return null;
+        }
 
-            SetObjectIdentifier(vaultUriHelper, new Client.SecretIdentifier(clientSecretItem.Id));
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            JToken.FromObject(((SecureString)value).ConvertToString()).WriteTo(writer);
         }
     }
 }

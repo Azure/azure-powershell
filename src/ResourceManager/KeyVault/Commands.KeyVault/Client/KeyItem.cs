@@ -12,15 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Security;
-using Microsoft.Azure.Commands.KeyVault.WebKey;
+using Microsoft.Azure.Commands.KeyVault.Client.Protocol;
+using Newtonsoft.Json;
 
-namespace Microsoft.Azure.Commands.KeyVault.Models
+namespace Microsoft.Azure.Commands.KeyVault.Client
 {
-    internal interface IWebKeyConverter
+    [JsonObject]
+    public class KeyItem
     {
-        JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password);
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, 
+            NullValueHandling = NullValueHandling.Ignore, PropertyName = MessagePropertyNames.Kid, Required = Required.Always)]
+        public string Kid { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, 
+            NullValueHandling = NullValueHandling.Ignore, PropertyName = MessagePropertyNames.Attributes, Required = Required.Always)]
+        public KeyAttributes Attributes { get; set; }
     }
 }

@@ -14,7 +14,7 @@
 
 using System;
 using System.Security;
-using Client = Microsoft.KeyVault.Client;
+using Microsoft.Azure.Commands.KeyVault.Client;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             SetObjectIdentifier(vaultUriHelper, new Client.SecretIdentifier(clientSecret.Id));
-            SecretValue = clientSecret.Value.ToSecureString();
+            SecretValue = clientSecret.Value.ConvertToSecureString();
             SecretValueText = clientSecret.Value;
         }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 secretValue = value;
                 if (secretValue != null)
                 {
-                    SecretValueText = secretValue.ToStringExt();
+                    SecretValueText = secretValue.ConvertToString();
                 }
                 else
                 {

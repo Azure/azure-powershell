@@ -12,78 +12,65 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.KeyVault.Models
+using System;
+using System.Runtime.InteropServices;
+using System.Security;
+using System.Text;
+
+namespace Microsoft.Azure.Commands.KeyVault.Client
 {
-    using System;
-    using System.Runtime.InteropServices;
-    using System.Security;
 
     /// <summary>
     /// Extends SecureString and string to convert from one to the other
     /// </summary>
-    public static class SecureStringExtension
+    public static class SecureStringExtensions
     {
 
         /// <summary>
         /// Converts a string into a secure string.
         /// </summary>
-        /// <param name="str">the string to be converted.</param>
-        public static SecureString ToSecureString( this string str )
+        /// <param name="value">the string to be converted.</param>
+        /// <returns>The secure string converted from the input string </returns>
+        public static SecureString ConvertToSecureString(this string value)
         {
-            if ( str == null )
+            if (value == null)
             {
-                throw new ArgumentNullException( "str" );
+                throw new ArgumentNullException("value");
             }
 
-            SecureString secureString = null;
-
-            try
+            unsafe
             {
-                secureString = new SecureString();
-
-                foreach ( char ch in str )
+                fixed (char* chars = value)
                 {
-                    secureString.AppendChar( ch );
+                    SecureString secureString = new SecureString(chars, value.Length);
+                    secureString.MakeReadOnly();
+                    return secureString;
                 }
-
-                return secureString;
-            }
-            catch ( Exception )
-            {
-                if ( secureString != null )
-                {
-                    secureString.Dispose();
-                }
-
-                throw;
             }
         }
 
         /// <summary>
         /// Converts the secure string to a string.
         /// </summary>
-        /// <param name="secureString">the secure string to be converted.</param>
-        public static string ToStringExt( this SecureString secureString )
+        /// <param name="secureString">the secure string to be converted.</param> 
+        /// <returns>The string converted from a secure string </returns>
+        public static string ConvertToString(this SecureString secureString)
         {
-            string str = null;
-            IntPtr stringPointer = IntPtr.Zero;
-
-            if ( secureString == null )
+            if (secureString == null)
             {
-                throw new ArgumentNullException( "secureString" );
+                throw new ArgumentNullException("secureString");
             }
 
+            IntPtr stringPointer = IntPtr.Zero;
             try
             {
                 stringPointer = Marshal.SecureStringToBSTR(secureString);
-                str = Marshal.PtrToStringBSTR(stringPointer);
+                return Marshal.PtrToStringBSTR(stringPointer);
             }
             finally
             {
                 Marshal.ZeroFreeBSTR(stringPointer);
             }
-
-            return str;
         }
     }
 }

@@ -42,7 +42,7 @@
           <maml:description>
             <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Destination</maml:name>
@@ -58,7 +58,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Disable</maml:name>
           <maml:description>
-            <maml:para></maml:para>
+            <maml:para>Indicates that the key you are adding is set to an initial state of disabled. Any attempt to use the key will fail. Use this parameter if you are preloading keys that you intent to enable later.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
@@ -92,7 +92,7 @@
               -- Restore
             </maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="true">System.String[]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="true">String[]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>NotBefore</maml:name>
@@ -123,23 +123,12 @@
           <maml:description>
             <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Destination</maml:name>
-          <maml:description>
-            <maml:para>Specifies whether the key is a software key or an HSM key. Valid values are: HSM and Software. </maml:para>
-            <maml:para>If you do not specify this parameter, and this cmdlet creates a key, it creates a software key. If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM key. The cmdlet cannot import that key as software key. If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software key.</maml:para>
-          </maml:description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" variableLength="false">HSM</command:parameterValue>
-            <command:parameterValue required="false" variableLength="false">Software</command:parameterValue>
-          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Disable</maml:name>
           <maml:description>
-            <maml:para></maml:para>
+            <maml:para>Indicates that the key you are adding is set to an initial state of disabled. Any attempt to use the key will fail. Use this parameter if you are preloading keys that you intent to enable later.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
@@ -166,7 +155,7 @@
               -- Restore
             </maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="true">System.String[]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="true">String[]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>NotBefore</maml:name>
@@ -174,6 +163,17 @@
             <maml:para>Specifies the time, as a DateTime object, before which the key cannot be used. This parameter uses UTC. To obtain a DateTime object, use the Get-Date cmdlet. If you do not specify this parameter, the key can be used immediately. </maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">Nullable [System.DateTime]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Destination</maml:name>
+          <maml:description>
+            <maml:para>Specifies whether the key is a software key or an HSM key. Valid values are: HSM and Software. </maml:para>
+            <maml:para>If you do not specify this parameter, and this cmdlet creates a key, it creates a software key. If you do not specify this parameter, and this cmdlet imports a key that has .byok file name extension, it imports that key as an HSM key. The cmdlet cannot import that key as software key. If you do not specify this parameter, and this cmdlet imports a key that has a .pfx file name extension, it imports the key as a software key.</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" variableLength="false">HSM</command:parameterValue>
+            <command:parameterValue required="false" variableLength="false">Software</command:parameterValue>
+          </command:parameterValueGroup>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -194,7 +194,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Disable</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Indicates that the key you are adding is set to an initial state of disabled. Any attempt to use the key will fail. Use this parameter if you are preloading keys that you intent to enable later.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -256,9 +256,9 @@
             -- Restore
           </maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="true">System.String[]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="true">String[]</command:parameterValue>
         <dev:type>
-          <maml:name>System.String[]</maml:name>
+          <maml:name>String[]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -268,9 +268,9 @@
         <maml:description>
           <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -303,7 +303,7 @@
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>System.String, System.String[], System.DateTime</maml:name>
+          <maml:name>String, String[], System.DateTime</maml:name>
           <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
@@ -406,7 +406,7 @@
         </command:commandLines>
       </command:example>
       <command:example>
-        <maml:title>Example 5: Import a software-protected keysoftware-protected </maml:title>
+        <maml:title>Example 5: Import a software-protected key</maml:title>
         <maml:introduction>
           <maml:para></maml:para>
         </maml:introduction>
@@ -491,22 +491,29 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2" aliases="KeyVersion">
+          <maml:name>Version</maml:name>
+          <maml:description>
+            <maml:para>Specifies the key version. This cmdlet constructs the FQDN of a key based on the vault name, your currently selected environment, the key name, and the key version.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="KeyName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the key to get. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Get-AzureKeyVaultKey</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1" aliases="KeyName">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1" aliases="KeyName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the key to get. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1" aliases="none">
           <maml:name>VaultName</maml:name>
@@ -523,9 +530,9 @@
         <maml:description>
           <maml:para>Specifies the name of the key to get. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -534,6 +541,18 @@
         <maml:name>VaultName</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the vault from which this cmdlet gets keys. This cmdlet constructs the FQDN of a vault based on the name that this parameter specifies and your selected environment.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2" aliases="KeyVersion">
+        <maml:name>Version</maml:name>
+        <maml:description>
+          <maml:para>Specifies the key version. This cmdlet constructs the FQDN of a key based on the vault name, your currently selected environment, the key name, and the key version.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -560,7 +579,7 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>List&lt;Microsoft.Azure.Commands.KeyVault.Models.KeyBundle&gt;</maml:name>
+          <maml:name>List&lt;Microsoft.Azure.Commands.KeyVault.Models.KeyBundle&gt;, Microsoft.Azure.Commands.KeyVault.Models.KeyBundle</maml:name>
           <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
@@ -654,22 +673,29 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2" aliases="SecretVersion">
+          <maml:name>Version</maml:name>
+          <maml:description>
+            <maml:para>Specifies the secret version. This cmdlet constructs the FQDN of a secret based on the vault name, your currently selected environment, the secret name, and the secret version.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="SecretName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of a secret to get. This cmdlet constructs the fully qualified domain name (FQDN) of a secret based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Get-AzureKeyVaultSecret</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1" aliases="SecretName">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1" aliases="SecretName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of a secret to get. This cmdlet constructs the fully qualified domain name (FQDN) of a secret based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1" aliases="none">
           <maml:name>VaultName</maml:name>
@@ -686,9 +712,9 @@
         <maml:description>
           <maml:para>Specifies the name of a secret to get. This cmdlet constructs the fully qualified domain name (FQDN) of a secret based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -697,6 +723,18 @@
         <maml:name>VaultName</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the vault to which the secret belongs. This cmdlet constructs the FQDN of a vault based on the name that this parameter specifies and your current environment.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2" aliases="SecretVersion">
+        <maml:name>Version</maml:name>
+        <maml:description>
+          <maml:para>Specifies the secret version. This cmdlet constructs the FQDN of a secret based on the vault name, your currently selected environment, the secret name, and the secret version.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -723,7 +761,7 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>List&lt;Microsoft.Azure.Commands.KeyVault.Models.Secret&gt;,Microsoft.Azure.Commands.KeyVault.Models.Secret</maml:name>
+          <maml:name>List&lt;Microsoft.Azure.Commands.KeyVault.Models.Secret&gt;, Microsoft.Azure.Commands.KeyVault.Models.Secret</maml:name>
           <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
@@ -818,7 +856,7 @@
           <maml:description>
             <maml:para>Specifies the name of the key to remove. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
@@ -852,9 +890,9 @@
         <maml:description>
           <maml:para>Specifies the name of the key to remove. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -939,10 +977,9 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Remove-AzureKeyVaultKey -VaultName "Contoso" -Name "ITSoftware" -Force -Confirm:$False
-
         </dev:code>
         <dev:remarks>
-          <maml:para>This command removes the key named ITSoftware from the vault named Contoso. The command specifies the Force parameter, and, therefore, the cmdlet does not prompt you for confirmation.</maml:para>
+          <maml:para>This command removes the key named ITSoftware from the vault named Contoso. The command specifies the Force and Confirm parameters, and, therefore, the cmdlet does not prompt you for confirmation.</maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -1018,7 +1055,7 @@
           <maml:description>
             <maml:para>Specifies the name of a secret. This cmdlet constructs the fully qualified domain name (FQDN) of a secret based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
@@ -1052,9 +1089,9 @@
         <maml:description>
           <maml:para>Specifies the name of a secret. This cmdlet constructs the fully qualified domain name (FQDN) of a secret based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -1139,10 +1176,9 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Remove-AzureKeyVaultSecret -VaultName "Contoso" -Name "FinanceSecret" -Force -Confirm:$False
-
         </dev:code>
         <dev:remarks>
-          <maml:para>This command removes the secret named FinanceSecret from the vault named Contoso. The command specifies the Force parameter, and, therefore, the cmdlet does not prompt you for confirmation.</maml:para>
+          <maml:para>This command removes the secret named FinanceSecret from the vault named Contoso. The command specifies the Force and Confirm parameters, and, therefore, the cmdlet does not prompt you for confirmation.</maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -1197,14 +1233,14 @@
           <maml:description>
             <maml:para>Specifies the name of the key to update. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Enable</maml:name>
           <maml:description>
             <maml:para>Specifies whether to enable or disable a key. A value of $True enables the key. A value of $False disables the key. If you do not specify this parameter, this cmdlet does not modify the status of the key.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Nullable [System.Boolean]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Nullable [Boolean]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Expires</maml:name>
@@ -1212,6 +1248,25 @@
             <maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet updates. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. </maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">Nullable [System.DateTime]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>KeyOps</maml:name>
+          <maml:description>
+            <maml:para>Specifies an array of operations that can be performed by using the key that this cmdlet adds. If you do not specify this parameter, all operations can be performed.</maml:para>
+            <maml:para>
+              The acceptable values for this parameter are a comma-separated list of key operations as defined by the JSON Web Key specification. These values are:
+
+              -- Encrypt
+              -- Decrypt
+              -- Wrap
+              -- Unwrap
+              -- Sign
+              -- Verify
+              -- Backup
+              -- Restore
+            </maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">String[]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>NotBefore</maml:name>
@@ -1228,9 +1283,9 @@
         <maml:description>
           <maml:para>Specifies whether to enable or disable a key. A value of $True enables the key. A value of $False disables the key. If you do not specify this parameter, this cmdlet does not modify the status of the key.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Nullable [System.Boolean]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Nullable [Boolean]</command:parameterValue>
         <dev:type>
-          <maml:name>Nullable [System.Boolean]</maml:name>
+          <maml:name>Nullable [Boolean]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -1247,14 +1302,38 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>KeyOps</maml:name>
+        <maml:description>
+          <maml:para>Specifies an array of operations that can be performed by using the key that this cmdlet adds. If you do not specify this parameter, all operations can be performed.</maml:para>
+          <maml:para>
+            The acceptable values for this parameter are a comma-separated list of key operations as defined by the JSON Web Key specification. These values are:
+
+            -- Encrypt
+            -- Decrypt
+            -- Wrap
+            -- Unwrap
+            -- Sign
+            -- Verify
+            -- Backup
+            -- Restore
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="KeyName">
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the key to update. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -1287,7 +1366,7 @@
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>System.String, Boolean, System.DateTime</maml:name>
+          <maml:name>String, Boolean, System.DateTime</maml:name>
           <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
@@ -1385,7 +1464,7 @@
           <maml:description>
             <maml:para>Specifies the name of a secret to modify. This cmdlet constructs the fully qualified domain name (FQDN) of a secret based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="none">
           <maml:name>SecretValue</maml:name>
@@ -1402,9 +1481,9 @@
         <maml:description>
           <maml:para>Specifies the name of a secret to modify. This cmdlet constructs the fully qualified domain name (FQDN) of a secret based on the name that this parameter specifies, the name of the vault, and your current environment.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -1481,7 +1560,7 @@
         <command:commandLines>
           <command:commandLine>
             <command:commandText />
-          </command:commandLine> 
+          </command:commandLine>
         </command:commandLines>
       </command:example>
     </command:examples>

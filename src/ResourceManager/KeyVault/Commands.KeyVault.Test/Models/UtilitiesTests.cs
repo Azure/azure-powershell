@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.KeyVault.Client;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.KeyVault.WebKey;
+using Microsoft.Azure.Commands.KeyVault.WebKey;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-using Xunit;
 using System.Security.Cryptography.X509Certificates;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.Models
 {
@@ -31,8 +32,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
         public void ConvertStringAndSecureString()
         {
             var origStr = "this is test string";
-            var secureString = origStr.ToSecureString();
-            var convStr = secureString.ToStringExt();
+            var secureString = origStr.ConvertToSecureString();
+            var convStr = secureString.ConvertToString();
 
             Assert.Equal( origStr, convStr );
         }
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
             File.WriteAllBytes(tempPath, Resource.pfxCert);
 
             IWebKeyConverter converters = WebKeyConverterFactory.CreateConverterChain();
-            var webKey = converters.ConvertKeyFromFile(new FileInfo(tempPath), password.ToSecureString());
+            var webKey = converters.ConvertKeyFromFile(new FileInfo(tempPath), password.ConvertToSecureString());
 
             Assert.True(webKey.HasPrivateKey());
             Assert.True(webKey.IsValid());

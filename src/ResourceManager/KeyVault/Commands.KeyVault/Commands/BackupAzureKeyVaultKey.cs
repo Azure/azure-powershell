@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
         private string GetDefaultFile()
         {
             var currentPath = CurrentPath();
-            var filename = string.Format("{0}\\backup-{1}-{2}-{3}", currentPath, VaultName, Name, Microsoft.KeyVault.Client.UnixEpoch.Now());
+            var filename = string.Format("{0}\\backup-{1}-{2}-{3}", currentPath, VaultName, Name, Microsoft.Azure.Commands.KeyVault.Client.UnixEpoch.Now());
             File.Create(filename).Dispose();
             return filename;
         }

@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.KeyVault.WebKey;
-using Client = Microsoft.KeyVault.Client;
+using Microsoft.Azure.Commands.KeyVault.WebKey;
+using Client = Microsoft.Azure.Commands.KeyVault.Client;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models

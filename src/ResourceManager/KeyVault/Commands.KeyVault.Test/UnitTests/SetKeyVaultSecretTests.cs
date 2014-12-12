@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Client;
 using Microsoft.Azure.Commands.KeyVault.Cmdlets;
-using Microsoft.Azure.Commands.KeyVault.Models;
+using Cmdlet = Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -43,8 +44,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanSetSecretTest()
         {
-            SecureString secureSecretValue = SecretValue.ToSecureString();
-            Secret expected = new Secret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue, Version = SecretVersion };
+            SecureString secureSecretValue = SecretValue.ConvertToSecureString();
+            Cmdlet.Secret expected = new Cmdlet.Secret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue, Version = SecretVersion };
             keyVaultClientMock.Setup(kv => kv.SetSecret(VaultName, SecretName, secureSecretValue)).Returns(expected).Verifiable();
 
             cmdlet.Name = SecretName;
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ErrorSetSecretTest()
         {
-            SecureString secureSecretValue = SecretValue.ToSecureString();
+            SecureString secureSecretValue = SecretValue.ConvertToSecureString();
             keyVaultClientMock.Setup(kv => kv.SetSecret(VaultName, SecretName, secureSecretValue))
                 .Throws(new Exception("exception")).Verifiable();
 

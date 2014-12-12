@@ -18,7 +18,7 @@ using System.Security;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.KeyVault.WebKey;
+using Microsoft.Azure.Commands.KeyVault.WebKey;
 
 
 namespace Microsoft.Azure.Commands.KeyVault

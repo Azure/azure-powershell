@@ -18,7 +18,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.KeyVault.WebKey;
+using Microsoft.Azure.Commands.KeyVault.WebKey;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {

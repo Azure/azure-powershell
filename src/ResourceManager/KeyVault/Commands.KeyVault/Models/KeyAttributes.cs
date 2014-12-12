@@ -14,7 +14,7 @@
 
 using System;
 using System.Collections.ObjectModel;
-using Client = Microsoft.KeyVault.Client;
+using Client = Microsoft.Azure.Commands.KeyVault.Client;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {

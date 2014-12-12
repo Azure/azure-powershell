@@ -12,15 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Security;
-using Microsoft.Azure.Commands.KeyVault.WebKey;
-
-namespace Microsoft.Azure.Commands.KeyVault.Models
+namespace Microsoft.Azure.Commands.KeyVault.WebKey
 {
-    internal interface IWebKeyConverter
+    /// <summary>
+    /// Supported JsonWebKey key types (kty)
+    /// </summary>
+    public static class JsonWebKeyType
     {
-        JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password);
+        public const string EllipticCurve = "EC";
+        public const string Rsa           = "RSA";
+        public const string RsaHsm        = "RSA-HSM";
+        public const string Octet         = "oct";
+
+        /// <summary>
+        /// All types names. Use clone to avoid FxCop violation
+        /// </summary>
+        public static string[] AllTypes
+        {
+            get { return (string[])_allTypes.Clone(); }
+        }
+
+        private static readonly string[] _allTypes = { EllipticCurve, Rsa, RsaHsm, Octet };
     }
 }

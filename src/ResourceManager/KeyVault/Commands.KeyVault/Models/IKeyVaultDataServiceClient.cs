@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.KeyVault.WebKey;
+using Microsoft.Azure.Commands.KeyVault.WebKey;
 using System.Collections.Generic;
 using System.Security;
 

@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Client = Microsoft.KeyVault.Client;
+using Client = Microsoft.Azure.Commands.KeyVault.Client;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {

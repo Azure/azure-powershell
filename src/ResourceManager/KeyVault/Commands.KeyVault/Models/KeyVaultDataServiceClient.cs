@@ -22,8 +22,8 @@ using Microsoft.WindowsAzure.Common.Internals;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
-using Client = Microsoft.KeyVault.Client;
-using Microsoft.KeyVault.WebKey;
+using Client = Microsoft.Azure.Commands.KeyVault.Client;
+using Microsoft.Azure.Commands.KeyVault.WebKey;
 using System.IO;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -221,9 +221,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
-            string plainSecretValue = secretValue.ToStringExt();
 
-            Client.Secret clientSecret = this.keyVaultClient.SetSecretAsync(vaultAddress, secretName, plainSecretValue).GetAwaiter().GetResult();
+            Client.Secret clientSecret = this.keyVaultClient.SetSecretAsync(vaultAddress, secretName, secretValue).GetAwaiter().GetResult();
 
             return new Secret(clientSecret, this.vaultUriHelper);
         }
@@ -297,7 +296,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             var backupBlob = this.keyVaultClient.BackupKeyAsync(vaultAddress, keyName).GetAwaiter().GetResult();
 
-            File.WriteAllText(outputBlobPath, backupBlob);
+            File.WriteAllBytes(outputBlobPath, backupBlob);
 
             return outputBlobPath;
         }
@@ -313,7 +312,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("inputBlobPath");
             }
 
-            var backupBlob = File.ReadAllText(inputBlobPath);
+            var backupBlob = File.ReadAllBytes(inputBlobPath);
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
