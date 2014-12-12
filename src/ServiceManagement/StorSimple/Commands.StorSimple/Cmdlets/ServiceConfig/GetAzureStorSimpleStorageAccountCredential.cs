@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var sac = allSACs.Where(x => x.Name.Equals(StorageAccountName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (sac == null)
                 {
-                    WriteVerbose(Resources.NotFoundMessageStorageAccount);
+                    WriteVerbose(Resources.NotFoundMessageStorageAccountCredential);
                 }
                 else
                 {

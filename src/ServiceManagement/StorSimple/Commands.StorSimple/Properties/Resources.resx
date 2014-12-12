@@ -141,7 +141,7 @@
   <data name="NotFoundMessageResource" xml:space="preserve">
     <value>The specified resource does not exist.</value>
   </data>
-  <data name="NotFoundMessageStorageAccount" xml:space="preserve">
+  <data name="NotFoundMessageStorageAccountCredential" xml:space="preserve">
     <value>Storage account with the specified name does not exist.</value>
   </data>
   <data name="RemoveASSDBackupMessage" xml:space="preserve">
@@ -318,11 +318,23 @@
   <data name="SuccessfulResourceSelection" xml:space="preserve">
     <value>Your resource has seen selected successfully. To change to another resource please use Select-AzureStorSimpleResource commandlet!</value>
   </data>
+  <data name="EncryptionInProgressMessage" xml:space="preserve">
+    <value>Encryption in progress...</value>
+  </data>
+  <data name="WebExceptionMessage" xml:space="preserve">
+    <value>Web exception encountered with StatusCode: {0}</value>
+  </data>
   <data name="ValidationSuccessfulRegistrationKey" xml:space="preserve">
     <value>The registration key has been validated successfully! </value>
   </data>
   <data name="InvalidInputMessage" xml:space="preserve">
     <value>Invalid input : {0}</value>
+  </data>
+  <data name="StorageCredentialVerificationFailureMessage" xml:space="preserve">
+    <value>Storage credential verification failed.</value>
+  </data>
+  <data name="StorageCredentialVerificationSuccessMessage" xml:space="preserve">
+    <value>Storage credential verification succeeded.</value>
   </data>
   <data name="StorageAccountFoundMessage" xml:space="preserve">
     <value>Found storage account with name : {0}</value>
@@ -330,7 +342,22 @@
   <data name="StorageAccountNotFoundMessage" xml:space="preserve">
     <value>Could not find storage account with name: {0}</value>
   </data>
-  <data name="WebExceptionMessage" xml:space="preserve">
-    <value>Web exception encountered with StatusCode: {0}</value>
+  <data name="RegistrationKeyNotPassedMessage" xml:space="preserve">
+    <value>Registrtion key not passed - validating that the secrets are already initialized</value>
+  </data>
+  <data name="RegistrationKeyPassedMessage" xml:space="preserve">
+    <value>Registration key passed - initializing secrets</value>
+  </data>
+  <data name="ResourceContextInitializeMessage" xml:space="preserve">
+    <value>Initializing resource context</value>
+  </data>
+  <data name="SecretsValidationCompleteMessage" xml:space="preserve">
+    <value>Secrets validation complete</value>
+  </data>
+  <data name="StorageAccountCleanupRetryMessage" xml:space="preserve">
+    <value>Cleaning up objects, retry count: {0}</value>
+  </data>
+  <data name="InlineSacCreationMessage" xml:space="preserve">
+    <value>Creating StorageAccountCredential inline</value>
   </data>
 </root>

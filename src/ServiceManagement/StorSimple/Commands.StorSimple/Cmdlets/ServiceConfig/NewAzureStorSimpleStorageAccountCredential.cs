@@ -41,8 +41,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
+                //validate storage account credentials
+                bool storageAccountPresent;
+                String location = GetStorageAccountLocation(StorageAccountName, out storageAccountPresent);
+                if (!storageAccountPresent || !ValidStorageAccountCred(StorageAccountName, StorageAccountKey))
+                {
+                    WriteVerbose(Resources.StorageCredentialVerificationFailureMessage);
+                    return;
+                }
+                WriteVerbose(Resources.StorageCredentialVerificationSuccessMessage);
+
                 String encryptedKey = null;
                 StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(StorSimpleClient);
+                WriteVerbose(Resources.EncryptionInProgressMessage);
                 storSimpleCryptoManager.EncryptSecretWithRakPub(StorageAccountKey, out encryptedKey);
 
                 var serviceConfig = new ServiceConfiguration()
@@ -60,7 +71,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                 Password = encryptedKey,
                                 PasswordEncryptionCertThumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint(),
                                 UseSSL = UseSSL,
-                                Name = StorageAccountName
+                                Name = StorageAccountName,
+                                Location = location
                             },
                         },
                         Deleted = new List<string>(),

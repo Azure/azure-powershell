@@ -160,6 +160,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Encryption in progress....
+        /// </summary>
+        internal static string EncryptionInProgressMessage {
+            get {
+                return ResourceManager.GetString("EncryptionInProgressMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} operation failed, please check the job status for more details..
         /// </summary>
         internal static string FailureMessageCompleteJob {
@@ -210,6 +219,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string IncorrectFormatInRegistrationKey {
             get {
                 return ResourceManager.GetString("IncorrectFormatInRegistrationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating StorageAccountCredential inline.
+        /// </summary>
+        internal static string InlineSacCreationMessage {
+            get {
+                return ResourceManager.GetString("InlineSacCreationMessage", resourceCulture);
             }
         }
         
@@ -414,9 +432,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Storage account with the specified name does not exist..
         /// </summary>
-        internal static string NotFoundMessageStorageAccount {
+        internal static string NotFoundMessageStorageAccountCredential {
             get {
-                return ResourceManager.GetString("NotFoundMessageStorageAccount", resourceCulture);
+                return ResourceManager.GetString("NotFoundMessageStorageAccountCredential", resourceCulture);
             }
         }
         
@@ -453,6 +471,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string ProvidedRegistrationKey {
             get {
                 return ResourceManager.GetString("ProvidedRegistrationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registrtion key not passed - validating that the secrets are already initialized.
+        /// </summary>
+        internal static string RegistrationKeyNotPassedMessage {
+            get {
+                return ResourceManager.GetString("RegistrationKeyNotPassedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration key passed - initializing secrets.
+        /// </summary>
+        internal static string RegistrationKeyPassedMessage {
+            get {
+                return ResourceManager.GetString("RegistrationKeyPassedMessage", resourceCulture);
             }
         }
         
@@ -574,6 +610,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Initializing resource context.
+        /// </summary>
+        internal static string ResourceContextInitializeMessage {
+            get {
+                return ResourceManager.GetString("ResourceContextInitializeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} StorSimple resource{1} found!.
         /// </summary>
         internal static string ResourceGet_StatusMessage {
@@ -597,6 +642,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string ReturnedCountVolumeMessage {
             get {
                 return ResourceManager.GetString("ReturnedCountVolumeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secrets validation complete.
+        /// </summary>
+        internal static string SecretsValidationCompleteMessage {
+            get {
+                return ResourceManager.GetString("SecretsValidationCompleteMessage", resourceCulture);
             }
         }
         
@@ -637,6 +691,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cleaning up objects, retry count: {0}.
+        /// </summary>
+        internal static string StorageAccountCleanupRetryMessage {
+            get {
+                return ResourceManager.GetString("StorageAccountCleanupRetryMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Found storage account with name : {0}.
         /// </summary>
         internal static string StorageAccountFoundMessage {
@@ -651,6 +714,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string StorageAccountNotFoundMessage {
             get {
                 return ResourceManager.GetString("StorageAccountNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage credential verification failed..
+        /// </summary>
+        internal static string StorageCredentialVerificationFailureMessage {
+            get {
+                return ResourceManager.GetString("StorageCredentialVerificationFailureMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage credential verification succeeded..
+        /// </summary>
+        internal static string StorageCredentialVerificationSuccessMessage {
+            get {
+                return ResourceManager.GetString("StorageCredentialVerificationSuccessMessage", resourceCulture);
             }
         }
         

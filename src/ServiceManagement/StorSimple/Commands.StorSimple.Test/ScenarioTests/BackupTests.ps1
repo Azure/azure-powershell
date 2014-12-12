@@ -38,6 +38,20 @@ function Wait-Job ($jobId)
     $jobStatus
 }
 
+<#
+.SYNOPSIS
+Returns default values for the test
+#>
+function Get-DefaultValue ($key)
+{
+    $defaults = @{
+		StorageAccountName = "wuscisclcis1diagj5sy4";
+		StorageAccountPrimaryAccessKey = "gLm0tjCPJAUKzBFEVjN92ZtEwKnQK8MLasuX/ymNwMRQWFGmUA5sWZUZt9u8JfouhhYyzb3v5RQWtZSX+GxMbg==";
+		StorageAccountSecondaryAccessKey = "zLo+ziNdEX86ffu6OURQFNRL5lrLJpf9J9T8TOk6ne/Mpl7syq1DUp4TIprBt+DGPzo4ytAON+H1N4p6GRwVHg=="
+	}
+
+	return $defaults[$key];
+}
 
 <#
 .SYNOPSIS
@@ -57,10 +71,15 @@ Creates pre-req objects for backup related tests
 #>
 function SetupObjects-BackupScenario($deviceName, $dcName, $acrName, $iqn, $vdName)
 {
-    $sacList = Get-AzureStorSimpleStorageAccountCredential
-	Assert-AreNotEqual 0 @($sacList).Count
-	$sacToUse = $sacList | Select-Object -first 1 -wait
-    
+    $storageAccountName = Get-DefaultValue -key "StorageAccountName"
+    $storageAccountKey = Get-DefaultValue -Key "StorageAccountPrimaryAccessKey"
+    $sacToUse = Get-AzureStorSimpleStorageAccountCredential -Name $storageAccountName
+    if($sacToUse -eq $null)
+    {
+        $sacToUse = New-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Key $storageAccountKey -UseSSL $true -WaitForComplete
+    }
+    Assert-NotNull $sacToUse
+
     $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
     $dcToUse = Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -VolumeContainerName $dcName
     Assert-NotNull $dcToUse
@@ -584,3 +603,5 @@ function Test-GetPaginatedBackup
     #Cleanup
     CleanupObjects-BackupScenario $deviceName $dcName $acrName $vdName
 }
+
+Test-CreateGetRestoreDeleteBackup

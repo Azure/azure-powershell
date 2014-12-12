@@ -40,12 +40,12 @@ Returns default values for the test
 function Get-DefaultValue ($key)
 {
     $defaults = @{
-		StorageAccountName = "storsimple1htg67zmg7",
-		StorageAccountPrimaryAccessKey = "Xk12mx7wGl4uCc2yEYvNXkGXHR9/jUyVDmVT4rVS+1EFEUcdKynl1w8/cUc03ZMjkw3ooPpi0yTBmwyPrxGyNg==",
-		StorageAccountSecondaryAccessKey = "HSXNE9BMSWa0rjX77svBkNI2PBng0UVVF1HOxCLvQloV0zePzxLQc3Fy5h51Tou22ojBUj+LqCrg+01D1JS0mQ=="
+		StorageAccountName = "wuscisclcis1diagj5sy4";
+		StorageAccountPrimaryAccessKey = "gLm0tjCPJAUKzBFEVjN92ZtEwKnQK8MLasuX/ymNwMRQWFGmUA5sWZUZt9u8JfouhhYyzb3v5RQWtZSX+GxMbg==";
+		StorageAccountSecondaryAccessKey = "zLo+ziNdEX86ffu6OURQFNRL5lrLJpf9J9T8TOk6ne/Mpl7syq1DUp4TIprBt+DGPzo4ytAON+H1N4p6GRwVHg=="
 	}
 
-	return $defaults[key];
+	return $defaults[$key];
 }
 
 <#
@@ -62,9 +62,7 @@ function Test-CreateGetDeleteAccessControlRecord
     Set-DefaultResource
     
     # Test
-    New-AzureStorSimpleAccessControlRecord -Name $acrName -iqn $iqn -WaitForComplete
-    
-    $acrCreated = Get-AzureStorSimpleAccessControlRecord -Name $acrName
+    $acrCreated = New-AzureStorSimpleAccessControlRecord -Name $acrName -iqn $iqn -WaitForComplete
     Assert-NotNull $acrCreated
     
     Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete
@@ -84,15 +82,15 @@ function Test-CreateUpdateDeleteAccessControlRecord
     Set-DefaultResource
     
     # Test
-    New-AzureStorSimpleAccessControlRecord -Name $acrName -iqn $iqn -WaitForComplete
-    
-    $acrList = Get-AzureStorSimpleAccessControlRecord
-    Assert-AreNotEqual 0 @($acrList).Count
-    $acrCreated = Get-AzureStorSimpleAccessControlRecord -Name $acrName
+    $acrCreated = New-AzureStorSimpleAccessControlRecord -Name $acrName -iqn $iqn -WaitForComplete
     Assert-NotNull $acrCreated
 
+    $acrList = Get-AzureStorSimpleAccessControlRecord
+    Assert-AreNotEqual 0 @($acrList).Count
+    
     $iqnUpdated = $iqn + "_updated"
-    Set-AzureStorSimpleAccessControlRecord -Name $acrName -IQN $iqnUpdated -WaitForComplete
+    $acrUpdated = Set-AzureStorSimpleAccessControlRecord -Name $acrName -IQN $iqnUpdated -WaitForComplete
+    Assert-NotNull $acrUpdated
     
     (Get-AzureStorSimpleAccessControlRecord -Name $acrName) | Remove-AzureStorSimpleAccessControlRecord -Force -WaitForComplete
 }
@@ -103,16 +101,14 @@ Tests create, get and delete of SAC.
 #>
 function Test-CreateGetDeleteStorageAccountCredential
 {
-    $storageAccountName = Get-DefaultValye -key "StorageAccountName"
+    $storageAccountName = Get-DefaultValue -key "StorageAccountName"
     $storageAccountKey = Get-DefaultValue -Key "StorageAccountPrimaryAccessKey"
 	
     #Pre-req
     Set-DefaultResource
     
     # Test
-    New-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Key $storageAccountKey -UseSSL $true -WaitForComplete
-    
-    $sacCreated = Get-AzureStorSimpleStorageAccountCredential -Name $storageAccountName
+    $sacCreated = New-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Key $storageAccountKey -UseSSL $true -WaitForComplete
     Assert-NotNull $sacCreated
     
     Remove-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Force -WaitForComplete
@@ -120,11 +116,11 @@ function Test-CreateGetDeleteStorageAccountCredential
 
 <#
 .SYNOPSIS
-Tests create, update and delete of ACR.
+Tests create, update and delete of SAC.
 #>
 function Test-CreateUpdateDeleteStorageAccountCredential
 {
-    $storageAccountName = Get-DefaultValye -key "StorageAccountName"
+    $storageAccountName = Get-DefaultValue -key "StorageAccountName"
     $storageAccountKey = Get-DefaultValue -Key "StorageAccountPrimaryAccessKey"
     $storageAccountSecondaryKey = Get-DefaultValue -Key "StorageAccountSecondaryAccessKey"
 
@@ -132,14 +128,63 @@ function Test-CreateUpdateDeleteStorageAccountCredential
     Set-DefaultResource
     
     # Test
-    New-AzureStorSimpleStorageAccountCredential -Name $stoargeAccountName -Key $storageAccountKey -UseSSL $true -WaitForComplete
-    
-    $sacList = Get-AzureStorSimpleStorageAccountCredential
-    Assert-AreNotEqual 0 @($sacList).Count
-    $sacCreated = Get-AzureStorSimpleStorageAccountCredential -Name $storageAccountName
+    $sacCreated = New-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Key $storageAccountKey -UseSSL $true -WaitForComplete
     Assert-NotNull $sacCreated
 
-    Set-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Key $storageAccountSecondaryKey -WaitForComplete
+    $sacList = Get-AzureStorSimpleStorageAccountCredential
+    Assert-AreNotEqual 0 @($sacList).Count
+    
+    $sacUpdated = Set-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Key $storageAccountSecondaryKey -WaitForComplete
+    Assert-NotNull $sacUpdated
+    
+    (Get-AzureStorSimpleStorageAccountCredential -Name $storageAccountName) | Remove-AzureStorSimpleStorageAccountCredential -Force -WaitForComplete
+}
+
+<#
+.SYNOPSIS
+Tests creation of SAC with invalid creds, which should fail
+#>
+function Test-CreateStorageAccountCredential_InvalidCreds
+{
+    $storageAccountName = Get-DefaultValue -key "StorageAccountName"
+    $storageAccountKey = Get-DefaultValue -Key "StorageAccountPrimaryAccessKey"
+
+    $storageAccountName_Wrong = $storageAccountName.SubString(3)
+    $storageAccountKey_Wrong = $storageAccountKey.SubString(3)
+
+    #Pre-req
+    Set-DefaultResource
+    
+    # Test
+    New-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Key $storageAccountKey_Wrong -UseSSL $true -WaitForComplete -ErrorAction SilentlyContinue
+    $sacCreated = Get-AzureStorSimpleStorageAccountCredential -Name $storageAccountName
+    Assert-Null $sacCreated
+
+    New-AzureStorSimpleStorageAccountCredential -Name $storageAccountName_Wrong -Key $storageAccountKey -UseSSL $true -WaitForComplete -ErrorAction SilentlyContinue
+    $sacCreated = Get-AzureStorSimpleStorageAccountCredential -Name $storageAccountName_Wrong
+    Assert-Null $sacCreated
+}
+
+<#
+.SYNOPSIS
+Tests update of SAC with invalid creds, which should fail
+#>
+function Test-UpdateStorageAccountCredential_InvalidCreds
+{
+    $storageAccountName = Get-DefaultValue -key "StorageAccountName"
+    $storageAccountKey = Get-DefaultValue -Key "StorageAccountPrimaryAccessKey"
+
+    $storageAccountKey_Wrong = $storageAccountKey.SubString(3)
+
+    #Pre-req
+    Set-DefaultResource
+    
+    # Test
+    $sacCreated = New-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Key $storageAccountKey -UseSSL $true -WaitForComplete
+    Assert-NotNull $sacCreated
+
+    $sacUpdated = Set-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Key $storageAccountKey_Wrong -WaitForComplete -ErrorAction SilentlyContinue
+    Assert-Null $sacUpdated
     
     (Get-AzureStorSimpleStorageAccountCredential -Name $storageAccountName) | Remove-AzureStorSimpleStorageAccountCredential -Force -WaitForComplete
 }

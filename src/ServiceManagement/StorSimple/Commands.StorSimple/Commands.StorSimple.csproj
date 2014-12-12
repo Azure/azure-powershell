@@ -127,6 +127,7 @@
     <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\SelectAzureStorSimpleResource.cs" />
     <Compile Include="Cmdlets\ServiceConfig\GetAzureStorSimpleAccessControlRecord.cs" />
+    <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleInlineStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\RemoveAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\ServiceConfig\RemoveAzureStorSimpleStorageAccountCredential.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Encryption\EncryptionCmdLetHelper.cs" />
     <Compile Include="Encryption\StorSimpleKeyManager.cs" />
     <Compile Include="Exceptions\DeviceNotYetConfiguredException.cs" />
+    <Compile Include="Exceptions\NoDeviceRegisteredException.cs" />
     <Compile Include="Exceptions\RegistrationKeyException.cs" />
     <Compile Include="Exceptions\StorSimpleDeviceNotFoundException.cs" />
     <Compile Include="Exceptions\StorSimpleJobNotFoundException.cs" />
@@ -173,10 +175,6 @@
     <ProjectReference Include="..\..\..\Commands.StorSimple.Library\Commands.StorSimple.Library.csproj">
       <Project>{b0e9c13f-4e03-4df0-91fa-9a8c76e7422d}</Project>
       <Name>Commands.StorSimple.Library</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.ScenarioTest\Commands.ScenarioTest.csproj">
-      <Project>{a3965b66-5a3e-4b8c-9574-28e5958d4828}</Project>
-      <Name>Commands.ScenarioTest</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

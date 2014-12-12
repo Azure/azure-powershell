@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
@@ -47,32 +48,38 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                StorSimpleResourceContext currentContext = null;
-                var status = StorSimpleClient.SetResourceContext(resourceName);
-                if (status.Equals(Resources.NotFoundMessageResource))
+                this.WriteVerbose(Resources.ResourceContextInitializeMessage);
+                var resCred = StorSimpleClient.GetResourceDetails(resourceName);
+                if (resCred == null)
                 {
+                    this.WriteVerbose(Resources.NotFoundMessageResource);
                     throw new StorSimpleResourceNotFoundException();
                 }
-                else
+                
+                StorSimpleClient.SetResourceContext(resCred);
+                var deviceInfos = StorSimpleClient.GetAllDevices();
+                if (!deviceInfos.Any())
                 {
-                    this.WriteVerbose(status);
-                    currentContext = StorSimpleClient.GetResourceContext();
-                    this.WriteObject(currentContext);
+                    StorSimpleClient.ResetResourceContext();
+                    throw new NoDeviceRegisteredException();
                 }
 
                 //now check for the key
                 if (string.IsNullOrEmpty(RegistrationKey))
                 {
-                    this.WriteVerbose(Resources.NotProvidedWarningRegistrationKey);
+                    this.WriteVerbose(Resources.RegistrationKeyNotPassedMessage);
                 }
                 else
                 {
-                    this.WriteVerbose(Resources.ProvidedRegistrationKey);
-                    EncryptionCmdLetHelper.PersistCIK(this, currentContext.ResourceId, ParseCIKFromRegistrationKey());
+                    this.WriteVerbose(Resources.RegistrationKeyPassedMessage);
+                    EncryptionCmdLetHelper.PersistCIK(this, resCred.ResourceId, ParseCIKFromRegistrationKey());
                 }
-                EncryptionCmdLetHelper.ValidatePersistedCIK(this, currentContext.ResourceId);
-                this.WriteVerbose(Resources.ValidationSuccessfulRegistrationKey);
-                this.WriteVerbose(Resources.SuccessfulResourceSelection);
+                EncryptionCmdLetHelper.ValidatePersistedCIK(this, resCred.ResourceId);
+                this.WriteVerbose(Resources.SecretsValidationCompleteMessage);
+
+                this.WriteVerbose(Resources.SuccessMessageSetResourceContext);
+                var currentContext = StorSimpleClient.GetResourceContext();
+                this.WriteObject(currentContext);
             }
             catch(Exception exception)
             {
