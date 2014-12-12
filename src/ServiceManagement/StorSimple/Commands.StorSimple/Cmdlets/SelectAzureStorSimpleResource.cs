@@ -4,9 +4,13 @@ using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
+    /// <summary>
+    /// this commandlet will set a particular resource to the current context
+    /// </summary>
     [Cmdlet(VerbsCommon.Select, "AzureStorSimpleResource"),OutputType(typeof(StorSimpleResourceContext))]
     public class SelectAzureStorSimpleResource : StorSimpleCmdletBase
     {
@@ -33,6 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
         protected override void BeginProcessing()
         {
+            //we dont have to verify that resource is selected
             return;
         }
 
@@ -48,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (resCred == null)
                 {
                     this.WriteVerbose(Resources.NotFoundMessageResource);
-                    return;
+                    throw new StorSimpleResourceNotFoundException();
                 }
                 
                 StorSimpleClient.SetResourceContext(resCred);
@@ -59,7 +64,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     StorSimpleClient.ResetResourceContext();
                     return;
                 }
-                
+
+                //now check for the key
                 if (string.IsNullOrEmpty(RegistrationKey))
                 {
                     this.WriteVerbose(Resources.RegistrationKeyNotPassedMessage);
@@ -82,18 +88,21 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
         }
 
+        /// <summary>
+        /// The CIK has to be parsed from the registration key
+        /// </summary>
+        /// <returns></returns>
         private string ParseCIKFromRegistrationKey()
         {
             try
             {
                 string[] parts = RegistrationKey.Split(new char[] {':'});
                 this.WriteVerbose("RegistrationKey #parts:" + parts.Length);
-                //this.WriteVerbose("Using part: " + parts[2]);
                 return parts[2].Split(new char[] {'#'})[0];
             }
             catch (Exception ex)
             {
-                throw new ArgumentException("RegistrationKey is not of the right format", "RegistrationKey", ex);
+                throw new RegistrationKeyException(Resources.IncorrectFormatInRegistrationKey, ex);
             }
         }
     }

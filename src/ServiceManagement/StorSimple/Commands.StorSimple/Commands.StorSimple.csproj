@@ -139,7 +139,14 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Encryption\EncryptionCmdLetHelper.cs" />
     <Compile Include="Encryption\StorSimpleKeyManager.cs" />
-    <Compile Include="Encryption\StorSimpleSecretManagementException.cs" />
+    <Compile Include="Exceptions\DeviceNotYetConfiguredException.cs" />
+    <Compile Include="Exceptions\RegistrationKeyException.cs" />
+    <Compile Include="Exceptions\StorSimpleDeviceNotFoundException.cs" />
+    <Compile Include="Exceptions\StorSimpleJobNotFoundException.cs" />
+    <Compile Include="Exceptions\StorSimpleSecretManagementException.cs" />
+    <Compile Include="Exceptions\ResourceContextNotFoundException.cs" />
+    <Compile Include="Exceptions\ResourceNotFoundException.cs" />
+    <Compile Include="Models\JobReport.cs" />
     <Compile Include="Models\PSContracts.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
