@@ -16,7 +16,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSResource : PSChildResource
+    public class PSTopLevelResource : PSChildResource
     {
         public string ResourceGroupName { get; set; }
 

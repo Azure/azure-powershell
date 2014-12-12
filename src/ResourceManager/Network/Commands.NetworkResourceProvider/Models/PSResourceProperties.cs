@@ -17,5 +17,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
     public class PSResourceProperties
     {
         public string ProvisioningState { get; set; }
+
     }
 }

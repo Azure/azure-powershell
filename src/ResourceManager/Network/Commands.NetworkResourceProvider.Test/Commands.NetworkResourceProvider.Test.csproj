@@ -78,7 +78,7 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Testing">
-      <HintPath>..\..\..\packages\Hydra.SpecTestSupport.1.0.5406.28672-prerelease\lib\net45\Microsoft.WindowsAzure.Testing.dll</HintPath>
+      <HintPath>..\..\..\packages\Hydra.SpecTestSupport.1.0.5417.13285-prerelease\lib\net45\Microsoft.WindowsAzure.Testing.dll</HintPath>
     </Reference>
     <Reference Include="Moq">
       <HintPath>..\..\..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
@@ -125,7 +125,9 @@
     <Compile Include="ScenarioTests\PublicIpAddressTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -140,6 +142,9 @@
     </None>
     <None Include="ScenarioTests\PublicIpAddressTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUDStaticAllocation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceSet.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

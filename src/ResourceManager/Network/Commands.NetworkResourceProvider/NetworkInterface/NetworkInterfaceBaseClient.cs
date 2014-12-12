@@ -19,6 +19,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
@@ -58,6 +59,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var networkInterface = Mapper.Map<PSNetworkInterface>(getNetworkInterfaceResponse.NetworkInterface);
             networkInterface.ResourceGroupName = resourceGroupName;
+
+            if (networkInterface.Properties.IpConfigurations[0].Properties.PublicIpAddress == null)
+            {
+                networkInterface.Properties.IpConfigurations[0].Properties.PublicIpAddress = new PSResourceId();
+            }
+
+            networkInterface.PropertiesText = JsonConvert.SerializeObject(networkInterface.Properties, Formatting.Indented);
 
             return networkInterface;
         }

@@ -24,5 +24,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 
         public PSDnsSettings DnsSettings { get; set; }
 
+        public string MacAddress { get; set; }
+
     }
 }

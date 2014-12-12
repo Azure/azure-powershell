@@ -14,8 +14,10 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSVirtualNetwork : PSResource
+    public class PSVirtualNetwork : PSTopLevelResource
     {
         public PSVirtualNetworkProperties Properties { get; set; }
+
+        public string PropertiesText { get; set; }
     }
 }

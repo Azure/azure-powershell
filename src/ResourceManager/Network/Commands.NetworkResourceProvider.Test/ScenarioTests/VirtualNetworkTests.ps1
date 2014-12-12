@@ -33,7 +33,7 @@ function Test-VirtualNetworkCRUD
         
         # Create the Virtual Network
         $subnet = New-AzureVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $actual = New-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $actual = New-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet
         $expected = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
         Assert-AreEqual $expected.ResourceGroupName $rgname	
@@ -41,6 +41,8 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual $expected.Location $actual.Location
         Assert-AreEqual "Succeeded" $expected.Properties.ProvisioningState
         Assert-AreEqual "10.0.0.0/16" $expected.Properties.AddressSpace.AddressPrefixes[0]
+        Assert-AreEqual 1 @($expected.Properties.DhcpOptions.DnsServers).Count
+        Assert-AreEqual "8.8.8.8" $expected.Properties.DhcpOptions.DnsServers[0]
         Assert-AreEqual 1 @($expected.Properties.Subnets).Count
         Assert-AreEqual $subnetName $expected.Properties.Subnets[0].Name
         Assert-AreEqual "10.0.1.0/24" $expected.Properties.Subnets[0].Properties.AddressPrefix

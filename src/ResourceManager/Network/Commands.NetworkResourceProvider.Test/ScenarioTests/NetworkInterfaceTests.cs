@@ -28,6 +28,13 @@ namespace Commands.NetworkResourceProvider.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceCRUDStaticAllocation()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceCRUDStaticAllocation");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkInterfaceNoPublicIpAddress()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceNoPublicIpAddress");
