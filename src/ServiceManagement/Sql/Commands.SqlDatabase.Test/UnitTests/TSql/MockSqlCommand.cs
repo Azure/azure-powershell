@@ -467,22 +467,29 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.TSql
             {
                 string value;
 
-                switch (parameter.DbType)
+                if (parameter.Value == DBNull.Value)
                 {
-                    case DbType.AnsiString:
-                    case DbType.AnsiStringFixedLength:
-                        value = (string)parameter.Value;
-                        break;
-                    case DbType.String:
-                    case DbType.StringFixedLength:
-                        value = (string)parameter.Value;
-                        break;
-                    case DbType.Boolean:
-                        value = (bool)parameter.Value ? "1" : "0";
-                        break;
-                    default:
-                        value = parameter.Value.ToString();
-                        break;
+                    value = string.Empty;
+                }
+                else
+                {
+                    switch (parameter.DbType)
+                    {
+                        case DbType.AnsiString:
+                        case DbType.AnsiStringFixedLength:
+                            value = (string)parameter.Value;
+                            break;
+                        case DbType.String:
+                        case DbType.StringFixedLength:
+                            value = (string)parameter.Value;
+                            break;
+                        case DbType.Boolean:
+                            value = (bool)parameter.Value ? "1" : "0";
+                            break;
+                        default:
+                            value = parameter.Value.ToString();
+                            break;
+                    }
                 }
 
                 key = key.Replace(parameter.ParameterName, value);
