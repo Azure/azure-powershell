@@ -42,11 +42,16 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string AvailabilitySetId { get; set; }
         public string ProvisioningState { get; set; }
 
-        public OSProfile OSConfiguration
+        public string OSConfiguration
         {
             get
             {
-                return this.OSProfile;
+                if (this.StorageProfile != null && this.StorageProfile.OSDisk != null)
+                {
+                    return this.StorageProfile.OSDisk.OperatingSystemType;
+                }
+
+                return null;
             }
         }
 
