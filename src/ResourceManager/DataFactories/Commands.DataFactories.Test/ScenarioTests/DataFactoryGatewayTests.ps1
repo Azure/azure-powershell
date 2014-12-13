@@ -50,10 +50,9 @@ function Test-DataFactoryGateway
         $gwname = "foo"
         $description = "description"
    
-        $actual = New-AzureDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname -Location $dflocation
+        $actual = New-AzureDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname
         $expected = Get-AzureDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname
         Assert-AreEqual $actual.Name $expected.Name
-        Assert-AreEqual $actual.Location $expected.Location
 
         $key = New-AzureDataFactoryGatewayKey -ResourceGroupName $rgname -DataFactoryName $dfname -GatewayName $gwname
         Assert-NotNull $key
@@ -91,10 +90,9 @@ function Test-DataFactoryGatewayWithDataFactoryParameter
         $gwname = "foo"
         $description = "description"
    
-        $actual = New-AzureDataFactoryGateway -DataFactory $datafactory -Name $gwname -Location $dflocation
+        $actual = New-AzureDataFactoryGateway -DataFactory $datafactory -Name $gwname
         $expected = Get-AzureDataFactoryGateway -DataFactory $datafactory -Name $gwname
         Assert-AreEqual $actual.Name $expected.Name
-        Assert-AreEqual $actual.Location $expected.Location
 
         $key = New-AzureDataFactoryGatewayKey -DataFactory $datafactory -GatewayName $gwname
         Assert-NotNull $key

@@ -22,7 +22,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
     {
         protected const string StorageAccountElemStr = "StorageAccount";
         protected const string LocalResourceDirElemStr = "LocalResourceDirectory";
-        protected const string StorageNameElemStr = "Name";
         protected const string StorageNameAttrStr = "name";
         protected const string PrivConfNameAttr = "name";
         protected const string PrivConfKeyAttr = "key";

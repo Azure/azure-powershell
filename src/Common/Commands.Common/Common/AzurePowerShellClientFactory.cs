@@ -119,16 +119,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Common
             }
         }
 
-        private void UpdateSubscriptionRegisteredProviders(AzureSubscription subscription, List<string> providers)
+        private void UpdateSubscriptionRegisteredProviders(AzureSubscription subscription, List<string> providers)
         {
-            if (providers != null && providers.Count > 0)
-            {
-                subscription.SetOrAppendProperty(AzureSubscription.Property.RegisteredResourceProviders,
-                    providers.ToArray());
-                ProfileClient profileClient = new ProfileClient();
-                profileClient.AddOrSetSubscription(subscription);
-                profileClient.Profile.Save();
-            }
+            if (providers != null && providers.Count > 0)
+            {
+                subscription.SetOrAppendProperty(AzureSubscription.Property.RegisteredResourceProviders,
+                    providers.ToArray());
+                try
+                {
+                    ProfileClient profileClient = new ProfileClient();
+                    profileClient.AddOrSetSubscription(subscription);
+                    profileClient.Profile.Save();
+                }
+                catch (KeyNotFoundException)
+                {
+                    // if using a subscription data file, do not write registration to disk
+                    // long term solution is using -Profile parameter
+                }
+            }
         }
     }
 }

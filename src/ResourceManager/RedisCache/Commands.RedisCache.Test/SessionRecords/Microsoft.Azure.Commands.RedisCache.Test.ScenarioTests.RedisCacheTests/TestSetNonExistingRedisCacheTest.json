@@ -1,7 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/f435d8e1-f7a0-4f79-adf7-b1a564728140/resourceGroups/redisruntimetestrg/providers/Microsoft.Cache/Redis/NonExistingRedisCache?api-version=2014-04-01-preview",
+      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/NonExistingRedisCache?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL05vbkV4aXN0aW5nUmVkaXNDYWNoZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -11,17 +12,26 @@
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"Resource not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
+        "Content-Length": [
+          "69"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8e8de709-75e9-42ad-a8bb-72f33ac571dd"
+          "f75f354f-eeaf-416d-83de-0f7bc6d1554e"
         ],
         "x-ms-correlation-request-id": [
-          "8e8de709-75e9-42ad-a8bb-72f33ac571dd"
+          "f75f354f-eeaf-416d-83de-0f7bc6d1554e"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20140916T191257Z:8e8de709-75e9-42ad-a8bb-72f33ac571dd"
+          "WESTUS:20141112T220409Z:f75f354f-eeaf-416d-83de-0f7bc6d1554e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -30,7 +40,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 16 Sep 2014 19:12:57 GMT"
+          "Wed, 12 Nov 2014 22:04:09 GMT"
         ]
       },
       "StatusCode": 404
@@ -38,6 +48,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "f435d8e1-f7a0-4f79-adf7-b1a564728140"
+    "SubscriptionId": "e638312d-094f-40fd-a2cc-579fe8490bbd"
   }
 }

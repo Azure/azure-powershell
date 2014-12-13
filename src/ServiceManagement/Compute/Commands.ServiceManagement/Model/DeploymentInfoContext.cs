@@ -255,7 +255,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 
                 this.RolesConfiguration = new Dictionary<string, RoleConfiguration>();
 
-                var roles = doc.Root.Descendants(this.ns + "Role");
+                var roles = doc.Root.Descendants(this.ns + "Role").Where(t => t.Parent == doc.Root);
 
                 foreach (var role in roles)
                 {
