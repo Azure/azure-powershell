@@ -208,11 +208,7 @@
     <Compile Include="VirtualNetwork\GetAzureVirtualNetworkCmdlet.cs" />
     <Compile Include="VirtualNetwork\NewAzureVirtualNetworkCmdlet.cs" />
     <Compile Include="VirtualNetwork\VirtualNetworkBaseClient.cs" />
-    <None Include="Microsoft.Azure.Commands.NetworkResourceProvider.format.ps1xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+     
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
@@ -221,6 +217,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="Microsoft.Azure.Commands.NetworkResourceProvider.format.ps1xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
