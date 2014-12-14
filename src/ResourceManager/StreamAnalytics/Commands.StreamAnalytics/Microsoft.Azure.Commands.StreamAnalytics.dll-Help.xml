@@ -91,7 +91,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>
-            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null]]
+            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics]]
             Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota
           </maml:name>
           <maml:uri />
@@ -284,7 +284,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>
-            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null]]
+            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics]]
             Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation
           </maml:name>
           <maml:uri />
@@ -477,7 +477,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>
-            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null]]
+            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics]]
             Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput
           </maml:name>
           <maml:uri />
@@ -704,7 +704,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>
-            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null]]
+            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics]]
             Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput
           </maml:name>
           <maml:uri />
@@ -940,7 +940,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>
-            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null]]
+            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics]]
             Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob
           </maml:name>
           <maml:uri />
