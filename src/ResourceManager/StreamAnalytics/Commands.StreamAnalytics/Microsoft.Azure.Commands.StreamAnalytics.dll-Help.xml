@@ -91,7 +91,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>
-            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null]]
+            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics]]
             Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota
           </maml:name>
           <maml:uri />
@@ -284,7 +284,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>
-            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null]]
+            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics]]
             Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation
           </maml:name>
           <maml:uri />
@@ -477,7 +477,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>
-            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null]]
+            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics]]
             Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput
           </maml:name>
           <maml:uri />
@@ -704,7 +704,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>
-            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null]]
+            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics]]
             Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput
           </maml:name>
           <maml:uri />
@@ -940,7 +940,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>
-            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=0.8.12.0, Culture=neutral, PublicKeyToken=null]]
+            System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics]]
             Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob
           </maml:name>
           <maml:uri />
@@ -1078,7 +1078,7 @@
       <maml:description>
         <maml:para>
           Creates a new output within a Stream Analytics job or updates an existing output.
-          The name of the output can be specified in the .JSON file or on the command line.  If both are specified, the name on command line will be used instead of the name in the file.
+          The name of the output can be specified in the .JSON file or on the command line.  If both are specified, the name on command line must be the same with the one in the file.
           If you specify an output that already exists and do not specify -Force parameter, the cmdlet will ask whether or not to replace the existing output.
           If you specify -Force parameter and specify an existing output name, the output will be replaced without confirmation.
         </maml:para>
@@ -1093,7 +1093,7 @@
     <maml:description>
       <maml:para>
         The New-AzureStreamAnalyticsOutput cmdlet creates a new output within a Stream Analytics job or updates an existing output.
-        The name of the output can be specified in the .JSON file or on the command line.  If both are specified, the name on command line will be used instead of the name in the file.
+        The name of the output can be specified in the .JSON file or on the command line.  If both are specified, the name on command line must be the same with the one in the file.
         If you specify an output that already exists and do not specify -Force parameter, the cmdlet will ask whether or not to replace the existing output.
         If you specify -Force parameter and specify an existing output name, the output will be replaced without confirmation.
       </maml:para>
@@ -1353,7 +1353,7 @@
       <maml:description>
         <maml:para>
           Creates a new transformation within a Stream Analytics job or updates the existing transformation.
-          The name of the transformation can be specified in the .JSON file or on the command line.  If both are specified, the name on command line will be used instead of the name in the file.
+          The name of the transformation can be specified in the .JSON file or on the command line.  If both are specified, the name on command line must be the same with the one in the file.
           If you specify a transformation that already exists and do not specify -Force parameter, the cmdlet will ask whether or not to replace the existing transformation.
           If you specify -Force parameter and specify an existing transformation name, the transformation will be replaced without confirmation.
         </maml:para>
@@ -1368,7 +1368,7 @@
     <maml:description>
       <maml:para>
         The New-AzureStreamAnalyticsTransformation cmdlet creates a new transformation within a Stream Analytics job or updates the existing transformation.
-        The name of the transformation can be specified in the .JSON file or on the command line.  If both are specified, the name on command line will be used instead of the name in the file.
+        The name of the transformation can be specified in the .JSON file or on the command line.  If both are specified, the name on command line must be the same with the one in the file.
         If you specify a transformation that already exists and do not specify -Force parameter, the cmdlet will ask whether or not to replace the existing transformation.
         If you specify -Force parameter and specify an existing transformation name, the transformation will be replaced without confirmation.
       </maml:para>
@@ -1620,7 +1620,7 @@
       <maml:description>
         <maml:para>
           Creates a new input within a Stream Analytics job or updates an existing specified input.
-          The name of the input can be specified in the .JSON file or on the command line.  If both are specified, the name on command line will be used instead of the name in the file.
+          The name of the input can be specified in the .JSON file or on the command line.  If both are specified, the name on command line must be the same with the one in the file.
           If you specify an input that already exists and do not specify -Force parameter, the cmdlet will ask whether or not to replace the existing input.
           If you specify -Force parameter and specify an existing input name, the input will be replaced without confirmation.
         </maml:para>
@@ -1635,7 +1635,7 @@
     <maml:description>
       <maml:para>
         The New-AzureStreamAnalyticsInput cmdlet creates a new input within a Stream Analytics job or updates an existing specified input.
-        The name of the input can be specified in the .JSON file or on the command line.  If both are specified, the name on command line will be used instead of the name in the file.
+        The name of the input can be specified in the .JSON file or on the command line.  If both are specified, the name on command line must be the same with the one in the file.
         If you specify an input that already exists and do not specify -Force parameter, the cmdlet will ask whether or not to replace the existing input.
         If you specify -Force parameter and specify an existing input name, the input will be replaced without confirmation.
       </maml:para>
@@ -1921,7 +1921,7 @@
       <maml:description>
         <maml:para>
           Creates a new Stream Analytics job in Microsoft Azure or updates the definition of an existing specified job.
-          The name of the job can be specified in the .JSON file or on the command line.  If both are specified, the name on command line will be used instead of the name in the file.
+          The name of the job can be specified in the .JSON file or on the command line.  If both are specified, the name on command line must be the same with the one in the file.
           If you specify a job name that already exists and do not specify -Force parameter, the cmdlet will ask whether or not to replace the existing job.
           If you specify -Force parameter and specify an existing job name, the job definition will be replaced without confirmation.
         </maml:para>
@@ -1936,7 +1936,7 @@
     <maml:description>
       <maml:para>
         The New-AzureStreamAnalyticsJob cmdlet creates a new Stream Analytics job in Microsoft Azure or updates the definition of an existing specified job.
-        The name of the job can be specified in the .JSON file or on the command line.  If both are specified, the name on command line will be used instead of the name in the file.
+        The name of the job can be specified in the .JSON file or on the command line.  If both are specified, the name on command line must be the same with the one in the file.
         If you specify a job name that already exists and do not specify -Force parameter, the cmdlet will ask whether or not to replace the existing job.
         If you specify -Force parameter and specify an existing job name, the job definition will be replaced without confirmation.
       </maml:para>

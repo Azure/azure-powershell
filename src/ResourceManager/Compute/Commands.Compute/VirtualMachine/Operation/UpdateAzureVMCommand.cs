@@ -20,5 +20,6 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(VerbsData.Update, ProfileNouns.VirtualMachine)]
     public class UpdateAzureVMCommand : NewAzureVMCommand
     {
+        public new string Location { get; set; }
     }
 }
