@@ -20,30 +20,30 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return GetStorSimpleClient().VirtualDisk.GetByName(deviceid, diskName, GetCustomRequestHeaders());
         }
 
-        public JobStatusInfo CreateVolume(string deviceid, VirtualDiskRequest diskDetails)
+        public TaskStatusInfo CreateVolume(string deviceid, VirtualDiskRequest diskDetails)
         {
             return GetStorSimpleClient().VirtualDisk.Create(deviceid, diskDetails, GetCustomRequestHeaders());
         }
 
-        public GuidJobResponse CreateVolumeAsync(string deviceid, VirtualDiskRequest diskDetails)
+        public GuidTaskResponse CreateVolumeAsync(string deviceid, VirtualDiskRequest diskDetails)
         {
             return GetStorSimpleClient().VirtualDisk.BeginCreating(deviceid, diskDetails, GetCustomRequestHeaders());
         }
 
-        public JobStatusInfo RemoveVolume(string deviceid, string diskid)
+        public TaskStatusInfo RemoveVolume(string deviceid, string diskid)
         {
             return GetStorSimpleClient().VirtualDisk.Delete(deviceid, diskid, GetCustomRequestHeaders());
         }
-        public GuidJobResponse RemoveVolumeAsync(string deviceid, string diskid)
+        public GuidTaskResponse RemoveVolumeAsync(string deviceid, string diskid)
         {
             return GetStorSimpleClient().VirtualDisk.BeginDeleting(deviceid, diskid, GetCustomRequestHeaders());
         }
 
-        public JobStatusInfo UpdateVolume(string deviceid, string diskid, VirtualDisk diskDetails)
+        public TaskStatusInfo UpdateVolume(string deviceid, string diskid, VirtualDisk diskDetails)
         {
             return GetStorSimpleClient().VirtualDisk.Update(deviceid, diskid, diskDetails, GetCustomRequestHeaders());
         }
-        public GuidJobResponse UpdateVolumeAsync(string deviceid, string diskid, VirtualDisk diskDetails)
+        public GuidTaskResponse UpdateVolumeAsync(string deviceid, string diskid, VirtualDisk diskDetails)
         {
             return GetStorSimpleClient().VirtualDisk.BeginUpdating(deviceid, diskid, diskDetails,GetCustomRequestHeaders());
         }

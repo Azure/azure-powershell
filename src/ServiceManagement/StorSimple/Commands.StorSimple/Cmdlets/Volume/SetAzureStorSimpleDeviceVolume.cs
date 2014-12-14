@@ -9,7 +9,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     using Properties;
     using System.Collections.Generic;
 
-    [Cmdlet(VerbsCommon.Set, "AzureStorSimpleDeviceVolume"), OutputType(typeof(JobStatusInfo))]
+    [Cmdlet(VerbsCommon.Set, "AzureStorSimpleDeviceVolume"), OutputType(typeof(TaskStatusInfo))]
     public class SetAzureStorSimpleDeviceVolume : StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
@@ -80,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (WaitForComplete.IsPresent)
                 {
                     var jobstatus = StorSimpleClient.UpdateVolume(deviceId, diskDetails.InstanceId, diskDetails);
-                    HandleSyncJobResponse(jobstatus, "update");
+                    HandleSyncTaskResponse(jobstatus, "update");
                     var updatedVolume = StorSimpleClient.GetVolumeByName(deviceId, VolumeName);
                     WriteObject(updatedVolume.VirtualDiskInfo);
                 }
@@ -88,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     var jobresult = StorSimpleClient.UpdateVolumeAsync(deviceId, diskDetails.InstanceId, diskDetails);
 
-                    HandleAsyncJobResponse(jobresult, "update");
+                    HandleAsyncTaskResponse(jobresult, "update");
                 }
             }
             catch (Exception exception)

@@ -22,33 +22,32 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return this.GetStorSimpleClient().BackupPolicy.GetBackupPolicyDetailsByName(deviceId, backupPolicyName, GetCustomRequestHeaders());
         }
 
-        public JobStatusInfo DeleteBackupPolicy(string deviceid, string backupPolicyId)
+        public TaskStatusInfo DeleteBackupPolicy(string deviceid, string backupPolicyId)
         {
             return GetStorSimpleClient().BackupPolicy.Delete(deviceid, backupPolicyId, GetCustomRequestHeaders());
         }
 
-        public JobResponse DeleteBackupPolicyAsync(string deviceid, string backupPolicyId)
+        public TaskResponse DeleteBackupPolicyAsync(string deviceid, string backupPolicyId)
         {
             return GetStorSimpleClient().BackupPolicy.BeginDeleting(deviceid, backupPolicyId, GetCustomRequestHeaders());
         }
 
-        public JobStatusInfo CreateBackupPolicy(string deviceId, NewBackupPolicyConfig config)
+        public TaskStatusInfo CreateBackupPolicy(string deviceId, NewBackupPolicyConfig config)
         {
             return GetStorSimpleClient().BackupPolicy.Create(deviceId, config, GetCustomRequestHeaders());
         }
 
-        public JobResponse CreateBackupPolicyAsync(string deviceId, NewBackupPolicyConfig config)
+        public TaskResponse CreateBackupPolicyAsync(string deviceId, NewBackupPolicyConfig config)
         {
             return GetStorSimpleClient().BackupPolicy.BeginCreatingBackupPolicy(deviceId, config, GetCustomRequestHeaders());
         }
 
-        public JobStatusInfo UpdateBackupPolicy(string deviceId, string policyId, UpdateBackupPolicyConfig updatepolicyConfig)
+        public TaskStatusInfo UpdateBackupPolicy(string deviceId, string policyId, UpdateBackupPolicyConfig updatepolicyConfig)
         {
-            return GetStorSimpleClient()
-                .BackupPolicy.Update(deviceId, policyId, updatepolicyConfig, GetCustomRequestHeaders());
+            return GetStorSimpleClient().BackupPolicy.Update(deviceId, policyId, updatepolicyConfig, GetCustomRequestHeaders());
         }
 
-        public JobResponse UpdateBackupPolicyAsync(string deviceId, string policyId, UpdateBackupPolicyConfig updatepolicyConfig)
+        public TaskResponse UpdateBackupPolicyAsync(string deviceId, string policyId, UpdateBackupPolicyConfig updatepolicyConfig)
         {
             return GetStorSimpleClient().BackupPolicy.BeginUpdatingBackupPolicy(deviceId, policyId, updatepolicyConfig, GetCustomRequestHeaders());
         }

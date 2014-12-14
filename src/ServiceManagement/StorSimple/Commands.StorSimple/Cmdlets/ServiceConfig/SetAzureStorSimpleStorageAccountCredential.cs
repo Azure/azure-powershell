@@ -15,7 +15,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// <summary>
     /// Edit the Storage Account Cred
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureStorSimpleStorageAccountCredential"), OutputType(typeof(JobStatusInfo))]
+    [Cmdlet(VerbsCommon.Set, "AzureStorSimpleStorageAccountCredential"), OutputType(typeof(TaskStatusInfo))]
 
     public class SetAzureStorSimpleStorageAccountCredential : StorSimpleCmdletBase
     {
@@ -93,9 +93,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 if (WaitForComplete.IsPresent)
                 {
-                    var jobStatus = StorSimpleClient.ConfigureService(serviceConfig);
-                    HandleSyncJobResponse(jobStatus, "update");
-                    if (jobStatus.TaskResult == TaskResult.Succeeded)
+                    var taskStatus = StorSimpleClient.ConfigureService(serviceConfig);
+                    HandleSyncTaskResponse(taskStatus, "update");
+                    if (taskStatus.AsyncTaskAggregatedResult == AsyncTaskAggregatedResult.Succeeded)
                     {
                         var updatedSac = StorSimpleClient.GetAllStorageAccountCredentials()
                                             .Where(x => x.Name.Equals(StorageAccountName, StringComparison.InvariantCultureIgnoreCase));
@@ -105,7 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 else
                 {
                     var jobResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
-                    HandleAsyncJobResponse(jobResponse, "update");
+                    HandleAsyncTaskResponse(jobResponse, "update");
                 }
             }
             catch (Exception exception)

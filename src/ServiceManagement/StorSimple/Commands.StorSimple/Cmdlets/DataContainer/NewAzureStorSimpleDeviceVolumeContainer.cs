@@ -9,7 +9,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
     using Properties;
 
-    [Cmdlet(VerbsCommon.New, "AzureStorSimpleDeviceVolumeContainer"), OutputType(typeof(JobStatusInfo))]
+    [Cmdlet(VerbsCommon.New, "AzureStorSimpleDeviceVolumeContainer"), OutputType(typeof(TaskStatusInfo))]
     public class NewAzureStorSimpleDeviceVolumeContainer : StorSimpleCmdletBase
     {
 
@@ -81,9 +81,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 if (WaitForComplete.IsPresent)
                 {
-                    var jobstatus = StorSimpleClient.CreateDataContainer(deviceid, dc);
-                    HandleSyncJobResponse(jobstatus, "create");
-                    if(jobstatus.TaskResult == TaskResult.Succeeded)
+                    var taskStatus = StorSimpleClient.CreateDataContainer(deviceid, dc);
+                    HandleSyncTaskResponse(taskStatus, "create");
+                    if (taskStatus.AsyncTaskAggregatedResult == AsyncTaskAggregatedResult.Succeeded)
                     {
                         var createdDataContainer = StorSimpleClient.GetDataContainer(deviceid, VolumeContainerName);
                         WriteObject(createdDataContainer.DataContainerInfo);
@@ -93,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 else
                 {
                     var jobstatus = StorSimpleClient.CreateDataContainerAsync(deviceid, dc);
-                    HandleAsyncJobResponse(jobstatus, "create");                
+                    HandleAsyncTaskResponse(jobstatus, "create");                
                 }
             }
             catch (Exception exception)

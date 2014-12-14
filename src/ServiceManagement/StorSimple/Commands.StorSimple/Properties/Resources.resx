@@ -127,7 +127,7 @@
     <value>No BackupPolicy was found with the given name. Try giving a different name or remove the Name paramter altogether to get all backuppolicies on the device</value>
   </data>
   <data name="FailureMessageSubmitJob" xml:space="preserve">
-    <value>The {0} job failed to submit. </value>
+    <value>The {0} task failed to submit. </value>
   </data>
   <data name="NotAllowedErrorDataContainerEncryption" xml:space="preserve">
     <value>Please provide the EncryptionKey.</value>
@@ -193,7 +193,7 @@
     <value>Context set successfully for the given resource name.</value>
   </data>
   <data name="SuccessMessageSubmitJob" xml:space="preserve">
-    <value>The {0} job is submitted successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job status</value>
+    <value>The {0} task is submitted successfully. Please use the command Get-AzureStorSimpleTask -InstanceId {1} for tracking the task's status</value>
   </data>
   <data name="InvalidBackupIdParameter" xml:space="preserve">
     <value>Specify valid string for BackupId parameter</value>
@@ -241,7 +241,7 @@
     <value>Call to service failed with error code: {0}</value>
   </data>
   <data name="FailureMessageCompleteJob" xml:space="preserve">
-    <value>The {0} operation failed, please check the job status for more details.</value>
+    <value>The {0} operation failed, please check the task's status for more details.</value>
   </data>
   <data name="SuccessMessageCompleteJob" xml:space="preserve">
     <value>The {0} operation completed successfully.</value>

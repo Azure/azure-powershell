@@ -14,7 +14,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// <summary>
     /// Removes the Storage Account Cred specified from the StorSimple Service Config
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureStorSimpleStorageAccountCredential"), OutputType(typeof(JobStatusInfo))]
+    [Cmdlet(VerbsCommon.Remove, "AzureStorSimpleStorageAccountCredential"), OutputType(typeof(TaskStatusInfo))]
 
     public class RemoveAzureStorSimpleStorageAccountCredential : StorSimpleCmdletBase
     {
@@ -74,12 +74,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                     if (WaitForComplete.IsPresent)
                                     {
                                         var jobStatus = StorSimpleClient.ConfigureService(serviceConfig);
-                                        HandleSyncJobResponse(jobStatus, "delete");
+                                        HandleSyncTaskResponse(jobStatus, "delete");
                                     }
                                     else
                                     {
                                         var jobResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
-                                        HandleAsyncJobResponse(jobResponse, "delete");
+                                        HandleAsyncTaskResponse(jobResponse, "delete");
                                     }
                               }
                               catch (Exception exception)

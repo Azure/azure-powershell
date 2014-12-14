@@ -9,7 +9,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Volume
     using Properties;
     using System.Collections.Generic;
 
-    [Cmdlet(VerbsCommon.New, "AzureStorSimpleDeviceVolume"), OutputType(typeof(JobStatusInfo))]
+    [Cmdlet(VerbsCommon.New, "AzureStorSimpleDeviceVolume"), OutputType(typeof(TaskStatusInfo))]
     public class NewAzureStorSimpleDeviceVolume : StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
@@ -84,9 +84,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Volume
 
                 if (WaitForComplete.IsPresent)
                 {
-                    var jobstatus = StorSimpleClient.CreateVolume(deviceid, virtualDiskToCreate); ;
-                    HandleSyncJobResponse(jobstatus, "create");
-                    if(jobstatus.TaskResult == TaskResult.Succeeded)
+                    var taskStatus = StorSimpleClient.CreateVolume(deviceid, virtualDiskToCreate); ;
+                    HandleSyncTaskResponse(taskStatus, "create");
+                    if (taskStatus.AsyncTaskAggregatedResult == AsyncTaskAggregatedResult.Succeeded)
                     {
                         var createdVolume = StorSimpleClient.GetVolumeByName(deviceid, VolumeName);
                         WriteObject(createdVolume.VirtualDiskInfo);
@@ -96,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Volume
                 else
                 {
                     var jobstatus = StorSimpleClient.CreateVolumeAsync(deviceid, virtualDiskToCreate); ;
-                    HandleAsyncJobResponse(jobstatus, "create");
+                    HandleAsyncTaskResponse(jobstatus, "create");
                 }
             }
             catch (Exception exception)

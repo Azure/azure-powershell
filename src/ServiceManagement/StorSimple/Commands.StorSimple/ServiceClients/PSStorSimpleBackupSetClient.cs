@@ -19,32 +19,32 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     GetCustomRequestHeaders());
         }
 
-        public JobStatusInfo DeleteBackup(string deviceid, string backupSetId)
+        public TaskStatusInfo DeleteBackup(string deviceid, string backupSetId)
         {
             return GetStorSimpleClient().Backup.Delete(deviceid, backupSetId, GetCustomRequestHeaders());
         }
 
-        public JobResponse DeleteBackupAsync(string deviceid, string backupSetId)
+        public TaskResponse DeleteBackupAsync(string deviceid, string backupSetId)
         {
             return GetStorSimpleClient().Backup.BeginDeleting(deviceid, backupSetId, GetCustomRequestHeaders());
         }
 
-        public JobStatusInfo RestoreBackup(string deviceid, RestoreBackupRequest backupRequest)
+        public TaskStatusInfo RestoreBackup(string deviceid, RestoreBackupRequest backupRequest)
         {
             return GetStorSimpleClient().Backup.Restore(deviceid, backupRequest, GetCustomRequestHeaders());
         }
 
-        public JobResponse RestoreBackupAsync(string deviceid, RestoreBackupRequest backupRequest)
+        public TaskResponse RestoreBackupAsync(string deviceid, RestoreBackupRequest backupRequest)
         {
             return GetStorSimpleClient().Backup.BeginRestoring(deviceid, backupRequest, GetCustomRequestHeaders());
         }
 
-        public JobStatusInfo DoBackup(string deviceid, String backupPolicyId, BackupNowRequest request)
+        public TaskStatusInfo DoBackup(string deviceid, String backupPolicyId, BackupNowRequest request)
         {
             return GetStorSimpleClient().Backup.Create(deviceid, backupPolicyId, request, GetCustomRequestHeaders());
         }
 
-        public JobResponse DoBackupAsync(string deviceid, String backupPolicyId, BackupNowRequest request)
+        public TaskResponse DoBackupAsync(string deviceid, String backupPolicyId, BackupNowRequest request)
         {
             return GetStorSimpleClient().Backup.BeginCreatingBackup(deviceid, backupPolicyId, request, GetCustomRequestHeaders());
         }

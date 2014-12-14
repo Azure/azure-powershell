@@ -51,12 +51,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                       if (WaitForComplete.IsPresent)
                       {
                           var deleteJobStatusInfo = StorSimpleClient.DeleteBackupPolicy(deviceId, backupPolicyIdFinal);
-                          HandleSyncJobResponse(deleteJobStatusInfo, "remove");
+                          HandleSyncTaskResponse(deleteJobStatusInfo, "remove");
                       }
                       else
                       {
                           var jobresult = StorSimpleClient.DeleteBackupPolicyAsync(deviceId, backupPolicyIdFinal);
-                          HandleAsyncJobResponse(jobresult, "remove");
+                          HandleAsyncTaskResponse(jobresult, "remove");
                       }
                   });
             }

@@ -9,7 +9,7 @@ using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleDeviceBackupRestoreJob"),OutputType(typeof(JobResponse), typeof(JobStatusInfo))]
+    [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleDeviceBackupRestoreJob"),OutputType(typeof(TaskResponse), typeof(TaskStatusInfo))]
     public class StartAzureStorSimpleDeviceBackupRestoreJob: StorSimpleCmdletBase
     {
         private string deviceId = null;
@@ -51,13 +51,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                       if (WaitForComplete.IsPresent)
                       {
                           var restoreBackupResult = StorSimpleClient.RestoreBackup(deviceId, request);
-                          HandleSyncJobResponse(restoreBackupResult, "start");
+                          HandleSyncTaskResponse(restoreBackupResult, "start");
                       }
                       else
                       {
                           //async scenario
                           var jobresult = StorSimpleClient.RestoreBackupAsync(deviceId, request);
-                          HandleAsyncJobResponse(jobresult, "start");
+                          HandleAsyncTaskResponse(jobresult, "start");
                       }
                   });
             }

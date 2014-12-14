@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string HelpMessageDeviceType = "The device type.";
         public const string HelpMessageForce = "User confirmation is not required.";
         public const string HelpMessageIQNforACR = "The iSCSI Qualified Name (IQN).";
-        public const string HelpMessageJobId = "The job identifier.";
+        public const string HelpMessageTaskId = "The task identifier.";
         public const string HelpMessageSACObject = "The storage account credential object.";
         public const string HelpMessageStorageAccountKey = "The storage account key.";
         public const string HelpMessageStorageAccountName = "The storage account name.";

@@ -10,12 +10,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
     public partial class PSStorSimpleClient
     {
-        public JobStatusInfo ConfigureService(ServiceConfiguration serviceConfig)
+        public TaskStatusInfo ConfigureService(ServiceConfiguration serviceConfig)
         {
             return GetStorSimpleClient().ServiceConfig.Create(serviceConfig, GetCustomRequestHeaders());
         }
 
-        public JobResponse ConfigureServiceAsync(ServiceConfiguration serviceConfig)
+        public TaskResponse ConfigureServiceAsync(ServiceConfiguration serviceConfig)
         {
             return GetStorSimpleClient().ServiceConfig.BeginCreating(serviceConfig, GetCustomRequestHeaders());
         }

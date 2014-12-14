@@ -16,7 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// <summary>
     /// Add Azure Storage account to the StorSimple Manager Service
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureStorSimpleStorageAccountCredential"), OutputType(typeof(JobStatusInfo))]
+    [Cmdlet(VerbsCommon.New, "AzureStorSimpleStorageAccountCredential"), OutputType(typeof(TaskStatusInfo))]
 
     public class NewAzureStorSimpleStorageAccountCredential : StorSimpleCmdletBase
     {
@@ -82,9 +82,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 if (WaitForComplete.IsPresent)
                 {
-                    var jobStatus = StorSimpleClient.ConfigureService(serviceConfig);
-                    HandleSyncJobResponse(jobStatus, "create");
-                    if (jobStatus.TaskResult == TaskResult.Succeeded)
+                    var taskStatus = StorSimpleClient.ConfigureService(serviceConfig);
+                    HandleSyncTaskResponse(taskStatus, "create");
+                    if (taskStatus.AsyncTaskAggregatedResult == AsyncTaskAggregatedResult.Succeeded)
                     {
                         var createdSac = StorSimpleClient.GetAllStorageAccountCredentials()
                                             .Where(x => x.Name.Equals(StorageAccountName, StringComparison.InvariantCultureIgnoreCase));
@@ -94,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 else
                 {
                     var jobResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
-                    HandleAsyncJobResponse(jobResponse, "create");
+                    HandleAsyncTaskResponse(jobResponse, "create");
                 }
             }
             catch (Exception exception)

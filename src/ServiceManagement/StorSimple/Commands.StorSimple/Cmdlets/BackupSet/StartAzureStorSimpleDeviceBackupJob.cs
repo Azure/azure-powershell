@@ -9,7 +9,7 @@ using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleDeviceBackupJob"),OutputType(typeof(JobResponse), typeof(JobStatusInfo))]
+    [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleDeviceBackupJob"),OutputType(typeof(TaskResponse), typeof(TaskStatusInfo))]
     public class StartAzureStorSimpleDeviceBackupJob : StorSimpleCmdletBase
     {
         private const string PARAMETERSET_BACKUPTYPE = "BackupTypeGiven";
@@ -43,12 +43,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                  if (WaitForComplete.IsPresent)
                  {
                      var JobStatusInfo = StorSimpleClient.DoBackup(deviceId, BackupPolicyId, backupNowRequest);
-                     HandleSyncJobResponse(JobStatusInfo, "start");
+                     HandleSyncTaskResponse(JobStatusInfo, "start");
                  }
                  else
                  {
                      var jobresult = StorSimpleClient.DoBackupAsync(deviceId, BackupPolicyId, backupNowRequest);
-                     HandleAsyncJobResponse(jobresult, "start");
+                     HandleAsyncTaskResponse(jobresult, "start");
                  }
              }
              catch (Exception exception)

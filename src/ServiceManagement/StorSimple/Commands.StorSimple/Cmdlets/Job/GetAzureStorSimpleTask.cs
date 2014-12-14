@@ -6,12 +6,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     using Microsoft.WindowsAzure.Management.StorSimple.Models;
     using Properties;
 
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleJob"), OutputType(typeof(JobStatusInfo))]
-    public class GetAzureStorSimpleJob : StorSimpleCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleTask"), OutputType(typeof(TaskStatusInfo))]
+    public class GetAzureStorSimpleTask : StorSimpleCmdletBase
     {
 
-        [Alias("JobId")]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageJobId)]
+        [Alias("TaskId")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageTaskId)]
         [ValidateNotNullOrEmpty]
         public string InstanceId { get; set; }
 
@@ -19,8 +19,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                var jobStatus = StorSimpleClient.GetJobStatus(InstanceId);
-                this.WriteObject(jobStatus);
+                var taskStatus = StorSimpleClient.GetJobStatus(InstanceId);
+                this.WriteObject(taskStatus);
             }
 
             catch(Exception exception)

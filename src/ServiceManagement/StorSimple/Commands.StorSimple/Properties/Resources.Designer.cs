@@ -151,7 +151,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} operation failed, please check the job status for more details..
+        ///   Looks up a localized string similar to The {0} operation failed, please check the task&apos;s status for more details..
         /// </summary>
         internal static string FailureMessageCompleteJob {
             get {
@@ -160,7 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} job failed to submit. .
+        ///   Looks up a localized string similar to The {0} task failed to submit. .
         /// </summary>
         internal static string FailureMessageSubmitJob {
             get {
@@ -565,7 +565,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} job is submitted successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job status.
+        ///   Looks up a localized string similar to The {0} task is submitted successfully. Please use the command Get-AzureStorSimpleTask -InstanceId {1} for tracking the task&apos;s status.
         /// </summary>
         internal static string SuccessMessageSubmitJob {
             get {

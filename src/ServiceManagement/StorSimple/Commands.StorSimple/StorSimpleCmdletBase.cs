@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             }
         }
 
-        internal virtual void HandleAsyncJobResponse(OperationResponse opResponse, string operationName)
+        internal virtual void HandleAsyncTaskResponse(OperationResponse opResponse, string operationName)
         {
             string msg = string.Empty;
 
@@ -42,29 +42,29 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
             else
             {
-                if (opResponse.GetType().Equals(typeof(JobResponse)))
+                if (opResponse.GetType().Equals(typeof(TaskResponse)))
                 {
-                    var jobResponse = opResponse as JobResponse;
-                    msg = string.Format(Resources.SuccessMessageSubmitJob, operationName, jobResponse.JobId);
-                    WriteObject(jobResponse.JobId);
+                    var taskResponse = opResponse as TaskResponse;
+                    msg = string.Format(Resources.SuccessMessageSubmitJob, operationName, taskResponse.TaskId);
+                    WriteObject(taskResponse.TaskId);
                 }
 
-                else if (opResponse.GetType().Equals(typeof(GuidJobResponse)))
+                else if (opResponse.GetType().Equals(typeof(GuidTaskResponse)))
                 {
-                    var guidJobResponse = opResponse as GuidJobResponse;
-                    msg = string.Format(Resources.SuccessMessageSubmitJob, operationName, guidJobResponse.JobId);
-                    WriteObject(guidJobResponse.JobId);
+                    var guidTaskResponse = opResponse as GuidTaskResponse;
+                    msg = string.Format(Resources.SuccessMessageSubmitJob, operationName, guidTaskResponse.TaskId);
+                    WriteObject(guidTaskResponse.TaskId);
                 }
             }
 
             WriteVerbose(msg);
         }
 
-        internal virtual void HandleSyncJobResponse(JobStatusInfo jobStatus, string operationName)
+        internal virtual void HandleSyncTaskResponse(TaskStatusInfo jobStatus, string operationName)
         {
             string msg = string.Empty;
 
-            if (jobStatus.TaskResult != TaskResult.Succeeded)
+            if (jobStatus.AsyncTaskAggregatedResult != AsyncTaskAggregatedResult.Succeeded)
             {
                 msg = string.Format(Resources.FailureMessageCompleteJob, operationName);
                 WriteObject(jobStatus);

@@ -7,7 +7,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
     using Properties;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureStorSimpleDeviceVolumeContainer"), OutputType(typeof(JobStatusInfo))]
+    [Cmdlet(VerbsCommon.Remove, "AzureStorSimpleDeviceVolumeContainer"), OutputType(typeof(TaskStatusInfo))]
     public class RemoveAzureStorSimpleDeviceVolumeContainer : StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
@@ -45,12 +45,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                     if (WaitForComplete.IsPresent)
                                     {
                                         var jobstatusInfo = StorSimpleClient.DeleteDataContainer(deviceid, VolumeContainer.InstanceId);
-                                        HandleSyncJobResponse(jobstatusInfo, "delete");
+                                        HandleSyncTaskResponse(jobstatusInfo, "delete");
                                     }
                                     else
                                     {
                                         var jobresult = StorSimpleClient.DeleteDataContainerAsync(deviceid, VolumeContainer.InstanceId);
-                                        HandleAsyncJobResponse(jobresult, "delete");
+                                        HandleAsyncTaskResponse(jobresult, "delete");
                                     }
                               }
                               catch (Exception exception)

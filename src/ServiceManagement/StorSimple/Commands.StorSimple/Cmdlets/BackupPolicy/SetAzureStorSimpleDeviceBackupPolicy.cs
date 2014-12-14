@@ -64,9 +64,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 if (WaitForComplete.IsPresent)
                 {
-                    var JobStatusInfo = StorSimpleClient.UpdateBackupPolicy(deviceId, BackupPolicyId, updateConfig);
-                    HandleSyncJobResponse(JobStatusInfo, "update");
-                    if(JobStatusInfo.TaskResult == TaskResult.Succeeded)
+                    var taskStatusInfo = StorSimpleClient.UpdateBackupPolicy(deviceId, BackupPolicyId, updateConfig);
+                    HandleSyncTaskResponse(taskStatusInfo, "update");
+                    if (taskStatusInfo.AsyncTaskAggregatedResult == AsyncTaskAggregatedResult.Succeeded)
                     {
                         var updatedBackupPolicy = StorSimpleClient.GetBackupPolicyByName(deviceId, BackupPolicyName);
                         WriteObject(updatedBackupPolicy.BackupPolicyDetails);
@@ -75,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 else
                 {
                     var jobresult = StorSimpleClient.UpdateBackupPolicyAsync(deviceId, BackupPolicyId, updateConfig);
-                    HandleAsyncJobResponse(jobresult, "Update");
+                    HandleAsyncTaskResponse(jobresult, "Update");
                 }
             }
 

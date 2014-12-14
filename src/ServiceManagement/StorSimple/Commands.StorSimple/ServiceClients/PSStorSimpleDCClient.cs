@@ -15,17 +15,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return this.GetStorSimpleClient().DataContainer.List(deviceId, this.GetCustomRequestHeaders());
         }
 
-        public JobStatusInfo GetJobStatus(string jobId)
+        public TaskStatusInfo GetJobStatus(string jobId)
         {
             return GetStorSimpleClient().GetOperationStatus(jobId);
         }
-        public JobStatusInfo CreateDataContainer(string deviceId,DataContainerRequest dc)
+        public TaskStatusInfo CreateDataContainer(string deviceId,DataContainerRequest dc)
         {
                 return GetStorSimpleClient().DataContainer.Create(deviceId, dc, GetCustomRequestHeaders());
            
         }
 
-        public JobResponse CreateDataContainerAsync(string deviceId, DataContainerRequest dc)
+        public TaskResponse CreateDataContainerAsync(string deviceId, DataContainerRequest dc)
         {
             return GetStorSimpleClient().DataContainer.BeginCreating(deviceId, dc, GetCustomRequestHeaders());
         }
@@ -36,12 +36,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return GetStorSimpleClient().DataContainer.Get(deviceId, Name, GetCustomRequestHeaders());
         }
 
-        public JobResponse DeleteDataContainerAsync(string deviceid, string dcid)
+        public TaskResponse DeleteDataContainerAsync(string deviceid, string dcid)
         {
             return GetStorSimpleClient().DataContainer.BeginDeleting(deviceid, dcid, GetCustomRequestHeaders());
         }
 
-        public JobStatusInfo DeleteDataContainer(string deviceid, string dcid)
+        public TaskStatusInfo DeleteDataContainer(string deviceid, string dcid)
         {
             return GetStorSimpleClient().DataContainer.Delete(deviceid, dcid, GetCustomRequestHeaders());
         }
