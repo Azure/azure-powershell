@@ -39,6 +39,16 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 throw new ArgumentException(ResourceNotFound);
             }
 
+            // Verify if PublicIpAddress is empty
+            foreach(var ipconfig in NetworkInterface.Properties.IpConfigurations)
+            {
+                if (ipconfig.Properties.PublicIpAddress != null &&
+                    string.IsNullOrEmpty(ipconfig.Properties.PublicIpAddress.Id))
+                {
+                    ipconfig.Properties.PublicIpAddress = null;
+                }
+            }
+            
             // Map to the sdk object
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterfaceCreateOrUpdateParameters>(this.NetworkInterface);
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkInterface.Tag, validate: true);
