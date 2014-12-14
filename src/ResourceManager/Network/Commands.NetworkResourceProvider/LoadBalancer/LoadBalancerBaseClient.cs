@@ -13,13 +13,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure;
-using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
@@ -59,7 +58,9 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var loadBalancer = Mapper.Map<PSLoadBalancer>(getLoadBalancerResponse.LoadBalancer);
             loadBalancer.ResourceGroupName = resourceGroupName;
-            loadBalancer.PropertiesText = JsonConvert.SerializeObject(loadBalancer.Properties, Formatting.Indented);
+            loadBalancer.Tag =
+                TagsConversionHelper.CreateTagHashtable(getLoadBalancerResponse.LoadBalancer.Tags);
+
             return loadBalancer;
         }
     }

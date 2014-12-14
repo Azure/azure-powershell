@@ -31,6 +31,10 @@
                 <PropertyName>Etag</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Properties</Label>
                 <PropertyName>PropertiesText</PropertyName>
               </ListItem>
@@ -67,6 +71,10 @@
               <ListItem>
                 <Label>Etag</Label>
                 <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Properties</Label>
@@ -107,6 +115,10 @@
                 <PropertyName>Etag</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Properties</Label>
                 <PropertyName>PropertiesText</PropertyName>
               </ListItem>
@@ -143,6 +155,10 @@
               <ListItem>
                 <Label>Etag</Label>
                 <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Properties</Label>

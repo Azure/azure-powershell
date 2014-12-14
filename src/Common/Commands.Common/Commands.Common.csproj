@@ -191,6 +191,7 @@
     <Compile Include="Models\AzureContext.cs" />
     <Compile Include="Models\JsonProfileSerializer.cs" />
     <Compile Include="Common\PSAzureAccount.cs" />
+    <Compile Include="Models\PSTagValuePair.cs" />
     <Compile Include="Models\XmlProfileSerializer.cs" />
     <Compile Include="Models\AzureSubscription.cs" />
     <Compile Include="Models\DiskDataStore.cs" />
@@ -199,6 +200,8 @@
     <Compile Include="Utilities\ConversionUtilities.cs" />
     <Compile Include="Utilities\DictionaryExtensions.cs" />
     <Compile Include="Utilities\GeneralUtilities.cs" />
+    <Compile Include="Utilities\ResourcesExtensions.cs" />
+    <Compile Include="Utilities\TagsConversionHelper.cs" />
     <Compile Include="Utilities\XmlUtilities.cs" />
     <Compile Include="Utilities\FileUtilities.cs" />
     <Compile Include="Utilities\JsonUtilities.cs" />

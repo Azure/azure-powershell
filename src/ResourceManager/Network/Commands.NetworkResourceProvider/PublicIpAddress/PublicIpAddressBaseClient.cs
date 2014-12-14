@@ -19,6 +19,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -64,8 +65,10 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             {
                 publicIpAddress.Properties.DnsSettings = new PSPublicIpAddressDnsSettings();
             }
+
+            publicIpAddress.Tag =
+                TagsConversionHelper.CreateTagHashtable(getPublicIpAddressResponse.PublicIpAddress.Tags);
             
-            publicIpAddress.PropertiesText = JsonConvert.SerializeObject(publicIpAddress.Properties, Formatting.Indented);
             return publicIpAddress;
         }
     }

@@ -15,10 +15,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -56,6 +58,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             Mandatory = false,
             HelpMessage = "The Domain Name label.")]
         public string DomainNameLabel { get; set; }
+
+        [Alias("Tags")]
+        [Parameter(
+            Mandatory = false, 
+            HelpMessage = "An array of hashtables which represents resource tags.")]
+        public Hashtable[] Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -96,6 +104,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
 
             var publicIpModel = Mapper.Map<MNM.PublicIpAddressCreateOrUpdateParameters>(publicIp);
+
+            publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.PublicIpAddressClient.CreateOrUpdate(this.ResourceGroupName, this.Name, publicIpModel);
 

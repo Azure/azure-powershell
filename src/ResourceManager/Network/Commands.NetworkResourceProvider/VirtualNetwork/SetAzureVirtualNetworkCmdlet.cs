@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             
             // Map to the sdk object
             var vnetModel = Mapper.Map<MNM.VirtualNetworkCreateOrUpdateParameters>(this.VirtualNetwork);
+            vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetwork.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call
             this.VirtualNetworkClient.CreateOrUpdate(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, vnetModel);

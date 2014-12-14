@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Collections;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
@@ -22,6 +23,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 
         public string Location { get; set; }
 
-        public Dictionary<string, string> Tags { get; set; }
+        public Hashtable[] Tag { get; set; }
+
+        public string TagsTable
+        {
+            get { return ResourcesExtensions.ConstructTagsTable(Tag); }
+        }
     }
 }

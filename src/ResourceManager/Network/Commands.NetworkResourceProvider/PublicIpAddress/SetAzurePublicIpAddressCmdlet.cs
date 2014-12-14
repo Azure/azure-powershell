@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             // Map to the sdk object
             var publicIpModel = Mapper.Map<MNM.PublicIpAddressCreateOrUpdateParameters>(this.PublicIpAddress);
+            publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.PublicIpAddress.Tag, validate: true);
 
             this.PublicIpAddressClient.CreateOrUpdate(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name, publicIpModel);
 

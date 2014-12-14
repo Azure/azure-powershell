@@ -12,11 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -59,6 +61,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
              HelpMessage = "The list of subnets")]
         public List<PSSubnet> Subnet { get; set; }
 
+        [Alias("Tags")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "An array of hashtables which represents resource tags.")]
+        public Hashtable[] Tag { get; set; }
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
@@ -100,6 +108,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             // Map to the sdk object
             var vnetModel = Mapper.Map<MNM.VirtualNetworkCreateOrUpdateParameters>(vnet);
+            vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call
             this.VirtualNetworkClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetModel);
