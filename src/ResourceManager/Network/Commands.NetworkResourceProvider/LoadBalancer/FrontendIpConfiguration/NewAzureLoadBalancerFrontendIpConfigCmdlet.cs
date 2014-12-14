@@ -40,9 +40,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             frontendIpConfig.Name = this.Name;
             frontendIpConfig.Properties = new PSFrontendIpConfigurationProperties();
             frontendIpConfig.Properties.PrivateIpAllocationMethod = this.AllocationMethod;
-            frontendIpConfig.Properties.Subnet = new PSResourceId();
-            frontendIpConfig.Properties.Subnet.Id = this.SubnetId;
 
+            if (!string.IsNullOrEmpty(this.SubnetId))
+            {
+                frontendIpConfig.Properties.Subnet = new PSResourceId();
+                frontendIpConfig.Properties.Subnet.Id = this.SubnetId;
+            }
 
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
             {

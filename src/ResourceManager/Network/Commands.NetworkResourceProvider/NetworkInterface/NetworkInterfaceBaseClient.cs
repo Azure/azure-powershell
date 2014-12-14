@@ -60,6 +60,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             networkInterface.ResourceGroupName = resourceGroupName;
             networkInterface.Tag =
                 TagsConversionHelper.CreateTagHashtable(getNetworkInterfaceResponse.NetworkInterface.Tags);
+            
+            if (networkInterface.Properties.IpConfigurations[0].Properties.PublicIpAddress == null)
+            {
+                networkInterface.Properties.IpConfigurations[0].Properties.PublicIpAddress = new PSResourceId();
+            }
 
             return networkInterface;
         }
