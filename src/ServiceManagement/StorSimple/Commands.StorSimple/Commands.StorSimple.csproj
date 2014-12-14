@@ -122,11 +122,12 @@
     <Compile Include="Cmdlets\GetAzureStorSimpleDeviceConnectedInitiator.cs" />
     <Compile Include="Cmdlets\GetAzureStorSimpleResource.cs" />
     <Compile Include="Cmdlets\GetAzureStorSimpleResourceContext.cs" />
-    <Compile Include="Cmdlets\Job\GetAzureStorSimpleJob.cs" />
+    <Compile Include="Cmdlets\Job\GetAzureStorSimpleTask.cs" />
     <Compile Include="Cmdlets\ServiceConfig\GetAzureStorSimpleStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\SelectAzureStorSimpleResource.cs" />
     <Compile Include="Cmdlets\ServiceConfig\GetAzureStorSimpleAccessControlRecord.cs" />
+    <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleInlineStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\RemoveAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\ServiceConfig\RemoveAzureStorSimpleStorageAccountCredential.cs" />
@@ -139,7 +140,15 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Encryption\EncryptionCmdLetHelper.cs" />
     <Compile Include="Encryption\StorSimpleKeyManager.cs" />
-    <Compile Include="Encryption\StorSimpleSecretManagementException.cs" />
+    <Compile Include="Exceptions\DeviceNotYetConfiguredException.cs" />
+    <Compile Include="Exceptions\NoDeviceRegisteredException.cs" />
+    <Compile Include="Exceptions\RegistrationKeyException.cs" />
+    <Compile Include="Exceptions\StorSimpleDeviceNotFoundException.cs" />
+    <Compile Include="Exceptions\StorSimpleJobNotFoundException.cs" />
+    <Compile Include="Exceptions\StorSimpleSecretManagementException.cs" />
+    <Compile Include="Exceptions\ResourceContextNotFoundException.cs" />
+    <Compile Include="Exceptions\ResourceNotFoundException.cs" />
+    <Compile Include="Models\JobReport.cs" />
     <Compile Include="Models\PSContracts.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
