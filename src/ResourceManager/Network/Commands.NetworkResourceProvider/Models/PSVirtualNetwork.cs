@@ -12,12 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
+
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
     public class PSVirtualNetwork : PSTopLevelResource
     {
         public PSVirtualNetworkProperties Properties { get; set; }
 
-        public string PropertiesText { get; set; }
+        public string PropertiesText
+        {
+            get { return JsonConvert.SerializeObject(Properties, Formatting.Indented); }
+        }
     }
 }

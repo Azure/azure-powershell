@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             
             // Map to the sdk object
             var lbModel = Mapper.Map<MNM.LoadBalancerCreateOrUpdateParameters>(this.LoadBalancer);
+            lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.LoadBalancer.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call
             this.LoadBalancerClient.CreateOrUpdate(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name, lbModel);

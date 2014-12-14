@@ -11,8 +11,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     public abstract class NetworkResourceBaseClient : NetworkBaseClient

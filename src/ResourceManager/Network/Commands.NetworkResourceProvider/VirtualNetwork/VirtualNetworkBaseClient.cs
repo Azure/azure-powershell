@@ -18,6 +18,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -65,7 +66,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 virtualNetwork.Properties.DhcpOptions = new PSDhcpOptions();
             }
 
-            virtualNetwork.PropertiesText = JsonConvert.SerializeObject(virtualNetwork.Properties, Formatting.Indented);
+            virtualNetwork.Tag =
+                TagsConversionHelper.CreateTagHashtable(getNetworkInterfaceResponse.VirtualNetwork.Tags);
 
             return virtualNetwork;
         }

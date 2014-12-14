@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,17 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-
-namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
+namespace Microsoft.WindowsAzure.Commands.Common.Models
 {
-    public class PSPublicIpAddress : PSTopLevelResource
+    public class PSTagValuePair
     {
-        public PSPublicIpAddressProperties Properties { get; set; }
-
-        public string PropertiesText
-        {
-            get { return JsonConvert.SerializeObject(Properties, Formatting.Indented); }
-        }
+        public string Name { get; set; }
+        public string Value { get; set; }
     }
 }

@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -70,6 +71,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
              Mandatory = false,
              HelpMessage = "The list of frontend Ip config")]
         public List<PSLoadBalancingRule> LoadBalancingRule { get; set; }
+
+        [Alias("Tags")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "An array of hashtables which represents resource tags.")]
+        public Hashtable[] Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -135,6 +142,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             // Map to the sdk object
             var lbModel = Mapper.Map<MNM.LoadBalancerCreateOrUpdateParameters>(loadBalancer);
+            lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call
             this.LoadBalancerClient.CreateOrUpdate(this.ResourceGroupName, this.Name, lbModel);
