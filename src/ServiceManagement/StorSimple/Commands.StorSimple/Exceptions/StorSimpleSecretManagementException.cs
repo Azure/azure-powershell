@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 
-namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
+namespace Microsoft.WindowsAzure.Commands.StorSimple.Exceptions
 {
     public class StorSimpleSecretManagementException : Exception
     {

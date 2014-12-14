@@ -66,12 +66,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     resCred => resCred.ResourceName.Equals(resourceName, StringComparison.CurrentCultureIgnoreCase));
         }
 
-        public string SetResourceContext(string resourceName)
+        public void SetResourceContext(ResourceCredentials resCred)
         {
-            var resCred = GetResourceDetails(resourceName);
             if (resCred == null)
             {
-                return Resources.NotFoundMessageResource;
+                return;
             }
 
             StorSimpleContext.ResourceId = resCred.ResourceId;
@@ -81,15 +80,31 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             StorSimpleContext.ResourceName = resCred.ResourceName;
             StorSimpleContext.ResourceProviderNameSpace = resCred.ResourceNameSpace;
             StorSimpleContext.KeyManager = new StorSimpleKeyManager(resCred.ResourceId);
-            
-            return Resources.SuccessMessageSetResourceContext;
+        }
+
+        public void ResetResourceContext()
+        {
+            StorSimpleContext.ResourceId = null;
+            StorSimpleContext.StampId = null;
+            StorSimpleContext.CloudServiceName = null;
+            StorSimpleContext.ResourceType = null;
+            StorSimpleContext.ResourceName = null;
+            StorSimpleContext.ResourceProviderNameSpace = null;
+            StorSimpleContext.KeyManager = null;
         }
 
         public StorSimpleResourceContext GetResourceContext()
         {
-            return new StorSimpleResourceContext(StorSimpleContext.ResourceId, StorSimpleContext.ResourceName,
-                StorSimpleContext.StampId, StorSimpleContext.CloudServiceName, StorSimpleContext.ResourceProviderNameSpace,
-                StorSimpleContext.ResourceType, StorSimpleContext.KeyManager);
+            if (String.IsNullOrEmpty(StorSimpleContext.ResourceId)
+                || String.IsNullOrEmpty(StorSimpleContext.ResourceName)
+                || String.IsNullOrEmpty(StorSimpleContext.ResourceType))
+                return null;
+            else
+            {
+                return new StorSimpleResourceContext(StorSimpleContext.ResourceId, StorSimpleContext.ResourceName,
+                    StorSimpleContext.StampId, StorSimpleContext.CloudServiceName, StorSimpleContext.ResourceProviderNameSpace,
+                    StorSimpleContext.ResourceType, StorSimpleContext.KeyManager);
+            }
         }
     }
 

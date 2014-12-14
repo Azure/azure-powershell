@@ -10,7 +10,10 @@ using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Set, "AzureStorSimpleDeviceBackupPolicy"), OutputType(typeof(NewBackupPolicyConfig))]
+    /// <summary>
+    /// this commandlet can be used to update an existing backuppolicy
+    /// </summary>
+    [Cmdlet(VerbsCommon.Set, "AzureStorSimpleDeviceBackupPolicy"), OutputType(typeof(BackupPolicyDetails))]
     public class SetAzureStorSimpleDeviceBackupPolicy: StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
@@ -64,6 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 if (WaitForComplete.IsPresent)
                 {
+                    WriteVerbose("About to run a task to update your backuppolicy!"); 
                     var taskStatusInfo = StorSimpleClient.UpdateBackupPolicy(deviceId, BackupPolicyId, updateConfig);
                     HandleSyncTaskResponse(taskStatusInfo, "update");
                     if (taskStatusInfo.AsyncTaskAggregatedResult == AsyncTaskAggregatedResult.Succeeded)
@@ -74,6 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
                 else
                 {
+                    WriteVerbose("About to create a task to update your backuppolicy!");
                     var jobresult = StorSimpleClient.UpdateBackupPolicyAsync(deviceId, BackupPolicyId, updateConfig);
                     HandleAsyncTaskResponse(jobresult, "Update");
                 }
@@ -91,7 +96,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             deviceId = StorSimpleClient.GetDeviceId(DeviceName);
             if (deviceId == null)
             {
-                WriteVerbose(Resources.NotFoundMessageDevice);
+                WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                WriteObject(null);
+                return;
             }
 
             ProcessAddSchedules();

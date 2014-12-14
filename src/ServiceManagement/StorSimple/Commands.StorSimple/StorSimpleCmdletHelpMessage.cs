@@ -69,5 +69,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string HelpMessageBackupScheduleBaseObjsToUpdate = "List of BackupScheduleUpdateRequest objects to be updated";
         public const string HelpMessageBackupScheduleBaseObjsToDelete = "List of Instance Id of BackupSchedule objects to be deleted";
         public const string HelpMessageVolumeObjsToUpdate = "List of VolumeIds to be updated";
+        public const string HelpMessageResourceName = "Name of the resource which needs to be retrieved";
     }
 }

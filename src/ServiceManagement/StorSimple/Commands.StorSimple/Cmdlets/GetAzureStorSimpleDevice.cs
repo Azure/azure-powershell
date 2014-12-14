@@ -80,6 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     WriteObject(deviceInfos, true);
                 }
+                WriteVerbose(String.Format(Resources.DeviceGet_StatusMessage, deviceInfos.Count(), deviceInfos.Count() > 1 ? "s" : String.Empty));
             }
             catch (Exception exception)
             {

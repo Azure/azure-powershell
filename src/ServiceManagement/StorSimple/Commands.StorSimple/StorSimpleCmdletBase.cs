@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
@@ -12,6 +13,8 @@ using Microsoft.WindowsAzure;
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
     using Properties;
+    using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
+    using Microsoft.WindowsAzure.Commands.StorSimple.Models;
 
     public class StorSimpleCmdletBase : AzurePSCmdlet
     {
@@ -63,16 +66,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         internal virtual void HandleSyncTaskResponse(TaskStatusInfo jobStatus, string operationName)
         {
             string msg = string.Empty;
+            JobReport jobReport = new JobReport(jobStatus);
 
             if (jobStatus.AsyncTaskAggregatedResult != AsyncTaskAggregatedResult.Succeeded)
             {
                 msg = string.Format(Resources.FailureMessageCompleteJob, operationName);
-                WriteObject(jobStatus);
+                WriteObject(jobReport);
             }
 
             else
             {
                 msg = string.Format(Resources.SuccessMessageCompleteJob, operationName);
+                WriteObject(jobReport);
             }
 
             WriteVerbose(msg);
@@ -184,13 +189,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             base.BeginProcessing();
             VerifyResourceContext();
         }
+        /// <summary>
+        /// this method verifies that a resource has been selected before this commandlet is executed
+        /// </summary>
         private void VerifyResourceContext()
         {
             if (!CheckResourceContextPresent())
             {
-                Exception ex = new Exception("Resource Context not set. Please set the resourcename using Select-AzureStorSimpleResource commandlet");
-                ErrorRecord resourceNotSetRecord = new ErrorRecord(ex, "RESOURCE_NOT_SET", ErrorCategory.InvalidOperation, null);
-                this.ThrowTerminatingError(resourceNotSetRecord);
+                throw new ResourceContextNotFoundException();
             }
         }
 
@@ -210,23 +216,54 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         {
             using (System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create())
             {
+                bool valid = true;
                 Random rnd = new Random();
-                string testContainerName = String.Format("storsimplevalidationcontainer{0}", rnd.Next());
-                string script = String.Format(
+                string testContainerName = String.Format("storsimplesdkvalidation{0}", rnd.Next());
+                //create a storage container and then delete it
+                string validateScript = String.Format(
                                   @"$context = New-AzureStorageContext -StorageAccountName {0} -StorageAccountKey {1};"
                                 + @"New-AzureStorageContainer -Name {2} -Context $context;"
                                 + @"Remove-AzureStorageContainer -Name {2} -Context $context -Force;",
                                 storageAccountName, storageAccountKey, testContainerName);
-                ps.AddScript(script);
+                ps.AddScript(validateScript);
                 ps.Invoke();
                 if (ps.HadErrors)
                 {
-                    HandleException(ps.Streams.Error[0].Exception);
-                    return false;
+                    var exception = ps.Streams.Error[0].Exception;
+                    string getScript = String.Format(
+                                  @"$context = New-AzureStorageContext -StorageAccountName {0} -StorageAccountKey {1};"
+                                + @"Get-AzureStorageContainer -Name {2} -Context $context;",
+                                storageAccountName, storageAccountKey, testContainerName);
+                    ps.AddScript(getScript);
+                    var result = ps.Invoke();
+                    if (result != null && result.Count > 0)
+                    {
+                        //storage container successfully created and still exists, retry deleting it
+                        int retryCount = 1;
+                        string removeScript = String.Format(
+                                  @"$context = New-AzureStorageContext -StorageAccountName {0} -StorageAccountKey {1};"
+                                + @"Remove-AzureStorageContainer -Name {2} -Context $context -Force;",
+                                storageAccountName, storageAccountKey, testContainerName);
+                        do
+                        {
+                            WriteVerbose(string.Format(Resources.StorageAccountCleanupRetryMessage, retryCount));
+                            ps.AddScript(removeScript);
+                            ps.Invoke();
+                            Thread.Sleep(retryCount * 1000);
+                            ps.AddScript(getScript);
+                            result = ps.Invoke();
+                        } while (result != null && result.Count > 0 && ++retryCount <= 5);
+                    }
+                    else
+                    {
+                        valid = false;
+                        HandleException(exception);
+                    }
                 }
-                return true;
+                return valid;
             }
         }
+
 
         internal String GetStorageAccountLocation(string storageAccountName, out bool exist)
         {
@@ -264,6 +301,28 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 }
                 return location;
             }
+        }
+	
+        /// <summary>
+        /// this method verifies that the devicename parameter specified is completely configured
+        /// no operation should be allowed to perform on a non-configured device
+        /// </summary>
+        public void VerifyDeviceConfigurationCompleteForDevice(String deviceId)
+        {
+            DeviceDetails details = storSimpleClient.GetDeviceDetails(deviceId);
+            bool data0Configured = false;
+
+            if(details.NetInterfaceList!=null)
+            {
+                NetInterface data0 = details.NetInterfaceList.Where(x => x.InterfaceId == NetInterfaceId.Data0).ToList<NetInterface>().First<NetInterface>();
+                if (data0 != null
+                    && data0.IsEnabled
+                    && data0.NicIPv4Settings != null
+                    && !String.IsNullOrEmpty(data0.NicIPv4Settings.Controller0IPv4Address))
+                    data0Configured = true;
+            }
+            if (!data0Configured)
+                throw new DeviceNotYetConfiguredException();
         }
     }
 }

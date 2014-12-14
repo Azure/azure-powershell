@@ -88,15 +88,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to # of backup policies returned : {0}.
-        /// </summary>
-        internal static string BackupPoliciesReturnedCount {
-            get {
-                return ResourceManager.GetString("BackupPoliciesReturnedCount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to BackupPolicy with id {0} found!.
         /// </summary>
         internal static string BackupPolicyFound {
@@ -106,16 +97,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No BackupPolicy was found with the given name. Try giving a different name or remove the Name paramter altogether to get all backuppolicies on the device.
+        ///   Looks up a localized string similar to {0} backup polic{1} found!.
         /// </summary>
-        internal static string BackupPolicyNotFound {
+        internal static string BackupPolicyGet_StatusMessage {
             get {
-                return ResourceManager.GetString("BackupPolicyNotFound", resourceCulture);
+                return ResourceManager.GetString("BackupPolicyGet_StatusMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to # of backups returned : {0}.
+        ///   Looks up a localized string similar to {0} backups found!.
         /// </summary>
         internal static string BackupsReturnedCount {
             get {
@@ -138,6 +129,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string CloudExceptionMessage {
             get {
                 return ResourceManager.GetString("CloudExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} StorSimple device{1} found!.
+        /// </summary>
+        internal static string DeviceGet_StatusMessage {
+            get {
+                return ResourceManager.GetString("DeviceGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device with device name {0} not found under resource {1}.
+        /// </summary>
+        internal static string DeviceWithNameNotFoundInResourceMessage {
+            get {
+                return ResourceManager.GetString("DeviceWithNameNotFoundInResourceMessage", resourceCulture);
             }
         }
         
@@ -192,6 +201,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string FoundVolumeMessage {
             get {
                 return ResourceManager.GetString("FoundVolumeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Registration key specified appears to be in an incorrect format. Please verify that the exact key is copied from the portal!.
+        /// </summary>
+        internal static string IncorrectFormatInRegistrationKey {
+            get {
+                return ResourceManager.GetString("IncorrectFormatInRegistrationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating StorageAccountCredential inline.
+        /// </summary>
+        internal static string InlineSacCreationMessage {
+            get {
+                return ResourceManager.GetString("InlineSacCreationMessage", resourceCulture);
             }
         }
         
@@ -277,6 +304,87 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} Iscsi Connection{1} found!.
+        /// </summary>
+        internal static string IscsiConnectionGet_StatusMessage {
+            get {
+                return ResourceManager.GetString("IscsiConnectionGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No backuppolicy with name : {0} found in your device: {1} !.
+        /// </summary>
+        internal static string NoBackupPolicyWithGivenNameFound {
+            get {
+                return ResourceManager.GetString("NoBackupPolicyWithGivenNameFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No device found in your currently selected resource : {0}!.
+        /// </summary>
+        internal static string NoDeviceFoundInResourceMessage {
+            get {
+                return ResourceManager.GetString("NoDeviceFoundInResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No device found in your currently selected resource : {0} with id : {1}!.
+        /// </summary>
+        internal static string NoDeviceFoundWithGivenIdInResourceMessage {
+            get {
+                return ResourceManager.GetString("NoDeviceFoundWithGivenIdInResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No device found in your currently selected resource : {0} with ModelDescription : {1}!.
+        /// </summary>
+        internal static string NoDeviceFoundWithGivenModelInResourceMessage {
+            get {
+                return ResourceManager.GetString("NoDeviceFoundWithGivenModelInResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No device found in your currently selected resource : {0} with name : {1}!.
+        /// </summary>
+        internal static string NoDeviceFoundWithGivenNameInResourceMessage {
+            get {
+                return ResourceManager.GetString("NoDeviceFoundWithGivenNameInResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No device found in your currently selected resource : {0} with Type : {1}!.
+        /// </summary>
+        internal static string NoDeviceFoundWithGivenTypeInResourceMessage {
+            get {
+                return ResourceManager.GetString("NoDeviceFoundWithGivenTypeInResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No resource found in your subscription!.
+        /// </summary>
+        internal static string NoResourceFoundInSubscriptionMessage {
+            get {
+                return ResourceManager.GetString("NoResourceFoundInSubscriptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No resource found in your subscription with name : {0}!.
+        /// </summary>
+        internal static string NoResourceFoundWithGivenNameInSubscriptionMessage {
+            get {
+                return ResourceManager.GetString("NoResourceFoundWithGivenNameInSubscriptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide the EncryptionKey..
         /// </summary>
         internal static string NotAllowedErrorDataContainerEncryption {
@@ -295,7 +403,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The specified access control record does not exist..
+        ///   Looks up a localized string similar to Access control record with the specified name does not exist..
         /// </summary>
         internal static string NotFoundMessageACR {
             get {
@@ -322,7 +430,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The specified storage account does not exist in current resource context..
+        ///   Looks up a localized string similar to Storage account with the specified name does not exist..
         /// </summary>
         internal static string NotFoundMessageStorageAccountCredential {
             get {
@@ -345,6 +453,42 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string NotFoundVolumeMessage {
             get {
                 return ResourceManager.GetString("NotFoundVolumeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration key parameter is not passed. Validating whether a registration key is already persisted for this resource!.
+        /// </summary>
+        internal static string NotProvidedWarningRegistrationKey {
+            get {
+                return ResourceManager.GetString("NotProvidedWarningRegistrationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration key is provided. Persisting for later use!.
+        /// </summary>
+        internal static string ProvidedRegistrationKey {
+            get {
+                return ResourceManager.GetString("ProvidedRegistrationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registrtion key not passed - validating that the secrets are already initialized.
+        /// </summary>
+        internal static string RegistrationKeyNotPassedMessage {
+            get {
+                return ResourceManager.GetString("RegistrationKeyNotPassedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration key passed - initializing secrets.
+        /// </summary>
+        internal static string RegistrationKeyPassedMessage {
+            get {
+                return ResourceManager.GetString("RegistrationKeyPassedMessage", resourceCulture);
             }
         }
         
@@ -457,7 +601,34 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to # of volume containers returned: {0}.
+        ///   Looks up a localized string similar to You have a resource selected. Resource Name: {0} Id: {1}.
+        /// </summary>
+        internal static string ResourceContextFound {
+            get {
+                return ResourceManager.GetString("ResourceContextFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initializing resource context.
+        /// </summary>
+        internal static string ResourceContextInitializeMessage {
+            get {
+                return ResourceManager.GetString("ResourceContextInitializeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} StorSimple resource{1} found!.
+        /// </summary>
+        internal static string ResourceGet_StatusMessage {
+            get {
+                return ResourceManager.GetString("ResourceGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} volume containers found!.
         /// </summary>
         internal static string ReturnedCountDataContainerMessage {
             get {
@@ -466,11 +637,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to # of volumes returned: {0}.
+        ///   Looks up a localized string similar to {0} volumes found for your volume container!.
         /// </summary>
         internal static string ReturnedCountVolumeMessage {
             get {
                 return ResourceManager.GetString("ReturnedCountVolumeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secrets validation complete.
+        /// </summary>
+        internal static string SecretsValidationCompleteMessage {
+            get {
+                return ResourceManager.GetString("SecretsValidationCompleteMessage", resourceCulture);
             }
         }
         
@@ -511,6 +691,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cleaning up objects, retry count: {0}.
+        /// </summary>
+        internal static string StorageAccountCleanupRetryMessage {
+            get {
+                return ResourceManager.GetString("StorageAccountCleanupRetryMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Found storage account with name : {0}.
         /// </summary>
         internal static string StorageAccountFoundMessage {
@@ -547,7 +736,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} operation completed successfully..
+        ///   Looks up a localized string similar to Your resource has seen selected successfully. To change to another resource please use Select-AzureStorSimpleResource commandlet!.
+        /// </summary>
+        internal static string SuccessfulResourceSelection {
+            get {
+                return ResourceManager.GetString("SuccessfulResourceSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The job created for your {0} operation has completed successfully..
         /// </summary>
         internal static string SuccessMessageCompleteJob {
             get {
@@ -570,6 +768,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string SuccessMessageSubmitJob {
             get {
                 return ResourceManager.GetString("SuccessMessageSubmitJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The registration key has been validated successfully! .
+        /// </summary>
+        internal static string ValidationSuccessfulRegistrationKey {
+            get {
+                return ResourceManager.GetString("ValidationSuccessfulRegistrationKey", resourceCulture);
             }
         }
         
