@@ -28,13 +28,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The public IP address allocation method.")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(Management.Network.Models.IpAllocationMethod.Dynamic, Management.Network.Models.IpAllocationMethod.Static, IgnoreCase = true)]
-        public string PrivateIpAllocationMethod { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "The private ip address of the frontendIpConfiguration " +
                           "if static allocation is specified.")]
         public string PrivateIpAddress { get; set; }
