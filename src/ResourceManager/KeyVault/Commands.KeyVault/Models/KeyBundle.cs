@@ -43,7 +43,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 clientKeyBundle.Attributes.Expires, 
                 clientKeyBundle.Attributes.NotBefore, 
                 clientKeyBundle.Key.Kty, 
-                clientKeyBundle.Key.KeyOps);                   
+                clientKeyBundle.Key.KeyOps);
+
+            Id = clientKeyBundle.Key.Kid;
         }
 
         public KeyAttributes Attributes { get; set; }

@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Enabled = attribute.Enabled;
             Expires = attribute.Expires;
             NotBefore = attribute.NotBefore;
+            Id = clientKeyItem.Kid;
         }
 
         public bool? Enabled { get; set; }

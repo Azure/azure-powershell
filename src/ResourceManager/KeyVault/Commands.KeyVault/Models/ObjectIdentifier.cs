@@ -36,5 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string Name { get; set; }
 
         public string Version { get; set; }
+
+        public string Id { get; set; }
     }
 }

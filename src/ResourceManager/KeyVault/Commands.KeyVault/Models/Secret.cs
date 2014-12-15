@@ -36,31 +36,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             SetObjectIdentifier(vaultUriHelper, new Client.SecretIdentifier(clientSecret.Id));
-            SecretValue = clientSecret.Value.ConvertToSecureString();
-            SecretValueText = clientSecret.Value;
+            SecretValue = clientSecret.SecureValue;
+
+            Id = clientSecret.Id;
         }
 
-        public SecureString SecretValue
+        public SecureString SecretValue { get; set; }
+
+        public string SecretValueText
         {
             get
             {
-                return secretValue;
-            }
-            set
-            {
-                secretValue = value;
-                if (secretValue != null)
-                {
-                    SecretValueText = secretValue.ConvertToString();
-                }
-                else
-                {
-                    SecretValueText = null;
-                }
+                return SecretValue.ConvertToString();
             }
         }
-        private SecureString secretValue;
-
-        public string SecretValueText { get; private set; }
     }
 }

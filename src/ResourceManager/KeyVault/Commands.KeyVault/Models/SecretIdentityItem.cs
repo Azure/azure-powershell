@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             SetObjectIdentifier(vaultUriHelper, new Client.SecretIdentifier(clientSecretItem.Id));
+            Id = clientSecretItem.Id;
         }
     }
 }
