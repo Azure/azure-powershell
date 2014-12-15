@@ -39,7 +39,16 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             var frontendIpConfig = new PSFrontendIpConfiguration();
             frontendIpConfig.Name = this.Name;
             frontendIpConfig.Properties = new PSFrontendIpConfigurationProperties();
-            frontendIpConfig.Properties.PrivateIpAllocationMethod = this.AllocationMethod;
+
+            if (!string.IsNullOrEmpty(this.PrivateIpAllocationMethod))
+            {
+                frontendIpConfig.Properties.PrivateIpAllocationMethod = this.PrivateIpAllocationMethod;
+            }
+
+            if (!string.IsNullOrEmpty(this.PrivateIpAddress))
+            {
+                frontendIpConfig.Properties.PrivateIpAddress = this.PrivateIpAddress;
+            }
 
             if (!string.IsNullOrEmpty(this.SubnetId))
             {

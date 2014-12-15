@@ -27,11 +27,17 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The public IP address allocation method.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(Management.Network.Models.IpAllocationMethod.Dynamic, Management.Network.Models.IpAllocationMethod.Static, IgnoreCase = true)]
-        public string AllocationMethod { get; set; }
+        public string PrivateIpAllocationMethod { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The private ip address of the frontendIpConfiguration " +
+                          "if static allocation is specified.")]
+        public string PrivateIpAddress { get; set; }
 
         [Parameter(
             ParameterSetName = "SetByResourceId",

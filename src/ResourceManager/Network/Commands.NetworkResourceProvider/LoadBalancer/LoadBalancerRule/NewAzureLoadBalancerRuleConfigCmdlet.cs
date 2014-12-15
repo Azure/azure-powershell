@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             loadBalancingRule.Properties.Protocol = this.Protocol;
             loadBalancingRule.Properties.FrontendPort = this.FrontendPort;
             loadBalancingRule.Properties.BackendPort = this.BackendPort;
-            loadBalancingRule.Properties.IdleTimeoutInMinutes = this.IdleTimeoutInSeconds;
+            loadBalancingRule.Properties.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             loadBalancingRule.Properties.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
             loadBalancingRule.Properties.BackendAddressPool = new PSResourceId();
             loadBalancingRule.Properties.BackendAddressPool.Id = this.BackendAddressPoolId;
