@@ -164,7 +164,7 @@
     <Compile Include="VirtualMachine\Operation\GetAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Operation\UpdateAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Action\RestartAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\VirtualMachineExtensionBaseCmdlet.cs" />
+    <Compile Include="Extension\VirtualMachineExtensionBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\VirtualMachineBaseCmdlet.cs" />
     <Compile Include="Common\ConstantStringTypes.cs" />
     <Compile Include="Models\PSVirtualMachine.cs" />
