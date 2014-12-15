@@ -21,6 +21,7 @@ using System.Net;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Management;
+using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Common
 {
@@ -43,6 +44,41 @@ namespace Microsoft.WindowsAzure.Commands.Common.Common
             }
 
             return client;
+        }
+                
+        public override void RegisterCustomProviders(IEnumerable<string> providers)
+        {
+            var context = AzureSession.CurrentContext;
+            var registeredProviders = context.Subscription.GetPropertyAsArray(
+                                            AzureSubscription.Property.RegisteredResourceProviders);
+            var successfullyRegisteredProvider = new List<string>();
+            var creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
+
+            var requiredProviders = providers.Where(p => !registeredProviders.Contains(p))
+                                             .ToList();
+
+            if (requiredProviders.Count > 0)
+            {
+                using (var client = AzureSession.ClientFactory.CreateCustomClient<ResourceManagementClient>(
+                    creds,
+                    context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
+                {
+                    foreach (var provider in requiredProviders)
+                    {
+                        try
+                        {
+                            client.Providers.Register(provider);
+                            successfullyRegisteredProvider.Add(provider);
+                        }
+                        catch
+                        {
+                            // Ignore this as the user may not have access to Sparta endpoint or the provider is already registered
+                        }
+                    }
+                }
+
+                UpdateSubscriptionRegisteredProviders(context.Subscription, successfullyRegisteredProvider);
+            }
         }
 
         /// <summary>

@@ -102,5 +102,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
             return client;
         }
+
+        public override void RegisterCustomProviders(IEnumerable<string> providers)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

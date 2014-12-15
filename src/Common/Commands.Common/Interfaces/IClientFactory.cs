@@ -17,6 +17,7 @@ using System.Net.Http;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Common;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -31,5 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         HttpClient CreateHttpClient(string endpoint, ICredentials credentials);
 
         HttpClient CreateHttpClient(string endpoint, HttpMessageHandler effectiveHandler);
+
+        void RegisterCustomProviders(IEnumerable<string> providers);
     }
 }
