@@ -33,7 +33,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         public SwitchParameter WaitForComplete { get; set; }
 
         private string deviceId = null;
-        private List<BackupScheduleBase> schedulesToAddList = null;
         private List<String> volumeIdsToAddList = null;
         private NewBackupPolicyConfig newConfig = null;
 
