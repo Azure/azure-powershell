@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                     "$context");
                 HttpSession testSession = MockServerHelper.DefaultSessionCollection.GetSession(
                     "UnitTest.Common.CreatePremiumDatabasesWithSqlAuth");
-                DatabaseTestHelper.SetDefaultTestSessionSettings(testSession);                
+                DatabaseTestHelper.SetDefaultTestSessionSettings(testSession);
                 testSession.RequestValidator =
                     new Action<HttpMessage, HttpMessage.Request>(
                     (expected, actual) =>
@@ -57,69 +57,79 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                         Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
                     });
 
-                using (AsyncExceptionManager exceptionManager = new AsyncExceptionManager())
+                TestCreatePremiumDatabase(powershell, testSession);
+            }
+        }
+
+        /// <summary>
+        /// Helper function to create premium database in the powershell environment provided.
+        /// </summary>
+        /// <param name="powershell">The powershell environment</param>
+        /// <param name="testSession">The test session</param>
+        private static void TestCreatePremiumDatabase(System.Management.Automation.PowerShell powershell, HttpSession testSession)
+        {
+            using (AsyncExceptionManager exceptionManager = new AsyncExceptionManager())
+            {
+                Collection<PSObject> premiumDB_P1, PremiumDB_P2;
+                using (new MockHttpServer(
+                    exceptionManager,
+                    MockHttpServer.DefaultServerPrefixUri,
+                    testSession))
                 {
-                    Collection<PSObject> premiumDB_P1, PremiumDB_P2;
-                    using (new MockHttpServer(
-                        exceptionManager,
-                        MockHttpServer.DefaultServerPrefixUri,
-                        testSession))
-                    {
-                        powershell.InvokeBatchScript(
-                            @"$P1 = Get-AzureSqlDatabaseServiceObjective" +
-                            @" -Context $context" +
-                            @" -ServiceObjectiveName ""P1""");                        
+                    powershell.InvokeBatchScript(
+                        @"$P1 = Get-AzureSqlDatabaseServiceObjective" +
+                        @" -Context $context" +
+                        @" -ServiceObjectiveName ""P1""");
 
-                        powershell.InvokeBatchScript(
-                            @"$P2 = Get-AzureSqlDatabaseServiceObjective " +
-                            @"-Context $context" +
-                            @" -ServiceObjectiveName ""P2"""); 
+                    powershell.InvokeBatchScript(
+                        @"$P2 = Get-AzureSqlDatabaseServiceObjective " +
+                        @"-Context $context" +
+                        @" -ServiceObjectiveName ""P2""");
 
-                        premiumDB_P1 = powershell.InvokeBatchScript(
-                            @"$premiumDB_P1 = New-AzureSqlDatabase " +
-                            @"-Context $context " +
-                            @"-DatabaseName NewAzureSqlPremiumDatabaseTests_P1 " +
-                            @"-Edition Premium " +
-                            @"-ServiceObjective $P1 ");
-                        premiumDB_P1 = powershell.InvokeBatchScript("$PremiumDB_P1");
+                    premiumDB_P1 = powershell.InvokeBatchScript(
+                        @"$premiumDB_P1 = New-AzureSqlDatabase " +
+                        @"-Context $context " +
+                        @"-DatabaseName NewAzureSqlPremiumDatabaseTests_P1 " +
+                        @"-Edition Premium " +
+                        @"-ServiceObjective $P1 ");
+                    premiumDB_P1 = powershell.InvokeBatchScript("$PremiumDB_P1");
 
-                        powershell.InvokeBatchScript(
-                            @"$PremiumDB_P2 = New-AzureSqlDatabase " +
-                            @"-Context $context " +
-                            @"-DatabaseName NewAzureSqlPremiumDatabaseTests_P2 " +
-                            @"-Collation Japanese_CI_AS " +
-                            @"-Edition Premium " +
-                            @"-ServiceObjective $P2 " +
-                            @"-MaxSizeGB 10 " +
-                            @"-Force");
-                        PremiumDB_P2 = powershell.InvokeBatchScript("$PremiumDB_P2");
-                    }
-
-                    Assert.AreEqual(0, powershell.Streams.Error.Count, "Errors during run!");
-                    Assert.AreEqual(0, powershell.Streams.Warning.Count, "Warnings during run!");
-                    powershell.Streams.ClearStreams();
-                    
-                    Assert.IsTrue(
-                        premiumDB_P1.Single().BaseObject is Services.Server.Database,
-                        "Expecting a Database object");
-                    Services.Server.Database databaseP1 =
-                        (Services.Server.Database)premiumDB_P1.Single().BaseObject;
-                    Assert.AreEqual("NewAzureSqlPremiumDatabaseTests_P1", databaseP1.Name, "Expected db name to be NewAzureSqlPremiumDatabaseTests_P1");
-
-                    Assert.IsTrue(
-                        PremiumDB_P2.Single().BaseObject is Services.Server.Database,
-                        "Expecting a Database object");
-                    Services.Server.Database databaseP2 =
-                        (Services.Server.Database)PremiumDB_P2.Single().BaseObject;
-                    Assert.AreEqual("NewAzureSqlPremiumDatabaseTests_P2", databaseP2.Name, "Expected db name to be NewAzureSqlPremiumDatabaseTests_P2");
-
-                    Assert.AreEqual(
-                        "Japanese_CI_AS",
-                        databaseP2.CollationName,
-                        "Expected collation to be Japanese_CI_AS");
-                    Assert.AreEqual("Premium", databaseP2.Edition, "Expected edition to be Premium");
-                    Assert.AreEqual(10, databaseP2.MaxSizeGB, "Expected max size to be 10 GB");
+                    powershell.InvokeBatchScript(
+                        @"$PremiumDB_P2 = New-AzureSqlDatabase " +
+                        @"-Context $context " +
+                        @"-DatabaseName NewAzureSqlPremiumDatabaseTests_P2 " +
+                        @"-Collation Japanese_CI_AS " +
+                        @"-Edition Premium " +
+                        @"-ServiceObjective $P2 " +
+                        @"-MaxSizeGB 10 " +
+                        @"-Force");
+                    PremiumDB_P2 = powershell.InvokeBatchScript("$PremiumDB_P2");
                 }
+
+                Assert.AreEqual(0, powershell.Streams.Error.Count, "Errors during run!");
+                Assert.AreEqual(0, powershell.Streams.Warning.Count, "Warnings during run!");
+                powershell.Streams.ClearStreams();
+
+                Assert.IsTrue(
+                    premiumDB_P1.Single().BaseObject is Services.Server.Database,
+                    "Expecting a Database object");
+                Services.Server.Database databaseP1 =
+                    (Services.Server.Database)premiumDB_P1.Single().BaseObject;
+                Assert.AreEqual("NewAzureSqlPremiumDatabaseTests_P1", databaseP1.Name, "Expected db name to be NewAzureSqlPremiumDatabaseTests_P1");
+
+                Assert.IsTrue(
+                    PremiumDB_P2.Single().BaseObject is Services.Server.Database,
+                    "Expecting a Database object");
+                Services.Server.Database databaseP2 =
+                    (Services.Server.Database)PremiumDB_P2.Single().BaseObject;
+                Assert.AreEqual("NewAzureSqlPremiumDatabaseTests_P2", databaseP2.Name, "Expected db name to be NewAzureSqlPremiumDatabaseTests_P2");
+
+                Assert.AreEqual(
+                    "Japanese_CI_AS",
+                    databaseP2.CollationName,
+                    "Expected collation to be Japanese_CI_AS");
+                Assert.AreEqual("Premium", databaseP2.Edition, "Expected edition to be Premium");
+                Assert.AreEqual(10, databaseP2.MaxSizeGB, "Expected max size to be 10 GB");
             }
         }
 

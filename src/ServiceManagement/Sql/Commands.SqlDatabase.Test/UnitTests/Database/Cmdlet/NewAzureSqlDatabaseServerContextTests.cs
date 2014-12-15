@@ -126,6 +126,9 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                 UnitTestHelper.ImportAzureModule(powershell);
                 UnitTestHelper.CreateTestCredential(powershell);
 
+                // Tell the sql auth factory to create a v2 context (skip checking sql version using select query).
+                //
+                SqlAuthContextFactory.sqlVersion = SqlAuthContextFactory.SqlVersion.v2;
                 using (AsyncExceptionManager exceptionManager = new AsyncExceptionManager())
                 {
                     Collection<PSObject> serverContext;
@@ -190,6 +193,10 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
 
                 using (AsyncExceptionManager exceptionManager = new AsyncExceptionManager())
                 {
+                    // Tell the sql auth factory to create a v2 context (skip checking sql version using select query).
+                    //
+                    SqlAuthContextFactory.sqlVersion = SqlAuthContextFactory.SqlVersion.v2;
+
                     // Test warning when different $metadata is received.
                     Collection<PSObject> serverContext;
                     using (new MockHttpServer(
@@ -211,6 +218,10 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                     Assert.AreEqual(1, powershell.Streams.Error.Count, "Errors during run!");
                     Assert.AreEqual(2, powershell.Streams.Warning.Count, "Should have warning!");
                     powershell.Streams.ClearStreams();
+
+                    // Tell the sql auth factory to create a v2 context (skip checking sql version using select query).
+                    //
+                    SqlAuthContextFactory.sqlVersion = SqlAuthContextFactory.SqlVersion.v2;
 
                     // Test error case
                     using (new MockHttpServer(
@@ -308,6 +319,10 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                 testSession.SessionProperties["Username"],
                 testSession.SessionProperties["Password"]);
 
+            // Tell the sql auth factory to create a v2 context (skip checking sql version using select query).
+            //
+            SqlAuthContextFactory.sqlVersion = SqlAuthContextFactory.SqlVersion.v2;
+
             Collection<PSObject> serverContext;
             using (AsyncExceptionManager exceptionManager = new AsyncExceptionManager())
             {
@@ -338,6 +353,51 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
             Assert.IsTrue(
                 contextPsObject.BaseObject is ServerDataServiceSqlAuth,
                 "Expecting a ServerDataServiceSqlAuth object");
+        }
+
+        /// <summary>
+        /// Common helper method for other tests to create a context for ESA server.
+        /// </summary>
+        /// <param name="contextVariable">The variable name that will hold the new context.</param>
+        public static void CreateServerContextSqlAuthV12(
+            System.Management.Automation.PowerShell powershell,
+            string manageUrl,
+            string username,
+            string password,
+            string contextVariable)
+        {
+            UnitTestHelper.ImportAzureModule(powershell);
+            UnitTestHelper.CreateTestCredential(
+                powershell,
+                username,
+                password);
+
+            // Tell the sql auth factory to create a v22 context (skip checking sql version using select query).
+            //
+            SqlAuthContextFactory.sqlVersion = SqlAuthContextFactory.SqlVersion.v12;
+            
+            Collection<PSObject> serverContext;
+            using (AsyncExceptionManager exceptionManager = new AsyncExceptionManager())
+            {
+                serverContext = powershell.InvokeBatchScript(
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        @"{1} = New-AzureSqlDatabaseServerContext " +
+                        @"-ManageUrl {0} " +
+                        @"-Credential $credential ",
+                        manageUrl,
+                        contextVariable),
+                    contextVariable);
+            }
+
+            Assert.AreEqual(0, powershell.Streams.Error.Count, "Errors during run!");
+            Assert.AreEqual(0, powershell.Streams.Warning.Count, "Warnings during run!");
+            powershell.Streams.ClearStreams();
+
+            PSObject contextPsObject = serverContext.Single();
+            Assert.IsTrue(
+                contextPsObject.BaseObject is TSqlConnectionContext,
+                "Expecting a TSqlConnectionContext object");
         }
     }
 }
