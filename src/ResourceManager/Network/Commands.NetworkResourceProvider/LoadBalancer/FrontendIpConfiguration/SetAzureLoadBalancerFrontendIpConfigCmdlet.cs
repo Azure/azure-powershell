@@ -59,6 +59,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 frontendIpConfig.Properties.PrivateIpAllocationMethod = this.PrivateIpAllocationMethod;
             }
 
+            if (!string.IsNullOrEmpty(this.PrivateIpAddress))
+            {
+                frontendIpConfig.Properties.PrivateIpAddress = this.PrivateIpAddress;
+            }
+
             if (!string.IsNullOrEmpty(this.SubnetId))
             {
                 frontendIpConfig.Properties.Subnet = new PSResourceId();

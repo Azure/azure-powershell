@@ -34,6 +34,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public string PrivateIpAllocationMethod { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "The private ip address of the frontendIpConfiguration " +
+                          "if static allocation is specified.")]
+        public string PrivateIpAddress { get; set; }
+
+        [Parameter(
             ParameterSetName = "SetByResourceId",
             HelpMessage = "SubnetId")]
         [ValidateNotNullOrEmpty]
