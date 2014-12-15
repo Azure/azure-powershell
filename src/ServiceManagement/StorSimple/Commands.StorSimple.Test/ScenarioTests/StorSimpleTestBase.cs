@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests
             }
         }
 
-        public new static T GetServiceClient<T>() where T : class
+        public static T GetServiceClient<T>() where T : class
         {
             var factory = (TestEnvironmentFactory)new RDFETestEnvironmentFactory();
 
