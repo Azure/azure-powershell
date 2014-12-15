@@ -22,6 +22,9 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using Microsoft.WindowsAzure.Commands.Common.Factories;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -321,13 +324,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 WriteWarning("The StorageAccountName parameter is no longer used and will be removed in a future release. Please update scripts to remove this parameter.");
             }
 
+            AzureSession.ClientFactory.RegisterCustomProviders(validationInfo.RequiredProviders.Select(p => p.Namespace.ToLower()));
             ResourceManagementClient.Deployments.CreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
             WriteVerbose(string.Format("Create template deployment '{0}'.", parameters.DeploymentName));
             Deployment result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
             return result.ToPSResourceGroupDeployment(parameters.ResourceGroupName);
         }
-
+        
         private string GenerateDeploymentName(CreatePSResourceGroupDeploymentParameters parameters)
         {
             if (!string.IsNullOrEmpty(parameters.DeploymentName))

@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Factories
 {
-    public class ClientFactory : IClientFactory
+    public abstract class ClientFactory : IClientFactory
     {
         private static readonly char[] uriPathSeparator = { '/' };
 
@@ -136,5 +136,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Factories
             // Our handler is ready
             return clientHandler;
         }
+
+        public abstract void RegisterCustomProviders(IEnumerable<string> providers);
     }
 }
