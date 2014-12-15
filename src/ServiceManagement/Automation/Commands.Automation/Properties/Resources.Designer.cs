@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Runbook was not found. Runbook name: {0}..
+        /// </summary>
+        internal static string RunbookNotFound {
+            get {
+                return ResourceManager.GetString("RunbookNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The schedule was not found. Schedule name: {0}..
         /// </summary>
         internal static string ScheduleNotFound {

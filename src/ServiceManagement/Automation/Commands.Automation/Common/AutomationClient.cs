@@ -16,15 +16,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Text;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -77,6 +74,32 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 });
 
             return scheduleModels.Select(this.CreateScheduleFromScheduleModel);
+        }
+
+        public Runbook GetRunbook(string automationAccountName, string name) 
+        {
+            var sdkRunbook = this.automationManagementClient.Runbooks.Get(
+                automationAccountName, name).Runbook;
+
+            if (sdkRunbook == null)
+            {
+                throw new ResourceNotFoundException(typeof(Runbook), string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, name));
+            }
+
+            return new Runbook(sdkRunbook);
+        }
+
+        public IEnumerable<Runbook> ListRunbooks(string automationAccountName)
+        {
+            return AutomationManagementClient
+                .ContinuationTokenHandler(
+                    skipToken =>
+                    {
+                        var response = this.automationManagementClient.Runbooks.List(
+                            automationAccountName, skipToken);
+                        return new ResponseWithSkipToken<AutomationManagement.Models.Runbook>(
+                            response, response.Runbooks);
+                    }).Select(c => new Runbook(c));
         }
 
         #endregion

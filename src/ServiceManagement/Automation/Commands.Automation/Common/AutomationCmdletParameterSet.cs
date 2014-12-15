@@ -13,23 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
-    public interface IAutomationClient
+    internal static class AutomationCmdletParameterSets
     {
-        AzureSubscription Subscription { get; }
-
-        Schedule GetSchedule(string automationAccountName, string scheduleName);
-
-        IEnumerable<Schedule> ListSchedules(string automationAccountName);
-
-        Runbook GetRunbook(string automationAccountName, string runbookName);
-
-        IEnumerable<Runbook> ListRunbooks(string automationAccountName);
+        internal const string ByAll = "ByAll";
+        internal const string ByName = "ByName";
     }
 }

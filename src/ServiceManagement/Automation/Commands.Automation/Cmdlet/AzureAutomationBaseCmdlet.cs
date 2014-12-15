@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
@@ -57,8 +58,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the automation account name.
         /// </summary>
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The automation account name.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
         public string AutomationAccountName { get; set; }
 
         protected virtual void AutomationExecuteCmdlet()
@@ -91,6 +91,24 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 
                 throw;
             }
+        }
+
+        protected bool GenerateCmdletOutput(IEnumerable<object> results)
+        {
+            var ret = true;
+            foreach (var result in results)
+            {
+                try
+                {
+                    WriteObject(result);
+                }
+                catch (PipelineStoppedException)
+                {
+                    ret = false;
+                }
+            }
+
+            return ret;
         }
 
         private string ParseErrorMessage(string errorMessage)
