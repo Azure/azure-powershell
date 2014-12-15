@@ -27,16 +27,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (StorageAccountName == null)
                 {
                     WriteObject(allSACs);
+                    WriteVerbose(String.Format(Resources.SACGet_StatusMessage, allSACs.Count, allSACs.Count > 1 ? "s" : String.Empty));
                     return;
                 }
                 
                 var sac = allSACs.Where(x => x.Name.Equals(StorageAccountName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (sac == null)
                 {
-                    WriteVerbose(Resources.NotFoundMessageStorageAccountCredential);
+                    WriteVerbose(String.Format(Resources.SACNotFoundWithName, StorageAccountName));
+                    WriteObject(null);
                 }
                 else
                 {
+                    WriteVerbose(String.Format(Resources.SACFoundWithName, StorageAccountName));
                     WriteObject(sac);
                 }
             }

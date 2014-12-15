@@ -38,17 +38,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                                   if (deviceid == null)
                                   {
-                                      WriteObject(Resources.NotFoundMessageDevice);
+                                      WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                                      WriteObject(null);
                                       return;
                                   }
                                   
                                     if (WaitForComplete.IsPresent)
                                     {
+                                        WriteVerbose("About to run a job to remove your Volume container!");
                                         var jobstatusInfo = StorSimpleClient.DeleteDataContainer(deviceid, VolumeContainer.InstanceId);
                                         HandleSyncTaskResponse(jobstatusInfo, "delete");
                                     }
                                     else
                                     {
+                                        WriteVerbose("About to create a job to remove your Volume container!");
                                         var jobresult = StorSimpleClient.DeleteDataContainerAsync(deviceid, VolumeContainer.InstanceId);
                                         HandleAsyncTaskResponse(jobresult, "delete");
                                     }

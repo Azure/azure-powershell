@@ -14,10 +14,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// <summary>
     /// This commandlet will remove a given backup from the device
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureStorSimpleDeviceBackup")]
+    [Cmdlet(VerbsCommon.Remove, "AzureStorSimpleDeviceBackup", DefaultParameterSetName = StorSimpleCmdletParameterSet.Empty)]
     public class RemoveAzureStorSimpleDeviceBackup:StorSimpleCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName, ParameterSetName = StorSimpleCmdletParameterSet.Empty )]
         [ValidateNotNullOrEmptyAttribute]
         public string DeviceName { get; set; }
 

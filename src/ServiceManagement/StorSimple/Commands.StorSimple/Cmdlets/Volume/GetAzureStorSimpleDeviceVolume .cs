@@ -31,7 +31,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var deviceId = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceId == null)
                 {
-                    WriteVerbose(Resources.NotFoundMessageDevice);
+                    WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                    WriteObject(null);
                     return;
                 }
                 
@@ -39,8 +40,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     case StorSimpleCmdletParameterSet.IdentifyByParentObject:
                         var volumeInfoList = StorSimpleClient.GetAllVolumesFordataContainer(deviceId, VolumeContainer.InstanceId);
-                        WriteVerbose(string.Format(Resources.ReturnedCountVolumeMessage, volumeInfoList.ListofVirtualDisks.Count));
                         WriteObject(volumeInfoList.ListofVirtualDisks);
+                        WriteVerbose(string.Format(Resources.ReturnedCountVolumeMessage, volumeInfoList.ListofVirtualDisks.Count, volumeInfoList.ListofVirtualDisks.Count > 1 ? "s" : String.Empty));
                         break;
                     case StorSimpleCmdletParameterSet.IdentifyByName:
                         var volumeInfo = StorSimpleClient.GetVolumeByName(deviceId, VolumeName);
@@ -48,8 +49,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             && volumeInfo.VirtualDiskInfo != null 
                             && volumeInfo.VirtualDiskInfo.InstanceId != null)
                         {
-                            WriteVerbose(String.Format(Resources.FoundVolumeMessage, VolumeName));
                             WriteObject(volumeInfo.VirtualDiskInfo);
+                            WriteVerbose(String.Format(Resources.FoundVolumeMessage, VolumeName));
                         }
                         else
                         {

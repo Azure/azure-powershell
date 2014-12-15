@@ -61,6 +61,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} Access Control Record{1} found!.
+        /// </summary>
+        internal static string ACRGet_StatusMessage {
+            get {
+                return ResourceManager.GetString("ACRGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More backups are available for your query. To access the next page of your result use \&quot;-First {0} -Skip {1}\&quot; in your commandlet.
         /// </summary>
         internal static string BackupNextPageFormatMessage {
@@ -192,6 +201,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string FoundDataContainerMessage {
             get {
                 return ResourceManager.GetString("FoundDataContainerMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Access Control Record with given name {0} is found!.
+        /// </summary>
+        internal static string FoundMessageACR {
+            get {
+                return ResourceManager.GetString("FoundMessageACR", resourceCulture);
             }
         }
         
@@ -403,7 +421,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Access control record with the specified name does not exist..
+        ///   Looks up a localized string similar to No Access Control Record with given name {0} is found!.
         /// </summary>
         internal static string NotFoundMessageACR {
             get {
@@ -628,7 +646,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} volume containers found!.
+        ///   Looks up a localized string similar to {0} volume container{1} found!.
         /// </summary>
         internal static string ReturnedCountDataContainerMessage {
             get {
@@ -637,11 +655,38 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} volumes found for your volume container!.
+        ///   Looks up a localized string similar to {0} volume{1} found for your volume container!.
         /// </summary>
         internal static string ReturnedCountVolumeMessage {
             get {
                 return ResourceManager.GetString("ReturnedCountVolumeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage Access Credential with name {0} found!.
+        /// </summary>
+        internal static string SACFoundWithName {
+            get {
+                return ResourceManager.GetString("SACFoundWithName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Storage Access Credential{1} found!.
+        /// </summary>
+        internal static string SACGet_StatusMessage {
+            get {
+                return ResourceManager.GetString("SACGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage Access Credential with name {0} not found!.
+        /// </summary>
+        internal static string SACNotFoundWithName {
+            get {
+                return ResourceManager.GetString("SACNotFoundWithName", resourceCulture);
             }
         }
         

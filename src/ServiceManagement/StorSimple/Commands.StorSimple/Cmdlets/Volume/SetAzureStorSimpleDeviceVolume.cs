@@ -25,12 +25,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public bool? Online { get; set; }
 
-        [Alias("Size")]
+        [Alias("SizeInBytes")]
         [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeSize)]
         [ValidateNotNullOrEmpty]
-        public Int64? VolumeSize { get; set; }
+        public Int64? VolumeSizeInBytes { get; set; }
 
         [Alias("AppType")]
+        [ValidateSet("PrimaryVolume","ArchiveVolume")]
         [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeAppType)]
         [ValidateNotNullOrEmpty]
         public AppType? VolumeAppType { get; set; }
@@ -49,7 +50,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var deviceId = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceId == null)
                 {
-                    WriteVerbose(Resources.NotFoundMessageDevice);
+                    WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                    WriteObject(null);
                     return;
                 }
 
@@ -57,6 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (diskDetails == null)
                 {
                     WriteVerbose(Resources.NotFoundMessageVirtualDisk);
+                    WriteObject(null);
                     return;
                 }
                 
@@ -64,9 +67,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     diskDetails.Online = Online.GetValueOrDefault();
                 }
-                if (VolumeSize != null)
+                if (VolumeSizeInBytes != null)
                 {
-                    diskDetails.SizeInBytes = VolumeSize.GetValueOrDefault();
+                    diskDetails.SizeInBytes = VolumeSizeInBytes.GetValueOrDefault();
                 }
                 if (VolumeAppType != null)
                 {

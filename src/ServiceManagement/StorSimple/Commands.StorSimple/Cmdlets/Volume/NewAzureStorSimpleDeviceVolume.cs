@@ -26,16 +26,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Volume
         [ValidateNotNullOrEmpty]
         public string VolumeName { get; set; }
 
-        [Alias("Size")]
+        [Alias("SizeInBytes")]
         [Parameter(Position = 3, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeSize)]
         [ValidateNotNullOrEmpty]
-        public Int64 VolumeSize { get; set; }
+        public Int64 VolumeSizeInBytes { get; set; }
 
         [Parameter(Position = 4, Mandatory = true, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeAcrList)]
         [ValidateNotNullOrEmpty]
         public List<AccessControlRecord> AccessControlRecords { get; set; }
 
         [Alias("AppType")]
+        [ValidateSet("PrimaryVolume","ArchiveVolume")]
         [Parameter(Position = 5, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeAppType)]
         [ValidateNotNullOrEmpty]
         public AppType VolumeAppType { get; set; }
@@ -64,7 +65,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Volume
 
                 if (deviceid == null)
                 {
-                    WriteVerbose(Resources.NotFoundMessageDevice);
+                    WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                    WriteObject(null);
                     return;
                 }
 
@@ -76,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Volume
                     AcrList = AccessControlRecords,
                     AppType = VolumeAppType,
                     IsDefaultBackupEnabled = EnableDefaultBackup,
-                    SizeInBytes = VolumeSize,
+                    SizeInBytes = VolumeSizeInBytes,
                     DataContainer = VolumeContainer,
                     Online = Online,
                     IsMonitoringEnabled = EnableMonitoring

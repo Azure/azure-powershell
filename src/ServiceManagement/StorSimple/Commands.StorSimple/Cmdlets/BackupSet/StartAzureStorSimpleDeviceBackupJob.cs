@@ -9,7 +9,7 @@ using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleDeviceBackupJob"),OutputType(typeof(TaskResponse), typeof(TaskStatusInfo))]
+    [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleDeviceBackupJob", DefaultParameterSetName = StorSimpleCmdletParameterSet.Empty),OutputType(typeof(TaskResponse), typeof(TaskStatusInfo))]
     public class StartAzureStorSimpleDeviceBackupJob : StorSimpleCmdletBase
     {
         private const string PARAMETERSET_BACKUPTYPE = "BackupTypeGiven";

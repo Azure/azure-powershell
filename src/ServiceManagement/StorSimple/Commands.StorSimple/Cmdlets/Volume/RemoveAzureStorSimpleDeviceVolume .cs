@@ -43,7 +43,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                                   if (deviceid == null)
                                   {
-                                      WriteVerbose(Resources.NotFoundMessageDevice);
+                                      WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                                      WriteObject(null);
                                       return;
                                   }
 
@@ -66,11 +67,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                                   if (WaitForComplete.IsPresent)
                                   {
+                                      WriteVerbose("About to run a job to remove your volume!");
                                       var jobstatus = StorSimpleClient.RemoveVolume(deviceid, volumeId);
                                       HandleSyncTaskResponse(jobstatus, "delete");
                                   }
                                   else
                                   {
+                                      WriteVerbose("About to run a job to remove your volume!");
                                       var jobresponse = StorSimpleClient.RemoveVolumeAsync(deviceid, volumeId);
                                       HandleAsyncTaskResponse(jobresponse, "delete");
                                   }

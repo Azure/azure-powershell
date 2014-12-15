@@ -27,17 +27,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (ACRName == null)
                 {
                     WriteObject(allACRs);
+                    WriteVerbose(String.Format(Resources.ACRGet_StatusMessage, allACRs.Count, allACRs.Count > 1 ? "s" : String.Empty));
                     return;
                 }
                 
                 var acr = allACRs.Where(x => x.Name.Equals(ACRName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (acr == null)
                 {
-                    WriteVerbose(Resources.NotFoundMessageACR);
+                    WriteObject(null);
+                    WriteVerbose(String.Format(Resources.NotFoundMessageACR,ACRName));
                 }
                 else
                 {
                     WriteObject(acr);
+                    WriteVerbose(String.Format(Resources.FoundMessageACR, ACRName));
                 }
             }
             catch (Exception exception)

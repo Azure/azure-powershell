@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var existingSac = allSACs.Where(x => x.Name.Equals(StorageAccountName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (existingSac == null)
                 {
-                    WriteVerbose(Resources.NotFoundMessageStorageAccountCredential);
+                    WriteVerbose(String.Format(Resources.SACNotFoundWithName,StorageAccountName));
                     return;
                 }
 
@@ -93,6 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 if (WaitForComplete.IsPresent)
                 {
+                    WriteVerbose("About to run a task to update your Storage Access credential!"); 
                     var taskStatus = StorSimpleClient.ConfigureService(serviceConfig);
                     HandleSyncTaskResponse(taskStatus, "update");
                     if (taskStatus.AsyncTaskAggregatedResult == AsyncTaskAggregatedResult.Succeeded)
@@ -104,6 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
                 else
                 {
+                    WriteVerbose("About to create a task to update your Storage Access credential!");
                     var jobResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
                     HandleAsyncTaskResponse(jobResponse, "update");
                 }

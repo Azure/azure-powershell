@@ -29,15 +29,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 if (deviceid == null)
                 {
-                    WriteObject(Resources.NotFoundMessageDevice);
+                    WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                    WriteObject(null);
                     return;
                 }
 
                 if (VolumeContainerName == null)
                 {
                     var dataContainerList = StorSimpleClient.GetAllDataContainers(deviceid);
-                    WriteVerbose(String.Format(Resources.ReturnedCountDataContainerMessage, dataContainerList.DataContainers.Count));
                     WriteObject(dataContainerList.DataContainers);
+                    WriteVerbose(String.Format(Resources.ReturnedCountDataContainerMessage, dataContainerList.DataContainers.Count, dataContainerList.DataContainers.Count > 1 ? "s" : String.Empty));
                 }
                 else
                 {
@@ -46,8 +47,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         && dataContainer.DataContainerInfo != null
                         && dataContainer.DataContainerInfo.InstanceId != null)
                     {
-                        WriteVerbose(String.Format(Resources.FoundDataContainerMessage, VolumeContainerName));
                         WriteObject(dataContainer.DataContainerInfo);
+                        WriteVerbose(String.Format(Resources.FoundDataContainerMessage, VolumeContainerName));
                     }
                     else
                     {

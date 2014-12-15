@@ -44,19 +44,23 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                               try
                               {
                                   AccessControlRecord existingAcr = null;
+                                  string acrName = null;
                                   switch (ParameterSetName)
                                   {
                                       case StorSimpleCmdletParameterSet.IdentifyByName:
                                           var allACRs = StorSimpleClient.GetAllAccessControlRecords();
                                           existingAcr = allACRs.Where(x => x.Name.Equals(ACRName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+                                          acrName = ACRName;
                                           break;
                                       case StorSimpleCmdletParameterSet.IdentifyByObject:
                                           existingAcr = ACR;
+                                          acrName = ACR.Name;
                                           break;
                                   }
                                   if (existingAcr == null)
                                   {
-                                      WriteVerbose(Resources.NotFoundMessageACR);
+                                      WriteObject(null);
+                                      WriteVerbose(String.Format(Resources.NotFoundMessageACR, acrName));
                                       return;
                                   }
                                   
@@ -73,11 +77,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                                     if (WaitForComplete.IsPresent)
                                     {
+                                        WriteVerbose("About to run a job to remove your ACR!");
                                         var jobStatus = StorSimpleClient.ConfigureService(serviceConfig);
                                         HandleSyncTaskResponse(jobStatus, "delete");
                                     }
                                     else
                                     {
+                                        WriteVerbose("About to create a job to remove your ACR!");
                                         var jobResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
                                         HandleAsyncTaskResponse(jobResponse, "delete");
                                     }

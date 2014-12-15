@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var existingAcr = allACRs.Where(x => x.Name.Equals(ACRName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (existingAcr == null)
                 {
-                    WriteVerbose(Resources.NotFoundMessageACR);
+                    WriteVerbose(String.Format(Resources.NotFoundMessageACR,ACRName));
                     return;
                 }
                 
@@ -67,6 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 if (WaitForComplete.IsPresent)
                 {
+                    WriteVerbose("About to run a task to update your Access Control Record!"); 
                     var taskStatus = StorSimpleClient.ConfigureService(serviceConfig);
                     HandleSyncTaskResponse(taskStatus, "update");
                     if (taskStatus.AsyncTaskAggregatedResult == AsyncTaskAggregatedResult.Succeeded)
@@ -78,6 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
                 else
                 {
+                    WriteVerbose("About to create a task to update your Access Control Record!");
                     var jobResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
                     HandleAsyncTaskResponse(jobResponse, "update");
                 }

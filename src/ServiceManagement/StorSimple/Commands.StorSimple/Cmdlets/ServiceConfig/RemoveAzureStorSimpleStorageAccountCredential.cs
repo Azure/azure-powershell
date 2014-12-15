@@ -44,19 +44,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                               try
                               {
                                   StorageAccountCredentialResponse existingSac = null;
+                                  string sacName = null;
+
                                   switch (ParameterSetName)
                                   {
                                       case StorSimpleCmdletParameterSet.IdentifyByName:
                                           var allSACs = StorSimpleClient.GetAllStorageAccountCredentials();
                                           existingSac = allSACs.Where(x => x.Name.Equals(StorageAccountName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+                                          sacName = StorageAccountName;
                                           break;
                                       case StorSimpleCmdletParameterSet.IdentifyByObject:
                                           existingSac = SAC;
+                                          sacName = SAC.Name;
                                           break;
                                   }
                                   if (existingSac == null)
                                   {
-                                      WriteVerbose(Resources.NotFoundMessageStorageAccountCredential);
+                                      WriteObject(null);
+                                      WriteVerbose(String.Format(Resources.SACNotFoundWithName, sacName));
                                       return;
                                   }
                                   
@@ -73,11 +78,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                                     if (WaitForComplete.IsPresent)
                                     {
+                                        WriteVerbose("About to run a job to remove your Storage Access Credential!");
                                         var jobStatus = StorSimpleClient.ConfigureService(serviceConfig);
                                         HandleSyncTaskResponse(jobStatus, "delete");
                                     }
                                     else
                                     {
+                                        WriteVerbose("About to create a job to remove your Storage Access Credential!");
                                         var jobResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
                                         HandleAsyncTaskResponse(jobResponse, "delete");
                                     }

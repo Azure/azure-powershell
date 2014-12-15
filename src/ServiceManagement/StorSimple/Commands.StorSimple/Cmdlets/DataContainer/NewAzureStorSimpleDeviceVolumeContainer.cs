@@ -27,10 +27,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public StorageAccountCredentialResponse PrimaryStorageAccountCredential { get; set; }
 
-        [Alias("CloudBandwidth")]
+        [Alias("CloudBandwidthInMbps")]
         [Parameter(Position = 3, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDataContainerBandwidth)]
         [ValidateNotNullOrEmpty]
-        public int BandWidthRate { get; set; }
+        public int BandWidthRateInMbps { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDataContainerEncryptionEnabled)]
         [ValidateNotNullOrEmpty]
@@ -50,7 +50,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 deviceid = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceid == null)
                 {
-                    WriteObject(Resources.NotFoundMessageDevice);
+                    WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                    WriteObject(null);
                     return;
                 }
 
@@ -96,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     IsDefault = false,
                     Name = VolumeContainerName,
-                    BandwidthRate = BandWidthRate,
+                    BandwidthRate = BandWidthRateInMbps,
                     IsEncryptionEnabled = EncryptionEnabled ?? false,
                     EncryptionKey = encryptedKey,
                     VolumeCount = 0,
