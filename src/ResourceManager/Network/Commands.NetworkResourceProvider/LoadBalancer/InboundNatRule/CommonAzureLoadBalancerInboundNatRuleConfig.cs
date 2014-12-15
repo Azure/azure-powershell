@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "IdleTimeoutInSeconds")]
+            HelpMessage = "IdleTimeoutInMinutes")]
         public int IdleTimeoutInMinutes { get; set; }
 
         [Parameter(

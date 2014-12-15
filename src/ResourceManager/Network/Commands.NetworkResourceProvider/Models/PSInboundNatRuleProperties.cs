@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 
         public int BackendPort { get; set; }
 
-        public int IdleTimeoutInMinutes { get; set; }
+        public int? IdleTimeoutInMinutes { get; set; }
 
         public bool EnableFloatingIP { get; set; }
     }

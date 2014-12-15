@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -33,12 +34,24 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 Resources.LoadBalancerNameNotSet, resource, resourceName);
         }
 
-        public static string NormalizeResourceId(string id, string resourceGroupName, string loadBalancerName)
+        private static string NormalizeLoadBalancerChildResourceIds(string id, string resourceGroupName, string loadBalancerName)
         {
-            id = id.Replace(Resources.ResourceGroupNotSet, resourceGroupName);
-            id = id.Replace(Resources.LoadBalancerNameNotSet, loadBalancerName);
+            id = NormalizeId(id, "resourceGroups", resourceGroupName);
+            id = NormalizeId(id, "loadBalancers", loadBalancerName);
 
             return id;
+        }
+
+        private static string NormalizeId(string id, string resourceName, string resourceValue)
+        {
+            int startIndex = id.IndexOf(resourceName, StringComparison.OrdinalIgnoreCase) + resourceName.Length + 1;
+            int endIndex = id.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
+            
+            // Replace the following string '/{value}/'
+            startIndex--;
+            string orignalString = id.Substring(startIndex, endIndex - startIndex + 1);
+
+            return id.Replace(orignalString, string.Format("/{0}/", resourceValue));
         }
 
         public static void NormalizeChildResourcesId(PSLoadBalancer loadBalancer)
@@ -50,16 +63,16 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
                 foreach (var frontendIpConfiguration in loadBalancingRule.Properties.FrontendIPConfigurations)
                 {
-                    frontendIpConfiguration.Id = NormalizeResourceId(frontendIpConfiguration.Id,
+                    frontendIpConfiguration.Id = NormalizeLoadBalancerChildResourceIds(frontendIpConfiguration.Id,
                         loadBalancer.ResourceGroupName, loadBalancer.Name);
                 }
 
                 loadBalancingRule.Properties.BackendAddressPool.Id =
-                    NormalizeResourceId(loadBalancingRule.Properties.BackendAddressPool.Id,
+                    NormalizeLoadBalancerChildResourceIds(loadBalancingRule.Properties.BackendAddressPool.Id,
                         loadBalancer.ResourceGroupName, loadBalancer.Name);
 
                 loadBalancingRule.Properties.Probe.Id =
-                    NormalizeResourceId(loadBalancingRule.Properties.Probe.Id,
+                    NormalizeLoadBalancerChildResourceIds(loadBalancingRule.Properties.Probe.Id,
                         loadBalancer.ResourceGroupName, loadBalancer.Name);
             }
 
@@ -70,7 +83,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
                 foreach (var frontendIpConfiguration in inboundNatRule.Properties.FrontendIPConfigurations)
                 {
-                    frontendIpConfiguration.Id = NormalizeResourceId(frontendIpConfiguration.Id,
+                    frontendIpConfiguration.Id = NormalizeLoadBalancerChildResourceIds(frontendIpConfiguration.Id,
                         loadBalancer.ResourceGroupName, loadBalancer.Name);
                 }
             }

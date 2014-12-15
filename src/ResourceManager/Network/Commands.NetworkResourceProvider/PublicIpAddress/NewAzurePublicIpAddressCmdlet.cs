@@ -59,6 +59,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             HelpMessage = "The Domain Name label.")]
         public string DomainNameLabel { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "IdleTimeoutInMinutes")]
+        public int IdleTimeoutInMinutes { get; set; }
+
         [Alias("Tags")]
         [Parameter(
             Mandatory = false, 
@@ -96,6 +101,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             publicIp.Location = this.Location;
             publicIp.Properties = new PSPublicIpAddressProperties();
             publicIp.Properties.PublicIpAllocationMethod = this.AllocationMethod;
+
+            if (this.IdleTimeoutInMinutes > 0)
+            {
+                publicIp.Properties.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
+            }
 
             if (!string.IsNullOrEmpty(this.DomainNameLabel))
             {
