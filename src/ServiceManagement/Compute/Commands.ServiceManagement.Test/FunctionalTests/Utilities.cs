@@ -588,13 +588,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 {
                     if (e.ToString().Contains(errorMessage) || (e.InnerException != null && e.InnerException.ToString().Contains(errorMessage)))
                     {
+                        i++;
+                        if (i == maxTry)
+                        {
+                            Console.WriteLine("Max number of retry is reached: {0}", errorMessage);
+                            throw;
+                        }
                         Console.WriteLine("{0} error occurs! retrying ...", errorMessage);
                         if (e.InnerException != null)
                         {
                             Console.WriteLine(e.InnerException);
                         }
                         Thread.Sleep(TimeSpan.FromSeconds(intervalSeconds));
-                        i++;
                         continue;
                     }
                     else
