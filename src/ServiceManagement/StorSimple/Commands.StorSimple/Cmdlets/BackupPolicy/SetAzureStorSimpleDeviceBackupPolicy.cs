@@ -55,11 +55,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             try
             {
                 updateConfig = new UpdateBackupPolicyConfig();
-                ProcessParameters();
+                if (!ProcessParameters())
+                    return;
 
                 updateConfig.InstanceId = BackupPolicyId;
                 updateConfig.Name = BackupPolicyName;
-                updateConfig.IsPolicyRenamed = false;
+                updateConfig.IsPolicyRenamed = true;
                 updateConfig.BackupSchedulesToBeAdded = schedulesToAdd;
                 updateConfig.BackupSchedulesToBeUpdated = schedulesToUpdate;
                 updateConfig.BackupSchedulesToBeDeleted = scheduleIdsTodelete;
@@ -91,20 +92,21 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         }
 
 
-        private void ProcessParameters()
+        private bool ProcessParameters()
         {
             deviceId = StorSimpleClient.GetDeviceId(DeviceName);
             if (deviceId == null)
             {
                 WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 WriteObject(null);
-                return;
+                return false;
             }
 
             ProcessAddSchedules();
             ProcessUpdateSchedules();
             ProcessDeleteScheduleIds();
             ProcessUpdateVolumeIds();
+            return true;
         }
 
         private void ProcessAddSchedules()

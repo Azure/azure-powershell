@@ -31,7 +31,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                ProcessParameters();
+                if (!ProcessParameters()) 
+                    return;
                 if (String.IsNullOrEmpty(BackupPolicyName))
                 {
                     BackupPolicyListResponse backupPolicyList = null;
@@ -60,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
         }
 
-          private void ProcessParameters()
+          private bool ProcessParameters()
         {
             deviceId = StorSimpleClient.GetDeviceId(DeviceName);
 
@@ -68,8 +69,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 WriteObject(null);
-                return;
+                return false;
             }
+            return true;
         }
 
           /// <summary>
@@ -105,7 +107,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
           /// <returns></returns>
           private BackupPolicyDetails CorrectLastBackupForNewPolicyDetail(BackupPolicyDetails backupPolicyDetail)
           {
-              if (backupPolicyDetail != null)
+              if (backupPolicyDetail != null && backupPolicyDetail.LastBackup != null)
               {
                   if (backupPolicyDetail.LastBackup.Value.Year == 2010
                       && backupPolicyDetail.LastBackup.Value.Month == 1

@@ -202,7 +202,7 @@
     <value>Specify valid Backup object for Backup parameter </value>
   </data>
   <data name="InvalidBackupPolicyIdParameter" xml:space="preserve">
-    <value>Specify valid string for BackupPolicyId parameter</value>
+    <value>Specify valid Guid for BackupPolicyId parameter</value>
   </data>
   <data name="InvalidBackupPolicyObjectParameter" xml:space="preserve">
     <value>Specify valid BackupPolicy object for BackupPolicy Parameter</value>

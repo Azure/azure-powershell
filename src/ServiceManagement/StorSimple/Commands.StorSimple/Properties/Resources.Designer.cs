@@ -259,7 +259,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specify valid string for BackupPolicyId parameter.
+        ///   Looks up a localized string similar to Specify valid Guid for BackupPolicyId parameter.
         /// </summary>
         internal static string InvalidBackupPolicyIdParameter {
             get {

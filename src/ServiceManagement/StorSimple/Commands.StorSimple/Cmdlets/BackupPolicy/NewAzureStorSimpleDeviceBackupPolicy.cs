@@ -43,7 +43,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 newConfig = new NewBackupPolicyConfig();
                 newConfig.Name = BackupPolicyName;
 
-                ProcessParameters();
+                if (!ProcessParameters())
+                    return;
 
                 if (WaitForComplete.IsPresent)
                 {
@@ -66,18 +67,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 this.HandleException(exception);
             }
         }
-        private void ProcessParameters()
+        private bool ProcessParameters()
         {
             deviceId = StorSimpleClient.GetDeviceId(DeviceName);
             if (deviceId == null)
             {
                 WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 WriteObject(null);
-                return;
+                return false;
             }
 
             ProcessAddSchedules();
             ProcessAddVolumeIds();
+            return true;
         }
 
         /// <summary>
