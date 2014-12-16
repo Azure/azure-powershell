@@ -120,7 +120,7 @@ namespace Microsoft.WindowsAzure.Commands.Scheduler
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, ParameterSetName = AuthParamSet, HelpMessage = "The Http Authentication type (None or ClientCertificate).")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, ParameterSetName = RequiredParamSet, HelpMessage = "The Http Authentication type (None or ClientCertificate).")]
-        [ValidateSet("None", "ClientCertificate", IgnoreCase = true)]
+        [ValidateSet("None", "ClientCertificate", "ActiveDirectoryOAuth", "Basic", IgnoreCase = true)]
         public string HttpAuthenticationType { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, ParameterSetName = AuthParamSet, HelpMessage = "The pfx of client certificate.")]

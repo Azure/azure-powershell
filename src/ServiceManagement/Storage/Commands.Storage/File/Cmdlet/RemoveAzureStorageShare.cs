@@ -29,6 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ValueFromPipeline = true,
             ParameterSetName = Constants.ShareNameParameterSetName,
             HelpMessage = "Name of the file share to be removed.")]
         [ValidateNotNullOrEmpty]

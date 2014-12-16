@@ -39,12 +39,7 @@ HelpMessage = "The data factory object.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The geographic region to create the data factory.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The description to update.")]
         public string Description { get; set; }
 
@@ -79,21 +74,11 @@ HelpMessage = "The data factory object.")]
             var request = new PSDataFactoryGateway
             {
                 Name = Name,
-                Location = NormalizeLocation(Location),
                 Description = Description
             };
 
             PSDataFactoryGateway response = DataFactoryClient.CreateOrUpdateGateway(ResourceGroupName, DataFactoryName, request);
             WriteObject(response);
-        }
-
-        // As a nested resource of data factory, CSM will not normalize location when
-        // creating gateway, so we have to do this by ourselves.
-        private static string NormalizeLocation(string location)
-        {
-            return String.IsNullOrEmpty(location)
-                       ? String.Empty
-                       : location.Trim().Replace(" ", String.Empty).ToUpperInvariant();
         }
     }
 }
