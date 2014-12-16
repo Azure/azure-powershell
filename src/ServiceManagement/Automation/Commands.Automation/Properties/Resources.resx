@@ -121,6 +121,10 @@
     <value>The Automation account was not found.</value>
     <comment>Automation</comment>
   </data>
+  <data name="RunbookNotFound" xml:space="preserve">
+    <value>The Runbook was not found. Runbook name: {0}.</value>
+    <comment>Autmation</comment>
+  </data>
   <data name="ScheduleNotFound" xml:space="preserve">
     <value>The schedule was not found. Schedule name: {0}.</value>
     <comment>Automation</comment>

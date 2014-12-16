@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationExecuteCmdlet()
         {
             IEnumerable<Runbook> ret = null;
-            if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
+            if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
             {
                 ret = new List<Runbook> 
                 { 
                    this.AutomationClient.GetRunbook(this.AutomationAccountName, this.Name)
                 };
             }
-            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
             {
                 ret = this.AutomationClient.ListRunbooks(this.AutomationAccountName);
             }
