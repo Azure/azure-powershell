@@ -46,7 +46,10 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             inboundNatRule.Properties.Protocol = this.Protocol;
             inboundNatRule.Properties.FrontendPort = this.FrontendPort;
             inboundNatRule.Properties.BackendPort = this.BackendPort;
-            inboundNatRule.Properties.IdleTimeoutInMinutes = this.IdleTimeoutInSeconds;
+            if (this.IdleTimeoutInMinutes > 0)
+            {
+                inboundNatRule.Properties.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
+            }
             inboundNatRule.Properties.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
             inboundNatRule.Properties.BackendIPConfiguration = new PSResourceId();
             inboundNatRule.Properties.BackendIPConfiguration.Id = this.BackendIpConfigurationId;

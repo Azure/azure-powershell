@@ -89,6 +89,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             HelpMessage = "PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The IpConfiguration name." +
+                          "default value: ipconfig1")]
+        [ValidateNotNullOrEmpty]
+        public string IpConfigurationName { get; set; }
+
         [Alias("Tags")]
         [Parameter(
             Mandatory = false,
@@ -139,7 +146,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             networkInterface.Properties.IpConfigurations = new List<PSNetworkInterfaceIpConfiguration>();
 
             var nicIpConfiguration = new PSNetworkInterfaceIpConfiguration();
-            nicIpConfiguration.Name = "ipconfig1";
+            nicIpConfiguration.Name = string.IsNullOrEmpty(this.IpConfigurationName) ? "ipconfig1" : this.IpConfigurationName;
             nicIpConfiguration.Properties = new PSNetworkInterfaceIpConfigurationProperties();
             nicIpConfiguration.Properties.PrivateIpAllocationMethod = this.AllocationMethod;
 

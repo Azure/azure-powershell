@@ -55,20 +55,21 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             var frontendIpConfig = new PSFrontendIpConfiguration();
             frontendIpConfig.Name = this.Name;
             frontendIpConfig.Properties = new PSFrontendIpConfigurationProperties();
-            if (!string.IsNullOrEmpty(this.PrivateIpAllocationMethod))
-            {
-                frontendIpConfig.Properties.PrivateIpAllocationMethod = this.PrivateIpAllocationMethod;
-            }
-
-            if (!string.IsNullOrEmpty(this.PrivateIpAddress))
-            {
-                frontendIpConfig.Properties.PrivateIpAddress = this.PrivateIpAddress;
-            }
-
+           
             if (!string.IsNullOrEmpty(this.SubnetId))
             {
                 frontendIpConfig.Properties.Subnet = new PSResourceId();
                 frontendIpConfig.Properties.Subnet.Id = this.SubnetId;
+
+                if (!string.IsNullOrEmpty(this.PrivateIpAddress))
+                {
+                    frontendIpConfig.Properties.PrivateIpAddress = this.PrivateIpAddress;
+                    frontendIpConfig.Properties.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Static;
+                }
+                else
+                {
+                    frontendIpConfig.Properties.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Dynamic;
+                }
             }
 
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))

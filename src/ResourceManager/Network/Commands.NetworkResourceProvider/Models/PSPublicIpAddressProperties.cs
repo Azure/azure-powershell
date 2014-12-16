@@ -24,6 +24,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 
         public string IpAddress { get; set; }
 
-        public string IdleTimeoutInMinutes { get; set; }
+        public int? IdleTimeoutInMinutes { get; set; }
     }
 }
