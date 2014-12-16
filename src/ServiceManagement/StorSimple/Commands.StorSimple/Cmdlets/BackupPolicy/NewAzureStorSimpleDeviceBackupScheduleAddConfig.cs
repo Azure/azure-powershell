@@ -40,6 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
         private ScheduleStatus scheduleStatus;
         private DateTime StartFromDt;
+
         private void ProcessParameters()
         {
             if (String.IsNullOrEmpty(StartFromDateTime))
@@ -56,6 +57,25 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
             }
             scheduleStatus = Enabled ? ScheduleStatus.Enabled : ScheduleStatus.Disabled;
+            if (BackupType == "Invalid")
+            {
+                throw new ArgumentException("BackupType cannot be Invalid");
+            }
+
+            if (RetentionCount < 1 || RetentionCount > 64)
+            {
+                throw new ArgumentException("RetentionCount value should be 1 - 64");
+            }
+
+            if (RecurrenceType == "Invalid")
+            {
+                throw new ArgumentException("RecurrenceType cannot be Invalid");
+            }
+
+            if (RecurrenceValue <= 0)
+            {
+                throw new ArgumentException("RecurrenceValue should be >=0");
+            }
         }
 
         public override void ExecuteCmdlet()

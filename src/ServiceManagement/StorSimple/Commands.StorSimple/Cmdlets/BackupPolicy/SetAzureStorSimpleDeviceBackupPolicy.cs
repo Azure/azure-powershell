@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -123,7 +124,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             updateConfig.BackupSchedulesToBeAdded = schedulesToAdd;
         }
 
-
         private void ProcessUpdateSchedules()
         {          
             if (BackupSchedulesToUpdate!=null && BackupSchedulesToUpdate.Length > 0)
@@ -164,6 +164,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
             }
             updateConfig.VolumeIds = volumeIdsToUpdate;
+        }
+
+        private void ValidatePolicyNameHasNoDisallowedChars(string name)
+        {
+            // Backup policy name can't have characters "[]=';"
+            Regex disallowedCharsRegex = new Regex("\\[|\\]|=|'|;");
+
+            if (disallowedCharsRegex.IsMatch(name))
+            {
+                throw new ArgumentException("BackupPolicyName should not have characters \"[]=';\"", "Name");
+            }
         }
     }
 }
