@@ -863,7 +863,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             {
                 throw new ArgumentNullException("account1");
             }
-            if (account1.Id != account2.Id)
+            if (!string.Equals(account1.Id, account2.Id, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new ArgumentException("Account1 Ids do not match.");
             }
