@@ -23,8 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Gateway
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network name.")]
         public string VNetName
         {
-            get;
-            set;
+            get; set;
         }
 
         public override void ExecuteCmdlet()
