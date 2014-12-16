@@ -34,6 +34,18 @@ function Get-DeviceName ()
 	$deviceName
 }
 
+function Get-DefaultValue ($key)
+{
+    $defaults = @{
+		StorageAccountName = "wuscisclcis1diagj5sy4";
+		StorageAccountPrimaryAccessKey = "gLm0tjCPJAUKzBFEVjN92ZtEwKnQK8MLasuX/ymNwMRQWFGmUA5sWZUZt9u8JfouhhYyzb3v5RQWtZSX+GxMbg==";
+		StorageAccountSecondaryAccessKey = "zLo+ziNdEX86ffu6OURQFNRL5lrLJpf9J9T8TOk6ne/Mpl7syq1DUp4TIprBt+DGPzo4ytAON+H1N4p6GRwVHg=="
+	}
+
+	return $defaults[$key];
+}
+
+
 function Test-VolumeContainerSync
 {
     echo "Executing Test-VolumeContainerSync"
@@ -117,4 +129,52 @@ function Test-VolumeContainerSync_RepetitiveDCName
     echo "Cleaning up"
     $jobStatus = $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
     echo "Exiting test"
+}
+
+function Test-VolumeContainerSync_InlineSac
+{
+    echo "Executing Test-VolumeContainerSync"
+    $dcName = Generate-Name("VolumeContainer")
+    $deviceName = Get-DeviceName
+
+    echo "Creating DC with inline SAC"
+    $storageAccountName = Get-DefaultValue -key "StorageAccountName"
+    $storageAccountKey = Get-DefaultValue -Key "StorageAccountPrimaryAccessKey"
+	$inlineSac = New-AzureStorSimpleInlineStorageAccountCredential -Name $storageAccountName -Key $storageAccountKey
+    $inlineSac | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -EncryptionEnabled $true -EncryptionKey "testkey" -WaitForComplete
+	
+    echo "Trying to retrieve new DC"
+    $dcToUse = Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -VolumeContainerName $dcName
+	Assert-NotNull $dcToUse "dc is not created properly"
+
+    echo "Cleaning up DC"
+    $jobStatus = $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
+    echo "Existing the test"
+}
+
+function Test-VolumeContainerSync_InlineSac_InvalidCreds
+{
+    echo "Executing Test-VolumeContainerSync"
+    $dcName = Generate-Name("VolumeContainer")
+    $deviceName = Get-DeviceName
+
+    echo "Creating DC with inline SAC"
+    $storageAccountName = Get-DefaultValue -key "StorageAccountName"
+    $storageAccountKey = Get-DefaultValue -Key "StorageAccountPrimaryAccessKey"
+
+    $storageAccountName_Wrong = $storageAccountName.SubString(3)
+    $storageAccountKey_Wrong = $storageAccountKey.SubString(3)
+
+	$inlineSac1 = New-AzureStorSimpleInlineStorageAccountCredential -Name $storageAccountName_Wrong -Key $storageAccountKey
+    $inlineSac1 | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -EncryptionEnabled $true -EncryptionKey "testkey" -WaitForComplete -ErrorAction SilentlyContinue
+	$dcToUse1 = Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -VolumeContainerName $dcName
+	Assert-Null $dcToUse1
+    
+    $dcName2 = Generate-Name("VolumeContainer")
+    $inlineSac2 = New-AzureStorSimpleInlineStorageAccountCredential -Name $storageAccountName -Key $storageAccountKey_Wrong
+    $inlineSac2 | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName2 -DeviceName $deviceName -BandWidthRate 256 -EncryptionEnabled $true -EncryptionKey "testkey" -WaitForComplete -ErrorAction SilentlyContinue
+	$dcToUse2 = Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -VolumeContainerName $dcName2
+	Assert-Null $dcToUse2
+
+    echo "Existing the test"
 }

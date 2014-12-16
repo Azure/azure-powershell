@@ -28,14 +28,14 @@ function Generate-Name ($prefix)
 .SYNOPSIS
 Polls for a job to finish, and returns the JobStatus object
 #>
-function Wait-Job ($jobId)
+function Wait-Job ($taskId)
 {
     do {
         Start-Sleep 3 #sleep for 3sec
-        $jobStatus = Get-AzureStorSimpleJob -InstanceId $jobId
-        $result = $jobStatus.TaskResult
-    } while($result -eq [Microsoft.WindowsAzure.Management.StorSimple.Models.TaskResult]"InProgress")
-    $jobStatus
+        $taskStatus = Get-AzureStorSimpleTask -InstanceId $taskId
+        $result = $taskStatus.AsyncTaskAggregatedResult
+    } while($result -eq [Microsoft.WindowsAzure.Management.StorSimple.Models.AsyncTaskAggregatedResult]"InProgress")
+    Assert-AreEqual $result ([Microsoft.WindowsAzure.Management.StorSimple.Models.AsyncTaskAggregatedResult]"Succeeded")
 }
 
 <#
@@ -604,4 +604,64 @@ function Test-GetPaginatedBackup
     CleanupObjects-BackupScenario $deviceName $dcName $acrName $vdName
 }
 
-Test-CreateGetRestoreDeleteBackup
+<#
+.SYNOPSIS
+Tests create, get, restore, delete of backup in async fashion
+#>
+function Test-CreateGetRestoreDeleteBackup_Async
+{
+    # Unique object names
+	$dcName = Generate-Name("VolumeContainer")
+    $acrName = Generate-Name("ACR")
+    $iqn = Generate-Name("IQN")
+    $vdName = Generate-Name("Volume")
+    $bpName = Generate-Name("BackupPolicy")
+
+    # Setup
+    $deviceName = Get-DeviceName
+    SetupObjects-BackupScenario $deviceName $dcName $acrName $iqn $vdName
+	
+    # Test
+    $vdToUse = Get-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName
+    Assert-NotNull $vdToUse
+
+    $schedule1 = New-AzureStorSimpleDeviceBackupScheduleAddConfig -BackupType LocalSnapshot -RecurrenceType Daily -RecurrenceValue 10 -RetentionCount 5 -Enabled $true
+    $schedule2 = New-AzureStorSimpleDeviceBackupScheduleAddConfig -BackupType CloudSnapshot -RecurrenceType Hourly -RecurrenceValue 1 -RetentionCount 5 -Enabled $true
+    $scheduleArray = @()
+    $scheduleArray += $schedule1
+    $scheduleArray += $schedule2
+    $volumeArray = @()
+    $volumeArray += $vdToUse.InstanceId
+    
+    $taskId = New-AzureStorSimpleDeviceBackupPolicy -DeviceName $deviceName -BackupPolicyName $bpName -BackupSchedulesToAdd $scheduleArray -VolumeIdsToAdd $volumeArray
+    Wait-Job $taskId
+    $bpToUse = Get-AzureStorSimpleDeviceBackupPolicy -DeviceName $deviceName -BackupPolicyName $bpName
+	Assert-NotNull $bpToUse
+    $bpId = $bpToUse.InstanceId
+
+    $taskId = Start-AzureStorSimpleDeviceBackupJob -DeviceName $deviceName -BackupPolicyId $bpId -BackupType CloudSnapshot
+    Wait-Job $taskId
+
+    $retryCount = 0
+    do {
+        Start-Sleep (5*$retryCount)
+        $backupToRestore = Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -BackupPolicyId $bpId -First 1
+        $retryCount += 1
+    } while(($backupToRestore -eq $null) -and ($retryCount -lt 5))
+    Assert-NotNull $backupToRestore
+
+    $backupId = $backupToRestore.InstanceId
+    $snapshotId = $backupToRestore.Snapshots[0].Id
+
+    $taskId = Start-AzureStorSimpleDeviceBackupRestoreJob -DeviceName $deviceName -BackupId $backupId -Snapshot $snapshotId -Force
+    Wait-Job $taskId
+
+    $taskId = Remove-AzureStorSimpleDeviceBackup -DeviceName $deviceName -BackupId $backupId -Force
+    Wait-Job $taskId
+    
+    $taskId = Remove-AzureStorSimpleDeviceBackupPolicy -DeviceName $deviceName -BackupPolicyId $bpId -Force
+    Wait-Job $taskId
+
+    #Cleanup
+    CleanupObjects-BackupScenario $deviceName $dcName $acrName $vdName
+}
