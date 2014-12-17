@@ -180,11 +180,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CloudService\Development\DisableAzureRemoteDesktop.cs" />
-    <Compile Include="CloudService\Development\EnableAzureMemcacheRole.cs" />
     <Compile Include="CloudService\Development\EnableAzureRemoteDesktop.cs" />
     <Compile Include="CloudService\Development\GetAzureServiceProjectRoleRuntime.cs" />
     <Compile Include="CloudService\Development\SaveAzureServiceProjectPackage.cs" />
-    <Compile Include="CloudService\Development\Scaffolding\AddAzureCacheWorkerRole.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzureDjangoWebRole.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzureNodeWebRole.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzureNodeWorkerRole.cs" />

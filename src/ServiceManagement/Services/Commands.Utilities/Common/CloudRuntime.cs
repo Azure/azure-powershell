@@ -579,39 +579,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 
             protected override void ApplyScaffoldingChanges(CloudRuntimePackage package)
             {
-                string rootPath = CommonUtilities.GetServiceRootPath(FilePath);
-
-                if (CloudServiceProject.Components.StartupTaskExists(RoleName, Resources.CacheStartupCommand))
-                {
-                    CloudServiceProject.Components.SetStartupTaskVariable(
-                        RoleName,
-                        Resources.CacheRuntimeUrl,
-                        package.PackageUri.ToString(),
-                        Resources.CacheStartupCommand);
-                }
-                else
-                {
-                    Variable emulated = new Variable
-                    {
-                        name = Resources.EmulatedKey,
-                        RoleInstanceValue = new RoleInstanceValueElement
-                        {
-                            xpath = "/RoleEnvironment/Deployment/@emulated"
-                        }
-                    };
-                    Variable cacheRuntimeUrl = new Variable
-                    {
-                        name = Resources.CacheRuntimeUrl,
-                        value = package.PackageUri.ToString()
-                    };
-
-                    CloudServiceProject.Components.AddStartupTask(
-                        RoleName,
-                        Resources.CacheStartupCommand,
-                        ExecutionContext.elevated,
-                        emulated,
-                        cacheRuntimeUrl);
-                }
+                //Caching scaffolding is no longer supported. 
             }
         }
 

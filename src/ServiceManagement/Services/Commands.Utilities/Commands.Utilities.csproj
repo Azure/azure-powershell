@@ -179,7 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CloudService\AddRole.cs" />
-    <Compile Include="CloudService\CacheConfigurationFactory.cs" />
     <Compile Include="CloudService\CloudServiceClient.cs" />
     <Compile Include="CloudService\ICloudServiceClient.cs" />
     <Compile Include="CloudService\Model\ConfigurationSet.cs" />

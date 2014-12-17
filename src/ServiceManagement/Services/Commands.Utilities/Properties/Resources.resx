@@ -236,28 +236,6 @@
   <data name="BlobEndpointUriEnv" xml:space="preserve">
     <value>AZURE_BLOBSTORAGE_TEMPLATE</value>
   </data>
-  <data name="CacheAlreadyEnabledMessage" xml:space="preserve">
-    <value>Memcache is already enabled for role '{0}'.</value>
-  </data>
-  <data name="CacheAutoDiscoveryConfig" xml:space="preserve">
-    <value>&lt;configuration&gt;
-  &lt;configSections&gt;
-    &lt;section name="dataCacheClients" type="Microsoft.ApplicationServer.Caching.DataCacheClientsSection, Microsoft.ApplicationServer.Caching.Core" allowLocation="true" 	allowDefinition="Everywhere" /&gt;
-  &lt;/configSections&gt;
-  &lt;dataCacheClients&gt;
-    &lt;tracing sinkType="DiagnosticSink" traceLevel="Error" /&gt;
-    &lt;dataCacheClient name="DefaultShimConfig" useLegacyProtocol="false"&gt;
-      &lt;autoDiscover isEnabled="true" identifier="$RoleName$" /&gt;
-    &lt;/dataCacheClient&gt;
-  &lt;/dataCacheClients&gt;
-&lt;/configuration&gt;</value>
-  </data>
-  <data name="CacheClientDiagnosticLevelAssemblyName" xml:space="preserve">
-    <value>Microsoft.WindowsAzure.Plugins.Caching.ClientDiagnosticLevel</value>
-  </data>
-  <data name="CacheDiagnosticStoreName" xml:space="preserve">
-    <value>DiagnosticStore</value>
-  </data>
   <data name="CacheMismatchMessage" xml:space="preserve">
     <value>Please upgrade the cache runtime of role '{0}' to '{1}' using Set-AzureServiceProjectRole -RoleName {0} -Runtime Cache -Version {1}</value>
   </data>
@@ -270,26 +248,11 @@
   <data name="CacheRuntimeVersionKey" xml:space="preserve">
     <value>CacheRuntimeVersion</value>
   </data>
-  <data name="CacheScaffolding" xml:space="preserve">
-    <value>Resources\Scaffolding\Cache</value>
-  </data>
-  <data name="CacheStartupCommand" xml:space="preserve">
-    <value>setup_cache.cmd &gt; cache_log.txt</value>
-  </data>
   <data name="CacheVersionWarningText" xml:space="preserve">
     <value>Installing caching version {0} for Role '{1}' (the caching version locally installed is: {2})</value>
   </data>
-  <data name="CachingCacheSizePercentageSettingName" xml:space="preserve">
-    <value>Microsoft.WindowsAzure.Plugins.Caching.CacheSizePercentage</value>
-  </data>
   <data name="CachingConfigStoreConnectionStringSettingName" xml:space="preserve">
     <value>Microsoft.WindowsAzure.Plugins.Caching.ConfigStoreConnectionString</value>
-  </data>
-  <data name="CachingConfigStoreConnectionStringSettingValue" xml:space="preserve">
-    <value>DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}</value>
-  </data>
-  <data name="CachingModuleName" xml:space="preserve">
-    <value>Caching</value>
   </data>
   <data name="CannotFind" xml:space="preserve">
     <value>Cannot find {0} with name {1}.</value>

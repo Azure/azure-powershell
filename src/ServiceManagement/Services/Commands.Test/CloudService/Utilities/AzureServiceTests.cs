@@ -39,10 +39,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 
         private AddAzureNodeWorkerRoleCommand addNodeWorkerCmdlet;
 
-        private AddAzureCacheWorkerRoleCommand addCacheRoleCmdlet;
-
-        private EnableAzureMemcacheRoleCommand enableCacheCmdlet;
-
         /// <summary>
         /// This method handles most possible cases that user can do to create role
         /// </summary>
@@ -194,12 +190,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             AzureTool.IgnoreMissingSDKError = true;
             AzurePowerShell.ProfileDirectory = Test.Utilities.Common.Data.AzureSdkAppDir;
             mockCommandRuntime = new MockCommandRuntime();
-
-            enableCacheCmdlet = new EnableAzureMemcacheRoleCommand();
-            addCacheRoleCmdlet = new AddAzureCacheWorkerRoleCommand();
-
-            addCacheRoleCmdlet.CommandRuntime = mockCommandRuntime;
-            enableCacheCmdlet.CommandRuntime = mockCommandRuntime;
         }
 
         [Fact]
