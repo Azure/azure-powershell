@@ -51,11 +51,14 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -63,11 +66,11 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.4.0.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.4.2.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\WindowsAzure.Storage.4.2.1\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.4.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -75,6 +78,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Net" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -92,7 +96,8 @@
     <Compile Include="Gateway\GetAzureVNetConnection.cs" />
     <Compile Include="Gateway\GetAzureVNetGateway.cs" />
     <Compile Include="Gateway\GetAzureVNetGatewayDiagnostics.cs" />
-    <Compile Include="Gateway\GetAzureVnetGatewayKey.cs" />
+    <Compile Include="Gateway\GetAzureVNetGatewayIPsecParameters.cs" />
+    <Compile Include="Gateway\GetAzureVNetGatewayKey.cs" />
     <Compile Include="Gateway\Model\GatewayConnectionContext.cs" />
     <Compile Include="Gateway\Model\ProvisioningState.cs" />
     <Compile Include="Gateway\Model\SharedKeyContext.cs" />
@@ -101,10 +106,12 @@
     <Compile Include="Gateway\NewAzureVNetGateway.cs" />
     <Compile Include="Gateway\RemoveAzureVNetGateway.cs" />
     <Compile Include="Gateway\RemoveAzureVNetGatewayDefaultSite.cs" />
-    <Compile Include="Gateway\ResizeAzureVnetGateway.cs" />
+    <Compile Include="Gateway\ResetAzureVNetGateway.cs" />
+    <Compile Include="Gateway\ResizeAzureVNetGateway.cs" />
     <Compile Include="Gateway\SetAzureVNetGateway.cs" />
-    <Compile Include="Gateway\SetAzureVnetGatewayDefaultSite.cs" />
-    <Compile Include="Gateway\SetAzureVnetGatewayKey.cs" />
+    <Compile Include="Gateway\SetAzureVNetGatewayDefaultSite.cs" />
+    <Compile Include="Gateway\SetAzureVNetGatewayIPsecParameters.cs" />
+    <Compile Include="Gateway\SetAzureVNetGatewayKey.cs" />
     <Compile Include="Gateway\StartAzureVNetGatewayDiagnostics.cs" />
     <Compile Include="Gateway\StopAzureVNetGatewayDiagnostics.cs" />
     <Compile Include="NetworkClient.cs" />

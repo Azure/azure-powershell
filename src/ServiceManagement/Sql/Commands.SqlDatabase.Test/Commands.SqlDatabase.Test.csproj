@@ -72,11 +72,11 @@
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.WindowsAzure.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -90,6 +90,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -132,6 +133,18 @@
     <Compile Include="UnitTests\Database\Cmdlet\NewAzureSqlPremiumDatabaseTests.cs" />
     <Compile Include="UnitTests\Database\Cmdlet\AzureSqlDatabaseCopyCertAuthTests.cs" />
     <Compile Include="UnitTests\Database\Cmdlet\RestoreDatabaseTests.cs" />
+    <Compile Include="UnitTests\Database\Cmdlet\SqlAuthv12MockTests.cs" />
+    <Compile Include="UnitTests\TSql\MockQueryResult.cs" />
+    <Compile Include="UnitTests\TSql\MockSettings.cs" />
+    <Compile Include="UnitTests\TSql\MockSqlCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UnitTests\TSql\MockSqlConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UnitTests\TSql\MockSqlParameter.cs" />
+    <Compile Include="UnitTests\TSql\MockSqlParameterCollection.cs" />
+    <Compile Include="UnitTests\TSql\RecordMockDataResultsAttribute.cs" />
     <Compile Include="Utilities\SqlCustomPsHostUserInterface.cs" />
     <Compile Include="Utilities\SqlDatabaseSettings.cs" />
     <Compile Include="UnitTests\MockServer\AsyncExceptionManager.cs" />
@@ -221,6 +234,9 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="TestScripts\Database\DeleteDatabase-ScenarioFunctions.ps1" />
+    <Content Include="Resources\TSqlMockSessions\SqlAuthv12MockTests.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestScripts\Database\ExpectedFormat.txt" />
     <Content Include="TestScripts\Server\ExpectedFormat.txt" />
   </ItemGroup>

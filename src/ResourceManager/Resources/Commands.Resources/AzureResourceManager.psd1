@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.8.11'
+ModuleVersion = '0.8.12'
 
 # ID used to uniquely identify this module
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'
@@ -63,7 +63,8 @@ FormatsToProcess = @(
     '.\Resources\Microsoft.WindowsAzure.Commands.Profile.format.ps1xml',
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',
-    '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml'
+    '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',
+    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
@@ -74,7 +75,8 @@ NestedModules = @(
     '.\Sql\Microsoft.Azure.Commands.Sql.dll',
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',
-    '.\Batch\Microsoft.Azure.Commands.Batch.dll'
+    '.\Batch\Microsoft.Azure.Commands.Batch.dll',
+    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll'
 )
 
 # Functions to export from this module
