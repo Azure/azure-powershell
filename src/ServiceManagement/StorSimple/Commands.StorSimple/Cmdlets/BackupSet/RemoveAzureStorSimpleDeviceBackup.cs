@@ -14,23 +14,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// <summary>
     /// This commandlet will remove a given backup from the device
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureStorSimpleDeviceBackup", DefaultParameterSetName = StorSimpleCmdletParameterSet.Empty)]
+    [Cmdlet(VerbsCommon.Remove, "AzureStorSimpleDeviceBackup", DefaultParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
     public class RemoveAzureStorSimpleDeviceBackup:StorSimpleCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName, ParameterSetName = StorSimpleCmdletParameterSet.Empty )]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByObject)]
         [ValidateNotNullOrEmptyAttribute]
         public string DeviceName { get; set; }
 
 
-        [Parameter(Position = 1, Mandatory = true, 
-            HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupIdToDelete,
-            ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupIdToDelete,ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
         public String BackupId { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupIdToDelete,
-            ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByObject)]
+        [Parameter(Position = 1, Mandatory = true,ValueFromPipeline = true,HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupIdToDelete,ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByObject)]
         public Backup Backup { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageForce)]
@@ -51,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                ProcessParameters();
+                if (!ProcessParameters()) return;
                 ConfirmAction(
                    Force.IsPresent,
                    string.Format(Resources.RemoveASSDBackupWarningMessage, finalBackupId),
@@ -78,13 +74,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
         }
 
-        private void ProcessParameters()
+        private bool ProcessParameters()
         {
             deviceId = StorSimpleClient.GetDeviceId(DeviceName);
 
             if (deviceId == null)
             {
-                WriteVerbose(Resources.NotFoundMessageDevice);
+                WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                WriteObject(null);
+                return false;
             }
             switch (ParameterSetName)
             {
@@ -105,7 +103,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     }
                     break;
             }
- 
+            return true;
         }
     }
 }
