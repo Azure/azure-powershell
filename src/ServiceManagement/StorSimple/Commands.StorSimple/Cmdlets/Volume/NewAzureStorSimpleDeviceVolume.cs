@@ -32,7 +32,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Volume
         public Int64 VolumeSizeInBytes { get; set; }
 
         [Parameter(Position = 4, Mandatory = true, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeAcrList)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
+        [AllowEmptyCollection]
         public List<AccessControlRecord> AccessControlRecords { get; set; }
 
         [Alias("AppType")]
