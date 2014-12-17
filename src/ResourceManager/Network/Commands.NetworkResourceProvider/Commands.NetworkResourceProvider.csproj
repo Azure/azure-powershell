@@ -110,7 +110,6 @@
     <Compile Include="Common\NetworkBaseClient.cs" />
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
-    <Compile Include="Common\NetworkResourceBaseClient.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\CommonAzureLoadBalancerBackendAddressPoolConfig.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\SetAzureLoadBalancerBackendAddressPoolConfigCmdlet.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\GetAzureLoadBalancerBackendAddressPoolConfigCmdlet.cs" />
@@ -210,7 +209,6 @@
     <Compile Include="VirtualNetwork\GetAzureVirtualNetworkCmdlet.cs" />
     <Compile Include="VirtualNetwork\NewAzureVirtualNetworkCmdlet.cs" />
     <Compile Include="VirtualNetwork\VirtualNetworkBaseClient.cs" />
-     
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
