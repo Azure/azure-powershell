@@ -399,7 +399,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             var account = client.AddAccountAndLoadSubscriptions(new AzureAccount { Id = "UserA", Type = AzureAccount.AccountType.User }, 
                 AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], null);
 
-            Assert.Equal("USERA", account.Id);
             var userA = client.GetAccount("UserA");
             var secondUserA = client.GetAccount("USERA");
             Assert.NotNull(userA);

@@ -835,9 +835,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
             {
                 throw new ArgumentNullException("environment1");
             }
-            if (environment1.Name != environment2.Name)
+            if (!string.Equals(environment1.Name, environment2.Name, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new ArgumentException("Subscription Ids do not match.");
+                throw new ArgumentException("Environment names do not match.");
             }
             AzureEnvironment mergedEnvironment = new AzureEnvironment
             {
