@@ -15,9 +15,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return this.GetStorSimpleClient().DataContainer.List(deviceId, this.GetCustomRequestHeaders());
         }
 
-        public TaskStatusInfo GetJobStatus(string jobId)
+        public TaskStatusInfo GetTaskStatus(string taskId)
         {
-            return GetStorSimpleClient().GetOperationStatus(jobId);
+            return GetStorSimpleClient().GetOperationStatus(taskId);
         }
         public TaskStatusInfo CreateDataContainer(string deviceId,DataContainerRequest dc)
         {

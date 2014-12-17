@@ -790,7 +790,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The job created for your {0} operation has completed successfully..
+        ///   Looks up a localized string similar to The task created for your {0} operation has completed successfully..
         /// </summary>
         internal static string SuccessMessageCompleteJob {
             get {

@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Exceptions
 {
     [Serializable]
-    public class StorSimpleJobNotFoundException : Exception
+    public class StorSimpleTaskNotFoundException : Exception
     {
-        static String genericErrorMessage = "The JobId provided does not exist. Please try with a valid job instance Id.";
+        static String genericErrorMessage = "The TaskId provided does not exist. Please try with a valid task instance Id.";
         /// <summary>
         /// Create a new instance with error message
         /// </summary>
         /// <param name="message">error message</param>
-        public StorSimpleJobNotFoundException(String message)
+        public StorSimpleTaskNotFoundException(String message)
             : base(message)
         { }
 
-        public StorSimpleJobNotFoundException()
+        public StorSimpleTaskNotFoundException()
             : base(genericErrorMessage)
         {
 

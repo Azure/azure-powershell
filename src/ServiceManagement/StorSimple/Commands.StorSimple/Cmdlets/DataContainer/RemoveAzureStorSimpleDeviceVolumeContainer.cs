@@ -45,15 +45,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                   
                                     if (WaitForComplete.IsPresent)
                                     {
-                                        WriteVerbose("About to run a job to remove your Volume container!");
-                                        var jobstatusInfo = StorSimpleClient.DeleteDataContainer(deviceid, VolumeContainer.InstanceId);
-                                        HandleSyncTaskResponse(jobstatusInfo, "delete");
+                                        WriteVerbose("About to run a task to remove your Volume container!");
+                                        var taskstatusInfo = StorSimpleClient.DeleteDataContainer(deviceid, VolumeContainer.InstanceId);
+                                        HandleSyncTaskResponse(taskstatusInfo, "delete");
                                     }
                                     else
                                     {
-                                        WriteVerbose("About to create a job to remove your Volume container!");
-                                        var jobresult = StorSimpleClient.DeleteDataContainerAsync(deviceid, VolumeContainer.InstanceId);
-                                        HandleAsyncTaskResponse(jobresult, "delete");
+                                        WriteVerbose("About to create a task to remove your Volume container!");
+                                        var taskresult = StorSimpleClient.DeleteDataContainerAsync(deviceid, VolumeContainer.InstanceId);
+                                        HandleAsyncTaskResponse(taskresult, "delete");
                                     }
                               }
                               catch (Exception exception)

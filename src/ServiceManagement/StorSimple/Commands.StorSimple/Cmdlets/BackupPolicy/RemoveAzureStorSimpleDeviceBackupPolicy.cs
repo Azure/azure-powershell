@@ -52,15 +52,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                   {
                       if (WaitForComplete.IsPresent)
                       {
-                          WriteVerbose("About to run a job to remove your backuppolicy!");
-                          var deleteJobStatusInfo = StorSimpleClient.DeleteBackupPolicy(deviceId, backupPolicyIdFinal);
-                          HandleSyncTaskResponse(deleteJobStatusInfo, "remove");
+                          WriteVerbose("About to run a task to remove your backuppolicy!");
+                          var deleteTaskStatusInfo = StorSimpleClient.DeleteBackupPolicy(deviceId, backupPolicyIdFinal);
+                          HandleSyncTaskResponse(deleteTaskStatusInfo, "remove");
                       }
                       else
                       {
-                          WriteVerbose("About to create a job to remove your backuppolicy!");
-                          var jobresult = StorSimpleClient.DeleteBackupPolicyAsync(deviceId, backupPolicyIdFinal);
-                          HandleAsyncTaskResponse(jobresult, "remove");
+                          WriteVerbose("About to create a task to remove your backuppolicy!");
+                          var taskresult = StorSimpleClient.DeleteBackupPolicyAsync(deviceId, backupPolicyIdFinal);
+                          HandleAsyncTaskResponse(taskresult, "remove");
                       }
                   });
             }

@@ -77,15 +77,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                                     if (WaitForComplete.IsPresent)
                                     {
-                                        WriteVerbose("About to run a job to remove your ACR!");
-                                        var jobStatus = StorSimpleClient.ConfigureService(serviceConfig);
-                                        HandleSyncTaskResponse(jobStatus, "delete");
+                                        WriteVerbose("About to run a task to remove your ACR!");
+                                        var taskStatus = StorSimpleClient.ConfigureService(serviceConfig);
+                                        HandleSyncTaskResponse(taskStatus, "delete");
                                     }
                                     else
                                     {
-                                        WriteVerbose("About to create a job to remove your ACR!");
-                                        var jobResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
-                                        HandleAsyncTaskResponse(jobResponse, "delete");
+                                        WriteVerbose("About to create a task to remove your ACR!");
+                                        var taskResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
+                                        HandleAsyncTaskResponse(taskResponse, "delete");
                                     }
                               }
                               catch (Exception exception)

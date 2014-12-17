@@ -69,8 +69,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
                 else
                 {
-                    var jobResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
-                    HandleAsyncTaskResponse(jobResponse, "create");
+                    var taskResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
+                    HandleAsyncTaskResponse(taskResponse, "create");
                 }
             }
             catch (Exception exception)

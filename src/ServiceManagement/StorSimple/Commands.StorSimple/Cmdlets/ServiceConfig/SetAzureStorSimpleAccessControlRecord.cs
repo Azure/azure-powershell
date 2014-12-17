@@ -80,8 +80,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 else
                 {
                     WriteVerbose("About to create a task to update your Access Control Record!");
-                    var jobResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
-                    HandleAsyncTaskResponse(jobResponse, "update");
+                    var taskResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
+                    HandleAsyncTaskResponse(taskResponse, "update");
                 }
             }
             catch (Exception exception)

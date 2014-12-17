@@ -42,13 +42,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                  ProcessParameters();
                  if (WaitForComplete.IsPresent)
                  {
-                     var JobStatusInfo = StorSimpleClient.DoBackup(deviceId, BackupPolicyId, backupNowRequest);
-                     HandleSyncTaskResponse(JobStatusInfo, "start");
+                     var taskStatusInfo = StorSimpleClient.DoBackup(deviceId, BackupPolicyId, backupNowRequest);
+                     HandleSyncTaskResponse(taskStatusInfo, "start");
                  }
                  else
                  {
-                     var jobresult = StorSimpleClient.DoBackupAsync(deviceId, BackupPolicyId, backupNowRequest);
-                     HandleAsyncTaskResponse(jobresult, "start");
+                     var taskresult = StorSimpleClient.DoBackupAsync(deviceId, BackupPolicyId, backupNowRequest);
+                     HandleAsyncTaskResponse(taskresult, "start");
                  }
              }
              catch (Exception exception)

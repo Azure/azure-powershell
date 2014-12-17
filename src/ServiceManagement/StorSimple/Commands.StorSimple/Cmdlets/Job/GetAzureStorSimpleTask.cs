@@ -19,7 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                var taskStatus = StorSimpleClient.GetJobStatus(InstanceId);
+                var taskStatus = StorSimpleClient.GetTaskStatus(InstanceId);
                 this.WriteObject(taskStatus);
             }
 

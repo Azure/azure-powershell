@@ -244,7 +244,7 @@
     <value>The {0} operation failed, please check the task's status for more details.</value>
   </data>
   <data name="SuccessMessageCompleteJob" xml:space="preserve">
-    <value>The job created for your {0} operation has completed successfully.</value>
+    <value>The task created for your {0} operation has completed successfully.</value>
   </data>
   <data name="BackupsReturnedCount" xml:space="preserve">
     <value>{0} backups found!</value>

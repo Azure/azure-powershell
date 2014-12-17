@@ -78,15 +78,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                                     if (WaitForComplete.IsPresent)
                                     {
-                                        WriteVerbose("About to run a job to remove your Storage Access Credential!");
-                                        var jobStatus = StorSimpleClient.ConfigureService(serviceConfig);
-                                        HandleSyncTaskResponse(jobStatus, "delete");
+                                        WriteVerbose("About to run a task to remove your Storage Access Credential!");
+                                        var taskStatus = StorSimpleClient.ConfigureService(serviceConfig);
+                                        HandleSyncTaskResponse(taskStatus, "delete");
                                     }
                                     else
                                     {
-                                        WriteVerbose("About to create a job to remove your Storage Access Credential!");
-                                        var jobResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
-                                        HandleAsyncTaskResponse(jobResponse, "delete");
+                                        WriteVerbose("About to create a task to remove your Storage Access Credential!");
+                                        var taskResponse = StorSimpleClient.ConfigureServiceAsync(serviceConfig);
+                                        HandleAsyncTaskResponse(taskResponse, "delete");
                                     }
                               }
                               catch (Exception exception)

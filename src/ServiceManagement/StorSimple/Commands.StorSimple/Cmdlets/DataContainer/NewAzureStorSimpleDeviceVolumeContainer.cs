@@ -118,8 +118,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 else
                 {
-                    var jobstatus = StorSimpleClient.CreateDataContainerAsync(deviceid, dc);
-                    HandleAsyncTaskResponse(jobstatus, "create");                
+                    var taskstatus = StorSimpleClient.CreateDataContainerAsync(deviceid, dc);
+                    HandleAsyncTaskResponse(taskstatus, "create");                
                 }
             }
             catch (Exception exception)

@@ -98,8 +98,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Volume
 
                 else
                 {
-                    var jobstatus = StorSimpleClient.CreateVolumeAsync(deviceid, virtualDiskToCreate); ;
-                    HandleAsyncTaskResponse(jobstatus, "create");
+                    var taskstatus = StorSimpleClient.CreateVolumeAsync(deviceid, virtualDiskToCreate); ;
+                    HandleAsyncTaskResponse(taskstatus, "create");
                 }
             }
             catch (Exception exception)

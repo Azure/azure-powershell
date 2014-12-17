@@ -81,8 +81,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 else
                 {
                     WriteVerbose("About to create a task to update your backuppolicy!");
-                    var jobresult = StorSimpleClient.UpdateBackupPolicyAsync(deviceId, BackupPolicyId, updateConfig);
-                    HandleAsyncTaskResponse(jobresult, "Update");
+                    var taskresult = StorSimpleClient.UpdateBackupPolicyAsync(deviceId, BackupPolicyId, updateConfig);
+                    HandleAsyncTaskResponse(taskresult, "Update");
                 }
             }
 

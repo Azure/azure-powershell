@@ -63,21 +63,21 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             WriteVerbose(msg);
         }
 
-        internal virtual void HandleSyncTaskResponse(TaskStatusInfo jobStatus, string operationName)
+        internal virtual void HandleSyncTaskResponse(TaskStatusInfo taskStatus, string operationName)
         {
             string msg = string.Empty;
-            JobReport jobReport = new JobReport(jobStatus);
+            TaskReport taskReport = new TaskReport(taskStatus);
 
-            if (jobStatus.AsyncTaskAggregatedResult != AsyncTaskAggregatedResult.Succeeded)
+            if (taskStatus.AsyncTaskAggregatedResult != AsyncTaskAggregatedResult.Succeeded)
             {
                 msg = string.Format(Resources.FailureMessageCompleteJob, operationName);
-                WriteObject(jobReport);
+                WriteObject(taskReport);
             }
 
             else
             {
                 msg = string.Format(Resources.SuccessMessageCompleteJob, operationName);
-                WriteObject(jobReport);
+                WriteObject(taskReport);
             }
 
             WriteVerbose(msg);

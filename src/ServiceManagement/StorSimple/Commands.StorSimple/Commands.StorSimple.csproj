@@ -144,11 +144,11 @@
     <Compile Include="Exceptions\NoDeviceRegisteredException.cs" />
     <Compile Include="Exceptions\RegistrationKeyException.cs" />
     <Compile Include="Exceptions\StorSimpleDeviceNotFoundException.cs" />
-    <Compile Include="Exceptions\StorSimpleJobNotFoundException.cs" />
+    <Compile Include="Exceptions\StorSimpleTaskNotFoundException.cs" />
     <Compile Include="Exceptions\StorSimpleSecretManagementException.cs" />
     <Compile Include="Exceptions\ResourceContextNotFoundException.cs" />
     <Compile Include="Exceptions\ResourceNotFoundException.cs" />
-    <Compile Include="Models\JobReport.cs" />
+    <Compile Include="Models\TaskReport.cs" />
     <Compile Include="Models\PSContracts.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -187,6 +187,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

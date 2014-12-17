@@ -56,8 +56,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                       else
                       {
                           //async scenario
-                          var jobresult = StorSimpleClient.RestoreBackupAsync(deviceId, request);
-                          HandleAsyncTaskResponse(jobresult, "start");
+                          var taskresult = StorSimpleClient.RestoreBackupAsync(deviceId, request);
+                          HandleAsyncTaskResponse(taskresult, "start");
                       }
                   });
             }
