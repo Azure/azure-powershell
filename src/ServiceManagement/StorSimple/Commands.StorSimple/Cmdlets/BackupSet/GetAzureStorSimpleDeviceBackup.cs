@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                ProcessParameters();
+                if (!ProcessParameters()) return;
                 GetBackupResponse backupList = null;
                 backupList = StorSimpleClient.GetAllBackups(deviceId, filterType, isAllSelected, IdToPass,
                     FromDateTime.ToString(),
@@ -91,13 +91,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
         }
 
-        private void ProcessParameters()
+        private bool ProcessParameters()
         {
             deviceId = StorSimpleClient.GetDeviceId(DeviceName);
 
             if (deviceId == null)
             {
-                WriteVerbose(Resources.NotFoundMessageDevice);
+                WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                WriteObject(null);
+                return false;
             }
             if(First<0)
                 throw new ArgumentException(Resources.FirstParameterInvalidMessage);
@@ -151,6 +153,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     IdToPass = null;
                     break;
             }
+            return true;
         }
 
     }
