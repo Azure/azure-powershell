@@ -1690,6 +1690,9 @@
                                         <Component Id="cmp021B29446C062B1149132B85E2459720" Guid="*">
                                             <File Id="filF3D8A3E762DD13F9FFD7B2B0BB339070" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.PythonTools.WebRole.dll.content" />
                                         </Component>
+                                        <Component Id="cmpA69B6C11506C243CDE56D867B794AC9F" Guid="*">
+                                           <File Id="fil848958AA95168855F8FE3E93358C2B76" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.Web.Deployment.dll.content" />
+                                        </Component>
                                         <Component Id="cmp8B904F97CEDA97F7D1A68BDBC2259AB4" Guid="*">
                                             <File Id="filD732F0BF33579E271040FE1DE0AB979E" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.Web.PlatformInstaller.dll.content" />
                                         </Component>
@@ -2614,6 +2617,7 @@
             <ComponentRef Id="cmp5D8936EABB5A2DB970A0AB381C73830D" />
             <ComponentRef Id="cmp1F5C71A2DDA57D948B24B19D145ADE56" />
             <ComponentRef Id="cmp021B29446C062B1149132B85E2459720" />
+            <ComponentRef Id="cmpA69B6C11506C243CDE56D867B794AC9F" />
             <ComponentRef Id="cmp8B904F97CEDA97F7D1A68BDBC2259AB4" />
             <ComponentRef Id="cmp0F225B9A1229479E467639080599E9D1" />
             <ComponentRef Id="cmpB20DE8E10E242EDCAFEBEAEECD60CDD3" />
