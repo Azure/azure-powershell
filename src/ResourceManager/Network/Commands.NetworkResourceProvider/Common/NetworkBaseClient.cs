@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     public abstract class NetworkBaseClient : AzurePSCmdlet
     {
 
-        //;protected static string NetworkCmdletPrefix
         public NetworkClient networkClient;
 
         public NetworkClient NetworkClient
