@@ -918,7 +918,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                     var tenantAccount = new AzureAccount();
                     CopyAccount(account, tenantAccount);
                     var tenantToken = AzureSession.AuthenticationFactory.Authenticate(tenantAccount, environment, tenant, password, ShowDialog.Never);
-                    if (tenantAccount.Id == account.Id)
+                    if (string.Equals(tenantAccount.Id, account.Id, StringComparison.InvariantCultureIgnoreCase))
                     {
                         tenantAccount = account;
                     }
@@ -984,7 +984,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                     var tenantAccount = new AzureAccount();
                     CopyAccount(account, tenantAccount);
                     var tenantToken = AzureSession.AuthenticationFactory.Authenticate(tenantAccount, environment, tenant, password, ShowDialog.Never);
-                    if (tenantAccount.Id == account.Id)
+                    if (string.Equals(tenantAccount.Id, account.Id, StringComparison.InvariantCultureIgnoreCase))
                     {
                         tenantAccount = account;
                     }
