@@ -154,6 +154,12 @@ namespace Microsoft.Azure.Commands.Network
             return client.Gateways.Delete(vnetName);
         }
 
+        public GatewayGetOperationStatusResponse ResetGateway(string vnetName)
+        {
+            ResetGatewayParameters parameters = new ResetGatewayParameters();
+            return client.Gateways.Reset(vnetName, parameters);
+        }
+
         public GatewayGetOperationStatusResponse ResizeGateway(string vnetName, string gatewaySKU)
         {
             ResizeGatewayParameters parameters = new ResizeGatewayParameters()
