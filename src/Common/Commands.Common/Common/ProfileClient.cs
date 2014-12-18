@@ -835,9 +835,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
             {
                 throw new ArgumentNullException("environment1");
             }
-            if (environment1.Name != environment2.Name)
+            if (!string.Equals(environment1.Name, environment2.Name, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new ArgumentException("Subscription Ids do not match.");
+                throw new ArgumentException("Environment names do not match.");
             }
             AzureEnvironment mergedEnvironment = new AzureEnvironment
             {
@@ -863,9 +863,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
             {
                 throw new ArgumentNullException("account1");
             }
-            if (account1.Id != account2.Id)
+            if (!string.Equals(account1.Id, account2.Id, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new ArgumentException("Account1 Ids do not match.");
+                throw new ArgumentException("Account Ids do not match.");
             }
             if (account1.Type != account2.Type)
             {
@@ -918,7 +918,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                     var tenantAccount = new AzureAccount();
                     CopyAccount(account, tenantAccount);
                     var tenantToken = AzureSession.AuthenticationFactory.Authenticate(tenantAccount, environment, tenant, password, ShowDialog.Never);
-                    if (tenantAccount.Id == account.Id)
+                    if (string.Equals(tenantAccount.Id, account.Id, StringComparison.InvariantCultureIgnoreCase))
                     {
                         tenantAccount = account;
                     }
@@ -984,7 +984,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                     var tenantAccount = new AzureAccount();
                     CopyAccount(account, tenantAccount);
                     var tenantToken = AzureSession.AuthenticationFactory.Authenticate(tenantAccount, environment, tenant, password, ShowDialog.Never);
-                    if (tenantAccount.Id == account.Id)
+                    if (string.Equals(tenantAccount.Id, account.Id, StringComparison.InvariantCultureIgnoreCase))
                     {
                         tenantAccount = account;
                     }
