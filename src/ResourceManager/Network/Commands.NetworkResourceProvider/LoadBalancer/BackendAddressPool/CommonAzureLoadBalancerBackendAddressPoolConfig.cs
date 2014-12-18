@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             Mandatory = false,
             HelpMessage = "The name of the BackendAddressPool")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [Parameter(
             HelpMessage = "IPConfig IDs of NetworkInterfaces")]

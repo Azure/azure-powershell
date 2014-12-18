@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             Mandatory = false,
             HelpMessage = "The name of the Inbound NAT rule")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [Parameter(
             ParameterSetName = "SetByResourceId",

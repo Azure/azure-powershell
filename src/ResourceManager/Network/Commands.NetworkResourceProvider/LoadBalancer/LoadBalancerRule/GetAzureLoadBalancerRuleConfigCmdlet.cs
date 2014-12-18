@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var loadBalancerRule =
-                    this.LoadBalancer.Properties.LoadBalancingRules.Where(
+                    this.LoadBalancer.Properties.LoadBalancingRules.First(
                         resource =>
                             string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 

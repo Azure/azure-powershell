@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var inboundNatRule =
-                    this.LoadBalancer.Properties.InboundNatRules.Where(
+                    this.LoadBalancer.Properties.InboundNatRules.First(
                         resource =>
                             string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 

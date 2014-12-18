@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             Mandatory = false,
             HelpMessage = "The name of the FrontendIpConfiguration")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = false,

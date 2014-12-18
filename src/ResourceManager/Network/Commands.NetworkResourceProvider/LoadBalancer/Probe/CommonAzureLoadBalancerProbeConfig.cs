@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the Inbound NAT rule")]
+            HelpMessage = "The name of the probe")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,

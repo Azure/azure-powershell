@@ -24,6 +24,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     {
         [Parameter(
             Mandatory = true,
+            HelpMessage = "The name of the FrontendIpConfiguration")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
