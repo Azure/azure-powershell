@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>Custom request headers</returns>
         public CustomRequestHeaders GetRequestHeaders()
         {
-            this.ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToString("yyyy-mm-dd HH:mm:ssZ") + "-P";
+            this.ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-P";
 
             return new CustomRequestHeaders()
             {

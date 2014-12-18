@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Microsoft.Azure.Commands.DataFactories.Test
+namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
-    public class PipelineTests : DataFactoriesScenarioTestsBase
+    public class OutputFilterOptions
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPipeline()
-        {
-            RunPowerShellTest("Test-Pipeline");
-        }
+        public string Name { get; set; }
+
+        public string JobName { get; set; }
+
+        public string ResourceGroupName { get; set; }
     }
 }
