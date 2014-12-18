@@ -1667,9 +1667,6 @@
                         <Component Id="cmpC991E1830F969A9E01A219FA59C15555" Guid="*">
                             <File Id="fil6E8B352C3B92B8EDA1DCD40AB01E2F01" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.WindowsAzure.Management.dll" />
                         </Component>
-                        <Component Id="cmpD293B320B2787F774A07989003AE6DC9" Guid="*">
-                            <File Id="filA3BFBEA9B0212F1988CBF41973AEB241" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.WindowsAzure.Management.ExpressRoute.dll" />
-                        </Component>
                         <Component Id="cmp4861D6E897FD00852565187F855E80A0" Guid="*">
                             <File Id="fil9AD7471CEA88432C94E4D86714ECFF19" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.WindowsAzure.Management.MediaServices.dll" />
                         </Component>
@@ -2915,7 +2912,6 @@
             <ComponentRef Id="cmpAB88A6754839602E1323B92AF593A44C" />
             <ComponentRef Id="cmp93E55086B9A2EB83BDB19653C23F2003" />
             <ComponentRef Id="cmpC991E1830F969A9E01A219FA59C15555" />
-            <ComponentRef Id="cmpD293B320B2787F774A07989003AE6DC9" />
             <ComponentRef Id="cmp4861D6E897FD00852565187F855E80A0" />
             <ComponentRef Id="cmpA2470D39CF7C4333D0382E5AE1937FBF" />
             <ComponentRef Id="cmp7B46CB7989E3DBF46E2F8DECFBD8D407" />
