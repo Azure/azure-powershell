@@ -12,6 +12,14 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.SYNOPSIS
+Sets context to default resource
+#>
+function Set-DefaultResource
+{
+    $selectedResource = Select-AzureStorSimpleResource -ResourceName OneSDK-Resource
+}
 
 <#
 .SYNOPSIS
@@ -19,6 +27,7 @@ Tests creating new resource group and a simple resource.
 #>
 function Test-NewBackupPolicyAddConfig
 {
+    Set-DefaultResource
 	$config = New-AzureStorSimpleDeviceBackupScheduleAddConfig -BackupType LocalSnapshot -RecurrenceType Daily -RecurrenceValue 1 -RetentionCount 1 -Enabled 0 -StartFromDateTime "10/23/2014 7:00 AM"
 	Assert-AreEqual $config.BackupType LocalSnapshot 'BackupType doesnt match'
 	Assert-AreEqual $config.Recurrence.RecurrenceType 'Daily' 'RecurrenceType doesnt match'
@@ -30,6 +39,7 @@ function Test-NewBackupPolicyAddConfig
 
 function Test-NewBackupPolicyAddConfig-DefaultValues
 {
+    Set-DefaultResource
 	$currenttime = get-date
 	$config = New-AzureStorSimpleDeviceBackupScheduleAddConfig -BackupType CloudSnapshot -RecurrenceType Daily -RecurrenceValue 10 -RetentionCount 10 -Enabled 1
 	$startTimeFromConfig = [datetime]::ParseExact($config.StartTime,"yyyy-MM-ddTHH:mm:sszzz",$null)

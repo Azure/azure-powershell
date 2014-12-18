@@ -95,5 +95,12 @@ namespace Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests
         {
             RunPowerShellTest("Test-GetPaginatedBackup");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateGetRestoreDeleteBackup_Async()
+        {
+            RunPowerShellTest("Test-CreateGetRestoreDeleteBackup_Async");
+        }
     }
 }

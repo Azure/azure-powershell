@@ -46,5 +46,19 @@ namespace Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests
         {
             RunPowerShellTest("Test-CreateUpdateDeleteStorageAccountCredential");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateStorageAccountCredential_InvalidCreds()
+        {
+            RunPowerShellTest("Test-CreateStorageAccountCredential_InvalidCreds");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateStorageAccountCredential_InvalidCreds()
+        {
+            RunPowerShellTest("Test-UpdateStorageAccountCredential_InvalidCreds");
+        }
     }
 }

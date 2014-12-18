@@ -116,8 +116,10 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\BackupPolicyTests.cs" />
     <Compile Include="ScenarioTests\BackupTests.cs" />
     <Compile Include="ScenarioTests\DeviceTests.cs" />
+    <Compile Include="ScenarioTests\ResourceTests.cs" />
     <Compile Include="ScenarioTests\ServiceConfigTests.cs" />
     <Compile Include="ScenarioTests\StorSimplerController.cs" />
     <Compile Include="ScenarioTests\StorSimpleTestBase.cs" />
@@ -137,11 +139,17 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ScenarioTests\BackupPolicyTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\BackupTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Configuration\ConfigurationReader.ps1" />
     <None Include="ScenarioTests\DeviceTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ResourceTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ServiceConfigTests.ps1">

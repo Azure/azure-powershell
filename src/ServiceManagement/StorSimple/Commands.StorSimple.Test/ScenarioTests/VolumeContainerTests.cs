@@ -31,6 +31,19 @@ namespace Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests
         {
             RunPowerShellTest("Test-VolumeContainerSync_RepetitiveDCName");
         }
-                            
+
+        [Fact]
+        [Trait("StorSimpleCmdlets", "VolumeContainer")]
+        public void TestVolumeContainerSync_InlineSac()
+        {
+            RunPowerShellTest("Test-VolumeContainerSync_InlineSac");
+        }
+
+        [Fact]
+        [Trait("StorSimpleCmdlets", "VolumeContainer")]
+        public void TestVolumeContainerSync_InlineSac_InvalidCreds()
+        {
+            RunPowerShellTest("Test-VolumeContainerSync_InlineSac_InvalidCreds");
+        }
     }
 }

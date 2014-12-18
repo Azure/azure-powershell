@@ -31,6 +31,13 @@ namespace Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests
         {
             RunPowerShellTest("Test-NewVolumeRepetitiveName");
         }
+
+        [Fact]
+        [Trait("StorSimpleCmdlets", "Volume")]
+        public void TestNewVolumeNoAccess()
+        {
+            RunPowerShellTest("Test-NewVolumeNoAccess");
+        }
                             
     }
 }
