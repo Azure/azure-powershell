@@ -192,6 +192,7 @@
     <Compile Include="CloudService\Model\UpgradeStatus.cs" />
     <Compile Include="CloudService\Model\VirtualIP.cs" />
     <Compile Include="CloudService\SetSettings.cs" />
+    <Compile Include="Common\AzureTools\AzureSdkVersionInfo.cs" />
     <Compile Include="Common\AzureTools\AzureTool.cs" />
     <Compile Include="Common\AzureTools\CsEncrypt.cs" />
     <Compile Include="Common\AzureTools\CsPack.cs" />
