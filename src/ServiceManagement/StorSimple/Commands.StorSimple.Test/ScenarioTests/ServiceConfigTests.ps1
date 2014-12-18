@@ -40,9 +40,9 @@ Returns default values for the test
 function Get-DefaultValue ($key)
 {
     $defaults = @{
-		StorageAccountName = "wuscisclcis1diagj5sy4";
-		StorageAccountPrimaryAccessKey = "gLm0tjCPJAUKzBFEVjN92ZtEwKnQK8MLasuX/ymNwMRQWFGmUA5sWZUZt9u8JfouhhYyzb3v5RQWtZSX+GxMbg==";
-		StorageAccountSecondaryAccessKey = "zLo+ziNdEX86ffu6OURQFNRL5lrLJpf9J9T8TOk6ne/Mpl7syq1DUp4TIprBt+DGPzo4ytAON+H1N4p6GRwVHg=="
+		StorageAccountName = "wuscisclcis1mdsj5sy409";
+		StorageAccountPrimaryAccessKey = "OKVxOKV5wDZ98Dq6ehBC29+R05XBXAEVvLOwpK6vh6PaOxRUocQXPY7WhLumiVo8osk/o4elSJR79USWtgSyCA==";
+		StorageAccountSecondaryAccessKey = "lSNa58WEo/Nabrt0L+UCnVlQPdzq4kIUITVs5HzOb4ZZ7lsNdOR1wmcVQOWBLSR/OHy2qoM/90DTrSHWhrixGw=="
 	}
 
 	return $defaults[$key];

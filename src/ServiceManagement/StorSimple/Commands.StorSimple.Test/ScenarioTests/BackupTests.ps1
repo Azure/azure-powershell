@@ -265,7 +265,7 @@ function Test-AddUpdateDeleteScheduleInBackupPolicy
     $updateArray=@()
     $deleteArray = @()
 
-    $addConfig = New-AzureStorSimpleDeviceBackupScheduleAddConfig -BackupType CloudSnapshot -RecurrenceType Daily -RecurrenceValue 1 -RetentionCount 100 -Enabled $true
+    $addConfig = New-AzureStorSimpleDeviceBackupScheduleAddConfig -BackupType CloudSnapshot -RecurrenceType Daily -RecurrenceValue 1 -RetentionCount 50 -Enabled $true
     $addArray += $addConfig
     
     $scheduleToDelete = $bpToUse.BackupSchedules | Where {$_.BackupType -eq [Microsoft.WindowsAzure.Management.StorSimple.Models.BackupType]::CloudSnapshot} | Select-Object -First 1 -wait
@@ -312,7 +312,7 @@ function Test-CreateGetRestoreDeleteBackup
         Start-Sleep (5*$retryCount)
         $backupToRestore = Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -BackupPolicyId $bpId -First 1
         $retryCount += 1
-    } while(($backupToRestore -eq $null) -and ($retryCount -lt 5))
+    } while(($backupToRestore -eq $null) -and ($retryCount -lt 10))
     Assert-NotNull $backupToRestore
 
     $backupId = $backupToRestore.InstanceId
@@ -356,7 +356,7 @@ function Test-GetBackupByBackupPolicyId
         Start-Sleep (5*$retryCount)
         $backupCreated = Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -BackupPolicyId $bpId -First 1
         $retryCount += 1
-    } while(($backupCreated -eq $null) -and ($retryCount -le 5))
+    } while(($backupCreated -eq $null) -and ($retryCount -lt 10))
     Assert-NotNull $backupCreated
 
     $backupId = $backupCreated.InstanceId
@@ -398,7 +398,7 @@ function Test-GetBackupByBackupPolicyObject
         Start-Sleep (5*$retryCount)
         $backupCreated = $bpToUse | Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -First 1
         $retryCount += 1
-    } while(($backupCreated -eq $null) -and ($retryCount -le 5))
+    } while(($backupCreated -eq $null) -and ($retryCount -lt 10))
     Assert-NotNull $backupCreated
 
     $backupId = $backupCreated.InstanceId
@@ -443,7 +443,7 @@ function Test-GetBackupByVolumeId
         Start-Sleep (5*$retryCount)
         $backupCreated = Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -VolumeId $volumeId -First 1
         $retryCount += 1
-    } while(($backupCreated -eq $null) -and ($retryCount -le 5))
+    } while(($backupCreated -eq $null) -and ($retryCount -lt 10))
     Assert-NotNull $backupCreated
 
     $backupId = $backupCreated.InstanceId
@@ -487,7 +487,7 @@ function Test-GetBackupByVolumeObject
         Start-Sleep (5*$retryCount)
         $backupCreated = $vdToUse | Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -First 1
         $retryCount += 1
-    } while(($backupCreated -eq $null) -and ($retryCount -le 5))
+    } while(($backupCreated -eq $null) -and ($retryCount -lt 10))
     Assert-NotNull $backupCreated
 
     $backupId = $backupCreated.InstanceId
@@ -531,7 +531,7 @@ function Test-GetBackupByTimePeriod
         Start-Sleep (5*$retryCount)
         $backupCreated = Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -BackupPolicyId $bpId -From $startDt -To $endDt -First 1
         $retryCount += 1
-    } while(($backupCreated -eq $null) -and ($retryCount -le 5))
+    } while(($backupCreated -eq $null) -and ($retryCount -lt 10))
     Assert-NotNull $backupCreated
 
     $backupCreated | Remove-AzureStorSimpleDeviceBackup -DeviceName $deviceName -Force -WaitForComplete
@@ -647,7 +647,7 @@ function Test-CreateGetRestoreDeleteBackup_Async
         Start-Sleep (5*$retryCount)
         $backupToRestore = Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -BackupPolicyId $bpId -First 1
         $retryCount += 1
-    } while(($backupToRestore -eq $null) -and ($retryCount -lt 5))
+    } while(($backupToRestore -eq $null) -and ($retryCount -lt 10))
     Assert-NotNull $backupToRestore
 
     $backupId = $backupToRestore.InstanceId

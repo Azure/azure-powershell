@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests
 
         [Fact]
         [Trait("StorSimpleCmdlets", "New-BackupPolicyConfig")]
-        public void TestGetAllDevices_DefaultValues()
+        public void TestNewBackupPolicyAddConfigDefaultValues()
         {
             RunPowerShellTest("Test-NewBackupPolicyAddConfig-DefaultValues");
         }

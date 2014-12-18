@@ -25,13 +25,13 @@
           "ussouth2"
         ],
         "x-ms-request-id": [
-          "24326b50f89f5ef5a0b1e0ec7ca2137e"
+          "bfccef5d8dd95d4a82c7242873658c4b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 18 Dec 2014 14:07:27 GMT"
+          "Thu, 18 Dec 2014 14:09:27 GMT"
         ],
         "Server": [
           "1.0.6198.167",
@@ -54,7 +54,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "ef2199e5-c969-453e-9051-271f5c7b3713_PS"
+          "23adaf40-5e96-4ae6-a61a-0345cc6110b6_PS"
         ],
         "x-ms-version": [
           "2014-01-01"
@@ -81,19 +81,19 @@
           "ussouth2"
         ],
         "x-ms-client-request-id": [
-          "ef2199e5-c969-453e-9051-271f5c7b3713_PS,ef2199e5-c969-453e-9051-271f5c7b3713_PS"
+          "23adaf40-5e96-4ae6-a61a-0345cc6110b6_PS,23adaf40-5e96-4ae6-a61a-0345cc6110b6_PS"
         ],
         "Strict-Transport-Security": [
           "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7383b011f1285bdcafa9d5803c57c3c6"
+          "e0d4aefa2cd25f09ba67d428a2813a8a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 18 Dec 2014 14:07:30 GMT"
+          "Thu, 18 Dec 2014 14:09:30 GMT"
         ],
         "Server": [
           "1.0.6198.167",
@@ -119,7 +119,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "ebe41614-2229-47a8-aa59-3135fbcc3714_PS"
+          "a8902c94-e7d3-420f-a13f-80fc516f8d0a_PS"
         ],
         "x-ms-version": [
           "2014-01-01"
@@ -146,19 +146,84 @@
           "ussouth2"
         ],
         "x-ms-client-request-id": [
-          "ebe41614-2229-47a8-aa59-3135fbcc3714_PS,ebe41614-2229-47a8-aa59-3135fbcc3714_PS"
+          "a8902c94-e7d3-420f-a13f-80fc516f8d0a_PS,a8902c94-e7d3-420f-a13f-80fc516f8d0a_PS"
         ],
         "Strict-Transport-Security": [
           "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "3230e2eb37e1567bb5e58aa35175a805"
+          "6ce76aa335335accba2ad8e678b03011"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 18 Dec 2014 14:07:32 GMT"
+          "Thu, 18 Dec 2014 14:09:32 GMT"
+        ],
+        "Server": [
+          "1.0.6198.167",
+          "(rd_rdfe_stable.141203-1417)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/062c67a6-019b-40af-a775-c4dc1abe56ed/cloudservices/CisService-DTYHC5NYB4BUTV3ZHFNSE5EKIZZGLGYR44OJUL5OQGG4I2EMYOZA-west-us/resources/WACis/~/CiSVault/OneSDK-Resource/api/devices?api-version=2014-01-01.1.0",
+      "EncodedRequestUri": "LzA2MmM2N2E2LTAxOWItNDBhZi1hNzc1LWM0ZGMxYWJlNTZlZC9jbG91ZHNlcnZpY2VzL0Npc1NlcnZpY2UtRFRZSEM1TllCNEJVVFYzWkhGTlNFNUVLSVpaR0xHWVI0NE9KVUw1T1FHRzRJMkVNWU9aQS13ZXN0LXVzL3Jlc291cmNlcy9XQUNpcy9+L0NpU1ZhdWx0L09uZVNESy1SZXNvdXJjZS9hcGkvZGV2aWNlcz9hcGktdmVyc2lvbj0yMDE0LTAxLTAxLjEuMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/xml"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "345661f0-c3d8-449d-a627-3986e1845b38_PS"
+        ],
+        "x-ms-version": [
+          "2014-01-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.StorSimple.StorSimpleManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "<ArrayOfDeviceInfo xmlns=\"http://windowscloudbackup.com/CiS/V2013_03\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <DeviceInfo>\r\n    <ACRCount>0</ACRCount>\r\n    <ActivationTime>2014-11-28T06:04:49.2510897Z</ActivationTime>\r\n    <ActiveController>Unknown</ActiveController>\r\n    <AvailableStorageInBytes>1093364144128</AvailableStorageInBytes>\r\n    <CloudCredCount>0</CloudCredCount>\r\n    <Culture>en-US</Culture>\r\n    <CurrentController>Unknown</CurrentController>\r\n    <DataContainerCount>0</DataContainerCount>\r\n    <Description i:nil=\"true\" />\r\n    <DeviceId>29f9be68-04f7-437d-a466-b90a1ed324b5</DeviceId>\r\n    <DeviceSoftwareVersion>6.3.9600.17215</DeviceSoftwareVersion>\r\n    <FriendlyName>Avirupch_App3</FriendlyName>\r\n    <IsConfigUpdated>true</IsConfigUpdated>\r\n    <IsVirtualApplianceInterimEntry>false</IsVirtualApplianceInterimEntry>\r\n    <Location i:nil=\"true\" />\r\n    <ModelDescription>100</ModelDescription>\r\n    <NNicCards>6</NNicCards>\r\n    <ProvisionedStorageInBytes>6147483648</ProvisionedStorageInBytes>\r\n    <SerialNumber>123456789</SerialNumber>\r\n    <Status>Online</Status>\r\n    <TargetIQN>iqn.1991-05.com.microsoft:storsimple100-123456789-target</TargetIQN>\r\n    <TimeZone>Pacific Standard Time</TimeZone>\r\n    <TotalStorageInBytes>1099511627776</TotalStorageInBytes>\r\n    <Type>Appliance</Type>\r\n    <UsingStorageInBytes>0</UsingStorageInBytes>\r\n    <VolumeCount>0</VolumeCount>\r\n  </DeviceInfo>\r\n  <DeviceInfo>\r\n    <ACRCount>0</ACRCount>\r\n    <ActivationTime>2014-12-11T17:33:21.6765566Z</ActivationTime>\r\n    <ActiveController>Unknown</ActiveController>\r\n    <AvailableStorageInBytes>32985348833280</AvailableStorageInBytes>\r\n    <CloudCredCount>0</CloudCredCount>\r\n    <Culture>en-US</Culture>\r\n    <CurrentController>Unknown</CurrentController>\r\n    <DataContainerCount>0</DataContainerCount>\r\n    <Description i:nil=\"true\" />\r\n    <DeviceId>2b4bda4e-5ab6-4668-a681-ca47cee7ca64</DeviceId>\r\n    <DeviceSoftwareVersion>6.3.9600.17215</DeviceSoftwareVersion>\r\n    <FriendlyName>test-madhurta</FriendlyName>\r\n    <IsConfigUpdated>false</IsConfigUpdated>\r\n    <IsVirtualApplianceInterimEntry>false</IsVirtualApplianceInterimEntry>\r\n    <Location>West US</Location>\r\n    <ModelDescription>1100</ModelDescription>\r\n    <NNicCards>0</NNicCards>\r\n    <ProvisionedStorageInBytes>0</ProvisionedStorageInBytes>\r\n    <SerialNumber>2B4BDA4E-5AB6-4668-A681-CA47CEE7CA64</SerialNumber>\r\n    <Status>Offline</Status>\r\n    <TargetIQN>iqn.1991-05.com.microsoft:storsimple1100-2b4bda4e-5ab6-4668-a681-ca47cee7ca64-target</TargetIQN>\r\n    <TimeZone>UTC</TimeZone>\r\n    <TotalStorageInBytes>32985348833280</TotalStorageInBytes>\r\n    <Type>VirtualAppliance</Type>\r\n    <UsingStorageInBytes>0</UsingStorageInBytes>\r\n    <VolumeCount>0</VolumeCount>\r\n  </DeviceInfo>\r\n</ArrayOfDeviceInfo>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2472"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-client-request-id": [
+          "345661f0-c3d8-449d-a627-3986e1845b38_PS,345661f0-c3d8-449d-a627-3986e1845b38_PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "bb3d86e9fd6250b8bdfd3fb7948be888"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 18 Dec 2014 14:09:33 GMT"
         ],
         "Server": [
           "1.0.6198.167",
@@ -184,7 +249,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "c46a398b-31d8-4090-a7a7-9e7d86c40b10_PS"
+          "869ddbfe-a76e-47da-b8a3-93da1a2b3e34_PS"
         ],
         "x-ms-version": [
           "2014-01-01"
@@ -211,19 +276,19 @@
           "ussouth2"
         ],
         "x-ms-client-request-id": [
-          "c46a398b-31d8-4090-a7a7-9e7d86c40b10_PS,c46a398b-31d8-4090-a7a7-9e7d86c40b10_PS"
+          "869ddbfe-a76e-47da-b8a3-93da1a2b3e34_PS,869ddbfe-a76e-47da-b8a3-93da1a2b3e34_PS"
         ],
         "Strict-Transport-Security": [
           "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "711150d20d4e5fd4914215918532e405"
+          "9bcdb8b3054f5211a8934ead08ef1584"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 18 Dec 2014 14:07:31 GMT"
+          "Thu, 18 Dec 2014 14:09:31 GMT"
         ],
         "Server": [
           "1.0.6198.167",

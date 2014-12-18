@@ -113,7 +113,6 @@
     <Compile Include="ScenarioTests\DeviceTests.cs" />
     <Compile Include="ScenarioTests\ResourceTests.cs" />
     <Compile Include="ScenarioTests\ServiceConfigTests.cs" />
-    <Compile Include="ScenarioTests\StorSimplerController.cs" />
     <Compile Include="ScenarioTests\StorSimpleTestBase.cs" />
     <Compile Include="ScenarioTests\VolumeContainerTests.cs" />
     <Compile Include="ScenarioTests\VolumeTests.cs" />
@@ -161,7 +160,130 @@
     <None Include="ScenarioTests\VolumeTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupPolicyTests\TestNewBackupPolicyAddConfigDefaultValues.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupPolicyTests\TestNewBackupPolicyConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestAddUpdateDeleteScheduleInBackupPolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestAddVolumeToBackupPolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestCreateGetDeleteBackupPolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestCreateGetRestoreDeleteBackup.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestCreateGetRestoreDeleteBackup_Async.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestGetBackupByBackupPolicyId.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestGetBackupByBackupPolicyObject.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestGetBackupByTimePeriod.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestGetBackupByVolumeId.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestGetBackupByVolumeObject.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestGetPaginatedBackup.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestRenameBackupPolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.DeviceTests\TestGetAllDevices.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.DeviceTests\TestGetAllDevices_ByDeviceId.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.DeviceTests\TestGetAllDevices_ByDeviceName.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.DeviceTests\TestGetAllDevices_ByDeviceType.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.DeviceTests\TestGetAllDevices_NegativeCase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.DeviceTests\TestGetDevices_ByModel.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.DeviceTests\TestGetDevices_DetailedResult.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.ResourceTests\TestGetResource.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.ResourceTests\TestGetResourceCheckCount.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.ResourceTests\TestGetResourceContext.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.ResourceTests\TestSetResource_DirectInput.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.ResourceTests\TestSetResource_IncorrectName.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.ResourceTests\TestSetResource_PipedInput.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.ServiceConfigTests\TestCreateGetDeleteAccessControlRecord.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.ServiceConfigTests\TestCreateGetDeleteStorageAccountCredential.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.ServiceConfigTests\TestCreateStorageAccountCredential_InvalidCreds.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.ServiceConfigTests\TestCreateUpdateDeleteAccessControlRecord.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.ServiceConfigTests\TestCreateUpdateDeleteStorageAccountCredential.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.ServiceConfigTests\TestUpdateStorageAccountCredential_InvalidCreds.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.VolumeContainerTests\TestVolumeContainerAsync.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.VolumeContainerTests\TestVolumeContainerSync.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.VolumeContainerTests\TestVolumeContainerSync_InlineSac.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.VolumeContainerTests\TestVolumeContainerSync_InlineSac_InvalidCreds.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.VolumeContainerTests\TestVolumeContainerSync_RepetitiveDCName.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.VolumeTests\TestNewVolumeNoAccess.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.VolumeTests\TestNewVolumeRepetitiveName.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.VolumeTests\TestVolumeAsync.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests.VolumeTests\TestVolumeSync.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

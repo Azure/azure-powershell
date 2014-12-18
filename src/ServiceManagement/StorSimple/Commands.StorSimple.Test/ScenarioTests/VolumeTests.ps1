@@ -26,6 +26,16 @@ function Generate-Name ($prefix)
 
 <#
 .SYNOPSIS
+Sets context to default resource
+#>
+function Set-DefaultResource
+{
+    $selectedResource = Select-AzureStorSimpleResource -ResourceName OneSDK-Resource
+}
+
+
+<#
+.SYNOPSIS
 Gets device name to use for the test
 #>
 function Get-DeviceName ()
@@ -38,16 +48,17 @@ function Test-VolumeSync
 {
     echo "Executing Test-VolumeSync"
     $dcName = Generate-Name("VolumeContainer")
-    $deviceName = Get-DeviceName
     $vdName = Generate-Name("Volume")
     $acrName = Generate-Name("ACR")
     $iqn = Generate-Name("IQN")
+    
+    Set-DefaultResource
+
+    $deviceName = Get-DeviceName
 
     echo "Creating new ACR"
-    $jobStatus = New-AzureStorSimpleAccessControlRecord -Name $acrName -iqn $iqn -WaitForComplete
-    Assert-AreEqual $jobStatus.Status "Completed"
-	Assert-AreEqual $jobStatus.Result "Succeeded"
-
+    New-AzureStorSimpleAccessControlRecord -Name $acrName -iqn $iqn -WaitForComplete
+    
     echo "Retrieving the ACR"
     $acrList = @()
     $acrList += Get-AzureStorSimpleAccessControlRecord -ACRName $acrName
@@ -58,38 +69,34 @@ function Test-VolumeSync
 	Assert-NotNull $sacToUse "SAC cannot be empty"
 
     echo "Creating new DC"
-    $jobStatus = $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
-	Assert-AreEqual $jobStatus.Status "Completed"
-	Assert-AreEqual $jobStatus.Result "Succeeded"
+    $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
 	
     echo "Trying to retrieve new DC"
     $dcToUse = Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -VolumeContainerName $dcName
 	Assert-NotNull $dcToUse "dc is not created properly"
 
     echo "Creating new Volume"
-    $jobStatus = $dcToUse | New-AzureStorSimpleDeviceVolume -DeviceName $deviceName -Name $vdName -Size 2000000000 -AccessControlRecords $acrList -AppType PrimaryVolume -Online $true -EnableDefaultBackup $false -EnableMonitoring $false -WaitForComplete
-	Assert-AreEqual $jobStatus.Status "Completed"
-	Assert-AreEqual $jobStatus.Result "Succeeded"
-
+    $dcToUse | New-AzureStorSimpleDeviceVolume -DeviceName $deviceName -Name $vdName -Size 2000000000 -AccessControlRecords $acrList -AppType PrimaryVolume -Online $true -EnableDefaultBackup $false -EnableMonitoring $false -WaitForComplete
+	
     echo "Retrieving the volume"
     $vdToUse = Get-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName
 	Assert-NotNull $vdToUse "Volume is not created properly"
 
     echo "Setting volume offline"
-    $jobStatus = Set-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Online $false -WaitForComplete
+    Set-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Online $false -WaitForComplete
 
     echo "Verifying that volume is offline"
     $vdToUse = Get-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName
 	Assert-AreEqual $vdToUse.Online $false
 
     echo "Cleaning up the volume"
-    $jobStatus = Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -WaitForComplete -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -WaitForComplete -ErrorAction SilentlyContinue
     
     echo "Cleaning up DC"
-    $jobStatus = $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
+    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
     
     echo "Cleaning up the ACR"
-    $jobStatus = Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete  -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete  -ErrorAction SilentlyContinue
     echo "Existing the test"
 }
 
@@ -97,16 +104,17 @@ function Test-NewVolumeRepetitiveName
 {
 	echo "Executing Test-NewVolumeRepetitiveName"
     $dcName = Generate-Name("VolumeContainer")
-    $deviceName = Get-DeviceName
     $vdName = Generate-Name("Volume")
     $acrName = Generate-Name("ACR")
     $iqn = Generate-Name("IQN")
+    
+    Set-DefaultResource
+
+    $deviceName = Get-DeviceName
 
     echo "Creating new ACR"
-    $jobStatus = New-AzureStorSimpleAccessControlRecord -Name $acrName -iqn $iqn -WaitForComplete
-    Assert-AreEqual $jobStatus.Status "Completed"
-	Assert-AreEqual $jobStatus.Result "Succeeded"
-
+    New-AzureStorSimpleAccessControlRecord -Name $acrName -iqn $iqn -WaitForComplete
+    
     echo "Retrieving the ACR"
     $acrList = @()
     $acrList += Get-AzureStorSimpleAccessControlRecord -ACRName $acrName
@@ -117,19 +125,15 @@ function Test-NewVolumeRepetitiveName
 	Assert-NotNull $sacToUse "SAC cannot be empty"
 
     echo "Creating new DC"
-    $jobStatus = $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
-	Assert-AreEqual $jobStatus.Status "Completed"
-	Assert-AreEqual $jobStatus.Result "Succeeded"
+    $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
 	
     echo "Trying to retrieve new DC"
     $dcToUse = Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -VolumeContainerName $dcName
 	Assert-NotNull $dcToUse "dc is not created properly"
 
     echo "Creating new Volume"
-    $jobStatus = $dcToUse | New-AzureStorSimpleDeviceVolume -DeviceName $deviceName -Name $vdName -Size 2000000000 -AccessControlRecords $acrList -AppType PrimaryVolume -Online $true -EnableDefaultBackup $false -EnableMonitoring $false -WaitForComplete
-	Assert-AreEqual $jobStatus.Status "Completed"
-	Assert-AreEqual $jobStatus.Result "Succeeded"
-
+    $dcToUse | New-AzureStorSimpleDeviceVolume -DeviceName $deviceName -Name $vdName -Size 2000000000 -AccessControlRecords $acrList -AppType PrimaryVolume -Online $true -EnableDefaultBackup $false -EnableMonitoring $false -WaitForComplete
+	
     echo "Retrieving the volume"
     $vdToUse = Get-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName
 	Assert-NotNull $vdToUse "Volume is not created properly"
@@ -139,7 +143,7 @@ function Test-NewVolumeRepetitiveName
     $ErrorActionPreference = "Stop"
     try
     {
-	    $jobStatus = $dcToUse | New-AzureStorSimpleDeviceVolume -DeviceName $deviceName -Name $vdName -Size 2000000000 -AccessControlRecords $acrList -AppType PrimaryVolume -Online $true -EnableDefaultBackup $false -EnableMonitoring $false -WaitForComplete
+	    $dcToUse | New-AzureStorSimpleDeviceVolume -DeviceName $deviceName -Name $vdName -Size 2000000000 -AccessControlRecords $acrList -AppType PrimaryVolume -Online $true -EnableDefaultBackup $false -EnableMonitoring $false -WaitForComplete
     }
     catch
     {
@@ -150,10 +154,10 @@ function Test-NewVolumeRepetitiveName
     Assert-AreEqual $ExceptionOccurred "true"
   
     echo "Cleaning up DC"
-    $jobStatus = $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
+    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
     
     echo "Cleaning up the ACR"
-    $jobStatus = Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete  -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete  -ErrorAction SilentlyContinue
     echo "Existing the test"
 }
 
@@ -162,8 +166,11 @@ function Test-NewVolumeNoAccess
 	echo "Executing Test-NewVolumeNoAccess"
     
     $dcName = Generate-Name("VolumeContainer")
-    $deviceName = Get-DeviceName
     $vdName = Generate-Name("Volume")
+    
+    Set-DefaultResource
+
+    $deviceName = Get-DeviceName
     
     echo "Getting SAC"
 	$sacToUse = (Get-AzureStorSimpleStorageAccountCredential) | Select-Object -first 1 -wait
@@ -203,16 +210,17 @@ function Test-VolumeAsync
 {
     echo "Executing Test-VolumeAsync"
     $dcName = Generate-Name("VolumeContainer")
-    $deviceName = Get-DeviceName
     $vdName = Generate-Name("Volume")
     $acrName = Generate-Name("ACR")
     $iqn = Generate-Name("IQN")
+    
+    Set-DefaultResource
+
+    $deviceName = Get-DeviceName
 
     echo "Creating new ACR"
-    $jobStatus = New-AzureStorSimpleAccessControlRecord -Name $acrName -iqn $iqn -WaitForComplete
-    Assert-AreEqual $jobStatus.Status "Completed"
-	Assert-AreEqual $jobStatus.Result "Succeeded"
-
+    New-AzureStorSimpleAccessControlRecord -Name $acrName -iqn $iqn -WaitForComplete
+    
     echo "Retrieving the ACR"
     $acrList = @()
     $acrList += Get-AzureStorSimpleAccessControlRecord -ACRName $acrName
@@ -223,16 +231,14 @@ function Test-VolumeAsync
 	Assert-NotNull $sacToUse "SAC cannot be empty"
 
     echo "Creating new DC"
-    $jobStatus = $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
-	Assert-AreEqual $jobStatus.Status "Completed"
-	Assert-AreEqual $jobStatus.Result "Succeeded"
+    $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
 	
     echo "Trying to retrieve new DC"
     $dcToUse = Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -VolumeContainerName $dcName
 	Assert-NotNull $dcToUse "dc is not created properly"
 
     echo "Creating new Volume"
-    $jobStatus = $dcToUse | New-AzureStorSimpleDeviceVolume -DeviceName $deviceName -Name $vdName -Size 2000000000 -AccessControlRecords $acrList -AppType PrimaryVolume -Online $true -EnableDefaultBackup $false -EnableMonitoring $false
+    $dcToUse | New-AzureStorSimpleDeviceVolume -DeviceName $deviceName -Name $vdName -Size 2000000000 -AccessControlRecords $acrList -AppType PrimaryVolume -Online $true -EnableDefaultBackup $false -EnableMonitoring $false
 	
 
     echo "Retrieving the volume"
@@ -242,7 +248,7 @@ function Test-VolumeAsync
 	Assert-NotNull $vdToUse "Volume is not created properly"
 
     echo "Setting volume offline"
-    $jobStatus = Set-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Online $false
+    Set-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Online $false
 
     echo "Verifying that volume is offline"
     [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
@@ -250,13 +256,13 @@ function Test-VolumeAsync
 	Assert-AreEqual $vdToUse.Online $false
 
     echo "Cleaning up the volume"
-    $jobStatus = Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -ErrorAction SilentlyContinue
     [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
     
     echo "Cleaning up DC"
-    $jobStatus = $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
+    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
     
     echo "Cleaning up the ACR"
-    $jobStatus = Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete  -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete  -ErrorAction SilentlyContinue
     echo "Existing the test"
 }

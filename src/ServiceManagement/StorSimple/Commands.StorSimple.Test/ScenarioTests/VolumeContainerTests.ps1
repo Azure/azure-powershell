@@ -26,6 +26,16 @@ function Generate-Name ($prefix)
 
 <#
 .SYNOPSIS
+Sets context to default resource
+#>
+function Set-DefaultResource
+{
+    $selectedResource = Select-AzureStorSimpleResource -ResourceName OneSDK-Resource
+}
+
+
+<#
+.SYNOPSIS
 Gets device name to use for the test
 #>
 function Get-DeviceName ()
@@ -37,9 +47,9 @@ function Get-DeviceName ()
 function Get-DefaultValue ($key)
 {
     $defaults = @{
-		StorageAccountName = "wuscisclcis1diagj5sy4";
-		StorageAccountPrimaryAccessKey = "gLm0tjCPJAUKzBFEVjN92ZtEwKnQK8MLasuX/ymNwMRQWFGmUA5sWZUZt9u8JfouhhYyzb3v5RQWtZSX+GxMbg==";
-		StorageAccountSecondaryAccessKey = "zLo+ziNdEX86ffu6OURQFNRL5lrLJpf9J9T8TOk6ne/Mpl7syq1DUp4TIprBt+DGPzo4ytAON+H1N4p6GRwVHg=="
+		StorageAccountName = "wuscisclcis1mdsj5sy409";
+		StorageAccountPrimaryAccessKey = "OKVxOKV5wDZ98Dq6ehBC29+R05XBXAEVvLOwpK6vh6PaOxRUocQXPY7WhLumiVo8osk/o4elSJR79USWtgSyCA==";
+		StorageAccountSecondaryAccessKey = "lSNa58WEo/Nabrt0L+UCnVlQPdzq4kIUITVs5HzOb4ZZ7lsNdOR1wmcVQOWBLSR/OHy2qoM/90DTrSHWhrixGw=="
 	}
 
 	return $defaults[$key];
@@ -50,6 +60,9 @@ function Test-VolumeContainerSync
 {
     echo "Executing Test-VolumeContainerSync"
     $dcName = Generate-Name("VolumeContainer")
+
+    Set-DefaultResource
+
     $deviceName = Get-DeviceName
 
     echo "Getting SAC"
@@ -57,16 +70,14 @@ function Test-VolumeContainerSync
 	Assert-NotNull $sacToUse "SAC cannot be empty"
 
     echo "Creating new DC"
-    $jobStatus = $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
-	Assert-AreEqual $jobStatus.Status "Completed"
-	Assert-AreEqual $jobStatus.Result "Succeeded"
+    $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
 	
     echo "Trying to retrieve new DC"
     $dcToUse = Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -VolumeContainerName $dcName
 	Assert-NotNull $dcToUse "dc is not created properly"
 
     echo "Cleaning up DC"
-    $jobStatus = $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
+    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
     echo "Existing the test"
 }
 
@@ -74,6 +85,9 @@ function Test-VolumeContainerAsync
 {
     echo "Executing Test-VolumeContainerAsync"
 	$dcName = Generate-Name("VolumeContainer")
+
+    Set-DefaultResource
+
     $deviceName = Get-DeviceName
 
     echo "Getting SAC"
@@ -81,7 +95,7 @@ function Test-VolumeContainerAsync
 	Assert-NotNull $sacToUse "SAC cannot be empty"
 
     echo "Creating new DC in async mode"
-    $jobStatus = $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -Verbose
+    $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -Verbose
 
     echo "Trying to get DC"
     [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
@@ -91,7 +105,7 @@ function Test-VolumeContainerAsync
     Assert-NotNull $dcToUse "DC is not created"
 
     echo "Cleaning up"
-    $jobStatus = $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
+    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
     echo "Exiting test"
 }
 
@@ -100,6 +114,9 @@ function Test-VolumeContainerSync_RepetitiveDCName
 {
     echo "Executing Test-VolumeContainerSync_RepetitiveDCName"
 	$dcName = Generate-Name("VolumeContainer")
+
+    Set-DefaultResource
+
     $deviceName = Get-DeviceName
 
     echo "Getting SAC"
@@ -107,16 +124,14 @@ function Test-VolumeContainerSync_RepetitiveDCName
 	Assert-NotNull $sacToUse "SAC cannot be empty"
 
     echo "Creating new DC"
-    $jobStatus = $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
-	Assert-AreEqual $jobStatus.Status "Completed"
-	Assert-AreEqual $jobStatus.Result "Succeeded"
+    $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
 	
     echo "Trying to create another DC with same name"
     $ExceptionOccurred = "false"
     $ErrorActionPreference = "Stop"
     try
     {
-	    $jobStatus = $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
+	    $sacToUse | New-AzureStorSimpleDeviceVolumeContainer -Name $dcName -DeviceName $deviceName -BandWidthRate 256 -WaitForComplete
     }
     catch
     {
@@ -127,7 +142,7 @@ function Test-VolumeContainerSync_RepetitiveDCName
     Assert-AreEqual $ExceptionOccurred "true"
 
     echo "Cleaning up"
-    $jobStatus = $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
+    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
     echo "Exiting test"
 }
 
@@ -135,6 +150,9 @@ function Test-VolumeContainerSync_InlineSac
 {
     echo "Executing Test-VolumeContainerSync"
     $dcName = Generate-Name("VolumeContainer")
+
+    Set-DefaultResource
+
     $deviceName = Get-DeviceName
 
     echo "Creating DC with inline SAC"
@@ -148,7 +166,11 @@ function Test-VolumeContainerSync_InlineSac
 	Assert-NotNull $dcToUse "dc is not created properly"
 
     echo "Cleaning up DC"
-    $jobStatus = $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
+    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete
+
+    echo "Cleaning up SAC"
+    Remove-AzureStorSimpleStorageAccountCredential -Name $storageAccountName -Force -WaitForComplete -ErrorAction SilentlyContinue
+
     echo "Existing the test"
 }
 
@@ -156,6 +178,9 @@ function Test-VolumeContainerSync_InlineSac_InvalidCreds
 {
     echo "Executing Test-VolumeContainerSync"
     $dcName = Generate-Name("VolumeContainer")
+
+    Set-DefaultResource
+
     $deviceName = Get-DeviceName
 
     echo "Creating DC with inline SAC"

@@ -12,6 +12,15 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.SYNOPSIS
+Sets context to default resource
+#>
+function Set-DefaultResource
+{
+    $selectedResource = Select-AzureStorSimpleResource -ResourceName OneSDK-Resource
+}
+
 
 <#
 .SYNOPSIS
@@ -20,11 +29,7 @@ Tests creating new resource group and a simple resource.
 function Test-GetDevices
 {
 	# Setup
-	$selectedResource = (Get-AzureStorSimpleResource) | Select-Object -first 1
-	
-	echo $selectedResource
-	
-	$selectedResource | Select-AzureStorSimpleResource 
+	Set-DefaultResource
 	
 	# Test
 	$list = Get-AzureStorSimpleDevice
@@ -36,8 +41,7 @@ function Test-GetDevices
 function Test-GetDevices_ByDeviceId
 {
 	# Selecting a resource
-	$selectedResource = (Get-AzureStorSimpleResource) | Select-Object -first 1
-	$selectedResource | Select-AzureStorSimpleResource
+	Set-DefaultResource
 
 	# Make get devices call
 	$deviceList = Get-AzureStorSimpleDevice
@@ -53,8 +57,7 @@ function Test-GetDevices_ByDeviceId
 function Test-GetDevices_ByDeviceName
 {
 	# Selecting a resource
-	$selectedResource = (Get-AzureStorSimpleResource) | Select-Object -first 1
-	$selectedResource | Select-AzureStorSimpleResource
+	Set-DefaultResource
 
 	# Make get devices call
 	$deviceList = Get-AzureStorSimpleDevice
@@ -70,8 +73,7 @@ function Test-GetDevices_ByDeviceName
 function Test-GetDevices_ByType
 {
 	# Selecting a resource
-	$selectedResource = (Get-AzureStorSimpleResource) | Select-Object -first 1
-	$selectedResource | Select-AzureStorSimpleResource
+	Set-DefaultResource
 
 	# Make get devices call
 	$deviceList = Get-AzureStorSimpleDevice
@@ -86,8 +88,7 @@ function Test-GetDevices_ByType
 function Test-GetDevices_ByModel
 {
 	# Selecting a resource
-	$selectedResource = (Get-AzureStorSimpleResource) | Select-Object -first 1
-	$selectedResource | Select-AzureStorSimpleResource
+	Set-DefaultResource
 
 	# Make get devices call
 	$deviceList = Get-AzureStorSimpleDevice
@@ -103,8 +104,7 @@ function Test-GetDevices_ByModel
 function Test-GetDevices_IncorrectParameters
 {
 	# Selecting a resource
-	$selectedResource = (Get-AzureStorSimpleResource) | Select-Object -first 1
-	$selectedResource | Select-AzureStorSimpleResource
+	Set-DefaultResource
 
 	# Make get devices call
 	$deviceList = Get-AzureStorSimpleDevice -DeviceName "someRandomName"
@@ -115,8 +115,7 @@ function Test-GetDevices_IncorrectParameters
 function Test-GetDevices_DetailedResult
 {
 	# Selecting a resource
-	$selectedResource = (Get-AzureStorSimpleResource) | Select-Object -first 1
-	$selectedResource | Select-AzureStorSimpleResource
+	Set-DefaultResource
 
 	# Make get devices call
 	$detailedList = Get-AzureStorSimpleDevice -Detailed

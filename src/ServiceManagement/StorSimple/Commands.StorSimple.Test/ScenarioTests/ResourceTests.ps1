@@ -44,17 +44,24 @@ function Test-SetResources-IncorrectResourceName
 {
 	# Set an invalid resource
 	$invalidName="123#$%"
-	$output = Select-AzureStorSimpleResource -ResourceName $invalidName
+    $ErrorActionPreference = "Stop"
+    $exceptionEncountered = $false
+    try
+    {
+	    $output = Select-AzureStorSimpleResource -ResourceName $invalidName
+    }
+    catch
+    {
+        $exceptionEncountered = $true
+    }
 
-	# Check whether resource context is set properly
-	Assert-AreEqual $output "The specified resource does not exist."
+	Assert-AreEqual $exceptionEncountered $true
 }
 
 function Test-SetResources-DirectInput
 {
 	# Get a resource name to set
-	$resources = Get-AzureStorSimpleResource
-	$resourceName = $resources[0].ResourceName
+	$resourceName = "OneSDK-Resource"
 
 	# Set the resource Name
 	$output = Select-AzureStorSimpleResource -ResourceName $resourceName
@@ -64,7 +71,7 @@ function Test-SetResources-DirectInput
 function Test-SetResources-PipedInput
 {
 	# Get a resource name to set
-	$resource = (Get-AzureStorSimpleResource) | select-object -first 1
+	$resource = (Get-AzureStorSimpleResource) | Where-Object {$_.ResourceName -eq 'OneSDK-Resource'}
 	
 
 	# Set the resource Name
@@ -75,7 +82,7 @@ function Test-SetResources-PipedInput
 function Test-GetResourceContext
 {
 	# Get a resource name to set
-	$resource = (Get-AzureStorSimpleResource) | select-object -first 1
+	$resource = (Get-AzureStorSimpleResource) | Where-Object {$_.ResourceName -eq 'OneSDK-Resource'}
 
 	# Set the resource Name
 	$output = $resource | Select-AzureStorSimpleResource 
