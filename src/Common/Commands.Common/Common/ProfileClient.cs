@@ -865,7 +865,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
             if (!string.Equals(account1.Id, account2.Id, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new ArgumentException("Account1 Ids do not match.");
+                throw new ArgumentException("Account Ids do not match.");
             }
             if (account1.Type != account2.Type)
             {
