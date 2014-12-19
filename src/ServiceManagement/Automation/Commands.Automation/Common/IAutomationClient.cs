@@ -24,9 +24,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
     {
         AzureSubscription Subscription { get; }
 
+        Schedule CreateSchedule(string automationAccountName, Schedule schedule);
+
+        void DeleteSchedule(string automationAccountName, string scheduleName);
+
         Schedule GetSchedule(string automationAccountName, string scheduleName);
 
         IEnumerable<Schedule> ListSchedules(string automationAccountName);
+
+        Schedule UpdateSchedule(string automationAccountName, string scheduleName, bool? isEnabled, string description);
 
         Runbook GetRunbook(string automationAccountName, string runbookName);
 

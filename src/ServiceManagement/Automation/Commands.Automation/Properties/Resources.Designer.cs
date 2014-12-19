@@ -70,11 +70,38 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing the Azure Automation schedule..
+        /// </summary>
+        internal static string RemoveAzureAutomationScheduleDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureAutomationScheduleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Automation schedule?.
+        /// </summary>
+        internal static string RemoveAzureAutomationScheduleWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureAutomationScheduleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Runbook was not found. Runbook name: {0}..
         /// </summary>
         internal static string RunbookNotFound {
             get {
                 return ResourceManager.GetString("RunbookNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Automation schedule name is in use. Schedule name: {0}..
+        /// </summary>
+        internal static string ScheduleNameExists {
+            get {
+                return ResourceManager.GetString("ScheduleNameExists", resourceCulture);
             }
         }
         

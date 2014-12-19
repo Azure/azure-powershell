@@ -34,17 +34,17 @@ namespace Microsoft.Azure.Commands.Automation.Model
             Requires.Argument("schedule", schedule).NotNull();
             //this.AccountId = new Guid(schedule.AccountId);
             this.Name = schedule.Name;
-            this.Description = schedule.Description;
-            this.StartTime = schedule.StartTime.ToLocalTime();
-            this.ExpiryTime = schedule.ExpiryTime.ToLocalTime();
-            this.CreationTime = schedule.CreationTime.ToLocalTime();
-            this.LastModifiedTime = schedule.LastModifiedTime.ToLocalTime();
-            this.IsEnabled = schedule.IsEnabled;
-            this.NextRun = schedule.NextRun.HasValue
-                               ? schedule.NextRun.Value.ToLocalTime()
+            this.Description = schedule.Properties.Description;
+            this.StartTime = schedule.Properties.StartTime.ToLocalTime();
+            this.ExpiryTime = schedule.Properties.ExpiryTime.ToLocalTime();
+            this.CreationTime = schedule.Properties.CreationTime.ToLocalTime();
+            this.LastModifiedTime = schedule.Properties.LastModifiedTime.ToLocalTime();
+            this.IsEnabled = schedule.Properties.IsEnabled;
+            this.NextRun = schedule.Properties.NextRun.HasValue
+                               ? schedule.Properties.NextRun.Value.ToLocalTime()
                                : this.NextRun;
-            this.Interval = schedule.Interval.Value;
-            this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Frequency);
+            this.Interval = schedule.Properties.Interval.HasValue ? schedule.Properties.Interval.Value : this.Interval;
+            this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Properties.Frequency, true);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the expiry time.
         /// </summary>
-        public DateTimeOffset? ExpiryTime { get; set; }
+        public DateTimeOffset ExpiryTime { get; set; }
 
         /// <summary>
         /// Gets or sets the creation time.

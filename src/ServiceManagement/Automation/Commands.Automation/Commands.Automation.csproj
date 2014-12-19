@@ -100,10 +100,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationSchedule.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationSchedule.cs" />
+    <Compile Include="Cmdlet\NewAzureAutomationSchedule.cs" />
+    <Compile Include="Cmdlet\SetAzureAutomationSchedule.cs" />
     <Compile Include="Common\AutomationClient.cs" />
     <Compile Include="Common\AutomationCmdletParameterSet.cs" />
+    <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\IAutomationClient.cs" />
     <Compile Include="Common\Requires.cs" />
     <Compile Include="Common\RequiresExtensions.cs" />
