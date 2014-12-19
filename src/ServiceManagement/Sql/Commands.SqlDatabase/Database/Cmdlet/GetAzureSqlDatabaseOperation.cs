@@ -131,6 +131,30 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     ErrorCategory.InvalidArgument,
                     null));
             }
+
+            // The API doesn't allow supplying a database name and and operation GUID. 
+            if (this.MyInvocation.BoundParameters.ContainsKey("DatabaseName") &&
+                this.MyInvocation.BoundParameters.ContainsKey("OperationGuid"))
+            {
+                this.WriteError(new ErrorRecord(
+                    new PSArgumentException(
+                        String.Format(Resources.InvalidParameterCombination, "DatabaseName", "OperationGuid")),
+                    string.Empty,
+                    ErrorCategory.InvalidArgument,
+                    null));
+            }
+
+            // The API doesn't allow supplying a database name and and operation GUID. 
+            if (this.MyInvocation.BoundParameters.ContainsKey("Database") &&
+                this.MyInvocation.BoundParameters.ContainsKey("OperationGuid"))
+            {
+                this.WriteError(new ErrorRecord(
+                    new PSArgumentException(
+                        String.Format(Resources.InvalidParameterCombination, "Database", "OperationGuid")),
+                    string.Empty,
+                    ErrorCategory.InvalidArgument,
+                    null));
+            }
         }
 
         /// <summary>
