@@ -1439,7 +1439,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             oldProfileDataPath = System.IO.Path.Combine(AzurePowerShell.ProfileDirectory, AzurePowerShell.OldProfileFile);
             oldProfileDataPathError = System.IO.Path.Combine(AzurePowerShell.ProfileDirectory, AzurePowerShell.OldProfileFileBackup);
             oldProfileData = @"<?xml version=""1.0"" encoding=""utf-8""?>
-                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.WindowsAzure.Commands.Utilities.Common"">
+                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Extensions"">
                   <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>
                   <Environments>
                     <AzureEnvironmentData>
@@ -1548,7 +1548,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 </ProfileData>";
 
             oldProfileDataBadSubscription = @"<?xml version=""1.0"" encoding=""utf-8""?>
-                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.WindowsAzure.Commands.Utilities.Common"">
+                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Extensions"">
                   <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>
                   <Environments>                    
                   </Environments>
@@ -1629,7 +1629,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 </ProfileData>";
 
             oldProfileDataCorruptedFile = @"<?xml version=""1.0"" encoding=""utf-8""?>
-                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.WindowsAzure.Commands.Utilities.Common"">
+                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Extensions"">
                   <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>
                   <Environments bad>
                     <AzureEnvironmentData>
