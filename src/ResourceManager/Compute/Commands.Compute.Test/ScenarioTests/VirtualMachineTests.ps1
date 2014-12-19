@@ -117,7 +117,7 @@ function Test-VirtualMachine
 
         Retry-IfException { Start-AzureVM -Name $vmname -ResourceGroupName $rgname; }
         Retry-IfException { Restart-AzureVM -Name $vmname -ResourceGroupName $rgname; }
-        Retry-IfException { Stop-AzureVM -Name $vmname -ResourceGroupName $rgname -Force; }
+        Retry-IfException { Stop-AzureVM -Name $vmname -ResourceGroupName $rgname -Force -StayProvisioned; }
 
         # Update
         Retry-IfException { Update-AzureVM -ResourceGroupName $rgname -Name $vmname -VM $p; }
