@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationJobOutput.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationVariable.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationSchedule.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="DataContract\ErrorResponse.cs" />
     <Compile Include="DataContract\OdataError.cs" />
     <Compile Include="DataContract\OdataErrorMessage.cs" />
+    <Compile Include="Model\JobStream.cs" />
     <Compile Include="Model\Runbook.cs" />
     <Compile Include="Model\Schedule.cs" />
     <Compile Include="Model\ScheduleFrequency.cs" />

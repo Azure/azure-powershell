@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
     {
         AzureSubscription Subscription { get; }
 
+        IEnumerable<JobStream> GetJobStream(string automationAccountname, Guid jobId, DateTime? time, string streamType);
+
         Variable GetVariable(string automationAccountName, string variableName);
 
         IEnumerable<Variable> ListVariables(string automationAccountName);

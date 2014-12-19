@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Initializes a new instance of the <see cref="Variable"/> class.
         /// </summary>
         /// <param name="variable">
-        /// The runbook.
+        /// The varaiable.
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Initializes a new instance of the <see cref="Variable"/> class.
         /// </summary>
         /// <param name="variable">
-        /// The runbook.
+        /// The variable.
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>

@@ -89,6 +89,25 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return new Runbook(sdkRunbook);
         }
 
+        public IEnumerable<JobStream> GetJobStream(string automationAccountName, Guid jobId, DateTime? time, string streamType)
+        {
+            var listParams = new AutomationManagement.Models.JobStreamListParameters();
+            
+            if (time.HasValue)
+            {
+                listParams.Time = time.Value.ToUniversalTime().ToString();
+            }
+
+            if (streamType != null)
+            {
+                listParams.StreamType = streamType;
+            }
+
+            var jobStreams = this.automationManagementClient.JobStreams.List(automationAccountName, jobId, listParams).JobStreams;
+
+            return jobStreams.Select(this.CreateJobStreamFromJobStreamModel);
+        }
+
         public Variable SetVariable(string automationAccountName, Variable variable)
         {
             bool variableExists = true;
@@ -248,6 +267,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #endregion
 
         #region Private Methods
+        private JobStream CreateJobStreamFromJobStreamModel(AutomationManagement.Models.JobStream jobStream)
+        {
+            Requires.Argument("jobStream", jobStream).NotNull();
+            return new JobStream(jobStream);
+        }
+
         private Variable CreateVariableFromVariableModel(AutomationManagement.Models.Variable variable)
         {
             Requires.Argument("variable", variable).NotNull();

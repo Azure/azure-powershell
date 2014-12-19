@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation variables for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationVariable")]
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationVariable")]
     [OutputType(typeof(Variable))]
     public class SetAzureAutomationVariable : AzureAutomationBaseCmdlet
     {
