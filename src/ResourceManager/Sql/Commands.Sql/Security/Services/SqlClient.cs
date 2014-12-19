@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.WindowsAzure.Commands.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
