@@ -22,6 +22,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema;
 using Microsoft.WindowsAzure.Common.Internals;
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Extensions.XmlSchema;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
 {
