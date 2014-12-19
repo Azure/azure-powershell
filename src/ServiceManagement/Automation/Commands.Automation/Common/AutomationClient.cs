@@ -89,6 +89,149 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return new Runbook(sdkRunbook);
         }
 
+        public Variable SetVariable(string automationAccountName, Variable variable)
+        {
+            bool variableExists = true;
+
+            try
+            {
+                this.GetVariable(automationAccountName, variable.Name);
+            }
+            catch (ResourceNotFoundException)
+            {
+                variableExists = false;
+            }
+
+            if (variableExists)
+            {
+                if (variable.IsEncrypted)
+                {
+                    var updateParams = new AutomationManagement.Models.EncryptedVariableUpdateParameters()
+                    {
+                        Name = variable.Name,
+                        Properties = new AutomationManagement.Models.EncryptedVariableUpdateProperties()
+                        {
+                            Value = variable.Value,
+                            Description = variable.Description
+                        }
+                    };
+
+                    this.automationManagementClient.EncryptedVariables.Update(automationAccountName, updateParams);
+                }
+                else
+                {
+                    var updateParams = new AutomationManagement.Models.VariableUpdateParameters()
+                    {
+                        Name = variable.Name,
+                        Properties = new AutomationManagement.Models.VariableUpdateProperties()
+                        {
+                            Value = variable.Value,
+                            Description = variable.Description
+                        }
+                    };
+
+                    this.automationManagementClient.Variables.Update(automationAccountName, updateParams);
+                }
+
+                return this.GetVariable(automationAccountName, variable.Name);
+            }
+            else
+            {
+                if (variable.IsEncrypted)
+                {
+                    var createParams = new AutomationManagement.Models.EncryptedVariableCreateParameters()
+                    {
+                        Name = variable.Name,
+                        Properties = new AutomationManagement.Models.EncryptedVariableCreateProperties()
+                        {
+                            Value = variable.Value,
+                            Description = variable.Description
+                        }
+                    };
+
+                    var sdkCreatedVariable = this.automationManagementClient.EncryptedVariables.Create(automationAccountName, createParams).EncryptedVariable;
+
+                    if (sdkCreatedVariable == null)
+                    {
+                        // TODO:  throw the right error here
+                        throw new ArgumentNullException();
+                    }
+
+                    return new Variable(sdkCreatedVariable);
+                }
+                else
+                {
+                    var createParams = new AutomationManagement.Models.VariableCreateParameters()
+                    {
+                        Name = variable.Name,
+                        Properties = new AutomationManagement.Models.VariableCreateProperties()
+                        {
+                            Value = variable.Value,
+                            Description = variable.Description
+                        }
+                    };
+
+                    var sdkCreatedVariable = this.automationManagementClient.Variables.Create(automationAccountName, createParams).Variable;
+
+                    if (sdkCreatedVariable == null)
+                    {
+                        // TODO:  throw the right error here
+                        throw new ArgumentNullException();
+                    }
+
+                    return new Variable(sdkCreatedVariable);
+                }
+            }
+         
+        }
+
+        public Variable GetVariable(string automationAccountName, string name)
+        {
+            var sdkEncryptedVariable = this.automationManagementClient.EncryptedVariables.Get(
+                automationAccountName, name).EncryptedVariable;
+
+            if (sdkEncryptedVariable != null)
+            {
+                return new Variable(sdkEncryptedVariable);
+            }
+            
+            var sdkVarible = this.automationManagementClient.Variables.Get(automationAccountName, name).Variable;
+
+            if (sdkVarible != null)
+            {
+                return new Variable(sdkVarible);
+            }
+
+            throw new ResourceNotFoundException(typeof(Variable), string.Format(CultureInfo.CurrentCulture, Resources.VariableNotFound, name));
+        }
+
+        public IEnumerable<Variable> ListVariables(string automationAccountName)
+        {
+            IList<AutomationManagement.Models.Variable> variables = AutomationManagementClient.ContinuationTokenHandler(
+               skipToken =>
+               {
+                   var response = this.automationManagementClient.Variables.List(
+                       automationAccountName);
+                   return new ResponseWithSkipToken<AutomationManagement.Models.Variable>(
+                       response, response.Variables);
+               });
+
+            var result = variables.Select(this.CreateVariableFromVariableModel).ToList();
+
+            IList<AutomationManagement.Models.EncryptedVariable> encryptedVariables = AutomationManagementClient.ContinuationTokenHandler(
+               skipToken =>
+               {
+                   var response = this.automationManagementClient.EncryptedVariables.List(
+                       automationAccountName);
+                   return new ResponseWithSkipToken<AutomationManagement.Models.EncryptedVariable>(
+                       response, response.EncryptedVariables);
+               });
+
+            result.AddRange(encryptedVariables.Select(this.CreateVariableFromVariableModel).ToList());
+
+            return result;
+        }
+
         public IEnumerable<Runbook> ListRunbooks(string automationAccountName)
         {
             return AutomationManagementClient
@@ -105,6 +248,20 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #endregion
 
         #region Private Methods
+        private Variable CreateVariableFromVariableModel(AutomationManagement.Models.Variable variable)
+        {
+            Requires.Argument("variable", variable).NotNull();
+
+            return new Variable(variable);
+        }
+
+        private Variable CreateVariableFromVariableModel(AutomationManagement.Models.EncryptedVariable variable)
+        {
+            Requires.Argument("variable", variable).NotNull();
+
+            return new Variable(variable);
+        }
+
 
         private Schedule CreateScheduleFromScheduleModel(AutomationManagement.Models.Schedule schedule)
         {

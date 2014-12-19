@@ -129,4 +129,8 @@
     <value>The schedule was not found. Schedule name: {0}.</value>
     <comment>Automation</comment>
   </data>
+  <data name="VariableNotFound" xml:space="preserve">
+    <value>The varaible was not found. Variable name {0}.</value>
+    <comment>Automation</comment>
+  </data>
 </root>

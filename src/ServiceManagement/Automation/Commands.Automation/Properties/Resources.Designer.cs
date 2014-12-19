@@ -86,5 +86,14 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
                 return ResourceManager.GetString("ScheduleNotFound", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The varaible was not found. Variable name {0}..
+        /// </summary>
+        internal static string VariableNotFound {
+            get {
+                return ResourceManager.GetString("VariableNotFound", resourceCulture);
+            }
+        }
     }
 }

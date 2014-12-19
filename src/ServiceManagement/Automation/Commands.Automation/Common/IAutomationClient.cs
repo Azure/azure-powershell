@@ -24,6 +24,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
     {
         AzureSubscription Subscription { get; }
 
+        Variable GetVariable(string automationAccountName, string variableName);
+
+        IEnumerable<Variable> ListVariables(string automationAccountName);
+
+        Variable SetVariable(string automationAccountName, Variable variable);
+
         Schedule GetSchedule(string automationAccountName, string scheduleName);
 
         IEnumerable<Schedule> ListSchedules(string automationAccountName);
