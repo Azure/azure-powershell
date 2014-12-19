@@ -13,17 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Management.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
-    internal static class AutomationCmdletParameterSets
+    public class Constants
     {
-        internal const string ByAll = "ByAll";
-        internal const string ByName = "ByName";
-        internal const string ByPath = "ByPath";
+        public const string ClientIdentity = "PowerShell";
+
+        public const char RunbookTagsSeparatorChar = ',';
+
+        public const string RunbookTagsSeparatorString = ",";
     }
 }

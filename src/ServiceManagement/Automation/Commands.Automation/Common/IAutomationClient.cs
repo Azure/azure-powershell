@@ -31,5 +31,19 @@ namespace Microsoft.Azure.Commands.Automation.Common
         Runbook GetRunbook(string automationAccountName, string runbookName);
 
         IEnumerable<Runbook> ListRunbooks(string automationAccountName);
+
+        Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description, IDictionary<string, string> tags);
+
+        Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description, IDictionary<string, string> tags);
+        
+        void DeleteRunbook(string automationAccountName, string runbookName);
+
+        Runbook PublishRunbook(string automationAccountName, string runbookName);
+
+        Runbook UpdateRunbook(string automationAccountName, string runbookName, string description, IDictionary<string, string> tags, bool? logProgress, bool? logVerbose);
+
+        RunbookDefinition UpdateRunbookDefinition(string automationAccountName, string runbookName, string runbookPath, bool overwrite);
+
+        IEnumerable<RunbookDefinition> ListRunbookDefinitionsByRunbookName(string automationAccountName, string runbookName, bool? isDraft);
     }
 }

@@ -92,7 +92,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationRunbookDefinitionTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationScheduleTest.cs" />
+    <Compile Include="UnitTests\NewAzureAutomationRunbookTest.cs" />
+    <Compile Include="UnitTests\PublishAzureAutomationRunbookTest.cs" />
+    <Compile Include="UnitTests\RemoveAzureAutomationRunbookTest.cs" />
+    <Compile Include="UnitTests\SetAzureAutomationRunbookDefinitionTest.cs" />
+    <Compile Include="UnitTests\SetAzureAutomationRunbookTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Test\Commands.Common.Test.csproj">

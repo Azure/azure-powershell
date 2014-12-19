@@ -70,6 +70,33 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing the Azure Automation runbook..
+        /// </summary>
+        internal static string RemoveAzureAutomationRunbookDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureAutomationRunbookDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Automation runbook?.
+        /// </summary>
+        internal static string RemoveAzureAutomationRunbookWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureAutomationRunbookWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Runbook already has a draft. Specify the parameter to force an overwrite of this draft..
+        /// </summary>
+        internal static string RunbookAlreadyHasDraft {
+            get {
+                return ResourceManager.GetString("RunbookAlreadyHasDraft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Runbook was not found. Runbook name: {0}..
         /// </summary>
         internal static string RunbookNotFound {
