@@ -22,7 +22,29 @@ namespace Microsoft.Azure.Commands.Automation.Common
 {
     internal static class AutomationCmdletParameterSets
     {
+        /// <summary>
+        /// By All parameter set.
+        /// </summary>
         internal const string ByAll = "ByAll";
+
+        /// <summary>
+        /// By Name parameter set.
+        /// </summary>
         internal const string ByName = "ByName";
+
+        /// <summary>
+        /// The one time schedule parameter set.
+        /// </summary>
+        internal const string ByOneTime = "ByOneTime";
+
+        /// <summary>
+        /// The daily schedule parameter set.
+        /// </summary>
+        internal const string ByDaily = "ByDaily";
+
+        /// <summary>
+        /// The hourly schedule parameter set.
+        /// </summary>
+        internal const string ByHourly = "ByHourly";
     }
 }

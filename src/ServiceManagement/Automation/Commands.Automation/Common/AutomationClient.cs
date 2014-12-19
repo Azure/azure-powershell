@@ -17,9 +17,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 
@@ -56,6 +58,47 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Schedule Operations
 
+        public Schedule CreateSchedule(string automationAccountName, Schedule schedule)
+        {
+            var scheduleCreateParameters = new AutomationManagement.Models.ScheduleCreateParameters
+            {
+                Name = schedule.Name,
+                Properties = new AutomationManagement.Models.ScheduleCreateProperties
+                {
+                    StartTime = schedule.StartTime,
+                    ExpiryTime = schedule.ExpiryTime,
+                    Description = schedule.Description,
+                    Interval = schedule.Interval,
+                    Frequency = schedule.Frequency.ToString()
+                }
+            };
+
+            var scheduleCreateResponse = this.automationManagementClient.Schedules.Create(
+                automationAccountName,
+                scheduleCreateParameters);
+
+            return this.GetSchedule(automationAccountName, schedule.Name);
+        }
+
+        public void DeleteSchedule(string automationAccountName, string scheduleName)
+        {
+            try 
+            {
+                this.automationManagementClient.Schedules.Delete(
+                    automationAccountName,
+                    scheduleName);
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Schedule), string.Format(CultureInfo.CurrentCulture, Resources.ScheduleNotFound, scheduleName));
+                }
+
+                throw;
+            }
+        }
+
         public Schedule GetSchedule(string automationAccountName, string scheduleName)
         {
             AutomationManagement.Models.Schedule scheduleModel = this.GetScheduleModel(automationAccountName, scheduleName);
@@ -68,13 +111,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 skipToken =>
                 {
                     var response = this.automationManagementClient.Schedules.List(
-                        automationAccountName);
+                        automationAccountName, skipToken);
                     return new ResponseWithSkipToken<AutomationManagement.Models.Schedule>(
                         response, response.Schedules);
                 });
 
             return scheduleModels.Select(this.CreateScheduleFromScheduleModel);
         }
+        
+        public Schedule UpdateSchedule(string automationAccountName, string scheduleName, bool? isEnabled, string description)
+        {
+            AutomationManagement.Models.Schedule scheduleModel = this.GetScheduleModel(automationAccountName, scheduleName);
+            return this.UpdateScheduleHelper(automationAccountName, scheduleModel, isEnabled, description);
+        }
+
+        #endregion
 
         public Runbook GetRunbook(string automationAccountName, string name) 
         {
@@ -264,8 +315,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     }).Select(c => new Runbook(c));
         }
 
-        #endregion
-
         #region Private Methods
         private JobStream CreateJobStreamFromJobStreamModel(AutomationManagement.Models.JobStream jobStream)
         {
@@ -297,14 +346,23 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         private AutomationManagement.Models.Schedule GetScheduleModel(string automationAccountName, string scheduleName)
         {
-            AutomationManagement.Models.Schedule scheduleModel = this.automationManagementClient.Schedules.Get(
-                automationAccountName,
-                scheduleName)
-                .Schedule;
+            AutomationManagement.Models.Schedule scheduleModel;
 
-            if (scheduleModel == null)
+            try
             {
-                throw new ResourceNotFoundException(typeof(Schedule), string.Format(CultureInfo.CurrentCulture, Resources.ScheduleNotFound, scheduleName));
+                scheduleModel = this.automationManagementClient.Schedules.Get(
+                    automationAccountName,
+                    scheduleName)
+                    .Schedule;
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Schedule), string.Format(CultureInfo.CurrentCulture, Resources.ScheduleNotFound, scheduleName));
+                }
+
+                throw;
             }
 
             return scheduleModel;
@@ -313,6 +371,36 @@ namespace Microsoft.Azure.Commands.Automation.Common
         private string FormatDateTime(DateTime dateTime)
         {
             return string.Format(CultureInfo.InvariantCulture, "{0:O}", dateTime.ToUniversalTime());
+        }
+
+        private Schedule UpdateScheduleHelper(string automationAccountName, AutomationManagement.Models.Schedule schedule, bool? isEnabled, string description)
+        {
+
+            if (isEnabled.HasValue)
+            {
+                schedule.Properties.IsEnabled = isEnabled.Value;
+            }
+
+            if (description != null)
+            {
+                schedule.Properties.Description = description;
+            }
+
+            var scheduleUpdateParameters = new AutomationManagement.Models.ScheduleUpdateParameters
+            {
+                Name = schedule.Name,
+                Properties = new AutomationManagement.Models.ScheduleUpdateProperties
+                {
+                    Description = schedule.Properties.Description,
+                    IsEnabled = schedule.Properties.IsEnabled
+                }
+            };
+
+            this.automationManagementClient.Schedules.Update(
+                automationAccountName,
+                scheduleUpdateParameters);
+
+            return this.GetSchedule(automationAccountName, schedule.Name);
         }
 
         #endregion
