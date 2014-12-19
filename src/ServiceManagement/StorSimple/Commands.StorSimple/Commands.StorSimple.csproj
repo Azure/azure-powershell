@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{11524D98-6C40-4091-A8E1-86463FEE607C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.StorSimple</RootNamespace>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.StorSimple</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>b697debf</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Debug\ServiceManagement\Azure\StorSimple\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Package\Release\ServiceManagement\Azure\StorSimple\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Utilities.HttpRecorder">
+      <HintPath>..\..\..\packages\Hydra.HttpRecorder.1.0.5399.28277-prerelease\lib\net45\Microsoft.Azure.Utilities.HttpRecorder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.11.10918.1222\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.11.10918.1222\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Commands, Version=0.8.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Package\Debug\ServiceManagement\Azure\Services\Microsoft.WindowsAzure.Commands.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Commands.Common, Version=0.8.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Common\Commands.Common\bin\Debug\Microsoft.WindowsAzure.Commands.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Common">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Common.NetFramework">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Scheduler, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.3.0.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.StorSimple">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.StorSimple.0.9.0-preview\lib\net40\Microsoft.WindowsAzure.Management.StorSimple.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cmdlets\BackupPolicy\GetAzureStorSimpleDeviceBackupPolicy.cs" />
+    <Compile Include="Cmdlets\BackupPolicy\NewAzureStorSimpleDeviceBackupPolicy.cs" />
+    <Compile Include="Cmdlets\BackupPolicy\NewAzureStorSimpleDeviceBackupScheduleAddConfig.cs" />
+    <Compile Include="Cmdlets\BackupPolicy\NewAzureStorSimpleDeviceBackupScheduleUpdateConfig.cs" />
+    <Compile Include="Cmdlets\BackupPolicy\RemoveAzureStorSimpleDeviceBackupPolicy.cs" />
+    <Compile Include="Cmdlets\BackupPolicy\SetAzureStorSimpleDeviceBackupPolicy.cs" />
+    <Compile Include="Cmdlets\BackupSet\GetAzureStorSimpleDeviceBackup.cs" />
+    <Compile Include="Cmdlets\BackupSet\RemoveAzureStorSimpleDeviceBackup.cs" />
+    <Compile Include="Cmdlets\BackupSet\StartAzureStorSimpleDeviceBackupJob.cs" />
+    <Compile Include="Cmdlets\BackupSet\StartAzureStorSimpleDeviceBackupRestoreJob.cs" />
+    <Compile Include="Cmdlets\DataContainer\GetAzureStorSimpleDeviceVolumeContainer.cs" />
+    <Compile Include="Cmdlets\DataContainer\NewAzureStorSimpleDeviceVolumeContainer.cs" />
+    <Compile Include="Cmdlets\DataContainer\RemoveAzureStorSimpleDeviceVolumeContainer.cs" />
+    <Compile Include="Cmdlets\GetAzureStorSimpleDevice.cs" />
+    <Compile Include="Cmdlets\GetAzureStorSimpleDeviceConnectedInitiator.cs" />
+    <Compile Include="Cmdlets\GetAzureStorSimpleResource.cs" />
+    <Compile Include="Cmdlets\GetAzureStorSimpleResourceContext.cs" />
+    <Compile Include="Cmdlets\Job\GetAzureStorSimpleTask.cs" />
+    <Compile Include="Cmdlets\ServiceConfig\GetAzureStorSimpleStorageAccountCredential.cs" />
+    <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleAccessControlRecord.cs" />
+    <Compile Include="Cmdlets\SelectAzureStorSimpleResource.cs" />
+    <Compile Include="Cmdlets\ServiceConfig\GetAzureStorSimpleAccessControlRecord.cs" />
+    <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleInlineStorageAccountCredential.cs" />
+    <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleStorageAccountCredential.cs" />
+    <Compile Include="Cmdlets\ServiceConfig\RemoveAzureStorSimpleAccessControlRecord.cs" />
+    <Compile Include="Cmdlets\ServiceConfig\RemoveAzureStorSimpleStorageAccountCredential.cs" />
+    <Compile Include="Cmdlets\ServiceConfig\SetAzureStorSimpleAccessControlRecord.cs" />
+    <Compile Include="Cmdlets\ServiceConfig\SetAzureStorSimpleStorageAccountCredential.cs" />
+    <Compile Include="Cmdlets\Volume\GetAzureStorSimpleDeviceVolume .cs" />
+    <Compile Include="Cmdlets\Volume\NewAzureStorSimpleDeviceVolume.cs" />
+    <Compile Include="Cmdlets\Volume\RemoveAzureStorSimpleDeviceVolume .cs" />
+    <Compile Include="Cmdlets\Volume\SetAzureStorSimpleDeviceVolume.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Encryption\EncryptionCmdLetHelper.cs" />
+    <Compile Include="Encryption\StorSimpleKeyManager.cs" />
+    <Compile Include="Exceptions\DeviceNotYetConfiguredException.cs" />
+    <Compile Include="Exceptions\NoDeviceRegisteredException.cs" />
+    <Compile Include="Exceptions\RegistrationKeyException.cs" />
+    <Compile Include="Exceptions\StorSimpleDeviceNotFoundException.cs" />
+    <Compile Include="Exceptions\StorSimpleTaskNotFoundException.cs" />
+    <Compile Include="Exceptions\StorSimpleSecretManagementException.cs" />
+    <Compile Include="Exceptions\ResourceContextNotFoundException.cs" />
+    <Compile Include="Exceptions\ResourceNotFoundException.cs" />
+    <Compile Include="Models\TaskReport.cs" />
+    <Compile Include="Models\PSContracts.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceClients\PSStoreSimpleBackupPolicyClient.cs" />
+    <Compile Include="ServiceClients\PSStoreSimpleCryptKeysClient.cs" />
+    <Compile Include="ServiceClients\PSStorSimpleBackupSetClient.cs" />
+    <Compile Include="ServiceClients\PSStorSimpleClient.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceClients\PSStorSimpleContextClient.cs" />
+    <Compile Include="ServiceClients\PSStorSimpleDCClient.cs" />
+    <Compile Include="ServiceClients\PSStorSimpleDevicesClient.cs" />
+    <Compile Include="ServiceClients\PSStorSimpleServiceConfigClient.cs" />
+    <Compile Include="ServiceClients\PSStorSimpleVolumeClient.cs" />
+    <Compile Include="StorSimpleCmdletBase.cs" />
+    <Compile Include="StorSimpleCmdletHelpMessage.cs" />
+    <Compile Include="StorSimpleCmdletParameterSet.cs" />
+    <Compile Include="StorSimpleContext.cs" />
+    <Compile Include="Encryption\StorSimpleCryptoManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Commands.StorSimple.Library\Commands.StorSimple.Library.csproj">
+      <Project>{b0e9c13f-4e03-4df0-91fa-9a8c76e7422d}</Project>
+      <Name>Commands.StorSimple.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
