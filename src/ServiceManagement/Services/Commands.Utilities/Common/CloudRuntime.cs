@@ -89,8 +89,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
                     runtime = new NullCloudRuntime();
                     break;
                 case RuntimeType.Cache:
-                    runtime = new CacheCloudRuntime();
-                    break;
+                    //Scaffolding for cache is no longer supported
+                    throw new NotSupportedException(Resources.CacheScaffoldingIsNotSupport);
                 case RuntimeType.PHP:
                     runtime = new PHPCloudRuntime();
                     break;
@@ -535,83 +535,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
             protected override void ApplyScaffoldingChanges(CloudRuntimePackage package)
             {
                 
-            }
-        }
-
-        private class CacheCloudRuntime : CloudRuntime
-        {
-            protected override void Configure(Dictionary<string, string> environment)
-            {
-                if (string.IsNullOrEmpty(this.Version))
-                {
-                    string version;
-                    if (!environment.TryGetValue(Resources.CacheRuntimeVersionKey, out version))
-                    {
-                        version = AzureTool.GetAzureSdkVersion();
-                    }
-
-                    this.Version = version;
-                }
-            }
-
-            public override bool Match(CloudRuntimePackage runtime)
-            {
-                return this.Version.Equals(runtime.Version, StringComparison.OrdinalIgnoreCase);
-            }
-
-            protected override string GenerateWarningText(CloudRuntimePackage package)
-            {
-                return string.Format(Resources.CacheVersionWarningText, package.Version, this.RoleName,
-                    this.Version);
-            }
-
-            protected override bool GetChanges(CloudRuntimePackage package, out Dictionary<string, string> changes)
-            {
-                base.GetChanges(package, out changes);
-
-                Debug.Assert(changes.ContainsKey(Resources.RuntimeTypeKey), "Cache runtime should be added before calling this method");
-                Debug.Assert(changes.ContainsKey(Resources.RuntimeUrlKey), "Cache runtime should be added before calling this method");
-
-                changes[Resources.CacheRuntimeVersionKey] = package.Version;
-
-                return true;
-            }
-
-            protected override void ApplyScaffoldingChanges(CloudRuntimePackage package)
-            {
-                string rootPath = CommonUtilities.GetServiceRootPath(FilePath);
-
-                if (CloudServiceProject.Components.StartupTaskExists(RoleName, Resources.CacheStartupCommand))
-                {
-                    CloudServiceProject.Components.SetStartupTaskVariable(
-                        RoleName,
-                        Resources.CacheRuntimeUrl,
-                        package.PackageUri.ToString(),
-                        Resources.CacheStartupCommand);
-                }
-                else
-                {
-                    Variable emulated = new Variable
-                    {
-                        name = Resources.EmulatedKey,
-                        RoleInstanceValue = new RoleInstanceValueElement
-                        {
-                            xpath = "/RoleEnvironment/Deployment/@emulated"
-                        }
-                    };
-                    Variable cacheRuntimeUrl = new Variable
-                    {
-                        name = Resources.CacheRuntimeUrl,
-                        value = package.PackageUri.ToString()
-                    };
-
-                    CloudServiceProject.Components.AddStartupTask(
-                        RoleName,
-                        Resources.CacheStartupCommand,
-                        ExecutionContext.elevated,
-                        emulated,
-                        cacheRuntimeUrl);
-                }
             }
         }
 

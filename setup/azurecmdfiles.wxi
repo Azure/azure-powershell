@@ -1467,29 +1467,6 @@
                         </Component>
                         <Directory Id="dir7B3D975F9D09F45FF8AC88A91847AAAE" Name="Resources">
                             <Directory Id="dir88A673CF05D91163C2061C48577C7090" Name="Scaffolding">
-                                <Directory Id="dir4AA7085369D31CC87F5F980A9A92DEEB" Name="Cache">
-                                    <Directory Id="dir495AE375E45D390A5353648D6EB3626B" Name="WebRole">
-                                        <Component Id="cmp1FE62B609FA18BB75E9DD773609054AC" Guid="*">
-                                            <File Id="fil16D80EBEAB7CA36A3090213B5CF7381C" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Cache\WebRole\Scaffold.xml" />
-                                        </Component>
-                                        <Directory Id="dirCAF02246E99DE5F164F64B0C09E9491C" Name="bin">
-                                            <Component Id="cmp15AE15FAB1DD000021FB6EFF1892B8EB" Guid="*">
-                                                <File Id="fil2AE2989C16FF87E0EDE1B479FF0FC31D" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Cache\WebRole\bin\setup_cache.cmd" />
-                                            </Component>
-                                        </Directory>
-                                    </Directory>
-                                    <Directory Id="dir11DC33EEBA840D5BAABF0715FE621546" Name="WorkerRole">
-                                        <Component Id="cmp6F0F20CA4AE1A60B239F07EEDBE5DE73" Guid="*">
-                                            <File Id="fil6F8C1A89DF0D3695664C4422DF6874F4" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Cache\WorkerRole\Scaffold.xml" />
-                                        </Component>
-                                        <Component Id="cmpE5988EA8443F15599FA0B174F8782C0D" Guid="*">
-                                            <File Id="filAA6A55A7EC1CC97CE4E6FBCF71CD0DC9" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Cache\WorkerRole\setup_cache.cmd" />
-                                        </Component>
-                                        <Component Id="cmp3A10497B2FDB4DE8AB9D1125BBE202B6" Guid="*">
-                                            <File Id="filE2AB35B5FD36151C7D855E75A54B911C" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Cache\WorkerRole\web.config" />
-                                        </Component>
-                                    </Directory>
-                                </Directory>
                                 <Directory Id="dir6461915EF2E31440AC969CEBB7CE7E8C" Name="General">
                                     <Component Id="cmp484E8ED2EE1DD835A3C56DAF785883E5" Guid="*">
                                         <File Id="fil99FD74BB0CE2A97472D0EDE484CAD790" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\General\deploymentSettings.json" />
@@ -1714,7 +1691,7 @@
                                             <File Id="filF3D8A3E762DD13F9FFD7B2B0BB339070" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.PythonTools.WebRole.dll.content" />
                                         </Component>
                                         <Component Id="cmpA69B6C11506C243CDE56D867B794AC9F" Guid="*">
-                                            <File Id="fil848958AA95168855F8FE3E93358C2B76" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.Web.Deployment.dll.content" />
+                                           <File Id="fil848958AA95168855F8FE3E93358C2B76" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.Web.Deployment.dll.content" />
                                         </Component>
                                         <Component Id="cmp8B904F97CEDA97F7D1A68BDBC2259AB4" Guid="*">
                                             <File Id="filD732F0BF33579E271040FE1DE0AB979E" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.Web.PlatformInstaller.dll.content" />
@@ -2575,11 +2552,6 @@
             <ComponentRef Id="cmp9C9CE8AD490B1B8749ED391B5DC85F21" />
             <ComponentRef Id="cmp0418C423C7EB6C3C8838305D0EA0177A" />
             <ComponentRef Id="cmpE9EDC1586045D7CEED49D3E56F77F331" />
-            <ComponentRef Id="cmp1FE62B609FA18BB75E9DD773609054AC" />
-            <ComponentRef Id="cmp15AE15FAB1DD000021FB6EFF1892B8EB" />
-            <ComponentRef Id="cmp6F0F20CA4AE1A60B239F07EEDBE5DE73" />
-            <ComponentRef Id="cmpE5988EA8443F15599FA0B174F8782C0D" />
-            <ComponentRef Id="cmp3A10497B2FDB4DE8AB9D1125BBE202B6" />
             <ComponentRef Id="cmp484E8ED2EE1DD835A3C56DAF785883E5" />
             <ComponentRef Id="cmp9318F45E838743A28503590F2B3A8C70" />
             <ComponentRef Id="cmp245F68F73D39AF55BD6AC28F2FA16A04" />

@@ -179,7 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CloudService\AddRole.cs" />
-    <Compile Include="CloudService\CacheConfigurationFactory.cs" />
     <Compile Include="CloudService\CloudServiceClient.cs" />
     <Compile Include="CloudService\ICloudServiceClient.cs" />
     <Compile Include="CloudService\Model\ConfigurationSet.cs" />
@@ -193,6 +192,7 @@
     <Compile Include="CloudService\Model\UpgradeStatus.cs" />
     <Compile Include="CloudService\Model\VirtualIP.cs" />
     <Compile Include="CloudService\SetSettings.cs" />
+    <Compile Include="Common\AzureTools\AzureSdkVersionInfo.cs" />
     <Compile Include="Common\AzureTools\AzureTool.cs" />
     <Compile Include="Common\AzureTools\CsEncrypt.cs" />
     <Compile Include="Common\AzureTools\CsPack.cs" />
@@ -418,14 +418,6 @@
     <Content Include="Microsoft.WindowsAzure.Commands.WebSites.Types.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Scaffolding\Cache\WebRole\Scaffold.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Scaffolding\Cache\WorkerRole\Scaffold.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\Scaffolding\General\Scaffold.xml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -470,15 +462,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Scaffolding\Node\Website\iisnode.yml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Scaffolding\Cache\WebRole\bin\setup_cache.cmd">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Scaffolding\Cache\WorkerRole\setup_cache.cmd">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Scaffolding\Cache\WorkerRole\web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Scaffolding\General\deploymentSettings.json">
