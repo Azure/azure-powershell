@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Commands.Compute.Properties;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -28,6 +30,12 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "To keep the VM provisioned.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter StayProvisioned { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -35,8 +43,20 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.Force.IsPresent
              || this.ShouldContinue(Resources.VirtualMachineStoppingConfirmation, Resources.VirtualMachineStoppingCaption))
             {
-                var op = this.VirtualMachineClient.Stop(this.ResourceGroupName, this.Name);
-                WriteObject(op);
+                Action<Func<string, string, LongRunningOperationResponse>> call = f =>
+                {
+                    var op = f(this.ResourceGroupName, this.Name);
+                    WriteObject(op);
+                };
+
+                if (this.StayProvisioned)
+                {
+                    call(this.VirtualMachineClient.Stop);
+                }
+                else
+                {
+                    call(this.VirtualMachineClient.Deallocate);
+                }
             }
         }
     }
