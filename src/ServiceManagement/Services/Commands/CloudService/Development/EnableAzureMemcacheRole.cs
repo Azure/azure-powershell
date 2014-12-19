@@ -74,7 +74,6 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
         public override void ExecuteCmdlet()
         {
             WriteWarning("This cmdlet will be removed in a future release as we are retiring Managed Cache scaffolding support.");
-
             string rootPath = CommonUtilities.GetServiceRootPath(CurrentPath());
             RoleName = string.IsNullOrEmpty(RoleName) ? CommonUtilities.GetRoleName(rootPath, CurrentPath()) : RoleName;
 
