@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development.Scaffolding
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            WriteWarning("This cmdlet will be removed in a future release as part of obselating Managed Cache scaffolding support.");
+            WriteWarning("This cmdlet will be removed in a future release as we are retiring Managed Cache scaffolding support.");
             AddAzureCacheWorkerRoleProcess(Name, Instances, CommonUtilities.GetServiceRootPath(CurrentPath()));
         }
 
