@@ -31,24 +31,28 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP address location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP address allocation method.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(MNM.IpAllocationMethod.Dynamic, IgnoreCase = true)]
@@ -56,17 +60,20 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Domain Name label.")]
         public string DomainNameLabel { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "IdleTimeoutInMinutes")]
         public int IdleTimeoutInMinutes { get; set; }
 
         [Alias("Tags")]
         [Parameter(
-            Mandatory = false, 
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
 
