@@ -24,7 +24,7 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    public abstract class PublicIpAddressBaseClient : NetworkResourceBaseClient
+    public abstract class PublicIpAddressBaseClient : NetworkBaseClient
     {
         public IPublicIpAddressOperations PublicIpAddressClient
         {

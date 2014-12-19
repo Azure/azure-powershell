@@ -22,6 +22,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     [Cmdlet(VerbsCommon.New, "AzureLoadBalancerProbeConfig"), OutputType(typeof(PSProbe))]
     public class NewAzureLoadBalancerProbeConfigCmdlet : CommonAzureLoadBalancerProbeConfig
     {
+        [Parameter(
+               Mandatory = true,
+               HelpMessage = "The name of the probe")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

@@ -23,6 +23,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     [Cmdlet(VerbsCommon.New, "AzureLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSInboundNatRule))]
     public class NewAzureLoadBalancerInboundNatRuleConfigCmdlet : CommonAzureLoadBalancerInboundNatRuleConfig
     {
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the Inbound NAT rule")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

@@ -22,6 +22,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     [Cmdlet(VerbsCommon.New, "AzureLoadBalancerBackendAddressPoolConfig"), OutputType(typeof(PSBackendAddressPool))]
     public class NewAzureLoadBalancerBackendAddressPoolConfigCmdlet : CommonAzureLoadBalancerBackendAddressPoolConfig
     {
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the BackendAddressPool")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

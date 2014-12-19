@@ -29,41 +29,48 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
          Mandatory = true,
+         ValueFromPipelineByPropertyName = true,
          HelpMessage = "location.")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
         [ValidateNotNullOrEmpty]
         public List<string> AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of Dns Servers")]
         public List<string> DnsServer { get; set; }
 
         [Parameter(
              Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of subnets")]
         public List<PSSubnet> Subnet { get; set; }
 
         [Alias("Tags")]
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
 

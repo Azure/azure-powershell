@@ -19,26 +19,25 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     public abstract class NetworkBaseClient : AzurePSCmdlet
     {
 
-        //;protected static string NetworkCmdletPrefix
-        public NetworkClient networkClient;
+        private NetworkClient _networkClient;
 
         public NetworkClient NetworkClient
         {
             get
             {
-                if (networkClient == null)
+                if (_networkClient == null)
                 {
-                    networkClient = new NetworkClient(CurrentContext)
+                    _networkClient = new NetworkClient(CurrentContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
                         WarningLogger = WriteWarningWithTimestamp
                     };
                 }
-                return networkClient;
+                return _networkClient;
             }
 
-            set { networkClient = value; }
+            set { _networkClient = value; }
         }
         public override void ExecuteCmdlet()
         {

@@ -23,7 +23,7 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    public abstract class VirtualNetworkBaseClient : NetworkResourceBaseClient
+    public abstract class VirtualNetworkBaseClient : NetworkBaseClient
     {
         public IVirtualNetworkOperations VirtualNetworkClient
         {

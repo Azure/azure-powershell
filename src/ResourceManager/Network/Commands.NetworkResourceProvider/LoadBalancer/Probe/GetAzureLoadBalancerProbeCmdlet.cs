@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var lbProbe =
-                    this.LoadBalancer.Properties.Probes.Where(
+                    this.LoadBalancer.Properties.Probes.First(
                         resource =>
                             string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 

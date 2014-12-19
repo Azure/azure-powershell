@@ -21,6 +21,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     [Cmdlet(VerbsCommon.New, "AzureLoadBalancerFrontendIpConfig"), OutputType(typeof(PSFrontendIpConfiguration))]
     public class NewAzureLoadBalancerFrontendIpConfigCmdlet : CommonAzureLoadBalancerFrontendIpConfig
     {
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the FrontendIpConfiguration")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

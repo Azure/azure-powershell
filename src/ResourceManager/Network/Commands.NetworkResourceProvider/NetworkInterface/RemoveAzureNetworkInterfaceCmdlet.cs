@@ -26,12 +26,14 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }

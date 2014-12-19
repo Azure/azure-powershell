@@ -20,6 +20,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     [Cmdlet(VerbsCommon.New, "AzureVirtualNetworkSubnetConfig"), OutputType(typeof(PSSubnet))]
     public class NewAzureVirtualNetworkSubnetConfigCmdlet : CommonAzureVirtualNetworkSubnetConfigCmdlet
     {
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the subnet")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

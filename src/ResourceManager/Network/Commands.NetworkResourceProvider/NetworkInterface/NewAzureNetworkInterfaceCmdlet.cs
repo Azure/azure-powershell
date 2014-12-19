@@ -31,25 +31,29 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     {
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP address location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP address allocation method.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
@@ -60,12 +64,14 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The private ip address of the Network Interface " +
                           "if static allocation is specified.")]
         public string PrivateIpAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "SubnetId")]
         [ValidateNotNullOrEmpty]
@@ -73,24 +79,28 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResource",
             HelpMessage = "Subnet")]
         public PSSubnet Subnet { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "PublicIpAddressId")]
         public string PublicIpAddressId { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResource",
             HelpMessage = "PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The IpConfiguration name." +
                           "default value: ipconfig1")]
         [ValidateNotNullOrEmpty]
@@ -99,6 +109,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Alias("Tags")]
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
 

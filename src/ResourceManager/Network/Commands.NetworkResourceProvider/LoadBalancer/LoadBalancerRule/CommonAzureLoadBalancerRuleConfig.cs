@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the Inbound NAT rule")]
+            HelpMessage = "The name of the load balancer rule")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [Parameter(
             ParameterSetName = "SetByResourceId",

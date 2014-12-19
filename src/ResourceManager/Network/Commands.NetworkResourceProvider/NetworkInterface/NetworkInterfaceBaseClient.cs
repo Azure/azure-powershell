@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    public abstract class NetworkInterfaceBaseClient : NetworkResourceBaseClient
+    public abstract class NetworkInterfaceBaseClient : NetworkBaseClient
     {
         public INetworkInterfaceOperations NetworkInterfaceClient
         {

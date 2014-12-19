@@ -24,6 +24,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
     {
         [Parameter(
             Mandatory = true,
+            HelpMessage = "The name of the subnet")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The virtualNetwork")]
         public PSVirtualNetwork VirtualNetwork { get; set; }

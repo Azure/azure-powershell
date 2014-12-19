@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             if (!this.IsLoadBalancerPresent(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name))
             {
-                throw new ArgumentException(ResourceNotFound);
+                throw new ArgumentException(Resources.ResourceNotFound);
             }
             
             // Map to the sdk object

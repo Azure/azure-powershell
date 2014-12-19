@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    public abstract class LoadBalancerBaseClient : NetworkResourceBaseClient
+    public abstract class LoadBalancerBaseClient : NetworkBaseClient
     {
         public ILoadBalancerOperations LoadBalancerClient
         {
