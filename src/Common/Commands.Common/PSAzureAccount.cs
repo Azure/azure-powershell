@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Extensions.Models;
 namespace Microsoft.Azure.Common.Extensions.Models
 {
     public class PSAzureAccount

@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Extensions.Properties;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Common;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.Azure.Common.Extensions.Properties;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.WindowsAzure.Common;
-using Microsoft.WindowsAzure;
+using System.Net.Http.Headers;
 
 namespace Microsoft.Azure.Common.Extensions.Factories
 {
@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Common.Extensions.Factories
         public ClientFactory()
         {
             actions = new Dictionary<Type, IClientAction>();
+            UserAgents = new List<ProductInfoHeaderValue>();
         }
 
         public virtual TClient CreateClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
@@ -94,6 +95,11 @@ namespace Microsoft.Azure.Common.Extensions.Factories
             }
 
             TClient client = (TClient)constructor.Invoke(parameters);
+
+            foreach (ProductInfoHeaderValue userAgent in UserAgents)
+            {
+                client.UserAgent.Add(userAgent);
+            }
 
             return client;
         }
@@ -164,5 +170,7 @@ namespace Microsoft.Azure.Common.Extensions.Factories
                 actions.Remove(actionType);
             }
         }
+
+        public List<ProductInfoHeaderValue> UserAgents { get; set; }
     }
 }

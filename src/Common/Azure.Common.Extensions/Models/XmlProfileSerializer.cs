@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Extensions.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,9 +20,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Xml;
-using Microsoft.Azure.Common.Extensions.Interfaces;
-using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.Azure.Common.Extensions.Models
 {

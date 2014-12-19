@@ -12,11 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
-using System.Net.Http;
 using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Common;
 using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace Microsoft.Azure.Common.Extensions
 {
@@ -35,5 +37,7 @@ namespace Microsoft.Azure.Common.Extensions
         void AddAction(IClientAction action);
 
         void RemoveAction(Type actionType);
+
+        List<ProductInfoHeaderValue> UserAgents { get; set; }
     }
 }

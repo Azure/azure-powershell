@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Diagnostics;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
-using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -33,12 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 AzureSession.ClientFactory.AddAction(new RPRegistrationAction());
             }
 
-            AzureSession.ClientFactory.AddAction(new UserAgentHeaderAction(AzurePowerShell.UserAgentValue));
-            AzureSession.OldProfileFile = AzurePowerShell.OldProfileFile;
-            AzureSession.OldProfileFileBackup = AzurePowerShell.OldProfileFileBackup;
-            AzureSession.ProfileDirectory = AzurePowerShell.ProfileDirectory;
-            AzureSession.ProfileFile = AzurePowerShell.ProfileFile;
-            AzureSession.TokenCacheFile = AzurePowerShell.TokenCacheFile;
+            AzureSession.ClientFactory.UserAgents.Add(AzurePowerShell.UserAgentValue);
         }
 
         public AzurePSCmdlet()

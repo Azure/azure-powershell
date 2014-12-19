@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.IO;
 using System.Security.Cryptography;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.Azure.Common.Extensions.Authentication
 {

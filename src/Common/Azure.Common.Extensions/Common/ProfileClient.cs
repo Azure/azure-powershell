@@ -12,20 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Extensions.Authentication;
+using Microsoft.Azure.Common.Extensions.Factories;
+using Microsoft.Azure.Common.Extensions.Interfaces;
+using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Extensions.Properties;
+using Microsoft.Azure.Subscriptions;
+using Microsoft.WindowsAzure;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Common.Extensions.Factories;
-using Microsoft.Azure.Common.Extensions.Interfaces;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.Azure.Common.Extensions.Properties;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Authentication;
-using Microsoft.WindowsAzure;
 
 namespace Microsoft.Azure.Common.Extensions
 {

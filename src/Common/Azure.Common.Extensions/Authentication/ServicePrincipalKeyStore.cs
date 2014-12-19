@@ -15,7 +15,6 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
-using Microsoft.Azure.Common.Extensions.Authentication;
 using FILETIME = System.Runtime.InteropServices.ComTypes.FILETIME;
 
 namespace Microsoft.Azure.Common.Extensions.Authentication

@@ -12,10 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Extensions.Properties;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Common.Internals;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -27,10 +30,6 @@ using System.Security.Permissions;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Xml;
-using Microsoft.Azure.Common.Extensions.Properties;
-using Microsoft.WindowsAzure.Common.Internals;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {

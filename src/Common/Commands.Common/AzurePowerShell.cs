@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Extensions.Properties;
 using System;
 using System.IO;
-using Microsoft.Azure.Common.Extensions.Properties;
 using System.Net.Http.Headers;
 
 namespace Microsoft.WindowsAzure.Commands.Common

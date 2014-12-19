@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Extensions.Interfaces;
+using Microsoft.WindowsAzure.Common.Internals;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Common.Extensions.Interfaces;
-using Microsoft.WindowsAzure.Common.Internals;
-using System.Diagnostics;
 
 namespace Microsoft.Azure.Common.Extensions.Models
 {

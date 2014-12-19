@@ -157,7 +157,6 @@
     <Compile Include="Interfaces\IClientFactory.cs" />
     <Compile Include="Interfaces\IDataStore.cs" />
     <Compile Include="Interfaces\IProfileSerializer.cs" />
-    <Compile Include="Models\UserAgentHeaderAction.cs" />
     <Compile Include="Models\AzureAccount.cs" />
     <Compile Include="Models\AzureAccount.Methods.cs" />
     <Compile Include="Models\AzureContext.cs" />

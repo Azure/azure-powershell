@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Common.Extensions.Factories;
 using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.Azure.Common.Extensions.Properties;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Authentication;
+using System;
+using System.IO;
 
 namespace Microsoft.Azure.Common.Extensions
 {
@@ -30,6 +28,13 @@ namespace Microsoft.Azure.Common.Extensions
             AuthenticationFactory = new AuthenticationFactory();
             CurrentContext = new AzureContext();
             CurrentContext.Environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+            AzureSession.OldProfileFile = "WindowsAzureProfile.xml";
+            AzureSession.OldProfileFileBackup = "WindowsAzureProfile.xml.bak";
+            AzureSession.ProfileDirectory = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                Resources.AzureDirectoryName); ;
+            AzureSession.ProfileFile = "AzureProfile.json";
+            AzureSession.TokenCacheFile = "TokenCache.dat";
         }
 
         public static AzureContext CurrentContext { get; private set; }
