@@ -73,6 +73,8 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            WriteWarning("This cmdlet will be removed in a future release as part of obselating Managed Cache scaffolding support.");
+
             string rootPath = CommonUtilities.GetServiceRootPath(CurrentPath());
             RoleName = string.IsNullOrEmpty(RoleName) ? CommonUtilities.GetRoleName(rootPath, CurrentPath()) : RoleName;
 
