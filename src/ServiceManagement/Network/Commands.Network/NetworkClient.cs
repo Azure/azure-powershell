@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Network
     using Routes.Model;
     using WindowsAzure;
     using WindowsAzure.Commands.Common;
-    using WindowsAzure.Commands.Common.Models;
     using WindowsAzure.Commands.Common.Storage;
     using WindowsAzure.Commands.Utilities.Common;
     using WindowsAzure.Common;
@@ -32,6 +31,8 @@ namespace Microsoft.Azure.Commands.Network
     using WindowsAzure.Management.Network;
     using WindowsAzure.Management.Network.Models;
     using WindowsAzure.Storage.Auth;
+    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Extensions;
 
     public class NetworkClient
     {

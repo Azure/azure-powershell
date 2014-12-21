@@ -27,7 +27,7 @@ using Microsoft.Build.Framework;
 using Microsoft.Build.Logging;
 using Microsoft.Web.Deployment;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -47,6 +47,8 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 {
     using Utilities = Services.WebEntities;
+    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Extensions;
 
     public class WebsitesClient : IWebsitesClient
     {
