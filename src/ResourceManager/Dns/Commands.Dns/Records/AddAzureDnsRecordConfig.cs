@@ -60,13 +60,9 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string Value { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The service name for the SRV record to add.", ParameterSetName = "SRV")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The priority value SRV record to add.", ParameterSetName = "SRV")]
         [ValidateNotNullOrEmpty]
-        public string Service { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The protocol name for the SRV record to add.", ParameterSetName = "SRV")]
-        [ValidateNotNullOrEmpty]
-        public string Proto { get; set; }
+        public ushort Priority { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target host for the SRV record to add. Must not be relative to the name of the zone. Must not have a terminating dot", ParameterSetName = "SRV")]
         [ValidateNotNullOrEmpty]
@@ -119,7 +115,7 @@ namespace Microsoft.Azure.Commands.Dns
                     }
                 case RecordType.SRV:
                     {
-                        result.Records.Add(new SrvRecord { Service = this.Service, Port = this.Port, Proto = this.Proto, Target = this.Target, Weight = this.Weight });
+                        result.Records.Add(new SrvRecord { Priority = this.Priority, Port = this.Port, Target = this.Target, Weight = this.Weight });
                         break;
                     }
                 case RecordType.TXT:

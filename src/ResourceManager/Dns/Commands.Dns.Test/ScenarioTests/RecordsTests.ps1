@@ -359,10 +359,10 @@ function Test-RecordSetSRV
 	$record = $zone | New-AzureDnsRecordSet -Name $recordName -Ttl 100 -RecordType SRV
 
 	# add two records, remove one, remove another no-op
-	$record = $record | Add-AzureDnsRecordConfig -Port 53 -Proto udp -Priority 1 -Service dns -Target ns1.example.com -Weight 5
-	$record = $record | Add-AzureDnsRecordConfig -Port 53 -Proto udp -Priority 2 -Service dns -Target ns2.example.com -Weight 10
-	$record = $record | Remove-AzureDnsRecordConfig -Port 53 -Proto udp -Priority 2 -Service dns -Target ns2.example.com -Weight 10
-	$record = $record | Remove-AzureDnsRecordConfig -Port 53 -Proto udp -Priority 2435435 -Service dns -Target ns1.example.com -Weight 5
+	$record = $record | Add-AzureDnsRecordConfig -Port 53 -Priority 1 -Target ns1.example.com -Weight 5
+	$record = $record | Add-AzureDnsRecordConfig -Port 53 -Priority 2 -Target ns2.example.com -Weight 10
+	$record = $record | Remove-AzureDnsRecordConfig -Port 53 -Priority 2 -Target ns2.example.com -Weight 10
+	$record = $record | Remove-AzureDnsRecordConfig -Port 42 -Priority 2435435 -Target ns5.example.com -Weight 1600
 
 	$record | Set-AzureDnsRecordSet
 	$getResult = Get-AzureDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SRV 
@@ -370,8 +370,6 @@ function Test-RecordSetSRV
 	Assert-AreEqual 1 $getResult.Records.Count
 	Assert-AreEqual 53 $getResult.Records[0].Port
 	Assert-AreEqual 1 $getResult.Records[0].Priority
-	Assert-AreEqual udp $getResult.Records[0].Proto
-	Assert-AreEqual dns $getResult.Records[0].Service
 	Assert-AreEqual ns1.example.com $getResult.Records[0].Target
 	Assert-AreEqual 5 $getResult.Records[0].Weight
 
@@ -380,8 +378,6 @@ function Test-RecordSetSRV
 	Assert-AreEqual 1 $listResult[0].Records.Count
 	Assert-AreEqual 53 $listResult[0].Records[0].Port
 	Assert-AreEqual 1 $listResult[0].Records[0].Priority
-	Assert-AreEqual udp $listResult[0].Records[0].Proto
-	Assert-AreEqual dns $listResult[0].Records[0].Service
 	Assert-AreEqual ns1.example.com $listResult[0].Records[0].Target
 	Assert-AreEqual 5 $listResult[0].Records[0].Weight
 

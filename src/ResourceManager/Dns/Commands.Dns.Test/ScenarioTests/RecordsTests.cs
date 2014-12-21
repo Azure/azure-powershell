@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             RunPowerShellTest("Test-RecordSetTXT");
         }
 
-        [Fact(Skip = "Not supported in Private Preview")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetSRV()
         {

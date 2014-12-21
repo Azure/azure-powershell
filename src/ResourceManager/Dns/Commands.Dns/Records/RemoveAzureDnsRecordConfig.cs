@@ -60,13 +60,9 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string Value { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The service name of the SRV record to remove.", ParameterSetName = "SRV")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The priority value of the SRV record to remove.", ParameterSetName = "SRV")]
         [ValidateNotNullOrEmpty]
-        public string Service { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The protocol name of the SRV record to remove.", ParameterSetName = "SRV")]
-        [ValidateNotNullOrEmpty]
-        public string Proto { get; set; }
+        public ushort Priority { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target host of the SRV record to remove. Must not be relative to the name of the zone. Must not have a terminating dot", ParameterSetName = "SRV")]
         [ValidateNotNullOrEmpty]
@@ -131,8 +127,7 @@ namespace Microsoft.Azure.Commands.Dns
                     {
                         removedCount = result.Records.RemoveAll(record =>
                             record is SrvRecord
-                            && string.Equals(((SrvRecord)record).Service, this.Service, System.StringComparison.OrdinalIgnoreCase)
-                            && ((SrvRecord)record).Proto == this.Proto
+                            && ((SrvRecord)record).Priority == this.Priority
                             && ((SrvRecord)record).Port == this.Port
                             && string.Equals(((SrvRecord)record).Target, this.Target, System.StringComparison.OrdinalIgnoreCase)
                             && ((SrvRecord)record).Weight == this.Weight);

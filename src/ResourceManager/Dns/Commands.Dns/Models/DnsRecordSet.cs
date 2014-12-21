@@ -93,8 +93,7 @@ namespace Microsoft.Azure.Commands.Dns
                 return new SrvRecord
                 {
                     Port = mamlRecord.Port,
-                    Proto = mamlRecord.Proto,
-                    Service = mamlRecord.Service,
+                    Priority = mamlRecord.Priority,
                     Target = mamlRecord.Target,
                     Weight = mamlRecord.Weight,
                 };
@@ -239,27 +238,24 @@ namespace Microsoft.Azure.Commands.Dns
 
     public class SrvRecord : DnsRecordBase
     {
-        public string Service { get; set; }
-
-        public string Proto { get; set; }
-
         public string Target { get; set; }
 
         public ushort Weight { get; set; }
 
         public ushort Port { get; set; }
 
+        public ushort Priority { get; set; }
+
         public override string ToString()
         {
-            return string.Format("[{0},{1},{2},{3},{4}]", Service, Proto, Weight, Port, Target);
+            return string.Format("[{0},{1},{2},{3}]", Priority, Weight, Port, Target);
         }
 
         internal override object ToMamlRecord()
         {
             return new Management.Dns.Models.SrvRecord
             {
-                Service = this.Service,
-                Proto = this.Proto,
+                Priority = this.Priority,
                 Target = this.Target,
                 Weight = this.Weight,
                 Port = this.Port,
