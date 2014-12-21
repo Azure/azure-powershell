@@ -16,7 +16,7 @@ using System;
 using System.Management.Automation;
 using System.Net.Http;
 using System.Threading;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
+using Microsoft.Azure.Common.Extensions.Authentication;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider

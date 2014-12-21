@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Monitoring.Events;
 using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Commands.NetworkResourceProvider.Test
 {

@@ -32702,7 +32702,7 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
     <command:parameter required="false" variableLength="false" globbing="false" position="named">
-      <maml:name>AutoUpdateClient</maml:name>
+      <maml:name>AutoUpdateChefClient</maml:name>
       <maml:description>
         <maml:para>Flag to opt for auto chef-client update. Chef-client update is false by default.</maml:para>
       </maml:description>

@@ -15,7 +15,8 @@
 using System;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {

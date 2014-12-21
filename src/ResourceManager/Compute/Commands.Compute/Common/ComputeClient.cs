@@ -16,7 +16,8 @@ using System;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Extensions.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
