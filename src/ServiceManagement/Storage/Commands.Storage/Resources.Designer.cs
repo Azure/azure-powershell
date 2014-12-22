@@ -1460,6 +1460,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Valid environment names are: &apos;{0}&apos; and &apos;{1}&apos;.
+        /// </summary>
+        internal static string ValidEnvironmentName {
+            get {
+                return ResourceManager.GetString("ValidEnvironmentName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} {1}..
         /// </summary>
         internal static string VerboseLogFormat {

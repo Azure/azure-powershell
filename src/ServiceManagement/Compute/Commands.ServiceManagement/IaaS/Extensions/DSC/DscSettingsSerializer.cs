@@ -68,9 +68,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
                         JsonConvert.DeserializeObject<DscPublicSettings.Version1>(publicSettingsString);
                     publicSettings = publicSettingsV1.ToCurrentVersion();
                 }
-                catch (JsonException e)
+                catch (JsonException)
                 {
-                    throw e;
+                    throw;
                 } 
             }
             return publicSettings;
