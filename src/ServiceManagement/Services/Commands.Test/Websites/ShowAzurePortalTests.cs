@@ -16,6 +16,7 @@ using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Websites;
+using Microsoft.Azure.Common.Extensions.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {

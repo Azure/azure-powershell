@@ -14,11 +14,12 @@
 
 using System.IO;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.ServiceBus;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.CloudService
 {
