@@ -574,7 +574,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                     Context = this,
                     Enabled = true,
                     Id = new Guid("dd6d99bb-f193-4ec1-86f2-43d3bccbc49c"),
-                    IsDefault = true,
+                    IsDefault = false,
                     IsSystem = false,
                     Name = "Basic"
                 }, 
@@ -583,7 +583,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                     Context = this,
                     Enabled = true,
                     Id = new Guid("f1173c43-91bd-4aaa-973c-54e79e15235b"),
-                    IsDefault = false,
+                    IsDefault = true,
                     IsSystem = false,
                     Name = "S0"
                 },
