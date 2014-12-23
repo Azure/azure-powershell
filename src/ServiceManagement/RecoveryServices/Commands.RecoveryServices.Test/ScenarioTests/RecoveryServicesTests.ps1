@@ -91,6 +91,7 @@ function Test-RecoveryServicesProtectionTests
 				if ($protectionEntity.Protected)
 				{
 					Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity -Protection "Enable" -Force
+					Update-AzureSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity
 				}
 				else
 				{

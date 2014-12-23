@@ -192,5 +192,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 request,
                 this.GetRequestHeaders());
         }
+
+        /// <summary>
+        /// Syncs owner role information on Protection entity.
+        /// </summary>
+        /// <param name="protectionContainerId">Protection Container ID</param>
+        /// <param name="virtualMachineId">Virtual Machine ID</param>
+        /// <returns>Job response</returns>
+        public JobResponse UpdateSyncOwnerInformationOnProtectionEntity(
+            string protectionContainerId,
+            string protectionEntityId)
+        {
+            return this.GetSiteRecoveryClient().ProtectionEntity.SyncOwnerInformation(
+                protectionContainerId,
+                protectionEntityId,
+                this.GetRequestHeaders());
+        }
     }
 }
