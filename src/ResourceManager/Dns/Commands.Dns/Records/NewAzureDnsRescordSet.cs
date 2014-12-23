@@ -80,10 +80,17 @@ namespace Microsoft.Azure.Commands.Dns
 
             ConfirmAction(
                 !Overwrite.IsPresent || Force.IsPresent,
-                string.Format(ProjectResources.ConfirmOverwriteRecord, this.Name, this.RecordType, zoneName),
-                ProjectResources.CreatingEmptyRecordSet,
+                string.Format(ProjectResources.Confirm_OverwriteRecord, this.Name, this.RecordType, zoneName),
+                ProjectResources.Progress_CreatingEmptyRecordSet,
                 this.Name,
                 () => { result = this.DnsClient.CreateDnsRecordSet(zoneName, resourceGroupname, this.Name, this.Ttl, this.RecordType, this.Tag, this.Overwrite); });
+
+            if (result != null)
+            {
+                WriteVerbose(ProjectResources.Success);
+                WriteVerbose(string.Format(ProjectResources.Success_NewRecordSet, this.Name, zoneName, this.RecordType));
+                WriteVerbose(string.Format(ProjectResources.Success_RecordSetFqdn, this.Name, zoneName, this.RecordType));
+            }
 
             WriteObject(result);
         }

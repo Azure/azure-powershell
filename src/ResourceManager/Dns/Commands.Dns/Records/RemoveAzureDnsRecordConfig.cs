@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Dns
             var result = this.RecordSet;
             if (!string.Equals(this.ParameterSetName, this.RecordSet.RecordType.ToString(), StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentException(string.Format(ProjectResources.RemoveRecordTypeMismatch, this.ParameterSetName, this.RecordSet.RecordType));
+                throw new ArgumentException(string.Format(ProjectResources.Error_RemoveRecordTypeMismatch, this.ParameterSetName, this.RecordSet.RecordType));
             }
 
             int removedCount = 0;
@@ -148,7 +148,9 @@ namespace Microsoft.Azure.Commands.Dns
                         break;
                     }
             }
-            
+
+            WriteVerbose(ProjectResources.Success_RecordRemoved);
+
             WriteObject(result);
         }
     }

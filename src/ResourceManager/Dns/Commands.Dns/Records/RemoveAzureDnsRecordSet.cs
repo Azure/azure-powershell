@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Dns
             {
                 if ((string.IsNullOrWhiteSpace(this.RecordSet.Etag) || this.RecordSet.Etag == "*") && !this.IgnoreEtag.IsPresent)
                 {
-                    throw new PSArgumentException(string.Format(ProjectResources.EtagNotSpecified, typeof(DnsRecordSet).Name));
+                    throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(DnsRecordSet).Name));
                 }
 
                 recordSetToDelete = this.RecordSet;
@@ -103,10 +103,16 @@ namespace Microsoft.Azure.Commands.Dns
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(ProjectResources.ConfirmRemoveRecordSet, recordSetToDelete.Name, recordSetToDelete.ZoneName),
-                ProjectResources.RemovingRecordSetMessage,
+                string.Format(ProjectResources.Confirm_RemoveRecordSet, recordSetToDelete.Name, recordSetToDelete.ZoneName),
+                ProjectResources.Progress_RemovingRecordSet,
                 this.Name,
                 () => { deleted = DnsClient.DeleteDnsRecordSet(recordSetToDelete, ignoreEtag); });
+
+            if (deleted)
+            {
+                WriteVerbose(ProjectResources.Success);
+                WriteVerbose(ProjectResources.Success_RemoveRecordSet);
+            }
 
             if (this.PassThru)
             {

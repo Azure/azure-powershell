@@ -37,11 +37,13 @@ namespace Microsoft.Azure.Commands.Dns
         {
             if ((string.IsNullOrWhiteSpace(this.RecordSet.Etag) || this.RecordSet.Etag == "*") && !this.IgnoreEtag.IsPresent)
             {
-                throw new PSArgumentException(string.Format(ProjectResources.EtagNotSpecified, typeof(DnsRecordSet).Name));
+                throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(DnsRecordSet).Name));
             }
 
             DnsRecordSet result = this.DnsClient.UpdateDnsRecordSet(this.RecordSet, this.IgnoreEtag.IsPresent);
-         
+
+            WriteVerbose(ProjectResources.Success);
+
             WriteObject(result);
         }
     }

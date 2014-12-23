@@ -16,6 +16,8 @@ using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 
+using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+
 namespace Microsoft.Azure.Commands.Dns
 {
     /// <summary>
@@ -39,6 +41,8 @@ namespace Microsoft.Azure.Commands.Dns
         public override void ExecuteCmdlet()
         {
             DnsZone result = this.DnsClient.CreateDnsZone(this.Name, this.ResourceGroupName, this.Tag);
+            WriteVerbose(ProjectResources.Success);
+            WriteVerbose(string.Format(ProjectResources.Success_NewZone, this.Name, this.ResourceGroupName));
             WriteObject(result);
         }
     }

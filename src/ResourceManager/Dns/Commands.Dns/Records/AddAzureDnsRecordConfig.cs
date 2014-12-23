@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Dns
             var result = this.RecordSet;
             if (!string.Equals(this.ParameterSetName, this.RecordSet.RecordType.ToString(), StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentException(string.Format(ProjectResources.AddRecordTypeMismatch, this.ParameterSetName, this.RecordSet.RecordType));
+                throw new ArgumentException(string.Format(ProjectResources.Error_AddRecordTypeMismatch, this.ParameterSetName, this.RecordSet.RecordType));
             }
 
             switch (result.RecordType)
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Dns
                         }
                         else
                         {
-                            throw new ArgumentException(ProjectResources.MultipleCnames);
+                            throw new ArgumentException(ProjectResources.Error_AddRecordMultipleCnames);
                         }
 
                         break;
@@ -141,7 +141,9 @@ namespace Microsoft.Azure.Commands.Dns
                         break;
                     }
             }
-            
+
+            WriteVerbose(ProjectResources.Success_RecordAdded);
+
             WriteObject(result);
         }
     }

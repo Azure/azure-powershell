@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Dns
             {
                 if ((string.IsNullOrWhiteSpace(this.Zone.Etag) || this.Zone.Etag == "*") && !this.IgnoreEtag.IsPresent)
                 {
-                    throw new PSArgumentException(string.Format(ProjectResources.EtagNotSpecified, typeof(DnsZone).Name));
+                    throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(DnsZone).Name));
                 }
 
                 zoneToUpdate = this.Zone;
@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Dns
             bool ignoreEtag = this.IgnoreEtag.IsPresent || this.ParameterSetName != "Object";
             result = this.DnsClient.UpdateDnsZone(zoneToUpdate, ignoreEtag);
 
+            WriteVerbose(ProjectResources.Success);
             WriteObject(result);
         }
     }
