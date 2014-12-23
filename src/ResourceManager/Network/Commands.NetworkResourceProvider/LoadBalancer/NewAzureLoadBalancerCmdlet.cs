@@ -122,25 +122,25 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             loadBalancer.Properties.FrontendIpConfigurations = new List<PSFrontendIpConfiguration>();
             loadBalancer.Properties.FrontendIpConfigurations = this.FrontendIpConfiguration;
 
-            if (this.BackendAddressPool.Any())
+            if (this.BackendAddressPool != null)
             {
                 loadBalancer.Properties.BackendAddressPools = new List<PSBackendAddressPool>();
                 loadBalancer.Properties.BackendAddressPools = this.BackendAddressPool;
             }
 
-            if (this.Probe.Any())
+            if (this.Probe != null)
             {
                 loadBalancer.Properties.Probes = new List<PSProbe>();
                 loadBalancer.Properties.Probes = this.Probe;
             }
 
-            if (this.InboundNatRule.Any())
+            if (this.InboundNatRule != null)
             {
                 loadBalancer.Properties.InboundNatRules = new List<PSInboundNatRule>();
                 loadBalancer.Properties.InboundNatRules = this.InboundNatRule;
             }
 
-            if (this.LoadBalancingRule.Any())
+            if (this.LoadBalancingRule != null)
             {
                 loadBalancer.Properties.LoadBalancingRules = new List<PSLoadBalancingRule>();
                 loadBalancer.Properties.LoadBalancingRules = this.LoadBalancingRule;
