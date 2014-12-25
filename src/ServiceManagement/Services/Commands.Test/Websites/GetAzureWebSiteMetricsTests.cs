@@ -28,7 +28,8 @@ using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
-    
+    using System.Globalization;
+
     public class GetAzureWebsiteMetricsTests : WebsitesTestBase
     {
         [Fact]
@@ -47,13 +48,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                     Data = new MetricSet()
                     {
                         Name = "CPU Time",
-                        StartTime = DateTime.Parse("7/28/2014 1:00:00 AM"),
-                        EndTime = DateTime.Parse("7/28/2014 2:00:00 AM"),
+                        StartTime = DateTime.Parse("7/28/2014 1:00:00 AM", new CultureInfo("en-US")),
+                        EndTime = DateTime.Parse("7/28/2014 2:00:00 AM", new CultureInfo("en-US")),
                         Values = new List<MetricSample>
                         {
                             new MetricSample
                             {
-                                TimeCreated = DateTime.Parse("7/28/2014 1:00:00 AM"),
+                                TimeCreated = DateTime.Parse("7/28/2014 1:00:00 AM", new CultureInfo("en-US")),
                                 Total = 201,
                             }
                         }
