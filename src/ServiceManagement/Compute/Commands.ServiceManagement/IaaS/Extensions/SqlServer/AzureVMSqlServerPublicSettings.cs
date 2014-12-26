@@ -28,5 +28,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// Auto-backup settings
         /// </summary>
         public AutoBackupSettings AutoBackupSettings { get; set; }
+
+        /// <summary>
+        /// Auto-telemetry settings
+        /// </summary>
+        public AutoTelemetrySettings AutoTelemetrySettings { get; set; }
     }
 }

@@ -47,7 +47,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.6.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.7.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -130,6 +130,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Azure.Common.Extensions\Common.Extensions.csproj">
+      <Project>{b95c489c-8cb7-4dcf-8d5f-b9aebdbbaf89}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>

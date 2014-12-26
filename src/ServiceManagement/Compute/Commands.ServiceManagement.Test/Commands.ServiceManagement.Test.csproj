@@ -99,11 +99,10 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.6.1.2\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.4.1.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Network">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.4.3.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -477,6 +476,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Azure.Common.Extensions\Common.Extensions.csproj">
+      <Project>{b95c489c-8cb7-4dcf-8d5f-b9aebdbbaf89}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>

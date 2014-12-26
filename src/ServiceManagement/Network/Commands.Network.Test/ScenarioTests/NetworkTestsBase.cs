@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.Testing;
 
 namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
 {
+    using Microsoft.Azure.Common.Extensions;
     using WindowsAzure.Management.Network;
 
     public abstract class NetworkTestsBase

@@ -16,11 +16,12 @@ using System;
 using System.Globalization;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {

@@ -21,13 +21,14 @@ using System.ServiceModel;
 using System.ServiceModel.Dispatcher;
 using AutoMapper;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {

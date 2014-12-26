@@ -26,6 +26,7 @@ using Microsoft.WindowsAzure.Management.Monitoring.Events.Models;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {

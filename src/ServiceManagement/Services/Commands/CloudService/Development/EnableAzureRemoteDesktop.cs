@@ -30,6 +30,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceDefiniti
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Certificate = Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceConfigurationSchema.Certificate;
 using ConfigurationSetting = Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceConfigurationSchema.ConfigurationSetting;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.CloudService.Development
 {

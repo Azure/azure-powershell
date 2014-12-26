@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.Utilities;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Sql.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
