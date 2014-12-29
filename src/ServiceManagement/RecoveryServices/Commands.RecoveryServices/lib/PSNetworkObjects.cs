@@ -15,6 +15,7 @@
 using System;
 using System.Runtime.Serialization;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -40,18 +41,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.ID = network.ID;
             this.Name = network.Name;
             this.Type = network.Type;
+            this.FabricObjectID = network.FabricObjectID;
+            this.FabricType = network.FabricType;
+            this.ServerId = network.ServerID;
+            this.VmNetworkSubnetList = network.VmNetworkSubnetList;
         }
 
         #region Properties
+        /// <summary>
+        /// Gets or sets name of the Network.
+        /// </summary>
+        public string Name { get; set; }
+
         /// <summary>
         /// Gets or sets Network ID.
         /// </summary>
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the Network.
+        /// Gets or sets Fabric object Id.
         /// </summary>
-        public string Name { get; set; }
+        public string FabricObjectID { get; set; }
+
+        /// <summary>
+        /// Gets or sets Server Id.
+        /// </summary>
+        public string ServerId { get; set; }
 
         /// <summary>
         /// Gets or sets Type of Network.
@@ -59,9 +74,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets Server Id.
+        /// Gets or sets Fabric object  type.
         /// </summary>
-        public string ServerId { get; set; }
+        public string FabricType { get; set; }
+
+        /// <summary>
+        /// Gets or sets VM Network subnets.
+        /// </summary>
+        public IList<VmNetworkSubnetDetails> VmNetworkSubnetList { get; set; }
         #endregion
     }
 
@@ -84,38 +104,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="networkMapping">Network mapping object</param>
         public ASRNetworkMapping(NetworkMapping networkMapping)
         {
-            this.PrimaryNetworkId = networkMapping.ID;
             this.PrimaryServerId = networkMapping.PrimaryServerId;
+            this.PrimaryNetworkId = networkMapping.PrimaryNetworkId;
+            this.PrimaryNetworkName = networkMapping.PrimaryNetworkName;
             this.RecoveryServerId = networkMapping.RecoveryServerId;
-            // this.RecoveryNetworkId=
-            this.Type = networkMapping.Type;
+            this.RecoveryNetworkId = networkMapping.RecoveryNetworkId;
+            this.RecoveryNetworkName = networkMapping.RecoveryNetworkName;
+            this.PairingStatus = networkMapping.PairingStatus;
         }
 
         #region Properties
-        /// <summary>
-        /// Gets or sets Primary Network Id.
-        /// </summary>
-        public string PrimaryNetworkId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Network Id.
-        /// </summary>
-        public string RecoveryNetworkId { get; set; }
-
-        /// <summary>
-        /// Gets or sets type of Network.
-        /// </summary>
-        public string Type { get; set; }
-
         /// <summary>
         /// Gets or sets Primary server Id.
         /// </summary>
         public string PrimaryServerId { get; set; }
 
         /// <summary>
+        /// Gets or sets Primary network Id.
+        /// </summary>
+        public string PrimaryNetworkId { get; set; }
+
+        /// <summary>
+        /// Gets or sets Primary network name.
+        /// </summary>
+        public string PrimaryNetworkName { get; set; }
+
+        /// <summary>
         /// Gets or sets Recovery server Id.
         /// </summary>
         public string RecoveryServerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery network Id.
+        /// </summary>
+        public string RecoveryNetworkId { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery network name.
+        /// </summary>
+        public string RecoveryNetworkName { get; set; }
+
+        /// <summary>
+        /// Gets or sets pairing status.
+        /// </summary>
+        public string PairingStatus { get; set; }
         #endregion
     }
 }

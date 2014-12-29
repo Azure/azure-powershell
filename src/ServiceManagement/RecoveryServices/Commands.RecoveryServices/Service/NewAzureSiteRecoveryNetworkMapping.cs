@@ -33,16 +33,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Primary Network object.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRNetwork PrimaryNetwork {get; set;}
 
         /// <summary>
         /// Gets or sets Recovery Network object.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRNetwork RecoveryNetwork { get; set; }
+
+        /// <summary>
+        /// Gets or sets Azure subscription.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string AzureSubscriptionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets Azure VM Network Id.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string AzureVMNetworkId { get; set; }
 
         /// <summary>
         /// Job response.
@@ -57,20 +72,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                this.jobResponse =
-                    RecoveryServicesClient
-                    .NewAzureSiteRecoveryNetworkMapping(
-                    PrimaryNetwork.ServerId,
-                    PrimaryNetwork.ID,
-                    RecoveryNetwork.ServerId,
-                    RecoveryNetwork.ID);
-
-                this.WriteJob(this.jobResponse.Job);
+                    switch (this.ParameterSetName)
+                    {
+                        case ASRParameterSets.EnterpriseToEnterprise:
+                            this.EnterpriseToEnterpriseNetworkMapping();
+                            break;
+                        case ASRParameterSets.EnterpriseToAzure:
+                            this.EnterpriseToAzureNetworkMapping();
+                            break;
+                    }
             }
             catch (Exception exception)
             {
                 this.HandleException(exception);
             }
+        }
+
+        private void EnterpriseToEnterpriseNetworkMapping()
+        {
+            this.jobResponse =
+                RecoveryServicesClient
+                .NewAzureSiteRecoveryNetworkMapping(
+                PrimaryNetwork.ServerId,
+                PrimaryNetwork.ID,
+                RecoveryNetwork.ServerId,
+                RecoveryNetwork.ID);
+
+            this.WriteJob(this.jobResponse.Job);
+        }
+
+        private void EnterpriseToAzureNetworkMapping()
+        {
+            //validate AzureVM Network and then gen the name
+
+            // Verify whether the subscription is associated with the account or not.
+            RecoveryServicesClient.ValidateSubscriptionAccountAssociation(this.AzureSubscriptionId);
+
+            // Check if the Azure VM Network is associated with the Subscription or not.
+            RecoveryServicesClient.ValidateVMNetworkSubscriptionAssociation(this.AzureSubscriptionId, this.AzureVMNetworkId);
+
+            string azureVMNetworkName = string.Empty;
+            this.jobResponse =
+                RecoveryServicesClient
+                .NewAzureSiteRecoveryAzureNetworkMapping(
+                PrimaryNetwork.ServerId,
+                PrimaryNetwork.ID,
+                azureVMNetworkName,
+                AzureVMNetworkId);
+
+            this.WriteJob(this.jobResponse.Job);
         }
 
         /// <summary>

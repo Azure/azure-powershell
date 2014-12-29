@@ -237,6 +237,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Subscription {0} is not associated with the account.
+        /// </summary>
+        internal static string SubscriptionIsNotAssociatedWithTheAccount {
+            get {
+                return ResourceManager.GetString("SubscriptionIsNotAssociatedWithTheAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vault settings file not found, please pass the file downloaded from portal.
         /// </summary>
         internal static string VaultSettingFileNotFound {

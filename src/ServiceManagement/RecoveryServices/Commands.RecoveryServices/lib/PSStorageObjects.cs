@@ -39,29 +39,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             this.ID = storage.ID;
             this.Name = storage.Name;
-            this.type = storage.Type;
+            this.Type = storage.Type;
+            this.FabricObjectID = storage.FabricObjectID;
+            this.FabricType = storage.FabricType;
+            this.ServerId = storage.ServerID;
         }
 
         #region Properties
-        /// <summary>
-        /// Gets or sets Storage ID.
-        /// </summary>
-        public string ID { get; set; }
-
         /// <summary>
         /// Gets or sets name of the Storage.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets to Type of Storage.
+        /// Gets or sets Storage ID.
         /// </summary>
-        public string type { get; set; }
+        public string ID { get; set; }
+
+        /// <summary>
+        /// Gets or sets Fabric object ID.
+        /// </summary>
+        public string FabricObjectID { get; set; }
 
         /// <summary>
         /// Gets or sets Server Id.
         /// </summary>
         public string ServerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets to Type of Storage.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets Fabric type.
+        /// </summary>
+        public string FabricType { get; set; }
+
         #endregion
     }
 
@@ -84,8 +98,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="storageMapping">Storage mapping object</param>
         public ASRStorageMapping(StorageMapping storageMapping)
         {
-            this.ID = storageMapping.ID;
-            this.Name = storageMapping.Name;
             this.PrimaryServerId = storageMapping.PrimaryServerId;
             this.PrimaryStorageId = storageMapping.PrimaryStorageId;
             this.RecoveryServerId = storageMapping.RecoveryServerId;
@@ -93,16 +105,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         #region Properties
-        /// <summary>
-        /// Gets or sets Storage ID.
-        /// </summary>
-        public string ID { get; set; }
-
-        /// <summary>
-        /// Gets or sets name of the Storage.
-        /// </summary>
-        public string Name { get; set; }
-
         /// <summary>
         /// Gets or sets Primary server Id.
         /// </summary>

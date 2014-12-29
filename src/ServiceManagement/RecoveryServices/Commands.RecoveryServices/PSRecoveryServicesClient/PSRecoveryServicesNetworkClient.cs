@@ -33,16 +33,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             return this.GetSiteRecoveryClient().Networks.List(serverId, this.GetRequestHeaders());
         }
-
-        /// <summary>
-        /// Gets Azure Site Recovery Network.
-        /// </summary>
-        /// <param name="serverId">Server ID</param>
-        /// <param name="networkId">Network ID</param>
-        /// <returns>Network response</returns>
-        public NetworkResponse GetAzureSiteRecoveryNetwork(string serverId, string networkId)
-        {
-            return this.GetSiteRecoveryClient().Networks.Get(networkId, serverId, this.GetRequestHeaders());
-        }
     }
 }
