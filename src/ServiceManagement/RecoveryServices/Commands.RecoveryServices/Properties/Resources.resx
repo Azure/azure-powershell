@@ -194,4 +194,10 @@ ClientRequestId: {3}</value>
   <data name="SubscriptionIsNotAssociatedWithTheAccount" xml:space="preserve">
     <value>Subscription {0} is not associated with the account</value>
   </data>
+  <data name="ProtectionEntityAlreadyDisabled" xml:space="preserve">
+    <value>Protection entity {0} is already disabled</value>
+  </data>
+  <data name="ProtectionEntityAlreadyEnabled" xml:space="preserve">
+    <value>Protection entity {0} is already enabled</value>
+  </data>
 </root>

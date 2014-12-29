@@ -174,6 +174,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Protection entity {0} is already disabled.
+        /// </summary>
+        internal static string ProtectionEntityAlreadyDisabled {
+            get {
+                return ResourceManager.GetString("ProtectionEntityAlreadyDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protection entity {0} is already enabled.
+        /// </summary>
+        internal static string ProtectionEntityAlreadyEnabled {
+            get {
+                return ResourceManager.GetString("ProtectionEntityAlreadyEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Protection Entity {0} is not associated with Protection Container {1}.
         /// </summary>
         internal static string ProtectionEntityNotFound {
