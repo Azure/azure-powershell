@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRServer Server {get; set;}
+        public ASRServer Server { get; set; }
         #endregion Parameters
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             try
             {
                 StorageListResponse storageListResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryStorages(Server.ID);
+                    RecoveryServicesClient.GetAzureSiteRecoveryStorages(this.Server.ID);
 
-                WriteStorages(storageListResponse.Storages);
+                this.WriteStorages(storageListResponse.Storages);
             }
             catch (Exception exception)
             {

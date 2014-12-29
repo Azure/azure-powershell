@@ -31,16 +31,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     {
         #region Parameters
         /// <summary>
+        /// Job response.
+        /// </summary>
+        private JobResponse jobResponse = null;
+
+        /// <summary>
         /// Gets or sets Network mapping object.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRNetworkMapping NetworkMapping {get; set;}
-
-        /// <summary>
-        /// Job response.
-        /// </summary>
-        private JobResponse jobResponse = null;
+        public ASRNetworkMapping NetworkMapping { get; set; }
         #endregion Parameters
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 this.jobResponse =
                     RecoveryServicesClient
                     .RemoveAzureSiteRecoveryNetworkMapping(
-                    NetworkMapping.PrimaryServerId,
-                    NetworkMapping.PrimaryNetworkId,
-                    NetworkMapping.RecoveryServerId);
+                    this.NetworkMapping.PrimaryServerId,
+                    this.NetworkMapping.PrimaryNetworkId,
+                    this.NetworkMapping.RecoveryServerId);
 
                 this.WriteJob(this.jobResponse.Job);
             }

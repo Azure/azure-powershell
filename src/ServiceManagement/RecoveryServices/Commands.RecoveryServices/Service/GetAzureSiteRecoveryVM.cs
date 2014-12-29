@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithId, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByIDsWithId, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string Id {get; set;}
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets name of the Virtual Machine.
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByIDsWithName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string Name {get; set;}
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets ID of the ProtectionContainer containing the Virtual Machine.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByIDsWithId, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByIDsWithName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ProtectionContainerId {get; set;}
+        public string ProtectionContainerId { get; set; }
 
         /// <summary>
         /// Gets or sets Protection Container Object.
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithId, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public ASRProtectionContainer ProtectionContainer {get; set;}
+        public ASRProtectionContainer ProtectionContainer { get; set; }
         #endregion Parameters
 
         /// <summary>

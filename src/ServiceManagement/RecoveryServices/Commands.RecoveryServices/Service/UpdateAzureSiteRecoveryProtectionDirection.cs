@@ -40,35 +40,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string RPId {get; set;}
+        public string RPId { get; set; }
 
         /// <summary>
         /// Gets or sets ID of the PE.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ProtectionEntityId {get; set;}
+        public string ProtectionEntityId { get; set; }
 
         /// <summary>
         /// Gets or sets ID of the Recovery Plan.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ProtectionContainerId {get; set;}
+        public string ProtectionContainerId { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Plan object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRRecoveryPlan RecoveryPlan {get; set;}
+        public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         /// <summary>
         /// Gets or sets Protection Entity object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRProtectionEntity ProtectionEntity {get; set;}
+        public ASRProtectionEntity ProtectionEntity { get; set; }
 
         /// <summary>
         /// Gets or sets Failover direction for the recovery plan.
@@ -77,13 +77,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateSet(
             PSRecoveryServicesClient.PrimaryToRecovery,
             PSRecoveryServicesClient.RecoveryToPrimary)]
-        public string Direction {get; set;}
+        public string Direction { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. This is required to wait for job completion.
         /// </summary>
         [Parameter]
-        public SwitchParameter WaitForCompletion {get; set;}
+        public SwitchParameter WaitForCompletion { get; set; }
         #endregion Parameters
 
         /// <summary>

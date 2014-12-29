@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public ASRServer PrimaryServer {get; set;}
+        public ASRServer PrimaryServer { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Server object.
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 NetworkMappingListResponse networkMappingListResponse =
                     RecoveryServicesClient
-                    .GetAzureSiteRecoveryNetworkMappings(PrimaryServer.ID, RecoveryServer.ID);
+                    .GetAzureSiteRecoveryNetworkMappings(this.PrimaryServer.ID, this.RecoveryServer.ID);
 
-                WriteNetworkMappings(networkMappingListResponse.NetworkMappings);
+                this.WriteNetworkMappings(networkMappingListResponse.NetworkMappings);
             }
             catch (Exception exception)
             {

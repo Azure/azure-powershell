@@ -31,16 +31,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     {
         #region Parameters
         /// <summary>
+        /// Job response.
+        /// </summary>
+        private JobResponse jobResponse = null;
+
+        /// <summary>
         /// Gets or sets Storage mapping object.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRStorageMapping StorageMapping {get; set;}
-
-        /// <summary>
-        /// Job response.
-        /// </summary>
-        private JobResponse jobResponse = null;
+        public ASRStorageMapping StorageMapping { get; set; }
         #endregion Parameters
 
         /// <summary>
@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 this.jobResponse =
                     RecoveryServicesClient
                     .RemoveAzureSiteRecoveryStorageMapping(
-                    StorageMapping.PrimaryServerId,
-                    StorageMapping.PrimaryStorageId,
-                    StorageMapping.RecoveryServerId,
-                    StorageMapping.RecoveryStorageId);
+                    this.StorageMapping.PrimaryServerId,
+                    this.StorageMapping.PrimaryStorageId,
+                    this.StorageMapping.RecoveryServerId,
+                    this.StorageMapping.RecoveryStorageId);
 
                 this.WriteJob(this.jobResponse.Job);
             }
