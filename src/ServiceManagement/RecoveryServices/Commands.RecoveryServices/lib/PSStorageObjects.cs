@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
@@ -21,6 +22,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Azure Site Recovery Storage.
     /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
     public class ASRStorage
     {
         /// <summary>
@@ -82,6 +87,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Azure Site Recovery Storage Mapping.
     /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
     public class ASRStorageMapping
     {
         /// <summary>

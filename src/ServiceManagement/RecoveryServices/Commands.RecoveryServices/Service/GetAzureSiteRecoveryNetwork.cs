@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRServer Server {get; set;}
+        public ASRServer Server { get; set; }
         #endregion Parameters
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             try
             {
                 NetworkListResponse networkListResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryNetworks(Server.ID);
+                    RecoveryServicesClient.GetAzureSiteRecoveryNetworks(this.Server.ID);
 
-                WriteNetworks(networkListResponse.Networks);
+                this.WriteNetworks(networkListResponse.Networks);
             }
             catch (Exception exception)
             {

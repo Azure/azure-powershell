@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ById, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string Id {get; set;}
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets Job Object.
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             "Failed",
             "Cancelled",
             "Suspended")]
-        public string State {get; set;}
+        public string State { get; set; }
         #endregion Parameters
 
         /// <summary>

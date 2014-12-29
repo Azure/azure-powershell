@@ -31,12 +31,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     {
         #region Parameters
         /// <summary>
+        /// Job response.
+        /// </summary>
+        private JobResponse jobResponse = null;
+
+        /// <summary>
         /// Gets or sets Primary Network object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public ASRNetwork PrimaryNetwork {get; set;}
+        public ASRNetwork PrimaryNetwork { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Network object.
@@ -58,11 +63,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string AzureVMNetworkId { get; set; }
-
-        /// <summary>
-        /// Job response.
-        /// </summary>
-        private JobResponse jobResponse = null;
         #endregion Parameters
 
         /// <summary>
@@ -88,23 +88,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
+        /// <summary>
+        /// Enterprise to enterprise network mapping.
+        /// </summary>
         private void EnterpriseToEnterpriseNetworkMapping()
         {
             this.jobResponse =
                 RecoveryServicesClient
                 .NewAzureSiteRecoveryNetworkMapping(
-                PrimaryNetwork.ServerId,
-                PrimaryNetwork.ID,
-                RecoveryNetwork.ServerId,
-                RecoveryNetwork.ID);
+                this.PrimaryNetwork.ServerId,
+                this.PrimaryNetwork.ID,
+                this.RecoveryNetwork.ServerId,
+                this.RecoveryNetwork.ID);
 
             this.WriteJob(this.jobResponse.Job);
         }
 
+        /// <summary>
+        /// Enterprise to Azure network mapping.
+        /// </summary>
         private void EnterpriseToAzureNetworkMapping()
         {
-            //validate AzureVM Network and then gen the name
-
             // Verify whether the subscription is associated with the account or not.
             RecoveryServicesClient.ValidateSubscriptionAccountAssociation(this.AzureSubscriptionId);
 
@@ -115,10 +119,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.jobResponse =
                 RecoveryServicesClient
                 .NewAzureSiteRecoveryAzureNetworkMapping(
-                PrimaryNetwork.ServerId,
-                PrimaryNetwork.ID,
+                this.PrimaryNetwork.ServerId,
+                this.PrimaryNetwork.ID,
                 azureVMNetworkName,
-                AzureVMNetworkId);
+                this.AzureVMNetworkId);
 
             this.WriteJob(this.jobResponse.Job);
         }

@@ -31,11 +31,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     {
         #region Parameters
         /// <summary>
+        /// Job response.
+        /// </summary>
+        private JobResponse jobResponse = null;
+
+        /// <summary>
         /// Gets or sets Primary Storage object.
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public ASRStorage PrimaryStorage {get; set;}
+        public ASRStorage PrimaryStorage { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Storage object.
@@ -43,11 +48,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRStorage RecoveryStorage { get; set; }
-
-        /// <summary>
-        /// Job response.
-        /// </summary>
-        private JobResponse jobResponse = null;
         #endregion Parameters
 
         /// <summary>
@@ -60,10 +60,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 this.jobResponse =
                     RecoveryServicesClient
                     .NewAzureSiteRecoveryStorageMapping(
-                    PrimaryStorage.ServerId,
-                    PrimaryStorage.ID,
-                    RecoveryStorage.ServerId,
-                    RecoveryStorage.ID);
+                    this.PrimaryStorage.ServerId,
+                    this.PrimaryStorage.ID,
+                    this.RecoveryStorage.ServerId,
+                    this.RecoveryStorage.ID);
 
                 this.WriteJob(this.jobResponse.Job);
             }

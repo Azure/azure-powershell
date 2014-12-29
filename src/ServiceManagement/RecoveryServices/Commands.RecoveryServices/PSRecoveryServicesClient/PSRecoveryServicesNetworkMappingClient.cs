@@ -13,16 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Xml;
 using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Management.SiteRecovery;
-// using Microsoft.WindowsAzure.Management.
-using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
-using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.WindowsAzure.Management.SiteRecovery;
+using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -32,44 +32,179 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public enum TargetNetworkType
     {
         /// <summary>
-        /// Server.
+        /// Target type of the network is Server.
         /// </summary>
         Server = 0,
 
         /// <summary>
-        /// Azure.
+        /// Target type of the network is Azure.
         /// </summary>
         Azure,
     }
 
+    /// <summary>
+    /// Helper around serialization/deserialization of objects. This one is a thin wrapper around
+    /// DataContractUtils template class which is the one doing the heavy lifting.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    public static class DataContractUtils
+    {
+        /// <summary>
+        /// Serializes the supplied object to the string.
+        /// </summary>
+        /// <typeparam name="T">The object type.</typeparam>
+        /// <param name="obj">Object to serialize</param>
+        /// <returns>Serialized string.</returns>
+        public static string Serialize<T>(T obj)
+        {
+            return DataContractUtils<T>.Serialize(obj);
+        }
+
+        /// <summary>
+        /// Deserialize the string to the expected object type.
+        /// </summary>
+        /// <typeparam name="T">The object type</typeparam>
+        /// <param name="xmlString">Serialized string</param>
+        /// <param name="result">Deserialized object</param>
+        public static void Deserialize<T>(string xmlString, out T result)
+        {
+            result = DataContractUtils<T>.Deserialize(xmlString);
+        }
+    }
+
+    /// <summary>
+    /// Template class for DataContractUtils.
+    /// </summary>
+    /// <typeparam name="T">The object type</typeparam>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    public static class DataContractUtils<T>
+    {
+        /// <summary>
+        /// Serializes the propertyBagContainer to the string. 
+        /// </summary>
+        /// <param name="propertyBagContainer">Property bag</param>
+        /// <returns>Serialized string </returns>
+        public static string Serialize(T propertyBagContainer)
+        {
+            var serializer = new DataContractSerializer(typeof(T));
+            string xmlString;
+            StringWriter sw = null;
+            try
+            {
+                sw = new StringWriter();
+                using (var writer = new XmlTextWriter(sw))
+                {
+                    // Indent the XML so it's human readable.
+                    writer.Formatting = Formatting.Indented;
+                    serializer.WriteObject(writer, propertyBagContainer);
+                    writer.Flush();
+                    xmlString = sw.ToString();
+                }
+            }
+            finally
+            {
+                if (sw != null)
+                {
+                    sw.Close();
+                }
+            }
+
+            return xmlString;
+        }
+
+        /// <summary>
+        /// Deserialize the string to the propertyBagContainer.
+        /// </summary>
+        /// <param name="xmlString">Serialized string</param>
+        /// <returns>Deserialized object</returns>
+        public static T Deserialize(string xmlString)
+        {
+            T propertyBagContainer;
+            using (Stream stream = new MemoryStream())
+            {
+                byte[] data = System.Text.Encoding.UTF8.GetBytes(xmlString);
+                stream.Write(data, 0, data.Length);
+                stream.Position = 0;
+                DataContractSerializer deserializer = new DataContractSerializer(typeof(T));
+                propertyBagContainer = (T)deserializer.ReadObject(stream);
+            }
+
+            return propertyBagContainer;
+        }
+    }
+
+    /// <summary>
+    /// Create network mapping input.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
     public class CreateNetworkMappingInput
     {
+        /// <summary>
+        /// Gets or sets Primary Server Id.
+        /// </summary>
         [DataMember(Order = 1)]
         public string PrimaryServerId { get; set; }
 
+        /// <summary>
+        /// Gets or sets Primary Network Id.
+        /// </summary>
         [DataMember(Order = 2)]
         public string PrimaryNetworkId { get; set; }
 
+        /// <summary>
+        /// Gets or sets Recovery Server Id.
+        /// </summary>
         [DataMember(Order = 3)]
         public string RecoveryServerId { get; set; }
 
+        /// <summary>
+        /// Gets or sets Recovery Network Id.
+        /// </summary>
         [DataMember(Order = 4)]
         public string RecoveryNetworkId { get; set; }
     }
 
+    /// <summary>
+    /// Create Azure network mapping input.
+    /// </summary>
+    [SuppressMessage(
+       "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+       "SA1402:FileMayOnlyContainASingleClass",
+       Justification = "Keeping all contracts together.")]
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
     public class CreateAzureNetworkMappingInput
     {
+        /// <summary>
+        /// Gets or sets Primary Server Id.
+        /// </summary>
         [DataMember(Order = 1)]
         public string PrimaryServerId { get; set; }
 
+        /// <summary>
+        /// Gets or sets Primary Network Id.
+        /// </summary>
         [DataMember(Order = 2)]
         public string PrimaryNetworkId { get; set; }
 
+        /// <summary>
+        /// Gets or sets Azure VM Network Id.
+        /// </summary>
         [DataMember(Order = 3)]
         public string AzureVMNetworkId { get; set; }
 
+        /// <summary>
+        /// Gets or sets Azure VM Network name.
+        /// </summary>
         [DataMember(Order = 4)]
         public string AzureVMNetworkName { get; set; }
     }
@@ -77,6 +212,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Recovery services convenience client.
     /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
@@ -154,6 +293,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 .Create(networkMappingInput, this.GetRequestHeaders());
         }
 
+        /// <summary>
+        /// Validates whether the subscription belongs to the currently logged account or not.
+        /// </summary>
+        /// <param name="azureSubscriptionId">Azure Subscription ID</param>
         public void ValidateSubscriptionAccountAssociation(string azureSubscriptionId)
         {
             bool associatedSubscription = false;
@@ -179,6 +322,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
+        /// <summary>
+        /// Validates whether the Azure VM Network is associated with the subscription or not.
+        /// </summary>
+        /// <param name="subscriptionId">Subscription Id</param>
+        /// <param name="azureNetworkId">Azure Network Id</param>
         public void ValidateVMNetworkSubscriptionAssociation(string subscriptionId, string azureNetworkId)
         {
             /*
@@ -188,6 +336,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             var sites = response.VirtualNetworkSites;
             */
         }
+
         /// <summary>
         /// Delete Azure Site Recovery Network Mapping.
         /// </summary>
@@ -208,88 +357,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             return this.GetSiteRecoveryClient()
                 .NetworkMappings
                 .Delete(networkUnMappingInput, this.GetRequestHeaders());
-        }
-    }
-
-    /// <summary>
-    /// Helper around serialization/deserialization of objects. This one is a thin wrapper around
-    /// DataContractUtils<T> which is the one doing the heavy lifting.
-    /// </summary>
-    public static class DataContractUtils
-    {
-        /// <summary>
-        /// Serializes the supplied object to the string.
-        /// </summary>
-        /// <typeparam name="T">The object type.</typeparam>
-        /// <param name="The object to serialize."></param>
-        /// <returns>Serialized string.</returns>
-        public static string Serialize<T>(T obj)
-        {
-            return DataContractUtils<T>.Serialize(obj);
-        }
-
-        /// <summary>
-        /// Deserialize the string to the expected object type.
-        /// </summary>
-        /// <param name="xmlString">Serialized string.</param>
-        /// <param name="result">Deserialized object.</param>
-        public static void Deserialize<T>(string xmlString, out T result)
-        {
-            result = DataContractUtils<T>.Deserialize(xmlString);
-        }
-    }
-
-    public static class DataContractUtils<T>
-    {
-        /// <summary>
-        /// Serializes the propertyBagContainer to the string. 
-        /// </summary>
-        /// <param name="propertyBagContainer"></param>
-        /// <returns></returns>
-        public static string Serialize(T propertyBagContainer)
-        {
-            var serializer = new DataContractSerializer(typeof(T));
-            string xmlString;
-            StringWriter sw = null;
-            try
-            {
-                sw = new StringWriter();
-                using (var writer = new XmlTextWriter(sw))
-                {
-                    // Indent the XML so it's human readable.
-                    writer.Formatting = Formatting.Indented;
-                    serializer.WriteObject(writer, propertyBagContainer);
-                    writer.Flush();
-                    xmlString = sw.ToString();
-                }
-            }
-            finally
-            {
-                if (sw != null)
-                    sw.Close();
-            }
-
-            return xmlString;
-        }
-
-        /// <summary>
-        /// Deserialize the string to the propertyBagContainer.
-        /// </summary>
-        /// <param name="xmlString"></param>
-        /// <returns></returns>
-        public static T Deserialize(string xmlString)
-        {
-            T propertyBagContainer;
-            using (Stream stream = new MemoryStream())
-            {
-                byte[] data = System.Text.Encoding.UTF8.GetBytes(xmlString);
-                stream.Write(data, 0, data.Length);
-                stream.Position = 0;
-                DataContractSerializer deserializer = new DataContractSerializer(typeof(T));
-                propertyBagContainer = (T)deserializer.ReadObject(stream);
-            }
-
-            return propertyBagContainer;
         }
     }
 }

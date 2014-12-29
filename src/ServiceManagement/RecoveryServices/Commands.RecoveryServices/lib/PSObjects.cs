@@ -201,6 +201,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVirtualMachine" /> class.
+        /// </summary>
+        /// <param name="vm">Virtual Machine</param>
         public ASRVirtualMachine(VirtualMachine vm)
             : base(
                 vm.ID,

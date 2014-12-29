@@ -13,15 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
     /// Azure Site Recovery Network.
     /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
     public class ASRNetwork
     {
         /// <summary>
@@ -88,6 +93,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Azure Site Recovery Network Mapping.
     /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
     public class ASRNetworkMapping
     {
         /// <summary>

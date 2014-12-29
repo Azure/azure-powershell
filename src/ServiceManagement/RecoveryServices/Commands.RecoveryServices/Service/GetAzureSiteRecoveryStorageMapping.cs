@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public ASRServer PrimaryServer {get; set;}
+        public ASRServer PrimaryServer { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Server object.
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 StorageMappingListResponse storageMappingListResponse =
                     RecoveryServicesClient
-                    .GetAzureSiteRecoveryStorageMappings(PrimaryServer.ID, RecoveryServer.ID);
+                    .GetAzureSiteRecoveryStorageMappings(this.PrimaryServer.ID, this.RecoveryServer.ID);
 
-                WriteStorageMappings(storageMappingListResponse.StorageMappings);
+                this.WriteStorageMappings(storageMappingListResponse.StorageMappings);
             }
             catch (Exception exception)
             {
