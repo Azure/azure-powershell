@@ -65,7 +65,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.SiteRecovery, Version=0.9.0.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.0.1.1-preview\lib\net40\Microsoft.WindowsAzure.Management.SiteRecovery.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.0.2.2-preview\lib\net40\Microsoft.WindowsAzure.Management.SiteRecovery.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -97,6 +97,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="lib\PSStorageObjects.cs" />
+    <Compile Include="lib\PSNetworkObjects.cs" />
     <Compile Include="lib\PSContracts.cs" />
     <Compile Include="lib\PSObjects.cs" />
     <Compile Include="lib\PSParameterSets.cs" />
@@ -106,6 +108,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStorageClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStorageMappingClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesNetworkMappingClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesNetworkClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVMGroupClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesPEClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesClient.cs">
@@ -118,6 +124,14 @@
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVMClient.cs" />
     <Compile Include="RecoveryServicesCmdletBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryStorage.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryStorageMapping.cs" />
+    <Compile Include="Service\NewAzureSiteRecoveryStorageMapping.cs" />
+    <Compile Include="Service\RemoveAzureSiteRecoveryStorageMapping.cs" />
+    <Compile Include="Service\RemoveAzureSiteRecoveryNetworkMapping.cs" />
+    <Compile Include="Service\NewAzureSiteRecoveryNetworkMapping.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryNetworkMapping.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryNetwork.cs" />
     <Compile Include="Service\CreateAzureSiteRecoveryRecoveryPlan.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryRecoveryPlanFile.cs" />
     <Compile Include="Service\RemoveAzureSiteRecoveryRecoveryPlan.cs" />
