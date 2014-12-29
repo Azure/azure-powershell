@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             HelpMessage = "AzureSiteRecovery vault settings file path", 
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string Path {get; set;}
+        public string Path { get; set; }
         #endregion Parameters
 
         /// <summary>

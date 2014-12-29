@@ -108,5 +108,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// When parameters are passed to the command.
         /// </summary>
         internal const string ByParam = "ByParam";
+
+        /// <summary>
+        /// Mapping between Enterprise to Enterprise.
+        /// </summary>
+        internal const string EnterpriseToEnterprise = "EnterpriseToEnterprise";
+
+        /// <summary>
+        /// Mapping between Enterprise to Azure.
+        /// </summary>
+        internal const string EnterpriseToAzure = "EnterpriseToAzure";
     }
 }

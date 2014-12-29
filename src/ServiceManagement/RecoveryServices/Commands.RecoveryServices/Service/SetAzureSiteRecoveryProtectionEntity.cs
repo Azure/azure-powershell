@@ -45,21 +45,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByIDs, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string Id {get; set;}
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets ID of the ProtectionContainer containing the Virtual Machine.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByIDs, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ProtectionContianerId {get; set;}
+        public string ProtectionContianerId { get; set; }
 
         /// <summary>
         /// Gets or sets Protection Entity Object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRProtectionEntity ProtectionEntity {get; set;}
+        public ASRProtectionEntity ProtectionEntity { get; set; }
 
         /// <summary>
         /// Gets or sets Protection to set, either enable or disable.
@@ -69,13 +69,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateSet(
             PSRecoveryServicesClient.EnableProtection,
             PSRecoveryServicesClient.DisableProtection)]
-        public string Protection {get; set;}
+        public string Protection { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. On passing, command waits till completion.
         /// </summary>
         [Parameter]
-        public SwitchParameter WaitForCompletion {get; set;}
+        public SwitchParameter WaitForCompletion { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
@@ -101,8 +101,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     break;
             }
 
-            ConfirmAction(
-                Force.IsPresent || 0 != string.CompareOrdinal(this.Protection, PSRecoveryServicesClient.DisableProtection),
+            this.ConfirmAction(
+                this.Force.IsPresent || 0 != string.CompareOrdinal(this.Protection, PSRecoveryServicesClient.DisableProtection),
                 string.Format(Properties.Resources.DisableProtectionWarning, this.targetNameOrId),
                 string.Format(Properties.Resources.DisableProtectionWhatIfMessage, this.Protection),
                 this.targetNameOrId,

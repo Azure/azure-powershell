@@ -50,14 +50,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string RpId {get; set;}
+        public string RpId { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Plan object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRRecoveryPlan RecoveryPlan {get; set;}
+        public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         /// <summary>
         /// Gets or sets failover direction for the recovery plan.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateSet(
           PSRecoveryServicesClient.PrimaryToRecovery,
           PSRecoveryServicesClient.RecoveryToPrimary)]
-        public string Direction {get; set;}
+        public string Direction { get; set; }
 
         /// <summary>
         /// Gets or sets ID of the PE.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithLogicalNetworkID, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithVMNetworkID, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ProtectionEntityId {get; set;}
+        public string ProtectionEntityId { get; set; }
 
         /// <summary>
         /// Gets or sets ID of the Recovery Plan.
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithLogicalNetworkID, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithVMNetworkID, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ProtectionContainerId {get; set;}
+        public string ProtectionContainerId { get; set; }
 
         /// <summary>
         /// Gets or sets Protection Entity object.
@@ -96,27 +96,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectWithLogicalNetworkID, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectWithVMNetworkID, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public ASRProtectionEntity ProtectionEntity {get; set;}
+        public ASRProtectionEntity ProtectionEntity { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. This is required to wait for job completion.
         /// </summary>
         [Parameter]
-        public SwitchParameter WaitForCompletion {get; set;}
+        public SwitchParameter WaitForCompletion { get; set; }
 
         /// <summary>
         /// Gets or sets Logical network ID.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectWithLogicalNetworkID, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithLogicalNetworkID, Mandatory = true)]
-        public string LogicalNetworkId {get; set;}
+        public string LogicalNetworkId { get; set; }
 
         /// <summary>
         /// Gets or sets VM network ID.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectWithVMNetworkID, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithVMNetworkID, Mandatory = true)]
-        public string VmNetworkId {get; set;}
+        public string VmNetworkId { get; set; }
         #endregion Parameters
 
         /// <summary>

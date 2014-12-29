@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             if (0 == string.Compare(EnableProtection, protection, StringComparison.OrdinalIgnoreCase))
             {
-                jobResponse =
-                    this.GetSiteRecoveryClient().ProtectionEntity.EnableProtection(
+                jobResponse = null;
+                    /* this.GetSiteRecoveryClient().ProtectionEntity.EnableProtection(
                     protectionContainerId,
                     virtualMachineId,
-                    requestHeaders);
+                    requestHeaders); */
             }
             else if (0 == string.Compare(DisableProtection, protection, StringComparison.OrdinalIgnoreCase))
             {
@@ -169,10 +169,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string protectionContainerId,
             string protectionEntityId)
         {
-            return this.GetSiteRecoveryClient().ProtectionEntity.CommitFailover(
-                protectionContainerId,
-                protectionEntityId,
-                this.GetRequestHeaders());
+            return null; /* this.GetSiteRecoveryClient().ProtectionEntity.CommitFailover(
+                 protectionContainerId,
+                 protectionEntityId,
+                 this.GetRequestHeaders()); */
         }
 
         /// <summary>

@@ -13,33 +13,29 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
-    /// Stops Azure Site Recovery Job.
+    /// Retrieves Azure Site Recovery Storage.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureSiteRecoveryJob", DefaultParameterSetName = ASRParameterSets.ByObject)]
-    [OutputType(typeof(ASRJob))]
-    public class StopAzureSiteRecoveryJob : RecoveryServicesCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryStorage")]
+    [OutputType(typeof(IEnumerable<ASRStorage>))]
+    public class GetAzureSiteRecoveryStorage : RecoveryServicesCmdletBase
     {
         #region Parameters
         /// <summary>
-        /// Gets or sets Job ID.
+        /// Gets or sets Server object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ById, Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets Job Object.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ASRJob Job { get; set; }
+        public ASRServer Server { get; set; }
         #endregion Parameters
 
         /// <summary>
@@ -49,17 +45,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByObject:
-                        this.Id = this.Job.ID;
-                        this.GetById();
-                        break;
+                StorageListResponse storageListResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryStorages(this.Server.ID);
 
-                    case ASRParameterSets.ById:
-                        this.GetById();
-                        break;
-                }
+                this.WriteStorages(storageListResponse.Storages);
             }
             catch (Exception exception)
             {
@@ -68,11 +57,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Queries by ID.
+        /// Write Storages.
         /// </summary>
-        private void GetById()
+        /// <param name="storages">List of Storages</param>
+        private void WriteStorages(IList<Storage> storages)
         {
-            RecoveryServicesClient.StopAzureSiteRecoveryJob(this.Id);
+            this.WriteObject(storages.Select(s => new ASRStorage(s)), true);
         }
     }
 }

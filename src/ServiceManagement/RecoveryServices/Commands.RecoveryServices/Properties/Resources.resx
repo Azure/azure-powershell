@@ -191,4 +191,7 @@ ClientRequestId: {3}</value>
   <data name="RemoveRPWhatIfMessage" xml:space="preserve">
     <value>Removing Recovery Plan</value>
   </data>
+  <data name="SubscriptionIsNotAssociatedWithTheAccount" xml:space="preserve">
+    <value>Subscription {0} is not associated with the account</value>
+  </data>
 </root>
