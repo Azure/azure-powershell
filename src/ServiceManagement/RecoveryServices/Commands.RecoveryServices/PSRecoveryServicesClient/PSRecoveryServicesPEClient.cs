@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// syncs owner role information on Protection entity.
         /// </summary>
         /// <param name="protectionContainerId">Protection Container ID</param>
-        /// <param name="protectionEntityId">Virtual Machine ID</param>
+        /// <param name="protectionEntityId">Protection Entity ID</param>
         /// <returns>Job response</returns>
         public JobResponse UpdateAzureSiteRecoveryProtectionEntity(
             string protectionContainerId,
