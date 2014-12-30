@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// </summary>
     [Cmdlet(VerbsData.Update, "AzureSiteRecoveryProtectionEntity")]
     [OutputType(typeof(ASRJob))]
-    public class UpdateSyncOwnerInformation : RecoveryServicesCmdletBase
+    public class UpdateAzureSiteRecoveryProtectionEntity : RecoveryServicesCmdletBase
     {
         #region Parameters
 
@@ -44,16 +44,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private string protectionContainerId;
 
         /// <summary>
-        /// Recovery Plan object.
-        /// </summary>
-        private ASRProtectionEntity protectionEntity;
-
-        /// <summary>
-        /// Wait / hold prompt till the Job completes.
-        /// </summary>
-        private bool waitForCompletion;
-
-        /// <summary>
         /// Job response.
         /// </summary>
         private JobResponse jobResponse = null;
@@ -65,8 +55,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateNotNullOrEmpty]
         public ASRProtectionEntity ProtectionEntity
         {
-            get { return this.protectionEntity; }
-            set { this.protectionEntity = value; }
+            get;
+            set;
         }
 
         /// <summary>
@@ -75,8 +65,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter]
         public SwitchParameter WaitForCompletion
         {
-            get { return this.waitForCompletion; }
-            set { this.waitForCompletion = value; }
+            get;
+            set;
         }
 
         #endregion Parameters
@@ -113,13 +103,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void SyncOwnerInformationOnPE()
         {
-            this.jobResponse = RecoveryServicesClient.UpdateSyncOwnerInformationOnProtectionEntity(
+            this.jobResponse = RecoveryServicesClient.UpdateAzureSiteRecoveryProtectionEntity(
                 this.protectionContainerId,
                 this.protectionEntityId);
 
             this.WriteJob(this.jobResponse.Job);
 
-            if (this.waitForCompletion)
+            if (this.WaitForCompletion)
             {
                 this.WaitForJobCompletion(this.jobResponse.Job.ID);
             }

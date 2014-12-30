@@ -157,7 +157,7 @@
     <Compile Include="Service\GetAzureSiteRecoveryVaultSettings.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryVM.cs" />
     <Compile Include="Service\ImportAzureSiteRecoveryVaultSettingsFile.cs" />
-    <Compile Include="Service\UpdateSyncOwnerInformation.cs" />
+    <Compile Include="Service\UpdateAzureSiteRecoveryProtectionEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
