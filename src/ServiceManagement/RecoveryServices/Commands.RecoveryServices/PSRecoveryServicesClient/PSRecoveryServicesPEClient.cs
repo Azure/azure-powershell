@@ -192,5 +192,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 request,
                 this.GetRequestHeaders());
         }
+
+        /// <summary>
+        /// Currently available only for E2E replication provider, 
+        /// syncs owner role information on Protection entity.
+        /// </summary>
+        /// <param name="protectionContainerId">Protection Container ID</param>
+        /// <param name="protectionEntityId">Protection Entity ID</param>
+        /// <returns>Job response</returns>
+        public JobResponse UpdateAzureSiteRecoveryProtectionEntity(
+            string protectionContainerId,
+            string protectionEntityId)
+        {
+            return this.GetSiteRecoveryClient().ProtectionEntity.SyncOwnerInformation(
+                protectionContainerId,
+                protectionEntityId,
+                this.GetRequestHeaders());
+        }
     }
 }
