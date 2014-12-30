@@ -142,6 +142,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Azure.Common.Extensions\Common.Extensions.csproj">
+      <Project>{b95c489c-8cb7-4dcf-8d5f-b9aebdbbaf89}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\Commands\Commands.csproj">
       <Project>{CD5AA507-F5EF-473D-855B-84B91A1ABE54}</Project>
       <Name>Commands</Name>

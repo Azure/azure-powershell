@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
     using DatabaseCopyModel = Model.DatabaseCopy;
+    using Microsoft.Azure.Common.Extensions;
 
     /// <summary>
     /// Retrieves a list of all ongoing Microsoft Azure SQL Database copy operations in the given

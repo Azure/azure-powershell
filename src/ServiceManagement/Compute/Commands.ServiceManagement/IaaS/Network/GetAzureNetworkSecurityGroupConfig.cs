@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Network;
 using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {

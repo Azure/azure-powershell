@@ -116,8 +116,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.MediaServices.1.2.0\lib\net40\Microsoft.WindowsAzure.Management.MediaServices.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Network">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.4.2.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.4.3.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Scheduler">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.4.1.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
@@ -339,6 +340,10 @@
     <None Include="Performance\Microsoft.ServiceBus.MessagingPerformanceCounters.man" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Azure.Common.Extensions\Common.Extensions.csproj">
+      <Project>{b95c489c-8cb7-4dcf-8d5f-b9aebdbbaf89}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.Utilities\Commands.Utilities.csproj">
       <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>
       <Name>Commands.Utilities</Name>
