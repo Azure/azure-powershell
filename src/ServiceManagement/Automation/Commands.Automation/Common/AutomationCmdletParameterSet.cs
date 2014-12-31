@@ -46,5 +46,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// The hourly schedule parameter set.
         /// </summary>
         internal const string ByHourly = "ByHourly";
+
+        /// <summary>
+        /// The Job Id parameter set.
+        /// </summary>
+        internal const string ByJobId = "ByJobId";
+
+        /// <summary>
+        /// The Runbook name parameter set.
+        /// </summary>
+        internal const string ByRunbookName = "ByRunbookName"; 
     }
 }
