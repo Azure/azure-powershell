@@ -102,6 +102,7 @@
     <Compile Include="UnitTests\RemoveAzureAutomationCredentialTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationModuleTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationScheduleTest.cs" />
+    <Compile Include="UnitTests\RemoveAzureAutomationVariableTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationCredentialTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationScheduleTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationVariableTest.cs" />

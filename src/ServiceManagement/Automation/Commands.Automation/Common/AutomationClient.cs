@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                skipToken =>
                {
                    var response = this.automationManagementClient.Variables.List(
-                       automationAccountName);
+                       automationAccountName, skipToken);
                    return new ResponseWithSkipToken<AutomationManagement.Models.Variable>(
                        response, response.Variables);
                });
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                skipToken =>
                {
                    var response = this.automationManagementClient.EncryptedVariables.List(
-                       automationAccountName);
+                       automationAccountName, skipToken);
                    return new ResponseWithSkipToken<AutomationManagement.Models.EncryptedVariable>(
                        response, response.EncryptedVariables);
                });
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             IList<AutomationManagement.Models.Credential> credentialModels = AutomationManagementClient.ContinuationTokenHandler(
                 skipToken =>
                 {
-                    var response = this.automationManagementClient.PsCredentials.List(automationAccountName);
+                    var response = this.automationManagementClient.PsCredentials.List(automationAccountName, skipToken);
                     return new ResponseWithSkipToken<AutomationManagement.Models.Credential>(
                         response, response.Credentials);
                 });
