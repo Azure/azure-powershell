@@ -16,28 +16,38 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation variables for a given account.
+    /// Create a new Module for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationVariable")]
-    [OutputType(typeof(Variable))]
-    public class RemoveAzureAutomationVariable : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureAutomationModule")]
+    [OutputType(typeof(Module))]
+    public class NewAzureAutomationModule : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the variable name.
+        /// Gets or sets the module name.
         /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The module name.")]
         public string Name { get; set; }
 
-        [Parameter(Position = 2, HelpMessage = "Confirm the removal of the variable")]
-        public SwitchParameter Force { get; set; }
+        /// <summary>
+        /// Gets or sets the contentLink
+        /// </summary>
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The ContentLink.")]
+        [ValidateNotNullOrEmpty]
+        public Uri ContentLink { get; set; }
+
+        /// <summary>
+        /// Gets or sets the module tags.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The module tags.")]
+        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -45,15 +55,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingAzureAutomationResourceWarning, "Module"),
-                string.Format(Resources.RemoveAzureAutomationResourceDescription, "Module"),
-                Name,
-                () =>
-                {
-                    this.AutomationClient.DeleteVariable(this.AutomationAccountName, this.Name);
-                });
+            var createdModule = this.AutomationClient.CreateModule(this.AutomationAccountName, ContentLink, Name, Tags);
+
+            this.WriteObject(createdModule);
         }
     }
 }

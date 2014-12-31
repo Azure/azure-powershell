@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 Value = this.Value
             };
 
-            var ret = this.AutomationClient.SetVariable(this.AutomationAccountName, variable);
+            var ret = this.AutomationClient.UpdateVariable(this.AutomationAccountName, variable);
             
             this.GenerateCmdletOutput(ret);
         }

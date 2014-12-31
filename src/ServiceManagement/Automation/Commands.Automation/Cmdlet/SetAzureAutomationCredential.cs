@@ -16,43 +16,39 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation variables for a given account.
+    /// Sets a Credential for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationVariable")]
-    [OutputType(typeof(Variable))]
-    public class NewAzureAutomationVariable : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [OutputType(typeof(PSCredential))]
+    public class SetAzureAutomationCredential : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the variable name.
+        /// Gets or sets the credential name.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The credential name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the variable IsEncrypted Property.
+        /// Gets or sets the credential description.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The IsEncrypted property of the variable.")]
-        [ValidateNotNull]
-        public SwitchParameter Encrypted { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the variable description.
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the variable.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The credential description.")]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the variable value.
+        /// Gets or sets the credential Value.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value of the variable.")]
-        public string Value { get; set; }
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The credential value.")]
+        public PSCredential Value { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -60,17 +56,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            Variable variable = new Variable()
+            string userName = null, password = null;
+
+            if(Value != null)
             {
-                Name = this.Name,
-                Encrypted = this.Encrypted.IsPresent,
-                Description = this.Description,
-                Value = this.Value
-            };
+                userName = Value.UserName;
+                password = Value.GetNetworkCredential().Password;
+            }
 
-            var ret = this.AutomationClient.CreateVariable(this.AutomationAccountName, variable);
+            var updatedCredential = this.AutomationClient.UpdateCredential(this.AutomationAccountName, Name, userName, password, Description);
 
-            this.GenerateCmdletOutput(ret);
+            this.WriteObject(updatedCredential);
         }
     }
 }

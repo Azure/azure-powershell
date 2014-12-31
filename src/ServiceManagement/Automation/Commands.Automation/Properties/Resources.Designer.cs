@@ -70,6 +70,33 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} {1} operation failed for object name: {2) under AutomationAccount: {3}.
+        /// </summary>
+        internal static string AutomationOperationFailed {
+            get {
+                return ResourceManager.GetString("AutomationOperationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Job having Id: {0} was not found..
+        /// </summary>
+        internal static string JobNotFound {
+            get {
+                return ResourceManager.GetString("JobNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is empty..
+        /// </summary>
+        internal static string ParameterEmpty {
+            get {
+                return ResourceManager.GetString("ParameterEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing the Azure Automation {0}..
         /// </summary>
         internal static string RemoveAzureAutomationResourceDescription {
@@ -129,6 +156,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string ScheduleNotFound {
             get {
                 return ResourceManager.GetString("ScheduleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The variable already exists. Variable name {0}..
+        /// </summary>
+        internal static string VariableAlreadyExists {
+            get {
+                return ResourceManager.GetString("VariableAlreadyExists", resourceCulture);
             }
         }
         

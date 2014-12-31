@@ -16,28 +16,24 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation variables for a given account.
+    /// Gets a Module for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationVariable")]
-    [OutputType(typeof(Variable))]
-    public class RemoveAzureAutomationVariable : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationModule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [OutputType(typeof(Module))]
+    public class GetAzureAutomationModule : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the variable name.
+        /// Gets or sets the module name.
         /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The module name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Position = 2, HelpMessage = "Confirm the removal of the variable")]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -45,15 +41,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingAzureAutomationResourceWarning, "Module"),
-                string.Format(Resources.RemoveAzureAutomationResourceDescription, "Module"),
-                Name,
-                () =>
-                {
-                    this.AutomationClient.DeleteVariable(this.AutomationAccountName, this.Name);
-                });
+            IEnumerable<Module> ret = null;
+            if (!string.IsNullOrEmpty(this.Name))
+            {
+                ret = new List<Module> 
+                { 
+                   this.AutomationClient.GetModule(this.AutomationAccountName, this.Name)
+                };
+            }
+            else
+            {
+                ret = this.AutomationClient.ListModules(this.AutomationAccountName);
+            }
+
+            this.GenerateCmdletOutput(ret);
         }
     }
 }

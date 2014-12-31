@@ -32,4 +32,3 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
     }
 }
-
