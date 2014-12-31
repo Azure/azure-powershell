@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public Variable(AutomationManagement.Models.Variable variable)
+        public Variable(AutomationManagement.Models.Variable variable, string automationAccoutName)
         {
             Requires.Argument("variable", variable).NotNull();
 
@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.LastModifiedTime = variable.Properties.LastModifiedTime.ToLocalTime();
             this.Value = variable.Properties.Value;
             this.Description = variable.Properties.Description;
-            this.IsEncrypted = false;
+            this.Encrypted = false;
+            this.AutomationAccountName = automationAccoutName;
         }
 
         // <summary>
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public Variable(AutomationManagement.Models.EncryptedVariable variable)
+        public Variable(AutomationManagement.Models.EncryptedVariable variable, string automationAccountName)
         {
             Requires.Argument("variable", variable).NotNull();
 
@@ -61,7 +62,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.LastModifiedTime = variable.Properties.LastModifiedTime.ToLocalTime();
             this.Value = null;
             this.Description = variable.Properties.Description;
-            this.IsEncrypted = true;
+            this.Encrypted = true;
+            this.AutomationAccountName = automationAccountName;
         }
 
         /// <summary>
@@ -99,6 +101,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the description.
         /// </summary>
-        public bool IsEncrypted { get; set; }
+        public bool Encrypted { get; set; }
+
+        /// <summary>
+        /// Gets or sets the automaiton account name.
+        /// </summary>
+        public string AutomationAccountName { get; set; }
     }
 }

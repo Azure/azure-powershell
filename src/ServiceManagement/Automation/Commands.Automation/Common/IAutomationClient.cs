@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<Variable> ListVariables(string automationAccountName);
 
+        Variable NewVariable(string automationAccountName, Variable variable);
+
+        void RemoveVariable(string automationAccountName, string variableName);
+
         Variable SetVariable(string automationAccountName, Variable variable);
         
         Schedule CreateSchedule(string automationAccountName, Schedule schedule);

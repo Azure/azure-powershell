@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return jobStreams.Select(this.CreateJobStreamFromJobStreamModel);
         }
 
-        public Variable SetVariable(string automationAccountName, Variable variable)
+        public Variable NewVariable(string automationAccountName, Variable variable)
         {
             bool variableExists = true;
 
@@ -174,102 +174,143 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (variableExists)
             {
-                if (variable.IsEncrypted)
-                {
-                    var updateParams = new AutomationManagement.Models.EncryptedVariableUpdateParameters()
-                    {
-                        Name = variable.Name,
-                        Properties = new AutomationManagement.Models.EncryptedVariableUpdateProperties()
-                        {
-                            Value = variable.Value,
-                            Description = variable.Description
-                        }
-                    };
+                //TODO : throw the right error message here
+                throw new ArgumentNullException();
+            }
 
-                    this.automationManagementClient.EncryptedVariables.Update(automationAccountName, updateParams);
-                }
-                else
+            if (variable.Encrypted)
+            {
+                var createParams = new AutomationManagement.Models.EncryptedVariableCreateParameters()
                 {
-                    var updateParams = new AutomationManagement.Models.VariableUpdateParameters()
+                    Name = variable.Name,
+                    Properties = new AutomationManagement.Models.EncryptedVariableCreateProperties()
                     {
-                        Name = variable.Name,
-                        Properties = new AutomationManagement.Models.VariableUpdateProperties()
-                        {
-                            Value = variable.Value,
-                            Description = variable.Description
-                        }
-                    };
+                        Value = variable.Value,
+                        Description = variable.Description
+                    }
+                };
 
-                    this.automationManagementClient.Variables.Update(automationAccountName, updateParams);
+                var sdkCreatedVariable = this.automationManagementClient.EncryptedVariables.Create(automationAccountName, createParams).EncryptedVariable;
+
+                if (sdkCreatedVariable == null)
+                {
+                    // TODO:  throw the right error here
+                    throw new ArgumentNullException();
                 }
 
-                return this.GetVariable(automationAccountName, variable.Name);
+                return new Variable(sdkCreatedVariable, automationAccountName);
             }
             else
             {
-                if (variable.IsEncrypted)
+                var createParams = new AutomationManagement.Models.VariableCreateParameters()
                 {
-                    var createParams = new AutomationManagement.Models.EncryptedVariableCreateParameters()
+                    Name = variable.Name,
+                    Properties = new AutomationManagement.Models.VariableCreateProperties()
                     {
-                        Name = variable.Name,
-                        Properties = new AutomationManagement.Models.EncryptedVariableCreateProperties()
-                        {
-                            Value = variable.Value,
-                            Description = variable.Description
-                        }
-                    };
-
-                    var sdkCreatedVariable = this.automationManagementClient.EncryptedVariables.Create(automationAccountName, createParams).EncryptedVariable;
-
-                    if (sdkCreatedVariable == null)
-                    {
-                        // TODO:  throw the right error here
-                        throw new ArgumentNullException();
+                        Value = variable.Value,
+                        Description = variable.Description
                     }
+                };
 
-                    return new Variable(sdkCreatedVariable);
+                var sdkCreatedVariable = this.automationManagementClient.Variables.Create(automationAccountName, createParams).Variable;
+
+                if (sdkCreatedVariable == null)
+                {
+                    // TODO:  throw the right error here
+                    throw new ArgumentNullException();
+                }
+
+                return new Variable(sdkCreatedVariable, automationAccountName);
+            }
+        }
+
+        public void RemoveVariable(string automationAccountName, string variableName)
+        {
+            try
+            {
+                var existingVarible = this.GetVariable(automationAccountName, variableName);
+
+                if (existingVarible.Encrypted)
+                {
+                    this.automationManagementClient.EncryptedVariables.Delete(automationAccountName, variableName);
                 }
                 else
                 {
-                    var createParams = new AutomationManagement.Models.VariableCreateParameters()
-                    {
-                        Name = variable.Name,
-                        Properties = new AutomationManagement.Models.VariableCreateProperties()
-                        {
-                            Value = variable.Value,
-                            Description = variable.Description
-                        }
-                    };
-
-                    var sdkCreatedVariable = this.automationManagementClient.Variables.Create(automationAccountName, createParams).Variable;
-
-                    if (sdkCreatedVariable == null)
-                    {
-                        // TODO:  throw the right error here
-                        throw new ArgumentNullException();
-                    }
-
-                    return new Variable(sdkCreatedVariable);
+                    this.automationManagementClient.Variables.Delete(automationAccountName, variableName);
                 }
             }
-         
+            catch (ResourceNotFoundException)
+            {
+                // the variable does not exists or already deleted. Do nothing. Return.
+                return;
+            }
+        }
+        public Variable SetVariable(string automationAccountName, Variable variable)
+        {
+            var existingVarible = this.GetVariable(automationAccountName, variable.Name);
+                variable.Encrypted = existingVarible.Encrypted;
+            
+            if (variable.Encrypted)
+            {
+                var updateParams = new AutomationManagement.Models.EncryptedVariableUpdateParameters()
+                {
+                    Name = variable.Name,
+                    Properties = new AutomationManagement.Models.EncryptedVariableUpdateProperties()
+                    {
+                        Value = variable.Value,
+                        Description = variable.Description
+                    }
+                };
+
+                this.automationManagementClient.EncryptedVariables.Update(automationAccountName, updateParams);
+            }
+            else
+            {
+                var updateParams = new AutomationManagement.Models.VariableUpdateParameters()
+                {
+                    Name = variable.Name,
+                    Properties = new AutomationManagement.Models.VariableUpdateProperties()
+                    {
+                        Value = variable.Value,
+                        Description = variable.Description
+                    }
+                };
+
+                this.automationManagementClient.Variables.Update(automationAccountName, updateParams);
+            }
+
+            return this.GetVariable(automationAccountName, variable.Name);
         }
 
         public Variable GetVariable(string automationAccountName, string name)
         {
-            var sdkEncryptedVariable = this.automationManagementClient.EncryptedVariables.Get(
-                automationAccountName, name).EncryptedVariable;
-
-            if (sdkEncryptedVariable != null)
+            try
             {
-                return new Variable(sdkEncryptedVariable);
+                var sdkEncryptedVariable = this.automationManagementClient.EncryptedVariables.Get(
+                    automationAccountName, name).EncryptedVariable;
+
+                if (sdkEncryptedVariable != null)
+                {
+                    return new Variable(sdkEncryptedVariable, automationAccountName);
+                }
             }
-            
-            var sdkVarible = this.automationManagementClient.Variables.Get(automationAccountName, name).Variable;
-
-            if (sdkVarible != null)
+            catch (CloudException)
             {
-                return new Variable(sdkVarible);
+                // do nothing
+            }
+
+            try
+            {
+                var sdkVarible = this.automationManagementClient.Variables.Get(automationAccountName, name).Variable;
+
+                if (sdkVarible != null)
+                {
+                    return new Variable(sdkVarible, automationAccountName);
+                }
+            }
+            catch (CloudException)
+            {
+                // do nothing
             }
 
             throw new ResourceNotFoundException(typeof(Variable), string.Format(CultureInfo.CurrentCulture, Resources.VariableNotFound, name));
@@ -281,12 +322,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
                skipToken =>
                {
                    var response = this.automationManagementClient.Variables.List(
-                       automationAccountName);
+                       automationAccountName, skipToken);
                    return new ResponseWithSkipToken<AutomationManagement.Models.Variable>(
                        response, response.Variables);
                });
 
-            var result = variables.Select(this.CreateVariableFromVariableModel).ToList();
+            var result = variables.Select((variable, autoamtionAccountName) => this.CreateVariableFromVariableModel(variable, automationAccountName)).ToList();
 
             IList<AutomationManagement.Models.EncryptedVariable> encryptedVariables = AutomationManagementClient.ContinuationTokenHandler(
                skipToken =>
@@ -297,7 +338,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                        response, response.EncryptedVariables);
                });
 
-            result.AddRange(encryptedVariables.Select(this.CreateVariableFromVariableModel).ToList());
+            result.AddRange(encryptedVariables.Select((variable, autoamtionAccountName) => this.CreateVariableFromVariableModel(variable, automationAccountName)).ToList());
 
             return result;
         }
@@ -322,18 +363,18 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return new JobStream(jobStream);
         }
 
-        private Variable CreateVariableFromVariableModel(AutomationManagement.Models.Variable variable)
+        private Variable CreateVariableFromVariableModel(AutomationManagement.Models.Variable variable, string automationAccountName)
         {
             Requires.Argument("variable", variable).NotNull();
 
-            return new Variable(variable);
+            return new Variable(variable, automationAccountName);
         }
 
-        private Variable CreateVariableFromVariableModel(AutomationManagement.Models.EncryptedVariable variable)
+        private Variable CreateVariableFromVariableModel(AutomationManagement.Models.EncryptedVariable variable, string automationAccountName)
         {
             Requires.Argument("variable", variable).NotNull();
 
-            return new Variable(variable);
+            return new Variable(variable, automationAccountName);
         }
 
 

@@ -121,12 +121,20 @@
     <value>The Automation account was not found.</value>
     <comment>Automation</comment>
   </data>
+  <data name="RemoveAzureAutomationResourceDescription" xml:space="preserve">
+    <value>Removing the Azure Automation {0}.</value>
+    <comment>Automation</comment>
+  </data>
   <data name="RemoveAzureAutomationScheduleDescription" xml:space="preserve">
     <value>Removing the Azure Automation schedule.</value>
     <comment>Automation</comment>
   </data>
   <data name="RemoveAzureAutomationScheduleWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Automation schedule?</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemovingAzureAutomationResourceWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Automation {0} ?</value>
     <comment>Automation</comment>
   </data>
   <data name="RunbookNotFound" xml:space="preserve">

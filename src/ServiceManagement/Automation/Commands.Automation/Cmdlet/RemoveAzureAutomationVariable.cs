@@ -18,41 +18,26 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Gets azure automation variables for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureAutomationVariable")]
+    [Cmdlet(VerbsCommon.Remove, "AzureAutomationVariable")]
     [OutputType(typeof(Variable))]
-    public class SetAzureAutomationVariable : AzureAutomationBaseCmdlet
+    public class RemoveAzureAutomationVariable : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the variable name.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        /// <summary>
-        /// Gets or sets the variable IsEncrypted Property.
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The IsEncrypted property of the variable.")]
-        [ValidateNotNull]
-        public bool IsEncrypted { get; set; }
-
-        /// <summary>
-        /// Gets or sets the variable description.
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the variable.")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets the variable value.
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value of the variable.")]
-        public string Value { get; set; }
+        [Parameter(Position = 2, HelpMessage = "Confirm the removal of the variable")]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -60,17 +45,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            Variable variable = new Variable()
-            {
-                Name = this.Name,
-                IsEncrypted = this.IsEncrypted,
-                Description = this.Description,
-                Value = this.Value
-            };
-
-            var ret = this.AutomationClient.SetVariable(this.AutomationAccountName, variable);
-            
-            this.GenerateCmdletOutput(ret);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemovingAzureAutomationResourceWarning, "Module"),
+                string.Format(Resources.RemoveAzureAutomationResourceDescription, "Module"),
+                Name,
+                () =>
+                {
+                    this.AutomationClient.RemoveVariable(this.AutomationAccountName, this.Name);
+                });
         }
     }
 }
