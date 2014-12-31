@@ -70,6 +70,42 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} {1} operation failed for object name: {2) under AutomationAccount: {3}.
+        /// </summary>
+        internal static string AutomationOperationFailed {
+            get {
+                return ResourceManager.GetString("AutomationOperationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Job having Id: {0} was not found..
+        /// </summary>
+        internal static string JobNotFound {
+            get {
+                return ResourceManager.GetString("JobNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is empty..
+        /// </summary>
+        internal static string ParameterEmpty {
+            get {
+                return ResourceManager.GetString("ParameterEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the Azure Automation {0}..
+        /// </summary>
+        internal static string RemoveAzureAutomationResourceDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureAutomationResourceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing the Azure Automation schedule..
         /// </summary>
         internal static string RemoveAzureAutomationScheduleDescription {
@@ -84,6 +120,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string RemoveAzureAutomationScheduleWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureAutomationScheduleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Automation {0} ?.
+        /// </summary>
+        internal static string RemovingAzureAutomationResourceWarning {
+            get {
+                return ResourceManager.GetString("RemovingAzureAutomationResourceWarning", resourceCulture);
             }
         }
         

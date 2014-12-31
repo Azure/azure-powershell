@@ -37,5 +37,37 @@ namespace Microsoft.Azure.Commands.Automation.Common
         Runbook GetRunbook(string automationAccountName, string runbookName);
 
         IEnumerable<Runbook> ListRunbooks(string automationAccountName);
+
+        Credential CreateCredential(string automationAccountName, string name, string userName, string password, string description);
+
+        Credential UpdateCredential(string automationAccountName, string name, string userName, string password, string description);
+
+        Credential GetCredential(string automationAccountName, string name);
+
+        IEnumerable<Credential> ListCredentials(string automationAccountName);
+
+        void DeleteCredential(string automationAccountName, string name);
+
+        Module CreateModule(string automationAccountName, Uri contentLink, string moduleName, IDictionary<string, string> tags);
+
+        Module GetModule(string automationAccountName, string name);
+
+        Module UpdateModule(string automationAccountName, IDictionary<string, string> tags, string name, Uri contentLink);
+
+        IEnumerable<Module> ListModules(string automationAccountName);
+
+        void DeleteModule(string automationAccountName, string name);
+
+        Job GetJob(string automationAccountName, Guid id);
+
+        IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTime? startTime, DateTime? endTime);
+
+        IEnumerable<Job> ListJobs(string automationAccountName, DateTime? startTime, DateTime? endTime);
+
+        void ResumeJob(string automationAccountName, Guid id);
+
+        void StopJob(string automationAccountName, Guid id);
+
+        void SuspendJob(string automationAccountName, Guid id);
     }
 }
