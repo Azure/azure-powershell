@@ -289,26 +289,38 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
 
                 // Move the deployment from 'Staging' to 'Production'
-                vmPowershellCmdlets.MoveAzureDeployment(serviceName);
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.MoveAzureDeployment(serviceName);
+                }, "The server encountered an internal error. Please retry the request.", 10, 30);
                 result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 1);
                 Console.WriteLine("successfully moved");
 
                 // Set the deployment status to 'Suspended'
-                vmPowershellCmdlets.SetAzureDeploymentStatus(serviceName, DeploymentSlotType.Production, DeploymentStatus.Suspended);
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.SetAzureDeploymentStatus(serviceName, DeploymentSlotType.Production, DeploymentStatus.Suspended);
+                }, "The server encountered an internal error. Please retry the request.", 10, 30);
                 result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, DeploymentStatus.Suspended, 1);
                 Console.WriteLine("successfully changed the status");
 
                 // Update the deployment
-                vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Production, configPath2.FullName);
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Production, configPath2.FullName);
+                }, "The server encountered an internal error. Please retry the request.", 10, 30);
                 result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 2);
                 Console.WriteLine("successfully updated the deployment");
 
                 // Upgrade the deployment
                 DateTime start = DateTime.Now;
-                vmPowershellCmdlets.SetAzureDeploymentUpgrade(serviceName, DeploymentSlotType.Production, UpgradeType.Simultaneous, packagePath2.FullName, configPath3.FullName);
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.SetAzureDeploymentUpgrade(serviceName, DeploymentSlotType.Production, UpgradeType.Simultaneous, packagePath2.FullName, configPath3.FullName);
+                }, "The server encountered an internal error. Please retry the request.", 10, 30);
                 TimeSpan duration = DateTime.Now - start;
                 Console.WriteLine("Auto upgrade took {0}.", duration);
 
