@@ -90,11 +90,11 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -210,6 +210,10 @@
     <Compile Include="Resources\NewAzureResourceCommand.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Azure.Common.Extensions\Common.Extensions.csproj">
+      <Project>{b95c489c-8cb7-4dcf-8d5f-b9aebdbbaf89}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
@@ -233,6 +237,10 @@
     <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
       <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
       <Name>Commands.Tags</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\StreamAnalytics\Commands.StreamAnalytics\Commands.StreamAnalytics.csproj">
+      <Project>{F49A314A-A235-47D3-A654-1EC19ACA366C}</Project>
+      <Name>Commands.StreamAnalytics</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

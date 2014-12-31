@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Extensions;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
@@ -31,8 +32,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     {
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
-        protected const string TenantIdKey = "TenantId";
-        protected const string DomainKey = "Domain";
+        private const string TenantIdKey = "TenantId";
+        private const string DomainKey = "Domain";
 
         public GraphRbacManagementClient GraphClient { get; private set; }
 

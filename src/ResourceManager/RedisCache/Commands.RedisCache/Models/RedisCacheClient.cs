@@ -14,11 +14,12 @@
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
+    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Common.Extensions.Models;
     using Microsoft.Azure.Management.Redis;
     using Microsoft.Azure.Management.Redis.Models;
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.Commands.Common;
-    using Microsoft.WindowsAzure.Commands.Common.Models;
 
     public class RedisCacheClient
     {

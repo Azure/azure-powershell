@@ -23,8 +23,9 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
 {
@@ -270,6 +271,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
         /// <param name="powershell">An instance of the <see cref="PowerShell"/> object.</param>
         public static void CreateTestCredential(System.Management.Automation.PowerShell powershell, string username, string password)
         {
+            password = password.Replace("$", "`$");
+
             // Create the test credential
             powershell.InvokeBatchScript(
                 string.Format(@"$user = ""{0}""", username),

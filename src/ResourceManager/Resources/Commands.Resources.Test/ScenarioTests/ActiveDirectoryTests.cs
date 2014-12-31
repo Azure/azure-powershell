@@ -426,6 +426,32 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetADUserWithMail()
+        {
+            const string scriptMethod = "Test-GetADUserWithMail '{0}'";
+            User newUser = null;
+            var controllerAdmin = ResourcesController.NewInstance;
+
+            controllerAdmin.RunPsTestWorkflow(
+                // scriptBuilder
+                () =>
+                {
+                    newUser = CreateNewAdUser(controllerAdmin);
+                    return new[] { string.Format(scriptMethod, newUser.UserPrincipalName) };
+                },
+                // initialize
+                null,
+                // cleanup
+                () =>
+                {
+                    DeleteAdUser(controllerAdmin, newUser);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithBadObjectId()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADUserWithBadObjectId");
