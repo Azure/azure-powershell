@@ -522,7 +522,7 @@
   <MockQueryResult>
     <MockId>SqlAuthv12MockTests.GetAzureSqlDatabaseWithSqlAuthv12</MockId>
     <DatabaseName>testdb1</DatabaseName>
-    <CommandText>SELECT DatabasePropertyEx(testdb1, 'Edition') as edition,  DatabasePropertyEx(testdb1, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <CommandText>SELECT DatabasePropertyEx(testdb1, 'Edition') as edition,  DatabasePropertyEx(testdb1, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb1, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
     <DataSetResult>
       <NewDataSet>
         <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
@@ -533,6 +533,7 @@
                   <xs:complexType>
                     <xs:sequence>
                       <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
                       <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
                     </xs:sequence>
                   </xs:complexType>
@@ -543,6 +544,7 @@
         </xs:schema>
         <Table>
           <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">S0</serviceObjective>
           <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">268435456000</maxSizeBytes>
         </Table>
       </NewDataSet>
@@ -678,7 +680,7 @@
   <MockQueryResult>
     <MockId>SqlAuthv12MockTests.GetAzureSqlDatabaseWithSqlAuthv12</MockId>
     <DatabaseName>master</DatabaseName>
-    <CommandText>SELECT DatabasePropertyEx(master, 'Edition') as edition,  DatabasePropertyEx(master, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <CommandText>SELECT DatabasePropertyEx(master, 'Edition') as edition,  DatabasePropertyEx(master, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(master, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
     <DataSetResult>
       <NewDataSet>
         <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
@@ -689,6 +691,7 @@
                   <xs:complexType>
                     <xs:sequence>
                       <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
                       <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
                     </xs:sequence>
                   </xs:complexType>
@@ -699,6 +702,7 @@
         </xs:schema>
         <Table>
           <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">System</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">System2</serviceObjective>
           <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">5368709120</maxSizeBytes>
         </Table>
       </NewDataSet>
@@ -707,7 +711,7 @@
   <MockQueryResult>
     <MockId>SqlAuthv12MockTests.GetAzureSqlDatabaseWithSqlAuthv12</MockId>
     <DatabaseName>testdb2</DatabaseName>
-    <CommandText>SELECT DatabasePropertyEx(testdb2, 'Edition') as edition,  DatabasePropertyEx(testdb2, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <CommandText>SELECT DatabasePropertyEx(testdb2, 'Edition') as edition,  DatabasePropertyEx(testdb2, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb2, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
     <DataSetResult>
       <NewDataSet>
         <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
@@ -718,6 +722,7 @@
                   <xs:complexType>
                     <xs:sequence>
                       <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
                       <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
                     </xs:sequence>
                   </xs:complexType>
@@ -728,6 +733,7 @@
         </xs:schema>
         <Table>
           <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Basic</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Basic</serviceObjective>
           <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">2147483648</maxSizeBytes>
         </Table>
       </NewDataSet>
@@ -736,7 +742,7 @@
   <MockQueryResult>
     <MockId>SqlAuthv12MockTests.GetAzureSqlDatabaseWithSqlAuthv12</MockId>
     <DatabaseName>testdb3</DatabaseName>
-    <CommandText>SELECT DatabasePropertyEx(testdb3, 'Edition') as edition,  DatabasePropertyEx(testdb3, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <CommandText>SELECT DatabasePropertyEx(testdb3, 'Edition') as edition,  DatabasePropertyEx(testdb3, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb3, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
     <DataSetResult>
       <NewDataSet>
         <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
@@ -746,8 +752,9 @@
                 <xs:element name="Table">
                   <xs:complexType>
                     <xs:sequence>
-                      <xs:element name="edition" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
-                      <xs:element name="maxSizeBytes" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
                     </xs:sequence>
                   </xs:complexType>
                 </xs:element>
@@ -757,6 +764,7 @@
         </xs:schema>
         <Table>
           <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">S0</serviceObjective>
           <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">107374182400</maxSizeBytes>
         </Table>
       </NewDataSet>
@@ -765,7 +773,7 @@
   <MockQueryResult>
     <MockId>SqlAuthv12MockTests.GetAzureSqlDatabaseWithSqlAuthv12</MockId>
     <DatabaseName>testdb4</DatabaseName>
-    <CommandText>SELECT DatabasePropertyEx(testdb4, 'Edition') as edition,  DatabasePropertyEx(testdb4, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <CommandText>SELECT DatabasePropertyEx(testdb4, 'Edition') as edition,  DatabasePropertyEx(testdb4, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb4, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
     <DataSetResult>
       <NewDataSet>
         <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
@@ -775,8 +783,9 @@
                 <xs:element name="Table">
                   <xs:complexType>
                     <xs:sequence>
-                      <xs:element name="edition" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
-                      <xs:element name="maxSizeBytes" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
                     </xs:sequence>
                   </xs:complexType>
                 </xs:element>
@@ -786,6 +795,7 @@
         </xs:schema>
         <Table>
           <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">S2</serviceObjective>
           <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">268435456000</maxSizeBytes>
         </Table>
       </NewDataSet>
