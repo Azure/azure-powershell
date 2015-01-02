@@ -196,6 +196,10 @@
     <None Include="TestScripts\Server\ResetPassword.ps1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Azure.Common.Extensions\Common.Extensions.csproj">
+      <Project>{b95c489c-8cb7-4dcf-8d5f-b9aebdbbaf89}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.SqlDatabase\Commands.SqlDatabase.csproj">
       <Project>{DDF5D225-C9C5-42B7-BDB5-2C3646E479AA}</Project>
       <Name>Commands.SqlDatabase</Name>

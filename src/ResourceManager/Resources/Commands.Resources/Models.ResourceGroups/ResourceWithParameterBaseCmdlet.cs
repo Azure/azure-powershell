@@ -22,6 +22,7 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.Azure.Commands.Resources
 {
