@@ -328,5 +328,9 @@ namespace Microsoft.Azure.Common.Extensions.Models
         public const string AzureTrafficManagerDnsSuffix = "trafficmanager.net";
 
         public const string ChinaTrafficManagerDnsSuffix = "trafficmanager.cn";
+
+        public const string AzureKeyVaultDnsSuffix = "vault.azure.net";
+
+        public const string AzureKeyVaultServiceEndpointResourceId = "https://vault.azure.net";
     }
 }

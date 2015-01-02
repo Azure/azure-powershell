@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Extensions.Authentication;
+using Microsoft.Azure.Common.Extensions.Models;
+using System;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {

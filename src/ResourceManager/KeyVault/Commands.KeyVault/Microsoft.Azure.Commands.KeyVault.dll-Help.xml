@@ -372,9 +372,9 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$KeyOperations = "decrypt", "verify"
-          PS C:\&gt; $Expires = (Get-Date).AddYears(2).ToUniversalTime()
-          PS C:\&gt; $NotBefore=(Get-Date).ToUniversalTime()
-          PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITHsmNonDefault" -Destination "HSM" -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations -Disable
+PS C:\&gt; $Expires = (Get-Date).AddYears(2).ToUniversalTime()
+PS C:\&gt; $NotBefore=(Get-Date).ToUniversalTime()
+PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITHsmNonDefault" -Destination "HSM" -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations -Disable
         </dev:code>
         <dev:remarks>
           <maml:para>The first command stores the values decrypt and verify in the $KeyOperations variable.</maml:para>
@@ -412,7 +412,7 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$Password = ConvertTo-SecureString -String "password" -AsPlainText -Force
-          PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfx" -KeyFilePath "C:\Contoso\ITPfx.pfx" -KeyFilePassword $Password
+PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfx" -KeyFilePath "C:\Contoso\ITPfx.pfx" -KeyFilePassword $Password
         </dev:code>
         <dev:remarks>
           <maml:para>The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Password variable. For more information, type Get-Help ConvertTo-SecureString.</maml:para>
@@ -431,8 +431,8 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$Password = ConvertTo-SecureString -String "password" -AsPlainText -Force
-          PS C:\&gt; $Expires = (Get-Date).AddYears(2).ToUniversalTime()
-          PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destination "HSM" -KeyFilePath "C:\Contoso\ITPfx.pfx" -KeyFilePassword $Password -Expires $Expires
+PS C:\&gt; $Expires = (Get-Date).AddYears(2).ToUniversalTime()
+PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destination "HSM" -KeyFilePath "C:\Contoso\ITPfx.pfx" -KeyFilePassword $Password -Expires $Expires
         </dev:code>
         <dev:remarks>
           <maml:para>The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Password variable. </maml:para>
@@ -1401,7 +1401,7 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$Expires= (Get-Date).AddYears(2).ToUniversalTime()
-          PS C:\&gt; Set-AzureKeyVaultKey -VaultName "Contoso" -Name "ITSoftware" -Expires $Expires -Enable $True
+PS C:\&gt; Set-AzureKeyVaultKey -VaultName "Contoso" -Name "ITSoftware" -Expires $Expires -Enable $True
         </dev:code>
         <dev:remarks>
           <maml:para>The first command creates a DateTime object by using the Get-Date cmdlet. That object specifies a time two years in the future. The command stores that date in the $Expires variable. For more information, type Get-Help Get-Date.</maml:para>
@@ -1551,7 +1551,7 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$Secret = ConvertTo-SecureString -String "password" -AsPlainText -Force
-          PS C:\&gt; Set-AzureKeyVaultSecret -VaultName "Contoso" -Name "ITSecret" -SecretValue $Secret
+PS C:\&gt; Set-AzureKeyVaultSecret -VaultName "Contoso" -Name "ITSecret" -SecretValue $Secret
         </dev:code>
         <dev:remarks>
           <maml:para>The first command converts a string into a secure string by using the ConvertTo-SecureString cmdlet, and then stores that string in the $Secret variable. For more information, type Get-Help ConvertTo-SecureString.</maml:para>

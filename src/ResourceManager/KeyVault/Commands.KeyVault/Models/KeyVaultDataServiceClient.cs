@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Net.Http;
-using System.Security;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.WebKey;
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Common.Internals;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
-using Client = Microsoft.Azure.Commands.KeyVault.Client;
-using Microsoft.Azure.Commands.KeyVault.WebKey;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
