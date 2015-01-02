@@ -28,29 +28,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [OutputType(typeof(RunbookDefinition))]
     public class GetAzureAutomationRunbookDefinition : AzureAutomationBaseCmdlet
     {
-
-        /// <summary>
-        /// The published slot.
-        /// </summary>
-        private const string Published = "Published";
-
-        /// <summary>
-        /// The draft slot.
-        /// </summary>
-        private const string Draft = "Draft";
-
         /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
-        [Alias("RunbookName")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the runbook version type
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Returns the draft or the published runbook version only. If not set, return both.")]
-        [ValidateSet(Published, Draft)]
+        [ValidateSet(Constants.Published, Constants.Draft)]
         public string Slot { get; set; }
 
         /// <summary>
@@ -79,7 +68,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 
             if (this.Slot != null)
             {
-                isDraft = this.Slot == Draft;
+                isDraft = this.Slot == Constants.Draft;
             }
 
             return isDraft;

@@ -17,10 +17,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.IO;
+using System.Net;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
@@ -29,8 +32,6 @@ using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
 namespace Microsoft.Azure.Commands.Automation.Common
 {
     using AutomationManagement = Management.Automation;
-    using System.Text;
-    using System.IO;
 
     public class AutomationClient : IAutomationClient
     {
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 skipToken =>
                 {
                     var response = this.automationManagementClient.Schedules.List(
-                        automationAccountName);
+                        automationAccountName,skipToken);
                     return new ResponseWithSkipToken<AutomationManagement.Models.Schedule>(
                         response, response.Schedules);
                 });
@@ -82,16 +83,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #endregion
 
         #region RunbookOperations
-        public Runbook GetRunbook(string automationAccountName, string name) 
+        public Runbook GetRunbook(string automationAccountName, string runbookName) 
         {
-            var sdkRunbook = this.automationManagementClient.Runbooks.Get(automationAccountName, name).Runbook;
-
-            if (sdkRunbook == null)
+            var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
+            if (runbookModel == null)
             {
-                throw new ResourceNotFoundException(typeof(Runbook), string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, name));
+                throw new ResourceCommonException(typeof(Runbook), string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
             }
 
-            return new Runbook(automationAccountName, sdkRunbook);
+            return new Runbook(automationAccountName, runbookModel);
         }
 
         public IEnumerable<Runbook> ListRunbooks(string automationAccountName)
@@ -109,6 +109,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description, IDictionary<string, string> tags)
         {
+            var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
+            if (runbookModel != null)
+            {
+                throw new ResourceCommonException(typeof(Runbook), string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyExists, runbookName));
+            }
+
             var rdcprop = new RunbookCreateDraftProperties()
             {
                 Description = description,
@@ -126,6 +132,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description, IDictionary<string, string> tags)
         {
             var runbookName = Path.GetFileNameWithoutExtension(runbookPath);
+
+            var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
+            if (runbookModel != null)
+            {
+                throw new ResourceCommonException(typeof(Runbook), string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyExists, runbookName));
+            }
 
             var runbook = this.CreateRunbookByName(automationAccountName, runbookName, description, tags);
 
@@ -161,47 +173,46 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public RunbookDefinition UpdateRunbookDefinition(string automationAccountName, string runbookName, string runbookPath, bool overwrite)
         {
-
-            var runbook = this.automationManagementClient.Runbooks.Get(automationAccountName, runbookName).Runbook;
+            var runbook = this.TryGetRunbookModel(automationAccountName, runbookName);
             if (runbook == null)
             {
                 throw new ResourceNotFoundException(typeof(Runbook), string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
             }
 
-            if ((0 == String.Compare(runbook.Properties.State, "InEdit", CultureInfo.InvariantCulture,CompareOptions.IgnoreCase) && overwrite == false))
+            if ((0 == String.Compare(runbook.Properties.State, RunbookState.Edit, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && overwrite == false))
             {
-                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyHasDraft));
+                throw new ResourceCommonException(typeof(Runbook), string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyHasDraft, runbookName));
             }
 
             this.automationManagementClient.RunbookDraft.Update(automationAccountName, new RunbookDraftUpdateParameters { Name = runbookName, Stream = File.ReadAllText(runbookPath)});
 
             var content = this.automationManagementClient.RunbookDraft.Content(automationAccountName, runbookName).Stream;
 
-            return new RunbookDefinition(automationAccountName, runbook, content, "Draft");
+            return new RunbookDefinition(automationAccountName, runbook, content, Constants.Draft);
         }
 
         public IEnumerable<RunbookDefinition> ListRunbookDefinitionsByRunbookName(string automationAccountName, string runbookName, bool? isDraft)
         {
-            // Todo will do in next iteration
-            ////var ret = new List<RunbookDefinition>(); 
-            ////var runbook = this.automationManagementClient.Runbooks.Get(automationAccountName, runbookName).Runbook;
+            var ret = new List<RunbookDefinition>();
 
-            ////if (0 == String.Compare(runbook.Properties.State, "InEdit", CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && isDraft.Value)
-            ////{
-            ////    var draftContent = this.automationManagementClient.RunbookDrafts.Content(automationAccountName, runbookName).Stream;
-            ////    ret.Add(new RunbookDefinition(automationAccountName, runbook, draftContent, "Draft")));
-            ////}
-            ////else if (0 ==
-            ////         String.Compare(runbook.Properties.State, "Published", CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
-            ////{
-            ////    var publisedContent =
-            ////        this.automationManagementClient.Runbooks.Content(automationAccountName, runbookName).Stream;
-            ////    ret.Add(
-            ////}
+            var runbook = this.TryGetRunbookModel(automationAccountName, runbookName);
+            if (runbook == null)
+            {
+                throw new ResourceNotFoundException(typeof(Runbook), string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName)); 
+            }
 
-            ////return new RunbookDefinition(automationAccountName, runbook, content, "Published");
+            if (0 != String.Compare(runbook.Properties.State, RunbookState.Published, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && isDraft != null && isDraft.Value == true )
+            {
+                var draftContent = this.automationManagementClient.RunbookDraft.Content(automationAccountName, runbookName).Stream;
+                ret.Add(new RunbookDefinition(automationAccountName, runbook, draftContent, Constants.Draft));
+            }
+            else 
+            {
+                var publishedContent = this.automationManagementClient.Runbooks.Content(automationAccountName, runbookName).Stream;
+                ret.Add(new RunbookDefinition(automationAccountName, runbook, publishedContent, Constants.Published));
+            }
 
-            return null;
+            return ret;
         }
 
         public Runbook PublishRunbook(string automationAccountName, string runbookName)
@@ -241,6 +252,27 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
 
             return scheduleModel;
+        }
+
+        private Management.Automation.Models.Runbook TryGetRunbookModel(string automationAccountName, string runbookName)
+        {
+            Management.Automation.Models.Runbook runbook = null;
+            try
+            {
+                runbook = this.automationManagementClient.Runbooks.Get(automationAccountName, runbookName).Runbook;
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    runbook = null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return runbook;
         }
 
         private string FormatDateTime(DateTime dateTime)

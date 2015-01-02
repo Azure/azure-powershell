@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [Alias("RunbookName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the switch parameter not to confirm on removing the runbook.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not confirm on removing the runbook.")]
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>

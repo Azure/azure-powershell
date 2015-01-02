@@ -88,7 +88,16 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Runbook already has a draft. Specify the parameter to force an overwrite of this draft..
+        ///   Looks up a localized string similar to The Runbook already exists. Runbook name: {0}..
+        /// </summary>
+        internal static string RunbookAlreadyExists {
+            get {
+                return ResourceManager.GetString("RunbookAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Runbook already has a draft. Specify the parameter to force an overwrite of this draft. Runbook bane: {0}.
         /// </summary>
         internal static string RunbookAlreadyHasDraft {
             get {

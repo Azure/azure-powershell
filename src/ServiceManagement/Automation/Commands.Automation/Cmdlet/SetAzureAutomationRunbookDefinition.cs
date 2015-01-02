@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [ValidateNotNullOrEmpty]
         [Alias("RunbookName")]
         public string Name { get; set; }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the path of the updated runbook script
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The path of the updated runbook script.")]
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, HelpMessage = "The path to the updated runbook script.")]
         [ValidateNotNullOrEmpty]
         [Alias("RunbookPath")]
         public string Path { get; set; }
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets a value indicating whether to overwrite the existing draft runbook definition.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To overwrite the exisiting draft runbook definition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that the new draft runbook overwrites the existing draft, if one exists.")]
         public SwitchParameter Overwrite
         {
             get { return this.overwriteExistingRunbookDefinition; }

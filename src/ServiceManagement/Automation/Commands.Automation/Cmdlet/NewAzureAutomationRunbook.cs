@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [Alias("RunbookName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the path of the runbook script
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByPath, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook file path.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByPath, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook file path.")]
         [Alias("RunbookPath")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }

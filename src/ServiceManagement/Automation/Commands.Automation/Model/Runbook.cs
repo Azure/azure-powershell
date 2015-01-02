@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             this.CreationTime = runbook.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = runbook.Properties.LastModifiedTime.ToLocalTime();
-            this.LastModifiedBy = runbook.Properties.LastModifiedBy;
             this.Description = runbook.Properties.Description;
 
             this.LogVerbose = runbook.Properties.LogVerbose;
@@ -115,11 +114,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the last modified time.
         /// </summary>
         public DateTimeOffset LastModifiedTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the last modified by.
-        /// </summary>
-        public string LastModifiedBy { get; set; }
 
         /// <summary>
         /// Gets or sets the description.

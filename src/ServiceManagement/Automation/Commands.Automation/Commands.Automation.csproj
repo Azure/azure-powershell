@@ -114,6 +114,7 @@
     <Compile Include="Common\IAutomationClient.cs" />
     <Compile Include="Common\Requires.cs" />
     <Compile Include="Common\RequiresExtensions.cs" />
+    <Compile Include="Common\ResourceCommonException.cs" />
     <Compile Include="Common\ResourceNotFoundException.cs" />
     <Compile Include="DataContract\ErrorResponse.cs" />
     <Compile Include="DataContract\OdataError.cs" />
