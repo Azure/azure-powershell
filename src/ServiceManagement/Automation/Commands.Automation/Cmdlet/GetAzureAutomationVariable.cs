@@ -22,17 +22,17 @@ using Microsoft.Azure.Commands.Automation.Model;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation schedules for a given account.
+    /// Gets azure automation variables for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(Schedule))]
-    public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationVariable", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [OutputType(typeof(Variable))]
+    public class GetAzureAutomationVariable : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the schedule name.
+        /// Gets or sets the variable name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
@@ -41,23 +41,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Schedule> schedules;
-            if (this.Name != null)
+            IEnumerable<Variable> ret = null;
+            if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
             {
-                // ByName
-                schedules = new List<Schedule>
-                                {
-                                    this.AutomationClient.GetSchedule(
-                                        this.AutomationAccountName, this.Name)
-                                };
+                ret = new List<Variable> 
+                { 
+                   this.AutomationClient.GetVariable(this.AutomationAccountName, this.Name)
+                };
             }
-            else
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
             {
-                // ByAll
-                schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName);
-            }
+                ret = this.AutomationClient.ListVariables(this.AutomationAccountName);
+            } 
 
-            this.GenerateCmdletOutput(schedules);
+            this.GenerateCmdletOutput(ret);
         }
     }
 }

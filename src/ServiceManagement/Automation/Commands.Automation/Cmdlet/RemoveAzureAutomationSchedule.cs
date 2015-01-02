@@ -13,20 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation schedules for a given account.
+    /// Removes an azure automation Schedule.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(Schedule))]
-    public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureAutomationSchedule", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    public class RemoveAzureAutomationSchedule : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the schedule name.
@@ -36,28 +35,26 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the switch parameter not to confirm on removing the schedule.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Do not confirm on removing the schedule.")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Schedule> schedules;
-            if (this.Name != null)
-            {
-                // ByName
-                schedules = new List<Schedule>
-                                {
-                                    this.AutomationClient.GetSchedule(
-                                        this.AutomationAccountName, this.Name)
-                                };
-            }
-            else
-            {
-                // ByAll
-                schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName);
-            }
-
-            this.GenerateCmdletOutput(schedules);
+            this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationScheduleWarning),
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationScheduleDescription),
+                this.Name,
+                () =>
+                    {
+                        this.AutomationClient.DeleteSchedule(this.AutomationAccountName, this.Name);
+                    });
         }
     }
 }

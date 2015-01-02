@@ -22,18 +22,23 @@ using Microsoft.Azure.Commands.Automation.Model;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation schedules for a given account.
+    /// Gets azure automation variables for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(Schedule))]
-    public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationJobOutput")]
+    [OutputType(typeof(Variable))]
+    public class GetAzureAutomationJobOutput : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the schedule name.
+        /// Gets or sets the job id
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule name.")]
-        public string Name { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The job id")]
+        public Guid Id { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream type")]
+        public string Stream { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The start time filter for job output")]
+        public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -41,23 +46,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Schedule> schedules;
-            if (this.Name != null)
-            {
-                // ByName
-                schedules = new List<Schedule>
-                                {
-                                    this.AutomationClient.GetSchedule(
-                                        this.AutomationAccountName, this.Name)
-                                };
-            }
-            else
-            {
-                // ByAll
-                schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName);
-            }
-
-            this.GenerateCmdletOutput(schedules);
+            var ret = this.AutomationClient.GetJobStream(this.AutomationAccountName, this.Id, this.StartTime, this.Stream );
+            this.GenerateCmdletOutput(ret);
         }
     }
 }

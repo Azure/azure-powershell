@@ -16,24 +16,27 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation schedules for a given account.
+    /// Removes a Credential for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(Schedule))]
-    public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    public class RemoveAzureAutomationCredential : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the schedule name.
+        /// Gets or sets the credential name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The credential name.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, HelpMessage = "Confirm the removal of the credential")]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -41,23 +44,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Schedule> schedules;
-            if (this.Name != null)
-            {
-                // ByName
-                schedules = new List<Schedule>
-                                {
-                                    this.AutomationClient.GetSchedule(
-                                        this.AutomationAccountName, this.Name)
-                                };
-            }
-            else
-            {
-                // ByAll
-                schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName);
-            }
-
-            this.GenerateCmdletOutput(schedules);
+            ConfirmAction(
+                       Force.IsPresent,
+                      string.Format(Resources.RemovingAzureAutomationResourceWarning, "Credential"),
+                       string.Format(Resources.RemoveAzureAutomationResourceDescription, "Credential"),
+                       Name,
+                       () =>
+                       {
+                           this.AutomationClient.DeleteCredential(this.AutomationAccountName, Name);
+                       });
         }
     }
 }

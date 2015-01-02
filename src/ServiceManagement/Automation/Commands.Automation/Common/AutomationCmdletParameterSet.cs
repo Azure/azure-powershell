@@ -22,8 +22,45 @@ namespace Microsoft.Azure.Commands.Automation.Common
 {
     internal static class AutomationCmdletParameterSets
     {
+        /// <summary>
+        /// By All parameter set.
+        /// </summary>
         internal const string ByAll = "ByAll";
+
+        /// <summary>
+        /// By Name parameter set.
+        /// </summary>
         internal const string ByName = "ByName";
+
+        /// <summary>
+        /// By Path parameter set.
+        /// </summary>
         internal const string ByPath = "ByPath";
+
+
+        /// <summary>
+        /// The one time schedule parameter set.
+        /// </summary>
+        internal const string ByOneTime = "ByOneTime";
+
+        /// <summary>
+        /// The daily schedule parameter set.
+        /// </summary>
+        internal const string ByDaily = "ByDaily";
+
+        /// <summary>
+        /// The hourly schedule parameter set.
+        /// </summary>
+        internal const string ByHourly = "ByHourly";
+
+        /// <summary>
+        /// The Job Id parameter set.
+        /// </summary>
+        internal const string ByJobId = "ByJobId";
+
+        /// <summary>
+        /// The Runbook name parameter set.
+        /// </summary>
+        internal const string ByRunbookName = "ByRunbookName"; 
     }
 }

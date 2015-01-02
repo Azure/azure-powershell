@@ -16,24 +16,39 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation schedules for a given account.
+    /// Sets a Credential for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(Schedule))]
-    public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [OutputType(typeof(PSCredential))]
+    public class SetAzureAutomationCredential : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the schedule name.
+        /// Gets or sets the credential name.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule name.")]
+            HelpMessage = "The credential name.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the credential description.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The credential description.")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the credential Value.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The credential value.")]
+        public PSCredential Value { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -41,23 +56,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Schedule> schedules;
-            if (this.Name != null)
+            string userName = null, password = null;
+
+            if(Value != null)
             {
-                // ByName
-                schedules = new List<Schedule>
-                                {
-                                    this.AutomationClient.GetSchedule(
-                                        this.AutomationAccountName, this.Name)
-                                };
-            }
-            else
-            {
-                // ByAll
-                schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName);
+                userName = Value.UserName;
+                password = Value.GetNetworkCredential().Password;
             }
 
-            this.GenerateCmdletOutput(schedules);
+            var updatedCredential = this.AutomationClient.UpdateCredential(this.AutomationAccountName, Name, userName, password, Description);
+
+            this.WriteObject(updatedCredential);
         }
     }
 }

@@ -105,11 +105,32 @@
     <Compile Include="Cmdlet\PublishAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationRunbook.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationJobOutput.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationVariable.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationCredential.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationJob.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationModule.cs" />
+    <Compile Include="Cmdlet\NewAzureAutomationCredential.cs" />
+    <Compile Include="Cmdlet\NewAzureAutomationModule.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationCredential.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationRunbook.cs" />
+    <Compile Include="Cmdlet\NewAzureAutomationVariable.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationVariable.cs" />
+    <Compile Include="Cmdlet\SetAzureAutomationVariable.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationSchedule.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationSchedule.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationRunbookDefinition.cs" />
+    <Compile Include="Cmdlet\NewAzureAutomationSchedule.cs" />
+    <Compile Include="Cmdlet\ResumeAzureAutomationJob.cs" />
+    <Compile Include="Cmdlet\SetAzureAutomationCredential.cs" />
+    <Compile Include="Cmdlet\SetAzureAutomationModule.cs" />
+    <Compile Include="Cmdlet\SetAzureAutomationSchedule.cs" />
+    <Compile Include="Cmdlet\StopAzureAutomationJob.cs" />
+    <Compile Include="Cmdlet\SuspendAzureAutomationJob.cs" />
     <Compile Include="Common\AutomationClient.cs" />
     <Compile Include="Common\AutomationCmdletParameterSet.cs" />
+    <Compile Include="Common\AzureAutomationOperationException.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\IAutomationClient.cs" />
     <Compile Include="Common\Requires.cs" />
@@ -119,10 +140,15 @@
     <Compile Include="DataContract\ErrorResponse.cs" />
     <Compile Include="DataContract\OdataError.cs" />
     <Compile Include="DataContract\OdataErrorMessage.cs" />
+    <Compile Include="Model\JobStream.cs" />
+    <Compile Include="Model\Credential.cs" />
+    <Compile Include="Model\Job.cs" />
+    <Compile Include="Model\Module.cs" />
     <Compile Include="Model\Runbook.cs" />
     <Compile Include="Model\RunbookDefinition.cs" />
     <Compile Include="Model\Schedule.cs" />
     <Compile Include="Model\ScheduleFrequency.cs" />
+    <Compile Include="Model\Variable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -148,8 +174,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

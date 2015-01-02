@@ -70,6 +70,42 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} {1} operation failed for object name: {2) under AutomationAccount: {3}.
+        /// </summary>
+        internal static string AutomationOperationFailed {
+            get {
+                return ResourceManager.GetString("AutomationOperationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Job having Id: {0} was not found..
+        /// </summary>
+        internal static string JobNotFound {
+            get {
+                return ResourceManager.GetString("JobNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is empty..
+        /// </summary>
+        internal static string ParameterEmpty {
+            get {
+                return ResourceManager.GetString("ParameterEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the Azure Automation {0}..
+        /// </summary>
+        internal static string RemoveAzureAutomationResourceDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureAutomationResourceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing the Azure Automation runbook..
         /// </summary>
         internal static string RemoveAzureAutomationRunbookDescription {
@@ -88,6 +124,33 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing the Azure Automation schedule..
+        /// </summary>
+        internal static string RemoveAzureAutomationScheduleDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureAutomationScheduleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Automation schedule?.
+        /// </summary>
+        internal static string RemoveAzureAutomationScheduleWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureAutomationScheduleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Automation {0} ?.
+        /// </summary>
+        internal static string RemovingAzureAutomationResourceWarning {
+            get {
+                return ResourceManager.GetString("RemovingAzureAutomationResourceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Runbook already exists. Runbook name: {0}..
         /// </summary>
         internal static string RunbookAlreadyExists {
@@ -97,7 +160,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Runbook already has a draft. Specify the parameter to force an overwrite of this draft. Runbook bane: {0}.
+        ///   Looks up a localized string similar to Runbook already has a draft. Specify the parameter to force an overwrite of this draft. Runbook name: {0}.
         /// </summary>
         internal static string RunbookAlreadyHasDraft {
             get {
@@ -115,11 +178,38 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Automation schedule name is in use. Schedule name: {0}..
+        /// </summary>
+        internal static string ScheduleNameExists {
+            get {
+                return ResourceManager.GetString("ScheduleNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The schedule was not found. Schedule name: {0}..
         /// </summary>
         internal static string ScheduleNotFound {
             get {
                 return ResourceManager.GetString("ScheduleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The variable already exists. Variable name {0}..
+        /// </summary>
+        internal static string VariableAlreadyExists {
+            get {
+                return ResourceManager.GetString("VariableAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The varaible was not found. Variable name {0}..
+        /// </summary>
+        internal static string VariableNotFound {
+            get {
+                return ResourceManager.GetString("VariableNotFound", resourceCulture);
             }
         }
     }

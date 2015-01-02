@@ -93,6 +93,22 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             }
         }
 
+        protected bool GenerateCmdletOutput(object result)
+        {
+            var ret = true;
+
+            try
+            {
+                WriteObject(result);
+            }
+            catch (PipelineStoppedException)
+            {
+                ret = false;
+            }
+
+            return ret;
+        }
+
         protected bool GenerateCmdletOutput(IEnumerable<object> results)
         {
             var ret = true;

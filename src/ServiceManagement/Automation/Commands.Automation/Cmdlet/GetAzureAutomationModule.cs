@@ -16,23 +16,23 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation schedules for a given account.
+    /// Gets a Module for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(Schedule))]
-    public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationModule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [OutputType(typeof(Module))]
+    public class GetAzureAutomationModule : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the schedule name.
+        /// Gets or sets the module name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The module name.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
@@ -41,23 +41,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Schedule> schedules;
-            if (this.Name != null)
+            IEnumerable<Module> ret = null;
+            if (!string.IsNullOrEmpty(this.Name))
             {
-                // ByName
-                schedules = new List<Schedule>
-                                {
-                                    this.AutomationClient.GetSchedule(
-                                        this.AutomationAccountName, this.Name)
-                                };
+                ret = new List<Module> 
+                { 
+                   this.AutomationClient.GetModule(this.AutomationAccountName, this.Name)
+                };
             }
             else
             {
-                // ByAll
-                schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName);
+                ret = this.AutomationClient.ListModules(this.AutomationAccountName);
             }
 
-            this.GenerateCmdletOutput(schedules);
+            this.GenerateCmdletOutput(ret);
         }
     }
 }

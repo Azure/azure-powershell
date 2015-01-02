@@ -16,24 +16,38 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation schedules for a given account.
+    /// Create a new Module for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(Schedule))]
-    public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureAutomationModule")]
+    [OutputType(typeof(Module))]
+    public class NewAzureAutomationModule : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the schedule name.
+        /// Gets or sets the module name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The module name.")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the contentLink
+        /// </summary>
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The ContentLink.")]
+        [ValidateNotNullOrEmpty]
+        public Uri ContentLink { get; set; }
+
+        /// <summary>
+        /// Gets or sets the module tags.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The module tags.")]
+        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -41,23 +55,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Schedule> schedules;
-            if (this.Name != null)
-            {
-                // ByName
-                schedules = new List<Schedule>
-                                {
-                                    this.AutomationClient.GetSchedule(
-                                        this.AutomationAccountName, this.Name)
-                                };
-            }
-            else
-            {
-                // ByAll
-                schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName);
-            }
+            var createdModule = this.AutomationClient.CreateModule(this.AutomationAccountName, ContentLink, Name, Tags);
 
-            this.GenerateCmdletOutput(schedules);
+            this.WriteObject(createdModule);
         }
     }
 }

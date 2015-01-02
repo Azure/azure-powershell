@@ -22,18 +22,30 @@ using Microsoft.Azure.Commands.Automation.Model;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation schedules for a given account.
+    /// Gets azure automation variables for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(Schedule))]
-    public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationVariable")]
+    [OutputType(typeof(Variable))]
+    public class SetAzureAutomationVariable : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the schedule name.
+        /// Gets or sets the variable name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the variable description.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the variable.")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the variable value.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value of the variable.")]
+        public string Value { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -41,23 +53,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Schedule> schedules;
-            if (this.Name != null)
+            Variable variable = new Variable()
             {
-                // ByName
-                schedules = new List<Schedule>
-                                {
-                                    this.AutomationClient.GetSchedule(
-                                        this.AutomationAccountName, this.Name)
-                                };
-            }
-            else
-            {
-                // ByAll
-                schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName);
-            }
+                Name = this.Name,
+                Description = this.Description,
+                Value = this.Value
+            };
 
-            this.GenerateCmdletOutput(schedules);
+            var ret = this.AutomationClient.UpdateVariable(this.AutomationAccountName, variable);
+            
+            this.GenerateCmdletOutput(ret);
         }
     }
 }

@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
@@ -22,18 +21,33 @@ using Microsoft.Azure.Commands.Automation.Model;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation schedules for a given account.
+    /// Sets an azure automation schedule.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(Schedule))]
-    public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
+    public class SetAzureAutomationSchedule : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the schedule name.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The schedule name.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the indicator whether the schedule is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The schedule description.")]
+        public bool? IsEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule description.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The schedule description.")]
+        public string Description { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -41,23 +55,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Schedule> schedules;
-            if (this.Name != null)
-            {
-                // ByName
-                schedules = new List<Schedule>
-                                {
-                                    this.AutomationClient.GetSchedule(
-                                        this.AutomationAccountName, this.Name)
-                                };
-            }
-            else
-            {
-                // ByAll
-                schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName);
-            }
-
-            this.GenerateCmdletOutput(schedules);
+            Schedule schedule = this.AutomationClient.UpdateSchedule(
+                this.AutomationAccountName, this.Name, this.IsEnabled, this.Description);
+            this.WriteObject(schedule);
         }
     }
 }
