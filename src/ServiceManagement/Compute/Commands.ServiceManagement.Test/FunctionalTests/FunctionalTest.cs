@@ -22,6 +22,7 @@ using System.Management.Automation;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Azure.Common.Extensions.Models;
@@ -40,8 +41,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
-            //SetTestSettings();
-
             if (defaultAzureSubscription.Equals(null))
             {
                 Assert.Inconclusive("No Subscription is selected!");
@@ -57,12 +56,280 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             testStartTime = DateTime.Now;
         }
 
+        [TestCleanup]
+        public virtual void CleanUp()
+        {
+            Console.WriteLine("Test {0}", pass ? "passed" : "failed");
+
+            // Cleanup
+            if ((cleanupIfPassed && pass) || (cleanupIfFailed && !pass))
+            {
+                Console.WriteLine("Starting to clean up created VM and service...");
+                CleanupService(serviceName);
+            }
+        }
+
         [TestMethod(), TestCategory(Category.Functional), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet (Get-AzureStorageAccount)")]
         [Ignore]
         public void ScriptTestSample()
         {
             vmPowershellCmdlets.RunPSScript("Get-Help Save-AzureVhd -full");
         }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [TestMethod(), TestCategory(Category.Functional), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet ((Add,Get,Remove)-AzureCertificate)")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\certificateData.csv", "certificateData#csv", DataAccessMethod.Sequential)]
+        public void AzureCertificateTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+            vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, vmName, serviceName, imageName, username, password, locationName);
+            Console.WriteLine("Service Name: {0} is created.  VM: {1} is created.", serviceName, vmName);
+
+            // Certificate files to test
+            string cerFileName = Convert.ToString(TestContext.DataRow["cerFileName"]);
+            string pfxFileName = Convert.ToString(TestContext.DataRow["pfxFileName"]);
+            string psswrd = Convert.ToString(TestContext.DataRow["password"]);
+            string thumbprintAlgorithm = Convert.ToString(TestContext.DataRow["algorithm"]);
+
+            // Create a certificate
+            X509Certificate2 certCreated = Utilities.CreateCertificate(psswrd);
+            byte[] certData = certCreated.Export(X509ContentType.Pfx, psswrd);
+            File.WriteAllBytes(pfxFileName, certData);
+            byte[] certData2 = certCreated.Export(X509ContentType.Cert);
+            File.WriteAllBytes(cerFileName, certData2);
+
+            // Install the .cer file to local machine.
+            StoreLocation certStoreLocation = StoreLocation.CurrentUser;
+            StoreName certStoreName = StoreName.My;
+            X509Certificate2 installedCert = Utilities.InstallCert(cerFileName, certStoreLocation, certStoreName);
+
+            // Certificate1: get it from the installed certificate.
+            PSObject cert1 = vmPowershellCmdlets.RunPSScript(
+                String.Format("Get-Item cert:\\{0}\\{1}\\{2}", certStoreLocation.ToString(), certStoreName.ToString(), installedCert.Thumbprint))[0];
+            string cert1data = Convert.ToBase64String(((X509Certificate2)cert1.BaseObject).RawData);
+
+            // Certificate2: get it from .pfx file.
+            X509Certificate2Collection cert2 = new X509Certificate2Collection();
+            cert2.Import(pfxFileName, psswrd, X509KeyStorageFlags.PersistKeySet);
+            string cert2data = Convert.ToBase64String(cert2[0].RawData);
+
+            // Certificate3: get it from .cer file.
+            X509Certificate2Collection cert3 = new X509Certificate2Collection();
+            cert3.Import(cerFileName);
+            string cert3data = Convert.ToBase64String(cert3[0].RawData);
+
+            try
+            {
+                // Add a cert item
+                vmPowershellCmdlets.AddAzureCertificate(serviceName, cert1);
+                CertificateContext getCert1 = vmPowershellCmdlets.GetAzureCertificate(serviceName).FirstOrDefault(a => a.Thumbprint.Equals(installedCert.Thumbprint));
+                Console.WriteLine("Cert is added: {0}", getCert1.Thumbprint);
+                Assert.AreEqual(getCert1.Data, cert1data, "Cert is different!!");
+
+                Thread.Sleep(TimeSpan.FromMinutes(2));
+                vmPowershellCmdlets.RemoveAzureCertificate(serviceName, getCert1.Thumbprint, thumbprintAlgorithm);
+                pass = Utilities.CheckRemove(vmPowershellCmdlets.GetAzureCertificate, serviceName, getCert1.Thumbprint, thumbprintAlgorithm);
+
+                // Add .pfx file
+                vmPowershellCmdlets.AddAzureCertificate(serviceName, pfxFileName, psswrd);
+                CertificateContext getCert2 = vmPowershellCmdlets.GetAzureCertificate(serviceName, cert2[0].Thumbprint, thumbprintAlgorithm)[0];
+                Console.WriteLine("Cert is added: {0}", cert2[0].Thumbprint);
+                Assert.AreEqual(getCert2.Data, cert2data, "Cert is different!!");
+                Thread.Sleep(TimeSpan.FromMinutes(2));
+                vmPowershellCmdlets.RemoveAzureCertificate(serviceName, cert2[0].Thumbprint, thumbprintAlgorithm);
+                pass &= Utilities.CheckRemove(vmPowershellCmdlets.GetAzureCertificate, serviceName, cert2[0].Thumbprint, thumbprintAlgorithm);
+
+                // Add .cer file
+                vmPowershellCmdlets.AddAzureCertificate(serviceName, cerFileName);
+                CertificateContext getCert3 = vmPowershellCmdlets.GetAzureCertificate(serviceName, cert3[0].Thumbprint, thumbprintAlgorithm)[0];
+                Console.WriteLine("Cert is added: {0}", cert3[0].Thumbprint);
+                Assert.AreEqual(getCert3.Data, cert3data, "Cert is different!!");
+                Thread.Sleep(TimeSpan.FromMinutes(2));
+                vmPowershellCmdlets.RemoveAzureCertificate(serviceName, cert3[0].Thumbprint, thumbprintAlgorithm);
+                pass &= Utilities.CheckRemove(vmPowershellCmdlets.GetAzureCertificate, serviceName, cert3[0].Thumbprint, thumbprintAlgorithm);
+
+                var certs = vmPowershellCmdlets.GetAzureCertificate(serviceName);
+                Console.WriteLine("number of certs: {0}", certs.Count);
+                Utilities.PrintContext(certs);
+            }
+            catch (Exception e)
+            {
+                pass = false;
+                Assert.Fail(e.ToString());
+            }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [TestMethod(), TestCategory(Category.Functional), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet ((Add,Get,Set,Remove)-AzureDataDisk)")]
+        public void AzureDataDiskTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+            vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, vmName, serviceName, imageName, username, password, locationName);
+            Console.WriteLine("Service Name: {0} is created.  VM: {1} is created.", serviceName, vmName);
+
+            string diskLabel1 = "disk1";
+            int diskSize1 = 30;
+            int lunSlot1 = 0;
+
+            string diskLabel2 = "disk2";
+            int diskSize2 = 50;
+            int lunSlot2 = 2;
+
+
+            try
+            {
+                AddAzureDataDiskConfig dataDiskInfo1 = new AddAzureDataDiskConfig(DiskCreateOption.CreateNew, diskSize1, diskLabel1, lunSlot1);
+                AddAzureDataDiskConfig dataDiskInfo2 = new AddAzureDataDiskConfig(DiskCreateOption.CreateNew, diskSize2, diskLabel2, lunSlot2);
+
+                vmPowershellCmdlets.AddDataDisk(vmName, serviceName, new[] { dataDiskInfo1, dataDiskInfo2 }); // Add-AzureDataDisk with Get-AzureVM and Update-AzureVm
+
+                Assert.IsTrue(CheckDataDisk(vmName, serviceName, dataDiskInfo1, HostCaching.None), "Data disk is not properly added");
+                Console.WriteLine("Data disk added correctly.");
+
+                Assert.IsTrue(CheckDataDisk(vmName, serviceName, dataDiskInfo2, HostCaching.None), "Data disk is not properly added");
+                Console.WriteLine("Data disk added correctly.");
+
+                vmPowershellCmdlets.SetDataDisk(vmName, serviceName, HostCaching.ReadOnly, lunSlot1);
+                Assert.IsTrue(CheckDataDisk(vmName, serviceName, dataDiskInfo1, HostCaching.ReadOnly), "Data disk is not properly changed");
+                Console.WriteLine("Data disk is changed correctly.");
+
+                pass = true;
+
+            }
+            catch (Exception e)
+            {
+                pass = false;
+                Assert.Fail("Exception occurred: {0}", e.ToString());
+            }
+            finally
+            {
+                // Remove DataDisks created
+                foreach (DataVirtualHardDisk disk in vmPowershellCmdlets.GetAzureDataDisk(vmName, serviceName))
+                {
+                    vmPowershellCmdlets.RemoveDataDisk(vmName, serviceName, new[] { disk.Lun }); // Remove-AzureDataDisk
+                    RemoveDisk(disk.DiskName, 10);
+                }
+                Assert.AreEqual(0, vmPowershellCmdlets.GetAzureDataDisk(vmName, serviceName).Count, "DataDisk is not removed.");
+            }
+        }
+
+        private void RemoveDisk(string diskName, int maxTry)
+        {
+            for (int i = 0; i <= maxTry; i++)
+            {
+                try
+                {
+                    vmPowershellCmdlets.RemoveAzureDisk(diskName, false);
+                    break;
+                }
+                catch (Exception e)
+                {
+                    if (i == maxTry)
+                    {
+                        Console.WriteLine("Max try reached.  Couldn't delete the Virtual disk");
+                    }
+                    if (e.ToString().Contains("currently in use"))
+                    {
+                        Thread.Sleep(TimeSpan.FromSeconds(30));
+                        continue;
+                    }
+                }
+            }
+        }
+
+        private bool CheckDataDisk(string vmName, string serviceName, AddAzureDataDiskConfig dataDiskInfo, HostCaching hc)
+        {
+            bool found = false;
+            foreach (DataVirtualHardDisk disk in vmPowershellCmdlets.GetAzureDataDisk(vmName, serviceName))
+            {
+                Console.WriteLine("DataDisk - Name:{0}, Label:{1}, Size:{2}, LUN:{3}, HostCaching: {4}", disk.DiskName, disk.DiskLabel, disk.LogicalDiskSizeInGB, disk.Lun, disk.HostCaching);
+                if (disk.DiskLabel == dataDiskInfo.DiskLabel && disk.LogicalDiskSizeInGB == dataDiskInfo.DiskSizeGB && disk.Lun == dataDiskInfo.LunSlot)
+                {
+                    if (disk.HostCaching == hc.ToString())
+                    {
+                        found = true;
+                        Console.WriteLine("DataDisk found: {0}", disk.DiskLabel);
+                    }
+                }
+            }
+            return found;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [TestMethod(), TestCategory(Category.Functional), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet Set-AzureAvailabilitySet)")]
+        public void AzureAvailabilitySetTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+            vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, vmName, serviceName, imageName, username, password, locationName);
+            Console.WriteLine("Service Name: {0} is created.  VM: {1} is created.", serviceName, vmName);
+
+            string testAVSetName = "testAVSet1";
+
+            try
+            {
+                var vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, testAVSetName);
+                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
+                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
+
+                vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, string.Empty);
+                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
+                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, string.Empty));
+
+                vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, testAVSetName);
+                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
+                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
+
+                vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, null);
+                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
+                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
+
+                vm = vmPowershellCmdlets.RemoveAzureAvailabilitySet(vmName, serviceName);
+                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
+                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
+
+                pass = true;
+            }
+            catch (Exception e)
+            {
+                pass = false;
+                Assert.Fail("Exception occurred: {0}", e.ToString());
+            }
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [TestMethod(), TestCategory(Category.Functional), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet ((Get,Set)-AzureOSDisk)")]
+        public void AzureOSDiskTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+            vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, vmName, serviceName, imageName, username, password, locationName);
+            Console.WriteLine("Service Name: {0} is created.  VM: {1} is created.", serviceName, vmName);
+
+            try
+            {
+                PersistentVM vm = vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM;
+                Assert.IsTrue(Verify.AzureOsDisk(vm, "Windows", HostCaching.ReadWrite));
+
+                PersistentVM vm2 = vmPowershellCmdlets.SetAzureOSDisk(HostCaching.ReadOnly, vm);
+                Assert.IsTrue(Verify.AzureOsDisk(vm2, "Windows", HostCaching.ReadOnly));
+
+                pass = true;
+
+            }
+            catch (Exception e)
+            {
+                pass = false;
+                Assert.Fail("Exception occurred: {0}", e.ToString());
+            }
+        }
+
 
         /// <summary>
         ///
@@ -353,7 +620,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 catch (Exception ex)
                 {
                     Assert.IsNotNull(ex.InnerException);
-                    CloudException ce = (CloudException)ex.InnerException;
+                    CloudException ce = (CloudException) ex.InnerException;
                     Assert.IsTrue(ce.Response.StatusCode == System.Net.HttpStatusCode.BadRequest);
                     Assert.IsTrue(ce.Message.Contains("The date specified in parameter EndTime is not within the correct range."));
                 }
@@ -1409,19 +1676,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     pass = false;
                     Assert.Fail("Exception occurred: {0}", e.ToString());
                 }
-            }
-        }
-
-        [TestCleanup]
-        public virtual void CleanUp()
-        {
-            Console.WriteLine("Test {0}", pass ? "passed" : "failed");
-
-            // Cleanup            
-            if ((cleanupIfPassed && pass) || (cleanupIfFailed && !pass))
-            {
-                Console.WriteLine("Starting to clean up created VM and service...");
-                CleanupService(serviceName);
             }
         }
     }
