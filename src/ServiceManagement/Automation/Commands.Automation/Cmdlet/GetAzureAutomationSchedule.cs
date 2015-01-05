@@ -41,19 +41,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Schedule> schedules;
-            if (this.Name != null)
+            IEnumerable<Schedule> schedules = null;
+            if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
             {
-                // ByName
                 schedules = new List<Schedule>
                                 {
                                     this.AutomationClient.GetSchedule(
                                         this.AutomationAccountName, this.Name)
                                 };
             }
-            else
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
             {
-                // ByAll
                 schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName);
             }
 

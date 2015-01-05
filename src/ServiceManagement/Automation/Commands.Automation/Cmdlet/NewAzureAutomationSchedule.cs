@@ -98,20 +98,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 ExpiryTime = this.ExpiryTime
             };
 
-            if (this.OneTime.IsPresent)
+            if (this.ParameterSetName == AutomationCmdletParameterSets.ByOneTime)
             {
-                // ByOneTime
                 schedule.Frequency = ScheduleFrequency.Onetime;
             }
-            else if (this.DayInterval >= 1)
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByDaily)
             {
-                // ByDaily
                 schedule.Frequency = ScheduleFrequency.Day;
                 schedule.Interval = this.DayInterval;
             }
-            else if (this.HourInterval >= 1)
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByHourly)
             {
-                // ByHourly
                 schedule.Frequency = ScheduleFrequency.Hour;
                 schedule.Interval = this.HourInterval;
             }

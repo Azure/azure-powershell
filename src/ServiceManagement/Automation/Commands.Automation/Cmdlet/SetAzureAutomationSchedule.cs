@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the indicator whether the schedule is enabled.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule description.")]
+            HelpMessage = "Specifies whether the schedule is enabled. If a schedule is disabled, any runbooks using it will not run on the schedule until it is enabled.")]
         public bool? IsEnabled { get; set; }
 
         /// <summary>

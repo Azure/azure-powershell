@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="schedule">
         /// The schedule.
         /// </param>
-        public Schedule(Azure.Management.Automation.Models.Schedule schedule)
+        public Schedule(string automationAccountName, Azure.Management.Automation.Models.Schedule schedule)
         {
             Requires.Argument("schedule", schedule).NotNull();
-            //this.AccountId = new Guid(schedule.AccountId);
+            this.AutomationAccountName = automationAccountName;
             this.Name = schedule.Name;
             this.Description = schedule.Properties.Description;
             this.StartTime = schedule.Properties.StartTime.ToLocalTime();
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         }
 
         /// <summary>
-        /// Gets or sets the account id.
+        /// Gets or sets the automaiton account name.
         /// </summary>
-        public Guid AccountId { get; set; }
+        public string AutomationAccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the name.

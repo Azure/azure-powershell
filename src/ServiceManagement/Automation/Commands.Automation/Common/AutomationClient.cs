@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public Schedule GetSchedule(string automationAccountName, string scheduleName)
         {
             AutomationManagement.Models.Schedule scheduleModel = this.GetScheduleModel(automationAccountName, scheduleName);
-            return this.CreateScheduleFromScheduleModel(scheduleModel);
+            return this.CreateScheduleFromScheduleModel(automationAccountName, scheduleModel);
         }
 
         public IEnumerable<Schedule> ListSchedules(string automationAccountName)
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         response, response.Schedules);
                 });
 
-            return scheduleModels.Select(this.CreateScheduleFromScheduleModel);
+            return scheduleModels.Select(scheduleModel => new Schedule(automationAccountName, scheduleModel));
         }
         
         public Schedule UpdateSchedule(string automationAccountName, string scheduleName, bool? isEnabled, string description)
@@ -365,11 +365,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
 
-        private Schedule CreateScheduleFromScheduleModel(AutomationManagement.Models.Schedule schedule)
+        private Schedule CreateScheduleFromScheduleModel(string automationAccountName, AutomationManagement.Models.Schedule schedule)
         {
             Requires.Argument("schedule", schedule).NotNull();
 
-            return new Schedule(schedule);
+            return new Schedule(automationAccountName, schedule);
         }
 
         private AutomationManagement.Models.Schedule GetScheduleModel(string automationAccountName, string scheduleName)
