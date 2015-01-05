@@ -27,6 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 {
     using ConfigConfigurationSetting = Common.XmlSchema.ServiceConfigurationSchema.ConfigurationSetting;
     using DefinitionConfigurationSetting = Common.XmlSchema.ServiceDefinitionSchema.ConfigurationSetting;
+    using Microsoft.WindowsAzure.Commands.Common;
 
     static class CacheConfigurationFactory
     {

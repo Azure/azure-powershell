@@ -22,7 +22,7 @@ using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 using Microsoft.ServiceBus.Notifications;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Management.ServiceBus;
 using Microsoft.WindowsAzure.Management.ServiceBus.Models;
@@ -30,6 +30,8 @@ using Microsoft.WindowsAzure.Management.ServiceBus.Models;
 namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
 {
     using ServiceBusNamespaceDescription = Management.ServiceBus.Models.NamespaceDescription;
+    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Extensions;
 
     public class ServiceBusClientExtensions
     {
