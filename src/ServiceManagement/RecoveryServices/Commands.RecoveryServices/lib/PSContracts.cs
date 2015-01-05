@@ -16,8 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Microsoft.Azure.Commands.RecoveryServices.lib;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -288,6 +288,33 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         [DataMember(Order = 4)]
         public AcsNamespace AcsNamespace { get; set; }
         #endregion
+
+        #region Constructores
+
+        /// <summary>
+        /// Initializes a new instance of the VaultCreds class
+        /// </summary>
+        public VaultCreds()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the VaultCreds class
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">acs namespace</param>
+        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
+        {
+            this.SubscriptionId = subscriptionId;
+            this.ResourceType = "HyperVRecoveryManagerVault";//TODO:devsri - Move this to constants
+            this.ResourceName = resourceName;
+            this.ManagementCert = managementCert;
+            this.AcsNamespace = acsNamespace;
+        }
+
+        #endregion
     }
 
     /// <summary>
@@ -318,6 +345,42 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         [DataMember(Order = 2)]
         public string Version { get; set; }
         #endregion
+
+        #region Constructores
+
+        /// <summary>
+        /// Initializes a new instance of the ASRVaultCreds class
+        /// </summary>
+        public ASRVaultCreds()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the ASRVaultCreds class
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">acs namespace</param>
+        /// <param name="channelIntegrityKey">Agent Channel Integrity Key</param>
+        /// <param name="cloudServiceName">cloud service name</param>
+        /// <param name="siteId">custom site Id</param>
+        /// <param name="siteName">custom site name</param>
+        public ASRVaultCreds(
+            string subscriptionId,
+            string resourceName,
+            string managementCert,
+            AcsNamespace acsNamespace,
+            string channelIntegrityKey,
+            string cloudServiceName)
+            : base(subscriptionId, resourceName, managementCert, acsNamespace)
+        {
+            this.ChannelIntegrityKey = channelIntegrityKey;
+            this.CloudServiceName = cloudServiceName;
+            this.Version = "1.0"; //TODO:devsri - Move this to constants
+        }
+
+        #endregion
     }
 
     /// <summary>
@@ -327,21 +390,112 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
+    [DataContract]
     public class AcsNamespace
     {
         /// <summary>
         /// Gets or sets Host name
         /// </summary>
+        [DataMember(Order = 0)]
         public string HostName { get; set; }
 
         /// <summary>
         /// Gets or sets Name space
         /// </summary>
+        [DataMember(Order = 0)]
         public string Namespace { get; set; }
 
         /// <summary>
         /// Gets or sets Resource provider realm
         /// </summary>
+        [DataMember(Order = 0)]
         public string ResourceProviderRealm { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the AcsNamespace class.
+        /// </summary>
+        /// <param name="acsDetails">acsDetails name</param>
+        public AcsNamespace(UploadCertificateResponse acsDetails)
+        {
+            this.HostName = acsDetails.GlobalAcsHostName;
+            this.Namespace = acsDetails.GlobalAcsNamespace;
+            this.ResourceProviderRealm = acsDetails.GlobalAcsRPRealm;
+        }
+    }
+}
+
+namespace Microsoft.Azure.Portal.HybridServicesCore
+{
+    /// <summary>
+    /// The ResourceExtendedInfo which represents the xml info stored in RP.
+    /// </summary>
+    [DataContract]
+    public class ResourceExtendedInfo
+    {
+        #region properties
+
+        /// <summary>
+        /// Gets or sets the dversion
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets the channel integrity key
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string ChannelIntegrityKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Channel encryption key
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string ChannelEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the channel encryption key thumbprint
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string ChannelEncryptionKeyThumbprint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the portal certificate thumbprint
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string PortalCertificateThumbprint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the algorithm used to encrypt the data.
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string Algorithm { get; set; }
+
+        /// <summary>
+        /// Gets or sets the etag to be sent while updating the resource extended info.
+        /// </summary>
+        [IgnoreDataMember]
+        public string Etag { get; set; }
+
+        #endregion
+
+        /// <summary>
+        /// Returns the Xml representation of this object.
+        /// </summary>
+        /// <param name="encrypt">flag to set encrypted/non encerypted data</param>
+        /// <returns>the xml as string</returns>
+        public ResourceExtendedInformationArgs Translate(string eTag = null)
+        {
+            string serializedInfo = Utilities.Serialize<ResourceExtendedInfo>(this);
+            if(string.IsNullOrEmpty(eTag)){
+                eTag = Guid.NewGuid().ToString();
+            }
+
+            ResourceExtendedInformationArgs extendedInfoArgs = new ResourceExtendedInformationArgs(
+                "V2014_09",
+                serializedInfo,
+                eTag);
+
+            return extendedInfoArgs;
+        }
     }
 }

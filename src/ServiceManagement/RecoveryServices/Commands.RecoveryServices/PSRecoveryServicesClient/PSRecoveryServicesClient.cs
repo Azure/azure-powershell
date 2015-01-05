@@ -184,8 +184,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets request headers.
         /// </summary>
+        /// <param name="shouldSignRequest">specifies whether to sign the request or not</param>
         /// <returns>Custom request headers</returns>
-        public CustomRequestHeaders GetRequestHeaders()
+        public CustomRequestHeaders GetRequestHeaders(bool shouldSignRequest = true)
         {
             this.ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-P";
 
@@ -194,7 +195,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 // ClientRequestId is a unique ID for every request to Azure Site Recovery.
                 // It is useful when diagnosing failures in API calls.
                 ClientRequestId = this.ClientRequestId,
-                AgentAuthenticationHeader = this.GenerateAgentAuthenticationHeader(this.ClientRequestId)
+                AgentAuthenticationHeader = shouldSignRequest ? this.GenerateAgentAuthenticationHeader(this.ClientRequestId) : ""
             };
         }
 
