@@ -70,10 +70,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.SiteRecovery, Version=0.9.0.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.0.2.2-preview\lib\net40\Microsoft.WindowsAzure.Management.SiteRecovery.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -126,6 +122,7 @@
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesNetworkMappingClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesNetworkClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVaultClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVaultExtendedInfoClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVMGroupClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesPEClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesClient.cs">
@@ -177,7 +174,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\Security.Cryptography.dll" />
+    <Content Include="lib\Microsoft.Azure.RecoveryServices.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\Security.Cryptography.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Microsoft.Azure.Commands.RecoveryServices.dll-help.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

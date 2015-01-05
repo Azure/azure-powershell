@@ -24,13 +24,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
-        /// Updates the vault certificate
+        /// Gets Vault Extended Information
         /// </summary>
-        /// <param name="args">the certificate update arguments</param>
-        /// <returns>UploadCertificateResponse</returns>
-        public async Task<UploadCertificateResponse> UpdateVaultCertificate(CertificateArgs args)
+        /// <returns>ResourceExtendedInformationResponse</returns>
+        public async Task<ResourceExtendedInformation> GetExtendedInfo()
         {
-            return await this.GetSiteRecoveryClient().Vaults.UploadCertificateAsync(args, this.GetRequestHeaders(false));
+            ResourceExtendedInformationResponse response = await this.GetSiteRecoveryClient().VaultExtendedInfo.GetExtendedInfoAsync(this.GetRequestHeaders(false));
+
+            return response.ResourceExtendedInformation;
+        }
+
+        /// <summary>
+        /// Creates the extended information for the vault
+        /// </summary>
+        /// <param name="extendedInfoArgs">extneded info to be created</param>
+        /// <returns>ResourceExtendedInformation</returns>
+        public async Task<ResourceExtendedInformation> CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
+        {
+            ResourceExtendedInformationResponse response = await this.GetSiteRecoveryClient().VaultExtendedInfo.CreateExtendedInfoAsync(extendedInfoArgs, this.GetRequestHeaders(false));
+
+            return response.ResourceExtendedInformation;
         }
     }
 }
