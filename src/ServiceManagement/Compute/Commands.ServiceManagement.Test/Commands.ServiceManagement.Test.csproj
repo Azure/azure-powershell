@@ -358,7 +358,6 @@
     <Compile Include="FunctionalTests\PreviewCmdletInfo\GetAzureReservedIPCmdletInfo.cs" />
     <Compile Include="FunctionalTests\PreviewCmdletInfo\NewAzureReservedIPCmdletInfo.cs" />
     <Compile Include="FunctionalTests\PreviewCmdletInfo\RemoveAzureReservedIPCmdletInfo.cs" />
-    <Compile Include="FunctionalTests\ReservedIPTest.cs" />
     <Compile Include="FunctionalTests\SaveAzureVhdTest.cs" />
     <Compile Include="FunctionalTests\ScenarioTest.cs" />
     <Compile Include="FunctionalTests\ServiceManagementCmdletTestHelper.cs">
