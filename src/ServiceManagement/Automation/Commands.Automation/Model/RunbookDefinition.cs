@@ -13,60 +13,55 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Management.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
     using AutomationManagement = Management.Automation;
 
     /// <summary>
-    /// The Runbook.
+    /// The Runbook Definition.
     /// </summary>
-    public class Runbook
+    public class RunbookDefinition
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Runbook"/> class.
+        /// Initializes a new instance of the <see cref="RunbookDefinition"/> class.
         /// </summary>
         /// <param name="accountName">
-        /// The account name.
+        /// The runbook version.
         /// </param>
         /// <param name="runbook">
-        /// The runbook.
+        /// The runbook version.
         /// </param>
-        /// <exception cref="System.ArgumentException">
-        /// </exception>
-        public Runbook(string accountName, AutomationManagement.Models.Runbook runbook)
+        /// <param name="content">
+        /// The content.
+        /// </param>
+        /// <param name="slot">
+        /// Slot published or draft.
+        /// </param>
+        public RunbookDefinition(string accountName, AutomationManagement.Models.Runbook runbook, string content, string slot)
         {
             Requires.Argument("runbook", runbook).NotNull();
             Requires.Argument("accountName", accountName).NotNull();
+            Requires.Argument("slot", slot).NotNull();
 
             this.AutomationAccountName = accountName;
             this.Name = runbook.Name;
-            this.Location = runbook.Location;
-            this.Type = runbook.Type;
-            this.Tags = runbook.Tags ?? new Dictionary<string, string>();
+            this.Content = content;
 
             if (runbook.Properties == null) return;
 
             this.CreationTime = runbook.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = runbook.Properties.LastModifiedTime.ToLocalTime();
-            this.Description = runbook.Properties.Description;
-
-            this.LogVerbose = runbook.Properties.LogVerbose;
-            this.LogProgress = runbook.Properties.LogProgress;
-            this.State = runbook.Properties.State;
-            this.JobCount = runbook.Properties.JobCount;
+            this.Slot = slot;
             this.RunbookType = runbook.Properties.RunbookType;
-
-            this.Parameters = runbook.Properties.Parameters ?? new Dictionary<string, RunbookParameter>();
+            
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Runbook"/> class.
+        /// Initializes a new instance of the <see cref="RunbookDefinition"/> class.
         /// </summary>
-        public Runbook()
+        public RunbookDefinition()
         {
         }
 
@@ -81,24 +76,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the location.
+        /// Gets or sets the slot (publised or draft) of runbook.
         /// </summary>
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type.
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tags.
-        /// </summary>
-        public IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>
-        /// Gets or sets the JobCount.
-        /// </summary>
-        public int JobCount { get; set; }
+        public string Slot { get; set; }
 
         /// <summary>
         /// Gets or sets the runbook type.
@@ -116,28 +96,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public DateTimeOffset LastModifiedTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the description.
+        /// Gets or sets the runbook version content.
         /// </summary>
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets the parameters.
-        /// </summary>
-        public IDictionary<string, RunbookParameter> Parameters { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether log verbose is enabled.
-        /// </summary>
-        public bool LogVerbose { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether log progress is enabled.
-        /// </summary>
-        public bool LogProgress { get; set; }
-
-        /// <summary>
-        /// Gets or sets the state of runbook.
-        /// </summary>
-        public string State { get; set; }
+        public string Content { get; set; }
     }
 }

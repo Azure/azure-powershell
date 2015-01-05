@@ -121,6 +121,22 @@
     <value>The Automation account was not found.</value>
     <comment>Automation</comment>
   </data>
+  <data name="RemoveAzureAutomationRunbookDescription" xml:space="preserve">
+    <value>Removing the Azure Automation runbook.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationRunbookWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Automation runbook?</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookAlreadyExists" xml:space="preserve">
+    <value>The Runbook already exists. Runbook name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookAlreadyHasDraft" xml:space="preserve">
+    <value>Runbook already has a draft. Specify the parameter to force an overwrite of this draft. Runbook name: {0}</value>
+    <comment>Automation</comment> 
+  </data>
   <data name="AutomationOperationFailed" xml:space="preserve">
     <value>{0} {1} operation failed for object name: {2) under AutomationAccount: {3}</value>
     <comment>Automation</comment>

@@ -24,7 +24,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
     {
         AzureSubscription Subscription { get; }
 
+        #region JobStreams
+
         IEnumerable<JobStream> GetJobStream(string automationAccountname, Guid jobId, DateTime? time, string streamType);
+
+        #endregion
+
+        #region Variables
 
         Variable GetVariable(string automationAccountName, string variableName);
 
@@ -35,7 +41,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void DeleteVariable(string automationAccountName, string variableName);
 
         Variable UpdateVariable(string automationAccountName, Variable variable);
-        
+
+        #endregion
+
+        #region Scedules
+
         Schedule CreateSchedule(string automationAccountName, Schedule schedule);
 
         void DeleteSchedule(string automationAccountName, string scheduleName);
@@ -46,9 +56,31 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Schedule UpdateSchedule(string automationAccountName, string scheduleName, bool? isEnabled, string description);
 
+        #endregion
+
+        #region Runbooks
+
         Runbook GetRunbook(string automationAccountName, string runbookName);
 
         IEnumerable<Runbook> ListRunbooks(string automationAccountName);
+
+        Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description, IDictionary<string, string> tags);
+
+        Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description, IDictionary<string, string> tags);
+        
+        void DeleteRunbook(string automationAccountName, string runbookName);
+
+        Runbook PublishRunbook(string automationAccountName, string runbookName);
+
+        Runbook UpdateRunbook(string automationAccountName, string runbookName, string description, IDictionary<string, string> tags, bool? logProgress, bool? logVerbose);
+
+        RunbookDefinition UpdateRunbookDefinition(string automationAccountName, string runbookName, string runbookPath, bool overwrite);
+
+        IEnumerable<RunbookDefinition> ListRunbookDefinitionsByRunbookName(string automationAccountName, string runbookName, bool? isDraft);
+
+        #endregion
+
+        #region Credentials
 
         Credential CreateCredential(string automationAccountName, string name, string userName, string password, string description);
 
@@ -60,6 +92,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         void DeleteCredential(string automationAccountName, string name);
 
+        #endregion
+
+        #region Modules
+
         Module CreateModule(string automationAccountName, Uri contentLink, string moduleName, IDictionary<string, string> tags);
 
         Module GetModule(string automationAccountName, string name);
@@ -69,6 +105,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
         IEnumerable<Module> ListModules(string automationAccountName);
 
         void DeleteModule(string automationAccountName, string name);
+        
+        #endregion
+
+        #region Jobs
 
         Job GetJob(string automationAccountName, Guid id);
 
@@ -81,5 +121,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void StopJob(string automationAccountName, Guid id);
 
         void SuspendJob(string automationAccountName, Guid id);
+
+        #endregion
     }
 }

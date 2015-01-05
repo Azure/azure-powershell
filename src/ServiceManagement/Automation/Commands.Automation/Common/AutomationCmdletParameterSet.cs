@@ -33,6 +33,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
         internal const string ByName = "ByName";
 
         /// <summary>
+        /// By Path parameter set.
+        /// </summary>
+        internal const string ByPath = "ByPath";
+
+
+        /// <summary>
         /// The one time schedule parameter set.
         /// </summary>
         internal const string ByOneTime = "ByOneTime";

@@ -13,26 +13,32 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Management.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
-    public class Constants
+    [Serializable]
+    public class ResourceCommonException : Exception
     {
+        public ResourceCommonException(Type resourceType, string message)
+            : base(message)
+        {
+            this.ResourceType = resourceType;
+        }
 
-        public const string ClientIdentity = "PowerShell";
+        [NonSerialized]
+        private Type resourceType;
 
-        public const char RunbookTagsSeparatorChar = ',';
+        public Type ResourceType
+        {
+            get
+            {
+                return this.resourceType;
+            }
 
-        public const string RunbookTagsSeparatorString = ",";
-
-        public const string Published = "Published";
-
-        public const string Draft = "Draft";
-
-        // default schedule expiry time for daily schedule, consistent with UX
-        // 12/31/9999 12:00:00 AM
-        public static readonly DateTimeOffset DefaultScheduleExpiryTime = DateTimeOffset.MaxValue;
-
+            private set
+            {
+                this.resourceType = value;
+            }
+        }
     }
 }
