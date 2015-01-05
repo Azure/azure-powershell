@@ -78,6 +78,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<RunbookDefinition> ListRunbookDefinitionsByRunbookName(string automationAccountName, string runbookName, bool? isDraft);
 
+        Job StartRunbook(string automationAccountName, string runbookName, IDictionary parameters);
+
         #endregion
 
         #region Credentials

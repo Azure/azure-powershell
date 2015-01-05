@@ -26,7 +26,7 @@ using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
-
+using Newtonsoft.Json;
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
 using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
 using Job = Microsoft.Azure.Commands.Automation.Model.Job;
@@ -308,6 +308,27 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 });
 
             return this.GetRunbook(automationAccountName, runbookName);
+        }
+
+        public Job StartRunbook(string automationAccountName, string runbookName, IDictionary parameters)
+        {
+            IDictionary<string, string> processedParameters = this.ProcessRunbookParameters(automationAccountName, runbookName, parameters);
+            var job = this.automationManagementClient.Jobs.Create(
+                                    automationAccountName,
+                                    new JobCreateParameters
+                                    {
+                                        Properties = new JobCreateProperties
+                                        {
+                                            Runbook = new RunbookAssociationProperty
+                                            {
+                                                Name = runbookName
+                                            },
+                                            Parameters = processedParameters ?? null
+                                        },
+                                        Location = ""
+                                     }).Job;
+
+            return new Job(automationAccountName, job);
         }
 
         #endregion
@@ -968,6 +989,52 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 scheduleUpdateParameters);
 
             return this.GetSchedule(automationAccountName, schedule.Name);
+        }
+
+        private IDictionary<string, string> ProcessRunbookParameters(string automationAccountName, string runbookName, IDictionary parameters)
+        {
+            parameters = parameters ?? new Dictionary<string, string>();
+            var runbook = this.GetRunbook(automationAccountName, runbookName);
+            var filteredParameters = new Dictionary<string, string>();
+
+            foreach (var runbookParameter in runbook.Parameters)
+            {
+                if (parameters.Contains(runbookParameter.Key))
+                {
+                    object paramValue = parameters[runbookParameter.Key];
+                    try
+                    {
+                        filteredParameters.Add(runbookParameter.Key,
+                            JsonConvert.SerializeObject(paramValue,
+                                new JsonSerializerSettings()
+                                {
+                                    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                                }));
+                    }
+                    catch (JsonSerializationException)
+                    {
+                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.RunbookParameterCannotBeSerializedToJson, runbookParameter.Key));
+                    }
+                }
+                else if (runbookParameter.Value.IsMandatory)
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.RunbookParameterValueRequired, runbookParameter.Key));
+                }
+            }
+
+            if (filteredParameters.Count != parameters.Count)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookParameters));
+            }
+
+            var hasJobStartedBy = filteredParameters.Any(filteredParameter => filteredParameter.Key == Constants.JobStartedByParameterName);
+
+            if (!hasJobStartedBy)
+            {
+                filteredParameters.Add(Constants.JobStartedByParameterName, Constants.ClientIdentity);
+            }
+
+            return filteredParameters;
         }
 
         #endregion
