@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the switch parameter not to confirm on removing the schedule.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not confirm on removing the schedule.")]
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
