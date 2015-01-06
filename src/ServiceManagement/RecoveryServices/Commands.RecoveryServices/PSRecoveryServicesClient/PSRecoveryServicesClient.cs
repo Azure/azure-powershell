@@ -48,6 +48,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string ClientRequestId { get; set; }
 
         /// <summary>
+        /// Gets the value of recovery services management client.
+        /// </summary>
+        public RecoveryServicesManagementClient GetRecoveryServicesClient
+        {
+            get
+            {
+                return this.recoveryServicesClient;
+            }
+        }
+
+        /// <summary>
         /// Amount of time to sleep before fetching job details again.
         /// </summary>
         public const int TimeToSleepBeforeFetchingJobDetailsAgain = 30000;

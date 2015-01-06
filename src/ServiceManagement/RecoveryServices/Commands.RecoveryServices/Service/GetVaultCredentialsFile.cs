@@ -21,6 +21,7 @@ using Microsoft.Azure.Portal.HybridServicesCore;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -47,19 +48,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the vault name
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Vault Name for which the cred file to be generated")]
-        [ValidateNotNullOrEmpty]
-        //// TODO: devsri - Remove this.
-        public string CloudServiceName { get; set; }
-
-        /// <summary>
         /// Gets or sets the location of the vault
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Geo Name to which the vault belongs")]
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Geo Location Name to which the vault belongs")]
         [ValidateNotNullOrEmpty]
-        public string Geo { get; set; }
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets Job Object.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRVault Vault { get; set; }
 
         /// <summary>
         /// Gets or sets the path where the credential file is to be generated
@@ -78,46 +78,68 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override async void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             try
             {
-                AzureSubscription subscription = AzureSession.CurrentContext.Subscription;
-
-                // Generate certificate
-                X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(VaultCertificateExpiryInHoursForHRM, subscription.Id.ToString(), this.Name);
-
-                Utilities.UpdateVaultSettings(new ASRVaultCreds()
+                switch (this.ParameterSetName)
                 {
-                    CloudServiceName = this.CloudServiceName,
-                    ResourceName = this.Name
-                });
-
-                // Upload certificate
-                UploadCertificateResponse acsDetails = await this.UpdateVaultCertificate(cert);
-
-                // Get Channel Integrity key
-                string channelIntegrityKey = await this.GetChannelIntegrityKey();
-
-                // Generate file.
-                ASRVaultCreds vaultCreds = this.GenerateCredential(
-                    subscription.Id.ToString(),
-                    this.Name,
-                    cert,
-                    acsDetails,
-                    channelIntegrityKey,
-                    this.CloudServiceName);
-
-                string filePath = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
-                string fileName = this.GenerateFileName();
-
-                // write the content to a file.
-                Utilities.WriteToFile<ASRVaultCreds>(vaultCreds, filePath, fileName);
+                    case ASRParameterSets.ByObject:
+                        this.Name = this.Vault.Name;
+                        this.Location = this.Vault.Location;
+                        this.GetByParams();
+                        break;
+                    case ASRParameterSets.ByParam:
+                    default:
+                        this.GetByParams();
+                        break;
+                }
             }
             catch (Exception exception)
             {
                 this.HandleException(exception);
             }
+        }
+
+        /// <summary>
+        /// Method to execute the command
+        /// </summary>
+        private async void GetByParams()
+        {
+            AzureSubscription subscription = AzureSession.CurrentContext.Subscription;
+
+            CloudService cloudService = RecoveryServicesClient.GetCloudServiceForVault(this.Name, this.Location);
+            string cloudServiceName = cloudService.Name;
+
+            // Generate certificate
+            X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(VaultCertificateExpiryInHoursForHRM, subscription.Id.ToString(), this.Name);
+
+            Utilities.UpdateVaultSettings(new ASRVaultCreds()
+            {
+                CloudServiceName = cloudServiceName,
+                ResourceName = this.Name
+            });
+
+            // Upload certificate
+            UploadCertificateResponse acsDetails = await this.UpdateVaultCertificate(cert);
+
+            // Get Channel Integrity key
+            string channelIntegrityKey = await this.GetChannelIntegrityKey();
+
+            // Generate file.
+            ASRVaultCreds vaultCreds = this.GenerateCredential(
+                subscription.Id.ToString(),
+                this.Name,
+                cert,
+                acsDetails,
+                channelIntegrityKey,
+                cloudServiceName);
+
+            string filePath = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
+            string fileName = this.GenerateFileName();
+
+            // write the content to a file.
+            Utilities.WriteToFile<ASRVaultCreds>(vaultCreds, filePath, fileName);
         }
 
         /// <summary>

@@ -44,6 +44,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
+    /// Vault Status ENUM values
+    /// </summary>
+    public enum VaultStatus
+    {
+        /// <summary>
+        /// Activating the created resource.
+        /// </summary>
+        Activating,
+
+        /// <summary>
+        /// Creating the resource.
+        /// </summary>
+        Creating,
+
+        /// <summary>
+        /// Resource created
+        /// </summary>
+        Created,
+
+        /// <summary>
+        /// Resource is active
+        /// </summary>
+        Active,
+
+        /// <summary>
+        /// Resource is disabled
+        /// </summary>
+        Disabled,
+
+        /// <summary>
+        /// Resource is being deleted
+        /// </summary>
+        Removing
+    }
+
+    /// <summary>
     /// Constant definition
     /// </summary>
     public class Constants
@@ -62,6 +98,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// extended information version.
         /// </summary>
         public const string VaultExtendedInfVersion = "V2014_09";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Type
+        /// </summary>
+        public const string RdfeOperationStatusTypeCreate = "Create";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Type
+        /// </summary>
+        public const string RdfeOperationStatusTypeDelete = "Delete";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Result
+        /// </summary>
+        public const string RdfeOperationStatusResultSucceeded = "Succeeded";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Failed
+        /// </summary>
+        public const string RdfeOperationStatusResultFailed = "Failed";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.InProgress
+        /// </summary>
+        public const string RdfeOperationStatusResultInProgress = "InProgress";
     }
 
     /// <summary>
