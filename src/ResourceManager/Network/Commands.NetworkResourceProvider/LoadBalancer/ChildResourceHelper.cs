@@ -77,14 +77,17 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
 
             // Normalize InboundNatRule
-            foreach (var inboundNatRule in loadBalancer.Properties.InboundNatRules)
+            if (loadBalancer.Properties.InboundNatRules != null)
             {
-                inboundNatRule.Id = string.Empty;
-
-                foreach (var frontendIpConfiguration in inboundNatRule.Properties.FrontendIPConfigurations)
+                foreach (var inboundNatRule in loadBalancer.Properties.InboundNatRules)
                 {
-                    frontendIpConfiguration.Id = NormalizeLoadBalancerChildResourceIds(frontendIpConfiguration.Id,
-                        loadBalancer.ResourceGroupName, loadBalancer.Name);
+                    inboundNatRule.Id = string.Empty;
+
+                    foreach (var frontendIpConfiguration in inboundNatRule.Properties.FrontendIPConfigurations)
+                    {
+                        frontendIpConfiguration.Id = NormalizeLoadBalancerChildResourceIds(frontendIpConfiguration.Id,
+                            loadBalancer.ResourceGroupName, loadBalancer.Name);
+                    }
                 }
             }
 
