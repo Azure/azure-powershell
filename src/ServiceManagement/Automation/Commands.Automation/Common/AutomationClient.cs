@@ -230,6 +230,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var runbookUpdateParameters = new RunbookUpdateParameters();
             runbookUpdateParameters.Name = runbookName;
             if (tags != null) runbookUpdateParameters.Tags = tags;
+            runbookUpdateParameters.Properties =  new RunbookUpdateProperties();
             if (description != null) runbookUpdateParameters.Properties.Description = description;
             if (logProgress.HasValue) runbookUpdateParameters.Properties.LogProgress = logProgress.Value;
             if (logVerbose.HasValue) runbookUpdateParameters.Properties.LogVerbose = logVerbose.Value;
