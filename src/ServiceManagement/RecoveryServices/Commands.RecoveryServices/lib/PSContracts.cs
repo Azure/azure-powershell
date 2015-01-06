@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text;
-using Microsoft.Azure.Commands.RecoveryServices.lib;
+using Microsoft.Azure.Commands.RecoveryServices;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -41,6 +41,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Represents a HMACSHA512 hash function.
         /// </summary>
         HMACSHA512
+    }
+
+    /// <summary>
+    /// Constant definition
+    /// </summary>
+    public class Constants
+    {
+        /// <summary>
+        /// ASR vault type
+        /// </summary>
+        public const string ASRVaulType = "HyperVRecoveryManagerVault";
+
+        /// <summary>
+        /// Vault Credential version.
+        /// </summary>
+        public const string VaultCredentialVersion = "1.0";
+
+        /// <summary>
+        /// extended information version.
+        /// </summary>
+        public const string VaultExtendedInfVersion = "V2014_09";
     }
 
     /// <summary>
@@ -257,6 +278,33 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     [DataContract]
     public class VaultCreds
     {
+        #region Constructores
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultCreds"/> class.
+        /// </summary>
+        public VaultCreds()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultCreds"/> class.
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">authenticating service namespace</param>
+        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
+        {
+            this.SubscriptionId = subscriptionId;
+            this.ResourceType = Constants.ASRVaulType;
+            this.ResourceName = resourceName;
+            this.ManagementCert = managementCert;
+            this.AcsNamespace = acsNamespace;
+        }
+
+        #endregion
+
         #region Properties
         /// <summary>
         /// Gets or sets the key name for Namespace entry
@@ -288,33 +336,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         [DataMember(Order = 4)]
         public AcsNamespace AcsNamespace { get; set; }
         #endregion
-
-        #region Constructores
-
-        /// <summary>
-        /// Initializes a new instance of the VaultCreds class
-        /// </summary>
-        public VaultCreds()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the VaultCreds class
-        /// </summary>
-        /// <param name="subscriptionId">subscription Id</param>
-        /// <param name="resourceName">resource name</param>
-        /// <param name="managementCert">management cert</param>
-        /// <param name="acsNamespace">acs namespace</param>
-        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
-        {
-            this.SubscriptionId = subscriptionId;
-            this.ResourceType = "HyperVRecoveryManagerVault";//TODO:devsri - Move this to constants
-            this.ResourceName = resourceName;
-            this.ManagementCert = managementCert;
-            this.AcsNamespace = acsNamespace;
-        }
-
-        #endregion
     }
 
     /// <summary>
@@ -326,6 +347,40 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         Justification = "Keeping all contracts together.")]
     public class ASRVaultCreds : VaultCreds
     {
+        #region Constructores
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVaultCreds"/> class.
+        /// </summary>
+        public ASRVaultCreds()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVaultCreds"/> class.
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">authenticating service  namespace</param>
+        /// <param name="channelIntegrityKey">Agent Channel Integrity Key</param>
+        /// <param name="cloudServiceName">cloud service name</param>
+        public ASRVaultCreds(
+            string subscriptionId,
+            string resourceName,
+            string managementCert,
+            AcsNamespace acsNamespace,
+            string channelIntegrityKey,
+            string cloudServiceName)
+            : base(subscriptionId, resourceName, managementCert, acsNamespace)
+        {
+            this.ChannelIntegrityKey = channelIntegrityKey;
+            this.CloudServiceName = cloudServiceName;
+            this.Version = Constants.VaultCredentialVersion;
+        }
+
+        #endregion
+
         #region Properties
         /// <summary>
         /// Gets or sets the value for ACIK
@@ -345,42 +400,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         [DataMember(Order = 2)]
         public string Version { get; set; }
         #endregion
-
-        #region Constructores
-
-        /// <summary>
-        /// Initializes a new instance of the ASRVaultCreds class
-        /// </summary>
-        public ASRVaultCreds()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ASRVaultCreds class
-        /// </summary>
-        /// <param name="subscriptionId">subscription Id</param>
-        /// <param name="resourceName">resource name</param>
-        /// <param name="managementCert">management cert</param>
-        /// <param name="acsNamespace">acs namespace</param>
-        /// <param name="channelIntegrityKey">Agent Channel Integrity Key</param>
-        /// <param name="cloudServiceName">cloud service name</param>
-        /// <param name="siteId">custom site Id</param>
-        /// <param name="siteName">custom site name</param>
-        public ASRVaultCreds(
-            string subscriptionId,
-            string resourceName,
-            string managementCert,
-            AcsNamespace acsNamespace,
-            string channelIntegrityKey,
-            string cloudServiceName)
-            : base(subscriptionId, resourceName, managementCert, acsNamespace)
-        {
-            this.ChannelIntegrityKey = channelIntegrityKey;
-            this.CloudServiceName = cloudServiceName;
-            this.Version = "1.0"; //TODO:devsri - Move this to constants
-        }
-
-        #endregion
     }
 
     /// <summary>
@@ -393,6 +412,17 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     [DataContract]
     public class AcsNamespace
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AcsNamespace"/> class.
+        /// </summary>
+        /// <param name="acsDetails">authenticating service Details name</param>
+        public AcsNamespace(UploadCertificateResponse acsDetails)
+        {
+            this.HostName = acsDetails.GlobalAcsHostName;
+            this.Namespace = acsDetails.GlobalAcsNamespace;
+            this.ResourceProviderRealm = acsDetails.GlobalAcsRPRealm;
+        }
+
         /// <summary>
         /// Gets or sets Host name
         /// </summary>
@@ -410,17 +440,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 0)]
         public string ResourceProviderRealm { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the AcsNamespace class.
-        /// </summary>
-        /// <param name="acsDetails">acsDetails name</param>
-        public AcsNamespace(UploadCertificateResponse acsDetails)
-        {
-            this.HostName = acsDetails.GlobalAcsHostName;
-            this.Namespace = acsDetails.GlobalAcsNamespace;
-            this.ResourceProviderRealm = acsDetails.GlobalAcsRPRealm;
-        }
     }
 }
 
@@ -435,7 +454,7 @@ namespace Microsoft.Azure.Portal.HybridServicesCore
         #region properties
 
         /// <summary>
-        /// Gets or sets the dversion
+        /// Gets or sets the version
         /// </summary>
         [DataMember(IsRequired = false)]
         public string Version { get; set; }
@@ -471,31 +490,36 @@ namespace Microsoft.Azure.Portal.HybridServicesCore
         public string Algorithm { get; set; }
 
         /// <summary>
-        /// Gets or sets the etag to be sent while updating the resource extended info.
+        /// Gets or sets the tag to be sent while updating the resource extended info.
         /// </summary>
         [IgnoreDataMember]
         public string Etag { get; set; }
 
         #endregion
 
+        #region Public methods
+
         /// <summary>
         /// Returns the Xml representation of this object.
         /// </summary>
-        /// <param name="encrypt">flag to set encrypted/non encerypted data</param>
+        /// <param name="etag">string to be used as unique identifier for the request</param>
         /// <returns>the xml as string</returns>
-        public ResourceExtendedInformationArgs Translate(string eTag = null)
+        public ResourceExtendedInformationArgs Translate(string etag = null)
         {
             string serializedInfo = Utilities.Serialize<ResourceExtendedInfo>(this);
-            if(string.IsNullOrEmpty(eTag)){
-                eTag = Guid.NewGuid().ToString();
+            if (string.IsNullOrEmpty(etag))
+            {
+                etag = Guid.NewGuid().ToString();
             }
 
             ResourceExtendedInformationArgs extendedInfoArgs = new ResourceExtendedInformationArgs(
-                "V2014_09",
+                Constants.VaultExtendedInfVersion,
                 serializedInfo,
-                eTag);
+                etag);
 
             return extendedInfoArgs;
         }
+
+        #endregion
     }
 }

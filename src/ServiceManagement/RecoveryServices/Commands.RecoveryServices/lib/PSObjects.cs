@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             this.ID = pc.ID;
             this.Name = pc.Name;
-            this.ConfigurationStatus = pc.ConfigurationStatus;
+            ////this.ConfigurationStatus = pc.ConfigurationStatus;
             this.Role = pc.Role;
             this.ServerId = pc.ServerId;
             this.FabricObjectId = pc.FabricObjectId;

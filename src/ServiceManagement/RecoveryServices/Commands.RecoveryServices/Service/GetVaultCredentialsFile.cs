@@ -16,13 +16,12 @@ using System;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.RecoveryServices.lib;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.HybridServicesCore;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -33,6 +32,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [OutputType(typeof(string))]
     public class GetVaultCredentialsFile : RecoveryServicesCmdletBase
     {
+        /// <summary>
+        /// Expiry in hours for generated certificate.
+        /// </summary>
         private const int VaultCertificateExpiryInHoursForHRM = 120;
 
         #region Parameters
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Vault Name for which the cred file to be generated")]
         [ValidateNotNullOrEmpty]
-        // TODO: devsri - Remove this.
+        //// TODO: devsri - Remove this.
         public string CloudServiceName { get; set; }
 
         /// <summary>
@@ -68,8 +70,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets the path where the credential file is to be generated
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory =false, HelpMessage = "The path where the vault credential file is to be created.")]
-        // TODO:devsri - add file path validator over here.
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory = false, HelpMessage = "The path where the vault credential file is to be created.")]
         public string Path { get; set; }
 
         #endregion Parameters
@@ -119,6 +120,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
+        /// <summary>
+        /// Method to update vault certificate
+        /// </summary>
+        /// <param name="cert">certificate object </param>
+        /// <returns>Upload Certificate Response</returns>
         private async Task<UploadCertificateResponse> UpdateVaultCertificate(X509Certificate2 cert)
         {
             var certificateArgs = new CertificateArgs()
@@ -132,6 +138,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             return response;
         }
 
+        /// <summary>
+        /// Get the Integrity key
+        /// </summary>
+        /// <returns>key as string.</returns>
         private async Task<string> GetChannelIntegrityKey()
         {
             ResourceExtendedInformation extendedInformation;
@@ -141,7 +151,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
             catch (Exception)
             {
-                //TODO:devsri - Handle specific error rather than generic once
+                // TODO:devsri - Handle specific error rather than generic once
                 extendedInformation = new ResourceExtendedInformation();
             }
 
@@ -158,6 +168,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             return extendedInfo.ChannelIntegrityKey;
         }
 
+        /// <summary>
+        /// Method to generate the credential file content
+        /// </summary>
+        /// <param name="subscriptionId">subscription id</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsDetails">ACS details</param>
+        /// <param name="channelIntegrityKey">Integrity key</param>
+        /// <param name="cloudServiceName">cloud service name</param>
+        /// <returns>vault credential object</returns>
         private ASRVaultCreds GenerateCredential(string subscriptionId, string resourceName, X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, string cloudServiceName)
         {
             string serializedCertifivate = Convert.ToBase64String(managementCert.Export(X509ContentType.Pfx));
@@ -175,6 +195,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             return vaultCreds;
         }
 
+        /// <summary>
+        /// Method to generate the file name
+        /// </summary>
+        /// <returns>file name as string.</returns>
         private string GenerateFileName()
         {
             string fileName;

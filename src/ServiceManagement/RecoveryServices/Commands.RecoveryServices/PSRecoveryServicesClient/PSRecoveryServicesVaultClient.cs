@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Updates the vault certificate
         /// </summary>
         /// <param name="args">the certificate update arguments</param>
-        /// <returns>UploadCertificateResponse</returns>
+        /// <returns>Upload Certificate Response</returns>
         public async Task<UploadCertificateResponse> UpdateVaultCertificate(CertificateArgs args)
         {
             return await this.GetSiteRecoveryClient().Vaults.UploadCertificateAsync(args, this.GetRequestHeaders(false));

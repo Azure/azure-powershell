@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets Vault Extended Information
         /// </summary>
-        /// <returns>ResourceExtendedInformationResponse</returns>
+        /// <returns>Vault Extended Information Response</returns>
         public async Task<ResourceExtendedInformation> GetExtendedInfo()
         {
             ResourceExtendedInformationResponse response = await this.GetSiteRecoveryClient().VaultExtendedInfo.GetExtendedInfoAsync(this.GetRequestHeaders(false));
@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Creates the extended information for the vault
         /// </summary>
-        /// <param name="extendedInfoArgs">extneded info to be created</param>
-        /// <returns>ResourceExtendedInformation</returns>
+        /// <param name="extendedInfoArgs">extended info to be created</param>
+        /// <returns>Vault Extended Information</returns>
         public async Task<ResourceExtendedInformation> CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
         {
             ResourceExtendedInformationResponse response = await this.GetSiteRecoveryClient().VaultExtendedInfo.CreateExtendedInfoAsync(extendedInfoArgs, this.GetRequestHeaders(false));

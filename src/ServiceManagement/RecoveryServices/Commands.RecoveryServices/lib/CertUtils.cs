@@ -13,54 +13,57 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using Security.Cryptography;
 using Security.Cryptography.X509Certificates;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.ComponentModel;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.lib
+namespace Microsoft.Azure.Commands.RecoveryServices
 {
+    /// <summary>
+    /// Class to provide methods to manage the certificates.
+    /// </summary>
     public static class CertUtils
     {
-        public const string MsEnhancedProv = "Microsoft Enhanced Cryptographic Provider v1.0"; // MS_ENHANCED_PROV;
+        /// <summary>
+        /// Enhancement provider
+        /// </summary>
+        private const string MsEnhancedProv = "Microsoft Enhanced Cryptographic Provider v1.0";
+
+        /// <summary>
+        /// Client Authentication Value
+        /// </summary>
+        private const string OIDClientAuthValue = "1.3.6.1.5.5.7.3.2";
+
+        /// <summary>
+        /// Client Authentication Friendly name
+        /// </summary>
+        private const string OIDClientAuthFriendlyName = "Client Authentication";
+
+        /// <summary>
+        /// Key size
+        /// </summary>
+        private const int KeySize2048 = 2048;
+
+        /// <summary>
+        /// default issuer name
+        /// </summary>
         private const string DefaultIssuer = "CN=Windows Azure Tools";
+
+        /// <summary>
+        /// default password.
+        /// </summary>
         private const string DefaultPassword = "";
 
-        public const string OIDClientAuthValue = "1.3.6.1.5.5.7.3.2";
-        public const string OIDClientAuthFriendlyName = "Client Authentication";
-        public const int KeySize2048 = 2048;
-
         /// <summary>
-        /// Windows Azure Service Management API requires 2048bit RSA keys.
-        /// The private key needs to be exportable so we can save it to .pfx for sharing with team members.
-        /// </summary>
-        /// <returns>A 2048 bit RSA key</returns>
-        private static CngKey Create2048RsaKey()
-        {
-            var keyCreationParameters = new CngKeyCreationParameters
-            {
-                ExportPolicy = CngExportPolicies.AllowExport,
-                KeyCreationOptions = CngKeyCreationOptions.None,
-                KeyUsage = CngKeyUsages.AllUsages,
-                Provider = new CngProvider(MsEnhancedProv)
-            };
-
-            keyCreationParameters.Parameters.Add(new CngProperty("Length", BitConverter.GetBytes(KeySize2048), CngPropertyOptions.None));
-
-            return CngKey.Create(CngAlgorithm2.Rsa, null, keyCreationParameters);
-        }
-
-        /// <summary>
-        /// Method to generate a self signed certifficate
+        /// Method to generate a self signed certificate
         /// </summary>
         /// <param name="validForHours">number of hours for which the certificate is valid.</param>
         /// <param name="subscriptionId">subscriptionId in question</param>
         /// <param name="certificateNamePrefix">prefix for the certificate name</param>
         /// <param name="issuer">issuer for the certificate</param>
-        /// <param name="password">certificate passwor</param>
+        /// <param name="password">certificate password</param>
         /// <returns>certificate as an object</returns>
         public static X509Certificate2 CreateSelfSignedCertificate(
             int validForHours,
@@ -103,18 +106,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.lib
             var bytes = cert.Export(X509ContentType.Pfx, password);
 
             // PfxValidation is not done here because these are newly created certs and assumed valid.
-            return NewX509Certificate2(bytes, password, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.Exportable, doPfxValidation: false);
-        }
-
-        /// <summary>
-        /// Generates friendly name
-        /// </summary>
-        /// <param name="subscriptionId">subscription id</param>
-        /// <param name="prefix">prefix, likely resource name</param>
-        /// <returns>friendly name</returns>
-        private static string GenerateCertFriendlyName(string subscriptionId, string prefix = "")
-        {
-            return string.Format("{0}{1}-{2}-vaultcredentials", prefix, subscriptionId, DateTime.Now.ToString("M-d-yyyy"));
+            return NewX509Certificate2(bytes, password, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.Exportable, shouldValidatePfx: false);
         }
 
         /// <summary>
@@ -123,9 +115,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.lib
         /// <param name="rawData">The bytes that represent the certificate</param>
         /// <param name="password">The certificate private password</param>
         /// <param name="keyStorageFlags">The certificate loading options</param>
-        /// <param name="doPfxValidation">Flag to indicate if pfx file should validated. Set to true if the rawData is retrieved from an untrusted source.</param>
+        /// <param name="shouldValidatePfx">Flag to indicate if file should validated. Set to true if the rawData is retrieved from an untrusted source.</param>
         /// <returns>An instance of the X509Certificate</returns>
-        public static X509Certificate2 NewX509Certificate2(byte[] rawData, string password, X509KeyStorageFlags keyStorageFlags, bool doPfxValidation)
+        public static X509Certificate2 NewX509Certificate2(byte[] rawData, string password, X509KeyStorageFlags keyStorageFlags, bool shouldValidatePfx)
         {
             string temporaryFileName = Path.GetTempFileName();
 
@@ -146,6 +138,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.lib
                     // Not deleting the file is fine
                 }
             }
+        }
+
+        /// <summary>
+        /// Generates friendly name
+        /// </summary>
+        /// <param name="subscriptionId">subscription id</param>
+        /// <param name="prefix">prefix, likely resource name</param>
+        /// <returns>friendly name</returns>
+        private static string GenerateCertFriendlyName(string subscriptionId, string prefix = "")
+        {
+            return string.Format("{0}{1}-{2}-vaultcredentials", prefix, subscriptionId, DateTime.Now.ToString("M-d-yyyy"));
+        }
+
+        /// <summary>
+        /// Windows Azure Service Management API requires 2048bit RSA keys.
+        /// The private key needs to be exportable so we can save it for sharing with team members.
+        /// </summary>
+        /// <returns>A 2048 bit RSA key</returns>
+        private static CngKey Create2048RsaKey()
+        {
+            var keyCreationParameters = new CngKeyCreationParameters
+            {
+                ExportPolicy = CngExportPolicies.AllowExport,
+                KeyCreationOptions = CngKeyCreationOptions.None,
+                KeyUsage = CngKeyUsages.AllUsages,
+                Provider = new CngProvider(MsEnhancedProv)
+            };
+
+            keyCreationParameters.Parameters.Add(new CngProperty("Length", BitConverter.GetBytes(KeySize2048), CngPropertyOptions.None));
+
+            return CngKey.Create(CngAlgorithm2.Rsa, null, keyCreationParameters);
         }
     }
 }

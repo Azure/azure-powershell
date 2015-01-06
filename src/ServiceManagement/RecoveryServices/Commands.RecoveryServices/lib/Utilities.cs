@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.lib
+namespace Microsoft.Azure.Commands.RecoveryServices
 {
+    /// <summary>
+    /// Class to define Utility methods 
+    /// </summary>
     public static class Utilities
     {
         /// <summary>
@@ -52,13 +51,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.lib
             return serializedValue;
         }
 
-
         /// <summary>
         /// Deserialize the xml as T
         /// </summary>
         /// <typeparam name="T">the type name</typeparam>
         /// <param name="xml">the xml as string</param>
-        /// <returns>the eqvivalant T</returns>
+        /// <returns>the equivalent T</returns>
         public static T Deserialize<T>(string xml)
         {
             if (string.IsNullOrEmpty(xml))
@@ -79,6 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.lib
         /// <summary>
         /// Method to write content to a file.
         /// </summary>
+        /// <typeparam name="T">Class to be serialized</typeparam>
         /// <param name="fileContent">content to be written to the file</param>
         /// <param name="filePath">the path where the file is to be created</param>
         /// <param name="fileName">name of the file to be created</param>
@@ -111,7 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.lib
         }
 
         /// <summary>
-        /// method to return the Cownloads path for the curretn user.
+        /// method to return the Downloads path for the current user.
         /// </summary>
         /// <returns>path as  string.</returns>
         public static string GetDefaultPath()
