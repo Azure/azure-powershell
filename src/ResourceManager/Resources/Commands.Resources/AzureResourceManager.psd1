@@ -66,6 +66,7 @@ FormatsToProcess = @(
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',
     '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',
+    '.\KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',
     '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',
     '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.format.ps1xml'
@@ -80,6 +81,7 @@ NestedModules = @(
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',
     '.\Batch\Microsoft.Azure.Commands.Batch.dll',
+    '.\KeyVault\Microsoft.Azure.Commands.KeyVault.dll',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',
     '.\Compute\Microsoft.Azure.Commands.Compute.dll',
     '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.dll'
