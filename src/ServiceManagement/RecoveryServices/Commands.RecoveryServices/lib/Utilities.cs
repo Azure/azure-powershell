@@ -82,14 +82,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="fileContent">content to be written to the file</param>
         /// <param name="filePath">the path where the file is to be created</param>
         /// <param name="fileName">name of the file to be created</param>
-        public static void WriteToFile<T>(T fileContent, string filePath, string fileName)
+        /// <returns>file path with file name as string</returns>
+        public static string WriteToFile<T>(T fileContent, string filePath, string fileName)
         {
             string fullFileName = Path.Combine(filePath, fileName);
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@fullFileName, true))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@fullFileName, false))
             {
                 string contentToWrite = Serialize<T>(fileContent);
                 file.WriteLine(contentToWrite);
             }
+
+            return fullFileName;
         }
 
         /// <summary>

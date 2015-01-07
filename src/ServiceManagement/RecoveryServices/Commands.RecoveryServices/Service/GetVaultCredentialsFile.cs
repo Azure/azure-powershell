@@ -58,17 +58,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string Location { get; set; }
 
         /// <summary>
-        /// Gets or sets Job Object.
+        /// Gets or sets vault Object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRVault Vault { get; set; }
 
         /// <summary>
-        /// Gets or sets the path where the credential file is to be generated
+        /// Gets or sets the site name
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory = false, HelpMessage = "The site name if the vault credentials to be downloaded for a Hyper-V sites.")]
         public string SiteName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site id
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory = false, HelpMessage = "The site name if the vault credentials to be downloaded for a Hyper-V sites.")]
+        public string SiteId { get; set; }
+
+        /// <summary>
+        /// Gets or sets site object
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = false, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public Site Site { get; set; }
 
         /// <summary>
         /// Gets or sets the path where the credential file is to be generated
@@ -90,6 +103,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     case ASRParameterSets.ByObject:
                         this.Name = this.Vault.Name;
                         this.Location = this.Vault.Location;
+                        if (this.Site != null)
+                        {
+                            this.SiteName = this.Site.Name;
+                            this.SiteId = this.Site.ID;
+                        }
+
                         this.GetByParams();
                         break;
                     case ASRParameterSets.ByParam:
@@ -107,7 +126,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to execute the command
         /// </summary>
-        private async void GetByParams()
+        private void GetByParams()
         {
             AzureSubscription subscription = AzureSession.CurrentContext.Subscription;
 
@@ -124,15 +143,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             });
 
             // Upload certificate
-            UploadCertificateResponse acsDetails = await this.UpdateVaultCertificate(cert);
+            UploadCertificateResponse acsDetails;
+            Task<UploadCertificateResponse> uploadCertificate = this.UpdateVaultCertificate(cert);
 
             // Get Channel Integrity key
-            string channelIntegrityKey = await this.GetChannelIntegrityKey();
+            string channelIntegrityKey;
+            Task<string> getChannelIntegrityKey = this.GetChannelIntegrityKey();
+
+            uploadCertificate.Wait();
+            getChannelIntegrityKey.Wait();
+
+            acsDetails = uploadCertificate.Result;
+            channelIntegrityKey = getChannelIntegrityKey.Result;
 
             // Generate file.
             ASRVaultCreds vaultCreds = this.GenerateCredential(
                 subscription.Id.ToString(),
-                this.Name,
                 cert,
                 acsDetails,
                 channelIntegrityKey,
@@ -142,7 +168,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string fileName = this.GenerateFileName();
 
             // write the content to a file.
-            Utilities.WriteToFile<ASRVaultCreds>(vaultCreds, filePath, fileName);
+            string outputPath = Utilities.WriteToFile<ASRVaultCreds>(vaultCreds, filePath, fileName);
+
+            // print the path to the user.
+            this.WriteObject(outputPath, true);
         }
 
         /// <summary>
@@ -231,13 +260,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Method to generate the credential file content
         /// </summary>
         /// <param name="subscriptionId">subscription id</param>
-        /// <param name="resourceName">resource name</param>
         /// <param name="managementCert">management cert</param>
         /// <param name="acsDetails">ACS details</param>
         /// <param name="channelIntegrityKey">Integrity key</param>
         /// <param name="cloudServiceName">cloud service name</param>
         /// <returns>vault credential object</returns>
-        private ASRVaultCreds GenerateCredential(string subscriptionId, string resourceName, X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, string cloudServiceName)
+        private ASRVaultCreds GenerateCredential(string subscriptionId, X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, string cloudServiceName)
         {
             string serializedCertifivate = Convert.ToBase64String(managementCert.Export(X509ContentType.Pfx));
 
@@ -245,11 +273,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             ASRVaultCreds vaultCreds = new ASRVaultCreds(
                                             subscriptionId,
-                                            resourceName,
+                                            this.Name,
                                             serializedCertifivate,
                                             acsNamespace,
                                             channelIntegrityKey,
-                                            cloudServiceName);
+                                            cloudServiceName,
+                                            this.SiteId,
+                                            this.SiteName);
 
             return vaultCreds;
         }

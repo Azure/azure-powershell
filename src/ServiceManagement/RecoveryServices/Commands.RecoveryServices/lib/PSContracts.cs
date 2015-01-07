@@ -494,18 +494,25 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="acsNamespace">authenticating service  namespace</param>
         /// <param name="channelIntegrityKey">Agent Channel Integrity Key</param>
         /// <param name="cloudServiceName">cloud service name</param>
+        /// <param name="siteId">custom site Id</param>
+        /// <param name="siteName">custom site name</param>
         public ASRVaultCreds(
             string subscriptionId,
             string resourceName,
             string managementCert,
             AcsNamespace acsNamespace,
             string channelIntegrityKey,
-            string cloudServiceName)
+            string cloudServiceName,
+            string siteId,
+            string siteName)
             : base(subscriptionId, resourceName, managementCert, acsNamespace)
         {
             this.ChannelIntegrityKey = channelIntegrityKey;
             this.CloudServiceName = cloudServiceName;
             this.Version = Constants.VaultCredentialVersion;
+
+            this.SiteId = siteId != null ? siteId : string.Empty;
+            this.SiteName = siteName != null ? siteName : string.Empty;
         }
 
         #endregion
@@ -528,6 +535,18 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 2)]
         public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site Id
+        /// </summary>
+        [DataMember(Order = 3)]
+        public string SiteId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site name
+        /// </summary>
+        [DataMember(Order = 4)]
+        public string SiteName { get; set; }
         #endregion
     }
 
