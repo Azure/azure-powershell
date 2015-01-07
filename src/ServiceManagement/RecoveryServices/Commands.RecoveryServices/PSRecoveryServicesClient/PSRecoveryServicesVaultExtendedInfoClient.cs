@@ -39,11 +39,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="extendedInfoArgs">extended info to be created</param>
         /// <returns>Vault Extended Information</returns>
-        public async Task<ResourceExtendedInformation> CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
+        public OperationResponse CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
         {
-            ResourceExtendedInformationResponse response = await this.GetSiteRecoveryClient().VaultExtendedInfo.CreateExtendedInfoAsync(extendedInfoArgs, this.GetRequestHeaders(false));
-
-            return response.ResourceExtendedInformation;
+            return this.GetSiteRecoveryClient().VaultExtendedInfo.CreateExtendedInfo(extendedInfoArgs, this.GetRequestHeaders(false));
         }
     }
 }

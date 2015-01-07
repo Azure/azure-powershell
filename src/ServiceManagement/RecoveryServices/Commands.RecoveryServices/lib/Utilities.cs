@@ -15,6 +15,7 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Security.Cryptography;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -120,6 +121,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             path = Path.Combine(path, "Downloads");
 
             return path;
+        }
+
+        /// <summary>
+        /// Generate cryptographically random key of given bit size.
+        /// </summary>
+        /// <param name="size">size of the key to be generated</param>
+        /// <returns>the key</returns>
+        public static string GenerateRandomKey(int size)
+        {
+            byte[] key = new byte[(int)size / 8];
+            RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider();
+            crypto.GetBytes(key);
+            return Convert.ToBase64String(key);
         }
     }
 }

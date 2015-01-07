@@ -853,7 +853,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         /// Method to extract vault id
         /// </summary>
-        /// <param name="OutputItems">the output item from vault</param>
+        /// <param name="outputItems">the output item from vault</param>
         /// <returns>returns the vault id as string</returns>
         private string ParseVaultId(IList<OutputItem> outputItems)
         {

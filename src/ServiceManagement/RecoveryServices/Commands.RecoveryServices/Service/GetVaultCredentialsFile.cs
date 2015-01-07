@@ -14,15 +14,18 @@
 
 using System;
 using System.Management.Automation;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.HybridServicesCore;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
+using rpError = Microsoft.Azure.Commands.RecoveryServices.RestApiInfra;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -166,28 +169,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>key as string.</returns>
         private async Task<string> GetChannelIntegrityKey()
         {
-            ResourceExtendedInformation extendedInformation;
+            ResourceExtendedInformation extendedInformation = null;
             try
             {
                 extendedInformation = await RecoveryServicesClient.GetExtendedInfo();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                // TODO:devsri - Handle specific error rather than generic once
-                extendedInformation = new ResourceExtendedInformation();
+                try
+                {
+                    CloudException cloudException = exception as CloudException;
+
+                    if (cloudException != null && cloudException.Response != null && !string.IsNullOrEmpty(cloudException.Response.Content))
+                    {
+                        rpError.Error error = (rpError.Error)Utilities.Deserialize<rpError.Error>(cloudException.Response.Content);
+                        if (error.ErrorCode.Equals(RpErrorCode.ResourceExtendedInfoNotFound.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            extendedInformation = new ResourceExtendedInformation();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.HandleException(ex);
+                }
             }
 
             ResourceExtendedInfo extendedInfo = Utilities.Deserialize<ResourceExtendedInfo>(extendedInformation.ExtendedInfo);
 
             if (extendedInfo == null)
             {
-                ResourceExtendedInformationArgs extendedInfoArgs = extendedInfo.Translate();
-                extendedInformation = await RecoveryServicesClient.CreateExtendedInfo(extendedInfoArgs);
-
-                extendedInfo = Utilities.Deserialize<ResourceExtendedInfo>(extendedInformation.ExtendedInfo);
+                extendedInfo = this.CreateVaultExtendedInformatino();
             }
 
             return extendedInfo.ChannelIntegrityKey;
+        }
+
+        /// <summary>
+        /// Method to create the extended info for the vault.
+        /// </summary>
+        /// <returns>returns the object as task</returns>
+        private ResourceExtendedInfo CreateVaultExtendedInformatino()
+        {
+            ResourceExtendedInfo extendedInfo = null;
+            try
+            {
+                extendedInfo = new ResourceExtendedInfo();
+                extendedInfo.GenerateSecurityInfo();
+                ResourceExtendedInformationArgs extendedInfoArgs = extendedInfo.Translate();
+                RecoveryServicesClient.CreateExtendedInfo(extendedInfoArgs);
+            }
+            catch (Exception exception)
+            {
+                this.HandleException(exception);
+            }
+
+            return extendedInfo;
         }
 
         /// <summary>

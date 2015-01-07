@@ -80,6 +80,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
+    /// The types of crypto algorithms
+    /// </summary>
+    public enum CryptoAlgorithm
+    {
+        /// <summary>
+        /// The asymmetric key based RSA 2048 algorithm.
+        /// </summary>
+        RSAPKCS1V17,
+
+        /// <summary>
+        /// The asymmetric key based RSA 2048 algorithm.
+        /// </summary>
+        RSAPKCS1V15,
+
+        /// <summary>
+        /// The symmetric key based AES algorithm with key size 256 bits.
+        /// </summary>
+        AES256,
+
+        /// <summary>
+        /// The symmetric key based SHA 256 Algorithm
+        /// </summary>
+        HMACSHA256,
+
+        /// <summary>
+        /// When no algorithm is used.
+        /// </summary>
+        None
+    }
+
+    /// <summary>
+    /// The RP service error code that needs to be handled by portal.
+    /// </summary>
+    public enum RpErrorCode
+    {
+        /// <summary>
+        /// The error code sent by RP if the Resource extended info doesn't exists.
+        /// </summary>
+        ResourceExtendedInfoNotFound
+    }
+
+    /// <summary>
     /// Constant definition
     /// </summary>
     public class Constants
@@ -95,9 +137,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public const string VaultCredentialVersion = "1.0";
 
         /// <summary>
+        /// The version of Extended resource info.
+        /// </summary>
+        public const string VaultSecurityInfoVersion = "1.0";
+
+        /// <summary>
         /// extended information version.
         /// </summary>
-        public const string VaultExtendedInfVersion = "V2014_09";
+        public const string VaultExtendedInfoContractVersion = "V2014_09";
 
         /// <summary>
         /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Type
@@ -324,6 +371,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Status Suspended value.
         /// </summary>
         public static readonly string Suspended = "Suspended";
+    }
+}
+
+//// TODO: Remove this once we get nuget
+namespace Microsoft.Azure.Commands.RecoveryServices.RestApiInfra
+{
+    /// <summary>
+    /// Class to define the error for RP
+    /// </summary>
+        [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract(Namespace = "http://schemas.microsoft.com/wars")]
+    public class Error
+    {
+        /// <summary>
+        /// Gets or sets the value for the error as string.
+        /// </summary>
+        [DataMember]
+        public string ErrorCode { get; set; }
     }
 }
 
@@ -563,22 +631,31 @@ namespace Microsoft.Azure.Portal.HybridServicesCore
         /// <summary>
         /// Returns the Xml representation of this object.
         /// </summary>
-        /// <param name="etag">string to be used as unique identifier for the request</param>
         /// <returns>the xml as string</returns>
-        public ResourceExtendedInformationArgs Translate(string etag = null)
+        public ResourceExtendedInformationArgs Translate()
         {
-            string serializedInfo = Utilities.Serialize<ResourceExtendedInfo>(this);
-            if (string.IsNullOrEmpty(etag))
+            if (string.IsNullOrEmpty(this.Etag))
             {
-                etag = Guid.NewGuid().ToString();
+                this.Etag = Guid.NewGuid().ToString();
             }
 
+            string serializedInfo = Utilities.Serialize<ResourceExtendedInfo>(this);
             ResourceExtendedInformationArgs extendedInfoArgs = new ResourceExtendedInformationArgs(
-                Constants.VaultExtendedInfVersion,
+                Constants.VaultExtendedInfoContractVersion,
                 serializedInfo,
-                etag);
+                this.Etag);
 
             return extendedInfoArgs;
+        }
+
+        /// <summary>
+        /// Method to generate security information
+        /// </summary>
+        public void GenerateSecurityInfo()
+        {
+            this.ChannelIntegrityKey = Utilities.GenerateRandomKey(128);
+            this.Version = Constants.VaultSecurityInfoVersion;
+            this.Algorithm = CryptoAlgorithm.None.ToString();
         }
 
         #endregion
