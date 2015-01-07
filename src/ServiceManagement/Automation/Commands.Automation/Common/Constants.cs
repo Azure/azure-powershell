@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
 {
     public class Constants
     {
-
         public const string ClientIdentity = "PowerShell";
 
         public const char RunbookTagsSeparatorChar = ',';
@@ -34,5 +33,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
         // 12/31/9999 12:00:00 AM
         public static readonly DateTimeOffset DefaultScheduleExpiryTime = DateTimeOffset.MaxValue;
 
+        public const string JobStartedByParameterName = "MicrosoftApplicationManagementStartedBy";
     }
 }

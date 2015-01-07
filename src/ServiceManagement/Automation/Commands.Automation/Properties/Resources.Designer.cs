@@ -79,11 +79,38 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to At least one parameter provided is not expected by the runbook..
+        /// </summary>
+        internal static string InvalidRunbookParameters {
+            get {
+                return ResourceManager.GetString("InvalidRunbookParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Job having Id: {0} was not found..
         /// </summary>
         internal static string JobNotFound {
             get {
                 return ResourceManager.GetString("JobNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The job schedule was not found. Runbook name {0}. Schedule name {1}..
+        /// </summary>
+        internal static string JobScheduleNotFound {
+            get {
+                return ResourceManager.GetString("JobScheduleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The job schedule was not found. Job schedule id: {0}..
+        /// </summary>
+        internal static string JobScheduleWithIdNotFound {
+            get {
+                return ResourceManager.GetString("JobScheduleWithIdNotFound", resourceCulture);
             }
         }
         
@@ -169,11 +196,38 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The runbook has no published version. Runbook name {0}..
+        /// </summary>
+        internal static string RunbookHasNoPublishedVersion {
+            get {
+                return ResourceManager.GetString("RunbookHasNoPublishedVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Runbook was not found. Runbook name: {0}..
         /// </summary>
         internal static string RunbookNotFound {
             get {
                 return ResourceManager.GetString("RunbookNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The runbook parameter &quot;{0}&quot; cannot be serialized to JSON..
+        /// </summary>
+        internal static string RunbookParameterCannotBeSerializedToJson {
+            get {
+                return ResourceManager.GetString("RunbookParameterCannotBeSerializedToJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The runbook parameter &quot;{0}&quot; is mandatory..
+        /// </summary>
+        internal static string RunbookParameterValueRequired {
+            get {
+                return ResourceManager.GetString("RunbookParameterValueRequired", resourceCulture);
             }
         }
         
@@ -205,7 +259,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The varaible was not found. Variable name {0}..
+        ///   Looks up a localized string similar to The variable was not found. Variable name {0}..
         /// </summary>
         internal static string VariableNotFound {
             get {

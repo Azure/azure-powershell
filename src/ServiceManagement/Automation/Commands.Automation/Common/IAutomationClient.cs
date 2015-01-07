@@ -123,5 +123,25 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void SuspendJob(string automationAccountName, Guid id);
 
         #endregion
+
+        #region JobSchedules
+
+        JobSchedule GetJobSchedule(string automationAccountName, Guid jobScheduleId);
+
+        JobSchedule GetJobSchedule(string automationAccountName, string runbookName, string scheduleName);
+
+        IEnumerable<JobSchedule> ListJobSchedules(string automationAccountName);
+
+        IEnumerable<JobSchedule> ListJobSchedulesByRunbookName(string automationAccountName, string runbookName);
+
+        IEnumerable<JobSchedule> ListJobSchedulesByScheduleName(string automationAccountName, string scheduleName);
+
+        JobSchedule RegisterScheduledRunbook(string automationAccountName, string runbookName, string scheduleName, IDictionary parameters);
+
+        void UnregisterScheduledRunbook(string automationAccountName, Guid jobScheduleId);
+
+        void UnregisterScheduledRunbook(string automationAccountName, string runbookName, string scheduleName);
+
+        #endregion
     }
 }
