@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             
             if (time.HasValue)
             {
-                listParams.Time = time.Value.ToUniversalTime().ToString();
+                listParams.Time = this.FormatDateTime(time.Value);
             }
 
             if (streamType != null)
@@ -155,8 +155,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
 
             var jobStreams = this.automationManagementClient.JobStreams.List(automationAccountName, jobId, listParams).JobStreams;
-
-            return jobStreams.Select(this.CreateJobStreamFromJobStreamModel);
+            return jobStreams.Select( stream => this.CreateJobStreamFromJobStreamModel(stream, automationAccountName, jobId)).ToList();
         }
 
         public Variable CreateVariable(string automationAccountName, Variable variable)
@@ -314,7 +313,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                        response, response.Variables);
                });
 
-            var result = variables.Select((variable, autoamtionAccountName) => this.CreateVariableFromVariableModel(variable, automationAccountName)).ToList();
+            var result = variables.Select(variable => this.CreateVariableFromVariableModel(variable, automationAccountName)).ToList();
 
             IList<AutomationManagement.Models.EncryptedVariable> encryptedVariables = AutomationManagementClient.ContinuationTokenHandler(
                skipToken =>
@@ -325,7 +324,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                        response, response.EncryptedVariables);
                });
 
-            result.AddRange(encryptedVariables.Select((variable, autoamtionAccountName) => this.CreateVariableFromVariableModel(variable, automationAccountName)).ToList());
+            result.AddRange(encryptedVariables.Select(variable => this.CreateVariableFromVariableModel(variable, automationAccountName)).ToList());
 
             return result;
         }
@@ -344,10 +343,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         #region Private Methods
-        private JobStream CreateJobStreamFromJobStreamModel(AutomationManagement.Models.JobStream jobStream)
+        private JobStream CreateJobStreamFromJobStreamModel(AutomationManagement.Models.JobStream jobStream, string automationAccountName, Guid jobId)
         {
             Requires.Argument("jobStream", jobStream).NotNull();
-            return new JobStream(jobStream);
+            Requires.Argument("automationAccountName", automationAccountName).NotNull();
+            Requires.Argument("jobId", jobId).NotNull();
+            return new JobStream(jobStream, automationAccountName, jobId);
         }
 
         private Variable CreateVariableFromVariableModel(AutomationManagement.Models.Variable variable, string automationAccountName)
@@ -606,9 +607,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Delete", "Module", name, automationAccountName));
             }
         }
-
-
-
 
         public Job GetJob(string automationAccountName, Guid Id)
         {

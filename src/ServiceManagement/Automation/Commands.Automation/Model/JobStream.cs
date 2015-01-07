@@ -32,14 +32,16 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public JobStream(AutomationManagement.Models.JobStream jobStream)
+        public JobStream(AutomationManagement.Models.JobStream jobStream, string automationAccountName, Guid jobId )
         {
             Requires.Argument("jobStream", jobStream).NotNull();
 
             this.StreamId = jobStream.Properties.StreamId;
-            this.StreamType = jobStream.Properties.StreamType;
-            this.Summary = jobStream.Properties.Summary;
-            this.Time = jobStream.Properties.Time.ToLocalTime();
+            this.Type = jobStream.Properties.StreamType;
+            this.Text = jobStream.Properties.Summary;
+            this.Time = jobStream.Properties.Time;
+            this.AutomationAccountName = automationAccountName;
+            this.Id = jobId;
         }
 
         /// <summary>
@@ -48,6 +50,16 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public JobStream()
         {
         }
+
+        /// <summary>
+        /// Gets or sets the automation account name.
+        /// </summary>
+        public string AutomationAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Job Id.
+        /// </summary>
+        public Guid Id { get; set; }
 
         /// <summary>
         /// Gets or sets the stream id
@@ -60,13 +72,13 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public DateTimeOffset Time { get; set; }
 
         /// <summary>
-        /// Gets or sets the stream summary.
+        /// Gets or sets the stream text.
         /// </summary>
-        public string Summary { get; set; }
+        public string Text { get; set; }
 
         /// <summary>
         /// Gets or sets the stream Type.
         /// </summary>
-        public string StreamType { get; set; }
+        public string Type { get; set; }
     }
 }
