@@ -186,7 +186,6 @@
     <Compile Include="FunctionalTests\ExtensionTests\CustomScriptExtensionTests.cs" />
     <Compile Include="FunctionalTests\ExtensionTests\DscExtensionTests.cs" />
     <Compile Include="FunctionalTests\FunctionalTestCommonVhd.cs" />
-    <Compile Include="FunctionalTests\FunctionalTestCommonVM.cs" />
     <Compile Include="FunctionalTests\GenericIaaSExtensionTests.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\AddAzureCertificateCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\AddAzureDiskCmdletInfo.cs" />

@@ -27,5 +27,6 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
         public bool IsDefault { get; set; }
         public bool IsCurrent { get; set; }
         public string CurrentStorageAccountName { get; set; }
+        public string TenantId { get; set; }
     }
 }
