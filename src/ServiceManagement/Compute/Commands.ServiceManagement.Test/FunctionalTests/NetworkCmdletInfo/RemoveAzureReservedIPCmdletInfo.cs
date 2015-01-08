@@ -12,25 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo
 {
-    public class NewAzureVMConfigCmdletInfo : CmdletsInfo
+    public class RemoveAzureReservedIPCmdletInfo : CmdletsInfo
     {
-        public NewAzureVMConfigCmdletInfo(AzureVMConfigInfo vmConfig)
+        public RemoveAzureReservedIPCmdletInfo(string name, bool force)
         {
-            this.cmdletName = Utilities.NewAzureVMConfigCmdletName;
+            this.cmdletName = Utilities.RemoveAzureReservedIPCmdletName;
 
-            this.cmdletParams.Add(new CmdletParam("Name", vmConfig.vmName));
-            this.cmdletParams.Add(new CmdletParam("ImageName", vmConfig.imageName));
-            this.cmdletParams.Add(new CmdletParam("InstanceSize", vmConfig.vmSize));
-
-            if (!string.IsNullOrEmpty(vmConfig.mediaLocation))
-            {
-                this.cmdletParams.Add(new CmdletParam("MediaLocation", vmConfig.mediaLocation));
-            }
+            this.cmdletParams.Add(new CmdletParam("ReservedIPName", name));
+            if(force)
+            this.cmdletParams.Add(new CmdletParam("Force"));
         }
     }
 }

@@ -278,7 +278,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                         Label = this.DeploymentLabel ?? this.ServiceName,
                         VirtualNetworkName = this.VNetName,
                         Roles = { persistentVMs[0] },
-                        ReservedIPName = ReservedIPName,
+                        ReservedIPName = ReservedIPName
                     };
 
                     if (this.DnsSettings != null)
@@ -367,7 +367,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     RoleSize = persistentVMs[i].RoleSize,
                     ProvisionGuestAgent = persistentVMs[i].ProvisionGuestAgent,
                     ResourceExtensionReferences = persistentVMs[i].ProvisionGuestAgent != null && persistentVMs[i].ProvisionGuestAgent.Value ? persistentVMs[i].ResourceExtensionReferences : null,
-                    VMImageName = VMTuples[i].Item3 ? persistentVMs[i].VMImageName : null
+                    VMImageName = VMTuples[i].Item3 ? persistentVMs[i].VMImageName : null,
+                    MediaLocation = VMTuples[i].Item3 ? persistentVMs[i].MediaLocation : null
                 };
 
                 if (parameter.OSVirtualHardDisk != null)
@@ -428,7 +429,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 Label = persistentVM.Label,
                 ProvisionGuestAgent = persistentVM.ProvisionGuestAgent,
                 ResourceExtensionReferences = persistentVM.ProvisionGuestAgent != null && persistentVM.ProvisionGuestAgent.Value ? Mapper.Map<List<ResourceExtensionReference>>(persistentVM.ResourceExtensionReferences) : null,
-                VMImageName = isVMImage ? persistentVM.OSVirtualHardDisk.SourceImageName : null
+                VMImageName = isVMImage ? persistentVM.OSVirtualHardDisk.SourceImageName : null,
+                MediaLocation = isVMImage ? persistentVM.OSVirtualHardDisk.MediaLink : null
             };
 
             if (result.OSVirtualHardDisk != null)

@@ -750,11 +750,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 // Create a VNet
                 var vnetConfig = vmPowershellCmdlets.GetAzureVNetConfig(null);
-                if (vnetConfig.Count > 0)
-                {
-                    vmPowershellCmdlets.RunPSScript("Get-AzureService | Remove-AzureService -Force");
-                    Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.RemoveAzureVNetConfig(), "in use", 5, 30);
-                }
+                //if (vnetConfig.Count > 0)
+                //{
+                //    vmPowershellCmdlets.RunPSScript("Get-AzureService | Remove-AzureService -Force");
+                //    Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.RemoveAzureVNetConfig(), "in use", 5, 30);
+                //}
                 vmPowershellCmdlets.SetAzureVNetConfig(Directory.GetCurrentDirectory() + "\\VnetconfigWithLocation.netcfg");
                 var sites = vmPowershellCmdlets.GetAzureVNetSite(null);
                 var subnet = sites[0].Subnets.First().Name;
@@ -1558,7 +1558,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         /// <summary>
         ///
         /// </summary>
-        [TestMethod(), TestCategory(Category.Functional), TestCategory(Category.BVT), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet ((Get,Set,Remove)-AzureVNetConfig)")]
+        [TestMethod(), TestCategory(Category.Sequential), TestCategory(Category.BVT), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet ((Get,Set,Remove)-AzureVNetConfig)")]
         public void AzureVNetConfigTest()
         {
             StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
