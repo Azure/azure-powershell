@@ -572,6 +572,59 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         }
 
+        [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "IaaS"), Priority(0), Owner("hylee"), Description("Test the cmdlets (Get-AzureVMImage, New-AzureVMConfig, New-AzureVM, Get-AzureVM, Remove-AzureVM, etc.)")]
+        public void CreateVirtualMachineUsingVMImageWithDataDisks()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, DateTime.Now);
+            
+            try
+            {
+                // Try to get VM image with data disks
+                var vmImages = vmPowershellCmdlets.GetAzureVMImageReturningVMImages();
+                var vmImage = vmImages.Where(t => t.OS == "Windows" && t.DataDiskConfigurations != null && t.DataDiskConfigurations.Any()).FirstOrDefault();
+
+                // New-AzureService and verify with Get-AzureService
+                vmPowershellCmdlets.NewAzureService(serviceName, serviceName, locationName);
+                Assert.IsTrue(Verify.AzureService(serviceName, serviceName, locationName));
+
+                // New-AzureVMConfig
+                var vmName = Utilities.GetUniqueShortName(vmNamePrefix);
+                var vmSize = vmPowershellCmdlets.GetAzureRoleSize().Where(t => t.MaxDataDiskCount != null && t.MaxDataDiskCount >= vmImage.DataDiskConfigurations.Count()).Select(t => t.InstanceSize).First();
+                var currentStorage = vmPowershellCmdlets.GetAzureStorageAccount(defaultAzureSubscription.CurrentStorageAccountName).First();
+                var mediaLocationStr = ("mloc" + vmName).ToLower();
+                var vmMediaLocation = currentStorage.Endpoints.Where(p => p.Contains("blob")).First() + mediaLocationStr;
+                var azureVMConfigInfo = new AzureVMConfigInfo(vmName, vmSize, vmImage.ImageName, vmMediaLocation);
+                PersistentVM vm = vmPowershellCmdlets.NewAzureVMConfig(azureVMConfigInfo);
+
+                // Add-AzureProvisioningConfig
+                AzureProvisioningConfigInfo azureProvisioningConfig = new AzureProvisioningConfigInfo(OS.Windows, username, password, true);
+                azureProvisioningConfig.Vm = vm;
+                vm = vmPowershellCmdlets.AddAzureProvisioningConfig(azureProvisioningConfig);
+
+                // New-AzureVM
+                vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, null, null, null, null, null, null);
+                pass = true;
+
+                // Get-AzureVM
+                var returnedVM = vmPowershellCmdlets.GetAzureVM(vmName, serviceName);
+                Assert.IsTrue(returnedVM.VM.DataVirtualHardDisks != null && returnedVM.VM.DataVirtualHardDisks.Count() == vmImage.DataDiskConfigurations.Count());
+                Assert.IsTrue(returnedVM.VM.DataVirtualHardDisks.All(t => t.MediaLink.ToString().StartsWith(vmMediaLocation)));
+
+                // Remove-AzureVM
+                vmPowershellCmdlets.RemoveAzureVM(vmName, serviceName);
+
+                // Remove-AzureService
+                vmPowershellCmdlets.RemoveAzureService(serviceName, true);
+
+                pass = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                throw;
+            }
+        }
+
         private void UpdateVmImageUsingDiskConfigSetAndVerifyChanges(DataDiskConfigurationList diskConfig, string disk1Name, string disk2Name)
         {
             cahcing = GetAlternateHostCachingForOsDisk(cahcing.ToString());
