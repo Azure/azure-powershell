@@ -102,19 +102,22 @@
     <Compile Include="UnitTests\SetAzureAutomationRunbookDefinitionTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationCredentialTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationModuleTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationScheduleTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationCredentialTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationModuleTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationScheduleTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationVariableTest.cs" />
-    <Compile Include="UnitTests\RemoveAzureAutomationCredentialTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationModuleTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationScheduleTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationVariableTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationVariableTest.cs" />
+    <Compile Include="UnitTests\ResumeAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationCredentialTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationScheduleTest.cs" />
-    <Compile Include="UnitTests\GetAzureAutomationVariableTest.cs" />
+    <Compile Include="UnitTests\StopAzureAutomationJobTest.cs" />
+    <Compile Include="UnitTests\SuspendAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\StartAzureAutomationRunbookTest.cs" />
   </ItemGroup>
   <ItemGroup>

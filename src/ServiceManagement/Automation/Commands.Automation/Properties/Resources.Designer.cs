@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The credential was not found. Credential name: {0}..
+        /// </summary>
+        internal static string CredentialNotFound {
+            get {
+                return ResourceManager.GetString("CredentialNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Invalid runbook parameters..
         /// </summary>
         internal static string InvalidRunbookParameters {
@@ -96,6 +105,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to The module was not found. Module name: {0}..
+        /// </summary>
+        internal static string ModuleNotFound {
+            get {
+                return ResourceManager.GetString("ModuleNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to The job schedule was not found. Runbook name {0}. Schedule name {1}..
         /// </summary>
@@ -192,6 +210,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string RemovingAzureAutomationResourceWarning {
             get {
                 return ResourceManager.GetString("RemovingAzureAutomationResourceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource exists..
+        /// </summary>
+        internal static string ResourceExists {
+            get {
+                return ResourceManager.GetString("ResourceExists", resourceCulture);
             }
         }
         
