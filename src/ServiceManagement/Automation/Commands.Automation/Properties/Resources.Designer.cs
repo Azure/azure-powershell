@@ -79,11 +79,29 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The credential was not found. Credential name: {0}..
+        /// </summary>
+        internal static string CredentialNotFound {
+            get {
+                return ResourceManager.GetString("CredentialNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Job having Id: {0} was not found..
         /// </summary>
         internal static string JobNotFound {
             get {
                 return ResourceManager.GetString("JobNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The module was not found. Module name: {0}..
+        /// </summary>
+        internal static string ModuleNotFound {
+            get {
+                return ResourceManager.GetString("ModuleNotFound", resourceCulture);
             }
         }
         
@@ -129,6 +147,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string RemovingAzureAutomationResourceWarning {
             get {
                 return ResourceManager.GetString("RemovingAzureAutomationResourceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource exists..
+        /// </summary>
+        internal static string ResourceExists {
+            get {
+                return ResourceManager.GetString("ResourceExists", resourceCulture);
             }
         }
         

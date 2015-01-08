@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Module GetModule(string automationAccountName, string name);
 
-        Module UpdateModule(string automationAccountName, IDictionary<string, string> tags, string name, Uri contentLink);
+        Module UpdateModule(string automationAccountName, IDictionary<string, string> tags, string name);
 
         IEnumerable<Module> ListModules(string automationAccountName);
 
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Job GetJob(string automationAccountName, Guid id);
 
-        IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTime? startTime, DateTime? endTime);
+        IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTime? startTime, DateTime? endTime, string jobStatus);
 
-        IEnumerable<Job> ListJobs(string automationAccountName, DateTime? startTime, DateTime? endTime);
+        IEnumerable<Job> ListJobs(string automationAccountName, DateTime? startTime, DateTime? endTime, string jobStatus);
 
         void ResumeJob(string automationAccountName, Guid id);
 

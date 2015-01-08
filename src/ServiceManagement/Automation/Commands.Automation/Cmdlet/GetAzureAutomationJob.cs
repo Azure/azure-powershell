@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.Automation.Common;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets a Credential for automation.
+    /// Gets a Job object for automation.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureAutomationJob", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Microsoft.Azure.Commands.Automation.Model.Job))]
@@ -39,20 +39,28 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
          /// Gets or sets the runbook name of the job. 
          /// </summary> 
          [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, HelpMessage = "The runbook name of the job.")] 
-         public string RunbookName { get; set; } 
+         public string RunbookName { get; set; }
+
+         /// <summary> 
+         /// Gets or sets the runbook name of the job. 
+         /// </summary> 
+         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = false, HelpMessage = "The runbook name of the job.")]
+         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter jobs so that job start time >= StartTime.")]
+         [ValidateSet("Completed", "Failed", "Queued", "Starting", "Resuming", "Running", "Stopped", "Stopping", "Suspended", "Suspending", "Activating", "Blocked", "Removing")]
+         public string Status { get; set; } 
 
          /// <summary> 
          /// Gets or sets the start time filter. 
          /// </summary> 
          [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = false, HelpMessage = "Filter jobs so that job start time >= StartTime.")]
-         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter jobs so that job start time >= StartTime.")] 
+         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter jobs so that job start time >= StartTime.")]
          public DateTime? StartTime { get; set; } 
  
          /// <summary> 
          /// Gets or sets the end time filter. 
          /// </summary> 
          [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = false, HelpMessage = "Filter jobs so that job end time <= EndTime.")]
-         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter jobs so that job end time <= EndTime.")] 
+         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter jobs so that job end time <= EndTime.")]
          public DateTime? EndTime { get; set; } 
 
         /// <summary>
@@ -71,12 +79,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
              else if (this.RunbookName != null) 
              { 
                  // ByRunbookName 
-                 jobs = this.AutomationClient.ListJobsByRunbookName(this.AutomationAccountName, this.RunbookName, this.StartTime, this.EndTime); 
+                 jobs = this.AutomationClient.ListJobsByRunbookName(this.AutomationAccountName, this.RunbookName, this.StartTime, this.EndTime, this.Status); 
              } 
              else 
              { 
                  // ByAll 
-                 jobs = this.AutomationClient.ListJobs(this.AutomationAccountName, this.StartTime, this.EndTime); 
+                 jobs = this.AutomationClient.ListJobs(this.AutomationAccountName, this.StartTime, this.EndTime, this.Status); 
              } 
  
              this.WriteObject(jobs, true); 

@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Name = runbook.Name;
             this.CreationTime = runbook.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = runbook.Properties.LastModifiedTime.ToLocalTime();
-            this.LastModifiedBy = runbook.Properties.LastModifiedBy;
             this.Description = runbook.Properties.Description;
             // this.Tags = runbook.Tags != null ? runbook.Tags.Split(Constants.RunbookTagsSeparatorChar) : new string[] { };
             this.LogVerbose = runbook.Properties.LogVerbose;
