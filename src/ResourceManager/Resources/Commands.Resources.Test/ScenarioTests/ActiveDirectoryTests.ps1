@@ -432,3 +432,37 @@ function Test-GetADUserWithBadSearchString
     # Assert
     Assert-Null($users)
 }
+
+<#
+.SYNOPSIS
+Tests Creating and deleting application.
+#>
+function Test-NewADApplication
+{
+    # Setup
+    $displayName = getAssetName
+    $homePage = "http://" + $displayName + ".com"
+    $identifierUri = "http://" + $displayName
+
+    # Test
+    $application = New-AzureADApplication -DisplayName $displayName -HomePage $homePage -IdentifierUris $identifierUri
+
+    # Assert
+    Assert-NotNull $application
+}
+
+<#
+.SYNOPSIS
+Tests Creating and deleting service principal.
+#>
+function Test-NewADServicePrincipal
+{
+    param([string]$applicationId)
+
+    # Test
+    $servicePrincipal = New-AzureADServicePrincipal -ApplicationId $applicationId
+
+    # Assert
+    Assert-NotNull $servicePrincipal
+}
+
