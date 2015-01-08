@@ -14,17 +14,18 @@
 
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PreviewCmdletInfo
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo
 {
-    public class RemoveAzureReservedIPCmdletInfo : CmdletsInfo
+    public class GetAzureReservedIPCmdletInfo : CmdletsInfo
     {
-        public RemoveAzureReservedIPCmdletInfo(string name, bool force)
+        public GetAzureReservedIPCmdletInfo(string name)
         {
-            this.cmdletName = Utilities.RemoveAzureReservedIPCmdletName;
+            this.cmdletName = Utilities.GetAzureReservedIPCmdletName;
 
-            this.cmdletParams.Add(new CmdletParam("ReservedIPName", name));
-            if(force)
-            this.cmdletParams.Add(new CmdletParam("Force"));
+            if (!string.IsNullOrEmpty(name))
+            {
+                this.cmdletParams.Add(new CmdletParam("ReservedIPName", name));
+            }
         }
     }
 }

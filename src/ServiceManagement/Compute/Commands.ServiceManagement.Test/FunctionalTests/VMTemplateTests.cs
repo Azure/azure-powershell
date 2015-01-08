@@ -754,6 +754,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public static void ClassCleanup()
         {
         }
+
         #region Helper Methods
         public void VerifyVMImage(string vmImageName, OS ImageFamily, string imageLabel, string osState, HostCaching hostCaching, DataDiskConfigurationList diskConfigs)
         {

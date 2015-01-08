@@ -638,12 +638,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 PersistentVM persistentVM2 = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo2);
 
                 PersistentVM[] VMs = { persistentVM1, persistentVM2 };
-                vmPowershellCmdlets.NewAzureVM(svcName, VMs);
+                vmPowershellCmdlets.NewAzureVM(svcName, VMs, null, true);
                 Console.WriteLine("The VM is successfully created: {0}", vmName1);
                 Console.WriteLine("The VM is successfully created: {0}", vmName2);
-
-                WaitForReadyState(svcName, vmName1);
-                WaitForReadyState(svcName, vmName2);
 
                 // Stop and deallocate the VMs
                 vmPowershellCmdlets.StopAzureVM("*", svcName, false, true);
@@ -741,13 +738,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 PersistentVM[] VMs = { persistentVM1 };
 
                 Utilities.RecordTimeTaken(ref prevTime);
-                vmPowershellCmdlets.NewAzureVM(svcName, VMs);
+                vmPowershellCmdlets.NewAzureVM(svcName, VMs, null, true);
                 Utilities.RecordTimeTaken(ref prevTime);
 
                 Console.WriteLine("The VM is successfully created: {0}", vmName1);
-
-                WaitForReadyState(svcName, vmName1);
-
                 Console.WriteLine(vmPowershellCmdlets.GetAzureVM(vmName1, svcName).InstanceStatus);
 
                 Utilities.RecordTimeTaken(ref prevTime);
@@ -807,14 +801,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 PersistentVM[] VMs = { persistentVM1, persistentVM2 };
 
                 Utilities.RecordTimeTaken(ref prevTime);
-                vmPowershellCmdlets.NewAzureVM(svcName, VMs);
+                vmPowershellCmdlets.NewAzureVM(svcName, VMs, null, true);
                 Utilities.RecordTimeTaken(ref prevTime);
 
                 Console.WriteLine("The VM is successfully created: {0}", vmName1);
                 Console.WriteLine("The VM is successfully created: {0}", vmName2);
-
-                WaitForReadyState(svcName, vmName1);
-                WaitForReadyState(svcName, vmName2);
 
                 Console.WriteLine(vmPowershellCmdlets.GetAzureVM(vmName1, svcName).InstanceStatus);
                 Console.WriteLine(vmPowershellCmdlets.GetAzureVM(vmName2, svcName).InstanceStatus);
@@ -831,8 +822,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 // Start VM1 one only using wildcard name
                 Utilities.RecordTimeTaken(ref prevTime);
-                Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.StartAzureVM(vm1WildcardName, svcName), "HTTP Status Code: 409", 10, 60);
-                //StartAzureVMs(vm1WildcardName, svcName);
+                Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.StartAzureVM(vm1WildcardName, svcName), "HTTP Status Code: 409", 10, 60);                
                 Utilities.RecordTimeTaken(ref prevTime);
 
                 WaitForReadyState(svcName, vmName1);
@@ -841,7 +831,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // Stop all VM's
                 Utilities.RecordTimeTaken(ref prevTime);
                 Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.StopAzureVM("*", svcName, true, true), "HTTP Status Code: 409", 10, 60);
-                //StopAzureVMs("*", svcName, true, true);
                 Utilities.RecordTimeTaken(ref prevTime);
 
                 WaitForStoppedState(svcName, vmName1);
@@ -853,7 +842,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 //Start all VM's
                 Utilities.RecordTimeTaken(ref prevTime);
                 Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.StartAzureVM("*", svcName), "HTTP Status Code: 409", 10, 60);
-                //StartAzureVMs("*", svcName);
                 Utilities.RecordTimeTaken(ref prevTime);
 
                 WaitForReadyState(svcName, vmName1);
@@ -900,12 +888,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 PersistentVM[] VMs = { persistentVM1 };
 
                 Utilities.RecordTimeTaken(ref prevTime);
-                vmPowershellCmdlets.NewAzureVM(svcName, VMs);
+                vmPowershellCmdlets.NewAzureVM(svcName, VMs, null, true);
                 Utilities.RecordTimeTaken(ref prevTime);
 
                 Console.WriteLine("The VM is successfully created: {0}", vmName1);
-
-                WaitForReadyState(svcName, vmName1);
 
                 Console.WriteLine(vmPowershellCmdlets.GetAzureVM(vmName1, svcName).InstanceStatus);
 
@@ -990,14 +976,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 PersistentVM[] VMs = { persistentVM1, persistentVM2 };
 
                 Utilities.RecordTimeTaken(ref prevTime);
-                vmPowershellCmdlets.NewAzureVM(svcName, VMs);
+                vmPowershellCmdlets.NewAzureVM(svcName, VMs, null, true);
                 Utilities.RecordTimeTaken(ref prevTime);
 
                 Console.WriteLine("The VM is successfully created: {0}", vmName1);
                 Console.WriteLine("The VM is successfully created: {0}", vmName2);
-
-                WaitForReadyState(svcName, vmName1);
-                WaitForReadyState(svcName, vmName2);
 
                 Console.WriteLine(vmPowershellCmdlets.GetAzureVM(vmName1, svcName).InstanceStatus);
                 Console.WriteLine(vmPowershellCmdlets.GetAzureVM(vmName2, svcName).InstanceStatus);
@@ -1005,8 +988,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // Stop VM1 one only using wildcard name
                 string vm1WildcardName = vmName1.Replace(prefixVMName, "*");
                 Utilities.RecordTimeTaken(ref prevTime);
-                Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.StopAzureVM(vm1WildcardName, svcName, false, true), "HTTP Status Code: 409", 10, 60);
-                //StopAzureVMs(vm1WildcardName, svcName, false, true);
+                Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.StopAzureVM(vm1WildcardName, svcName, false, true), "HTTP Status Code: 409", 10, 60);                
                 Utilities.RecordTimeTaken(ref prevTime);
 
                 WaitForStoppedState(svcName, vmName1);
@@ -1015,7 +997,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // Start VM1 one only using wildcard name
                 Utilities.RecordTimeTaken(ref prevTime);
                 Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.StartAzureVM(vm1WildcardName, svcName), "HTTP Status Code: 409", 10, 60);
-                //StartAzureVMs(vm1WildcardName, svcName);
                 Utilities.RecordTimeTaken(ref prevTime);
 
                 WaitForReadyState(svcName, vmName1);
@@ -1032,8 +1013,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Assert.IsTrue(CheckRoleInstanceState(svcName, vmName2, new string[] { stoppedDeallocatedState }));
 
                 Utilities.RecordTimeTaken(ref prevTime);
-                Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.StartAzureVM("*", svcName), "HTTP Status Code: 409", 10, 60);
-                //StartAzureVMs("*", svcName);
+                Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.StartAzureVM("*", svcName), "HTTP Status Code: 409", 10, 60);                
                 Utilities.RecordTimeTaken(ref prevTime);
 
                 WaitForReadyState(svcName, vmName1);
@@ -1112,7 +1092,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             int totalWaitTimeInSeconds = 0;
             for (int i = 0; i < maxTry; i++)
             {
-                vmStatus = vmPowershellCmdlets.GetAzureVM(vmName, svcName).InstanceStatus;
+                var vm = vmPowershellCmdlets.GetAzureVM(vmName, svcName);
+                if (vm == null)
+                {
+                    Assert.Fail("The VM is deleted!!!");
+                }
+                else
+                {
+                    vmStatus = vmPowershellCmdlets.GetAzureVM(vmName, svcName).InstanceStatus;
+                }
 
                 if (exps.Contains(vmStatus))
                 {

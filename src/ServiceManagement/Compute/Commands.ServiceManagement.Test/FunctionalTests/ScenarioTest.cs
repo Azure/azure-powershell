@@ -759,7 +759,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         /// AzureVNetGatewayTest()
         /// </summary>
         /// Note: Create a VNet, a LocalNet from the portal without creating a gateway.
-        [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"),
+        [TestMethod(), TestCategory(Category.Sequential), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"),
         Description("Test the cmdlet ((Set,Remove)-AzureVNetConfig, Get-AzureVNetSite, (New,Get,Set,Remove)-AzureVNetGateway, Get-AzureVNetConnection)")]
         public void VNetTest()
         {

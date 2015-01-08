@@ -219,7 +219,6 @@
     <Message Importance="high" Text="Running AzureRT all tests..." />
 
     <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
-    <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
     <Exec
       Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:Sequential /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
       ContinueOnError="true" />
@@ -228,7 +227,6 @@
   <Target Name="AzureRTPar" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT all tests..." />
 
-    <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
     <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
     <Exec
       Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTAllTestFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
