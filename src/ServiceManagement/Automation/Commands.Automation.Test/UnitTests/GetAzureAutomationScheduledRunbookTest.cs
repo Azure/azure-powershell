@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             string accountName = "automation";
             string runbookName = "runbook";
 
-            this.mockAutomationClient.Setup(f => f.ListJobSchedulesByRunbookName(accountName, runbookName)).Returns((string a) => new List<JobSchedule>());
+            this.mockAutomationClient.Setup(f => f.ListJobSchedulesByRunbookName(accountName, runbookName)).Returns((string a, string b) => new List<JobSchedule>());
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             string accountName = "automation";
             string scheduleName = "schedule";
 
-            this.mockAutomationClient.Setup(f => f.ListJobSchedulesByScheduleName(accountName, scheduleName)).Returns((string a) => new List<JobSchedule>());
+            this.mockAutomationClient.Setup(f => f.ListJobSchedulesByScheduleName(accountName, scheduleName)).Returns((string a, string b) => new List<JobSchedule>());
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;

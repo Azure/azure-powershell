@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation job schedules for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId)]
-    [OutputType(typeof(Schedule))]
-    class GetAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [OutputType(typeof(JobSchedule))]
+    public class GetAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the job id.

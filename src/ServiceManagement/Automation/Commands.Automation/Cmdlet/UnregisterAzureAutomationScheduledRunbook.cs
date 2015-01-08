@@ -13,10 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -38,7 +40,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookNameAndScheduleName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The runbook name.")]
         [ValidateNotNullOrEmpty]
         [Alias("RunbookName")]
@@ -47,7 +49,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the schedule that will be used to start the runbook.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookNameAndScheduleName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the schedule on which the runbook will be started.")]
         [ValidateNotNullOrEmpty]
         public string ScheduleName { get; set; }
@@ -64,16 +66,24 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            if (this.ParameterSetName == AutomationCmdletParameterSets.ByJobScheduleId)
-            {
-                this.AutomationClient.UnregisterScheduledRunbook(
-                    this.AutomationAccountName, this.Id.Value);
-            }
-            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookName)
-            {
-                this.AutomationClient.UnregisterScheduledRunbook(
-                    this.AutomationAccountName, this.Name, this.ScheduleName);
-            }
+            this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationJobScheduleWarning),
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationJobScheduleDescription),
+                this.Id.HasValue ? this.Id.Value.ToString() : this.Name,
+                () =>
+                    {
+                        if (this.ParameterSetName == AutomationCmdletParameterSets.ByJobScheduleId)
+                        {
+                            this.AutomationClient.UnregisterScheduledRunbook(
+                                this.AutomationAccountName, this.Id.Value);
+                        }
+                        else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookNameAndScheduleName)
+                        {
+                            this.AutomationClient.UnregisterScheduledRunbook(
+                                this.AutomationAccountName, this.Name, this.ScheduleName);
+                        }
+                    });
         }
     }
 }

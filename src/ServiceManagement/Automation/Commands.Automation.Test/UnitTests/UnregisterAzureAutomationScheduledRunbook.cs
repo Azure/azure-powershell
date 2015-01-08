@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.Name = runbookName;
             this.cmdlet.ScheduleName = scheduleName;
-            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByRunbookName);
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByRunbookNameAndScheduleName);
             this.cmdlet.Force = true;
             this.cmdlet.ExecuteCmdlet();
 

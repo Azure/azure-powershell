@@ -101,7 +101,7 @@
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationRunbookDefinition.cs" />
-    <Compile Include="Cmdlet\GetAzureAutomationScheduledRunbook .cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationScheduledRunbook.cs" />
     <Compile Include="Cmdlet\RegisterAzureAutomationScheduledRunbook.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\PublishAzureAutomationRunbook.cs" />

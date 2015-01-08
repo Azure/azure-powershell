@@ -209,4 +209,12 @@
     <value>The runbook parameter "{0}" is mandatory.</value>
     <comment>Automation</comment>
   </data>
+  <data name="RemoveAzureAutomationJobScheduleDescription" xml:space="preserve">
+    <value>Disassociating the Azure Automation runbook and schedule.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationJobScheduleWarning" xml:space="preserve">
+    <value>Are you sure you want to disassociate the Azure Automation runbook and schedule?</value>
+    <comment>Automation</comment>
+  </data>
 </root>

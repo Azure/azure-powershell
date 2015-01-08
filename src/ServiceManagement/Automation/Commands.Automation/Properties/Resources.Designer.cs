@@ -124,6 +124,24 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disassociating the Azure Automation runbook and schedule..
+        /// </summary>
+        internal static string RemoveAzureAutomationJobScheduleDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureAutomationJobScheduleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to disassociate the Azure Automation runbook and schedule?.
+        /// </summary>
+        internal static string RemoveAzureAutomationJobScheduleWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureAutomationJobScheduleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing the Azure Automation {0}..
         /// </summary>
         internal static string RemoveAzureAutomationResourceDescription {

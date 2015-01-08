@@ -887,7 +887,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             foreach (var js in jobSchedules)
             {
-                if (js.RunbookName == runbookName && js.ScheduleName == scheduleName)
+                if (String.Equals(js.RunbookName, runbookName, StringComparison.OrdinalIgnoreCase) && 
+                    String.Equals(js.ScheduleName, scheduleName, StringComparison.OrdinalIgnoreCase))
                 {
                     jobSchedule = this.GetJobSchedule(automationAccountName, new Guid(js.Id));
                     jobScheduleFound = true;
@@ -925,7 +926,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             IEnumerable<JobSchedule> jobSchedulesOfRunbook = new List<JobSchedule>();
 
-            jobSchedulesOfRunbook = jobSchedules.Where(js => js.RunbookName == runbookName);
+            jobSchedulesOfRunbook = jobSchedules.Where(js => String.Equals(js.RunbookName, runbookName, StringComparison.OrdinalIgnoreCase));
 
             return jobSchedulesOfRunbook;
         }
@@ -936,7 +937,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             IEnumerable<JobSchedule> jobSchedulesOfSchedule = new List<JobSchedule>();
 
-            jobSchedulesOfSchedule = jobSchedules.Where(js => js.ScheduleName == scheduleName);
+            jobSchedulesOfSchedule = jobSchedules.Where(js => String.Equals(js.ScheduleName, scheduleName, StringComparison.OrdinalIgnoreCase));
 
             return jobSchedulesOfSchedule;
         }
@@ -1094,7 +1095,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
         private IDictionary<string, RunbookParameter> ListRunbookParameters(string automationAccountName, string runbookName)
         {
             Runbook runbook = this.GetRunbook(automationAccountName, runbookName);
-            if (runbook.State != Microsoft.Azure.Management.Automation.Models.RunbookState.New)
+            if (0 == String.Compare(runbook.State, RunbookState.New, CultureInfo.InvariantCulture,
+                     CompareOptions.IgnoreCase))
             {
                 throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.RunbookHasNoPublishedVersion, runbookName));
             }

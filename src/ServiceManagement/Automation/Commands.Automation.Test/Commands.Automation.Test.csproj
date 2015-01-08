@@ -94,7 +94,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTests\GetAzureAutomationRunbookDefinitionTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationRunbookTest.cs" />
-    <Compile Include="UnitTests\GetAzureAutomationScheduledRunbook.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationScheduledRunbookTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\PublishAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\RegisterAzureAutomationScheduledRunbook.cs" />
