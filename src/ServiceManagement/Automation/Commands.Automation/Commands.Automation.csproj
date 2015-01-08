@@ -100,6 +100,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
+    <Compile Include="Cmdlet\NewAzureAutomationAccount.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationRunbookDefinition.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\PublishAzureAutomationRunbook.cs" />
@@ -141,6 +143,7 @@
     <Compile Include="DataContract\ErrorResponse.cs" />
     <Compile Include="DataContract\OdataError.cs" />
     <Compile Include="DataContract\OdataErrorMessage.cs" />
+    <Compile Include="Model\AutomationAccount.cs" />
     <Compile Include="Model\JobStream.cs" />
     <Compile Include="Model\Credential.cs" />
     <Compile Include="Model\Job.cs" />

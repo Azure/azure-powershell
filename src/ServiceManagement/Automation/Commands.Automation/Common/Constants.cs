@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Management.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Common
@@ -30,11 +31,19 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const string Draft = "Draft";
 
+        public const string AutomationServicePrefix = "OaasCS";
+
         public const string JobStartedByParameterName = "JobStartedBy";
 
         // default schedule expiry time for daily schedule, consistent with UX
         // 12/31/9999 12:00:00 AM
         public static readonly DateTimeOffset DefaultScheduleExpiryTime = DateTimeOffset.MaxValue;
 
+        public class AutomationAccountState
+        {
+            public const string Ready = "Ready";
+
+            public const string Suspended = "Suspended";
+        }
     }
 }

@@ -92,6 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\NewAzureAutomationAccountTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationAccountTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationRunbookDefinitionTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationRunbookTest.cs" />

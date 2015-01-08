@@ -197,4 +197,8 @@
     <value>Runbook mandatory parameter not specified. Parameter name {0}.</value>
     <comment>Automation</comment>
   </data>
+  <data name="AutomationAccountAlreadyExists" xml:space="preserve">
+    <value>The Automation account already exists</value>
+    <comment>Automation</comment>
+  </data>
 </root>

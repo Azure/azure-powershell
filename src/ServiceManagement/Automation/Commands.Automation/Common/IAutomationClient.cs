@@ -125,5 +125,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void SuspendJob(string automationAccountName, Guid id);
 
         #endregion
+
+        #region Accounts
+
+        IEnumerable<AutomationAccount> ListAutomationAccounts(string automationAccountName, string location);
+
+        AutomationAccount CreateAutomationAccount(string automationAccountName, string location);
+
+        #endregion
     }
 }

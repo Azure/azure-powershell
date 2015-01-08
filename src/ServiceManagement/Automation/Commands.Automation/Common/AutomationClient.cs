@@ -19,6 +19,8 @@ using System.Globalization;
 using System.Linq;
 using System.IO;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
@@ -143,7 +145,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
-        #region RunbookOperations
+        #region Runbook Operations
 
         public Runbook GetRunbook(string automationAccountName, string runbookName)
         {
@@ -187,7 +189,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Draft = new RunbookDraft()
             };
 
-            var rdcparam = new RunbookCreateDraftParameters() { Name = runbookName, Properties = rdcprop, Location = "" };
+            var rdcparam = new RunbookCreateDraftParameters() { Name = runbookName, Properties = rdcprop, Tags = tags };
 
             this.automationManagementClient.Runbooks.CreateWithDraftParameters(automationAccountName, rdcparam);
 
@@ -878,6 +880,102 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region Account Operations
+
+        public IEnumerable<AutomationAccount> ListAutomationAccounts(string automationAccountName, string location)
+        {
+            if (automationAccountName != null)
+            {
+                Requires.Argument("AutomationAccountName", automationAccountName).ValidAutomationAccountName();
+            }
+
+            var automationAccounts = new List<AutomationAccount>();
+            var cloudServices = new List<CloudService>(this.automationManagementClient.CloudServices.List().CloudServices);
+
+            foreach (var cloudService in cloudServices)
+            {
+                automationAccounts.AddRange(cloudService.Resources.Select(resource => new AutomationAccount(cloudService, resource)));
+            }
+
+            // RDFE does not support server-side filtering, hence we filter on the client-side.
+            if (automationAccountName != null)
+            {
+                automationAccounts = automationAccounts.Where(account => string.Equals(account.AutomationAccountName, automationAccountName, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                if (!automationAccounts.Any())
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.AutomationAccountNotFound));
+                }
+            }
+
+            if (location != null)
+            {
+                automationAccounts = automationAccounts.Where(account => string.Equals(account.Location, location, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            return automationAccounts;
+        }
+
+        public AutomationAccount CreateAutomationAccount(string automationAccountName, string location)
+        {
+            
+            Requires.Argument("AutomationAccountName", automationAccountName).ValidAutomationAccountName();
+
+            try
+            {
+                var existingAccount = this.ListAutomationAccounts(automationAccountName, location);
+
+                if (existingAccount != null)
+                {
+                    throw new ResourceCommonException(typeof (AutomationAccount),
+                        string.Format(CultureInfo.CurrentCulture, Resources.AutomationAccountAlreadyExists,
+                            automationAccountName));
+                }
+            }
+            catch (ArgumentException)
+            {
+                // ArgumentException is thrown when account does not exists, so ignore it
+            }
+
+            // Generate cloud service name
+            var generatedCsName = GetCloudServiceName(automationAccountName, location);
+
+            try
+            {
+                this.automationManagementClient.CloudServices.Get(generatedCsName);
+            }
+            catch (CloudException e)
+            {
+                // Clould Service does not exists, hence create it
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    this.automationManagementClient.CloudServices.Create(
+                        new CloudServiceCreateParameters()
+                        {
+                            Name = generatedCsName,
+                            GeoRegion = location,
+                            Label = generatedCsName,
+                            Description = "Cloud Service via PowerShell client"
+                        });
+                }
+            }
+
+            this.automationManagementClient.AutomationAccounts.Create(
+                generatedCsName,
+                new AutomationAccountCreateParameters()
+                {
+                    Name = automationAccountName,
+                    CloudServiceSettings = new CloudServiceSettings
+                    {
+                           GeoRegion = location
+                    },
+                });
+
+            return this.ListAutomationAccounts(automationAccountName, location).FirstOrDefault();
+        }
+
+        #endregion
+
         #region Private Methods
 
         private JobStream CreateJobStreamFromJobStreamModel(AutomationManagement.Models.JobStream jobStream)
@@ -1036,6 +1134,44 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
 
             return filteredParameters;
+        }
+
+        private string GetCloudServiceName(string subscriptionId, string region)
+        {
+            string hashedSubId = string.Empty;
+            using (SHA256 sha256 = SHA256Managed.Create())
+            {
+                hashedSubId = Base32NoPaddingEncode(sha256.ComputeHash(UTF8Encoding.UTF8.GetBytes(subscriptionId)));
+            }
+
+            return string.Format(CultureInfo.InvariantCulture, "{0}-{1}-{2}", Constants.AutomationServicePrefix, hashedSubId, region.Replace(' ', '-'));
+        }
+
+        private string Base32NoPaddingEncode(byte[] data)
+        {
+            const string base32StandardAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+
+            StringBuilder result = new StringBuilder(Math.Max((int)Math.Ceiling(data.Length * 8 / 5.0), 1));
+
+            byte[] emptyBuffer = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+            byte[] workingBuffer = new byte[8];
+
+            // Process input 5 bytes at a time
+            for (int i = 0; i < data.Length; i += 5)
+            {
+                int bytes = Math.Min(data.Length - i, 5);
+                Array.Copy(emptyBuffer, workingBuffer, emptyBuffer.Length);
+                Array.Copy(data, i, workingBuffer, workingBuffer.Length - (bytes + 1), bytes);
+                Array.Reverse(workingBuffer);
+                ulong val = BitConverter.ToUInt64(workingBuffer, 0);
+
+                for (int bitOffset = ((bytes + 1) * 8) - 5; bitOffset > 3; bitOffset -= 5)
+                {
+                    result.Append(base32StandardAlphabet[(int)((val >> bitOffset) & 0x1f)]);
+                }
+            }
+
+            return result.ToString();
         }
 
         #endregion

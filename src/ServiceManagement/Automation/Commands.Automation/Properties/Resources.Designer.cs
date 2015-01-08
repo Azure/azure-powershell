@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Automation account already exists.
+        /// </summary>
+        internal static string AutomationAccountAlreadyExists {
+            get {
+                return ResourceManager.GetString("AutomationAccountAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Automation account was not found..
         /// </summary>
         internal static string AutomationAccountNotFound {
