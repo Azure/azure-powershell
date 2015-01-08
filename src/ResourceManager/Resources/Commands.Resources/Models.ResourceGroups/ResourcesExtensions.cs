@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return psGalleryItem;
         }
 
-        // TODO: <insights issue url>
+        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
         //public static PSDeploymentEventData ToPSDeploymentEventData(this EventData eventData)
         //{
         //    if (eventData == null)
