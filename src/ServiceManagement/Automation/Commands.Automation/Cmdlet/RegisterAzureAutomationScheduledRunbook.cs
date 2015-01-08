@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
@@ -21,33 +21,35 @@ using Microsoft.Azure.Commands.Automation.Model;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Sets an azure automation schedule.
+    /// Registers an azure automation scheduled runbook.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
-    [OutputType(typeof(Schedule))]
-    public class SetAzureAutomationSchedule : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsLifecycle.Register, "AzureAutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
+    [OutputType(typeof(Runbook))]
+    public class RegisterAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the schedule name.
+        /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The runbook name.")]
         [ValidateNotNullOrEmpty]
+        [Alias("RunbookName")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the indicator whether the schedule is enabled.
+        /// Gets or sets the schedule that will be used to start the runbook.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies whether the schedule is enabled. If a schedule is disabled, any runbooks using it will not run on the schedule until it is enabled.")]
-        public bool? IsEnabled { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the schedule on which the runbook will be started.")]
+        [ValidateNotNullOrEmpty]
+        public string ScheduleName { get; set; }
 
         /// <summary>
-        /// Gets or sets the schedule description.
+        /// Gets or sets the runbook parameters.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule description.")]
-        public string Description { get; set; }
+            HelpMessage = "The runbook parameters.")]
+        public IDictionary Parameters { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -55,9 +57,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            Schedule schedule = this.AutomationClient.UpdateSchedule(
-                this.AutomationAccountName, this.Name, this.IsEnabled, this.Description);
-            this.WriteObject(schedule);
+            JobSchedule jobSchedule;
+
+            jobSchedule = this.AutomationClient.RegisterScheduledRunbook(
+                    this.AutomationAccountName, this.Name, this.ScheduleName, this.Parameters);
+
+            this.WriteObject(jobSchedule);
         }
     }
 }

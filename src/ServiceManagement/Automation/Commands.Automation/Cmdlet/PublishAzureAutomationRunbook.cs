@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
@@ -22,17 +21,18 @@ using Microsoft.Azure.Commands.Automation.Model;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation schedules for a given account.
+    /// Publishes an azure automation runbook.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(Schedule))]
-    public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsData.Publish, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [OutputType(typeof(Runbook))]
+    public class PublishAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the schedule name.
+        /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("RunbookName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -41,21 +41,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Schedule> schedules = null;
-            if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
-            {
-                schedules = new List<Schedule>
-                                {
-                                    this.AutomationClient.GetSchedule(
-                                        this.AutomationAccountName, this.Name)
-                                };
-            }
-            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
-            {
-                schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName);
-            }
+            var runbook = this.AutomationClient.PublishRunbook(this.AutomationAccountName, this.Name);
 
-            this.GenerateCmdletOutput(schedules);
+            this.WriteObject(runbook);
         }
     }
 }

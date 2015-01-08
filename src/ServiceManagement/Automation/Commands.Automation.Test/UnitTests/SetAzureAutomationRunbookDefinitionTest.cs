@@ -13,73 +13,82 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class GetAzureAutomationScheduleTest : TestBase
+    public class SetAzureAutomationRunbookDefinitionTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private GetAzureAutomationSchedule cmdlet;
+        private SetAzureAutomationRunbookDefinition cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new GetAzureAutomationSchedule
+            this.cmdlet = new SetAzureAutomationRunbookDefinition
                               {
                                   AutomationClient = this.mockAutomationClient.Object,
                                   CommandRuntime = this.mockCommandRuntime
                               };
         }
 
+
         [TestMethod]
-        public void GetAzureAutomationScheduleByNameSuccessfull()
+        public void SetAzureAutomationRunbookDefinitionByNameSuccessfull()
         {
             // Setup
             string accountName = "automation";
-            string scheduleName = "schedule";
+            string runbookName = "runbook";
+            string runbookPath = "runbook.ps1";
 
-            this.mockAutomationClient.Setup(f => f.GetSchedule(accountName, scheduleName));
+            this.mockAutomationClient.Setup(
+                f => f.UpdateRunbookDefinition(accountName, runbookName, runbookPath, false));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = scheduleName;
-            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByName);
+            this.cmdlet.Name = runbookName;
+            this.cmdlet.Path = runbookPath;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.GetSchedule(accountName, scheduleName), Times.Once());
+            this.mockAutomationClient.Verify(
+                f => f.UpdateRunbookDefinition(accountName, runbookName, runbookPath, false),
+                Times.Once());
         }
 
         [TestMethod]
-        public void GetAzureAutomationScheduleByAllSuccessfull()
+        public void SetAzureAutomationRunbookDefinitionByNameWithOverwriteSuccessfull()
         {
             // Setup
             string accountName = "automation";
+            string runbookName = "runbook";
+            string runbookPath = "runbook.ps1";
 
-            this.mockAutomationClient.Setup(f => f.ListSchedules(accountName)).Returns((string a) => new List<Schedule>());
+            this.mockAutomationClient.Setup(
+                f => f.UpdateRunbookDefinition(accountName, runbookName, runbookPath, true));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByAll);
+            this.cmdlet.Name = runbookName;
+            this.cmdlet.Path = runbookPath;
+            this.cmdlet.Overwrite = true;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListSchedules(accountName), Times.Once());
+            this.mockAutomationClient.Verify(
+                f => f.UpdateRunbookDefinition(accountName, runbookName, runbookPath, true),
+                Times.Once());
         }
     }
 }

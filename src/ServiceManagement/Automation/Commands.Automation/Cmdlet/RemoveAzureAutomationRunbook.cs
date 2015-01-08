@@ -22,20 +22,21 @@ using Microsoft.Azure.Commands.Automation.Properties;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Removes an azure automation Schedule.
+    /// Removes an azure automation runbook.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationSchedule", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
-    public class RemoveAzureAutomationSchedule : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureAutomationRunbook", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    public class RemoveAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the schedule name.
+        /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Alias("RunbookName")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the switch parameter not to confirm on removing the schedule.
+        /// Gets or sets the switch parameter not to confirm on removing the runbook.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -48,13 +49,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             this.ConfirmAction(
                 this.Force.IsPresent,
-                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationScheduleWarning),
-                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationScheduleDescription),
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationRunbookWarning),
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationRunbookDescription),
                 this.Name,
                 () =>
-                    {
-                        this.AutomationClient.DeleteSchedule(this.AutomationAccountName, this.Name);
-                    });
+                {   
+                    AutomationClient.DeleteRunbook(this.AutomationAccountName, this.Name);
+                });
         }
     }
 }

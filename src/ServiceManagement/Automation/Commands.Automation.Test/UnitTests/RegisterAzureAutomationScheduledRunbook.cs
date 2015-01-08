@@ -13,73 +13,55 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class GetAzureAutomationScheduleTest : TestBase
+    public class RegisterAzureAutomationScheduledJobTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private GetAzureAutomationSchedule cmdlet;
+        private RegisterAzureAutomationScheduledRunbook cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new GetAzureAutomationSchedule
-                              {
-                                  AutomationClient = this.mockAutomationClient.Object,
-                                  CommandRuntime = this.mockCommandRuntime
-                              };
+            this.cmdlet = new RegisterAzureAutomationScheduledRunbook
+            {
+                AutomationClient = this.mockAutomationClient.Object,
+                CommandRuntime = this.mockCommandRuntime
+            };
         }
 
         [TestMethod]
-        public void GetAzureAutomationScheduleByNameSuccessfull()
+        public void RegisterAzureAutomationScheduledRunbookSuccessfull()
         {
             // Setup
             string accountName = "automation";
+            string runbookName = "runbook";
             string scheduleName = "schedule";
 
-            this.mockAutomationClient.Setup(f => f.GetSchedule(accountName, scheduleName));
+            this.mockAutomationClient.Setup(
+                f => f.RegisterScheduledRunbook(accountName, runbookName, scheduleName, null));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = scheduleName;
-            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByName);
+            this.cmdlet.Name = runbookName;
+            this.cmdlet.ScheduleName = scheduleName;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.GetSchedule(accountName, scheduleName), Times.Once());
-        }
-
-        [TestMethod]
-        public void GetAzureAutomationScheduleByAllSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-
-            this.mockAutomationClient.Setup(f => f.ListSchedules(accountName)).Returns((string a) => new List<Schedule>());
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByAll);
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.ListSchedules(accountName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.RegisterScheduledRunbook(accountName, runbookName, scheduleName, null), Times.Once());
         }
     }
 }

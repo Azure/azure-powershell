@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
@@ -58,6 +59,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.Name = scheduleName;
             this.cmdlet.StartTime = DateTimeOffset.Now;
             this.cmdlet.OneTime = true;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByOneTime);
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
@@ -79,6 +81,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.Name = scheduleName;
             this.cmdlet.StartTime = DateTimeOffset.Now;
             this.cmdlet.DayInterval = dayInterval;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByDaily);
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
@@ -100,6 +103,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.Name = scheduleName;
             this.cmdlet.StartTime = DateTimeOffset.Now;
             this.cmdlet.HourInterval = hourInterval;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByHourly);
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
@@ -123,6 +127,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.Name = scheduleName;
             this.cmdlet.StartTime = DateTimeOffset.Now;
             this.cmdlet.DayInterval = dayInterval;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByDaily);
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
@@ -170,6 +175,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.Name = scheduleName;
             this.cmdlet.StartTime = DateTimeOffset.Now;
             this.cmdlet.HourInterval = hourInterval;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByHourly);
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
@@ -220,6 +226,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.StartTime = startTime;
             this.cmdlet.ExpiryTime = expiryTime;
             this.cmdlet.DayInterval = dayInterval;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByDaily);
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
@@ -269,6 +276,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.StartTime = startTime;
             this.cmdlet.ExpiryTime = expiryTime;
             this.cmdlet.HourInterval = hourInterval;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByHourly);
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
