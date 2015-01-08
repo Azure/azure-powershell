@@ -116,13 +116,9 @@
     <Compile Include="UnitTests\ResumeAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationCredentialTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationScheduleTest.cs" />
-<<<<<<< HEAD
     <Compile Include="UnitTests\StopAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\SuspendAzureAutomationJobTest.cs" />
-=======
-    <Compile Include="UnitTests\GetAzureAutomationVariableTest.cs" />
     <Compile Include="UnitTests\StartAzureAutomationRunbookTest.cs" />
->>>>>>> 49d22b83a8c84569821f203c51e06464d41a95da
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Test\Commands.Common.Test.csproj">
