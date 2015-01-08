@@ -90,7 +90,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
            HelpMessage = "The usage of the key credentials associated with the application. Acceptable values are 'Sign' and 'Verify'. Default is 'Verify'")]
         public string KeyUsage { get; set; }
-
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
             HelpMessage = "The start date after which password or key would be valid. Default value is current time.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
