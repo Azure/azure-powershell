@@ -1,3 +1,17 @@
+2015.01.08 version 0.8.13
+* Key Vault Service - new cmdlets in AzureResourceManager mode:
+  * Keys:
+    * Add-AzureKeyVaultKey
+    * Get-AzureKeyVaultKey
+    * Set-AzureKeyVaultKey
+    * Backup-AzureKeyVaultKey
+    * Restore-AzureKeyVaultKey
+    * Remove-AzureKeyVaultKey
+  * Secrets:
+    * Get-AzureKeyVaultSecret
+    * Set-AzureKeyVaultSecret
+    * Remove-AzureKeyVaultSecret
+
 2014.12.12 version 0.8.12
 * StreamAnalytics
   * New cmdlets in AzureResourceManager mode
