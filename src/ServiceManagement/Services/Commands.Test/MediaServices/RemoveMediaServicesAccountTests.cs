@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.MediaServices;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.MediaServices;
 using Moq;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
 {
@@ -34,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
             const string expectedName = "testacc";
 
             clientMock.Setup(f => f.DeleteAzureMediaServiceAccountAsync(expectedName)).Returns(
-                Task.Factory.StartNew(() => new OperationResponse { StatusCode = HttpStatusCode.NoContent }));
+                Task.Factory.StartNew(() => new AzureOperationResponse { StatusCode = HttpStatusCode.NoContent }));
 
             // Test
             RemoveAzureMediaServiceCommand command = new RemoveAzureMediaServiceCommand

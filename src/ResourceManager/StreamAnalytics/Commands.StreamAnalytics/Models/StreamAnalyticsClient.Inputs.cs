@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.Azure.Management.StreamAnalytics.Models;
 using Microsoft.WindowsAzure;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
@@ -159,7 +160,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public virtual HttpStatusCode RemovePSInput(string resourceGroupName, string jobName, string inputName)
         {
-            OperationResponse response = StreamAnalyticsManagementClient.Inputs.Delete(resourceGroupName, jobName, inputName);
+            AzureOperationResponse response = StreamAnalyticsManagementClient.Inputs.Delete(resourceGroupName, jobName, inputName);
 
             return response.StatusCode;
         }

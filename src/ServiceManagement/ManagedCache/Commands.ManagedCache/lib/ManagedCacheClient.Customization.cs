@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.Azure.Management.ManagedCache;
 using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Common;
+using Microsoft.Azure.Common;
 using Microsoft.WindowsAzure.Common.Internals;
 
 namespace Microsoft.Azure

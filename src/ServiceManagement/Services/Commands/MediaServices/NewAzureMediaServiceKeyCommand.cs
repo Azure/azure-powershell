@@ -17,6 +17,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.MediaServices;
 using Microsoft.WindowsAzure.Commands.Utilities.MediaServices.Services.Entities;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Management.MediaServices.Models;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.MediaServices
 {
@@ -62,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.MediaServices
                               MediaServicesClient = MediaServicesClient ?? new MediaServicesClient(CurrentContext.Subscription, WriteDebug);
 
                               
-                              OperationResponse result =null;
+                              AzureOperationResponse result = null;
                               CatchAggregatedExceptionFlattenAndRethrow(() => { result = MediaServicesClient.RegenerateMediaServicesAccountAsync(Name, KeyType).Result; });
                             
                               MediaServiceAccountDetails account = null;

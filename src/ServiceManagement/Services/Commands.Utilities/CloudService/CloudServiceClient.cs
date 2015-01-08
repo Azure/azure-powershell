@@ -43,6 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
     using ConfigConfigurationSetting = Common.XmlSchema.ServiceConfigurationSchema.ConfigurationSetting;
     using Microsoft.Azure.Common.Extensions.Models;
     using Microsoft.Azure.Common.Extensions;
+    using Hyak.Common;
 
     public class CloudServiceClient : ICloudServiceClient
     {

@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Get the list of events for a deployment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureResourceGroupLog", DefaultParameterSetName = LastDeploymentSetName), OutputType(typeof(List<PSDeploymentEventData>))]
+    // TODO: <insights issue url>
+    //[Cmdlet(VerbsCommon.Get, "AzureResourceGroupLog", DefaultParameterSetName = LastDeploymentSetName), OutputType(typeof(List<PSDeploymentEventData>))]
     public class GetAzureResourceGroupLogCommand : ResourcesBaseCmdlet
     {
         internal const string AllSetName = "All";
@@ -50,7 +51,9 @@ namespace Microsoft.Azure.Commands.Resources
                     DeploymentName = DeploymentName,
                     All = All.IsPresent
                 };
-            WriteObject(ResourcesClient.GetResourceGroupLogs(parameters), true);
+
+            // TODO: <insights issue url>
+            //WriteObject(ResourcesClient.GetResourceGroupLogs(parameters), true);
         }
     }
 }

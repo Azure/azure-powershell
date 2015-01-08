@@ -26,7 +26,6 @@ using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Monitoring.Events;
 using Newtonsoft.Json;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 using Microsoft.Azure.Management.Authorization;
@@ -50,7 +49,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
 
-        public IEventsClient EventsClient { get; set; }
+        // TODO: <insights issue url>
+        //public IEventsClient EventsClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
 
@@ -66,7 +66,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
             : this(
                 AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                 new GalleryTemplatesClient(context),
-                AzureSession.ClientFactory.CreateClient<EventsClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+                // TODO: <insights issue url>
+                //AzureSession.ClientFactory.CreateClient<EventsClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                 AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
@@ -81,12 +82,15 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
             GalleryTemplatesClient galleryTemplatesClient,
-            IEventsClient eventsClient,
+            // TODO: <insights issue url>
+            //IEventsClient eventsClient,
             IAuthorizationManagementClient authorizationManagementClient)
         {
             ResourceManagementClient = resourceManagementClient;
             GalleryTemplatesClient = galleryTemplatesClient;
-            EventsClient = eventsClient;
+
+            // TODO: <insights issue url>
+            //EventsClient = eventsClient;
             AuthorizationManagementClient = authorizationManagementClient;
         }
 

@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
-using Newtonsoft.Json;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using System.Collections.Generic;
 using System.Net;
-using System.Globalization;
+using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     using NSM = Management.Compute.Models;
+    using Hyak.Common;
 
     /// <summary>
     /// Get-AzureVMSqlServerExtension implementation

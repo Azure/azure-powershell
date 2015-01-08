@@ -771,7 +771,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             ));
 
             resourceOperationsMock.Setup(f => f.DeleteAsync(resourceGroupName, It.IsAny<ResourceIdentity>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.Factory.StartNew(() => new OperationResponse
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse
                 {
                     RequestId = "123",
                     StatusCode = HttpStatusCode.OK

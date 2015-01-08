@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Commands.ManagedCache
                 parameters.GeoRegion = location;
                 parameters.Description = cloudServiceName;
                 parameters.Label = cloudServiceName;
-                OperationResponse response = client.CloudServices.Create(cloudServiceName, parameters);
+                AzureOperationResponse response = client.CloudServices.Create(cloudServiceName, parameters);
             }
             return cloudServiceName;
         }

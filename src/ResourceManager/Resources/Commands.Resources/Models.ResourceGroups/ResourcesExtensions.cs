@@ -22,11 +22,11 @@ using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Monitoring.Events.Models;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -137,38 +137,39 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return psGalleryItem;
         }
 
-        public static PSDeploymentEventData ToPSDeploymentEventData(this EventData eventData)
-        {
-            if (eventData == null)
-            {
-                return null;
-            }
-            PSDeploymentEventData psObject = new PSDeploymentEventData
-                {
-                    Authorization = eventData.Authorization.ToPSDeploymentEventDataAuthorization(),
-                    ResourceUri = eventData.ResourceUri,
-                    SubscriptionId = eventData.SubscriptionId,
-                    EventId = eventData.EventDataId,
-                    EventName = eventData.EventName.LocalizedValue,
-                    EventSource = eventData.EventSource.LocalizedValue,
-                    Channels = eventData.EventChannels.ToString(),
-                    Level = eventData.Level.ToString(),
-                    Description = eventData.Description,
-                    Timestamp = eventData.EventTimestamp,
-                    OperationId = eventData.OperationId,
-                    OperationName = eventData.OperationName.LocalizedValue,
-                    Status = eventData.Status.LocalizedValue,
-                    SubStatus = eventData.SubStatus.LocalizedValue,
-                    Caller = GetEventDataCaller(eventData.Claims),
-                    CorrelationId = eventData.CorrelationId,
-                    ResourceGroupName = eventData.ResourceGroupName,
-                    ResourceProvider = eventData.ResourceProviderName.LocalizedValue,
-                    HttpRequest = eventData.HttpRequest.ToPSDeploymentEventDataHttpRequest(),
-                    Claims = eventData.Claims,
-                    Properties = eventData.Properties
-                };
-            return psObject;
-        }
+        // TODO: <insights issue url>
+        //public static PSDeploymentEventData ToPSDeploymentEventData(this EventData eventData)
+        //{
+        //    if (eventData == null)
+        //    {
+        //        return null;
+        //    }
+        //    PSDeploymentEventData psObject = new PSDeploymentEventData
+        //        {
+        //            Authorization = eventData.Authorization.ToPSDeploymentEventDataAuthorization(),
+        //            ResourceUri = eventData.ResourceUri,
+        //            SubscriptionId = eventData.SubscriptionId,
+        //            EventId = eventData.EventDataId,
+        //            EventName = eventData.EventName.LocalizedValue,
+        //            EventSource = eventData.EventSource.LocalizedValue,
+        //            Channels = eventData.EventChannels.ToString(),
+        //            Level = eventData.Level.ToString(),
+        //            Description = eventData.Description,
+        //            Timestamp = eventData.EventTimestamp,
+        //            OperationId = eventData.OperationId,
+        //            OperationName = eventData.OperationName.LocalizedValue,
+        //            Status = eventData.Status.LocalizedValue,
+        //            SubStatus = eventData.SubStatus.LocalizedValue,
+        //            Caller = GetEventDataCaller(eventData.Claims),
+        //            CorrelationId = eventData.CorrelationId,
+        //            ResourceGroupName = eventData.ResourceGroupName,
+        //            ResourceProvider = eventData.ResourceProviderName.LocalizedValue,
+        //            HttpRequest = eventData.HttpRequest.ToPSDeploymentEventDataHttpRequest(),
+        //            Claims = eventData.Claims,
+        //            Properties = eventData.Properties
+        //        };
+        //    return psObject;
+        //}
 
         public static PSDeploymentEventDataHttpRequest ToPSDeploymentEventDataHttpRequest(this HttpRequestInfo httpRequest)
         {

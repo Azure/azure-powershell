@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             return response;
         }
 
-        public OperationResponse DeleteCache(string resourceGroupName, string cacheName)
+        public AzureOperationResponse DeleteCache(string resourceGroupName, string cacheName)
         {
             return _client.Redis.Delete(resourceGroupName: resourceGroupName, name: cacheName);
         }
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             return _client.Redis.ListNext(nextLink: nextLink);
         }
         
-        public OperationResponse RegenerateAccessKeys(string resourceGroupName, string cacheName, RedisKeyType keyType)
+        public AzureOperationResponse RegenerateAccessKeys(string resourceGroupName, string cacheName, RedisKeyType keyType)
         {
             return _client.Redis.RegenerateKey(resourceGroupName: resourceGroupName, name: cacheName, parameters: new RedisRegenerateKeyParameters() { KeyType = keyType });
         }
