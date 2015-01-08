@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             KeyType = "AsymmetricX509Cert";
             KeyUsage = "Verify";
         }
-
+        
         public override void ExecuteCmdlet()
         {
             CreatePSApplicationParameters createParameters = new CreatePSApplicationParameters
