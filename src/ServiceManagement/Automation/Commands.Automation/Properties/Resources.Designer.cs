@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to At least one parameter provided is not expected by the runbook..
+        ///   Looks up a localized string similar to Invalid runbook parameters..
         /// </summary>
         internal static string InvalidRunbookParameters {
             get {
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The runbook parameter &quot;{0}&quot; cannot be serialized to JSON..
+        ///   Looks up a localized string similar to Runbook parameter cannot be serialized to json. Parameter name {0}..
         /// </summary>
         internal static string RunbookParameterCannotBeSerializedToJson {
             get {
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The runbook parameter &quot;{0}&quot; is mandatory..
+        ///   Looks up a localized string similar to Runbook mandatory parameter not specified. Parameter name {0}..
         /// </summary>
         internal static string RunbookParameterValueRequired {
             get {

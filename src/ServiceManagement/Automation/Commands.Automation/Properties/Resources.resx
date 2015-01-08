@@ -217,4 +217,16 @@
     <value>Are you sure you want to disassociate the Azure Automation runbook and schedule?</value>
     <comment>Automation</comment>
   </data>
+  <data name="InvalidRunbookParameters" xml:space="preserve">
+    <value>Invalid runbook parameters.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookParameterCannotBeSerializedToJson" xml:space="preserve">
+    <value>Runbook parameter cannot be serialized to json. Parameter name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookParameterValueRequired" xml:space="preserve">
+    <value>Runbook mandatory parameter not specified. Parameter name {0}.</value>
+    <comment>Automation</comment>
+  </data>
 </root>

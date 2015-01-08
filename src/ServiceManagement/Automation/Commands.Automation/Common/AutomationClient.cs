@@ -232,6 +232,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var runbookUpdateParameters = new RunbookUpdateParameters();
             runbookUpdateParameters.Name = runbookName;
             if (tags != null) runbookUpdateParameters.Tags = tags;
+            runbookUpdateParameters.Properties =  new RunbookUpdateProperties();
             if (description != null) runbookUpdateParameters.Properties.Description = description;
             if (logProgress.HasValue) runbookUpdateParameters.Properties.LogProgress = logProgress.Value;
             if (logVerbose.HasValue) runbookUpdateParameters.Properties.LogVerbose = logVerbose.Value;
@@ -310,6 +311,27 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 });
 
             return this.GetRunbook(automationAccountName, runbookName);
+        }
+
+        public Job StartRunbook(string automationAccountName, string runbookName, IDictionary parameters)
+        {
+            IDictionary<string, string> processedParameters = this.ProcessRunbookParameters(automationAccountName, runbookName, parameters);
+            var job = this.automationManagementClient.Jobs.Create(
+                                    automationAccountName,
+                                    new JobCreateParameters
+                                    {
+                                        Properties = new JobCreateProperties
+                                        {
+                                            Runbook = new RunbookAssociationProperty
+                                            {
+                                                Name = runbookName
+                                            },
+                                            Parameters = processedParameters ?? null
+                                        },
+                                        Location = ""
+                                     }).Job;
+
+            return new Job(automationAccountName, job);
         }
 
         #endregion
@@ -1139,7 +1161,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookParameters));
             }
 
-            bool hasJobStartedBy = filteredParameters.Any(filteredParameter => filteredParameter.Key == Constants.JobStartedByParameterName);
+            var hasJobStartedBy = filteredParameters.Any(filteredParameter => filteredParameter.Key == Constants.JobStartedByParameterName);
 
             if (!hasJobStartedBy)
             {
