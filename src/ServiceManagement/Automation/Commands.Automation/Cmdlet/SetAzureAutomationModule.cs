@@ -44,19 +44,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets the contentLink
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The ContentLink.")]
-        public Uri ContentLink { get; set; }
-
-        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            var updatedModule = this.AutomationClient.UpdateModule(this.AutomationAccountName, Tags, Name, ContentLink);
+            var updatedModule = this.AutomationClient.UpdateModule(this.AutomationAccountName, Tags, Name);
 
             this.WriteObject(updatedModule);
         }

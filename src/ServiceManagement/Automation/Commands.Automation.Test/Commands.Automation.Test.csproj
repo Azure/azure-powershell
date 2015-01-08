@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTests\GetAzureAutomationCredentialTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationModuleTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationScheduleTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationCredentialTest.cs" />
@@ -101,8 +102,11 @@
     <Compile Include="UnitTests\RemoveAzureAutomationCredentialTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationModuleTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationScheduleTest.cs" />
+    <Compile Include="UnitTests\ResumeAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationCredentialTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationScheduleTest.cs" />
+    <Compile Include="UnitTests\StopAzureAutomationJobTest.cs" />
+    <Compile Include="UnitTests\SuspendAzureAutomationJobTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Test\Commands.Common.Test.csproj">
