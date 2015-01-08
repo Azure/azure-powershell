@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test
 {

@@ -136,21 +136,39 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             this.command.CurrentSubscription = this.GetCurrentSubscription(this.Subscription, this.Certificate);
             this.AssertTaskLogsDirectorySpecified(this.TaskLogsDirectory);
 
+            int numSpecifiedOutputTypes = 0;
+            string selectedOutputType = "Standard Output";
+            this.command.OutputType = JobOutputType.StandardOutput;
+
+            if (this.StandardOutput.IsPresent)
+            {
+                numSpecifiedOutputTypes++;
+            }
+
+            if (this.DownloadTaskLogs.IsPresent)
+            {
+                this.command.OutputType = JobOutputType.TaskLogs;
+                selectedOutputType = "Task Logs";
+                numSpecifiedOutputTypes++;
+            }
+
+            if (this.TaskSummary.IsPresent)
+            {
+                this.command.OutputType = JobOutputType.TaskSummary;
+                selectedOutputType = "Task Summary";
+                numSpecifiedOutputTypes++;
+            }
+
             if (this.StandardError.IsPresent)
             {
                 this.command.OutputType = JobOutputType.StandardError;
+                selectedOutputType = "Standard Error";
+                numSpecifiedOutputTypes++;
             }
-            else if (this.TaskSummary.IsPresent)
+
+            if (numSpecifiedOutputTypes > 1)
             {
-                this.command.OutputType = JobOutputType.TaskSummary;
-            }
-            else if (this.DownloadTaskLogs.IsPresent)
-            {
-                this.command.OutputType = JobOutputType.TaskLogs;
-            }
-            else
-            {
-                this.command.OutputType = JobOutputType.StandardOutput;
+                this.WriteWarning(String.Format("This cmdlet supports specifying only one job output type. Only {0} will be returned", selectedOutputType));
             }
 
             try

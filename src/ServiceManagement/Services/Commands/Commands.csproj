@@ -92,13 +92,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\Microsoft.Web.Deployment.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Common">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Common.NetFramework">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
@@ -109,19 +107,18 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.6.1.2\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.MediaServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.MediaServices.1.2.0\lib\net40\Microsoft.WindowsAzure.Management.MediaServices.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.4.0.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.4.3.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Scheduler, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.3.0.2\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Scheduler">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.4.1.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.ServiceBus">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.ServiceBus.0.15.0-preview\lib\net40\Microsoft.WindowsAzure.Management.ServiceBus.dll</HintPath>
@@ -212,6 +209,7 @@
     <Compile Include="MediaServices\NewAzureMediaServiceCommand.cs" />
     <Compile Include="MediaServices\NewAzureMediaServiceKeyCommand.cs" />
     <Compile Include="MediaServices\RemoveAzureMediaServiceCommand.cs" />
+    <Compile Include="DataFactories\NewAzureDataFactoryStubCommand.cs" />
     <Compile Include="Scheduler\GetSchedulerJobCollectionCommand.cs" />
     <Compile Include="Scheduler\GetSchedulerJobCommand.cs" />
     <Compile Include="Scheduler\GetSchedulerJobHistoryCommand.cs" />
@@ -338,6 +336,10 @@
     <None Include="Performance\Microsoft.ServiceBus.MessagingPerformanceCounters.man" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Azure.Common.Extensions\Common.Extensions.csproj">
+      <Project>{b95c489c-8cb7-4dcf-8d5f-b9aebdbbaf89}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.Utilities\Commands.Utilities.csproj">
       <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>
       <Name>Commands.Utilities</Name>

@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {

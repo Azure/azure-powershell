@@ -22,13 +22,14 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
+using Microsoft.Azure.Common.Extensions.Authentication;
 using Moq;
 using Xunit;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
@@ -147,6 +148,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             // Verify
             Assert.Equal(0, tokenCache.ReadItems().Count());
+        }
+
+        [Fact]
+        public void DeleteCorruptedTokenCache()
+        {
+            //setup
+            string testFileName = @"c:\foobar\TokenCache.dat";
+            ProfileClient.DataStore.WriteFile(testFileName, new byte[] { 0, 1 });
+            
+            //Act
+            ProtectedFileTokenCache tokenCache = new ProtectedFileTokenCache(testFileName);
+
+            //Assert
+            Assert.False(ProfileClient.DataStore.FileExists(testFileName));
         }
 
         [Fact]
@@ -721,7 +736,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                     { AzureEnvironment.Endpoint.AdTenant, "https://login.windows-ppe.net/" },
                     { AzureEnvironment.Endpoint.ActiveDirectory, "https://login.windows-ppe.net/" },
                     { AzureEnvironment.Endpoint.Gallery, "https://current.gallery.azure-test.net" },
-                    { AzureEnvironment.Endpoint.ResourceManager, "https://api-current.resources.windows-int.net/" },
+                    { AzureEnvironment.Endpoint.ResourceManager, "https://api-current.resources.windows-int.net/" },                    
+                    { AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, "vault-int.azure-int.net" },
+                    { AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, "https://vault-int.azure-int.net/" },
                 }
             };
             azureAccount = new AzureAccount

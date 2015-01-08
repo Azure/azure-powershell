@@ -49,7 +49,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.11.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataFactories">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.0.11.4-preview\lib\net40\Microsoft.Azure.Management.DataFactories.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.0.12.0-preview\lib\net40\Microsoft.Azure.Management.DataFactories.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Monitoring">
       <HintPath>..\..\..\packages\Microsoft.Azure.Monitoring.2.2.0-preview\lib\net40\Microsoft.Azure.Monitoring.dll</HintPath>
@@ -140,7 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ScenarioTests\HubTests.cs" />
-    <Compile Include="ScenarioTests\PipelineTests.cs" />
     <Compile Include="UnitTests\GetHubTests.cs" />
     <Compile Include="UnitTests\NewDataFactoryEncryptValueTests.cs" />
     <Compile Include="ScenarioTests\DataFactoryGatewayTests.cs" />
@@ -259,9 +258,6 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.LinkedServiceTests\TestLinkedServiceWithDataFactoryParameter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.PipelineTests\TestPipeline.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.TableTests\TestGetTableWithEmptyName.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -279,6 +275,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Azure.Common.Extensions\Common.Extensions.csproj">
+      <Project>{b95c489c-8cb7-4dcf-8d5f-b9aebdbbaf89}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
       <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
       <Name>Commands.ScenarioTests.Common</Name>

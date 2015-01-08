@@ -118,6 +118,7 @@
           ProvisioningState : succeeded
           SslPort           : 6380
           MaxMemoryPolicy   : VolatileTTL
+          EnableNonSslPort  : False
           RedisVersion      : 2.8
           Size              : 1GB
           Sku               : Basic
@@ -151,6 +152,7 @@
           ProvisioningState : succeeded
           SslPort           : 6380
           MaxMemoryPolicy   : VolatileTTL
+          EnableNonSslPort  : False
           RedisVersion      : 2.8
           Size              : 1GB
           Sku               : Basic
@@ -165,6 +167,7 @@
           ProvisioningState : succeeded
           SslPort           : 6380
           MaxMemoryPolicy   : VolatileTTL
+          EnableNonSslPort  : True
           RedisVersion      : 2.8
           Size              : 250MB
           Sku               : Standard
@@ -198,6 +201,7 @@
           ProvisioningState : succeeded
           SslPort           : 6380
           MaxMemoryPolicy   : VolatileTTL
+          EnableNonSslPort  : False
           RedisVersion      : 2.8
           Size              : 1GB
           Sku               : Basic
@@ -212,6 +216,7 @@
           ProvisioningState : succeeded
           SslPort           : 6380
           MaxMemoryPolicy   : VolatileTTL
+          EnableNonSslPort  : True
           RedisVersion      : 2.8
           Size              : 250MB
           Sku               : Standard
@@ -226,6 +231,7 @@
           ProvisioningState : succeeded
           SslPort           : 6380
           MaxMemoryPolicy   : VolatileTTL
+          EnableNonSslPort  : False
           RedisVersion      : 2.8
           Size              : 250MB
           Sku               : Basic
@@ -284,7 +290,8 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Location</maml:name>
           <maml:description>
-            <maml:para>Location in which to create redis cache.</maml:para>
+            <maml:para>Location in which to create redis cache. Possible values are "North Central US", "South Central US", "Central US", "West Europe",
+            "North Europe", "West US", "East US", "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East", "Australia Southeast"</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -315,6 +322,13 @@
             <maml:para>MaxMemoryPolicy used by the redis cache. The default value is VolatileLRU. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>EnableNonSslPort</maml:name>
+          <maml:description>
+            <maml:para>EnableNonSslPort is used by Azure Redis Cache. If no value is provided, the default value is false and the non-SSL port will be disabled. Possible values are true and false.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -406,6 +420,18 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>EnableNonSslPort</maml:name>
+        <maml:description>
+          <maml:para>EnableNonSslPort is used by Azure Redis Cache. If no value is provided, the default value is false and the non-SSL port will be disabled. Possible values are true and false.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+        <dev:type>
+          <maml:name>Boolean</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -463,6 +489,7 @@
           ProvisioningState : creating
           SslPort           : 6380
           MaxMemoryPolicy   :
+          EnableNonSslPort  : False
           RedisVersion      : 2.8
           Size              : 1GB
           Sku               : Standard
@@ -498,6 +525,7 @@
           ProvisioningState : creating
           SslPort           : 6380
           MaxMemoryPolicy   : AllKeysLRU
+          EnableNonSslPort  : False
           RedisVersion      : 2.8
           Size              : 250MB
           Sku               : Standard
@@ -1053,6 +1081,13 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>EnableNonSslPort</maml:name>
+          <maml:description>
+            <maml:para>EnableNonSslPort is used by Azure Redis Cache. The default value is null and no change will be made to the currently configured value. Possible values are true and false.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -1090,6 +1125,18 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>EnableNonSslPort</maml:name>
+        <maml:description>
+          <maml:para>EnableNonSslPort is used by Azure Redis Cache. The default value is null and no change will be made to the currently configured value. Possible values are true and false.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+        <dev:type>
+          <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
@@ -1151,6 +1198,7 @@
           ProvisioningState : creating
           SslPort           : 6380
           MaxMemoryPolicy   : AllKeysLRU
+          EnableNonSslPort  : False
           RedisVersion      : 2.8
           Size              : 250MB
           Sku               : Standard

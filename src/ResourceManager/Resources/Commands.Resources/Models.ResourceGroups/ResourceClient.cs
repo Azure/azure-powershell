@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Monitoring.Events;
 using Newtonsoft.Json;
@@ -33,6 +33,7 @@ using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using System.Diagnostics;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {

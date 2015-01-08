@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Location where want to create cache.")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US", 
+            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East", "Australia Southeast", IgnoreCase = false)]
         public string Location { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Redis version.")]
@@ -53,6 +55,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateSet(MaxMemoryPolicyStrings.AllKeysLRU, MaxMemoryPolicyStrings.AllKeysRandom, MaxMemoryPolicyStrings.NoEviction, 
             MaxMemoryPolicyStrings.VolatileLRU, MaxMemoryPolicyStrings.VolatileRandom, MaxMemoryPolicyStrings.VolatileTTL, IgnoreCase = false)]
         public string MaxMemoryPolicy { get; set;}
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "EnableNonSslPort property of redis cache.")]
+        public bool? EnableNonSslPort { get; set; }
 
         private const string redisDefaultVersion = "2.8";
 
@@ -110,7 +115,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                     throw;
                 }
             }
-            WriteObject(new RedisCacheAttributesWithAccessKeys(CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, RedisVersion, skuFamily, skuCapacity, Sku, MaxMemoryPolicy), ResourceGroupName));
+            WriteObject(new RedisCacheAttributesWithAccessKeys(CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, RedisVersion, skuFamily, skuCapacity, Sku, MaxMemoryPolicy, EnableNonSslPort), ResourceGroupName));
         }
     }
 }

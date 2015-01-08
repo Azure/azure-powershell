@@ -16,10 +16,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.TrafficManager.Models;
 using Microsoft.WindowsAzure.Management.TrafficManager;
 using Microsoft.WindowsAzure.Management.TrafficManager.Models;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.TrafficManager.Utilities
 {

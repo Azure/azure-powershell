@@ -19,6 +19,8 @@ using System.Text;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
