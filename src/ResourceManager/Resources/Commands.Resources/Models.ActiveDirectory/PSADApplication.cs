@@ -13,15 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 {
-    public class PSADServicePrincipal : PSADObject
+    public class PSADApplication
     {
-        public string ServicePrincipalName { get; set; }
+        public string Type { get; set; }
 
         public Guid ApplicationId { get; set; }
 
-        public bool AccountEnabled { get; set; }
+        public Guid ApplicationObjectId { get; set; }
+
+        public bool AvailableToOtherTenants { get; set; }
+
+        public IList<string> AppPermissions { get; set; }
     }
 }

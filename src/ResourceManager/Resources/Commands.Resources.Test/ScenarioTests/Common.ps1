@@ -46,6 +46,15 @@ function Get-ProviderLocation($provider)
 
 <#
 .SYNOPSIS
+Gets valid application display name
+#>
+function Get-ApplicatonDisplayName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Cleans the created resource groups
 #>
 function Clean-ResourceGroup($rgname)

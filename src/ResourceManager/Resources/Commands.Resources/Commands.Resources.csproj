@@ -54,7 +54,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Graph.RBAC">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.4.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.5.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -126,10 +126,19 @@
     <Compile Include="ActiveDirectory\GetAzureADGroupCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryBaseCmdlet.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryClientExtensions.cs" />
     <Compile Include="Models.ActiveDirectory\ADObjectFilterOptions.cs" />
+    <Compile Include="Models.ActiveDirectory\CreatePSServicePrincipalParameters.cs" />
     <Compile Include="Models.ActiveDirectory\ParameterSet.cs" />
+    <Compile Include="Models.ActiveDirectory\CreatePSApplicationParameters.cs" />
+    <Compile Include="Models.ActiveDirectory\PSADKeyCredential.cs" />
+    <Compile Include="Models.ActiveDirectory\PSADPasswordCredential.cs" />
+    <Compile Include="Models.ActiveDirectory\PSADApplication.cs" />
     <Compile Include="Models.ActiveDirectory\PSADServicePrincipal.cs" />
     <Compile Include="Models.ActiveDirectory\PSADGroup.cs" />
     <Compile Include="Models.ActiveDirectory\PSADUser.cs" />
