@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             string accountName = "automation";
             string runbookName = "runbook";
 
-            this.mockAutomationClient.Setup(f => f.ListJobsByRunbookName(accountName, runbookName, null, null));
+            this.mockAutomationClient.Setup(f => f.ListJobsByRunbookName(accountName, runbookName, null, null, null));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListJobsByRunbookName(accountName, runbookName, null, null), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListJobsByRunbookName(accountName, runbookName, null, null, null), Times.Once());
         }
 
         public void GetAzureAutomationJobByRunbookNamAndStartTimeEndTimeeSuccessfull()
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             DateTime startTime = new DateTime(2014, 12, 30, 17, 0, 0, 0);
             DateTime endTime = new DateTime(2014, 12, 30, 18, 0, 0, 0);
 
-            this.mockAutomationClient.Setup(f => f.ListJobsByRunbookName(accountName, runbookName, startTime, endTime));
+            this.mockAutomationClient.Setup(f => f.ListJobsByRunbookName(accountName, runbookName, startTime, endTime, null));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
@@ -79,7 +79,28 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListJobsByRunbookName(accountName, runbookName, startTime, endTime), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListJobsByRunbookName(accountName, runbookName, startTime, endTime, null), Times.Once());
+        }
+
+        public void GetAzureAutomationCompletedJobByRunbookNamAndStartTimeEndTimeeSuccessfull()
+        {
+            // Setup
+            string accountName = "automation";
+            string runbookName = "runbook";
+            DateTime startTime = new DateTime(2014, 12, 30, 17, 0, 0, 0);
+            DateTime endTime = new DateTime(2014, 12, 30, 18, 0, 0, 0);
+            string status = "Completed";
+
+            this.mockAutomationClient.Setup(f => f.ListJobsByRunbookName(accountName, runbookName, startTime, endTime, status));
+
+            // Test
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.RunbookName = runbookName;
+            this.cmdlet.Status = status;
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient.Verify(f => f.ListJobsByRunbookName(accountName, runbookName, startTime, endTime, status), Times.Once());
         }
 
         [TestMethod]
@@ -88,14 +109,14 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             // Setup
             string accountName = "automation";
 
-            this.mockAutomationClient.Setup(f => f.ListJobs(accountName, null, null));
+            this.mockAutomationClient.Setup(f => f.ListJobs(accountName, null, null, null));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListJobs(accountName, null, null), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListJobs(accountName, null, null, null), Times.Once());
         }
 
         [TestMethod]
@@ -107,7 +128,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             DateTime endTime = new DateTime(2014, 12, 30, 18, 0, 0, 0);
 
             // look for jobs between 5pm to 6pm on 30th december 2014 
-            this.mockAutomationClient.Setup(f => f.ListJobs(accountName, startTime, endTime));
+            this.mockAutomationClient.Setup(f => f.ListJobs(accountName, startTime, endTime, null));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
@@ -116,7 +137,30 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListJobs(accountName, startTime, endTime), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListJobs(accountName, startTime, endTime, null), Times.Once());
+        }
+
+        [TestMethod]
+        public void GetAzureAutomationAllCompletedJobsBetweenStartAndEndTimeSuccessfull()
+        {
+            // Setup
+            string accountName = "automation";
+            DateTime startTime = new DateTime(2014, 12, 30, 17, 0, 0, 0);
+            DateTime endTime = new DateTime(2014, 12, 30, 18, 0, 0, 0);
+            string status = "Completed";
+
+            // look for jobs between 5pm to 6pm on 30th december 2014 
+            this.mockAutomationClient.Setup(f => f.ListJobs(accountName, startTime, endTime, status));
+
+            // Test
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.StartTime = startTime;
+            this.cmdlet.EndTime = endTime;
+            this.cmdlet.Status = status;
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient.Verify(f => f.ListJobs(accountName, startTime, endTime, status), Times.Once());
         }
 
         public void GetAzureAutomationJobByIdSuccessfull()
@@ -136,5 +180,6 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             // Assert
             this.mockAutomationClient.Verify(f => f.GetJob(accountName, jobId), Times.Once());
         }
+
     }
 }
