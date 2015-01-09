@@ -281,43 +281,26 @@ function Test-NetworkUnMapping
 	Assert-True { $networkMappings.Count -eq 0 }
 }
 
-function WaitForJobCompletion
-{
-    param([string] $JobId)
-
-	do
-	{
-		Start-Sleep 5
-		$job = Get-AzureSiteRecoveryJob -Id $JobId;
-	} while( -not (($job.State -eq "Succeeded") -or ($job.State -eq "Failed") -or ($job.State -eq "Cancelled") -or ($job.State -eq "Suspended")))
-}
-
 <#
 .SYNOPSIS
 Wait for job completion
+Usage:
+	WaitForJobCompletion -JobId $job.ID
+	WaitForJobCompletion -JobId $job.ID -NumOfSecondsToWait 10
 #>
-<#function WaitForJobCompletion
+function WaitForJobCompletion
 {
-    param([string] $JobId, [Int] $numOfSeconds = 150, [String] $StateDescription)
+    param([string] $JobId, [Int] $NumOfSecondsToWait = 30)
+	$endStateDescription = @('Succeeded','Failed','Cancelled','Suspended')
 
-    $timeElapse = 0
-    $interval = 3
-    $endStateDescription = @('Completed','Failed')
-    while($timeElapse -lt $numOfSeconds)
-    {
-        Wait-Seconds $interval
-        $timeElapse = $timeElapse + $interval
-        $job = Get-AzureSiteRecoveryJob -Id $JobId
-        if($job.StateDescription -eq StateDescription)
-        {
-            break
-        }
-        elseif($endStateDescription -ccontains $job.StateDescription.ToLower())
-        {
-            Write-Output ("The Job with ID $($job.ID) reached $($job.ccontains) ccontains already.")
-            return
-        }
-    }
-    Assert-AreEqual $StateDescription $job.StateDescription "Job did not reach $StateDescription StateDescription within $numOfSeconds seconds."
+	$timeElapse = 0;
+	$interval = 5;
+	do
+	{
+		Start-Sleep $interval
+		$timeElapse = $timeElapse + $interval
+		$job = Get-AzureSiteRecoveryJob -Id $JobId;
+	} while((-not ($endStateDescription -ccontains $job.State)) -and ($timeElapse -lt $NumOfSecondsToWait))
+
+	Assert-True { $endStateDescription -ccontains $job.State } "Job did not reached desired state within $NumOfSecondsToWait seconds."
 }
-#>
