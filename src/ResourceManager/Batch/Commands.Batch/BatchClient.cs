@@ -13,12 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Batch.Properties;
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;

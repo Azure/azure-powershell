@@ -25,7 +25,7 @@ using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Newtonsoft.Json;
 
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
@@ -40,6 +40,7 @@ using JobSchedule = Microsoft.Azure.Commands.Automation.Model.JobSchedule;
 namespace Microsoft.Azure.Commands.Automation.Common
 {
     using AutomationManagement = Management.Automation;
+    using Microsoft.Azure.Common.Extensions;
 
     public class AutomationClient : IAutomationClient
     {
