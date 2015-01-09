@@ -233,7 +233,7 @@
 
     <Delete Files="$(TestOutputDirectory)\RTFuntionalDebug.trx" />
     <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:Funtional /resultsfile:$(TestOutputDirectory)\RTFuntionalDebug.trx"
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:Functional /resultsfile:$(TestOutputDirectory)\RTFuntionalDebug.trx"
       ContinueOnError="false" />
   </Target>
 
