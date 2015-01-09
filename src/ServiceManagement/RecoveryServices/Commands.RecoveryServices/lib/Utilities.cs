@@ -121,10 +121,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>path as  string.</returns>
         public static string GetDefaultPath()
         {
-            string path = null;
-            path = Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
-            path = Path.Combine(path, "Downloads");
-
+            string path = Path.GetTempPath();
             return path;
         }
 
