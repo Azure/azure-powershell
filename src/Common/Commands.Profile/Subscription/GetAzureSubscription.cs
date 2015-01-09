@@ -17,13 +17,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using Microsoft.WindowsAzure.Management;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -150,6 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             psObject.IsDefault = subscription.IsPropertySet(AzureSubscription.Property.Default);
             psObject.IsCurrent = AzureSession.CurrentContext.Subscription != null && AzureSession.CurrentContext.Subscription.Id == subscription.Id;
             psObject.CurrentStorageAccountName = subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            psObject.TenantId = subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
             return psObject;
         }
 

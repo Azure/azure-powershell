@@ -19,7 +19,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.MarketplaceServiceReference;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
@@ -32,6 +32,8 @@ using Microsoft.WindowsAzure.Management.Store.Models;
 namespace Microsoft.WindowsAzure.Commands.Utilities.Store
 {
     using Resource = Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource;
+    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Extensions;
 
     public class StoreClient
     {
