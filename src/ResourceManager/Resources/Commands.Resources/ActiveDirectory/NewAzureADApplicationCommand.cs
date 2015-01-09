@@ -26,9 +26,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     [Cmdlet(VerbsCommon.New, "AzureADApplication", DefaultParameterSetName = ParameterSet.ApplicationWithoutCredential), OutputType(typeof(PSADApplication))]
     public class NewAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
-        private string _KeyType = "AsymmetricX509Cert";
-        private string _KeyUsage = "Verify";
-        
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithoutCredential,
             HelpMessage = "The display name for the application.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
@@ -88,43 +85,32 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
             HelpMessage = "The type of the key credentials associated with the application. Acceptable values are 'AsymmetricX509Cert', 'Password' and 'Symmetric'. Default is 'AsymmetricX509Cert'")]
-        public string KeyType 
-        { 
-            get
-            {
-                return _KeyType;
-            }
-            set
-            {
-                _KeyType = value; 
-            }
-        }
+        public string KeyType  { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
            HelpMessage = "The usage of the key credentials associated with the application. Acceptable values are 'Sign' and 'Verify'. Default is 'Verify'")]
-        public string KeyUsage
+        public string KeyUsage { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
+            HelpMessage = "The start date after which password or key would be valid. Default value is current time.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
+            HelpMessage = "The start date after which password or key would be valid. Default value is current time.")]
+        public DateTime StartDate { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
+            HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
+            HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
+        public DateTime EndDate { get; set; }
+
+        public NewAzureADApplicationCommand()
         {
-            get
-            {
-                return _KeyUsage;
-            }
-            set
-            {
-                _KeyUsage = value;
-            }
+            DateTime currentTime = DateTime.UtcNow;
+            StartDate = currentTime;
+            EndDate = currentTime.AddYears(1);
+            KeyType = "AsymmetricX509Cert";
+            KeyUsage = "Verify";
         }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
-            HelpMessage = "The start date after which password or key would be valid. Default value is current time.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
-            HelpMessage = "The start date after which password or key would be valid. Default value is current time.")]
-        public DateTime? StartDate { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
-            HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
-            HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
-        public DateTime? EndDate { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -135,7 +121,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 IdentifierUris = IdentifierUris
             };
 
-            DateTime currentTime = DateTime.UtcNow;
             switch (ParameterSetName)
             {
                 case ParameterSet.ApplicationWithPasswordPlain:
@@ -143,8 +128,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     {
                         new PSADPasswordCredential 
                         {
-                            StartDate = StartDate ?? currentTime,
-                            EndDate = EndDate ?? currentTime.AddYears(1),
+                            StartDate = StartDate,
+                            EndDate = EndDate,
                             KeyId = Guid.NewGuid(),
                             Value = Password
                         }
@@ -160,8 +145,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     {
                         new PSADKeyCredential
                         {
-                            StartDate = StartDate ?? currentTime,
-                            EndDate = EndDate ?? currentTime.AddYears(1),
+                            StartDate = StartDate,
+                            EndDate = EndDate,
                             KeyId = Guid.NewGuid(),
                             Type = KeyType,
                             Usage = KeyUsage,
