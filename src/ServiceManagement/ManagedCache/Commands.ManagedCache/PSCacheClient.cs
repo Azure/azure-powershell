@@ -27,6 +27,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Common.Extensions;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.ManagedCache
 {

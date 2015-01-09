@@ -33,6 +33,7 @@ using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using System.Diagnostics;
 using Microsoft.Azure.Common.Extensions;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {

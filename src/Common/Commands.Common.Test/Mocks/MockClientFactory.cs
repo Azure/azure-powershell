@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using Microsoft.Azure.Utilities.HttpRecorder;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Common;
 using Microsoft.Azure.Common.Extensions.Factories;
 using Microsoft.Azure.Common.Extensions.Models;

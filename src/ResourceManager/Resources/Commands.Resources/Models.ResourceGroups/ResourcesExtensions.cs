@@ -26,7 +26,6 @@ using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -171,37 +170,39 @@ namespace Microsoft.Azure.Commands.Resources.Models
         //    return psObject;
         //}
 
-        public static PSDeploymentEventDataHttpRequest ToPSDeploymentEventDataHttpRequest(this HttpRequestInfo httpRequest)
-        {
-            if (httpRequest == null)
-            {
-                return null;
-            }
-            PSDeploymentEventDataHttpRequest psObject = new PSDeploymentEventDataHttpRequest
-            {
-                ClientId = httpRequest.ClientRequestId,
-                Method = httpRequest.Method,
-                Url = httpRequest.Uri,
-                ClientIpAddress = httpRequest.ClientIpAddress
-            };
-            return psObject;
-        }
+        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+        //public static PSDeploymentEventDataHttpRequest ToPSDeploymentEventDataHttpRequest(this HttpRequestInfo httpRequest)
+        //{
+        //    if (httpRequest == null)
+        //    {
+        //        return null;
+        //    }
+        //    PSDeploymentEventDataHttpRequest psObject = new PSDeploymentEventDataHttpRequest
+        //    {
+        //        ClientId = httpRequest.ClientRequestId,
+        //        Method = httpRequest.Method,
+        //        Url = httpRequest.Uri,
+        //        ClientIpAddress = httpRequest.ClientIpAddress
+        //    };
+        //    return psObject;
+        //}
 
-        public static PSDeploymentEventDataAuthorization ToPSDeploymentEventDataAuthorization(this SenderAuthorization authorization)
-        {
-            if (authorization == null)
-            {
-                return null;
-            }
-            PSDeploymentEventDataAuthorization psObject = new PSDeploymentEventDataAuthorization
-            {
-                Action = authorization.Action,
-                Role = authorization.Role,
-                Scope = authorization.Scope,
-                Condition = authorization.Condition
-            };
-            return psObject;
-        }
+        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+        //public static PSDeploymentEventDataAuthorization ToPSDeploymentEventDataAuthorization(this SenderAuthorization authorization)
+        //{
+        //    if (authorization == null)
+        //    {
+        //        return null;
+        //    }
+        //    PSDeploymentEventDataAuthorization psObject = new PSDeploymentEventDataAuthorization
+        //    {
+        //        Action = authorization.Action,
+        //        Role = authorization.Role,
+        //        Scope = authorization.Scope,
+        //        Condition = authorization.Condition
+        //    };
+        //    return psObject;
+        //}
 
         public static string ConstructResourcesTable(List<PSResource> resources)
         {
