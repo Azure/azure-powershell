@@ -24,8 +24,9 @@ using Microsoft.Azure.Management.ManagedCache;
 using Microsoft.Azure.Management.ManagedCache.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.Azure.Commands.ManagedCache
 {

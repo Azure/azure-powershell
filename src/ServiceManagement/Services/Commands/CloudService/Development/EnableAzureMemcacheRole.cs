@@ -32,6 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
 {
     using ConfigConfigurationSetting = Utilities.Common.XmlSchema.ServiceConfigurationSchema.ConfigurationSetting;
     using DefinitionConfigurationSetting = Utilities.Common.XmlSchema.ServiceDefinitionSchema.ConfigurationSetting;
+    using Microsoft.WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Enables memcache for specific role.

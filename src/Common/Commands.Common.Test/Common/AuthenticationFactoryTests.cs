@@ -15,10 +15,10 @@
 using System.Collections.Generic;
 using Xunit;
 using System;
-using Microsoft.WindowsAzure.Commands.Common.Factories;
+using Microsoft.Azure.Common.Extensions.Factories;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Authentication;
+using Microsoft.Azure.Common.Extensions.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             var subscriptionId = Guid.NewGuid();
 
-            var credential = authFactory.GetSubscriptionCloudCredentials(new Models.AzureContext
+            var credential = authFactory.GetSubscriptionCloudCredentials(new AzureContext
             {
                 Environment = AzureEnvironment.PublicEnvironments["AzureCloud"],
                 Account = new AzureAccount

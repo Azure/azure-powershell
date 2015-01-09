@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model;
@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Management.Scheduler;
 using Microsoft.WindowsAzure.Management.Scheduler.Models;
 using Microsoft.WindowsAzure.Scheduler;
 using Microsoft.WindowsAzure.Scheduler.Models;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
 {
