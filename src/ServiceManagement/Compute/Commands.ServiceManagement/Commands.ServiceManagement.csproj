@@ -190,6 +190,7 @@
     <Compile Include="IaaS\Extensions\DSC\DscPrivateSettings.cs" />
     <Compile Include="IaaS\Extensions\DSC\DscPublicSettings.cs" />
     <Compile Include="IaaS\Extensions\DSC\DscSettingsSerializer.cs" />
+    <Compile Include="IaaS\Extensions\DSC\GetAzureVMDscExtensionStatus.cs" />
     <Compile Include="IaaS\Extensions\DSC\GetDscResourceException.cs" />
     <Compile Include="IaaS\Extensions\DSC\RemoveAzureVMDscExtension.cs" />
     <Compile Include="IaaS\Extensions\DSC\GetAzureVMDscExtension.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="IaaS\Extensions\DSC\ConfigurationParseResult.cs" />
     <Compile Include="IaaS\Extensions\DSC\ServiceManagementBaseCmdletExtentions.cs" />
     <Compile Include="IaaS\Extensions\DSC\PublishAzureVMDscConfiguration.cs" />
+    <Compile Include="IaaS\Extensions\DSC\VirtualMachineDscExtensionStatusContext.cs" />
     <Compile Include="IaaS\Extensions\MicrosoftAntimalware\GetAzureVMMicrosoftAntimalwareExtension.cs" />
     <Compile Include="IaaS\Extensions\MicrosoftAntimalware\RemoveAzureVMMicrosoftAntimalwareExtension.cs" />
     <Compile Include="IaaS\Extensions\MicrosoftAntimalware\SetAzureVMMicrosoftAntimalwareExtension.cs" />
