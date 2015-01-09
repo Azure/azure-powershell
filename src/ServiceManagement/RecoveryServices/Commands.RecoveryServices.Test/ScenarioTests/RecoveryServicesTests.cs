@@ -32,5 +32,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         {
             this.RunPowerShellTest("Test-RecoveryServicesProtectionTests -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageMapping()
+        {
+            this.RunPowerShellTest("Test-StorageMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageUnMapping()
+        {
+            this.RunPowerShellTest("Test-StorageUnMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkMapping()
+        {
+            this.RunPowerShellTest("Test-NetworkMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkUnMapping()
+        {
+            this.RunPowerShellTest("Test-NetworkUnMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+        }
     }
 }
