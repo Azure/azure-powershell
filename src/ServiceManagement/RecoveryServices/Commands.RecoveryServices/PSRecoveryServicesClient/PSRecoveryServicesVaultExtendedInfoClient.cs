@@ -43,5 +43,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             return this.GetSiteRecoveryClient().VaultExtendedInfo.CreateExtendedInfo(extendedInfoArgs, this.GetRequestHeaders(false));
         }
+
+        /// <summary>
+        /// Updates the vault certificate
+        /// </summary>
+        /// <param name="args">the certificate update arguments</param>
+        /// <returns>Upload Certificate Response</returns>
+        public async Task<UploadCertificateResponse> UpdateVaultCertificate(CertificateArgs args)
+        {
+            return await this.GetSiteRecoveryClient().VaultExtendedInfo.UploadCertificateAsync(args, this.GetRequestHeaders(false));
+        }
     }
 }

@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
+using System.Text;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -137,6 +139,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider();
             crypto.GetBytes(key);
             return Convert.ToBase64String(key);
+        }
+
+        /// <summary>
+        /// Method to generate the cloud service name 
+        /// </summary>
+        /// <param name="region">region name</param>
+        /// <returns>cloud service name as string</returns>
+        public static string GenerateCloudServiceName(string region)
+        {
+            return string.Format(
+                CultureInfo.InvariantCulture,
+                "{0}{1}{2}",
+                Constants.CloudServiceNameExtensionPrefix,
+                region.Replace(' ', '-'),
+                Constants.CloudServiceNameExtensionSuffix);       
         }
     }
 }

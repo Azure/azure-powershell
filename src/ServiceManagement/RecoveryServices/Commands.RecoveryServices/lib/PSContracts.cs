@@ -170,6 +170,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.InProgress
         /// </summary>
         public const string RdfeOperationStatusResultInProgress = "InProgress";
+
+        /// <summary>
+        /// Cloud service name prefix
+        /// </summary>
+        public const string CloudServiceNameExtensionPrefix = "CS-";
+
+        /// <summary>
+        /// Cloud service name suffix
+        /// </summary>
+        public const string CloudServiceNameExtensionSuffix = "-RecoveryServices";
+
+        /// <summary>
+        /// Schema Version of RP
+        /// </summary>
+        public const string RpSchemaVersion = "1.1";
     }
 
     /// <summary>

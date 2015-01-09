@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Threading.Tasks;
 using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
+using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -24,13 +23,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
-        /// Updates the vault certificate
+        /// Method to create Azure Site Recovery Vault
         /// </summary>
-        /// <param name="args">the certificate update arguments</param>
-        /// <returns>Upload Certificate Response</returns>
-        public async Task<UploadCertificateResponse> UpdateVaultCertificate(CertificateArgs args)
+        /// <param name="cloudServiceName">name of the cloud service</param>
+        /// <param name="vaultName">name of the vault</param>
+        /// <param name="vaultCreateInput">vault creation input object</param>
+        /// <returns>creation response object.</returns>
+        public VaultCreateResponse CreateVault(string cloudServiceName, string vaultName, VaultCreateArgs vaultCreateInput)
         {
-            return await this.GetSiteRecoveryClient().Vaults.UploadCertificateAsync(args, this.GetRequestHeaders(false));
+            return this.GetRecoveryServicesClient.Vaults.Create(cloudServiceName, vaultName, vaultCreateInput);
         }
     }
 }

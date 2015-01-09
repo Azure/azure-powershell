@@ -136,6 +136,7 @@
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVMClient.cs" />
     <Compile Include="RecoveryServicesCmdletBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\CreateAzureSiteRecoveryVault.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryStorage.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryStorageMapping.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryVaults.cs" />
@@ -147,7 +148,7 @@
     <Compile Include="Service\GetAzureSiteRecoveryNetwork.cs" />
     <Compile Include="Service\CreateAzureSiteRecoveryRecoveryPlan.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryRecoveryPlanFile.cs" />
-    <Compile Include="Service\GetVaultCredentialsFile.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryVaultCredential.cs" />
     <Compile Include="Service\RemoveAzureSiteRecoveryRecoveryPlan.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryProtectionEntity.cs" />
     <Compile Include="Service\RestartAzureSiteRecoveryJob.cs" />
@@ -176,9 +177,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\Microsoft.Azure.RecoveryServices.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="lib\Microsoft.Azure.RecoveryServices.dll" />
     <Content Include="lib\Security.Cryptography.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

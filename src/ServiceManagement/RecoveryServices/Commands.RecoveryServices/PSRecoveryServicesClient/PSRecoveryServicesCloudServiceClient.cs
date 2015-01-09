@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 
@@ -68,6 +71,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             return cloudServiceToReturn;
+        }
+
+        /// <summary>
+        /// Method to Either find or create the cloud service.
+        /// </summary>
+        /// <param name="cloudServiceName">name of the cloud service to be created</param>
+        /// <param name="cloudServiceInput">cloud service input to create the service.</param>
+        public void FindOrCreateCloudService(string cloudServiceName, CloudServiceCreateArgs cloudServiceInput)
+        {
+            bool cloudServicePresent = this.DoesCloudServiceExits(cloudServiceName);
+
+            if (!cloudServicePresent)
+            {
+                this.GetRecoveryServicesClient.CloudServices.Create(cloudServiceName, cloudServiceInput);
+            }
+        }
+
+        /// <summary>
+        /// Checks whether a cloud service is present or not.
+        /// </summary>
+        /// <param name="cloudServiceName">name of the cloud service to be created</param>
+        /// <returns>returns true in case the cloud service exits and false otherwise.</returns>
+        private bool DoesCloudServiceExits(string cloudServiceName)
+        {
+            IEnumerable<CloudService> cloudServiceList = this.GetCloudServices();
+            bool cloudServicePresent = false;
+
+            foreach (var cloudService in cloudServiceList)
+            {
+                if (cloudServiceName.Equals(cloudService.Name, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    cloudServicePresent = true;
+                    break;
+                }
+            }
+
+            return cloudServicePresent;
         }
     }
 }
