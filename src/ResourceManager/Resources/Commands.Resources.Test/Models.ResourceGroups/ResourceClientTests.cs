@@ -40,6 +40,7 @@ using Newtonsoft.Json.Linq;
 using Xunit;
 using Xunit.Extensions;
 using System.Diagnostics;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
