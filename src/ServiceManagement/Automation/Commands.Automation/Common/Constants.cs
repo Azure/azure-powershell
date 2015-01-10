@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
 {
     public class Constants
     {
-
         public const string ClientIdentity = "PowerShell";
 
         public const char RunbookTagsSeparatorChar = ',';

@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Module GetModule(string automationAccountName, string name);
 
-        Module UpdateModule(string automationAccountName, IDictionary<string, string> tags, string name, Uri contentLink);
+        Module UpdateModule(string automationAccountName, IDictionary<string, string> tags, string name);
 
         IEnumerable<Module> ListModules(string automationAccountName);
 
@@ -114,9 +114,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Job GetJob(string automationAccountName, Guid id);
 
-        IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTime? startTime, DateTime? endTime);
+        IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTime? startTime, DateTime? endTime, string jobStatus);
 
-        IEnumerable<Job> ListJobs(string automationAccountName, DateTime? startTime, DateTime? endTime);
+        IEnumerable<Job> ListJobs(string automationAccountName, DateTime? startTime, DateTime? endTime, string jobStatus);
 
         void ResumeJob(string automationAccountName, Guid id);
 
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void SuspendJob(string automationAccountName, Guid id);
 
         #endregion
-
+        
         #region Accounts
 
         IEnumerable<AutomationAccount> ListAutomationAccounts(string automationAccountName, string location);
@@ -133,6 +133,27 @@ namespace Microsoft.Azure.Commands.Automation.Common
         AutomationAccount CreateAutomationAccount(string automationAccountName, string location);
 
         void DeleteAutomationAccount(string automationAccountName, string location);
+        
+        #endregion
+
+        #region JobSchedules
+
+        JobSchedule GetJobSchedule(string automationAccountName, Guid jobScheduleId);
+
+        JobSchedule GetJobSchedule(string automationAccountName, string runbookName, string scheduleName);
+
+        IEnumerable<JobSchedule> ListJobSchedules(string automationAccountName);
+
+        IEnumerable<JobSchedule> ListJobSchedulesByRunbookName(string automationAccountName, string runbookName);
+
+        IEnumerable<JobSchedule> ListJobSchedulesByScheduleName(string automationAccountName, string scheduleName);
+
+        JobSchedule RegisterScheduledRunbook(string automationAccountName, string runbookName, string scheduleName, IDictionary parameters);
+
+        void UnregisterScheduledRunbook(string automationAccountName, Guid jobScheduleId);
+
+        void UnregisterScheduledRunbook(string automationAccountName, string runbookName, string scheduleName);
+
 
         #endregion
     }

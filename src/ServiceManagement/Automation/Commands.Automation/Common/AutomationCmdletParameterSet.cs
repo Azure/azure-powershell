@@ -61,6 +61,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// <summary>
         /// The Runbook name parameter set.
         /// </summary>
-        internal const string ByRunbookName = "ByRunbookName"; 
+        internal const string ByRunbookName = "ByRunbookName";
+
+        /// <summary>
+        /// The Schedule name parameter set.
+        /// </summary>
+        internal const string ByScheduleName = "ByScheduleName";
+        
+        /// <summary>
+        /// The Schedule name parameter set.
+        /// </summary>
+        internal const string ByRunbookNameAndScheduleName = "ByRunbookNameAndScheduleName";
+
+        /// <summary>
+        /// The Job Schedule Id parameter set.
+        /// </summary>
+        internal const string ByJobScheduleId = "ByJobScheduleId";
     }
 }

@@ -141,9 +141,15 @@
     <value>{0} {1} operation failed for object name: {2) under AutomationAccount: {3}</value>
     <comment>Automation</comment>
   </data>
+  <data name="CredentialNotFound" xml:space="preserve">
+    <value>The credential was not found. Credential name: {0}.</value>
+  </data>
   <data name="JobNotFound" xml:space="preserve">
     <value>The Job having Id: {0} was not found.</value>
     <comment>Automation</comment>
+  </data>
+  <data name="ModuleNotFound" xml:space="preserve">
+    <value>The module was not found. Module name: {0}.</value>
   </data>
   <data name="ParameterEmpty" xml:space="preserve">
     <value>{0} is empty.</value>
@@ -165,6 +171,9 @@
     <value>Are you sure you want to remove the Azure Automation {0} ?</value>
     <comment>Automation</comment>
   </data>
+  <data name="ResourceExists" xml:space="preserve">
+    <value>Resource exists.</value>
+  </data>
   <data name="RunbookNotFound" xml:space="preserve">
     <value>The Runbook was not found. Runbook name: {0}.</value>
     <comment>Autmation</comment>
@@ -182,7 +191,39 @@
     <comment>Automation</comment>
   </data>
   <data name="VariableNotFound" xml:space="preserve">
-    <value>The varaible was not found. Variable name {0}.</value>
+    <value>The variable was not found. Variable name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookHasNoPublishedVersion" xml:space="preserve">
+    <value>The runbook has no published version. Runbook name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="InvalidRunbookParameters" xml:space="preserve">
+    <value>At least one parameter provided is not expected by the runbook.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="JobScheduleNotFound" xml:space="preserve">
+    <value>The job schedule was not found. Runbook name {0}. Schedule name {1}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="JobScheduleWithIdNotFound" xml:space="preserve">
+    <value>The job schedule was not found. Job schedule id: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookParameterCannotBeSerializedToJson" xml:space="preserve">
+    <value>The runbook parameter "{0}" cannot be serialized to JSON.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookParameterValueRequired" xml:space="preserve">
+    <value>The runbook parameter "{0}" is mandatory.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationJobScheduleDescription" xml:space="preserve">
+    <value>Disassociating the Azure Automation runbook and schedule.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationJobScheduleWarning" xml:space="preserve">
+    <value>Are you sure you want to disassociate the Azure Automation runbook and schedule?</value>
     <comment>Automation</comment>
   </data>
   <data name="InvalidRunbookParameters" xml:space="preserve">

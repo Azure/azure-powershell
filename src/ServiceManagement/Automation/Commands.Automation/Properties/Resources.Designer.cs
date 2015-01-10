@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The credential was not found. Credential name: {0}..
+        /// </summary>
+        internal static string CredentialNotFound {
+            get {
+                return ResourceManager.GetString("CredentialNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Invalid runbook parameters..
         /// </summary>
         internal static string InvalidRunbookParameters {
@@ -106,11 +115,56 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The module was not found. Module name: {0}..
+        /// </summary>
+        internal static string ModuleNotFound {
+            get {
+                return ResourceManager.GetString("ModuleNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The job schedule was not found. Runbook name {0}. Schedule name {1}..
+        /// </summary>
+        internal static string JobScheduleNotFound {
+            get {
+                return ResourceManager.GetString("JobScheduleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The job schedule was not found. Job schedule id: {0}..
+        /// </summary>
+        internal static string JobScheduleWithIdNotFound {
+            get {
+                return ResourceManager.GetString("JobScheduleWithIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is empty..
         /// </summary>
         internal static string ParameterEmpty {
             get {
                 return ResourceManager.GetString("ParameterEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disassociating the Azure Automation runbook and schedule..
+        /// </summary>
+        internal static string RemoveAzureAutomationJobScheduleDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureAutomationJobScheduleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to disassociate the Azure Automation runbook and schedule?.
+        /// </summary>
+        internal static string RemoveAzureAutomationJobScheduleWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureAutomationJobScheduleWarning", resourceCulture);
             }
         }
         
@@ -169,6 +223,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resource exists..
+        /// </summary>
+        internal static string ResourceExists {
+            get {
+                return ResourceManager.GetString("ResourceExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Runbook already exists. Runbook name: {0}..
         /// </summary>
         internal static string RunbookAlreadyExists {
@@ -183,6 +246,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string RunbookAlreadyHasDraft {
             get {
                 return ResourceManager.GetString("RunbookAlreadyHasDraft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The runbook has no published version. Runbook name {0}..
+        /// </summary>
+        internal static string RunbookHasNoPublishedVersion {
+            get {
+                return ResourceManager.GetString("RunbookHasNoPublishedVersion", resourceCulture);
             }
         }
         
@@ -241,7 +313,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The varaible was not found. Variable name {0}..
+        ///   Looks up a localized string similar to The variable was not found. Variable name {0}..
         /// </summary>
         internal static string VariableNotFound {
             get {

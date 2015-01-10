@@ -104,6 +104,8 @@
     <Compile Include="Cmdlet\NewAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationRunbookDefinition.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationScheduledRunbook.cs" />
+    <Compile Include="Cmdlet\RegisterAzureAutomationScheduledRunbook.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\PublishAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationRunbook.cs" />
@@ -132,6 +134,7 @@
     <Compile Include="Cmdlet\StartAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\StopAzureAutomationJob.cs" />
     <Compile Include="Cmdlet\SuspendAzureAutomationJob.cs" />
+    <Compile Include="Cmdlet\UnregisterAzureAutomationScheduledRunbook.cs" />
     <Compile Include="Common\AutomationClient.cs" />
     <Compile Include="Common\AutomationCmdletParameterSet.cs" />
     <Compile Include="Common\AzureAutomationOperationException.cs" />
@@ -145,6 +148,7 @@
     <Compile Include="DataContract\OdataError.cs" />
     <Compile Include="DataContract\OdataErrorMessage.cs" />
     <Compile Include="Model\AutomationAccount.cs" />
+    <Compile Include="Model\JobSchedule.cs" />
     <Compile Include="Model\JobStream.cs" />
     <Compile Include="Model\Credential.cs" />
     <Compile Include="Model\Job.cs" />

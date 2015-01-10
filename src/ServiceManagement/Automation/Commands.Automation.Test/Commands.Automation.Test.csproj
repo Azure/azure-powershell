@@ -96,26 +96,31 @@
     <Compile Include="UnitTests\GetAzureAutomationAccountTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationRunbookDefinitionTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationRunbookTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationScheduledRunbookTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\PublishAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationAccountTest.cs" />
+    <Compile Include="UnitTests\RegisterAzureAutomationScheduledRunbook.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationRunbookDefinitionTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationCredentialTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationModuleTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationScheduleTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationCredentialTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationModuleTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationScheduleTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationVariableTest.cs" />
-    <Compile Include="UnitTests\RemoveAzureAutomationCredentialTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationModuleTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationScheduleTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationVariableTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationVariableTest.cs" />
+    <Compile Include="UnitTests\ResumeAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationCredentialTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationScheduleTest.cs" />
-    <Compile Include="UnitTests\GetAzureAutomationVariableTest.cs" />
+    <Compile Include="UnitTests\StopAzureAutomationJobTest.cs" />
+    <Compile Include="UnitTests\SuspendAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\StartAzureAutomationRunbookTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +140,7 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <Compile Include="UnitTests\UnregisterAzureAutomationScheduledRunbook.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

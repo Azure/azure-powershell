@@ -12,42 +12,38 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Properties;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    using AutomationManagement = Management.Automation;
-
     /// <summary>
-    /// The Job Stream.
+    /// The Job Schedule.
     /// </summary>
-    public class JobStream
+    public class JobSchedule
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobStream"/> class.
+        /// Initializes a new instance of the <see cref="JobSchedule"/> class.
         /// </summary>
-        /// <param name="jobStream">
-        /// The job stream.
+        /// <param name="jobSchedule">
+        /// The job schedule.
         /// </param>
-        /// <exception cref="System.ArgumentException">
-        /// </exception>
-        public JobStream(AutomationManagement.Models.JobStream jobStream, string automationAccountName, Guid jobId )
+        public JobSchedule(string automationAccountName, Azure.Management.Automation.Models.JobSchedule jobSchedule)
         {
-            Requires.Argument("jobStream", jobStream).NotNull();
-
-            this.StreamId = jobStream.Properties.StreamId;
-            this.Type = jobStream.Properties.StreamType;
-            this.Text = jobStream.Properties.Summary;
-            this.Time = jobStream.Properties.Time;
+            Requires.Argument("jobSchedule", jobSchedule).NotNull();
             this.AutomationAccountName = automationAccountName;
-            this.Id = jobId;
+            this.Id = jobSchedule.Properties.Id;
+            this.RunbookName = jobSchedule.Properties.Runbook.Name;
+            this.ScheduleName = jobSchedule.Properties.Schedule.Name;
+            this.Parameters = jobSchedule.Properties.Parameters ?? new Dictionary<string, string>();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobStream"/> class.
+        /// Initializes a new instance of the <see cref="HourlySchedule"/> class.
         /// </summary>
-        public JobStream()
+        public JobSchedule()
         {
         }
 
@@ -55,30 +51,25 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the automation account name.
         /// </summary>
         public string AutomationAccountName { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the job schedule id.
+        /// </summary>
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the Job Id.
+        /// Gets or sets the runbook name.
         /// </summary>
-        public Guid Id { get; set; }
+        public string RunbookName { get; set; }
 
         /// <summary>
-        /// Gets or sets the stream id
+        /// Gets or sets the schedule name.
         /// </summary>
-        public string StreamId { get; set; }
+        public string ScheduleName { get; set; }
 
         /// <summary>
-        /// Gets or sets the stream time.
+        /// Gets or sets the runbook parameters.
         /// </summary>
-        public DateTimeOffset Time { get; set; }
-
-        /// <summary>
-        /// Gets or sets the stream text.
-        /// </summary>
-        public string Text { get; set; }
-
-        /// <summary>
-        /// Gets or sets the stream Type.
-        /// </summary>
-        public string Type { get; set; }
+        public IDictionary<string, string> Parameters { get; set; }
     }
 }

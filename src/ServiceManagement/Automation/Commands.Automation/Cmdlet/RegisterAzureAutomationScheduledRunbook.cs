@@ -12,43 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Create a new Module for automation.
+    /// Registers an azure automation scheduled runbook.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationModule")]
-    [OutputType(typeof(Module))]
-    public class NewAzureAutomationModule : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsLifecycle.Register, "AzureAutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
+    [OutputType(typeof(Runbook))]
+    public class RegisterAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the module name.
+        /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The module name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The runbook name.")]
         [ValidateNotNullOrEmpty]
+        [Alias("RunbookName")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the contentLink
+        /// Gets or sets the schedule that will be used to start the runbook.
         /// </summary>
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The ContentLink.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the schedule on which the runbook will be started.")]
         [ValidateNotNullOrEmpty]
-        public Uri ContentLink { get; set; }
+        public string ScheduleName { get; set; }
 
         /// <summary>
-        /// Gets or sets the module tags.
+        /// Gets or sets the runbook parameters.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The module tags.")]
-        public IDictionary<string, string> Tags { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The runbook parameters.")]
+        public IDictionary Parameters { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -56,9 +57,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            var createdModule = this.AutomationClient.CreateModule(this.AutomationAccountName, ContentLink, Name, Tags);
+            JobSchedule jobSchedule;
 
-            this.WriteObject(createdModule);
+            jobSchedule = this.AutomationClient.RegisterScheduledRunbook(
+                    this.AutomationAccountName, this.Name, this.ScheduleName, this.Parameters);
+
+            this.WriteObject(jobSchedule);
         }
     }
 }
