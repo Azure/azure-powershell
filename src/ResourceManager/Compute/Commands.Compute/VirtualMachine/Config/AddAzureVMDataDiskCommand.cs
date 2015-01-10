@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Caching = this.Caching,
                 DiskSizeGB = this.DiskSizeInGB,
                 Lun = this.Lun == null ? 0 : this.Lun.Value,
-                VirtualHardDisk = new VirtualHardDisk
+                VirtualHardDisk = this.VhdUri == null ? null : new VirtualHardDisk
                 {
                     Uri = this.VhdUri.ToString()
                 }
