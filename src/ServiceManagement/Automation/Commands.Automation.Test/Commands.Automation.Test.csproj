@@ -98,6 +98,7 @@
     <Compile Include="UnitTests\GetAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\PublishAzureAutomationRunbookTest.cs" />
+    <Compile Include="UnitTests\RemoveAzureAutomationAccountTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationRunbookDefinitionTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationRunbookTest.cs" />

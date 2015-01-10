@@ -132,6 +132,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         AutomationAccount CreateAutomationAccount(string automationAccountName, string location);
 
+        void DeleteAutomationAccount(string automationAccountName, string location);
+
         #endregion
     }
 }

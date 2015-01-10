@@ -918,7 +918,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public AutomationAccount CreateAutomationAccount(string automationAccountName, string location)
         {
-            
+
             Requires.Argument("AutomationAccountName", automationAccountName).ValidAutomationAccountName();
 
             try
@@ -937,41 +937,34 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 // ArgumentException is thrown when account does not exists, so ignore it
             }
 
-            // Generate cloud service name
-            var generatedCsName = GetCloudServiceName(automationAccountName, location);
+            this.automationManagementClient.CreateAutomationAccount(automationAccountName, location);
+
+            return this.ListAutomationAccounts(automationAccountName, location).FirstOrDefault();
+        }
+
+
+        public void DeleteAutomationAccount(string automationAccountName, string location)
+        {
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("Location", location).NotNull();
 
             try
             {
-                this.automationManagementClient.CloudServices.Get(generatedCsName);
+                this.automationManagementClient.DeleteAutomationAccount(automationAccountName,location);
             }
             catch (CloudException e)
             {
-                // Clould Service does not exists, hence create it
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)
                 {
-                    this.automationManagementClient.CloudServices.Create(
-                        new CloudServiceCreateParameters()
-                        {
-                            Name = generatedCsName,
-                            GeoRegion = location,
-                            Label = generatedCsName,
-                            Description = "Cloud Service via PowerShell client"
-                        });
+                    // Try with SHA encoded cloud Service name
+                    var generatedCsName = GetCloudServiceName(automationAccountName, location);
+                    this.automationManagementClient.AutomationAccounts.Delete(generatedCsName, automationAccountName);
+                }
+                else
+                {
+                    throw;
                 }
             }
-
-            this.automationManagementClient.AutomationAccounts.Create(
-                generatedCsName,
-                new AutomationAccountCreateParameters()
-                {
-                    Name = automationAccountName,
-                    CloudServiceSettings = new CloudServiceSettings
-                    {
-                           GeoRegion = location
-                    },
-                });
-
-            return this.ListAutomationAccounts(automationAccountName, location).FirstOrDefault();
         }
 
         #endregion
@@ -1144,7 +1137,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 hashedSubId = Base32NoPaddingEncode(sha256.ComputeHash(UTF8Encoding.UTF8.GetBytes(subscriptionId)));
             }
 
-            return string.Format(CultureInfo.InvariantCulture, "{0}-{1}-{2}", Constants.AutomationServicePrefix, hashedSubId, region.Replace(' ', '-'));
+            return string.Format(CultureInfo.InvariantCulture, "{0}{1}-{2}", Constants.AutomationServicePrefix, hashedSubId, region.Replace(' ', '-'));
         }
 
         private string Base32NoPaddingEncode(byte[] data)

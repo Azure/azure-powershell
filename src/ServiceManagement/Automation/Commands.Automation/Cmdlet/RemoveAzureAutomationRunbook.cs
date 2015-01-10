@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes an azure automation runbook.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationRunbook", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Remove, "AzureAutomationRunbook", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     public class RemoveAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [Alias("RunbookName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation runbook definitions for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationRunbookDefinition", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationRunbookDefinition", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(RunbookDefinition))]
     public class GetAzureAutomationRunbookDefinition : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [Alias("RunbookName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
