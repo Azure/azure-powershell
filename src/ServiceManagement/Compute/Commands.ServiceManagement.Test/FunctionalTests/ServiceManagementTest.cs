@@ -380,19 +380,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         protected void VerifyRDP(string serviceName, string rdpPath)
         {
-            Utilities.GetDeploymentAndWaitForReady(serviceName, DeploymentSlotType.Production, 10, 600);
-
+            Console.WriteLine("Fetching Azure VM RDP file");
             vmPowershellCmdlets.GetAzureRemoteDesktopFile("WebRole1_IN_0", serviceName, rdpPath, false);
-
-            string dns;
-
-            using (var stream = new StreamReader(rdpPath))
-            {
-                string firstLine = stream.ReadLine();
-                dns = Utilities.FindSubstring(firstLine, ':', 2);
-            }
-
-            Assert.IsTrue((Utilities.RDPtestPaaS(dns, "WebRole1", 0, username, password, true)), "Cannot RDP to the instance!!");
+            Console.WriteLine("Azure VM RDP file downloaded.");
         }
 
         protected string UploadVhdFile()

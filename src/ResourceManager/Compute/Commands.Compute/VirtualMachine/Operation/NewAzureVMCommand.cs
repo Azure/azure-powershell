@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute
                 VirtualMachine = new VirtualMachine
                 {
                     VirtualMachineProperties = vmProps,
-                    Location = this.Location,
+                    Location = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
                     Name = !string.IsNullOrEmpty(this.Name) ? this.Name : this.VM.Name
                 }
             };

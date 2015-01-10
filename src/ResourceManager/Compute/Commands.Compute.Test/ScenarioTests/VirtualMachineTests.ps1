@@ -130,6 +130,7 @@ function Test-VirtualMachine
         Assert-AreEqual $vm2.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm2.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm2.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-NotNull $vm2.Location;
         
         $vms = Get-AzureVM -ResourceGroupName $rgname;
         Assert-AreNotEqual $vms $null;

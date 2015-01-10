@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string Caching { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskSizeInGB)]
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Caching = this.Caching,
                 DiskSizeGB = this.DiskSizeInGB,
                 Lun = this.Lun == null ? 0 : this.Lun.Value,
-                VirtualHardDisk = new VirtualHardDisk
+                VirtualHardDisk = this.VhdUri == null ? null : new VirtualHardDisk
                 {
                     Uri = this.VhdUri.ToString()
                 }

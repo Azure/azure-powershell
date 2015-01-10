@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public string Name { get; set; }
 
+        public string Location { get; set; }
+
         public string VMSize
         {
             get
@@ -150,6 +152,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             {
                 ResourceGroupName = rgName,
                 Name = virtualMachine == null ? null : virtualMachine.Name,
+                Location = virtualMachine == null ? null : virtualMachine.Location,
                 ProvisioningState = virtualMachine.VirtualMachineProperties.ProvisioningState,
                 Tags = virtualMachine.Tags,
                 Resources = virtualMachine.VirtualMachineSubResources,

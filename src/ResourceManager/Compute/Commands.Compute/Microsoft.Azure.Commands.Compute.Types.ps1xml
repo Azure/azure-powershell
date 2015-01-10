@@ -11,6 +11,7 @@
             <ReferencedProperties>
               <Name>ResourceGroupName</Name>
               <Name>Name</Name>
+              <Name>Location</Name>
               <Name>VMSize</Name>
               <Name>Tags</Name>
               <Name>AvailabilitySetId</Name>
