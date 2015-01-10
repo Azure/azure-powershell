@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string Caching { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskSizeInGB)]
