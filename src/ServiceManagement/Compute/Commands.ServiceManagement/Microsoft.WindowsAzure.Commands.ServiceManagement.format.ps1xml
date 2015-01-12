@@ -658,6 +658,10 @@
                 <PropertyName>TimestampUtc</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>StatusMessage</Label>
+                <PropertyName>StatusMessage</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>DscConfigurationLog</Label>
                 <PropertyName>DscConfigurationLog</PropertyName>
               </ListItem>
