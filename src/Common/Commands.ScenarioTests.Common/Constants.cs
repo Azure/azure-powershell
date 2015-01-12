@@ -50,6 +50,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public const string Scheduler = "Scheduler";
 
+        public const string KeyVault = "KeyVault";
+
         public const string Network = "Network";
 
         // Owners
