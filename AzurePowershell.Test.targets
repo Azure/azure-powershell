@@ -35,7 +35,7 @@
     <Delete Files="$(_testResult)"/>
     <Exec
       Command="MSTest.exe /testcontainer:$(_testAssembly) /testsettings:$(_testSettings) /category:$(_testFilter) /resultsfile:$(_testResult)"
-      ContinueOnError="true" />
+      ContinueOnError="false" />
   </Target>
 
   <Target Name="BeforeRunTests">
@@ -44,69 +44,65 @@
   </Target>
   
   <Target Name="TestManagement">
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(ManagementTestDebug)" Html="$(TestOutputDirectory)\ManagementDebug.xunit.dll.html" Verbose="true"
-      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" ContinueOnError="true"/>
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(ManagementTestDebug)" Html="$(TestOutputDirectory)\ManagementDebug.xunit.dll.html" Verbose="false"
+      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 
   <Target Name="TestManagedCache">
     <PropertyGroup>
       <_ManagedCacheTestAssembly>.\src\ServiceManagement\ManagedCache\Commands.ManagedCache.Test\bin\Debug\Microsoft.Azure.Commands.ManagedCache.Test.dll</_ManagedCacheTestAssembly>
     </PropertyGroup>
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(_ManagedCacheTestAssembly)" Html="$(TestOutputDirectory)\ManagedCache.xunit.dll.html" Verbose="true"
-      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" ContinueOnError="true"/>
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(_ManagedCacheTestAssembly)" Html="$(TestOutputDirectory)\ManagedCache.xunit.dll.html" Verbose="false"
+      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 
   <Target Name="TestResourceManager">
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(ResourceManagerTestDebug)" Html="$(TestOutputDirectory)\ResourceManagerTestDebug.xunit.dll.html" Verbose="true"
-      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" ContinueOnError="true"/>
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(ResourceManagerTestDebug)" Html="$(TestOutputDirectory)\ResourceManagerTestDebug.xunit.dll.html" Verbose="false"
+      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
   
   <Target Name="TestBatch">
-     <Xunit.Runner.MSBuild.xunit Assemblies="$(BatchTestDebug)" Html="$(TestOutputDirectory)\BatchTestDebug.xunit.dll.html" Verbose="true"
-       ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" ContinueOnError="true"/>
+     <Xunit.Runner.MSBuild.xunit Assemblies="$(BatchTestDebug)" Html="$(TestOutputDirectory)\BatchTestDebug.xunit.dll.html" Verbose="false"
+       ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 
   <Target Name="TestDataFactoryManager">
-     <Xunit.Runner.MSBuild.xunit Assemblies="$(DataFactoryManagerTestDebug)" Html="$(TestOutputDirectory)\DataFactoryManagerTestDebug.xunit.dll.html" Verbose="true"
-       ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" ContinueOnError="true"/>
+     <Xunit.Runner.MSBuild.xunit Assemblies="$(DataFactoryManagerTestDebug)" Html="$(TestOutputDirectory)\DataFactoryManagerTestDebug.xunit.dll.html" Verbose="false"
+       ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 
   <Target Name="TestStreamAnalyticsManager">
-     <Xunit.Runner.MSBuild.xunit Assemblies="$(StreamAnalyticsManagerTestDebug)" Html="$(TestOutputDirectory)\StreamAnalyticsManagerTestDebug.xunit.dll.html" Verbose="true"
-       ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" ContinueOnError="true"/>
+     <Xunit.Runner.MSBuild.xunit Assemblies="$(StreamAnalyticsManagerTestDebug)" Html="$(TestOutputDirectory)\StreamAnalyticsManagerTestDebug.xunit.dll.html" Verbose="false"
+       ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 
   <Target Name="TestServiceManagement">
     <MSBuild Targets="InvokeMSTest"
              Properties="_testAssembly=$(ServiceManagementTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\ServiceManagementDebug.trx"
-             ContinueOnError="true"
              Projects="build.proj"/>
   </Target>
 
   <Target Name="TestServiceManagementExtensions">
     <MSBuild Targets="InvokeMSTest"
              Properties="_testAssembly=$(ServiceManagementExtensionsTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\ServiceManagementExtensionsDebug.trx"
-             ContinueOnError="true"
              Projects="build.proj"/>
   </Target>
 
   <Target Name="TestSqlDatabase">
     <MSBuild Targets="InvokeMSTest"
         Properties="_testAssembly=$(SqlDatabaseTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\SqlDatabaseDebug.trx"
-        Projects="build.proj" ContinueOnError="true"/>
+        Projects="build.proj"/>
   </Target>
 
   <Target Name="TestHDInsight">
     <MSBuild Targets="InvokeMSTest"
         Properties="_testAssembly=$(HDInsightTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\HDInsightDebug.trx"
-        ContinueOnError="true"
         Projects="build.proj"/>
   </Target>
 
   <Target Name="TestStorage">
     <MSBuild Targets="InvokeMSTest"
         Properties="_testAssembly=$(StorageTestDebug);_testSettings=$(TestSettings);_testFilter=$(TestFilter);_testResult=$(TestOutputDirectory)\StorageDebug.trx"
-        ContinueOnError="true"
         Projects="build.proj"/>
   </Target>
 
@@ -114,8 +110,8 @@
     <PropertyGroup>
       <_RecoveryServicesTestAssembly>.\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll</_RecoveryServicesTestAssembly>
     </PropertyGroup>
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(_RecoveryServicesTestAssembly)" Html="$(TestOutputDirectory)\RecoveryServices.xunit.dll.html" Verbose="true"
-      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" ContinueOnError="true"/>
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(_RecoveryServicesTestAssembly)" Html="$(TestOutputDirectory)\RecoveryServices.xunit.dll.html" Verbose="false"
+      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 
   <!-- Run the scenario tests -->
@@ -123,40 +119,38 @@
     <Message Importance="high" Text="Running scenario tests..." />
     <MSBuild Targets="InvokeMSTest"
       Properties="_testAssembly=$(ScenarioTestDebug);_testSettings=$(TestSettings);_testFilter=$(ScenarioTestFilter);_testResult=$(TestOutputDirectory)\ScenarioTestDebug.trx"
-      ContinueOnError="true"
       Projects="build.proj"/>
     <MSBuild Targets="InvokeMSTest"
       Properties="_testAssembly=$(StorageScenarioTestDebug);_testSettings=$(TestSettings);_testFilter=$(ScenarioTestFilter);_testResult=$(TestOutputDirectory)\StorageScenarioTestDebug.trx"
-      ContinueOnError="true"
       Projects="build.proj"/>
   </Target>
   
   <!-- Run the common tests -->
   <Target Name="CommonTests">
     <Message Importance="high" Text="Running Common tests" />
-	  <Xunit.Runner.MSBuild.xunit Assemblies="$(CommonTestDebug)" Html="$(TestOutputDirectory)\CommonTests.xunit.dll.html" Verbose="true"
-      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" ContinueOnError="true"/>
+	  <Xunit.Runner.MSBuild.xunit Assemblies="$(CommonTestDebug)" Html="$(TestOutputDirectory)\CommonTests.xunit.dll.html" Verbose="false"
+      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
   </Target>
 
   <!-- Run the sql tests -->
   <Target Name="SqlTests">
     <Message Importance="high" Text="Running Sql tests" />
-    <Xunit.Runner.MSBuild.xunit Assemblies="$(SqlTestDebug)" Html="$(TestOutputDirectory)\SqlTests.xunit.dll.html" Verbose="true"
-      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" ContinueOnError="true"/>
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(SqlTestDebug)" Html="$(TestOutputDirectory)\SqlTests.xunit.dll.html" Verbose="false"
+      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>  
 
   <!-- Run the KeyVault tests -->
   <Target Name="KeyVaultTests">
     <Message Importance="high" Text="Running KeyVault tests" />
     <Xunit.Runner.MSBuild.xunit Assemblies="$(KeyVaultTestDebug)" Html="$(TestOutputDirectory)\KeyVaultTests.xunit.dll.html" Verbose="true"
-      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" ContinueOnError="true"/>
+      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
   </Target>
   
   <!-- Run the scenario tests with Mocks -->
   <Target Name="MockedScenarioTests">
     <Message Importance="high" Text="Running scenario tests with Mocks" />
 	  <Xunit.Runner.MSBuild.xunit Assemblies="$(ScenarioTestDebug)" Html="$(TestOutputDirectory)\MockedScenarioTests.xunit.dll.html" Verbose="true"
-      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" ContinueOnError="true"/>
+      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 
   <Target Name="RunOneSDKCIT" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
@@ -164,7 +158,7 @@
     <Delete Files="$(TestOutputDirectory)\RunOneSDKCITDebug.trx" />
     <Exec
       Command="MSTest.exe /testcontainer:$(ScenarioTestDebug) /testsettings:$(TestSettings) /category:$(OneSDKCITFilter) /resultsfile:$(TestOutputDirectory)\RunOneSDKCITDebug.trx"
-      ContinueOnError="true" />
+      ContinueOnError="false" />
   </Target>
   
   <!-- Run the AzureRT tests -->
@@ -173,7 +167,7 @@
     <Delete Files="$(TestOutputDirectory)\RTBVTDebug.trx" />
     <Exec
       Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:BVT /resultsfile:$(TestOutputDirectory)\RTBVTDebug.trx"
-      ContinueOnError="true" />
+      ContinueOnError="false" />
   </Target>
 
   <Target Name="AzureRTBVTsSeq" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
@@ -181,7 +175,7 @@
     <Delete Files="$(TestOutputDirectory)\RTBVTDebug.trx" />
     <Exec
       Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:BVT /resultsfile:$(TestOutputDirectory)\RTBVTDebug.trx"
-      ContinueOnError="true" />
+      ContinueOnError="false" />
   </Target>
 
   <Target Name="AzureRTOne" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
@@ -189,7 +183,7 @@
     <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
     <Exec
       Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug.trx"
-      ContinueOnError="true" />
+      ContinueOnError="false" />
   </Target>
 
   <Target Name="AzureRTMulti" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
@@ -197,7 +191,7 @@
     <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
     <Exec
       Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) $(TestParams) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug.trx"
-      ContinueOnError="true" />
+      ContinueOnError="false" />
   </Target>
 
   <Target Name="AzureRTAll" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
@@ -205,7 +199,7 @@
     <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
     <Exec
       Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:$(AzureRTAllTestFilter3) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
-      ContinueOnError="true" />
+      ContinueOnError="false" />
   </Target>
 
   <Target Name="AzureRTAllFast" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
@@ -218,7 +212,7 @@
       ContinueOnError="true" />
     <Exec
       Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTAllTestFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
-      ContinueOnError="true" />
+      ContinueOnError="false" />
   </Target>
 
   <Target Name="AzureRTSeq" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
@@ -238,7 +232,7 @@
     <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
     <Exec
       Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTAllTestFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
-      ContinueOnError="true" />
+      ContinueOnError="false" />
   </Target>
 
   <Target Name="AzureRTAllPreview" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
@@ -250,7 +244,7 @@
       ContinueOnError="true" />
     <Exec
       Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTAllTestFilter2) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
-      ContinueOnError="true" />
+      ContinueOnError="false" />
   </Target>
 
   <Target Name="AzureRTPreview" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
@@ -258,7 +252,7 @@
     <Delete Files="$(TestOutputDirectory)\RTPreviewDebug.trx" />
     <Exec
       Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:Preview /resultsfile:$(TestOutputDirectory)\RTPreviewDebug.trx"
-      ContinueOnError="true" />
+      ContinueOnError="false" />
   </Target>
 
   <!-- DSC extension related targets -->
@@ -267,7 +261,7 @@
     <Delete Files="$(TestOutputDirectory)\DSCExtensionDebug_x64.trx" />
     <Exec
       Command="MSTest.exe /testcontainer:$(ServiceManagementExtensionsTestDebug) /testsettings:$(TestSettings_x64) /category:x64_only /resultsfile:$(TestOutputDirectory)\DSCExtensionDebug_x64.trx"
-      ContinueOnError="true" />
+      ContinueOnError="false" />
   </Target>
 
   <ItemGroup>
@@ -275,7 +269,7 @@
   </ItemGroup>
 
   <Target Name="LiveTests"> 
-    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="true" />
+    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec Command="packages\xunit.runners.1.9.2\tools\xunit.console.clr4.exe  @(LiveTestDlls) /trait &quot;AcceptanceType=LiveBVT&quot; /html &quot;$(TestOutputDirectory)\Live.%(Filename).html&quot;" />
   </Target> 
 
