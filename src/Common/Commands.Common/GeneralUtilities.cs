@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Common.Extensions;
 using Microsoft.Azure.Common.Extensions.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Common.Internals;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -329,11 +329,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string FormatString(string content)
         {
-            if (ParserHelper.IsXml(content))
+            if (CloudException.IsXml(content))
             {
                 return XmlUtilities.TryFormatXml(content);
             }
-            else if (ParserHelper.IsJson(content))
+            else if (CloudException.IsJson(content))
             {
                 return JsonUtilities.TryFormatJson(content);
             }
