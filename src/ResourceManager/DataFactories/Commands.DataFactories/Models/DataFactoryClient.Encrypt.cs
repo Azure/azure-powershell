@@ -33,12 +33,14 @@ namespace Microsoft.Azure.Commands.DataFactories
                 resourceGroupName, dataFactoryName);
         }
 
-        public virtual string OnPremisesEncryptString(SecureString value, string resourceGroupName, string dataFactoryName, string gatewayName, PSCredential credential)
+        public virtual string OnPremisesEncryptString(SecureString value, string resourceGroupName, string dataFactoryName, string gatewayName, PSCredential credential, string type)
         {
             if (value == null)
             {
                 throw new ArgumentNullException("value");
             }
+
+            LinkedServiceType likedServiceType = type == null ? LinkedServiceType.OnPremisesSqlLinkedService : (LinkedServiceType) Enum.Parse(typeof(LinkedServiceType), type, true);
 
             var response = DataPipelineManagementClient.Gateways.RetrieveConnectionInfo(resourceGroupName, dataFactoryName, gatewayName);
             var gatewayEncryptionInfos = new[]
@@ -54,9 +56,8 @@ namespace Microsoft.Azure.Commands.DataFactories
 
             string userName = credential != null ? credential.UserName : null;
             SecureString password = credential != null ? credential.Password : null;
-            UserInputConnectionString connectionString = new UserInputConnectionString(value, userName, password);
-            var gatewayEncryptionClient = new GatewayEncryptionClient();
-            return gatewayEncryptionClient.Encrypt(connectionString, gatewayEncryptionInfos);
+            UserInputConnectionString connectionString = new UserInputConnectionString(value, userName, password, likedServiceType);
+            return GatewayEncryptionClient.Encrypt(connectionString, gatewayEncryptionInfos);
         }
     }
 }

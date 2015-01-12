@@ -55,7 +55,7 @@
       <HintPath>..\..\..\packages\Microsoft.DataFactories.Runtime.0.11.1-preview\lib\net45\Microsoft.DataFactories.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.DataTransfer.Gateway.Encryption">
-      <HintPath>..\..\..\packages\Microsoft.DataTransfer.Gateway.Encryption.1.1.0-preview\lib\net45\Microsoft.DataTransfer.Gateway.Encryption.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.DataTransfer.Gateway.Encryption.1.2.0-preview\lib\net45\Microsoft.DataTransfer.Gateway.Encryption.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
