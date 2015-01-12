@@ -5517,7 +5517,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         partial void OnPercentCompleteChanging(int value);
         partial void OnPercentCompleteChanged();
         /// <summary>
-        /// There are no comments for Property ErrorCode in the schema.
+        /// There are no comments for Property Error.Code in the schema.
         /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public global::System.Nullable<int> ErrorCode
