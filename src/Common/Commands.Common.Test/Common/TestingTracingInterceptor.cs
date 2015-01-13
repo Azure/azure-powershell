@@ -17,8 +17,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
-using Microsoft.WindowsAzure.Common;
-using Microsoft.WindowsAzure.Common.Internals;
+using Microsoft.Azure.Common;
+using Microsoft.Azure.Common.Internals;
+using Hyak.Common;
+using Hyak.Common.Internals;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
@@ -97,12 +99,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         {
             try
             {
-                CloudContext.Configuration.Tracing.RemoveTracingInterceptor(TestingTracingInterceptor.Singleton);
+                TracingAdapter.RemoveTracingInterceptor(TestingTracingInterceptor.Singleton);
             }
             catch
             {
             }
-            CloudContext.Configuration.Tracing.AddTracingInterceptor(TestingTracingInterceptor.Singleton);
+            TracingAdapter.AddTracingInterceptor(TestingTracingInterceptor.Singleton);
         }
 
         static TestingTracingInterceptor Singleton

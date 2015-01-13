@@ -17,7 +17,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Test;
 using Xunit;
 using Microsoft.Azure.Common.Extensions;
 

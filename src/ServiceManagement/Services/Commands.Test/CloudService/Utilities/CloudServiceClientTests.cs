@@ -32,6 +32,7 @@ using Moq;
 using MockStorageService = Microsoft.WindowsAzure.Commands.Test.Utilities.Common.MockStorageService;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
@@ -162,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 
             clientMocks.ComputeManagementClientMock.Setup(
                 c => c.HostedServices.DeleteAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Returns(Tasks.FromResult(new OperationResponse
+                .Returns(Tasks.FromResult(new AzureOperationResponse
                 {
                     RequestId = "request000",
                     StatusCode = HttpStatusCode.OK
@@ -200,7 +201,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 
             clientMocks.ComputeManagementClientMock.Setup(
                 c => c.HostedServices.DeleteAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Returns(Tasks.FromResult(new OperationResponse
+                .Returns(Tasks.FromResult(new AzureOperationResponse
                 {
                     RequestId = "request000",
                     StatusCode = HttpStatusCode.OK
@@ -225,7 +226,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 
             clientMocks.ComputeManagementClientMock.Setup(
                 c => c.Deployments.BeginDeletingBySlotAsync(It.IsAny<string>(), DeploymentSlot.Production, It.IsAny<CancellationToken>()))
-                .Returns((string s, DeploymentSlot slot, CancellationToken cancellationToken) => Tasks.FromResult(new OperationResponse
+                .Returns((string s, DeploymentSlot slot, CancellationToken cancellationToken) => Tasks.FromResult(new AzureOperationResponse
                 {
                     RequestId = "req0",
                     StatusCode = HttpStatusCode.OK
@@ -233,7 +234,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 
             clientMocks.ComputeManagementClientMock.Setup(
                 c => c.HostedServices.DeleteAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Returns(Tasks.FromResult(new OperationResponse
+                .Returns(Tasks.FromResult(new AzureOperationResponse
                 {
                     RequestId = "request000",
                     StatusCode = HttpStatusCode.OK
@@ -259,7 +260,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             clientMocks.ComputeManagementClientMock.Setup(
                 c =>
                 c.HostedServices.CreateAsync(It.IsAny<HostedServiceCreateParameters>(), It.IsAny<CancellationToken>()))
-                .Returns(Tasks.FromResult(new OperationResponse
+                .Returns(Tasks.FromResult(new AzureOperationResponse
                 {
                     RequestId = "request001",
                     StatusCode = HttpStatusCode.OK
@@ -288,7 +289,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             clientMocks.ComputeManagementClientMock.Setup(
                 c =>
                 c.HostedServices.CreateAsync(It.IsAny<HostedServiceCreateParameters>(), It.IsAny<CancellationToken>()))
-                .Returns(Tasks.FromResult(new OperationResponse
+                .Returns(Tasks.FromResult(new AzureOperationResponse
                 {
                     RequestId = "request001",
                     StatusCode = HttpStatusCode.OK
@@ -324,7 +325,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             clientMocks.ComputeManagementClientMock.Setup(
                 c =>
                 c.HostedServices.CreateAsync(It.IsAny<HostedServiceCreateParameters>(), It.IsAny<CancellationToken>()))
-                .Returns(Tasks.FromResult(new OperationResponse
+                .Returns(Tasks.FromResult(new AzureOperationResponse
                 {
                     RequestId = "request001",
                     StatusCode = HttpStatusCode.OK
@@ -354,7 +355,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             clientMocks.ComputeManagementClientMock.Setup(
                 c =>
                 c.HostedServices.CreateAsync(It.IsAny<HostedServiceCreateParameters>(), It.IsAny<CancellationToken>()))
-                .Returns(Tasks.FromResult(new OperationResponse
+                .Returns(Tasks.FromResult(new AzureOperationResponse
                 {
                     RequestId = "request001",
                     StatusCode = HttpStatusCode.OK
@@ -387,7 +388,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             clientMocks.ComputeManagementClientMock.Setup(
                 c =>
                 c.HostedServices.CreateAsync(It.IsAny<HostedServiceCreateParameters>(), It.IsAny<CancellationToken>()))
-                .Returns(Tasks.FromResult(new OperationResponse
+                .Returns(Tasks.FromResult(new AzureOperationResponse
                 {
                     RequestId = "request001",
                     StatusCode = HttpStatusCode.OK
@@ -424,7 +425,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             clientMocks.ComputeManagementClientMock.Setup(
                 c =>
                 c.HostedServices.CreateAsync(It.IsAny<HostedServiceCreateParameters>(), It.IsAny<CancellationToken>()))
-                .Returns(Tasks.FromResult(new OperationResponse
+                .Returns(Tasks.FromResult(new AzureOperationResponse
                 {
                     RequestId = "request001",
                     StatusCode = HttpStatusCode.OK
@@ -463,7 +464,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             clientMocks.ComputeManagementClientMock.Setup(
                 c =>
                 c.HostedServices.CreateAsync(It.IsAny<HostedServiceCreateParameters>(), It.IsAny<CancellationToken>()))
-                .Returns(Tasks.FromResult(new OperationResponse
+                .Returns(Tasks.FromResult(new AzureOperationResponse
                 {
                     RequestId = "request001",
                     StatusCode = HttpStatusCode.OK

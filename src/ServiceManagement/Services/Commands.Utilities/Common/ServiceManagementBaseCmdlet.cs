@@ -29,6 +29,8 @@ using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -199,12 +201,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         //TODO: Input argument is not used and should probably be removed.
-        protected void ExecuteClientActionNewSM<TResult>(object input, string operationDescription, Func<TResult> action, Func<OperationStatusResponse, TResult, object> contextFactory) where TResult : OperationResponse
+        protected void ExecuteClientActionNewSM<TResult>(object input, string operationDescription, Func<TResult> action, Func<OperationStatusResponse, TResult, object> contextFactory) where TResult : AzureOperationResponse
         {
             ExecuteClientActionNewSM(input, operationDescription, action, null, contextFactory);
         }
 
-        protected void ExecuteClientActionNewSM<TResult>(object input, string operationDescription, Func<TResult> action, Func<string, string, OperationStatusResponse> waitOperation, Func<OperationStatusResponse, TResult, object> contextFactory) where TResult : OperationResponse
+        protected void ExecuteClientActionNewSM<TResult>(object input, string operationDescription, Func<TResult> action, Func<string, string, OperationStatusResponse> waitOperation, Func<OperationStatusResponse, TResult, object> contextFactory) where TResult : AzureOperationResponse
         {
             TResult result = null;
             OperationStatusResponse operation = null;
@@ -260,9 +262,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        protected void ExecuteClientActionNewSM<TResult>(object input, string operationDescription, Func<TResult> action) where TResult : OperationResponse
+        protected void ExecuteClientActionNewSM<TResult>(object input, string operationDescription, Func<TResult> action) where TResult : AzureOperationResponse
         {
-            this.ExecuteClientActionNewSM(input, operationDescription, action, (s, response) => this.ContextFactory<OperationResponse, ManagementOperationContext>(response, s));
+            this.ExecuteClientActionNewSM(input, operationDescription, action, (s, response) => this.ContextFactory<AzureOperationResponse, ManagementOperationContext>(response, s));
         }
 
         protected T2 ContextFactory<T1, T2>(T1 source, OperationStatusResponse response) where T2 : ManagementOperationContext
