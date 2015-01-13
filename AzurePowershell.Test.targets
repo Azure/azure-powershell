@@ -26,6 +26,7 @@
     <AzureRTAllTestFilter>"Functional|AzureRTScenario"</AzureRTAllTestFilter>
     <AzureRTAllTestFilter2>"Functional|AzureRTScenario|Preview"</AzureRTAllTestFilter2>
     <AzureRTAllTestFilter3>"Functional|AzureRTScenario|Sequential"</AzureRTAllTestFilter3>
+	<AzureRTUploadSeqFilter>"AzureRTUpload|Sequential"</AzureRTUploadSeqFilter>
   </PropertyGroup>
   
   <Target Name="InvokeMSTest">
@@ -224,7 +225,7 @@
 
     <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
     <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:"AzureRTUpload|Sequential" /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:$(AzureRTUploadSeqFilter) /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
       ContinueOnError="false" />
   </Target>
 
