@@ -171,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 StatusCode = (int)(extensionSettingStatus.Code ?? -1),
                 StatusMessage = (extensionSettingStatus.FormattedMessage == null || extensionSettingStatus.FormattedMessage.Message == null) ? string.Empty : extensionSettingStatus.FormattedMessage.Message.ToString(CultureInfo.CurrentUICulture),
                 DscConfigurationLog = !string.Empty.Equals(message) ? message.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None) : new List<String>().ToArray(),
-                TimestampUtc = extensionSettingStatus.Timestamp == null ? string.Empty : string.Format(CultureInfo.CurrentCulture, "{0:u}", extensionSettingStatus.Timestamp)
+                TimestampUtc = extensionSettingStatus.Timestamp == null ? string.Empty : string.Format(CultureInfo.CurrentCulture, "{0:U}", TimeZone.CurrentTimeZone.ToUniversalTime(extensionSettingStatus.Timestamp.Value))
             };
             return dscStatusContext;
         }
