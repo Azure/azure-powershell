@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vault">vault object</param>
         /// <param name="site">site object </param>
         /// <returns>credential object</returns>
-        public ASRVaultCreds GetVaultCrentials(X509Certificate2 managementCert, ASRVault vault, Site site)
+        public ASRVaultCreds GenerateVaultCredential(X509Certificate2 managementCert, ASRVault vault, Site site)
         {
             Utilities.UpdateVaultSettings(new ASRVaultCreds()
             {
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             acsDetails = uploadCertificate.Result;
             channelIntegrityKey = getChannelIntegrityKey.Result;
 
-            ASRVaultCreds asrVaultCreds = this.GenerateCredential(
+            ASRVaultCreds asrVaultCreds = this.GenerateCredentialObject(
                                                 managementCert,
                                                 acsDetails,
                                                 channelIntegrityKey,
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             if (extendedInfo == null)
             {
-                extendedInfo = this.CreateVaultExtendedInformatino();
+                extendedInfo = this.CreateVaultExtendedInformation();
             }
             else
             {
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     // In case this condition is true that means the credential was first generated in portal
                     // and hence can not be fetched here.
-                    throw new CloudException(Resources.VaultCredentialGenerationUnSopported);
+                    throw new CloudException(Resources.VaultCredentialGenerationUnSupported);
                 }
             }
 
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Method to create the extended info for the vault.
         /// </summary>
         /// <returns>returns the object as task</returns>
-        private ResourceExtendedInfo CreateVaultExtendedInformatino()
+        private ResourceExtendedInfo CreateVaultExtendedInformation()
         {
             ResourceExtendedInfo extendedInfo = new ResourceExtendedInfo();
             extendedInfo.GenerateSecurityInfo();
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vault">vault object</param>
         /// <param name="site">site object</param>
         /// <returns>vault credential object</returns>
-        private ASRVaultCreds GenerateCredential(X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, ASRVault vault, Site site)
+        private ASRVaultCreds GenerateCredentialObject(X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, ASRVault vault, Site site)
         {
             string serializedCertifivate = Convert.ToBase64String(managementCert.Export(X509ContentType.Pfx));
 

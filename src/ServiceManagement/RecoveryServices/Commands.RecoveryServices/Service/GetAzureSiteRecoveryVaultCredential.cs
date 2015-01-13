@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             // Generate file.
-            ASRVaultCreds vaultCreds = RecoveryServicesClient.GetVaultCrentials(
+            ASRVaultCreds vaultCreds = RecoveryServicesClient.GenerateVaultCredential(
                                             cert,
                                             this.Vault,
                                             this.Site);
