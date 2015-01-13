@@ -224,7 +224,7 @@
 
     <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
     <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:AzureRTUpload|Sequential /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:"AzureRTUpload|Sequential" /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
       ContinueOnError="false" />
   </Target>
 
