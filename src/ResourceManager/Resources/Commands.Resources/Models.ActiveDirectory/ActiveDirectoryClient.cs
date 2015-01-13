@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 
         public void RemoveApplication(string applicationObjectId)
         {
-            OperationResponse response = GraphClient.Application.Delete(applicationObjectId.ToString());
+            GraphClient.Application.Delete(applicationObjectId.ToString());
         }
 
         public PSADServicePrincipal CreateServicePrincipal(CreatePSServicePrincipalParameters createParameters)
