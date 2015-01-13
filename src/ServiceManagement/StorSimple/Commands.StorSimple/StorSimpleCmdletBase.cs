@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
+using Hyak.Common;
+using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
@@ -34,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             }
         }
 
-        internal virtual void HandleAsyncTaskResponse(OperationResponse opResponse, string operationName)
+        internal virtual void HandleAsyncTaskResponse(AzureOperationResponse opResponse, string operationName)
         {
             string msg = string.Empty;
 

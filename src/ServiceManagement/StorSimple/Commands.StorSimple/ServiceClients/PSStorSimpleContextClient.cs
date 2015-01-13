@@ -4,6 +4,7 @@ using Microsoft.WindowsAzure;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.StorSimple;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
+using Microsoft.WindowsAzure.Management.Scheduler;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
