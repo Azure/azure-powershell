@@ -28,6 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string HelpMessageStorageAccountKey = "The storage account key.";
         public const string HelpMessageStorageAccountName = "The storage account name.";
         public const string HelpMessageUseSSL = "Flag to use SSL.";
+        public const string HelpMessageEndpoint = "Azure storage endpoint.";
         public const string HelpMessageVolumeAcrList = "List of access control records.";
         public const string HelpMessageVolumeAppType = "The application type of the volume.";
         public const string HelpMessageVolumeDefaultBackup = "Flag to enable default backup.";

@@ -214,7 +214,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return true;
         }
 
-        internal bool ValidStorageAccountCred(string storageAccountName, string storageAccountKey)
+        internal bool ValidStorageAccountCred(string storageAccountName, string storageAccountKey, string endpoint)
         {
             using (System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create())
             {
@@ -223,10 +223,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 string testContainerName = String.Format("storsimplesdkvalidation{0}", rnd.Next());
                 //create a storage container and then delete it
                 string validateScript = String.Format(
-                                  @"$context = New-AzureStorageContext -StorageAccountName {0} -StorageAccountKey {1};"
-                                + @"New-AzureStorageContainer -Name {2} -Context $context;"
-                                + @"Remove-AzureStorageContainer -Name {2} -Context $context -Force;",
-                                storageAccountName, storageAccountKey, testContainerName);
+                                  @"$context = New-AzureStorageContext -StorageAccountName {0} -StorageAccountKey {1} -Endpoint {2};"
+                                + @"New-AzureStorageContainer -Name {3} -Context $context;"
+                                + @"Remove-AzureStorageContainer -Name {3} -Context $context -Force;",
+                                storageAccountName, storageAccountKey, endpoint, testContainerName);
                 ps.AddScript(validateScript);
                 ps.Invoke();
                 if (ps.HadErrors)
@@ -325,6 +325,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             }
             if (!data0Configured)
                 throw new DeviceNotYetConfiguredException();
+        }
+
+        internal string GetHostnameFromEndpoint(string endpoint)
+        {
+            return String.Format("blob.{0}", endpoint);
         }
     }
 }
