@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// Unregisters an azure automation scheduled runbook.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Unregister, "AzureAutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId)]
-    [OutputType(typeof(Runbook))]
     public class UnregisterAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -34,7 +33,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The job schedule id.")]
-        [Alias("JobScheduleId")]
         public Guid? Id { get; set; }
 
         /// <summary>
@@ -43,8 +41,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookNameAndScheduleName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The runbook name.")]
         [ValidateNotNullOrEmpty]
-        [Alias("RunbookName")]
-        public string Name { get; set; }
+        [Alias("Name")]
+        public string RunbookName { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule that will be used to start the runbook.
@@ -70,7 +68,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 this.Force.IsPresent,
                 string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationJobScheduleWarning),
                 string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationJobScheduleDescription),
-                this.Id.HasValue ? this.Id.Value.ToString() : this.Name,
+                this.Id.HasValue ? this.Id.Value.ToString() : this.RunbookName,
                 () =>
                     {
                         if (this.ParameterSetName == AutomationCmdletParameterSets.ByJobScheduleId)
@@ -81,7 +79,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                         else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookNameAndScheduleName)
                         {
                             this.AutomationClient.UnregisterScheduledRunbook(
-                                this.AutomationAccountName, this.Name, this.ScheduleName);
+                                this.AutomationAccountName, this.RunbookName, this.ScheduleName);
                         }
                     });
         }

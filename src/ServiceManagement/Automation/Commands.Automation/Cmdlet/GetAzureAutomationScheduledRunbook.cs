@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the job id.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The job schedule id.")]
-        [Alias("JobScheduleId")]
         public Guid? Id { get; set; }
 
         /// <summary>
@@ -40,6 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, HelpMessage = "The runbook name of the job schedule.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookNameAndScheduleName, Mandatory = true, HelpMessage = "The runbook name of the job schedule.")]
+        [Alias("Name")]
         public string RunbookName { get; set; }
 
         /// <summary>

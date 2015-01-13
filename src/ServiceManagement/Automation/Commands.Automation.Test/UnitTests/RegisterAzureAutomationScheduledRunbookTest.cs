@@ -18,26 +18,25 @@ using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class UnregisterAzureAutomationScheduledRunbookTest : TestBase
+    public class RegisterAzureAutomationScheduledJobTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private UnregisterAzureAutomationScheduledRunbook cmdlet;
+        private RegisterAzureAutomationScheduledRunbook cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new UnregisterAzureAutomationScheduledRunbook
+            this.cmdlet = new RegisterAzureAutomationScheduledRunbook
             {
                 AutomationClient = this.mockAutomationClient.Object,
                 CommandRuntime = this.mockCommandRuntime
@@ -45,45 +44,24 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void UnregisterAzureAutomationScheduledRunbookByIdSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            var jobScheduleId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.UnregisterScheduledRunbook(accountName, jobScheduleId));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = jobScheduleId;
-            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByJobScheduleId);
-            this.cmdlet.Force = true;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.UnregisterScheduledRunbook(accountName, jobScheduleId), Times.Once());
-        }
-
-        [TestMethod]
-        public void UnregisterAzureAutomationScheduledRunbookByRunbookNameAndScheduleNameSuccessfull()
+        public void RegisterAzureAutomationScheduledRunbookSuccessfull()
         {
             // Setup
             string accountName = "automation";
             string runbookName = "runbook";
             string scheduleName = "schedule";
 
-            this.mockAutomationClient.Setup(f => f.UnregisterScheduledRunbook(accountName, runbookName, scheduleName));
+            this.mockAutomationClient.Setup(
+                f => f.RegisterScheduledRunbook(accountName, runbookName, scheduleName, null));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = runbookName;
+            this.cmdlet.RunbookName = runbookName;
             this.cmdlet.ScheduleName = scheduleName;
-            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByRunbookNameAndScheduleName);
-            this.cmdlet.Force = true;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.UnregisterScheduledRunbook(accountName, runbookName, scheduleName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.RegisterScheduledRunbook(accountName, runbookName, scheduleName, null), Times.Once());
         }
     }
 }
