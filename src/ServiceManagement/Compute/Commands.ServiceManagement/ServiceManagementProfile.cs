@@ -31,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
     using NSM = Management.Compute.Models;
     using NVM = Management.Network.Models;
     using PVM = Model;
+    using Microsoft.Azure;
 
     public static class ServiceManagementMapperExtension
     {
@@ -327,7 +328,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
                   .ForMember(c => c.Vip, o => o.MapFrom(r => r.VirtualIPAddress));
 
             //Common mapping
-            Mapper.CreateMap<OperationResponse, ManagementOperationContext>()
+            Mapper.CreateMap<AzureOperationResponse, ManagementOperationContext>()
                   .ForMember(c => c.OperationId, o => o.MapFrom(r => r.RequestId))
                   .ForMember(c => c.OperationStatus, o => o.MapFrom(r => r.StatusCode.ToString()));
 

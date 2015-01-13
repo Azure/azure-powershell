@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
 
-            OperationResponse deleteResponse = new OperationResponse();
+            AzureOperationResponse deleteResponse = new AzureOperationResponse();
             batchClientMock.Setup(b => b.DeleteAccount(resourceGroup, accountName)).Returns(deleteResponse);
 
             cmdlet.AccountName = accountName;

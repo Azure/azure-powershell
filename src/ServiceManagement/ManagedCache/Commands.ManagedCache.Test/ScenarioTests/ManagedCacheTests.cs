@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Testing;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.ManagedCache.Test.ScenarioTests

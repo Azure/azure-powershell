@@ -27,6 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
     using DatabaseCopyModel = Model.DatabaseCopy;
     using WamlDatabaseCopy = Management.Sql.Models.DatabaseCopy;
     using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure;
 
     /// <summary>
     /// Implementation of the <see cref="IServerDataServiceContext"/> with Certificate authentication.
@@ -319,7 +320,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve the list of databases
-            OperationResponse response = sqlManagementClient.Databases.Delete(
+            AzureOperationResponse response = sqlManagementClient.Databases.Delete(
                 this.serverName,
                 databaseName);
         }

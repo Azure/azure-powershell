@@ -25,9 +25,9 @@ using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Gallery.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Common.OData;
 using Moq;
 using Xunit;
+using Microsoft.Azure.Common.OData;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {

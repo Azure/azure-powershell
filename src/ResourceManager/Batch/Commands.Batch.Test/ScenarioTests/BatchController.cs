@@ -17,10 +17,10 @@ using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Monitoring.Events;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Test;
 using System;
 using System.Linq;
 
@@ -37,8 +37,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         public GalleryClient GalleryClient { get; private set; }
 
-        public EventsClient EventsClient { get; private set; }
-        
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public BatchManagementClient BatchManagementClient { get; private set; }
@@ -136,13 +134,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
-            EventsClient = GetEventsClient();
             ResourceManagementClient = GetResourceManagementClient();
             BatchManagementClient = GetBatchManagementClient();
 
             helper.SetupManagementClients(AuthorizationManagementClient,
                                           GalleryClient,
-                                          EventsClient,
                                           ResourceManagementClient,
                                           BatchManagementClient);
         }
@@ -155,11 +151,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private GalleryClient GetGalleryClient()
         {
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        }
-
-        private EventsClient GetEventsClient()
-        {
-            return TestBase.GetServiceClient<EventsClient>(this.csmTestFactory);
         }
 
         private ResourceManagementClient GetResourceManagementClient()

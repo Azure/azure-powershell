@@ -14,11 +14,13 @@
 
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Model;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
-using Microsoft.WindowsAzure.Common.Internals;
+using Microsoft.Azure.Common.Internals;
 using Microsoft.WindowsAzure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Sql.Models;
+using Hyak.Common;
 using System;
 using System.Management.Automation;
+using Hyak.Common.TransientFaultHandling;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
 {
@@ -105,9 +107,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
             SqlManagementClient sqlManagementClient = GetCurrentSqlClient();
 
             // Set the retry policty to not retry attempts.
-            CloudExtensions.SetRetryPolicy<SqlManagementClient>(
-                sqlManagementClient,
-                new WindowsAzure.Common.TransientFaultHandling.RetryPolicy(new WindowsAzure.Common.TransientFaultHandling.DefaultHttpErrorDetectionStrategy(), 0));
+            sqlManagementClient.SetRetryPolicy(new RetryPolicy(new DefaultHttpErrorDetectionStrategy(), 0));
 
             // Issue the create server request
             ServerCreateResponse response = sqlManagementClient.Servers.Create(
