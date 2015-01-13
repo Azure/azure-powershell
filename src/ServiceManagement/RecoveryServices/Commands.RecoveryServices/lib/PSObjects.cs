@@ -145,7 +145,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             this.ID = pc.ID;
             this.Name = pc.Name;
-            this.ConfigurationStatus = pc.ConfigurationStatus;
             this.Role = pc.Role;
             this.ServerId = pc.ServerId;
             this.FabricObjectId = pc.FabricObjectId;
@@ -171,11 +170,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets Server ID.
         /// </summary>
         public string ServerId { get; set; }
-
-        /// <summary>
-        /// Gets or sets configuration status.
-        /// </summary>
-        public string ConfigurationStatus { get; set; }
 
         /// <summary>
         /// Gets or sets a role of the protection container.
