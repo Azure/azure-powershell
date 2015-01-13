@@ -175,13 +175,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             string fileName;
 
-            if (string.IsNullOrEmpty(this.SiteName))
+            if (string.IsNullOrEmpty(this.Site.Name))
             {
-                fileName = string.Format("{0}_{1}.VaultCredentials", this.Name, DateTime.UtcNow.ToLongDateString());
+                fileName = string.Format("{0}_{1}.VaultCredentials", this.Vault.Name, DateTime.UtcNow.ToLongDateString());
             }
             else
             {
-                fileName = string.Format("{0}_{1}_{2}.VaultCredentials", this.SiteName, this.Name, DateTime.UtcNow.ToLongDateString());
+                fileName = string.Format("{0}_{1}_{2}.VaultCredentials", this.Site.Name, this.Vault.Name, DateTime.UtcNow.ToLongDateString());
             }
 
             return fileName;
