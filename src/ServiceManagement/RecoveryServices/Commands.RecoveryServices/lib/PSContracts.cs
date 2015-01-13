@@ -16,8 +16,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Microsoft.Azure.Commands.RecoveryServices;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -41,6 +42,84 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Represents a HMACSHA512 hash function.
         /// </summary>
         HMACSHA512
+    }
+
+    /// <summary>
+    /// Vault Status ENUM values
+    /// </summary>
+    public enum VaultStatus
+    {
+        /// <summary>
+        /// Activating the created resource.
+        /// </summary>
+        Activating,
+
+        /// <summary>
+        /// Creating the resource.
+        /// </summary>
+        Creating,
+
+        /// <summary>
+        /// Resource created
+        /// </summary>
+        Created,
+
+        /// <summary>
+        /// Resource is active
+        /// </summary>
+        Active,
+
+        /// <summary>
+        /// Resource is disabled
+        /// </summary>
+        Disabled,
+
+        /// <summary>
+        /// Resource is being deleted
+        /// </summary>
+        Removing
+    }
+
+    /// <summary>
+    /// The types of crypto algorithms
+    /// </summary>
+    public enum CryptoAlgorithm
+    {
+        /// <summary>
+        /// The asymmetric key based RSA 2048 algorithm.
+        /// </summary>
+        RSAPKCS1V17,
+
+        /// <summary>
+        /// The asymmetric key based RSA 2048 algorithm.
+        /// </summary>
+        RSAPKCS1V15,
+
+        /// <summary>
+        /// The symmetric key based AES algorithm with key size 256 bits.
+        /// </summary>
+        AES256,
+
+        /// <summary>
+        /// The symmetric key based SHA 256 Algorithm
+        /// </summary>
+        HMACSHA256,
+
+        /// <summary>
+        /// When no algorithm is used.
+        /// </summary>
+        None
+    }
+
+    /// <summary>
+    /// The RP service error code that needs to be handled by portal.
+    /// </summary>
+    public enum RpErrorCode
+    {
+        /// <summary>
+        /// The error code sent by RP if the Resource extended info doesn't exists.
+        /// </summary>
+        ResourceExtendedInfoNotFound
     }
 
     /// <summary>
@@ -245,6 +324,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 }
 
+//// TODO: Remove this once we get nuget
+namespace Microsoft.Azure.Commands.RecoveryServices.RestApiInfra
+{
+    /// <summary>
+    /// Class to define the error for RP
+    /// </summary>
+        [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract(Namespace = "http://schemas.microsoft.com/wars")]
+    public class Error
+    {
+        /// <summary>
+        /// Gets or sets the value for the error as string.
+        /// </summary>
+        [DataMember]
+        public string ErrorCode { get; set; }
+    }
+}
+
 namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
 {
     /// <summary>
@@ -257,6 +357,33 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     [DataContract]
     public class VaultCreds
     {
+        #region Constructores
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultCreds"/> class.
+        /// </summary>
+        public VaultCreds()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultCreds"/> class.
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">authenticating service namespace</param>
+        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
+        {
+            this.SubscriptionId = subscriptionId;
+            this.ResourceType = Constants.ASRVaultType;
+            this.ResourceName = resourceName;
+            this.ManagementCert = managementCert;
+            this.AcsNamespace = acsNamespace;
+        }
+
+        #endregion
+
         #region Properties
         /// <summary>
         /// Gets or sets the key name for Namespace entry
@@ -299,6 +426,47 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         Justification = "Keeping all contracts together.")]
     public class ASRVaultCreds : VaultCreds
     {
+        #region Constructores
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVaultCreds"/> class.
+        /// </summary>
+        public ASRVaultCreds()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVaultCreds"/> class.
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">authenticating service  namespace</param>
+        /// <param name="channelIntegrityKey">Agent Channel Integrity Key</param>
+        /// <param name="cloudServiceName">cloud service name</param>
+        /// <param name="siteId">custom site Id</param>
+        /// <param name="siteName">custom site name</param>
+        public ASRVaultCreds(
+            string subscriptionId,
+            string resourceName,
+            string managementCert,
+            AcsNamespace acsNamespace,
+            string channelIntegrityKey,
+            string cloudServiceName,
+            string siteId,
+            string siteName)
+            : base(subscriptionId, resourceName, managementCert, acsNamespace)
+        {
+            this.ChannelIntegrityKey = channelIntegrityKey;
+            this.CloudServiceName = cloudServiceName;
+            this.Version = Constants.VaultCredentialVersion;
+
+            this.SiteId = siteId != null ? siteId : string.Empty;
+            this.SiteName = siteName != null ? siteName : string.Empty;
+        }
+
+        #endregion
+
         #region Properties
         /// <summary>
         /// Gets or sets the value for ACIK
@@ -317,6 +485,18 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 2)]
         public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site Id
+        /// </summary>
+        [DataMember(Order = 3)]
+        public string SiteId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site name
+        /// </summary>
+        [DataMember(Order = 4)]
+        public string SiteName { get; set; }
         #endregion
     }
 
@@ -327,21 +507,126 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
+    [DataContract]
     public class AcsNamespace
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="AcsNamespace"/> class.
+        /// </summary>
+        /// <param name="acsDetails">authenticating service Details name</param>
+        public AcsNamespace(UploadCertificateResponse acsDetails)
+        {
+            this.HostName = acsDetails.GlobalAcsHostName;
+            this.Namespace = acsDetails.GlobalAcsNamespace;
+            this.ResourceProviderRealm = acsDetails.GlobalAcsRPRealm;
+        }
+
+        /// <summary>
         /// Gets or sets Host name
         /// </summary>
+        [DataMember(Order = 0)]
         public string HostName { get; set; }
 
         /// <summary>
         /// Gets or sets Name space
         /// </summary>
+        [DataMember(Order = 0)]
         public string Namespace { get; set; }
 
         /// <summary>
         /// Gets or sets Resource provider realm
         /// </summary>
+        [DataMember(Order = 0)]
         public string ResourceProviderRealm { get; set; }
+    }
+}
+
+namespace Microsoft.Azure.Portal.HybridServicesCore
+{
+    /// <summary>
+    /// The ResourceExtendedInfo which represents the xml info stored in RP.
+    /// </summary>
+    [DataContract]
+    public class ResourceExtendedInfo
+    {
+        #region properties
+
+        /// <summary>
+        /// Gets or sets the version
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets the channel integrity key
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string ChannelIntegrityKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Channel encryption key
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string ChannelEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the channel encryption key thumbprint
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string ChannelEncryptionKeyThumbprint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the portal certificate thumbprint
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string PortalCertificateThumbprint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the algorithm used to encrypt the data.
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string Algorithm { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tag to be sent while updating the resource extended info.
+        /// </summary>
+        [IgnoreDataMember]
+        public string Etag { get; set; }
+
+        #endregion
+
+        #region Public methods
+
+        /// <summary>
+        /// Returns the Xml representation of this object.
+        /// </summary>
+        /// <returns>the xml as string</returns>
+        public ResourceExtendedInformationArgs Translate()
+        {
+            if (string.IsNullOrEmpty(this.Etag))
+            {
+                this.Etag = Guid.NewGuid().ToString();
+            }
+
+            string serializedInfo = Utilities.Serialize<ResourceExtendedInfo>(this);
+            ResourceExtendedInformationArgs extendedInfoArgs = new ResourceExtendedInformationArgs(
+                Constants.VaultExtendedInfoContractVersion,
+                serializedInfo,
+                this.Etag);
+
+            return extendedInfoArgs;
+        }
+
+        /// <summary>
+        /// Method to generate security information
+        /// </summary>
+        public void GenerateSecurityInfo()
+        {
+            this.ChannelIntegrityKey = Utilities.GenerateRandomKey(128);
+            this.Version = Constants.VaultSecurityInfoVersion;
+            this.Algorithm = CryptoAlgorithm.None.ToString();
+        }
+
+        #endregion
     }
 }
