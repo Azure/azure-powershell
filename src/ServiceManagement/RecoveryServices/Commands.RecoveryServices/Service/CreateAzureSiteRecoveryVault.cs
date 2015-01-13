@@ -17,7 +17,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
-using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Used to initiate a vault create operation.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSiteRecoveryVault")]
-    [OutputType(typeof(string))]
+    [OutputType(typeof(VaultOperationOutput))]
     public class CreateAzureSiteRecoveryVault : RecoveryServicesCmdletBase
     {
         #region Parameters
@@ -70,21 +69,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     Name = this.Name,
                     Plan = string.Empty,
-                    ResourceProviderNamespace = "WAHyperVRecoveryManager", // TODO:devsri - do not hard code, find a good place to keep it.
-                    Type = Constants.ASRVaulType,
+                    ResourceProviderNamespace = Constants.ResourceNamespace,
+                    Type = Constants.ASRVaultType,
                     ETag = Guid.NewGuid().ToString(),
                     SchemaVersion = Constants.RpSchemaVersion
                 };
 
-                Utilities.UpdateVaultSettings(new ASRVaultCreds()
-                {
-                    CloudServiceName = cloudServiceName,
-                    ResourceName = this.Name
-                });
-
                 VaultCreateResponse response = RecoveryServicesClient.CreateVault(cloudServiceName, this.Name, vaultCreateArgs);
 
-                this.WriteObject(response.RequestId, true);
+                VaultOperationOutput output = new VaultOperationOutput()
+                {
+                    OperationTrackingId = response.RequestId
+                };
+
+                this.WriteObject(output, true);
             }
             catch (Exception exception)
             {

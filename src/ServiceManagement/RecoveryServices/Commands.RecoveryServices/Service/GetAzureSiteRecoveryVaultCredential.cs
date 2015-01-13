@@ -13,19 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
-using System.Net;
 using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Portal.HybridServicesCore;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
-using rpError = Microsoft.Azure.Commands.RecoveryServices.RestApiInfra;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -33,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Retrieves Azure Site Recovery Server.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVaultCredential", DefaultParameterSetName = ASRParameterSets.Default)]
-    [OutputType(typeof(string))]
+    [OutputType(typeof(VaultCredentialOutput))]
     public class GetVaultCredentialsFile : RecoveryServicesCmdletBase
     {
         /// <summary>
@@ -101,24 +97,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ByObject:
-                        this.Name = this.Vault.Name;
-                        this.Location = this.Vault.Location;
-                        if (this.Site != null)
-                        {
-                            this.SiteName = this.Site.Name;
-                            this.SiteId = this.Site.ID;
-                        }
-
-                        this.GetByParams();
+                        this.GetByObject();
                         break;
                     case ASRParameterSets.ByParam:
+                        this.Vault = new ASRVault()
+                        {
+                            Name = this.Name,
+                            Location = this.Location
+                        };
+                        if (!string.IsNullOrEmpty(this.SiteId) && !string.IsNullOrEmpty(this.SiteName))
+                        {
+                            this.Site = new Site()
+                            {
+                                ID = this.SiteId,
+                                Name = this.SiteName
+                            };
+                        }
+
+                        break;
                     default:
-                        this.GetByParams();
+                        this.GetByObject();
                         break;
                 }
             }
-            catch (Exception exception)
+            catch (AggregateException aggregateEx)
             {
+                // if an exception is thrown from a task, it will be wrapped in AggregateException 
+                // and propagated to the main thread. Just throwing the first exception in the list.
+                Exception exception = aggregateEx.InnerExceptions.First<Exception>();
                 this.HandleException(exception);
             }
         }
@@ -126,162 +132,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to execute the command
         /// </summary>
-        private void GetByParams()
+        private void GetByObject()
         {
             AzureSubscription subscription = AzureSession.CurrentContext.Subscription;
+            this.Vault.SubscriptionId = subscription.Id.ToString();
 
-            CloudService cloudService = RecoveryServicesClient.GetCloudServiceForVault(this.Name, this.Location);
-            string cloudServiceName = cloudService.Name;
+            CloudService cloudService = RecoveryServicesClient.GetCloudServiceForVault(this.Vault);
+            this.Vault.CloudServiceName = cloudService.Name;
 
             // Generate certificate
-            X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(VaultCertificateExpiryInHoursForHRM, subscription.Id.ToString(), this.Name);
+            X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(VaultCertificateExpiryInHoursForHRM, subscription.Id.ToString(), this.Vault.Name);
 
-            Utilities.UpdateVaultSettings(new ASRVaultCreds()
+            if (this.Site == null)
             {
-                CloudServiceName = cloudServiceName,
-                ResourceName = this.Name
-            });
-
-            // Upload certificate
-            UploadCertificateResponse acsDetails;
-            Task<UploadCertificateResponse> uploadCertificate = this.UpdateVaultCertificate(cert);
-
-            // Get Channel Integrity key
-            string channelIntegrityKey;
-            Task<string> getChannelIntegrityKey = this.GetChannelIntegrityKey();
-
-            uploadCertificate.Wait();
-            getChannelIntegrityKey.Wait();
-
-            acsDetails = uploadCertificate.Result;
-            channelIntegrityKey = getChannelIntegrityKey.Result;
+                this.Site = new Site();
+            }
 
             // Generate file.
-            ASRVaultCreds vaultCreds = this.GenerateCredential(
-                subscription.Id.ToString(),
-                cert,
-                acsDetails,
-                channelIntegrityKey,
-                cloudServiceName);
+            ASRVaultCreds vaultCreds = RecoveryServicesClient.GetVaultCrentials(
+                                            cert,
+                                            this.Vault,
+                                            this.Site);
 
             string filePath = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
             string fileName = this.GenerateFileName();
 
             // write the content to a file.
-            string outputPath = Utilities.WriteToFile<ASRVaultCreds>(vaultCreds, filePath, fileName);
-
-            // print the path to the user.
-            this.WriteObject(outputPath, true);
-        }
-
-        /// <summary>
-        /// Method to update vault certificate
-        /// </summary>
-        /// <param name="cert">certificate object </param>
-        /// <returns>Upload Certificate Response</returns>
-        private async Task<UploadCertificateResponse> UpdateVaultCertificate(X509Certificate2 cert)
-        {
-            var certificateArgs = new CertificateArgs()
+            VaultCredentialOutput output = new VaultCredentialOutput()
             {
-                Certificate = Convert.ToBase64String(cert.GetRawCertData()),
-                ContractVersion = "V2012_12"
+                FilePath = Utilities.WriteToFile<ASRVaultCreds>(vaultCreds, filePath, fileName)
             };
 
-            UploadCertificateResponse response = await RecoveryServicesClient.UpdateVaultCertificate(certificateArgs);
-
-            return response;
-        }
-
-        /// <summary>
-        /// Get the Integrity key
-        /// </summary>
-        /// <returns>key as string.</returns>
-        private async Task<string> GetChannelIntegrityKey()
-        {
-            ResourceExtendedInformation extendedInformation = null;
-            try
-            {
-                extendedInformation = await RecoveryServicesClient.GetExtendedInfo();
-            }
-            catch (Exception exception)
-            {
-                try
-                {
-                    CloudException cloudException = exception as CloudException;
-
-                    if (cloudException != null && cloudException.Response != null && !string.IsNullOrEmpty(cloudException.Response.Content))
-                    {
-                        rpError.Error error = (rpError.Error)Utilities.Deserialize<rpError.Error>(cloudException.Response.Content);
-                        if (error.ErrorCode.Equals(RpErrorCode.ResourceExtendedInfoNotFound.ToString(), StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            extendedInformation = new ResourceExtendedInformation();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    this.HandleException(ex);
-                }
-            }
-
-            ResourceExtendedInfo extendedInfo = Utilities.Deserialize<ResourceExtendedInfo>(extendedInformation.ExtendedInfo);
-
-            if (extendedInfo == null)
-            {
-                extendedInfo = this.CreateVaultExtendedInformatino();
-            }
-
-            return extendedInfo.ChannelIntegrityKey;
-        }
-
-        /// <summary>
-        /// Method to create the extended info for the vault.
-        /// </summary>
-        /// <returns>returns the object as task</returns>
-        private ResourceExtendedInfo CreateVaultExtendedInformatino()
-        {
-            ResourceExtendedInfo extendedInfo = null;
-            try
-            {
-                extendedInfo = new ResourceExtendedInfo();
-                extendedInfo.GenerateSecurityInfo();
-                ResourceExtendedInformationArgs extendedInfoArgs = extendedInfo.Translate();
-                RecoveryServicesClient.CreateExtendedInfo(extendedInfoArgs);
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
-            }
-
-            return extendedInfo;
-        }
-
-        /// <summary>
-        /// Method to generate the credential file content
-        /// </summary>
-        /// <param name="subscriptionId">subscription id</param>
-        /// <param name="managementCert">management cert</param>
-        /// <param name="acsDetails">ACS details</param>
-        /// <param name="channelIntegrityKey">Integrity key</param>
-        /// <param name="cloudServiceName">cloud service name</param>
-        /// <returns>vault credential object</returns>
-        private ASRVaultCreds GenerateCredential(string subscriptionId, X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, string cloudServiceName)
-        {
-            string serializedCertifivate = Convert.ToBase64String(managementCert.Export(X509ContentType.Pfx));
-
-            AcsNamespace acsNamespace = new AcsNamespace(acsDetails);
-
-            ASRVaultCreds vaultCreds = new ASRVaultCreds(
-                                            subscriptionId,
-                                            this.Name,
-                                            serializedCertifivate,
-                                            acsNamespace,
-                                            channelIntegrityKey,
-                                            cloudServiceName,
-                                            this.SiteId,
-                                            this.SiteName);
-
-            return vaultCreds;
+            // print the path to the user.
+            this.WriteObject(output, true);
         }
 
         /// <summary>

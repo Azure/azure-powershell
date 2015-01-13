@@ -264,6 +264,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot generate vault credentials from powershell for this vault. Download the file from portal..
+        /// </summary>
+        internal static string VaultCredentialGenerationUnSopported {
+            get {
+                return ResourceManager.GetString("VaultCredentialGenerationUnSopported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vault settings file not found, please pass the file downloaded from portal.
         /// </summary>
         internal static string VaultSettingFileNotFound {

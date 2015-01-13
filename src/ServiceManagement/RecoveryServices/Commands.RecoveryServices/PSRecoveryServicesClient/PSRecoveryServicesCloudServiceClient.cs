@@ -14,8 +14,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 
@@ -40,10 +39,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Method to get Cloud Service object for a given vault
         /// </summary>
-        /// <param name="vaultName">vault name</param>
-        /// <param name="region">vault region</param>
+        /// <param name="vault">vault object</param>
         /// <returns>cloud service object.</returns>
-        public CloudService GetCloudServiceForVault(string vaultName, string region)
+        public CloudService GetCloudServiceForVault(ASRVault vault)
         {
             IEnumerable<CloudService> cloudServiceList = this.GetCloudServices();
             CloudService cloudServiceToReturn = null;
@@ -51,13 +49,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             foreach (var cloudService in cloudServiceList)
             {
                 Vault selectedVault = null;
-                if (cloudService.GeoRegion == region)
+                if (cloudService.GeoRegion.Equals(vault.Location, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    foreach (var vault in cloudService.Resources)
+                    foreach (var resource in cloudService.Resources)
                     {
-                        if (vault.Name == vaultName)
+                        if (resource.Name.Equals(vault.Name, StringComparison.InvariantCultureIgnoreCase))
                         {
-                            selectedVault = vault;
+                            selectedVault = resource;
                             break;
                         }
                     }

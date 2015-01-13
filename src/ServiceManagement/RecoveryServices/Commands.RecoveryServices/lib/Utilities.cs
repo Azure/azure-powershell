@@ -17,7 +17,7 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
-using System.Text;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices

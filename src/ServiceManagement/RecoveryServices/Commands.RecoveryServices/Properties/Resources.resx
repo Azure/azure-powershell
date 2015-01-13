@@ -200,4 +200,7 @@ ClientRequestId: {3}</value>
   <data name="ProtectionEntityAlreadyEnabled" xml:space="preserve">
     <value>Protection entity {0} is already enabled</value>
   </data>
+  <data name="VaultCredentialGenerationUnSopported" xml:space="preserve">
+    <value>Cannot generate vault credentials from powershell for this vault. Download the file from portal.</value>
+  </data>
 </root>

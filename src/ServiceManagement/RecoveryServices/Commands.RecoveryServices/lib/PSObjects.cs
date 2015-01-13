@@ -22,6 +22,81 @@ using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
+    /// Constant definition
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class Constants
+    {
+        /// <summary>
+        /// ASR vault type
+        /// </summary>
+        public const string ASRVaultType = "HyperVRecoveryManagerVault";
+
+        /// <summary>
+        /// Vault Credential version.
+        /// </summary>
+        public const string VaultCredentialVersion = "1.0";
+
+        /// <summary>
+        /// The version of Extended resource info.
+        /// </summary>
+        public const string VaultSecurityInfoVersion = "1.0";
+
+        /// <summary>
+        /// extended information version.
+        /// </summary>
+        public const string VaultExtendedInfoContractVersion = "V2014_09";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Type
+        /// </summary>
+        public const string RdfeOperationStatusTypeCreate = "Create";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Type
+        /// </summary>
+        public const string RdfeOperationStatusTypeDelete = "Delete";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Result
+        /// </summary>
+        public const string RdfeOperationStatusResultSucceeded = "Succeeded";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Failed
+        /// </summary>
+        public const string RdfeOperationStatusResultFailed = "Failed";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.InProgress
+        /// </summary>
+        public const string RdfeOperationStatusResultInProgress = "InProgress";
+
+        /// <summary>
+        /// Cloud service name prefix
+        /// </summary>
+        public const string CloudServiceNameExtensionPrefix = "CS-";
+
+        /// <summary>
+        /// Cloud service name suffix
+        /// </summary>
+        public const string CloudServiceNameExtensionSuffix = "-RecoveryServices";
+
+        /// <summary>
+        /// Schema Version of RP
+        /// </summary>
+        public const string RpSchemaVersion = "1.1";
+
+        /// <summary>
+        /// Resource Provider Namespace.
+        /// </summary>
+        public const string ResourceNamespace = "WAHyperVRecoveryManager";
+    }
+
+    /// <summary>
     /// Azure Site Recovery Vault Settings.
     /// </summary>
     [SuppressMessage(
@@ -914,6 +989,58 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             : base(serviceError)
         {
         }
+    }
+
+    /// <summary>
+    /// Class to define the output of the vault credential generation.
+    /// </summary>
+    public class VaultCredentialOutput
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultCredentialOutput" /> class
+        /// </summary>
+        public VaultCredentialOutput()
+        {
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the path of generated credential file.
+        /// </summary>
+        public string FilePath { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Class to define the output object for the vault operations.
+    /// </summary>
+    public class VaultOperationOutput
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultOperationOutput" /> class
+        /// </summary>
+        public VaultOperationOutput()
+        {
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the operation tracking id of the operation performed.
+        /// </summary>
+        public string OperationTrackingId { get; set; }
+
+        #endregion
     }
 
     /// <summary>

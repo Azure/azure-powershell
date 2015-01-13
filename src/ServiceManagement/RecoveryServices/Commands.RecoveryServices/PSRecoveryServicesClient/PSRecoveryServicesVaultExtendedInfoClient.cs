@@ -12,9 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Properties;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Portal.HybridServicesCore;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
+using rpError = Microsoft.Azure.Commands.RecoveryServices.RestApiInfra;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -52,6 +59,151 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public async Task<UploadCertificateResponse> UpdateVaultCertificate(CertificateArgs args)
         {
             return await this.GetSiteRecoveryClient().VaultExtendedInfo.UploadCertificateAsync(args, this.GetRequestHeaders(false));
+        }
+
+        /// <summary>
+        /// Gets the vault credential object
+        /// </summary>
+        /// <param name="managementCert">certificate to be uploaded</param>
+        /// <param name="vault">vault object</param>
+        /// <param name="site">site object </param>
+        /// <returns>credential object</returns>
+        public ASRVaultCreds GetVaultCrentials(X509Certificate2 managementCert, ASRVault vault, Site site)
+        {
+            Utilities.UpdateVaultSettings(new ASRVaultCreds()
+            {
+                CloudServiceName = vault.CloudServiceName,
+                ResourceName = vault.Name
+            });
+
+            // Get Channel Integrity key
+            string channelIntegrityKey;
+            Task<string> getChannelIntegrityKey = this.GetChannelIntegrityKey();
+
+            // Making sure we can generate the file, once the SDK and portal are inter-operable
+            // upload certificate and fetch of ACIK can be made parallel to improvve the performace.
+            getChannelIntegrityKey.Wait();
+
+            // Upload certificate
+            UploadCertificateResponse acsDetails;
+            Task<UploadCertificateResponse> uploadCertificate = this.UpdateVaultCertificate(managementCert);
+            uploadCertificate.Wait();
+
+            acsDetails = uploadCertificate.Result;
+            channelIntegrityKey = getChannelIntegrityKey.Result;
+
+            ASRVaultCreds asrVaultCreds = this.GenerateCredential(
+                                                managementCert,
+                                                acsDetails,
+                                                channelIntegrityKey,
+                                                vault,
+                                                site);
+
+            return asrVaultCreds;
+        }
+
+        /// <summary>
+        /// Method to update vault certificate
+        /// </summary>
+        /// <param name="cert">certificate object </param>
+        /// <returns>Upload Certificate Response</returns>
+        private async Task<UploadCertificateResponse> UpdateVaultCertificate(X509Certificate2 cert)
+        {
+            var certificateArgs = new CertificateArgs()
+            {
+                Certificate = Convert.ToBase64String(cert.GetRawCertData()),
+                ContractVersion = "V2012_12"
+            };
+
+            UploadCertificateResponse response = await this.UpdateVaultCertificate(certificateArgs);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Get the Integrity key
+        /// </summary>
+        /// <returns>key as string.</returns>
+        private async Task<string> GetChannelIntegrityKey()
+        {
+            ResourceExtendedInformation extendedInformation = null;
+            try
+            {
+                extendedInformation = await this.GetExtendedInfo();
+            }
+            catch (Exception exception)
+            {
+                CloudException cloudException = exception as CloudException;
+
+                if (cloudException != null && cloudException.Response != null && !string.IsNullOrEmpty(cloudException.Response.Content))
+                {
+                    rpError.Error error = (rpError.Error)Utilities.Deserialize<rpError.Error>(cloudException.Response.Content);
+                    if (error.ErrorCode.Equals(RpErrorCode.ResourceExtendedInfoNotFound.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        extendedInformation = new ResourceExtendedInformation();
+                    }
+                }
+            }
+
+            ResourceExtendedInfo extendedInfo = Utilities.Deserialize<ResourceExtendedInfo>(extendedInformation.ExtendedInfo);
+
+            if (extendedInfo == null)
+            {
+                extendedInfo = this.CreateVaultExtendedInformatino();
+            }
+            else
+            {
+                if (!extendedInfo.Algorithm.Equals(CryptoAlgorithm.None.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    // In case this condition is true that means the credential was first generated in portal
+                    // and hence can not be fetched here.
+                    throw new CloudException(Resources.VaultCredentialGenerationUnSopported);
+                }
+            }
+
+            return extendedInfo.ChannelIntegrityKey;
+        }
+
+        /// <summary>
+        /// Method to create the extended info for the vault.
+        /// </summary>
+        /// <returns>returns the object as task</returns>
+        private ResourceExtendedInfo CreateVaultExtendedInformatino()
+        {
+            ResourceExtendedInfo extendedInfo = new ResourceExtendedInfo();
+            extendedInfo.GenerateSecurityInfo();
+            ResourceExtendedInformationArgs extendedInfoArgs = extendedInfo.Translate();
+            this.CreateExtendedInfo(extendedInfoArgs);
+            
+            return extendedInfo;
+        }
+
+        /// <summary>
+        /// Method to generate the credential file content
+        /// </summary>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsDetails">ACS details</param>
+        /// <param name="channelIntegrityKey">Integrity key</param>
+        /// <param name="vault">vault object</param>
+        /// <param name="site">site object</param>
+        /// <returns>vault credential object</returns>
+        private ASRVaultCreds GenerateCredential(X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, ASRVault vault, Site site)
+        {
+            string serializedCertifivate = Convert.ToBase64String(managementCert.Export(X509ContentType.Pfx));
+
+            AcsNamespace acsNamespace = new AcsNamespace(acsDetails);
+
+            ASRVaultCreds vaultCreds = new ASRVaultCreds(
+                                            vault.SubscriptionId,
+                                            vault.Name,
+                                            serializedCertifivate,
+                                            acsNamespace,
+                                            channelIntegrityKey,
+                                            vault.CloudServiceName,
+                                            site.ID,
+                                            site.Name);
+
+            return vaultCreds;
         }
     }
 }

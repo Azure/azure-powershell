@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     foreach (var vault in cloudService.Resources)
                     {
-                        if (vault.Type.Equals(Constants.ASRVaulType, StringComparison.InvariantCultureIgnoreCase))
+                        if (vault.Type.Equals(Constants.ASRVaultType, StringComparison.InvariantCultureIgnoreCase))
                         {
                             vaultList.Add(new ASRVault(cloudService, vault));
                         }
