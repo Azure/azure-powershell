@@ -665,4 +665,28 @@ Failed: {2}.</value>
     <value>Valid environment names are: '{0}' and '{1}'</value>
     <comment>0 and 1 are for the correct Environment names</comment>
   </data>
+  <data name="PolicyAlreadyExists" xml:space="preserve">
+    <value>Policy '{0}' already exists.</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Can not find policy '{0}'.</value>
+  </data>
+  <data name="RemovePolicyCancelled" xml:space="preserve">
+    <value>The remove operation of policy '{0}' has been cancelled.</value>
+  </data>
+  <data name="RemovePolicySuccessfully" xml:space="preserve">
+    <value>Removed policy '{0}' successfully.</value>
+  </data>
+  <data name="InvalidAccessPolicyType" xml:space="preserve">
+    <value>Access policy type is invalid, only SharedAccessBlobPolicy, SharedAccessQueuePolicy, and SharedAccessTablePolicy are supported</value>
+  </data>
+  <data name="InvalidAccessPolicyName" xml:space="preserve">
+    <value>Access policy name '{0}' is invalid. Valid names should be 1 through 64 characters long.</value>
+  </data>
+  <data name="ExpiryTimeParameterConflict" xml:space="preserve">
+    <value>Parameter -ExpiryTime and -NoExpiryTime are mutually exclusive</value>
+  </data>
+  <data name="StartTimeParameterConflict" xml:space="preserve">
+    <value>Parameter -StartTime and -NoStartTime are mutually exclusive</value>
+  </data>
 </root>

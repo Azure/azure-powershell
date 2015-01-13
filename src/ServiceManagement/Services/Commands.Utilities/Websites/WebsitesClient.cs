@@ -49,6 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
     using Utilities = Services.WebEntities;
     using Microsoft.Azure.Common.Extensions.Models;
     using Microsoft.Azure.Common.Extensions;
+    using Hyak.Common;
 
     public class WebsitesClient : IWebsitesClient
     {

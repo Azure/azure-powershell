@@ -16,12 +16,12 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Utilities.HttpRecorder;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Test;
 using Microsoft.Azure.Common.Extensions;
 using Microsoft.Azure.Common.Extensions.Models;
 

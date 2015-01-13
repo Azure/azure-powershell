@@ -15,14 +15,16 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Utilities.HttpRecorder;
-using Microsoft.WindowsAzure.Common.Internals;
+using Microsoft.Azure.Test.HttpRecorder;
 using Newtonsoft.Json.Linq;
+using System;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Azure.Test.HttpRecorder;
+using Hyak.Common;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
 {
-    using System;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
     public abstract class TestEnvironmentFactory
     {
         /// <summary>
@@ -114,12 +116,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
                     {
                         
                         string password = authSettings[AADPasswordKey];
-                        Tracing.Information("Using AAD auth with username and password combination");
+                        TracingAdapter.Information("Using AAD auth with username and password combination");
                         token = TokenCloudCredentialsHelper.GetTokenFromBasicCredentials(user, password, authEndpoint, tenant);
                     }
                     else
                     {
-                        Tracing.Information("Using AAD auth with pop-up dialog");
+                        TracingAdapter.Information("Using AAD auth with pop-up dialog");
                         string clientId = authSettings.ContainsKey(ClientID) ? authSettings[ClientID] : ClientIdDefault;
                         if (authSettings.ContainsKey(RawToken))
                         {
@@ -136,7 +138,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
                 if (HttpMockServer.Mode == HttpRecorderMode.Playback)
                 {
                     // playback mode but no stored credentials in mocks
-                    Tracing.Information("Using dummy token for playback");
+                    TracingAdapter.Information("Using dummy token for playback");
                     token = Guid.NewGuid().ToString();
                 }
 

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -21,7 +22,7 @@ using System.Net.Http;
 
 namespace Microsoft.Azure.Common.Extensions.Models
 {
-    public class RecordingTracingInterceptor : ICloudTracingInterceptor
+    public class RecordingTracingInterceptor : Hyak.Common.ICloudTracingInterceptor
     {
         public RecordingTracingInterceptor()
         {
@@ -80,14 +81,14 @@ namespace Microsoft.Azure.Common.Extensions.Models
         public static void AddToContext(RecordingTracingInterceptor interceptor)
         {
             RemoveFromContext(interceptor);
-            CloudContext.Configuration.Tracing.AddTracingInterceptor(interceptor);
+            TracingAdapter.AddTracingInterceptor(interceptor);
         }
 
         public static void RemoveFromContext(RecordingTracingInterceptor interceptor)
         {
             try
             {
-                CloudContext.Configuration.Tracing.RemoveTracingInterceptor(interceptor);
+                TracingAdapter.RemoveTracingInterceptor(interceptor);
             }
             catch
             {

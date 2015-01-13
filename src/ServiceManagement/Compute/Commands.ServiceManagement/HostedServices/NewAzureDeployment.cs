@@ -22,10 +22,12 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 {
     using PVM = Model;
+    using Hyak.Common;
 
     /// <summary>
     /// Create a new deployment. Note that there shouldn't be a deployment 
