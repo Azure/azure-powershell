@@ -23,11 +23,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-<<<<<<< HEAD
-using Microsoft.Azure.Common.Extensions.Authentication;
-using Microsoft.Azure.Common.Extensions;
-=======
->>>>>>> FW: Adding cmdlets for creating and deleting AD application &
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
@@ -376,7 +371,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 
         public void RemoveApplication(string applicationObjectId)
         {
-            OperationResponse response = GraphClient.Application.Delete(applicationObjectId.ToString());
+            GraphClient.Application.Delete(applicationObjectId.ToString());
         }
 
         public PSADServicePrincipal CreateServicePrincipal(CreatePSServicePrincipalParameters createParameters)
