@@ -20,14 +20,13 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Utilities.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Monitoring.Events;
-using Microsoft.WindowsAzure.Management.Srp;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Test;
 using System;
 using System.Linq;
+using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public GalleryClient GalleryClient { get; private set; }
 
-        public EventsClient EventsClient { get; private set; }
+        //public EventsClient EventsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -141,7 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             var subscriptionsClient = GetSubscriptionClient();
             var storageClient = GetStorageManagementClient();
             var galleryClient = GetGalleryClient();
-            var eventsClient = GetEventsClient();
+            //var eventsClient = GetEventsClient();
             var networkResourceProviderClient = GetNetworkResourceProviderClient();
             var computeManagementClient = GetComputeManagementClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
@@ -152,7 +151,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 subscriptionsClient,
                 storageClient,
                 galleryClient,
-                eventsClient,
+                //eventsClient,
                 networkResourceProviderClient,
                 computeManagementClient,
                 authorizationManagementClient,
@@ -214,10 +213,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return TestBase.GetServiceClient<GalleryClient>(new CSMTestEnvironmentFactory());
         }
 
-        private EventsClient GetEventsClient()
-        {
-            return TestBase.GetServiceClient<EventsClient>(new CSMTestEnvironmentFactory());
-        }
+        //private EventsClient GetEventsClient()
+        //{
+        //    return TestBase.GetServiceClient<EventsClient>(new CSMTestEnvironmentFactory());
+        //}
 
         private NetworkResourceProviderClient GetNetworkResourceProviderClient()
         {

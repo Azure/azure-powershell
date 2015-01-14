@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {

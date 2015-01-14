@@ -15,6 +15,7 @@
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {

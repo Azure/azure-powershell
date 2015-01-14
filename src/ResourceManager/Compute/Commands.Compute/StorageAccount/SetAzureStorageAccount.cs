@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Commands.Compute
     using System.Management.Automation;
     using Common;
     using Models;
-    using WindowsAzure.Management.Srp;
-    using WindowsAzure.Management.Srp.Models;
+    using Azure.Management.Storage;
+    using Azure.Management.Storage.Models;
 
     /// <summary>
     /// Lists all storage services underneath the subscription.
