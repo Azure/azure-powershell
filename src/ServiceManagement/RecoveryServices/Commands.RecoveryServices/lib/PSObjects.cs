@@ -15,13 +15,88 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Runtime.Serialization;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
+    /// <summary>
+    /// Constant definition
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class Constants
+    {
+        /// <summary>
+        /// ASR vault type
+        /// </summary>
+        public const string ASRVaultType = "HyperVRecoveryManagerVault";
+
+        /// <summary>
+        /// Vault Credential version.
+        /// </summary>
+        public const string VaultCredentialVersion = "1.0";
+
+        /// <summary>
+        /// The version of Extended resource info.
+        /// </summary>
+        public const string VaultSecurityInfoVersion = "1.0";
+
+        /// <summary>
+        /// extended information version.
+        /// </summary>
+        public const string VaultExtendedInfoContractVersion = "V2014_09";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Type
+        /// </summary>
+        public const string RdfeOperationStatusTypeCreate = "Create";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Type
+        /// </summary>
+        public const string RdfeOperationStatusTypeDelete = "Delete";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Result
+        /// </summary>
+        public const string RdfeOperationStatusResultSucceeded = "Succeeded";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Failed
+        /// </summary>
+        public const string RdfeOperationStatusResultFailed = "Failed";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.InProgress
+        /// </summary>
+        public const string RdfeOperationStatusResultInProgress = "InProgress";
+
+        /// <summary>
+        /// Cloud service name prefix
+        /// </summary>
+        public const string CloudServiceNameExtensionPrefix = "CS-";
+
+        /// <summary>
+        /// Cloud service name suffix
+        /// </summary>
+        public const string CloudServiceNameExtensionSuffix = "-RecoveryServices";
+
+        /// <summary>
+        /// Schema Version of RP
+        /// </summary>
+        public const string RpSchemaVersion = "1.1";
+
+        /// <summary>
+        /// Resource Provider Namespace.
+        /// </summary>
+        public const string ResourceNamespace = "WAHyperVRecoveryManager";
+    }
+
     /// <summary>
     /// Azure Site Recovery Vault Settings.
     /// </summary>
@@ -39,10 +114,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVaultSettings" /> class with Resource
+        /// Initializes a new instance of the <see cref="ASRVaultSettings" /> class with vault
         /// and Cloud Service names.
         /// </summary>
-        /// <param name="resourceName">Resource Name</param>
+        /// <param name="resourceName">vault Name</param>
         /// <param name="cloudServiceName">Cloud Service Name</param>
         public ASRVaultSettings(string resourceName, string cloudServiceName)
         {
@@ -146,7 +221,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             this.ID = pc.ID;
             this.Name = pc.Name;
-            this.ConfigurationStatus = pc.ConfigurationStatus;
             this.Role = pc.Role;
             this.ServerId = pc.ServerId;
             this.FabricObjectId = pc.FabricObjectId;
@@ -172,11 +246,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets Server ID.
         /// </summary>
         public string ServerId { get; set; }
-
-        /// <summary>
-        /// Gets or sets configuration status.
-        /// </summary>
-        public string ConfigurationStatus { get; set; }
 
         /// <summary>
         /// Gets or sets a role of the protection container.
@@ -784,7 +853,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public DateTime EndTime { get; set; }
     }
-    
+
     /// <summary>
     /// Azure Site Recovery Job.
     /// </summary>
@@ -844,7 +913,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public string ID { get; set; }
 
-       /// <summary>
+        /// <summary>
         /// Gets or sets Activity ID.
         /// </summary>
         public string ClientRequestId { get; set; }
@@ -883,6 +952,168 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets list of Errors.
         /// </summary>
         public List<ASRErrorDetails> Errors { get; set; }
+        #endregion
+    }
+
+    /// <summary>
+    /// Azure Site Recovery Vault.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class ASRVault
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVault" /> class.
+        /// </summary>
+        public ASRVault()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVault" /> class.
+        /// </summary>
+        /// <param name="cloudService">cloud service object</param>
+        /// <param name="vault">vault object</param>
+        public ASRVault(CloudService cloudService, Vault vault)
+        {
+            this.CloudServiceName = cloudService.Name;
+            this.Location = cloudService.GeoRegion;
+            this.Name = vault.Name;
+            this.SubscriptionId = AzureSession.CurrentContext.Subscription.Id.ToString();
+            this.Status = this.ParseStatus(vault.OperationStatus);
+            this.ID = this.ParseVaultId(vault.OutputItems);
+            if (vault.OperationStatus.Error != null)
+            {
+                this.StatusReason = vault.OperationStatus.Error.Message;
+            }
+        }
+
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Gets or sets Job display name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets Job ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        /// Gets or sets cloud service name.
+        /// </summary>
+        public string CloudServiceName { get; set; }
+
+        /// <summary>
+        /// Gets or sets subscription id
+        /// </summary>
+        public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets reason for the status
+        /// </summary>
+        public string StatusReason { get; set; }
+
+        /// <summary>
+        /// Gets or sets the status
+        /// </summary>
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets location.
+        /// </summary>
+        public string Location { get; set; }
+
+        #endregion
+
+        #region Private methods
+
+        /// <summary>
+        /// Method to parse status of the vault
+        /// </summary>
+        /// <param name="operationStatus">operation status returned</param>
+        /// <returns>status as string</returns>
+        private string ParseStatus(ResourceOperationStatus operationStatus)
+        {
+            string vaultStatus = string.Empty;
+
+            // Type and Result fields of OperationStatus is used to figured out the vault status.
+            // Type:Create & Result:Succeeded --> vault created in RDFE and RP.
+            // Type:Create & Result:InProgress --> vault created in RDFE and not created in RP.
+            // Type:Create & Result:Failed --> vault created in RDFE but failed in RP.
+            // Type:Delete & Result:InProgress --> vault is being deleted in RP & RDFE.
+            // Type:Delete & Result:Failed --> vault deletion happens first in RP then in RDFE.
+            if (!string.IsNullOrWhiteSpace(operationStatus.Type) && !string.IsNullOrWhiteSpace(operationStatus.Result))
+            {
+                switch (operationStatus.Type)
+                {
+                    case Constants.RdfeOperationStatusTypeCreate:
+                        switch (operationStatus.Result)
+                        {
+                            case Constants.RdfeOperationStatusResultSucceeded:
+                                vaultStatus = VaultStatus.Active.ToString();
+                                break;
+                            case Constants.RdfeOperationStatusResultInProgress:
+                                vaultStatus = VaultStatus.Creating.ToString();
+                                break;
+                            case Constants.RdfeOperationStatusResultFailed:
+                                vaultStatus = VaultStatus.Disabled.ToString();
+                                break;
+                        }
+
+                        break;
+                    case Constants.RdfeOperationStatusTypeDelete:
+                        switch (operationStatus.Result)
+                        {
+                            case Constants.RdfeOperationStatusResultInProgress:
+                                vaultStatus = VaultStatus.Removing.ToString();
+                                break;
+                            case Constants.RdfeOperationStatusResultFailed:
+                                vaultStatus = VaultStatus.Active.ToString();
+                                break;
+                        }
+
+                        break;
+                }
+            }
+
+            // In case if the resource has multiple create calls, then we might not know the result of first create. 
+            // So we are checking if the stamp id is returned or not. Also the vault name is required for all rdfe calls.
+            // Without these fields the vault can't be drilled down.
+            if (vaultStatus.Equals(VaultStatus.Active.ToString(), StringComparison.OrdinalIgnoreCase) && string.IsNullOrWhiteSpace(this.Name))
+            {
+                vaultStatus = VaultStatus.Disabled.ToString();
+            }
+
+            return vaultStatus;
+        }
+
+        /// <summary>
+        /// Method to extract vault id
+        /// </summary>
+        /// <param name="outputItems">the output item from vault</param>
+        /// <returns>returns the vault id as string</returns>
+        private string ParseVaultId(IList<OutputItem> outputItems)
+        {
+            string vaultId = string.Empty;
+            foreach (var outputItem in outputItems)
+            {
+                if (outputItem.Key == "ResourceId")
+                {
+                    vaultId = outputItem.Value;
+                    break;
+                }
+            }
+
+            return vaultId;
+        }
+
         #endregion
     }
 
@@ -927,6 +1158,58 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             : base(serviceError)
         {
         }
+    }
+
+    /// <summary>
+    /// Class to define the output of the vault credential generation.
+    /// </summary>
+    public class VaultCredentialOutput
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultCredentialOutput" /> class
+        /// </summary>
+        public VaultCredentialOutput()
+        {
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the path of generated credential file.
+        /// </summary>
+        public string FilePath { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Class to define the output object for the vault operations.
+    /// </summary>
+    public class VaultOperationOutput
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultOperationOutput" /> class
+        /// </summary>
+        public VaultOperationOutput()
+        {
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the operation tracking id of the operation performed.
+        /// </summary>
+        public string OperationTrackingId { get; set; }
+
+        #endregion
     }
 
     /// <summary>

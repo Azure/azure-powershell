@@ -101,3 +101,207 @@ function Test-RecoveryServicesProtectionTests
 		}
 	}
 }
+
+<#
+.SYNOPSIS
+Recovery Services Storage mapping tests and validation
+#>
+function Test-StorageMapping
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enumerate Servers
+	$servers = Get-AzureSiteRecoveryServer
+	Assert-True { $servers.Count -gt 0 }
+	Assert-NotNull($servers)
+	foreach($server in $servers)
+	{
+		Assert-NotNull($server.Name)
+		Assert-NotNull($server.ID)
+	}
+
+	# Enumerate Storages
+	$storages = Get-AzureSiteRecoveryStorage -Server $servers[0]
+	Assert-NotNull($storages)
+	Assert-True { $storages.Count -gt 0 }
+	foreach($storage in $storages)
+	{
+		Assert-NotNull($storage.Name)
+		Assert-NotNull($storage.ID)
+	}
+
+	# Enumerate StorageMappings
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	Assert-True { $storageMappings.Count -eq 0 }
+
+	# Create StorageMapping
+	$job = New-AzureSiteRecoveryStorageMapping -PrimaryStorage $storages[0] -RecoveryStorage $storages[1]
+	WaitForJobCompletion -JobId $job.ID
+
+	# Enumerate StorageMappings
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	Assert-NotNull($storageMappings)
+	Assert-True { $storageMappings.Count -eq 1 }
+	Assert-NotNull($storageMappings[0].PrimaryServerId)
+	Assert-NotNull($storageMappings[0].PrimaryStorageId)
+	Assert-NotNull($storageMappings[0].RecoveryServerId)
+	Assert-NotNull($storageMappings[0].RecoveryStorageId)
+}
+
+<#
+.SYNOPSIS
+Recovery Services Storage unmapping tests and validation
+#>
+function Test-StorageUnMapping
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enumerate Servers
+	$servers = Get-AzureSiteRecoveryServer
+	Assert-True { $servers.Count -gt 0 }
+	Assert-NotNull($servers)
+	foreach($server in $servers)
+	{
+		Assert-NotNull($server.Name)
+		Assert-NotNull($server.ID)
+	}
+
+	# Enumerate StorageMappings
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	Assert-NotNull($storageMappings)
+	Assert-True { $storageMappings.Count -eq 1 }
+	Assert-NotNull($storageMappings[0].PrimaryServerId)
+	Assert-NotNull($storageMappings[0].PrimaryStorageId)
+	Assert-NotNull($storageMappings[0].RecoveryServerId)
+	Assert-NotNull($storageMappings[0].RecoveryStorageId)
+
+	# Remove StorageMapping
+	$job = Remove-AzureSiteRecoveryStorageMapping -StorageMapping $storageMappings[0]
+	WaitForJobCompletion -JobId $job.ID
+
+	# Enumerate StorageMappings
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	Assert-True { $storageMappings.Count -eq 0 }
+}
+
+<#
+.SYNOPSIS
+Recovery Services Network mapping tests and validation
+#>
+function Test-NetworkMapping
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enumerate Servers
+	$servers = Get-AzureSiteRecoveryServer
+	Assert-True { $servers.Count -gt 0 }
+	Assert-NotNull($servers)
+	foreach($server in $servers)
+	{
+		Assert-NotNull($server.Name)
+		Assert-NotNull($server.ID)
+	}
+
+	# Enumerate Networks
+	$networks = Get-AzureSiteRecoveryNetwork -Server $servers[0]
+	Assert-NotNull($networks)
+	Assert-True { $networks.Count -gt 0 }
+	foreach($network in $networks)
+	{
+		Assert-NotNull($network.Name)
+		Assert-NotNull($network.ID)
+	}
+
+	# Enumerate NetworkMappings
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	Assert-True { $networkMappings.Count -eq 0 }
+
+	# Create NetworkMapping
+	$job = New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networks[0] -RecoveryNetwork $networks[1]
+	WaitForJobCompletion -JobId $job.ID
+
+	# Enumerate NetworkMappings
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	Assert-NotNull($networkMappings)
+	Assert-True { $networkMappings.Count -eq 1 }
+	Assert-NotNull($networkMappings[0].PrimaryServerId)
+	Assert-NotNull($networkMappings[0].PrimaryNetworkId)
+	Assert-NotNull($networkMappings[0].PrimaryNetworkName)
+	Assert-NotNull($networkMappings[0].RecoveryServerId)
+	Assert-NotNull($networkMappings[0].RecoveryNetworkId)
+	Assert-NotNull($networkMappings[0].RecoveryNetworkName)
+}
+
+<#
+.SYNOPSIS
+Recovery Services Network unmapping tests and validation
+#>
+function Test-NetworkUnMapping
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enumerate Servers
+	$servers = Get-AzureSiteRecoveryServer
+	Assert-True { $servers.Count -gt 0 }
+	Assert-NotNull($servers)
+	foreach($server in $servers)
+	{
+		Assert-NotNull($server.Name)
+		Assert-NotNull($server.ID)
+	}
+
+	# Enumerate NetworkMappings
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	Assert-NotNull($networkMappings)
+	Assert-True { $networkMappings.Count -eq 1 }
+	Assert-NotNull($networkMappings[0].PrimaryServerId)
+	Assert-NotNull($networkMappings[0].PrimaryNetworkId)
+	Assert-NotNull($networkMappings[0].PrimaryNetworkName)
+	Assert-NotNull($networkMappings[0].RecoveryServerId)
+	Assert-NotNull($networkMappings[0].RecoveryNetworkId)
+	Assert-NotNull($networkMappings[0].RecoveryNetworkName)
+
+	# Remove StorageMapping
+	$job = Remove-AzureSiteRecoveryNetworkMapping -NetworkMapping $networkMappings[0]
+	WaitForJobCompletion -JobId $job.ID
+
+	# Enumerate NetworkMappings
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	Assert-True { $networkMappings.Count -eq 0 }
+}
+
+<#
+.SYNOPSIS
+Wait for job completion
+Usage:
+	WaitForJobCompletion -JobId $job.ID
+	WaitForJobCompletion -JobId $job.ID -NumOfSecondsToWait 10
+#>
+function WaitForJobCompletion
+{
+    param([string] $JobId, [Int] $NumOfSecondsToWait = 30)
+	$endStateDescription = @('Succeeded','Failed','Cancelled','Suspended')
+
+	$timeElapse = 0;
+	$interval = 5;
+	do
+	{
+		Start-Sleep $interval
+		$timeElapse = $timeElapse + $interval
+		$job = Get-AzureSiteRecoveryJob -Id $JobId;
+	} while((-not ($endStateDescription -ccontains $job.State)) -and ($timeElapse -lt $NumOfSecondsToWait))
+
+	Assert-True { $endStateDescription -ccontains $job.State } "Job did not reached desired state within $NumOfSecondsToWait seconds."
+}
