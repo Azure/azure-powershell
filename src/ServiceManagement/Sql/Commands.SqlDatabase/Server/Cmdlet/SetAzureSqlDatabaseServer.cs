@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Model;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Sql.Models;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
 {
@@ -79,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
             SqlManagementClient sqlManagementClient = GetCurrentSqlClient();
 
             // Issue the change admin password request
-            OperationResponse response = sqlManagementClient.Servers.ChangeAdministratorPassword(
+            AzureOperationResponse response = sqlManagementClient.Servers.ChangeAdministratorPassword(
                 serverName, 
                 new ServerChangeAdministratorPasswordParameters()
                 {

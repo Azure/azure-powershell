@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
