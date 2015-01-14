@@ -210,6 +210,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Protection Profile {0} is not associated with the Protection Container {1}..
+        /// </summary>
+        internal static string ProtectionProfileNotFound {
+            get {
+                return ResourceManager.GetString("ProtectionProfileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RecoveryPlan  {0} is not associated with the Vault {1}.
         /// </summary>
         internal static string RecoveryPlanNotFound {
@@ -251,6 +260,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string ServerNotFound {
             get {
                 return ResourceManager.GetString("ServerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage is not associated with the account {0}.
+        /// </summary>
+        internal static string StorageIsNotAssociatedWithTheAccount {
+            get {
+                return ResourceManager.GetString("StorageIsNotAssociatedWithTheAccount", resourceCulture);
             }
         }
         

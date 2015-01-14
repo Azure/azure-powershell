@@ -18,6 +18,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.Serialization;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
+using Microsoft.WindowsAzure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -181,6 +182,180 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets a role of the protection container.
         /// </summary>
         public string Role { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Represents the StorageAccount of the client which can be used to protect VMs to Azure.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class CustomerStorageAccount
+    {
+        /// <summary>
+        /// Gets or sets the storage account name.
+        /// </summary>
+        [DataMember]
+        public string StorageAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the subscription id associated with the storage account.
+        /// </summary>
+        [DataMember]
+        public string SubscriptionId { get; set; }
+    }
+
+    /// <summary>
+    /// Hyper-V Replica Azure specific input for creating a protection profile.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class HyperVReplicaAzureProtectionProfileInput
+    {
+        /// <summary>
+        /// Gets or sets the duration (in hours) to which point the recovery history needs to be 
+        /// maintained.
+        /// </summary>
+        [DataMember]
+        public int RecoveryPointHistoryDuration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the interval (in hours) at which Hyper-V Replica should create an
+        /// application consistent snapshot within the VM.
+        /// </summary>
+        [DataMember]
+        public int AppConsistencyFreq { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication interval.
+        /// </summary>
+        [DataMember]
+        public int ReplicationInterval { get; set; }
+
+        /// <summary>
+        /// Gets or sets the scheduled start time for the initial replication. If this parameter 
+        /// is Null, the initial replication starts immediately.
+        /// </summary>
+        [DataMember]
+        public TimeSpan? OnlineIrStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of storage accounts to which the VMs in the primary cloud can 
+        /// replicate to.
+        /// </summary>
+        [DataMember]
+        public List<CustomerStorageAccount> StorageAccounts { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether encryption needs to be enabled for Vms in this cloud. 
+        /// </summary>
+        [DataMember]
+        public bool IsEncryptionEnabled { get; set; }
+
+    }
+
+    /// <summary>
+    /// Azure Site Recovery Protection Profile.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class ASRProtectionProfile
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRProtectionProfile" /> class.
+        /// </summary>
+        public ASRProtectionProfile()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRProtectionProfile" /> class with 
+        /// required parameters.
+        /// </summary>
+        /// <param name="protectionProfile">Protection container object</param>
+        public ASRProtectionProfile(ProtectionProfile protectionProfile)
+        {
+            this.ID = protectionProfile.ID;
+            this.Name = protectionProfile.Name;
+            this.ReplicationType = protectionProfile.ReplicationProvider;
+        }
+
+        #region Properties
+        /// <summary>
+        /// Gets or sets name of the Protection profile.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets Protection profile ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication Type (HyperVReplica, HyperVReplicaAzure)
+        /// </summary>
+        public string ReplicationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication Method.
+        /// </summary>
+        public string ReplicationMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery Protection Container.
+        /// </summary>
+        public ProtectionContainer RecoveryProtectionContainer { get; set; }
+
+        /// <summary>
+        /// Gets or sets Association Details.
+        /// </summary>
+        public List<ProtectionProfileAssociationDetails> AssociationDetail { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery Azure Subscription.
+        /// </summary>
+        public string RecoveryAzureSubscription { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery Azure Storage Account Name.
+        /// </summary>
+        public string RecoveryAzureStorageAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication Frequency in seconds.
+        /// </summary>
+        public int ReplicationFrequencySecond { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery Points.
+        /// </summary>
+        public int RecoveryPoints { get; set; }
+
+        /// <summary>
+        /// Gets or sets Application Consistent Snapshot Frequency in hours.
+        /// </summary>
+        public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
+
+        /// <summary>
+        /// Gets or sets if Compression is Enabled.
+        /// </summary>
+        public bool CompressionEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication port.
+        /// </summary>
+        public int ReplicationPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication Start Time.
+        /// </summary>
+        public int ReplicationStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets if Replica Deletion should be enabled.
+        /// </summary>
+        public bool AllowReplicaDeletion { get; set; }
 
         #endregion
     }
