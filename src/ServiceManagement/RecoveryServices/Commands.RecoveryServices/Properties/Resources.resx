@@ -206,4 +206,7 @@ ClientRequestId: {3}</value>
   <data name="StorageIsNotAssociatedWithTheAccount" xml:space="preserve">
     <value>Storage is not associated with the account {0}</value>
   </data>
+  <data name="VaultCredentialGenerationUnSupported" xml:space="preserve">
+    <value>Cannot generate vault credentials for this vault. Download it from the Azure Portal.</value>
+  </data>
 </root>
