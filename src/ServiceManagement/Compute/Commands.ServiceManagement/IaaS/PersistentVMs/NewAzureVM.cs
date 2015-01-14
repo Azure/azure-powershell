@@ -18,12 +18,15 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using AutoMapper;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.Azure;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 {
@@ -190,7 +193,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 }
                 catch (CloudException ex)
                 {
-                    if (string.Equals(ex.ErrorCode, "ConflictError"))
+                    if (string.Equals(ex.Error.Code, "ConflictError"))
                     {
                         HostedServiceGetResponse existingService = this.ComputeClient.HostedServices.Get(this.ServiceName);
 
@@ -207,7 +210,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                         {
                             // The same service name is already created under the same subscription,
                             // and its affinity group or location is matched with the given parameter.
-                            this.WriteWarning(ex.ErrorMessage);
+                            this.WriteWarning(ex.Error.Message);
                         }
                         else
                         {

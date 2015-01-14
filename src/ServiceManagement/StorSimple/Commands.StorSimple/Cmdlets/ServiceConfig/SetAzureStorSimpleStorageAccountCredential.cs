@@ -54,7 +54,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (!String.IsNullOrEmpty(StorageAccountKey))
                 {
                     //validate storage account credentials
-                    if (!ValidStorageAccountCred(StorageAccountName, StorageAccountKey))
+                    string hostname = existingSac.Hostname;
+                    string endpoint = hostname.Substring(hostname.IndexOf('.') + 1);
+                    if (!ValidStorageAccountCred(StorageAccountName, StorageAccountKey, endpoint))
                     {
                         WriteVerbose(Resources.StorageCredentialVerificationFailureMessage);
                         return;

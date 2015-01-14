@@ -1,27 +1,21 @@
-﻿
-
-// TODO :- Revisit this File again. THe person who starts work on PSScripts needs to review and change
-
+﻿using System;
 using System.Net;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Xml;
 using System.Net.Security;
 using System.Runtime.Caching;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Hyak.Common;
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.WindowsAzure.Management.Scheduler;
+using Microsoft.WindowsAzure.Management.StorSimple;
+using Microsoft.WindowsAzure.Management.StorSimple.Models;
+using Microsoft.WindowsAzure.Management.Scheduler.Models;
+
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
-using System;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml;
-using Microsoft.WindowsAzure.Management.StorSimple;
-using Microsoft.WindowsAzure.Management.StorSimple.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Scheduler;
-using Microsoft.WindowsAzure.Management.Scheduler.Models;
-    using Microsoft.WindowsAzure.Commands.Common;
-
     public partial class PSStorSimpleClient
     {
         private CloudServiceManagementClient cloudServicesClient;
@@ -73,7 +67,7 @@ using Microsoft.WindowsAzure.Management.Scheduler.Models;
             {
                 using (Stream stream = new MemoryStream())
                 {
-                    byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.ErrorMessage);
+                    byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.Error.Message);
                     stream.Write(data, 0, data.Length);
                     stream.Position = 0;
 
@@ -83,11 +77,11 @@ using Microsoft.WindowsAzure.Management.Scheduler.Models;
             }
             catch (XmlException)
             {
-                throw new XmlException(cloudException.ErrorMessage);
+                throw new XmlException(cloudException.Error.Message);
             }
             catch (SerializationException)
             {
-                throw new SerializationException(cloudException.ErrorMessage);
+                throw new SerializationException(cloudException.Error.Message);
             }
 
             throw new InvalidOperationException(

@@ -1,0 +1,11 @@
+{
+    "name": "HDILinkedService",
+    "properties": 
+    {
+        "type": "HDInsightBYOCLinkedService",
+        "clusterUri": "https://myhadoopcluster.azurehdinsight.net/",
+        "userName": "admin",
+        "password": "mypassword",
+        "linkedServiceName": "LinkedService-CuratedWikiData"
+    }
+}

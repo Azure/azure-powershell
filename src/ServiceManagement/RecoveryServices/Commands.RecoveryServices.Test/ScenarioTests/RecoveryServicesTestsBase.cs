@@ -18,16 +18,17 @@ using System.Net;
 using System.Net.Security;
 using System.Runtime.Serialization;
 using System.Xml;
-using Microsoft.Azure.Utilities.HttpRecorder;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.StorSimple;
+using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple

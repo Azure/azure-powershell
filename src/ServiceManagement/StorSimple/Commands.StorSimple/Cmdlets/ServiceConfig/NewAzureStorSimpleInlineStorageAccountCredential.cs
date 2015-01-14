@@ -30,14 +30,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string StorageAccountKey { get; set; }
 
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageEndpoint)]
+        [ValidateNotNullOrEmpty]
+        public string Endpoint { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
             {
+                string endpoint = String.IsNullOrEmpty(Endpoint) ? Constants.DefaultEndpoint : Endpoint;
+
                 var sac = new StorageAccountCredentialResponse()
                 {
                     CloudType = CloudType.Azure,
-                    Hostname = Constants.HostName,
+                    Hostname = GetHostnameFromEndpoint(endpoint),
                     Login = StorageAccountName,
                     Password = StorageAccountKey,
                     UseSSL = true,

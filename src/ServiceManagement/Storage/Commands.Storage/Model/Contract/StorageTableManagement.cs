@@ -13,6 +13,7 @@
 // ---------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -121,6 +122,45 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public TablePermissions GetTablePermissions(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
             return table.GetPermissions(requestOptions, operationContext);
+        }
+
+        /// <summary>
+        /// Return a task that asynchronously fetch table permissions
+        /// </summary>
+        /// <param name="table">target table</param>
+        /// <param name="requestOptions">request options</param>
+        /// <param name="operationContext">context</param>
+        /// <returns></returns>
+        public Task<TablePermissions> GetTablePermissionsAsync(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
+        {
+            return table.GetPermissionsAsync(requestOptions, operationContext);
+        }
+
+        /// <summary>
+        /// Set table permission
+        /// </summary>
+        /// <param name="table">Cloud table object</param>
+        /// <param name="tablePermissions">table permissions</param>
+        /// <param name="requestOptions">Table request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <returns></returns>
+        public void SetTablePermissions(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions, OperationContext operationContext)
+        {
+            table.SetPermissions(tablePermissions, requestOptions, operationContext);
+        }
+
+
+        /// <summary>
+        /// Return a task that asynchronously set table permissions
+        /// </summary>
+        /// <param name="table">target table</param>
+        /// <param name="tablePermissions">permissions to set</param>
+        /// <param name="requestOptions">request options</param>
+        /// <param name="operationContext">context</param>
+        /// <returns></returns>
+        public Task SetTablePermissionsAsync(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions, OperationContext operationContext)
+        {
+            return table.SetPermissionsAsync(tablePermissions, requestOptions, operationContext);
         }
     }
 }

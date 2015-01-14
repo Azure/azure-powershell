@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services;
 using Microsoft.WindowsAzure.Management.MediaServices;
@@ -30,6 +30,8 @@ using Microsoft.WindowsAzure.Management.MediaServices.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 using Newtonsoft.Json;
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.MediaServices
 {
@@ -142,7 +144,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.MediaServices
         ///     Deletes azure media service account async.
         /// </summary>
         /// <returns></returns>
-        public Task<OperationResponse> DeleteAzureMediaServiceAccountAsync(string name)
+        public Task<AzureOperationResponse> DeleteAzureMediaServiceAccountAsync(string name)
         {
             return _mediaServicesManagementClient.Accounts.DeleteAsync(name);
         }
@@ -150,7 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.MediaServices
         /// <summary>
         ///     Deletes azure media service account async.
         /// </summary>
-        public Task<OperationResponse> RegenerateMediaServicesAccountAsync(string name, MediaServicesKeyType keyType)
+        public Task<AzureOperationResponse> RegenerateMediaServicesAccountAsync(string name, MediaServicesKeyType keyType)
         {
             return _mediaServicesManagementClient.Accounts.RegenerateKeyAsync(name, keyType);
         }

@@ -18,13 +18,14 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Security;
 using System.Reflection;
-using Microsoft.Azure.Utilities.HttpRecorder;
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Scheduler;
 using Microsoft.WindowsAzure.Management.StorSimple;
-using Microsoft.WindowsAzure.Testing;
 using System.Management;
 using System.Management.Automation;
 

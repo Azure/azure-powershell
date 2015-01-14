@@ -20,6 +20,8 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Moq;
+using Microsoft.Azure;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {

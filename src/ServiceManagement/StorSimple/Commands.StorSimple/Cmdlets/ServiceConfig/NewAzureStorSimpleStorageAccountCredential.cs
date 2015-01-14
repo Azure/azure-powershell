@@ -34,17 +34,22 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public bool UseSSL { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageEndpoint)]
+        [ValidateNotNullOrEmpty]
+        public string Endpoint { get; set; }
+
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
+                string endpoint = String.IsNullOrEmpty(Endpoint) ? Constants.DefaultEndpoint : Endpoint;
                 //validate storage account credentials
                 bool storageAccountPresent;
                 String location = GetStorageAccountLocation(StorageAccountName, out storageAccountPresent);
-                if (!storageAccountPresent || !ValidStorageAccountCred(StorageAccountName, StorageAccountKey))
+                if (!storageAccountPresent || !ValidStorageAccountCred(StorageAccountName, StorageAccountKey, endpoint))
                 {
                     WriteVerbose(Resources.StorageCredentialVerificationFailureMessage);
                     return;
@@ -66,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             new StorageAccountCredential()
                             {
                                 CloudType = CloudType.Azure,
-                                Hostname = Constants.HostName,
+                                Hostname = GetHostnameFromEndpoint(endpoint),
                                 Login = StorageAccountName,
                                 Password = encryptedKey,
                                 PasswordEncryptionCertThumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint(),

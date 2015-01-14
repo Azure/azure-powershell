@@ -15,7 +15,7 @@
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Test;
 using System.Linq;
 using Xunit;
 
