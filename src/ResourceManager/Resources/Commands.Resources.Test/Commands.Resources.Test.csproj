@@ -200,6 +200,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Build2014_Website_App.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
