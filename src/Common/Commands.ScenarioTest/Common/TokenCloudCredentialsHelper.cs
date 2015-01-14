@@ -22,7 +22,7 @@ using System.Text;
 using System.Threading;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.IdentityModel.Clients.ActiveDirectory.Internal;
-using Microsoft.WindowsAzure.Common.Internals;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
 {
@@ -169,7 +169,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
                 string returnValue = GetProcessStreamValue(executor.StandardOutput);
                 executor.WaitForExit(10000);
                 int exitCode = executor.ExitCode;
-                Tracing.Information(ProcessExecuteInfo, exitCode, returnValue);
+                TracingAdapter.Information(ProcessExecuteInfo, exitCode, returnValue);
                 if (IsSuccess(returnValue, exitCode))
                 {
                     return CleanConsoleOutputString(returnValue);
@@ -177,7 +177,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
                 else
                 {
                     string errorValue = GetProcessStreamValue(executor.StandardError);
-                    Tracing.Information(ProcessExecuteErrorTrace, exitCode, returnValue, errorValue);
+                    TracingAdapter.Information(ProcessExecuteErrorTrace, exitCode, returnValue, errorValue);
                     throw new Exception(string.Format(ProcessExecuteException, executor.ExitCode, errorValue));
                 }
             }

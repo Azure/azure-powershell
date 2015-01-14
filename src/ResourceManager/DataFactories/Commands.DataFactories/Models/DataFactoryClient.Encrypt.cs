@@ -16,6 +16,7 @@ using System;
 using System.Security;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.DataTransfer.Gateway.Encryption;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -32,12 +33,14 @@ namespace Microsoft.Azure.Commands.DataFactories
                 resourceGroupName, dataFactoryName);
         }
 
-        public virtual string OnPremisesEncryptString(SecureString value, string resourceGroupName, string dataFactoryName, string gatewayName)
+        public virtual string OnPremisesEncryptString(SecureString value, string resourceGroupName, string dataFactoryName, string gatewayName, PSCredential credential, string type)
         {
             if (value == null)
             {
                 throw new ArgumentNullException("value");
             }
+
+            LinkedServiceType linkedServiceType = type == null ? LinkedServiceType.OnPremisesSqlLinkedService : (LinkedServiceType) Enum.Parse(typeof(LinkedServiceType), type, true);
 
             var response = DataPipelineManagementClient.Gateways.RetrieveConnectionInfo(resourceGroupName, dataFactoryName, gatewayName);
             var gatewayEncryptionInfos = new[]
@@ -46,12 +49,15 @@ namespace Microsoft.Azure.Commands.DataFactories
                         {
                             ServiceToken = response.ConnectionInfo.ServiceToken,
                             IdentityCertThumbprint = response.ConnectionInfo.IdentityCertThumbprint,
-                            HostServiceUri = response.ConnectionInfo.HostServiceUri
+                            HostServiceUri = response.ConnectionInfo.HostServiceUri,
+                            InstanceVersionString = response.ConnectionInfo.Version 
                         }
                 };
 
-            var gatewayEncryptionClient = new GatewayEncryptionClient();
-            return gatewayEncryptionClient.Encrypt(value, gatewayEncryptionInfos);
+            string userName = credential != null ? credential.UserName : null;
+            SecureString password = credential != null ? credential.Password : null;
+            UserInputConnectionString connectionString = new UserInputConnectionString(value, userName, password, linkedServiceType);
+            return GatewayEncryptionClient.Encrypt(connectionString, gatewayEncryptionInfos);
         }
     }
 }
