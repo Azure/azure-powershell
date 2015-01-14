@@ -203,4 +203,7 @@ ClientRequestId: {3}</value>
   <data name="VaultCredentialGenerationUnSupported" xml:space="preserve">
     <value>Cannot generate vault credentials for this vault. Download it from the Azure Portal.</value>
   </data>
+  <data name="VaultCreationSuccessMessage" xml:space="preserve">
+    <value>Vault has been created</value>
+  </data>
 </root>

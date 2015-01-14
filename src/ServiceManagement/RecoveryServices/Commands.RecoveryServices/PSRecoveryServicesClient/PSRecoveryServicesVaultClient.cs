@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vaultName">name of the vault</param>
         /// <param name="vaultCreateInput">vault creation input object</param>
         /// <returns>creation response object.</returns>
-        public VaultCreateResponse CreateVault(string cloudServiceName, string vaultName, VaultCreateArgs vaultCreateInput)
+        public RecoveryServicesOperationStatusResponse CreateVault(string cloudServiceName, string vaultName, VaultCreateArgs vaultCreateInput)
         {
             return this.GetRecoveryServicesClient.Vaults.Create(cloudServiceName, vaultName, vaultCreateInput);
         }

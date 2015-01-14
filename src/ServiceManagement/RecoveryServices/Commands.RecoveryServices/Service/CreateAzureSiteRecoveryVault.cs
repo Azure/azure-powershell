@@ -14,8 +14,9 @@
 
 using System;
 using System.Management.Automation;
+using System.Net;
+using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -75,11 +76,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     SchemaVersion = Constants.RpSchemaVersion
                 };
 
-                VaultCreateResponse response = RecoveryServicesClient.CreateVault(cloudServiceName, this.Name, vaultCreateArgs);
+                RecoveryServicesOperationStatusResponse response = RecoveryServicesClient.CreateVault(cloudServiceName, this.Name, vaultCreateArgs);
 
                 VaultOperationOutput output = new VaultOperationOutput()
                 {
-                    OperationTrackingId = response.RequestId
+                    response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultCreationSuccessMessage : response.StatusCode.ToString()
                 };
 
                 this.WriteObject(output, true);

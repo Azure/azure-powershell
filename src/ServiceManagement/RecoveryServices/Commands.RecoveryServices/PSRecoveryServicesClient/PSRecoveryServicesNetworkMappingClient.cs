@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             createNetworkMappingInput.RecoveryNetworkId = recoveryNetworkId;
 
             NetworkMappingInput networkMappingInput = new NetworkMappingInput();
-            networkMappingInput.TargetNetworkType = TargetNetworkType.Server.ToString();
+            networkMappingInput.NetworkTargetType = TargetNetworkType.Server.ToString();
             networkMappingInput.CreateNetworkMappingInput =
                 DataContractUtils.Serialize<CreateNetworkMappingInput>(createNetworkMappingInput);
             return this.GetSiteRecoveryClient()
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             createAzureNetworkMappingInput.AzureVMNetworkId = recoveryNetworkId;
 
             NetworkMappingInput networkMappingInput = new NetworkMappingInput();
-            networkMappingInput.TargetNetworkType = TargetNetworkType.Azure.ToString();
+            networkMappingInput.NetworkTargetType = TargetNetworkType.Azure.ToString();
             networkMappingInput.CreateNetworkMappingInput =
                 DataContractUtils.Serialize<CreateAzureNetworkMappingInput>(createAzureNetworkMappingInput);
             return this.GetSiteRecoveryClient()
