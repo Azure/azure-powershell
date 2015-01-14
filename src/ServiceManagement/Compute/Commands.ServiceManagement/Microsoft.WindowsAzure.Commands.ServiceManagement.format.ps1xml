@@ -654,8 +654,10 @@
                 <PropertyName>StatusCode</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>TimestampUtc</Label>
-                <PropertyName>TimestampUtc</PropertyName>
+                <Label>Timestamp</Label>
+                <ScriptBlock>
+                      $_.Timestamp.ToString("G")
+                </ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>StatusMessage</Label>

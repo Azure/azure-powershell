@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     public class VirtualMachineDscExtensionStatusContext
@@ -9,6 +11,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public int StatusCode { get; set; }
         public string StatusMessage { get; set; }
         public string[] DscConfigurationLog { get; set; }
-        public string TimestampUtc { get; set; }
+        public DateTime Timestamp { get; set; }
     }
 }
