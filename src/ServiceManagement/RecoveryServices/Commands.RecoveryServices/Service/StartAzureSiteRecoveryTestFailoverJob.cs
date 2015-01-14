@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
         [ValidateSet(
-          PSRecoveryServicesClient.PrimaryToRecovery,
-          PSRecoveryServicesClient.RecoveryToPrimary)]
+          Constants.PrimaryToRecovery,
+          Constants.RecoveryToPrimary)]
         public string Direction { get; set; }
 
         /// <summary>

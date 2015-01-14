@@ -36,40 +36,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             return response.CloudServices;
         }
 
-        /// <summary>
-        /// Method to get Cloud Service object for a given vault
-        /// </summary>
-        /// <param name="vault">vault object</param>
-        /// <returns>cloud service object.</returns>
-        public CloudService GetCloudServiceForVault(ASRVault vault)
-        {
-            IEnumerable<CloudService> cloudServiceList = this.GetCloudServices();
-            CloudService cloudServiceToReturn = null;
+        /////// <summary>
+        /////// Method to get Cloud Service object for a given vault
+        /////// </summary>
+        /////// <param name="vault">vault object</param>
+        /////// <returns>cloud service object.</returns>
+        ////public CloudService GetCloudServiceForVault(ASRVault vault)
+        ////{
+        ////    IEnumerable<CloudService> cloudServiceList = this.GetCloudServices();
+        ////    CloudService cloudServiceToReturn = null;
 
-            foreach (var cloudService in cloudServiceList)
-            {
-                Vault selectedVault = null;
-                if (cloudService.GeoRegion.Equals(vault.Location, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    foreach (var resource in cloudService.Resources)
-                    {
-                        if (resource.Name.Equals(vault.Name, StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            selectedVault = resource;
-                            break;
-                        }
-                    }
-                }
+        ////    foreach (var cloudService in cloudServiceList)
+        ////    {
+        ////        Vault selectedVault = null;
+        ////        if (cloudService.GeoRegion.Equals(vault.Location, StringComparison.InvariantCultureIgnoreCase))
+        ////        {
+        ////            foreach (var resource in cloudService.Resources)
+        ////            {
+        ////                if (resource.Name.Equals(vault.Name, StringComparison.InvariantCultureIgnoreCase))
+        ////                {
+        ////                    selectedVault = resource;
+        ////                    break;
+        ////                }
+        ////            }
+        ////        }
 
-                if (selectedVault != null)
-                {
-                    cloudServiceToReturn = cloudService;
-                    break;
-                }
-            }
+        ////        if (selectedVault != null)
+        ////        {
+        ////            cloudServiceToReturn = cloudService;
+        ////            break;
+        ////        }
+        ////    }
 
-            return cloudServiceToReturn;
-        }
+        ////    return cloudServiceToReturn;
+        ////}
 
         /// <summary>
         /// Method to Either find or create the cloud service.

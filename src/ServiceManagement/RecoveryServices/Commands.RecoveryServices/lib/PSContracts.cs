@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
-{
+{    
     /// <summary>
     /// Hash functions which can be used to calculate CIK HMAC.
     /// </summary>
@@ -539,10 +539,74 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         [DataMember(Order = 0)]
         public string ResourceProviderRealm { get; set; }
     }
-}
 
-namespace Microsoft.Azure.Portal.HybridServicesCore
-{
+    /// <summary>
+    /// Represents the StorageAccount of the client which can be used to protect VMs to Azure.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class CustomerStorageAccount
+    {
+        /// <summary>
+        /// Gets or sets the storage account name.
+        /// </summary>
+        [DataMember]
+        public string StorageAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the subscription id associated with the storage account.
+        /// </summary>
+        [DataMember]
+        public string SubscriptionId { get; set; }
+    }
+
+    /// <summary>
+    /// Hyper-V Replica Azure specific input for creating a protection profile.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class HyperVReplicaAzureProtectionProfileInput
+    {
+        /// <summary>
+        /// Gets or sets the duration (in hours) to which point the recovery history needs to be 
+        /// maintained.
+        /// </summary>
+        [DataMember]
+        public int RecoveryPointHistoryDuration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the interval (in hours) at which Hyper-V Replica should create an
+        /// application consistent snapshot within the VM.
+        /// </summary>
+        [DataMember]
+        public int AppConsistencyFreq { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication interval.
+        /// </summary>
+        [DataMember]
+        public int ReplicationInterval { get; set; }
+
+        /// <summary>
+        /// Gets or sets the scheduled start time for the initial replication. If this parameter 
+        /// is Null, the initial replication starts immediately.
+        /// </summary>
+        [DataMember]
+        public TimeSpan? OnlineIrStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of storage accounts to which the VMs in the primary cloud can 
+        /// replicate to.
+        /// </summary>
+        [DataMember]
+        public List<CustomerStorageAccount> StorageAccounts { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether encryption needs to be enabled for 
+        /// Virtual machines in this cloud. 
+        /// </summary>
+        [DataMember]
+        public bool IsEncryptionEnabled { get; set; }
+    }
+
     /// <summary>
     /// The ResourceExtendedInfo which represents the xml info stored in RP.
     /// </summary>
@@ -628,5 +692,300 @@ namespace Microsoft.Azure.Portal.HybridServicesCore
         }
 
         #endregion
+    }
+
+    /// <summary>
+    /// Hyper-V Replica specific protection profile details.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class HyperVReplicaProtectionProfileDetails
+    {
+        /// <summary>
+        /// Gets or sets a value indicating the number of recovery points.
+        /// </summary>
+        [DataMember]
+        public int NosOfRps { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the application consistent frequency.
+        /// </summary>
+        [DataMember]
+        public int AppConsistencyFreq { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether compression has to be enabled.
+        /// </summary>
+        [DataMember]
+        public bool IsCompressionEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether IR is online.
+        /// </summary>
+        [DataMember]
+        public bool IsOnlineIr { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the online IR start time.
+        /// </summary>
+        [DataMember]
+        public TimeSpan? OnlineIrStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the offline IR import path.
+        /// </summary>
+        [DataMember]
+        public string OfflineIrImportPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the offline IR export path.
+        /// </summary>
+        [DataMember]
+        public string OfflineIrExportPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the primary HTTP port.
+        /// </summary>
+        [DataMember]
+        public ushort PrimaryHttpPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the primary HTTPS port.
+        /// </summary>
+        [DataMember]
+        public ushort PrimaryHttpsPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the recovery HTTP port.
+        /// </summary>
+        [DataMember]
+        public ushort RecoveryHttpPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the recovery HTTPS port.
+        /// </summary>
+        [DataMember]
+        public ushort RecoveryHttpsPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the authentication type.
+        /// </summary>
+        [DataMember]
+        public ushort AllowedAuthenticationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the VM has to be auto deleted.
+        /// Supported Values: String.Empty, None, OnRecoveryCloud
+        /// </summary>
+        [DataMember]
+        public string VmAutoDeleteOption { get; set; }
+    }
+
+    /// <summary>
+    /// Hyper-V Replica Azure specific protection profile details.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class HyperVReplicaAzureProtectionProfileDetails
+    {
+        /// <summary>
+        /// Gets or sets the duration (in hours) to which point the recovery history needs to be 
+        /// maintained.
+        /// </summary>
+        [DataMember]
+        public int RecoveryPointHistoryDuration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the interval (in hours) at which Hyper-V Replica should create an
+        /// application consistent snapshot within the VM.
+        /// </summary>
+        [DataMember]
+        public int AppConsistencyFreq { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication interval.
+        /// </summary>
+        [DataMember]
+        public int ReplicationInterval { get; set; }
+
+        /// <summary>
+        /// Gets or sets the scheduled start time for the initial replication. If this parameter 
+        /// is Null, the initial replication starts immediately.
+        /// </summary>
+        [DataMember]
+        public TimeSpan? OnlineIrStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether encryption is enabled for virtual machines
+        /// in this cloud.
+        /// </summary>
+        [DataMember]
+        public bool IsEncryptionEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the active storage accounts details.
+        /// </summary>
+        [DataMember]
+        public CustomerStorageAccount ActiveStorageAccount { get; set; }
+    }
+
+    /// <summary>
+    /// This is the class which defines the Azure VM failover input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class AzureFailoverInput
+    {
+        /// <summary>
+        /// Gets or sets the Vault Location.
+        /// </summary> 
+        [DataMember]
+        public string VaultLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Primary KEK certificate PFX in Base-64 encoded form.
+        /// </summary>
+        [DataMember]
+        public string PrimaryKekCertificatePfx { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Secondary (rolled over) KEK certificate PFX in Base-64 encoded form.
+        /// </summary>
+        [DataMember]
+        public string SecondaryKekCertificatePfx { get; set; }
+    }
+
+    /// <summary>
+    /// This is the class which defines the Azure VM failover input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class AzureFailbackInput
+    {
+        /// <summary>
+        /// Gets or sets a value indicating whether whether data sync should be skipped or not.
+        /// </summary>
+        [DataMember]
+        public bool SkipDataSync { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether whether data sync should create VM on
+        /// premise in case VM is not available there.This is applicable only in case of failback.
+        /// </summary>
+        [DataMember]
+        public bool CreateRecoveryVmIfDoesntExist { get; set; }
+    }
+
+    /// <summary>
+    /// This is the class which defines the Azure enable protection input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class AzureReProtectionInput : AzureEnableProtectionInput
+    {
+    }
+
+    /// <summary>
+    /// This is the class which defines the Azure enable protection input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class AzureEnableProtectionInput
+    {
+        /// <summary>
+        /// Gets or sets the Hyper-V host Virtual Machine Id.
+        /// </summary>
+        [DataMember(Order = 1)]
+        public string HvHostVmId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Virtual Machine Name.
+        /// </summary>
+        [DataMember(Order = 2)]
+        public string VmName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS type associated with Virtual Machine.
+        /// </summary>
+        [DataMember(Order = 3)]
+        public string OSType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS disk VHD id associated with Virtual Machine.
+        /// </summary>
+        [DataMember(Order = 4)]
+        public string VHDId { get; set; }
+    }
+
+    /// <summary>
+    /// This is the class which defines the Azure VM failover input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class ASREnableProtectionInput
+    {
+        /// <summary>
+        /// Gets or sets the ProtectionProfileId.
+        /// </summary> 
+        [DataMember(Order = 1)]
+        public string ProtectionProfileId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ReplicationProviderInput.
+        /// For HyperVReplicaAzure provider it will be serialized AzureEnableProtectionInput
+        /// object. For HyperVReplicaAzure it can be null.
+        /// </summary> 
+        [DataMember(Order = 2)]
+        public string ReplicationProviderInput { get; set; }
+    }
+
+    /// <summary>
+    /// Disk details for E2A provider.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class AzureVmDiskDetails
+    {
+        /// <summary>
+        /// Gets or sets the List of all Disk in VM.
+        /// </summary>
+        [DataMember]
+        public string OsType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Type of OS “Windows|Linux” as set.
+        /// </summary>
+        [DataMember]
+        public List<VirtualHardDisk> Disks { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Name of OS Disk as set.
+        /// </summary>
+        [DataMember]
+        public string OsDisk { get; set; }
+
+        /// <summary>
+        /// Gets or sets the VHD id.
+        /// </summary>
+        [DataMember]
+        public string VHDId { get; set; }
+
+        /// <summary>
+        /// Gets or sets MaxSizeMB.
+        /// </summary>
+        [DataMember]
+        public ulong MaxSizeMB { get; set; }
     }
 }

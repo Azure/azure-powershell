@@ -17,6 +17,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Xml;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
@@ -160,6 +161,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // Ctrl + C and etc
             base.StopProcessing();
             this.StopProcessingFlag = true;
+        }
+
+        /// <summary>
+        /// Validates if the usage by ID is allowed or not.
+        /// </summary>
+        /// <param name="replicationProvider">Replication provider.</param>
+        protected void ValidateUsageById(string replicationProvider)
+        {
+            if (replicationProvider != Constants.HyperVReplica)
+            {
+                throw new Exception("Call using ID parameter is not supported.");
+            }
+        }
+
+        /// <summary>
+        /// Gets the current vault location.
+        /// </summary>
+        /// <returns>The current vault location.</returns>
+        protected string GetCurrentValutLocation()
+        {
+            string location = "Southeast Asia";
+            return location;
         }
     }
 }

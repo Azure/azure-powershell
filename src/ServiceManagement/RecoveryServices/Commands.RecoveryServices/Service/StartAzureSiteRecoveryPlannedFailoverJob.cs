@@ -13,11 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.WindowsAzure;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -73,13 +71,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Failover direction for the recovery plan.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
+        [Parameter(Mandatory = true)]
         [ValidateSet(
-            PSRecoveryServicesClient.PrimaryToRecovery,
-            PSRecoveryServicesClient.RecoveryToPrimary)]
+            Constants.PrimaryToRecovery,
+            Constants.RecoveryToPrimary)]
         public string Direction { get; set; }
 
         /// <summary>
@@ -87,6 +82,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter]
         public SwitchParameter WaitForCompletion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Optimize value.
+        /// </summary>
+        [ValidateSet(
+            Constants.ForDowntime,
+            Constants.ForSynchronization)]
+        public string Optimize { get; set; }
+
+        /// <summary>
+        /// Gets or sets switch parameter. This is the failover is being done to on-prim and the 
+        /// VM does not exist.
+        /// </summary>
+        public SwitchParameter CreateIfnotExists { get; set; }
         #endregion Parameters
 
         /// <summary>
@@ -99,11 +108,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ByRPObject:
+                    case ASRParameterSets.ByRPObjectE2AFailback:
                         this.RPId = this.RecoveryPlan.ID;
                         this.StartRpPlannedFailover();
                         break;
                     case ASRParameterSets.ByPEObject:
-                        this.ProtectionEntityId = this.ProtectionEntity.ID;
+                    case ASRParameterSets.ByPEObjectE2AFailback:
+                       this.ProtectionEntityId = this.ProtectionEntity.ID;
                         this.ProtectionContainerId = this.ProtectionEntity.ProtectionContainerId;
                         this.StartPEPlannedFailover();
                         break;
@@ -126,13 +137,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void StartPEPlannedFailover()
         {
-            var pfoReqeust = new PlannedFailoverRequest();
-            pfoReqeust.FailoverDirection = this.Direction;
+            var request = new PlannedFailoverRequest();
+
+            if (this.ProtectionEntity == null)
+            {
+                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                    this.ProtectionContainerId,
+                    this.ProtectionEntityId);
+                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+
+                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+            }
+
+            if (this.ProtectionEntity.ReplicationProvider == Constants.HyperVReplicaAzure)
+            {
+                request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
+                if (this.Direction == Constants.PrimaryToRecovery)
+                {
+                    var blob = new AzureFailoverInput();
+                    blob.VaultLocation = this.GetCurrentValutLocation();
+                    request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
+                }
+                else
+                {
+                    var blob = new AzureFailbackInput();
+                    blob.CreateRecoveryVmIfDoesntExist = false;
+                    blob.SkipDataSync = true;
+                    request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailbackInput>(blob);
+                }
+            }
+
+            request.FailoverDirection = this.Direction;
             this.jobResponse =
                 RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(
                 this.ProtectionContainerId,
                 this.ProtectionEntityId,
-                pfoReqeust);
+                request);
             this.WriteJob(this.jobResponse.Job);
 
             if (this.WaitForCompletion.IsPresent)
@@ -146,11 +186,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void StartRpPlannedFailover()
         {
-            RpPlannedFailoverRequest recoveryPlanPlannedFailoverRequest = new RpPlannedFailoverRequest();
-            recoveryPlanPlannedFailoverRequest.FailoverDirection = this.Direction;
+            RpPlannedFailoverRequest request = new RpPlannedFailoverRequest();
+
+            if (this.RecoveryPlan == null)
+            {
+                var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(
+                    this.RPId);
+                this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
+
+                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider);
+            }
+
+            if (this.RecoveryPlan.ReplicationProvider == Constants.HyperVReplicaAzure)
+            {
+                request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
+                if (this.Direction == Constants.PrimaryToRecovery)
+                {
+                    var blob = new AzureFailoverInput();
+                    blob.VaultLocation = this.GetCurrentValutLocation();
+                    request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
+                }
+                else
+                {
+                    var blob = new AzureFailbackInput();
+                    blob.CreateRecoveryVmIfDoesntExist = false;
+                    blob.SkipDataSync = true;
+                    request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailbackInput>(blob);
+                }
+            }
+
+            request.FailoverDirection = this.Direction;
+
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(
                 this.RPId, 
-                recoveryPlanPlannedFailoverRequest);
+                request);
 
             this.WriteJob(this.jobResponse.Job);
 

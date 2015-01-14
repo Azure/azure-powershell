@@ -25,16 +25,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
-        /// Represents Enable protection.
-        /// </summary>
-        public const string EnableProtection = "Enable";
-
-        /// <summary>
-        /// Represents Disable protection.
-        /// </summary>
-        public const string DisableProtection = "Disable";
-
-        /// <summary>
         /// Retrieves Protection Entity.
         /// </summary>
         /// <param name="protectionContainerId">Protection Container ID</param>
@@ -71,35 +61,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="protectionContainerId">Protection Container ID</param>
         /// <param name="virtualMachineId">Virtual Machine ID</param>
-        /// <param name="protection">Protection state to set</param>
+        /// <param name="input">Enable protection input.</param>
         /// <returns>Job response</returns>
-        public JobResponse SetProtectionOnProtectionEntity(
+        public JobResponse EnableProtection(
             string protectionContainerId,
             string virtualMachineId,
-            string protection)
+            EnableProtectionInput input)
         {
-            var requestHeaders = this.GetRequestHeaders();
-            
-            JobResponse jobResponse = null;
+            return this.GetSiteRecoveryClient().ProtectionEntity.EnableProtection(
+                protectionContainerId,
+                virtualMachineId,
+                input,
+                this.GetRequestHeaders());
+        }
 
-            if (0 == string.Compare(EnableProtection, protection, StringComparison.OrdinalIgnoreCase))
-            {
-                jobResponse = null;
-                    /* this.GetSiteRecoveryClient().ProtectionEntity.EnableProtection(
-                    protectionContainerId,
-                    virtualMachineId,
-                    requestHeaders); */
-            }
-            else if (0 == string.Compare(DisableProtection, protection, StringComparison.OrdinalIgnoreCase))
-            {
-                jobResponse =
-                    this.GetSiteRecoveryClient().ProtectionEntity.DisableProtection(
-                    protectionContainerId,
-                    virtualMachineId,
-                    requestHeaders);
-            }
-
-            return jobResponse;
+        /// <summary>
+        /// Sets protection on Protection entity.
+        /// </summary>
+        /// <param name="protectionContainerId">Protection Container ID</param>
+        /// <param name="virtualMachineId">Virtual Machine ID</param>
+        /// <returns>Job response</returns>
+        public JobResponse DisbleProtection(
+            string protectionContainerId,
+            string virtualMachineId)
+        {
+            return this.GetSiteRecoveryClient().ProtectionEntity.DisableProtection(
+                protectionContainerId,
+                virtualMachineId,
+                this.GetRequestHeaders());
         }
 
         /// <summary>
@@ -164,15 +153,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="protectionContainerId">Protection Container ID</param>
         /// <param name="protectionEntityId">Recovery Plan ID</param>
+        /// <param name="request">Commit failover request.</param>
         /// <returns>Job response</returns>
         public JobResponse StartAzureSiteRecoveryCommitFailover(
             string protectionContainerId,
-            string protectionEntityId)
+            string protectionEntityId,
+            CommitFailoverRequest request)
         {
-            return null; /* this.GetSiteRecoveryClient().ProtectionEntity.CommitFailover(
+            return this.GetSiteRecoveryClient().ProtectionEntity.CommitFailover(
                  protectionContainerId,
                  protectionEntityId,
-                 this.GetRequestHeaders()); */
+                 request,
+                 this.GetRequestHeaders());
         }
 
         /// <summary>

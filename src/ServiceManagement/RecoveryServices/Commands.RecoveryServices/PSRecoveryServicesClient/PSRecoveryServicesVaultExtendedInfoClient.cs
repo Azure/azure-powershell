@@ -17,7 +17,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Portal.HybridServicesCore;
+////using Microsoft.Azure.Portal.HybridServicesCore;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
@@ -68,39 +68,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vault">vault object</param>
         /// <param name="site">site object </param>
         /// <returns>credential object</returns>
-        public ASRVaultCreds GenerateVaultCredential(X509Certificate2 managementCert, ASRVault vault, Site site)
-        {
-            Utilities.UpdateVaultSettings(new ASRVaultCreds()
-            {
-                CloudServiceName = vault.CloudServiceName,
-                ResourceName = vault.Name
-            });
+        ////public ASRVaultCreds GenerateVaultCredential(X509Certificate2 managementCert, ASRVault vault, Site site)
+        ////{
+        ////    Utilities.UpdateVaultSettings(new ASRVaultCreds()
+        ////    {
+        ////        CloudServiceName = vault.CloudServiceName,
+        ////        ResourceName = vault.Name
+        ////    });
 
-            // Get Channel Integrity key
-            string channelIntegrityKey;
-            Task<string> getChannelIntegrityKey = this.GetChannelIntegrityKey();
+        ////    // Get Channel Integrity key
+        ////    string channelIntegrityKey;
+        ////    Task<string> getChannelIntegrityKey = this.GetChannelIntegrityKey();
 
-            // Making sure we can generate the file, once the SDK and portal are inter-operable
-            // upload certificate and fetch of ACIK can be made parallel to improvve the performace.
-            getChannelIntegrityKey.Wait();
+        ////    // Making sure we can generate the file, once the SDK and portal are inter-operable
+        ////    // upload certificate and fetch of ACIK can be made parallel to improvve the performace.
+        ////    getChannelIntegrityKey.Wait();
 
-            // Upload certificate
-            UploadCertificateResponse acsDetails;
-            Task<UploadCertificateResponse> uploadCertificate = this.UpdateVaultCertificate(managementCert);
-            uploadCertificate.Wait();
+        ////    // Upload certificate
+        ////    UploadCertificateResponse acsDetails;
+        ////    Task<UploadCertificateResponse> uploadCertificate = this.UpdateVaultCertificate(managementCert);
+        ////    uploadCertificate.Wait();
 
-            acsDetails = uploadCertificate.Result;
-            channelIntegrityKey = getChannelIntegrityKey.Result;
+        ////    acsDetails = uploadCertificate.Result;
+        ////    channelIntegrityKey = getChannelIntegrityKey.Result;
 
-            ASRVaultCreds asrVaultCreds = this.GenerateCredentialObject(
-                                                managementCert,
-                                                acsDetails,
-                                                channelIntegrityKey,
-                                                vault,
-                                                site);
+        ////    ASRVaultCreds asrVaultCreds = this.GenerateCredentialObject(
+        ////                                        managementCert,
+        ////                                        acsDetails,
+        ////                                        channelIntegrityKey,
+        ////                                        vault,
+        ////                                        site);
 
-            return asrVaultCreds;
-        }
+        ////    return asrVaultCreds;
+        ////}
 
         /// <summary>
         /// Method to update vault certificate
@@ -187,23 +187,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vault">vault object</param>
         /// <param name="site">site object</param>
         /// <returns>vault credential object</returns>
-        private ASRVaultCreds GenerateCredentialObject(X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, ASRVault vault, Site site)
-        {
-            string serializedCertifivate = Convert.ToBase64String(managementCert.Export(X509ContentType.Pfx));
+        ////private ASRVaultCreds GenerateCredentialObject(X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, ASRVault vault, Site site)
+        ////{
+        ////    string serializedCertifivate = Convert.ToBase64String(managementCert.Export(X509ContentType.Pfx));
 
-            AcsNamespace acsNamespace = new AcsNamespace(acsDetails);
+        ////    AcsNamespace acsNamespace = new AcsNamespace(acsDetails);
 
-            ASRVaultCreds vaultCreds = new ASRVaultCreds(
-                                            vault.SubscriptionId,
-                                            vault.Name,
-                                            serializedCertifivate,
-                                            acsNamespace,
-                                            channelIntegrityKey,
-                                            vault.CloudServiceName,
-                                            site.ID,
-                                            site.Name);
+        ////    ASRVaultCreds vaultCreds = new ASRVaultCreds(
+        ////                                    vault.SubscriptionId,
+        ////                                    vault.Name,
+        ////                                    serializedCertifivate,
+        ////                                    acsNamespace,
+        ////                                    channelIntegrityKey,
+        ////                                    vault.CloudServiceName,
+        ////                                    site.ID,
+        ////                                    site.Name);
 
-            return vaultCreds;
-        }
+        ////    return vaultCreds;
+        ////}
     }
 }

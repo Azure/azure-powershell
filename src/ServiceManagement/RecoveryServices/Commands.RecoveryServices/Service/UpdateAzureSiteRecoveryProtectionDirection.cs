@@ -13,11 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.WindowsAzure;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -75,8 +73,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateSet(
-            PSRecoveryServicesClient.PrimaryToRecovery,
-            PSRecoveryServicesClient.RecoveryToPrimary)]
+            Constants.PrimaryToRecovery,
+            Constants.RecoveryToPrimary)]
         public string Direction { get; set; }
 
         /// <summary>
@@ -139,23 +137,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void SetPEReprotect()
         {
-            if (this.ProtectionEntity == null)
-            {
-                ProtectionEntityResponse protectionEntityResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
-                    this.ProtectionContainerId,
-                    this.ProtectionEntityId);
-                this.ProtectionEntity = new ASRProtectionEntity(protectionEntityResponse.ProtectionEntity);
-            }
-
             // Until RR is done active location remains same from where FO was initiated.
-            if ((this.Direction == PSRecoveryServicesClient.PrimaryToRecovery &&
-                    this.ProtectionEntity.ActiveLocation != PSRecoveryServicesClient.RecoveryLocation) ||
-                (this.Direction == PSRecoveryServicesClient.RecoveryToPrimary &&
-                    this.ProtectionEntity.ActiveLocation != PSRecoveryServicesClient.PrimaryLocation))
+            if ((this.Direction == Constants.PrimaryToRecovery &&
+                    this.ProtectionEntity.ActiveLocation != Constants.RecoveryLocation) ||
+                (this.Direction == Constants.RecoveryToPrimary &&
+                    this.ProtectionEntity.ActiveLocation != Constants.PrimaryLocation))
             {
                 throw new ArgumentException("Parameter value is not correct.", "Direction");
             }
+
+            var request = new PlannedFailoverRequest();
+
+            if (this.ProtectionEntity == null)
+            {
+                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                    this.ProtectionContainerId,
+                    this.ProtectionEntityId);
+                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+
+                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+            }
+
+            if (this.ProtectionEntity.ReplicationProvider == Constants.HyperVReplicaAzure)
+            {
+                request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
+                if (this.Direction == Constants.PrimaryToRecovery)
+                {
+                    var blob = new AzureReProtectionInput();
+                    blob.HvHostVmId = this.ProtectionEntity.FabricObjectId;
+                    blob.VmName = this.ProtectionEntity.Name;
+
+                    blob.OSType = this.ProtectionEntity.OS;
+                    blob.VHDId = this.ProtectionEntity.OSDiskId;
+
+                    request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureReProtectionInput>(blob);
+                }
+            }
+
+            request.FailoverDirection = this.Direction;
 
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryReprotection(
                 this.ProtectionContainerId,
