@@ -9077,7 +9077,7 @@
         <RequestInfo>
           <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers</RequestUri>
           <Method>POST</Method>
-          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/2.0.0.0 AzurePowershell/v0.8.8</UserAgent>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
           <Headers>
             <Header>
               <Name>x-ms-version</Name>
@@ -9085,11 +9085,15 @@
             </Header>
             <Header>
               <Name>x-ms-client-session-id</Name>
-              <Value>c0f8aa73-8d4d-4e89-b965-76c086de4059-2014-09-08 18:28:02Z</Value>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
             </Header>
             <Header>
               <Name>x-ms-client-request-id</Name>
-              <Value>d6cd9ade-423c-4041-9931-cdea5b20bad4-2014-09-08 18:28:02Z</Value>
+              <Value>a5640cbc-153b-454e-8edc-54df19b45467-2015-01-14 23:22:17Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
             </Header>
           </Headers>
           <Cookies />
@@ -9098,23 +9102,19 @@
   &lt;AdministratorLoginPassword&gt;Pa$$w0rd!&lt;/AdministratorLoginPassword&gt;
   &lt;Location&gt;East Asia&lt;/Location&gt;
 &lt;/Server&gt;</RequestText>
-          <ContentType>application/xml; charset=utf-8</ContentType>
+          <ContentType>application/xml</ContentType>
           <Accept i:nil="true" />
         </RequestInfo>
         <ResponseInfo>
           <StatusCode>Created</StatusCode>
           <Headers>
             <Header>
-              <Name>x-ms-request-id</Name>
-              <Value>0d0606fa-dd66-4ed5-acdd-4b261b1e7e9e</Value>
-            </Header>
-            <Header>
               <Name>Content-Type</Name>
               <Value>application/xml; charset=utf-8</Value>
             </Header>
             <Header>
               <Name>Date</Name>
-              <Value>Mon, 08 Sep 2014 18:28:45 GMT</Value>
+              <Value>Wed, 14 Jan 2015 23:23:32 GMT</Value>
             </Header>
             <Header>
               <Name>Server</Name>
@@ -9122,15 +9122,15 @@
             </Header>
           </Headers>
           <Cookies />
-          <ResponseText>&lt;ServerName FullyQualifiedDomainName="y2nzad0rse.database.windows.net" xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;y2nzad0rse&lt;/ServerName&gt;</ResponseText>
+          <ResponseText>&lt;ServerName xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;bad9a02dab&lt;/ServerName&gt;</ResponseText>
         </ResponseInfo>
       </HttpMessage>
       <HttpMessage>
         <Index>1</Index>
         <RequestInfo>
           <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers</RequestUri>
-          <Method>POST</Method>
-          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/2.0.0.0 AzurePowershell/v0.8.8</UserAgent>
+          <Method>GET</Method>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
           <Headers>
             <Header>
               <Name>x-ms-version</Name>
@@ -9138,11 +9138,73 @@
             </Header>
             <Header>
               <Name>x-ms-client-session-id</Name>
-              <Value>c0f8aa73-8d4d-4e89-b965-76c086de4059-2014-09-08 18:28:02Z</Value>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
             </Header>
             <Header>
               <Name>x-ms-client-request-id</Name>
-              <Value>cd50a7a6-9194-4d5f-80d0-4a9924f962f5-2014-09-08 18:28:46Z</Value>
+              <Value>a5640cbc-153b-454e-8edc-54df19b45467-2015-01-14 23:22:17Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
+            </Header>
+          </Headers>
+          <Cookies />
+          <RequestText i:nil="true" />
+          <ContentType i:nil="true" />
+          <Accept i:nil="true" />
+        </RequestInfo>
+        <ResponseInfo>
+          <StatusCode>OK</StatusCode>
+          <Headers>
+            <Header>
+              <Name>Content-Type</Name>
+              <Value>application/xml; charset=utf-8</Value>
+            </Header>
+            <Header>
+              <Name>Date</Name>
+              <Value>Wed, 14 Jan 2015 23:23:32 GMT</Value>
+            </Header>
+            <Header>
+              <Name>Server</Name>
+              <Value>1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0</Value>
+            </Header>
+          </Headers>
+          <Cookies />
+          <ResponseText>&lt;Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;
+  &lt;Server&gt;
+    &lt;Name&gt;bad9a02dab&lt;/Name&gt;
+    &lt;AdministratorLogin&gt;mylogin&lt;/AdministratorLogin&gt;
+    &lt;Location&gt;East Asia&lt;/Location&gt;
+    &lt;FullyQualifiedDomainName&gt;bad9a02dab.database.windows.net&lt;/FullyQualifiedDomainName&gt;
+    &lt;Version&gt;12.0&lt;/Version&gt;
+    &lt;State&gt;Ready&lt;/State&gt;
+  &lt;/Server&gt;
+&lt;/Servers&gt;</ResponseText>
+        </ResponseInfo>
+      </HttpMessage>
+      <HttpMessage>
+        <Index>2</Index>
+        <RequestInfo>
+          <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers</RequestUri>
+          <Method>POST</Method>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
+          <Headers>
+            <Header>
+              <Name>x-ms-version</Name>
+              <Value>2012-03-01</Value>
+            </Header>
+            <Header>
+              <Name>x-ms-client-session-id</Name>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
+            </Header>
+            <Header>
+              <Name>x-ms-client-request-id</Name>
+              <Value>b8f75747-d0cf-4aa4-a669-7cf60fa29b5f-2015-01-14 23:23:32Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
             </Header>
           </Headers>
           <Cookies />
@@ -9151,23 +9213,19 @@
   &lt;AdministratorLoginPassword&gt;Pa$$w0rd&lt;/AdministratorLoginPassword&gt;
   &lt;Location&gt;East Asia&lt;/Location&gt;
 &lt;/Server&gt;</RequestText>
-          <ContentType>application/xml; charset=utf-8</ContentType>
+          <ContentType>application/xml</ContentType>
           <Accept i:nil="true" />
         </RequestInfo>
         <ResponseInfo>
           <StatusCode>Created</StatusCode>
           <Headers>
             <Header>
-              <Name>x-ms-request-id</Name>
-              <Value>675c1ce8-4714-4de6-bb20-73b3f85c0a65</Value>
-            </Header>
-            <Header>
               <Name>Content-Type</Name>
               <Value>application/xml; charset=utf-8</Value>
             </Header>
             <Header>
               <Name>Date</Name>
-              <Value>Mon, 08 Sep 2014 18:29:57 GMT</Value>
+              <Value>Wed, 14 Jan 2015 23:24:33 GMT</Value>
             </Header>
             <Header>
               <Name>Server</Name>
@@ -9175,15 +9233,15 @@
             </Header>
           </Headers>
           <Cookies />
-          <ResponseText>&lt;ServerName FullyQualifiedDomainName="zd1yhph61u.database.windows.net" xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;zd1yhph61u&lt;/ServerName&gt;</ResponseText>
+          <ResponseText>&lt;ServerName xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;64c9ec69ea&lt;/ServerName&gt;</ResponseText>
         </ResponseInfo>
       </HttpMessage>
       <HttpMessage>
-        <Index>2</Index>
+        <Index>3</Index>
         <RequestInfo>
           <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers</RequestUri>
           <Method>GET</Method>
-          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/2.0.0.0 AzurePowershell/v0.8.8</UserAgent>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
           <Headers>
             <Header>
               <Name>x-ms-version</Name>
@@ -9191,11 +9249,15 @@
             </Header>
             <Header>
               <Name>x-ms-client-session-id</Name>
-              <Value>c0f8aa73-8d4d-4e89-b965-76c086de4059-2014-09-08 18:28:02Z</Value>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
             </Header>
             <Header>
               <Name>x-ms-client-request-id</Name>
-              <Value>8b26d502-96a5-46c6-8527-9ff6aa5c68f8-2014-09-08 18:29:57Z</Value>
+              <Value>b8f75747-d0cf-4aa4-a669-7cf60fa29b5f-2015-01-14 23:23:32Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
             </Header>
           </Headers>
           <Cookies />
@@ -9207,16 +9269,12 @@
           <StatusCode>OK</StatusCode>
           <Headers>
             <Header>
-              <Name>x-ms-request-id</Name>
-              <Value>5b134439-eb63-43d6-bcf8-e34d4e99d33c</Value>
-            </Header>
-            <Header>
               <Name>Content-Type</Name>
               <Value>application/xml; charset=utf-8</Value>
             </Header>
             <Header>
               <Name>Date</Name>
-              <Value>Mon, 08 Sep 2014 18:29:57 GMT</Value>
+              <Value>Wed, 14 Jan 2015 23:24:33 GMT</Value>
             </Header>
             <Header>
               <Name>Server</Name>
@@ -9225,77 +9283,23 @@
           </Headers>
           <Cookies />
           <ResponseText>&lt;Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;
-
   &lt;Server&gt;
-    &lt;Name&gt;y2nzad0rse&lt;/Name&gt;
+    &lt;Name&gt;64c9ec69ea&lt;/Name&gt;
     &lt;AdministratorLogin&gt;mylogin&lt;/AdministratorLogin&gt;
     &lt;Location&gt;East Asia&lt;/Location&gt;
-    &lt;FullyQualifiedDomainName&gt;y2nzad0rse.database.windows.net&lt;/FullyQualifiedDomainName&gt;
-    &lt;Version&gt;2.0&lt;/Version&gt;
+    &lt;FullyQualifiedDomainName&gt;64c9ec69ea.database.windows.net&lt;/FullyQualifiedDomainName&gt;
+    &lt;Version&gt;12.0&lt;/Version&gt;
     &lt;State&gt;Ready&lt;/State&gt;
   &lt;/Server&gt;
   &lt;Server&gt;
-    &lt;Name&gt;zd1yhph61u&lt;/Name&gt;
+    &lt;Name&gt;bad9a02dab&lt;/Name&gt;
     &lt;AdministratorLogin&gt;mylogin&lt;/AdministratorLogin&gt;
     &lt;Location&gt;East Asia&lt;/Location&gt;
-    &lt;FullyQualifiedDomainName&gt;zd1yhph61u.database.windows.net&lt;/FullyQualifiedDomainName&gt;
-    &lt;Version&gt;2.0&lt;/Version&gt;
+    &lt;FullyQualifiedDomainName&gt;bad9a02dab.database.windows.net&lt;/FullyQualifiedDomainName&gt;
+    &lt;Version&gt;12.0&lt;/Version&gt;
     &lt;State&gt;Ready&lt;/State&gt;
   &lt;/Server&gt;
 &lt;/Servers&gt;</ResponseText>
-        </ResponseInfo>
-      </HttpMessage>
-      <HttpMessage>
-        <Index>3</Index>
-        <RequestInfo>
-          <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers/y2nzad0rse?op=ResetPassword</RequestUri>
-          <Method>POST</Method>
-          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/2.0.0.0 AzurePowershell/v0.8.8</UserAgent>
-          <Headers>
-            <Header>
-              <Name>x-ms-version</Name>
-              <Value>2012-03-01</Value>
-            </Header>
-            <Header>
-              <Name>x-ms-client-session-id</Name>
-              <Value>c0f8aa73-8d4d-4e89-b965-76c086de4059-2014-09-08 18:28:02Z</Value>
-            </Header>
-            <Header>
-              <Name>x-ms-client-request-id</Name>
-              <Value>08bf5358-6ce4-48e6-8b06-857157744bef-2014-09-08 18:29:57Z</Value>
-            </Header>
-          </Headers>
-          <Cookies />
-          <RequestText>&lt;AdministratorLoginPassword xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;Pa$$w0rd2&lt;/AdministratorLoginPassword&gt;</RequestText>
-          <ContentType>application/xml; charset=utf-8</ContentType>
-          <Accept i:nil="true" />
-        </RequestInfo>
-        <ResponseInfo>
-          <StatusCode>OK</StatusCode>
-          <Headers>
-            <Header>
-              <Name>x-ms-request-id</Name>
-              <Value>3b524b54-6183-4272-ab93-f6b0b6cb9faa</Value>
-            </Header>
-            <Header>
-              <Name>X-Content-Type-Options</Name>
-              <Value>nosniff</Value>
-            </Header>
-            <Header>
-              <Name>Cache-Control</Name>
-              <Value>no-store,no-cache</Value>
-            </Header>
-            <Header>
-              <Name>Date</Name>
-              <Value>Mon, 08 Sep 2014 18:30:00 GMT</Value>
-            </Header>
-            <Header>
-              <Name>Server</Name>
-              <Value>1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0</Value>
-            </Header>
-          </Headers>
-          <Cookies />
-          <ResponseText></ResponseText>
         </ResponseInfo>
       </HttpMessage>
       <HttpMessage>
@@ -9303,7 +9307,7 @@
         <RequestInfo>
           <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers</RequestUri>
           <Method>GET</Method>
-          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/2.0.0.0 AzurePowershell/v0.8.8</UserAgent>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
           <Headers>
             <Header>
               <Name>x-ms-version</Name>
@@ -9311,11 +9315,15 @@
             </Header>
             <Header>
               <Name>x-ms-client-session-id</Name>
-              <Value>c0f8aa73-8d4d-4e89-b965-76c086de4059-2014-09-08 18:28:02Z</Value>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
             </Header>
             <Header>
               <Name>x-ms-client-request-id</Name>
-              <Value>ac0d4028-1cab-406f-8dd6-2a622b136238-2014-09-08 18:30:01Z</Value>
+              <Value>c7588e3f-3cbe-4725-8fe8-3f54dcd64363-2015-01-14 23:25:54Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
             </Header>
           </Headers>
           <Cookies />
@@ -9327,16 +9335,12 @@
           <StatusCode>OK</StatusCode>
           <Headers>
             <Header>
-              <Name>x-ms-request-id</Name>
-              <Value>82f873ba-f7f1-4c64-aa12-b8971612d80d</Value>
-            </Header>
-            <Header>
               <Name>Content-Type</Name>
               <Value>application/xml; charset=utf-8</Value>
             </Header>
             <Header>
               <Name>Date</Name>
-              <Value>Mon, 08 Sep 2014 18:30:00 GMT</Value>
+              <Value>Wed, 14 Jan 2015 23:25:54 GMT</Value>
             </Header>
             <Header>
               <Name>Server</Name>
@@ -9345,21 +9349,20 @@
           </Headers>
           <Cookies />
           <ResponseText>&lt;Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;
-
   &lt;Server&gt;
-    &lt;Name&gt;y2nzad0rse&lt;/Name&gt;
+    &lt;Name&gt;64c9ec69ea&lt;/Name&gt;
     &lt;AdministratorLogin&gt;mylogin&lt;/AdministratorLogin&gt;
     &lt;Location&gt;East Asia&lt;/Location&gt;
-    &lt;FullyQualifiedDomainName&gt;y2nzad0rse.database.windows.net&lt;/FullyQualifiedDomainName&gt;
-    &lt;Version&gt;2.0&lt;/Version&gt;
+    &lt;FullyQualifiedDomainName&gt;64c9ec69ea.database.windows.net&lt;/FullyQualifiedDomainName&gt;
+    &lt;Version&gt;12.0&lt;/Version&gt;
     &lt;State&gt;Ready&lt;/State&gt;
   &lt;/Server&gt;
   &lt;Server&gt;
-    &lt;Name&gt;zd1yhph61u&lt;/Name&gt;
+    &lt;Name&gt;bad9a02dab&lt;/Name&gt;
     &lt;AdministratorLogin&gt;mylogin&lt;/AdministratorLogin&gt;
     &lt;Location&gt;East Asia&lt;/Location&gt;
-    &lt;FullyQualifiedDomainName&gt;zd1yhph61u.database.windows.net&lt;/FullyQualifiedDomainName&gt;
-    &lt;Version&gt;2.0&lt;/Version&gt;
+    &lt;FullyQualifiedDomainName&gt;bad9a02dab.database.windows.net&lt;/FullyQualifiedDomainName&gt;
+    &lt;Version&gt;12.0&lt;/Version&gt;
     &lt;State&gt;Ready&lt;/State&gt;
   &lt;/Server&gt;
 &lt;/Servers&gt;</ResponseText>
@@ -9368,9 +9371,9 @@
       <HttpMessage>
         <Index>5</Index>
         <RequestInfo>
-          <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers/zd1yhph61u?op=ResetPassword</RequestUri>
+          <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers/bad9a02dab?op=ResetPassword</RequestUri>
           <Method>POST</Method>
-          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/2.0.0.0 AzurePowershell/v0.8.8</UserAgent>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
           <Headers>
             <Header>
               <Name>x-ms-version</Name>
@@ -9378,16 +9381,20 @@
             </Header>
             <Header>
               <Name>x-ms-client-session-id</Name>
-              <Value>c0f8aa73-8d4d-4e89-b965-76c086de4059-2014-09-08 18:28:02Z</Value>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
             </Header>
             <Header>
               <Name>x-ms-client-request-id</Name>
-              <Value>a3154ad7-ad19-4fdb-8d7b-09b881bb5052-2014-09-08 18:30:01Z</Value>
+              <Value>2470ad3e-eae9-4744-a12c-97afa1d4c898-2015-01-14 23:25:57Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
             </Header>
           </Headers>
           <Cookies />
           <RequestText>&lt;AdministratorLoginPassword xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;Pa$$w0rd2&lt;/AdministratorLoginPassword&gt;</RequestText>
-          <ContentType>application/xml; charset=utf-8</ContentType>
+          <ContentType>application/xml</ContentType>
           <Accept i:nil="true" />
         </RequestInfo>
         <ResponseInfo>
@@ -9395,11 +9402,15 @@
           <Headers>
             <Header>
               <Name>x-ms-request-id</Name>
-              <Value>e0318802-2d82-41f6-acde-fa07d382d8f2</Value>
+              <Value>76961317-ac49-432e-a8a2-c121e1860df4</Value>
             </Header>
             <Header>
               <Name>X-Content-Type-Options</Name>
               <Value>nosniff</Value>
+            </Header>
+            <Header>
+              <Name>Strict-Transport-Security</Name>
+              <Value>max-age=31536000; includeSubDomains</Value>
             </Header>
             <Header>
               <Name>Cache-Control</Name>
@@ -9407,7 +9418,7 @@
             </Header>
             <Header>
               <Name>Date</Name>
-              <Value>Mon, 08 Sep 2014 18:30:00 GMT</Value>
+              <Value>Wed, 14 Jan 2015 23:25:58 GMT</Value>
             </Header>
             <Header>
               <Name>Server</Name>
@@ -9423,7 +9434,7 @@
         <RequestInfo>
           <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers</RequestUri>
           <Method>GET</Method>
-          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/2.0.0.0 AzurePowershell/v0.8.8</UserAgent>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
           <Headers>
             <Header>
               <Name>x-ms-version</Name>
@@ -9431,11 +9442,15 @@
             </Header>
             <Header>
               <Name>x-ms-client-session-id</Name>
-              <Value>c0f8aa73-8d4d-4e89-b965-76c086de4059-2014-09-08 18:28:02Z</Value>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
             </Header>
             <Header>
               <Name>x-ms-client-request-id</Name>
-              <Value>85714a9e-dd1f-4918-8c00-df04766e55f7-2014-09-08 18:30:01Z</Value>
+              <Value>e92143e3-8ac9-45ad-81e7-7b0912f3320b-2015-01-14 23:25:59Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
             </Header>
           </Headers>
           <Cookies />
@@ -9447,16 +9462,12 @@
           <StatusCode>OK</StatusCode>
           <Headers>
             <Header>
-              <Name>x-ms-request-id</Name>
-              <Value>ff914e03-79e4-4394-950f-72fa4ffa86ef</Value>
-            </Header>
-            <Header>
               <Name>Content-Type</Name>
               <Value>application/xml; charset=utf-8</Value>
             </Header>
             <Header>
               <Name>Date</Name>
-              <Value>Mon, 08 Sep 2014 18:30:01 GMT</Value>
+              <Value>Wed, 14 Jan 2015 23:25:58 GMT</Value>
             </Header>
             <Header>
               <Name>Server</Name>
@@ -9465,21 +9476,19 @@
           </Headers>
           <Cookies />
           <ResponseText>&lt;Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;
-
   &lt;Server&gt;
-    &lt;Name&gt;y2nzad0rse&lt;/Name&gt;
+    &lt;Name&gt;64c9ec69ea&lt;/Name&gt;
     &lt;AdministratorLogin&gt;mylogin&lt;/AdministratorLogin&gt;
     &lt;Location&gt;East Asia&lt;/Location&gt;
-    &lt;FullyQualifiedDomainName&gt;y2nzad0rse.database.windows.net&lt;/FullyQualifiedDomainName&gt;
-    &lt;Version&gt;2.0&lt;/Version&gt;
-    &lt;State&gt;Ready&lt;/State&gt;
-  &lt;/Server&gt;
+    &lt;FullyQualifiedDomainName&gt;64c9ec69ea.database.windows.net&lt;/FullyQualifiedDomainName&gt;
+    &lt;Version&gt;12.0&lt;/Version&gt;
+    &lt;State&gt;Ready&lt;/State&gt;  &lt;/Server&gt;
   &lt;Server&gt;
-    &lt;Name&gt;zd1yhph61u&lt;/Name&gt;
+    &lt;Name&gt;bad9a02dab&lt;/Name&gt;
     &lt;AdministratorLogin&gt;mylogin&lt;/AdministratorLogin&gt;
     &lt;Location&gt;East Asia&lt;/Location&gt;
-    &lt;FullyQualifiedDomainName&gt;zd1yhph61u.database.windows.net&lt;/FullyQualifiedDomainName&gt;
-    &lt;Version&gt;2.0&lt;/Version&gt;
+    &lt;FullyQualifiedDomainName&gt;bad9a02dab.database.windows.net&lt;/FullyQualifiedDomainName&gt;
+    &lt;Version&gt;12.0&lt;/Version&gt;
     &lt;State&gt;Ready&lt;/State&gt;
   &lt;/Server&gt;
 &lt;/Servers&gt;</ResponseText>
@@ -9488,9 +9497,9 @@
       <HttpMessage>
         <Index>7</Index>
         <RequestInfo>
-          <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers/y2nzad0rse</RequestUri>
-          <Method>DELETE</Method>
-          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/2.0.0.0 AzurePowershell/v0.8.8</UserAgent>
+          <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers/64c9ec69ea?op=ResetPassword</RequestUri>
+          <Method>POST</Method>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
           <Headers>
             <Header>
               <Name>x-ms-version</Name>
@@ -9498,16 +9507,20 @@
             </Header>
             <Header>
               <Name>x-ms-client-session-id</Name>
-              <Value>c0f8aa73-8d4d-4e89-b965-76c086de4059-2014-09-08 18:28:02Z</Value>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
             </Header>
             <Header>
               <Name>x-ms-client-request-id</Name>
-              <Value>3e41040f-82bd-4202-b63a-f5e4e0ddeec3-2014-09-08 18:30:01Z</Value>
+              <Value>8d56f29b-686b-44bb-a920-0557e12a39d4-2015-01-14 23:26:25Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
             </Header>
           </Headers>
           <Cookies />
-          <RequestText></RequestText>
-          <ContentType i:nil="true" />
+          <RequestText>&lt;AdministratorLoginPassword xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;Pa$$w0rd2&lt;/AdministratorLoginPassword&gt;</RequestText>
+          <ContentType>application/xml</ContentType>
           <Accept i:nil="true" />
         </RequestInfo>
         <ResponseInfo>
@@ -9515,11 +9528,23 @@
           <Headers>
             <Header>
               <Name>x-ms-request-id</Name>
-              <Value>4ee18dbe-b61a-44ea-ab5c-2a49425a829e</Value>
+              <Value>1746ae65-c0be-4846-bf39-f3bcc198eef2</Value>
+            </Header>
+            <Header>
+              <Name>X-Content-Type-Options</Name>
+              <Value>nosniff</Value>
+            </Header>
+            <Header>
+              <Name>Strict-Transport-Security</Name>
+              <Value>max-age=31536000; includeSubDomains</Value>
+            </Header>
+            <Header>
+              <Name>Cache-Control</Name>
+              <Value>no-store,no-cache</Value>
             </Header>
             <Header>
               <Name>Date</Name>
-              <Value>Mon, 08 Sep 2014 18:30:01 GMT</Value>
+              <Value>Wed, 14 Jan 2015 23:26:26 GMT</Value>
             </Header>
             <Header>
               <Name>Server</Name>
@@ -9535,7 +9560,7 @@
         <RequestInfo>
           <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers</RequestUri>
           <Method>GET</Method>
-          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/2.0.0.0 AzurePowershell/v0.8.8</UserAgent>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
           <Headers>
             <Header>
               <Name>x-ms-version</Name>
@@ -9543,11 +9568,15 @@
             </Header>
             <Header>
               <Name>x-ms-client-session-id</Name>
-              <Value>c0f8aa73-8d4d-4e89-b965-76c086de4059-2014-09-08 18:28:02Z</Value>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
             </Header>
             <Header>
               <Name>x-ms-client-request-id</Name>
-              <Value>52ae2e86-5d2f-4061-aa45-d5a7e0a3dedc-2014-09-08 18:30:02Z</Value>
+              <Value>d161a0b3-75da-4e92-9c7f-fd88a472f912-2015-01-14 23:26:27Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
             </Header>
           </Headers>
           <Cookies />
@@ -9559,16 +9588,12 @@
           <StatusCode>OK</StatusCode>
           <Headers>
             <Header>
-              <Name>x-ms-request-id</Name>
-              <Value>979289ea-09bf-43c8-8165-4b4c24340e2f</Value>
-            </Header>
-            <Header>
               <Name>Content-Type</Name>
               <Value>application/xml; charset=utf-8</Value>
             </Header>
             <Header>
               <Name>Date</Name>
-              <Value>Mon, 08 Sep 2014 18:30:02 GMT</Value>
+              <Value>Wed, 14 Jan 2015 23:26:26 GMT</Value>
             </Header>
             <Header>
               <Name>Server</Name>
@@ -9579,11 +9604,18 @@
           <ResponseText>&lt;Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;
 
   &lt;Server&gt;
-    &lt;Name&gt;zd1yhph61u&lt;/Name&gt;
+    &lt;Name&gt;64c9ec69ea&lt;/Name&gt;
     &lt;AdministratorLogin&gt;mylogin&lt;/AdministratorLogin&gt;
     &lt;Location&gt;East Asia&lt;/Location&gt;
-    &lt;FullyQualifiedDomainName&gt;zd1yhph61u.database.windows.net&lt;/FullyQualifiedDomainName&gt;
-    &lt;Version&gt;2.0&lt;/Version&gt;
+    &lt;FullyQualifiedDomainName&gt;64c9ec69ea.database.windows.net&lt;/FullyQualifiedDomainName&gt;
+    &lt;Version&gt;12.0&lt;/Version&gt;
+    &lt;State&gt;Ready&lt;/State&gt;  &lt;/Server&gt;
+  &lt;Server&gt;
+    &lt;Name&gt;bad9a02dab&lt;/Name&gt;
+    &lt;AdministratorLogin&gt;mylogin&lt;/AdministratorLogin&gt;
+    &lt;Location&gt;East Asia&lt;/Location&gt;
+    &lt;FullyQualifiedDomainName&gt;bad9a02dab.database.windows.net&lt;/FullyQualifiedDomainName&gt;
+    &lt;Version&gt;12.0&lt;/Version&gt;
     &lt;State&gt;Ready&lt;/State&gt;
   &lt;/Server&gt;
 &lt;/Servers&gt;</ResponseText>
@@ -9592,9 +9624,9 @@
       <HttpMessage>
         <Index>9</Index>
         <RequestInfo>
-          <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers/zd1yhph61u</RequestUri>
+          <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers/bad9a02dab</RequestUri>
           <Method>DELETE</Method>
-          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/2.0.0.0 AzurePowershell/v0.8.8</UserAgent>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
           <Headers>
             <Header>
               <Name>x-ms-version</Name>
@@ -9602,11 +9634,15 @@
             </Header>
             <Header>
               <Name>x-ms-client-session-id</Name>
-              <Value>c0f8aa73-8d4d-4e89-b965-76c086de4059-2014-09-08 18:28:02Z</Value>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
             </Header>
             <Header>
               <Name>x-ms-client-request-id</Name>
-              <Value>37df4c06-72d7-44c7-8743-e54e60f13976-2014-09-08 18:30:02Z</Value>
+              <Value>d2cb19e1-d66f-4de5-b840-beafe2a1e49f-2015-01-14 23:26:37Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
             </Header>
           </Headers>
           <Cookies />
@@ -9618,12 +9654,8 @@
           <StatusCode>OK</StatusCode>
           <Headers>
             <Header>
-              <Name>x-ms-request-id</Name>
-              <Value>814b376d-7a7e-4473-a0e5-bd5f6511ac58</Value>
-            </Header>
-            <Header>
               <Name>Date</Name>
-              <Value>Mon, 08 Sep 2014 18:30:02 GMT</Value>
+              <Value>Wed, 14 Jan 2015 23:26:40 GMT</Value>
             </Header>
             <Header>
               <Name>Server</Name>
@@ -9639,7 +9671,7 @@
         <RequestInfo>
           <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers</RequestUri>
           <Method>GET</Method>
-          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/2.0.0.0 AzurePowershell/v0.8.8</UserAgent>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
           <Headers>
             <Header>
               <Name>x-ms-version</Name>
@@ -9647,11 +9679,15 @@
             </Header>
             <Header>
               <Name>x-ms-client-session-id</Name>
-              <Value>c0f8aa73-8d4d-4e89-b965-76c086de4059-2014-09-08 18:28:02Z</Value>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
             </Header>
             <Header>
               <Name>x-ms-client-request-id</Name>
-              <Value>a73eb2b2-ec85-453e-a804-5f09d8da8b03-2014-09-08 18:30:03Z</Value>
+              <Value>8e607053-25e2-4c0e-bbf9-dd1e5b713477-2015-01-14 23:26:40Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
             </Header>
           </Headers>
           <Cookies />
@@ -9663,16 +9699,116 @@
           <StatusCode>OK</StatusCode>
           <Headers>
             <Header>
-              <Name>x-ms-request-id</Name>
-              <Value>181d132e-aa23-4a7f-b7db-7a7bcfd6ccca</Value>
+              <Name>Content-Type</Name>
+              <Value>application/xml; charset=utf-8</Value>
             </Header>
+            <Header>
+              <Name>Date</Name>
+              <Value>Wed, 14 Jan 2015 23:26:40 GMT</Value>
+            </Header>
+            <Header>
+              <Name>Server</Name>
+              <Value>1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0</Value>
+            </Header>
+          </Headers>
+          <Cookies />
+          <ResponseText>&lt;Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;
+
+  &lt;Server&gt;
+    &lt;Name&gt;64c9ec69ea&lt;/Name&gt;
+    &lt;AdministratorLogin&gt;mylogin&lt;/AdministratorLogin&gt;
+    &lt;Location&gt;East Asia&lt;/Location&gt;
+    &lt;FullyQualifiedDomainName&gt;64c9ec69ea.database.windows.net&lt;/FullyQualifiedDomainName&gt;
+    &lt;Version&gt;12.0&lt;/Version&gt;
+    &lt;State&gt;Ready&lt;/State&gt;
+  &lt;/Server&gt;
+&lt;/Servers&gt;</ResponseText>
+        </ResponseInfo>
+      </HttpMessage>
+      <HttpMessage>
+        <Index>11</Index>
+        <RequestInfo>
+          <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers/64c9ec69ea</RequestUri>
+          <Method>DELETE</Method>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
+          <Headers>
+            <Header>
+              <Name>x-ms-version</Name>
+              <Value>2012-03-01</Value>
+            </Header>
+            <Header>
+              <Name>x-ms-client-session-id</Name>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
+            </Header>
+            <Header>
+              <Name>x-ms-client-request-id</Name>
+              <Value>e2285b19-82c9-4885-be7b-631d39206dcb-2015-01-14 23:27:59Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
+            </Header>
+          </Headers>
+          <Cookies />
+          <RequestText></RequestText>
+          <ContentType i:nil="true" />
+          <Accept i:nil="true" />
+        </RequestInfo>
+        <ResponseInfo>
+          <StatusCode>OK</StatusCode>
+          <Headers>
+            <Header>
+              <Name>Date</Name>
+              <Value>Wed, 14 Jan 2015 23:28:01 GMT</Value>
+            </Header>
+            <Header>
+              <Name>Server</Name>
+              <Value>1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0</Value>
+            </Header>
+          </Headers>
+          <Cookies />
+          <ResponseText></ResponseText>
+        </ResponseInfo>
+      </HttpMessage>
+      <HttpMessage>
+        <Index>12</Index>
+        <RequestInfo>
+          <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers</RequestUri>
+          <Method>GET</Method>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
+          <Headers>
+            <Header>
+              <Name>x-ms-version</Name>
+              <Value>2012-03-01</Value>
+            </Header>
+            <Header>
+              <Name>x-ms-client-session-id</Name>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
+            </Header>
+            <Header>
+              <Name>x-ms-client-request-id</Name>
+              <Value>48071ade-756f-41c0-82db-c1c6e6d0a662-2015-01-14 23:28:02Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
+            </Header>
+          </Headers>
+          <Cookies />
+          <RequestText i:nil="true" />
+          <ContentType i:nil="true" />
+          <Accept i:nil="true" />
+        </RequestInfo>
+        <ResponseInfo>
+          <StatusCode>OK</StatusCode>
+          <Headers>
             <Header>
               <Name>Content-Type</Name>
               <Value>application/xml; charset=utf-8</Value>
             </Header>
             <Header>
               <Name>Date</Name>
-              <Value>Mon, 08 Sep 2014 18:30:02 GMT</Value>
+              <Value>Wed, 14 Jan 2015 23:28:01 GMT</Value>
             </Header>
             <Header>
               <Name>Server</Name>
@@ -19596,6 +19732,64 @@
         <RequestInfo>
           <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers</RequestUri>
           <Method>GET</Method>
+          <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/5.0.0.0 AzurePowershell/v0.8.13</UserAgent>
+          <Headers>
+            <Header>
+              <Name>x-ms-version</Name>
+              <Value>2012-03-01</Value>
+            </Header>
+            <Header>
+              <Name>x-ms-client-session-id</Name>
+              <Value>9b748b65-4c0f-4330-addb-e4fc2c068a36-2015-01-14 23:22:17Z</Value>
+            </Header>
+            <Header>
+              <Name>x-ms-client-request-id</Name>
+              <Value>a5640cbc-153b-454e-8edc-54df19b45467-2015-01-14 23:22:17Z</Value>
+            </Header>
+            <Header>
+              <Name>Authorization</Name>
+              <Value>Bearer abc</Value>
+            </Header>
+          </Headers>
+          <Cookies />
+          <RequestText i:nil="true" />
+          <ContentType i:nil="true" />
+          <Accept i:nil="true" />
+        </RequestInfo>
+        <ResponseInfo>
+          <StatusCode>OK</StatusCode>
+          <Headers>
+            <Header>
+              <Name>Content-Type</Name>
+              <Value>application/xml; charset=utf-8</Value>
+            </Header>
+            <Header>
+              <Name>Date</Name>
+              <Value>Wed, 14 Jan 2015 23:23:32 GMT</Value>
+            </Header>
+            <Header>
+              <Name>Server</Name>
+              <Value>1.0.6198.12 (rd_rdfe_stable.131001-0757) Microsoft-HTTPAPI/2.0</Value>
+            </Header>
+          </Headers>
+          <Cookies />
+          <ResponseText>&lt;Servers xmlns="http://schemas.microsoft.com/sqlazure/2010/12/"&gt;
+  &lt;Server&gt;
+    &lt;Name&gt;m4mfnkbsoc&lt;/Name&gt;
+    &lt;AdministratorLogin&gt;mylogin&lt;/AdministratorLogin&gt;
+    &lt;Location&gt;East Asia&lt;/Location&gt;
+    &lt;FullyQualifiedDomainName&gt;m4mfnkbsoc.database.windows.net&lt;/FullyQualifiedDomainName&gt;
+    &lt;Version&gt;2.0&lt;/Version&gt;
+    &lt;State&gt;Ready&lt;/State&gt;
+  &lt;/Server&gt;
+&lt;/Servers&gt;</ResponseText>
+        </ResponseInfo>
+      </HttpMessage>
+      <HttpMessage>
+        <Index>2</Index>
+        <RequestInfo>
+          <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers</RequestUri>
+          <Method>GET</Method>
           <UserAgent>Microsoft.WindowsAzure.Management.Sql.SqlManagementClient/0.9.0.0 WindowsAzurePowershell/v0.7.3.1</UserAgent>
           <Headers>
             <Header>
@@ -19637,13 +19831,14 @@
             &lt;Location&gt;East Asia&lt;/Location&gt;
             &lt;FullyQualifiedDomainName&gt;m4mfnkbsoc.database.windows.net&lt;/FullyQualifiedDomainName&gt;
             &lt;Version&gt;2.0&lt;/Version&gt;
+            &lt;State&gt;Ready&lt;/State&gt;
             &lt;/Server&gt;
             &lt;/Servers&gt;
           </ResponseText>
         </ResponseInfo>
       </HttpMessage>
       <HttpMessage>
-        <Index>2</Index>
+        <Index>3</Index>
         <RequestInfo>
           <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers/m4mfnkbsoc</RequestUri>
           <Method>DELETE</Method>
@@ -19680,7 +19875,7 @@
         </ResponseInfo>
       </HttpMessage>
       <HttpMessage>
-        <Index>3</Index>
+        <Index>4</Index>
         <RequestInfo>
           <RequestUri>https://localhost:65432/00000000-0000-0000-0001-000000000001/services/sqlservers/servers</RequestUri>
           <Method>GET</Method>

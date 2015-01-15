@@ -21,6 +21,9 @@ using Hyak.Common;
 using System;
 using System.Management.Automation;
 using Hyak.Common.TransientFaultHandling;
+using System.Collections.Generic;
+using System.Linq;
+using System.Globalization;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
 {
@@ -119,14 +122,27 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
                     Version = version.HasValue ? version.Value.ToString("F1") : null
                 });
 
+            IEnumerable<Management.Sql.Models.Server> servers = sqlManagementClient.Servers.List().Servers;
+            var newServer = servers.Where(s => s.Name == response.ServerName).FirstOrDefault();
+
+            if (newServer == null)
+            {
+                throw new ItemNotFoundException(string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.CreateServerServerNotFound,
+                    response.ServerName));
+            }
+
             SqlDatabaseServerContext operationContext = new SqlDatabaseServerContext()
             {
                 OperationStatus = Services.Constants.OperationSuccess,
                 OperationDescription = CommandRuntime.ToString(),
                 OperationId = response.RequestId,
-                ServerName = response.ServerName,
+                ServerName = newServer.Name,
                 Location = location,
                 AdministratorLogin = adminLogin,
+                State = newServer.State,
+                Version = newServer.Version
             };
 
             return operationContext;

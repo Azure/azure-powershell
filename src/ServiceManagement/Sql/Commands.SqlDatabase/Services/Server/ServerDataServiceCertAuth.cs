@@ -329,11 +329,20 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
 
         #region Service Objective Operations
 
-        /// <summary>
-        /// Retrieves the list of all service objectives on the server.
-        /// </summary>
-        /// <returns>An array of all service objectives on the server.</returns>
-        public ServiceObjective[] GetServiceObjectives()
+        private ServiceObjective[] objectivesCache;
+        private ServiceObjective[] Objectives
+        {
+            get
+            {
+                if (objectivesCache == null)
+                {
+                    PopulateSloCache();
+                }
+                return objectivesCache;
+            }
+        }
+
+        private void PopulateSloCache()
         {
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
 
@@ -345,9 +354,17 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             ServiceObjectiveListResponse response = sqlManagementClient.ServiceObjectives.List(
                 this.serverName);
 
-            // Construct the resulting Database object
-            ServiceObjective[] serviceObjectives = response.Select(serviceObjective => CreateServiceObjectiveFromResponse(serviceObjective)).ToArray();
-            return serviceObjectives;
+            // Populate the cache;
+            objectivesCache = response.Select(serviceObjective => CreateServiceObjectiveFromResponse(serviceObjective)).ToArray();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all service objectives on the server.
+        /// </summary>
+        /// <returns>An array of all service objectives on the server.</returns>
+        public ServiceObjective[] GetServiceObjectives()
+        {
+            return Objectives;
         }
 
         /// <summary>
@@ -359,9 +376,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// </returns>
         public ServiceObjective GetServiceObjective(string serviceObjectiveName)
         {
-            ServiceObjective serviceObjective = GetServiceObjectives()
-                .Where(s => s.Name == serviceObjectiveName)
-                .FirstOrDefault();
+            var serviceObjective = Objectives.Where(s => s.Name == serviceObjectiveName).FirstOrDefault();
+
             if (serviceObjective == null)
             {
                 throw new InvalidOperationException(
@@ -383,19 +399,18 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// </returns>
         public ServiceObjective GetServiceObjective(ServiceObjective serviceObjectiveToRefresh)
         {
-            this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
+            var serviceObjective = Objectives.Where(s => s.Id == serviceObjectiveToRefresh.Id).FirstOrDefault();
+            
+            if (serviceObjective == null)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.ServiceObjectiveNotFound,
+                        this.ServerName,
+                        serviceObjectiveToRefresh.Id));
+            }
 
-            // Get the SQL management client
-            SqlManagementClient sqlManagementClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            this.AddTracingHeaders(sqlManagementClient);
-
-            // Retrieve the specified database
-            ServiceObjectiveGetResponse response = sqlManagementClient.ServiceObjectives.Get(
-                this.serverName,
-                serviceObjectiveToRefresh.Id.ToString());
-
-            // Construct the resulting Database object
-            ServiceObjective serviceObjective = CreateServiceObjectiveFromResponse(response.ServiceObjective);
             return serviceObjective;
         }
 
