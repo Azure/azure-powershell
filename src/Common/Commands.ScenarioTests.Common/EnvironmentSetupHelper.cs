@@ -230,7 +230,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                     if (powershell.Streams.Error.Count > 0)
                     {
-                        throw powershell.Streams.Error[0].Exception;
+                        throw new RuntimeException(
+                            "Test failed due to a non-empty error stream, check the error stream in the test log for more details.");
                     }
 
                     return output;
