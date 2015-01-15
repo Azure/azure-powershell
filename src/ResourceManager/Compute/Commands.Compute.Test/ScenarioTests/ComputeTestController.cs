@@ -20,13 +20,13 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test;
 using System;
 using System.Linq;
-using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
@@ -50,6 +50,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         //public EventsClient EventsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
+
+
+        public SrpManagementClient StorageClient { get; private set; }
+
+        public NetworkResourceProviderClient NetworkResourceProviderClient { get; private set; }
+
+        public ComputeManagementClient ComputeManagementClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -136,26 +143,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         private void SetupManagementClients()
         {
-            var resourceManagementClient = GetResourceManagementClient();
-            var subscriptionsClient = GetSubscriptionClient();
-            var storageClient = GetStorageManagementClient();
-            var galleryClient = GetGalleryClient();
+            ResourceManagementClient = GetResourceManagementClient();
+            SubscriptionClient = GetSubscriptionClient();
+            StorageClient = GetStorageManagementClient();
+            GalleryClient = GetGalleryClient();
             //var eventsClient = GetEventsClient();
-            var networkResourceProviderClient = GetNetworkResourceProviderClient();
-            var computeManagementClient = GetComputeManagementClient();
-            var authorizationManagementClient = GetAuthorizationManagementClient();
-            var graphClient = GetGraphClient();
+            NetworkResourceProviderClient = GetNetworkResourceProviderClient();
+            ComputeManagementClient = GetComputeManagementClient();
+            AuthorizationManagementClient = GetAuthorizationManagementClient();
+            GraphClient = GetGraphClient();
 
             helper.SetupManagementClients(
-                resourceManagementClient,
-                subscriptionsClient,
-                storageClient,
-                galleryClient,
+                ResourceManagementClient,
+                SubscriptionClient,
+                StorageClient,
+                GalleryClient,
                 //eventsClient,
-                networkResourceProviderClient,
-                computeManagementClient,
-                authorizationManagementClient,
-                graphClient);
+                NetworkResourceProviderClient,
+                ComputeManagementClient,
+                AuthorizationManagementClient,
+                GraphClient);
         }
 
         private GraphRbacManagementClient GetGraphClient()
@@ -193,42 +200,42 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         private ResourceManagementClient GetResourceManagementClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
 
         private SubscriptionClient GetSubscriptionClient()
         {
-            return TestBase.GetServiceClient<SubscriptionClient>(new CSMTestEnvironmentFactory());
+            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
         private SrpManagementClient GetStorageManagementClient()
         {
             return testViaCsm
-                ? TestBase.GetServiceClient<SrpManagementClient>(new CSMTestEnvironmentFactory())
+                ? TestBase.GetServiceClient<SrpManagementClient>(this.csmTestFactory)
                 : TestBase.GetServiceClient<SrpManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         private GalleryClient GetGalleryClient()
         {
-            return TestBase.GetServiceClient<GalleryClient>(new CSMTestEnvironmentFactory());
+            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
         //private EventsClient GetEventsClient()
         //{
-        //    return TestBase.GetServiceClient<EventsClient>(new CSMTestEnvironmentFactory());
+        //    return TestBase.GetServiceClient<EventsClient>(this.csmTestFactory);
         //}
 
         private NetworkResourceProviderClient GetNetworkResourceProviderClient()
         {
             return testViaCsm
-                ? TestBase.GetServiceClient<NetworkResourceProviderClient>(new CSMTestEnvironmentFactory())
+                ? TestBase.GetServiceClient<NetworkResourceProviderClient>(this.csmTestFactory)
                 : TestBase.GetServiceClient<NetworkResourceProviderClient>(new RDFETestEnvironmentFactory());
         }
 
         private ComputeManagementClient GetComputeManagementClient()
         {
             return testViaCsm
-                ? TestBase.GetServiceClient<ComputeManagementClient>(new CSMTestEnvironmentFactory())
+                ? TestBase.GetServiceClient<ComputeManagementClient>(this.csmTestFactory)
                 : TestBase.GetServiceClient<ComputeManagementClient>(new RDFETestEnvironmentFactory());
         }
     }
