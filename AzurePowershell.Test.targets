@@ -22,6 +22,7 @@
     <HDInsightTestDebug>.\src\ServiceManagement\HDInsight\Commands.HDInsight.Test\bin\Debug\Microsoft.WindowsAzure.Commands.HDInsight.Test.dll</HDInsightTestDebug>
     <StorageTestDebug>.\src\ServiceManagement\Storage\Commands.Storage.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Storage.Test.dll</StorageTestDebug>
     <TestFilter>"!Functional&#x26;!Scenario&#x26;!AzureRTScenario&#x26;!Sequential&#x26;!PIRTest&#x26;!Preview&#x26;!ADDomain&#x26;!Network&#x26;!AzureRTUpload"</TestFilter>
+    <KeyVaultTestDebug>.\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll</KeyVaultTestDebug>
     <ScenarioTestFilter>All</ScenarioTestFilter>
     <OneSDKCITFilter>"OneSDK&#x26;CIT"</OneSDKCITFilter>
     <AzureRTAllTestFilter>"Functional|AzureRTScenario|Sequential|AzureRTUpload|Network"</AzureRTAllTestFilter>
@@ -187,6 +188,14 @@
       ContinueOnError="false" />
   </Target>
 
+  <Target Name="AzureRTRepeat" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+    <Message Importance="high" Text="Running a specific tests..." />
+    <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
+    <Exec
+      Command="for /l %%x in (1, 1, $(RepeatTimes)) do MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug%%x.trx"
+      ContinueOnError="false" />
+  </Target>
+  
   <Target Name="AzureRTMulti" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
     <Message Importance="high" Text="Running tests:" />
     <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />

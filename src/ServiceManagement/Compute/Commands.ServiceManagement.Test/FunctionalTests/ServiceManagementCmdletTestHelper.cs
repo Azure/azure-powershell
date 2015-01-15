@@ -1402,9 +1402,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return result;
         }
 
-        public void SaveAzureVMImage(string serviceName, string vmName, string newImageName, string osState = null, string newImageLabel = null, bool retyOnConflict = true)
+        public void SaveAzureVMImage(string serviceName, string vmName, string newImageName, string osState = null, string newImageLabel = null, bool debug = false, bool retryOnConflict = false)
         {
-            RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SaveAzureVMImageCmdletInfo(serviceName, vmName, newImageName, newImageLabel, osState), retyOnConflict);
+            RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SaveAzureVMImageCmdletInfo(serviceName, vmName, newImageName, newImageLabel, osState), debug, retryOnConflict);
         }
 
         public Collection<SM.OSImageContext> GetAzureVMImage(string imageName = null)
@@ -1414,7 +1414,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         public Collection<SM.VMImageContext> GetAzureVMImageReturningVMImages(string imageName = null)
         {
-            return RunPSCmdletAndReturnAll<SM.VMImageContext>(new GetAzureVMImageCmdletInfo(imageName));
+            Collection<SM.OSImageContext> images = GetAzureVMImage();
+            Collection<SM.VMImageContext> vmImages = new Collection<SM.VMImageContext>();
+            foreach (SM.OSImageContext image in images)
+            {
+                if (image is SM.VMImageContext)
+                {
+                    vmImages.Add((SM.VMImageContext)image);
+                }
+            }
+
+            return vmImages;
         }
 
         public string GetAzureVMImageName(string[] keywords, bool exactMatch = true)
