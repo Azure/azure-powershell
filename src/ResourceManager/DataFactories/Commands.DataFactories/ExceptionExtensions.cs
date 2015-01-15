@@ -15,14 +15,12 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-
-using Microsoft.Azure.Commands.DataFactories.Properties;
-using Microsoft.WindowsAzure;
 using Hyak.Common;
+using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    internal static class CloudExceptionExtensions
+    internal static class ExceptionExtensions
     {
         public static CloudException CreateFormattedException(this CloudException cloudException)
         {
@@ -49,6 +47,16 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
 
             return string.Empty;
+        }
+
+        public static ArgumentOutOfRangeException CreateFormattedException(this ArgumentOutOfRangeException exception)
+        {
+            return new ArgumentOutOfRangeException(
+                exception.ParamName,
+                exception.ActualValue,
+                string.Format(CultureInfo.InvariantCulture,
+                    Resources.FormattedArgumentOutOfRangeExceptionMessageTemplate, 
+                    exception.Message));
         }
     }
 }
