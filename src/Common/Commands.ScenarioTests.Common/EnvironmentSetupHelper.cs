@@ -230,14 +230,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                     if (powershell.Streams.Error.Count > 0)
                     {
-                        string exceptionStr = string.Empty;
-                        var ex = powershell.Streams.Error[0].Exception;
-                        while (ex != null)
-                        {
-                            exceptionStr += ex.Message + " ";
-                            ex = ex.InnerException;
-                        }
-                        throw new RuntimeException(exceptionStr);
+                        throw powershell.Streams.Error[0].Exception;
                     }
 
                     return output;

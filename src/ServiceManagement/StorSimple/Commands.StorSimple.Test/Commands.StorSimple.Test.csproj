@@ -7,8 +7,8 @@
     <ProjectGuid>{0FA676D5-1349-4086-B33F-65EC2CB7DA41}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commands.StorSimple.Test</RootNamespace>
-    <AssemblyName>Commands.StorSimple.Test</AssemblyName>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.StorSimple.Test</RootNamespace>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.StorSimple.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
@@ -110,7 +110,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\BackupPolicyTests.cs" />
     <Compile Include="ScenarioTests\StorSimpleTestBase.cs" />

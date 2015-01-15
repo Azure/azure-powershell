@@ -1,8 +1,6 @@
-﻿using Commands.StorSimple.Test;
-using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets;
-using Xunit;
+﻿using Xunit;
 
-namespace Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests
+namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
 {
     public class BackupPolicyTests:StorSimpleTestBase
     {

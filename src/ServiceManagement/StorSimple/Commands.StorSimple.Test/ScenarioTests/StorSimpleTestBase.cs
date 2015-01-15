@@ -29,7 +29,7 @@ using Microsoft.WindowsAzure.Management.StorSimple;
 using System.Management;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.StorSimple.Test.ScenarioTests
+namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
 {
     public class StorSimpleTestBase
     {

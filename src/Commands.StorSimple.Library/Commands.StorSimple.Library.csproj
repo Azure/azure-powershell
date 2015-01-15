@@ -7,8 +7,8 @@
     <ProjectGuid>{B0E9C13F-4E03-4DF0-91FA-9A8C76E7422D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commands.StorSimple.Library</RootNamespace>
-    <AssemblyName>Commands.StorSimple.Library</AssemblyName>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.StorSimple.Library</RootNamespace>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.StorSimple.Library</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
