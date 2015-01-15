@@ -26,7 +26,7 @@ function Test-InvalidResourceGroupName
 
     Assert-ThrowsContains { Get-AzureDataFactory -ResourceGroupName $rgName } $invalidNameError
 
-    Assert-ThrowsContains { New-AzureDataFactory -ResourceGroupName $rgName -Name $dfName -Force } $invalidNameError
+    Assert-ThrowsContains { New-AzureDataFactory -ResourceGroupName $rgName -Name $dfName -Location westus -Force } $invalidNameError
 
     Assert-ThrowsContains { Remove-AzureDataFactory -ResourceGroupName $rgName -Name $dfName -Force } $invalidNameError
 
@@ -38,7 +38,7 @@ function Test-InvalidResourceGroupName
 
     Assert-ThrowsContains { Get-AzureDataFactoryTable -ResourceGroupName $rgName -DataFactoryName $dfName} $invalidNameError
 
-    Assert-ThrowsContains { New-AzureDataFactoryTable -ResourceGroupName $rgName -DataFactoryName $dfName -Name "table" -Force } $invalidNameError
+    Assert-ThrowsContains { New-AzureDataFactoryTable -ResourceGroupName $rgName -DataFactoryName $dfName -Name "table" -File .\Resources\table.json -Force } $invalidNameError
 
     Assert-ThrowsContains { Remove-AzureDataFactoryTable -ResourceGroupName $rgName -DataFactoryName $dfName -Name "table" -Force } $invalidNameError
     
