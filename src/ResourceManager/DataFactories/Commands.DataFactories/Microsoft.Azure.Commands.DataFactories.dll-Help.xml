@@ -2088,6 +2088,13 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
+          <maml:name>Type</maml:name>
+          <maml:description>
+            <maml:para>Specifies the linked service type. This cmdlet encrypts data for the linked service type that this parameter specifies. For on premises SQL linked service, type OnPremisesSqlLinkedService. For file system linked service, type OnPremisesFileSystemLinkedService.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryEncryptValue</maml:name>
@@ -2125,6 +2132,13 @@
             <maml:para>Specifies the Windows authentication credentials (user name and password) to be used. This cmdlet encrypts the credential data you specify here.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6" aliases="">
+          <maml:name>Type</maml:name>
+          <maml:description>
+            <maml:para>Specifies the linked service type. This cmdlet encrypts data for the linked service type that this parameter specifies. For on premises SQL linked service, type OnPremisesSqlLinkedService. For file system linked service, type OnPremisesFileSystemLinkedService.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -2197,6 +2211,18 @@
         <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         <dev:type>
           <maml:name>PSCredential</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="6" aliases="">
+        <maml:name>Type</maml:name>
+        <maml:description>
+          <maml:para>Specifies the linked service type. For on premises SQL linked service, type OnPremisesSqlLinkedService. For file system linked service, type OnPremisesFileSystemLinkedService. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
@@ -2277,13 +2303,35 @@
         <dev:code>
           PS C:\&gt; $Value = ConvertTo-SecureString "Data Source=ContosoServer;Initial Catalog=catelog;Integrated Security=True" -AsPlainText -Force
           PS C:\&gt; $Credential = Get-Credential
-          PS C:\&gt; New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential
+          PS C:\&gt; New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesSqlLinkedService
           data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
         </dev:code>
         <dev:remarks>
           <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified string to a SecureString object, and then stores that object in the $Value variable.</maml:para>
           <maml:para>The second command uses the Get-Credential cmdlet to collect the windows authentication user name and password, and then stores that PSCredential object in the $Credential variable. For more information, type Get-Help Get-Credential.</maml:para>
-          <maml:para>The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, and resource group. </maml:para>
+          <maml:para>The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, resource group, and linked service type. </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 4: Encrypt the file system host name</maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt; $Value = ConvertTo-SecureString "hostname" -AsPlainText -Force
+          PS C:\&gt; $Credential = Get-Credential
+          PS C:\&gt; New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesFileSystemLinkedService
+          EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
+        </dev:code>
+        <dev:remarks>
+          <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified string to a SecureString object, and then stores that object in the $Value variable.</maml:para>
+          <maml:para>The second command uses the Get-Credential cmdlet to collect the windows authentication user name and password, and then stores that PSCredential object in the $Credential variable. For more information, type Get-Help Get-Credential.</maml:para>
+          <maml:para>The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, resource group, and linked service type. </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>

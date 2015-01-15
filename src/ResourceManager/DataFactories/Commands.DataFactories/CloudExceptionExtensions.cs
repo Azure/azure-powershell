@@ -18,6 +18,7 @@ using System.Globalization;
 
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.WindowsAzure;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -30,8 +31,8 @@ namespace Microsoft.Azure.Commands.DataFactories
                     CultureInfo.InvariantCulture,
                     Resources.FormattedCloudExceptionMessageTemplate,
                     cloudException.Response.StatusCode,
-                    cloudException.ErrorCode,
-                    cloudException.ErrorMessage,
+                    cloudException.Error.Code,
+                    cloudException.Error.Message,
                     cloudException.GetRequestId(),
                     DateTime.UtcNow));
         }

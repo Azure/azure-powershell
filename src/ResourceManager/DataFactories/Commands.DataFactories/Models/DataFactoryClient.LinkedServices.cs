@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.WindowsAzure;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         public virtual HttpStatusCode DeleteLinkedService(string resourceGroupName, string dataFactoryName, string linkedServiceName)
         {
-            OperationResponse response = DataPipelineManagementClient.LinkedServices.Delete(resourceGroupName,
+            AzureOperationResponse response = DataPipelineManagementClient.LinkedServices.Delete(resourceGroupName,
                 dataFactoryName, linkedServiceName);
 
             return response.StatusCode;
