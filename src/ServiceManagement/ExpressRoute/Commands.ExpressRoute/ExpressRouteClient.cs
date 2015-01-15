@@ -15,7 +15,7 @@
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.WindowsAzure.Common;
+using Microsoft.Azure.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
@@ -27,6 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     using Utilities.Common;
     using Microsoft.Azure.Common.Extensions.Models;
     using Microsoft.Azure.Common.Extensions;
+    using Hyak.Common;
     
    
     public class ExpressRouteClient

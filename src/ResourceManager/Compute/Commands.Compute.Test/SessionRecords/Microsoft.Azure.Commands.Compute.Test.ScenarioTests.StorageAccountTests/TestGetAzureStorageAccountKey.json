@@ -259,7 +259,7 @@
           "220"
         ],
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Srp.SrpManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Storage.SrpManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"name\": \"stopstestrg1586\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"accountType\": \"Standard_GRS\",\r\n    \"primaryEndpoints\": {},\r\n    \"customDomains\": [],\r\n    \"secondaryEndpoints\": {}\r\n  }\r\n}",
@@ -314,7 +314,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Srp.SrpManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Storage.SrpManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"key1\": \"CIjnsA5nACG1Hs0+5imEqhjUYhmEp8OXpWH3RvBxG07vKCTydE0daJ3Dch5aG7S7A1wY7CDZxzuriIF2JB67Zw==\",\r\n  \"key2\": \"Yf76AjIshvFljtmNe6Qr1E2rJH27OWzNovUb+XOrCatbkVgd9UrXFOAC7WH6azomzoCO//J4xzX5YM5xuQVSbw==\"\r\n}",
@@ -366,7 +366,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Srp.SrpManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Storage.SrpManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "",

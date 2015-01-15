@@ -15,8 +15,8 @@
 namespace Microsoft.Azure.Commands.Compute
 {
     using System.Management.Automation;
-    using WindowsAzure.Management.Srp;
-    using WindowsAzure.Management.Srp.Models;
+    using Azure.Management.Storage;
+    using Azure.Management.Storage.Models;
 
     [Cmdlet(VerbsCommon.New, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKeys))]
     public class NewAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet

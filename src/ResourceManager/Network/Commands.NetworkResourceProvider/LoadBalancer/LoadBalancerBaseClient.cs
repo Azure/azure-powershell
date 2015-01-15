@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {

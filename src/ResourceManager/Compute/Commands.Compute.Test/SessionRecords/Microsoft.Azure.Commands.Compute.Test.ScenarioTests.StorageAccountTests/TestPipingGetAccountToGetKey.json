@@ -259,7 +259,7 @@
           "220"
         ],
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Srp.SrpManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Storage.SrpManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"name\": \"stopstestrg8211\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"accountType\": \"Standard_GRS\",\r\n    \"primaryEndpoints\": {},\r\n    \"customDomains\": [],\r\n    \"secondaryEndpoints\": {}\r\n  }\r\n}",
@@ -314,7 +314,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Srp.SrpManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Storage.SrpManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"StorageAccountNotFound\",\r\n    \"message\": \"The storage account stopstestrg8211 was not found.\"\r\n  }\r\n}",
@@ -366,7 +366,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Srp.SrpManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Storage.SrpManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/84fffc2f-5d77-449a-bc7f-58c363f2a6b9/resourceGroups/pstestrg8211/providers/Microsoft.Storage/storageAccounts/stopstestrg8211\",\r\n  \"name\": \"stopstestrg8211\",\r\n  \"location\": \"West US\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"ResolvingDns\",\r\n    \"accountType\": \"Standard_GRS\",\r\n    \"primaryEndpoints\": {\r\n      \"blob\": \"https://stopstestrg8211.blob.core.windows.net/\",\r\n      \"queue\": \"https://stopstestrg8211.queue.core.windows.net/\",\r\n      \"table\": \"https://stopstestrg8211.table.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"\",\r\n    \"secondaryLocation\": \"\",\r\n    \"creationTime\": \"2014-12-03T10:16:09.9232882Z\"\r\n  }\r\n}",
@@ -418,7 +418,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Srp.SrpManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Storage.SrpManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"key1\": \"2FfPzzJxUcujg6DjUK2bVGEsp56wYf9+elXOJ5CnPG12ERlbr/Jxn5A5V1daDhloxTRI+1246QItMmSEaiZCiw==\",\r\n  \"key2\": \"WODrp952AkHmoRKnVF3vS1P7ap4xMyjD/9eaXKvFWHgwK/beOlWGFB+3wlNrOl03KGkMqteBoy8n6PCRrVvcyw==\"\r\n}",
@@ -470,7 +470,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Srp.SrpManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Storage.SrpManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "",

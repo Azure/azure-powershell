@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 

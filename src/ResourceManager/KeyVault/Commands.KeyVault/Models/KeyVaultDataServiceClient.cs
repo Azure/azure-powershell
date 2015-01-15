@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.WebKey;
 using Microsoft.Azure.Common.Extensions;
 using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Common.Internals;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -322,17 +322,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private void SendRequestCallback(string correlationId, HttpRequestMessage request)
         {
-            if (CloudContext.Configuration.Tracing.IsEnabled)
+            if (TracingAdapter.IsEnabled)
             {
-                Tracing.SendRequest(correlationId, request);
+                TracingAdapter.SendRequest(correlationId, request);
             }
         }
 
         private void ReceiveResponseCallback(string correlationId, HttpResponseMessage response)
         {
-            if (CloudContext.Configuration.Tracing.IsEnabled)
+            if (TracingAdapter.IsEnabled)
             {
-                Tracing.ReceiveResponse(correlationId, response);
+                TracingAdapter.ReceiveResponse(correlationId, response);
             }
         }
 

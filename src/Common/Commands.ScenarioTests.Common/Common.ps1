@@ -307,7 +307,7 @@ function Wait-Seconds
 {
     param([int] $timeout)
     
-    [Microsoft.WindowsAzure.Testing.TestUtilities]::Wait($timeout * 1000)
+    [Microsoft.Azure.Test.TestUtilities]::Wait($timeout * 1000)
 }
 
 
@@ -357,7 +357,7 @@ function getAssetName
         }
     }
     
-    $assetName = [Microsoft.Azure.Utilities.HttpRecorder.HttpMockServer]::GetAssetName($testName, "onesdk")
+    $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "onesdk")
 
     return $assetName
 }
