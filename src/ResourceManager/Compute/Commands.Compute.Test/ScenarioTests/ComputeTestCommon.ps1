@@ -28,7 +28,7 @@ function Get-ComputeTestResourceGroupName
         }
     }
     
-    $assetName = [Microsoft.Azure.Utilities.HttpRecorder.HttpMockServer]::GetAssetName($testName, "pstestrg")
+    $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "pstestrg")
 
     return $assetName
 }
