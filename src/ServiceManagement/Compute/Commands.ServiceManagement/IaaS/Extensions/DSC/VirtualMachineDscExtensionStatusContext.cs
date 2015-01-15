@@ -11,6 +11,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public int StatusCode { get; set; }
         public string StatusMessage { get; set; }
         public string[] DscConfigurationLog { get; set; }
-        public DateTime Timestamp { get; set; }
+        public DateTimeOffset Timestamp { get; set; }
     }
 }
