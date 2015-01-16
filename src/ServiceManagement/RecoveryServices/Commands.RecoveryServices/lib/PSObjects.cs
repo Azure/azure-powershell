@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
@@ -256,6 +257,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
+    /// Protection profile association details.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related public classes together.")]
+    public class ASRProtectionProfileAssociationDetails
+    {
+        /// <summary>
+        /// Gets or sets the PrimaryProtectionContainerId.
+        /// </summary>
+        [DataMember(Order = 1)]
+        public string PrimaryProtectionContainerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the RecoveryProtectionContainerId.
+        /// </summary>
+        [DataMember(Order = 2)]
+        public string RecoveryProtectionContainerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the association status. This is a string representation of the 
+        /// enumeration type <see cref="CloudPairingStatus"/>.
+        /// </summary>
+        [DataMember(Order = 3)]
+        public string AssociationStatus { get; set; }
+    }
+
+    /// <summary>
     /// Azure Site Recovery Protection Profile.
     /// </summary>
     [SuppressMessage(
@@ -305,14 +336,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ReplicationMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets Recovery Protection Container.
-        /// </summary>
-        public ProtectionContainer RecoveryProtectionContainer { get; set; }
-
-        /// <summary>
         /// Gets or sets Association Details.
         /// </summary>
-        public List<ProtectionProfileAssociationDetails> AssociationDetail { get; set; }
+        public List<ASRProtectionProfileAssociationDetails> AssociationDetail { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Azure Subscription.

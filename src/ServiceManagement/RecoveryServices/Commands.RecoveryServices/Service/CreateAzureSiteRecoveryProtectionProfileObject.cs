@@ -50,13 +50,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string ReplicationMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets a value Recovery Protection Container of the Protection Profile.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ProtectionContainer RecoveryProtectionContainer { get; set; }
-
-        /// <summary>
         /// Gets or sets a value Recovery Azure Subscription of the Protection Profile for E2A scenarios.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
@@ -170,7 +163,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 ReplicationType = this.ReplicationType,
                 ReplicationMethod = this.ReplicationMethod,
-                RecoveryProtectionContainer = this.RecoveryProtectionContainer,
                 RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                 RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
                 ReplicationFrequencySecond = this.ReplicationFrequencySecond,
@@ -194,7 +186,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 ReplicationType = this.ReplicationType,
                 ReplicationMethod = this.ReplicationMethod,
-                RecoveryProtectionContainer = this.RecoveryProtectionContainer,
                 RecoveryAzureSubscription = null,
                 RecoveryAzureStorageAccountName = null,
                 ReplicationFrequencySecond = this.ReplicationFrequencySecond,
