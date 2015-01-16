@@ -68,7 +68,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
              HelpMessage = "The list of subnets")]
         public List<PSSubnet> Subnet { get; set; }
 
-        [Alias("Tags")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

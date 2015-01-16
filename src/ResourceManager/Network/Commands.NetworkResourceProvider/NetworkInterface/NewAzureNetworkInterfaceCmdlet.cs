@@ -107,7 +107,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [ValidateNotNullOrEmpty]
         public string IpConfigurationName { get; set; }
 
-        [Alias("Tags")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

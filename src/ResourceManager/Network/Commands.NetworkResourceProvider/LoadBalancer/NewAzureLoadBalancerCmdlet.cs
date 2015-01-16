@@ -81,7 +81,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
              HelpMessage = "The list of frontend Ip config")]
         public List<PSLoadBalancingRule> LoadBalancingRule { get; set; }
 
-        [Alias("Tags")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

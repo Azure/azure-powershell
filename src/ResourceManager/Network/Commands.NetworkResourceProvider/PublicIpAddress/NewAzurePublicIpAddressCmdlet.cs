@@ -71,7 +71,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             HelpMessage = "IdleTimeoutInMinutes")]
         public int IdleTimeoutInMinutes { get; set; }
 
-        [Alias("Tags")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
