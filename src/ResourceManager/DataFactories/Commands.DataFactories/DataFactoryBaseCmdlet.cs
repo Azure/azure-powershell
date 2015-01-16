@@ -52,11 +52,15 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         protected override void WriteExceptionError(Exception exception)
         {
-            // Override the default error message into a formatted message which contains Request Id
-            CloudException cloudException = exception as CloudException;
-            if (cloudException != null)
+            if (exception is CloudException)
             {
-                exception = cloudException.CreateFormattedException();
+                // Override the default error message into a formatted message which contains Request Id
+                exception = ((CloudException)exception).CreateFormattedException();
+            }
+            else if (exception is ArgumentOutOfRangeException)
+            {
+                // Add resource naming rules page link into a formatted message
+                exception = ((ArgumentOutOfRangeException) exception).CreateFormattedException();
             }
 
             base.WriteExceptionError(exception);
