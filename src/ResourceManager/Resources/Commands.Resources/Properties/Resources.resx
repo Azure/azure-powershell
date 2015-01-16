@@ -210,4 +210,19 @@
   <data name="RoleDefinitionNotFound" xml:space="preserve">
     <value>Can not find role definition with name '{0}'.</value>
   </data>
+  <data name="RemoveApplication" xml:space="preserve">
+    <value>Removing application ...</value>
+  </data>
+  <data name="RemoveServicePrincipal" xml:space="preserve">
+    <value>Removing service principal ...</value>
+  </data>
+  <data name="RemovingApplication" xml:space="preserve">
+    <value>Are you sure you want to remove application with object id '{0}'.</value>
+  </data>
+  <data name="RemovingServicePrincipal" xml:space="preserve">
+    <value>Are you sure you want to remove service principal with object id '{0}'.</value>
+  </data>
+  <data name="ServicePrincipalDoesntExist" xml:space="preserve">
+    <value>Service principal with object id '{0}' does not exist.</value>
+  </data>
 </root>

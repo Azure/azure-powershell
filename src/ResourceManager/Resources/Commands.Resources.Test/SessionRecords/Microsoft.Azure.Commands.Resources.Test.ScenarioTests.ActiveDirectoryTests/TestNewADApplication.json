@@ -1,0 +1,93 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/2ee94052-bf34-4e83-aa6f-f82125c65d74/applications?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "LzJlZTk0MDUyLWJmMzQtNGU4My1hYTZmLWY4MjEyNWM2NWQ3NC9hcHBsaWNhdGlvbnM/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"onesdk6351\",\r\n  \"homepage\": \"http://onesdk6351.com\",\r\n  \"identifierUris\": [\r\n    \"http://onesdk6351\"\r\n  ]\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "166"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/2ee94052-bf34-4e83-aa6f-f82125c65d74/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.Application/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.Application\",\r\n  \"objectType\": \"Application\",\r\n  \"objectId\": \"4b8f5079-5762-4faf-bf6b-8125e8742bb1\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"appId\": \"73ff49c3-28b2-4cc9-91e8-b23bc430cb07\",\r\n  \"appMetadata\": null,\r\n  \"appPermissions\": [\r\n    {\r\n      \"claimValue\": \"user_impersonation\",\r\n      \"description\": \"Allow the application to access onesdk6351 on behalf of the signed-in user.\",\r\n      \"directAccessGrantTypes\": [],\r\n      \"displayName\": \"Access onesdk6351\",\r\n      \"impersonationAccessGrantTypes\": [\r\n        {\r\n          \"impersonated\": \"User\",\r\n          \"impersonator\": \"Application\"\r\n        }\r\n      ],\r\n      \"isDisabled\": false,\r\n      \"origin\": \"Application\",\r\n      \"permissionId\": \"66ae29da-d9c1-4d94-9d96-cf8ec8dc72f6\",\r\n      \"resourceScopeType\": \"Personal\",\r\n      \"userConsentDescription\": \"Allow the application to access onesdk6351 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access onesdk6351\",\r\n      \"lang\": null\r\n    }\r\n  ],\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"onesdk6351\",\r\n  \"errorUrl\": null,\r\n  \"homepage\": \"http://onesdk6351.com\",\r\n  \"identifierUris\": [\r\n    \"http://onesdk6351\"\r\n  ],\r\n  \"keyCredentials\": [],\r\n  \"knownClientApplications\": [],\r\n  \"logoutUrl\": null,\r\n  \"passwordCredentials\": [],\r\n  \"oAuth2AllowImplicitFlow\": false,\r\n  \"oAuth2AllowUrlPathMatching\": false,\r\n  \"oAuth2RequirePostResponse\": false,\r\n  \"publicClient\": null,\r\n  \"replyUrls\": [],\r\n  \"requiredResourceAccess\": [],\r\n  \"resourceApplicationSet\": null,\r\n  \"samlMetadataUrl\": null,\r\n  \"webApi\": null,\r\n  \"webApp\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1459"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "BiT8NvCsG9CzGn9Igt/qjpr0fipwFVWZyElqjCPNVoQ="
+        ],
+        "request-id": [
+          "bebd5feb-df9e-49b6-b2b5-2f2716b5dec8"
+        ],
+        "client-request-id": [
+          "e2f35b0d-f65c-4918-8102-f5f3cb084f02"
+        ],
+        "x-ms-gateway-rewrite": [
+          "false"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.42-previewInternal"
+        ],
+        "ocp-aad-session-key": [
+          "IzQzYKBbYVcYWaBftvlJF_u0vJ63PZ18_G48o5PM2Hk6uvQ3m_GUPz_o0ySH7OnxBVF4C0KM9j7SgBABcb5OJQXSCVoAQaXfW5O2PKYwq5MIY-Pf7KvmLg-PcyiTYa-6_a1oYbNJvaTzfOAkK_K-Vw.OtZnZsOKJz8UPqG00VUB8CyDPGmmgL7-PrPJpr1Lgqo"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://graph.windows.net/2ee94052-bf34-4e83-aa6f-f82125c65d74/directoryObjects/4b8f5079-5762-4faf-bf6b-8125e8742bb1/Microsoft.WindowsAzure.ActiveDirectory.Application"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Thu, 08 Jan 2015 01:15:23 GMT"
+        ]
+      },
+      "StatusCode": 201
+    }
+  ],
+  "Names": {
+    "Test-NewADApplication": [
+      "onesdk6351"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "da6dbdd6-591f-40df-8315-7aa26807e713",
+    "TenantId": "2ee94052-bf34-4e83-aa6f-f82125c65d74",
+    "Domain": "soochi.onmicrosoft.com"
+  }
+}
