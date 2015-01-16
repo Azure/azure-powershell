@@ -760,7 +760,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             var vmImages = vmPowershellCmdlets.GetAzureVMImageReturningVMImages(vmImageName);
             Assert.IsTrue(vmImages.Count >= 1);
-            var vmImageInfo = vmImages[0];
+            var vmImageInfo = vmImages.First(t => t.ImageName == vmImageName);
             Utilities.PrintContext(vmImageInfo);
             Utilities.PrintContext(vmImageInfo.OSDiskConfiguration);
             foreach (var disk in vmImageInfo.DataDiskConfigurations)
