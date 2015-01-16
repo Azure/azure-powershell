@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string ReplicationType { get; set; }
 
         /// <summary>
-        /// Gets or sets a value for Replication Method of the Protection Profile.
+        /// Gets or sets Replication Method of the Protection Profile.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -50,14 +50,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string ReplicationMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets a value Recovery Protection Container of the Protection Profile.
+        /// Gets or sets Recovery Protection Container of the Protection Profile.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ProtectionContainer RecoveryProtectionContainer { get; set; }
 
         /// <summary>
-        /// Gets or sets a value Recovery Azure Subscription of the Protection Profile for E2A scenarios.
+        /// Gets or sets Recovery Azure Subscription of the Protection Profile for E2A scenarios.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether Compression needs to be Enabled on the Protection Profile.
+        /// Gets or sets if Compression needs to be Enabled on the Protection Profile.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public int ReplicationStartTime { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether Replica should be Deleted on 
-        /// disabling protection of a protection entity protected by the Protection Profile.
+        /// Gets or sets the boolean value indicating Replica Deletion on disabling protection
+        /// on a protection entity protected by the Protection Profile.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -132,10 +132,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 switch (this.ReplicationType)
                 {
                     case "HyperVReplica":
-                        this.EnterpriseToEnterpriseProtectionProfileObject();
+                        EnterpriseToEnterpriseProtectionProfileObject();
                         break;
                     case "HyperVReplicaAzure":
-                        this.EnterpriseToAzureProtectionProfileObject();
+                        EnterpriseToAzureProtectionProfileObject();
                         break;
                 }
             }
@@ -145,19 +145,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
-        /// <summary>
-        /// Handles interrupts.
-        /// </summary>
-        protected override void StopProcessing()
-        {
-            // Ctrl + C and etc
-            base.StopProcessing();
-            this.StopProcessingFlag = true;
-        }
-
-        /// <summary>
-        /// Creates an E2A Protection Profile Object
-        /// </summary>
         private void EnterpriseToAzureProtectionProfileObject()
         {
             // Verify whether the storage account is associated with the account or not.
@@ -185,9 +172,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.WriteObject(protectionProfile);
         }
 
-        /// <summary>
-        /// Creates an E2E Protection Profile object
-        /// </summary>
         private void EnterpriseToEnterpriseProtectionProfileObject()
         {
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
@@ -207,6 +191,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             };
 
             this.WriteObject(protectionProfile);
+        }
+
+        /// <summary>
+        /// Handles interrupts.
+        /// </summary>
+        protected override void StopProcessing()
+        {
+            // Ctrl + C and etc
+            base.StopProcessing();
+            this.StopProcessingFlag = true;
         }
     }
 }
