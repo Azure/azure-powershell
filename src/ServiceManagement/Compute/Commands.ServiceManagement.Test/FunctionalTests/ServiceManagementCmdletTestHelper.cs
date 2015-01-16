@@ -1414,7 +1414,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         public Collection<SM.VMImageContext> GetAzureVMImageReturningVMImages(string imageName = null)
         {
-            Collection<SM.OSImageContext> images = GetAzureVMImage();
+            Collection<SM.OSImageContext> images = GetAzureVMImage(imageName);
             Collection<SM.VMImageContext> vmImages = new Collection<SM.VMImageContext>();
             foreach (SM.OSImageContext image in images)
             {
