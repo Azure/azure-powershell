@@ -14,18 +14,21 @@
 
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PreviewCmdletInfo
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo
 {
-    public class GetAzureReservedIPCmdletInfo : CmdletsInfo
+    public class NewAzureReservedIPCmdletInfo : CmdletsInfo
     {
-        public GetAzureReservedIPCmdletInfo(string name)
+        public NewAzureReservedIPCmdletInfo(string name, string location, string label)
         {
-            this.cmdletName = Utilities.GetAzureReservedIPCmdletName;
+            this.cmdletName = Utilities.NewAzureReservedIPCmdletName;
 
-            if (!string.IsNullOrEmpty(name))
+            this.cmdletParams.Add(new CmdletParam("ReservedIPName", name));
+            this.cmdletParams.Add(new CmdletParam("Location", location));
+
+            if (!string.IsNullOrEmpty(label))
             {
-                this.cmdletParams.Add(new CmdletParam("ReservedIPName", name));
-            }            
+                this.cmdletParams.Add(new CmdletParam("Label", label));
+            }
         }
     }
 }

@@ -64,12 +64,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 if (string.IsNullOrEmpty(imageName))
                     imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
+                
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    var svcExists = vmPowershellCmdlets.TestAzureServiceName(serviceName);
+                    if (svcExists)
+                    {
+                        // Try to delete the hosted service artifact in this subscription
+                        vmPowershellCmdlets.RemoveAzureService(serviceName, true);
+                    }
 
-                vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName1, serviceName, imageName, username, password, locationName);
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName1, serviceName, imageName, username, password, locationName);
+                }, "The server encountered an internal error. Please retry the request.", 10, 30);
+
                 // Verify
                 Assert.AreEqual(newAzureQuickVMName1, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName).Name, true);
 
-                vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password);
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password);
+                }, "The server encountered an internal error. Please retry the request.", 10, 30);
+
                 // Verify
                 Assert.AreEqual(newAzureQuickVMName2, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
 
@@ -225,16 +240,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             try
             {
-                Utilities.RetryActionUntilSuccess(() =>
-                {
-                    if (vmPowershellCmdlets.TestAzureServiceName(serviceName))
-                    {
-                        var op = vmPowershellCmdlets.RemoveAzureService(serviceName);
-                    }
-
-                    vmPowershellCmdlets.NewAzureQuickVM(OS.Linux, newAzureLinuxVMName, serviceName, linuxImageName, "user", password, locationName);
-                }, "Windows Azure is currently performing an operation on this hosted service that requires exclusive access.", 10, 30);
-
+                vmPowershellCmdlets.NewAzureQuickVM(OS.Linux, newAzureLinuxVMName, serviceName, linuxImageName, "user", password, locationName);
                 // Verify
                 PersistentVMRoleContext vmRoleCtxt = vmPowershellCmdlets.GetAzureVM(newAzureLinuxVMName, serviceName);
                 Assert.AreEqual(newAzureLinuxVMName, vmRoleCtxt.Name, true);
@@ -536,6 +542,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmRoleCtxt = vmPowershellCmdlets.GetAzureVM(persistentVM.RoleName, serviceName);
                 if (vmRoleCtxt.InstanceStatus == "StoppedVM")
                 {
+                    Console.WriteLine("The status of the VM {0} : {1}", persistentVM.RoleName, vmRoleCtxt.InstanceStatus);
                     break;
                 }
                 Console.WriteLine("The status of the VM {0} : {1}", persistentVM.RoleName, vmRoleCtxt.InstanceStatus);
@@ -753,7 +760,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         /// AzureVNetGatewayTest()
         /// </summary>
         /// Note: Create a VNet, a LocalNet from the portal without creating a gateway.
-        [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"),
+        [TestMethod(), TestCategory(Category.Sequential), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"),
         Description("Test the cmdlet ((Set,Remove)-AzureVNetConfig, Get-AzureVNetSite, (New,Get,Set,Remove)-AzureVNetGateway, Get-AzureVNetConnection)")]
         public void VNetTest()
         {
