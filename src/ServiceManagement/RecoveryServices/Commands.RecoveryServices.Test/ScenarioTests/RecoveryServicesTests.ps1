@@ -14,6 +14,18 @@
 
 ########################## Recovery Services Tests #############################
 
+# Followings are the switch to control validation which can be tuned from outside later to control the test result in case of some product misbehaviour.
+$Validate_EnableProtection_JobSucceeded = $true;
+$Validate_DisableProtection_JobSucceeded = $true;
+$Validate_PFO_JobSucceeded = $true;
+$Validate_Commit_PFO_JobSucceeded = $true;
+$Validate_Commit_Failback_JobSucceeded = $true;
+$Validate_EnableProtection_WaitForCanFailover = $true;
+$Validate_RRAfterFailback_JobSucceeded = $true;
+$Validate_Failback_JobSucceeded = $true;
+$Validate_TFO_JobSucceeded = $true;
+$Validate_UFO_JobSucceeded = $true;
+
 <#
 .SYNOPSIS
 Recovery Services Enumeration Tests
@@ -280,6 +292,439 @@ function Test-NetworkUnMapping
 	# Enumerate NetworkMappings
 	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
 	Assert-True { $networkMappings.Count -eq 0 }
+}
+
+<#
+.SYNOPSIS
+Recovery Services Failback Tests
+#>
+function Test-Failback
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enable protection for an un protected Protection Entity
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+
+		# Enumerate Protection Entities under each configured Protection Containers
+		if ($protectionContainer.Role -eq "Primary")
+		{
+			$protectionEntities = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer
+			Assert-NotNull($protectionEntities)
+			foreach($protectionEntity in $protectionEntities)
+			{
+				Assert-NotNull($protectionEntity.Name)
+				Assert-NotNull($protectionEntity.ID)
+                Write-Host "Checking PE"
+                $protectionEntity
+				if ($protectionEntity.CanFailover -eq $true -and $protectionEntity.ActiveLocation -eq "Recovery")
+				{
+                    Write-Host "Firing failback"
+
+					$job = Start-AzureSiteRecoveryPlannedFailoverJob -Direction RecoveryToPrimary -Optimize ForDowntime -ProtectionEntity $protectionEntity -WaitForCompletion
+					
+                    # Validate_Failback_JobSucceeded
+                    if ($Validate_Failback_JobSucceeded -eq $true)
+                    {
+                        $job = Get-AzureSiteRecoveryJob -Id $job.ID
+                        Assert-True { $job.State -eq "Succeeded" }
+                    }
+
+                    return;
+				}
+			}
+		}
+	}
+
+    throw("No VM found for failback");
+}
+
+
+<#
+.SYNOPSIS
+Recovery Services RRAfterFailback Tests
+#>
+function Test-RRAfterFailback
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enable protection for an un protected Protection Entity
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+
+		# Enumerate Protection Entities under each configured Protection Containers
+		if ($protectionContainer.Role -eq "Primary")
+		{
+			$protectionEntities = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer
+			Assert-NotNull($protectionEntities)
+			foreach($protectionEntity in $protectionEntities)
+			{
+				Assert-NotNull($protectionEntity.Name)
+				Assert-NotNull($protectionEntity.ID)
+				if ($protectionEntity.CanReverseReplicate -eq $true -and $protectionEntity.ActiveLocation -eq "Recovery")
+				{
+					$job = Update-AzureSiteRecoveryProtectionDirection -ProtectionEntity $protectionEntity -Direction PrimaryToRecovery -WaitForCompletion
+					
+                    # Validate_PFO_JobSucceeded
+                    if ($Validate_RRAfterFailback_JobSucceeded -eq $true)
+                    {
+                        $job = Get-AzureSiteRecoveryJob -Id $job.ID
+                        Assert-True { $job.State -eq "Succeeded" }
+                    }
+
+                    return;
+				}
+			}
+		}
+	}
+
+    throw("No VM found for RRAfterFailback");
+}
+
+<#
+.SYNOPSIS
+Recovery Services Commit_PFO Tests
+#>
+function Test-CommitPFO
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enable protection for an un protected Protection Entity
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+
+		# Enumerate Protection Entities under each configured Protection Containers
+		if ($protectionContainer.Role -eq "Primary")
+		{
+			$protectionEntities = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer
+			Assert-NotNull($protectionEntities)
+			foreach($protectionEntity in $protectionEntities)
+			{
+				Assert-NotNull($protectionEntity.Name)
+				Assert-NotNull($protectionEntity.ID)
+				if ($protectionEntity.CanCommit -eq $true)
+				{
+					$job = Start-AzureSiteRecoveryCommitFailoverJob -ProtectionEntity $protectionEntity -WaitForCompletion
+					
+                    # Validate_PFO_JobSucceeded
+                    if ($Validate_Commit_PFO_JobSucceeded -eq $true)
+                    {
+                        $job = Get-AzureSiteRecoveryJob -Id $job.ID
+                        Assert-True { $job.State -eq "Succeeded" }
+                    }
+
+                    return;
+				}
+			}
+		}
+	}
+
+    throw("No VM found for Commit_PFO");
+}
+
+
+<#
+.SYNOPSIS
+Recovery Services PFO Tests
+#>
+function Test-PFO
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enable protection for an un protected Protection Entity
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+
+		# Enumerate Protection Entities under each configured Protection Containers
+		if ($protectionContainer.Role -eq "Primary")
+		{
+			$protectionEntities = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer
+			Assert-NotNull($protectionEntities)
+			foreach($protectionEntity in $protectionEntities)
+			{
+				Assert-NotNull($protectionEntity.Name)
+				Assert-NotNull($protectionEntity.ID)
+				if ($protectionEntity.CanFailover -eq $true)
+				{
+					$job = Start-AzureSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -WaitForCompletion
+					
+                    # Validate_PFO_JobSucceeded
+                    if ($Validate_PFO_JobSucceeded -eq $true)
+                    {
+                        $job = Get-AzureSiteRecoveryJob -Id $job.ID
+                        Assert-True { $job.State -eq "Succeeded" }
+                    }
+                    
+                    return;
+				}
+			}
+		}
+	}
+
+    throw("No VM found for PFO");
+}
+
+
+<#
+.SYNOPSIS
+Recovery Services UFO Tests
+#>
+function Test-UFO
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enable protection for an un protected Protection Entity
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+
+		# Enumerate Protection Entities under each configured Protection Containers
+		if ($protectionContainer.Role -eq "Primary")
+		{
+			$protectionEntities = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer
+			Assert-NotNull($protectionEntities)
+			foreach($protectionEntity in $protectionEntities)
+			{
+				Assert-NotNull($protectionEntity.Name)
+				Assert-NotNull($protectionEntity.ID)
+				if ($protectionEntity.CanFailover -eq $true)
+				{
+					$job = Start-AzureSiteRecoveryUnplannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -WaitForCompletion
+					
+                    # Validate_UFO_JobSucceeded
+                    if ($Validate_UFO_JobSucceeded -eq $true)
+                    {
+                        $job = Get-AzureSiteRecoveryJob -Id $job.ID
+                        Assert-True { $job.State -eq "Succeeded" }
+                    }
+                    
+                    return;
+				}
+			}
+		}
+	}
+
+    throw("No VM found for UFO");
+}
+
+
+<#
+.SYNOPSIS
+Recovery Services TFO Tests
+#>
+function Test-TFO
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enable protection for an un protected Protection Entity
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+
+		# Enumerate Protection Entities under each configured Protection Containers
+		if ($protectionContainer.Role -eq "Primary")
+		{
+			$protectionEntities = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer
+			Assert-NotNull($protectionEntities)
+			foreach($protectionEntity in $protectionEntities)
+			{
+				Assert-NotNull($protectionEntity.Name)
+				Assert-NotNull($protectionEntity.ID)
+				if ($protectionEntity.CanFailover -eq $true)
+				{
+					$job = Start-AzureSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -WaitForCompletion
+					
+                    # Validate_TFO_JobSucceeded
+                    if ($Validate_TFO_JobSucceeded -eq $true)
+                    {
+                        $job = Get-AzureSiteRecoveryJob -Id $job.ID
+                        Assert-True { $job.State -eq "Succeeded" }
+                    }
+
+                    return;
+				}
+			}
+		}
+	}
+
+    throw("No VM found for TFO");
+}
+
+<#
+.SYNOPSIS
+Recovery Services Enable Protection Tests
+#>
+function Test-EnableProtection
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enable protection for an un protected Protection Entity
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+
+		# Enumerate Protection Entities under each configured Protection Containers
+		if ($protectionContainer.Role -eq "Primary")
+		{
+			$protectionEntities = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer
+			Assert-NotNull($protectionEntities)
+			foreach($protectionEntity in $protectionEntities)
+			{
+				Assert-NotNull($protectionEntity.Name)
+				Assert-NotNull($protectionEntity.ID)
+				if ($protectionEntity.Protected -eq $false)
+				{
+					$job = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity -Protection "Enable" -Force -ProtectionProfile $protectionContainer.AvailableProtectionProfiles[0] -WaitForCompletion
+					
+                    # Validate_EnableProtection_JobSucceeded
+                    if ($Validate_EnableProtection_JobSucceeded -eq $true)
+                    {
+                        $job = Get-AzureSiteRecoveryJob -Id $job.ID
+                        Assert-True { $job.State -eq "Succeeded" }
+                    }
+
+                    # Validate_EnableProtection_WaitForCanFailover
+                    if ($Validate_EnableProtection_WaitForCanFailover -eq $true)
+                    {
+                        WaitForCanFailover $protectionEntity.Id
+                    }
+
+                    return;
+				}
+			}
+		}
+	}
+
+    throw("No VM found for Enable Protection");
+}
+
+<#
+.SYNOPSIS
+Recovery Services Enable Protection Tests
+#>
+function Test-DisableProtection
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enable protection for an un protected Protection Entity
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+
+		# Enumerate Protection Entities under each configured Protection Containers
+		if ($protectionContainer.Role -eq "Primary")
+		{
+			$protectionEntities = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer
+			Assert-NotNull($protectionEntities)
+			foreach($protectionEntity in $protectionEntities)
+			{
+				Assert-NotNull($protectionEntity.Name)
+				Assert-NotNull($protectionEntity.ID)
+                Write-Host "Checking PE"
+                $protectionEntity
+				if ($protectionEntity.Protected -eq $true)
+				{
+                    Write-Host "Disabling protection for PE: " + $protectionEntity.Name + " (" + $protectionEntity.ID + ")"
+					$job = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity -Protection "Disable" -Force -WaitForCompletion
+                    
+                    # Validate_DisableProtection_JobSucceeded
+                    if ($Validate_DisableProtection_JobSucceeded -eq $true)
+                    {
+                        Assert-True { $job.State -eq "Succeeded" }
+                    }
+
+                    return;				
+                }
+			}
+		}
+	}
+    
+    throw("No VM found for Disable Protection");
+}
+
+<#
+.SYNOPSIS
+Recovery Services Enable Protection Tests
+#>
+function WaitForCanFailover
+{
+    param([string] $peId)
+    $count = 20
+	do
+	{
+		Start-Sleep 5
+		$pe = Get-AzureSiteRecoveryProtectionEntity -Id peId;
+        if ($count -ne 0)
+        {
+            $count = $count -1;
+        }
+        else
+        {
+            throw("WaitForCanFailover failed.");
+            return;
+        }
+
+	} while( -not ($pe.CanFailover -eq $true))
 }
 
 <#

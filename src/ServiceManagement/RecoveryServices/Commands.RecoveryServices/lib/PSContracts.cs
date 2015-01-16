@@ -608,93 +608,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     }
 
     /// <summary>
-    /// The ResourceExtendedInfo which represents the xml info stored in RP.
-    /// </summary>
-    [DataContract]
-    public class ResourceExtendedInfo
-    {
-        #region properties
-
-        /// <summary>
-        /// Gets or sets the version
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public string Version { get; set; }
-
-        /// <summary>
-        /// Gets or sets the channel integrity key
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public string ChannelIntegrityKey { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Channel encryption key
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public string ChannelEncryptionKey { get; set; }
-
-        /// <summary>
-        /// Gets or sets the channel encryption key thumbprint
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public string ChannelEncryptionKeyThumbprint { get; set; }
-
-        /// <summary>
-        /// Gets or sets the portal certificate thumbprint
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public string PortalCertificateThumbprint { get; set; }
-
-        /// <summary>
-        /// Gets or sets the algorithm used to encrypt the data.
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public string Algorithm { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tag to be sent while updating the resource extended info.
-        /// </summary>
-        [IgnoreDataMember]
-        public string Etag { get; set; }
-
-        #endregion
-
-        #region Public methods
-
-        /// <summary>
-        /// Returns the Xml representation of this object.
-        /// </summary>
-        /// <returns>the xml as string</returns>
-        public ResourceExtendedInformationArgs Translate()
-        {
-            if (string.IsNullOrEmpty(this.Etag))
-            {
-                this.Etag = Guid.NewGuid().ToString();
-            }
-
-            string serializedInfo = Utilities.Serialize<ResourceExtendedInfo>(this);
-            ResourceExtendedInformationArgs extendedInfoArgs = new ResourceExtendedInformationArgs(
-                Constants.VaultExtendedInfoContractVersion,
-                serializedInfo,
-                this.Etag);
-
-            return extendedInfoArgs;
-        }
-
-        /// <summary>
-        /// Method to generate security information
-        /// </summary>
-        public void GenerateSecurityInfo()
-        {
-            this.ChannelIntegrityKey = Utilities.GenerateRandomKey(128);
-            this.Version = Constants.VaultSecurityInfoVersion;
-            this.Algorithm = CryptoAlgorithm.None.ToString();
-        }
-
-        #endregion
-    }
-
-    /// <summary>
     /// Hyper-V Replica specific protection profile details.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
@@ -987,5 +900,95 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember]
         public ulong MaxSizeMB { get; set; }
+    }
+}
+
+namespace Microsoft.Azure.Portal.HybridServicesCore
+{
+    /// <summary>
+    /// The ResourceExtendedInfo which represents the xml info stored in RP.
+    /// </summary>
+    [DataContract]
+    public class ResourceExtendedInfo
+    {
+        #region properties
+
+        /// <summary>
+        /// Gets or sets the version
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets the channel integrity key
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string ChannelIntegrityKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Channel encryption key
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string ChannelEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the channel encryption key thumbprint
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string ChannelEncryptionKeyThumbprint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the portal certificate thumbprint
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string PortalCertificateThumbprint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the algorithm used to encrypt the data.
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string Algorithm { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tag to be sent while updating the resource extended info.
+        /// </summary>
+        [IgnoreDataMember]
+        public string Etag { get; set; }
+
+        #endregion
+
+        #region Public methods
+
+        /// <summary>
+        /// Returns the Xml representation of this object.
+        /// </summary>
+        /// <returns>the xml as string</returns>
+        public ResourceExtendedInformationArgs Translate()
+        {
+            if (string.IsNullOrEmpty(this.Etag))
+            {
+                this.Etag = Guid.NewGuid().ToString();
+            }
+
+            string serializedInfo = Utilities.Serialize<ResourceExtendedInfo>(this);
+            ResourceExtendedInformationArgs extendedInfoArgs = new ResourceExtendedInformationArgs(
+                Constants.VaultExtendedInfoContractVersion,
+                serializedInfo,
+                this.Etag);
+
+            return extendedInfoArgs;
+        }
+
+        /// <summary>
+        /// Method to generate security information
+        /// </summary>
+        public void GenerateSecurityInfo()
+        {
+            this.ChannelIntegrityKey = Utilities.GenerateRandomKey(128);
+            this.Version = Constants.VaultSecurityInfoVersion;
+            this.Algorithm = CryptoAlgorithm.None.ToString();
+        }
+
+        #endregion
     }
 }

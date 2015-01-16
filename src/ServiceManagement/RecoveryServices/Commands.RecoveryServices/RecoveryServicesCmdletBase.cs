@@ -20,6 +20,7 @@ using System.Xml;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -181,7 +182,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>The current vault location.</returns>
         protected string GetCurrentValutLocation()
         {
-            string location = "Southeast Asia";
+            string location = string.Empty;
+
+            CloudServiceListResponse response =  
+                this.RecoveryServicesClient.GetRecoveryServicesClient.CloudServices.List();
+            foreach (var cloudService in response.CloudServices)
+            {
+                if (cloudService.Name == PSRecoveryServicesClient.asrVaultCreds.CloudServiceName)
+                {
+                    location = cloudService.GeoRegion;
+                    break;
+                }
+            }
+
             return location;
         }
     }
