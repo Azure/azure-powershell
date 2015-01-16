@@ -256,73 +256,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    /// Represents the StorageAccount of the client which can be used to protect VMs to Azure.
-    /// </summary>
-    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    public class CustomerStorageAccount
-    {
-        /// <summary>
-        /// Gets or sets the storage account name.
-        /// </summary>
-        [DataMember]
-        public string StorageAccountName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the subscription id associated with the storage account.
-        /// </summary>
-        [DataMember]
-        public string SubscriptionId { get; set; }
-    }
-
-    /// <summary>
-    /// Hyper-V Replica Azure specific input for creating a protection profile.
-    /// </summary>
-    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    public class HyperVReplicaAzureProtectionProfileInput
-    {
-        /// <summary>
-        /// Gets or sets the duration (in hours) to which point the recovery history needs to be 
-        /// maintained.
-        /// </summary>
-        [DataMember]
-        public int RecoveryPointHistoryDuration { get; set; }
-
-        /// <summary>
-        /// Gets or sets the interval (in hours) at which Hyper-V Replica should create an
-        /// application consistent snapshot within the VM.
-        /// </summary>
-        [DataMember]
-        public int AppConsistencyFreq { get; set; }
-
-        /// <summary>
-        /// Gets or sets the replication interval.
-        /// </summary>
-        [DataMember]
-        public int ReplicationInterval { get; set; }
-
-        /// <summary>
-        /// Gets or sets the scheduled start time for the initial replication. If this parameter 
-        /// is Null, the initial replication starts immediately.
-        /// </summary>
-        [DataMember]
-        public TimeSpan? OnlineIrStartTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of storage accounts to which the VMs in the primary cloud can 
-        /// replicate to.
-        /// </summary>
-        [DataMember]
-        public List<CustomerStorageAccount> StorageAccounts { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether encryption needs to be enabled for Vms in this cloud. 
-        /// </summary>
-        [DataMember]
-        public bool IsEncryptionEnabled { get; set; }
-
-    }
-
-    /// <summary>
     /// Azure Site Recovery Protection Profile.
     /// </summary>
     [SuppressMessage(
@@ -407,7 +340,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
 
         /// <summary>
-        /// Gets or sets if Compression is Enabled.
+        /// Gets or sets a value indicating whether Compression is Enabled.
         /// </summary>
         public bool CompressionEnabled { get; set; }
 
@@ -422,7 +355,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public int ReplicationStartTime { get; set; }
 
         /// <summary>
-        /// Gets or sets if Replica Deletion should be enabled.
+        /// Gets or sets a value indicating whether Replica Deletion should be enabled.
         /// </summary>
         public bool AllowReplicaDeletion { get; set; }
 
