@@ -16,12 +16,15 @@ using System;
 
 namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 {
-    public class PSADServicePrincipal : PSADObject
+    public class PSADPasswordCredential
     {
-        public string ServicePrincipalName { get; set; }
+        public DateTime StartDate { get; set; }
 
-        public Guid ApplicationId { get; set; }
+        public DateTime EndDate { get; set; }
 
-        public bool AccountEnabled { get; set; }
+        public Guid KeyId { get; set; }
+
+        public string Value { get; set; }
+
     }
 }
