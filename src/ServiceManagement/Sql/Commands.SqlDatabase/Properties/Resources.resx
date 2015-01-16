@@ -122,7 +122,7 @@
     <comment>Parameter validation</comment>
   </data>
   <data name="CreateServerServerNotFound" xml:space="preserve">
-    <value>Unable to retrieve newly created server '{0}' from the service.</value>
+    <value>Unable to retrieve newly created server '{0}'.</value>
   </data>
   <data name="CredentialNotSpecified" xml:space="preserve">
     <value>The Sql Authenticate Credential was not specified.</value>

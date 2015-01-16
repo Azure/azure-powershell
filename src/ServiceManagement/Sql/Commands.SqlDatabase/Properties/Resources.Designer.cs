@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to retrieve newly created server &apos;{0}&apos; from the service..
+        ///   Looks up a localized string similar to Unable to retrieve newly created server &apos;{0}&apos;..
         /// </summary>
         internal static string CreateServerServerNotFound {
             get {

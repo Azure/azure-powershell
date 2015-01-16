@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common.TransientFaultHandling;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Model;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
-using Microsoft.Azure.Common.Internals;
 using Microsoft.WindowsAzure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Sql.Models;
-using Hyak.Common;
 using System;
-using System.Management.Automation;
-using Hyak.Common.TransientFaultHandling;
 using System.Collections.Generic;
-using System.Linq;
 using System.Globalization;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
 {
@@ -122,8 +120,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
                     Version = version.HasValue ? version.Value.ToString("F1") : null
                 });
 
-            IEnumerable<Management.Sql.Models.Server> servers = sqlManagementClient.Servers.List().Servers;
-            var newServer = servers.Where(s => s.Name == response.ServerName).FirstOrDefault();
+            var newServer = sqlManagementClient.Servers.List().Servers.Where(s => s.Name == response.ServerName).FirstOrDefault();
 
             if (newServer == null)
             {
