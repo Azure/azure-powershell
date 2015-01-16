@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateSet(
             "HyperVReplica",
             "HyperVReplicaAzure")]
-        public string ReplicationType { get; set; }
+        public string ReplicationProvider { get; set; }
 
         /// <summary>
         /// Gets or sets a value for Replication Method of the Protection Profile.
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                switch (this.ReplicationType)
+                switch (this.ReplicationProvider)
                 {
                     case "HyperVReplica":
                         this.EnterpriseToEnterpriseProtectionProfileObject();
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
-                ReplicationType = this.ReplicationType,
+                ReplicationProvider = this.ReplicationProvider,
                 ReplicationMethod = this.ReplicationMethod,
                 RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                 RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
-                ReplicationType = this.ReplicationType,
+                ReplicationProvider = this.ReplicationProvider,
                 ReplicationMethod = this.ReplicationMethod,
                 RecoveryAzureSubscription = null,
                 RecoveryAzureStorageAccountName = null,

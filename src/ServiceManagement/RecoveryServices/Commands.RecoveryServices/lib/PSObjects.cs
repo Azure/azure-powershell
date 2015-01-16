@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             this.ID = protectionProfile.ID;
             this.Name = protectionProfile.Name;
-            this.ReplicationType = protectionProfile.ReplicationProvider;
+            this.ReplicationProvider = protectionProfile.ReplicationProvider;
         }
 
         #region Properties
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         /// Gets or sets Replication Type (HyperVReplica, HyperVReplicaAzure)
         /// </summary>
-        public string ReplicationType { get; set; }
+        public string ReplicationProvider { get; set; }
 
         /// <summary>
         /// Gets or sets Replication Method.
