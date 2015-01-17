@@ -13,51 +13,72 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class RemoveAzureAutomationAccountTest : TestBase
+    public class GetAzureAutomationCertificateTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private RemoveAzureAutomationAccount cmdlet;
+        private GetAzureAutomationCertificate cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new RemoveAzureAutomationAccount
-            {
-                AutomationClient = this.mockAutomationClient.Object,
-                CommandRuntime = this.mockCommandRuntime
-            };
+            this.cmdlet = new GetAzureAutomationCertificate
+                              {
+                                  AutomationClient = this.mockAutomationClient.Object,
+                                  CommandRuntime = this.mockCommandRuntime
+                              };
         }
 
         [TestMethod]
-        public void RemoveAzureAutomationAccountByNameSuccessfull()
+        public void GetAzureAutomationCertificateByNameSuccessfull()
+        {
+            // Setup
+            string accountName = "automation";
+            string certificateName = "certificate";
+
+            this.mockAutomationClient.Setup(f => f.GetCertificate(accountName, certificateName));
+
+            // Test
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.Name = certificateName;
+            this.cmdlet.SetParameterSet("ByCertificateName");
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient.Verify(f => f.GetCertificate(accountName, certificateName), Times.Once());
+        }
+
+        [TestMethod]
+        public void GetAzureAutomationCertificateByAllSuccessfull()
         {
             // Setup
             string accountName = "automation";
 
-            this.mockAutomationClient.Setup(f => f.DeleteAutomationAccount(accountName));
+            this.mockAutomationClient.Setup(f => f.ListCertificates(accountName)).Returns((string a) => new List<Certificate>());
 
             // Test
-            this.cmdlet.Name = accountName;
-            this.cmdlet.Force = true;
+            this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.DeleteAutomationAccount(accountName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListCertificates(accountName), Times.Once());
         }
     }
 }

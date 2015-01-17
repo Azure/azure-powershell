@@ -100,12 +100,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationCertificate.cs" />
+    <Compile Include="Cmdlet\SetAzureAutomationCertificate.cs" />
+    <Compile Include="Cmdlet\NewAzureAutomationCertificate.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationRunbookDefinition.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationScheduledRunbook.cs" />
     <Compile Include="Cmdlet\RegisterAzureAutomationScheduledRunbook.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationCertificate.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\PublishAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationRunbook.cs" />
@@ -148,6 +152,7 @@
     <Compile Include="DataContract\OdataError.cs" />
     <Compile Include="DataContract\OdataErrorMessage.cs" />
     <Compile Include="Model\AutomationAccount.cs" />
+    <Compile Include="Model\Certificate.cs" />
     <Compile Include="Model\JobSchedule.cs" />
     <Compile Include="Model\JobStream.cs" />
     <Compile Include="Model\Credential.cs" />

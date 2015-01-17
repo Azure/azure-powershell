@@ -67,7 +67,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// The Schedule name parameter set.
         /// </summary>
         internal const string ByScheduleName = "ByScheduleName";
-        
+
+        /// <summary>
+        /// The certificate name parameter set.
+        /// </summary>
+        internal const string ByCertificateName = "ByCertificateName";
+
         /// <summary>
         /// The Schedule name parameter set.
         /// </summary>

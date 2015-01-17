@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the runbook tags.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook tags.")]
+        [Alias("Tag")]
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>

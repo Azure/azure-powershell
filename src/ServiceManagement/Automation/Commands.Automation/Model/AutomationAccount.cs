@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         }
 
         /// <summary>
-        /// Gets or sets the plan.
+        /// Gets or sets the automation account name.
         /// </summary>
-        public string Plan { get; set; }
+        public string AutomationAccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the location.
@@ -78,8 +78,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string State { get; set; }
 
         /// <summary>
-        /// Gets or sets the automation account name.
+        /// Gets or sets the plan.
         /// </summary>
-        public string AutomationAccountName { get; set; }
+        public string Plan { get; set; }
     }
 }

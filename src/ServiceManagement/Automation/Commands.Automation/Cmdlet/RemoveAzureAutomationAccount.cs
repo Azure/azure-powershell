@@ -60,12 +60,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the location.
-        /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The geo region of the automation account")]
-        public string Location { get; set; }
-
-        /// <summary>
         /// Gets or sets the switch parameter not to confirm on removing the automaiton account.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
@@ -82,10 +76,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 string.Format(CultureInfo.CurrentCulture, Resources.RemovingAzureAutomationResourceWarning),
                 string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationResourceDescription),
                 this.Name,
-                () =>
-                {
-                    AutomationClient.DeleteAutomationAccount(this.Name, this.Location);
-                });
+                () => AutomationClient.DeleteAutomationAccount(this.Name));
         }
     }
 }

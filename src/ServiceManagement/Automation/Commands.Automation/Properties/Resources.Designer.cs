@@ -88,6 +88,24 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The certificate already exists. Certificate name: {0}..
+        /// </summary>
+        internal static string CertificateAlreadyExists {
+            get {
+                return ResourceManager.GetString("CertificateAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The certificate was not found. Certificate name {0}..
+        /// </summary>
+        internal static string CertificateNotFound {
+            get {
+                return ResourceManager.GetString("CertificateNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The credential was not found. Credential name: {0}..
         /// </summary>
         internal static string CredentialNotFound {
@@ -95,7 +113,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
                 return ResourceManager.GetString("CredentialNotFound", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid runbook parameters..
         /// </summary>
@@ -115,15 +133,6 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The module was not found. Module name: {0}..
-        /// </summary>
-        internal static string ModuleNotFound {
-            get {
-                return ResourceManager.GetString("ModuleNotFound", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to The job schedule was not found. Runbook name {0}. Schedule name {1}..
         /// </summary>
         internal static string JobScheduleNotFound {
@@ -138,6 +147,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string JobScheduleWithIdNotFound {
             get {
                 return ResourceManager.GetString("JobScheduleWithIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The module was not found. Module name: {0}..
+        /// </summary>
+        internal static string ModuleNotFound {
+            get {
+                return ResourceManager.GetString("ModuleNotFound", resourceCulture);
             }
         }
         

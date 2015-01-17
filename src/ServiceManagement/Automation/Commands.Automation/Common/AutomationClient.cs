@@ -19,7 +19,9 @@ using System.Globalization;
 using System.Linq;
 using System.IO;
 using System.Net;
+using System.Security;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
@@ -38,6 +40,7 @@ using JobStream = Microsoft.Azure.Commands.Automation.Model.JobStream;
 using Credential = Microsoft.Azure.Commands.Automation.Model.Credential;
 using Module = Microsoft.Azure.Commands.Automation.Model.Module;
 using JobSchedule = Microsoft.Azure.Commands.Automation.Model.JobSchedule;
+using Certificate = Microsoft.Azure.Commands.Automation.Model.Certificate;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -1000,10 +1003,23 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
 
-        public void DeleteAutomationAccount(string automationAccountName, string location)
+        public void DeleteAutomationAccount(string automationAccountName)
         {
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-            Requires.Argument("Location", location).NotNull();
+
+            string location = string.Empty;
+
+            var cloudServices = new List<CloudService>(this.automationManagementClient.CloudServices.List().CloudServices);
+
+            foreach (var cloudService in cloudServices)
+            {
+                if (cloudService.Resources.Any(resource => 0 == String.Compare(resource.Name, automationAccountName, CultureInfo.InvariantCulture,
+                    CompareOptions.IgnoreCase)))
+                {
+                    location = cloudService.GeoRegion;
+                    break;
+                }
+            }
 
             try
             {
@@ -1022,6 +1038,92 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     throw;
                 }
             }
+        }
+
+        #endregion
+
+        #region Certificate
+
+        public Certificate CreateCertificate(string automationAccountName, string name, string path, SecureString password,
+            string description, bool exportable)
+        {
+            var certificateModel = this.TryGetCertificateModel(automationAccountName, name);
+            if (certificateModel != null)
+            {
+                throw new ResourceCommonException(typeof(Certificate),
+                    string.Format(CultureInfo.CurrentCulture, Resources.CertificateAlreadyExists, name));
+            }
+
+            var cert = (password == null)
+                ? new X509Certificate2(path)
+                : new X509Certificate2(path, password);
+
+            var ccprop = new CertificateCreateProperties()
+            {
+                Description = description,
+                Base64Value = Convert.ToBase64String(cert.Export(X509ContentType.Pkcs12)),
+                Thumbprint = cert.Thumbprint,
+                IsExportable = exportable
+            };
+
+            var ccparam = new CertificateCreateParameters() { Name = name, Properties = ccprop };
+
+            var certificate = this.automationManagementClient.Certificates.Create(automationAccountName, ccparam).Certificate;
+
+            return new Certificate(automationAccountName, certificate);
+        }
+
+
+        public Certificate UpdateCertificate(string automationAccountName, string name, string path, SecureString password,
+            string description, bool exportable)
+        {
+            var cert = (password == null)
+                ? new X509Certificate2(path)
+                : new X509Certificate2(path, password);
+
+            var cuprop = new CertificateUpdateProperties()
+            {
+                Description = description,
+                Base64Value = Convert.ToBase64String(cert.Export(X509ContentType.Pkcs12)),
+                Thumbprint = cert.Thumbprint,
+                IsExportable = exportable
+            };
+
+            var cuparam = new CertificateUpdateParameters() { Name = name, Properties = cuprop };
+
+            this.automationManagementClient.Certificates.Update(automationAccountName, cuparam);
+
+            return new Certificate(automationAccountName, this.automationManagementClient.Certificates.Get(automationAccountName, name).Certificate);
+        }
+
+        public Certificate GetCertificate(string automationAccountName, string name)
+        {
+            var certificateModel = this.TryGetCertificateModel(automationAccountName, name);
+            if (certificateModel == null)
+            {
+                throw new ResourceCommonException(typeof(Certificate),
+                    string.Format(CultureInfo.CurrentCulture, Resources.CertificateNotFound, name));
+            }
+
+            return new Certificate(automationAccountName, certificateModel);
+        }
+
+        public IEnumerable<Certificate> ListCertificates(string automationAccountName)
+        {
+            return AutomationManagementClient
+               .ContinuationTokenHandler(
+                   skipToken =>
+                   {
+                       var response = this.automationManagementClient.Certificates.List(
+                           automationAccountName, skipToken);
+                       return new ResponseWithSkipToken<AutomationManagement.Models.Certificate>(
+                           response, response.Certificates);
+                   }).Select(c => new Certificate(automationAccountName, c));
+        }
+
+        public void DeleteCertificate(string automationAccountName, string name)
+        {
+            this.automationManagementClient.Certificates.Delete(automationAccountName, name);
         }
 
         #endregion
@@ -1212,6 +1314,27 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 }
             }
             return runbook;
+        }
+
+        private Management.Automation.Models.Certificate TryGetCertificateModel(string automationAccountName, string certificateName)
+        {
+            Management.Automation.Models.Certificate certificate = null;
+            try
+            {
+                certificate = this.automationManagementClient.Certificates.Get(automationAccountName, certificateName).Certificate;
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    certificate = null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return certificate;
         }
 
         private IDictionary<string, RunbookParameter> ListRunbookParameters(string automationAccountName, string runbookName)
