@@ -13,13 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Exceptions
 {
     [Serializable]
     public class ResourceContextNotFoundException : Exception
     {
-        static string genericErrorMessage = "Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName <<name>> to set";
+        static string genericErrorMessage = Resources.ResourceContextNotSetMessage;
         /// <summary>
         /// Create a new instance with error message
         /// </summary>

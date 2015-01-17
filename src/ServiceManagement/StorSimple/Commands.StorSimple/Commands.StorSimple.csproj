@@ -125,7 +125,7 @@
     <Compile Include="Cmdlets\GetAzureStorSimpleDeviceConnectedInitiator.cs" />
     <Compile Include="Cmdlets\GetAzureStorSimpleResource.cs" />
     <Compile Include="Cmdlets\GetAzureStorSimpleResourceContext.cs" />
-    <Compile Include="Cmdlets\Job\GetAzureStorSimpleTask.cs" />
+    <Compile Include="Cmdlets\Task\GetAzureStorSimpleTask.cs" />
     <Compile Include="Cmdlets\ServiceConfig\GetAzureStorSimpleStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\SelectAzureStorSimpleResource.cs" />
@@ -145,8 +145,6 @@
     <Compile Include="Exceptions\DeviceNotYetConfiguredException.cs" />
     <Compile Include="Exceptions\NoDeviceRegisteredException.cs" />
     <Compile Include="Exceptions\RegistrationKeyException.cs" />
-    <Compile Include="Exceptions\StorSimpleDeviceNotFoundException.cs" />
-    <Compile Include="Exceptions\StorSimpleTaskNotFoundException.cs" />
     <Compile Include="Exceptions\StorSimpleSecretManagementException.cs" />
     <Compile Include="Exceptions\ResourceContextNotFoundException.cs" />
     <Compile Include="Exceptions\ResourceNotFoundException.cs" />

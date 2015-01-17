@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
 
                 this.WriteObject(currentContext);
-                this.WriteVerbose(string.Format(Resources.ResourceContextFound,currentContext.ResourceName, currentContext.ResourceName));
+                this.WriteVerbose(string.Format(Resources.ResourceContextFound,currentContext.ResourceName, currentContext.ResourceId));
             }
 
             catch(Exception exception)

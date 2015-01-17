@@ -414,4 +414,13 @@
   <data name="PersistSecretFailed" xml:space="preserve">
     <value>Could not persist secret</value>
   </data>
+  <data name="DeviceNotConfiguredMessage" xml:space="preserve">
+    <value>The device name you have specified is not yet configured fully. Please complete the configuration and retry.</value>
+  </data>
+  <data name="DeviceNotRegisteredMessage" xml:space="preserve">
+    <value>No StorSimple device is currently registered with this resource. Please register at least one device to the resource and rerun this command.</value>
+  </data>
+  <data name="ResourceContextNotSetMessage" xml:space="preserve">
+    <value>Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context.</value>
+  </data>
 </root>

@@ -13,13 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Exceptions
 {
     [Serializable]
     public class DeviceNotYetConfiguredException : Exception
     {
-        static string genericErrorMessage = "The device name you have specified is not yet configured fully. Please complete the configuration and retry";
+        static string genericErrorMessage = Resources.DeviceNotConfiguredMessage;
         /// <summary>
         /// Create a new instance with error message
         /// </summary>

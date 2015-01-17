@@ -13,13 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Exceptions
 {
     [Serializable]
     public class StorSimpleResourceNotFoundException : Exception
     {
-        static string genericErrorMessage = "The resourcename provided does not exist under your subscription. To get a list of all available resources use Get-AzureStorSimpleResource";
+        static string genericErrorMessage = Resources.NotFoundMessageResource;
         /// <summary>
         /// Create a new instance with error message
         /// </summary>

@@ -13,13 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Exceptions
 {
     [Serializable]
     public class NoDeviceRegisteredException : Exception
     {
-        static string genericErrorMessage = "No StorSimple device is currently registered with this resource. Please register at least one device to the resource and rerun this command.";
+        static string genericErrorMessage = Resources.DeviceNotRegisteredMessage;
         /// <summary>
         /// Create a new instance with error message
         /// </summary>
