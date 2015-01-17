@@ -57,23 +57,26 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public static void NormalizeChildResourcesId(PSLoadBalancer loadBalancer)
         {
             // Normalize LoadBalancingRules
-            foreach (var loadBalancingRule in loadBalancer.Properties.LoadBalancingRules)
+            if (loadBalancer.Properties.InboundNatRules != null)
             {
-                loadBalancingRule.Id = string.Empty;
-
-                foreach (var frontendIpConfiguration in loadBalancingRule.Properties.FrontendIPConfigurations)
+                foreach (var loadBalancingRule in loadBalancer.Properties.LoadBalancingRules)
                 {
-                    frontendIpConfiguration.Id = NormalizeLoadBalancerChildResourceIds(frontendIpConfiguration.Id,
-                        loadBalancer.ResourceGroupName, loadBalancer.Name);
+                    loadBalancingRule.Id = string.Empty;
+
+                    foreach (var frontendIpConfiguration in loadBalancingRule.Properties.FrontendIPConfigurations)
+                    {
+                        frontendIpConfiguration.Id = NormalizeLoadBalancerChildResourceIds(frontendIpConfiguration.Id,
+                            loadBalancer.ResourceGroupName, loadBalancer.Name);
+                    }
+
+                    loadBalancingRule.Properties.BackendAddressPool.Id =
+                        NormalizeLoadBalancerChildResourceIds(loadBalancingRule.Properties.BackendAddressPool.Id,
+                            loadBalancer.ResourceGroupName, loadBalancer.Name);
+
+                    loadBalancingRule.Properties.Probe.Id =
+                        NormalizeLoadBalancerChildResourceIds(loadBalancingRule.Properties.Probe.Id,
+                            loadBalancer.ResourceGroupName, loadBalancer.Name);
                 }
-
-                loadBalancingRule.Properties.BackendAddressPool.Id =
-                    NormalizeLoadBalancerChildResourceIds(loadBalancingRule.Properties.BackendAddressPool.Id,
-                        loadBalancer.ResourceGroupName, loadBalancer.Name);
-
-                loadBalancingRule.Properties.Probe.Id =
-                    NormalizeLoadBalancerChildResourceIds(loadBalancingRule.Properties.Probe.Id,
-                        loadBalancer.ResourceGroupName, loadBalancer.Name);
             }
 
             // Normalize InboundNatRule

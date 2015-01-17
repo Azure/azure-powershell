@@ -56,7 +56,10 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP address allocation method.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(MNM.IpAllocationMethod.Dynamic, IgnoreCase = true)]
+        [ValidateSet(
+            MNM.IpAllocationMethod.Dynamic,
+            MNM.IpAllocationMethod.Static,
+            IgnoreCase = true)]
         public string AllocationMethod { get; set; }
 
         [Parameter(
