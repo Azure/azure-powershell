@@ -1,4 +1,18 @@
-﻿using System.Linq;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure;
@@ -24,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         public string BackupPolicyId { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage =StorSimpleCmdletHelpMessage.HelpMessageVolumeIdForBackup , ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById2)]
-        public String VolumeId { get; set; }
+        public string VolumeId { get; set; }
 
         [Alias("BackupPolicyDetails")]
         [Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true, HelpMessage =StorSimpleCmdletHelpMessage.HelpMessageBackupPolicyDetailsObject ,ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByObject)]
@@ -63,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     FromDateTime.ToString(),
                     ToDateTime.ToString(), Skip.ToString(), First ==null? null: First.ToString());
                 WriteObject(backupList.BackupSetsList, true);
-                WriteVerbose(String.Format(Resources.BackupsReturnedCount, backupList.BackupSetsList.Count));
+                WriteVerbose(string.Format(Resources.BackupsReturnedCount, backupList.BackupSetsList.Count));
                 if (backupList.NextPageUri != null 
                     && backupList.NextPageStartIdentifier!="1")
                 {
@@ -71,13 +85,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     {
                         //user has provided First(Top) parameter while calling the commandlet
                         //so we need to provide it to him for calling the next page
-                        WriteVerbose(String.Format(Resources.BackupNextPageFormatMessage, First, backupList.NextPageStartIdentifier));
+                        WriteVerbose(string.Format(Resources.BackupNextPageFormatMessage, First, backupList.NextPageStartIdentifier));
                     }
                     else
                     {
                         //user has NOT provided First(Top) parameter while calling the commandlet
                         //so we DONT need to provide it to him for calling the next page
-                        WriteVerbose(String.Format(Resources.BackupNextPagewithNoFirstMessage, backupList.NextPageStartIdentifier));
+                        WriteVerbose(string.Format(Resources.BackupNextPagewithNoFirstMessage, backupList.NextPageStartIdentifier));
                     }
                 }
                 else
@@ -97,7 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
             if (deviceId == null)
             {
-                WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 WriteObject(null);
                 return false;
             }
@@ -107,7 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 throw new ArgumentException(Resources.SkipParameterInvalidMessage);
             if (Skip == null)
                 Skip = 0;
-            if (String.IsNullOrEmpty(From))
+            if (string.IsNullOrEmpty(From))
                 FromDateTime = DateTime.MinValue;
             else
             {
@@ -115,7 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if(!result)
                     throw new ArgumentException(Resources.InvalidFromMessage);
             }
-            if (String.IsNullOrEmpty(To))
+            if (string.IsNullOrEmpty(To))
                 ToDateTime = DateTime.MaxValue;
             else
             {

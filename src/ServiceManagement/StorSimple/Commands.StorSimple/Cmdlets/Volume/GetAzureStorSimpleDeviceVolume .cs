@@ -1,13 +1,25 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
-using Microsoft.WindowsAzure;
 using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    using Properties;
-
     [Cmdlet(VerbsCommon.Get, "AzureStorSimpleDeviceVolume"), OutputType(typeof(VirtualDisk), typeof(IList<VirtualDisk>))]
     public class GetAzureStorSimpleDeviceVolume : StorSimpleCmdletBase
     {
@@ -31,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var deviceId = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceId == null)
                 {
-                    WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                     WriteObject(null);
                     return;
                 }
@@ -41,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     case StorSimpleCmdletParameterSet.IdentifyByParentObject:
                         var volumeInfoList = StorSimpleClient.GetAllVolumesFordataContainer(deviceId, VolumeContainer.InstanceId);
                         WriteObject(volumeInfoList.ListofVirtualDisks);
-                        WriteVerbose(string.Format(Resources.ReturnedCountVolumeMessage, volumeInfoList.ListofVirtualDisks.Count, volumeInfoList.ListofVirtualDisks.Count > 1 ? "s" : String.Empty));
+                        WriteVerbose(string.Format(Resources.ReturnedCountVolumeMessage, volumeInfoList.ListofVirtualDisks.Count, volumeInfoList.ListofVirtualDisks.Count > 1 ? "s" : string.Empty));
                         break;
                     case StorSimpleCmdletParameterSet.IdentifyByName:
                         var volumeInfo = StorSimpleClient.GetVolumeByName(deviceId, VolumeName);
@@ -50,11 +62,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             && volumeInfo.VirtualDiskInfo.InstanceId != null)
                         {
                             WriteObject(volumeInfo.VirtualDiskInfo);
-                            WriteVerbose(String.Format(Resources.FoundVolumeMessage, VolumeName));
+                            WriteVerbose(string.Format(Resources.FoundVolumeMessage, VolumeName));
                         }
                         else
                         {
-                            WriteVerbose(String.Format(Resources.NotFoundVolumeMessage, VolumeName));
+                            WriteVerbose(string.Format(Resources.NotFoundVolumeMessage, VolumeName));
                         }
                         break;
                 }

@@ -1,37 +1,47 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.Linq;
-using System.Collections.Generic;
 using System.Threading;
 using Hyak.Common;
 using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using System.Xml.Linq;
+using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Net;
 using System.Management.Automation;
-using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
+using Microsoft.WindowsAzure.Commands.StorSimple.Models;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
-    using Properties;
-    using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
-    using Microsoft.WindowsAzure.Commands.StorSimple.Models;
-
     public class StorSimpleCmdletBase : AzurePSCmdlet
     {
-        private PSStorSimpleClient storSimpleClient;
+        private StorSimpleClient storSimpleClient;
 
-        internal PSStorSimpleClient StorSimpleClient
+        internal StorSimpleClient StorSimpleClient
         {
             get
             {
                 if (this.storSimpleClient == null)
                 {
-                    this.storSimpleClient = new PSStorSimpleClient(CurrentContext.Subscription);
+                    this.storSimpleClient = new StorSimpleClient(CurrentContext.Subscription);
                 }
                 storSimpleClient.ClientRequestId = Guid.NewGuid().ToString("D") + "_PS";
-                WriteVerbose(String.Format(Resources.ClientRequestIdMessage, storSimpleClient.ClientRequestId));
+                WriteVerbose(string.Format(Resources.ClientRequestIdMessage, storSimpleClient.ClientRequestId));
                 return this.storSimpleClient;
             }
         }
@@ -113,7 +123,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                         XDocument xDoc = XDocument.Parse(response.Content);
                         StripNamespaces(xDoc);
                         string cloudErrorCode = xDoc.Descendants("ErrorCode").FirstOrDefault().Value;
-                        WriteVerbose(String.Format(Resources.CloudExceptionMessage, cloudErrorCode));
+                        WriteVerbose(string.Format(Resources.CloudExceptionMessage, cloudErrorCode));
                     }
                     catch (Exception)
                     {
@@ -131,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     try
                     {
                         HttpWebResponse response = webEx.Response as HttpWebResponse;
-                        WriteVerbose(String.Format(Resources.WebExceptionMessage, response.StatusCode));
+                        WriteVerbose(string.Format(Resources.WebExceptionMessage, response.StatusCode));
                     }
                     catch (Exception)
                     {
@@ -206,8 +216,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         {
             var resourceContext = StorSimpleClient.GetResourceContext();
             if (resourceContext == null
-                || String.IsNullOrEmpty(resourceContext.ResourceId)
-                || String.IsNullOrEmpty(resourceContext.ResourceName))
+                || string.IsNullOrEmpty(resourceContext.ResourceId)
+                || string.IsNullOrEmpty(resourceContext.ResourceName))
             {
                 return false;
             }
@@ -220,9 +230,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             {
                 bool valid = true;
                 Random rnd = new Random();
-                string testContainerName = String.Format("storsimplesdkvalidation{0}", rnd.Next());
+                string testContainerName = string.Format("storsimplesdkvalidation{0}", rnd.Next());
                 //create a storage container and then delete it
-                string validateScript = String.Format(
+                string validateScript = string.Format(
                                   @"$context = New-AzureStorageContext -StorageAccountName {0} -StorageAccountKey {1} -Endpoint {2};"
                                 + @"New-AzureStorageContainer -Name {3} -Context $context;"
                                 + @"Remove-AzureStorageContainer -Name {3} -Context $context -Force;",
@@ -232,7 +242,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 if (ps.HadErrors)
                 {
                     var exception = ps.Streams.Error[0].Exception;
-                    string getScript = String.Format(
+                    string getScript = string.Format(
                                   @"$context = New-AzureStorageContext -StorageAccountName {0} -StorageAccountKey {1};"
                                 + @"Get-AzureStorageContainer -Name {2} -Context $context;",
                                 storageAccountName, storageAccountKey, testContainerName);
@@ -242,7 +252,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     {
                         //storage container successfully created and still exists, retry deleting it
                         int retryCount = 1;
-                        string removeScript = String.Format(
+                        string removeScript = string.Format(
                                   @"$context = New-AzureStorageContext -StorageAccountName {0} -StorageAccountKey {1};"
                                 + @"Remove-AzureStorageContainer -Name {2} -Context $context -Force;",
                                 storageAccountName, storageAccountKey, testContainerName);
@@ -267,28 +277,28 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         }
 
 
-        internal String GetStorageAccountLocation(string storageAccountName, out bool exist)
+        internal string GetStorageAccountLocation(string storageAccountName, out bool exist)
         {
             using (System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create())
             {
-                String location = null;
+                string location = null;
                 exist = false;
 
-                string script = String.Format(@"Get-AzureStorageAccount -StorageAccountName {0}", storageAccountName);
+                string script = string.Format(@"Get-AzureStorageAccount -StorageAccountName {0}", storageAccountName);
                 ps.AddScript(script);
                 var result = ps.Invoke();
                 
                 if (ps.HadErrors)
                 {
                     HandleException(ps.Streams.Error[0].Exception);
-                    WriteVerbose(String.Format(Resources.StorageAccountNotFoundMessage, storageAccountName));
+                    WriteVerbose(string.Format(Resources.StorageAccountNotFoundMessage, storageAccountName));
                 }
                 
                 if (result != null && result.Count > 0)
                 {
                     exist = true;
                     WriteVerbose(string.Format(Resources.StorageAccountFoundMessage, storageAccountName));
-                    script = String.Format(@"Get-AzureStorageAccount -StorageAccountName {0}"
+                    script = string.Format(@"Get-AzureStorageAccount -StorageAccountName {0}"
                                            + @"| Select-Object -ExpandProperty Location", storageAccountName);
                     ps.AddScript(script);
                     result = ps.Invoke();
@@ -309,7 +319,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// this method verifies that the devicename parameter specified is completely configured
         /// no operation should be allowed to perform on a non-configured device
         /// </summary>
-        public void VerifyDeviceConfigurationCompleteForDevice(String deviceId)
+        public void VerifyDeviceConfigurationCompleteForDevice(string deviceId)
         {
             DeviceDetails details = storSimpleClient.GetDeviceDetails(deviceId);
             bool data0Configured = false;
@@ -320,7 +330,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 if (data0 != null
                     && data0.IsEnabled
                     && data0.NicIPv4Settings != null
-                    && !String.IsNullOrEmpty(data0.NicIPv4Settings.Controller0IPv4Address))
+                    && !string.IsNullOrEmpty(data0.NicIPv4Settings.Controller0IPv4Address))
                     data0Configured = true;
             }
             if (!data0Configured)
@@ -329,7 +339,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
         internal string GetHostnameFromEndpoint(string endpoint)
         {
-            return String.Format("blob.{0}", endpoint);
+            return string.Format("blob.{0}", endpoint);
         }
     }
 }

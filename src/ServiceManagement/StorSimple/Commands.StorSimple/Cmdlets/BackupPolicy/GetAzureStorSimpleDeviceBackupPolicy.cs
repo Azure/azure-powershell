@@ -1,4 +1,18 @@
-﻿using System.Linq;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure;
@@ -25,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
         [Alias("Name")]
         [Parameter(Position = 1, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupPolicyName)]
-        public String BackupPolicyName { get; set; }
+        public string BackupPolicyName { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -33,25 +47,25 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 if (!ProcessParameters()) 
                     return;
-                if (String.IsNullOrEmpty(BackupPolicyName))
+                if (string.IsNullOrEmpty(BackupPolicyName))
                 {
                     BackupPolicyListResponse backupPolicyList = null;
                     backupPolicyList = StorSimpleClient.GetAllBackupPolicies(deviceId);
                     backupPolicyList.BackupPolicies = CorrectLastBackupForNewPolicy(backupPolicyList.BackupPolicies);
                     WriteObject(backupPolicyList.BackupPolicies);
-                    WriteVerbose(String.Format(Resources.BackupPolicyGet_StatusMessage, backupPolicyList.BackupPolicies.Count, backupPolicyList.BackupPolicies.Count > 1 ? "ies" : "y"));
+                    WriteVerbose(string.Format(Resources.BackupPolicyGet_StatusMessage, backupPolicyList.BackupPolicies.Count, backupPolicyList.BackupPolicies.Count > 1 ? "ies" : "y"));
                 }
                 else
                 {
                     GetBackupPolicyDetailsResponse backupPolicyDetail = null;
                     backupPolicyDetail = StorSimpleClient.GetBackupPolicyByName(deviceId, BackupPolicyName);
                     backupPolicyDetail.BackupPolicyDetails = CorrectLastBackupForNewPolicyDetail(backupPolicyDetail.BackupPolicyDetails);
-                    if (String.IsNullOrEmpty(backupPolicyDetail.BackupPolicyDetails.InstanceId))
-                        WriteVerbose(String.Format(Resources.NoBackupPolicyWithGivenNameFound,BackupPolicyName,DeviceName));
+                    if (string.IsNullOrEmpty(backupPolicyDetail.BackupPolicyDetails.InstanceId))
+                        WriteVerbose(string.Format(Resources.NoBackupPolicyWithGivenNameFound,BackupPolicyName,DeviceName));
                     else
                     {
                         WriteObject(backupPolicyDetail.BackupPolicyDetails);
-                        WriteVerbose(String.Format(Resources.BackupPolicyFound, backupPolicyDetail.BackupPolicyDetails.InstanceId));
+                        WriteVerbose(string.Format(Resources.BackupPolicyFound, backupPolicyDetail.BackupPolicyDetails.InstanceId));
                     }
                 }
             }
@@ -67,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
             if (deviceId == null)
             {
-                WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 WriteObject(null);
                 return false;
             }

@@ -1,14 +1,25 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.Management.Automation;
-using System.Net;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
+using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
-using Microsoft.WindowsAzure;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    using Properties;
-
     [Cmdlet(VerbsCommon.New, "AzureStorSimpleDeviceVolumeContainer"), OutputType(typeof(TaskStatusInfo))]
     public class NewAzureStorSimpleDeviceVolumeContainer : StorSimpleCmdletBase
     {
@@ -50,17 +61,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 deviceid = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceid == null)
                 {
-                    WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                     WriteObject(null);
                     return;
                 }
 
-                if(EncryptionEnabled == true && String.IsNullOrEmpty(EncryptionKey))
+                if(EncryptionEnabled == true && string.IsNullOrEmpty(EncryptionKey))
                 {
                     throw new ArgumentNullException("EncryptionKey");
                 }
 
-                String encryptedKey = null;
+                string encryptedKey = null;
                 StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(StorSimpleClient);
                 if (EncryptionEnabled == true)
                 {
@@ -76,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                     //validate storage account credentials
                     bool storageAccountPresent;
-                    String location = GetStorageAccountLocation(sac.Name, out storageAccountPresent);
+                    string location = GetStorageAccountLocation(sac.Name, out storageAccountPresent);
                     string hostname = sac.Hostname;
                     string endpoint = hostname.Substring(hostname.IndexOf('.') + 1);
                     if (!storageAccountPresent || !ValidStorageAccountCred(sac.Name, sac.Password, endpoint))
@@ -86,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     }
                     WriteVerbose(Resources.StorageCredentialVerificationSuccessMessage);
 
-                    String encryptedPassword = null;
+                    string encryptedPassword = null;
                     WriteVerbose(Resources.EncryptionInProgressMessage);
                     storSimpleCryptoManager.EncryptSecretWithRakPub(sac.Password, out encryptedPassword);
 

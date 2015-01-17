@@ -1,11 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
+using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
 {
@@ -15,12 +25,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
         {
             if (string.IsNullOrEmpty(resourceId))
             {
-                throw new ArgumentNullException("resourceId", "ResourceId must be specified");
+                throw new ArgumentNullException("resourceId", Resources.ResourceIdMissing);
             }
 
             if (string.IsNullOrEmpty(cik))
             {
-                throw new StorSimpleSecretManagementException("Invalid arguments - CIK is NULL", KeyStoreOperationStatus.PERSIST_EMPTY_KEY);
+                throw new StorSimpleSecretManagementException(Resources.CIKInvalid, KeyStoreOperationStatus.PERSIST_EMPTY_KEY);
             }
 
             StorSimpleKeyManager mgr = cmdlet.StorSimpleClient.GetResourceContext().StorSimpleKeyManager;
@@ -36,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
             // other error codes are NOT expected - those validations have been done already
             if (status != KeyStoreOperationStatus.PERSIST_SUCCESS)
             {   
-                throw new StorSimpleSecretManagementException("Could not persist secret", status);
+                throw new StorSimpleSecretManagementException(Resources.PersistSecretFailed, status);
             }
         }
 
@@ -51,25 +61,25 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
                 status == KeyStoreOperationStatus.RETRIEVE_FILESTREAM_INVALID)
             {
                 // CIK was persisted, but has been corrupted
-                throw new StorSimpleSecretManagementException("Secret was persisted earlier, but seems to have been corrupted. Please use Select-AzureStorSimpleResource and provide the Registration key once again.", status);
+                throw new StorSimpleSecretManagementException(Resources.PersistedCIKCorrupted, status);
             }
 
             if (status == KeyStoreOperationStatus.RETRIEVE_FILE_DOES_NOT_EXIST)
             {
                 // CIK was never persisted
-                throw new StorSimpleSecretManagementException("Could not find the persisted secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again.", status);
+                throw new StorSimpleSecretManagementException(Resources.CIKNotPersisted, status);
             }
 
             // other error codes are NOT expected - those validations have been done already
             if (status != KeyStoreOperationStatus.RETRIEVE_SUCCESS)
             {
-                throw new StorSimpleSecretManagementException("Could not retrieve secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again.", status);
+                throw new StorSimpleSecretManagementException(Resources.CIKFetchFailed, status);
             }
 
             if (string.IsNullOrEmpty(cik))
             {
                 // CIK retrieved successfully, but is NULL :(
-                throw new StorSimpleSecretManagementException("Retrieved secret successfully, but was NULL.", KeyStoreOperationStatus.RETRIEVE_EMPTY_KEY);
+                throw new StorSimpleSecretManagementException(Resources.PersistedCIKIsNull, KeyStoreOperationStatus.RETRIEVE_EMPTY_KEY);
             }
 
             return cik;
@@ -84,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
 
             if (string.IsNullOrEmpty(rakPub))
             {
-                throw new StorSimpleSecretManagementException("Failed to validate persisted secret.", KeyStoreOperationStatus.VALIDATE_FAILED);
+                throw new StorSimpleSecretManagementException(Resources.PersistedCIKValidationFailed, KeyStoreOperationStatus.VALIDATE_FAILED);
             }
         }
     }

@@ -1,14 +1,26 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
 using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
-using Microsoft.WindowsAzure.Management.StorSimple.Models;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
 {
     public class StorSimpleCryptoManager
     {
-        private PSStorSimpleClient StorSimpleClient;
+        private StorSimpleClient StorSimpleClient;
 
-        public StorSimpleCryptoManager(PSStorSimpleClient storSimpleClient)
+        public StorSimpleCryptoManager(StorSimpleClient storSimpleClient)
         {
             this.StorSimpleClient = storSimpleClient;
         }
@@ -20,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
         /// <param name="secret"></param>
         /// <param name="encryptedSecret"></param>
         /// <returns></returns>
-        public KeyStoreOperationStatus EncryptSecretWithRakPub(String secret, out String encryptedSecret)
+        public KeyStoreOperationStatus EncryptSecretWithRakPub(string secret, out string encryptedSecret)
         {
             StorSimpleKeyManager keyManager = StorSimpleClient.GetResourceContext().StorSimpleKeyManager;
             encryptedSecret = null;
