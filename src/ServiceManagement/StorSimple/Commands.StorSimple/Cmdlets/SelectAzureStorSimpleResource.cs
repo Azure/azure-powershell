@@ -72,7 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 else
                 {
                     this.WriteVerbose(Resources.RegistrationKeyPassedMessage);
-                    EncryptionCmdLetHelper.PersistCIK(this, resCred.ResourceId, ParseCIKFromRegistrationKey());
+                    EncryptionCmdLetHelper.PersistCIK(this, resCred.ResourceId, StorSimpleClient.ParseCIKFromRegistrationKey(RegistrationKey));
                 }
                 EncryptionCmdLetHelper.ValidatePersistedCIK(this, resCred.ResourceId);
                 this.WriteVerbose(Resources.SecretsValidationCompleteMessage);
@@ -84,24 +84,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             catch(Exception exception)
             {
                 this.HandleException(exception);
-            }
-        }
-
-        /// <summary>
-        /// The CIK has to be parsed from the registration key
-        /// </summary>
-        /// <returns></returns>
-        private string ParseCIKFromRegistrationKey()
-        {
-            try
-            {
-                string[] parts = RegistrationKey.Split(new char[] {':'});
-                this.WriteVerbose("RegistrationKey #parts:" + parts.Length);
-                return parts[2].Split(new char[] {'#'})[0];
-            }
-            catch (Exception ex)
-            {
-                throw new RegistrationKeyException(Resources.IncorrectFormatInRegistrationKey, ex);
             }
         }
     }

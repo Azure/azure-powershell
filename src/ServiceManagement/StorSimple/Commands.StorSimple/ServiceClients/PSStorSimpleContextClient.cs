@@ -4,6 +4,7 @@ using Microsoft.WindowsAzure;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.StorSimple;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
+using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
 using Microsoft.WindowsAzure.Management.Scheduler;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
@@ -105,6 +106,23 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 return new StorSimpleResourceContext(StorSimpleContext.ResourceId, StorSimpleContext.ResourceName,
                     StorSimpleContext.StampId, StorSimpleContext.CloudServiceName, StorSimpleContext.ResourceProviderNameSpace,
                     StorSimpleContext.ResourceType, StorSimpleContext.KeyManager);
+            }
+        }
+
+        /// <summary>
+        /// The CIK has to be parsed from the registration key
+        /// </summary>
+        /// <returns></returns>
+        public string ParseCIKFromRegistrationKey(string registrationKey)
+        {
+            try
+            {
+                string[] parts = registrationKey.Split(new char[] { ':' });
+                return parts[2].Split(new char[] { '#' })[0];
+            }
+            catch (Exception ex)
+            {
+                throw new RegistrationKeyException(Resources.IncorrectFormatInRegistrationKey, ex);
             }
         }
     }

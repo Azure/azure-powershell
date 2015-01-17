@@ -18,7 +18,7 @@ Sets context to default resource
 #>
 function Set-DefaultResource
 {
-    $selectedResource = Select-AzureStorSimpleResource -ResourceName OneSDK-Resource
+    $selectedResource = Select-AzureStorSimpleResource -ResourceName OneSDK-Resource -RegistrationKey "1975530557201809476:eOqMQdvHon3lGwKVYctxZVnwpZcqi8ZS1uyCLJAl6Wg=:JovQDqP1KyWdh4m3mYkdzQ==#4edfc1cde41104e5"
 }
 
 <#
