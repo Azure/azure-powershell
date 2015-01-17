@@ -140,7 +140,6 @@
     <Compile Include="Cmdlets\Volume\NewAzureStorSimpleDeviceVolume.cs" />
     <Compile Include="Cmdlets\Volume\RemoveAzureStorSimpleDeviceVolume .cs" />
     <Compile Include="Cmdlets\Volume\SetAzureStorSimpleDeviceVolume.cs" />
-    <Compile Include="Constants.cs" />
     <Compile Include="Encryption\EncryptionCmdLetHelper.cs" />
     <Compile Include="Encryption\StorSimpleKeyManager.cs" />
     <Compile Include="Exceptions\DeviceNotYetConfiguredException.cs" />
@@ -158,16 +157,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ServiceClients\PSStoreSimpleBackupPolicyClient.cs" />
-    <Compile Include="ServiceClients\PSStoreSimpleCryptKeysClient.cs" />
-    <Compile Include="ServiceClients\PSStorSimpleBackupSetClient.cs" />
-    <Compile Include="ServiceClients\PSStorSimpleClient.cs" />
+    <Compile Include="ServiceClients\StoreSimpleBackupPolicyClient.cs" />
+    <Compile Include="ServiceClients\StoreSimpleCryptKeysClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleBackupSetClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceClients\PSStorSimpleContextClient.cs" />
-    <Compile Include="ServiceClients\PSStorSimpleDCClient.cs" />
-    <Compile Include="ServiceClients\PSStorSimpleDevicesClient.cs" />
-    <Compile Include="ServiceClients\PSStorSimpleServiceConfigClient.cs" />
-    <Compile Include="ServiceClients\PSStorSimpleVolumeClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleContextClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleDCClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleDevicesClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleServiceConfigClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleVolumeClient.cs" />
     <Compile Include="StorSimpleCmdletBase.cs" />
     <Compile Include="StorSimpleCmdletHelpMessage.cs" />
     <Compile Include="StorSimpleCmdletParameterSet.cs" />

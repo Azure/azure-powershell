@@ -1,13 +1,26 @@
-﻿using System;
-using System.Linq;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
-using Microsoft.WindowsAzure;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    using Properties;
-    using System.Collections.Generic;
+    
 
     [Cmdlet(VerbsCommon.Get, "AzureStorSimpleDeviceVolumeContainer"),OutputType(typeof(DataContainer), typeof(IList<DataContainer>))]
     public class GetAzureStorSimpleDeviceVolumeContainer : StorSimpleCmdletBase
@@ -29,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 if (deviceid == null)
                 {
-                    WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                     WriteObject(null);
                     return;
                 }
@@ -38,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     var dataContainerList = StorSimpleClient.GetAllDataContainers(deviceid);
                     WriteObject(dataContainerList.DataContainers);
-                    WriteVerbose(String.Format(Resources.ReturnedCountDataContainerMessage, dataContainerList.DataContainers.Count, dataContainerList.DataContainers.Count > 1 ? "s" : String.Empty));
+                    WriteVerbose(string.Format(Resources.ReturnedCountDataContainerMessage, dataContainerList.DataContainers.Count, dataContainerList.DataContainers.Count > 1 ? "s" : string.Empty));
                 }
                 else
                 {
@@ -48,11 +61,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         && dataContainer.DataContainerInfo.InstanceId != null)
                     {
                         WriteObject(dataContainer.DataContainerInfo);
-                        WriteVerbose(String.Format(Resources.FoundDataContainerMessage, VolumeContainerName));
+                        WriteVerbose(string.Format(Resources.FoundDataContainerMessage, VolumeContainerName));
                     }
                     else
                     {
-                        WriteVerbose(String.Format(Resources.NotFoundDataContainerMessage, VolumeContainerName));
+                        WriteVerbose(string.Format(Resources.NotFoundDataContainerMessage, VolumeContainerName));
                     }
                 }
             }

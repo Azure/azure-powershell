@@ -1,4 +1,18 @@
-﻿using System.Linq;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System.Linq;
 using System.Management.Automation;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
@@ -24,19 +38,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupIdToDelete,ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
-        public String BackupId { get; set; }
+        public string BackupId { get; set; }
 
         [Parameter(Position = 1, Mandatory = true,ValueFromPipeline = true,HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupIdToDelete,ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByObject)]
         public Backup Backup { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageForce)]
-        public SwitchParameter Force
-        {
-            get { return force; }
-            set { force = value; }
-        }
-        private bool force;
-
+        public SwitchParameter Force { get; set; }
+        
         [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
 
@@ -80,14 +89,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
             if (deviceId == null)
             {
-                WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 WriteObject(null);
                 return false;
             }
             switch (ParameterSetName)
             {
                 case StorSimpleCmdletParameterSet.IdentifyById:
-                    if (String.IsNullOrEmpty(BackupId))
+                    if (string.IsNullOrEmpty(BackupId))
                         throw new ArgumentException(Resources.InvalidBackupIdParameter);
                     else
                     {
@@ -95,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     }
                     break;
                 case StorSimpleCmdletParameterSet.IdentifyByObject:
-                    if(Backup==null || String.IsNullOrEmpty(Backup.InstanceId))
+                    if(Backup==null || string.IsNullOrEmpty(Backup.InstanceId))
                         throw new ArgumentException(Resources.InvalidBackupObjectParameter);
                     else
                     {

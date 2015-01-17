@@ -375,4 +375,43 @@
   <data name="SACNotFoundWithName" xml:space="preserve">
     <value>Storage Access Credential with name {0} not found!</value>
   </data>
+  <data name="BackupTypeInvalid" xml:space="preserve">
+    <value>BackupType cannot be Invalid</value>
+  </data>
+  <data name="RecurrenceTypeInvalid" xml:space="preserve">
+    <value>RecurrenceType cannot be Invalid</value>
+  </data>
+  <data name="RecurrenceValueLessThanZero" xml:space="preserve">
+    <value>RecurrenceValue should be &gt;=0</value>
+  </data>
+  <data name="RetentionCountRangeInvalid" xml:space="preserve">
+    <value>RetentionCount value should be 1 - 64</value>
+  </data>
+  <data name="BackupPolicyNameHasDisallowedChars" xml:space="preserve">
+    <value>BackupPolicyName should not have characters "[]=';"</value>
+  </data>
+  <data name="ResourceIdMissing" xml:space="preserve">
+    <value>ResourceId must be specified</value>
+  </data>
+  <data name="CIKFetchFailed" xml:space="preserve">
+    <value>Could not retrieve secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
+  </data>
+  <data name="CIKInvalid" xml:space="preserve">
+    <value>Invalid arguments - CIK is NULL</value>
+  </data>
+  <data name="CIKNotPersisted" xml:space="preserve">
+    <value>Could not find the persisted secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
+  </data>
+  <data name="PersistedCIKCorrupted" xml:space="preserve">
+    <value>Secret was persisted earlier, but seems to have been corrupted. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
+  </data>
+  <data name="PersistedCIKIsNull" xml:space="preserve">
+    <value>Retrieved secret successfully, but was NULL.</value>
+  </data>
+  <data name="PersistedCIKValidationFailed" xml:space="preserve">
+    <value>Failed to validate persisted secret.</value>
+  </data>
+  <data name="PersistSecretFailed" xml:space="preserve">
+    <value>Could not persist secret</value>
+  </data>
 </root>

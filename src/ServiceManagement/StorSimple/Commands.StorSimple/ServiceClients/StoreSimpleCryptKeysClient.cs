@@ -12,11 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Management.StorSimple;
+using Microsoft.WindowsAzure.Management.StorSimple.Models;
+
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
-    public class Constants
+    public partial class StorSimpleClient
     {
-        public const string RequestIdHeaderName = "x-ms-request-id";
-        public const string DefaultEndpoint = "core.windows.net";
+        public GetResourceEncryptionKeyResponse GetResourceEncryptionKey()
+        {
+            return this.GetStorSimpleClient().ResourceEncryptionKeys.Get(GetCustomRequestHeaders());
+        }
     }
 }
