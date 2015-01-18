@@ -179,16 +179,5 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
             updateConfig.VolumeIds = volumeIdsToUpdate;
         }
-
-        private void ValidatePolicyNameHasNoDisallowedChars(string name)
-        {
-            // Backup policy name can't have characters "[]=';"
-            Regex disallowedCharsRegex = new Regex("\\[|\\]|=|'|;");
-
-            if (disallowedCharsRegex.IsMatch(name))
-            {
-                throw new ArgumentException(Resources.BackupPolicyNameHasDisallowedChars, "Name");
-            }
-        }
     }
 }

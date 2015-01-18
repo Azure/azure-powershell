@@ -18,6 +18,7 @@ using System.Threading;
 using Hyak.Common;
 using Microsoft.Azure;
 using System.Xml.Linq;
+using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -314,6 +315,26 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 return location;
             }
         }
+
+        internal bool ValidateAndEncryptStorageCred(string name, string key, string endpoint, out string encryptedKey, out string thumbprint)
+        {
+            StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(StorSimpleClient);
+            thumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint();
+            encryptedKey = null;
+            if (!string.IsNullOrEmpty(key))
+            {
+                //validate storage account credentials
+                if (!ValidStorageAccountCred(name, key, endpoint))
+                {
+                    WriteVerbose(Resources.StorageCredentialVerificationFailureMessage);
+                    return false;
+                }
+                WriteVerbose(Resources.StorageCredentialVerificationSuccessMessage);
+                WriteVerbose(Resources.EncryptionInProgressMessage);
+                storSimpleCryptoManager.EncryptSecretWithRakPub(key, out encryptedKey);
+            }
+            return true;
+        }
 	
         /// <summary>
         /// this method verifies that the devicename parameter specified is completely configured
@@ -340,6 +361,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         internal string GetHostnameFromEndpoint(string endpoint)
         {
             return string.Format("blob.{0}", endpoint);
+        }
+
+        internal string GetEndpointFromHostname(string hostname)
+        {
+            return hostname.Substring(hostname.IndexOf('.') + 1);
         }
     }
 }

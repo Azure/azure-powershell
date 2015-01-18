@@ -59,21 +59,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     return;
                 }
 
-                string encryptedKey = null;
-                StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(StorSimpleClient);
-                if (!string.IsNullOrEmpty(StorageAccountKey))
+                string encryptedKey;
+                string thumbprint;
+                string endpoint = GetEndpointFromHostname(existingSac.Hostname);
+                if (!ValidateAndEncryptStorageCred(StorageAccountName, StorageAccountKey, endpoint, out encryptedKey, out thumbprint))
                 {
-                    //validate storage account credentials
-                    string hostname = existingSac.Hostname;
-                    string endpoint = hostname.Substring(hostname.IndexOf('.') + 1);
-                    if (!ValidStorageAccountCred(StorageAccountName, StorageAccountKey, endpoint))
-                    {
-                        WriteVerbose(Resources.StorageCredentialVerificationFailureMessage);
-                        return;
-                    }
-                    WriteVerbose(Resources.StorageCredentialVerificationSuccessMessage);
-                    WriteVerbose(Resources.EncryptionInProgressMessage);
-                    storSimpleCryptoManager.EncryptSecretWithRakPub(StorageAccountKey, out encryptedKey);
+                    return;
                 }
 
                 var serviceConfig = new ServiceConfiguration()
@@ -96,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                 VolumeCount = existingSac.VolumeCount,
                                 Name = existingSac.Name,
                                 IsDefault = existingSac.IsDefault,
-                                PasswordEncryptionCertThumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint(),
+                                PasswordEncryptionCertThumbprint = thumbprint,
                                 Location = existingSac.Location
                             },
                         }

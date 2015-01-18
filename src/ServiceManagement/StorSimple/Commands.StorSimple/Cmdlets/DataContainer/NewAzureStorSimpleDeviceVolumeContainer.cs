@@ -57,8 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                string deviceid = null;
-                deviceid = StorSimpleClient.GetDeviceId(DeviceName);
+                string deviceid = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceid == null)
                 {
                     WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
@@ -81,28 +80,25 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 if (string.IsNullOrEmpty(PrimaryStorageAccountCredential.InstanceId))
                 {
+                    //The SAC needs to be created inline
                     WriteVerbose(Resources.InlineSacCreationMessage);
 
                     var sac = PrimaryStorageAccountCredential;
 
                     //validate storage account credentials
                     bool storageAccountPresent;
+                    string encryptedPassword;
+                    string thumbprint;
+                    string endpoint = GetEndpointFromHostname(sac.Hostname);
                     string location = GetStorageAccountLocation(sac.Name, out storageAccountPresent);
-                    string hostname = sac.Hostname;
-                    string endpoint = hostname.Substring(hostname.IndexOf('.') + 1);
-                    if (!storageAccountPresent || !ValidStorageAccountCred(sac.Name, sac.Password, endpoint))
+                    if (!storageAccountPresent 
+                        || !ValidateAndEncryptStorageCred(sac.Name, sac.Password, endpoint, out encryptedPassword, out thumbprint))
                     {
-                        WriteVerbose(Resources.StorageCredentialVerificationFailureMessage);
                         return;
                     }
-                    WriteVerbose(Resources.StorageCredentialVerificationSuccessMessage);
-
-                    string encryptedPassword = null;
-                    WriteVerbose(Resources.EncryptionInProgressMessage);
-                    storSimpleCryptoManager.EncryptSecretWithRakPub(sac.Password, out encryptedPassword);
-
+                    
                     sac.Password = encryptedPassword;
-                    sac.PasswordEncryptionCertThumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint();
+                    sac.PasswordEncryptionCertThumbprint = thumbprint;
                     sac.Location = location;
                 }
 

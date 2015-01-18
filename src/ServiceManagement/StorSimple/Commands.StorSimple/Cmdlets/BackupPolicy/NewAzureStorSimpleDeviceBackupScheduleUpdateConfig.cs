@@ -57,60 +57,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Position = 6, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupEnabledDesc)]
         public bool Enabled { get; set; }
 
-        private ScheduleStatus scheduleStatus;
-        private DateTime StartFromDt;
-        private void ProcessParameters()
-        {
-            if (!string.IsNullOrEmpty(StartFromDateTime))
-            {
-                bool dateTimeValid = DateTime.TryParse(StartFromDateTime, out StartFromDt);
-
-                if (!dateTimeValid)
-                {
-                    throw new ArgumentException(Resources.StartFromDateForBackupNotValid);
-                }
-            }
-            else
-                StartFromDt = DateTime.Now;
-
-            scheduleStatus = Enabled ? ScheduleStatus.Enabled : ScheduleStatus.Disabled;
-            if (BackupType == "Invalid")
-            {
-                throw new ArgumentException(Resources.BackupTypeInvalid);
-            }
-
-            if (RetentionCount < 1 || RetentionCount > 64)
-            {
-                throw new ArgumentException(Resources.RetentionCountRangeInvalid);
-            }
-
-            if (RecurrenceType == "Invalid")
-            {
-                throw new ArgumentException(Resources.RecurrenceTypeInvalid);
-            }
-
-            if (RecurrenceValue <= 0)
-            {
-                throw new ArgumentException(Resources.RecurrenceValueLessThanZero);
-            }
-        }
-
         public override void ExecuteCmdlet()
         {
             try
             {
-                ProcessParameters();
-
                 BackupScheduleUpdateRequest updateScheduleObject = new BackupScheduleUpdateRequest();
                 updateScheduleObject.BackupType = (BackupType)Enum.Parse(typeof(BackupType), BackupType);
-                updateScheduleObject.Status = scheduleStatus;
+                updateScheduleObject.Status = Enabled ? ScheduleStatus.Enabled : ScheduleStatus.Disabled;
                 updateScheduleObject.RetentionCount = RetentionCount;
-                updateScheduleObject.StartTime = StartFromDt.ToString("yyyy-MM-ddTHH:mm:sszzz");
+                updateScheduleObject.StartTime = StartFromDateTime;
                 updateScheduleObject.Recurrence = new ScheduleRecurrence();
                 updateScheduleObject.Recurrence.RecurrenceType = (RecurrenceType)Enum.Parse(typeof(RecurrenceType), RecurrenceType);
                 updateScheduleObject.Recurrence.RecurrenceValue = RecurrenceValue;
                 updateScheduleObject.Id = Id;
-
+                StorSimpleClient.ValidateBackupScheduleUpdateRequest(updateScheduleObject);
                 WriteObject(updateScheduleObject);
             }
             catch (Exception exception)

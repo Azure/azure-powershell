@@ -56,20 +56,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             try
             {
                 string endpoint = string.IsNullOrEmpty(Endpoint) ? StorSimpleConstants.DefaultStorageAccountEndpoint : Endpoint;
+                
                 //validate storage account credentials
                 bool storageAccountPresent;
+                string encryptedKey;
+                string thumbprint;
                 string location = GetStorageAccountLocation(StorageAccountName, out storageAccountPresent);
-                if (!storageAccountPresent || !ValidStorageAccountCred(StorageAccountName, StorageAccountKey, endpoint))
+                if (!storageAccountPresent
+                    || !ValidateAndEncryptStorageCred(StorageAccountName, StorageAccountKey, endpoint, out encryptedKey, out thumbprint))
                 {
-                    WriteVerbose(Resources.StorageCredentialVerificationFailureMessage);
                     return;
                 }
-                WriteVerbose(Resources.StorageCredentialVerificationSuccessMessage);
-
-                string encryptedKey = null;
-                StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(StorSimpleClient);
-                WriteVerbose(Resources.EncryptionInProgressMessage);
-                storSimpleCryptoManager.EncryptSecretWithRakPub(StorageAccountKey, out encryptedKey);
 
                 var serviceConfig = new ServiceConfiguration()
                 {
@@ -84,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                 Hostname = GetHostnameFromEndpoint(endpoint),
                                 Login = StorageAccountName,
                                 Password = encryptedKey,
-                                PasswordEncryptionCertThumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint(),
+                                PasswordEncryptionCertThumbprint = thumbprint,
                                 UseSSL = UseSSL,
                                 Name = StorageAccountName,
                                 Location = location

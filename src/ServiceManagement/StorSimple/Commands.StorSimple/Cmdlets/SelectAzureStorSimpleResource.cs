@@ -27,26 +27,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsCommon.Select, "AzureStorSimpleResource"),OutputType(typeof(StorSimpleResourceContext))]
     public class SelectAzureStorSimpleResource : StorSimpleCmdletBase
     {
-        private string resourceName;
-        /// <summary>
-        /// Name of the resource that needs to be selected
-        /// </summary>
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string ResourceName
-        {
-            get { return this.resourceName; }
-            set { this.resourceName = value; }
-        }
-
-        private string registrationKey;
+        public string ResourceName { get; set; }
 
         [Parameter(Mandatory = false, Position = 2, ValueFromPipelineByPropertyName = true)]
-        public string RegistrationKey
-        {
-            get { return this.registrationKey; }
-            set { this.registrationKey = value; }
-        }
+        [ValidateNotNullOrEmpty]
+        public string RegistrationKey { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -62,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             try
             {
                 this.WriteVerbose(Resources.ResourceContextInitializeMessage);
-                var resCred = StorSimpleClient.GetResourceDetails(resourceName);
+                var resCred = StorSimpleClient.GetResourceDetails(ResourceName);
                 if (resCred == null)
                 {
                     this.WriteVerbose(Resources.NotFoundMessageResource);

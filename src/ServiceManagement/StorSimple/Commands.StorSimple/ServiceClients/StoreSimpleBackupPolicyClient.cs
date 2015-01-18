@@ -12,8 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
@@ -21,12 +24,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
     {
         public BackupPolicyListResponse GetAllBackupPolicies(string deviceId)
         {
-            return this.GetStorSimpleClient().BackupPolicy.List(deviceId, GetCustomRequestHeaders());
+            var backupPolicyList = this.GetStorSimpleClient().BackupPolicy.List(deviceId, GetCustomRequestHeaders());
+            backupPolicyList.BackupPolicies = CorrectLastBackupForNewPolicy(backupPolicyList.BackupPolicies);
+            return backupPolicyList;
         }
 
         public GetBackupPolicyDetailsResponse GetBackupPolicyByName(string deviceId, string backupPolicyName)
         {
-            return this.GetStorSimpleClient().BackupPolicy.GetBackupPolicyDetailsByName(deviceId, backupPolicyName, GetCustomRequestHeaders());
+            var backupPolicyDetail = this.GetStorSimpleClient().BackupPolicy.GetBackupPolicyDetailsByName(deviceId, backupPolicyName, GetCustomRequestHeaders());
+            backupPolicyDetail.BackupPolicyDetails = CorrectLastBackupForNewPolicyDetail(backupPolicyDetail.BackupPolicyDetails);
+            return backupPolicyDetail;
         }
 
         public TaskStatusInfo DeleteBackupPolicy(string deviceid, string backupPolicyId)
@@ -57,6 +64,102 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public TaskResponse UpdateBackupPolicyAsync(string deviceId, string policyId, UpdateBackupPolicyConfig updatepolicyConfig)
         {
             return GetStorSimpleClient().BackupPolicy.BeginUpdatingBackupPolicy(deviceId, policyId, updatepolicyConfig, GetCustomRequestHeaders());
+        }
+
+        /// <summary>
+        /// for a new backuppolicy for which no backup has yet been taken,service returns last backup time as 1/1/2010 which is misleading
+        /// we are setting it to null
+        /// </summary>
+        /// <param name="backupPolicyList"></param>
+        /// <returns></returns>
+        private IList<BackupPolicy> CorrectLastBackupForNewPolicy(IList<BackupPolicy> backupPolicyList)
+        {
+            if (backupPolicyList != null)
+            {
+                for (int i = 0; i < backupPolicyList.Count; ++i)
+                {
+                    if (backupPolicyList[i].LastBackup.Value.Year == 2010
+                        && backupPolicyList[i].LastBackup.Value.Month == 1
+                        && backupPolicyList[i].LastBackup.Value.Day == 1)
+                    {
+                        //this means that for this policy no backup has yet been taken
+                        //so the service returns 1/1/2010 which is incorrect. hence we are correcting it here
+                        backupPolicyList[i].LastBackup = null;
+                    }
+                }
+            }
+            return backupPolicyList;
+        }
+
+        /// <summary>
+        /// for a new backuppolicy for which no backup has yet been taken,service returns last backup time as 1/1/2010 which is misleading
+        /// we are setting it to null
+        /// </summary>
+        /// <param name="backupPolicyList"></param>
+        /// <returns></returns>
+        private BackupPolicyDetails CorrectLastBackupForNewPolicyDetail(BackupPolicyDetails backupPolicyDetail)
+        {
+            if (backupPolicyDetail != null && backupPolicyDetail.LastBackup != null)
+            {
+                if (backupPolicyDetail.LastBackup.Value.Year == 2010
+                    && backupPolicyDetail.LastBackup.Value.Month == 1
+                    && backupPolicyDetail.LastBackup.Value.Day == 1)
+                {
+                    //this means that for this policy no backup has yet been taken
+                    //so the service returns 1/1/2010 which is incorrect. hence we are correcting it here
+                    backupPolicyDetail.LastBackup = null;
+                }
+
+            }
+            return backupPolicyDetail;
+        }
+
+        public void ValidateBackupScheduleBase(BackupScheduleBase newScheduleObject)
+        {
+            newScheduleObject.StartTime = GetValidStartTime(newScheduleObject.StartTime);
+            ValidateRetentionCount(newScheduleObject.RetentionCount);
+            ValidateRecurrenceValue(newScheduleObject.Recurrence.RecurrenceValue);
+        }
+
+        public void ValidateBackupScheduleUpdateRequest(BackupScheduleUpdateRequest updateScheduleObject)
+        {
+            updateScheduleObject.StartTime = GetValidStartTime(updateScheduleObject.StartTime);
+            ValidateRetentionCount(updateScheduleObject.RetentionCount);
+            ValidateRecurrenceValue(updateScheduleObject.Recurrence.RecurrenceValue);
+        }
+
+        private string GetValidStartTime(string startTime)
+        {
+            DateTime StartFromDt;
+            if (!string.IsNullOrEmpty(startTime))
+            {
+                bool dateTimeValid = DateTime.TryParse(startTime, out StartFromDt);
+
+                if (!dateTimeValid)
+                {
+                    throw new ArgumentException(Resources.StartFromDateForBackupNotValid);
+                }
+            }
+            else
+                StartFromDt = DateTime.Now;
+
+            return StartFromDt.ToString("yyyy-MM-ddTHH:mm:sszzz");
+        }
+
+        private void ValidateRetentionCount(long retentionCount)
+        {
+            if (retentionCount < 1 || retentionCount > 64)
+            {
+                throw new ArgumentException(Resources.RetentionCountRangeInvalid);
+            }
+        }
+
+        private void ValidateRecurrenceValue(int recurrenceValue)
+        {
+            if (recurrenceValue <= 0)
+            {
+                throw new ArgumentException(Resources.RecurrenceValueLessThanZero);
+            }
         }
     }
 }

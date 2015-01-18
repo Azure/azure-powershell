@@ -148,6 +148,9 @@
     <Compile Include="Exceptions\StorSimpleSecretManagementException.cs" />
     <Compile Include="Exceptions\ResourceContextNotFoundException.cs" />
     <Compile Include="Exceptions\ResourceNotFoundException.cs" />
+    <Compile Include="Library\CryptoHelper.cs" />
+    <Compile Include="Library\IKeyManager.cs" />
+    <Compile Include="Library\LocalKeyStoreManager.cs" />
     <Compile Include="Models\TaskReport.cs" />
     <Compile Include="Models\PSContracts.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -172,10 +175,6 @@
     <Compile Include="Encryption\StorSimpleCryptoManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Commands.StorSimple.Library\Commands.StorSimple.Library.csproj">
-      <Project>{b0e9c13f-4e03-4df0-91fa-9a8c76e7422d}</Project>
-      <Name>Commands.StorSimple.Library</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>

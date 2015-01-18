@@ -51,7 +51,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     BackupPolicyListResponse backupPolicyList = null;
                     backupPolicyList = StorSimpleClient.GetAllBackupPolicies(deviceId);
-                    backupPolicyList.BackupPolicies = CorrectLastBackupForNewPolicy(backupPolicyList.BackupPolicies);
                     WriteObject(backupPolicyList.BackupPolicies);
                     WriteVerbose(string.Format(Resources.BackupPolicyGet_StatusMessage, backupPolicyList.BackupPolicies.Count, backupPolicyList.BackupPolicies.Count > 1 ? "ies" : "y"));
                 }
@@ -59,7 +58,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     GetBackupPolicyDetailsResponse backupPolicyDetail = null;
                     backupPolicyDetail = StorSimpleClient.GetBackupPolicyByName(deviceId, BackupPolicyName);
-                    backupPolicyDetail.BackupPolicyDetails = CorrectLastBackupForNewPolicyDetail(backupPolicyDetail.BackupPolicyDetails);
                     if (string.IsNullOrEmpty(backupPolicyDetail.BackupPolicyDetails.InstanceId))
                         WriteVerbose(string.Format(Resources.NoBackupPolicyWithGivenNameFound,BackupPolicyName,DeviceName));
                     else
@@ -87,53 +85,5 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
             return true;
         }
-
-          /// <summary>
-          /// for a new backuppolicy for which no backup has yet been taken,service returns last backup time as 1/1/2010 which is misleading
-          /// we are setting it to null
-          /// </summary>
-          /// <param name="backupPolicyList"></param>
-          /// <returns></returns>
-          private IList<BackupPolicy> CorrectLastBackupForNewPolicy(IList<BackupPolicy> backupPolicyList)
-          {
-              if (backupPolicyList != null)
-              {
-                  for (int i = 0; i < backupPolicyList.Count; ++i)
-                  {
-                      if (backupPolicyList[i].LastBackup.Value.Year == 2010
-                          && backupPolicyList[i].LastBackup.Value.Month == 1
-                          && backupPolicyList[i].LastBackup.Value.Day == 1)
-                      {
-                          //this means that for this policy no backup has yet been taken
-                          //so the service returns 1/1/2010 which is incorrect. hence we are correcting it here
-                          backupPolicyList[i].LastBackup = null;
-                      }
-                  }
-              }
-              return backupPolicyList;
-          }
-
-          /// <summary>
-          /// for a new backuppolicy for which no backup has yet been taken,service returns last backup time as 1/1/2010 which is misleading
-          /// we are setting it to null
-          /// </summary>
-          /// <param name="backupPolicyList"></param>
-          /// <returns></returns>
-          private BackupPolicyDetails CorrectLastBackupForNewPolicyDetail(BackupPolicyDetails backupPolicyDetail)
-          {
-              if (backupPolicyDetail != null && backupPolicyDetail.LastBackup != null)
-              {
-                  if (backupPolicyDetail.LastBackup.Value.Year == 2010
-                      && backupPolicyDetail.LastBackup.Value.Month == 1
-                      && backupPolicyDetail.LastBackup.Value.Day == 1)
-                  {
-                      //this means that for this policy no backup has yet been taken
-                      //so the service returns 1/1/2010 which is incorrect. hence we are correcting it here
-                      backupPolicyDetail.LastBackup = null;
-                  }
-
-              }
-              return backupPolicyDetail;
-          }
     }
-    }
+}

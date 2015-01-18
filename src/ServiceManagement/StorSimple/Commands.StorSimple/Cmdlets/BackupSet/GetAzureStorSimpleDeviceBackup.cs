@@ -55,9 +55,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         public string To { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageFirstDesc)]
+        [ValidateRange(0, Int32.MaxValue)]
         public int? First { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageSkipDesc)]
+        [ValidateRange(0, Int32.MaxValue)]
         public int? Skip { get; set; }
 
         private string deviceId = null;
@@ -75,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 GetBackupResponse backupList = null;
                 backupList = StorSimpleClient.GetAllBackups(deviceId, filterType, isAllSelected, IdToPass,
                     FromDateTime.ToString(),
-                    ToDateTime.ToString(), Skip.ToString(), First ==null? null: First.ToString());
+                    ToDateTime.ToString(), Skip == null ? "0" : Skip.ToString(), First == null ? null : First.ToString());
                 WriteObject(backupList.BackupSetsList, true);
                 WriteVerbose(string.Format(Resources.BackupsReturnedCount, backupList.BackupSetsList.Count));
                 if (backupList.NextPageUri != null 
@@ -115,18 +117,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 WriteObject(null);
                 return false;
             }
-            if(First<0)
-                throw new ArgumentException(Resources.FirstParameterInvalidMessage);
-            if (Skip  < 0)
-                throw new ArgumentException(Resources.SkipParameterInvalidMessage);
-            if (Skip == null)
-                Skip = 0;
+
             if (string.IsNullOrEmpty(From))
                 FromDateTime = DateTime.MinValue;
             else
             {
                 bool result = DateTime.TryParse(From, out FromDateTime);
-                if(!result)
+                if (!result)
                     throw new ArgumentException(Resources.InvalidFromMessage);
             }
             if (string.IsNullOrEmpty(To))

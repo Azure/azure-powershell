@@ -40,12 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         public BackupPolicyDetails BackupPolicy { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageForce)]
-        public SwitchParameter Force
-        {
-            get { return force; }
-            set { force = value; }
-        }
-        private bool force;
+        public SwitchParameter Force { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
