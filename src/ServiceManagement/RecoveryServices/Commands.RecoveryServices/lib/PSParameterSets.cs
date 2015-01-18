@@ -35,6 +35,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string ByPEObject = "ByPEObject";
 
         /// <summary>
+        /// When only RP Object with E2A provider is passed to the command.
+        /// </summary>
+        internal const string ByRPObjectE2A = "ByRPObjectE2A";
+
+        /// <summary>
+        /// When only PE Object with E2A provider is passed to the failback command.
+        /// </summary>
+        internal const string ByPEObjectE2AFailback = "ByPEObjectE2AFailback";
+
+        /// <summary>
+        /// When only RP Object with E2A provider is passed to the failback command.
+        /// </summary>
+        internal const string ByRPObjectE2AFailback = "ByRPObjectE2AFailback";
+
+        /// <summary>
+        /// When only PE Object with E2A provider is passed to the command.
+        /// </summary>
+        internal const string ByPEObjectE2A = "ByPEObjectE2A";
+
+        /// <summary>
+        /// When only PE Object with E2A provider is passed to the enable protection command.
+        /// </summary>
+        internal const string ByPEObjectE2AEnable = "ByPEObjectE2AEnable";
+
+        /// <summary>
         /// When only PE Object is passed along with logical network ID to the command.
         /// </summary>
         internal const string ByPEObjectWithLogicalNetworkID = "ByPEObjectWithLogicalNetworkID";

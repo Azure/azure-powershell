@@ -13,11 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.WindowsAzure;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -53,6 +51,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string RpId { get; set; }
 
         /// <summary>
+        /// Gets or sets ID of the Recovery Plan.
+        /// </summary>
+        public ASRNetwork Network { get; set; }
+
+        /// <summary>
         /// Gets or sets Recovery Plan object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
@@ -67,8 +70,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
         [ValidateSet(
-          PSRecoveryServicesClient.PrimaryToRecovery,
-          PSRecoveryServicesClient.RecoveryToPrimary)]
+          Constants.PrimaryToRecovery,
+          Constants.RecoveryToPrimary)]
         public string Direction { get; set; }
 
         /// <summary>
@@ -175,11 +178,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void StartRpTestFailover()
         {
-            RpTestFailoverRequest recoveryPlanTestFailoverRequest = new RpTestFailoverRequest();
-            recoveryPlanTestFailoverRequest.FailoverDirection = this.Direction;
+            RpTestFailoverRequest request = new RpTestFailoverRequest();
+
+            if (this.Network != null)
+            {
+                request.NetworkID = this.Network.ID;
+                request.NetworkType = "UseVMNetworkTypeForTestFailover";
+            }
+            else
+            {
+                request.NetworkID = this.networkId;
+            }
+
+            if (this.RecoveryPlan == null)
+            {
+                var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(
+                    this.RpId);
+                this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
+
+                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider);
+            }
+
+            request.ReplicationProviderSettings = string.Empty;
+
+            if (this.RecoveryPlan.ReplicationProvider == Constants.HyperVReplicaAzure)
+            {
+                request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
+                if (this.Direction == Constants.PrimaryToRecovery)
+                {
+                    var blob = new AzureFailoverInput();
+                    blob.VaultLocation = this.GetCurrentValutLocation();
+                    request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
+                }
+            }
+
+            request.FailoverDirection = this.Direction;
+
+            if (this.Network != null)
+            {
+                request.NetworkID = this.Network.ID;
+                this.networkType = "UseVMNetworkTypeForTestFailover";
+            }
+            else
+            {
+                request.NetworkID = this.networkId;
+            }
+
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryTestFailover(
                 this.RpId, 
-                recoveryPlanTestFailoverRequest);
+                request);
 
             this.WriteJob(this.jobResponse.Job);
 
@@ -194,18 +241,51 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void StartPETestFailover()
         {
-            var tfoReqeust = new TestFailoverRequest();
-            tfoReqeust.NetworkID = this.networkId;
-            tfoReqeust.FailoverDirection = this.Direction;
-            tfoReqeust.NetworkType = this.networkType;
-            tfoReqeust.ReplicationProvider = string.Empty;
-            tfoReqeust.ReplicationProviderSettings = string.Empty;
+            var request = new TestFailoverRequest();
+
+            if (this.ProtectionEntity == null)
+            {
+                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                    this.ProtectionContainerId,
+                    this.ProtectionEntityId);
+                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+
+                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+            }
+
+            request.ReplicationProviderSettings = string.Empty;
+
+            if (this.ProtectionEntity.ReplicationProvider == Constants.HyperVReplicaAzure)
+            {
+                request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
+                if (this.Direction == Constants.PrimaryToRecovery)
+                {
+                    var blob = new AzureFailoverInput();
+                    blob.VaultLocation = this.GetCurrentValutLocation();
+                    request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
+                }
+            }
+
+            request.FailoverDirection = this.Direction;
+
+            if (this.Network != null)
+            {
+                request.NetworkID = this.Network.ID;
+                this.networkType = "UseVMNetworkTypeForTestFailover";
+            }
+            else
+            {
+                request.NetworkID = this.networkId;
+            }
+
+            request.FailoverDirection = this.Direction;
+            request.NetworkType = this.networkType;
 
             this.jobResponse =
                 RecoveryServicesClient.StartAzureSiteRecoveryTestFailover(
                 this.ProtectionContainerId,
                 this.ProtectionEntityId,
-                tfoReqeust);
+                request);
             this.WriteJob(this.jobResponse.Job);
 
             if (this.WaitForCompletion.IsPresent)

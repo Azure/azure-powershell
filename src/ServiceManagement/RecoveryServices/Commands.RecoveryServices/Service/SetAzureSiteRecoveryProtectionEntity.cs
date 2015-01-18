@@ -13,11 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.WindowsAzure;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -63,8 +61,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Protection Entity Object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AEnable, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionEntity ProtectionEntity { get; set; }
+
+        /// <summary>
+        /// Gets or sets Protection profile.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AEnable, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRProtectionProfile ProtectionProfile { get; set; }
 
         /// <summary>
         /// Gets or sets Protection to set, either enable or disable.
@@ -72,9 +78,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            PSRecoveryServicesClient.EnableProtection,
-            PSRecoveryServicesClient.DisableProtection)]
+            Constants.EnableProtection,
+            Constants.DisableProtection)]
         public string Protection { get; set; }
+
+        /// <summary>
+        /// Gets or sets OS disk name.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AEnable)]
+        [ValidateNotNullOrEmpty]
+        public string OSDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets OS.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AEnable)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.OSWindows,
+            Constants.OSLinux)]
+        public string OS { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. On passing, command waits till completion.
@@ -97,6 +120,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByPEObject:
+                case ASRParameterSets.ByPEObjectE2AEnable:
                     this.Id = this.ProtectionEntity.ID;
                     this.ProtectionContainerId = this.ProtectionEntity.ProtectionContainerId;
                     this.targetNameOrId = this.ProtectionEntity.Name;
@@ -116,14 +140,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             if (this.alreadyEnabled &&
-                this.Protection.Equals(PSRecoveryServicesClient.EnableProtection, StringComparison.OrdinalIgnoreCase))
+                this.Protection.Equals(Constants.EnableProtection, StringComparison.OrdinalIgnoreCase))
             {
                 throw new ArgumentException(
                     Properties.Resources.ProtectionEntityAlreadyEnabled,
                     this.targetNameOrId);
             }
             else if (!this.alreadyEnabled &&
-                this.Protection.Equals(PSRecoveryServicesClient.DisableProtection, StringComparison.OrdinalIgnoreCase))
+                this.Protection.Equals(Constants.DisableProtection, StringComparison.OrdinalIgnoreCase))
             {
                 throw new ArgumentException(
                     Properties.Resources.ProtectionEntityAlreadyDisabled,
@@ -131,7 +155,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             this.ConfirmAction(
-                this.Force.IsPresent || 0 != string.CompareOrdinal(this.Protection, PSRecoveryServicesClient.DisableProtection),
+                this.Force.IsPresent || 0 != string.CompareOrdinal(this.Protection, Constants.DisableProtection),
                 string.Format(Properties.Resources.DisableProtectionWarning, this.targetNameOrId),
                 string.Format(Properties.Resources.DisableProtectionWhatIfMessage, this.Protection),
                 this.targetNameOrId,
@@ -139,11 +163,65 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     {
                         try
                         {
-                            this.jobResponse =
-                                RecoveryServicesClient.SetProtectionOnProtectionEntity(
-                                this.ProtectionContainerId,
-                                this.Id,
-                                this.Protection);
+                            if (this.Protection == Constants.EnableProtection)
+                            {
+                                var input = new EnableProtectionInput();
+
+                                if (this.ProtectionEntity == null)
+                                {
+                                    var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                                        this.ProtectionContainerId,
+                                        this.Id);
+                                    this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+
+                                    this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+                                }
+
+                                if (this.ProtectionProfile.ReplicationType == Constants.HyperVReplicaAzure)
+                                {
+                                    input.ProtectionProfileId = this.ProtectionProfile.ID;
+                                    AzureEnableProtectionInput azureInput = new AzureEnableProtectionInput();
+                                    azureInput.HvHostVmId = this.ProtectionEntity.FabricObjectId;
+                                    azureInput.VmName = this.ProtectionEntity.Name;
+
+                                    azureInput.OSType = this.OS;
+                                    if (string.IsNullOrWhiteSpace(this.OS))
+                                    {
+                                        azureInput.OSType = this.ProtectionEntity.OS;
+                                    }
+
+                                    if (string.IsNullOrWhiteSpace(this.OSDiskName))
+                                    {
+                                        azureInput.VHDId = this.ProtectionEntity.OSDiskId;
+                                    }
+                                    else
+                                    {
+                                        foreach (var disk in this.ProtectionEntity.Disks)
+                                        {
+                                            if (disk.Name == this.OSDiskName)
+                                            {
+                                                azureInput.VHDId = disk.Id;
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                    input.ReplicationProviderInput = DataContractUtils.Serialize<AzureEnableProtectionInput>(azureInput);
+                                }
+
+                                this.jobResponse =
+                                    RecoveryServicesClient.EnableProtection(
+                                    this.ProtectionContainerId,
+                                    this.Id,
+                                    input);
+                            }
+                            else
+                            {
+                                this.jobResponse =
+                                    RecoveryServicesClient.DisbleProtection(
+                                    this.ProtectionContainerId,
+                                    this.Id);
+                            }
 
                             this.WriteJob(this.jobResponse.Job);
 
