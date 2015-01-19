@@ -113,6 +113,14 @@
     <Xunit.Runner.MSBuild.xunit Assemblies="$(_RecoveryServicesTestAssembly)" Html="$(TestOutputDirectory)\RecoveryServices.xunit.dll.html" Verbose="false"
       ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
+  
+  <Target Name="TestStorSimple">
+    <PropertyGroup>
+      <_StorSimpleTestAssembly>.\src\ServiceManagement\StorSimple\Commands.StorSimple.Test\bin\Debug\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll</_StorSimpleTestAssembly>
+    </PropertyGroup>
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(_StorSimpleTestAssembly)" Html="$(TestOutputDirectory)\StorSimple.xunit.dll.html" Verbose="false"
+      ExcludeTraits="$(XUnitExcludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+  </Target>
 
   <!-- Run the scenario tests -->
   <Target Name="ScenarioTest" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
