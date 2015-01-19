@@ -376,7 +376,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return hostname.Substring(hostname.IndexOf('.') + 1);
         }
 
-        internal Exception GetGenericException(String exceptionMessage, Exception innerException)
+        internal Exception GetGenericException(string exceptionMessage, Exception innerException)
         {
             return new Exception(exceptionMessage, innerException);
         }

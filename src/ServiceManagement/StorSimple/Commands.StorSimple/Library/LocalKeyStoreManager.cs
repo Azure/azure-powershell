@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library
         #region ctor
         public LocalKeyStoreManager(string keyStorefilePath, bool overwriteFileIfExists = true)
         {
-            if (String.IsNullOrEmpty(keyStorefilePath))
+            if (string.IsNullOrEmpty(keyStorefilePath))
             {
                 throw new ArgumentNullException("keyStorefilePath");
             }
@@ -69,9 +69,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library
         /// <param name="keyValue">the string that needs to be encrypted</param>
         /// <param name="fileName">the filename that can be used</param>
         /// <returns></returns>
-        public KeyStoreOperationStatus PersistKey(String keyValue)
+        public KeyStoreOperationStatus PersistKey(string keyValue)
         {
-            if (String.IsNullOrEmpty(keyValue))
+            if (string.IsNullOrEmpty(keyValue))
                 return KeyStoreOperationStatus.PERSIST_EMPTY_KEY;
 
             if (File.Exists(KeyStorefilePath) && !OverwriteFileIfExists)
