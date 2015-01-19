@@ -151,7 +151,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid arguments - CIK is NULL.
+        ///   Looks up a localized string similar to Invalid value for Registration Key. CIK could not be retrieved from Registration Key. Please provide the value as such from the portal!.
         /// </summary>
         internal static string CIKInvalid {
             get {

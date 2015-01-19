@@ -24,7 +24,6 @@ using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Net;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
 using Microsoft.WindowsAzure.Commands.StorSimple.Models;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
@@ -194,15 +193,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     errorRecord = new ErrorRecord(argEx, string.Empty, ErrorCategory.InvalidData, null);
                     break;
                 }
-                else if (exType == typeof(StorSimpleSecretManagementException))
-                {
-                    var keyManagerEx = ex as StorSimpleSecretManagementException;
-                    if (keyManagerEx == null)
-                        break;
-                    errorRecord = new ErrorRecord(keyManagerEx, string.Empty, ErrorCategory.SecurityError, null);
-                    break;
-                }
-
                 ex = ex.InnerException;
             } while (ex != null);
 
@@ -227,7 +217,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         {
             if (!CheckResourceContextPresent())
             {
-                throw new ResourceContextNotFoundException();
+                throw GetGenericException(Resources.ResourceContextNotSetMessage, null);
             }
         }
 
@@ -373,7 +363,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     data0Configured = true;
             }
             if (!data0Configured)
-                throw new DeviceNotYetConfiguredException();
+                throw GetGenericException(Resources.DeviceNotConfiguredMessage, null);
         }
 
         internal string GetHostnameFromEndpoint(string endpoint)
@@ -384,6 +374,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         internal string GetEndpointFromHostname(string hostname)
         {
             return hostname.Substring(hostname.IndexOf('.') + 1);
+        }
+
+        internal Exception GetGenericException(String exceptionMessage, Exception innerException)
+        {
+            return new Exception(exceptionMessage, innerException);
         }
     }
 }

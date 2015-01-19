@@ -142,12 +142,6 @@
     <Compile Include="Cmdlets\Volume\SetAzureStorSimpleDeviceVolume.cs" />
     <Compile Include="Encryption\EncryptionCmdLetHelper.cs" />
     <Compile Include="Encryption\StorSimpleKeyManager.cs" />
-    <Compile Include="Exceptions\DeviceNotYetConfiguredException.cs" />
-    <Compile Include="Exceptions\NoDeviceRegisteredException.cs" />
-    <Compile Include="Exceptions\RegistrationKeyException.cs" />
-    <Compile Include="Exceptions\StorSimpleSecretManagementException.cs" />
-    <Compile Include="Exceptions\ResourceContextNotFoundException.cs" />
-    <Compile Include="Exceptions\ResourceNotFoundException.cs" />
     <Compile Include="Library\CryptoHelper.cs" />
     <Compile Include="Library\IKeyManager.cs" />
     <Compile Include="Library\LocalKeyStoreManager.cs" />

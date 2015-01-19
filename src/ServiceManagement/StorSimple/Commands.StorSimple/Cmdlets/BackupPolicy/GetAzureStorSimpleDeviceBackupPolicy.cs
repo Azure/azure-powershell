@@ -20,7 +20,6 @@ using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
-using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {

@@ -17,7 +17,6 @@ using System.Linq;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -50,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (resCred == null)
                 {
                     this.WriteVerbose(Resources.NotFoundMessageResource);
-                    throw new StorSimpleResourceNotFoundException();
+                    throw GetGenericException(Resources.NotFoundMessageResource, null);
                 }
                 
                 StorSimpleClient.SetResourceContext(resCred);
@@ -58,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (!deviceInfos.Any())
                 {
                     StorSimpleClient.ResetResourceContext();
-                    throw new NoDeviceRegisteredException();
+                    throw base.GetGenericException(Resources.DeviceNotRegisteredMessage, null);
                 }
 
                 //now check for the key

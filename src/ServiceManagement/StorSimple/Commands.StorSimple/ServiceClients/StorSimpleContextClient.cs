@@ -16,7 +16,6 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
-using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.Scheduler;
 
@@ -133,7 +132,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             }
             catch (Exception ex)
             {
-                throw new RegistrationKeyException(Resources.IncorrectFormatInRegistrationKey, ex);
+                throw new Exception(Resources.IncorrectFormatInRegistrationKey, ex);
             }
         }
     }

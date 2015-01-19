@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.StorSimple.Exceptions;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using System;
 using System.Management.Automation;
@@ -25,20 +24,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureStorSimpleResourceContext"),OutputType(typeof(StorSimpleResourceContext))]
     public class GetAzureStorSimpleResourceContext : StorSimpleCmdletBase
     {
-        //suppress resource check for this commandlet
-        public GetAzureStorSimpleResourceContext() : base(false) { }
-
         public override void ExecuteCmdlet()
         {
             try
             {
                 var currentContext = StorSimpleClient.GetResourceContext();
-                if(currentContext == null)
-                {
-                    ResourceContextNotFoundException notFoundEx = new ResourceContextNotFoundException();
-                    throw notFoundEx;
-                }
-
                 this.WriteObject(currentContext);
                 this.WriteVerbose(string.Format(Resources.ResourceContextFound,currentContext.ResourceName, currentContext.ResourceId));
             }
