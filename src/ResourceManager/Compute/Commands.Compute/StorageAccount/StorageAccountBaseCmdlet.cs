@@ -14,7 +14,7 @@
 
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Srp;
+using Microsoft.Azure.Management.Storage;
 using System;
 
 namespace Microsoft.Azure.Commands.Compute

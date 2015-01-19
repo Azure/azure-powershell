@@ -21,9 +21,8 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Monitoring.Events;
-using Microsoft.WindowsAzure.Testing;
 using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Test;
 
 namespace Commands.NetworkResourceProvider.Test
 {
@@ -38,7 +37,7 @@ namespace Commands.NetworkResourceProvider.Test
 
         public GalleryClient GalleryClient { get; private set; }
 
-        public EventsClient EventsClient { get; private set; }
+        //public EventsClient EventsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -129,7 +128,7 @@ namespace Commands.NetworkResourceProvider.Test
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
             GalleryClient = GetGalleryClient();
-            EventsClient = GetEventsClient();
+            //EventsClient = GetEventsClient();
             NetworkResourceProviderClient = GetNetworkResourceProviderClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
 
@@ -137,7 +136,7 @@ namespace Commands.NetworkResourceProvider.Test
                 ResourceManagementClient,
                 SubscriptionClient,
                 GalleryClient,
-                EventsClient,
+                //EventsClient,
                 AuthorizationManagementClient,
                 NetworkResourceProviderClient);
         }
@@ -166,9 +165,9 @@ namespace Commands.NetworkResourceProvider.Test
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
-        private EventsClient GetEventsClient()
-        {
-            return TestBase.GetServiceClient<EventsClient>(this.csmTestFactory);
-        }
+        //private EventsClient GetEventsClient()
+        //{
+        //    return TestBase.GetServiceClient<EventsClient>(this.csmTestFactory);
+        //}
     }
 }
