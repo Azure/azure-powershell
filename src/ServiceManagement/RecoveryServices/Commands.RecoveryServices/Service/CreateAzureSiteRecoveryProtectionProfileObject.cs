@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Creates Azure Site Recovery Protection Profile object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSiteRecoveryProtectionProfile", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.New, "AzureSiteRecoveryProtectionProfile", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
     [OutputType(typeof(ASRProtectionProfile))]
     public class CreateAzureSiteRecoveryProtectionProfileObject : RecoveryServicesCmdletBase
     {
         #region Parameters
 
         /// <summary>
-        /// Gets or sets Replication Type of the Protection Profile.
+        /// Gets or sets Replication Provider of the Protection Profile.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets a value for Replication Method of the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             "Online",
@@ -66,42 +67,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Replication Frequency of the Protection Profile in seconds.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public int ReplicationFrequencySecond { get; set; }
+        public int ReplicationFrequencyInSeconds { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Points of the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public int RecoveryPoints { get; set; }
 
         /// <summary>
         /// Gets or sets Application Consistent Snapshot Frequency of the Protection Profile in hours.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether Compression needs to be Enabled on the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public bool CompressionEnabled { get; set; }
 
         /// <summary>
         /// Gets or sets the Replication Port of the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public int ReplicationPort { get; set; }
 
         /// <summary>
         /// Gets or sets Replication Start time of the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public int ReplicationStartTime { get; set; }
 
@@ -109,7 +116,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets a value indicating whether Replica should be Deleted on 
         /// disabling protection of a protection entity protected by the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public bool AllowReplicaDeletion { get; set; }
 
@@ -165,7 +173,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 ReplicationMethod = this.ReplicationMethod,
                 RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                 RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
-                ReplicationFrequencySecond = this.ReplicationFrequencySecond,
+                ReplicationFrequencySecond = this.ReplicationFrequencyInSeconds,
                 RecoveryPoints = this.RecoveryPoints,
                 ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
                 CompressionEnabled = this.CompressionEnabled,
@@ -188,7 +196,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 ReplicationMethod = this.ReplicationMethod,
                 RecoveryAzureSubscription = null,
                 RecoveryAzureStorageAccountName = null,
-                ReplicationFrequencySecond = this.ReplicationFrequencySecond,
+                ReplicationFrequencySecond = this.ReplicationFrequencyInSeconds,
                 RecoveryPoints = this.RecoveryPoints,
                 ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
                 CompressionEnabled = this.CompressionEnabled,
