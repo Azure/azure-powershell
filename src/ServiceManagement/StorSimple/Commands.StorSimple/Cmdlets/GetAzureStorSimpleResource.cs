@@ -31,11 +31,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceName { get; set; }
 
-        protected override void BeginProcessing()
-        {
-            //to prevent resource checking in StorSimpleCmdletbase.BeginProcessing()
-            return;
-        }
+        //suppress resource check for this commandlet
+        public GetAzureStorSimpleResource() : base(false) { }
 
         public override void ExecuteCmdlet()
         {

@@ -31,6 +31,23 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
     public class StorSimpleCmdletBase : AzurePSCmdlet
     {
+        //this property will determine whether before running the actual commandlet logic, should resource selection be verified
+        protected bool verifyResourceBeforeCmdletExecute;
+
+        /// <summary>
+        /// default constructor for most commandlets. In this case, Resource check will be verified
+        /// </summary>
+        public StorSimpleCmdletBase() : this(true) { }
+
+        /// <summary>
+        /// constructor variant if you want to suppress the resource check for your commandlet
+        /// </summary>
+        /// <param name="performResourceCheck"></param>
+        public StorSimpleCmdletBase(bool performResourceCheck):base()
+        {
+            verifyResourceBeforeCmdletExecute = performResourceCheck;
+        }
+
         private StorSimpleClient storSimpleClient;
 
         internal StorSimpleClient StorSimpleClient
@@ -200,7 +217,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            VerifyResourceContext();
+            if(verifyResourceBeforeCmdletExecute)
+                VerifyResourceContext();
         }
         /// <summary>
         /// this method verifies that a resource has been selected before this commandlet is executed

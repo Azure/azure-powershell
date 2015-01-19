@@ -35,11 +35,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string RegistrationKey { get; set; }
 
-        protected override void BeginProcessing()
-        {
-            //we dont have to verify that resource is selected
-            return;
-        }
+        //suppress resource check for this commandlet
+        public SelectAzureStorSimpleResource() : base(false) { }
 
         /// <summary>
         /// ProcessRecord of the command.
