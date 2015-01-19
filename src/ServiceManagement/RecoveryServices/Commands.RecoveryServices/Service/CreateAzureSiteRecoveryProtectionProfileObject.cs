@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public int ReplicationStartTime { get; set; }
+        public TimeSpan? ReplicationStartTime { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether Replica should be Deleted on 
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 ReplicationMethod = this.ReplicationMethod,
                 RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                 RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
-                ReplicationFrequencySecond = this.ReplicationFrequencyInSeconds,
+                ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
                 RecoveryPoints = this.RecoveryPoints,
                 ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
                 CompressionEnabled = this.CompressionEnabled,
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 ReplicationMethod = this.ReplicationMethod,
                 RecoveryAzureSubscription = null,
                 RecoveryAzureStorageAccountName = null,
-                ReplicationFrequencySecond = this.ReplicationFrequencyInSeconds,
+                ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
                 RecoveryPoints = this.RecoveryPoints,
                 ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
                 CompressionEnabled = this.CompressionEnabled,
