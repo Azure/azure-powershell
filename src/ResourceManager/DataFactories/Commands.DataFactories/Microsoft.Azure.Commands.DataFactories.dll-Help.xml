@@ -78,7 +78,7 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Collections.Generic.List`1[[Microsoft.WindowsAzure.Commands.Utilities.PSDataFactory, Microsoft.WindowsAzure.Commands.Utilities]] Microsoft.WindowsAzure.Commands.Utilities.PSDataFactory </maml:name>
+          <maml:name>System.Collections.Generic.List`1[[Microsoft.WindowsAzure.Commands.Utilities.PSDataFactory, Microsoft.WindowsAzure.Commands.Utilities, Version=0.8.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]] Microsoft.WindowsAzure.Commands.Utilities.PSDataFactory </maml:name>
           <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
@@ -174,23 +174,6 @@
       <command:syntaxItem>
         <maml:name>Get-AzureDataFactoryGateway</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
-          <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet gets information about logical gateways in the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the logical gateway about which to get information.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-AzureDataFactoryGateway</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>Specifies the name of an Azure resource group. This cmdlet gets information about logical gateways that belong to the group that this parameter specifies.</maml:para>
@@ -203,6 +186,23 @@
             <maml:para>Specifies the name of a data factory. This cmdlet gets information about logical gateways in the data factory that this parameter specifies.  </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the logical gateway about which to get information.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureDataFactoryGateway</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>DataFactory</maml:name>
+          <maml:description>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet gets information about logical gateways in the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -308,7 +308,6 @@
           ExpiryTime      :
 
           Name            : gateway2
-          Location        : West US
           Description     :
           Version         : 1.3.5338.1
           Status          : Offline
@@ -390,23 +389,6 @@
       <command:syntaxItem>
         <maml:name>Get-AzureDataFactoryHub</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
-          <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet gets information about hubs in the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the hub about which to get information.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-AzureDataFactoryHub</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>Specifies the name of an Azure resource group. This cmdlet gets information about hubs that belong to the group that this parameter specifies.</maml:para>
@@ -419,6 +401,23 @@
             <maml:para>Specifies the name of a data factory. This cmdlet gets information about hubs in the data factory that this parameter specifies.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the hub about which to get information.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureDataFactoryHub</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>DataFactory</maml:name>
+          <maml:description>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet gets information about hubs in the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -584,23 +583,6 @@
       <command:syntaxItem>
         <maml:name>Get-AzureDataFactoryLinkedService</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
-          <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet gets linked services that belong to the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the linked service about which to get information.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-AzureDataFactoryLinkedService</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>Specifies the name of an Azure resource group. This cmdlet gets linked services that belong to the group that this parameter specifies.</maml:para>
@@ -613,6 +595,23 @@
             <maml:para>Specifies the name of a data factory. This cmdlet gets linked services that belong to the data factory that this parameter specifies.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the linked service about which to get information.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureDataFactoryLinkedService</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>DataFactory</maml:name>
+          <maml:description>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet gets linked services that belong to the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -688,7 +687,7 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Collections.Generic.List`1[[Microsoft.WindowsAzure.Commands.Utilities.PSLinkedService, Microsoft.WindowsAzure.Commands.Utilities]] Microsoft.WindowsAzure.Commands.Utilities.PSLinkedService </maml:name>
+          <maml:name>System.Collections.Generic.List`1[[Microsoft.WindowsAzure.Commands.Utilities.PSLinkedService, Microsoft.WindowsAzure.Commands.Utilities, Version=0.8.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]] Microsoft.WindowsAzure.Commands.Utilities.PSLinkedService </maml:name>
           <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
@@ -707,6 +706,9 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt; Get-AzureDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" | Format-List
+        </dev:code>
+        <dev:code>
+          PS C:\&gt;$df = Get-AzureDataFactory -ResourceGroupName ADF -Name WikiADFGet-AzureDataFactoryLinkedService -DataFactory $df | format-list
           LinkedServiceName : HDILinkedService
           ResourceGroupName : ADF
           DataFactoryName   : WikiADF
@@ -734,6 +736,7 @@
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets information about all linked services in the data factory named WikiADF, and then passes the linked services to the Format-List cmdlet by using the pipeline operator. That Windows PowerShell cmdlet formats the results. For more information, type Get-Help Format-List.</maml:para>
+          <maml:para>You can use either one of the following ways: </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -767,9 +770,7 @@
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;$DataFactory = Get-AzureDataFactory -ResourceGroupName "ADF" -Name "ContosoFactory"
-          PS C:\&gt; Get-AzureDataFactoryLinkedService -DataFactory $DataFactory | Format-Table -Property LinkedServiceName, DataFactoryName, ResourceGroupName
-
+          PS C:\&gt;$DataFactory = Get-AzureDataFactory -ResourceGroupName "ADF" -Name "ContosoFactory"PS C:\&gt; Get-AzureDataFactoryLinkedService -DataFactory $DataFactory | Format-Table -Property LinkedServiceName, DataFactoryName, ResourceGroupName
         </dev:code>
         <dev:remarks>
           <maml:para>The first command uses the Get-AzureDataFactory cmdlet to get the data factory named ContosoFactory, and then stores it in the $DataFactory variable. </maml:para>
@@ -814,23 +815,6 @@
       <command:syntaxItem>
         <maml:name>Get-AzureDataFactoryPipeline</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
-          <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet gets pipelines that belong to the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the pipeline about which to get information.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-AzureDataFactoryPipeline</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>Specifies the name of an Azure resource group. This cmdlet gets pipelines that belong to the group that this parameter specifies.</maml:para>
@@ -848,6 +832,23 @@
           <maml:name>DataFactoryName</maml:name>
           <maml:description>
             <maml:para>Specifies the name of a data factory. This cmdlet gets pipelines that belong to the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureDataFactoryPipeline</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>DataFactory</maml:name>
+          <maml:description>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet gets pipelines that belong to the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the pipeline about which to get information.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -937,13 +938,16 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt; Get-AzureDataFactoryPipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+        </dev:code>
+        <dev:code>
+          PS C:\&gt;$df = Get-AzureDataFactory -ResourceGroupName ADF -Name WikiADFGet-AzureDataFactoryPipeline -DataFactory $df
           PipelineName        ResourceGroupName      DataFactoryName             Properties
           ------------        -----------------      ---------------             ----------
           DPWikisample        ADF                    WikiADF                     Microsoft.DataFactories.PipelineProperties
           DPTwittersample     ADF                    WikiADF                     Microsoft.DataFactories.PipelineProperties
         </dev:code>
         <dev:remarks>
-          <maml:para>This command gets information about all pipelines in the data factory named WikiADF.</maml:para>
+          <maml:para>This command gets information about all pipelines in the data factory named WikiADF. You can either one of the following example commands. The second one uses a DataFactory object as a parameter.</maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -1149,7 +1153,9 @@
           <maml:name>StartDateTime</maml:name>
           <maml:description>
             <maml:para>Specifies the start of a time period as a DateTime object. This cmdlet gets runs for the data slices that match this time period. </maml:para>
-            <maml:para>StartDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+            <maml:para>StartDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
+            <maml:para></maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
@@ -1174,7 +1180,9 @@
           <maml:name>StartDateTime</maml:name>
           <maml:description>
             <maml:para>Specifies the start of a time period as a DateTime object. This cmdlet gets runs for the data slices that match this time period. </maml:para>
-            <maml:para>StartDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+            <maml:para>StartDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
+            <maml:para></maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
@@ -1221,7 +1229,9 @@
         <maml:name>StartDateTime</maml:name>
         <maml:description>
           <maml:para>Specifies the start of a time period as a DateTime object. This cmdlet gets runs for the data slices that match this time period. </maml:para>
-          <maml:para>StartDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+          <maml:para>StartDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+          <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
+          <maml:para></maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
@@ -1276,7 +1286,8 @@
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt; Get-AzureDataFactoryRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TableName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00
+          PS C:\&gt; Get-AzureDataFactoryRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TableName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00Z
+
           Id                  : a7c4913c-9623-49b3-ae1e-3e45e2b68819
           ResourceGroupName   : ADF
           DataFactoryName     : WikiADF
@@ -1349,41 +1360,6 @@
       <command:syntaxItem>
         <maml:name>Get-AzureDataFactorySlice</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
-          <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet gets slices that belong to the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-          <maml:name>TableName</maml:name>
-          <maml:description>
-            <maml:para>
-              Specifies the name of the table for which this cmdlet gets slices.
-            </maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
-          <maml:name>StartDateTime</maml:name>
-          <maml:description>
-            <maml:para>Specifies the start of a time period as a DateTime object. This cmdlet gets slices produced after the time that this parameter specifies.</maml:para>
-            <maml:para>StartDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
-          <maml:name>EndDateTime</maml:name>
-          <maml:description>
-            <maml:para>Specifies the end of a time period as a DateTime object. This cmdlet gets slices produced before the time that this parameter specifies. For more information about DateTime objects, type Get-Help Get-Date.</maml:para>
-            <maml:para>EndDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-AzureDataFactorySlice</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>Specifies the name of an Azure resource group. This cmdlet gets slices that belong to the group that this parameter specifies.</maml:para>
@@ -1410,7 +1386,8 @@
           <maml:name>StartDateTime</maml:name>
           <maml:description>
             <maml:para>Specifies the start of a time period as a DateTime object. This cmdlet gets slices produced after the time that this parameter specifies.</maml:para>
-            <maml:para>StartDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+            <maml:para>StartDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
@@ -1418,7 +1395,45 @@
           <maml:name>EndDateTime</maml:name>
           <maml:description>
             <maml:para>Specifies the end of a time period as a DateTime object. This cmdlet gets slices produced before the time that this parameter specifies. For more information about DateTime objects, type Get-Help Get-Date.</maml:para>
-            <maml:para>EndDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+            <maml:para>EndDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureDataFactorySlice</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>DataFactory</maml:name>
+          <maml:description>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet gets slices that belong to the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+          <maml:name>TableName</maml:name>
+          <maml:description>
+            <maml:para>
+              Specifies the name of the table for which this cmdlet gets slices.
+            </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
+          <maml:name>StartDateTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies the start of a time period as a DateTime object. This cmdlet gets slices produced after the time that this parameter specifies.</maml:para>
+            <maml:para>StartDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
+          <maml:name>EndDateTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies the end of a time period as a DateTime object. This cmdlet gets slices produced before the time that this parameter specifies. For more information about DateTime objects, type Get-Help Get-Date.</maml:para>
+            <maml:para>EndDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
@@ -1453,7 +1468,8 @@
         <maml:name>EndDateTime</maml:name>
         <maml:description>
           <maml:para>Specifies the end of a time period as a DateTime object. This cmdlet gets slices produced before the time that this parameter specifies. For more information about DateTime objects, type Get-Help Get-Date.</maml:para>
-          <maml:para>EndDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+          <maml:para>EndDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+          <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
@@ -1478,7 +1494,8 @@
         <maml:name>StartDateTime</maml:name>
         <maml:description>
           <maml:para>Specifies the start of a time period as a DateTime object. This cmdlet gets slices produced after the time that this parameter specifies.</maml:para>
-          <maml:para>StartDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+          <maml:para>StartDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+          <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
@@ -1535,7 +1552,8 @@
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt; Get-AzureDataFactorySlice -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TableName "DAWikiAggregatedData" -StartDateTime 2014-05-20T10:00:00
+          PS C:\&gt; Get-AzureDataFactorySlice -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TableName "DAWikiAggregatedData" -StartDateTime 2014-05-20T10:00:00Z
+
           ResourceGroupName : ADF
           DataFactoryName   : WikiADF
           TableName         : DAWikiAggregatedData
@@ -1627,23 +1645,6 @@
       <command:syntaxItem>
         <maml:name>Get-AzureDataFactoryTable</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
-          <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet gets tables that belong to the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the table about which to get information.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-AzureDataFactoryTable</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>Specifies the name of an Azure resource group. This cmdlet gets tables that belong to the group that this parameter specifies.</maml:para>
@@ -1656,6 +1657,23 @@
             <maml:para>Specifies the name of a data factory. This cmdlet gets tables that belong to the data factory that this parameter specifies.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the table about which to get information.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureDataFactoryTable</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>DataFactory</maml:name>
+          <maml:description>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet gets tables that belong to the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -2061,37 +2079,6 @@
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryEncryptValue</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
-          <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet encrypts data for the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="">
-          <maml:name>Value</maml:name>
-          <maml:description>
-            <maml:para>Specifies the value to encrypt.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="">
-          <maml:name>GatewayName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the gateway. This cmdlet encrypts data for the gateway that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
-          <maml:name>Credential</maml:name>
-          <maml:description>
-            <maml:para>Specifies the Windows authentication credentials (user name and password) to be used. This cmdlet encrypts the credential data you specify here.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>New-AzureDataFactoryEncryptValue</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>Specifies the name of an Azure resource group. This cmdlet encrypts data for the group that this parameter specifies.</maml:para>
@@ -2125,6 +2112,51 @@
             <maml:para>Specifies the Windows authentication credentials (user name and password) to be used. This cmdlet encrypts the credential data you specify here.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
+          <maml:name>Type</maml:name>
+          <maml:description>
+            <maml:para>Specifies the linked service type. This cmdlet encrypts data for the linked service type that this parameter specifies. For on-premises SQL linked service, type OnPremisesSqlLinkedService and for file system linked service, type OnPremisesFileSystemLinkedService</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureDataFactoryEncryptValue</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>DataFactory</maml:name>
+          <maml:description>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet encrypts data for the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="">
+          <maml:name>Value</maml:name>
+          <maml:description>
+            <maml:para>Specifies the value to encrypt.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="">
+          <maml:name>GatewayName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the gateway. This cmdlet encrypts data for the gateway that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
+          <maml:name>Credential</maml:name>
+          <maml:description>
+            <maml:para>Specifies the Windows authentication credentials (user name and password) to be used. This cmdlet encrypts the credential data you specify here.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6" aliases="">
+          <maml:name>Type</maml:name>
+          <maml:description>
+            <maml:para>Specifies the linked service type. This cmdlet encrypts data for the linked service type that this parameter specifies. For on-premises SQL linked service, type OnPremisesSqlLinkedService and for file system linked service, type OnPremisesFileSystemLinkedService.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -2177,7 +2209,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="">
         <maml:name>Value</maml:name>
         <maml:description>
           <maml:para>Specifies the value to encrypt.</maml:para>
@@ -2189,7 +2221,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
         <maml:name>Credential</maml:name>
         <maml:description>
           <maml:para>Specifies the Windows authentication credentials (user name and password) to be used. This cmdlet encrypts the credential data you specify here.</maml:para>
@@ -2197,6 +2229,18 @@
         <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         <dev:type>
           <maml:name>PSCredential</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="6" aliases="">
+        <maml:name>Type</maml:name>
+        <maml:description>
+          <maml:para>Specifies the linked service type. For on premises SQL linked service, type OnPremisesSqlLinkedService and for file system linked service, type OnPremisesFileSystemLinkedService.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
@@ -2235,9 +2279,14 @@
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt; $Value = ConvertTo-SecureString "Data Source=ContosoServer;Initial Catalog=catelog;user id =user123;password=password123" -AsPlainText -Force
-          PS C:\&gt; New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value
-          data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
+          PS C:\&gt; $Value = ConvertTo-SecureString 'Data Source=ContosoServer;Initial Catalog=catelog;user id =user123;password=password123' -AsPlainText -ForcePS
+        </dev:code>
+        <dev:code>
+          PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value
+          data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/
+          H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfv
+          BzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9B
+          hGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
         </dev:code>
         <dev:remarks>
           <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified connection string to a SecureString object, and then stores that object in the $Value variable. For more information, type Get-Help ConvertTo-SecureString.</maml:para>
@@ -2255,9 +2304,14 @@
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt; $Value = ConvertTo-SecureString "Test123" -AsPlainText -Force
-          PS C:\&gt; New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -ResourceGroupName "ADF" -Value $Value
-          $Encrypted$String$KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpxdmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
+          PS C:\&gt; $Value = ConvertTo-SecureString 'Test123' -AsPlainText -ForcePS
+        </dev:code>
+        <dev:code>
+          PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -ResourceGroupName "ADF" -Value $Value
+          $Encrypted$String$KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJm
+          O0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpxdmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y
+          0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe
+          /XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
         </dev:code>
         <dev:remarks>
           <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified string to a SecureString object, and then stores that object in the $Value variable.</maml:para>
@@ -2275,15 +2329,44 @@
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt; $Value = ConvertTo-SecureString "Data Source=ContosoServer;Initial Catalog=catelog;Integrated Security=True" -AsPlainText -Force
+          PS C:\&gt; $Value = ConvertTo-SecureString 'Data Source=ContosoServer;Initial Catalog=catelog;Integrated Security=True' -AsPlainText -Force
+        </dev:code>
+        <dev:code>
+          PS C:\&gt;$Credential = Get-Credential
+        </dev:code>
+        <dev:code>
+          PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesSqlLinkedService
+          data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3Jyd
+          Tkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj
+          1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZi
+          Sw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
+        </dev:code>
+        <dev:remarks>
+          <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified connection string to a SecureString object, and then stores that object in the $Value variable. For more information, type Get-Help ConvertTo-SecureString.</maml:para>
+          <maml:para>The second command uses the Get-Credential cmdlet to collect the windows authentication (user name and password), and then stores that PSCredential object in the $Credential variable. For more information, type Get-Help Get-Credential.</maml:para>
+          <maml:para>The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, resource group, and linked service type.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 4: Encrypt a file system path</maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt; $Value = ConvertTo-SecureString '\\hostname\FilePath' -AsPlainText -Force
           PS C:\&gt; $Credential = Get-Credential
-          PS C:\&gt; New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential
-          data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
+          PS C:\&gt; New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesFileSystemLinkedService
+          EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
         </dev:code>
         <dev:remarks>
           <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified string to a SecureString object, and then stores that object in the $Value variable.</maml:para>
-          <maml:para>The second command uses the Get-Credential cmdlet to collect the windows authentication user name and password, and then stores that PSCredential object in the $Credential variable. For more information, type Get-Help Get-Credential.</maml:para>
-          <maml:para>The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, and resource group. </maml:para>
+          <maml:para>The second command uses the Get-Credential cmdlet to collect the windows authentication (user name and password), and then stores that PSCredential object in the $Credential variable. For more information, type Get-Help Get-Credential.</maml:para>
+          <maml:para>The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, resource group, and linked service type. </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -2320,30 +2403,6 @@
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryGateway</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
-          <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet creates a gateway for the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the gateway to create.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="">
-          <maml:name>Description</maml:name>
-          <maml:description>
-            <maml:para>Specifies a description for the gateway.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>New-AzureDataFactoryGateway</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a gateway that belongs to the group that this parameter specifies.</maml:para>
@@ -2364,7 +2423,31 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="">
+          <maml:name>Description</maml:name>
+          <maml:description>
+            <maml:para>Specifies a description for the gateway.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureDataFactoryGateway</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>DataFactory</maml:name>
+          <maml:description>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet creates a gateway for the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the gateway to create.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="">
           <maml:name>Description</maml:name>
           <maml:description>
             <maml:para>Specifies a description for the gateway.</maml:para>
@@ -2398,7 +2481,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="5" aliases="">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="4" aliases="">
         <maml:name>Description</maml:name>
         <maml:description>
           <maml:para>Specifies a description for the gateway.</maml:para>
@@ -2480,7 +2563,7 @@
           ExpiryTime      :
         </dev:code>
         <dev:remarks>
-          <maml:para>This command creates a gateway named ContosoGateway in the data factory named WikiADF in the resource group named ADF in the WestUS location. </maml:para>
+          <maml:para>This command creates a gateway named ContosoGateway in the data factory named WikiADF in the resource group named ADF. </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -2523,11 +2606,18 @@
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryGatewayKey</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet creates a gateway key for the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a key for a gateway that belongs to the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet creates a gateway key for the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>GatewayName</maml:name>
@@ -2542,18 +2632,11 @@
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryGatewayKey</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a key for a gateway that belongs to the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet creates a gateway key for the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet creates a gateway key for the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>GatewayName</maml:name>
@@ -2693,11 +2776,18 @@
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryHub</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet creates a hub for the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a hub that belongs to the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet creates a hub for the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -2723,18 +2813,11 @@
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryHub</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a hub that belongs to the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet creates a hub for the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet creates a hub for the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -2926,11 +3009,20 @@
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryLinkedService</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet creates a linked service for the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a linked service for the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>
+              Specifies the name of a data factory. This cmdlet creates a linked service for the data factory that this parameter specifies.
+            </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -2956,20 +3048,11 @@
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryLinkedService</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a linked service for the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet creates a linked service for the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>
-              Specifies the name of a data factory. This cmdlet creates a linked service for the data factory that this parameter specifies.
-            </maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -3159,16 +3242,25 @@
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryPipeline</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet creates a pipeline for the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a pipeline for the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the pipeline to create.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>
+              Specifies the name of a data factory. This cmdlet creates a pipeline for the data factory that this parameter specifies.
+            </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -3191,25 +3283,16 @@
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryPipeline</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a pipeline for the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet creates a pipeline for the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the pipeline to create.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>
-              Specifies the name of a data factory. This cmdlet creates a pipeline for the data factory that this parameter specifies.
-            </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -3410,11 +3493,18 @@
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryTable</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet creates a table in the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a table in the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet creates a table in the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -3440,18 +3530,11 @@
       <command:syntaxItem>
         <maml:name>New-AzureDataFactoryTable</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a table in the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet creates a table in the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet creates a table in the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -3607,8 +3690,7 @@
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt; $Table = New-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
-          PS C:\&gt; $Table.Availability
+          PS C:\&gt; $Table = New-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\&gt; $Table.Availability
           AnchorDateTime :
           Frequency      : Hour
           Interval       : 1
@@ -3631,8 +3713,7 @@
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt; $Table = New-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
-          PS C:\&gt; $Table.Location
+          PS C:\&gt; $Table = New-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\&gt; $Table.Location
           BlobPath          : wikidatagateway/wikisampledatain/
           FilenamePrefix    :
           Format            :
@@ -3655,8 +3736,7 @@
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt; $Table = New-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
-          PS C:\&gt; $Table.Policy.Validation | Format-List $table.Location
+          PS C:\&gt; $Table = New-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\&gt; $Table.Policy.Validation | Format-List $table.Location
 
           BlobPath          : wikidatagateway/wikisampledatain/
           FilenamePrefix    :
@@ -3710,11 +3790,20 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureDataFactory</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies the PSDataFactory object to remove. </maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a data factory from the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="DataFactoryName">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>
+              Specifies the name of the data factory to remove.
+            </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
           <maml:name>Force</maml:name>
@@ -3726,20 +3815,11 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureDataFactory</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a data factory from the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies the PSDataFactory object to remove. </maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>
-              Specifies the name of the data factory to remove.
-            </maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
           <maml:name>Force</maml:name>
@@ -3774,7 +3854,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="DataFactoryName">
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>
@@ -3882,11 +3962,18 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureDataFactoryGateway</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet removes a gateway from the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a gateway that belongs to the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet removes a gateway from the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -3905,18 +3992,11 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureDataFactoryGateway</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a gateway that belongs to the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet removes a gateway from the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet removes a gateway from the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -4080,13 +4160,20 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureDataFactoryHub</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet removes a hub from the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a hub from the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet removes a hub from the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="HubName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the hub to remove.</maml:para>
@@ -4103,20 +4190,13 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureDataFactoryHub</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a hub from the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet removes a hub from the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet removes a hub from the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="HubName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the hub to remove.</maml:para>
@@ -4168,7 +4248,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="HubName">
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the hub to remove.</maml:para>
@@ -4279,13 +4359,20 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureDataFactoryLinkedService</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet removes a linked service from the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a linked service from the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet removes a linked service from the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="LinkedServiceName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>
@@ -4304,20 +4391,13 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureDataFactoryLinkedService</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a linked service from the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet removes a linked service from the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet removes a linked service from the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="LinkedServiceName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>
@@ -4371,7 +4451,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="LinkedServiceName">
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>
@@ -4432,7 +4512,6 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt; Remove-AzureDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceTest"
-
           Confirm
           Are you sure you want to remove linked service 'LinkedServiceTest' in data factory 'WikiADF'?
           [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -4480,13 +4559,20 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureDataFactoryPipeline</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet removes a pipeline from the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a pipeline from the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet removes a pipeline from the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="PipelineName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the pipeline to remove.</maml:para>
@@ -4503,20 +4589,13 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureDataFactoryPipeline</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a pipeline from the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet removes a pipeline from the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet removes a pipeline from the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="PipelineName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the pipeline to remove.</maml:para>
@@ -4568,7 +4647,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="PipelineName">
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the pipeline to remove.</maml:para>
@@ -4686,13 +4765,20 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureDataFactoryTable</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet removes a table from the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a table from the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet removes a table from the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="TableName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the table to remove.</maml:para>
@@ -4709,20 +4795,13 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureDataFactoryTable</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a table from the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet removes a table from the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet removes a table from the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="TableName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the table to remove.</maml:para>
@@ -4774,7 +4853,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="TableName">
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the table to remove.</maml:para>
@@ -4880,13 +4959,20 @@
       <command:syntaxItem>
         <maml:name>Resume-AzureDataFactoryPipeline</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet resumes a pipeline that belongs to the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet resumes a pipeline that belongs to the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet resumes a pipeline that belongs to the data factory that this parameter specifies. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="PipelineName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the pipeline to resume. </maml:para>
@@ -4903,20 +4989,13 @@
       <command:syntaxItem>
         <maml:name>Resume-AzureDataFactoryPipeline</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet resumes a pipeline that belongs to the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet resumes a pipeline that belongs to the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet resumes a pipeline that belongs to the data factory that this parameter specifies. </maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="PipelineName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the pipeline to resume. </maml:para>
@@ -4968,7 +5047,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="PipelineName">
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the pipeline to resume. </maml:para>
@@ -5089,16 +5168,46 @@
       <command:syntaxItem>
         <maml:name>Save-AzureDataFactoryLog</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactoryName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet downloads log files for the data factory that this parameter specifies.</maml:para>
+            <maml:para></maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>Id</maml:name>
+          <maml:description>
+            <maml:para>Specifies the ID of the activity run for the data slice. Use the Get-AzureDataFactoryRun cmdlet to get an ID. </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="">
+          <maml:name>Output</maml:name>
+          <maml:description>
+            <maml:para>Specifies the output folder in which the downloaded log files are saved. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
+          <maml:name>DownloadLogs</maml:name>
+          <maml:description>
+            <maml:para>Indicates that this cmdlet downloads log files to your local computer. If Ouptut folder is not specified, files are saved to Documents folder under a subfolder. </maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Save-AzureDataFactoryLog</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a data factory that belongs to the group that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet downloads log files for the data factory that this parameter specifies.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -5126,6 +5235,18 @@
     </command:syntax>
     <command:parameters>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+        <maml:name>DataFactory</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+        <dev:type>
+          <maml:name>PSDataFactory</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
         <maml:name>DataFactoryName</maml:name>
         <maml:description>
           <maml:para>Specifies the name of a data factory. This cmdlet downloads log files for the data factory that this parameter specifies.</maml:para>
@@ -5254,7 +5375,7 @@
         </command:commandLines>
       </command:example>
       <command:example>
-        <maml:title>Example 2: Get the location of log files</maml:title>
+        <maml:title>Example 3: Get the location of log files</maml:title>
         <maml:introduction>
           <maml:para></maml:para>
         </maml:introduction>
@@ -5324,11 +5445,18 @@
       <command:syntaxItem>
         <maml:name>Set-AzureDataFactoryGateway</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet sets the description for the gateway in the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet sets the description for a gateway that belongs to the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet sets the description for the gateway in the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -5348,18 +5476,11 @@
       <command:syntaxItem>
         <maml:name>Set-AzureDataFactoryGateway</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet sets the description for a gateway that belongs to the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet sets the description for the gateway in the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet sets the description for the gateway in the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>Name</maml:name>
@@ -5531,57 +5652,6 @@
       <command:syntaxItem>
         <maml:name>Set-AzureDataFactoryPipelineActivePeriod</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
-          <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet modifies the active period for a pipeline that belongs to the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name">
-          <maml:name>PipelineName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of the pipeline. This cmdlet sets the active period for the pipeline that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
-          <maml:name>StartDateTime</maml:name>
-          <maml:description>
-            <maml:para>Specifies the start of a time period as a DateTime object. Data processing occurs or data slices are processed within this period.</maml:para>
-            <maml:para>StartDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
-          <maml:name>EndDateTime</maml:name>
-          <maml:description>
-            <maml:para>Specifies the end of a time period as a DateTime object. Data processing occurs or data slices are processed within this period. For more information about DateTime objects, type Get-Help Get-Date.</maml:para>
-            <maml:para>EndDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>AutoResolve</maml:name>
-          <maml:description>
-            <maml:para>Indicates that this cmdlet uses auto resolve.</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>Indicates that this cmdlet sets the active period without prompting you for confirmation.</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>ForceRecalculate</maml:name>
-          <maml:description>
-            <maml:para>Indicates that this cmdlet uses force recalculate.</maml:para>
-          </maml:description>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Set-AzureDataFactoryPipelineActivePeriod</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>
@@ -5608,7 +5678,8 @@
           <maml:name>StartDateTime</maml:name>
           <maml:description>
             <maml:para>Specifies the start of a time period as a DateTime object. Data processing occurs or data slices are processed within this period.</maml:para>
-            <maml:para>StartDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+            <maml:para>StartDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
@@ -5616,7 +5687,61 @@
           <maml:name>EndDateTime</maml:name>
           <maml:description>
             <maml:para>Specifies the end of a time period as a DateTime object. Data processing occurs or data slices are processed within this period. For more information about DateTime objects, type Get-Help Get-Date.</maml:para>
-            <maml:para>EndDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+            <maml:para>EndDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
+          <maml:name>AutoResolve</maml:name>
+          <maml:description>
+            <maml:para>Indicates that this cmdlet uses auto resolve.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Indicates that this cmdlet sets the active period without prompting you for confirmation.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
+          <maml:name>ForceRecalculate</maml:name>
+          <maml:description>
+            <maml:para>Indicates that this cmdlet uses force recalculate.</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Set-AzureDataFactoryPipelineActivePeriod</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>DataFactory</maml:name>
+          <maml:description>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet modifies the active period for a pipeline that belongs to the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name">
+          <maml:name>PipelineName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the pipeline. This cmdlet sets the active period for the pipeline that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
+          <maml:name>StartDateTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies the start of a time period as a DateTime object. Data processing occurs or data slices are processed within this period.</maml:para>
+            <maml:para>StartDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
+          <maml:name>EndDateTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies the end of a time period as a DateTime object. Data processing occurs or data slices are processed within this period. For more information about DateTime objects, type Get-Help Get-Date.</maml:para>
+            <maml:para>EndDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
@@ -5681,7 +5806,8 @@
         <maml:name>EndDateTime</maml:name>
         <maml:description>
           <maml:para>Specifies the end of a time period as a DateTime object. Data processing occurs or data slices are processed within this period. For more information about DateTime objects, type Get-Help Get-Date.</maml:para>
-          <maml:para>EndDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+          <maml:para>EndDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+          <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
@@ -5744,7 +5870,8 @@
         <maml:name>StartDateTime</maml:name>
         <maml:description>
           <maml:para>Specifies the start of a time period as a DateTime object. Data processing occurs or data slices are processed within this period.</maml:para>
-          <maml:para>StartDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+          <maml:para>StartDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+          <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
@@ -5787,7 +5914,8 @@
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt; Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName "ADF" -PipelineName "DPWikisample" -DataFactoryName "WikiADF" -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-22T16:00:00
+          PS C:\&gt; Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName "ADF" -PipelineName "DPWikisample" -DataFactoryName "WikiADF" -StartDateTime 2014-05-21T16:00:00Z -EndDateTime 2014-05-22T16:00:00Z
+
           Confirm
           Are you sure you want to set pipeline 'DPWikisample' active period from '05/21/2014 16:00:00' to
           '05/22/2014 16:00:00'?
@@ -5836,11 +5964,18 @@
       <command:syntaxItem>
         <maml:name>Set-AzureDataFactorySliceStatus</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet modifies the status of slices that belong to the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet modifies the status of slices that belong to the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet modifies the status of slices that belong to the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>TableName</maml:name>
@@ -5853,7 +5988,8 @@
           <maml:name>StartDateTime</maml:name>
           <maml:description>
             <maml:para>Specifies the start of a time period as a DateTime object. This time is the beginning of a data slice.</maml:para>
-            <maml:para>StartDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+            <maml:para>StartDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
@@ -5861,7 +5997,8 @@
           <maml:name>EndDateTime</maml:name>
           <maml:description>
             <maml:para>Specifies the end of a time period as a DateTime object. This time is the end of a data slice. For more information about DateTime objects, type Get-Help Get-Date.</maml:para>
-            <maml:para>EndDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+            <maml:para>EndDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
@@ -5895,18 +6032,11 @@
       <command:syntaxItem>
         <maml:name>Set-AzureDataFactorySliceStatus</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet modifies the status of slices that belong to the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet modifies the status of slices that belong to the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet modifies the status of slices that belong to the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
           <maml:name>TableName</maml:name>
@@ -5919,7 +6049,8 @@
           <maml:name>StartDateTime</maml:name>
           <maml:description>
             <maml:para>Specifies the start of a time period as a DateTime object. This time is the beginning of a data slice.</maml:para>
-            <maml:para>StartDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+            <maml:para>StartDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
@@ -5927,7 +6058,8 @@
           <maml:name>EndDateTime</maml:name>
           <maml:description>
             <maml:para>Specifies the end of a time period as a DateTime object. This time is the end of a data slice. For more information about DateTime objects, type Get-Help Get-Date.</maml:para>
-            <maml:para>EndDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+            <maml:para>EndDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+            <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
@@ -5988,7 +6120,8 @@
         <maml:name>EndDateTime</maml:name>
         <maml:description>
           <maml:para>Specifies the end of a time period as a DateTime object. This time is the end of a data slice. For more information about DateTime objects, type Get-Help Get-Date.</maml:para>
-          <maml:para>EndDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+          <maml:para>EndDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+          <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
@@ -6013,7 +6146,8 @@
         <maml:name>StartDateTime</maml:name>
         <maml:description>
           <maml:para>Specifies the start of a time period as a DateTime object. This time is the beginning of a data slice.</maml:para>
-          <maml:para>StartDateTime is a Coordinated Universal Time (UTC) time that you must specify in ISO format, for example, 2014-10-19T16:32:41Z. </maml:para>
+          <maml:para>StartDateTime must be specified in the ISO8601 format. Examples: 2015-01-01Z, 2015-01-01T00:00:00Z, 2015-01-01T00:00:00.000Z (UTC), 2015-01-01T00:00:00-08:00 (Pacific Standard Time)</maml:para>
+          <maml:para>The default time zone designator is UTC. If the time zone designator is omitted (ex: 2014-10-01), it is considered as an UTC time 2014-10-01T00:00:00Z.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
@@ -6104,7 +6238,7 @@
           <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt; Set-AzureDataFactorySliceStatus -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TableName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00 -Status "PendingExecution" -UpdateType "UpstreamInPipeline"
+          PS C:\&gt; Set-AzureDataFactorySliceStatus -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TableName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00Z -EndDateTime 2014-05-21T20:00:00Z -Status "PendingExecution" -UpdateType "UpstreamInPipeline"
           True
         </dev:code>
         <dev:remarks>
@@ -6145,13 +6279,20 @@
       <command:syntaxItem>
         <maml:name>Suspend-AzureDataFactoryPipeline</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>DataFactory</maml:name>
+          <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies a PSDataFactory object. This cmdlet suspends a pipeline that belongs to the data factory that this parameter specifies.</maml:para>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet suspends a pipeline that belongs to the group that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet suspends a pipeline that belongs to the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="PipelineName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the pipeline to suspend.</maml:para>
@@ -6168,20 +6309,13 @@
       <command:syntaxItem>
         <maml:name>Suspend-AzureDataFactoryPipeline</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
+          <maml:name>DataFactory</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of an Azure resource group. This cmdlet suspends a pipeline that belongs to the group that this parameter specifies.</maml:para>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet suspends a pipeline that belongs to the data factory that this parameter specifies.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
-          <maml:name>DataFactoryName</maml:name>
-          <maml:description>
-            <maml:para>Specifies the name of a data factory. This cmdlet suspends a pipeline that belongs to the data factory that this parameter specifies.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="PipelineName">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the pipeline to suspend.</maml:para>
@@ -6233,7 +6367,7 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="PipelineName">
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the pipeline to suspend.</maml:para>

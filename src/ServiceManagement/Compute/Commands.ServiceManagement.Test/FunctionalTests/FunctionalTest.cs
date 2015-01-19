@@ -29,6 +29,7 @@ using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -595,7 +596,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, serviceName, DeploymentSlotType.Production, null, 4);
                 Console.WriteLine("successfully updated the deployment");
 
-                var date = new DateTime(2014, 10, 17);
+                var date = DateTime.Now.AddMonths(-1);
                 // Get Deployment Events by Name
                 var events = vmPowershellCmdlets.GetAzureDeploymentEvent(serviceName, deploymentName, date, date.AddHours(1));
                 Assert.IsTrue(!events.Any() || events.All(e => e.DeploymentName == deploymentName

@@ -33,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
 {
     using GitClass = Utilities.Websites.Services.Git;
     using Microsoft.Azure.Common.Extensions;
+    using Hyak.Common;
 
     /// <summary>
     /// Creates a new azure website.

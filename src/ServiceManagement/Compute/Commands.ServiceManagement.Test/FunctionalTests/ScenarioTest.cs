@@ -760,7 +760,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         /// AzureVNetGatewayTest()
         /// </summary>
         /// Note: Create a VNet, a LocalNet from the portal without creating a gateway.
-        [TestMethod(), TestCategory(Category.Network), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"),
+        [TestMethod(), TestCategory(Category.Sequential), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"),
         Description("Test the cmdlet ((Set,Remove)-AzureVNetConfig, Get-AzureVNetSite, (New,Get,Set,Remove)-AzureVNetGateway, Get-AzureVNetConnection)")]
         public void VNetTest()
         {
@@ -1039,7 +1039,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 DiagnosticExtensionContext resultContext = vmPowershellCmdlets.GetAzureServiceDiagnosticsExtension(serviceName)[0];
 
-                Assert.IsTrue(VerifyDiagExtContext(resultContext, "AllRoles", defaultExtensionId, storage, daConfig));
+                VerifyDiagExtContext(resultContext, "AllRoles", defaultExtensionId, storage, daConfig);
 
                 vmPowershellCmdlets.RemoveAzureServiceDiagnosticsExtension(serviceName, true);
 
@@ -1592,51 +1592,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return vnetState.Equals(expectedState);
         }
 
-        private bool VerifyDiagExtContext(DiagnosticExtensionContext resultContext, string role, string extID, string storage, string config)
+        private void VerifyDiagExtContext(DiagnosticExtensionContext resultContext, string role, string extID, string storage, string config)
         {
             Utilities.PrintContext(resultContext);
 
-            try
-            {
-                Assert.AreEqual(role, resultContext.Role.RoleType.ToString(), "role is not same");
-                Assert.AreEqual(Utilities.PaaSDiagnosticsExtensionName, resultContext.Extension, "extension is not Diagnostics");
-                Assert.AreEqual(extID, resultContext.Id, "extension id is not same");
-                //Assert.AreEqual(storage, resultContext.StorageAccountName, "storage account name is not same");
+            Assert.AreEqual(role, resultContext.Role.RoleType.ToString(), "role is not same");
+            Assert.AreEqual(Utilities.PaaSDiagnosticsExtensionName, resultContext.Extension, "extension is not Diagnostics");
+            Assert.AreEqual(extID, resultContext.Id, "extension id is not same");
+            //Assert.AreEqual(storage, resultContext.StorageAccountName, "storage account name is not same");
 
-                XmlDocument doc = new XmlDocument();
-                doc.Load("@./da.xml");
-                string inner = Utilities.GetInnerXml(resultContext.WadCfg, "WadCfg");
-                Assert.IsTrue(Utilities.CompareWadCfg(inner, doc), "xml is not same");
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error happens: {0}", e.ToString());
-                return false;
-            }
+            XmlDocument doc = new XmlDocument();
+            doc.Load("@./da.xml");
+            string inner = Utilities.GetInnerXml(resultContext.WadCfg, "WadCfg");
+            Assert.IsTrue(Utilities.CompareWadCfg(inner, doc), "xml is not same");
         }
 
         private void VerifyRDPExtContext(RemoteDesktopExtensionContext resultContext, string role, string extID, string userName, DateTime exp, string version = null)
         {
             Utilities.PrintContextAndItsBase(resultContext);
 
-            try
+            Assert.AreEqual(role, resultContext.Role.RoleType.ToString(), "role is not same");
+            Assert.AreEqual("RDP", resultContext.Extension, "extension is not RDP");
+            Assert.AreEqual(extID, resultContext.Id, "extension id is not same");
+            Assert.AreEqual(userName, resultContext.UserName, "storage account name is not same");
+            Assert.IsTrue(Utilities.CompareDateTime(exp, resultContext.Expiration), "expiration is not same");
+            if (!string.IsNullOrEmpty(version))
             {
-                Assert.AreEqual(role, resultContext.Role.RoleType.ToString(), "role is not same");
-                Assert.AreEqual("RDP", resultContext.Extension, "extension is not RDP");
-                Assert.AreEqual(extID, resultContext.Id, "extension id is not same");
-                Assert.AreEqual(userName, resultContext.UserName, "storage account name is not same");
-                Assert.IsTrue(Utilities.CompareDateTime(exp, resultContext.Expiration), "expiration is not same");
-                if (!string.IsNullOrEmpty(version))
-                {
-                    Assert.AreEqual(version, resultContext.Version, "version numbers are not same");
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error happens: {0}", e.ToString());
-                throw;
+                Assert.AreEqual(version, resultContext.Version, "version numbers are not same");
             }
         }
     }

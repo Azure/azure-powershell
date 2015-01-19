@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Websites.WebHostingPlan
 {

@@ -22,13 +22,15 @@
     <SqlDatabaseTestDebug>.\src\ServiceManagement\Sql\Commands.SqlDatabase.Test\bin\Debug\Microsoft.WindowsAzure.Commands.SqlDatabase.Test.dll</SqlDatabaseTestDebug>
     <HDInsightTestDebug>.\src\ServiceManagement\HDInsight\Commands.HDInsight.Test\bin\Debug\Microsoft.WindowsAzure.Commands.HDInsight.Test.dll</HDInsightTestDebug>
     <StorageTestDebug>.\src\ServiceManagement\Storage\Commands.Storage.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Storage.Test.dll</StorageTestDebug>
-    <TestFilter>"!Functional&#x26;!Scenario&#x26;!AzureRTScenario&#x26;!Sequential&#x26;!PIRTest&#x26;!Preview&#x26;!ADDomain&#x26;!Network&#x26;!AzureRTUpload"</TestFilter>
     <KeyVaultTestDebug>.\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll</KeyVaultTestDebug>
+    <TestFilter>"!Functional&#x26;!Scenario&#x26;!AzureRTScenario&#x26;!Sequential&#x26;!PIRTest&#x26;!Preview&#x26;!ADDomain&#x26;!Network&#x26;!AzureRTUpload"</TestFilter>
     <ScenarioTestFilter>All</ScenarioTestFilter>
     <OneSDKCITFilter>"OneSDK&#x26;CIT"</OneSDKCITFilter>
-    <AzureRTAllTestFilter>"Functional|AzureRTScenario"</AzureRTAllTestFilter>
-    <AzureRTAllTestFilter2>"Functional|AzureRTScenario|Preview"</AzureRTAllTestFilter2>
-    <AzureRTAllTestFilter3>"Functional|AzureRTScenario|Sequential"</AzureRTAllTestFilter3>
+    <AzureRTAllTestFilter>"Functional|AzureRTScenario|Sequential|AzureRTUpload|Network"</AzureRTAllTestFilter>
+    <AzureRTParAllFilter>"Functional|AzureRTScenario"</AzureRTParAllFilter>
+    <AzureRTAllPreviewFilter>"Functional|AzureRTScenario|Preview"</AzureRTAllPreviewFilter>
+    <AzureRTUploadSeqFilter>"AzureRTUpload|Sequential"</AzureRTUploadSeqFilter>
+    <AzureRTSeqAllFilter>"AzureRTUpload|Sequential|Network"</AzureRTSeqAllFilter>
   </PropertyGroup>
   
   <Target Name="InvokeMSTest">
@@ -201,7 +203,7 @@
       Command="for /l %%x in (1, 1, $(RepeatTimes)) do MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug%%x.trx"
       ContinueOnError="false" />
   </Target>
-  
+
   <Target Name="AzureRTMulti" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
     <Message Importance="high" Text="Running tests:" />
     <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
@@ -214,7 +216,7 @@
     <Message Importance="high" Text="Running AzureRT all tests..." />
     <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
     <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:$(AzureRTAllTestFilter3) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:$(AzureRTAllTestFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
       ContinueOnError="false" />
   </Target>
 
@@ -224,10 +226,10 @@
     <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
     <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
     <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:Sequential /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:$(AzureRTSeqAllFilter) /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
       ContinueOnError="true" />
     <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTAllTestFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTParAllFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
       ContinueOnError="false" />
   </Target>
 
@@ -236,7 +238,7 @@
 
     <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
     <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:Sequential /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:$(AzureRTSeqAllFilter) /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
       ContinueOnError="true" />
   </Target>
 
@@ -254,7 +256,7 @@
 
     <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
     <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:AzureRTUpload|Sequential /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:$(AzureRTUploadSeqFilter) /resultsfile:$(TestOutputDirectory)\RTSequentialDebug.trx"
       ContinueOnError="false" />
   </Target>
 
@@ -293,7 +295,7 @@
       Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /category:Sequential /resultsfile:$(TestOutputDirectory)\RTAddVhdDebug.trx"
       ContinueOnError="true" />
     <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTAllTestFilter2) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:$(AzureRTAllPreviewFilter) /resultsfile:$(TestOutputDirectory)\RTDebug.trx"
       ContinueOnError="false" />
   </Target>
 

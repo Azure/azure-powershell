@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 using Moq;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
