@@ -18,7 +18,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.ScenarioTest.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Test;
 using Xunit;
 using Microsoft.Azure.Common.Extensions;
 

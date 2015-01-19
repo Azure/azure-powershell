@@ -180,6 +180,16 @@ namespace Microsoft.Azure.Commands.DataFactories.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}
+        ///For data factory naming restrictions, please see http://msdn.microsoft.com/en-us/library/dn835027.aspx.
+        /// </summary>
+        internal static string FormattedArgumentOutOfRangeExceptionMessageTemplate {
+            get {
+                return ResourceManager.GetString("FormattedArgumentOutOfRangeExceptionMessageTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HTTP Status Code: {0}
         ///Error Code: {1}
         ///Error Message: {2}
