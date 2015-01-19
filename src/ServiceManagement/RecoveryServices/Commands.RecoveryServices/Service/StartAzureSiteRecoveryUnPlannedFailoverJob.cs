@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.Management.Automation;
 using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
@@ -78,8 +79,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true)]
         [ValidateSet(
-            PSRecoveryServicesClient.PrimaryToRecovery,
-            PSRecoveryServicesClient.RecoveryToPrimary)]
+            Constants.PrimaryToRecovery,
+            Constants.RecoveryToPrimary)]
         public string Direction { get; set; }
 
         /// <summary>
@@ -140,14 +141,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void StartPEUnplannedFailover()
         {
-            var ufoReqeust = new UnplannedFailoverRequest();
-            ufoReqeust.FailoverDirection = this.Direction;
-            ufoReqeust.SourceSiteOperations = this.PerformSourceSiteOperations;
+            var request = new UnplannedFailoverRequest();
+            if (this.ProtectionEntity == null)
+            {
+                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                    this.ProtectionContainerId,
+                    this.ProtectionEntityId);
+                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+
+                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+            }
+
+            if (this.ProtectionEntity.ReplicationProvider == Constants.HyperVReplicaAzure)
+            {
+                request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
+                if (this.Direction == Constants.PrimaryToRecovery)
+                {
+                    var blob = new AzureFailoverInput();
+                    blob.VaultLocation = this.GetCurrentValutLocation();
+                    request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
+                }
+            }
+
+            request.FailoverDirection = this.Direction;
+            request.SourceSiteOperations = this.PerformSourceSiteOperations;
             this.jobResponse =
                 RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
                 this.ProtectionContainerId,
                 this.ProtectionEntityId,
-                ufoReqeust);
+                request);
             this.WriteJob(this.jobResponse.Job);
 
             if (this.WaitForCompletion.IsPresent)
@@ -161,12 +183,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void StartRpUnPlannedFailover()
         {
-            RpUnplannedFailoverRequest recoveryPlanUnPlannedFailoverRequest = new RpUnplannedFailoverRequest();
-            recoveryPlanUnPlannedFailoverRequest.FailoverDirection = this.Direction;
-            recoveryPlanUnPlannedFailoverRequest.PrimaryAction = this.PrimaryAction;
+            RpUnplannedFailoverRequest request = new RpUnplannedFailoverRequest();
+
+            if (this.RecoveryPlan == null)
+            {
+                var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(
+                    this.RPId);
+                this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
+
+                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider);
+            }
+
+            if (this.RecoveryPlan.ReplicationProvider == Constants.HyperVReplicaAzure)
+            {
+                request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
+                if (this.Direction == Constants.PrimaryToRecovery)
+                {
+                    var blob = new AzureFailoverInput();
+                    blob.VaultLocation = this.GetCurrentValutLocation();
+                    request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
+                }
+            }
+
+            request.FailoverDirection = this.Direction;
+            request.PrimaryAction = this.PrimaryAction;
+
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
                 this.RPId,
-                recoveryPlanUnPlannedFailoverRequest);
+                request);
 
             this.WriteJob(this.jobResponse.Job);
 
