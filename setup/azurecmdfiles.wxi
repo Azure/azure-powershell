@@ -1114,8 +1114,14 @@
                         <Component Id="cmp12C6E2ACC51F95C3303F6486917E8E75" Guid="*">
                             <File Id="filDB5B05710501E18F7BB630DA75A91B03" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Network\Newtonsoft.Json.dll" />
                         </Component>
+                        <Component Id="cmpE36FC5D85FACEDF16450AC56F0C159BE" Guid="*">
+                            <File Id="filF9245A77CC3210597C7BCB3777FFEEC3" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Network\System.Net.Http.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp87E83CA66DD51C9A6D61F1AC91FF683B" Guid="*">
                             <File Id="filB81C05773E93D768A10E3A660379BBC7" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Network\System.Net.Http.Formatting.dll" />
+                        </Component>
+                        <Component Id="cmp4F4E2D906EB5F067FB54ACDE2DA1F2DE" Guid="*">
+                            <File Id="fil32D7BA9A1417F592C027C83F08BCB27A" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Network\System.Net.Http.Primitives.dll" />
                         </Component>
                         <Component Id="cmpCC09A82900E1A278F48DB77993C40967" Guid="*">
                             <File Id="filA9139A091A1470B6463953C84F7B1BF9" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Network\System.Spatial.dll" />
@@ -2341,7 +2347,9 @@
             <ComponentRef Id="cmpB382FB922425C1C446A732BD66BBEEE0" />
             <ComponentRef Id="cmp9C36EDC63632529B78C870EF3695F0D3" />
             <ComponentRef Id="cmp12C6E2ACC51F95C3303F6486917E8E75" />
+            <ComponentRef Id="cmpE36FC5D85FACEDF16450AC56F0C159BE" />
             <ComponentRef Id="cmp87E83CA66DD51C9A6D61F1AC91FF683B" />
+            <ComponentRef Id="cmp4F4E2D906EB5F067FB54ACDE2DA1F2DE" />
             <ComponentRef Id="cmpCC09A82900E1A278F48DB77993C40967" />
             <ComponentRef Id="cmpCA80C6C0F5670291AF2F3560D36B1EA3" />
             <ComponentRef Id="cmp1E1EACEE941A7D7B9B2649BB3AC9ABC3" />
