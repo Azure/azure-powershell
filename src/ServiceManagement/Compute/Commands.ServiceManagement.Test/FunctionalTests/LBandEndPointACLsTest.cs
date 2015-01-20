@@ -263,12 +263,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     if (p == AzureEndPointConfigInfo.ParameterSet.NoLB)
                     {
                         Console.WriteLine("Skipping None until the bug is fixed..");
-                        //Console.WriteLine("-----Change the second endpoint.");
-                        //ep2Info.EndpointLocalPort = ep2LocalPortChanged;
-                        //ep2Info.EndpointPublicPort = ep2PublicPortChanged;
-                        //ep2Info.LoadBalancerDistribution = LoadBalancerDistribution.None;
-                        //vmPowershellCmdlets.SetEndPoint(defaultVm, serviceName, ep2Info); // Set-AzureEndpoint with Get-AzureVM and Update-AzureVm
-                        //CheckEndpoint(defaultVm, serviceName, new[] { ep2Info });
                     }
                     else
                     {
