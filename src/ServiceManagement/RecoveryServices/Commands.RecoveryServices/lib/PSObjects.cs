@@ -306,6 +306,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     {
                         asrProtectionProfile.HyperVReplicaProviderSettingsObject.AssociationDetail = new List<ASRProtectionProfileAssociationDetails>();
                     }
+
                     foreach (var profileAssosicationDetail in profile.AssociationDetail)
                     {
                         var asrProfileDetail = new ASRProtectionProfileAssociationDetails();
@@ -349,7 +350,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             = details.RecoveryPointHistoryDuration;
 
                         asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.CanDissociate = profile.CanDissociate;
-
                     }
                     else if (profile.ReplicationProvider == Constants.HyperVReplica)
                     {

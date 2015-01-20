@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            "HyperVReplica",
-            "HyperVReplicaAzure")]
+            Constants.HyperVReplica,
+            Constants.HyperVReplicaAzure)]
         public string ReplicationProvider { get; set; }
 
         /// <summary>
@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            "Online",
-            "Offline")]
+            Constants.OnlineReplicationMethod,
+            Constants.OfflineReplicationMethod)]
         public string ReplicationMethod { get; set; }
 
         /// <summary>
@@ -132,10 +132,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 switch (this.ReplicationProvider)
                 {
-                    case "HyperVReplica":
+                    case Constants.HyperVReplica:
                         this.EnterpriseToEnterpriseProtectionProfileObject();
                         break;
-                    case "HyperVReplicaAzure":
+                    case Constants.HyperVReplicaAzure:
                         this.EnterpriseToAzureProtectionProfileObject();
                         break;
                 }
