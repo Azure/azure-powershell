@@ -692,7 +692,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/062c67a6-019b-40af-a775-c4dc1abe56ed/cloudservices/CisService-DTYHC5NYB4BUTV3ZHFNSE5EKIZZGLGYR44OJUL5OQGG4I2EMYOZA-west-us/resources/WACis/~/CiSVault/OneSDK-Resource/api/devices/29f9be68-04f7-437d-a466-b90a1ed324b5/datacontainers?dataContainerName=VolumeContainer_1672633481&api-version=2014-01-01.1.0",
+      "RequestUri": "/062c67a6-019b-40af-a775-c4dc1abe56ed/cloudservices/CisService-DTYHC5NYB4BUTV3ZHFNSE5EKIZZGLGYR44OJUL5OQGG4I2EMYOZA-west-us/resources/WACis/~/CiSVault/OneSDK-Resource/api/devices/29f9be68-04f7-437d-a466-b90a1ed324b5/datacontainers?dataContainerName=TestVolumeContainer&api-version=2014-01-01.1.0",
       "EncodedRequestUri": "LzA2MmM2N2E2LTAxOWItNDBhZi1hNzc1LWM0ZGMxYWJlNTZlZC9jbG91ZHNlcnZpY2VzL0Npc1NlcnZpY2UtRFRZSEM1TllCNEJVVFYzWkhGTlNFNUVLSVpaR0xHWVI0NE9KVUw1T1FHRzRJMkVNWU9aQS13ZXN0LXVzL3Jlc291cmNlcy9XQUNpcy9+L0NpU1ZhdWx0L09uZVNESy1SZXNvdXJjZS9hcGkvZGV2aWNlcy8yOWY5YmU2OC0wNGY3LTQzN2QtYTQ2Ni1iOTBhMWVkMzI0YjUvZGF0YWNvbnRhaW5lcnM/ZGF0YUNvbnRhaW5lck5hbWU9Vm9sdW1lQ29udGFpbmVyXzE2NzI2MzM0ODEmYXBpLXZlcnNpb249MjAxNC0wMS0wMS4xLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -757,7 +757,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/062c67a6-019b-40af-a775-c4dc1abe56ed/cloudservices/CisService-DTYHC5NYB4BUTV3ZHFNSE5EKIZZGLGYR44OJUL5OQGG4I2EMYOZA-west-us/resources/WACis/~/CiSVault/OneSDK-Resource/api/devices/29f9be68-04f7-437d-a466-b90a1ed324b5/datacontainers?dataContainerName=VolumeContainer_1470497797&api-version=2014-01-01.1.0",
+      "RequestUri": "/062c67a6-019b-40af-a775-c4dc1abe56ed/cloudservices/CisService-DTYHC5NYB4BUTV3ZHFNSE5EKIZZGLGYR44OJUL5OQGG4I2EMYOZA-west-us/resources/WACis/~/CiSVault/OneSDK-Resource/api/devices/29f9be68-04f7-437d-a466-b90a1ed324b5/datacontainers?dataContainerName=TestVolumeContainer&api-version=2014-01-01.1.0",
       "EncodedRequestUri": "LzA2MmM2N2E2LTAxOWItNDBhZi1hNzc1LWM0ZGMxYWJlNTZlZC9jbG91ZHNlcnZpY2VzL0Npc1NlcnZpY2UtRFRZSEM1TllCNEJVVFYzWkhGTlNFNUVLSVpaR0xHWVI0NE9KVUw1T1FHRzRJMkVNWU9aQS13ZXN0LXVzL3Jlc291cmNlcy9XQUNpcy9+L0NpU1ZhdWx0L09uZVNESy1SZXNvdXJjZS9hcGkvZGV2aWNlcy8yOWY5YmU2OC0wNGY3LTQzN2QtYTQ2Ni1iOTBhMWVkMzI0YjUvZGF0YWNvbnRhaW5lcnM/ZGF0YUNvbnRhaW5lck5hbWU9Vm9sdW1lQ29udGFpbmVyXzE0NzA0OTc3OTcmYXBpLXZlcnNpb249MjAxNC0wMS0wMS4xLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",

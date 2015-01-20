@@ -18,9 +18,9 @@ Generates unique name with given prefix
 #>
 function Generate-Name ($prefix)
 {
-    $s = $prefix
-    $s += "_"
-    $s += Get-Random
+    $s = "Test" + $prefix
+    #$s += "_"
+    #$s += Get-Random
     $s
 }
 
