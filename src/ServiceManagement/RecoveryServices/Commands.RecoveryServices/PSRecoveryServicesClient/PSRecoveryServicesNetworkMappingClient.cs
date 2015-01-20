@@ -200,13 +200,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Azure VM Network Id.
         /// </summary>
         [DataMember(Order = 3)]
-        public string AzureVMNetworkId { get; set; }
+        public string RecoveryNetworkId { get; set; }
 
         /// <summary>
         /// Gets or sets Azure VM Network name.
         /// </summary>
         [DataMember(Order = 4)]
-        public string AzureVMNetworkName { get; set; }
+        public string RecoveryNetworkName { get; set; }
     }
 
     /// <summary>
@@ -281,8 +281,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 new CreateAzureNetworkMappingInput();
             createAzureNetworkMappingInput.PrimaryServerId = primaryServerId;
             createAzureNetworkMappingInput.PrimaryNetworkId = primaryNetworkId;
-            createAzureNetworkMappingInput.AzureVMNetworkName = recoveryNetworkName;
-            createAzureNetworkMappingInput.AzureVMNetworkId = recoveryNetworkId;
+            createAzureNetworkMappingInput.RecoveryNetworkName = recoveryNetworkName;
+            createAzureNetworkMappingInput.RecoveryNetworkId = recoveryNetworkId;
 
             NetworkMappingInput networkMappingInput = new NetworkMappingInput();
             networkMappingInput.NetworkTargetType = NetworkTargetType.Azure.ToString();
@@ -296,16 +296,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Validates whether the Azure VM Network is associated with the subscription or not.
         /// </summary>
-        /// <param name="subscriptionId">Subscription Id</param>
-        /// <param name="azureNetworkId">Azure Network Id</param>
-        public void ValidateVMNetworkSubscriptionAssociation(string subscriptionId, string azureNetworkId)
+        /// <param name="azureSubscriptionId">Subscription Id</param>
+        /// <param name="azureVMNetworkId">Azure VM Network Id</param>
+        /// <param name="azureVMNetworkName">Azure VM Network name</param>
+        public void ValidateVMNetworkSubscriptionAssociation(
+            string azureSubscriptionId,
+            string azureVMNetworkId,
+            out string azureVMNetworkName)
         {
-            /*
-            NetworkManagementClient networkClient =
-                AzureSession.ClientFactory.CreateClient<NetworkManagementClient>(AzureSession.CurrentContext.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            var response = this.networkClient.Networks.List();
-            var sites = response.VirtualNetworkSites;
-            */
+            bool associatedVMNetwork = false;
+            azureVMNetworkName = string.Empty;
+
+            AzureNetworkListResponse azureNetworkListResponse =
+                this.GetSiteRecoveryClient().Networks.ListAzureNetworks(azureSubscriptionId);
+
+            foreach (AzureNetworkListResponse.VirtualNetworkSite site in azureNetworkListResponse.VirtualNetworkSites)
+            {
+                if (azureVMNetworkId.Equals(site.Id))
+                {
+                    associatedVMNetwork = true;
+                    azureVMNetworkName = site.Name;
+                    break;
+                }
+            }
+
+            if (!associatedVMNetwork)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.AzureVMNetworkIsNotAssociatedWithTheSubscription,
+                    azureVMNetworkId,
+                    azureSubscriptionId));
+            }
         }
 
         /// <summary>

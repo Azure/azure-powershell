@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AzureVMNetwork {0} is not associated with the Subscription {1}.
+        /// </summary>
+        internal static string AzureVMNetworkIsNotAssociatedWithTheSubscription {
+            get {
+                return ResourceManager.GetString("AzureVMNetworkIsNotAssociatedWithTheSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation Failed.
         ///Message: {0}
         ///Possible Causes: {1}
@@ -282,20 +291,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot generate vault credentials for this vault. Download it from the Azure Portal..
-        /// </summary>
-        internal static string VaultCredentialGenerationUnSupported {
-            get {
-                return ResourceManager.GetString("VaultCredentialGenerationUnSupported", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Vault settings file not found, please pass the file downloaded from portal.
         /// </summary>
         internal static string VaultSettingFileNotFound {
             get {
                 return ResourceManager.GetString("VaultSettingFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot generate vault settings file for this vault. Download it from the Azure Portal..
+        /// </summary>
+        internal static string VaultSettingsGenerationUnSupported {
+            get {
+                return ResourceManager.GetString("VaultSettingsGenerationUnSupported", resourceCulture);
             }
         }
         

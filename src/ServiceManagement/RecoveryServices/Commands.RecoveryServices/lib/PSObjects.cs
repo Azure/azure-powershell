@@ -1308,16 +1308,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    /// Class to define the output of the vault credential generation.
+    /// Class to define the output of the vault settings file generation.
     /// </summary>
-    public class VaultCredentialOutput
+    public class VaultSettingsFilePath
     {
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VaultCredentialOutput" /> class
+        /// Initializes a new instance of the <see cref="VaultSettingsFilePath" /> class
         /// </summary>
-        public VaultCredentialOutput()
+        public VaultSettingsFilePath()
         {
         }
 
