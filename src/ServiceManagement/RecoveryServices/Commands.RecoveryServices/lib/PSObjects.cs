@@ -298,7 +298,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     var asrProtectionProfile = new ASRProtectionProfile();
 
-                    asrProtectionProfile.AssociationDetail = new List<ASRProtectionProfileAssociationDetails>();
+                    if (profile.ReplicationProvider == Constants.HyperVReplicaAzure)
+                    {
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.AssociationDetail = new List<ASRProtectionProfileAssociationDetails>();
+                    }
+                    else if (profile.ReplicationProvider == Constants.HyperVReplica)
+                    {
+                        asrProtectionProfile.HyperVReplicaProviderSettingsObject.AssociationDetail = new List<ASRProtectionProfileAssociationDetails>();
+                    }
                     foreach (var profileAssosicationDetail in profile.AssociationDetail)
                     {
                         var asrProfileDetail = new ASRProtectionProfileAssociationDetails();
@@ -307,7 +314,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             profileAssosicationDetail.PrimaryProtectionContainerId;
                         asrProfileDetail.RecoveryProtectionContainerId =
                             profileAssosicationDetail.RecoveryProtectionContainerId;
-                        asrProtectionProfile.AssociationDetail.Add(asrProfileDetail);
+
+                        if (profile.ReplicationProvider == Constants.HyperVReplicaAzure)
+                        {
+                            asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.AssociationDetail.Add(asrProfileDetail);
+                        }
+                        else if (profile.ReplicationProvider == Constants.HyperVReplica)
+                        {
+                            asrProtectionProfile.HyperVReplicaProviderSettingsObject.AssociationDetail.Add(asrProfileDetail);
+                        }
                     }
 
                     if (profile.ReplicationProvider == Constants.HyperVReplicaAzure)
@@ -315,52 +330,52 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         var details = DataContractUtils<HyperVReplicaAzureProtectionProfileDetails>.Deserialize(
                             profile.ReplicationProviderSetting);
 
-                        asrProtectionProfile.AllowReplicaDeletion = false;
-                        asrProtectionProfile.ReplicationPort = 0;
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.AllowReplicaDeletion = false;
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationPort = 0;
 
-                        asrProtectionProfile.ApplicationConsistentSnapshotFrequencyInHours = 
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours = 
                             details.AppConsistencyFreq;
-                        asrProtectionProfile.RecoveryAzureStorageAccountName = 
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureStorageAccountName = 
                             details.ActiveStorageAccount.StorageAccountName;
-                        asrProtectionProfile.RecoveryAzureSubscription = 
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureSubscription = 
                             details.ActiveStorageAccount.SubscriptionId;
-                        asrProtectionProfile.ReplicationFrequencyInSeconds = details.ReplicationInterval;
-                        asrProtectionProfile.ReplicationMethod = details.OnlineIrStartTime.HasValue ?
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds = details.ReplicationInterval;
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationMethod = details.OnlineIrStartTime.HasValue ?
                             Constants.OnlineReplicationMethod : 
                             Constants.OfflineReplicationMethod;
-                        asrProtectionProfile.ReplicationStartTime = details.OnlineIrStartTime;
-                        asrProtectionProfile.CompressionEnabled = details.IsEncryptionEnabled;
-                        asrProtectionProfile.RecoveryPoints 
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime = details.OnlineIrStartTime;
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.CompressionEnabled = details.IsEncryptionEnabled;
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryPoints 
                             = details.RecoveryPointHistoryDuration;
+
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.CanDissociate = profile.CanDissociate;
+
                     }
                     else if (profile.ReplicationProvider == Constants.HyperVReplica)
                     {
                         var details = DataContractUtils<HyperVReplicaProtectionProfileDetails>.Deserialize(
                             profile.ReplicationProviderSetting);
 
-                        asrProtectionProfile.AllowReplicaDeletion = 
+                        asrProtectionProfile.HyperVReplicaProviderSettingsObject.AllowReplicaDeletion = 
                             details.VmAutoDeleteOption == "OnRecoveryCloud";
-                        asrProtectionProfile.ApplicationConsistentSnapshotFrequencyInHours = 
+                        asrProtectionProfile.HyperVReplicaProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours = 
                             details.AppConsistencyFreq;
 
-                        asrProtectionProfile.CompressionEnabled = details.IsCompressionEnabled;
+                        asrProtectionProfile.HyperVReplicaProviderSettingsObject.CompressionEnabled = details.IsCompressionEnabled;
+                        asrProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationFrequencyInSeconds = 0;
 
-                        asrProtectionProfile.RecoveryAzureStorageAccountName = null;
-                        asrProtectionProfile.RecoveryAzureSubscription = null;
-                        asrProtectionProfile.ReplicationFrequencyInSeconds = 0;
-
-                        asrProtectionProfile.RecoveryPoints = details.NosOfRps;
-                        asrProtectionProfile.ReplicationMethod = details.IsOnlineIr ? 
+                        asrProtectionProfile.HyperVReplicaProviderSettingsObject.RecoveryPoints = details.NosOfRps;
+                        asrProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationMethod = details.IsOnlineIr ? 
                             Constants.OnlineReplicationMethod : 
                             Constants.OfflineReplicationMethod;
-                        asrProtectionProfile.ReplicationPort = details.RecoveryHttpsPort;
-                        asrProtectionProfile.ReplicationStartTime = details.OnlineIrStartTime;
+                        asrProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationPort = details.RecoveryHttpsPort;
+                        asrProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationStartTime = details.OnlineIrStartTime;
+                        asrProtectionProfile.HyperVReplicaProviderSettingsObject.CanDissociate = profile.CanDissociate;
                     }
 
                     asrProtectionProfile.ID = profile.ID;
                     asrProtectionProfile.Name = profile.Name;
                     asrProtectionProfile.ReplicationProvider = profile.ReplicationProvider;
-                    asrProtectionProfile.CanDissociate = profile.CanDissociate;
 
                     this.AvailableProtectionProfiles.Add(asrProtectionProfile);
                 }
@@ -494,6 +509,108 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets Replication Type (HyperVReplica, HyperVReplicaAzure)
         /// </summary>
         public string ReplicationProvider { get; set; }
+
+        /// <summary>
+        /// Gets or sets HyperVReplicaProviderSettings
+        /// </summary>
+        public HyperVReplicaProviderSettings HyperVReplicaProviderSettingsObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets HyperVReplicaAzureProviderSettings
+        /// </summary>
+        public HyperVReplicaAzureProviderSettings HyperVReplicaAzureProviderSettingsObject { get; set; }
+
+        #endregion Properties
+    }
+
+    /// <summary>
+    /// Azure Site Recovery Protection Profile HyperVReplicaProviderSettings.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class HyperVReplicaProviderSettings
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HyperVReplicaProviderSettings" /> class.
+        /// </summary>
+        public HyperVReplicaProviderSettings()
+        {
+        }
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets Replication Method.
+        /// </summary>
+        public string ReplicationMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether profile can be dissociated or not.
+        /// </summary>
+        public bool CanDissociate { get; set; }
+
+        /// <summary>
+        /// Gets or sets Association Details.
+        /// </summary>
+        public List<ASRProtectionProfileAssociationDetails> AssociationDetail { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication Frequency in seconds.
+        /// </summary>
+        public int ReplicationFrequencyInSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery Points.
+        /// </summary>
+        public int RecoveryPoints { get; set; }
+
+        /// <summary>
+        /// Gets or sets Application Consistent Snapshot Frequency in hours.
+        /// </summary>
+        public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Compression is Enabled.
+        /// </summary>
+        public bool CompressionEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication port.
+        /// </summary>
+        public int ReplicationPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication Start Time.
+        /// </summary>
+        public TimeSpan? ReplicationStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Replica Deletion should be enabled.
+        /// </summary>
+        public bool AllowReplicaDeletion { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Azure Site Recovery Protection Profile HyperVReplicaAzureProviderSettings.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class HyperVReplicaAzureProviderSettings
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HyperVReplicaAzureProviderSettings" /> class.
+        /// </summary>
+        public HyperVReplicaAzureProviderSettings()
+        {
+        }
+
+        #region Properties
 
         /// <summary>
         /// Gets or sets Replication Method.

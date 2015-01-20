@@ -222,16 +222,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
                 ReplicationProvider = this.ReplicationProvider,
-                ReplicationMethod = this.ReplicationMethod,
-                RecoveryAzureSubscription = this.RecoveryAzureSubscription,
-                RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
-                ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
-                RecoveryPoints = this.RecoveryPoints,
-                ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
-                CompressionEnabled = this.CompressionEnabled,
-                ReplicationPort = this.ReplicationPort,
-                ReplicationStartTime = timeSpan,
-                AllowReplicaDeletion = this.AllowReplicaDeletion
+                HyperVReplicaAzureProviderSettingsObject = new HyperVReplicaAzureProviderSettings()
+                {
+                    ReplicationMethod = this.ReplicationMethod,
+                    RecoveryAzureSubscription = this.RecoveryAzureSubscription,
+                    RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
+                    ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
+                    RecoveryPoints = this.RecoveryPoints,
+                    ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
+                    CompressionEnabled = this.CompressionEnabled,
+                    ReplicationPort = this.ReplicationPort,
+                    ReplicationStartTime = timeSpan,
+                    AllowReplicaDeletion = this.AllowReplicaDeletion
+                },
+                HyperVReplicaProviderSettingsObject = null
             };
 
             this.WriteObject(protectionProfile);
@@ -248,16 +252,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
                 ReplicationProvider = this.ReplicationProvider,
-                ReplicationMethod = this.ReplicationMethod,
-                RecoveryAzureSubscription = null,
-                RecoveryAzureStorageAccountName = null,
-                ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
-                RecoveryPoints = this.RecoveryPoints,
-                ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
-                CompressionEnabled = this.CompressionEnabled,
-                ReplicationPort = this.ReplicationPort,
-                ReplicationStartTime = timeSpan,
-                AllowReplicaDeletion = this.AllowReplicaDeletion
+                HyperVReplicaAzureProviderSettingsObject = null,
+                HyperVReplicaProviderSettingsObject = new HyperVReplicaProviderSettings()
+                {
+                    ReplicationMethod = this.ReplicationMethod,
+                    ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
+                    RecoveryPoints = this.RecoveryPoints,
+                    ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
+                    CompressionEnabled = this.CompressionEnabled,
+                    ReplicationPort = this.ReplicationPort,
+                    ReplicationStartTime = timeSpan,
+                    AllowReplicaDeletion = this.AllowReplicaDeletion
+                }
             };
 
             this.WriteObject(protectionProfile);
