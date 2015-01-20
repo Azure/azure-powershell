@@ -86,22 +86,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     azureStorageAccount));
             }
         }
-
-        /// <summary>
-        /// Converts the given time string into a TimeSpan object.
-        /// </summary>
-        /// <param name="replicationStartTime">Replication Start Time</param>
-        /// <returns></returns>
-        public static TimeSpan? ConvertIntoTimeSpan(string replicationStartTime)
-        {
-            if (String.IsNullOrEmpty(replicationStartTime))
-            {
-                return null;
-            }
-
-            // TBD
-
-            return new TimeSpan();
-        }
     }
 }
