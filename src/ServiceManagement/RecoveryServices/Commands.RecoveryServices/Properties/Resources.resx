@@ -200,4 +200,7 @@ ClientRequestId: {3}</value>
   <data name="ProtectionEntityAlreadyEnabled" xml:space="preserve">
     <value>Protection entity {0} is already enabled</value>
   </data>
+  <data name="AzureVMNetworkIsNotAssociatedWithTheSubscription" xml:space="preserve">
+    <value>AzureVMNetwork {0} is not associated with the Subscription {1}</value>
+  </data>
 </root>

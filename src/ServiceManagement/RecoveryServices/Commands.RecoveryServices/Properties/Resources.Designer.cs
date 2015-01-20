@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AzureVMNetwork {0} is not associated with the Subscription {1}.
+        /// </summary>
+        internal static string AzureVMNetworkIsNotAssociatedWithTheSubscription {
+            get {
+                return ResourceManager.GetString("AzureVMNetworkIsNotAssociatedWithTheSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation Failed.
         ///Message: {0}
         ///Possible Causes: {1}
