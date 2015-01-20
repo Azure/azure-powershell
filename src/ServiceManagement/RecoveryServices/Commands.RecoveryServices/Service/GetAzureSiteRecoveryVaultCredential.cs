@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Retrieves Azure Site Recovery Server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVaultCredential", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVaultCredential", DefaultParameterSetName = ASRParameterSets.ByObject)]
     [OutputType(typeof(VaultCredentialOutput))]
     public class GetVaultCredentialsFile : RecoveryServicesCmdletBase
     {
@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets the vault name
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Vault Name for which the cred file to be generated")]
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory = true, HelpMessage = "Vault Name for which the cred file to be generated")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the location of the vault
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Geo Location Name to which the vault belongs")]
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory = true, HelpMessage = "Geo Location Name to which the vault belongs")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

@@ -1354,7 +1354,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         /// Gets or sets the operation tracking id of the operation performed.
         /// </summary>
-        public string OperationTrackingId { get; set; }
+        public string Response { get; set; }
 
         #endregion
     }
