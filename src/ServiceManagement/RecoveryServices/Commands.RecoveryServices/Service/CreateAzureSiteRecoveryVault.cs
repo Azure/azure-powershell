@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
                 VaultOperationOutput output = new VaultOperationOutput()
                 {
-                    response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultCreationSuccessMessage : response.StatusCode.ToString()
+                    Response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultCreationSuccessMessage : response.StatusCode.ToString()
                 };
 
                 this.WriteObject(output, true);

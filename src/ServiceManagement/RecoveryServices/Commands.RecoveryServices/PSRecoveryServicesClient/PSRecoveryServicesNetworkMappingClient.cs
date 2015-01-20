@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Target network type.
     /// </summary>
-    public enum TargetNetworkType
+    public enum NetworkTargetType
     {
         /// <summary>
         /// Target type of the network is Server.
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             createNetworkMappingInput.RecoveryNetworkId = recoveryNetworkId;
 
             NetworkMappingInput networkMappingInput = new NetworkMappingInput();
-            networkMappingInput.NetworkTargetType = TargetNetworkType.Server.ToString();
+            networkMappingInput.NetworkTargetType = NetworkTargetType.Server.ToString();
             networkMappingInput.CreateNetworkMappingInput =
                 DataContractUtils.Serialize<CreateNetworkMappingInput>(createNetworkMappingInput);
             return this.GetSiteRecoveryClient()
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             createAzureNetworkMappingInput.AzureVMNetworkId = recoveryNetworkId;
 
             NetworkMappingInput networkMappingInput = new NetworkMappingInput();
-            networkMappingInput.NetworkTargetType = TargetNetworkType.Azure.ToString();
+            networkMappingInput.NetworkTargetType = NetworkTargetType.Azure.ToString();
             networkMappingInput.CreateNetworkMappingInput =
                 DataContractUtils.Serialize<CreateAzureNetworkMappingInput>(createAzureNetworkMappingInput);
             return this.GetSiteRecoveryClient()

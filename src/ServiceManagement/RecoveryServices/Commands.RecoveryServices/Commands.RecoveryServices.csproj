@@ -47,8 +47,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.RecoveryServices">
-      <HintPath>..\..\..\..\..\hydra-specs-pr\SiteRecovery\SiteRecovery.Tests\bin\Debug\Microsoft.Azure.RecoveryServices.dll</HintPath>
+    <Reference Include="Microsoft.Azure.RecoveryServices, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Microsoft.Azure.RecoveryServices.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
