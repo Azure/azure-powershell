@@ -109,8 +109,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             this.PrimaryServerId = storageMapping.PrimaryServerId;
             this.PrimaryStorageId = storageMapping.PrimaryStorageId;
+            this.PrimaryStorageName = storageMapping.PrimaryStorageName;
             this.RecoveryServerId = storageMapping.RecoveryServerId;
             this.RecoveryStorageId = storageMapping.RecoveryStorageId;
+            this.RecoveryStorageName = storageMapping.RecoveryStorageName;
         }
 
         #region Properties
@@ -125,6 +127,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string PrimaryStorageId { get; set; }
 
         /// <summary>
+        /// Gets or sets Primary storage name.
+        /// </summary>
+        public string PrimaryStorageName { get; set; }
+
+        /// <summary>
         /// Gets or sets Recovery server Id.
         /// </summary>
         public string RecoveryServerId { get; set; }
@@ -133,6 +140,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Recovery storage Id.
         /// </summary>
         public string RecoveryStorageId { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery storage name.
+        /// </summary>
+        public string RecoveryStorageName { get; set; }
         #endregion
     }
 }

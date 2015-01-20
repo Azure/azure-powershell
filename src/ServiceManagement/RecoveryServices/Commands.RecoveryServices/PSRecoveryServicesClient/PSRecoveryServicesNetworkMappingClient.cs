@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public enum NetworkTargetType
     {
         /// <summary>
-        /// Target type of the network is Server.
+        /// SCVMM VM Network.
         /// </summary>
-        Server = 0,
+        SCVMM = 0,
 
         /// <summary>
-        /// Target type of the network is Azure.
+        /// Azure VM Network.
         /// </summary>
         Azure,
     }
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             createNetworkMappingInput.RecoveryNetworkId = recoveryNetworkId;
 
             NetworkMappingInput networkMappingInput = new NetworkMappingInput();
-            networkMappingInput.NetworkTargetType = NetworkTargetType.Server.ToString();
+            networkMappingInput.NetworkTargetType = NetworkTargetType.SCVMM.ToString();
             networkMappingInput.CreateNetworkMappingInput =
                 DataContractUtils.Serialize<CreateNetworkMappingInput>(createNetworkMappingInput);
             return this.GetSiteRecoveryClient()

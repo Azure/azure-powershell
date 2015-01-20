@@ -167,6 +167,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Represents Disable protection.
         /// </summary>
         public const string DisableProtection = "Disable";
+
+        /// <summary>
+        /// Azure fabric Id. In E2A context Recovery Server Id is always this.
+        /// </summary>
+        public const string AzureFabricId = "21a9403c-6ec1-44f2-b744-b4e50b792387";
     }
 
     /// <summary>
