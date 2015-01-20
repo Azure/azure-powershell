@@ -14,8 +14,9 @@
 
 using System;
 using System.Management.Automation;
+using System.Net;
+using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -32,14 +33,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets the vault name
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Vault Name for which the cred file to be generated")]
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory = true, HelpMessage = "Vault Name for which the cred file to be generated")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the location of the vault
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Geo Location Name")]
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory = true, HelpMessage = "Geo Location Name")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -75,11 +76,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     SchemaVersion = Constants.RpSchemaVersion
                 };
 
-                VaultCreateResponse response = RecoveryServicesClient.CreateVault(cloudServiceName, this.Name, vaultCreateArgs);
+                RecoveryServicesOperationStatusResponse response = RecoveryServicesClient.CreateVault(cloudServiceName, this.Name, vaultCreateArgs);
 
                 VaultOperationOutput output = new VaultOperationOutput()
                 {
-                    OperationTrackingId = response.RequestId
+                    Response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultCreationSuccessMessage : response.StatusCode.ToString()
                 };
 
                 this.WriteObject(output, true);
