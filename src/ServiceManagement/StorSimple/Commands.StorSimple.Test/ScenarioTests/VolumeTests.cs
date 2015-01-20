@@ -17,22 +17,35 @@ using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
 {
-    public class BackupPolicyTests:StorSimpleTestBase
+    public class VolumeTests : StorSimpleTestBase
     {
-        #region New-AzureStorSimpleDeviceBackupScheduleAddConfig
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewBackupPolicyConfig()
+        public void TestVolumeSync()
         {
-            RunPowerShellTest("Test-NewBackupPolicyAddConfig");
+            RunPowerShellTest("Test-VolumeSync");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewBackupPolicyAddConfigDefaultValues()
+        public void TestVolumeAsync()
         {
-            RunPowerShellTest("Test-NewBackupPolicyAddConfig-DefaultValues");
+            RunPowerShellTest("Test-VolumeAsync");
         }
-        #endregion New-AzureStorSimpleDeviceBackupScheduleAddConfig
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewVolumeRepetitiveName()
+        {
+            RunPowerShellTest("Test-NewVolumeRepetitiveName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewVolumeNoAccess()
+        {
+            RunPowerShellTest("Test-NewVolumeNoAccess");
+        }
+                            
     }
 }
