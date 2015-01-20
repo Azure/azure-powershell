@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = jobScheduleId;
+            this.cmdlet.JobScheduleId = jobScheduleId;
             this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByJobScheduleId);
             this.cmdlet.Force = true;
             this.cmdlet.ExecuteCmdlet();

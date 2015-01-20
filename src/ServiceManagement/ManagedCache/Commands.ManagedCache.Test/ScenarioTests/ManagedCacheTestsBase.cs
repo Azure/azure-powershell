@@ -14,9 +14,9 @@
 
 using Microsoft.Azure.Common.Extensions;
 using Microsoft.Azure.Management.ManagedCache;
+using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Testing;
 
 namespace Microsoft.Azure.Commands.ManagedCache.Test.ScenarioTests
 {

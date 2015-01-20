@@ -22,7 +22,8 @@ using System.Net;
 using System.ServiceModel;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
-using Microsoft.WindowsAzure.Common;
+using Microsoft.Azure.Common;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common
 {

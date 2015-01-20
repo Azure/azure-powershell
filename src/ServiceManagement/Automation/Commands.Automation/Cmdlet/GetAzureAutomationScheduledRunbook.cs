@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the job id.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The job schedule id.")]
-        public Guid? Id { get; set; }
+        public Guid? JobScheduleId { get; set; }
 
         /// <summary>
         /// Gets or sets the runbook name of the job.
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 jobSchedules = new List<JobSchedule>
                                 {
                                     this.AutomationClient.GetJobSchedule(
-                                        this.AutomationAccountName, this.Id.Value)
+                                        this.AutomationAccountName, this.JobScheduleId .Value)
                                 };
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookNameAndScheduleName)

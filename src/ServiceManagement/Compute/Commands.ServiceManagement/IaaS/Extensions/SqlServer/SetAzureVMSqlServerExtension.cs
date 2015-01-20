@@ -16,9 +16,13 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using System.Net;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {

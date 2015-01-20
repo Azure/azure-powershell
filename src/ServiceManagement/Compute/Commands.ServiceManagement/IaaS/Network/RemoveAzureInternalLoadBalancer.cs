@@ -17,6 +17,8 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -39,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 CommandRuntime.ToString(),
                 () =>
                 {
-                    OperationResponse op = null;
+                    AzureOperationResponse op = null;
                     var deployment = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, DeploymentSlot.Production);
                     if (deployment.LoadBalancers != null && deployment.LoadBalancers.Any())
                     {

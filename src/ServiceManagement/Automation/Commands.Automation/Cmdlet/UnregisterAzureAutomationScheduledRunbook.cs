@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The job schedule id.")]
-        public Guid? Id { get; set; }
+        public Guid? JobScheduleId { get; set; }
 
         /// <summary>
         /// Gets or sets the runbook name
@@ -68,13 +68,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 this.Force.IsPresent,
                 string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationJobScheduleWarning),
                 string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationJobScheduleDescription),
-                this.Id.HasValue ? this.Id.Value.ToString() : this.RunbookName,
+                this.JobScheduleId.HasValue ? this.JobScheduleId.Value.ToString() : this.RunbookName,
                 () =>
                     {
                         if (this.ParameterSetName == AutomationCmdletParameterSets.ByJobScheduleId)
                         {
                             this.AutomationClient.UnregisterScheduledRunbook(
-                                this.AutomationAccountName, this.Id.Value);
+                                this.AutomationAccountName, this.JobScheduleId.Value);
                         }
                         else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookNameAndScheduleName)
                         {
