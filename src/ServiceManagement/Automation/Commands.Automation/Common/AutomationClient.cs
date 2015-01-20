@@ -337,13 +337,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Variables
 
-        public Variable CreateVariable(string automationAccountName, Variable variable)
+        public Variable CreateVariable(Variable variable)
         {
             bool variableExists = true;
 
             try
             {
-                this.GetVariable(automationAccountName, variable.Name);
+                this.GetVariable(variable.AutomationAccountName, variable.Name);
             }
             catch (ResourceNotFoundException)
             {
@@ -363,16 +363,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Name = variable.Name,
                     Properties = new AutomationManagement.Models.EncryptedVariableCreateProperties()
                     {
-                        Value = variable.Value,
+                        Value = JsonConvert.SerializeObject(variable.Value),
                         Description = variable.Description
                     }
                 };
 
                 var sdkCreatedVariable =
-                    this.automationManagementClient.EncryptedVariables.Create(automationAccountName, createParams)
+                    this.automationManagementClient.EncryptedVariables.Create(variable.AutomationAccountName, createParams)
                         .EncryptedVariable;
 
-                return new Variable(sdkCreatedVariable, automationAccountName);
+                return new Variable(sdkCreatedVariable, variable.AutomationAccountName);
             }
             else
             {
@@ -381,15 +381,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Name = variable.Name,
                     Properties = new AutomationManagement.Models.VariableCreateProperties()
                     {
-                        Value = variable.Value,
+                        Value = JsonConvert.SerializeObject(variable.Value),
                         Description = variable.Description
                     }
                 };
 
                 var sdkCreatedVariable =
-                    this.automationManagementClient.Variables.Create(automationAccountName, createParams).Variable;
+                    this.automationManagementClient.Variables.Create(variable.AutomationAccountName, createParams).Variable;
 
-                return new Variable(sdkCreatedVariable, automationAccountName);
+                return new Variable(sdkCreatedVariable, variable.AutomationAccountName);
             }
         }
 
@@ -415,41 +415,66 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
 
-        public Variable UpdateVariable(string automationAccountName, Variable variable)
+        public Variable UpdateVariable(Variable variable, VariableUpdateFields updateFields)
         {
-            var existingVarible = this.GetVariable(automationAccountName, variable.Name);
-            variable.Encrypted = existingVarible.Encrypted;
+            var existingVariable = this.GetVariable(variable.AutomationAccountName, variable.Name);
+
+            if (existingVariable.Encrypted != variable.Encrypted)
+            {
+                throw new ResourceNotFoundException(typeof(Variable),
+                    string.Format(CultureInfo.CurrentCulture, Resources.VariableEncryptionCannotBeChanged, variable.Name, existingVariable.Encrypted));
+            }
 
             if (variable.Encrypted)
             {
                 var updateParams = new AutomationManagement.Models.EncryptedVariableUpdateParameters()
                 {
-                    Name = variable.Name,
-                    Properties = new AutomationManagement.Models.EncryptedVariableUpdateProperties()
-                    {
-                        Value = variable.Value,
-                        Description = variable.Description
-                    }
+                    Name = variable.Name
                 };
 
-                this.automationManagementClient.EncryptedVariables.Update(automationAccountName, updateParams);
+                if (updateFields == VariableUpdateFields.OnlyDescription)
+                {
+                    updateParams.Properties = new AutomationManagement.Models.EncryptedVariableUpdateProperties()
+                    {
+                        Description = variable.Description
+                    };
+                }
+                else
+                {
+                    updateParams.Properties = new AutomationManagement.Models.EncryptedVariableUpdateProperties()
+                    {
+                        Value = JsonConvert.SerializeObject(variable.Value)
+                    };
+                }
+
+                this.automationManagementClient.EncryptedVariables.Update(variable.AutomationAccountName, updateParams);
             }
             else
             {
                 var updateParams = new AutomationManagement.Models.VariableUpdateParameters()
                 {
                     Name = variable.Name,
-                    Properties = new AutomationManagement.Models.VariableUpdateProperties()
-                    {
-                        Value = variable.Value,
-                        Description = variable.Description
-                    }
                 };
 
-                this.automationManagementClient.Variables.Update(automationAccountName, updateParams);
+                if (updateFields == VariableUpdateFields.OnlyDescription)
+                {
+                    updateParams.Properties = new AutomationManagement.Models.VariableUpdateProperties()
+                    {
+                        Description = variable.Description
+                    };
+                }
+                else
+                {
+                    updateParams.Properties = new AutomationManagement.Models.VariableUpdateProperties()
+                    {
+                        Value = JsonConvert.SerializeObject(variable.Value)
+                    };
+                }
+
+                this.automationManagementClient.Variables.Update(variable.AutomationAccountName, updateParams);
             }
 
-            return this.GetVariable(automationAccountName, variable.Name);
+            return this.GetVariable(variable.AutomationAccountName, variable.Name);
         }
 
         public Variable GetVariable(string automationAccountName, string name)

@@ -77,5 +77,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// The Job Schedule Id parameter set.
         /// </summary>
         internal const string ByJobScheduleId = "ByJobScheduleId";
+
+        /// <summary>
+        /// Parameter set for updating variable value
+        /// </summary>
+        internal const string UpdateVariableValue = "UpdateVariableValue";
+
+        /// <summary>
+        /// Parameter set for updating variable description
+        /// </summary>
+        internal const string UpdateVariableDescription = "UpdateVariableDescription";
     }
 }

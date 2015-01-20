@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<Variable> ListVariables(string automationAccountName);
 
-        Variable CreateVariable(string automationAccountName, Variable variable);
+        Variable CreateVariable(Variable variable);
 
         void DeleteVariable(string automationAccountName, string variableName);
 
-        Variable UpdateVariable(string automationAccountName, Variable variable);
+        Variable UpdateVariable(Variable variable, VariableUpdateFields updateFields);
 
         #endregion
 

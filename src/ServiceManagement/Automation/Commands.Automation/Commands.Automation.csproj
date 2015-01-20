@@ -141,6 +141,7 @@
     <Compile Include="Common\RequiresExtensions.cs" />
     <Compile Include="Common\ResourceCommonException.cs" />
     <Compile Include="Common\ResourceNotFoundException.cs" />
+    <Compile Include="Common\VariableUpdateFields.cs" />
     <Compile Include="DataContract\ErrorResponse.cs" />
     <Compile Include="DataContract\OdataError.cs" />
     <Compile Include="DataContract\OdataErrorMessage.cs" />

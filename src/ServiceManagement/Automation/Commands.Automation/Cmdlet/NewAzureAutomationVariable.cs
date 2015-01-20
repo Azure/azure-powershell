@@ -28,16 +28,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the variable name.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the variable IsEncrypted Property.
+        /// Gets or sets the variable encrypted Property.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The IsEncrypted property of the variable.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The encrypted property of the variable.")]
         [ValidateNotNull]
-        public SwitchParameter Encrypted { get; set; }
+        public bool Encrypted { get; set; }
         
         /// <summary>
         /// Gets or sets the variable description.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the variable value.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value of the variable.")]
-        public string Value { get; set; }
+        public object Value { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -60,12 +60,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             Variable variable = new Variable()
             {
                 Name = this.Name,
-                Encrypted = this.Encrypted.IsPresent,
+                Encrypted = this.Encrypted,
                 Description = this.Description,
-                Value = this.Value
+                Value = this.Value,
+                AutomationAccountName = this.AutomationAccountName
             };
 
-            var ret = this.AutomationClient.CreateVariable(this.AutomationAccountName, variable);
+            var ret = this.AutomationClient.CreateVariable(variable);
 
             this.GenerateCmdletOutput(ret);
         }

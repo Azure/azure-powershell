@@ -18,6 +18,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -31,21 +32,29 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the variable name.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.UpdateVariableValue, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.UpdateVariableDescription, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the variable encrypted Property.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.UpdateVariableValue, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The encrypted property of the variable.")]
+        [ValidateNotNull]
+        public bool Encrypted { get; set; }
+        
+        /// <summary>
         /// Gets or sets the variable description.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the variable.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.UpdateVariableDescription, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the variable.")]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets the variable value.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value of the variable.")]
-        public string Value { get; set; }
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.UpdateVariableValue, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The value of the variable.")]
+        public object Value { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -57,11 +66,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             {
                 Name = this.Name,
                 Description = this.Description,
-                Value = this.Value
+                Encrypted = this.Encrypted,
+                Value = JsonConvert.SerializeObject(this.Value),
+                AutomationAccountName = this.AutomationAccountName
             };
 
-            var ret = this.AutomationClient.UpdateVariable(this.AutomationAccountName, variable);
-            
+            Variable ret;
+            if (ParameterSetName == AutomationCmdletParameterSets.UpdateVariableValue)
+            { 
+                ret = this.AutomationClient.UpdateVariable(variable, VariableUpdateFields.OnlyValue);
+            }
+            else
+            {
+                ret = this.AutomationClient.UpdateVariable(variable, VariableUpdateFields.OnlyDescription);
+            }
             this.GenerateCmdletOutput(ret);
         }
     }

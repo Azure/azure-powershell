@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.Automation.Common;
 namespace Microsoft.Azure.Commands.Automation.Model
 {
     using AutomationManagement = Management.Automation;
+    using Newtonsoft.Json;
+    using System.Management.Automation;
 
     /// <summary>
     /// The Variable.
@@ -39,7 +41,16 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Name = variable.Name;
             this.CreationTime = variable.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = variable.Properties.LastModifiedTime.ToLocalTime();
-            this.Value = variable.Properties.Value;
+
+            if (variable.Properties.Value == null)
+            {
+                this.Value = null;
+            }
+            else
+            {
+                this.Value = JsonConvert.DeserializeObject<object>(variable.Properties.Value);
+            }
+
             this.Description = variable.Properties.Description;
             this.Encrypted = false;
             this.AutomationAccountName = automationAccoutName;
@@ -91,7 +102,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the value.
         /// </summary>
-        public string Value { get; set; }
+        public object Value { get; set; }
 
         /// <summary>
         /// Gets or sets the description.
