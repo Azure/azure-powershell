@@ -16,12 +16,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Microsoft.Azure.Commands.RecoveryServices;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
-{
+{    
     /// <summary>
     /// Hash functions which can be used to calculate CIK HMAC.
     /// </summary>
@@ -41,6 +42,84 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Represents a HMACSHA512 hash function.
         /// </summary>
         HMACSHA512
+    }
+
+    /// <summary>
+    /// Vault Status ENUM values
+    /// </summary>
+    public enum VaultStatus
+    {
+        /// <summary>
+        /// Activating the created resource.
+        /// </summary>
+        Activating,
+
+        /// <summary>
+        /// Creating the resource.
+        /// </summary>
+        Creating,
+
+        /// <summary>
+        /// Resource created
+        /// </summary>
+        Created,
+
+        /// <summary>
+        /// Resource is active
+        /// </summary>
+        Active,
+
+        /// <summary>
+        /// Resource is disabled
+        /// </summary>
+        Disabled,
+
+        /// <summary>
+        /// Resource is being deleted
+        /// </summary>
+        Removing
+    }
+
+    /// <summary>
+    /// The types of crypto algorithms
+    /// </summary>
+    public enum CryptoAlgorithm
+    {
+        /// <summary>
+        /// The asymmetric key based RSA 2048 algorithm.
+        /// </summary>
+        RSAPKCS1V17,
+
+        /// <summary>
+        /// The asymmetric key based RSA 2048 algorithm.
+        /// </summary>
+        RSAPKCS1V15,
+
+        /// <summary>
+        /// The symmetric key based AES algorithm with key size 256 bits.
+        /// </summary>
+        AES256,
+
+        /// <summary>
+        /// The symmetric key based SHA 256 Algorithm
+        /// </summary>
+        HMACSHA256,
+
+        /// <summary>
+        /// When no algorithm is used.
+        /// </summary>
+        None
+    }
+
+    /// <summary>
+    /// The RP service error code that needs to be handled by portal.
+    /// </summary>
+    public enum RpErrorCode
+    {
+        /// <summary>
+        /// The error code sent by RP if the Resource extended info doesn't exists.
+        /// </summary>
+        ResourceExtendedInfoNotFound
     }
 
     /// <summary>
@@ -245,6 +324,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 }
 
+//// TODO: Remove this once we get nuget
+namespace Microsoft.Azure.Commands.RecoveryServices.RestApiInfra
+{
+    /// <summary>
+    /// Class to define the error for RP
+    /// </summary>
+        [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract(Namespace = "http://schemas.microsoft.com/wars")]
+    public class Error
+    {
+        /// <summary>
+        /// Gets or sets the value for the error as string.
+        /// </summary>
+        [DataMember]
+        public string ErrorCode { get; set; }
+    }
+}
+
 namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
 {
     /// <summary>
@@ -257,6 +357,33 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     [DataContract]
     public class VaultCreds
     {
+        #region Constructores
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultCreds"/> class.
+        /// </summary>
+        public VaultCreds()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultCreds"/> class.
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">authenticating service namespace</param>
+        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
+        {
+            this.SubscriptionId = subscriptionId;
+            this.ResourceType = Constants.ASRVaultType;
+            this.ResourceName = resourceName;
+            this.ManagementCert = managementCert;
+            this.AcsNamespace = acsNamespace;
+        }
+
+        #endregion
+
         #region Properties
         /// <summary>
         /// Gets or sets the key name for Namespace entry
@@ -299,6 +426,47 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         Justification = "Keeping all contracts together.")]
     public class ASRVaultCreds : VaultCreds
     {
+        #region Constructores
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVaultCreds"/> class.
+        /// </summary>
+        public ASRVaultCreds()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVaultCreds"/> class.
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">authenticating service  namespace</param>
+        /// <param name="channelIntegrityKey">Agent Channel Integrity Key</param>
+        /// <param name="cloudServiceName">cloud service name</param>
+        /// <param name="siteId">custom site Id</param>
+        /// <param name="siteName">custom site name</param>
+        public ASRVaultCreds(
+            string subscriptionId,
+            string resourceName,
+            string managementCert,
+            AcsNamespace acsNamespace,
+            string channelIntegrityKey,
+            string cloudServiceName,
+            string siteId,
+            string siteName)
+            : base(subscriptionId, resourceName, managementCert, acsNamespace)
+        {
+            this.ChannelIntegrityKey = channelIntegrityKey;
+            this.CloudServiceName = cloudServiceName;
+            this.Version = Constants.VaultCredentialVersion;
+
+            this.SiteId = siteId != null ? siteId : string.Empty;
+            this.SiteName = siteName != null ? siteName : string.Empty;
+        }
+
+        #endregion
+
         #region Properties
         /// <summary>
         /// Gets or sets the value for ACIK
@@ -317,6 +485,18 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 2)]
         public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site Id
+        /// </summary>
+        [DataMember(Order = 3)]
+        public string SiteId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site name
+        /// </summary>
+        [DataMember(Order = 4)]
+        public string SiteName { get; set; }
         #endregion
     }
 
@@ -327,21 +507,488 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
+    [DataContract]
     public class AcsNamespace
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="AcsNamespace"/> class.
+        /// </summary>
+        /// <param name="acsDetails">authenticating service Details name</param>
+        public AcsNamespace(UploadCertificateResponse acsDetails)
+        {
+            this.HostName = acsDetails.GlobalAcsHostName;
+            this.Namespace = acsDetails.GlobalAcsNamespace;
+            this.ResourceProviderRealm = acsDetails.GlobalAcsRPRealm;
+        }
+
+        /// <summary>
         /// Gets or sets Host name
         /// </summary>
+        [DataMember(Order = 0)]
         public string HostName { get; set; }
 
         /// <summary>
         /// Gets or sets Name space
         /// </summary>
+        [DataMember(Order = 0)]
         public string Namespace { get; set; }
 
         /// <summary>
         /// Gets or sets Resource provider realm
         /// </summary>
+        [DataMember(Order = 0)]
         public string ResourceProviderRealm { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the StorageAccount of the client which can be used to protect VMs to Azure.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class CustomerStorageAccount
+    {
+        /// <summary>
+        /// Gets or sets the storage account name.
+        /// </summary>
+        [DataMember]
+        public string StorageAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the subscription id associated with the storage account.
+        /// </summary>
+        [DataMember]
+        public string SubscriptionId { get; set; }
+    }
+
+    /// <summary>
+    /// Hyper-V Replica Azure specific input for creating a protection profile.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class HyperVReplicaAzureProtectionProfileInput
+    {
+        /// <summary>
+        /// Gets or sets the duration (in hours) to which point the recovery history needs to be 
+        /// maintained.
+        /// </summary>
+        [DataMember]
+        public int RecoveryPointHistoryDuration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the interval (in hours) at which Hyper-V Replica should create an
+        /// application consistent snapshot within the VM.
+        /// </summary>
+        [DataMember]
+        public int AppConsistencyFreq { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication interval.
+        /// </summary>
+        [DataMember]
+        public int ReplicationInterval { get; set; }
+
+        /// <summary>
+        /// Gets or sets the scheduled start time for the initial replication. If this parameter 
+        /// is Null, the initial replication starts immediately.
+        /// </summary>
+        [DataMember]
+        public TimeSpan? OnlineIrStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of storage accounts to which the VMs in the primary cloud can 
+        /// replicate to.
+        /// </summary>
+        [DataMember]
+        public List<CustomerStorageAccount> StorageAccounts { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether encryption needs to be enabled for 
+        /// Virtual machines in this cloud. 
+        /// </summary>
+        [DataMember]
+        public bool IsEncryptionEnabled { get; set; }
+    }
+
+    /// <summary>
+    /// Hyper-V Replica specific protection profile details.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class HyperVReplicaProtectionProfileDetails
+    {
+        /// <summary>
+        /// Gets or sets a value indicating the number of recovery points.
+        /// </summary>
+        [DataMember]
+        public int NosOfRps { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the application consistent frequency.
+        /// </summary>
+        [DataMember]
+        public int AppConsistencyFreq { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether compression has to be enabled.
+        /// </summary>
+        [DataMember]
+        public bool IsCompressionEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether IR is online.
+        /// </summary>
+        [DataMember]
+        public bool IsOnlineIr { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the online IR start time.
+        /// </summary>
+        [DataMember]
+        public TimeSpan? OnlineIrStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the offline IR import path.
+        /// </summary>
+        [DataMember]
+        public string OfflineIrImportPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the offline IR export path.
+        /// </summary>
+        [DataMember]
+        public string OfflineIrExportPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the primary HTTP port.
+        /// </summary>
+        [DataMember]
+        public ushort PrimaryHttpPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the primary HTTPS port.
+        /// </summary>
+        [DataMember]
+        public ushort PrimaryHttpsPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the recovery HTTP port.
+        /// </summary>
+        [DataMember]
+        public ushort RecoveryHttpPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the recovery HTTPS port.
+        /// </summary>
+        [DataMember]
+        public ushort RecoveryHttpsPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the authentication type.
+        /// </summary>
+        [DataMember]
+        public ushort AllowedAuthenticationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the VM has to be auto deleted.
+        /// Supported Values: String.Empty, None, OnRecoveryCloud
+        /// </summary>
+        [DataMember]
+        public string VmAutoDeleteOption { get; set; }
+    }
+
+    /// <summary>
+    /// Hyper-V Replica Azure specific protection profile details.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class HyperVReplicaAzureProtectionProfileDetails
+    {
+        /// <summary>
+        /// Gets or sets the duration (in hours) to which point the recovery history needs to be 
+        /// maintained.
+        /// </summary>
+        [DataMember]
+        public int RecoveryPointHistoryDuration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the interval (in hours) at which Hyper-V Replica should create an
+        /// application consistent snapshot within the VM.
+        /// </summary>
+        [DataMember]
+        public int AppConsistencyFreq { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication interval.
+        /// </summary>
+        [DataMember]
+        public int ReplicationInterval { get; set; }
+
+        /// <summary>
+        /// Gets or sets the scheduled start time for the initial replication. If this parameter 
+        /// is Null, the initial replication starts immediately.
+        /// </summary>
+        [DataMember]
+        public TimeSpan? OnlineIrStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether encryption is enabled for virtual machines
+        /// in this cloud.
+        /// </summary>
+        [DataMember]
+        public bool IsEncryptionEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the active storage accounts details.
+        /// </summary>
+        [DataMember]
+        public CustomerStorageAccount ActiveStorageAccount { get; set; }
+    }
+
+    /// <summary>
+    /// This is the class which defines the Azure VM failover input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class AzureFailoverInput
+    {
+        /// <summary>
+        /// Gets or sets the Vault Location.
+        /// </summary> 
+        [DataMember]
+        public string VaultLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Primary KEK certificate PFX in Base-64 encoded form.
+        /// </summary>
+        [DataMember]
+        public string PrimaryKekCertificatePfx { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Secondary (rolled over) KEK certificate PFX in Base-64 encoded form.
+        /// </summary>
+        [DataMember]
+        public string SecondaryKekCertificatePfx { get; set; }
+    }
+
+    /// <summary>
+    /// This is the class which defines the Azure VM failover input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class AzureFailbackInput
+    {
+        /// <summary>
+        /// Gets or sets a value indicating whether whether data sync should be skipped or not.
+        /// </summary>
+        [DataMember]
+        public bool SkipDataSync { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether whether data sync should create VM on
+        /// premise in case VM is not available there.This is applicable only in case of failback.
+        /// </summary>
+        [DataMember]
+        public bool CreateRecoveryVmIfDoesntExist { get; set; }
+    }
+
+    /// <summary>
+    /// This is the class which defines the Azure enable protection input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class AzureReProtectionInput : AzureEnableProtectionInput
+    {
+    }
+
+    /// <summary>
+    /// This is the class which defines the Azure enable protection input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class AzureEnableProtectionInput
+    {
+        /// <summary>
+        /// Gets or sets the Hyper-V host Virtual Machine Id.
+        /// </summary>
+        [DataMember(Order = 1)]
+        public string HvHostVmId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Virtual Machine Name.
+        /// </summary>
+        [DataMember(Order = 2)]
+        public string VmName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS type associated with Virtual Machine.
+        /// </summary>
+        [DataMember(Order = 3)]
+        public string OSType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS disk VHD id associated with Virtual Machine.
+        /// </summary>
+        [DataMember(Order = 4)]
+        public string VHDId { get; set; }
+    }
+
+    /// <summary>
+    /// This is the class which defines the Azure VM failover input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class ASREnableProtectionInput
+    {
+        /// <summary>
+        /// Gets or sets the ProtectionProfileId.
+        /// </summary> 
+        [DataMember(Order = 1)]
+        public string ProtectionProfileId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ReplicationProviderInput.
+        /// For HyperVReplicaAzure provider it will be serialized AzureEnableProtectionInput
+        /// object. For HyperVReplicaAzure it can be null.
+        /// </summary> 
+        [DataMember(Order = 2)]
+        public string ReplicationProviderInput { get; set; }
+    }
+
+    /// <summary>
+    /// Disk details for E2A provider.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class AzureVmDiskDetails
+    {
+        /// <summary>
+        /// Gets or sets the List of all Disk in VM.
+        /// </summary>
+        [DataMember]
+        public string OsType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Type of OS “Windows|Linux” as set.
+        /// </summary>
+        [DataMember]
+        public List<VirtualHardDisk> Disks { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Name of OS Disk as set.
+        /// </summary>
+        [DataMember]
+        public string OsDisk { get; set; }
+
+        /// <summary>
+        /// Gets or sets the VHD id.
+        /// </summary>
+        [DataMember]
+        public string VHDId { get; set; }
+
+        /// <summary>
+        /// Gets or sets MaxSizeMB.
+        /// </summary>
+        [DataMember]
+        public ulong MaxSizeMB { get; set; }
+    }
+}
+
+namespace Microsoft.Azure.Portal.HybridServicesCore
+{
+    /// <summary>
+    /// The ResourceExtendedInfo which represents the xml info stored in RP.
+    /// </summary>
+    [DataContract]
+    public class ResourceExtendedInfo
+    {
+        #region properties
+
+        /// <summary>
+        /// Gets or sets the version
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets the channel integrity key
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string ChannelIntegrityKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Channel encryption key
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string ChannelEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the channel encryption key thumbprint
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string ChannelEncryptionKeyThumbprint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the portal certificate thumbprint
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string PortalCertificateThumbprint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the algorithm used to encrypt the data.
+        /// </summary>
+        [DataMember(IsRequired = false)]
+        public string Algorithm { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tag to be sent while updating the resource extended info.
+        /// </summary>
+        [IgnoreDataMember]
+        public string Etag { get; set; }
+
+        #endregion
+
+        #region Public methods
+
+        /// <summary>
+        /// Returns the Xml representation of this object.
+        /// </summary>
+        /// <returns>the xml as string</returns>
+        public ResourceExtendedInformationArgs Translate()
+        {
+            if (string.IsNullOrEmpty(this.Etag))
+            {
+                this.Etag = Guid.NewGuid().ToString();
+            }
+
+            string serializedInfo = Utilities.Serialize<ResourceExtendedInfo>(this);
+            ResourceExtendedInformationArgs extendedInfoArgs = new ResourceExtendedInformationArgs(
+                Constants.VaultExtendedInfoContractVersion,
+                serializedInfo,
+                this.Etag);
+
+            return extendedInfoArgs;
+        }
+
+        /// <summary>
+        /// Method to generate security information
+        /// </summary>
+        public void GenerateSecurityInfo()
+        {
+            this.ChannelIntegrityKey = Utilities.GenerateRandomKey(128);
+            this.Version = Constants.VaultSecurityInfoVersion;
+            this.Algorithm = CryptoAlgorithm.None.ToString();
+        }
+
+        #endregion
     }
 }

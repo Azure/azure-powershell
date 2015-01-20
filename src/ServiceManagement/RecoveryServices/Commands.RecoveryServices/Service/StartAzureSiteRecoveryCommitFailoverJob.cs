@@ -114,6 +114,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void SetRpCommit()
         {
+            var request = new CommitFailoverRequest();
+
+            if (this.ProtectionEntity == null)
+            {
+                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                    this.ProtectionContainerId,
+                    this.ProtectionEntityId);
+                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+
+                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+            }
+
+            request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
+            request.ReplicationProviderSettings = string.Empty;
+
+            if (this.ProtectionEntity.ActiveLocation == Constants.PrimaryLocation)
+            {
+                request.FailoverDirection = Constants.PrimaryToRecovery;
+            }
+            else
+            {
+                request.FailoverDirection = Constants.RecoveryToPrimary;
+            }
+
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(
                 this.RPId);
 
@@ -130,9 +154,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void SetPECommit()
         {
+            var request = new CommitFailoverRequest();
+
+            if (this.ProtectionEntity == null)
+            {
+                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                    this.ProtectionContainerId,
+                    this.ProtectionEntityId);
+                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+
+                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+            }
+
+            request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
+            request.ReplicationProviderSettings = string.Empty;
+ 
+            if (this.ProtectionEntity.ActiveLocation == Constants.PrimaryLocation)
+            {
+                request.FailoverDirection = Constants.RecoveryToPrimary;
+            }
+            else
+            {
+                request.FailoverDirection = Constants.PrimaryToRecovery;
+            }
+
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(
                 this.ProtectionContainerId,
-                this.ProtectionEntityId);
+                this.ProtectionEntityId,
+                request);
 
             this.WriteJob(this.jobResponse.Job);
 
