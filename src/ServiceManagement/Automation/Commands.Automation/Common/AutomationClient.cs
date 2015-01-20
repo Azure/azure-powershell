@@ -25,7 +25,7 @@ using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Newtonsoft.Json;
 
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
@@ -40,6 +40,10 @@ using JobSchedule = Microsoft.Azure.Commands.Automation.Model.JobSchedule;
 namespace Microsoft.Azure.Commands.Automation.Common
 {
     using AutomationManagement = Management.Automation;
+    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Extensions;
+    using Hyak.Common;
+
 
     public class AutomationClient : IAutomationClient
     {
@@ -998,7 +1002,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 if (String.Equals(js.RunbookName, runbookName, StringComparison.OrdinalIgnoreCase) && 
                     String.Equals(js.ScheduleName, scheduleName, StringComparison.OrdinalIgnoreCase))
                 {
-                    jobSchedule = this.GetJobSchedule(automationAccountName, new Guid(js.Id));
+                    jobSchedule = this.GetJobSchedule(automationAccountName, new Guid(js.JobScheduleId));
                     jobScheduleFound = true;
                     break;
                 }
@@ -1097,7 +1101,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (jobSchedule.RunbookName == runbookName && jobSchedule.ScheduleName == scheduleName)
                 {
-                    this.UnregisterScheduledRunbook(automationAccountName, new Guid(jobSchedule.Id));
+                    this.UnregisterScheduledRunbook(automationAccountName, new Guid(jobSchedule.JobScheduleId));
                     jobScheduleFound = true;
                     break;
                 }

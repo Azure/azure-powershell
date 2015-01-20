@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         {
             Requires.Argument("jobSchedule", jobSchedule).NotNull();
             this.AutomationAccountName = automationAccountName;
-            this.Id = jobSchedule.Properties.Id;
+            this.JobScheduleId = jobSchedule.Properties.Id;
             this.RunbookName = jobSchedule.Properties.Runbook.Name;
             this.ScheduleName = jobSchedule.Properties.Schedule.Name;
             this.Parameters = jobSchedule.Properties.Parameters ?? new Dictionary<string, string>();
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the job schedule id.
         /// </summary>
-        public string Id { get; set; }
+        public string JobScheduleId { get; set; }
 
         /// <summary>
         /// Gets or sets the runbook name.

@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Websites.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.DeploymentEntities;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Websites
 {

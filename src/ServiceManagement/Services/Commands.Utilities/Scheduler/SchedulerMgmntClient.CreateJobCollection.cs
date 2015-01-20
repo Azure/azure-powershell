@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model;
 using Microsoft.WindowsAzure.Management.Scheduler.Models;
+using Microsoft.WindowsAzure.Management.Scheduler;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
 {

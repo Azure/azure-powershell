@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             if (module.Properties == null) return;
 
             this.CreationTime = module.Properties.CreationTime.ToLocalTime();
-            this.LastPublishTime = module.Properties.LastPublishTime.ToLocalTime();
+            this.LastPublishTime = module.Properties.LastModifiedTime.ToLocalTime();
             this.IsGlobal = module.Properties.IsGlobal;
             this.Version = module.Properties.Version;
             this.ProvisioningState = module.Properties.ProvisioningState.ToString();

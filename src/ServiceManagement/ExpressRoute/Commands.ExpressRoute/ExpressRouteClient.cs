@@ -14,8 +14,8 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Common;
+using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
@@ -25,6 +25,9 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     using System.Collections.Generic;
     using System.Net;
     using Utilities.Common;
+    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Extensions;
+    using Hyak.Common;
     
    
     public class ExpressRouteClient
@@ -94,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             return (Client.DedicatedCircuits.Get(serviceKey)).DedicatedCircuit;
         }
 
-		public AzureDedicatedCircuit NewAzureDedicatedCircuit(string circuitName, 
+        public AzureDedicatedCircuit NewAzureDedicatedCircuit(string circuitName, 
             UInt32 bandwidth, string location, string serviceProviderName)
         {
             return (Client.DedicatedCircuits.New(new DedicatedCircuitNewParameters()
