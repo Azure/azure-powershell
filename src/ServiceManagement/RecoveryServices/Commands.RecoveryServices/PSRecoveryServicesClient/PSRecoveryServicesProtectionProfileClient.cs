@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="createAndAssociateProtectionProfileInput">Protection Profile Input</param>
         /// <returns>Job response</returns>
-        public JobResponse CreateAndAssociateAzureSiteRecoveryProtectionProfile(
+        public JobResponse StartCreateAndAssociateAzureSiteRecoveryProtectionProfileJob(
             CreateAndAssociateProtectionProfileInput createAndAssociateProtectionProfileInput)
         {
             return this.GetSiteRecoveryClient().ProtectionProfile.CreateAndAssociate(
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="protectionProfileId">Protection Profile ID</param>
         /// <param name="protectionProfileAssociationInput">Protection Profile Association Input</param>
         /// <returns>Job response</returns>
-        public JobResponse DeleteAndDissociateAzureSiteRecoveryProtectionProfile(
+        public JobResponse StartDeleteAndDissociateAzureSiteRecoveryProtectionProfileJob(
             string protectionProfileId,
             ProtectionProfileAssociationInput protectionProfileAssociationInput)
         {
