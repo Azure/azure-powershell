@@ -15,6 +15,7 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Recovery Azure Storage Account Name of the Protection Profile for E2A scenarios.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccount { get; set; }
 

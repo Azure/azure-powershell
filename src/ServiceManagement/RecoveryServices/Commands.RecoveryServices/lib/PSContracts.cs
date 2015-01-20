@@ -741,6 +741,158 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     }
 
     /// <summary>
+    /// Azure Site Recovery Protection Profile HyperVReplicaProviderSettings.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class HyperVReplicaProviderSettings
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HyperVReplicaProviderSettings" /> class.
+        /// </summary>
+        public HyperVReplicaProviderSettings()
+        {
+        }
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets Replication Method.
+        /// </summary>
+        public string ReplicationMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether profile can be dissociated or not.
+        /// </summary>
+        public bool CanDissociate { get; set; }
+
+        /// <summary>
+        /// Gets or sets Association Details.
+        /// </summary>
+        public List<ASRProtectionProfileAssociationDetails> AssociationDetail { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication Frequency in seconds.
+        /// </summary>
+        public int ReplicationFrequencyInSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery Points.
+        /// </summary>
+        public int RecoveryPoints { get; set; }
+
+        /// <summary>
+        /// Gets or sets Application Consistent Snapshot Frequency in hours.
+        /// </summary>
+        public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Compression is Enabled.
+        /// </summary>
+        public bool CompressionEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication port.
+        /// </summary>
+        public int ReplicationPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication Start Time.
+        /// </summary>
+        public TimeSpan? ReplicationStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Replica Deletion should be enabled.
+        /// </summary>
+        public bool AllowReplicaDeletion { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Azure Site Recovery Protection Profile HyperVReplicaAzureProviderSettings.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class HyperVReplicaAzureProviderSettings
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HyperVReplicaAzureProviderSettings" /> class.
+        /// </summary>
+        public HyperVReplicaAzureProviderSettings()
+        {
+        }
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets Replication Method.
+        /// </summary>
+        public string ReplicationMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether profile can be dissociated or not.
+        /// </summary>
+        public bool CanDissociate { get; set; }
+
+        /// <summary>
+        /// Gets or sets Association Details.
+        /// </summary>
+        public List<ASRProtectionProfileAssociationDetails> AssociationDetail { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery Azure Subscription.
+        /// </summary>
+        public string RecoveryAzureSubscription { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery Azure Storage Account Name.
+        /// </summary>
+        public string RecoveryAzureStorageAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication Frequency in seconds.
+        /// </summary>
+        public int ReplicationFrequencyInSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery Points.
+        /// </summary>
+        public int RecoveryPoints { get; set; }
+
+        /// <summary>
+        /// Gets or sets Application Consistent Snapshot Frequency in hours.
+        /// </summary>
+        public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Compression is Enabled.
+        /// </summary>
+        public bool CompressionEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication port.
+        /// </summary>
+        public int ReplicationPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication Start Time.
+        /// </summary>
+        public TimeSpan? ReplicationStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Replica Deletion should be enabled.
+        /// </summary>
+        public bool AllowReplicaDeletion { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
     /// This is the class which defines the Azure VM failover input.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
