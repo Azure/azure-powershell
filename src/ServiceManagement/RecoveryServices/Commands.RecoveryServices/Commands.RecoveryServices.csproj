@@ -149,7 +149,7 @@
     <Compile Include="Service\GetAzureSiteRecoveryNetwork.cs" />
     <Compile Include="Service\CreateAzureSiteRecoveryRecoveryPlan.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryRecoveryPlanFile.cs" />
-    <Compile Include="Service\GetAzureSiteRecoveryVaultCredential.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryVaultSettingsFile.cs" />
     <Compile Include="Service\RemoveAzureSiteRecoveryRecoveryPlan.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryProtectionEntity.cs" />
     <Compile Include="Service\RestartAzureSiteRecoveryJob.cs" />
