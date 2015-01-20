@@ -294,35 +294,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Validates whether the subscription belongs to the currently logged account or not.
-        /// </summary>
-        /// <param name="azureSubscriptionId">Azure Subscription ID</param>
-        public void ValidateSubscriptionAccountAssociation(string azureSubscriptionId)
-        {
-            bool associatedSubscription = false;
-            ProfileClient pc = new ProfileClient();
-            List<AzureSubscription> subscriptions =
-                pc.RefreshSubscriptions(AzureSession.CurrentContext.Environment);
-
-            foreach (AzureSubscription sub in subscriptions)
-            {
-                if (azureSubscriptionId.Equals(sub.Id.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    associatedSubscription = true;
-                    break;
-                }
-            }
-
-            if (!associatedSubscription)
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.SubscriptionIsNotAssociatedWithTheAccount,
-                    azureSubscriptionId));
-            }
-        }
-
-        /// <summary>
         /// Validates whether the Azure VM Network is associated with the subscription or not.
         /// </summary>
         /// <param name="azureSubscriptionId">Subscription Id</param>
