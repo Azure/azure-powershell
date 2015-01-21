@@ -92,7 +92,7 @@ function Test-VolumeSync
     echo "Cleaning up the volume"
     Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -WaitForComplete
     
-    Start-Sleep 60
+    [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(60000)
 	echo "Cleaning up DC"
     $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete    
     
@@ -164,7 +164,7 @@ function Test-NewVolumeRepetitiveName
     echo "Cleaning up the volume"
     Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -WaitForComplete
     
-    Start-Sleep 60
+    [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(60000)
 	echo "Cleaning up DC"
     $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete    
     
@@ -212,7 +212,7 @@ function Test-NewVolumeNoAccess
     echo "Cleaning up the volume"
     Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -WaitForComplete
   
-    Start-Sleep 60
+    [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(60000)
 	echo "Cleaning up DC"
     $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete    
     
@@ -266,7 +266,7 @@ function Test-VolumeAsync
     echo "Verifying that volume is offline"
     [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
     $vdToUse = Get-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName
-	Assert-AreEqual $vdToUse.Online $false
+	Assert-AreEqual $vdToUse.Online $false "Volume is not offline"
 
     echo "Cleaning up the volume"
     Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force

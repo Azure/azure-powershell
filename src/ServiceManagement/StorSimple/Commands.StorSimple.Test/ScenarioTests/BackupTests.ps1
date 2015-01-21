@@ -31,7 +31,7 @@ Polls for a job to finish, and returns the JobStatus object
 function Wait-Job ($taskId)
 {
     do {
-        Start-Sleep 3 #sleep for 3sec
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(3000) #sleep for 3sec
         $taskStatus = Get-AzureStorSimpleTask -InstanceId $taskId
         $result = $taskStatus.AsyncTaskAggregatedResult
     } while($result -eq [Microsoft.WindowsAzure.Management.StorSimple.Models.AsyncTaskAggregatedResult]"InProgress")
@@ -106,8 +106,8 @@ function CleanupObjects-BackupScenario($deviceName, $dcName, $acrName, $vdName)
 
     Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete
     
-	Start-Sleep 90
-    Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Name $dcName | Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete
+	[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(90000)
+	Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Name $dcName | Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete
 }
 
 <#
@@ -311,7 +311,7 @@ function Test-CreateGetRestoreDeleteBackup
 
     $retryCount = 0
     do {
-        Start-Sleep (5*$retryCount)
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(5000*$retryCount)
         $backupToRestore = Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -BackupPolicyId $bpId -First 1
         $retryCount += 1
     } while(($backupToRestore -eq $null) -and ($retryCount -lt 10))
@@ -355,7 +355,7 @@ function Test-GetBackupByBackupPolicyId
 
     $retryCount = 0
     do {
-        Start-Sleep (5*$retryCount)
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(5000*$retryCount)
         $backupCreated = Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -BackupPolicyId $bpId -First 1
         $retryCount += 1
     } while(($backupCreated -eq $null) -and ($retryCount -lt 10))
@@ -397,7 +397,7 @@ function Test-GetBackupByBackupPolicyObject
 
     $retryCount = 0
     do {
-        Start-Sleep (5*$retryCount)
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(5000*$retryCount)
         $backupCreated = $bpToUse | Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -First 1
         $retryCount += 1
     } while(($backupCreated -eq $null) -and ($retryCount -lt 10))
@@ -442,7 +442,7 @@ function Test-GetBackupByVolumeId
 
     $retryCount = 0
     do {
-        Start-Sleep (5*$retryCount)
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(5000*$retryCount)
         $backupCreated = Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -VolumeId $volumeId -First 1
         $retryCount += 1
     } while(($backupCreated -eq $null) -and ($retryCount -lt 10))
@@ -486,7 +486,7 @@ function Test-GetBackupByVolumeObject
 
     $retryCount = 0
     do {
-        Start-Sleep (5*$retryCount)
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(5000*$retryCount)
         $backupCreated = $vdToUse | Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -First 1
         $retryCount += 1
     } while(($backupCreated -eq $null) -and ($retryCount -lt 10))
@@ -527,10 +527,10 @@ function Test-GetBackupByTimePeriod
     Start-AzureStorSimpleDeviceBackupJob -DeviceName $deviceName -BackupPolicyId $bpId -BackupType CloudSnapshot -WaitForComplete
 
     $retryCount = 0
-    $startDt = (Get-Date).AddDays(-1).ToString()
-    $endDt = (Get-Date).AddDays(1).ToString()
+    $startDt = (Get-Date).AddDays(-1).Date.ToString("O")
+    $endDt = (Get-Date).AddDays(1).Date.ToString("O")
     do {
-        Start-Sleep (5*$retryCount)
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(5000*$retryCount)
         $backupCreated = Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -BackupPolicyId $bpId -From $startDt -To $endDt -First 1
         $retryCount += 1
     } while(($backupCreated -eq $null) -and ($retryCount -lt 10))
@@ -575,7 +575,7 @@ function Test-GetPaginatedBackup
 
     $retryCount = 0
     do {
-        Start-Sleep (5*$retryCount)
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(5000*$retryCount)
         
 		#Retrieving without First or Skip
         $allBackups = Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -BackupPolicyId $bpId
@@ -646,7 +646,7 @@ function Test-CreateGetRestoreDeleteBackup_Async
 
     $retryCount = 0
     do {
-        Start-Sleep (5*$retryCount)
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(5000*$retryCount)
         $backupToRestore = Get-AzureStorSimpleDeviceBackup -DeviceName $deviceName -BackupPolicyId $bpId -First 1
         $retryCount += 1
     } while(($backupToRestore -eq $null) -and ($retryCount -lt 10))
@@ -667,5 +667,3 @@ function Test-CreateGetRestoreDeleteBackup_Async
     #Cleanup
     CleanupObjects-BackupScenario $deviceName $dcName $acrName $vdName
 }
-
-Test-AddVolumeToBackupPolicy
