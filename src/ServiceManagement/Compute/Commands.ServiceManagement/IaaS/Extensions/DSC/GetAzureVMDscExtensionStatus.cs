@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 
@@ -45,13 +46,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected const string VirtualMachineDscStatusCmdletNoun = "AzureVMDscExtensionStatus";
         protected const string GetStatusByServiceAndVmNameParamSet = "GetStatusByServiceAndVMName";
         protected const string GetStatusByVmParamSet = "GetStatusByVM";
-        protected string Service = null;
-        protected string VmName = null;
-
+        internal string Service = null;
+        internal string VmName = null;
         protected override void ExecuteCommand()
         {
             ServiceManagementProfile.Initialize();
-            GetCurrentDeployment(this.ServiceName, this.VM);
+            GetService(this.ServiceName, this.VM);
+            GetCurrentDeployment();
 
             if (CurrentDeploymentNewSM == null)
             {
@@ -68,29 +69,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             WriteObject(vmDscStatusContexts, true);
         }
 
-        protected void GetCurrentDeployment(String serviceName, IPersistentVM vm)
+        internal void GetService(String serviceName, IPersistentVM vm)
+        {
+            if (!string.IsNullOrEmpty(serviceName))
+            {
+                Service = serviceName;
+            }
+            else
+            {
+                //get the service name from the VM object
+                var vmRoleContext = vm as PersistentVMRoleContext;
+                if (vmRoleContext == null)
+                    return;
+
+                Service = vmRoleContext.ServiceName;
+                VmName = vmRoleContext.Name;
+            }
+        }
+        internal void GetCurrentDeployment()
         {
             InvokeInOperationContext(() =>
             {
                 try
                 {
-                    if (!string.IsNullOrEmpty(serviceName))
-                    {
-                        Service = serviceName;
-                        CurrentDeploymentNewSM = this.ComputeClient.Deployments.GetBySlot(serviceName, NSM.DeploymentSlot.Production);
-                    }
-                    else
-                    {
-                        //get the service name from the VM object
-                        var vmRoleContext = vm as PersistentVMRoleContext;
-                        if (vmRoleContext == null)
-                            return;
-
-                        Service = vmRoleContext.ServiceName;
-                        VmName = vmRoleContext.Name;
-                        CurrentDeploymentNewSM = this.ComputeClient.Deployments.GetBySlot(vmRoleContext.ServiceName, NSM.DeploymentSlot.Production);
-                    }
-
+                    if (string.IsNullOrEmpty(this.Service))
+                        return;
+                    
+                    CurrentDeploymentNewSM = this.ComputeClient.Deployments.GetBySlot(this.Service, NSM.DeploymentSlot.Production);
                     GetDeploymentOperationNewSM = GetOperationNewSM(CurrentDeploymentNewSM.RequestId);
                     WriteVerboseWithTimestamp(Resources.GetDeploymentCompletedOperation);
                 }
@@ -103,7 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 }
             });
         }
-        private List<T> GetVirtualMachineDscStatusContextList<T>(NSM.DeploymentGetResponse deployment)
+        internal List<T> GetVirtualMachineDscStatusContextList<T>(NSM.DeploymentGetResponse deployment)
             where T : VirtualMachineDscExtensionStatusContext, new()
         {
             var vmDscStatusContexts = new List<T>();
@@ -134,7 +139,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             return vmDscStatusContexts;
         }
 
-        private T CreateDscStatusContext<T>(NSM.Role vmRole, NSM.RoleInstance roleInstance,
+        internal T CreateDscStatusContext<T>(NSM.Role vmRole, NSM.RoleInstance roleInstance,
             NSM.DeploymentGetResponse deployment) where T : VirtualMachineDscExtensionStatusContext, new()
         {
             var message = string.Empty;
