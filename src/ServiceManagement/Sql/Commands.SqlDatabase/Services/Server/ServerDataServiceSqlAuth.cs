@@ -26,6 +26,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
 {
     using DatabaseCopyModel = Model.DatabaseCopy;
+    using Microsoft.WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Implementation of the <see cref="IServerDataServiceContext"/> with Sql Authentication.
@@ -338,7 +339,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             {
                 database.MaxSizeGB = (int)databaseMaxSizeGb;
             }
-            if(databaseMaxSizeBytes != null)
+            if (databaseMaxSizeBytes != null)
             {
                 database.MaxSizeBytes = (long)databaseMaxSizeBytes;
             }

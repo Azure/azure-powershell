@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Extensions;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
@@ -19,9 +20,8 @@ using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Monitoring.Events;
 using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Test;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Test
 {
@@ -40,14 +40,12 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
             var resourceManagementClient = GetResourceManagementClient();
             var subscriptionsClient = GetSubscriptionClient();
             var galleryClient = GetGalleryClient();
-            var eventsClient = GetEventsClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
 
             helper.SetupManagementClients(dataPipelineManagementClient,
                 resourceManagementClient,
                 subscriptionsClient,
                 galleryClient,
-                eventsClient,
                 authorizationManagementClient);
         }
 
@@ -89,11 +87,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
         protected GalleryClient GetGalleryClient()
         {
             return TestBase.GetServiceClient<GalleryClient>(new CSMTestEnvironmentFactory());
-        }
-
-        protected EventsClient GetEventsClient()
-        {
-            return TestBase.GetServiceClient<EventsClient>(new CSMTestEnvironmentFactory());
         }
 
         protected AuthorizationManagementClient GetAuthorizationManagementClient()

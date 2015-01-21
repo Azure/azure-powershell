@@ -26,6 +26,7 @@ using Microsoft.Azure.Commands.Automation.DataContract;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             }
             catch (CloudException cloudException)
             {
-                if (string.IsNullOrEmpty(cloudException.ErrorCode) && string.IsNullOrEmpty(cloudException.ErrorMessage))
+                if (string.IsNullOrEmpty(cloudException.Error.Code) && string.IsNullOrEmpty(cloudException.Error.Message))
                 {
                     string message = this.ParseErrorMessage(cloudException.Response.Content);
                     if (!string.IsNullOrEmpty(message))

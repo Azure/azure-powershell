@@ -17,12 +17,13 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.Diagnostics;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
