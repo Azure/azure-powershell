@@ -143,8 +143,6 @@
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVMClient.cs" />
     <Compile Include="RecoveryServicesCmdletBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\SetAzureSiteRecoveryProtectionProfile.cs" />
-    <Compile Include="Service\StartAzureSiteRecoveryProtectionProfileDissociationJob.cs" />
     <Compile Include="Service\StartAzureSiteRecoveryProtectionProfileAssociationJob.cs" />
     <Compile Include="Service\CreateAzureSiteRecoveryProtectionProfileObject.cs" />
     <Compile Include="Service\CreateAzureSiteRecoveryVault.cs" />
