@@ -351,8 +351,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             this.AddTracingHeaders(sqlManagementClient);
 
             // Retrieve the specified database
-            ServiceObjectiveListResponse response = sqlManagementClient.ServiceObjectives.List(
-                this.serverName);
+            ServiceObjectiveListResponse response = sqlManagementClient.ServiceObjectives.List(this.serverName);
 
             // Populate the cache;
             objectivesCache = response.Select(serviceObjective => CreateServiceObjectiveFromResponse(serviceObjective)).ToArray();
