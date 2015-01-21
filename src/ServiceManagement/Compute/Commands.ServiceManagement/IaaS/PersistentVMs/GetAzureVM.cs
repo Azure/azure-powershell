@@ -20,8 +20,10 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using AutoMapper;
+using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {

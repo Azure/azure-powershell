@@ -306,6 +306,25 @@ function Test-GetADUserWithObjectId
     Assert-NotNull($users[0].UserPrincipalName)
 }
 
+
+<#
+.SYNOPSIS
+Tests getting Active Directory users by mail.
+#>
+function Test-GetADUserWithMail
+{
+    param([string]$mail)
+
+    # Test
+    $users = Get-AzureADUser -Mail $mail
+
+    # Assert
+    Assert-AreEqual $users.Count 1
+    Assert-AreEqual $users[0].Mail $mail
+    Assert-NotNull($users[0].DisplayName)
+    Assert-NotNull($users[0].UserPrincipalName)
+}
+
 <#
 .SYNOPSIS
 Tests getting Active Directory users.
@@ -413,3 +432,37 @@ function Test-GetADUserWithBadSearchString
     # Assert
     Assert-Null($users)
 }
+
+<#
+.SYNOPSIS
+Tests Creating and deleting application.
+#>
+function Test-NewADApplication
+{
+    # Setup
+    $displayName = getAssetName
+    $homePage = "http://" + $displayName + ".com"
+    $identifierUri = "http://" + $displayName
+
+    # Test
+    $application = New-AzureADApplication -DisplayName $displayName -HomePage $homePage -IdentifierUris $identifierUri
+
+    # Assert
+    Assert-NotNull $application
+}
+
+<#
+.SYNOPSIS
+Tests Creating and deleting service principal.
+#>
+function Test-NewADServicePrincipal
+{
+    param([string]$applicationId)
+
+    # Test
+    $servicePrincipal = New-AzureADServicePrincipal -ApplicationId $applicationId
+
+    # Assert
+    Assert-NotNull $servicePrincipal
+}
+

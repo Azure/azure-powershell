@@ -89,7 +89,7 @@ function GetOperationStatus
         Write-Output "Request Status: $($status.Status)"
         if($status.Status -eq "Failed")
         {
-            Write-Output "Error message: $($status.ErrorMessage)"
+            Write-Output "Error message: $($status.Error.Message)"
             break
         }
     } while($status.Status -ne "Completed")
@@ -128,7 +128,7 @@ function GetOperationStatusWithRequestId
         Write-Output "Request Status: $($status.Status)"
         if($status.Status -eq "Failed")
         {
-            Write-Output "Error message: $($status.ErrorMessage)"
+            Write-Output "Error message: $($status.Error.Message)"
             break
         }
     } while($status.Status -ne "Completed")
