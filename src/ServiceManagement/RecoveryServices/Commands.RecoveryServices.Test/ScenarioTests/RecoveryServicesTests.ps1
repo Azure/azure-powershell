@@ -255,6 +255,69 @@ function Test-NetworkMapping
 
 <#
 .SYNOPSIS
+Recovery Services Azure Network mapping tests and validation
+#>
+function Test-AzureNetworkMapping
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enumerate Servers
+	$servers = Get-AzureSiteRecoveryServer
+	Assert-True { $servers.Count -gt 0 }
+	Assert-NotNull($servers)
+	foreach($server in $servers)
+	{
+		Assert-NotNull($server.Name)
+		Assert-NotNull($server.ID)
+	}
+
+	# Enumerate Networks
+	$networks = Get-AzureSiteRecoveryNetwork -Server $servers[0]
+	Assert-NotNull($networks)
+	Assert-True { $networks.Count -gt 0 }
+	foreach($network in $networks)
+	{
+		Assert-NotNull($network.Name)
+		Assert-NotNull($network.ID)
+	}
+
+	<#
+	# Enumerate Azure VM Networks
+	$azureVmNetworks = Get-AzureVNetSite
+	Assert-NotNull($azureVmNetworks)
+	Assert-True { $azureVmNetworks.Count -gt 0 }
+	#>
+
+	# Enumerate AzureNetworkMappings
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -Azure
+	Assert-True { $networkMappings.Count -eq 0 }
+
+	# Create AzureNetworkMapping
+	# $subscription = Get-AzureSubscription -Current
+
+	# TODO (sriramvu): There are few dependency issues on using Get-AzureVNetSite to get list of Azure VM Networks, will update the test.
+	# Should setup NetworkManagementClient along with our two mgmt clients in RecoveryServicesTestsBase.cs
+	# $job = New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networks[0] -AzureSubscriptionId $subscription.SubscriptionId -AzureVMNetworkId $azureVmNetworks[0].Id
+	$job = New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networks[0] -AzureSubscriptionId 62633f66-ce59-4114-b65d-a50beb5bd8d8 -AzureVMNetworkId "1d0ecfad-ac09-4222-b46f-2ab74839fe7e"
+	WaitForJobCompletion -JobId $job.ID
+
+	# Enumerate NetworkMappings
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -Azure
+	Assert-NotNull($networkMappings)
+	Assert-True { $networkMappings.Count -eq 1 }
+	Assert-NotNull($networkMappings[0].PrimaryServerId)
+	Assert-NotNull($networkMappings[0].PrimaryNetworkId)
+	Assert-NotNull($networkMappings[0].PrimaryNetworkName)
+	Assert-NotNull($networkMappings[0].RecoveryServerId)
+	Assert-NotNull($networkMappings[0].RecoveryNetworkId)
+	Assert-NotNull($networkMappings[0].RecoveryNetworkName)
+}
+
+<#
+.SYNOPSIS
 Recovery Services Network unmapping tests and validation
 #>
 function Test-NetworkUnMapping
@@ -285,12 +348,53 @@ function Test-NetworkUnMapping
 	Assert-NotNull($networkMappings[0].RecoveryNetworkId)
 	Assert-NotNull($networkMappings[0].RecoveryNetworkName)
 
-	# Remove StorageMapping
+	# Remove NetworkMapping
 	$job = Remove-AzureSiteRecoveryNetworkMapping -NetworkMapping $networkMappings[0]
 	WaitForJobCompletion -JobId $job.ID
 
 	# Enumerate NetworkMappings
 	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	Assert-True { $networkMappings.Count -eq 0 }
+}
+
+<#
+.SYNOPSIS
+Recovery Services Azure Network unmapping tests and validation
+#>
+function Test-AzureNetworkUnMapping
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Enumerate Servers
+	$servers = Get-AzureSiteRecoveryServer
+	Assert-True { $servers.Count -gt 0 }
+	Assert-NotNull($servers)
+	foreach($server in $servers)
+	{
+		Assert-NotNull($server.Name)
+		Assert-NotNull($server.ID)
+	}
+
+	# Enumerate Azure NetworkMappings
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -Azure
+	Assert-NotNull($networkMappings)
+	Assert-True { $networkMappings.Count -eq 1 }
+	Assert-NotNull($networkMappings[0].PrimaryServerId)
+	Assert-NotNull($networkMappings[0].PrimaryNetworkId)
+	Assert-NotNull($networkMappings[0].PrimaryNetworkName)
+	Assert-NotNull($networkMappings[0].RecoveryServerId)
+	Assert-NotNull($networkMappings[0].RecoveryNetworkId)
+	Assert-NotNull($networkMappings[0].RecoveryNetworkName)
+
+	# Remove Azure NetworkMapping
+	$job = Remove-AzureSiteRecoveryNetworkMapping -NetworkMapping $networkMappings[0]
+	WaitForJobCompletion -JobId $job.ID
+
+	# Enumerate Azure NetworkMappings
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -Azure
 	Assert-True { $networkMappings.Count -eq 0 }
 }
 
