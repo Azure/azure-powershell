@@ -166,10 +166,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private void EnterpriseToAzureProtectionProfileObject()
         {
             // Verify whether the storage account is associated with the account or not.
-            PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
+            // PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
 
             // Verify whether the subscription is associated with the account or not.
-            PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
+            // PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
 
             this.ValidateReplicationStartTime(this.ReplicationStartTime);
 
