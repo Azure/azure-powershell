@@ -17,22 +17,41 @@ using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
 {
-    public class BackupPolicyTests:StorSimpleTestBase
+    public class VolumeContainerTests : StorSimpleTestBase
     {
-        #region New-AzureStorSimpleDeviceBackupScheduleAddConfig
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewBackupPolicyConfig()
+        public void TestVolumeContainerSync()
         {
-            RunPowerShellTest("Test-NewBackupPolicyAddConfig");
+            RunPowerShellTest("Test-VolumeContainerSync");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewBackupPolicyAddConfigDefaultValues()
+        public void TestVolumeContainerAsync()
         {
-            RunPowerShellTest("Test-NewBackupPolicyAddConfig-DefaultValues");
+            RunPowerShellTest("Test-VolumeContainerAsync");
         }
-        #endregion New-AzureStorSimpleDeviceBackupScheduleAddConfig
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVolumeContainerSync_RepetitiveDCName()
+        {
+            RunPowerShellTest("Test-VolumeContainerSync_RepetitiveDCName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVolumeContainerSync_InlineSac()
+        {
+            RunPowerShellTest("Test-VolumeContainerSync_InlineSac");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVolumeContainerSync_InlineSac_InvalidCreds()
+        {
+            RunPowerShellTest("Test-VolumeContainerSync_InlineSac_InvalidCreds");
+        }
     }
 }

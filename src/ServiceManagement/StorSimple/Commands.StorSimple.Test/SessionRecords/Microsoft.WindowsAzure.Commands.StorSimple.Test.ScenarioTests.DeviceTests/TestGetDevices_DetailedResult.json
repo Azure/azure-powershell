@@ -25,13 +25,13 @@
           "ussouth2"
         ],
         "x-ms-request-id": [
-          "213f38c360876b78bcd3b517fdc08297"
+          "8edb786014ee6cbeafa83a6296bd3a87"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 20 Jan 2015 18:25:58 GMT"
+          "Tue, 20 Jan 2015 18:23:20 GMT"
         ],
         "Server": [
           "1.0.6198.179",
@@ -54,7 +54,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "8fa53a20-778a-47d2-bf5e-bf8de56cb05f_PS"
+          "cef7f860-3a4b-45ba-a899-63061d5b609b_PS"
         ],
         "x-ms-version": [
           "2014-01-01"
@@ -81,19 +81,84 @@
           "ussouth2"
         ],
         "x-ms-client-request-id": [
-          "8fa53a20-778a-47d2-bf5e-bf8de56cb05f_PS,8fa53a20-778a-47d2-bf5e-bf8de56cb05f_PS"
+          "cef7f860-3a4b-45ba-a899-63061d5b609b_PS,cef7f860-3a4b-45ba-a899-63061d5b609b_PS"
         ],
         "Strict-Transport-Security": [
           "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "5e515f764af56c0db38a451dfb857e28"
+          "c494dbc092146a5f95daf444eb6f3629"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 20 Jan 2015 18:26:01 GMT"
+          "Tue, 20 Jan 2015 18:23:25 GMT"
+        ],
+        "Server": [
+          "1.0.6198.179",
+          "(rd_rdfe_stable.150115-1225)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/062c67a6-019b-40af-a775-c4dc1abe56ed/cloudservices/CisService-DTYHC5NYB4BUTV3ZHFNSE5EKIZZGLGYR44OJUL5OQGG4I2EMYOZA-west-us/resources/WACis/~/CiSVault/OneSDK-Resource/api/devices?api-version=2014-01-01.1.0",
+      "EncodedRequestUri": "LzA2MmM2N2E2LTAxOWItNDBhZi1hNzc1LWM0ZGMxYWJlNTZlZC9jbG91ZHNlcnZpY2VzL0Npc1NlcnZpY2UtRFRZSEM1TllCNEJVVFYzWkhGTlNFNUVLSVpaR0xHWVI0NE9KVUw1T1FHRzRJMkVNWU9aQS13ZXN0LXVzL3Jlc291cmNlcy9XQUNpcy9+L0NpU1ZhdWx0L09uZVNESy1SZXNvdXJjZS9hcGkvZGV2aWNlcz9hcGktdmVyc2lvbj0yMDE0LTAxLTAxLjEuMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/xml"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "4a4a92ad-9d83-467a-aac3-21ff346b1b91_PS"
+        ],
+        "x-ms-version": [
+          "2014-01-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.StorSimple.StorSimpleManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "<ArrayOfDeviceInfo xmlns=\"http://windowscloudbackup.com/CiS/V2013_03\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <DeviceInfo>\r\n    <ACRCount>0</ACRCount>\r\n    <ActivationTime>2014-11-28T06:04:49.2510897Z</ActivationTime>\r\n    <ActiveController>Unknown</ActiveController>\r\n    <AvailableStorageInBytes>1086774209536</AvailableStorageInBytes>\r\n    <CloudCredCount>0</CloudCredCount>\r\n    <Culture>en-US</Culture>\r\n    <CurrentController>Unknown</CurrentController>\r\n    <DataContainerCount>0</DataContainerCount>\r\n    <Description i:nil=\"true\" />\r\n    <DeviceId>29f9be68-04f7-437d-a466-b90a1ed324b5</DeviceId>\r\n    <DeviceSoftwareVersion>6.3.9600.17215</DeviceSoftwareVersion>\r\n    <FriendlyName>Avirupch_App3</FriendlyName>\r\n    <IsConfigUpdated>true</IsConfigUpdated>\r\n    <IsVirtualApplianceInterimEntry>false</IsVirtualApplianceInterimEntry>\r\n    <Location i:nil=\"true\" />\r\n    <ModelDescription>100</ModelDescription>\r\n    <NNicCards>6</NNicCards>\r\n    <ProvisionedStorageInBytes>12737418240</ProvisionedStorageInBytes>\r\n    <SerialNumber>123456789</SerialNumber>\r\n    <Status>Online</Status>\r\n    <TargetIQN>iqn.1991-05.com.microsoft:storsimple100-123456789-target</TargetIQN>\r\n    <TimeZone>Pacific Standard Time</TimeZone>\r\n    <TotalStorageInBytes>1099511627776</TotalStorageInBytes>\r\n    <Type>Appliance</Type>\r\n    <UsingStorageInBytes>0</UsingStorageInBytes>\r\n    <VolumeCount>0</VolumeCount>\r\n  </DeviceInfo>\r\n  <DeviceInfo>\r\n    <ACRCount>0</ACRCount>\r\n    <ActivationTime>2014-12-11T17:33:21.6765566Z</ActivationTime>\r\n    <ActiveController>Unknown</ActiveController>\r\n    <AvailableStorageInBytes>32985348833280</AvailableStorageInBytes>\r\n    <CloudCredCount>0</CloudCredCount>\r\n    <Culture>en-US</Culture>\r\n    <CurrentController>Unknown</CurrentController>\r\n    <DataContainerCount>0</DataContainerCount>\r\n    <Description i:nil=\"true\" />\r\n    <DeviceId>2b4bda4e-5ab6-4668-a681-ca47cee7ca64</DeviceId>\r\n    <DeviceSoftwareVersion>6.3.9600.17215</DeviceSoftwareVersion>\r\n    <FriendlyName>test-madhurta</FriendlyName>\r\n    <IsConfigUpdated>false</IsConfigUpdated>\r\n    <IsVirtualApplianceInterimEntry>false</IsVirtualApplianceInterimEntry>\r\n    <Location>West US</Location>\r\n    <ModelDescription>1100</ModelDescription>\r\n    <NNicCards>0</NNicCards>\r\n    <ProvisionedStorageInBytes>0</ProvisionedStorageInBytes>\r\n    <SerialNumber>2B4BDA4E-5AB6-4668-A681-CA47CEE7CA64</SerialNumber>\r\n    <Status>Offline</Status>\r\n    <TargetIQN>iqn.1991-05.com.microsoft:storsimple1100-2b4bda4e-5ab6-4668-a681-ca47cee7ca64-target</TargetIQN>\r\n    <TimeZone>UTC</TimeZone>\r\n    <TotalStorageInBytes>32985348833280</TotalStorageInBytes>\r\n    <Type>VirtualAppliance</Type>\r\n    <UsingStorageInBytes>0</UsingStorageInBytes>\r\n    <VolumeCount>0</VolumeCount>\r\n  </DeviceInfo>\r\n  <DeviceInfo>\r\n    <ACRCount>0</ACRCount>\r\n    <ActivationTime>2015-01-08T12:47:48.2608605Z</ActivationTime>\r\n    <ActiveController>Unknown</ActiveController>\r\n    <AvailableStorageInBytes>32985348833280</AvailableStorageInBytes>\r\n    <CloudCredCount>0</CloudCredCount>\r\n    <Culture>en-US</Culture>\r\n    <CurrentController>Unknown</CurrentController>\r\n    <DataContainerCount>0</DataContainerCount>\r\n    <Description i:nil=\"true\" />\r\n    <DeviceId>3b24f574-3997-4127-8ce4-cefb1c996ec7</DeviceId>\r\n    <DeviceSoftwareVersion>6.3.9600.17215</DeviceSoftwareVersion>\r\n    <FriendlyName>quicktestpas213</FriendlyName>\r\n    <IsConfigUpdated>false</IsConfigUpdated>\r\n    <IsVirtualApplianceInterimEntry>false</IsVirtualApplianceInterimEntry>\r\n    <Location>West US</Location>\r\n    <ModelDescription>1100</ModelDescription>\r\n    <NNicCards>0</NNicCards>\r\n    <ProvisionedStorageInBytes>0</ProvisionedStorageInBytes>\r\n    <SerialNumber>3B24F574-3997-4127-8CE4-CEFB1C996EC7</SerialNumber>\r\n    <Status>Online</Status>\r\n    <TargetIQN>iqn.1991-05.com.microsoft:storsimple1100-3b24f574-3997-4127-8ce4-cefb1c996ec7-target</TargetIQN>\r\n    <TimeZone>UTC</TimeZone>\r\n    <TotalStorageInBytes>32985348833280</TotalStorageInBytes>\r\n    <Type>VirtualAppliance</Type>\r\n    <UsingStorageInBytes>0</UsingStorageInBytes>\r\n    <VolumeCount>0</VolumeCount>\r\n  </DeviceInfo>\r\n</ArrayOfDeviceInfo>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3661"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-client-request-id": [
+          "4a4a92ad-9d83-467a-aac3-21ff346b1b91_PS,4a4a92ad-9d83-467a-aac3-21ff346b1b91_PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "69fedc43fc6e6ce79fda0b90e2af989c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 20 Jan 2015 18:23:28 GMT"
         ],
         "Server": [
           "1.0.6198.179",
@@ -119,7 +184,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "55e006ae-6451-4ae7-b43c-038737351087_PS"
+          "9c71077c-c7ed-4f92-b25e-9fa2f6df1d69_PS"
         ],
         "x-ms-version": [
           "2014-01-01"
@@ -146,19 +211,214 @@
           "ussouth2"
         ],
         "x-ms-client-request-id": [
-          "55e006ae-6451-4ae7-b43c-038737351087_PS,55e006ae-6451-4ae7-b43c-038737351087_PS"
+          "9c71077c-c7ed-4f92-b25e-9fa2f6df1d69_PS,9c71077c-c7ed-4f92-b25e-9fa2f6df1d69_PS"
         ],
         "Strict-Transport-Security": [
           "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "fb07d0e97e1166c0981c710e65a0a7f6"
+          "4a487f0c91ac6c84bfc10dfe99731ff2"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 20 Jan 2015 18:26:03 GMT"
+          "Tue, 20 Jan 2015 18:23:27 GMT"
+        ],
+        "Server": [
+          "1.0.6198.179",
+          "(rd_rdfe_stable.150115-1225)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/062c67a6-019b-40af-a775-c4dc1abe56ed/cloudservices/CisService-DTYHC5NYB4BUTV3ZHFNSE5EKIZZGLGYR44OJUL5OQGG4I2EMYOZA-west-us/resources/WACis/~/CiSVault/OneSDK-Resource/api/devices/29f9be68-04f7-437d-a466-b90a1ed324b5?api-version=2014-01-01.3.0",
+      "EncodedRequestUri": "LzA2MmM2N2E2LTAxOWItNDBhZi1hNzc1LWM0ZGMxYWJlNTZlZC9jbG91ZHNlcnZpY2VzL0Npc1NlcnZpY2UtRFRZSEM1TllCNEJVVFYzWkhGTlNFNUVLSVpaR0xHWVI0NE9KVUw1T1FHRzRJMkVNWU9aQS13ZXN0LXVzL3Jlc291cmNlcy9XQUNpcy9+L0NpU1ZhdWx0L09uZVNESy1SZXNvdXJjZS9hcGkvZGV2aWNlcy8yOWY5YmU2OC0wNGY3LTQzN2QtYTQ2Ni1iOTBhMWVkMzI0YjU/YXBpLXZlcnNpb249MjAxNC0wMS0wMS4zLjA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/xml"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "c19ce63d-3e4f-46af-ac70-7c372f7dfcaf_PS"
+        ],
+        "x-ms-version": [
+          "2014-01-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.StorSimple.StorSimpleManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "<DeviceDetails i:type=\"DeviceDetails_V3\" xmlns=\"http://windowscloudbackup.com/CiS/V2013_03\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <InstanceId>29f9be68-04f7-437d-a466-b90a1ed324b5</InstanceId>\r\n  <Name i:nil=\"true\" />\r\n  <OperationInProgress>None</OperationInProgress>\r\n  <AlertNotification>\r\n    <AlertNotifcationCulture>en-US</AlertNotifcationCulture>\r\n    <AlertNotifcationEnabled>true</AlertNotifcationEnabled>\r\n    <AlertNotificationEmailList xmlns:d3p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n    <AlertNotificationEnabledForAdminCoAdmins>true</AlertNotificationEnabledForAdminCoAdmins>\r\n  </AlertNotification>\r\n  <Chap i:nil=\"true\" />\r\n  <DeviceProperties>\r\n    <ACRCount>0</ACRCount>\r\n    <ActivationTime>2014-11-28T06:04:49.2510897Z</ActivationTime>\r\n    <ActiveController>Unknown</ActiveController>\r\n    <AvailableStorageInBytes>1086774209536</AvailableStorageInBytes>\r\n    <CloudCredCount>0</CloudCredCount>\r\n    <Culture>en-US</Culture>\r\n    <CurrentController>Unknown</CurrentController>\r\n    <DataContainerCount>0</DataContainerCount>\r\n    <Description i:nil=\"true\" />\r\n    <DeviceId>29f9be68-04f7-437d-a466-b90a1ed324b5</DeviceId>\r\n    <DeviceSoftwareVersion>6.3.9600.17215</DeviceSoftwareVersion>\r\n    <FriendlyName>Avirupch_App3</FriendlyName>\r\n    <IsConfigUpdated>true</IsConfigUpdated>\r\n    <IsVirtualApplianceInterimEntry>false</IsVirtualApplianceInterimEntry>\r\n    <Location i:nil=\"true\" />\r\n    <ModelDescription>100</ModelDescription>\r\n    <NNicCards>6</NNicCards>\r\n    <ProvisionedStorageInBytes>12737418240</ProvisionedStorageInBytes>\r\n    <SerialNumber>123456789</SerialNumber>\r\n    <Status>Online</Status>\r\n    <TargetIQN>iqn.1991-05.com.microsoft:storsimple100-123456789-target</TargetIQN>\r\n    <TimeZone>Pacific Standard Time</TimeZone>\r\n    <TotalStorageInBytes>1099511627776</TotalStorageInBytes>\r\n    <Type>Appliance</Type>\r\n    <UsingStorageInBytes>0</UsingStorageInBytes>\r\n    <VolumeCount>0</VolumeCount>\r\n  </DeviceProperties>\r\n  <DnsServer>\r\n    <PrimaryIPv4>10.171.65.141</PrimaryIPv4>\r\n    <PrimaryIPv6 i:nil=\"true\" />\r\n    <SecondaryIPv4 xmlns:d3p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n      <d3p1:string>157.54.14.146</d3p1:string>\r\n    </SecondaryIPv4>\r\n    <SecondaryIPv6 xmlns:d3p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n  </DnsServer>\r\n  <NetInterfaceList>\r\n    <NetInterface>\r\n      <InterfaceId>Data0</InterfaceId>\r\n      <IsCloudEnabled>true</IsCloudEnabled>\r\n      <IsDefault>true</IsDefault>\r\n      <IsEnabled>true</IsEnabled>\r\n      <IsIScsiEnabled>true</IsIScsiEnabled>\r\n      <MediaConnectState>1</MediaConnectState>\r\n      <Mode>IPV4</Mode>\r\n      <NicIPv4Settings>\r\n        <Controller0IPv4Address>10.168.102.206</Controller0IPv4Address>\r\n        <Controller1IPv4Address>10.168.102.207</Controller1IPv4Address>\r\n        <IPv4Address>10.168.102.106</IPv4Address>\r\n        <IPv4Gateway>10.168.102.1</IPv4Gateway>\r\n        <IPv4Netmask>255.255.252.0</IPv4Netmask>\r\n      </NicIPv4Settings>\r\n      <NicIPv6Settings>\r\n        <Controller0IPv6Address></Controller0IPv6Address>\r\n        <Controller1IPv6Address></Controller1IPv6Address>\r\n        <IPv6Address></IPv6Address>\r\n        <IPv6Gateway></IPv6Gateway>\r\n        <IPv6Prefix></IPv6Prefix>\r\n      </NicIPv6Settings>\r\n      <Speed>10000000000</Speed>\r\n    </NetInterface>\r\n  </NetInterfaceList>\r\n  <Snapshot>\r\n    <IsSnapshotSecretSet>true</IsSnapshotSecretSet>\r\n    <SnapshotSecret i:nil=\"true\" />\r\n  </Snapshot>\r\n  <TimeServer>\r\n    <Primary>time.windows.com</Primary>\r\n    <Secondary xmlns:d3p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n    <TimeZone>Pacific Standard Time</TimeZone>\r\n  </TimeServer>\r\n  <WebProxy>\r\n    <Authentication>None</Authentication>\r\n    <ConnectionURI></ConnectionURI>\r\n    <Username></Username>\r\n  </WebProxy>\r\n  <SecretEncryptionCertThumbprint i:nil=\"true\" />\r\n  <RemoteMgmtSettingsInfo>\r\n    <RemoteManagementMode>Disabled</RemoteManagementMode>\r\n  </RemoteMgmtSettingsInfo>\r\n  <RemoteMinishellSecretInfo>\r\n    <IsMinishellSecretSet>true</IsMinishellSecretSet>\r\n    <MinishellSecret i:nil=\"true\" />\r\n  </RemoteMinishellSecretInfo>\r\n  <Type>Appliance</Type>\r\n  <VirtualApplianceProperties i:nil=\"true\" />\r\n</DeviceDetails>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3664"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-client-request-id": [
+          "c19ce63d-3e4f-46af-ac70-7c372f7dfcaf_PS,c19ce63d-3e4f-46af-ac70-7c372f7dfcaf_PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "a5d79b65f85f6fb9b2dfe1b87cbb0556"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 20 Jan 2015 18:23:29 GMT"
+        ],
+        "Server": [
+          "1.0.6198.179",
+          "(rd_rdfe_stable.150115-1225)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/062c67a6-019b-40af-a775-c4dc1abe56ed/cloudservices/CisService-DTYHC5NYB4BUTV3ZHFNSE5EKIZZGLGYR44OJUL5OQGG4I2EMYOZA-west-us/resources/WACis/~/CiSVault/OneSDK-Resource/api/devices/2b4bda4e-5ab6-4668-a681-ca47cee7ca64?api-version=2014-01-01.3.0",
+      "EncodedRequestUri": "LzA2MmM2N2E2LTAxOWItNDBhZi1hNzc1LWM0ZGMxYWJlNTZlZC9jbG91ZHNlcnZpY2VzL0Npc1NlcnZpY2UtRFRZSEM1TllCNEJVVFYzWkhGTlNFNUVLSVpaR0xHWVI0NE9KVUw1T1FHRzRJMkVNWU9aQS13ZXN0LXVzL3Jlc291cmNlcy9XQUNpcy9+L0NpU1ZhdWx0L09uZVNESy1SZXNvdXJjZS9hcGkvZGV2aWNlcy8yYjRiZGE0ZS01YWI2LTQ2NjgtYTY4MS1jYTQ3Y2VlN2NhNjQ/YXBpLXZlcnNpb249MjAxNC0wMS0wMS4zLjA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/xml"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "e31e31cd-e20a-490a-8638-940fa9cebeb9_PS"
+        ],
+        "x-ms-version": [
+          "2014-01-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.StorSimple.StorSimpleManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "<DeviceDetails i:type=\"DeviceDetails_V3\" xmlns=\"http://windowscloudbackup.com/CiS/V2013_03\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <InstanceId>2b4bda4e-5ab6-4668-a681-ca47cee7ca64</InstanceId>\r\n  <Name i:nil=\"true\" />\r\n  <OperationInProgress>None</OperationInProgress>\r\n  <AlertNotification>\r\n    <AlertNotifcationCulture>en-US</AlertNotifcationCulture>\r\n    <AlertNotifcationEnabled>true</AlertNotifcationEnabled>\r\n    <AlertNotificationEmailList xmlns:d3p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n    <AlertNotificationEnabledForAdminCoAdmins>true</AlertNotificationEnabledForAdminCoAdmins>\r\n  </AlertNotification>\r\n  <Chap i:nil=\"true\" />\r\n  <DeviceProperties>\r\n    <ACRCount>0</ACRCount>\r\n    <ActivationTime>2014-12-11T17:33:21.6765566Z</ActivationTime>\r\n    <ActiveController>Unknown</ActiveController>\r\n    <AvailableStorageInBytes>32985348833280</AvailableStorageInBytes>\r\n    <CloudCredCount>0</CloudCredCount>\r\n    <Culture>en-US</Culture>\r\n    <CurrentController>Unknown</CurrentController>\r\n    <DataContainerCount>0</DataContainerCount>\r\n    <Description i:nil=\"true\" />\r\n    <DeviceId>2b4bda4e-5ab6-4668-a681-ca47cee7ca64</DeviceId>\r\n    <DeviceSoftwareVersion>6.3.9600.17215</DeviceSoftwareVersion>\r\n    <FriendlyName>test-madhurta</FriendlyName>\r\n    <IsConfigUpdated>false</IsConfigUpdated>\r\n    <IsVirtualApplianceInterimEntry>false</IsVirtualApplianceInterimEntry>\r\n    <Location>West US</Location>\r\n    <ModelDescription>1100</ModelDescription>\r\n    <NNicCards>0</NNicCards>\r\n    <ProvisionedStorageInBytes>0</ProvisionedStorageInBytes>\r\n    <SerialNumber>2B4BDA4E-5AB6-4668-A681-CA47CEE7CA64</SerialNumber>\r\n    <Status>Offline</Status>\r\n    <TargetIQN>iqn.1991-05.com.microsoft:storsimple1100-2b4bda4e-5ab6-4668-a681-ca47cee7ca64-target</TargetIQN>\r\n    <TimeZone>UTC</TimeZone>\r\n    <TotalStorageInBytes>32985348833280</TotalStorageInBytes>\r\n    <Type>VirtualAppliance</Type>\r\n    <UsingStorageInBytes>0</UsingStorageInBytes>\r\n    <VolumeCount>0</VolumeCount>\r\n  </DeviceProperties>\r\n  <DnsServer i:nil=\"true\" />\r\n  <NetInterfaceList i:nil=\"true\" />\r\n  <Snapshot>\r\n    <IsSnapshotSecretSet>false</IsSnapshotSecretSet>\r\n    <SnapshotSecret i:nil=\"true\" />\r\n  </Snapshot>\r\n  <TimeServer>\r\n    <Primary i:nil=\"true\" />\r\n    <Secondary i:nil=\"true\" xmlns:d3p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n    <TimeZone>UTC</TimeZone>\r\n  </TimeServer>\r\n  <WebProxy i:nil=\"true\" />\r\n  <SecretEncryptionCertThumbprint i:nil=\"true\" />\r\n  <RemoteMgmtSettingsInfo>\r\n    <RemoteManagementMode>HttpsEnabled</RemoteManagementMode>\r\n  </RemoteMgmtSettingsInfo>\r\n  <RemoteMinishellSecretInfo>\r\n    <IsMinishellSecretSet>false</IsMinishellSecretSet>\r\n    <MinishellSecret i:nil=\"true\" />\r\n  </RemoteMinishellSecretInfo>\r\n  <Type>VirtualAppliance</Type>\r\n  <VirtualApplianceProperties>\r\n    <DnsName>test-madhurta</DnsName>\r\n    <EncodedChannelIntegrityKey i:nil=\"true\" />\r\n    <EncodedServiceEncryptionKey i:nil=\"true\" />\r\n    <InternalIpAddress>10.0.0.4</InternalIpAddress>\r\n    <IsServiceEncryptionKeySet>false</IsServiceEncryptionKeySet>\r\n    <PublicIpAddress i:nil=\"true\" />\r\n    <Region>West US</Region>\r\n    <SubnetName>Subnet1</SubnetName>\r\n    <VirtualNetworkName>AzCisRunnerWestUS</VirtualNetworkName>\r\n  </VirtualApplianceProperties>\r\n</DeviceDetails>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2937"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-client-request-id": [
+          "e31e31cd-e20a-490a-8638-940fa9cebeb9_PS,e31e31cd-e20a-490a-8638-940fa9cebeb9_PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "58e839645ed168b7838155482ad5f573"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 20 Jan 2015 18:23:30 GMT"
+        ],
+        "Server": [
+          "1.0.6198.179",
+          "(rd_rdfe_stable.150115-1225)",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/062c67a6-019b-40af-a775-c4dc1abe56ed/cloudservices/CisService-DTYHC5NYB4BUTV3ZHFNSE5EKIZZGLGYR44OJUL5OQGG4I2EMYOZA-west-us/resources/WACis/~/CiSVault/OneSDK-Resource/api/devices/3b24f574-3997-4127-8ce4-cefb1c996ec7?api-version=2014-01-01.3.0",
+      "EncodedRequestUri": "LzA2MmM2N2E2LTAxOWItNDBhZi1hNzc1LWM0ZGMxYWJlNTZlZC9jbG91ZHNlcnZpY2VzL0Npc1NlcnZpY2UtRFRZSEM1TllCNEJVVFYzWkhGTlNFNUVLSVpaR0xHWVI0NE9KVUw1T1FHRzRJMkVNWU9aQS13ZXN0LXVzL3Jlc291cmNlcy9XQUNpcy9+L0NpU1ZhdWx0L09uZVNESy1SZXNvdXJjZS9hcGkvZGV2aWNlcy8zYjI0ZjU3NC0zOTk3LTQxMjctOGNlNC1jZWZiMWM5OTZlYzc/YXBpLXZlcnNpb249MjAxNC0wMS0wMS4zLjA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/xml"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "b04c161c-fd73-42a6-ac27-c9154a5f5d48_PS"
+        ],
+        "x-ms-version": [
+          "2014-01-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.StorSimple.StorSimpleManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "<DeviceDetails i:type=\"DeviceDetails_V3\" xmlns=\"http://windowscloudbackup.com/CiS/V2013_03\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <InstanceId>3b24f574-3997-4127-8ce4-cefb1c996ec7</InstanceId>\r\n  <Name i:nil=\"true\" />\r\n  <OperationInProgress>None</OperationInProgress>\r\n  <AlertNotification>\r\n    <AlertNotifcationCulture>en-US</AlertNotifcationCulture>\r\n    <AlertNotifcationEnabled>true</AlertNotifcationEnabled>\r\n    <AlertNotificationEmailList xmlns:d3p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n    <AlertNotificationEnabledForAdminCoAdmins>true</AlertNotificationEnabledForAdminCoAdmins>\r\n  </AlertNotification>\r\n  <Chap i:nil=\"true\" />\r\n  <DeviceProperties>\r\n    <ACRCount>0</ACRCount>\r\n    <ActivationTime>2015-01-08T12:47:48.2608605Z</ActivationTime>\r\n    <ActiveController>Unknown</ActiveController>\r\n    <AvailableStorageInBytes>32985348833280</AvailableStorageInBytes>\r\n    <CloudCredCount>0</CloudCredCount>\r\n    <Culture>en-US</Culture>\r\n    <CurrentController>Unknown</CurrentController>\r\n    <DataContainerCount>0</DataContainerCount>\r\n    <Description i:nil=\"true\" />\r\n    <DeviceId>3b24f574-3997-4127-8ce4-cefb1c996ec7</DeviceId>\r\n    <DeviceSoftwareVersion>6.3.9600.17215</DeviceSoftwareVersion>\r\n    <FriendlyName>quicktestpas213</FriendlyName>\r\n    <IsConfigUpdated>false</IsConfigUpdated>\r\n    <IsVirtualApplianceInterimEntry>false</IsVirtualApplianceInterimEntry>\r\n    <Location>West US</Location>\r\n    <ModelDescription>1100</ModelDescription>\r\n    <NNicCards>0</NNicCards>\r\n    <ProvisionedStorageInBytes>0</ProvisionedStorageInBytes>\r\n    <SerialNumber>3B24F574-3997-4127-8CE4-CEFB1C996EC7</SerialNumber>\r\n    <Status>Online</Status>\r\n    <TargetIQN>iqn.1991-05.com.microsoft:storsimple1100-3b24f574-3997-4127-8ce4-cefb1c996ec7-target</TargetIQN>\r\n    <TimeZone>UTC</TimeZone>\r\n    <TotalStorageInBytes>32985348833280</TotalStorageInBytes>\r\n    <Type>VirtualAppliance</Type>\r\n    <UsingStorageInBytes>0</UsingStorageInBytes>\r\n    <VolumeCount>0</VolumeCount>\r\n  </DeviceProperties>\r\n  <DnsServer i:nil=\"true\" />\r\n  <NetInterfaceList i:nil=\"true\" />\r\n  <Snapshot>\r\n    <IsSnapshotSecretSet>false</IsSnapshotSecretSet>\r\n    <SnapshotSecret i:nil=\"true\" />\r\n  </Snapshot>\r\n  <TimeServer>\r\n    <Primary i:nil=\"true\" />\r\n    <Secondary i:nil=\"true\" xmlns:d3p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n    <TimeZone>UTC</TimeZone>\r\n  </TimeServer>\r\n  <WebProxy i:nil=\"true\" />\r\n  <SecretEncryptionCertThumbprint i:nil=\"true\" />\r\n  <RemoteMgmtSettingsInfo>\r\n    <RemoteManagementMode>HttpsEnabled</RemoteManagementMode>\r\n  </RemoteMgmtSettingsInfo>\r\n  <RemoteMinishellSecretInfo>\r\n    <IsMinishellSecretSet>false</IsMinishellSecretSet>\r\n    <MinishellSecret i:nil=\"true\" />\r\n  </RemoteMinishellSecretInfo>\r\n  <Type>VirtualAppliance</Type>\r\n  <VirtualApplianceProperties>\r\n    <DnsName>quicktestpas213</DnsName>\r\n    <EncodedChannelIntegrityKey i:nil=\"true\" />\r\n    <EncodedServiceEncryptionKey i:nil=\"true\" />\r\n    <InternalIpAddress>10.0.0.4</InternalIpAddress>\r\n    <IsServiceEncryptionKeySet>false</IsServiceEncryptionKeySet>\r\n    <PublicIpAddress i:nil=\"true\" />\r\n    <Region>West US</Region>\r\n    <SubnetName>Subnet1</SubnetName>\r\n    <VirtualNetworkName>AzCisRunnerWestUS</VirtualNetworkName>\r\n  </VirtualApplianceProperties>\r\n</DeviceDetails>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2940"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-client-request-id": [
+          "b04c161c-fd73-42a6-ac27-c9154a5f5d48_PS,b04c161c-fd73-42a6-ac27-c9154a5f5d48_PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "79624afc38d966068de84a2dd43790be"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 20 Jan 2015 18:23:35 GMT"
         ],
         "Server": [
           "1.0.6198.179",
