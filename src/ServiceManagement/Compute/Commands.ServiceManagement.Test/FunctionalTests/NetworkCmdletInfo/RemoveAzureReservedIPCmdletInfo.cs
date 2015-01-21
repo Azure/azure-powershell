@@ -12,23 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test
-{
-    public class Category
-    {
-        public const string Scenario = "AzureRTScenario";
-        public const string BVT = "BVT";
-        public const string Functional = "Functional";
-        public const string Preview = "Preview";
-        public const string Sequential = "Sequential";
-        public const string Network = "Network";
-        public const string Upload = "AzureRTUpload";
-    }
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
 
-    public class LoadBalancerDistribution
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo
+{
+    public class RemoveAzureReservedIPCmdletInfo : CmdletsInfo
     {
-        public const string SourceIP = "sourceIP";
-        public const string SourceIPProtorol = "sourceIPProtocol";
-        public const string None = "none";
+        public RemoveAzureReservedIPCmdletInfo(string name, bool force)
+        {
+            this.cmdletName = Utilities.RemoveAzureReservedIPCmdletName;
+
+            this.cmdletParams.Add(new CmdletParam("ReservedIPName", name));
+            if(force)
+            this.cmdletParams.Add(new CmdletParam("Force"));
+        }
     }
 }

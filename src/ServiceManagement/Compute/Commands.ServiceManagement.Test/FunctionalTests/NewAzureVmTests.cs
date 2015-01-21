@@ -184,10 +184,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
 
                 // New-AzureVM
-                vmPowershellCmdlets.NewAzureVM(_serviceName, new[] { vm }, locationName);
+                vmPowershellCmdlets.NewAzureVM(_serviceName, new[] { vm }, locationName, true);
                 Console.WriteLine("New Azure service with name:{0} created successfully.", _serviceName);
-
-                StopAzureVMTest.WaitForReadyState(_serviceName, newAzureVMName, 60, 30);
 
                 // Get-AzureVM
                 var vmContext = vmPowershellCmdlets.GetAzureVM(newAzureVMName, _serviceName);
