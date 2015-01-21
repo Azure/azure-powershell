@@ -246,6 +246,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replication Start Time span value cannot be greater then 24 hours..
+        /// </summary>
+        internal static string ReplicationStartTimeInvalid {
+            get {
+                return ResourceManager.GetString("ReplicationStartTimeInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resource name mentioned is either null or empty.
         /// </summary>
         internal static string ResourceNameNullOrEmpty {
@@ -264,11 +273,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter the storage account name details in the protection profile..
+        /// </summary>
+        internal static string StorageAccountNameIsNotValid {
+            get {
+                return ResourceManager.GetString("StorageAccountNameIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage account {0} is not associated with the account.
         /// </summary>
         internal static string StorageIsNotAssociatedWithTheAccount {
             get {
                 return ResourceManager.GetString("StorageIsNotAssociatedWithTheAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the subscription ID details..
+        /// </summary>
+        internal static string SubscriptionIdIsNotValid {
+            get {
+                return ResourceManager.GetString("SubscriptionIdIsNotValid", resourceCulture);
             }
         }
         

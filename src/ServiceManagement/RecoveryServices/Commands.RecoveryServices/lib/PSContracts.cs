@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// application consistent snapshot within the VM.
         /// </summary>
         [DataMember]
-        public int AppConsistencyFreq { get; set; }
+        public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
 
         /// <summary>
         /// Gets or sets the replication interval.
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// is Null, the initial replication starts immediately.
         /// </summary>
         [DataMember]
-        public TimeSpan? OnlineIrStartTime { get; set; }
+        public TimeSpan? OnlineReplicationStartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the list of storage accounts to which the VMs in the primary cloud can 
@@ -600,11 +600,90 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         public List<CustomerStorageAccount> StorageAccounts { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether encryption needs to be enabled for 
-        /// Virtual machines in this cloud. 
+        /// Gets or sets a value indicating whether encryption needs to be enabled for virtual machines in this cloud. 
         /// </summary>
         [DataMember]
-        public bool IsEncryptionEnabled { get; set; }
+        public bool EncryptionEnabled { get; set; }
+    }
+
+    /// <summary>
+    /// Hyper-V Replica specific protection profile Input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class HyperVReplicaSP1ProtectionProfileInput
+    {
+        /// <summary>
+        /// Gets or sets a value indicating the number of recovery points.
+        /// </summary>
+        [DataMember]
+        public int RecoveryPoints { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the application consistent frequency.
+        /// </summary>
+        [DataMember]
+        public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether compression has to be enabled.
+        /// </summary>
+        [DataMember]
+        public bool CompressionEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether IR is online.
+        /// </summary>
+        [DataMember]
+        public bool OnlineReplicationMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the online IR start time.
+        /// </summary>
+        [DataMember]
+        public TimeSpan? OnlineReplicationStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the offline IR import path.
+        /// </summary>
+        [DataMember]
+        public string OfflineReplicationImportPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the offline IR export path.
+        /// </summary>
+        [DataMember]
+        public string OfflineReplicationExportPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the recovery HTTPS port.
+        /// </summary>
+        [DataMember]
+        public ushort ReplicationPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the authentication type.
+        /// </summary>
+        [DataMember]
+        public ushort AllowedAuthenticationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the VM has to be auto deleted.
+        /// </summary>
+        [DataMember]
+        public bool AllowReplicaDeletion { get; set; }
+    }
+
+    /// <summary>
+    /// Hyper-V Replica specific protection profile Input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class HyperVReplicaProtectionProfileInput : HyperVReplicaSP1ProtectionProfileInput
+    {
+        /// <summary>
+        /// Gets or sets a value indicating the replication interval.
+        /// </summary>
+        [DataMember]
+        public ushort ReplicationFrequencyInSeconds { get; set; }
     }
 
     /// <summary>
@@ -776,7 +855,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <summary>
         /// Gets or sets Replication Frequency in seconds.
         /// </summary>
-        public int ReplicationFrequencyInSeconds { get; set; }
+        public ushort ReplicationFrequencyInSeconds { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Points.
@@ -796,7 +875,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <summary>
         /// Gets or sets the replication port.
         /// </summary>
-        public int ReplicationPort { get; set; }
+        public ushort ReplicationPort { get; set; }
 
         /// <summary>
         /// Gets or sets Replication Start Time.
@@ -857,7 +936,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <summary>
         /// Gets or sets Replication Frequency in seconds.
         /// </summary>
-        public int ReplicationFrequencyInSeconds { get; set; }
+        public ushort ReplicationFrequencyInSeconds { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Points.
@@ -877,7 +956,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <summary>
         /// Gets or sets the replication port.
         /// </summary>
-        public int ReplicationPort { get; set; }
+        public ushort ReplicationPort { get; set; }
 
         /// <summary>
         /// Gets or sets Replication Start Time.

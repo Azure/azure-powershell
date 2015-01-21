@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
@@ -33,7 +34,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Replication Provider of the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             Constants.HyperVReplica,
@@ -43,8 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets a value for Replication Method of the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             Constants.OnlineReplicationMethod,
@@ -68,42 +69,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Replication Frequency of the Protection Profile in seconds.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [ValidateNotNullOrEmpty]
-        public int ReplicationFrequencyInSeconds { get; set; }
+        [DefaultValue(300)]
+        public ushort ReplicationFrequencyInSeconds { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Points of the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [ValidateNotNullOrEmpty]
+        [DefaultValue(0)]
         public int RecoveryPoints { get; set; }
 
         /// <summary>
         /// Gets or sets Application Consistent Snapshot Frequency of the Protection Profile in hours.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [ValidateNotNullOrEmpty]
+        [DefaultValue(0)]
         public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether Compression needs to be Enabled on the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public bool CompressionEnabled { get; set; }
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+        [DefaultValue(true)]
+        public SwitchParameter CompressionEnabled { get; set; }
 
         /// <summary>
         /// Gets or sets the Replication Port of the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [ValidateNotNullOrEmpty]
-        public int ReplicationPort { get; set; }
+        [DefaultValue(8084)]
+        public ushort ReplicationPort { get; set; }
 
         /// <summary>
         /// Gets or sets Replication Start time of the Protection Profile.
@@ -111,16 +114,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [ValidateNotNullOrEmpty]
+        [DefaultValue(null)]
         public TimeSpan? ReplicationStartTime { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether Replica should be Deleted on 
         /// disabling protection of a protection entity protected by the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public bool AllowReplicaDeletion { get; set; }
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+        [DefaultValue(false)]
+        public SwitchParameter AllowReplicaDeletion { get; set; }
 
         #endregion Parameters
 
@@ -163,10 +166,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private void EnterpriseToAzureProtectionProfileObject()
         {
             // Verify whether the storage account is associated with the account or not.
-            PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
+            // PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
 
             // Verify whether the subscription is associated with the account or not.
-            PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
+            // PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
+
+            this.ValidateReplicationStartTime(this.ReplicationStartTime);
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
@@ -191,10 +196,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
+        /// Validates if the time span object has a valid value.
+        /// </summary>
+        /// <param name="timeSpan">Time span object to be validated</param>
+        private void ValidateReplicationStartTime(TimeSpan? timeSpan)
+        {
+            if (timeSpan == null)
+            {
+                return;
+            }
+
+            if (TimeSpan.Compare(timeSpan.Value, new TimeSpan(24, 0, 0)) == 1)
+            {
+                throw new InvalidOperationException(
+                    string.Format(Properties.Resources.ReplicationStartTimeInvalid));
+            }
+        }
+
+        /// <summary>
         /// Creates an E2E Protection Profile object
         /// </summary>
         private void EnterpriseToEnterpriseProtectionProfileObject()
         {
+            this.ValidateReplicationStartTime(this.ReplicationStartTime);
+
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
                 ReplicationProvider = this.ReplicationProvider,

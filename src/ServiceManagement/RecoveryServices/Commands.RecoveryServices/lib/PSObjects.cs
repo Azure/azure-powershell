@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             details.ActiveStorageAccount.StorageAccountName;
                         asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureSubscription = 
                             details.ActiveStorageAccount.SubscriptionId;
-                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds = details.ReplicationInterval;
+                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds = (ushort)details.ReplicationInterval;
                         asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationMethod = details.OnlineIrStartTime.HasValue ?
                             Constants.OnlineReplicationMethod : 
                             Constants.OfflineReplicationMethod;

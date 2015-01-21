@@ -212,4 +212,13 @@ ClientRequestId: {3}</value>
   <data name="VaultCreationSuccessMessage" xml:space="preserve">
     <value>Vault has been created</value>
   </data>
+  <data name="ReplicationStartTimeInvalid" xml:space="preserve">
+    <value>Replication Start Time span value cannot be greater then 24 hours.</value>
+  </data>
+  <data name="StorageAccountNameIsNotValid" xml:space="preserve">
+    <value>Please enter the storage account name details in the protection profile.</value>
+  </data>
+  <data name="SubscriptionIdIsNotValid" xml:space="preserve">
+    <value>Please enter the subscription ID details.</value>
+  </data>
 </root>

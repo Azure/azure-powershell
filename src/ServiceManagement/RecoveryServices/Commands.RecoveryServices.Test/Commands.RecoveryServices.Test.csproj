@@ -68,10 +68,6 @@
     <Reference Include="Microsoft.WindowsAzure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.0\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.SiteRecovery, Version=0.9.0.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.0.2.2-preview\lib\net40\Microsoft.WindowsAzure.Management.SiteRecovery.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Testing, Version=1.0.5417.13285, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Hydra.SpecTestSupport.1.0.5417.13285-prerelease\lib\net45\Microsoft.WindowsAzure.Testing.dll</HintPath>
