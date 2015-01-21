@@ -33,6 +33,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="azureSubscriptionId">Azure Subscription ID</param>
         public static void ValidateSubscriptionAccountAssociation(string azureSubscriptionId)
         {
+            if (string.IsNullOrEmpty(azureSubscriptionId))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.SubscriptionIdIsNotValid));
+            }
+
             bool associatedSubscription = false;
             ProfileClient pc = new ProfileClient();
             List<AzureSubscription> subscriptions =
@@ -62,6 +69,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="azureStorageAccount">Storage Account details</param>
         public static void ValidateStorageAccountAssociation(string azureStorageAccount)
         {
+            if (string.IsNullOrEmpty(azureStorageAccount))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.StorageAccountNameIsNotValid));
+            }
+
             bool associatedAccount = false;
 
             SubscriptionCloudCredentials creds 
