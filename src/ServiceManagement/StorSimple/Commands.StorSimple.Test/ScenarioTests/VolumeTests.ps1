@@ -90,13 +90,14 @@ function Test-VolumeSync
 	Assert-AreEqual $vdToUse.Online $false
 
     echo "Cleaning up the volume"
-    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -WaitForComplete -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -WaitForComplete
     
-    echo "Cleaning up DC"
-    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
+    Start-Sleep 60
+	echo "Cleaning up DC"
+    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete    
     
     echo "Cleaning up the ACR"
-    Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete  -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete 
     echo "Existing the test"
 }
 
@@ -152,12 +153,23 @@ function Test-NewVolumeRepetitiveName
         $ExceptionOccurred = "true"
     }
     Assert-AreEqual $ExceptionOccurred "true"
-  
-    echo "Cleaning up DC"
-    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
+
+	echo "Setting volume offline"
+    Set-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Online $false -WaitForComplete
+
+    echo "Verifying that volume is offline"
+    $vdToUse = Get-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName
+	Assert-AreEqual $vdToUse.Online $false
+
+    echo "Cleaning up the volume"
+    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -WaitForComplete
+    
+    Start-Sleep 60
+	echo "Cleaning up DC"
+    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete    
     
     echo "Cleaning up the ACR"
-    Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete  -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete 
     echo "Existing the test"
 }
 
@@ -198,10 +210,11 @@ function Test-NewVolumeNoAccess
 	Assert-AreEqual $vdToUse.Online $false
 
     echo "Cleaning up the volume"
-    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -WaitForComplete -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -WaitForComplete
   
-    echo "Cleaning up DC"
-    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
+    Start-Sleep 60
+	echo "Cleaning up DC"
+    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete    
     
     echo "Existing the test"
 }
@@ -256,13 +269,13 @@ function Test-VolumeAsync
 	Assert-AreEqual $vdToUse.Online $false
 
     echo "Cleaning up the volume"
-    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force
     [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
     
     echo "Cleaning up DC"
-    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete  -ErrorAction SilentlyContinue   
+    $dcToUse| Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete    
     
     echo "Cleaning up the ACR"
-    Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete  -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete 
     echo "Existing the test"
 }

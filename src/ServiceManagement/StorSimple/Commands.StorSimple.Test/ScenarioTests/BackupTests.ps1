@@ -102,11 +102,12 @@ Deletes pre-req objects for backup related tests
 function CleanupObjects-BackupScenario($deviceName, $dcName, $acrName, $vdName)
 {
     Set-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Online $false -WaitForComplete
-    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -WaitForComplete -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName -Force -WaitForComplete
 
-    Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleAccessControlRecord -Name $acrName -Force -WaitForComplete
     
-    Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Name $dcName | Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete -ErrorAction SilentlyContinue
+	Start-Sleep 90
+    Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Name $dcName | Remove-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -Force -WaitForComplete
 }
 
 <#
@@ -214,7 +215,7 @@ function Test-AddVolumeToBackupPolicy
     $bpToUse = Get-AzureStorSimpleDeviceBackupPolicy -DeviceName $deviceName -BackupPolicyName $bpName
 	$bpId = $bpToUse.InstanceId
 
-    $vdNameToAdd = Generate-Name("Volume")
+    $vdNameToAdd = Generate-Name("VolumeToAdd")
     $acrList = @()
     $acrList += Get-AzureStorSimpleAccessControlRecord -ACRName $acrName
     (Get-AzureStorSimpleDeviceVolumeContainer -DeviceName $deviceName -VolumeContainerName $dcName) | 
@@ -234,7 +235,7 @@ function Test-AddVolumeToBackupPolicy
     Remove-AzureStorSimpleDeviceBackupPolicy -DeviceName $deviceName -BackupPolicyId $bpId -Force -WaitForComplete
 
     Set-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdNameToAdd -Online $false -WaitForComplete
-    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdNameToAdd -Force -WaitForComplete -ErrorAction SilentlyContinue
+    Remove-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdNameToAdd -Force -WaitForComplete
 
     #Cleanup
     CleanupObjects-BackupScenario $deviceName $dcName $acrName $vdName
@@ -666,3 +667,5 @@ function Test-CreateGetRestoreDeleteBackup_Async
     #Cleanup
     CleanupObjects-BackupScenario $deviceName $dcName $acrName $vdName
 }
+
+Test-AddVolumeToBackupPolicy
