@@ -89,9 +89,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Microsoft.Web.Deployment.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management">
-      <HintPath>..\..\packages\Microsoft.WindowsAzure.Management.4.0.0\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>

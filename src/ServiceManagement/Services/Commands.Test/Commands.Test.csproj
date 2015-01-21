@@ -102,9 +102,6 @@
     <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.0.0\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Compute">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.8.0.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
@@ -306,6 +303,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <Content Include="Resources\MyWebTemplateFolder\web.cloud.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -93,9 +93,6 @@
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.WindowsAzure.Management">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.0.0\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Sql">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Sql.5.0.0\lib\net40\Microsoft.WindowsAzure.Management.Sql.dll</HintPath>
     </Reference>
@@ -193,6 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FunctionalTests\Readme.txt" />
+    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="TestScripts\CommonFunctions.ps1" />
