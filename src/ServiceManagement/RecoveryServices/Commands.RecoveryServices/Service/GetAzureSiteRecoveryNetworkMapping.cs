@@ -33,17 +33,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Primary Server object.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRServer PrimaryServer { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Server object.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRServer RecoveryServer { get; set; }
 
+        /// <summary>
+        /// Gets or sets switch parameter. On passing, command sets target as Azure.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        public SwitchParameter Azure { get; set; }
         #endregion Parameters
 
         /// <summary>
@@ -53,9 +59,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                string primaryServerId = this.PrimaryServer.ID;
+                string recoveryServerId = string.Empty;
+
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.EnterpriseToEnterprise:
+                        recoveryServerId = this.RecoveryServer.ID;
+                        break;
+                    case ASRParameterSets.EnterpriseToAzure:
+                        recoveryServerId = Constants.AzureFabricId;
+                        break;
+                }
+
                 NetworkMappingListResponse networkMappingListResponse =
                     RecoveryServicesClient
-                    .GetAzureSiteRecoveryNetworkMappings(this.PrimaryServer.ID, this.RecoveryServer.ID);
+                    .GetAzureSiteRecoveryNetworkMappings(primaryServerId, recoveryServerId);
 
                 this.WriteNetworkMappings(networkMappingListResponse.NetworkMappings);
             }
