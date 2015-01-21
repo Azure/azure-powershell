@@ -301,7 +301,8 @@ function Test-AzureNetworkMapping
 	# TODO (sriramvu): There are few dependency issues on using Get-AzureVNetSite to get list of Azure VM Networks, will update the test.
 	# Should setup NetworkManagementClient along with our two mgmt clients in RecoveryServicesTestsBase.cs
 	# $job = New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networks[0] -AzureSubscriptionId $subscription.SubscriptionId -AzureVMNetworkId $azureVmNetworks[0].Id
-	$job = New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networks[0] -AzureSubscriptionId 62633f66-ce59-4114-b65d-a50beb5bd8d8 -AzureVMNetworkId "1d0ecfad-ac09-4222-b46f-2ab74839fe7e"
+	# $job = New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networks[0] -AzureSubscriptionId 62633f66-ce59-4114-b65d-a50beb5bd8d8 -AzureVMNetworkId "1d0ecfad-ac09-4222-b46f-2ab74839fe7e" # OneBox details
+	$job = New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networks[0] -AzureSubscriptionId a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba -AzureVMNetworkId ecb3a462-664f-4f57-873e-d09b5925e1a1 # POD details
 	WaitForJobCompletion -JobId $job.ID
 
 	# Enumerate NetworkMappings
