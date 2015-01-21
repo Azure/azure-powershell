@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Retrieves Azure Site Recovery Server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVaults")]
+    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVault")]
     [OutputType(typeof(List<ASRVault>))]
     public class GetAzureSiteRecoveryVaults : RecoveryServicesCmdletBase
     {
