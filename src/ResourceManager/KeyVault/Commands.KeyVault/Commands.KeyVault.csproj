@@ -56,7 +56,6 @@
     <Compile Include="WebKey\JsonWebKey.cs" />
     <Compile Include="WebKey\JsonWebKeyOperations.cs" />
     <Compile Include="WebKey\JsonWebKeyTypes.cs" />
-    <None Include="app.config" />
     <None Include="Microsoft.Azure.Commands.KeyVault.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
