@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
     using MaxMemoryPolicyStrings = Microsoft.Azure.Management.Redis.Models.MaxMemoryPolicy;
+    using Hyak.Common;
 
     [Cmdlet(VerbsCommon.New, "AzureRedisCache"), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class NewAzureRedisCache : RedisCacheCmdletBase
@@ -101,11 +102,11 @@ namespace Microsoft.Azure.Commands.RedisCache
             }
             catch (CloudException ex)
             {
-                if (ex.ErrorCode == "ResourceNotFound" || ex.Message.Contains("ResourceNotFound"))
+                if (ex.Error.Code == "ResourceNotFound" || ex.Message.Contains("ResourceNotFound"))
                 {
                     // cache does not exists so go ahead and create one
                 }
-                else if (ex.ErrorCode == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
+                else if (ex.Error.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
                 {
                     // resource group not found, let create throw error don't throw from here
                 }

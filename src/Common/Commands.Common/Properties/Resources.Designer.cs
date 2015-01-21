@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Common.Properties {
-    using System;
-    
-    
+namespace Microsoft.WindowsAzure.Commands.Common.Properties
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -3924,6 +3924,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string SubscriptionAlreadyExists {
             get {
                 return ResourceManager.GetString("SubscriptionAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information..
+        /// </summary>
+        public static string SubscriptionDataFileDeprecated {
+            get {
+                return ResourceManager.GetString("SubscriptionDataFileDeprecated", resourceCulture);
             }
         }
         

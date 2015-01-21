@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Models;
+using Microsoft.WindowsAzure.Management;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 {

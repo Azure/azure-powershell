@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
@@ -65,6 +66,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = true, HelpMessage = " Specifies the size to use for the virtual machine that is created from the OS image.")]
         public string RecommendedVMSize { get; set; }
 
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = true, HelpMessage = "Icon Uri.")]
+        public Uri IconUri { get; set; }
+
+        [Parameter(Position = 11, ValueFromPipelineByPropertyName = true, HelpMessage = "Small Icon Uri.")]
+        public Uri SmallIconUri { get; set; }
+
+        [Parameter(Position = 12, ValueFromPipelineByPropertyName = true, HelpMessage = "To show in GUI.")]
+        public SwitchParameter ShowInGui { get; set; }
+
         public void ExecuteCommand()
         {
             var imageType = new VirtualMachineImageHelper(this.ComputeClient).GetImageType(this.ImageName);
@@ -94,7 +104,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                     ImageFamily = this.ImageFamily,
                     PublishedDate = this.PublishedDate,
                     PrivacyUri = this.PrivacyUri,
-                    RecommendedVMSize = this.RecommendedVMSize
+                    RecommendedVMSize = this.RecommendedVMSize,
+                    IconUri = this.IconUri,
+                    SmallIconUri = this.SmallIconUri,
+                    ShowInGui = this.ShowInGui
                 };
 
                 this.ExecuteClientActionNewSM(

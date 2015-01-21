@@ -53,10 +53,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string AzurePowershellModuleServiceManagementPirModule = "Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.dll";
         public const string AzurePowershellModuleServiceManagementPreviewModule = "Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.dll";
 
-        private const string tclientPath = "tclient.dll";
-        private const string clxtsharPath = "clxtshar.dll";
-        private const string RDPTestPath = "RDPTest.exe";
-
         // AzureAffinityGroup
         public const string NewAzureAffinityGroupCmdletName = "New-AzureAffinityGroup";
         public const string GetAzureAffinityGroupCmdletName = "Get-AzureAffinityGroup";
@@ -389,45 +385,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        public static Uri GetDeploymentAndWaitForReady(string serviceName, string slot, int waitTime, int maxWaitTime)
-        {
-
-          
-                       
-            DateTime startTime = DateTime.Now;
-            while (true)
-            {
-                bool allReady = true;
-                DeploymentInfoContext result = vmPowershellCmdlets.GetAzureDeployment(serviceName, slot);
-                int instanceNum = result.RoleInstanceList.Count;
-                bool[] isReady = new bool[instanceNum];
-
-                for (int j = 0; j < instanceNum; j++)
-                {
-                    var instance = result.RoleInstanceList[j];
-                    Console.WriteLine("Instance: {0}, Status: {1}", instance.InstanceName, instance.InstanceStatus);
-                    isReady[j] = (instance.InstanceStatus == "ReadyRole");
-                    allReady &= isReady[j];
-                }
-
-                if (!allReady && (DateTime.Now - startTime).TotalSeconds < maxWaitTime)
-                {
-                    Console.WriteLine("Some roles are not ready, waiting for {0} seconds.", waitTime);
-                    Thread.Sleep(waitTime*1000);
-                }
-                else if (!allReady) // some roles are not ready, and time-out.
-                {
-                    Assert.Fail("Deployment is not ready within {0} seconds!", maxWaitTime);
-                }
-                else // all roles are ready
-                {
-                    Console.WriteLine("Result of the deployment: {0}", result.Status);                    
-                    return result.Url;
-                }
-            }
-            
-        }
-
         public static bool GetAzureVMAndWaitForReady(string serviceName, string vmName,int waitTime, int maxWaitTime )
         {
             Console.WriteLine("Waiting for the vm {0} to reach \"ReadyRole\" ");
@@ -586,15 +543,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 }
                 catch (Exception e)
                 {
-                    if (e.ToString().Contains(errorMessage))
+                    if (e.ToString().Contains(errorMessage) || (e.InnerException != null && e.InnerException.ToString().Contains(errorMessage)))
                     {
+                        i++;
+                        if (i == maxTry)
+                        {
+                            Console.WriteLine("Max number of retry is reached: {0}", errorMessage);
+                            throw;
+                        }
                         Console.WriteLine("{0} error occurs! retrying ...", errorMessage);
                         if (e.InnerException != null)
                         {
                             Console.WriteLine(e.InnerException);
                         }
                         Thread.Sleep(TimeSpan.FromSeconds(intervalSeconds));
-                        i++;
                         continue;
                     }
                     else
@@ -730,63 +692,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 secureStr.AppendChar(c);
             }
             return secureStr;
-        }
-
-        private static void RegisterDllsForRDP()
-        {
-            Assert.IsTrue(File.Exists(tclientPath), "{0} does not exist!", tclientPath);
-            Assert.IsTrue(File.Exists(clxtsharPath), "{0} does not exist!", clxtsharPath);
-            Assert.IsTrue(File.Exists(RDPTestPath), "{0}, does not exist!", RDPTestPath);
-
-            ExecuteSimpleProcess("regsvr32", "/s " + tclientPath);
-            ExecuteSimpleProcess("regsvr32", "/s " + clxtsharPath);
-        }
-
-        public static bool RDPtestPaaS(string dns, string roleName, int instance, string user, string psswrd, bool shouldSucceed)
-        {
-            RegisterDllsForRDP();
-
-            int returnCode = ExecuteSimpleProcess(RDPTestPath,
-                 String.Format("PaaS {0} {1} {2} {3} {4} {5}", dns, roleName, instance.ToString(), user, psswrd, shouldSucceed.ToString()));
-            if (returnCode == 0)
-            {
-                Console.WriteLine("RDP access succeeded.");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("RDP Failed!!");
-                return false;
-            }
-        }
-
-        public static bool RDPtestIaaS(string dns, int? port, string user, string psswrd, bool shouldSucceed)
-        {
-            RegisterDllsForRDP();
-
-            Console.WriteLine(String.Format("IaaS {0} {1} {2} {3} {4}", dns, port.ToString(), user, psswrd, shouldSucceed.ToString()));
-            int returnCode = ExecuteSimpleProcess(RDPTestPath,
-                 String.Format("IaaS {0} {1} {2} {3} {4}", dns, port.ToString(), user, psswrd, shouldSucceed.ToString()));
-            if (returnCode == 0)
-            {
-                Console.WriteLine("RDP access succeeded.");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("RDP Failed!!");
-                return false;
-            }
-        }
-
-        public static int ExecuteSimpleProcess(string fileName, string arguments)
-        {
-            Process p = new Process();
-            p.StartInfo.FileName = fileName;
-            p.StartInfo.Arguments = arguments;
-            p.Start();
-            p.WaitForExit();
-            return p.ExitCode;
         }
 
         public static string FindSubstring(string givenStr, char givenChar, int i)

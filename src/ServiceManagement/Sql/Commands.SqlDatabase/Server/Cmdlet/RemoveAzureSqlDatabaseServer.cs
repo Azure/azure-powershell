@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Model;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Management.Sql;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
 {
@@ -64,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
             SqlManagementClient sqlManagementClient = GetCurrentSqlClient();
 
             // Issue the delete server request
-            OperationResponse response = sqlManagementClient.Servers.Delete(serverName);
+            AzureOperationResponse response = sqlManagementClient.Servers.Delete(serverName);
             SqlDatabaseServerOperationContext operationContext = new SqlDatabaseServerOperationContext()
             {
                 OperationStatus = Services.Constants.OperationSuccess,

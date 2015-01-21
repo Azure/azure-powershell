@@ -148,10 +148,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             string oldLabel = "old label";
             string newLabel = "new label";
+            string vmSize = "Small";
+            var iconUri = "http://www.bing.com";
+            var smallIconUri = "http://www.bing.com";
+            bool showInGui = true;
 
             try
             {
-                OSImageContext result = vmPowershellCmdlets.AddAzureVMImage(newImageName, mediaLocation, OS.Windows, oldLabel);
+                OSImageContext result = vmPowershellCmdlets.AddAzureVMImage(newImageName, mediaLocation, OS.Windows, oldLabel, vmSize, iconUri, smallIconUri, showInGui);
 
                 OSImageContext resultReturned = vmPowershellCmdlets.GetAzureVMImage(newImageName)[0];
                 Assert.IsTrue(!string.IsNullOrEmpty(resultReturned.IOType));
