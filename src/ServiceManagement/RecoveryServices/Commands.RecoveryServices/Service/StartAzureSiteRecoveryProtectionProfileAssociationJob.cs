@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureSiteRecoveryProtectionProfileAssociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
     [OutputType(typeof(ASRJob))]
-    public class StartAzureSiteRecoveryProtectionProfileJob : RecoveryServicesCmdletBase
+    public class StartAzureSiteRecoveryProtectionProfileAssociationJob : RecoveryServicesCmdletBase
     {
         /// <summary>
         /// Job response.
@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Protection Profile object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionProfile ProtectionProfile { get; set; }
 
