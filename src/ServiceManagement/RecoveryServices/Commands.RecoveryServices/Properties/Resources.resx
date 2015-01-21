@@ -209,4 +209,7 @@ ClientRequestId: {3}</value>
   <data name="VaultCreationSuccessMessage" xml:space="preserve">
     <value>Vault has been created</value>
   </data>
+  <data name="ReplicationStartTimeInvalid" xml:space="preserve">
+    <value>Replication Start Time span value cannot be greater then 24 hours.</value>
+  </data>
 </root>

@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryProtectionProfileDissociationJob : RecoveryServicesCmdletBase
     {
-        #region Parameters
-
         /// <summary>
         /// Job response.
         /// </summary>
         private JobResponse jobResponse = null;
+
+        #region Parameters
 
         /// <summary>
         /// Gets or sets Protection Container to be removed the Protection Profile settings off.

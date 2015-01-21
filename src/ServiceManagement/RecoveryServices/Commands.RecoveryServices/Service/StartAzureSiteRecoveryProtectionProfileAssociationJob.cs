@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryProtectionProfileJob : RecoveryServicesCmdletBase
     {
-        #region Parameters
-
         /// <summary>
         /// Job response.
         /// </summary>
         private JobResponse jobResponse = null;
+
+        #region Parameters
 
         /// <summary>
         /// Gets or sets Protection Container to be applied the Protection Profile settings on.

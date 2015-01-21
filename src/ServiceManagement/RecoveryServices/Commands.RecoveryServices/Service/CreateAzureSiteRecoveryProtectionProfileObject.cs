@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Replication Provider of the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             Constants.HyperVReplica,
@@ -94,8 +95,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public bool CompressionEnabled { get; set; }
+        public SwitchParameter CompressionEnabled { get; set; }
 
         /// <summary>
         /// Gets or sets the Replication Port of the Protection Profile.
@@ -119,8 +119,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public bool AllowReplicaDeletion { get; set; }
+        public SwitchParameter AllowReplicaDeletion { get; set; }
 
         #endregion Parameters
 
@@ -168,6 +167,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // Verify whether the subscription is associated with the account or not.
             PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
 
+            this.ValidateReplicationStartTime(this.ReplicationStartTime);
+
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
                 ReplicationProvider = this.ReplicationProvider,
@@ -191,10 +192,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
+        /// Validates if the time span object has a valid value.
+        /// </summary>
+        /// <param name="timeSpan">Time span object to be validated</param>
+        private void ValidateReplicationStartTime(TimeSpan? timeSpan)
+        {
+            if (timeSpan == null)
+            {
+                return;
+            }
+
+            if (TimeSpan.Compare(timeSpan.Value, new TimeSpan(24, 0, 0)) == 1)
+            {
+                throw new InvalidOperationException(
+                    string.Format(Properties.Resources.ReplicationStartTimeInvalid));
+            }
+        }
+
+        /// <summary>
         /// Creates an E2E Protection Profile object
         /// </summary>
         private void EnterpriseToEnterpriseProtectionProfileObject()
         {
+            this.ValidateReplicationStartTime(this.ReplicationStartTime);
+
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
                 ReplicationProvider = this.ReplicationProvider,
