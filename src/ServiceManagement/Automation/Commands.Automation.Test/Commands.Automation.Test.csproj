@@ -103,6 +103,7 @@
     <Compile Include="UnitTests\PublishAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationAccountTest.cs" />
     <Compile Include="UnitTests\RegisterAzureAutomationScheduledRunbook.cs" />
+    <Compile Include="UnitTests\RemoveAzureAutomationCertificateTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationRunbookDefinitionTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationRunbookTest.cs" />

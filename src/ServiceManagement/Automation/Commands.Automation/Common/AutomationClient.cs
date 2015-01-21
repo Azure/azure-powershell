@@ -20,9 +20,7 @@ using System.Linq;
 using System.IO;
 using System.Net;
 using System.Security;
-using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
@@ -131,7 +129,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     skipToken =>
                     {
                         var response = this.automationManagementClient.Schedules.List(
-                            automationAccountName, skipToken);
+                            automationAccountName);
 
                         return new ResponseWithSkipToken<AutomationManagement.Models.Schedule>(
                             response, response.Schedules);
@@ -170,7 +168,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     skipToken =>
                     {
                         var response = this.automationManagementClient.Runbooks.List(
-                            automationAccountName, skipToken);
+                            automationAccountName);
                         return new ResponseWithSkipToken<AutomationManagement.Models.Runbook>(
                             response, response.Runbooks);
                     }).Select(c => new Runbook(automationAccountName, c));
@@ -195,7 +193,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             var rdcparam = new RunbookCreateDraftParameters() { Name = runbookName, Properties = rdcprop, Tags = tags };
 
-            this.automationManagementClient.Runbooks.CreateWithDraftParameters(automationAccountName, rdcparam);
+            this.automationManagementClient.Runbooks.CreateWithDraft(automationAccountName, rdcparam);
 
             return this.GetRunbook(automationAccountName, runbookName);
         }
@@ -1007,37 +1005,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
 
-            string location = string.Empty;
+            var csName = string.Empty;
 
-            var cloudServices = new List<CloudService>(this.automationManagementClient.CloudServices.List().CloudServices);
+            var cloudServices = this.automationManagementClient.CloudServices.List().CloudServices;
 
             foreach (var cloudService in cloudServices)
             {
                 if (cloudService.Resources.Any(resource => 0 == String.Compare(resource.Name, automationAccountName, CultureInfo.InvariantCulture,
                     CompareOptions.IgnoreCase)))
                 {
-                    location = cloudService.GeoRegion;
+                    csName = cloudService.Name;
                     break;
                 }
             }
 
-            try
-            {
-                this.automationManagementClient.DeleteAutomationAccount(automationAccountName,location);
-            }
-            catch (CloudException e)
-            {
-                if (e.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    // Try with SHA encoded cloud Service name
-                    var generatedCsName = GetCloudServiceName(automationAccountName, location);
-                    this.automationManagementClient.AutomationAccounts.Delete(generatedCsName, automationAccountName);
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            this.automationManagementClient.AutomationAccounts.Delete(csName, automationAccountName);
         }
 
         #endregion
@@ -1077,17 +1059,18 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public Certificate UpdateCertificate(string automationAccountName, string name, string path, SecureString password,
             string description, bool exportable)
         {
-            var cert = (password == null)
-                ? new X509Certificate2(path)
-                : new X509Certificate2(path, password);
-
-            var cuprop = new CertificateUpdateProperties()
+            var cuprop = new CertificateUpdateProperties();
+            
+            if (description != null) cuprop.Description = description;
+            
+            if (path != null)
             {
-                Description = description,
-                Base64Value = Convert.ToBase64String(cert.Export(X509ContentType.Pkcs12)),
-                Thumbprint = cert.Thumbprint,
-                IsExportable = exportable
-            };
+                var cert = (password == null) ? new X509Certificate2(path) : new X509Certificate2(path, password);
+                cuprop.Base64Value = Convert.ToBase64String(cert.Export(X509ContentType.Pkcs12));
+                cuprop.Thumbprint = cert.Thumbprint;
+            }
+
+            if (exportable) cuprop.IsExportable = true;
 
             var cuparam = new CertificateUpdateParameters() { Name = name, Properties = cuprop };
 
@@ -1187,7 +1170,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     skipToken =>
                     {
                         var response = this.automationManagementClient.JobSchedules.List(
-                            automationAccountName, skipToken);
+                            automationAccountName);
 
                         return new ResponseWithSkipToken<AutomationManagement.Models.JobSchedule>(
                             response, response.JobSchedules);
@@ -1393,46 +1376,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             return filteredParameters;
         }
-
-        private string GetCloudServiceName(string subscriptionId, string region)
-        {
-            string hashedSubId = string.Empty;
-            using (SHA256 sha256 = SHA256Managed.Create())
-            {
-                hashedSubId = Base32NoPaddingEncode(sha256.ComputeHash(UTF8Encoding.UTF8.GetBytes(subscriptionId)));
-            }
-
-            return string.Format(CultureInfo.InvariantCulture, "{0}{1}-{2}", Constants.AutomationServicePrefix, hashedSubId, region.Replace(' ', '-'));
-        }
-
-        private string Base32NoPaddingEncode(byte[] data)
-        {
-            const string base32StandardAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
-
-            StringBuilder result = new StringBuilder(Math.Max((int)Math.Ceiling(data.Length * 8 / 5.0), 1));
-
-            byte[] emptyBuffer = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 };
-            byte[] workingBuffer = new byte[8];
-
-            // Process input 5 bytes at a time
-            for (int i = 0; i < data.Length; i += 5)
-            {
-                int bytes = Math.Min(data.Length - i, 5);
-                Array.Copy(emptyBuffer, workingBuffer, emptyBuffer.Length);
-                Array.Copy(data, i, workingBuffer, workingBuffer.Length - (bytes + 1), bytes);
-                Array.Reverse(workingBuffer);
-                ulong val = BitConverter.ToUInt64(workingBuffer, 0);
-
-                for (int bitOffset = ((bytes + 1) * 8) - 5; bitOffset > 3; bitOffset -= 5)
-                {
-                    result.Append(base32StandardAlphabet[(int)((val >> bitOffset) & 0x1f)]);
-                }
-            }
-
-            return result.ToString();
-        }
-
-        
 
         private JobStream CreateJobStreamFromJobStreamModel(AutomationManagement.Models.JobStream jobStream, string automationAccountName, Guid jobId)
         {

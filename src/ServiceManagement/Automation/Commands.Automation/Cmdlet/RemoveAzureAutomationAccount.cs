@@ -73,10 +73,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             this.ConfirmAction(
                 this.Force.IsPresent,
-                string.Format(CultureInfo.CurrentCulture, Resources.RemovingAzureAutomationResourceWarning),
-                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationResourceDescription),
+                string.Format(CultureInfo.CurrentCulture, Resources.RemovingAzureAutomationResourceWarning, this.Name),
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationResourceDescription, this.Name),
                 this.Name,
-                () => AutomationClient.DeleteAutomationAccount(this.Name));
+                () =>
+                {
+                    AutomationClient.DeleteAutomationAccount(this.Name);
+                });
         }
     }
 }
