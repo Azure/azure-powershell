@@ -154,9 +154,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             HyperVReplicaAzureProtectionProfileInput hyperVReplicaAzureProtectionProfileInput
                     = new HyperVReplicaAzureProtectionProfileInput()
                     {
-                        AppConsistencyFreq = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
+                        ApplicationConsistentSnapshotFrequencyInHours = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
                         ReplicationInterval = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds,
-                        OnlineIrStartTime = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime
+                        OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime,
+                        RecoveryPointHistoryDuration = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryPoints,
                     };
 
             UpdateProtectionProfileInput updateProtectionProfileInput = 
@@ -175,17 +176,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void EnterpriseToEnterpriseUpdate()
         {
-            HyperVReplicaAzureProtectionProfileInput hyperVReplicaAzureProtectionProfileInput
-                = new HyperVReplicaAzureProtectionProfileInput()
-                {
-                    AppConsistencyFreq = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
-                    ReplicationInterval = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds,
-                    OnlineIrStartTime = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime
-                };
+            HyperVReplicaProtectionProfileInput hyperVReplicaProtectionProfileInput
+                    = new HyperVReplicaProtectionProfileInput()
+                    {
+                        ApplicationConsistentSnapshotFrequencyInHours = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
+                        ReplicationFrequencyInSeconds = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationFrequencyInSeconds,
+                        OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationStartTime,
+                        CompressionEnabled = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.CompressionEnabled,
+                        OnlineReplicationMethod = (string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 1) ? true : false,
+                        RecoveryPoints = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.RecoveryPoints,
+                        ReplicationPort = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationPort,
+                        AllowReplicaDeletion = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.AllowReplicaDeletion
+                    };
 
             UpdateProtectionProfileInput updateProtectionProfileInput =
                 new UpdateProtectionProfileInput(
-                    DataContractUtils<HyperVReplicaAzureProtectionProfileInput>.Serialize(hyperVReplicaAzureProtectionProfileInput));
+                    DataContractUtils<HyperVReplicaProtectionProfileInput>.Serialize(hyperVReplicaProtectionProfileInput));
             
             this.jobResponse = RecoveryServicesClient.UpdateAzureSiteRecoveryProtectionProfile(
                 updateProtectionProfileInput,

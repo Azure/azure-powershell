@@ -99,9 +99,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             HyperVReplicaAzureProtectionProfileInput hyperVReplicaAzureProtectionProfileInput
                     = new HyperVReplicaAzureProtectionProfileInput()
                     {
-                        AppConsistencyFreq = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
+                        ApplicationConsistentSnapshotFrequencyInHours = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
                         ReplicationInterval = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds,
-                        OnlineIrStartTime = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime
+                        OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime,
+                        RecoveryPointHistoryDuration = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryPoints,
                     };
 
             var storageAccount = new CustomerStorageAccount();
@@ -136,24 +137,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void EnterpriseToEnterpriseAssociation()
         {
-            HyperVReplicaAzureProtectionProfileInput hyperVReplicaAzureProtectionProfileInput
-                    = new HyperVReplicaAzureProtectionProfileInput()
+            HyperVReplicaProtectionProfileInput hyperVReplicaProtectionProfileInput
+                    = new HyperVReplicaProtectionProfileInput()
                     {
-                        AppConsistencyFreq = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
-                        ReplicationInterval = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds,
-                        OnlineIrStartTime = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime
+                        ApplicationConsistentSnapshotFrequencyInHours = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
+                        ReplicationFrequencyInSeconds = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationFrequencyInSeconds,
+                        OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationStartTime,
+                        CompressionEnabled = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.CompressionEnabled,
+                        OnlineReplicationMethod = (string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 1) ? true : false,
+                        RecoveryPoints = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.RecoveryPoints,
+                        ReplicationPort = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationPort,
+                        AllowReplicaDeletion = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.AllowReplicaDeletion
                     };
-
-            var storageAccount = new CustomerStorageAccount();
-            storageAccount.StorageAccountName = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureStorageAccountName;
-            storageAccount.SubscriptionId = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureSubscription;
-            hyperVReplicaAzureProtectionProfileInput.StorageAccounts.Add(storageAccount);
 
             CreateProtectionProfileInput createProtectionProfileInput =
                 new CreateProtectionProfileInput(
                     this.ProtectionProfile.Name,
                     this.ProtectionProfile.ReplicationProvider,
-                    DataContractUtils<HyperVReplicaAzureProtectionProfileInput>.Serialize(hyperVReplicaAzureProtectionProfileInput));
+                    DataContractUtils<HyperVReplicaProtectionProfileInput>.Serialize(hyperVReplicaProtectionProfileInput));
 
             ProtectionProfileAssociationInput protectionProfileAssociationInput =
                 new ProtectionProfileAssociationInput(
