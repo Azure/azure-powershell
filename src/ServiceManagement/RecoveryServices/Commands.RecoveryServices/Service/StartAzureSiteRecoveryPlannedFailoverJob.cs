@@ -151,7 +151,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             if (this.ProtectionEntity.ReplicationProvider == Constants.HyperVReplicaAzure)
             {
-                request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
                 if (this.Direction == Constants.PrimaryToRecovery)
                 {
                     var blob = new AzureFailoverInput();
@@ -166,8 +165,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailbackInput>(blob);
                 }
             }
+            else
+            {
+                request.ReplicationProviderSettings = string.Empty;
+            }
 
+            request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
             request.FailoverDirection = this.Direction;
+
             this.jobResponse =
                 RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(
                 this.ProtectionContainerId,
@@ -199,7 +204,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             if (this.RecoveryPlan.ReplicationProvider == Constants.HyperVReplicaAzure)
             {
-                request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
                 if (this.Direction == Constants.PrimaryToRecovery)
                 {
                     var blob = new AzureFailoverInput();
@@ -215,6 +219,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 }
             }
 
+            request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
             request.FailoverDirection = this.Direction;
 
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(

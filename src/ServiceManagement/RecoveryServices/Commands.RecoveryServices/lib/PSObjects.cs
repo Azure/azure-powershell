@@ -318,17 +318,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         asrProtectionProfile.ReplicationPort = 0;
 
                         asrProtectionProfile.ApplicationConsistentSnapshotFrequencyInHours = 
-                            details.AppConsistencyFreq;
+                            details.ApplicationConsistentSnapshotFrequencyInHours;
                         asrProtectionProfile.RecoveryAzureStorageAccount = 
                             details.ActiveStorageAccount.StorageAccountName;
                         asrProtectionProfile.RecoveryAzureSubscription = 
                             details.ActiveStorageAccount.SubscriptionId;
                         asrProtectionProfile.ReplicationFrequencySecond = details.ReplicationInterval;
-                        asrProtectionProfile.ReplicationMethod = details.OnlineIrStartTime.HasValue ?
+                        asrProtectionProfile.ReplicationMethod = details.OnlineReplicationStartTime.HasValue ?
                             Constants.OnlineReplicationMethod : 
                             Constants.OfflineReplicationMethod;
-                        asrProtectionProfile.ReplicationStartTime = details.OnlineIrStartTime;
-                        asrProtectionProfile.CompressionEnabled = details.IsEncryptionEnabled;
+                        asrProtectionProfile.ReplicationStartTime = details.OnlineReplicationStartTime;
+
+                        // TODO
+                        asrProtectionProfile.CompressionEnabled = details.EncryptionEnabled; 
                         asrProtectionProfile.RecoveryPoints 
                             = details.RecoveryPointHistoryDuration;
                     }
@@ -337,23 +339,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         var details = DataContractUtils<HyperVReplicaProtectionProfileDetails>.Deserialize(
                             profile.ReplicationProviderSetting);
 
-                        asrProtectionProfile.AllowReplicaDeletion = 
-                            details.VmAutoDeleteOption == "OnRecoveryCloud";
+                        asrProtectionProfile.AllowReplicaDeletion =
+                            details.ReplicaDeletionOption == "OnRecoveryCloud";
                         asrProtectionProfile.ApplicationConsistentSnapshotFrequencyInHours = 
-                            details.AppConsistencyFreq;
+                            details.ApplicationConsistentSnapshotFrequencyInHours;
 
-                        asrProtectionProfile.CompressionEnabled = details.IsCompressionEnabled;
+                        asrProtectionProfile.CompressionEnabled = details.CompressionEnabled;
 
                         asrProtectionProfile.RecoveryAzureStorageAccount = null;
                         asrProtectionProfile.RecoveryAzureSubscription = null;
                         asrProtectionProfile.ReplicationFrequencySecond = 0;
 
-                        asrProtectionProfile.RecoveryPoints = details.NosOfRps;
-                        asrProtectionProfile.ReplicationMethod = details.IsOnlineIr ? 
+                        asrProtectionProfile.RecoveryPoints = details.RecoveryPoints;
+                        asrProtectionProfile.ReplicationMethod = details.OnlineReplicationMethod ? 
                             Constants.OnlineReplicationMethod : 
                             Constants.OfflineReplicationMethod;
-                        asrProtectionProfile.ReplicationPort = details.RecoveryHttpsPort;
-                        asrProtectionProfile.ReplicationStartTime = details.OnlineIrStartTime;
+                        asrProtectionProfile.ReplicationPort = details.ReplicationPort;
+                        asrProtectionProfile.ReplicationStartTime = details.OnlineReplicationStartTime;
                     }
 
                     asrProtectionProfile.ID = profile.ID;
@@ -922,8 +924,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.ClientRequestId = job.ActivityId;
             this.State = job.State;
             this.StateDescription = job.StateDescription;
-            this.EndTime = job.EndTimestamp;
-            this.StartTime = job.StartTimestamp;
+            this.EndTime = job.EndTime;
+            this.StartTime = job.StartTime;
             this.AllowedActions = job.AllowedActions as List<string>;
             this.Name = job.Name;
             this.Tasks = new List<ASRTask>();
