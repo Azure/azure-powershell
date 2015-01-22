@@ -28,18 +28,41 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     using NSM = Management.Compute.Models;
 
+    /*
+     * Get the DSC Extension status for all or for a given virtual machine(s) deployed in a cloud service.
+     */
     [Cmdlet(VerbsCommon.Get, VirtualMachineDscStatusCmdletNoun, DefaultParameterSetName = GetStatusByServiceAndVmNameParamSet), OutputType(typeof(VirtualMachineDscExtensionStatusContext))]
     public class GetAzureVmDscExtensionStatusCommand : IaaSDeploymentManagementCmdletBase
     {
-        [Parameter(ParameterSetName = GetStatusByServiceAndVmNameParamSet, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Service name.")]
+        /* Name of the cloud service to request for DSC Extension Status
+         */
+        [Parameter(
+            ParameterSetName = GetStatusByServiceAndVmNameParamSet, 
+            Position = 0, 
+            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "Service name.")]
         [ValidateNotNullOrEmpty]
         public override string ServiceName { get; set; }
-        
-        [Parameter(ParameterSetName = GetStatusByServiceAndVmNameParamSet, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the deployment for the status.")]
+
+        /* Name of the virtual machine in a cloud service to request for DSC Extension Status
+         */
+        [Parameter(
+            ParameterSetName = GetStatusByServiceAndVmNameParamSet, 
+            Position = 1, 
+            ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The name of the deployment for the status.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = GetStatusByVmParamSet, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Virtual machine object for the status.")]
+        /* Virtual machine object returned by Get-AzureVM cmdlet to request for DSC Extension Status
+         */
+        [Parameter(
+            ParameterSetName = GetStatusByVmParamSet, 
+            Mandatory = true, 
+            ValueFromPipeline = true, 
+            ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "Virtual machine object for the status.")]
         [ValidateNotNullOrEmpty]
         [Alias("InputObject")]
         public IPersistentVM VM { get; set; }
@@ -70,6 +93,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             WriteObject(vmDscStatusContexts, true);
         }
 
+        /*
+         * Retrieves service name from the cmdlet's service name or virtual machine parameter
+         */
         internal void GetService(String serviceName, IPersistentVM vm)
         {
             if (!string.IsNullOrEmpty(serviceName))
@@ -87,6 +113,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 VmName = vmRoleContext.Name;
             }
         }
+
+        /*
+         * Retrieves deployment information for a cloud service from downlevel api's
+         */
         internal void GetCurrentDeployment()
         {
             InvokeInOperationContext(() =>
@@ -109,6 +139,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 }
             });
         }
+
+        /*
+         * Retrieves dsc extension status for all virtual machine's in a cloud service or a given virtual machine from the deployment object
+         */
         internal List<T> GetVirtualMachineDscStatusContextList<T>(NSM.DeploymentGetResponse deployment)
             where T : VirtualMachineDscExtensionStatusContext, new()
         {
@@ -140,6 +174,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             return vmDscStatusContexts;
         }
 
+        /*
+        * Creates dsc extension status object for a virtual machine
+        */
         internal T CreateDscStatusContext<T>(NSM.Role vmRole, NSM.RoleInstance roleInstance,
             NSM.DeploymentGetResponse deployment) where T : VirtualMachineDscExtensionStatusContext, new()
         {
