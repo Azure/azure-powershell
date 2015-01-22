@@ -878,6 +878,11 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         public ushort ReplicationPort { get; set; }
 
         /// <summary>
+        /// Gets or sets the allowed authentication type.
+        /// </summary>
+        public string Authentication { get; set; }
+
+        /// <summary>
         /// Gets or sets Replication Start Time.
         /// </summary>
         public TimeSpan? ReplicationStartTime { get; set; }
@@ -932,6 +937,11 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// Gets or sets Recovery Azure Storage Account Name.
         /// </summary>
         public string RecoveryAzureStorageAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to encrypt stored data.
+        /// </summary>
+        public bool EncryptStoredData { get; set; }
 
         /// <summary>
         /// Gets or sets Replication Frequency in seconds.

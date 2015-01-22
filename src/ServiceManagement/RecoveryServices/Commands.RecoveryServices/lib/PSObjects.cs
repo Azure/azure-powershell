@@ -172,6 +172,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Azure fabric Id. In E2A context Recovery Server Id is always this.
         /// </summary>
         public const string AzureFabricId = "21a9403c-6ec1-44f2-b744-b4e50b792387";
+
+        /// <summary>
+        /// Authentication Type as Certificate based authentication.
+        /// </summary>
+        public const string AuthenticationTypeCertificate = "Certificate";
+
+        /// <summary>
+        /// Authentication Type as Kerberos.
+        /// </summary>
+        public const string AuthenticationTypeKerberos = "Kerberos";
     }
 
     /// <summary>
