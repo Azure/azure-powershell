@@ -34,7 +34,6 @@ using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
-using System.Net.Security;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
