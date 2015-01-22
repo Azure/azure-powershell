@@ -687,92 +687,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     }
 
     /// <summary>
-    /// Hyper-V Replica specific protection profile details.
-    /// </summary>
-    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    public class HyperVReplicaProtectionProfileDetails
-    {
-        /// <summary>
-        /// Gets or sets a value indicating the number of recovery points.
-        /// </summary>
-        [DataMember]
-        public int NosOfRps { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating the application consistent frequency.
-        /// </summary>
-        [DataMember]
-        public int AppConsistencyFreq { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether compression has to be enabled.
-        /// </summary>
-        [DataMember]
-        public bool IsCompressionEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether IR is online.
-        /// </summary>
-        [DataMember]
-        public bool IsOnlineIr { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating the online IR start time.
-        /// </summary>
-        [DataMember]
-        public TimeSpan? OnlineIrStartTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating the offline IR import path.
-        /// </summary>
-        [DataMember]
-        public string OfflineIrImportPath { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating the offline IR export path.
-        /// </summary>
-        [DataMember]
-        public string OfflineIrExportPath { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating the primary HTTP port.
-        /// </summary>
-        [DataMember]
-        public ushort PrimaryHttpPort { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating the primary HTTPS port.
-        /// </summary>
-        [DataMember]
-        public ushort PrimaryHttpsPort { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating the recovery HTTP port.
-        /// </summary>
-        [DataMember]
-        public ushort RecoveryHttpPort { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating the recovery HTTPS port.
-        /// </summary>
-        [DataMember]
-        public ushort RecoveryHttpsPort { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating the authentication type.
-        /// </summary>
-        [DataMember]
-        public ushort AllowedAuthenticationType { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the VM has to be auto deleted.
-        /// Supported Values: String.Empty, None, OnRecoveryCloud
-        /// </summary>
-        [DataMember]
-        public string VmAutoDeleteOption { get; set; }
-    }
-
-    /// <summary>
     /// Hyper-V Replica Azure specific protection profile details.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
@@ -790,7 +704,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// application consistent snapshot within the VM.
         /// </summary>
         [DataMember]
-        public int AppConsistencyFreq { get; set; }
+        public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
 
         /// <summary>
         /// Gets or sets the replication interval.
@@ -803,20 +717,94 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// is Null, the initial replication starts immediately.
         /// </summary>
         [DataMember]
-        public TimeSpan? OnlineIrStartTime { get; set; }
+        public TimeSpan? OnlineReplicationStartTime { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether encryption is enabled for virtual machines
         /// in this cloud.
         /// </summary>
         [DataMember]
-        public bool IsEncryptionEnabled { get; set; }
+        public bool EncryptionEnabled { get; set; }
 
         /// <summary>
         /// Gets or sets the active storage accounts details.
         /// </summary>
         [DataMember]
         public CustomerStorageAccount ActiveStorageAccount { get; set; }
+    }
+
+    /// <summary>
+    /// Hyper-V Replica specific protection profile details.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class HyperVReplicaProtectionProfileDetails
+    {
+        /// <summary>
+        /// Gets or sets a value indicating the number of recovery points.
+        /// </summary>
+        [DataMember]
+        public int RecoveryPoints { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the application consistent frequency.
+        /// </summary>
+        [DataMember]
+        public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether compression has to be enabled.
+        /// </summary>
+        [DataMember]
+        public bool CompressionEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether IR is online.
+        /// </summary>
+        [DataMember]
+        public bool OnlineReplicationMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the online IR start time.
+        /// </summary>
+        [DataMember]
+        public TimeSpan? OnlineReplicationStartTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the offline IR import path.
+        /// </summary>
+        [DataMember]
+        public string OfflineReplicationImportPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the offline IR export path.
+        /// </summary>
+        [DataMember]
+        public string OfflineReplicationExportPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the recovery HTTPS port.
+        /// </summary>
+        [DataMember]
+        public ushort ReplicationPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the authentication type.
+        /// </summary>
+        [DataMember]
+        public ushort AllowedAuthenticationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the VM has to be auto deleted.
+        /// Supported Values: String.Empty, None, OnRecoveryCloud
+        /// </summary>
+        [DataMember]
+        public string ReplicaDeletionOption { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the replication interval.
+        /// </summary>
+        [DataMember]
+        public ushort ReplicationFrequencyInSeconds { get; set; }
     }
 
     /// <summary>
@@ -914,11 +902,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         #region Properties
 
         /// <summary>
-        /// Gets or sets Replication Method.
-        /// </summary>
-        public string ReplicationMethod { get; set; }
-
-        /// <summary>
         /// Gets or sets a value indicating whether profile can be dissociated or not.
         /// </summary>
         public bool CanDissociate { get; set; }
@@ -959,24 +942,9 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether Compression is Enabled.
-        /// </summary>
-        public bool CompressionEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or sets the replication port.
-        /// </summary>
-        public ushort ReplicationPort { get; set; }
-
-        /// <summary>
         /// Gets or sets Replication Start Time.
         /// </summary>
         public TimeSpan? ReplicationStartTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Replica Deletion should be enabled.
-        /// </summary>
-        public bool AllowReplicaDeletion { get; set; }
 
         #endregion
     }

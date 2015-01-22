@@ -197,17 +197,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 ReplicationProvider = this.ReplicationProvider,
                 HyperVReplicaAzureProviderSettingsObject = new HyperVReplicaAzureProviderSettings()
                 {
-                    ReplicationMethod = this.ReplicationMethod,
                     RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                     RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
                     EncryptStoredData = this.EncryptStoredData,
                     ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
                     RecoveryPoints = this.RecoveryPoints,
                     ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
-                    CompressionEnabled = this.CompressionEnabled,
-                    ReplicationPort = this.ReplicationPort,
                     ReplicationStartTime = this.ReplicationStartTime,
-                    AllowReplicaDeletion = this.AllowReplicaDeletion
                 },
                 HyperVReplicaProviderSettingsObject = null
             };

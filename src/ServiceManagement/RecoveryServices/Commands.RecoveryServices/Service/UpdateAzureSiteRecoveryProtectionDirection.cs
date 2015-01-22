@@ -121,6 +121,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void SetRpReprotect()
         {
+            var request = new ReprotectRequest();
+
+            if (this.RecoveryPlan == null)
+            {
+                var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(
+                    this.RPId);
+                this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
+
+                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider);
+            }
+
+            request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
+            request.ReplicationProviderSettings = string.Empty;
+
+            request.FailoverDirection = this.Direction; 
+            
             this.jobResponse = RecoveryServicesClient.UpdateAzureSiteRecoveryProtection(
                 this.RPId);
 
@@ -137,16 +153,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void SetPEReprotect()
         {
-            // Until RR is done active location remains same from where FO was initiated.
             if ((this.Direction == Constants.PrimaryToRecovery &&
-                    this.ProtectionEntity.ActiveLocation != Constants.RecoveryLocation) ||
+                    this.ProtectionEntity.ActiveLocation == Constants.RecoveryLocation) ||
                 (this.Direction == Constants.RecoveryToPrimary &&
-                    this.ProtectionEntity.ActiveLocation != Constants.PrimaryLocation))
+                    this.ProtectionEntity.ActiveLocation == Constants.PrimaryLocation))
             {
                 throw new ArgumentException("Parameter value is not correct.", "Direction");
             }
 
-            var request = new PlannedFailoverRequest();
+            var request = new ReprotectRequest();
 
             if (this.ProtectionEntity == null)
             {
@@ -158,9 +173,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
             }
 
+            request.ReplicationProviderSettings = string.Empty;
+
             if (this.ProtectionEntity.ReplicationProvider == Constants.HyperVReplicaAzure)
             {
-                request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
                 if (this.Direction == Constants.PrimaryToRecovery)
                 {
                     var blob = new AzureReProtectionInput();
@@ -174,11 +190,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 }
             }
 
+            request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
             request.FailoverDirection = this.Direction;
 
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryReprotection(
                 this.ProtectionContainerId,
-                this.ProtectionEntityId);
+                this.ProtectionEntityId,
+                request);
 
             this.WriteJob(this.jobResponse.Job);
 

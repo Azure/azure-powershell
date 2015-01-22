@@ -71,6 +71,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public ASRProtectionEntity ProtectionEntity { get; set; }
 
         /// <summary>
+        /// Gets or sets Failover direction for the recovery plan.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        [ValidateSet(
+            Constants.PrimaryToRecovery,
+            Constants.RecoveryToPrimary)]
+        public string Direction { get; set; }
+
+        /// <summary>
         /// Gets or sets switch parameter. This is required to wait for job completion.
         /// </summary>
         [Parameter]
@@ -116,27 +125,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             var request = new CommitFailoverRequest();
 
-            if (this.ProtectionEntity == null)
+            if (this.RecoveryPlan == null)
             {
-                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
-                    this.ProtectionContainerId,
-                    this.ProtectionEntityId);
-                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+                var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(
+                    this.RPId);
+                this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
 
-                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider);
             }
 
-            request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
+            request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
             request.ReplicationProviderSettings = string.Empty;
 
-            if (this.ProtectionEntity.ActiveLocation == Constants.PrimaryLocation)
-            {
-                request.FailoverDirection = Constants.PrimaryToRecovery;
-            }
-            else
-            {
-                request.FailoverDirection = Constants.RecoveryToPrimary;
-            }
+            request.FailoverDirection = this.Direction;
 
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(
                 this.RPId);

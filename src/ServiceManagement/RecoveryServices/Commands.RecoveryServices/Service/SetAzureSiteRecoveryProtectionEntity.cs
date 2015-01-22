@@ -208,6 +208,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
                                     input.ReplicationProviderInput = DataContractUtils.Serialize<AzureEnableProtectionInput>(azureInput);
                                 }
+                                else
+                                {
+                                    input.ReplicationProviderInput = string.Empty;
+                                    input.ProtectionProfileId = this.ProtectionProfile.ID;
+                                }
 
                                 this.jobResponse =
                                     RecoveryServicesClient.EnableProtection(
