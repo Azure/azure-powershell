@@ -80,7 +80,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [ValidateNotNullOrEmpty]
-        [DefaultValue(300)]
         public ushort ReplicationFrequencyInSeconds { get; set; }
 
         /// <summary>
@@ -105,7 +104,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets a value indicating whether Compression needs to be Enabled on the Protection Profile.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public SwitchParameter CompressionEnabled { get; set; }
 
         /// <summary>
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [ValidateNotNullOrEmpty]
-        [DefaultValue(8084)]
+        [DefaultValue(0)]
         public ushort ReplicationPort { get; set; }
 
         /// <summary>
@@ -124,7 +123,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateSet(
             Constants.AuthenticationTypeCertificate,
             Constants.AuthenticationTypeKerberos)]
-        [DefaultValue(Constants.AuthenticationTypeCertificate)]
         public string Authentication { get; set; }
 
         /// <summary>

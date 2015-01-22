@@ -104,6 +104,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         ReplicationInterval = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds,
                         OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime,
                         RecoveryPointHistoryDuration = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryPoints,
+                        EncryptionEnabled = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.EncryptStoredData
                     };
 
             var storageAccount = new CustomerStorageAccount();
@@ -148,7 +149,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         OnlineReplicationMethod = (string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 1) ? true : false,
                         RecoveryPoints = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.RecoveryPoints,
                         ReplicationPort = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationPort,
-                        AllowReplicaDeletion = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.AllowReplicaDeletion
+                        AllowReplicaDeletion = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.AllowReplicaDeletion,
+                        AllowedAuthenticationType = (ushort)((string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.Authentication, Constants.AuthenticationTypeKerberos, StringComparison.OrdinalIgnoreCase) == 0) ? 1 : 2),
                     };
 
             CreateProtectionProfileInput createProtectionProfileInput =

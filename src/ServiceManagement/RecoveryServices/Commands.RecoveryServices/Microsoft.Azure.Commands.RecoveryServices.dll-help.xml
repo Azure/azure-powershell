@@ -4900,7 +4900,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ReplicationMethod</maml:name>
           <maml:description>
-            <maml:para>Replication Method either Online or Offline. Default is taken as Online.</maml:para>
+            <maml:para>Replication Method either Online or Offline.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
         </command:parameter>
@@ -4908,7 +4908,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ReplicationFrequencyInSeconds</maml:name>
           <maml:description>
-            <maml:para>Replication Frequency In Seconds. Default is taken as 300.</maml:para>
+            <maml:para>Replication Frequency In Seconds. Default is taken as 0.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
         </command:parameter>
@@ -4940,7 +4940,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ReplicationPort</maml:name>
           <maml:description>
-            <maml:para>Replication Port. Default is taken as 8084.</maml:para>
+            <maml:para>Replication Port. Default is 0.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
         </command:parameter>
@@ -4948,7 +4948,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>CompressionEnabled</maml:name>
           <maml:description>
-            <maml:para>Compression to be Enabled. Default is true.</maml:para>
+            <maml:para>Compression to be Enabled. Default is false.</maml:para>
           </maml:description>
         </command:parameter>
 
