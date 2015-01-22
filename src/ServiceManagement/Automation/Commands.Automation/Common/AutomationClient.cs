@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                skipToken =>
                {
                    var response = this.automationManagementClient.Variables.List(
-                       automationAccountName, skipToken);
+                       automationAccountName);
                    return new ResponseWithSkipToken<AutomationManagement.Models.Variable>(
                        response, response.Variables);
                });
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                skipToken =>
                {
                    var response = this.automationManagementClient.EncryptedVariables.List(
-                       automationAccountName, skipToken);
+                       automationAccountName);
                    return new ResponseWithSkipToken<AutomationManagement.Models.EncryptedVariable>(
                        response, response.EncryptedVariables);
                });
@@ -603,8 +603,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 .ContinuationTokenHandler(
                     skipToken =>
                     {
-                        var response = this.automationManagementClient.PsCredentials.List(automationAccountName,
-                            skipToken);
+                        var response = this.automationManagementClient.PsCredentials.List(automationAccountName);
                         return new ResponseWithSkipToken<AutomationManagement.Models.Credential>(
                             response, response.Credentials);
                     });
@@ -671,7 +670,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 .ContinuationTokenHandler(
                     skipToken =>
                     {
-                        var response = this.automationManagementClient.Modules.List(automationAccountName, skipToken);
+                        var response = this.automationManagementClient.Modules.List(automationAccountName);
                         return new ResponseWithSkipToken<AutomationManagement.Models.Module>(
                             response, response.Modules);
                     });
@@ -781,7 +780,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                     EndTime = FormatDateTime(endTime.Value),
                                     RunbookName = runbookName,
                                     Status = jobStatus,
-                                    SkipToken = skipToken
                                 });
                         return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                     });
@@ -799,7 +797,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                        StartTime = FormatDateTime(startTime.Value),
                                        RunbookName = runbookName,
                                        Status = jobStatus,
-                                       SkipToken = skipToken
                                    });
                          return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                      });
@@ -817,7 +814,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                     EndTime = FormatDateTime(endTime.Value),
                                     RunbookName = runbookName,
                                     Status = jobStatus,
-                                    SkipToken = skipToken
                                 });
                         return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                     });
@@ -831,7 +827,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                             automationAccountName,
                             new AutomationManagement.Models.JobListParameters
                             {
-                                SkipToken = skipToken,
                                 Status = jobStatus,
                                 RunbookName = runbookName
                             });
@@ -871,7 +866,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                     StartTime = FormatDateTime(startTime.Value),
                                     EndTime = FormatDateTime(endTime.Value),
                                     Status = jobStatus,
-                                    SkipToken = skipToken
                                 });
                         return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                     });
@@ -888,7 +882,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                    {
                                        StartTime = FormatDateTime(startTime.Value),
                                        Status = jobStatus,
-                                       SkipToken = skipToken
                                    });
                          return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                      });
@@ -905,7 +898,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                 {
                                     EndTime = FormatDateTime(endTime.Value),
                                     Status = jobStatus,
-                                    SkipToken = skipToken
                                 });
                         return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                     });
@@ -917,7 +909,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     {
                         var response = this.automationManagementClient.Jobs.List(
                             automationAccountName,
-                            new AutomationManagement.Models.JobListParameters { Status = jobStatus, SkipToken = skipToken, });
+                            new AutomationManagement.Models.JobListParameters { Status = jobStatus });
                         return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                     });
             }
@@ -1102,7 +1094,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                    skipToken =>
                    {
                        var response = this.automationManagementClient.Certificates.List(
-                           automationAccountName, skipToken);
+                           automationAccountName);
                        return new ResponseWithSkipToken<AutomationManagement.Models.Certificate>(
                            response, response.Certificates);
                    }).Select(c => new Certificate(automationAccountName, c));
