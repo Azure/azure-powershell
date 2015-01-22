@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the variable description.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.UpdateVariableDescription, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the variable.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.UpdateVariableDescription, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the variable.")]
         public string Description { get; set; }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 Name = this.Name,
                 Description = this.Description,
                 Encrypted = this.Encrypted,
-                Value = JsonConvert.SerializeObject(this.Value),
+                Value = this.Value,
                 AutomationAccountName = this.AutomationAccountName
             };
 
