@@ -91,9 +91,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="azureSubscription">Azure Subscription</param>
         public PSRecoveryServicesClient(AzureSubscription azureSubscription)
         {
+            if (ServicePointManager.ServerCertificateValidationCallback == null)
+            {
+                ServicePointManager.ServerCertificateValidationCallback =
+                    delegate { return true; };
+            }
+
             this.recoveryServicesClient =
                 AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
+
 
         /// <summary>
         /// Retrieves Azure Cloud services.

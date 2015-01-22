@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public enum NetworkTargetType
     {
         /// <summary>
-        /// Target type of the network is Server.
+        /// SCVMM VM Network.
         /// </summary>
-        Server = 0,
+        SCVMM = 0,
 
         /// <summary>
-        /// Target type of the network is Azure.
+        /// Azure VM Network.
         /// </summary>
         Azure,
     }
@@ -200,13 +200,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Azure VM Network Id.
         /// </summary>
         [DataMember(Order = 3)]
-        public string AzureVMNetworkId { get; set; }
+        public string RecoveryNetworkId { get; set; }
 
         /// <summary>
         /// Gets or sets Azure VM Network name.
         /// </summary>
         [DataMember(Order = 4)]
-        public string AzureVMNetworkName { get; set; }
+        public string RecoveryNetworkName { get; set; }
     }
 
     /// <summary>
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             createNetworkMappingInput.RecoveryNetworkId = recoveryNetworkId;
 
             NetworkMappingInput networkMappingInput = new NetworkMappingInput();
-            networkMappingInput.NetworkTargetType = NetworkTargetType.Server.ToString();
+            networkMappingInput.NetworkTargetType = NetworkTargetType.SCVMM.ToString();
             networkMappingInput.CreateNetworkMappingInput =
                 DataContractUtils.Serialize<CreateNetworkMappingInput>(createNetworkMappingInput);
             return this.GetSiteRecoveryClient()
@@ -281,8 +281,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 new CreateAzureNetworkMappingInput();
             createAzureNetworkMappingInput.PrimaryServerId = primaryServerId;
             createAzureNetworkMappingInput.PrimaryNetworkId = primaryNetworkId;
-            createAzureNetworkMappingInput.AzureVMNetworkName = recoveryNetworkName;
-            createAzureNetworkMappingInput.AzureVMNetworkId = recoveryNetworkId;
+            createAzureNetworkMappingInput.RecoveryNetworkName = recoveryNetworkName;
+            createAzureNetworkMappingInput.RecoveryNetworkId = recoveryNetworkId;
 
             NetworkMappingInput networkMappingInput = new NetworkMappingInput();
             networkMappingInput.NetworkTargetType = NetworkTargetType.Azure.ToString();
@@ -294,47 +294,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Validates whether the subscription belongs to the currently logged account or not.
+        /// Validates whether the Azure VM Network is associated with the subscription or not.
         /// </summary>
-        /// <param name="azureSubscriptionId">Azure Subscription ID</param>
-        public void ValidateSubscriptionAccountAssociation(string azureSubscriptionId)
+        /// <param name="azureSubscriptionId">Subscription Id</param>
+        /// <param name="azureVMNetworkId">Azure VM Network Id</param>
+        /// <param name="azureVMNetworkName">Azure VM Network name</param>
+        public void ValidateVMNetworkSubscriptionAssociation(
+            string azureSubscriptionId,
+            string azureVMNetworkId,
+            out string azureVMNetworkName)
         {
-            bool associatedSubscription = false;
-            ProfileClient pc = new ProfileClient();
-            List<AzureSubscription> subscriptions =
-                pc.RefreshSubscriptions(AzureSession.CurrentContext.Environment);
+            bool associatedVMNetwork = false;
+            azureVMNetworkName = string.Empty;
 
-            foreach (AzureSubscription sub in subscriptions)
+            AzureNetworkListResponse azureNetworkListResponse =
+                this.GetSiteRecoveryClient().Networks.ListAzureNetworks(azureSubscriptionId);
+
+            foreach (AzureNetworkListResponse.VirtualNetworkSite site in azureNetworkListResponse.VirtualNetworkSites)
             {
-                if (azureSubscriptionId.Equals(sub.Id.ToString(), StringComparison.OrdinalIgnoreCase))
+                if (azureVMNetworkId.Equals(site.Id))
                 {
-                    associatedSubscription = true;
+                    associatedVMNetwork = true;
+                    azureVMNetworkName = site.Name;
                     break;
                 }
             }
 
-            if (!associatedSubscription)
+            if (!associatedVMNetwork)
             {
                 throw new InvalidOperationException(
                     string.Format(
-                    Properties.Resources.SubscriptionIsNotAssociatedWithTheAccount,
+                    Properties.Resources.AzureVMNetworkIsNotAssociatedWithTheSubscription,
+                    azureVMNetworkId,
                     azureSubscriptionId));
             }
-        }
-
-        /// <summary>
-        /// Validates whether the Azure VM Network is associated with the subscription or not.
-        /// </summary>
-        /// <param name="subscriptionId">Subscription Id</param>
-        /// <param name="azureNetworkId">Azure Network Id</param>
-        public void ValidateVMNetworkSubscriptionAssociation(string subscriptionId, string azureNetworkId)
-        {
-            /*
-            NetworkManagementClient networkClient =
-                AzureSession.ClientFactory.CreateClient<NetworkManagementClient>(AzureSession.CurrentContext.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            var response = this.networkClient.Networks.List();
-            var sites = response.VirtualNetworkSites;
-            */
         }
 
         /// <summary>

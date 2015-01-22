@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     // In case this condition is true that means the credential was first generated in portal
                     // and hence can not be fetched here.
-                    throw new CloudException(Resources.VaultCredentialGenerationUnSupported);
+                    throw new CloudException(Resources.VaultSettingsGenerationUnSupported);
                 }
             }
 

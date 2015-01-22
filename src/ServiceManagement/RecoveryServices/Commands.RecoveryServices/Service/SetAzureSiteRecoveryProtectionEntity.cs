@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                     this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
                                 }
 
-                                if (this.ProtectionProfile.ReplicationType == Constants.HyperVReplicaAzure)
+                                if (this.ProtectionProfile.ReplicationProvider == Constants.HyperVReplicaAzure)
                                 {
                                     input.ProtectionProfileId = this.ProtectionProfile.ID;
                                     AzureEnableProtectionInput azureInput = new AzureEnableProtectionInput();

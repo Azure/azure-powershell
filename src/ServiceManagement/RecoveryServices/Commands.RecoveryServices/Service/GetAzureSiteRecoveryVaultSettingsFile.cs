@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Retrieves Azure Site Recovery Server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVaultCredential", DefaultParameterSetName = ASRParameterSets.Default)]
-    [OutputType(typeof(VaultCredentialOutput))]
-    public class GetVaultCredentialsFile : RecoveryServicesCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVaultSettingsFile", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [OutputType(typeof(VaultSettingsFilePath))]
+    public class GetAzureSiteRecoveryVaultSettingsFile : RecoveryServicesCmdletBase
     {
         /// <summary>
         /// Expiry in hours for generated certificate.
@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets the vault name
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Vault Name for which the cred file to be generated")]
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory = true, HelpMessage = "Vault Name for which the cred file to be generated")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the location of the vault
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Geo Location Name to which the vault belongs")]
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory = true, HelpMessage = "Geo Location Name to which the vault belongs")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string fileName = this.GenerateFileName();
 
             // write the content to a file.
-            VaultCredentialOutput output = new VaultCredentialOutput()
+            VaultSettingsFilePath output = new VaultSettingsFilePath()
             {
                 FilePath = Utilities.WriteToFile<ASRVaultCreds>(vaultCreds, filePath, fileName)
             };
@@ -174,14 +174,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private string GenerateFileName()
         {
             string fileName;
-
+            string format = "yyyy-MM-ddTHH-mm-ss";
             if (string.IsNullOrEmpty(this.Site.Name))
             {
-                fileName = string.Format("{0}_{1}.VaultCredentials", this.Vault.Name, DateTime.UtcNow.ToLongDateString());
+                fileName = string.Format("{0}_{1}.VaultCredentials", this.Vault.Name, DateTime.UtcNow.ToString(format));
             }
             else
             {
-                fileName = string.Format("{0}_{1}_{2}.VaultCredentials", this.Site.Name, this.Vault.Name, DateTime.UtcNow.ToLongDateString());
+                fileName = string.Format("{0}_{1}_{2}.VaultCredentials", this.Site.Name, this.Vault.Name, DateTime.UtcNow.ToString(format));
             }
 
             return fileName;

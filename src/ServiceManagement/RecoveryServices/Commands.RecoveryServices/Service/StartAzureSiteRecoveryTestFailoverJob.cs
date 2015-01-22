@@ -188,6 +188,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             else
             {
                 request.NetworkID = this.networkId;
+                if (string.IsNullOrEmpty(this.networkType))
+                {
+                    request.NetworkType = "DisconnectedVMNetworkTypeForTestFailover";
+                }
             }
 
             if (this.RecoveryPlan == null)
@@ -213,16 +217,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
             request.FailoverDirection = this.Direction;
-
-            if (this.Network != null)
-            {
-                request.NetworkID = this.Network.ID;
-                this.networkType = "UseVMNetworkTypeForTestFailover";
-            }
-            else
-            {
-                request.NetworkID = this.networkId;
-            }
 
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryTestFailover(
                 this.RpId, 

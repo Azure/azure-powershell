@@ -121,6 +121,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void SetRpReprotect()
         {
+            var request = new ReprotectRequest();
+
+            if (this.RecoveryPlan == null)
+            {
+                var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(
+                    this.RPId);
+                this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
+
+                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider);
+            }
+
+            request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
+            request.ReplicationProviderSettings = string.Empty;
+
+            request.FailoverDirection = this.Direction; 
+            
             this.jobResponse = RecoveryServicesClient.UpdateAzureSiteRecoveryProtection(
                 this.RPId);
 

@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AzureVMNetwork {0} is not associated with the Subscription {1}.
+        /// </summary>
+        internal static string AzureVMNetworkIsNotAssociatedWithTheSubscription {
+            get {
+                return ResourceManager.GetString("AzureVMNetworkIsNotAssociatedWithTheSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation Failed.
         ///Message: {0}
         ///Possible Causes: {1}
@@ -237,6 +246,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replication Start Time span value cannot be greater then 24 hours..
+        /// </summary>
+        internal static string ReplicationStartTimeInvalid {
+            get {
+                return ResourceManager.GetString("ReplicationStartTimeInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resource name mentioned is either null or empty.
         /// </summary>
         internal static string ResourceNameNullOrEmpty {
@@ -255,6 +273,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter the storage account name details in the protection profile..
+        /// </summary>
+        internal static string StorageAccountNameIsNotValid {
+            get {
+                return ResourceManager.GetString("StorageAccountNameIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account {0} is not associated with the account.
+        /// </summary>
+        internal static string StorageIsNotAssociatedWithTheAccount {
+            get {
+                return ResourceManager.GetString("StorageIsNotAssociatedWithTheAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the subscription ID details..
+        /// </summary>
+        internal static string SubscriptionIdIsNotValid {
+            get {
+                return ResourceManager.GetString("SubscriptionIdIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscription {0} is not associated with the account.
         /// </summary>
         internal static string SubscriptionIsNotAssociatedWithTheAccount {
@@ -264,11 +309,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot generate vault credentials for this vault. Download it from the Azure Portal..
+        ///   Looks up a localized string similar to Vault has been created.
         /// </summary>
-        internal static string VaultCredentialGenerationUnSupported {
+        internal static string VaultCreationSuccessMessage {
             get {
-                return ResourceManager.GetString("VaultCredentialGenerationUnSupported", resourceCulture);
+                return ResourceManager.GetString("VaultCreationSuccessMessage", resourceCulture);
             }
         }
         
@@ -278,6 +323,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string VaultSettingFileNotFound {
             get {
                 return ResourceManager.GetString("VaultSettingFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot generate vault settings file for this vault. Download it from the Azure Portal..
+        /// </summary>
+        internal static string VaultSettingsGenerationUnSupported {
+            get {
+                return ResourceManager.GetString("VaultSettingsGenerationUnSupported", resourceCulture);
             }
         }
         
