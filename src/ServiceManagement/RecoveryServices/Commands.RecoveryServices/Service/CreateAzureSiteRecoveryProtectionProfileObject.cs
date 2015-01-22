@@ -165,11 +165,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void EnterpriseToAzureProtectionProfileObject()
         {
-            // Verify whether the storage account is associated with the account or not.
-            // PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
+            //// Verify whether the storage account is associated with the account or not.
+            //// PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
 
-            // Verify whether the subscription is associated with the account or not.
-            // PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
+            //// Verify whether the subscription is associated with the account or not.
+            //// PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
 
             this.ValidateReplicationStartTime(this.ReplicationStartTime);
 
@@ -184,7 +184,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
                     RecoveryPoints = this.RecoveryPoints,
                     ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
-                    CompressionEnabled = this.CompressionEnabled,
                     ReplicationPort = this.ReplicationPort,
                     ReplicationStartTime = this.ReplicationStartTime,
                     AllowReplicaDeletion = this.AllowReplicaDeletion

@@ -172,12 +172,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="protectionContainerId">Protection Container ID</param>
         /// <param name="protectionEntityId">Recovery Plan ID</param>
+        /// <param name="request">Re-protect request.</param>
         /// <returns>Job response</returns>
         public JobResponse StartAzureSiteRecoveryReprotection(
             string protectionContainerId,
-            string protectionEntityId)
+            string protectionEntityId,
+            ReprotectRequest request)
         {
-            var request = new ReprotectRequest();
             return this.GetSiteRecoveryClient().ProtectionEntity.Reprotect(
                 protectionContainerId,
                 protectionEntityId,

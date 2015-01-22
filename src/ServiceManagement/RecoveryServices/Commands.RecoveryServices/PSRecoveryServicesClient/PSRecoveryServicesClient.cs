@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
+
         /// <summary>
         /// Retrieves Azure Cloud services.
         /// </summary>
