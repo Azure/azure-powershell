@@ -41,10 +41,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Credential> ret = null;
+            IEnumerable<CredentialInfo> ret = null;
             if (!string.IsNullOrEmpty(this.Name))
             {
-                ret = new List<Credential> 
+                ret = new List<CredentialInfo> 
                 { 
                    this.AutomationClient.GetCredential(this.AutomationAccountName, this.Name)
                 };

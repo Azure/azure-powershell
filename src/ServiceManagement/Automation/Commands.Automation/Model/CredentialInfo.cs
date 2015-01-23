@@ -18,15 +18,15 @@ using System;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    public class Credential
+    public class CredentialInfo
     {
          /// <summary>
-        /// Initializes a new instance of the <see cref="Credential"/> class.
+        /// Initializes a new instance of the <see cref="CredentialInfo"/> class.
         /// </summary>
         /// <param name="Credential">
         /// The Credential.
         /// </param>
-        public Credential(string accountAcccountName, Azure.Management.Automation.Models.Credential credential)
+        public CredentialInfo(string accountAcccountName, Azure.Management.Automation.Models.Credential credential)
         {
             Requires.Argument("credential", credential).NotNull();
             this.AutomationAccountName = accountAcccountName;
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         }
 
          /// <summary>
-        /// Initializes a new instance of the <see cref="Credential"/> class.
+        /// Initializes a new instance of the <see cref="CredentialInfo"/> class.
         /// </summary>
-        public Credential()
+        public CredentialInfo()
         {
         }
 

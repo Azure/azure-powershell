@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Exception = job.Properties.Exception;
             this.EndTime = job.Properties.EndTime;
             this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
-            this.Parameters = job.Properties.Parameters ?? new Dictionary<string, string>();
+            this.JobParameters = job.Properties.Parameters ?? new Dictionary<string, string>();
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the parameters of the job.
         /// </summary>
-        public IDictionary<string, string> Parameters { get; set; }
+        public IDictionary<string, string> JobParameters { get; set; }
 
         /// <summary>
         /// Gets or sets the runbook.
