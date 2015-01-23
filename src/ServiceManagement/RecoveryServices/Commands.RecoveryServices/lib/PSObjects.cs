@@ -172,6 +172,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Azure fabric Id. In E2A context Recovery Server Id is always this.
         /// </summary>
         public const string AzureFabricId = "21a9403c-6ec1-44f2-b744-b4e50b792387";
+
+        /// <summary>
+        /// Authentication Type as Certificate based authentication.
+        /// </summary>
+        public const string AuthenticationTypeCertificate = "Certificate";
+
+        /// <summary>
+        /// Authentication Type as Kerberos.
+        /// </summary>
+        public const string AuthenticationTypeKerberos = "Kerberos";
     }
 
     /// <summary>
@@ -366,9 +376,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         var details = DataContractUtils<HyperVReplicaAzureProtectionProfileDetails>.Deserialize(
                             profile.ReplicationProviderSetting);
 
-                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.AllowReplicaDeletion = false;
-                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationPort = 0;
-
                         asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours = 
                             details.ApplicationConsistentSnapshotFrequencyInHours;
                         asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureStorageAccountName = 
@@ -378,10 +385,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                         asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds = 
                             (ushort)details.ReplicationInterval;
-                        asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationMethod = 
-                            details.OnlineReplicationStartTime.HasValue ?
-                                Constants.OnlineReplicationMethod : 
-                                Constants.OfflineReplicationMethod;
                         asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime = details.OnlineReplicationStartTime;
 
                         asrProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryPoints 

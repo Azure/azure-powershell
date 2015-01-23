@@ -866,6 +866,11 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         public ushort ReplicationPort { get; set; }
 
         /// <summary>
+        /// Gets or sets the allowed authentication type.
+        /// </summary>
+        public string Authentication { get; set; }
+
+        /// <summary>
         /// Gets or sets Replication Start Time.
         /// </summary>
         public TimeSpan? ReplicationStartTime { get; set; }
@@ -897,11 +902,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         #region Properties
 
         /// <summary>
-        /// Gets or sets Replication Method.
-        /// </summary>
-        public string ReplicationMethod { get; set; }
-
-        /// <summary>
         /// Gets or sets a value indicating whether profile can be dissociated or not.
         /// </summary>
         public bool CanDissociate { get; set; }
@@ -922,6 +922,11 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         public string RecoveryAzureStorageAccountName { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether to encrypt stored data.
+        /// </summary>
+        public bool EncryptStoredData { get; set; }
+
+        /// <summary>
         /// Gets or sets Replication Frequency in seconds.
         /// </summary>
         public ushort ReplicationFrequencyInSeconds { get; set; }
@@ -937,19 +942,9 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
 
         /// <summary>
-        /// Gets or sets the replication port.
-        /// </summary>
-        public ushort ReplicationPort { get; set; }
-
-        /// <summary>
         /// Gets or sets Replication Start Time.
         /// </summary>
         public TimeSpan? ReplicationStartTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Replica Deletion should be enabled.
-        /// </summary>
-        public bool AllowReplicaDeletion { get; set; }
 
         #endregion
     }

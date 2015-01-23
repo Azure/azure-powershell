@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateSet(
             Constants.OnlineReplicationMethod,
             Constants.OfflineReplicationMethod)]
+        [DefaultValue(Constants.OnlineReplicationMethod)]
         public string ReplicationMethod { get; set; }
 
         /// <summary>
@@ -67,12 +68,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string RecoveryAzureStorageAccount { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether stored data needs to be encrypted.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+        [DefaultValue(false)]
+        public SwitchParameter EncryptStoredData { get; set; }
+
+        /// <summary>
         /// Gets or sets Replication Frequency of the Protection Profile in seconds.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [ValidateNotNullOrEmpty]
-        [DefaultValue(300)]
         public ushort ReplicationFrequencyInSeconds { get; set; }
 
         /// <summary>
@@ -97,7 +104,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets a value indicating whether Compression needs to be Enabled on the Protection Profile.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public SwitchParameter CompressionEnabled { get; set; }
 
         /// <summary>
@@ -105,8 +112,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [ValidateNotNullOrEmpty]
-        [DefaultValue(8084)]
+        [DefaultValue(0)]
         public ushort ReplicationPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Replication Port of the Protection Profile.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.AuthenticationTypeCertificate,
+            Constants.AuthenticationTypeKerberos)]
+        public string Authentication { get; set; }
 
         /// <summary>
         /// Gets or sets Replication Start time of the Protection Profile.
@@ -168,8 +185,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             //// Verify whether the storage account is associated with the account or not.
             //// PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
 
-            //// Verify whether the subscription is associated with the account or not.
-            //// PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
+            // Verify whether the subscription is associated with the account or not.
+            PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
 
             this.ValidateReplicationStartTime(this.ReplicationStartTime);
 
@@ -178,15 +195,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 ReplicationProvider = this.ReplicationProvider,
                 HyperVReplicaAzureProviderSettingsObject = new HyperVReplicaAzureProviderSettings()
                 {
-                    ReplicationMethod = this.ReplicationMethod,
                     RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                     RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
+                    EncryptStoredData = this.EncryptStoredData,
                     ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
                     RecoveryPoints = this.RecoveryPoints,
                     ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
-                    ReplicationPort = this.ReplicationPort,
                     ReplicationStartTime = this.ReplicationStartTime,
-                    AllowReplicaDeletion = this.AllowReplicaDeletion
                 },
                 HyperVReplicaProviderSettingsObject = null
             };
@@ -231,6 +246,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
                     CompressionEnabled = this.CompressionEnabled,
                     ReplicationPort = this.ReplicationPort,
+                    Authentication = this.Authentication,
                     ReplicationStartTime = this.ReplicationStartTime,
                     AllowReplicaDeletion = this.AllowReplicaDeletion
                 }
