@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Extensions.Authentication;
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
-using Microsoft.WindowsAzure.Commands.Common.Authentication;
 using Xunit;
 using Assert = Xunit.Assert;
 

@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Starts an Azure automation runbook.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsLifecycle.Start, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(Job))]
     public class StartAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [ValidateNotNullOrEmpty]
         [Alias("RunbookName")]
         public string Name { get; set; }

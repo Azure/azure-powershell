@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             ConfirmAction(
                        Force.IsPresent,
-                      string.Format(Resources.RemovingAzureAutomationResourceWarning, "Credential"),
+                       string.Format(Resources.RemovingAzureAutomationResourceWarning, "Credential"),
                        string.Format(Resources.RemoveAzureAutomationResourceDescription, "Credential"),
                        Name,
                        () =>

@@ -24,14 +24,16 @@ namespace Microsoft.Azure.Commands.Network
     using Routes.Model;
     using WindowsAzure;
     using WindowsAzure.Commands.Common;
-    using WindowsAzure.Commands.Common.Models;
     using WindowsAzure.Commands.Common.Storage;
     using WindowsAzure.Commands.Utilities.Common;
-    using WindowsAzure.Common;
+    using Microsoft.Azure.Common;
     using WindowsAzure.Management;
     using WindowsAzure.Management.Network;
     using WindowsAzure.Management.Network.Models;
     using WindowsAzure.Storage.Auth;
+    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Extensions;
+    using Hyak.Common;
 
     public class NetworkClient
     {
@@ -154,6 +156,12 @@ namespace Microsoft.Azure.Commands.Network
             return client.Gateways.Delete(vnetName);
         }
 
+        public GatewayGetOperationStatusResponse ResetGateway(string vnetName)
+        {
+            ResetGatewayParameters parameters = new ResetGatewayParameters();
+            return client.Gateways.Reset(vnetName, parameters);
+        }
+
         public GatewayGetOperationStatusResponse ResizeGateway(string vnetName, string gatewaySKU)
         {
             ResizeGatewayParameters parameters = new ResizeGatewayParameters()
@@ -259,7 +267,7 @@ namespace Microsoft.Azure.Commands.Network
             return client.Routes.ListRouteTables().RouteTables;
         }
 
-        public OperationResponse CreateRouteTable(string routeTableName, string label, string location)
+        public AzureOperationResponse CreateRouteTable(string routeTableName, string label, string location)
         {
             CreateRouteTableParameters parameters = new CreateRouteTableParameters()
             {
@@ -271,12 +279,12 @@ namespace Microsoft.Azure.Commands.Network
             return client.Routes.CreateRouteTable(parameters);
         }
 
-        public OperationResponse DeleteRouteTable(string routeTableName)
+        public AzureOperationResponse DeleteRouteTable(string routeTableName)
         {
             return client.Routes.DeleteRouteTable(routeTableName);
         }
 
-        public OperationResponse SetRoute(string routeTableName, string routeName, string addressPrefix, string nextHopType)
+        public AzureOperationResponse SetRoute(string routeTableName, string routeName, string addressPrefix, string nextHopType)
         {
             NextHop nextHop = new NextHop()
             {
@@ -292,7 +300,7 @@ namespace Microsoft.Azure.Commands.Network
             return client.Routes.SetRoute(routeTableName, routeName, parameters);
         }
 
-        public OperationResponse DeleteRoute(string routeTableName, string routeName)
+        public AzureOperationResponse DeleteRoute(string routeTableName, string routeName)
         {
             return client.Routes.DeleteRoute(routeTableName, routeName);
         }
@@ -308,7 +316,7 @@ namespace Microsoft.Azure.Commands.Network
             return context;
         }
 
-        public OperationResponse AddRouteTableToSubnet(string vnetName, string subnetName, string routeTableName)
+        public AzureOperationResponse AddRouteTableToSubnet(string vnetName, string subnetName, string routeTableName)
         {
             AddRouteTableToSubnetParameters parameters = new AddRouteTableToSubnetParameters()
             {
@@ -318,7 +326,7 @@ namespace Microsoft.Azure.Commands.Network
             return client.Routes.AddRouteTableToSubnet(vnetName, subnetName, parameters);
         }
 
-        public OperationResponse RemoveRouteTableFromSubnet(string vnetName, string subnetName)
+        public AzureOperationResponse RemoveRouteTableFromSubnet(string vnetName, string subnetName)
         {
             return client.Routes.RemoveRouteTableFromSubnet(vnetName, subnetName);
         }

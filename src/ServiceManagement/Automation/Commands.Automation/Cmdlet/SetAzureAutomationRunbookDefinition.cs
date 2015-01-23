@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets an azure automation runbook definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureAutomationRunbookDefinition", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationRunbookDefinition", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(RunbookDefinition))]
     public class SetAzureAutomationRunbookDefinition : AzureAutomationBaseCmdlet
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [ValidateNotNullOrEmpty]
         [Alias("RunbookName")]
         public string Name { get; set; }

@@ -199,7 +199,7 @@
     <comment>Automation</comment>
   </data>
   <data name="InvalidRunbookParameters" xml:space="preserve">
-    <value>At least one parameter provided is not expected by the runbook.</value>
+    <value>Invalid runbook parameters.</value>
     <comment>Automation</comment>
   </data>
   <data name="JobScheduleNotFound" xml:space="preserve">
@@ -211,11 +211,11 @@
     <comment>Automation</comment>
   </data>
   <data name="RunbookParameterCannotBeSerializedToJson" xml:space="preserve">
-    <value>The runbook parameter "{0}" cannot be serialized to JSON.</value>
+    <value>Runbook parameter cannot be serialized to json. Parameter name {0}.</value>
     <comment>Automation</comment>
   </data>
   <data name="RunbookParameterValueRequired" xml:space="preserve">
-    <value>The runbook parameter "{0}" is mandatory.</value>
+    <value>Runbook mandatory parameter not specified. Parameter name {0}.</value>
     <comment>Automation</comment>
   </data>
   <data name="RemoveAzureAutomationJobScheduleDescription" xml:space="preserve">
@@ -226,16 +226,15 @@
     <value>Are you sure you want to disassociate the Azure Automation runbook and schedule?</value>
     <comment>Automation</comment>
   </data>
-  <data name="InvalidRunbookParameters" xml:space="preserve">
-    <value>Invalid runbook parameters.</value>
+  <data name="AutomationAccountAlreadyExists" xml:space="preserve">
+    <value>The Automation account already exists</value>
     <comment>Automation</comment>
   </data>
-  <data name="RunbookParameterCannotBeSerializedToJson" xml:space="preserve">
-    <value>Runbook parameter cannot be serialized to json. Parameter name {0}.</value>
+  <data name="CertificateNotFound" xml:space="preserve">
+    <value>The certificate was not found. Certificate name {0}.</value>
     <comment>Automation</comment>
   </data>
-  <data name="RunbookParameterValueRequired" xml:space="preserve">
-    <value>Runbook mandatory parameter not specified. Parameter name {0}.</value>
-    <comment>Automation</comment>
+  <data name="CertificateAlreadyExists" xml:space="preserve">
+    <value>The certificate already exists. Certificate name: {0}.</value>
   </data>
 </root>

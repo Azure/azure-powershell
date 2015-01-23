@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             // Test
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.Name = runbookName;
-            this.cmdlet.SetParameterSet("ByName");
+            this.cmdlet.SetParameterSet("ByRunbookName");
             this.cmdlet.ExecuteCmdlet();
 
             // Assert

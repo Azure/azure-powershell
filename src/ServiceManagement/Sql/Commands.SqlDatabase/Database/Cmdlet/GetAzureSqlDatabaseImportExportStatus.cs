@@ -19,6 +19,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.ImportExport;
 using Microsoft.WindowsAzure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Sql.Models;
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Extensions.Models;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -172,7 +174,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 
                 var status = this.GetAzureSqlDatabaseImportExportStatusProcess(
                     serverName,
-                    serverName + AzureSession.CurrentContext.Environment.GetEndpoint(Common.Models.AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix),
+                    serverName + AzureSession.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix),
                     userName,
                     password,
                     requestId);

@@ -18,12 +18,13 @@ using System.Management.Automation;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdlet;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.Utilities;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
@@ -111,6 +112,10 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                             @" -StorageAccountName $storageAccountName" +
                             @" -StorageAccountKey $storageAccountKey");
                     }).FirstOrDefault();
+
+                // Tell the sql auth factory to create a v2 context (skip checking sql version using select query).
+                //
+                SqlAuthContextFactory.sqlVersion = SqlAuthContextFactory.SqlVersion.v2;
 
                 //testSession.ServiceBaseUri = new Uri("https://lqtqbo6kkp.database.windows.net");
                 Collection<PSObject> databaseContext = MockServerHelper.ExecuteWithMock(

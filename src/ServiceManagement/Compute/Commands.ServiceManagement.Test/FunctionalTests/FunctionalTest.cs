@@ -24,10 +24,11 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {

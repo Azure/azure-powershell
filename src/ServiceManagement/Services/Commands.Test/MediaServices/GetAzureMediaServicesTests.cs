@@ -17,7 +17,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.MediaServices;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
@@ -26,6 +26,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.MediaServices;
 using Microsoft.WindowsAzure.Commands.Utilities.MediaServices.Services.Entities;
 using Microsoft.WindowsAzure.Management.MediaServices.Models;
 using Moq;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
 {

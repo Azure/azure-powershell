@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation schedules for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.New, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof (Runbook))]
     public class NewAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [Alias("RunbookName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the runbook tags.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook tags.")]
+        [Alias("Tag")]
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 runbook = this.AutomationClient.CreateRunbookByPath(
                     this.AutomationAccountName, this.ResolvePath(this.Path), this.Description, this.Tags);
             }
-            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookName)
             {
                 // ByRunbookName
                 runbook = this.AutomationClient.CreateRunbookByName(
