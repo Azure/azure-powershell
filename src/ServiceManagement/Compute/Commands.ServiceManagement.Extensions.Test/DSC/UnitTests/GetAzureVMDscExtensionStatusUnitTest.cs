@@ -62,12 +62,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
         public void TestGetVirtualMachineDscStatusContextListWithServiceName()
         {
             getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
-            List<NSM.Role> roles = null;
-            List<NSM.RoleInstance> roleInstances = null;
 
             // service has multiple vm's
-            roles = new List<NSM.Role> {CreateRole("dscmachine01"), CreateRole("dscmachine02")};
-            roleInstances = new List<NSM.RoleInstance>
+            var roles = new List<NSM.Role> {CreateRole("dscmachine01"), CreateRole("dscmachine02")};
+            var roleInstances = new List<NSM.RoleInstance>
             {
                 CreateRoleInstance("dscmachine01"),
                 CreateRoleInstance("dscmachine02")
@@ -76,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
             var deploymentResponse = CreateDeploymentGetResponse(ServiceName, roles, roleInstances);
             var dscExtensionStatusContexts =
                 getAzureVmDscExtensionStatusCmdlet
-                    .GetVirtualMachineDscStatusContextList<VirtualMachineDscExtensionStatusContext>(deploymentResponse);
+                    .GetVirtualMachineDscStatusContextList(deploymentResponse);
             Assert.IsNull(getAzureVmDscExtensionStatusCmdlet.Name);
             Assert.IsNull(getAzureVmDscExtensionStatusCmdlet.VmName);
             Assert.IsNotNull(dscExtensionStatusContexts);
@@ -89,12 +87,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
         {
             getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
             getAzureVmDscExtensionStatusCmdlet.Name = "dscmachine01";
-            List<NSM.Role> roles = null;
-            List<NSM.RoleInstance> roleInstances = null;
 
             // service has multiple vm's
-            roles = new List<NSM.Role> {CreateRole("dscmachine01"), CreateRole("dscmachine02")};
-            roleInstances = new List<NSM.RoleInstance>
+            var roles = new List<NSM.Role> {CreateRole("dscmachine01"), CreateRole("dscmachine02")};
+            var roleInstances = new List<NSM.RoleInstance>
             {
                 CreateRoleInstance("dscmachine01"),
                 CreateRoleInstance("dscmachine02")
@@ -103,7 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
             var deploymentResponse = CreateDeploymentGetResponse(ServiceName, roles, roleInstances);
             var dscExtensionStatusContexts =
                 getAzureVmDscExtensionStatusCmdlet
-                    .GetVirtualMachineDscStatusContextList<VirtualMachineDscExtensionStatusContext>(deploymentResponse);
+                    .GetVirtualMachineDscStatusContextList(deploymentResponse);
             Assert.IsNotNull(getAzureVmDscExtensionStatusCmdlet.Name);
             Assert.IsNull(getAzureVmDscExtensionStatusCmdlet.VmName);
             Assert.IsNotNull(dscExtensionStatusContexts);
@@ -116,12 +112,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
         {
             getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
             getAzureVmDscExtensionStatusCmdlet.Name = "some-blah";
-            List<NSM.Role> roles = null;
-            List<NSM.RoleInstance> roleInstances = null;
 
             // service has multiple vm's
-            roles = new List<NSM.Role> {CreateRole("dscmachine01"), CreateRole("dscmachine02")};
-            roleInstances = new List<NSM.RoleInstance>
+            var roles = new List<NSM.Role> {CreateRole("dscmachine01"), CreateRole("dscmachine02")};
+            var roleInstances = new List<NSM.RoleInstance>
             {
                 CreateRoleInstance("dscmachine01"),
                 CreateRoleInstance("dscmachine02")
@@ -130,7 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
             var deploymentResponse = CreateDeploymentGetResponse(ServiceName, roles, roleInstances);
             var dscExtensionStatusContexts =
                 getAzureVmDscExtensionStatusCmdlet
-                    .GetVirtualMachineDscStatusContextList<VirtualMachineDscExtensionStatusContext>(deploymentResponse);
+                    .GetVirtualMachineDscStatusContextList(deploymentResponse);
             Assert.IsNotNull(getAzureVmDscExtensionStatusCmdlet.Name);
             Assert.IsNull(getAzureVmDscExtensionStatusCmdlet.VmName);
             Assert.AreEqual(dscExtensionStatusContexts.Count, 0);
@@ -142,18 +136,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
         {
             getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
             getAzureVmDscExtensionStatusCmdlet.VmName = "dscmachine02";
-            List<NSM.Role> roles = null;
-            List<NSM.RoleInstance> roleInstances = null;
 
-            var vm = GetAzureVM(ServiceName, "dscmachine02");
             // service has multiple vm's
-            roles = new List<NSM.Role> {CreateRole("dscmachine02")};
-            roleInstances = new List<NSM.RoleInstance> {CreateRoleInstance("dscmachine02")};
+            var roles = new List<NSM.Role> {CreateRole("dscmachine02")};
+            var roleInstances = new List<NSM.RoleInstance> {CreateRoleInstance("dscmachine02")};
 
             var deploymentResponse = CreateDeploymentGetResponse(ServiceName, roles, roleInstances);
             var dscExtensionStatusContexts =
                 getAzureVmDscExtensionStatusCmdlet
-                    .GetVirtualMachineDscStatusContextList<VirtualMachineDscExtensionStatusContext>(deploymentResponse);
+                    .GetVirtualMachineDscStatusContextList(deploymentResponse);
             Assert.IsNull(getAzureVmDscExtensionStatusCmdlet.Name);
             Assert.IsNotNull(getAzureVmDscExtensionStatusCmdlet.VmName);
             Assert.AreEqual(dscExtensionStatusContexts.Count, 1);
@@ -164,15 +155,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
         public void TestCreateDscStatusContext()
         {
             getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
-            List<NSM.Role> roles = null;
-            List<NSM.RoleInstance> roleInstances = null;
 
-            roles = new List<NSM.Role> {CreateRole("dscmachine02")};
-            roleInstances = new List<NSM.RoleInstance> {CreateRoleInstance("dscmachine02")};
-            var deploymentResponse = CreateDeploymentGetResponse(ServiceName, roles, roleInstances);
+            var roles = new List<NSM.Role> {CreateRole("dscmachine02")};
+            var roleInstances = new List<NSM.RoleInstance> {CreateRoleInstance("dscmachine02")};
             var context =
-                getAzureVmDscExtensionStatusCmdlet.CreateDscStatusContext<VirtualMachineDscExtensionStatusContext>(
-                    roles[0], roleInstances[0], deploymentResponse);
+                getAzureVmDscExtensionStatusCmdlet.CreateDscStatusContext(
+                    roles[0], roleInstances[0]);
             Assert.IsNotNull(context);
             Assert.AreEqual(context.Name, "dscmachine02");
             Assert.AreEqual(context.StatusCode, 1);
@@ -203,7 +191,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
             {
                 Name = serviceName,
                 Configuration = "config",
-                Status = Microsoft.WindowsAzure.Management.Compute.Models.DeploymentStatus.Starting,
+                Status = Management.Compute.Models.DeploymentStatus.Starting,
                 PersistentVMDowntime = new NSM.PersistentVMDowntime
                 {
                     EndTime = DateTime.Now,
@@ -220,7 +208,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
 
         private NSM.RoleInstance CreateRoleInstance(String roleName)
         {
-            var roleInstance = new NSM.RoleInstance()
+            var roleInstance = new NSM.RoleInstance
             {
                 RoleName = roleName,
                 ResourceExtensionStatusList = CreateResourceExtensionStatus()
@@ -230,7 +218,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
 
         private NSM.Role CreateRole(String roleName)
         {
-            var role = new NSM.Role()
+            var role = new NSM.Role
             {
                 RoleName = roleName
             };
@@ -306,7 +294,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
             const string message = "[ESPARMAR-2012R2]:LCM:[Start Set]\r\n[ESPARMAR-2012R2]:LCM:[Start Resource] " +
                                    "[[WindowsFeature]IIS]\r\n[ESPARMAR-2012R2]:LCM:[Start Test] [[WindowsFeature]IIS]\r\n[ESPARMAR-2012R2]";
 
-            return message.Split(new string[] {"\r\n", "\n"}, StringSplitOptions.None);
+            return message.Split(new[] {"\r\n", "\n"}, StringSplitOptions.None);
         }
     }
 }
