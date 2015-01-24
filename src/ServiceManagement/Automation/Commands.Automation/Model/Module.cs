@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Tags = module.Tags ?? new Dictionary<string, string>();
 
             if (module.Properties == null) return;
-
+            
             this.CreationTime = module.Properties.CreationTime.ToLocalTime();
-            this.LastPublishTime = module.Properties.LastModifiedTime.ToLocalTime();
+            this.LastModifiedTime = module.Properties.LastModifiedTime.ToLocalTime();
             this.IsGlobal = module.Properties.IsGlobal;
             this.Version = module.Properties.Version;
             this.ProvisioningState = module.Properties.ProvisioningState.ToString();
@@ -107,11 +107,47 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the LastPublishTime.
         /// </summary>
-        public DateTimeOffset LastPublishTime { get; set; }
+        public DateTimeOffset LastModifiedTime { get; set; }
 
         /// <summary>
         /// Gets or sets the ProvisioningState.
         /// </summary>
         public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ContentLink.
+        /// </summary>
+        public ContentLink ContentLink { get; set; }
+    }
+
+    public class ContentLink
+    {
+        /// <summary>
+        /// Gets or sets the Uri.
+        /// </summary>
+        public Uri Uri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Content hash.
+        /// </summary>
+        public ContentHash ContentHash { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Version.
+        /// </summary>
+        public string Version { get; set; }
+    }
+
+    public class ContentHash
+    {
+        /// <summary>
+        /// Gets or sets the Algorithm.
+        /// </summary>
+        public string Algorithm { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Value.
+        /// </summary>
+        public string Value { get; set; }
     }
 }

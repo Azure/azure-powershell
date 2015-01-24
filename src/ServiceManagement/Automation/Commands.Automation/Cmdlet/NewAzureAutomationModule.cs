@@ -18,6 +18,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Common;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -48,7 +49,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the module tags.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The module tags.")]
-        public IDictionary<string, string> Tags { get; set; }
+        [Alias("Tag")] 
+        public IDictionary Tags { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.

@@ -35,7 +35,7 @@ using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
 using Job = Microsoft.Azure.Commands.Automation.Model.Job;
 using Variable = Microsoft.Azure.Commands.Automation.Model.Variable;
 using JobStream = Microsoft.Azure.Commands.Automation.Model.JobStream;
-using Credential = Microsoft.Azure.Commands.Automation.Model.Credential;
+using Credential = Microsoft.Azure.Commands.Automation.Model.CredentialInfo;
 using Module = Microsoft.Azure.Commands.Automation.Model.Module;
 using JobSchedule = Microsoft.Azure.Commands.Automation.Model.JobSchedule;
 using Certificate = Microsoft.Azure.Commands.Automation.Model.Certificate;
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Credentials
 
-        public Credential CreateCredential(string automationAccountName, string name, string userName, string password,
+        public CredentialInfo CreateCredential(string automationAccountName, string name, string userName, string password,
             string description)
         {
             var credentialCreateParams = new AutomationManagement.Models.CredentialCreateParameters();
@@ -532,10 +532,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             credentialCreateParams.Properties = new AutomationManagement.Models.CredentialCreateProperties();
             if (description != null) credentialCreateParams.Properties.Description = description;
 
-            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
-            {
-                new AzureAutomationOperationException(string.Format(Resources.ParameterEmpty, "Username or Password"));
-            }
+            Requires.Argument("userName", userName).NotNull();
+            Requires.Argument("password", password).NotNull();
 
             credentialCreateParams.Properties.UserName = userName;
             credentialCreateParams.Properties.Password = password;
@@ -548,19 +546,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Create",
                     "credential", name, automationAccountName));
             }
-            return new Credential(automationAccountName, createdCredential.Credential);
+            return new CredentialInfo(automationAccountName, createdCredential.Credential);
         }
 
-        public Credential UpdateCredential(string automationAccountName, string name, string userName, string password,
+        public CredentialInfo UpdateCredential(string automationAccountName, string name, string userName, string password,
             string description)
         {
             var credentialUpdateParams = new AutomationManagement.Models.CredentialUpdateParameters();
             credentialUpdateParams.Name = name;
             credentialUpdateParams.Properties = new AutomationManagement.Models.CredentialUpdateProperties();
             if (description != null) credentialUpdateParams.Properties.Description = description;
-
-            Requires.Argument("userName", userName).NotNull();
-            Requires.Argument("password", password).NotNull();
 
             credentialUpdateParams.Properties.UserName = userName;
             credentialUpdateParams.Properties.Password = password;
@@ -579,7 +574,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return updatedCredential;
         }
 
-        public Credential GetCredential(string automationAccountName, string name)
+        public CredentialInfo GetCredential(string automationAccountName, string name)
         {
             var credential = this.automationManagementClient.PsCredentials.Get(automationAccountName, name).Credential;
             if (credential == null)
@@ -587,7 +582,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 throw new ResourceNotFoundException(typeof(Credential), string.Format(CultureInfo.CurrentCulture, Resources.CredentialNotFound, name));
             }
 
-            return new Credential(automationAccountName, credential);
+            return new CredentialInfo(automationAccountName, credential);
         }
 
         private Credential CreateCredentialFromCredentialModel(AutomationManagement.Models.Credential credential)
@@ -632,13 +627,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Modules
         public Module CreateModule(string automationAccountName, Uri contentLink, string moduleName,
-            IDictionary<string, string> Tags)
+            IDictionary tags)
         {
+            IDictionary<string, string> moduleTags = null;
+            if (tags != null) moduleTags = tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
             var createdModule = this.automationManagementClient.Modules.Create(automationAccountName,
                 new AutomationManagement.Models.ModuleCreateParameters()
                 {
                     Name = moduleName,
-                    Tags = Tags,
+                    Tags = moduleTags,
                     Properties = new AutomationManagement.Models.ModuleCreateProperties()
                     {
                         ContentLink = new AutomationManagement.Models.ContentLink()
@@ -678,25 +675,47 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return modulesModels.Select(c => new Module(automationAccountName, c));
         }
 
-        public Module UpdateModule(string automationAccountName, IDictionary<string, string> tags, string name)
+        public Module UpdateModule(string automationAccountName, IDictionary tags, string name, Uri contentLinkUri)
         {
-            var existingModule = this.GetModule(automationAccountName, name);
-
-            var moduleUpdateParameters = new AutomationManagement.Models.ModuleUpdateParameters();
-            moduleUpdateParameters.Name = name;
-            if (tags != null) moduleUpdateParameters.Tags = tags;
-            moduleUpdateParameters.Location = existingModule.Location;
-
-            var updatedModule = this.automationManagementClient.Modules.Update(automationAccountName,
-                moduleUpdateParameters);
-
-            if (updatedModule == null || updatedModule.StatusCode != HttpStatusCode.OK)
+            if(tags != null && contentLinkUri != null)
             {
-                new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Update",
-                    "Module", name, automationAccountName));
+                var moduleCreateParameters = new AutomationManagement.Models.ModuleCreateParameters();
+                
+                moduleCreateParameters.Name = name;
+                moduleCreateParameters.Tags = tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
+
+                moduleCreateParameters.Properties = new ModuleCreateProperties();
+                moduleCreateParameters.Properties.ContentLink = new AutomationManagement.Models.ContentLink();
+                moduleCreateParameters.Properties.ContentLink.Uri = contentLinkUri;
+
+                this.automationManagementClient.Modules.Create(automationAccountName,
+                    moduleCreateParameters);
+
+            }
+            else if (contentLinkUri != null)
+            {
+                var moduleUpdateParameters = new AutomationManagement.Models.ModuleUpdateParameters();
+
+                moduleUpdateParameters.Name = name;
+                moduleUpdateParameters.Properties = new ModuleUpdateProperties();
+                moduleUpdateParameters.Properties.ContentLink = new AutomationManagement.Models.ContentLink();
+                moduleUpdateParameters.Properties.ContentLink.Uri = contentLinkUri;
+
+                this.automationManagementClient.Modules.Update(automationAccountName, moduleUpdateParameters);
+            }
+            else if(tags != null)
+            {
+                var moduleUpdateParameters = new AutomationManagement.Models.ModuleUpdateParameters();
+                
+                moduleUpdateParameters.Name = name;
+                moduleUpdateParameters.Tags = tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
+                moduleUpdateParameters.Properties = new ModuleUpdateProperties();
+
+                this.automationManagementClient.Modules.Update(automationAccountName, moduleUpdateParameters);
             }
 
-            return new Module(automationAccountName, updatedModule.Module);
+            var updatedModule = this.automationManagementClient.Modules.Get(automationAccountName, name).Module;
+            return new Module(automationAccountName, updatedModule);
         }
 
         public void DeleteModule(string automationAccountName, string name)
@@ -719,7 +738,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #endregion
 
         #region Jobs
-        public IEnumerable<JobStream> GetJobStream(string automationAccountName, Guid jobId, DateTime? time,
+        public IEnumerable<JobStream> GetJobStream(string automationAccountName, Guid jobId, DateTimeOffset? time,
            string streamType)
         {
             var listParams = new AutomationManagement.Models.JobStreamListParameters();
@@ -750,20 +769,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return new Job(automationAccountName, job);
         }
 
-        public IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTime? startTime, DateTime? endTime, string jobStatus)
+        public IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus)
         {
-            // Assume local time if DateTimeKind.Unspecified 
-            if (startTime.HasValue && startTime.Value.Kind == DateTimeKind.Unspecified)
-            {
-                startTime = DateTime.SpecifyKind(startTime.Value, DateTimeKind.Local);
-            }
-
-
-            if (endTime.HasValue && endTime.Value.Kind == DateTimeKind.Unspecified)
-            {
-                endTime = DateTime.SpecifyKind(endTime.Value, DateTimeKind.Local);
-            }
-            
             IEnumerable<AutomationManagement.Models.Job> jobModels;
 
             if (startTime.HasValue && endTime.HasValue)
@@ -837,20 +844,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return jobModels.Select(jobModel => new Job(automationAccountName, jobModel));
         }
 
-        public IEnumerable<Job> ListJobs(string automationAccountName, DateTime? startTime, DateTime? endTime, string jobStatus)
+        public IEnumerable<Job> ListJobs(string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus)
         {
-            // Assume local time if DateTimeKind.Unspecified 
-            if (startTime.HasValue && startTime.Value.Kind == DateTimeKind.Unspecified)
-            {
-                startTime = DateTime.SpecifyKind(startTime.Value, DateTimeKind.Local);
-            }
-
-
-            if (endTime.HasValue && endTime.Value.Kind == DateTimeKind.Unspecified)
-            {
-                endTime = DateTime.SpecifyKind(endTime.Value, DateTimeKind.Local);
-            }
-
             IEnumerable<AutomationManagement.Models.Job> jobModels;
 
             if (startTime.HasValue && endTime.HasValue)
@@ -1419,7 +1414,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return scheduleModel;
         }
 
-        private string FormatDateTime(DateTime dateTime)
+        private string FormatDateTime(DateTimeOffset dateTime)
         {
             return string.Format(CultureInfo.InvariantCulture, "{0:O}", dateTime.ToUniversalTime());
         }

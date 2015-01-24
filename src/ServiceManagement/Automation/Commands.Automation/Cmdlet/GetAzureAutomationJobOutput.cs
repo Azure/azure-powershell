@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Stream { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Retrieves output created after this time")]
-        public DateTime? StartTime { get; set; }
+        public DateTimeOffset? StartTime { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.

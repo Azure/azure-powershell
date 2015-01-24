@@ -175,7 +175,7 @@
     <Compile Include="Model\Certificate.cs" />
     <Compile Include="Model\JobSchedule.cs" />
     <Compile Include="Model\JobStream.cs" />
-    <Compile Include="Model\Credential.cs" />
+    <Compile Include="Model\CredentialInfo.cs" />
     <Compile Include="Model\Job.cs" />
     <Compile Include="Model\Module.cs" />
     <Compile Include="Model\Runbook.cs" />
