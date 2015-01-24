@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 
         public int? IdleTimeoutInMinutes { get; set; }
 
+        public string LoadDistribution { get; set; }
+
         public bool EnableFloatingIP { get; set; }
     }
 }
