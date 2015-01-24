@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The module tags.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Tag")] 
         public IDictionary Tags { get; set; }
 
         /// <summary>

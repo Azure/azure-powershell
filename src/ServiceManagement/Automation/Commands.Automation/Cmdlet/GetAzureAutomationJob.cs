@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
          /// </summary> 
          [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = false, HelpMessage = "The runbook name of the job.")]
          [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter jobs based on their status.")]
-         [ValidateSet("Completed", "Failed", "Queued", "Starting", "Resuming", "Running", "Stopped", "Stopping", "Suspended", "Suspending", "Activating", "Removing")]
+         [ValidateSet("Completed", "Failed", "Queued", "Starting", "Resuming", "Running", "Stopped", "Stopping", "Suspended", "Suspending", "Activating")]
          public string Status { get; set; } 
 
          /// <summary> 

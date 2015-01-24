@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the module tags.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The module tags.")]
+        [Alias("Tag")] 
         public IDictionary Tags { get; set; }
 
         /// <summary>
