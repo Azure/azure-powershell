@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Common.Extensions.Models;
 
@@ -125,6 +126,30 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void SuspendJob(string automationAccountName, Guid id);
 
         #endregion
+        
+        #region Accounts
+
+        IEnumerable<AutomationAccount> ListAutomationAccounts(string automationAccountName, string location);
+
+        AutomationAccount CreateAutomationAccount(string automationAccountName, string location);
+
+        void DeleteAutomationAccount(string automationAccountName);
+        
+        #endregion
+
+        #region Certificates
+
+        Certificate CreateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool exportable);
+
+        Certificate UpdateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool exportable);
+
+        Certificate GetCertificate(string automationAccountName, string name);
+
+        IEnumerable<Certificate> ListCertificates(string automationAccountName);
+
+        void DeleteCertificate(string automationAccountName, string name);
+
+        #endregion
 
         #region JobSchedules
 
@@ -143,6 +168,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void UnregisterScheduledRunbook(string automationAccountName, Guid jobScheduleId);
 
         void UnregisterScheduledRunbook(string automationAccountName, string runbookName, string scheduleName);
+
 
         #endregion
     }

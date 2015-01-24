@@ -228,5 +228,18 @@
   </data>
   <data name="VariableEncryptionCannotBeChanged" xml:space="preserve">
     <value>Cannot change encryption property of the variable. Variable name {0}. Encryption - {1}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="AutomationAccountAlreadyExists" xml:space="preserve">
+    <value>The Automation account already exists</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="CertificateNotFound" xml:space="preserve">
+    <value>The certificate was not found. Certificate name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="CertificateAlreadyExists" xml:space="preserve">
+    <value>The certificate already exists. Certificate name: {0}.</value>
+    <comment>Automation</comment>
   </data>
 </root>

@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.Name = runbookName;
             this.cmdlet.Description = description;
             this.cmdlet.Tags = tags;
-            this.cmdlet.SetParameterSet("ByName");
+            this.cmdlet.SetParameterSet("ByRunbookName");
             this.cmdlet.ExecuteCmdlet();
 
             // Assert

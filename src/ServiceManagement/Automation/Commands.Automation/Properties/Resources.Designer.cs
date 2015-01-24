@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Automation account already exists.
+        /// </summary>
+        internal static string AutomationAccountAlreadyExists {
+            get {
+                return ResourceManager.GetString("AutomationAccountAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Automation account was not found..
         /// </summary>
         internal static string AutomationAccountNotFound {
@@ -75,6 +84,24 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string AutomationOperationFailed {
             get {
                 return ResourceManager.GetString("AutomationOperationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The certificate already exists. Certificate name: {0}..
+        /// </summary>
+        internal static string CertificateAlreadyExists {
+            get {
+                return ResourceManager.GetString("CertificateAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The certificate was not found. Certificate name {0}..
+        /// </summary>
+        internal static string CertificateNotFound {
+            get {
+                return ResourceManager.GetString("CertificateNotFound", resourceCulture);
             }
         }
         

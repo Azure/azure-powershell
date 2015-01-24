@@ -23,19 +23,19 @@ using Microsoft.Azure.Commands.Automation.Properties;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Removes a Credential for automation.
+    /// Removes a Certificate for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
-    public class RemoveAzureAutomationCredential : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureAutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
+    public class RemoveAzureAutomationCertificate : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the credential name.
+        /// Gets or sets the certificate name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The credential name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByCertificateName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The certificate name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, HelpMessage = "Confirm the removal of the credential")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByCertificateName, Position = 2, HelpMessage = "Confirm the removal of the certificate")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             ConfirmAction(
                        Force.IsPresent,
-                       string.Format(Resources.RemovingAzureAutomationResourceWarning, "Credential"),
-                       string.Format(Resources.RemoveAzureAutomationResourceDescription, "Credential"),
+                      string.Format(Resources.RemovingAzureAutomationResourceWarning, "Certificate"),
+                       string.Format(Resources.RemoveAzureAutomationResourceDescription, "Certificate"),
                        Name,
                        () =>
                        {
-                           this.AutomationClient.DeleteCredential(this.AutomationAccountName, Name);
+                           this.AutomationClient.DeleteCertificate(this.AutomationAccountName, Name);
                        });
         }
     }

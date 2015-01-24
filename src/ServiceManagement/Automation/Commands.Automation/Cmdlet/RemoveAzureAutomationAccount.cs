@@ -12,31 +12,55 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Removes an azure automation runbook.
+    /// Removes azure automation accounts, filterd by automation account name and location.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationRunbook", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
-    public class RemoveAzureAutomationRunbook : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureAutomationAccount")]
+    [OutputType(typeof(AutomationAccount))]
+    public class RemoveAzureAutomationAccount : AzurePSCmdlet
     {
         /// <summary>
-        /// Gets or sets the runbook name
+        /// The automation client.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
-        [Alias("RunbookName")]
+        private IAutomationClient automationClient;
+
+        /// <summary>
+        /// Gets or sets the automation client base.
+        /// </summary>
+        public IAutomationClient AutomationClient
+        {
+            get
+            {
+                return this.automationClient = this.automationClient ?? new AutomationClient(CurrentContext.Subscription);
+            }
+
+            set
+            {
+                this.automationClient = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the automation account name.
+        /// </summary>
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
+        [Alias("AutomationAccountName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the switch parameter not to confirm on removing the runbook.
+        /// Gets or sets the switch parameter not to confirm on removing the automaiton account.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -45,16 +69,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
                 this.Force.IsPresent,
-                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationRunbookWarning),
-                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationRunbookDescription),
+                string.Format(CultureInfo.CurrentCulture, Resources.RemovingAzureAutomationResourceWarning, this.Name),
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationResourceDescription, this.Name),
                 this.Name,
                 () =>
-                {   
-                    AutomationClient.DeleteRunbook(this.AutomationAccountName, this.Name);
+                {
+                    AutomationClient.DeleteAutomationAccount(this.Name);
                 });
         }
     }
