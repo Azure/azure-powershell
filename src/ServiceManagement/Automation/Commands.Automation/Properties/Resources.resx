@@ -226,6 +226,10 @@
     <value>Are you sure you want to disassociate the Azure Automation runbook and schedule?</value>
     <comment>Automation</comment>
   </data>
+  <data name="VariableEncryptionCannotBeChanged" xml:space="preserve">
+    <value>Cannot change encryption property of the variable. Variable name {0}. Encryption - {1}.</value>
+    <comment>Automation</comment>
+  </data>
   <data name="AutomationAccountAlreadyExists" xml:space="preserve">
     <value>The Automation account already exists</value>
     <comment>Automation</comment>
@@ -236,5 +240,6 @@
   </data>
   <data name="CertificateAlreadyExists" xml:space="preserve">
     <value>The certificate already exists. Certificate name: {0}.</value>
+    <comment>Automation</comment>
   </data>
 </root>
