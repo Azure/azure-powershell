@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// Gets a Credential for automation.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(PSCredential))]
+    [OutputType(typeof(CredentialInfo))]
     public class GetAzureAutomationCredential : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -41,10 +41,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Credential> ret = null;
+            IEnumerable<CredentialInfo> ret = null;
             if (!string.IsNullOrEmpty(this.Name))
             {
-                ret = new List<Credential> 
+                ret = new List<CredentialInfo> 
                 { 
                    this.AutomationClient.GetCredential(this.AutomationAccountName, this.Name)
                 };

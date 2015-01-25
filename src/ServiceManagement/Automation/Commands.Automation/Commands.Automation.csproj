@@ -168,6 +168,7 @@
     <Compile Include="Common\RequiresExtensions.cs" />
     <Compile Include="Common\ResourceCommonException.cs" />
     <Compile Include="Common\ResourceNotFoundException.cs" />
+    <Compile Include="Common\VariableUpdateFields.cs" />
     <Compile Include="DataContract\ErrorResponse.cs" />
     <Compile Include="DataContract\OdataError.cs" />
     <Compile Include="DataContract\OdataErrorMessage.cs" />
@@ -175,7 +176,7 @@
     <Compile Include="Model\Certificate.cs" />
     <Compile Include="Model\JobSchedule.cs" />
     <Compile Include="Model\JobStream.cs" />
-    <Compile Include="Model\Credential.cs" />
+    <Compile Include="Model\CredentialInfo.cs" />
     <Compile Include="Model\Job.cs" />
     <Compile Include="Model\Module.cs" />
     <Compile Include="Model\Runbook.cs" />
@@ -209,6 +210,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

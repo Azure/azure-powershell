@@ -18,6 +18,8 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Common;
+using System.Collections;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -41,7 +43,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The module tags.")]
         [ValidateNotNullOrEmpty]
-        public IDictionary<string, string> Tags { get; set; }
+        [Alias("Tag")] 
+        public IDictionary Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the contentLink
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The ContentLinkUri.")]
+        public Uri ContentLinkUri { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -49,8 +59,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            var updatedModule = this.AutomationClient.UpdateModule(this.AutomationAccountName, Tags, Name);
-
+            var updatedModule = this.AutomationClient.UpdateModule(this.AutomationAccountName, Tags, Name, ContentLinkUri);
+            
             this.WriteObject(updatedModule);
         }
     }
