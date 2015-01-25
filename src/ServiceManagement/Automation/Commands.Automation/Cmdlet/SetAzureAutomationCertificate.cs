@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the certificate exportable Property.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The exportable property of the variable.")]
-        public SwitchParameter Exportable { get; set; }
+        public bool? Exportable { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationExecuteCmdlet()
         {
 
-            var updateddCertificate = this.AutomationClient.UpdateCertificate(this.AutomationAccountName, this.Name, this.Path, this.Password, this.Description, this.Exportable.IsPresent);
+            var updateddCertificate = this.AutomationClient.UpdateCertificate(this.AutomationAccountName, this.Name, this.Path, this.Password, this.Description, this.Exportable);
 
             this.WriteObject(updateddCertificate);
         }

@@ -65,15 +65,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<Runbook> ListRunbooks(string automationAccountName);
 
-        Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description, IDictionary<string, string> tags);
+        Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description, IDictionary tags);
 
-        Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description, IDictionary<string, string> tags);
+        Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description, IDictionary tags);
         
         void DeleteRunbook(string automationAccountName, string runbookName);
 
         Runbook PublishRunbook(string automationAccountName, string runbookName);
 
-        Runbook UpdateRunbook(string automationAccountName, string runbookName, string description, IDictionary<string, string> tags, bool? logProgress, bool? logVerbose);
+        Runbook UpdateRunbook(string automationAccountName, string runbookName, string description, IDictionary tags, bool? logProgress, bool? logVerbose);
 
         RunbookDefinition UpdateRunbookDefinition(string automationAccountName, string runbookName, string runbookPath, bool overwrite);
 
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Certificate CreateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool exportable);
 
-        Certificate UpdateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool exportable);
+        Certificate UpdateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool? exportable);
 
         Certificate GetCertificate(string automationAccountName, string name);
 

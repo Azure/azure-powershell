@@ -25,9 +25,6 @@ using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
 using Newtonsoft.Json;
 
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
@@ -179,7 +176,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description,
-            IDictionary<string, string> tags)
+            IDictionary tags)
         {
             var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
             if (runbookModel != null)
@@ -195,7 +192,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Draft = new RunbookDraft()
             };
 
-            var rdcparam = new RunbookCreateDraftParameters() { Name = runbookName, Properties = rdcprop, Tags = tags };
+            var rdcparam = new RunbookCreateDraftParameters() { Name = runbookName, Properties = rdcprop, Tags = (tags != null) ? tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString()) : null };
 
             this.automationManagementClient.Runbooks.CreateWithDraft(automationAccountName, rdcparam);
 
@@ -203,8 +200,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description,
-            IDictionary<string, string> tags)
+            IDictionary tags)
         {
+
             var runbookName = Path.GetFileNameWithoutExtension(runbookPath);
 
             var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
@@ -233,18 +231,26 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Runbook UpdateRunbook(string automationAccountName, string runbookName, string description,
-            IDictionary<string, string> tags, bool? logProgress, bool? logVerbose)
+            IDictionary tags, bool? logProgress, bool? logVerbose)
         {
+            var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
+            if (runbookModel == null)
+            {
+                throw new ResourceCommonException(typeof(Runbook),
+                    string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
+            }
+
             var runbookUpdateParameters = new RunbookUpdateParameters();
             runbookUpdateParameters.Name = runbookName;
-            if (tags != null) runbookUpdateParameters.Tags = tags;
+            runbookUpdateParameters.Tags = (tags != null)
+                    ? tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString())
+                    : runbookModel.Tags;
             runbookUpdateParameters.Properties =  new RunbookUpdateProperties();
-            if (description != null) runbookUpdateParameters.Properties.Description = description;
-            if (logProgress.HasValue) runbookUpdateParameters.Properties.LogProgress = logProgress.Value;
-            if (logVerbose.HasValue) runbookUpdateParameters.Properties.LogVerbose = logVerbose.Value;
+            runbookUpdateParameters.Properties.Description = description ?? runbookModel.Properties.Description;
+            runbookUpdateParameters.Properties.LogProgress = (logProgress.HasValue) ?  logProgress.Value : runbookModel.Properties.LogProgress;
+            runbookUpdateParameters.Properties.LogVerbose = (logProgress.HasValue) ? logProgress.Value : runbookModel.Properties.LogVerbose;
 
-            var runbook =
-                this.automationManagementClient.Runbooks.Update(automationAccountName, runbookUpdateParameters).Runbook;
+            var runbook = this.automationManagementClient.Runbooks.Update(automationAccountName, runbookUpdateParameters).Runbook;
 
             return new Runbook(automationAccountName, runbook);
         }
@@ -333,8 +339,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                                 Name = runbookName
                                             },
                                             Parameters = processedParameters ?? null
-                                        },
-                                        Location = ""
+                                        }
                                      }).Job;
 
             return new Job(automationAccountName, job);
@@ -1032,43 +1037,38 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     string.Format(CultureInfo.CurrentCulture, Resources.CertificateAlreadyExists, name));
             }
 
-            var cert = (password == null)
-                ? new X509Certificate2(path)
-                : new X509Certificate2(path, password);
-
-            var ccprop = new CertificateCreateProperties()
-            {
-                Description = description,
-                Base64Value = Convert.ToBase64String(cert.Export(X509ContentType.Pkcs12)),
-                Thumbprint = cert.Thumbprint,
-                IsExportable = exportable
-            };
-
-            var ccparam = new CertificateCreateParameters() { Name = name, Properties = ccprop };
-
-            var certificate = this.automationManagementClient.Certificates.Create(automationAccountName, ccparam).Certificate;
-
-            return new Certificate(automationAccountName, certificate);
+            return CreateCertificateInternal(automationAccountName, name, path, password, description, exportable);
         }
 
-
+        
         public Certificate UpdateCertificate(string automationAccountName, string name, string path, SecureString password,
-            string description, bool exportable)
+            string description, bool? exportable)
         {
-            var cuprop = new CertificateUpdateProperties();
+            var certificateModel = this.TryGetCertificateModel(automationAccountName, name);
+            if (certificateModel == null)
+            {
+                throw new ResourceCommonException(typeof(Certificate),
+                    string.Format(CultureInfo.CurrentCulture, Resources.CertificateNotFound, name));
+            }
             
-            if (description != null) cuprop.Description = description;
-            
+            var createOrUpdateDescription  = description ?? certificateModel.Properties.Description;
+            var createOrUpdateIsExportable = (exportable.HasValue) ? exportable.Value : certificateModel.Properties.IsExportable;
+
             if (path != null)
             {
-                var cert = (password == null) ? new X509Certificate2(path) : new X509Certificate2(path, password);
-                cuprop.Base64Value = Convert.ToBase64String(cert.Export(X509ContentType.Pkcs12));
-                cuprop.Thumbprint = cert.Thumbprint;
+                return this.CreateCertificateInternal(automationAccountName, name, path, password, createOrUpdateDescription,
+                    createOrUpdateIsExportable);
             }
 
-            if (exportable) cuprop.IsExportable = true;
-
-            var cuparam = new CertificateUpdateParameters() { Name = name, Properties = cuprop };
+            var cuparam = new CertificateUpdateParameters() 
+            { 
+                Name = name, 
+                Properties = new CertificateUpdateProperties()
+                {
+                    Description = createOrUpdateDescription,
+                    IsExportable = createOrUpdateIsExportable
+                } 
+            };
 
             this.automationManagementClient.Certificates.Update(automationAccountName, cuparam);
 
@@ -1453,6 +1453,28 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 scheduleUpdateParameters);
 
             return this.GetSchedule(automationAccountName, schedule.Name);
+        }
+
+        private Certificate CreateCertificateInternal(string automationAccountName, string name, string path,
+            SecureString password, string description, bool exportable)
+        {
+            var cert = (password == null)
+                ? new X509Certificate2(path)
+                : new X509Certificate2(path, password);
+
+            var ccprop = new CertificateCreateProperties()
+            {
+                Description = description,
+                Base64Value = Convert.ToBase64String(cert.Export(X509ContentType.Pkcs12)),
+                Thumbprint = cert.Thumbprint,
+                IsExportable = exportable
+            };
+
+            var ccparam = new CertificateCreateParameters() { Name = name, Properties = ccprop };
+
+            var certificate = this.automationManagementClient.Certificates.Create(automationAccountName, ccparam).Certificate;
+
+            return new Certificate(automationAccountName, certificate);
         }
 
         #endregion
