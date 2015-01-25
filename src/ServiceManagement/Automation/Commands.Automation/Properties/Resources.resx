@@ -237,4 +237,8 @@
   <data name="CertificateAlreadyExists" xml:space="preserve">
     <value>The certificate already exists. Certificate name: {0}.</value>
   </data>
+  <data name="ResourceNotFound" xml:space="preserve">
+    <value>Resource does not exists.</value>
+    <comment>Automation</comment>
+  </data>
 </root>

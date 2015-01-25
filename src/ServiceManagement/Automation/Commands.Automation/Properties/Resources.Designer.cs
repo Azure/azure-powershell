@@ -250,6 +250,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resource does not exists..
+        /// </summary>
+        internal static string ResourceNotFound {
+            get {
+                return ResourceManager.GetString("ResourceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Runbook already exists. Runbook name: {0}..
         /// </summary>
         internal static string RunbookAlreadyExists {
