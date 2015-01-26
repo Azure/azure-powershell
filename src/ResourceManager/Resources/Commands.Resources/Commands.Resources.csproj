@@ -131,10 +131,19 @@
     <Compile Include="ActiveDirectory\GetAzureADGroupCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryBaseCmdlet.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryClientExtensions.cs" />
     <Compile Include="Models.ActiveDirectory\ADObjectFilterOptions.cs" />
+    <Compile Include="Models.ActiveDirectory\CreatePSServicePrincipalParameters.cs" />
     <Compile Include="Models.ActiveDirectory\ParameterSet.cs" />
+    <Compile Include="Models.ActiveDirectory\CreatePSApplicationParameters.cs" />
+    <Compile Include="Models.ActiveDirectory\PSADKeyCredential.cs" />
+    <Compile Include="Models.ActiveDirectory\PSADPasswordCredential.cs" />
+    <Compile Include="Models.ActiveDirectory\PSADApplication.cs" />
     <Compile Include="Models.ActiveDirectory\PSADServicePrincipal.cs" />
     <Compile Include="Models.ActiveDirectory\PSADGroup.cs" />
     <Compile Include="Models.ActiveDirectory\PSADUser.cs" />
@@ -222,6 +231,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Profile\Commands.Profile.csproj">
       <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
       <Name>Commands.Profile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceManagement\StorSimple\Commands.StorSimple\Commands.StorSimple.csproj">
+      <Project>{11524d98-6c40-4091-a8e1-86463fee607c}</Project>
+      <Name>Commands.StorSimple</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Batch\Commands.Batch\Commands.Batch.csproj">
       <Project>{d470e50a-9607-48d6-a924-4f9f86502704}</Project>
