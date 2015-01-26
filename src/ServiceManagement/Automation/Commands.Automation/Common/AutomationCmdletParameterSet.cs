@@ -74,6 +74,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
         internal const string ByCertificateName = "ByCertificateName";
 
         /// <summary>
+        /// The connection name parameter set.
+        /// </summary>
+        internal const string ByConnectionName = "ByConnectionName";
+
+        /// <summary>
         /// The Schedule name parameter set.
         /// </summary>
         internal const string ByRunbookNameAndScheduleName = "ByRunbookNameAndScheduleName";

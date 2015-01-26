@@ -23,20 +23,20 @@ using Moq;
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class RemoveAzureAutomationCertificateTest : TestBase
+    public class RemoveAzureAutomationConnectionTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private RemoveAzureAutomationCertificate cmdlet;
+        private RemoveAzureAutomationConnection cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new RemoveAzureAutomationCertificate
+            this.cmdlet = new RemoveAzureAutomationConnection
             {
                 AutomationClient = this.mockAutomationClient.Object,
                 CommandRuntime = this.mockCommandRuntime
@@ -44,22 +44,22 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void RemoveAzureAutomationCertificateByNameSuccessfull()
+        public void RemoveAzureAutomationConnectionByNameSuccessfull()
         {
             // Setup
             string accountName = "automation";
-            string certificateName = "cert";
+            string connectionName = "connection";
 
-            this.mockAutomationClient.Setup(f => f.DeleteCertificate(accountName, certificateName));
+            this.mockAutomationClient.Setup(f => f.DeleteConnection(accountName, connectionName));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = certificateName;
+            this.cmdlet.Name = connectionName;
             this.cmdlet.Force = true;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.DeleteCertificate(accountName, certificateName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.DeleteConnection(accountName, connectionName), Times.Once());
         }
     }
 }

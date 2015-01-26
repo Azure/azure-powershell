@@ -36,6 +36,7 @@ using Credential = Microsoft.Azure.Commands.Automation.Model.CredentialInfo;
 using Module = Microsoft.Azure.Commands.Automation.Model.Module;
 using JobSchedule = Microsoft.Azure.Commands.Automation.Model.JobSchedule;
 using Certificate = Microsoft.Azure.Commands.Automation.Model.Certificate;
+using Connection = Microsoft.Azure.Commands.Automation.Model.Connection;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -1045,7 +1046,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
-        #region Certificate
+        #region Certificate Operations
 
         public Certificate CreateCertificate(string automationAccountName, string name, string path, SecureString password,
             string description, bool exportable)
@@ -1123,6 +1124,100 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public void DeleteCertificate(string automationAccountName, string name)
         {
             this.automationManagementClient.Certificates.Delete(automationAccountName, name);
+        }
+
+        #endregion 
+
+        #region Connection Operations
+
+        public Connection CreateConnection(string automationAccountName, string name, string connectionTypeName, IDictionary connectionFieldValues,
+            string description)
+        {
+            var connectionModel = this.TryGetConnectionModel(automationAccountName, name);
+            if (connectionModel != null)
+            {
+                throw new ResourceCommonException(typeof(Connection),
+                    string.Format(CultureInfo.CurrentCulture, Resources.ConnectionAlreadyExists, name));
+            }
+
+            var ccprop = new ConnectionCreateProperties()
+            {
+                Description = description,
+                ConnectionType = new ConnectionTypeAssociationProperty() { Name = connectionTypeName },
+                FieldDefinitionValues = connectionFieldValues.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString())
+            };
+
+            var ccparam = new ConnectionCreateParameters() { Name = name, Properties = ccprop };
+
+            var connection = this.automationManagementClient.Connections.Create(automationAccountName, ccparam).Connection;
+
+            return new Connection(automationAccountName, connection);
+        }
+
+        public Connection UpdateConnectionFieldValue(string automationAccountName, string name, string connectionFieldName, object value)
+        {
+            var connectionModel = this.TryGetConnectionModel(automationAccountName, name);
+            if (connectionModel == null)
+            {
+                throw new ResourceCommonException(typeof(Connection),
+                    string.Format(CultureInfo.CurrentCulture, Resources.ConnectionNotFound, name));
+            }
+
+            if (connectionModel.Properties.FieldDefinitionValues.ContainsKey(connectionFieldName))
+            {
+                connectionModel.Properties.FieldDefinitionValues[connectionFieldName] =
+                    JsonConvert.SerializeObject(value,
+                        new JsonSerializerSettings() {DateFormatHandling = DateFormatHandling.MicrosoftDateFormat});
+            }
+            else
+            {
+                throw new ResourceCommonException(typeof(Connection),
+                   string.Format(CultureInfo.CurrentCulture, Resources.ConnectionFieldNameNotFound, name));
+            }
+
+            var cuparam = new ConnectionUpdateParameters()
+            {
+                Name = name,
+                Properties = new ConnectionUpdateProperties()
+                {
+                    Description = connectionModel.Properties.Description,
+                    FieldDefinitionValues = connectionModel.Properties.FieldDefinitionValues
+                }
+            };
+
+            this.automationManagementClient.Connections.Update(automationAccountName, cuparam);
+
+            return new Connection(automationAccountName, this.automationManagementClient.Connections.Get(automationAccountName, name).Connection);
+        }
+
+        public Connection GetConnection(string automationAccountName, string name)
+        {
+            var connectionModel = this.TryGetConnectionModel(automationAccountName, name);
+            if (connectionModel == null)
+            {
+                throw new ResourceCommonException(typeof(Connection),
+                    string.Format(CultureInfo.CurrentCulture, Resources.ConnectionNotFound, name));
+            }
+
+            return new Connection(automationAccountName, connectionModel);
+        }
+
+        public IEnumerable<Connection> ListConnections(string automationAccountName)
+        {
+            return AutomationManagementClient
+               .ContinuationTokenHandler(
+                   skipToken =>
+                   {
+                       var response = this.automationManagementClient.Connections.List(
+                           automationAccountName);
+                       return new ResponseWithSkipToken<AutomationManagement.Models.Connection>(
+                           response, response.Connection);
+                   }).Select(c => new Connection(automationAccountName, c));
+        }
+
+        public void DeleteConnection(string automationAccountName, string name)
+        {
+            this.automationManagementClient.Connections.Delete(automationAccountName, name);
         }
 
         #endregion
@@ -1495,6 +1590,27 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var certificate = this.automationManagementClient.Certificates.Create(automationAccountName, ccparam).Certificate;
 
             return new Certificate(automationAccountName, certificate);
+        }
+
+        private Management.Automation.Models.Connection TryGetConnectionModel(string automationAccountName, string connectionName)
+        {
+            Management.Automation.Models.Connection connection = null;
+            try
+            {
+                connection = this.automationManagementClient.Connections.Get(automationAccountName, connectionName).Connection;
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    connection = null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return connection;
         }
 
         #endregion

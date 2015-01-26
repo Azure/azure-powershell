@@ -151,6 +151,20 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region Connection
+
+        Connection CreateConnection(string automationAccountName, string name, string connectionTypeName, IDictionary connectionFieldValues, string description);
+
+        Connection UpdateConnectionFieldValue(string automationAccountName, string name, string connectionFieldName, object value);
+
+        Connection GetConnection(string automationAccountName, string name);
+
+        IEnumerable<Connection> ListConnections(string automationAccountName);
+
+        void DeleteConnection(string automationAccountName, string name);
+
+        #endregion
+
         #region JobSchedules
 
         JobSchedule GetJobSchedule(string automationAccountName, Guid jobScheduleId);
