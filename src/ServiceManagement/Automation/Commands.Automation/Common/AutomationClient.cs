@@ -19,13 +19,12 @@ using System.Globalization;
 using System.Linq;
 using System.IO;
 using System.Net;
+using System.Security;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
 using Newtonsoft.Json;
 
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
@@ -33,9 +32,10 @@ using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
 using Job = Microsoft.Azure.Commands.Automation.Model.Job;
 using Variable = Microsoft.Azure.Commands.Automation.Model.Variable;
 using JobStream = Microsoft.Azure.Commands.Automation.Model.JobStream;
-using Credential = Microsoft.Azure.Commands.Automation.Model.Credential;
+using Credential = Microsoft.Azure.Commands.Automation.Model.CredentialInfo;
 using Module = Microsoft.Azure.Commands.Automation.Model.Module;
 using JobSchedule = Microsoft.Azure.Commands.Automation.Model.JobSchedule;
+using Certificate = Microsoft.Azure.Commands.Automation.Model.Certificate;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     skipToken =>
                     {
                         var response = this.automationManagementClient.Schedules.List(
-                            automationAccountName, skipToken);
+                            automationAccountName);
 
                         return new ResponseWithSkipToken<AutomationManagement.Models.Schedule>(
                             response, response.Schedules);
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
-        #region RunbookOperations
+        #region Runbook Operations
 
         public Runbook GetRunbook(string automationAccountName, string runbookName)
         {
@@ -169,14 +169,14 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     skipToken =>
                     {
                         var response = this.automationManagementClient.Runbooks.List(
-                            automationAccountName, skipToken);
+                            automationAccountName);
                         return new ResponseWithSkipToken<AutomationManagement.Models.Runbook>(
                             response, response.Runbooks);
                     }).Select(c => new Runbook(automationAccountName, c));
         }
 
         public Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description,
-            IDictionary<string, string> tags)
+            IDictionary tags)
         {
             var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
             if (runbookModel != null)
@@ -192,16 +192,17 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Draft = new RunbookDraft()
             };
 
-            var rdcparam = new RunbookCreateDraftParameters() { Name = runbookName, Properties = rdcprop, Location = "" };
+            var rdcparam = new RunbookCreateDraftParameters() { Name = runbookName, Properties = rdcprop, Tags = (tags != null) ? tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString()) : null };
 
-            this.automationManagementClient.Runbooks.CreateWithDraftParameters(automationAccountName, rdcparam);
+            this.automationManagementClient.Runbooks.CreateWithDraft(automationAccountName, rdcparam);
 
             return this.GetRunbook(automationAccountName, runbookName);
         }
 
         public Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description,
-            IDictionary<string, string> tags)
+            IDictionary tags)
         {
+
             var runbookName = Path.GetFileNameWithoutExtension(runbookPath);
 
             var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
@@ -230,18 +231,26 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Runbook UpdateRunbook(string automationAccountName, string runbookName, string description,
-            IDictionary<string, string> tags, bool? logProgress, bool? logVerbose)
+            IDictionary tags, bool? logProgress, bool? logVerbose)
         {
+            var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
+            if (runbookModel == null)
+            {
+                throw new ResourceCommonException(typeof(Runbook),
+                    string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
+            }
+
             var runbookUpdateParameters = new RunbookUpdateParameters();
             runbookUpdateParameters.Name = runbookName;
-            if (tags != null) runbookUpdateParameters.Tags = tags;
+            runbookUpdateParameters.Tags = (tags != null)
+                    ? tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString())
+                    : runbookModel.Tags;
             runbookUpdateParameters.Properties =  new RunbookUpdateProperties();
-            if (description != null) runbookUpdateParameters.Properties.Description = description;
-            if (logProgress.HasValue) runbookUpdateParameters.Properties.LogProgress = logProgress.Value;
-            if (logVerbose.HasValue) runbookUpdateParameters.Properties.LogVerbose = logVerbose.Value;
+            runbookUpdateParameters.Properties.Description = description ?? runbookModel.Properties.Description;
+            runbookUpdateParameters.Properties.LogProgress = (logProgress.HasValue) ?  logProgress.Value : runbookModel.Properties.LogProgress;
+            runbookUpdateParameters.Properties.LogVerbose = (logProgress.HasValue) ? logProgress.Value : runbookModel.Properties.LogVerbose;
 
-            var runbook =
-                this.automationManagementClient.Runbooks.Update(automationAccountName, runbookUpdateParameters).Runbook;
+            var runbook = this.automationManagementClient.Runbooks.Update(automationAccountName, runbookUpdateParameters).Runbook;
 
             return new Runbook(automationAccountName, runbook);
         }
@@ -330,8 +339,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                                 Name = runbookName
                                             },
                                             Parameters = processedParameters ?? null
-                                        },
-                                        Location = ""
+                                        }
                                      }).Job;
 
             return new Job(automationAccountName, job);
@@ -341,13 +349,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Variables
 
-        public Variable CreateVariable(string automationAccountName, Variable variable)
+        public Variable CreateVariable(Variable variable)
         {
             bool variableExists = true;
 
             try
             {
-                this.GetVariable(automationAccountName, variable.Name);
+                this.GetVariable(variable.AutomationAccountName, variable.Name);
             }
             catch (ResourceNotFoundException)
             {
@@ -367,16 +375,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Name = variable.Name,
                     Properties = new AutomationManagement.Models.EncryptedVariableCreateProperties()
                     {
-                        Value = variable.Value,
+                        Value = JsonConvert.SerializeObject(variable.Value),
                         Description = variable.Description
                     }
                 };
 
                 var sdkCreatedVariable =
-                    this.automationManagementClient.EncryptedVariables.Create(automationAccountName, createParams)
+                    this.automationManagementClient.EncryptedVariables.Create(variable.AutomationAccountName, createParams)
                         .EncryptedVariable;
 
-                return new Variable(sdkCreatedVariable, automationAccountName);
+                return new Variable(sdkCreatedVariable, variable.AutomationAccountName);
             }
             else
             {
@@ -385,15 +393,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Name = variable.Name,
                     Properties = new AutomationManagement.Models.VariableCreateProperties()
                     {
-                        Value = variable.Value,
+                        Value = JsonConvert.SerializeObject(variable.Value),
                         Description = variable.Description
                     }
                 };
 
                 var sdkCreatedVariable =
-                    this.automationManagementClient.Variables.Create(automationAccountName, createParams).Variable;
+                    this.automationManagementClient.Variables.Create(variable.AutomationAccountName, createParams).Variable;
 
-                return new Variable(sdkCreatedVariable, automationAccountName);
+                return new Variable(sdkCreatedVariable, variable.AutomationAccountName);
             }
         }
 
@@ -419,41 +427,66 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
 
-        public Variable UpdateVariable(string automationAccountName, Variable variable)
+        public Variable UpdateVariable(Variable variable, VariableUpdateFields updateFields)
         {
-            var existingVarible = this.GetVariable(automationAccountName, variable.Name);
-            variable.Encrypted = existingVarible.Encrypted;
+            var existingVariable = this.GetVariable(variable.AutomationAccountName, variable.Name);
+
+            if (existingVariable.Encrypted != variable.Encrypted)
+            {
+                throw new ResourceNotFoundException(typeof(Variable),
+                    string.Format(CultureInfo.CurrentCulture, Resources.VariableEncryptionCannotBeChanged, variable.Name, existingVariable.Encrypted));
+            }
 
             if (variable.Encrypted)
             {
                 var updateParams = new AutomationManagement.Models.EncryptedVariableUpdateParameters()
                 {
-                    Name = variable.Name,
-                    Properties = new AutomationManagement.Models.EncryptedVariableUpdateProperties()
-                    {
-                        Value = variable.Value,
-                        Description = variable.Description
-                    }
+                    Name = variable.Name
                 };
 
-                this.automationManagementClient.EncryptedVariables.Update(automationAccountName, updateParams);
+                if (updateFields == VariableUpdateFields.OnlyDescription)
+                {
+                    updateParams.Properties = new AutomationManagement.Models.EncryptedVariableUpdateProperties()
+                    {
+                        Description = variable.Description
+                    };
+                }
+                else
+                {
+                    updateParams.Properties = new AutomationManagement.Models.EncryptedVariableUpdateProperties()
+                    {
+                        Value = JsonConvert.SerializeObject(variable.Value)
+                    };
+                }
+
+                this.automationManagementClient.EncryptedVariables.Update(variable.AutomationAccountName, updateParams);
             }
             else
             {
                 var updateParams = new AutomationManagement.Models.VariableUpdateParameters()
                 {
                     Name = variable.Name,
-                    Properties = new AutomationManagement.Models.VariableUpdateProperties()
-                    {
-                        Value = variable.Value,
-                        Description = variable.Description
-                    }
                 };
 
-                this.automationManagementClient.Variables.Update(automationAccountName, updateParams);
+                if (updateFields == VariableUpdateFields.OnlyDescription)
+                {
+                    updateParams.Properties = new AutomationManagement.Models.VariableUpdateProperties()
+                    {
+                        Description = variable.Description
+                    };
+                }
+                else
+                {
+                    updateParams.Properties = new AutomationManagement.Models.VariableUpdateProperties()
+                    {
+                        Value = JsonConvert.SerializeObject(variable.Value)
+                    };
+                }
+
+                this.automationManagementClient.Variables.Update(variable.AutomationAccountName, updateParams);
             }
 
-            return this.GetVariable(automationAccountName, variable.Name);
+            return this.GetVariable(variable.AutomationAccountName, variable.Name);
         }
 
         public Variable GetVariable(string automationAccountName, string name)
@@ -497,7 +530,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                skipToken =>
                {
                    var response = this.automationManagementClient.Variables.List(
-                       automationAccountName, skipToken);
+                       automationAccountName);
                    return new ResponseWithSkipToken<AutomationManagement.Models.Variable>(
                        response, response.Variables);
                });
@@ -508,7 +541,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                skipToken =>
                {
                    var response = this.automationManagementClient.EncryptedVariables.List(
-                       automationAccountName, skipToken);
+                       automationAccountName);
                    return new ResponseWithSkipToken<AutomationManagement.Models.EncryptedVariable>(
                        response, response.EncryptedVariables);
                });
@@ -521,7 +554,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Credentials
 
-        public Credential CreateCredential(string automationAccountName, string name, string userName, string password,
+        public CredentialInfo CreateCredential(string automationAccountName, string name, string userName, string password,
             string description)
         {
             var credentialCreateParams = new AutomationManagement.Models.CredentialCreateParameters();
@@ -529,10 +562,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             credentialCreateParams.Properties = new AutomationManagement.Models.CredentialCreateProperties();
             if (description != null) credentialCreateParams.Properties.Description = description;
 
-            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
-            {
-                new AzureAutomationOperationException(string.Format(Resources.ParameterEmpty, "Username or Password"));
-            }
+            Requires.Argument("userName", userName).NotNull();
+            Requires.Argument("password", password).NotNull();
 
             credentialCreateParams.Properties.UserName = userName;
             credentialCreateParams.Properties.Password = password;
@@ -545,19 +576,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Create",
                     "credential", name, automationAccountName));
             }
-            return new Credential(automationAccountName, createdCredential.Credential);
+            return new CredentialInfo(automationAccountName, createdCredential.Credential);
         }
 
-        public Credential UpdateCredential(string automationAccountName, string name, string userName, string password,
+        public CredentialInfo UpdateCredential(string automationAccountName, string name, string userName, string password,
             string description)
         {
             var credentialUpdateParams = new AutomationManagement.Models.CredentialUpdateParameters();
             credentialUpdateParams.Name = name;
             credentialUpdateParams.Properties = new AutomationManagement.Models.CredentialUpdateProperties();
             if (description != null) credentialUpdateParams.Properties.Description = description;
-
-            Requires.Argument("userName", userName).NotNull();
-            Requires.Argument("password", password).NotNull();
 
             credentialUpdateParams.Properties.UserName = userName;
             credentialUpdateParams.Properties.Password = password;
@@ -576,7 +604,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return updatedCredential;
         }
 
-        public Credential GetCredential(string automationAccountName, string name)
+        public CredentialInfo GetCredential(string automationAccountName, string name)
         {
             var credential = this.automationManagementClient.PsCredentials.Get(automationAccountName, name).Credential;
             if (credential == null)
@@ -584,7 +612,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 throw new ResourceNotFoundException(typeof(Credential), string.Format(CultureInfo.CurrentCulture, Resources.CredentialNotFound, name));
             }
 
-            return new Credential(automationAccountName, credential);
+            return new CredentialInfo(automationAccountName, credential);
         }
 
         private Credential CreateCredentialFromCredentialModel(AutomationManagement.Models.Credential credential)
@@ -600,8 +628,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 .ContinuationTokenHandler(
                     skipToken =>
                     {
-                        var response = this.automationManagementClient.PsCredentials.List(automationAccountName,
-                            skipToken);
+                        var response = this.automationManagementClient.PsCredentials.List(automationAccountName);
                         return new ResponseWithSkipToken<AutomationManagement.Models.Credential>(
                             response, response.Credentials);
                     });
@@ -630,13 +657,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Modules
         public Module CreateModule(string automationAccountName, Uri contentLink, string moduleName,
-            IDictionary<string, string> Tags)
+            IDictionary tags)
         {
+            IDictionary<string, string> moduleTags = null;
+            if (tags != null) moduleTags = tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
             var createdModule = this.automationManagementClient.Modules.Create(automationAccountName,
                 new AutomationManagement.Models.ModuleCreateParameters()
                 {
                     Name = moduleName,
-                    Tags = Tags,
+                    Tags = moduleTags,
                     Properties = new AutomationManagement.Models.ModuleCreateProperties()
                     {
                         ContentLink = new AutomationManagement.Models.ContentLink()
@@ -668,7 +697,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 .ContinuationTokenHandler(
                     skipToken =>
                     {
-                        var response = this.automationManagementClient.Modules.List(automationAccountName, skipToken);
+                        var response = this.automationManagementClient.Modules.List(automationAccountName);
                         return new ResponseWithSkipToken<AutomationManagement.Models.Module>(
                             response, response.Modules);
                     });
@@ -676,25 +705,47 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return modulesModels.Select(c => new Module(automationAccountName, c));
         }
 
-        public Module UpdateModule(string automationAccountName, IDictionary<string, string> tags, string name)
+        public Module UpdateModule(string automationAccountName, IDictionary tags, string name, Uri contentLinkUri)
         {
-            var existingModule = this.GetModule(automationAccountName, name);
-
-            var moduleUpdateParameters = new AutomationManagement.Models.ModuleUpdateParameters();
-            moduleUpdateParameters.Name = name;
-            if (tags != null) moduleUpdateParameters.Tags = tags;
-            moduleUpdateParameters.Location = existingModule.Location;
-
-            var updatedModule = this.automationManagementClient.Modules.Update(automationAccountName,
-                moduleUpdateParameters);
-
-            if (updatedModule == null || updatedModule.StatusCode != HttpStatusCode.OK)
+            if(tags != null && contentLinkUri != null)
             {
-                new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Update",
-                    "Module", name, automationAccountName));
+                var moduleCreateParameters = new AutomationManagement.Models.ModuleCreateParameters();
+                
+                moduleCreateParameters.Name = name;
+                moduleCreateParameters.Tags = tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
+
+                moduleCreateParameters.Properties = new ModuleCreateProperties();
+                moduleCreateParameters.Properties.ContentLink = new AutomationManagement.Models.ContentLink();
+                moduleCreateParameters.Properties.ContentLink.Uri = contentLinkUri;
+
+                this.automationManagementClient.Modules.Create(automationAccountName,
+                    moduleCreateParameters);
+
+            }
+            else if (contentLinkUri != null)
+            {
+                var moduleUpdateParameters = new AutomationManagement.Models.ModuleUpdateParameters();
+
+                moduleUpdateParameters.Name = name;
+                moduleUpdateParameters.Properties = new ModuleUpdateProperties();
+                moduleUpdateParameters.Properties.ContentLink = new AutomationManagement.Models.ContentLink();
+                moduleUpdateParameters.Properties.ContentLink.Uri = contentLinkUri;
+
+                this.automationManagementClient.Modules.Update(automationAccountName, moduleUpdateParameters);
+            }
+            else if(tags != null)
+            {
+                var moduleUpdateParameters = new AutomationManagement.Models.ModuleUpdateParameters();
+                
+                moduleUpdateParameters.Name = name;
+                moduleUpdateParameters.Tags = tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
+                moduleUpdateParameters.Properties = new ModuleUpdateProperties();
+
+                this.automationManagementClient.Modules.Update(automationAccountName, moduleUpdateParameters);
             }
 
-            return new Module(automationAccountName, updatedModule.Module);
+            var updatedModule = this.automationManagementClient.Modules.Get(automationAccountName, name).Module;
+            return new Module(automationAccountName, updatedModule);
         }
 
         public void DeleteModule(string automationAccountName, string name)
@@ -717,7 +768,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #endregion
 
         #region Jobs
-        public IEnumerable<JobStream> GetJobStream(string automationAccountName, Guid jobId, DateTime? time,
+        public IEnumerable<JobStream> GetJobStream(string automationAccountName, Guid jobId, DateTimeOffset? time,
            string streamType)
         {
             var listParams = new AutomationManagement.Models.JobStreamListParameters();
@@ -748,20 +799,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return new Job(automationAccountName, job);
         }
 
-        public IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTime? startTime, DateTime? endTime, string jobStatus)
+        public IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus)
         {
-            // Assume local time if DateTimeKind.Unspecified 
-            if (startTime.HasValue && startTime.Value.Kind == DateTimeKind.Unspecified)
-            {
-                startTime = DateTime.SpecifyKind(startTime.Value, DateTimeKind.Local);
-            }
-
-
-            if (endTime.HasValue && endTime.Value.Kind == DateTimeKind.Unspecified)
-            {
-                endTime = DateTime.SpecifyKind(endTime.Value, DateTimeKind.Local);
-            }
-            
             IEnumerable<AutomationManagement.Models.Job> jobModels;
 
             if (startTime.HasValue && endTime.HasValue)
@@ -778,7 +817,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                     EndTime = FormatDateTime(endTime.Value),
                                     RunbookName = runbookName,
                                     Status = jobStatus,
-                                    SkipToken = skipToken
                                 });
                         return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                     });
@@ -796,7 +834,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                        StartTime = FormatDateTime(startTime.Value),
                                        RunbookName = runbookName,
                                        Status = jobStatus,
-                                       SkipToken = skipToken
                                    });
                          return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                      });
@@ -814,7 +851,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                     EndTime = FormatDateTime(endTime.Value),
                                     RunbookName = runbookName,
                                     Status = jobStatus,
-                                    SkipToken = skipToken
                                 });
                         return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                     });
@@ -828,7 +864,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                             automationAccountName,
                             new AutomationManagement.Models.JobListParameters
                             {
-                                SkipToken = skipToken,
                                 Status = jobStatus,
                                 RunbookName = runbookName
                             });
@@ -839,20 +874,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return jobModels.Select(jobModel => new Job(automationAccountName, jobModel));
         }
 
-        public IEnumerable<Job> ListJobs(string automationAccountName, DateTime? startTime, DateTime? endTime, string jobStatus)
+        public IEnumerable<Job> ListJobs(string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus)
         {
-            // Assume local time if DateTimeKind.Unspecified 
-            if (startTime.HasValue && startTime.Value.Kind == DateTimeKind.Unspecified)
-            {
-                startTime = DateTime.SpecifyKind(startTime.Value, DateTimeKind.Local);
-            }
-
-
-            if (endTime.HasValue && endTime.Value.Kind == DateTimeKind.Unspecified)
-            {
-                endTime = DateTime.SpecifyKind(endTime.Value, DateTimeKind.Local);
-            }
-
             IEnumerable<AutomationManagement.Models.Job> jobModels;
 
             if (startTime.HasValue && endTime.HasValue)
@@ -868,7 +891,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                     StartTime = FormatDateTime(startTime.Value),
                                     EndTime = FormatDateTime(endTime.Value),
                                     Status = jobStatus,
-                                    SkipToken = skipToken
                                 });
                         return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                     });
@@ -885,7 +907,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                    {
                                        StartTime = FormatDateTime(startTime.Value),
                                        Status = jobStatus,
-                                       SkipToken = skipToken
                                    });
                          return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                      });
@@ -902,7 +923,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                 {
                                     EndTime = FormatDateTime(endTime.Value),
                                     Status = jobStatus,
-                                    SkipToken = skipToken
                                 });
                         return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                     });
@@ -914,7 +934,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     {
                         var response = this.automationManagementClient.Jobs.List(
                             automationAccountName,
-                            new AutomationManagement.Models.JobListParameters { Status = jobStatus, SkipToken = skipToken, });
+                            new AutomationManagement.Models.JobListParameters { Status = jobStatus });
                         return new ResponseWithSkipToken<AutomationManagement.Models.Job>(response, response.Jobs);
                     });
             }
@@ -935,6 +955,174 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public void SuspendJob(string automationAccountName, Guid id)
         {
             this.automationManagementClient.Jobs.Suspend(automationAccountName, id);
+        }
+
+        #endregion
+
+        #region Account Operations
+
+        public IEnumerable<AutomationAccount> ListAutomationAccounts(string automationAccountName, string location)
+        {
+            if (automationAccountName != null)
+            {
+                Requires.Argument("AutomationAccountName", automationAccountName).ValidAutomationAccountName();
+            }
+
+            var automationAccounts = new List<AutomationAccount>();
+            var cloudServices = new List<CloudService>(this.automationManagementClient.CloudServices.List().CloudServices);
+
+            foreach (var cloudService in cloudServices)
+            {
+                automationAccounts.AddRange(cloudService.Resources.Select(resource => new AutomationAccount(cloudService, resource)));
+            }
+
+            // RDFE does not support server-side filtering, hence we filter on the client-side.
+            if (automationAccountName != null)
+            {
+                automationAccounts = automationAccounts.Where(account => string.Equals(account.AutomationAccountName, automationAccountName, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                if (!automationAccounts.Any())
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.AutomationAccountNotFound));
+                }
+            }
+
+            if (location != null)
+            {
+                automationAccounts = automationAccounts.Where(account => string.Equals(account.Location, location, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            return automationAccounts;
+        }
+
+        public AutomationAccount CreateAutomationAccount(string automationAccountName, string location)
+        {
+
+            Requires.Argument("AutomationAccountName", automationAccountName).ValidAutomationAccountName();
+
+            try
+            {
+                var existingAccount = this.ListAutomationAccounts(automationAccountName, location);
+
+                if (existingAccount != null)
+                {
+                    throw new ResourceCommonException(typeof (AutomationAccount),
+                        string.Format(CultureInfo.CurrentCulture, Resources.AutomationAccountAlreadyExists,
+                            automationAccountName));
+                }
+            }
+            catch (ArgumentException)
+            {
+                // ArgumentException is thrown when account does not exists, so ignore it
+            }
+
+            this.automationManagementClient.CreateAutomationAccount(automationAccountName, location);
+
+            return this.ListAutomationAccounts(automationAccountName, location).FirstOrDefault();
+        }
+
+
+        public void DeleteAutomationAccount(string automationAccountName)
+        {
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+
+            var csName = string.Empty;
+
+            var cloudServices = this.automationManagementClient.CloudServices.List().CloudServices;
+
+            foreach (var cloudService in cloudServices)
+            {
+                if (cloudService.Resources.Any(resource => 0 == String.Compare(resource.Name, automationAccountName, CultureInfo.InvariantCulture,
+                    CompareOptions.IgnoreCase)))
+                {
+                    csName = cloudService.Name;
+                    break;
+                }
+            }
+
+            this.automationManagementClient.AutomationAccounts.Delete(csName, automationAccountName);
+        }
+
+        #endregion
+
+        #region Certificate
+
+        public Certificate CreateCertificate(string automationAccountName, string name, string path, SecureString password,
+            string description, bool exportable)
+        {
+            var certificateModel = this.TryGetCertificateModel(automationAccountName, name);
+            if (certificateModel != null)
+            {
+                throw new ResourceCommonException(typeof(Certificate),
+                    string.Format(CultureInfo.CurrentCulture, Resources.CertificateAlreadyExists, name));
+            }
+
+            return CreateCertificateInternal(automationAccountName, name, path, password, description, exportable);
+        }
+
+        
+        public Certificate UpdateCertificate(string automationAccountName, string name, string path, SecureString password,
+            string description, bool? exportable)
+        {
+            var certificateModel = this.TryGetCertificateModel(automationAccountName, name);
+            if (certificateModel == null)
+            {
+                throw new ResourceCommonException(typeof(Certificate),
+                    string.Format(CultureInfo.CurrentCulture, Resources.CertificateNotFound, name));
+            }
+            
+            var createOrUpdateDescription  = description ?? certificateModel.Properties.Description;
+            var createOrUpdateIsExportable = (exportable.HasValue) ? exportable.Value : certificateModel.Properties.IsExportable;
+
+            if (path != null)
+            {
+                return this.CreateCertificateInternal(automationAccountName, name, path, password, createOrUpdateDescription,
+                    createOrUpdateIsExportable);
+            }
+
+            var cuparam = new CertificateUpdateParameters() 
+            { 
+                Name = name, 
+                Properties = new CertificateUpdateProperties()
+                {
+                    Description = createOrUpdateDescription,
+                    IsExportable = createOrUpdateIsExportable
+                } 
+            };
+
+            this.automationManagementClient.Certificates.Update(automationAccountName, cuparam);
+
+            return new Certificate(automationAccountName, this.automationManagementClient.Certificates.Get(automationAccountName, name).Certificate);
+        }
+
+        public Certificate GetCertificate(string automationAccountName, string name)
+        {
+            var certificateModel = this.TryGetCertificateModel(automationAccountName, name);
+            if (certificateModel == null)
+            {
+                throw new ResourceCommonException(typeof(Certificate),
+                    string.Format(CultureInfo.CurrentCulture, Resources.CertificateNotFound, name));
+            }
+
+            return new Certificate(automationAccountName, certificateModel);
+        }
+
+        public IEnumerable<Certificate> ListCertificates(string automationAccountName)
+        {
+            return AutomationManagementClient
+               .ContinuationTokenHandler(
+                   skipToken =>
+                   {
+                       var response = this.automationManagementClient.Certificates.List(
+                           automationAccountName);
+                       return new ResponseWithSkipToken<AutomationManagement.Models.Certificate>(
+                           response, response.Certificates);
+                   }).Select(c => new Certificate(automationAccountName, c));
+        }
+
+        public void DeleteCertificate(string automationAccountName, string name)
+        {
+            this.automationManagementClient.Certificates.Delete(automationAccountName, name);
         }
 
         #endregion
@@ -998,7 +1186,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     skipToken =>
                     {
                         var response = this.automationManagementClient.JobSchedules.List(
-                            automationAccountName, skipToken);
+                            automationAccountName);
 
                         return new ResponseWithSkipToken<AutomationManagement.Models.JobSchedule>(
                             response, response.JobSchedules);
@@ -1127,6 +1315,27 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return runbook;
         }
 
+        private Management.Automation.Models.Certificate TryGetCertificateModel(string automationAccountName, string certificateName)
+        {
+            Management.Automation.Models.Certificate certificate = null;
+            try
+            {
+                certificate = this.automationManagementClient.Certificates.Get(automationAccountName, certificateName).Certificate;
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    certificate = null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return certificate;
+        }
+
         private IDictionary<string, RunbookParameter> ListRunbookParameters(string automationAccountName, string runbookName)
         {
             Runbook runbook = this.GetRunbook(automationAccountName, runbookName);
@@ -1210,7 +1419,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
         private AutomationManagement.Models.Schedule GetScheduleModel(string automationAccountName, string scheduleName)
         {
             AutomationManagement.Models.Schedule scheduleModel;
-
             try
             {
                 scheduleModel = this.automationManagementClient.Schedules.Get(
@@ -1231,7 +1439,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return scheduleModel;
         }
 
-        private string FormatDateTime(DateTime dateTime)
+        private string FormatDateTime(DateTimeOffset dateTime)
         {
             return string.Format(CultureInfo.InvariantCulture, "{0:O}", dateTime.ToUniversalTime());
         }
@@ -1265,6 +1473,28 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 scheduleUpdateParameters);
 
             return this.GetSchedule(automationAccountName, schedule.Name);
+        }
+
+        private Certificate CreateCertificateInternal(string automationAccountName, string name, string path,
+            SecureString password, string description, bool exportable)
+        {
+            var cert = (password == null)
+                ? new X509Certificate2(path)
+                : new X509Certificate2(path, password);
+
+            var ccprop = new CertificateCreateProperties()
+            {
+                Description = description,
+                Base64Value = Convert.ToBase64String(cert.Export(X509ContentType.Pkcs12)),
+                Thumbprint = cert.Thumbprint,
+                IsExportable = exportable
+            };
+
+            var ccparam = new CertificateCreateParameters() { Name = name, Properties = ccprop };
+
+            var certificate = this.automationManagementClient.Certificates.Create(automationAccountName, ccparam).Certificate;
+
+            return new Certificate(automationAccountName, certificate);
         }
 
         #endregion

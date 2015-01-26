@@ -85,9 +85,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     }
                 }
 
-                if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.AutomationAccountNotFound), cloudException);
+                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ResourceNotFound), cloudException);
                 }
 
                 throw;
@@ -131,9 +131,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         private string ParseErrorMessage(string errorMessage)
         {
             // The errorMessage is expected to be the error details in JSON format.
-            // e.g. <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-            //          {"odata.error":{"code":"","message":{"lang":"en-US","value":"Runbook definition is invalid. Missing closing '}' in statement block."}}}
-            //      </string>
+            // e.g. <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">{"code":"NotFound","message":"Certificate not found."}</string>
             try
             {
                 using (var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(XDocument.Load(new StringReader(errorMessage)).Root.Value)))
@@ -141,9 +139,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     var serializer = new DataContractJsonSerializer(typeof(ErrorResponse));
                     var errorResponse = (ErrorResponse)serializer.ReadObject(memoryStream);
 
-                    if (!string.IsNullOrWhiteSpace(errorResponse.OdataError.Message.Value))
+                    if (!string.IsNullOrWhiteSpace(errorResponse.Message))
                     {
-                        return errorResponse.OdataError.Message.Value;
+                        return errorResponse.Message;
                     }
                 }
             }

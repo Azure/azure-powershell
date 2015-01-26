@@ -67,7 +67,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// The Schedule name parameter set.
         /// </summary>
         internal const string ByScheduleName = "ByScheduleName";
-        
+
+        /// <summary>
+        /// The certificate name parameter set.
+        /// </summary>
+        internal const string ByCertificateName = "ByCertificateName";
+
         /// <summary>
         /// The Schedule name parameter set.
         /// </summary>
@@ -77,5 +82,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// The Job Schedule Id parameter set.
         /// </summary>
         internal const string ByJobScheduleId = "ByJobScheduleId";
+
+        /// <summary>
+        /// Parameter set for updating variable value
+        /// </summary>
+        internal const string UpdateVariableValue = "UpdateVariableValue";
+
+        /// <summary>
+        /// Parameter set for updating variable description
+        /// </summary>
+        internal const string UpdateVariableDescription = "UpdateVariableDescription";
     }
 }

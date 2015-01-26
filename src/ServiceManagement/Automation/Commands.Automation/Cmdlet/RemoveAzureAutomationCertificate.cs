@@ -18,22 +18,25 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets a Credential for automation.
+    /// Removes a Certificate for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(CredentialInfo))]
-    public class GetAzureAutomationCredential : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureAutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
+    public class RemoveAzureAutomationCertificate : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the credential name.
+        /// Gets or sets the certificate name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The credential name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByCertificateName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The certificate name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByCertificateName, Position = 2, HelpMessage = "Confirm the removal of the certificate")]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -41,20 +44,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<CredentialInfo> ret = null;
-            if (!string.IsNullOrEmpty(this.Name))
-            {
-                ret = new List<CredentialInfo> 
-                { 
-                   this.AutomationClient.GetCredential(this.AutomationAccountName, this.Name)
-                };
-            }
-            else
-            {
-                ret = this.AutomationClient.ListCredentials(this.AutomationAccountName);
-            }
-
-            this.GenerateCmdletOutput(ret);
+            ConfirmAction(
+                       Force.IsPresent,
+                      string.Format(Resources.RemovingAzureAutomationResourceWarning, "Certificate"),
+                       string.Format(Resources.RemoveAzureAutomationResourceDescription, "Certificate"),
+                       Name,
+                       () =>
+                       {
+                           this.AutomationClient.DeleteCertificate(this.AutomationAccountName, Name);
+                       });
         }
     }
 }

@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemovingAzureAutomationResourceWarning, "Module"),
-                string.Format(Resources.RemoveAzureAutomationResourceDescription, "Module"),
+                string.Format(Resources.RemovingAzureAutomationResourceWarning, "Variable"),
+                string.Format(Resources.RemoveAzureAutomationResourceDescription, "Variable"),
                 Name,
                 () =>
                 {

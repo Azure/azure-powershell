@@ -18,32 +18,34 @@ using System;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    public class Credential
+    public class Certificate
     {
          /// <summary>
-        /// Initializes a new instance of the <see cref="Credential"/> class.
+        /// Initializes a new instance of the <see cref="Certificate"/> class.
         /// </summary>
-        /// <param name="Credential">
-        /// The Credential.
+        /// <param name="Certificate">
+        /// The Certificate.
         /// </param>
-        public Credential(string accountAcccountName, Azure.Management.Automation.Models.Credential credential)
+        public Certificate(string accountAcccountName, Azure.Management.Automation.Models.Certificate certificate)
         {
-            Requires.Argument("credential", credential).NotNull();
+            Requires.Argument("certificate", certificate).NotNull();
             this.AutomationAccountName = accountAcccountName;
-            this.Name = credential.Name;
+            this.Name = certificate.Name;
 
-            if (credential.Properties == null) return;
+            if (certificate.Properties == null) return;
 
-            this.Description = credential.Properties.Description;
-            this.CreationTime = credential.Properties.CreationTime.ToLocalTime();
-            this.LastModifiedTime = credential.Properties.LastModifiedTime.ToLocalTime();
-            this.UserName = credential.Properties.UserName;
+            this.Description = certificate.Properties.Description;
+            this.CreationTime = certificate.Properties.CreationTime.ToLocalTime();
+            this.LastModifiedTime = certificate.Properties.LastModifiedTime.ToLocalTime();
+            this.ExpiryTime = certificate.Properties.ExpiryTime.ToLocalTime();
+            this.Thumbprint = certificate.Properties.Thumbprint;
+            this.Exportable = certificate.Properties.IsExportable;
         }
 
          /// <summary>
-        /// Initializes a new instance of the <see cref="Credential"/> class.
+        /// Initializes a new instance of the <see cref="Certificate"/> class.
         /// </summary>
-        public Credential()
+        public Certificate()
         {
         }
 
@@ -51,13 +53,19 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the automaiton account name.
         /// </summary>
         public string AutomationAccountName { get; set; }
+
         public string Name { get; set; }
-        public string UserName { get; set; }
+
+        public string Thumbprint { get; set; }
 
         public string Description { get; set; }
+
+        public bool Exportable { get; set; }
 
         public DateTimeOffset CreationTime { get; set; }
 
         public DateTimeOffset LastModifiedTime { get; set; }
+
+        public DateTimeOffset ExpiryTime { get; set; }
     }
 }

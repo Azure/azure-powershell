@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+﻿﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,26 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Runtime.Serialization;
+using System;
 
-namespace Microsoft.Azure.Commands.Automation.DataContract
+namespace Microsoft.Azure.Commands.Automation.Common
 {
-    /// <summary>
-    /// The error response.
-    /// </summary>
-    [DataContract]
-    public class ErrorResponse
+    public enum VariableUpdateFields
     {
-        /// <summary>
-        /// Gets or sets the code.
-        /// </summary>
-        [DataMember(Name = "code")]
-        public string Code { get; set; }
-
-        /// <summary>
-        /// Gets or sets the message.
-        /// </summary>
-        [DataMember(Name = "message")]
-        public string Message { get; set; }
+        OnlyDescription = 0,
+        OnlyValue = 1
     }
 }

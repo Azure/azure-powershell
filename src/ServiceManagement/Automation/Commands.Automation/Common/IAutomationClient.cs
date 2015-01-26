@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Common.Extensions.Models;
 
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region JobStreams
 
-        IEnumerable<JobStream> GetJobStream(string automationAccountname, Guid jobId, DateTime? time, string streamType);
+        IEnumerable<JobStream> GetJobStream(string automationAccountname, Guid jobId, DateTimeOffset? time, string streamType);
 
         #endregion
 
@@ -36,11 +37,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<Variable> ListVariables(string automationAccountName);
 
-        Variable CreateVariable(string automationAccountName, Variable variable);
+        Variable CreateVariable(Variable variable);
 
         void DeleteVariable(string automationAccountName, string variableName);
 
-        Variable UpdateVariable(string automationAccountName, Variable variable);
+        Variable UpdateVariable(Variable variable, VariableUpdateFields updateFields);
 
         #endregion
 
@@ -64,15 +65,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<Runbook> ListRunbooks(string automationAccountName);
 
-        Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description, IDictionary<string, string> tags);
+        Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description, IDictionary tags);
 
-        Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description, IDictionary<string, string> tags);
+        Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description, IDictionary tags);
         
         void DeleteRunbook(string automationAccountName, string runbookName);
 
         Runbook PublishRunbook(string automationAccountName, string runbookName);
 
-        Runbook UpdateRunbook(string automationAccountName, string runbookName, string description, IDictionary<string, string> tags, bool? logProgress, bool? logVerbose);
+        Runbook UpdateRunbook(string automationAccountName, string runbookName, string description, IDictionary tags, bool? logProgress, bool? logVerbose);
 
         RunbookDefinition UpdateRunbookDefinition(string automationAccountName, string runbookName, string runbookPath, bool overwrite);
 
@@ -84,13 +85,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Credentials
 
-        Credential CreateCredential(string automationAccountName, string name, string userName, string password, string description);
+        CredentialInfo CreateCredential(string automationAccountName, string name, string userName, string password, string description);
 
-        Credential UpdateCredential(string automationAccountName, string name, string userName, string password, string description);
+        CredentialInfo UpdateCredential(string automationAccountName, string name, string userName, string password, string description);
 
-        Credential GetCredential(string automationAccountName, string name);
+        CredentialInfo GetCredential(string automationAccountName, string name);
 
-        IEnumerable<Credential> ListCredentials(string automationAccountName);
+        IEnumerable<CredentialInfo> ListCredentials(string automationAccountName);
 
         void DeleteCredential(string automationAccountName, string name);
 
@@ -98,11 +99,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Modules
 
-        Module CreateModule(string automationAccountName, Uri contentLink, string moduleName, IDictionary<string, string> tags);
+        Module CreateModule(string automationAccountName, Uri contentLink, string moduleName, IDictionary tags);
 
         Module GetModule(string automationAccountName, string name);
 
-        Module UpdateModule(string automationAccountName, IDictionary<string, string> tags, string name);
+        Module UpdateModule(string automationAccountName, IDictionary tags, string name, Uri contentLink);
 
         IEnumerable<Module> ListModules(string automationAccountName);
 
@@ -114,15 +115,39 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Job GetJob(string automationAccountName, Guid id);
 
-        IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTime? startTime, DateTime? endTime, string jobStatus);
+        IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus);
 
-        IEnumerable<Job> ListJobs(string automationAccountName, DateTime? startTime, DateTime? endTime, string jobStatus);
+        IEnumerable<Job> ListJobs(string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus);
 
         void ResumeJob(string automationAccountName, Guid id);
 
         void StopJob(string automationAccountName, Guid id);
 
         void SuspendJob(string automationAccountName, Guid id);
+
+        #endregion
+        
+        #region Accounts
+
+        IEnumerable<AutomationAccount> ListAutomationAccounts(string automationAccountName, string location);
+
+        AutomationAccount CreateAutomationAccount(string automationAccountName, string location);
+
+        void DeleteAutomationAccount(string automationAccountName);
+        
+        #endregion
+
+        #region Certificates
+
+        Certificate CreateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool exportable);
+
+        Certificate UpdateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool? exportable);
+
+        Certificate GetCertificate(string automationAccountName, string name);
+
+        IEnumerable<Certificate> ListCertificates(string automationAccountName);
+
+        void DeleteCertificate(string automationAccountName, string name);
 
         #endregion
 
@@ -143,6 +168,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void UnregisterScheduledRunbook(string automationAccountName, Guid jobScheduleId);
 
         void UnregisterScheduledRunbook(string automationAccountName, string runbookName, string scheduleName);
+
 
         #endregion
     }

@@ -12,34 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using System.Management.Automation;
+using System.Security;
+using System;
 
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class GetAzureAutomationRunbookTest : TestBase
+    public class NewAzureAutomationCertificateTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private GetAzureAutomationRunbook cmdlet;
+        private NewAzureAutomationCertificate cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new GetAzureAutomationRunbook
+            this.cmdlet = new NewAzureAutomationCertificate
                               {
                                   AutomationClient = this.mockAutomationClient.Object,
                                   CommandRuntime = this.mockCommandRuntime
@@ -47,39 +48,31 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void GetAzureAutomationRunbookByNameSuccessfull()
+        public void NewAzureAutomationCertificateByNameSuccessfull()
         {
             // Setup
             string accountName = "automation";
-            string runbookName = "runbook";
+            string certificateName = "certificate";
+            string path = "testCert.pfx";
+            string password = "password";
+            string description = "desc";
 
-            this.mockAutomationClient.Setup(f => f.GetRunbook(accountName, runbookName));
+            var secureString = new SecureString();
+            Array.ForEach(password.ToCharArray(), secureString.AppendChar);
+            secureString.MakeReadOnly();
 
-            // Test
+            this.mockAutomationClient.Setup(
+                f => f.CreateCertificate(accountName, certificateName, path, secureString, description, false));
+
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = runbookName;
-            this.cmdlet.SetParameterSet("ByRunbookName");
+            this.cmdlet.Name = certificateName;
+            this.cmdlet.Description = description;
+            this.cmdlet.Path = path;
+            this.cmdlet.Password = secureString;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.GetRunbook(accountName, runbookName), Times.Once());
-        }
-
-        [TestMethod]
-        public void GetAzureAutomationRunbookByAllSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-
-            this.mockAutomationClient.Setup(f => f.ListRunbooks(accountName)).Returns((string a) => new List<Runbook>()); ;
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.SetParameterSet("ByAll");
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.ListRunbooks(accountName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.CreateCertificate(accountName, certificateName, path, secureString, description, false), Times.Once());
         }
     }
 }

@@ -22,16 +22,16 @@ using Microsoft.Azure.Commands.Automation.Common;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets a Credential for automation.
+    /// Gets a certificate for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(CredentialInfo))]
-    public class GetAzureAutomationCredential : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [OutputType(typeof(Certificate))]
+    public class GetAzureAutomationCertificate : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the credential name.
+        /// Gets or sets the certificate name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The credential name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByCertificateName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The certificate name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -41,17 +41,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<CredentialInfo> ret = null;
-            if (!string.IsNullOrEmpty(this.Name))
+            IEnumerable<Certificate> ret = null;
+            if (this.ParameterSetName == AutomationCmdletParameterSets.ByCertificateName)
             {
-                ret = new List<CredentialInfo> 
+                ret = new List<Certificate> 
                 { 
-                   this.AutomationClient.GetCredential(this.AutomationAccountName, this.Name)
+                   this.AutomationClient.GetCertificate(this.AutomationAccountName, this.Name)
                 };
             }
-            else
+            else 
             {
-                ret = this.AutomationClient.ListCredentials(this.AutomationAccountName);
+                ret = this.AutomationClient.ListCertificates(this.AutomationAccountName);
             }
 
             this.GenerateCmdletOutput(ret);

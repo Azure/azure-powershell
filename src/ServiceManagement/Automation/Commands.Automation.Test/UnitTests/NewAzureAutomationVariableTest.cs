@@ -62,9 +62,10 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             variable.Value = value;
             variable.Description = description;
             variable.Encrypted = true;
+            variable.AutomationAccountName = accountName;
 
             this.mockAutomationClient.Setup(
-                f => f.CreateVariable(accountName, variable));
+                f => f.CreateVariable(variable));
 
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.Name = variableName;
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.CreateVariable(accountName, variable), Times.Once());
+            this.mockAutomationClient.Verify(f => f.CreateVariable(variable), Times.Once());
         }
     }
 }
