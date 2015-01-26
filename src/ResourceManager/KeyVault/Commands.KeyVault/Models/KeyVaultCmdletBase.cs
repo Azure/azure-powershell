@@ -25,11 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public KeyVaultCmdletBase()
         {        
         }
-        protected void WriteErrorDetails(Exception exception)
-        {
-            // Call the handler to parse and get ErrorRecord           
-            WriteError(KeyVaultExceptionHandler.RetrieveExceptionDetails(exception));
-        }
+
         internal IKeyVaultDataServiceClient DataServiceClient
         {
             get

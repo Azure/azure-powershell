@@ -116,11 +116,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             cmdlet.Name = KeyName;
             cmdlet.Force = true;
             cmdlet.PassThru = true;
-            cmdlet.ExecuteCmdlet();
+            try
+            {
+                cmdlet.ExecuteCmdlet();
+            }
+            catch { }
 
-            // Assert
             keyVaultClientMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteError(It.IsAny<ErrorRecord>()), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<KeyBundle>()), Times.Never());
         }
     }
 }
