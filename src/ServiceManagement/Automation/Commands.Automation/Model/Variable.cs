@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Automation.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
     using AutomationManagement = Management.Automation;
-    using Newtonsoft.Json;
-    using System.Management.Automation;
 
     /// <summary>
     /// The Variable.
@@ -48,7 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             }
             else
             {
-                this.Value = JsonConvert.DeserializeObject<object>(variable.Properties.Value);
+                this.Value = PowershellJsonConverter.Decrypt(variable.Properties.Value);
             }
 
             this.Description = variable.Properties.Description;

@@ -164,6 +164,7 @@
     <Compile Include="Common\AzureAutomationOperationException.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\IAutomationClient.cs" />
+    <Compile Include="Common\PowershellJsonConverter.cs" />
     <Compile Include="Common\Requires.cs" />
     <Compile Include="Common\RequiresExtensions.cs" />
     <Compile Include="Common\ResourceCommonException.cs" />

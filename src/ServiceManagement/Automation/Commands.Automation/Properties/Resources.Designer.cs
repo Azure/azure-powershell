@@ -169,6 +169,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to decrypt. Error Details {0}.
+        /// </summary>
+        internal static string PowershellJsonDecrypterFailed {
+            get {
+                return ResourceManager.GetString("PowershellJsonDecrypterFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disassociating the Azure Automation runbook and schedule..
         /// </summary>
         internal static string RemoveAzureAutomationJobScheduleDescription {
