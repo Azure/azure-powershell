@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 using Xunit;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {

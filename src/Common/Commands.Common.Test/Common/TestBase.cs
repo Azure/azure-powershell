@@ -16,10 +16,10 @@ using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -39,9 +39,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         [TestInitialize]
         public void BaseSetup()
         {
-            if (ProfileClient.DataStore != null && !(ProfileClient.DataStore is MockDataStore))
+            if (AzureSession.DataStore != null && !(AzureSession.DataStore is MockDataStore))
             {
-                ProfileClient.DataStore = new MockDataStore();
+                AzureSession.DataStore = new MockDataStore();
             }
             if (AzureSession.CurrentContext.Subscription == null)
             {

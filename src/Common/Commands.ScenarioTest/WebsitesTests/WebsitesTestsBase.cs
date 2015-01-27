@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.WebSites;
 using Microsoft.Azure.Test;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 {

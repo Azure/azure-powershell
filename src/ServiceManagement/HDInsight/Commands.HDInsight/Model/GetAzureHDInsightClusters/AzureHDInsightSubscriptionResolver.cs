@@ -14,7 +14,7 @@
 
 using System;
 using System.Linq;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.BaseInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.Extensions;
 

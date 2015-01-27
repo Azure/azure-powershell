@@ -20,7 +20,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net.Http;
 
-namespace Microsoft.Azure.Common.Extensions.Models
+namespace Microsoft.Azure.Common.Authorization.Models
 {
     public class RecordingTracingInterceptor : Hyak.Common.ICloudTracingInterceptor
     {

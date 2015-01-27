@@ -17,11 +17,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.BaseInterfaces;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
 {
@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
         internal AzureHDInsightSubscriptionResolverSimulator()
         {
             var certificate = new X509Certificate2(Convert.FromBase64String(IntegrationTestBase.TestCredentials.Certificate), string.Empty);
-            ProfileClient.DataStore.AddCertificate(certificate);
+            AzureSession.DataStore.AddCertificate(certificate);
             ProfileClient profileClient = new ProfileClient();
             profileClient.Profile.Accounts[certificate.Thumbprint] = new AzureAccount
             {

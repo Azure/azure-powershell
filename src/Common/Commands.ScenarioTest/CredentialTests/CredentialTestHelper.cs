@@ -19,7 +19,7 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.CredentialTests
 {
@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.CredentialTests
 
         public CredentialTestHelper()
         {
-            ProfileClient.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MockDataStore();
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
         }

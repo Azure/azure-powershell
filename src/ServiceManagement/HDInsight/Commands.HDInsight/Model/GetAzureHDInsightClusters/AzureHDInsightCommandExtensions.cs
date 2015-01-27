@@ -17,13 +17,13 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Hadoop.Client;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImplementations;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.BaseInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.Extensions;
 using System.Diagnostics;
-using Microsoft.Azure.Common.Extensions.Authentication;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization.Authentication;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters
 {
@@ -60,7 +60,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             return new HDInsightCertificateCredential
             {
                 SubscriptionId = currentSubscription.Id,
-                Certificate = ProfileClient.DataStore.GetCertificate(currentSubscription.Account),
+                Certificate = AzureSession.DataStore.GetCertificate(currentSubscription.Account),
                 Endpoint = environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement),
             };
         }

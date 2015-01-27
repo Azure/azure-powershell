@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
@@ -51,9 +51,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             packagePath = service.Paths.CloudPackage;
             configPath = service.Paths.CloudConfiguration;
             settings = ServiceSettingsTestData.Instance.Data[ServiceSettingsState.Default];
-            ProfileClient.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MockDataStore();
             ProfileClient client = new ProfileClient();
-            ProfileClient.DataStore.WriteFile(Test.Utilities.Common.Data.ValidPublishSettings.First(),
+            AzureSession.DataStore.WriteFile(Test.Utilities.Common.Data.ValidPublishSettings.First(),
                 File.ReadAllText(Test.Utilities.Common.Data.ValidPublishSettings.First()));
             client.ImportPublishSettings(Test.Utilities.Common.Data.ValidPublishSettings.First(), null);
             client.Profile.Save();
@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 
         public void TestCleanup()
         {
-            ProfileClient.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MockDataStore();
             if (Directory.Exists(Test.Utilities.Common.Data.AzureSdkAppDir))
             {
                 new RemoveAzurePublishSettingsCommand().RemovePublishSettingsProcess(Test.Utilities.Common.Data.AzureSdkAppDir);

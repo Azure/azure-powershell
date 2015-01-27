@@ -15,10 +15,10 @@
 using System.Collections.Generic;
 using Xunit;
 using System;
-using Microsoft.Azure.Common.Extensions.Factories;
+using Microsoft.Azure.Common.Authorization.Factories;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Common.Extensions.Authentication;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Authentication;
+using Microsoft.Azure.Common.Authorization.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {

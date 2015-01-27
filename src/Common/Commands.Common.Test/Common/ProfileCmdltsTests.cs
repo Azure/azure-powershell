@@ -22,14 +22,14 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions.Authentication;
+using Microsoft.Azure.Common.Authorization.Authentication;
 using Moq;
 using Xunit;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
@@ -46,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public ProfileCmdltsTests() : base()
         {
             dataStore = new MockDataStore();
-            ProfileClient.DataStore = dataStore;
+            AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             SetMockData();
             AzureSession.SetCurrentContext(null, null, null);
@@ -155,13 +155,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         {
             //setup
             string testFileName = @"c:\foobar\TokenCache.dat";
-            ProfileClient.DataStore.WriteFile(testFileName, new byte[] { 0, 1 });
+            AzureSession.DataStore.WriteFile(testFileName, new byte[] { 0, 1 });
             
             //Act
             ProtectedFileTokenCache tokenCache = new ProtectedFileTokenCache(testFileName);
 
             //Assert
-            Assert.False(ProfileClient.DataStore.FileExists(testFileName));
+            Assert.False(AzureSession.DataStore.FileExists(testFileName));
         }
 
         [Fact]
@@ -403,11 +403,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             ImportAzurePublishSettingsCommand cmdlt = new ImportAzurePublishSettingsCommand();
 
             // Setup
-            ProfileClient.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
+            AzureSession.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
                 Properties.Resources.ValidProfileChina);
             ProfileClient client = new ProfileClient();
             var oldDataStore = FileUtilities.DataStore;
-            FileUtilities.DataStore = ProfileClient.DataStore;
+            FileUtilities.DataStore = AzureSession.DataStore;
             var expectedEnv = "AzureChinaCloud";
             var expected = client.ImportPublishSettings("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings", null);
 
@@ -442,11 +442,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             ImportAzurePublishSettingsCommand cmdlt = new ImportAzurePublishSettingsCommand();
 
             // Setup
-            ProfileClient.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
+            AzureSession.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
                 Properties.Resources.ValidProfileChina);
             ProfileClient client = new ProfileClient();
             var oldDataStore = FileUtilities.DataStore;
-            FileUtilities.DataStore = ProfileClient.DataStore;
+            FileUtilities.DataStore = AzureSession.DataStore;
             var expectedEnv = "AzureCloud";
             var expected = client.ImportPublishSettings("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings", expectedEnv);
 

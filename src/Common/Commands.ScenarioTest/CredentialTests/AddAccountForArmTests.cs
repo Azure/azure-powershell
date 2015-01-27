@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Extensions;

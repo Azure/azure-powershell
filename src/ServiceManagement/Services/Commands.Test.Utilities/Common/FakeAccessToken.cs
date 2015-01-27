@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Common.Extensions.Authentication;
+using Microsoft.Azure.Common.Authorization.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {

@@ -17,13 +17,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using Microsoft.WindowsAzure.Management;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -186,7 +186,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                     ResourceManagerEndpoint = environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager),
                     IsDefault = subscription.GetProperty(AzureSubscription.Property.Default) != null,
                     Account = account,
-                    Certificate = isCert ? ProfileClient.DataStore.GetCertificate(subscription.Account) : null,
+                    Certificate = isCert ? AzureSession.DataStore.GetCertificate(subscription.Account) : null,
                     CurrentStorageAccountName = subscription.GetProperty(AzureSubscription.Property.StorageAccount)
                 };
 

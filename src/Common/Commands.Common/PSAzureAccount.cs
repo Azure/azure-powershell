@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Common.Extensions.Models
+namespace Microsoft.Azure.Common.Authorization.Models
 {
     public class PSAzureAccount
     {

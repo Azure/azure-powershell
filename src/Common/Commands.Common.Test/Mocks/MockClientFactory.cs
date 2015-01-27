@@ -22,9 +22,9 @@ using System.Net.Http.Headers;
 using Hyak.Common;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Common;
-using Microsoft.Azure.Common.Extensions.Factories;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization.Factories;
+using Microsoft.Azure.Common.Authorization.Models;
+using Microsoft.Azure.Common.Authorization;
 using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks

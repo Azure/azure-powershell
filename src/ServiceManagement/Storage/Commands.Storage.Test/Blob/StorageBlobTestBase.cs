@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
 {
@@ -60,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
         {
             BlobMock = new MockStorageBlobManagement();
             MockCmdRunTime = new MockCommandRuntime();
-            ProfileClient.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MockDataStore();
         }
 
         [TestCleanup]

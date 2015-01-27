@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Xunit;
     using Microsoft.WindowsAzure.Management;
-    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Common.Authorization;
     using Microsoft.Azure.Test;
 
     public class NSGScenarioTests

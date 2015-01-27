@@ -16,8 +16,8 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.TrafficManager.Utilities;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization;
+using Microsoft.Azure.Common.Authorization.Models;
 
 namespace Microsoft.WindowsAzure.Commands.TrafficManager
 {

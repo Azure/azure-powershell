@@ -18,11 +18,11 @@ using System.Collections.ObjectModel;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Diagnostics;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure;
@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public EnvironmentSetupHelper()
         {
-            ProfileClient.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MockDataStore();
             client = new ProfileClient();
 
             // Ignore SSL errors

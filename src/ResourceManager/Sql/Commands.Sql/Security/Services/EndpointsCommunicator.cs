@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.Sql;

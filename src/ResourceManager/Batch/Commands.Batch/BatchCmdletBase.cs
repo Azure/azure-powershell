@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;

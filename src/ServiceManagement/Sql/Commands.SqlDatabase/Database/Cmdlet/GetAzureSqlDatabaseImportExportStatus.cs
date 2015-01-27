@@ -19,8 +19,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.ImportExport;
 using Microsoft.WindowsAzure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Sql.Models;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization;
+using Microsoft.Azure.Common.Authorization.Models;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {

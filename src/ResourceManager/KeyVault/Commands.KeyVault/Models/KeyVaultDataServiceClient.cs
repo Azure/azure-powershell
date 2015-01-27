@@ -15,8 +15,8 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.WebKey;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure;
 using System;
 using System.Collections.Generic;

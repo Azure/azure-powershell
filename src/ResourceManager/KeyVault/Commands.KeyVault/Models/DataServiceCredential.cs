@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Authentication;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization;
+using Microsoft.Azure.Common.Authorization.Authentication;
+using Microsoft.Azure.Common.Authorization.Models;
 using System;
 using System.Linq;
 

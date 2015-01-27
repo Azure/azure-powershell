@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using Microsoft.Azure.Common.Extensions;
-    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Authorization;
+    using Microsoft.Azure.Common.Authorization.Models;
     using WindowsAzure.Commands.Common;
     using WindowsAzure.Commands.Utilities.Common;
     using WindowsAzure.Commands.Utilities.Profile;

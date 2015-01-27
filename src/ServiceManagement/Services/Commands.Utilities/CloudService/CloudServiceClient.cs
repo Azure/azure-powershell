@@ -22,7 +22,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.Model;
@@ -41,8 +41,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 {
     using ConfigCertificate = Common.XmlSchema.ServiceConfigurationSchema.Certificate;
     using ConfigConfigurationSetting = Common.XmlSchema.ServiceConfigurationSchema.ConfigurationSetting;
-    using Microsoft.Azure.Common.Extensions.Models;
-    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Common.Authorization.Models;
+    using Microsoft.Azure.Common.Authorization;
     using Hyak.Common;
 
     public class CloudServiceClient : ICloudServiceClient

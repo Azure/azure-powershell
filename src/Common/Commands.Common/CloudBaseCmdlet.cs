@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using System;
@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return ChannelHelper.CreateServiceManagementChannel<T>(
                 ServiceBinding,
                 CurrentContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement),
-                ProfileClient.DataStore.GetCertificate(certificateThumbprint),
+                AzureSession.DataStore.GetCertificate(certificateThumbprint),
                 new HttpRestMessageInspector(WriteDebug));
         }
 

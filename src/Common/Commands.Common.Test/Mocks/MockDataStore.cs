@@ -19,7 +19,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Common.Extensions.Interfaces;
+using Microsoft.Azure.Common.Authorization.Interfaces;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {

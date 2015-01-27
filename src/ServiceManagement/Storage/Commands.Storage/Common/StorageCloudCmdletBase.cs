@@ -20,7 +20,7 @@ using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;

@@ -20,7 +20,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {

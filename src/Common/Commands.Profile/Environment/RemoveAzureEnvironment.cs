@@ -14,7 +14,7 @@
 
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 

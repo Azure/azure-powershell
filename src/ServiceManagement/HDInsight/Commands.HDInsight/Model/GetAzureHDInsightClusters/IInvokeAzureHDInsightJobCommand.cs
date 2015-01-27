@@ -15,7 +15,7 @@
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects;
 using Microsoft.WindowsAzure.Management.HDInsight.Logging;
 

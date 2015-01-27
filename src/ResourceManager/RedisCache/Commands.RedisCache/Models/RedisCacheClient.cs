@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using Microsoft.Azure.Common.Extensions;
-    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Authorization;
+    using Microsoft.Azure.Common.Authorization.Models;
     using Microsoft.Azure.Management.Redis;
     using Microsoft.Azure.Management.Redis.Models;
     using Microsoft.WindowsAzure;

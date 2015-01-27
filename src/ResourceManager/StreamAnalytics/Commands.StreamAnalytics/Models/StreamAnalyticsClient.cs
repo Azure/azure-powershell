@@ -15,8 +15,8 @@
 using System.IO;
 using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization.Models;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {

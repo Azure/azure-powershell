@@ -16,14 +16,14 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using Xunit;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         public RemoveAzureEnvironmentTests()
         {
             dataStore = new MockDataStore();
-            ProfileClient.DataStore = dataStore;
+            AzureSession.DataStore = dataStore;
         }
 
         public void Cleanup()
