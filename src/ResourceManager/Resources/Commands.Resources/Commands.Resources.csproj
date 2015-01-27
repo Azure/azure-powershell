@@ -232,13 +232,17 @@
       <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
       <Name>Commands.Profile</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\ServiceManagement\StorSimple\Commands.StorSimple\Commands.StorSimple.csproj">
-      <Project>{11524d98-6c40-4091-a8e1-86463fee607c}</Project>
-      <Name>Commands.StorSimple</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Batch\Commands.Batch\Commands.Batch.csproj">
       <Project>{d470e50a-9607-48d6-a924-4f9f86502704}</Project>
       <Name>Commands.Batch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataFactories\Commands.DataFactories\Commands.DataFactories.csproj">
+      <Project>{9577252e-0a6b-4d61-86e8-95f7f309a987}</Project>
+      <Name>Commands.DataFactories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Insights\Commands.Insights\Commands.Insights.csproj">
+      <Project>{dea446a1-84e2-46cc-b780-eb4afde2460e}</Project>
+      <Name>Commands.Insights</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\KeyVault\Commands.KeyVault\Commands.KeyVault.csproj">
       <Project>{9ffc40cc-a341-4d0c-a25d-dc6b78ef6c94}</Project>
