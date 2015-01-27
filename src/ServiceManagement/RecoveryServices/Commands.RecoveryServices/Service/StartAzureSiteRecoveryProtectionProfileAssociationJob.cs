@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             CreateProtectionProfileInput createProtectionProfileInput =
                 new CreateProtectionProfileInput(
-                    this.ProtectionProfile.Name,
+                    string.IsNullOrEmpty(this.ProtectionProfile.Name) ? this.PrimaryProtectionContainer.Name : this.ProtectionProfile.Name,
                     this.ProtectionProfile.ReplicationProvider,
                     DataContractUtils<HyperVReplicaAzureProtectionProfileInput>.Serialize(hyperVReplicaAzureProtectionProfileInput));
 
@@ -154,8 +154,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     };
 
             CreateProtectionProfileInput createProtectionProfileInput =
-                new CreateProtectionProfileInput(
-                    this.ProtectionProfile.Name,
+                new CreateProtectionProfileInput( // Name of the protection profile as the name of the protection container if not given
+                    string.IsNullOrEmpty(this.ProtectionProfile.Name) ? this.PrimaryProtectionContainer.Name : this.ProtectionProfile.Name,
                     this.ProtectionProfile.ReplicationProvider,
                     DataContractUtils<HyperVReplicaProtectionProfileInput>.Serialize(hyperVReplicaProtectionProfileInput));
 
