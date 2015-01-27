@@ -51,19 +51,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            try
-            {
-                var filePath = ResolvePath(InputFile, Resources.BackupKeyFileNotFound);
+            var filePath = ResolvePath(InputFile, Resources.BackupKeyFileNotFound);
 
-                var restoredKeyBundle = this.DataServiceClient.RestoreKey(VaultName, filePath);
+            var restoredKeyBundle = this.DataServiceClient.RestoreKey(VaultName, filePath);
 
-                this.WriteObject(restoredKeyBundle);
-            }
-            catch (Exception ex)
-            {
-                this.WriteErrorDetails(ex);
-            }
+            this.WriteObject(restoredKeyBundle);
         }
-
     }
 }

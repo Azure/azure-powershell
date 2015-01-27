@@ -89,6 +89,56 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public static void AssemblyInit(TestContext context)
         {
             SetTestSettings();
+
+            vmPowershellCmdlets = new ServiceManagementCmdletTestHelper();
+
+            try
+            {
+                vmPowershellCmdlets.RunPSScript("Get-AzureService | Remove-AzureService -Force");
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                vmPowershellCmdlets.RunPSScript("Get-AzureDisk | Remove-AzureDisk");
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                vmPowershellCmdlets.RunPSScript(@"Get-AzureVMImage | where {$_.Category -eq 'User'} | Remove-AzureVMImage");
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                vmPowershellCmdlets.RunPSScript("Remove-AzureVNetConfig");
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                vmPowershellCmdlets.RunPSScript("Get-AzureAffinityGroup | Remove-AzureAffinityGroup");
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                vmPowershellCmdlets.RunPSScript("Get-AzureReservedIP | Remove-AzureReservedIP -Force");
+            }
+            catch
+            {
+            }
         }
 
         [AssemblyCleanup]
