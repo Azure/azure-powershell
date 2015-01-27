@@ -36,6 +36,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the connection name.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConnectionTypeName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The connection name.")]
+        [ValidateNotNullOrEmpty]
+        public string ConnectionTypeName { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -48,6 +55,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 { 
                    this.AutomationClient.GetConnection(this.AutomationAccountName, this.Name)
                 };
+            }
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByConnectionTypeName)
+            {
+                ret = this.AutomationClient.ListConnectionsByType(this.AutomationAccountName, this.ConnectionTypeName);
             }
             else
             {

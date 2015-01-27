@@ -159,6 +159,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Connection GetConnection(string automationAccountName, string name);
 
+        IEnumerable<Connection> ListConnectionsByType(string automationAccountName, string name);
+
         IEnumerable<Connection> ListConnections(string automationAccountName);
 
         void DeleteConnection(string automationAccountName, string name);

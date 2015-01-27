@@ -1202,6 +1202,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return new Connection(automationAccountName, connectionModel);
         }
 
+        public IEnumerable<Connection> ListConnectionsByType(string automationAccountName, string typeName)
+        {
+            var connections = this.ListConnections(automationAccountName);
+
+            return connections.Where(c => c.ConnectionTypeName.Equals(typeName, StringComparison.InvariantCultureIgnoreCase));
+        }
+
         public IEnumerable<Connection> ListConnections(string automationAccountName)
         {
             return AutomationManagementClient

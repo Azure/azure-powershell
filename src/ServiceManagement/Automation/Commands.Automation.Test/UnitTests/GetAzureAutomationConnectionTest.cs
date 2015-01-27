@@ -80,5 +80,24 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             // Assert
             this.mockAutomationClient.Verify(f => f.ListConnections(accountName), Times.Once());
         }
+
+        [TestMethod]
+        public void GetAzureAutomationConnectionByTypeSuccessfull()
+        {
+            // Setup
+            string accountName = "automation";
+            string connectionTypeName = "connectionType";
+
+            this.mockAutomationClient.Setup(f => f.ListConnectionsByType(accountName, connectionTypeName)).Returns((string a, string b) => new List<Connection>());
+
+            // Test
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.ConnectionTypeName = connectionTypeName;
+            this.cmdlet.SetParameterSet("ByConnectionTypeName");
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient.Verify(f => f.ListConnectionsByType(accountName, connectionTypeName), Times.Once());
+        }
     }
 }
