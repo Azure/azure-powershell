@@ -12,54 +12,63 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using System.Management.Automation;
+using System.Security;
+using System;
 
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class RemoveAzureAutomationCertificateTest : TestBase
+    public class NewAzureAutomationConnectionTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private RemoveAzureAutomationCertificate cmdlet;
+        private NewAzureAutomationConnection cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new RemoveAzureAutomationCertificate
-            {
-                AutomationClient = this.mockAutomationClient.Object,
-                CommandRuntime = this.mockCommandRuntime
-            };
+            this.cmdlet = new NewAzureAutomationConnection
+                              {
+                                  AutomationClient = this.mockAutomationClient.Object,
+                                  CommandRuntime = this.mockCommandRuntime
+                              };
         }
 
         [TestMethod]
-        public void RemoveAzureAutomationCertificateByNameSuccessfull()
+        public void NewAzureAutomationConnectionByNameSuccessfull()
         {
             // Setup
             string accountName = "automation";
-            string certificateName = "cert";
+            string connectionName = "connection";
+            string connectionTypeName = "connectiontype";
+            string password = "password";
+            string description = "desc";
 
-            this.mockAutomationClient.Setup(f => f.DeleteCertificate(accountName, certificateName));
+            this.mockAutomationClient.Setup(
+                f => f.CreateConnection(accountName, connectionName, connectionTypeName, null, description));
 
-            // Test
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = certificateName;
-            this.cmdlet.Force = true;
+            this.cmdlet.Name = connectionName;
+            this.cmdlet.Description = description;
+            this.cmdlet.ConnectionTypeName = connectionTypeName;
+            this.cmdlet.ConnectionFieldValues = null;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.DeleteCertificate(accountName, certificateName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.CreateConnection(accountName, connectionName, connectionTypeName, null, description), Times.Once());
         }
     }
 }

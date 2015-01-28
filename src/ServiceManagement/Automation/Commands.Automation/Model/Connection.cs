@@ -12,45 +12,46 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Properties;
 using System;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    public class Certificate
+    public class Connection
     {
          /// <summary>
-        /// Initializes a new instance of the <see cref="Certificate"/> class.
+        /// Initializes a new instance of the <see cref="Connection"/> class.
         /// </summary>
         /// <param name="accountAcccountName">
         /// The account name.
         /// </param>
-        /// <param name="certificate">
+        /// <param name="connection">
         /// The connection.
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public Certificate(string accountAcccountName, Azure.Management.Automation.Models.Certificate certificate)
+        public Connection(string accountAcccountName, Azure.Management.Automation.Models.Connection connection)
         {
-            Requires.Argument("certificate", certificate).NotNull();
+            Requires.Argument("connection", connection).NotNull();
             this.AutomationAccountName = accountAcccountName;
-            this.Name = certificate.Name;
+            this.Name = connection.Name;
 
-            if (certificate.Properties == null) return;
+            if (connection.Properties == null) return;
 
-            this.Description = certificate.Properties.Description;
-            this.CreationTime = certificate.Properties.CreationTime.ToLocalTime();
-            this.LastModifiedTime = certificate.Properties.LastModifiedTime.ToLocalTime();
-            this.ExpiryTime = certificate.Properties.ExpiryTime.ToLocalTime();
-            this.Thumbprint = certificate.Properties.Thumbprint;
-            this.Exportable = certificate.Properties.IsExportable;
+            this.Description = connection.Properties.Description;
+            this.CreationTime = connection.Properties.CreationTime.ToLocalTime();
+            this.LastModifiedTime = connection.Properties.LastModifiedTime.ToLocalTime();
+            this.ConnectionTypeName = connection.Properties.ConnectionType.Name;
+            this.FieldDefinitionValues = connection.Properties.FieldDefinitionValues;
         }
 
          /// <summary>
-        /// Initializes a new instance of the <see cref="Certificate"/> class.
+        /// Initializes a new instance of the <see cref="Connection"/> class.
         /// </summary>
-        public Certificate()
+        public Connection()
         {
         }
 
@@ -61,16 +62,14 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
         public string Name { get; set; }
 
-        public string Thumbprint { get; set; }
-
         public string Description { get; set; }
-
-        public bool Exportable { get; set; }
 
         public DateTimeOffset CreationTime { get; set; }
 
         public DateTimeOffset LastModifiedTime { get; set; }
 
-        public DateTimeOffset ExpiryTime { get; set; }
+        public string ConnectionTypeName { get; set; }
+
+        public IDictionary<string, string> FieldDefinitionValues { get; set; }
     }
 }

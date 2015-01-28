@@ -246,4 +246,16 @@
     <value>Resource does not exists.</value>
     <comment>Automation</comment>
   </data>
+  <data name="ConnectionAlreadyExists" xml:space="preserve">
+    <value>The Connection already exists. Connection name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConnectionFieldNameNotFound" xml:space="preserve">
+    <value>The connection field name was not found for connection name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConnectionNotFound" xml:space="preserve">
+    <value>The connection was not found. Connection name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
 </root>
