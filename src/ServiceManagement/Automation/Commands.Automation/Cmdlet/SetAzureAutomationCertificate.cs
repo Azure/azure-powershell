@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// Create a new Certificate for automation.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureAutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
-    [OutputType(typeof(Certificate))]
+    [OutputType(typeof(CertificateInfo))]
     public class SetAzureAutomationCertificate : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the certificate exportable Property.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The exportable property of the variable.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The exportable property of the certificate.")]
         public bool? Exportable { get; set; }
 
         /// <summary>

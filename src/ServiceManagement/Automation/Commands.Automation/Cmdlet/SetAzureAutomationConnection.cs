@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationExecuteCmdlet()
         {
 
-            var updateddConnection = this.AutomationClient.UpdateConnectionFieldValue(this.AutomationAccountName, this.Name, this.ConnectionFieldName, this.Value);
+            var updatedConnection = this.AutomationClient.UpdateConnectionFieldValue(this.AutomationAccountName, this.Name, this.ConnectionFieldName, this.Value);
 
-            this.WriteObject(updateddConnection);
+            this.WriteObject(updatedConnection);
         }
     }
 }

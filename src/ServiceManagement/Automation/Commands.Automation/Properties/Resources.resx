@@ -258,4 +258,8 @@
     <value>The connection was not found. Connection name: {0}.</value>
     <comment>Automation</comment>
   </data>
+  <data name="SetCertificateInvalidArgs" xml:space="preserve">
+    <value>Password and Exportable parameters cannot be updated for an existing certificate. They can only be specified when overwriting this certificate with a new one, via the Path parameter</value>
+    <comment>Automation</comment>
+  </data>
 </root>
