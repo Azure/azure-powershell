@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -172,7 +173,7 @@ namespace Microsoft.Azure.Commands.DataFactories
         
         public virtual HttpStatusCode DeleteDataFactory(string resourceGroupName, string dataFactoryName)
         {
-            OperationResponse response = DataPipelineManagementClient.DataFactories.Delete(resourceGroupName,
+            AzureOperationResponse response = DataPipelineManagementClient.DataFactories.Delete(resourceGroupName,
                 dataFactoryName);
             return response.StatusCode;
         }

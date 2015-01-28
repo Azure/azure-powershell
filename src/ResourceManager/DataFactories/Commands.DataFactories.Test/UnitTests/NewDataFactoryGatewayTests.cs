@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Gateway
 {

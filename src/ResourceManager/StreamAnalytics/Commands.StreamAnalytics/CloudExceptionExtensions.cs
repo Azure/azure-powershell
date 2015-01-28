@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.WindowsAzure;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
@@ -29,8 +30,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                     CultureInfo.InvariantCulture,
                     Resources.FormattedCloudExceptionMessageTemplate,
                     cloudException.Response.StatusCode,
-                    cloudException.ErrorCode,
-                    cloudException.ErrorMessage,
+                    cloudException.Error.Code,
+                    cloudException.Error.Message,
                     cloudException.GetRequestId(),
                     DateTime.UtcNow));
         }
