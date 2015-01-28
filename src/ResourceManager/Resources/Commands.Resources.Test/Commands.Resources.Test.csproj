@@ -64,9 +64,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.6.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.6.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.16.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
@@ -215,6 +212,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Build2014_Website_App.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
