@@ -129,6 +129,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
+    [DataContract]
+    public class ErrorInException : Error
+    {
+    }
+
+    /// <summary>
+    /// Error contract returned when some exception occurs in ASR REST API.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
     public class Error
     {

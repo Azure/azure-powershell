@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                             stream.Write(data, 0, data.Length);
                             stream.Position = 0;
 
-                            var deserializer = new DataContractSerializer(typeof(Error));
+                            var deserializer = new DataContractSerializer(typeof(ErrorInException));
                             error = (Error)deserializer.ReadObject(stream);
 
                             throw new InvalidOperationException(
