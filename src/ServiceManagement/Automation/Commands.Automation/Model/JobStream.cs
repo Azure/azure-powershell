@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         {
             Requires.Argument("jobStream", jobStream).NotNull();
 
-            this.StreamId = jobStream.Properties.StreamId;
+            this.JobStreamId = jobStream.Properties.JobStreamId;
             this.Type = jobStream.Properties.StreamType;
             this.Text = jobStream.Properties.Summary;
             this.Time = jobStream.Properties.Time;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the stream id
         /// </summary>
-        public string StreamId { get; set; }
+        public string JobStreamId { get; set; }
 
         /// <summary>
         /// Gets or sets the stream time.

@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BackupPolicyGet_StatusMessage" xml:space="preserve">
+    <value>{0} backup polic{1} found!</value>
+  </data>
+  <data name="BackupPolicyFound" xml:space="preserve">
+    <value>BackupPolicy with id {0} found!</value>
+  </data>
+  <data name="NoBackupPolicyWithGivenNameFound" xml:space="preserve">
+    <value>No backuppolicy with name : {0} found in your device: {1} !</value>
+  </data>
+  <data name="FailureMessageSubmitJob" xml:space="preserve">
+    <value>The {0} task failed to submit. </value>
+  </data>
+  <data name="NotAllowedErrorDataContainerEncryption" xml:space="preserve">
+    <value>Please provide the EncryptionKey.</value>
+  </data>
+  <data name="NotFoundMessageACR" xml:space="preserve">
+    <value>No Access Control Record with given name {0} is found!</value>
+  </data>
+  <data name="NotFoundMessageDevice" xml:space="preserve">
+    <value>The specified device does not exist.</value>
+  </data>
+  <data name="NotFoundMessageResource" xml:space="preserve">
+    <value>The specified resource does not exist.</value>
+  </data>
+  <data name="NotFoundMessageStorageAccountCredential" xml:space="preserve">
+    <value>Storage account with the specified name does not exist.</value>
+  </data>
+  <data name="RemoveASSDBackupMessage" xml:space="preserve">
+    <value>Removing backup with backupId {0}...</value>
+  </data>
+  <data name="RemoveASSDBackupPolicyMessage" xml:space="preserve">
+    <value>Removing backuppolicy with backuppolicyId {0}...</value>
+  </data>
+  <data name="RemoveASSDBackupPolicyWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to remove the backuppolicy with backuppolicyId{0}?</value>
+  </data>
+  <data name="RemoveASSDBackupWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to remove the backup with backupId{0}?</value>
+  </data>
+  <data name="NotFoundMessageVirtualDisk" xml:space="preserve">
+    <value>The specified volume does not exist.</value>
+  </data>
+  <data name="RemoveConfirmationACR" xml:space="preserve">
+    <value>Removing access control record...</value>
+  </data>
+  <data name="RemoveConfirmationDataContainer" xml:space="preserve">
+    <value>Removing volume container...</value>
+  </data>
+  <data name="RemoveConfirmationSAC" xml:space="preserve">
+    <value>Removing storage account...</value>
+  </data>
+  <data name="RemoveConfirmationVolume" xml:space="preserve">
+    <value>Removing volume...</value>
+  </data>
+  <data name="RemoveWarningACR" xml:space="preserve">
+    <value>Are you sure you want to remove the access control record?</value>
+  </data>
+  <data name="RemoveWarningDataContainer" xml:space="preserve">
+    <value>Are you sure you want to remove the volume container?</value>
+  </data>
+  <data name="RemoveWarningSAC" xml:space="preserve">
+    <value>Are you sure you want to remove the storage account?</value>
+  </data>
+  <data name="RemoveWarningVolume" xml:space="preserve">
+    <value>Are you sure you want to remove the volume?</value>
+  </data>
+  <data name="StartASSDBackupRestoreJobMessage" xml:space="preserve">
+    <value>Restoring backup with backupId {0}...</value>
+  </data>
+  <data name="StartASSDBackupRestoreJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to restore the backup with backupId{0}?</value>
+  </data>
+  <data name="SuccessMessageSetResourceContext" xml:space="preserve">
+    <value>Context set successfully for the given resource name.</value>
+  </data>
+  <data name="SuccessMessageSubmitJob" xml:space="preserve">
+    <value>The {0} task is submitted successfully. Please use the command Get-AzureStorSimpleTask -InstanceId {1} for tracking the task's status</value>
+  </data>
+  <data name="InvalidBackupIdParameter" xml:space="preserve">
+    <value>Specify valid string for BackupId parameter</value>
+  </data>
+  <data name="InvalidBackupObjectParameter" xml:space="preserve">
+    <value>Specify valid Backup object for Backup parameter </value>
+  </data>
+  <data name="InvalidBackupPolicyIdParameter" xml:space="preserve">
+    <value>Specify valid Guid for BackupPolicyId parameter</value>
+  </data>
+  <data name="InvalidBackupPolicyObjectParameter" xml:space="preserve">
+    <value>Specify valid BackupPolicy object for BackupPolicy Parameter</value>
+  </data>
+  <data name="BackupNextPageFormatMessage" xml:space="preserve">
+    <value>More backups are available for your query. To access the next page of your result use \"-First {0} -Skip {1}\" in your commandlet</value>
+  </data>
+  <data name="BackupNextPagewithNoFirstMessage" xml:space="preserve">
+    <value>More backups are available in the subsequent pages for your query. To access the next page use \"-Skip {0}\"  in your commandlet</value>
+  </data>
+  <data name="BackupNoMorePagesMessage" xml:space="preserve">
+    <value>No more backup sets are present for your query!</value>
+  </data>
+  <data name="FirstParameterInvalidMessage" xml:space="preserve">
+    <value>Parameter First cannot be &lt;0</value>
+  </data>
+  <data name="InvalidBackupSchedulesToAddParameter" xml:space="preserve">
+    <value>Atleast one BackupSchedule should be present in BackupSchedulesToAdd parameter</value>
+  </data>
+  <data name="InvalidFromMessage" xml:space="preserve">
+    <value>Provide valid datetime string for From parameter!</value>
+  </data>
+  <data name="InvalidToMessage" xml:space="preserve">
+    <value>Provide valid datetime string for To parameter!</value>
+  </data>
+  <data name="InvalidVolumeIdsToAddParameter" xml:space="preserve">
+    <value>Atleast one VolumeId should be present in VolumeIdsToAdd parameter</value>
+  </data>
+  <data name="SkipParameterInvalidMessage" xml:space="preserve">
+    <value>Parameter Skip cannot be &lt;0</value>
+  </data>
+  <data name="StartFromDateForBackupNotValid" xml:space="preserve">
+    <value>Provide valid dateTime for StartFrom parameter</value>
+  </data>
+  <data name="CloudExceptionMessage" xml:space="preserve">
+    <value>Call to service failed with error code: {0}</value>
+  </data>
+  <data name="FailureMessageCompleteJob" xml:space="preserve">
+    <value>The {0} operation failed, please check the task's status for more details.</value>
+  </data>
+  <data name="SuccessMessageCompleteJob" xml:space="preserve">
+    <value>The task created for your {0} operation has completed successfully.</value>
+  </data>
+  <data name="BackupsReturnedCount" xml:space="preserve">
+    <value>{0} backups found!</value>
+  </data>
+  <data name="FoundDataContainerMessage" xml:space="preserve">
+    <value>Volume container with name: {0} is found.</value>
+  </data>
+  <data name="FoundVolumeMessage" xml:space="preserve">
+    <value>Volume with name: {0} is found.</value>
+  </data>
+  <data name="NotFoundDataContainerMessage" xml:space="preserve">
+    <value>Volume container with name: {0} is not found.</value>
+  </data>
+  <data name="NotFoundVolumeMessage" xml:space="preserve">
+    <value>Volume with name: {0} is not found.</value>
+  </data>
+  <data name="ReturnedCountDataContainerMessage" xml:space="preserve">
+    <value>{0} volume container{1} found!</value>
+  </data>
+  <data name="ReturnedCountVolumeMessage" xml:space="preserve">
+    <value>{0} volume{1} found for your volume container!</value>
+  </data>
+  <data name="ClientRequestIdMessage" xml:space="preserve">
+    <value>ClientRequestId: {0}</value>
+  </data>
+  <data name="DeviceWithNameNotFoundInResourceMessage" xml:space="preserve">
+    <value>Device with device name {0} not found under resource {1}</value>
+  </data>
+  <data name="DeviceGet_StatusMessage" xml:space="preserve">
+    <value>{0} StorSimple device{1} found!</value>
+  </data>
+  <data name="IncorrectFormatInRegistrationKey" xml:space="preserve">
+    <value>The Registration key specified appears to be in an incorrect format. Please verify that the exact key is copied from the portal!</value>
+  </data>
+  <data name="IscsiConnectionGet_StatusMessage" xml:space="preserve">
+    <value>{0} Iscsi Connection{1} found!</value>
+  </data>
+  <data name="NoDeviceFoundInResourceMessage" xml:space="preserve">
+    <value>No device found in your currently selected resource : {0}!</value>
+  </data>
+  <data name="NoDeviceFoundWithGivenIdInResourceMessage" xml:space="preserve">
+    <value>No device found in your currently selected resource : {0} with id : {1}!</value>
+  </data>
+  <data name="NoDeviceFoundWithGivenModelInResourceMessage" xml:space="preserve">
+    <value>No device found in your currently selected resource : {0} with ModelDescription : {1}!</value>
+  </data>
+  <data name="NoDeviceFoundWithGivenNameInResourceMessage" xml:space="preserve">
+    <value>No device found in your currently selected resource : {0} with name : {1}!</value>
+  </data>
+  <data name="NoDeviceFoundWithGivenTypeInResourceMessage" xml:space="preserve">
+    <value>No device found in your currently selected resource : {0} with Type : {1}!</value>
+  </data>
+  <data name="NoResourceFoundInSubscriptionMessage" xml:space="preserve">
+    <value>No resource found in your subscription!</value>
+  </data>
+  <data name="NoResourceFoundWithGivenNameInSubscriptionMessage" xml:space="preserve">
+    <value>No resource found in your subscription with name : {0}!</value>
+  </data>
+  <data name="NotProvidedWarningRegistrationKey" xml:space="preserve">
+    <value>Registration key parameter is not passed. Validating whether a registration key is already persisted for this resource!</value>
+  </data>
+  <data name="ProvidedRegistrationKey" xml:space="preserve">
+    <value>Registration key is provided. Persisting for later use!</value>
+  </data>
+  <data name="ResourceContextFound" xml:space="preserve">
+    <value>You have a resource selected. Resource Name: {0} Id: {1}</value>
+  </data>
+  <data name="ResourceGet_StatusMessage" xml:space="preserve">
+    <value>{0} StorSimple resource{1} found!</value>
+  </data>
+  <data name="SuccessfulResourceSelection" xml:space="preserve">
+    <value>Your resource has seen selected successfully. To change to another resource please use Select-AzureStorSimpleResource commandlet!</value>
+  </data>
+  <data name="EncryptionInProgressMessage" xml:space="preserve">
+    <value>Encryption in progress...</value>
+  </data>
+  <data name="WebExceptionMessage" xml:space="preserve">
+    <value>Web exception encountered with StatusCode: {0}</value>
+  </data>
+  <data name="ValidationSuccessfulRegistrationKey" xml:space="preserve">
+    <value>The registration key has been validated successfully! </value>
+  </data>
+  <data name="InvalidInputMessage" xml:space="preserve">
+    <value>Invalid input : {0}</value>
+  </data>
+  <data name="StorageCredentialVerificationFailureMessage" xml:space="preserve">
+    <value>Storage credential verification failed.</value>
+  </data>
+  <data name="StorageCredentialVerificationSuccessMessage" xml:space="preserve">
+    <value>Storage credential verification succeeded.</value>
+  </data>
+  <data name="StorageAccountFoundMessage" xml:space="preserve">
+    <value>Found storage account with name : {0}</value>
+  </data>
+  <data name="StorageAccountNotFoundMessage" xml:space="preserve">
+    <value>Could not find storage account with name: {0}</value>
+  </data>
+  <data name="RegistrationKeyNotPassedMessage" xml:space="preserve">
+    <value>Registrtion key not passed - validating that the secrets are already initialized</value>
+  </data>
+  <data name="RegistrationKeyPassedMessage" xml:space="preserve">
+    <value>Registration key passed - initializing secrets</value>
+  </data>
+  <data name="ResourceContextInitializeMessage" xml:space="preserve">
+    <value>Initializing resource context</value>
+  </data>
+  <data name="SecretsValidationCompleteMessage" xml:space="preserve">
+    <value>Secrets validation complete</value>
+  </data>
+  <data name="StorageAccountCleanupRetryMessage" xml:space="preserve">
+    <value>Cleaning up objects, retry count: {0}</value>
+  </data>
+  <data name="InlineSacCreationMessage" xml:space="preserve">
+    <value>Creating StorageAccountCredential inline</value>
+  </data>
+  <data name="ACRGet_StatusMessage" xml:space="preserve">
+    <value>{0} Access Control Record{1} found!</value>
+  </data>
+  <data name="FoundMessageACR" xml:space="preserve">
+    <value>Access Control Record with given name {0} is found!</value>
+  </data>
+  <data name="SACFoundWithName" xml:space="preserve">
+    <value>Storage Access Credential with name {0} found!</value>
+  </data>
+  <data name="SACGet_StatusMessage" xml:space="preserve">
+    <value>{0} Storage Access Credential{1} found!</value>
+  </data>
+  <data name="SACNotFoundWithName" xml:space="preserve">
+    <value>Storage Access Credential with name {0} not found!</value>
+  </data>
+  <data name="BackupTypeInvalid" xml:space="preserve">
+    <value>BackupType cannot be Invalid</value>
+  </data>
+  <data name="RecurrenceTypeInvalid" xml:space="preserve">
+    <value>RecurrenceType cannot be Invalid</value>
+  </data>
+  <data name="RecurrenceValueLessThanZero" xml:space="preserve">
+    <value>RecurrenceValue should be &gt;=0</value>
+  </data>
+  <data name="RetentionCountRangeInvalid" xml:space="preserve">
+    <value>RetentionCount value should be 1 - 64</value>
+  </data>
+  <data name="BackupPolicyNameHasDisallowedChars" xml:space="preserve">
+    <value>BackupPolicyName should not have characters "[]=';"</value>
+  </data>
+  <data name="ResourceIdMissing" xml:space="preserve">
+    <value>ResourceId must be specified</value>
+  </data>
+  <data name="CIKFetchFailed" xml:space="preserve">
+    <value>Could not retrieve secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
+  </data>
+  <data name="CIKInvalid" xml:space="preserve">
+    <value>Invalid value for Registration Key. CIK could not be retrieved from Registration Key. Please provide the value as such from the portal!</value>
+  </data>
+  <data name="CIKNotPersisted" xml:space="preserve">
+    <value>Could not find the persisted secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
+  </data>
+  <data name="PersistedCIKCorrupted" xml:space="preserve">
+    <value>Secret was persisted earlier, but seems to have been corrupted. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
+  </data>
+  <data name="PersistedCIKIsNull" xml:space="preserve">
+    <value>Retrieved secret successfully, but was NULL.</value>
+  </data>
+  <data name="PersistedCIKValidationFailed" xml:space="preserve">
+    <value>Failed to validate persisted secret.</value>
+  </data>
+  <data name="PersistSecretFailed" xml:space="preserve">
+    <value>Could not persist secret</value>
+  </data>
+  <data name="DeviceNotConfiguredMessage" xml:space="preserve">
+    <value>The device name you have specified is not yet configured fully. Please complete the configuration and retry.</value>
+  </data>
+  <data name="DeviceNotRegisteredMessage" xml:space="preserve">
+    <value>No StorSimple device is currently registered with this resource. Please register at least one device to the resource and rerun this command.</value>
+  </data>
+  <data name="ResourceContextNotSetMessage" xml:space="preserve">
+    <value>Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context.</value>
+  </data>
+</root>

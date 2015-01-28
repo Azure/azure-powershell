@@ -106,6 +106,33 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Connection already exists. Connection name: {0}..
+        /// </summary>
+        internal static string ConnectionAlreadyExists {
+            get {
+                return ResourceManager.GetString("ConnectionAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The connection field name was not found for connection name: {0}..
+        /// </summary>
+        internal static string ConnectionFieldNameNotFound {
+            get {
+                return ResourceManager.GetString("ConnectionFieldNameNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The connection was not found. Connection name: {0}..
+        /// </summary>
+        internal static string ConnectionNotFound {
+            get {
+                return ResourceManager.GetString("ConnectionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The credential was not found. Credential name: {0}..
         /// </summary>
         internal static string CredentialNotFound {
@@ -259,6 +286,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resource does not exists..
+        /// </summary>
+        internal static string ResourceNotFound {
+            get {
+                return ResourceManager.GetString("ResourceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Runbook already exists. Runbook name: {0}..
         /// </summary>
         internal static string RunbookAlreadyExists {
@@ -327,6 +363,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string ScheduleNotFound {
             get {
                 return ResourceManager.GetString("ScheduleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password and Exportable parameters cannot be updated for an existing certificate. They can only be specified when overwriting this certificate with a new one, via the Path parameter.
+        /// </summary>
+        internal static string SetCertificateInvalidArgs {
+            get {
+                return ResourceManager.GetString("SetCertificateInvalidArgs", resourceCulture);
             }
         }
         

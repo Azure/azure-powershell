@@ -48,18 +48,18 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         {
             // Setup
             string accountName = "automation";
-            string certifiateName = "cert";
+            string certificateName = "cert";
 
-            this.mockAutomationClient.Setup(f => f.DeleteCertificate(accountName, certifiateName));
+            this.mockAutomationClient.Setup(f => f.DeleteCertificate(accountName, certificateName));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = certifiateName;
+            this.cmdlet.Name = certificateName;
             this.cmdlet.Force = true;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.DeleteCertificate(accountName, certifiateName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.DeleteCertificate(accountName, certificateName), Times.Once());
         }
     }
 }
