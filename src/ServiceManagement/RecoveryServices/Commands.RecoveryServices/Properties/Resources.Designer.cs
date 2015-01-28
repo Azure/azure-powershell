@@ -110,6 +110,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replication Provider {0} entered invalid for the current set of parameters..
+        /// </summary>
+        internal static string IncorrectReplicationProvider {
+            get {
+                return ResourceManager.GetString("IncorrectReplicationProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation failed.
         ///{0}.
         /// </summary>
