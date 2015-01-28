@@ -100,6 +100,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.0.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.4.0.1\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.0.0\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
     </Reference>
@@ -185,6 +189,10 @@
     <ProjectReference Include="..\..\DataFactories\Commands.DataFactories\Commands.DataFactories.csproj">
       <Project>{9577252e-0a6b-4d61-86e8-95f7f309a987}</Project>
       <Name>Commands.DataFactories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Insights\Commands.Insights\Commands.Insights.csproj">
+      <Project>{dea446a1-84e2-46cc-b780-eb4afde2460e}</Project>
+      <Name>Commands.Insights</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.Resources\Commands.Resources.csproj">
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
