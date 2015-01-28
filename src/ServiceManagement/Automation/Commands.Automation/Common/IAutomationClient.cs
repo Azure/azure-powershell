@@ -139,13 +139,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Certificates
 
-        Certificate CreateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool exportable);
+        CertificateInfo CreateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool exportable);
 
-        Certificate UpdateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool? exportable);
+        CertificateInfo UpdateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool? exportable);
 
-        Certificate GetCertificate(string automationAccountName, string name);
+        CertificateInfo GetCertificate(string automationAccountName, string name);
 
-        IEnumerable<Certificate> ListCertificates(string automationAccountName);
+        IEnumerable<CertificateInfo> ListCertificates(string automationAccountName);
 
         void DeleteCertificate(string automationAccountName, string name);
 

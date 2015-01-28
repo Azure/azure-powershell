@@ -35,7 +35,7 @@ using JobStream = Microsoft.Azure.Commands.Automation.Model.JobStream;
 using Credential = Microsoft.Azure.Commands.Automation.Model.CredentialInfo;
 using Module = Microsoft.Azure.Commands.Automation.Model.Module;
 using JobSchedule = Microsoft.Azure.Commands.Automation.Model.JobSchedule;
-using Certificate = Microsoft.Azure.Commands.Automation.Model.Certificate;
+using Certificate = Microsoft.Azure.Commands.Automation.Model.CertificateInfo;
 using Connection = Microsoft.Azure.Commands.Automation.Model.Connection;
 
 namespace Microsoft.Azure.Commands.Automation.Common
@@ -1048,27 +1048,33 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Certificate Operations
 
-        public Certificate CreateCertificate(string automationAccountName, string name, string path, SecureString password,
+        public CertificateInfo CreateCertificate(string automationAccountName, string name, string path, SecureString password,
             string description, bool exportable)
         {
             var certificateModel = this.TryGetCertificateModel(automationAccountName, name);
             if (certificateModel != null)
             {
-                throw new ResourceCommonException(typeof(Certificate),
+                throw new ResourceCommonException(typeof(CertificateInfo),
                     string.Format(CultureInfo.CurrentCulture, Resources.CertificateAlreadyExists, name));
             }
 
             return CreateCertificateInternal(automationAccountName, name, path, password, description, exportable);
         }
 
-        
-        public Certificate UpdateCertificate(string automationAccountName, string name, string path, SecureString password,
+
+        public CertificateInfo UpdateCertificate(string automationAccountName, string name, string path, SecureString password,
             string description, bool? exportable)
         {
+            if (String.IsNullOrWhiteSpace(path) && password != null && exportable.HasValue)
+            {
+                throw new ResourceCommonException(typeof(CertificateInfo),
+                    string.Format(CultureInfo.CurrentCulture, Resources.SetCertificateInvalidArgs, name));
+            }
+
             var certificateModel = this.TryGetCertificateModel(automationAccountName, name);
             if (certificateModel == null)
             {
-                throw new ResourceCommonException(typeof(Certificate),
+                throw new ResourceCommonException(typeof(CertificateInfo),
                     string.Format(CultureInfo.CurrentCulture, Resources.CertificateNotFound, name));
             }
             
@@ -1093,22 +1099,22 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             this.automationManagementClient.Certificates.Update(automationAccountName, cuparam);
 
-            return new Certificate(automationAccountName, this.automationManagementClient.Certificates.Get(automationAccountName, name).Certificate);
+            return new CertificateInfo(automationAccountName, this.automationManagementClient.Certificates.Get(automationAccountName, name).Certificate);
         }
 
-        public Certificate GetCertificate(string automationAccountName, string name)
+        public CertificateInfo GetCertificate(string automationAccountName, string name)
         {
             var certificateModel = this.TryGetCertificateModel(automationAccountName, name);
             if (certificateModel == null)
             {
-                throw new ResourceCommonException(typeof(Certificate),
+                throw new ResourceCommonException(typeof(CertificateInfo),
                     string.Format(CultureInfo.CurrentCulture, Resources.CertificateNotFound, name));
             }
 
             return new Certificate(automationAccountName, certificateModel);
         }
 
-        public IEnumerable<Certificate> ListCertificates(string automationAccountName)
+        public IEnumerable<CertificateInfo> ListCertificates(string automationAccountName)
         {
             return AutomationManagementClient
                .ContinuationTokenHandler(
@@ -1118,7 +1124,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                            automationAccountName);
                        return new ResponseWithSkipToken<AutomationManagement.Models.Certificate>(
                            response, response.Certificates);
-                   }).Select(c => new Certificate(automationAccountName, c));
+                   }).Select(c => new CertificateInfo(automationAccountName, c));
         }
 
         public void DeleteCertificate(string automationAccountName, string name)

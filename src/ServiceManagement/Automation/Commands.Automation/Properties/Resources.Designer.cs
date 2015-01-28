@@ -358,6 +358,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password and Exportable parameters cannot be updated for an existing certificate. They can only be specified when overwriting this certificate with a new one, via the Path parameter.
+        /// </summary>
+        internal static string SetCertificateInvalidArgs {
+            get {
+                return ResourceManager.GetString("SetCertificateInvalidArgs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The variable already exists. Variable name {0}..
         /// </summary>
         internal static string VariableAlreadyExists {

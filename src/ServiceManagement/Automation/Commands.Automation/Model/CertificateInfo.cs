@@ -18,10 +18,10 @@ using System;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    public class Certificate
+    public class CertificateInfo
     {
          /// <summary>
-        /// Initializes a new instance of the <see cref="Certificate"/> class.
+        /// Initializes a new instance of the <see cref="CertificateInfo"/> class.
         /// </summary>
         /// <param name="accountAcccountName">
         /// The account name.
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public Certificate(string accountAcccountName, Azure.Management.Automation.Models.Certificate certificate)
+        public CertificateInfo(string accountAcccountName, Azure.Management.Automation.Models.Certificate certificate)
         {
             Requires.Argument("certificate", certificate).NotNull();
             this.AutomationAccountName = accountAcccountName;
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         }
 
          /// <summary>
-        /// Initializes a new instance of the <see cref="Certificate"/> class.
+        /// Initializes a new instance of the <see cref="CertificateInfo"/> class.
         /// </summary>
-        public Certificate()
+        public CertificateInfo()
         {
         }
 

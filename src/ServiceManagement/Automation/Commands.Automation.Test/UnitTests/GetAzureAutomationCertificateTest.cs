@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             // Setup
             string accountName = "automation";
 
-            this.mockAutomationClient.Setup(f => f.ListCertificates(accountName)).Returns((string a) => new List<Certificate>());
+            this.mockAutomationClient.Setup(f => f.ListCertificates(accountName)).Returns((string a) => new List<CertificateInfo>());
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
