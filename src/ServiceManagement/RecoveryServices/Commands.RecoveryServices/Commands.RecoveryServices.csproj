@@ -165,6 +165,7 @@
     <Compile Include="Service\SetAzureSiteRecoveryProtectionEntity.cs" />
     <Compile Include="Service\StartAzureSiteRecoveryCommitFailoverJob.cs" />
     <Compile Include="Service\StartAzureSiteRecoveryPlannedFailoverJob.cs" />
+    <Compile Include="Service\StartAzureSiteRecoveryProtectionProfileDissociationJob.cs" />
     <Compile Include="Service\StartAzureSiteRecoveryTestFailoverJob.cs" />
     <Compile Include="Service\StartAzureSiteRecoveryUnPlannedFailoverJob.cs" />
     <Compile Include="Service\StopAzureSiteRecoveryJob.cs" />
