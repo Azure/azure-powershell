@@ -35,6 +35,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         #region Parameters
 
         /// <summary>
+        /// Gets or sets Protection Profile object.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRProtectionProfile ProtectionProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets Protection Container to be applied the Protection Profile settings on.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
@@ -45,17 +53,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Protection Container to be applied the Protection Profile settings on.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionContainer RecoveryProtectionContainer { get; set; }
-
-        /// <summary>
-        /// Gets or sets Protection Profile object.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public ASRProtectionProfile ProtectionProfile { get; set; }
 
         #endregion Parameters
 
@@ -69,10 +69,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.EnterpriseToAzure:
-                        this.EnterpriseToEnterpriseAssociation();
+                        this.EnterpriseToAzureAssociation();
                         break;
                     case ASRParameterSets.EnterpriseToEnterprise:
-                        this.EnterpriseToAzureAssociation();
+                        this.EnterpriseToEnterpriseAssociation();
                         break;
                 }
             }
@@ -97,19 +97,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void EnterpriseToAzureAssociation()
         {
+            if (string.Compare(
+                this.ProtectionProfile.ReplicationProvider,
+                Constants.HyperVReplicaAzure,
+                StringComparison.OrdinalIgnoreCase) != 0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.IncorrectReplicationProvider,
+                    this.ProtectionProfile.ReplicationProvider));
+            }
+
             HyperVReplicaAzureProtectionProfileInput hyperVReplicaAzureProtectionProfileInput
-                    = new HyperVReplicaAzureProtectionProfileInput()
-                    {
-                        ApplicationConsistentSnapshotFrequencyInHours = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
-                        ReplicationInterval = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds,
-                        OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime,
-                        RecoveryPointHistoryDuration = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryPoints,
-                        EncryptionEnabled = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.EncryptStoredData
-                    };
+                = new HyperVReplicaAzureProtectionProfileInput()
+                {
+                    ApplicationConsistentSnapshotFrequencyInHours = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
+                    ReplicationInterval = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds,
+                    OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime,
+                    RecoveryPointHistoryDuration = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryPoints,
+                    EncryptionEnabled = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.EncryptStoredData
+                };
 
             var storageAccount = new CustomerStorageAccount();
             storageAccount.StorageAccountName = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureStorageAccountName;
             storageAccount.SubscriptionId = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureSubscription;
+            
+            hyperVReplicaAzureProtectionProfileInput.StorageAccounts = new System.Collections.Generic.List<CustomerStorageAccount>();
             hyperVReplicaAzureProtectionProfileInput.StorageAccounts.Add(storageAccount);
 
             CreateProtectionProfileInput createProtectionProfileInput =
@@ -139,6 +152,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void EnterpriseToEnterpriseAssociation()
         {
+            if (string.Compare(
+                this.ProtectionProfile.ReplicationProvider,
+                Constants.HyperVReplica,
+                StringComparison.OrdinalIgnoreCase) != 0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.IncorrectReplicationProvider,
+                    this.ProtectionProfile.ReplicationProvider));
+            }
+
             HyperVReplicaProtectionProfileInput hyperVReplicaProtectionProfileInput
                     = new HyperVReplicaProtectionProfileInput()
                     {
@@ -154,7 +178,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     };
 
             CreateProtectionProfileInput createProtectionProfileInput =
-                new CreateProtectionProfileInput( // Name of the protection profile as the name of the protection container if not given
+                new CreateProtectionProfileInput(
+                    //// Name of the protection profile as the name of the protection container if not given
                     string.IsNullOrEmpty(this.ProtectionProfile.Name) ? this.PrimaryProtectionContainer.Name : this.ProtectionProfile.Name,
                     this.ProtectionProfile.ReplicationProvider,
                     DataContractUtils<HyperVReplicaProtectionProfileInput>.Serialize(hyperVReplicaProtectionProfileInput));

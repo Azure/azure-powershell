@@ -221,4 +221,7 @@ ClientRequestId: {3}</value>
   <data name="SubscriptionIdIsNotValid" xml:space="preserve">
     <value>Please enter the subscription ID details.</value>
   </data>
+  <data name="IncorrectReplicationProvider" xml:space="preserve">
+    <value>Replication Provider {0} entered invalid for the current set of parameters.</value>
+  </data>
 </root>
