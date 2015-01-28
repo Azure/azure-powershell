@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         private const string PsCommandParamInputObject = "InputObject";
         private const string PsCommandParamDepth = "Depth";
 
-        public static PSObject Decrypt(string json)
+        public static PSObject Deserialize(string json)
         {
             if (String.IsNullOrEmpty(json))
             {

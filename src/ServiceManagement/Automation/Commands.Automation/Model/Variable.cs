@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             }
             else
             {
-                this.Value = PowershellJsonConverter.Decrypt(variable.Properties.Value);
+                this.Value = PowershellJsonConverter.Deserialize(variable.Properties.Value);
             }
 
             this.Description = variable.Properties.Description;
