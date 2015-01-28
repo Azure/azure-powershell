@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
     using ConfigConfigurationSetting = Commands.Utilities.Common.XmlSchema.ServiceConfigurationSchema.ConfigurationSetting;
     using DefinitionConfigurationSetting = Commands.Utilities.Common.XmlSchema.ServiceDefinitionSchema.ConfigurationSetting;
     using TestResources = Commands.Common.Test.Properties.Resources;
-    using Microsoft.Azure.Common.Authorization;
+    using Microsoft.Azure.Common.Authentication;
 
     public class EnableAzureMemcacheRoleTests : TestBase
     {

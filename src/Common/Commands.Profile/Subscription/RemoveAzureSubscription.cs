@@ -14,7 +14,7 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Common.Authorization.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 

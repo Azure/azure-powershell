@@ -16,7 +16,7 @@
 using System;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Common.Authorization.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;

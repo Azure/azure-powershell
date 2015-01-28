@@ -23,13 +23,13 @@ using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authorization.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
     using AutomationManagement = Management.Automation;
-    using Microsoft.Azure.Common.Authorization;
+    using Microsoft.Azure.Common.Authentication;
 
     public class AutomationClient : IAutomationClient
     {

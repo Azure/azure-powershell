@@ -12,13 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authorization;
-using Microsoft.Azure.Common.Authorization.Authentication;
-using Microsoft.Azure.Common.Authorization.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

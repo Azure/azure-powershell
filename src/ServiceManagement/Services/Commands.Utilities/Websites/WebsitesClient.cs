@@ -27,7 +27,7 @@ using Microsoft.Build.Framework;
 using Microsoft.Build.Logging;
 using Microsoft.Web.Deployment;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authorization.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -47,8 +47,8 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 {
     using Utilities = Services.WebEntities;
-    using Microsoft.Azure.Common.Authorization.Models;
-    using Microsoft.Azure.Common.Authorization;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
 
     public class WebsitesClient : IWebsitesClient

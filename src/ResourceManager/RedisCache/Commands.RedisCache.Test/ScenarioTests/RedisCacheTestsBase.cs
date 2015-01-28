@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Test;
     using Microsoft.Azure.Management.Redis;
-    using Microsoft.Azure.Common.Authorization;
+    using Microsoft.Azure.Common.Authentication;
 
     public abstract class RedisCacheTestsBase : IDisposable
     {

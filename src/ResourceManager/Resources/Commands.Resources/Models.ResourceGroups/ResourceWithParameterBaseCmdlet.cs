@@ -22,7 +22,7 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Common.Authorization;
+using Microsoft.Azure.Common.Authentication;
 using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Resources

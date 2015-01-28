@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Common.Authorization.Models.PSAzureAccount</Name>
+      <Name>Microsoft.Azure.Common.Authentication.Models.PSAzureAccount</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Common.Authorization.Models.PSAzureAccount</TypeName>
+        <TypeName>Microsoft.Azure.Common.Authentication.Models.PSAzureAccount</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

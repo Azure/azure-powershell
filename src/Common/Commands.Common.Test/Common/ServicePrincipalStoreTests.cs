@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authorization.Authentication;
+using Microsoft.Azure.Common.Authentication;
 using System;
 using System.Runtime.InteropServices;
 using System.Security;

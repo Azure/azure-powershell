@@ -16,7 +16,7 @@ using System;
 using System.IO;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
-using Microsoft.Azure.Common.Authorization;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {

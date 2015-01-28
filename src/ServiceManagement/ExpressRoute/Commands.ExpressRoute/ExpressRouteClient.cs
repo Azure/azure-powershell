@@ -14,7 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authorization.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
@@ -25,8 +25,8 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     using System.Collections.Generic;
     using System.Net;
     using Utilities.Common;
-    using Microsoft.Azure.Common.Authorization.Models;
-    using Microsoft.Azure.Common.Authorization;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
     
    

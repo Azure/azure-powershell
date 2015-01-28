@@ -21,8 +21,8 @@ using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema;
-using Microsoft.Azure.Common.Authorization;
-using Microsoft.Azure.Common.Authorization.XmlSchema;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.XmlSchema;
 using Hyak.Common;
 using Microsoft.Azure;
 

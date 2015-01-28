@@ -32,7 +32,7 @@ using Microsoft.WindowsAzure.Management.WebSites.Models;
 namespace Microsoft.WindowsAzure.Commands.Websites
 {
     using GitClass = Utilities.Websites.Services.Git;
-    using Microsoft.Azure.Common.Authorization;
+    using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
 
     /// <summary>

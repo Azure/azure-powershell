@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.Network
     using WindowsAzure.Management.Network;
     using WindowsAzure.Management.Network.Models;
     using WindowsAzure.Storage.Auth;
-    using Microsoft.Azure.Common.Authorization.Models;
-    using Microsoft.Azure.Common.Authorization;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
 
     public class NetworkClient

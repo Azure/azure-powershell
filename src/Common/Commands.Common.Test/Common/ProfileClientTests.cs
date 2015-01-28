@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Subscriptions.Models;
-using Microsoft.Azure.Common.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authorization.Authentication;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
-using Microsoft.Azure.Common.Authorization;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
@@ -1441,7 +1439,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             oldProfileDataPath = System.IO.Path.Combine(AzurePowerShell.ProfileDirectory, AzurePowerShell.OldProfileFile);
             oldProfileDataPathError = System.IO.Path.Combine(AzurePowerShell.ProfileDirectory, AzurePowerShell.OldProfileFileBackup);
             oldProfileData = @"<?xml version=""1.0"" encoding=""utf-8""?>
-                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Authorization"">
+                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Authentication"">
                   <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>
                   <Environments>
                     <AzureEnvironmentData>
@@ -1550,7 +1548,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 </ProfileData>";
 
             oldProfileDataBadSubscription = @"<?xml version=""1.0"" encoding=""utf-8""?>
-                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Authorization"">
+                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Authentication"">
                   <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>
                   <Environments>                    
                   </Environments>
@@ -1631,7 +1629,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 </ProfileData>";
 
             oldProfileDataCorruptedFile = @"<?xml version=""1.0"" encoding=""utf-8""?>
-                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Authorization"">
+                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Authentication"">
                   <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>
                   <Environments bad>
                     <AzureEnvironmentData>

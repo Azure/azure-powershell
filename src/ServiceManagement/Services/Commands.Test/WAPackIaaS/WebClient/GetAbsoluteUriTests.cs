@@ -15,7 +15,7 @@
 using System;
 using System.Text;
 using Xunit;
-using Microsoft.Azure.Common.Authorization.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.WebClient;
 
 namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.WebClient

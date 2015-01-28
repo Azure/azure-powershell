@@ -37,7 +37,7 @@ using Newtonsoft.Json.Linq;
 using Xunit;
 using Xunit.Extensions;
 using System.Diagnostics;
-using Microsoft.Azure.Common.Authorization;
+using Microsoft.Azure.Common.Authentication;
 using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models

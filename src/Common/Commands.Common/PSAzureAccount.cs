@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Common.Authorization.Models
+namespace Microsoft.Azure.Common.Authentication.Models
 {
     public class PSAzureAccount
     {
