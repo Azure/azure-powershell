@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Protection Container to be removed the Protection Profile settings off.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionContainer RecoveryProtectionContainer { get; set; }
 
