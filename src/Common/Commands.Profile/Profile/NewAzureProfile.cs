@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [Parameter(Mandatory = true, Position = 3, ValueFromPipelineByPropertyName = true, ParameterSetName = CredentialsParameterSet)]
         public PSCredential Credential { get; set; }
         
-        [Parameter(Mandatory = false, Position = 4, ValueFromPipelineByPropertyName = true, ParameterSetName = CertificateParameterSet)]
+        [Parameter(Mandatory = true, Position = 4, ValueFromPipelineByPropertyName = true, ParameterSetName = CertificateParameterSet)]
         public string Tenant { get; set; }
 
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
