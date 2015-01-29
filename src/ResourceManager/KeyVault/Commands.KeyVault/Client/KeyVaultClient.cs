@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Client
                         Error = new Error()
                         {
                             Code = response.StatusCode.ToString(),
-                            Message = string.Format("HTTP {0} Error: ", response.StatusCode.ToString(), response.ReasonPhrase),
+                            Message = string.Format("HTTP {0} Error: {1}", response.StatusCode.ToString(), response.ReasonPhrase),
                         },
                     };
                 }
