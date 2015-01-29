@@ -58,15 +58,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            try
-            {
-                var secret = DataServiceClient.SetSecret(VaultName, Name, SecretValue);
-                WriteObject(secret);
-            }
-            catch (Exception ex)
-            {
-                this.WriteErrorDetails(ex);
-            }
+            var secret = DataServiceClient.SetSecret(VaultName, Name, SecretValue);
+            WriteObject(secret);
         }
     }
 }
