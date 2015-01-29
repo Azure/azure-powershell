@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateSet(
             Constants.OnlineReplicationMethod,
             Constants.OfflineReplicationMethod)]
-        [DefaultValue(Constants.OnlineReplicationMethod)]
         public string ReplicationMethod { get; set; }
 
         /// <summary>
@@ -80,7 +79,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [ValidateNotNullOrEmpty]
-        public ushort ReplicationFrequencyInSeconds { get; set; }
+        [ValidateSet(
+            Constants.Thirty,
+            Constants.ThreeHundred,
+            Constants.NineHundred)]
+        public string ReplicationFrequencyInSeconds { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Points of the Protection Profile.
@@ -112,7 +115,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [ValidateNotNullOrEmpty]
-        [DefaultValue(0)]
         public ushort ReplicationPort { get; set; }
 
         /// <summary>
@@ -131,7 +133,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [ValidateNotNullOrEmpty]
-        [DefaultValue(null)]
         public TimeSpan? ReplicationStartTime { get; set; }
 
         /// <summary>
@@ -190,6 +191,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             this.ValidateReplicationStartTime(this.ReplicationStartTime);
 
+            ushort replicationFrequencyInSeconds = this.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
                 ReplicationProvider = this.ReplicationProvider,
@@ -198,7 +201,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                     RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
                     EncryptStoredData = this.EncryptStoredData,
-                    ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
+                    ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
                     RecoveryPoints = this.RecoveryPoints,
                     ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
                     ReplicationStartTime = this.ReplicationStartTime,
@@ -207,6 +210,56 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             };
 
             this.WriteObject(protectionProfile);
+        }
+
+        /// <summary>
+        /// Creates an E2E Protection Profile object
+        /// </summary>
+        private void EnterpriseToEnterpriseProtectionProfileObject()
+        {
+            this.ValidateReplicationStartTime(this.ReplicationStartTime);
+
+            ushort replicationFrequencyInSeconds = this.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+
+            ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
+            {
+                ReplicationProvider = this.ReplicationProvider,
+                HyperVReplicaAzureProviderSettingsObject = null,
+                HyperVReplicaProviderSettingsObject = new HyperVReplicaProviderSettings()
+                {
+                    ReplicationMethod = this.ReplicationMethod,
+                    ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
+                    RecoveryPoints = this.RecoveryPoints,
+                    ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
+                    CompressionEnabled = this.CompressionEnabled,
+                    ReplicationPort = this.ReplicationPort,
+                    Authentication = this.Authentication,
+                    ReplicationStartTime = this.ReplicationStartTime,
+                    AllowReplicaDeletion = this.AllowReplicaDeletion
+                }
+            };
+
+            this.WriteObject(protectionProfile);
+        }
+
+        /// <summary>
+        /// Converts the Parameter set string of Replication Frequency in seconds to UShort.
+        /// </summary>
+        /// <param name="replicationFrequencyString">Replication frequency in seconds.</param>
+        /// <returns>A UShort corresponding to the value.</returns>
+        private ushort ConvertReplicationFrequencyToUshort(string replicationFrequencyString)
+        {
+            ushort replicationFrequency;
+
+            if (!ushort.TryParse(replicationFrequencyString, out replicationFrequency))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.InvalidReplicationFrequency,
+                    replicationFrequencyString));
+            }
+
+            return replicationFrequency;
         }
 
         /// <summary>
@@ -225,34 +278,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 throw new InvalidOperationException(
                     string.Format(Properties.Resources.ReplicationStartTimeInvalid));
             }
-        }
-
-        /// <summary>
-        /// Creates an E2E Protection Profile object
-        /// </summary>
-        private void EnterpriseToEnterpriseProtectionProfileObject()
-        {
-            this.ValidateReplicationStartTime(this.ReplicationStartTime);
-
-            ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
-            {
-                ReplicationProvider = this.ReplicationProvider,
-                HyperVReplicaAzureProviderSettingsObject = null,
-                HyperVReplicaProviderSettingsObject = new HyperVReplicaProviderSettings()
-                {
-                    ReplicationMethod = this.ReplicationMethod,
-                    ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
-                    RecoveryPoints = this.RecoveryPoints,
-                    ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
-                    CompressionEnabled = this.CompressionEnabled,
-                    ReplicationPort = this.ReplicationPort,
-                    Authentication = this.Authentication,
-                    ReplicationStartTime = this.ReplicationStartTime,
-                    AllowReplicaDeletion = this.AllowReplicaDeletion
-                }
-            };
-
-            this.WriteObject(protectionProfile);
         }
     }
 }

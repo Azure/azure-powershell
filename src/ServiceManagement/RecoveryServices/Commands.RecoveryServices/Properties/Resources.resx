@@ -224,4 +224,7 @@ ClientRequestId: {3}</value>
   <data name="IncorrectReplicationProvider" xml:space="preserve">
     <value>Replication Provider {0} entered invalid for the current set of parameters.</value>
   </data>
+  <data name="InvalidReplicationFrequency" xml:space="preserve">
+    <value>Replication Frequency {0} is invalid</value>
+  </data>
 </root>
