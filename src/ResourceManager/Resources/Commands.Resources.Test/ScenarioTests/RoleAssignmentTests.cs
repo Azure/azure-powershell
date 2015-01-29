@@ -25,6 +25,7 @@ using Microsoft.Azure.Test;
 using System;
 using System.Linq;
 using System.Threading;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
@@ -118,7 +119,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                                         .First();
 
                     // Wait to allow newly created object changes to propagate
-                    Thread.Sleep(TimeSpan.FromSeconds(20));
+                    TestMockSupport.Delay(20000);
 
                     return new[] 
                     { 
