@@ -242,6 +242,10 @@
     <value>The certificate already exists. Certificate name: {0}.</value>
     <comment>Automation</comment>
   </data>
+  <data name="PowershellJsonDecrypterFailed" xml:space="preserve">
+    <value>Failed to decrypt. Error Details {0}</value>
+    <comment>Automation</comment>
+  </data>
   <data name="ResourceNotFound" xml:space="preserve">
     <value>Resource does not exists.</value>
     <comment>Automation</comment>
