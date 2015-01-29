@@ -186,6 +186,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         public void SetTablePermissions(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions, OperationContext operationContext)
         {
             this.tablePermissions = tablePermissions;
+<<<<<<< HEAD
+        }
+
+        /// <summary>
+        /// Return a task that asynchronously set table permissions
+        /// </summary>
+        /// <param name="table">target table</param>
+        /// <param name="tablePermissions">permissions to set</param>
+        /// <param name="requestOptions">request options</param>
+        /// <param name="operationContext">context</param>
+        /// <returns></returns>
+        public Task SetTablePermissionsAsync(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions, OperationContext operationContext)
+        {
+            return Task.Factory.StartNew(() => this.SetTablePermissions(table, tablePermissions, requestOptions, operationContext));
+        }
+
+        /// <summary>
+        /// Return a task that asynchronously fetch table permissions
+        /// </summary>
+        /// <param name="table">target table</param>
+        /// <param name="requestOptions">request options</param>
+        /// <param name="operationContext">context</param>
+        /// <returns></returns>
+        public Task<TablePermissions> GetTablePermissionsAsync(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
+        {
+            return Task.Factory.StartNew(() => this.GetTablePermissions(table,
+                requestOptions, operationContext));
+=======
+>>>>>>> dc63110980a822f9381e23dcdf683635617f2e11
         }
 
         /// <summary>
@@ -213,6 +242,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
             return Task.Factory.StartNew(() => this.GetTablePermissions(table,
                 requestOptions, operationContext));
         }
+
 
         public AzureStorageContext StorageContext
         {
