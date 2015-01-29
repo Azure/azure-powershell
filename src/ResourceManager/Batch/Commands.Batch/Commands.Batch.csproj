@@ -123,6 +123,7 @@
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
     <Compile Include="BatchClient.cs" />
     <Compile Include="BatchCmdletBase.cs" />
+    <Compile Include="BatchOMCmdletBase.cs" />
     <Compile Include="Models\BatchAccountContext.cs" />
     <Compile Include="Models\PSAffinitiyInformation.cs" />
     <Compile Include="Models\PSAsyncEnumerable.cs" />
@@ -175,6 +176,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Constants.cs" />
+    <Compile Include="WorkItems\GetBatchWorkItemCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.Azure.Commands.Batch.format.ps1xml">

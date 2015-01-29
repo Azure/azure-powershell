@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountAndKeyInUse" xml:space="preserve">
+    <value>Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext.</value>
+  </data>
   <data name="BeginMAMLCall" xml:space="preserve">
     <value>Begin {0} call to RP</value>
   </data>
@@ -132,6 +135,15 @@
   <data name="GBA_ResGroupAccounts" xml:space="preserve">
     <value>Getting accounts in resource group {0}</value>
   </data>
+  <data name="GBWI_GetByName" xml:space="preserve">
+    <value>Getting WorkItem "{0}"</value>
+  </data>
+  <data name="GBWI_GetByOData" xml:space="preserve">
+    <value>Getting enumerator for WorkItems matching the specified OData filter</value>
+  </data>
+  <data name="GBWI_NoFilter" xml:space="preserve">
+    <value>Getting enumerator for all WorkItems associated with the Batch account</value>
+  </data>
   <data name="InvalidEndpointType" xml:space="preserve">
     <value>The endpoint is not recognized as valid: {0}</value>
   </data>
@@ -143,6 +155,9 @@
   </data>
   <data name="InvalidTagFormatNotUniqueName" xml:space="preserve">
     <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = "tagName1"; Value = "tagValue1"}, @{Name = "tagName2"; Value = "tagValue2"}</value>
+  </data>
+  <data name="KeyNotPresent" xml:space="preserve">
+    <value>The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated.</value>
   </data>
   <data name="MissingResGroupName" xml:space="preserve">
     <value>Cannot find resource group name in ID property: {0}</value>

@@ -12,15 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Net;
+using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Azure.Batch.Protocol.Entities;
 using Microsoft.Azure.Management.Batch.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test
 {
     public static class BatchTestHelpers
     {
+        /// <summary>
+        /// Builds an AccountResource object using the specified parameters
+        /// </summary>
         public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null)
         {
             string tenantUrlEnding = "batch-test.windows-int.net";
@@ -39,9 +47,28 @@ namespace Microsoft.Azure.Commands.Batch.Test
             {
                 resource.Tags = Microsoft.Azure.Commands.Batch.Helpers.CreateTagDictionary(tags, true);
             }
+
             return resource;
         }
 
+        /// <summary>
+        /// Builds a BatchAccountContext object with the keys set for testing
+        /// </summary>
+        public static BatchAccountContext CreateBatchContextWithKeys()
+        {
+            AccountResource resource = CreateAccountResource("account", "resourceGroup");
+            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource);
+            string dummyKey = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+            SetProperty(context, "PrimaryAccountKey", dummyKey);
+            SetProperty(context, "SecondaryAccountKey", dummyKey);
+
+            return context;
+        }
+
+
+        /// <summary>
+        /// Verifies that two BatchAccountContext objects are equal
+        /// </summary>
         public static void AssertBatchAccountContextsAreEqual(BatchAccountContext context1, BatchAccountContext context2)
         {
             if (context1 == null)
@@ -66,6 +93,53 @@ namespace Microsoft.Azure.Commands.Batch.Test
             Assert.Equal<string>(context1.Subscription, context2.Subscription);
             Assert.Equal<string>(context1.TagsTable, context2.TagsTable);
             Assert.Equal<string>(context1.TaskTenantUrl, context2.TaskTenantUrl);
+        }
+
+        /// <summary>
+        /// Builds a GetWorkItemResponse object
+        /// </summary>
+        public static GetWorkItemResponse CreateGetWorkItemResponse(string workItemName)
+        {
+            GetWorkItemResponse response = new GetWorkItemResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            JobExecutionEnvironment jee = new JobExecutionEnvironment();
+
+            WorkItem workItem = new WorkItem(workItemName, jee);
+            SetProperty(response, "WorkItem", workItem);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a ListWorkItemsResponse object
+        /// </summary>
+        public static ListWorkItemsResponse CreateListWorkItemsResponse(IEnumerable<string> workItemNames)
+        {
+            ListWorkItemsResponse response = new ListWorkItemsResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            List<WorkItem> workItems = new List<WorkItem>();
+            JobExecutionEnvironment jee = new JobExecutionEnvironment();
+
+            foreach (string name in workItemNames)
+            {
+                workItems.Add(new WorkItem(name, jee));
+            }
+
+            SetProperty(response, "WorkItems", workItems);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Uses Reflection to set a property value on an object. Can be used to bypass restricted set accessors.
+        /// </summary>
+        private static void SetProperty(object obj, string propertyName, object propertyValue)
+        {
+            Type t = obj.GetType();
+            PropertyInfo propInfo = t.GetProperty(propertyName);
+            propInfo.SetValue(obj, propertyValue);
         }
     }
 }

@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext..
+        /// </summary>
+        internal static string AccountAndKeyInUse {
+            get {
+                return ResourceManager.GetString("AccountAndKeyInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Begin {0} call to RP.
         /// </summary>
         internal static string BeginMAMLCall {
@@ -106,6 +115,33 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting WorkItem &quot;{0}&quot;.
+        /// </summary>
+        internal static string GBWI_GetByName {
+            get {
+                return ResourceManager.GetString("GBWI_GetByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting enumerator for WorkItems matching the specified OData filter.
+        /// </summary>
+        internal static string GBWI_GetByOData {
+            get {
+                return ResourceManager.GetString("GBWI_GetByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting enumerator for all WorkItems associated with the Batch account.
+        /// </summary>
+        internal static string GBWI_NoFilter {
+            get {
+                return ResourceManager.GetString("GBWI_NoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The endpoint is not recognized as valid: {0}.
         /// </summary>
         internal static string InvalidEndpointType {
@@ -138,6 +174,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string InvalidTagFormatNotUniqueName {
             get {
                 return ResourceManager.GetString("InvalidTagFormatNotUniqueName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated..
+        /// </summary>
+        internal static string KeyNotPresent {
+            get {
+                return ResourceManager.GetString("KeyNotPresent", resourceCulture);
             }
         }
         

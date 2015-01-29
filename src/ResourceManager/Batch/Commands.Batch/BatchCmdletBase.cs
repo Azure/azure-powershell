@@ -12,12 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Batch.Common;
+using Microsoft.Azure.Batch.Protocol.Entities;
 using Microsoft.Azure.Common.Extensions;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Common.Internals;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -52,6 +55,30 @@ namespace Microsoft.Azure.Commands.Batch
                 ExecuteCmdlet();
                 OnProcessRecord();
             }
+            catch (AggregateException ex)
+            {
+                // When the OM encounters an error, it'll throw an AggregateException with a nested BatchException.
+                // BatchExceptions have special handling to extract detailed failure information.  When an AggregateException
+                // is encountered, loop through the inner exceptions.  If there's a nested BatchException, perform the 
+                // special handling.  Otherwise, just write out the error.
+                AggregateException flattened = ex.Flatten();
+                foreach (Exception inner in flattened.InnerExceptions)
+                {
+                    BatchException asBatch = inner as BatchException;
+                    if (asBatch != null)
+                    {
+                        HandleBatchException(asBatch);
+                    }
+                    else
+                    {
+                        WriteExceptionError(inner);
+                    }
+                }
+            }
+            catch (BatchException ex)
+            {
+                HandleBatchException(ex);
+            }
             catch (CloudException ex)
             {
                 var updatedEx = ex;
@@ -82,6 +109,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <returns></returns>
         internal static string FindDetailedMessage(string content)
         {
+            // TODO: Revise after Task 2362107 is completed on the server side
             string message = null;
 
             if (ParserHelper.IsJson(content))
@@ -116,6 +144,37 @@ namespace Microsoft.Azure.Commands.Batch
             }
 
             return message;
+        }
+
+        /// <summary>
+        /// Extracts failure details from the BatchException object to create a more informative error message for the user.
+        /// </summary>
+        /// <param name="ex">The BatchException object</param>
+        private void HandleBatchException(BatchException ex)
+        {
+            if (ex != null)
+            {
+                if (ex.RequestInformation != null && ex.RequestInformation.AzureError != null)
+                {
+                    StringBuilder str = new StringBuilder(ex.Message).AppendLine();
+
+                    str.AppendFormat("Error Code: {0}", ex.RequestInformation.AzureError.Code).AppendLine();
+                    str.AppendFormat("Error Message: {0}", ex.RequestInformation.AzureError.Message.Value).AppendLine();
+                    str.AppendFormat("Client Request ID:{0}", ex.RequestInformation.ClientRequestID).AppendLine();
+                    if (ex.RequestInformation.AzureError.Values != null)
+                    {
+                        foreach (AzureErrorDetail detail in ex.RequestInformation.AzureError.Values)
+                        {
+                            str.AppendFormat("{0}:{1}", detail.Key, detail.Value).AppendLine();
+                        }
+                    }
+                    WriteExceptionError(new BatchException(ex.RequestInformation, str.ToString(), ex.InnerException));
+                }
+                else
+                {
+                    WriteExceptionError(ex);
+                }
+            }
         }
     }
 }
