@@ -4865,11 +4865,11 @@
     </maml:relatedLinks>
   </command:command>
 
-  <!--New-AzureSiteRecoveryProtectionProfile-->
+  <!--New-AzureSiteRecoveryProtectionProfileObject-->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        New-AzureSiteRecoveryProtectionProfile
+        New-AzureSiteRecoveryProtectionProfileObject
       </command:name>
       <maml:description>
         <maml:para>Creates a Protection profile object in memory. This command can be used to return a protection profile object to be further supplied for Protection Profile related operations.</maml:para>
@@ -4878,7 +4878,7 @@
         <maml:para></maml:para>
       </maml:copyright>
       <command:verb>New</command:verb>
-      <command:noun>AzureSiteRecoveryProtectionProfile</command:noun>
+      <command:noun>AzureSiteRecoveryProtectionProfileObject</command:noun>
       <dev:version></dev:version>
     </command:details>
     <maml:description>
@@ -4887,7 +4887,7 @@
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureSiteRecoveryProtectionProfile</maml:name>
+        <maml:name>New-AzureSiteRecoveryProtectionProfileObject</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ReplicationProvider</maml:name>
           <maml:description>
@@ -4960,7 +4960,7 @@
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>New-AzureSiteRecoveryProtectionProfile</maml:name>
+        <maml:name>New-AzureSiteRecoveryProtectionProfileObject</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ReplicationProvider</maml:name>
           <maml:description>
@@ -5248,13 +5248,213 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          New-AzureSiteRecoveryProtectionProfile -ReplicationProvider HyperVReplica -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 2 -ApplicationConsistentSnapshotFrequencyInHours 1 -CompressionEnabled -ReplicationPort 8085 -ReplicationStartTime 1 -AllowReplicaDeletion
+          New-AzureSiteRecoveryProtectionProfileObject -ReplicationProvider HyperVReplica -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 2 -ApplicationConsistentSnapshotFrequencyInHours 1 -CompressionEnabled -ReplicationPort 8085 -ReplicationStartTime 1 -AllowReplicaDeletion
 
           Name                                     :
           ID                                       :
           ReplicationProvider                      : HyperVReplica
           HyperVReplicaProviderSettingsObject      : Microsoft.Azure.Portal.RecoveryServices.Models.Common.HyperVReplicaProviderSettings
           HyperVReplicaAzureProviderSettingsObject :
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+
+  <!-- Start-AzureSiteRecoveryProtectionProfileAssociationJob -->
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Start-AzureSiteRecoveryProtectionProfileAssociationJob
+      </command:name>
+      <maml:description>
+        <maml:para></maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Start</command:verb>
+      <command:noun>AzureSiteRecoveryProtectionProfileAssociationJob</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para></maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Start-AzureSiteRecoveryProtectionProfileAssociationJob</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>PrimaryProtectionContainer</maml:name>
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ASRProtectionContainer</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>ProtectionProfile</maml:name>
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ASRProtectionProfile</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Start-AzureSiteRecoveryProtectionProfileAssociationJob</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>PrimaryProtectionContainer</maml:name>
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ASRProtectionContainer</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ProtectionProfile</maml:name>
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ASRProtectionProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>RecoveryProtectionContainer</maml:name>
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ASRProtectionContainer</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>PrimaryProtectionContainer</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ASRProtectionContainer</command:parameterValue>
+        <dev:type>
+          <maml:name>ASRProtectionContainer</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ProtectionProfile</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ASRProtectionProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>ASRProtectionProfile</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>RecoveryProtectionContainer</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ASRProtectionContainer</command:parameterValue>
+        <dev:type>
+          <maml:name>ASRProtectionContainer</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Start-AzureSiteRecoveryProtectionProfileAssociationJob -PrimaryProtectionContainer $protectionContainer1 -RecoveryProtectionContainer $protectionContainer2 -ProtectionProfile $protectionProfile
+
+          Name             : MyProtectionProfile
+          ID               : 51978b0f-9241-4153-9171-2e19344f0805
+          ClientRequestId  : bb6f3200-b7c6-4c6f-bcbc-a70bb9946f03-2015-01-27 22:55:55Z-P
+          State            : InProgress
+          StateDescription : InProgress
+          StartTime        : 1/27/2015 10:56:01 PM
+          EndTime          :
+          AllowedActions   :
+          Tasks            : {Adding the protection group, Configuring Windows Server 2012 R2 Hyper-V hosts for Azure}
+          Errors           : {}
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
