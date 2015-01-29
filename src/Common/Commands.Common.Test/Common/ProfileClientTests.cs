@@ -17,12 +17,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Subscriptions.Models;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
+using Microsoft.Azure.Common.Extensions.Authentication;
 using Xunit;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
@@ -290,6 +291,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
         }
 
+        /// <summary>
+        /// Verify that if a user has a different identity in one tenant, the identity is not added if it has no
+        /// access to subscriptions
+        /// </summary>
         [Fact]
         public void AddAzureAccountWithImpersonatedGuestWithNoSubscriptions()
         {
@@ -326,6 +331,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             Assert.Equal("UserA", subrdfe1.Account);
         }
 
+        /// <summary>
+        /// Verify that multiple accounts can be added if a user has different identitities in different domains, linked to the same login
+        /// Verify that subscriptions with admin access forall accounts are added
+        /// </summary>
         [Fact]
         public void AddAzureAccountWithImpersonatedGuestWithSubscriptions()
         {
@@ -346,7 +355,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             ProfileClient.DataStore = dataStore;
             ProfileClient client = new ProfileClient();
 
-            var account = client.AddAccountAndLoadSubscriptions(new AzureAccount { Id = "UserA", Type = AzureAccount.AccountType.User }, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], null);
+            var account = client.AddAccountAndLoadSubscriptions(new AzureAccount { Id = "UserA", Type = AzureAccount.AccountType.User }, 
+                AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], null);
 
             Assert.Equal("UserA", account.Id);
             Assert.Equal(1, account.GetSubscriptions(client.Profile).Count);
@@ -362,6 +372,39 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             Assert.NotNull(subGuest);
             Assert.Equal("UserA", subrdfe1.Account);
             Assert.Equal("UserB", subGuest.Account);
+        }
+        /// <summary>
+        /// Test that when account is added more than once with different capitalization, only a single account is added
+        /// and that accounts can be retrieved case-insensitively
+        /// </summary>
+        [Fact]
+        public void AddAzureAccountIsCaseInsensitive()
+        {
+            SetMocks(new[] { rdfeSubscription1, guestRdfeSubscription }.ToList(), new List<Azure.Subscriptions.Models.Subscription>(), new[] { commonTenant, guestTenant }.ToList(),
+                    (userAccount, environment, tenant) =>
+                {
+                    var token = new MockAccessToken
+                    {
+                        UserId = tenant == commonTenant.TenantId ? userAccount.Id : "USERA",
+                        AccessToken = "def",
+                        LoginType = LoginType.OrgId
+                    };
+                    userAccount.Id = token.UserId;
+                    return token;
+                });
+            MockDataStore dataStore = new MockDataStore();
+            dataStore.VirtualStore[oldProfileDataPath] = oldProfileData;
+            ProfileClient.DataStore = dataStore;
+            ProfileClient client = new ProfileClient();
+
+            var account = client.AddAccountAndLoadSubscriptions(new AzureAccount { Id = "UserA", Type = AzureAccount.AccountType.User }, 
+                AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], null);
+
+            var userA = client.GetAccount("UserA");
+            var secondUserA = client.GetAccount("USERA");
+            Assert.NotNull(userA);
+            Assert.NotNull(secondUserA);
+            Assert.Equal(userA.Id, secondUserA.Id);
         }
 
         [Fact]
@@ -1381,6 +1424,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                     { AzureEnvironment.Endpoint.ActiveDirectory, "https://login.windows-ppe.net/" },
                     { AzureEnvironment.Endpoint.Gallery, "https://current.gallery.azure-test.net" },
                     { AzureEnvironment.Endpoint.ResourceManager, "https://api-current.resources.windows-int.net/" },
+                    { AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, "vault-int.azure-int.net"},
+                    { AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, "https://vault-int.azure-int.net/"}
                 }
             };
             azureAccount = new AzureAccount
@@ -1396,7 +1441,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             oldProfileDataPath = System.IO.Path.Combine(AzurePowerShell.ProfileDirectory, AzurePowerShell.OldProfileFile);
             oldProfileDataPathError = System.IO.Path.Combine(AzurePowerShell.ProfileDirectory, AzurePowerShell.OldProfileFileBackup);
             oldProfileData = @"<?xml version=""1.0"" encoding=""utf-8""?>
-                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.WindowsAzure.Commands.Utilities.Common"">
+                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Extensions"">
                   <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>
                   <Environments>
                     <AzureEnvironmentData>
@@ -1505,7 +1550,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 </ProfileData>";
 
             oldProfileDataBadSubscription = @"<?xml version=""1.0"" encoding=""utf-8""?>
-                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.WindowsAzure.Commands.Utilities.Common"">
+                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Extensions"">
                   <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>
                   <Environments>                    
                   </Environments>
@@ -1586,7 +1631,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 </ProfileData>";
 
             oldProfileDataCorruptedFile = @"<?xml version=""1.0"" encoding=""utf-8""?>
-                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.WindowsAzure.Commands.Utilities.Common"">
+                <ProfileData xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Extensions"">
                   <DefaultEnvironmentName>AzureCloud</DefaultEnvironmentName>
                   <Environments bad>
                     <AzureEnvironmentData>

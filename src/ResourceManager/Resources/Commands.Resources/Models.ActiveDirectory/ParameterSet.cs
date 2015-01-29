@@ -56,6 +56,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 
         public const string ResourceWithObjectId = "ResourceWithObjectIdParameterSet";
 
+        public const string ApplicationWithoutCredential = "ApplicationWithoutCredentialParameterSet";
+
+        public const string ApplicationWithPasswordPlain = "ApplicationWithPasswordPlainParameterSet";
+
+        public const string ApplicationWithPasswordCredential = "ApplicationWithPasswordCredentialParameterSet";
+
+        public const string ApplicationWithKeyPlain = "ApplicationWithKeyPlainParameterSet";
+
+        public const string ApplicationWithKeyCredential = "ApplicationWithKeyCredentialParameterSet";
+
         public const string Empty = "EmptyParameterSet";
     }
 }

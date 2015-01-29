@@ -19,6 +19,7 @@ using System.Net;
 using System.Text;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common
 {

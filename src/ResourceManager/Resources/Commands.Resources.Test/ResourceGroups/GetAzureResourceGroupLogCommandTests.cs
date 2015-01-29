@@ -42,62 +42,63 @@ namespace Microsoft.Azure.Commands.Resources.Test
             };
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureResourceGroupLogOutputsProperties()
-        {
-            List<PSDeploymentEventData> result = new List<PSDeploymentEventData>();
-            result.Add(new PSDeploymentEventData
-                {
-                    EventId = "ac7d2ab5-698a-4c33-9c19-0a93d3d7f527",
-                    EventName = "Start request",
-                    EventSource = "Microsoft Resources",
-                    Channels = "Operation",
-                    Level = "Informational",
-                    Timestamp = DateTime.Now,
-                    OperationId = "c0f2e85f-efb0-47d0-bf90-f983ec8be91d",
-                    OperationName = "Microsoft.Resources/subscriptions/resourcegroups/deployments/write",
-                    Status = "Succeeded",
-                    SubStatus = "Created",
-                    ResourceGroupName = "foo",
-                    ResourceProvider = "Microsoft Resources",
-                    ResourceUri =
-                        "/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy",
-                    HttpRequest = new PSDeploymentEventDataHttpRequest
-                    {
-                        Url = "http://path/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy",
-                        Method = "PUT",
-                        ClientId = "1234",
-                        ClientIpAddress = "123.123.123.123"
-                    },
-                    Authorization = new PSDeploymentEventDataAuthorization
-                    {
-                        Action = "PUT",
-                        Condition = "",
-                        Role = "Sender",
-                        Scope = "None"
-                    },
-                    Claims = new Dictionary<string, string>
-                            {
-                                {"aud", "https://management.core.windows.net/"},
-                                {"iss", "https://sts.windows.net/123456/"},
-                                {"iat", "h123445"}
-                            },
-                    Properties = new Dictionary<string, string>()
-                });
+        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void GetAzureResourceGroupLogOutputsProperties()
+        //{
+        //    List<PSDeploymentEventData> result = new List<PSDeploymentEventData>();
+        //    result.Add(new PSDeploymentEventData
+        //        {
+        //            EventId = "ac7d2ab5-698a-4c33-9c19-0a93d3d7f527",
+        //            EventName = "Start request",
+        //            EventSource = "Microsoft Resources",
+        //            Channels = "Operation",
+        //            Level = "Informational",
+        //            Timestamp = DateTime.Now,
+        //            OperationId = "c0f2e85f-efb0-47d0-bf90-f983ec8be91d",
+        //            OperationName = "Microsoft.Resources/subscriptions/resourcegroups/deployments/write",
+        //            Status = "Succeeded",
+        //            SubStatus = "Created",
+        //            ResourceGroupName = "foo",
+        //            ResourceProvider = "Microsoft Resources",
+        //            ResourceUri =
+        //                "/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy",
+        //            HttpRequest = new PSDeploymentEventDataHttpRequest
+        //            {
+        //                Url = "http://path/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy",
+        //                Method = "PUT",
+        //                ClientId = "1234",
+        //                ClientIpAddress = "123.123.123.123"
+        //            },
+        //            Authorization = new PSDeploymentEventDataAuthorization
+        //            {
+        //                Action = "PUT",
+        //                Condition = "",
+        //                Role = "Sender",
+        //                Scope = "None"
+        //            },
+        //            Claims = new Dictionary<string, string>
+        //                    {
+        //                        {"aud", "https://management.core.windows.net/"},
+        //                        {"iss", "https://sts.windows.net/123456/"},
+        //                        {"iat", "h123445"}
+        //                    },
+        //            Properties = new Dictionary<string, string>()
+        //        });
 
-            GetPSResourceGroupLogParameters expected = new GetPSResourceGroupLogParameters();
+        //    GetPSResourceGroupLogParameters expected = new GetPSResourceGroupLogParameters();
 
-            resourcesClientMock.Setup(f => f.GetResourceGroupLogs(It.IsAny<GetPSResourceGroupLogParameters>()))
-                .Returns(result)
-                .Callback((GetPSResourceGroupLogParameters r) => expected = r);
+        //    resourcesClientMock.Setup(f => f.GetResourceGroupLogs(It.IsAny<GetPSResourceGroupLogParameters>()))
+        //        .Returns(result)
+        //        .Callback((GetPSResourceGroupLogParameters r) => expected = r);
 
-            cmdlet.Name = "foo";
+        //    cmdlet.Name = "foo";
 
-            cmdlet.ExecuteCmdlet();
+        //    cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(1, result.Count());
-            Assert.Equal("foo", expected.Name);
-        }
+        //    Assert.Equal(1, result.Count());
+        //    Assert.Equal("foo", expected.Name);
+        //}
     }
 }

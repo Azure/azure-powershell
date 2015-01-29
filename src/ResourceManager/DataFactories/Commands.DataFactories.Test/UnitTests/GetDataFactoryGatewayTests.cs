@@ -47,7 +47,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
             var expectedOutput = new PSDataFactoryGateway
             {
                 Name = GatewayName,
-                Location = Location,
                 Status = GatewayStatus.NeedRegistration
             };
 
@@ -74,14 +73,12 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
                     new PSDataFactoryGateway()
                         {
                             Name = GatewayName,
-                            Location = Location,
                             Status = GatewayStatus.NeedRegistration
                         },
 
                     new PSDataFactoryGateway()
                         {
                             Name = "foo2",
-                            Location = Location,
                             Status = GatewayStatus.NeedRegistration
                         }
                 };
