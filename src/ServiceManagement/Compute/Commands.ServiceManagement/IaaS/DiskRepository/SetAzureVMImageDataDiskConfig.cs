@@ -62,6 +62,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         [ValidateSet("ReadOnly", "ReadWrite", "None", IgnoreCase = true)]
         public string HostCaching { get; set; }
 
+        [Parameter(
+            Position = 4,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The media link.")]
+        [ValidateNotNullOrEmpty]
+        public Uri MediaLink { get; set; }
+
+        [Parameter(
+            Position = 5,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The logical disk size in GB.")]
+        [ValidateNotNullOrEmpty]
+        public int LogicalDiskSizeInGB { get; set; }
+
         protected override void ProcessRecord()
         {
             ServiceManagementProfile.Initialize();
@@ -80,9 +96,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 DiskConfig.DataDiskConfigurations.Add(diskConfig);
             }
 
-            diskConfig.Name        = this.DataDiskName;
+            diskConfig.Name = this.DataDiskName;
             diskConfig.HostCaching = this.HostCaching;
-            diskConfig.Lun         = this.Lun;
+            diskConfig.Lun = this.Lun;
+            diskConfig.MediaLink  = this.MediaLink;
+            diskConfig.LogicalDiskSizeInGB = this.LogicalDiskSizeInGB;
 
             WriteObject(DiskConfig);
         }

@@ -103,7 +103,7 @@ function Test-VirtualMachine
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        Retry-IfException { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p; }
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
 
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
@@ -115,12 +115,13 @@ function Test-VirtualMachine
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
 
-        Retry-IfException { Start-AzureVM -Name $vmname -ResourceGroupName $rgname; }
-        Retry-IfException { Restart-AzureVM -Name $vmname -ResourceGroupName $rgname; }
-        Retry-IfException { Stop-AzureVM -Name $vmname -ResourceGroupName $rgname -Force -StayProvisioned; }
+        Start-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        Restart-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        Stop-AzureVM -Name $vmname -ResourceGroupName $rgname -Force -StayProvisioned;
 
         # Update
-        Retry-IfException { Update-AzureVM -ResourceGroupName $rgname -Name $vmname -VM $p; }
+        $p.Location = $vm1.Location;
+        Update-AzureVM -ResourceGroupName $rgname -Name $vmname -VM $p;
 
         $vm2 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces.Count 1;
