@@ -26,7 +26,7 @@ namespace Commands.ApiManagement.Test.ScenarioTests
         {
             using (var context = UndoContext.Current)
             {
-                context.Start(TestUtilities.GetCallingClass(), TestUtilities.GetCurrentMethodName());
+                context.Start(TestUtilities.GetCallingClass(), TestUtilities.GetCurrentMethodName(2));
 
                 //SetupManagementClients();
 
