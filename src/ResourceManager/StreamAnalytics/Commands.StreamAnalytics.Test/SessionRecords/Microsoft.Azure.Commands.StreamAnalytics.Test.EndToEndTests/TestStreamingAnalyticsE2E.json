@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFM/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"key\": \"value\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"standard\"\r\n    },\r\n    \"outputStartMode\": \"CustomTime\",\r\n    \"outputStartTime\": \"2012-12-12T12:12:12Z\",\r\n    \"inputs\": [\r\n      {\r\n        \"name\": \"Input\",\r\n        \"properties\": {\r\n          \"type\": \"stream\",\r\n          \"serialization\": {\r\n            \"type\": \"CSV\",\r\n            \"properties\": {\r\n              \"fieldDelimiter\": \",\",\r\n              \"encoding\": \"UTF8\"\r\n            }\r\n          },\r\n          \"datasource\": {\r\n            \"type\": \"Microsoft.Storage/Blob\",\r\n            \"properties\": {\r\n              \"storageAccounts\": [\r\n                {\r\n                  \"accountName\": \"azurenrtdogfood\",\r\n                  \"accountKey\": \"$EncryptedStringForTesting\"\r\n                }\r\n              ],\r\n              \"container\": \"samples\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"transformation\": {\r\n      \"name\": \"transform1\",\r\n      \"properties\": {\r\n        \"streamingUnits\": 1,\r\n        \"query\": \"select Id, Name from Input\"\r\n      }\r\n    },\r\n    \"outputs\": [\r\n      {\r\n        \"name\": \"Output\",\r\n        \"properties\": {\r\n          \"datasource\": {\r\n            \"type\": \"Microsoft.Sql/Server/Database\",\r\n            \"properties\": {\r\n              \"server\": \"$EncryptedStringForTesting.database.windows.net\",\r\n              \"database\": \"azurenrtsql\",\r\n              \"user\": \"azurenrt@$EncryptedStringForTesting\",\r\n              \"password\": \"$EncryptedStringForTesting\",\r\n              \"table\": \"Samples\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
@@ -71,7 +70,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS?$expand=inputs%2Ctransformation%2Coutputs&api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFM/JGV4cGFuZD1pbnB1dHMlMkN0cmFuc2Zvcm1hdGlvbiUyQ291dHB1dHMmYXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -134,7 +132,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/inputs?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvaW5wdXRzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -194,7 +191,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/outputs?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvb3V0cHV0cz9hcGktdmVyc2lvbj0yMDE0LTEyLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -254,7 +250,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/transformations/transform1?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvdHJhbnNmb3JtYXRpb25zL3RyYW5zZm9ybTE/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -317,7 +312,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/inputs/Input?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvaW5wdXRzL0lucHV0P2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"Input\",\r\n  \"properties\": {\r\n    \"type\": \"stream\",\r\n    \"serialization\": {\r\n      \"type\": \"CSV\",\r\n      \"properties\": {\r\n        \"fieldDelimiter\": \",\",\r\n        \"encoding\": \"UTF8\"\r\n      }\r\n    },\r\n    \"datasource\": {\r\n      \"type\": \"Microsoft.Storage/Blob\",\r\n      \"properties\": {\r\n        \"storageAccounts\": [\r\n          {\r\n            \"accountName\": \"azurenrtdogfood\",\r\n            \"accountKey\": \"$EncryptedStringForTesting\"\r\n          }\r\n        ],\r\n        \"container\": \"samples\",\r\n        \"blobName\": \"sample-blob\",\r\n        \"PathPattern\": \"LongRunning/{date}/{time}\",\r\n        \"DateFormat\": \"yyyy-MM-dd\",\r\n        \"TimeFormat\": \"HH:mm\",\r\n        \"SourcePartitionCount\": null,\r\n        \"blobSerializationBoundary\": \"BlobBoundary\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
@@ -386,7 +380,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/inputs/Input/test?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvaW5wdXRzL0lucHV0L3Rlc3Q/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -455,7 +448,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/inputs/Input/test/OperationResults/2717fac6-8c0b-43fd-8ae6-03d77bc0a15e?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvaW5wdXRzL0lucHV0L3Rlc3QvT3BlcmF0aW9uUmVzdWx0cy8yNzE3ZmFjNi04YzBiLTQzZmQtOGFlNi0wM2Q3N2JjMGExNWU/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -524,7 +516,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/inputs/Input/test/OperationResults/2717fac6-8c0b-43fd-8ae6-03d77bc0a15e?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvaW5wdXRzL0lucHV0L3Rlc3QvT3BlcmF0aW9uUmVzdWx0cy8yNzE3ZmFjNi04YzBiLTQzZmQtOGFlNi0wM2Q3N2JjMGExNWU/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -587,7 +578,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/outputs/Output?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvb3V0cHV0cy9PdXRwdXQ/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"Output\",\r\n  \"properties\": {\r\n    \"datasource\": {\r\n      \"type\": \"Microsoft.Sql/Server/Database\",\r\n      \"properties\": {\r\n        \"server\": \"$EncryptedStringForTesting.database.windows.net\",\r\n        \"database\": \"azurenrtsql\",\r\n        \"user\": \"azurenrt@$EncryptedStringForTesting\",\r\n        \"password\": \"$EncryptedStringForTesting\",\r\n        \"table\": \"Samples\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
@@ -656,7 +646,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/outputs/Output/test?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvb3V0cHV0cy9PdXRwdXQvdGVzdD9hcGktdmVyc2lvbj0yMDE0LTEyLTAxLXByZXZpZXc=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -725,7 +714,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/outputs/Output/test/OperationResults/376752f2-eb93-42af-a858-bd73e3c1d70f?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvb3V0cHV0cy9PdXRwdXQvdGVzdC9PcGVyYXRpb25SZXN1bHRzLzM3Njc1MmYyLWViOTMtNDJhZi1hODU4LWJkNzNlM2MxZDcwZj9hcGktdmVyc2lvbj0yMDE0LTEyLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -794,7 +782,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/outputs/Output/test/OperationResults/376752f2-eb93-42af-a858-bd73e3c1d70f?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvb3V0cHV0cy9PdXRwdXQvdGVzdC9PcGVyYXRpb25SZXN1bHRzLzM3Njc1MmYyLWViOTMtNDJhZi1hODU4LWJkNzNlM2MxZDcwZj9hcGktdmVyc2lvbj0yMDE0LTEyLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -857,7 +844,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/transformations/transform1?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvdHJhbnNmb3JtYXRpb25zL3RyYW5zZm9ybTE/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"transform1\",\r\n  \"properties\": {\r\n    \"streamingUnits\": 1,\r\n    \"query\": \"select Id, Name from Input TIMESTAMP BY TimeCreated\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -926,7 +912,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/providers/Microsoft.StreamAnalytics/locations/West%20US/quotas?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RyZWFtQW5hbHl0aWNzL2xvY2F0aW9ucy9XZXN0JTIwVVMvcXVvdGFzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -986,7 +971,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/providers/Microsoft.StreamAnalytics/locations/West%20US/quotas?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RyZWFtQW5hbHl0aWNzL2xvY2F0aW9ucy9XZXN0JTIwVVMvcXVvdGFzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1046,7 +1030,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/start?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvc3RhcnQ/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1115,7 +1098,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/start/OperationResults/feabe924-3d71-433b-a9a7-9b180d114ae9?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvc3RhcnQvT3BlcmF0aW9uUmVzdWx0cy9mZWFiZTkyNC0zZDcxLTQzM2ItYTlhNy05YjE4MGQxMTRhZTk/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1184,7 +1166,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/start/OperationResults/feabe924-3d71-433b-a9a7-9b180d114ae9?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvc3RhcnQvT3BlcmF0aW9uUmVzdWx0cy9mZWFiZTkyNC0zZDcxLTQzM2ItYTlhNy05YjE4MGQxMTRhZTk/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1253,7 +1234,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/start/OperationResults/feabe924-3d71-433b-a9a7-9b180d114ae9?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvc3RhcnQvT3BlcmF0aW9uUmVzdWx0cy9mZWFiZTkyNC0zZDcxLTQzM2ItYTlhNy05YjE4MGQxMTRhZTk/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1322,7 +1302,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/start/OperationResults/feabe924-3d71-433b-a9a7-9b180d114ae9?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvc3RhcnQvT3BlcmF0aW9uUmVzdWx0cy9mZWFiZTkyNC0zZDcxLTQzM2ItYTlhNy05YjE4MGQxMTRhZTk/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1391,7 +1370,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/start/OperationResults/feabe924-3d71-433b-a9a7-9b180d114ae9?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvc3RhcnQvT3BlcmF0aW9uUmVzdWx0cy9mZWFiZTkyNC0zZDcxLTQzM2ItYTlhNy05YjE4MGQxMTRhZTk/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1460,7 +1438,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/start/OperationResults/feabe924-3d71-433b-a9a7-9b180d114ae9?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvc3RhcnQvT3BlcmF0aW9uUmVzdWx0cy9mZWFiZTkyNC0zZDcxLTQzM2ItYTlhNy05YjE4MGQxMTRhZTk/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1529,7 +1506,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/start/OperationResults/feabe924-3d71-433b-a9a7-9b180d114ae9?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvc3RhcnQvT3BlcmF0aW9uUmVzdWx0cy9mZWFiZTkyNC0zZDcxLTQzM2ItYTlhNy05YjE4MGQxMTRhZTk/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1598,7 +1574,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/start/OperationResults/feabe924-3d71-433b-a9a7-9b180d114ae9?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvc3RhcnQvT3BlcmF0aW9uUmVzdWx0cy9mZWFiZTkyNC0zZDcxLTQzM2ItYTlhNy05YjE4MGQxMTRhZTk/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1661,7 +1636,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/stop?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvc3RvcD9hcGktdmVyc2lvbj0yMDE0LTEyLTAxLXByZXZpZXc=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1730,7 +1704,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/stop/OperationResults/f448eb1f-541b-4f32-84cf-0d03d06aa54d?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvc3RvcC9PcGVyYXRpb25SZXN1bHRzL2Y0NDhlYjFmLTU0MWItNGYzMi04NGNmLTBkMDNkMDZhYTU0ZD9hcGktdmVyc2lvbj0yMDE0LTEyLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1799,7 +1772,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/stop/OperationResults/f448eb1f-541b-4f32-84cf-0d03d06aa54d?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvc3RvcC9PcGVyYXRpb25SZXN1bHRzL2Y0NDhlYjFmLTU0MWItNGYzMi04NGNmLTBkMDNkMDZhYTU0ZD9hcGktdmVyc2lvbj0yMDE0LTEyLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1862,7 +1834,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/outputs/Output?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvb3V0cHV0cy9PdXRwdXQ/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1922,7 +1893,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS/inputs/Input?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFMvaW5wdXRzL0lucHV0P2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1982,7 +1952,6 @@
     },
     {
       "RequestUri": "/subscriptions/fab1606e-7972-4dc7-badb-6b780365a8d7/resourcegroups/StreamAnalytics-Default-West-US/providers/Microsoft.StreamAnalytics/streamingjobs/TestJobPS?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmFiMTYwNmUtNzk3Mi00ZGM3LWJhZGItNmI3ODAzNjVhOGQ3L3Jlc291cmNlZ3JvdXBzL1N0cmVhbUFuYWx5dGljcy1EZWZhdWx0LVdlc3QtVVMvcHJvdmlkZXJzL01pY3Jvc29mdC5TdHJlYW1BbmFseXRpY3Mvc3RyZWFtaW5nam9icy9UZXN0Sm9iUFM/YXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

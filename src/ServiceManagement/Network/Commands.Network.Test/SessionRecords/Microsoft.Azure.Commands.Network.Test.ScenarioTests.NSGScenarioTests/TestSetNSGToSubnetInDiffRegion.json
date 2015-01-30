@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/locations",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9sb2NhdGlvbnM=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -43,7 +42,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/7258ee9e49983c9a954a3308f3600b8a",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzcyNThlZTllNDk5ODNjOWE5NTRhMzMwOGYzNjAwYjhh",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -84,7 +82,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/networksecuritygroups",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9zZXJ2aWNlcy9uZXR3b3JraW5nL25ldHdvcmtzZWN1cml0eWdyb3Vwcw==",
       "RequestMethod": "POST",
       "RequestBody": "<NetworkSecurityGroup xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Name>onesdk748</Name>\r\n  <Label>Scenario Test NSG</Label>\r\n  <Location>West Europe</Location>\r\n</NetworkSecurityGroup>",
       "RequestHeaders": {
@@ -131,7 +128,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/5c72ad6eec193ea49eca53b8b2550b46",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzVjNzJhZDZlZWMxOTNlYTQ5ZWNhNTNiOGIyNTUwYjQ2",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -175,7 +171,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/5c72ad6eec193ea49eca53b8b2550b46",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzVjNzJhZDZlZWMxOTNlYTQ5ZWNhNTNiOGIyNTUwYjQ2",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -218,8 +213,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/networksecuritygroups/onesdk748?",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9zZXJ2aWNlcy9uZXR3b3JraW5nL25ldHdvcmtzZWN1cml0eWdyb3Vwcy9vbmVzZGs3NDg/",
+      "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/networksecuritygroups/onesdk748",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -260,7 +254,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/media",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9zZXJ2aWNlcy9uZXR3b3JraW5nL21lZGlh",
       "RequestMethod": "PUT",
       "RequestBody": "<NetworkConfiguration xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns>\r\n      <DnsServers />\r\n    </Dns>\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"VirtualNetworkSiteName\" Location=\"North Europe\">\r\n        <AddressSpace>\r\n          <AddressPrefix>192.168.100.0/24</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"FrontEndSubnet\">\r\n            <AddressPrefix>192.168.100.0/28</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n        <DnsServersRef />\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>",
       "RequestHeaders": {
@@ -307,7 +300,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/748fba820a9139afa49c71ac663f0503",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzc0OGZiYTgyMGE5MTM5YWZhNDljNzFhYzY2M2YwNTAz",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -351,7 +343,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/748fba820a9139afa49c71ac663f0503",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzc0OGZiYTgyMGE5MTM5YWZhNDljNzFhYzY2M2YwNTAz",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -395,7 +386,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/virtualnetwork/VirtualNetworkSiteName/subnets/FrontEndSubnet/networksecuritygroups",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9zZXJ2aWNlcy9uZXR3b3JraW5nL3ZpcnR1YWxuZXR3b3JrL1ZpcnR1YWxOZXR3b3JrU2l0ZU5hbWUvc3VibmV0cy9Gcm9udEVuZFN1Ym5ldC9uZXR3b3Jrc2VjdXJpdHlncm91cHM=",
       "RequestMethod": "POST",
       "RequestBody": "<NetworkSecurityGroup xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Name>onesdk748</Name>\r\n</NetworkSecurityGroup>",
       "RequestHeaders": {
@@ -442,7 +432,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/fd39f0c013043389b8895f76a4ac65f3",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zL2ZkMzlmMGMwMTMwNDMzODliODg5NWY3NmE0YWM2NWYz",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -486,7 +475,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/fd39f0c013043389b8895f76a4ac65f3",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zL2ZkMzlmMGMwMTMwNDMzODliODg5NWY3NmE0YWM2NWYz",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

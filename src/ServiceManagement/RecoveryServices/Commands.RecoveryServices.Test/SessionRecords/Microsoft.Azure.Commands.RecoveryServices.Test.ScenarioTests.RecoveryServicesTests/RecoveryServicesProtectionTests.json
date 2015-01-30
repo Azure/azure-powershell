@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/947a55d7-75e9-4a36-b156-305c6270f018/cloudservices?api-version=2014-10-27",
-      "EncodedRequestUri": "Lzk0N2E1NWQ3LTc1ZTktNGEzNi1iMTU2LTMwNWM2MjcwZjAxOC9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTQtMTAtMjc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -43,7 +42,6 @@
     },
     {
       "RequestUri": "/947a55d7-75e9-4a36-b156-305c6270f018/cloudservices?api-version=2014-10-27",
-      "EncodedRequestUri": "Lzk0N2E1NWQ3LTc1ZTktNGEzNi1iMTU2LTMwNWM2MjcwZjAxOC9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTQtMTAtMjc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -84,7 +82,6 @@
     },
     {
       "RequestUri": "/947a55d7-75e9-4a36-b156-305c6270f018/cloudservices/RecoveryServices-BKSIPEKSKUOD6BRA3PZOPIOUSEB6PBLUPHIK7Z3U7OVNBDOA257Q-west-us/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/rijethma-vault/ProtectionContainers?api-version=2014-10-27",
-      "EncodedRequestUri": "Lzk0N2E1NWQ3LTc1ZTktNGEzNi1iMTU2LTMwNWM2MjcwZjAxOC9jbG91ZHNlcnZpY2VzL1JlY292ZXJ5U2VydmljZXMtQktTSVBFS1NLVU9ENkJSQTNQWk9QSU9VU0VCNlBCTFVQSElLN1ozVTdPVk5CRE9BMjU3US13ZXN0LXVzL3Jlc291cmNlcy9XQUh5cGVyVlJlY292ZXJ5TWFuYWdlci9+L0h5cGVyVlJlY292ZXJ5TWFuYWdlclZhdWx0L3JpamV0aG1hLXZhdWx0L1Byb3RlY3Rpb25Db250YWluZXJzP2FwaS12ZXJzaW9uPTIwMTQtMTAtMjc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

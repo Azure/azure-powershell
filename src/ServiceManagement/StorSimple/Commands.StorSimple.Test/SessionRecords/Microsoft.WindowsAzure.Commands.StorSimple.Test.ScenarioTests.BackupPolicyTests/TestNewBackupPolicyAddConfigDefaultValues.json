@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/062c67a6-019b-40af-a775-c4dc1abe56ed/CloudServices",
-      "EncodedRequestUri": "LzA2MmM2N2E2LTAxOWItNDBhZi1hNzc1LWM0ZGMxYWJlNTZlZC9DbG91ZFNlcnZpY2Vz",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -43,7 +42,6 @@
     },
     {
       "RequestUri": "/062c67a6-019b-40af-a775-c4dc1abe56ed/cloudservices/CisService-DTYHC5NYB4BUTV3ZHFNSE5EKIZZGLGYR44OJUL5OQGG4I2EMYOZA-west-us/resources/WACis/~/CiSVault/OneSDK-Resource/api/devices?api-version=2014-01-01.1.0",
-      "EncodedRequestUri": "LzA2MmM2N2E2LTAxOWItNDBhZi1hNzc1LWM0ZGMxYWJlNTZlZC9jbG91ZHNlcnZpY2VzL0Npc1NlcnZpY2UtRFRZSEM1TllCNEJVVFYzWkhGTlNFNUVLSVpaR0xHWVI0NE9KVUw1T1FHRzRJMkVNWU9aQS13ZXN0LXVzL3Jlc291cmNlcy9XQUNpcy9+L0NpU1ZhdWx0L09uZVNESy1SZXNvdXJjZS9hcGkvZGV2aWNlcz9hcGktdmVyc2lvbj0yMDE0LTAxLTAxLjEuMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -108,7 +106,6 @@
     },
     {
       "RequestUri": "/062c67a6-019b-40af-a775-c4dc1abe56ed/cloudservices/CisService-DTYHC5NYB4BUTV3ZHFNSE5EKIZZGLGYR44OJUL5OQGG4I2EMYOZA-west-us/resources/WACis/~/CiSVault/OneSDK-Resource/stamps/7ef900f6-ad91-497d-a9c5-2742b7ed4a75/secretmanagement/publickey?api-version=2014-01-01.1.0",
-      "EncodedRequestUri": "LzA2MmM2N2E2LTAxOWItNDBhZi1hNzc1LWM0ZGMxYWJlNTZlZC9jbG91ZHNlcnZpY2VzL0Npc1NlcnZpY2UtRFRZSEM1TllCNEJVVFYzWkhGTlNFNUVLSVpaR0xHWVI0NE9KVUw1T1FHRzRJMkVNWU9aQS13ZXN0LXVzL3Jlc291cmNlcy9XQUNpcy9+L0NpU1ZhdWx0L09uZVNESy1SZXNvdXJjZS9zdGFtcHMvN2VmOTAwZjYtYWQ5MS00OTdkLWE5YzUtMjc0MmI3ZWQ0YTc1L3NlY3JldG1hbmFnZW1lbnQvcHVibGlja2V5P2FwaS12ZXJzaW9uPTIwMTQtMDEtMDEuMS4w",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

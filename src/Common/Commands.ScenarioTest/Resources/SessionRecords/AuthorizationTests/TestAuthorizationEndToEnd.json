@@ -226,7 +226,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments?&api-version=2014-07-01-preview",
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments?api-version=2014-07-01-preview",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -271,7 +271,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments?&api-version=2014-07-01-preview",
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments?api-version=2014-07-01-preview",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -316,7 +316,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments?&api-version=2014-07-01-preview",
+      "RequestUri": "/subscriptions/1165e0f9-4535-44ce-bc6b-c73c00b5fb2c/providers/Microsoft.Authorization/roleAssignments?api-version=2014-07-01-preview",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

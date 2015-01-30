@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/myportalcache?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL215cG9ydGFsY2FjaGU/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

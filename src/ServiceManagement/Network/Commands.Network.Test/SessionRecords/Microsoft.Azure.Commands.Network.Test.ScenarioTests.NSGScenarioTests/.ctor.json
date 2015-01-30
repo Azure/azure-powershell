@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/locations",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9sb2NhdGlvbnM=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -43,7 +42,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/8273f0fe450530c39de7ede5b3e1c08e",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzgyNzNmMGZlNDUwNTMwYzM5ZGU3ZWRlNWIzZTFjMDhl",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -84,7 +82,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/media",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9zZXJ2aWNlcy9uZXR3b3JraW5nL21lZGlh",
       "RequestMethod": "PUT",
       "RequestBody": "<NetworkConfiguration xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <VirtualNetworkConfiguration></VirtualNetworkConfiguration>\r\n</NetworkConfiguration>",
       "RequestHeaders": {
@@ -131,7 +128,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/17db8e1adab23373b0c14c4f0dbc3488",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzE3ZGI4ZTFhZGFiMjMzNzNiMGMxNGM0ZjBkYmMzNDg4",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -175,7 +171,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/17db8e1adab23373b0c14c4f0dbc3488",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzE3ZGI4ZTFhZGFiMjMzNzNiMGMxNGM0ZjBkYmMzNDg4",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -219,7 +214,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/networksecuritygroups",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9zZXJ2aWNlcy9uZXR3b3JraW5nL25ldHdvcmtzZWN1cml0eWdyb3Vwcw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -260,7 +254,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/networksecuritygroups/onesdk2556",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9zZXJ2aWNlcy9uZXR3b3JraW5nL25ldHdvcmtzZWN1cml0eWdyb3Vwcy9vbmVzZGsyNTU2",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -301,7 +294,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/8db21b11f6a530fdba15695c91f9bc42",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzhkYjIxYjExZjZhNTMwZmRiYTE1Njk1YzkxZjliYzQy",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -345,7 +337,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/8db21b11f6a530fdba15695c91f9bc42",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzhkYjIxYjExZjZhNTMwZmRiYTE1Njk1YzkxZjliYzQy",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

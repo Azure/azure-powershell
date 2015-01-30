@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
