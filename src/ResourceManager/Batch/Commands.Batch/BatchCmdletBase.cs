@@ -14,10 +14,10 @@
 
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol.Entities;
+using Hyak.Common;
 using Microsoft.Azure.Common.Extensions;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Common.Internals;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Text;
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Batch
             // TODO: Revise after Task 2362107 is completed on the server side
             string message = null;
 
-            if (ParserHelper.IsJson(content))
+            if (CloudException.IsJson(content))
             {
                 var response = JObject.Parse(content);
 
