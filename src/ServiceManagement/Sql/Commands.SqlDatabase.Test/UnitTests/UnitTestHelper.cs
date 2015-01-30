@@ -290,10 +290,13 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
         {
             UnitTestHelper.ImportAzureModule(powershell);
 
+            X509Certificate2 certificate = UnitTestHelper.GetUnitTestClientCertificate();
+            Guid subscriptionId = new Guid(UnitTestSubscriptionId);
+
             // Set the client certificate used in the subscription
             powershell.Runspace.SessionStateProxy.SetVariable(
                 "clientCertificate",
-                UnitTestHelper.GetUnitTestClientCertificate());
+                certificate);
 
             ProfileClient client = new ProfileClient();
             client.Profile.Environments[UnitTestEnvironmentName] = new AzureEnvironment
@@ -308,13 +311,13 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
             
             var account = new AzureAccount
             {
-                Id = UnitTestHelper.GetUnitTestClientCertificate().Thumbprint,
+                Id = certificate.Thumbprint,
                 Type = AzureAccount.AccountType.Certificate
             };
 
             var subscription = new AzureSubscription
             {
-                Id = new Guid(UnitTestSubscriptionId),
+                Id = subscriptionId,
                 Name = UnitTestSubscriptionName,
                 Environment = UnitTestEnvironmentName,
                 Account = account.Id
@@ -324,7 +327,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
             client.AddOrSetSubscription(subscription);
             client.SetSubscriptionAsCurrent(UnitTestSubscriptionName, account.Id);
             client.Profile.Save();
-            
+
             return subscription;
         }
 

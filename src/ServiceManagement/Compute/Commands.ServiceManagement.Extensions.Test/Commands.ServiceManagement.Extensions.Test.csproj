@@ -70,6 +70,14 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.8.0.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.0.0\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
@@ -107,12 +115,21 @@
   <ItemGroup>
     <Compile Include="DSC\DscExtensionConfigurationParsingHelperTests.cs" />
     <Compile Include="DSC\DscExtensionSettingsSerializerTests.cs" />
+    <Compile Include="DSC\UnitTests\GetAzureVmDscExtensionStatusUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5EE72C53-1720-4309-B54B-5FB79703195F}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
       <Project>{C1BDA476-A5CC-4394-914D-48B0EC31A710}</Project>
       <Name>Commands.ScenarioTests.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Commands.Utilities\Commands.Utilities.csproj">
+      <Project>{4900EC4E-8DEB-4412-9108-0BC52F81D457}</Project>
+      <Name>Commands.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.ServiceManagement\Commands.ServiceManagement.csproj">
       <Project>{e1ca72ba-8374-45f6-904d-fd34ecdf5b6f}</Project>
