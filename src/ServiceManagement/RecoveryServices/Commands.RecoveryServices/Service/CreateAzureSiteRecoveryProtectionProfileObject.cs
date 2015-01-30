@@ -189,9 +189,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // Verify whether the subscription is associated with the account or not.
             PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
 
-            this.ValidateReplicationStartTime(this.ReplicationStartTime);
+            PSRecoveryServicesClientHelper.ValidateReplicationStartTime(this.ReplicationStartTime);
 
-            ushort replicationFrequencyInSeconds = this.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+            ushort replicationFrequencyInSeconds = PSRecoveryServicesClientHelper.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
@@ -217,9 +217,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void EnterpriseToEnterpriseProtectionProfileObject()
         {
-            this.ValidateReplicationStartTime(this.ReplicationStartTime);
+            PSRecoveryServicesClientHelper.ValidateReplicationStartTime(this.ReplicationStartTime);
 
-            ushort replicationFrequencyInSeconds = this.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+            ushort replicationFrequencyInSeconds = PSRecoveryServicesClientHelper.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
@@ -240,44 +240,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             };
 
             this.WriteObject(protectionProfile);
-        }
-
-        /// <summary>
-        /// Converts the Parameter set string of Replication Frequency in seconds to UShort.
-        /// </summary>
-        /// <param name="replicationFrequencyString">Replication frequency in seconds.</param>
-        /// <returns>A UShort corresponding to the value.</returns>
-        private ushort ConvertReplicationFrequencyToUshort(string replicationFrequencyString)
-        {
-            ushort replicationFrequency;
-
-            if (!ushort.TryParse(replicationFrequencyString, out replicationFrequency))
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.InvalidReplicationFrequency,
-                    replicationFrequencyString));
-            }
-
-            return replicationFrequency;
-        }
-
-        /// <summary>
-        /// Validates if the time span object has a valid value.
-        /// </summary>
-        /// <param name="timeSpan">Time span object to be validated</param>
-        private void ValidateReplicationStartTime(TimeSpan? timeSpan)
-        {
-            if (timeSpan == null)
-            {
-                return;
-            }
-
-            if (TimeSpan.Compare(timeSpan.Value, new TimeSpan(24, 0, 0)) == 1)
-            {
-                throw new InvalidOperationException(
-                    string.Format(Properties.Resources.ReplicationStartTimeInvalid));
-            }
         }
     }
 }

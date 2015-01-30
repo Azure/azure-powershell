@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             var storageAccount = new CustomerStorageAccount();
             storageAccount.StorageAccountName = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureStorageAccountName;
             storageAccount.SubscriptionId = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureSubscription;
-            
+
             hyperVReplicaAzureProtectionProfileInput.StorageAccounts = new System.Collections.Generic.List<CustomerStorageAccount>();
             hyperVReplicaAzureProtectionProfileInput.StorageAccounts.Add(storageAccount);
 

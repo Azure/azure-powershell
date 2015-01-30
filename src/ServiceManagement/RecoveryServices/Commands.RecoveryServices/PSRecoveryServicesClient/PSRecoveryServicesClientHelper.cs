@@ -100,5 +100,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     azureStorageAccount));
             }
         }
+
+        /// <summary>
+        /// Converts the Parameter set string of Replication Frequency in seconds to UShort.
+        /// </summary>
+        /// <param name="replicationFrequencyString">Replication frequency in seconds.</param>
+        /// <returns>A UShort corresponding to the value.</returns>
+        public static ushort ConvertReplicationFrequencyToUshort(string replicationFrequencyString)
+        {
+            ushort replicationFrequency;
+
+            if (!ushort.TryParse(replicationFrequencyString, out replicationFrequency))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.InvalidReplicationFrequency,
+                    replicationFrequencyString));
+            }
+
+            return replicationFrequency;
+        }
+
+        /// <summary>
+        /// Validates if the time span object has a valid value.
+        /// </summary>
+        /// <param name="timeSpan">Time span object to be validated</param>
+        public static void ValidateReplicationStartTime(TimeSpan? timeSpan)
+        {
+            if (timeSpan == null)
+            {
+                return;
+            }
+
+            if (TimeSpan.Compare(timeSpan.Value, new TimeSpan(24, 0, 0)) == 1)
+            {
+                throw new InvalidOperationException(
+                    string.Format(Properties.Resources.ReplicationStartTimeInvalid));
+            }
+        }
     }
 }
