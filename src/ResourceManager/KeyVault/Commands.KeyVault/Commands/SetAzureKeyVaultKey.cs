@@ -85,22 +85,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            try
+            KeyAttributes attributes = new KeyAttributes
             {
-                KeyAttributes attributes = new KeyAttributes
-                {
-                    Enabled = this.Enable,
-                    Expires = this.Expires,
-                    NotBefore = this.NotBefore,
-                    KeyOps = this.KeyOps
-                };
+                Enabled = this.Enable,
+                Expires = this.Expires,
+                NotBefore = this.NotBefore,
+                KeyOps = this.KeyOps
+            };
 
-                WriteObject(DataServiceClient.SetKey(VaultName, Name, attributes));
-            }
-            catch (Exception ex)
-            {
-                this.WriteErrorDetails(ex);
-            }
+            WriteObject(DataServiceClient.SetKey(VaultName, Name, attributes));
         }
     }
 }

@@ -63,30 +63,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
         #endregion
         public override void ExecuteCmdlet()
         {
-            try
+            KeyBundle keyBundle = null;
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.RemoveKeyWarning,
+                    Name),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.RemoveKeyWhatIfMessage,
+                    Name),
+                Name,
+                () => { keyBundle = DataServiceClient.DeleteKey(VaultName, Name); });
+
+            if (PassThru.IsPresent)
             {
-                KeyBundle keyBundle = null;
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.RemoveKeyWarning,
-                        Name),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.RemoveKeyWhatIfMessage,
-                        Name),
-                    Name,
-                    () => { keyBundle = DataServiceClient.DeleteKey(VaultName, Name); });
-                
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(keyBundle);
-                }
-            }
-            catch (Exception ex)
-            {
-                this.WriteErrorDetails(ex);
+                WriteObject(keyBundle);
             }
         }
       
