@@ -4703,7 +4703,7 @@
     </maml:relatedLinks>
   </command:command>
 
-  <!--Update-AzureSiteRecoveryProtectionEntity-->
+<!--Update-AzureSiteRecoveryProtectionEntity-->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -5835,4 +5835,1505 @@
     </maml:relatedLinks>
   </command:command>
 
+<!--Get-AzureSiteRecoveryStorage-->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Get-AzureSiteRecoveryStorage
+		</command:name>
+		<maml:description>
+			<maml:para>Get information about Azure Site Recovery Storages for current Azure Site Recovery Vault</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>AzureSiteRecoveryStorage</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>Get information about Azure Site Recovery Storages for current Azure Site Recovery Vault</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-AzureSiteRecoveryStorage</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Server object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Server object</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			<dev:type>
+				<maml:name>ASRServer</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>PS C:\&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+ $servers = Get-AzureSiteRecoveryServer
+
+PS C:\&gt; Get-AzureSiteRecoveryStorage -Server $servers[0]
+
+Name           : phase2PrimaryStorageClassification
+ID             : 1c1d0c0b-0c50-4675-af1a-1fdac70dbb6d
+FabricObjectID : 1c1d0c0b-0c50-4675-af1a-1fdac70dbb6d
+ServerId       : 774859b0-1966-48cc-9df7-759c441b7a8c
+Type           : Classification
+FabricType     : VMM
+
+Name           : phase2RecoveryStorageClassification
+ID             : 20cf8d92-fd5d-4872-985a-0f4562b8a0bf
+FabricObjectID : 20cf8d92-fd5d-4872-985a-0f4562b8a0bf
+ServerId       : 774859b0-1966-48cc-9df7-759c441b7a8c
+Type           : Classification
+FabricType     : VMM                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText></maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+<!--Get-AzureSiteRecoveryStorageMapping-->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Get-AzureSiteRecoveryStorageMapping
+		</command:name>
+		<maml:description>
+			<maml:para>Get information about Azure Site Recovery Storage mappings for current Azure Site Recovery Vault</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>AzureSiteRecoveryStorageMapping</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>Get information about Azure Site Recovery Storage mappings for current Azure Site Recovery Vault</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-AzureSiteRecoveryStorageMapping</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PrimaryServer</maml:name>
+				<maml:description>
+					<maml:para>Primary Server object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RecoveryServer</maml:name>
+				<maml:description>
+					<maml:para>Recovery Server object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PrimaryServer</maml:name>
+			<maml:description>
+				<maml:para>Primary Server object</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			<dev:type>
+				<maml:name>ASRServer</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>RecoveryServer</maml:name>
+			<maml:description>
+				<maml:para>Recovery Server object</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			<dev:type>
+				<maml:name>ASRServer</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>PS C:\&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+ $servers = Get-AzureSiteRecoveryServer
+
+PS C:\&gt; Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+
+PrimaryServerId     : 774859b0-1966-48cc-9df7-759c441b7a8c
+PrimaryStorageId    : 1c1d0c0b-0c50-4675-af1a-1fdac70dbb6d
+PrimaryStorageName  : phase2PrimaryStorageClassification
+RecoveryServerId    : 774859b0-1966-48cc-9df7-759c441b7a8c
+RecoveryStorageId   : 20cf8d92-fd5d-4872-985a-0f4562b8a0bf
+RecoveryStorageName : phase2RecoveryStorageClassification                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText></maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+<!--New-AzureSiteRecoveryStorageMapping-->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   New-AzureSiteRecoveryStorageMapping
+		</command:name>
+		<maml:description>
+			<maml:para>Creates a mapping between two Storages</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureSiteRecoveryStorageMapping</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>Creates a mapping between two Storages</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureSiteRecoveryStorageMapping</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PrimaryStorage</maml:name>
+				<maml:description>
+					<maml:para>Primary Storage object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRStorage</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RecoveryStorage</maml:name>
+				<maml:description>
+					<maml:para>Recovery Storage object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRStorage</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PrimaryStorage</maml:name>
+			<maml:description>
+				<maml:para>Primary Storage object</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ASRStorage</command:parameterValue>
+			<dev:type>
+				<maml:name>ASRStorage</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>RecoveryStorage</maml:name>
+			<maml:description>
+				<maml:para>Recovery Storage object</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ASRStorage</command:parameterValue>
+			<dev:type>
+				<maml:name>ASRStorage</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>PS C:\&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+ storages = Get-AzureSiteRecoveryStorage -Server $servers[0]
+
+PS C:\&gt; New-AzureSiteRecoveryStorageMapping -PrimaryStorage $storages[0] -RecoveryStorage $storages[1]
+
+Name             :
+ID               : fea46d20-6170-480f-b14b-81811d4c2a9c
+ClientRequestId  : 85033535-9525-4567-9132-a3518fff1d49-2015-01-30 05:28:18Z-P
+State            : NotStarted
+StateDescription : NotStarted
+StartTime        :
+EndTime          :
+AllowedActions   :
+Tasks            : {}
+Errors           : {}
+
+
+
+PS C:\&gt; Get-AzureSiteRecoveryJob -Id fea46d20-6170-480f-b14b-81811d4c2a9c
+
+Name             : ClassificationPairing
+ID               : fea46d20-6170-480f-b14b-81811d4c2a9c
+ClientRequestId  : 85033535-9525-4567-9132-a3518fff1d49-2015-01-30 05:28:18Z-P
+State            : Succeeded
+StateDescription : Completed
+StartTime        : 1/30/2015 5:28:23 AM
+EndTime          : 1/30/2015 5:28:22 AM
+AllowedActions   :
+Tasks            : {Prerequisites check for mapping classifications, Mapping classifications}
+Errors           : {}                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText></maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+<!--Remove-AzureSiteRecoveryStorageMapping-->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Remove-AzureSiteRecoveryStorageMapping
+		</command:name>
+		<maml:description>
+			<maml:para>Removes a Storage mapping form current Azure Site Recovery Vault</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Remove</command:verb>
+		<command:noun>AzureSiteRecoveryStorageMapping</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>Removes a Storage mapping form current Azure Site Recovery Vault</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Remove-AzureSiteRecoveryStorageMapping</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>StorageMapping</maml:name>
+				<maml:description>
+					<maml:para>Storage Mapping object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRStorageMapping</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>StorageMapping</maml:name>
+			<maml:description>
+				<maml:para>Storage Mapping object</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ASRStorageMapping</command:parameterValue>
+			<dev:type>
+				<maml:name>ASRStorageMapping</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>PS C:\&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+$storageMapping = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+
+PS C:\&gt; Remove-AzureSiteRecoveryStorageMapping -StorageMapping $storageMapping
+
+Name             : ClassificationUnpairing
+ID               : 32582350-28c4-4a53-8ebd-28dec9e24aca
+ClientRequestId  : 49c607cf-82fa-4317-8366-dacbe2bf479b-2015-01-30 05:30:16Z-P
+State            : InProgress
+StateDescription : InProgress
+StartTime        : 1/30/2015 5:30:20 AM
+EndTime          :
+AllowedActions   :
+Tasks            : {Prerequisites check for unmapping classifications, Unmapping classifications}
+Errors           : {}                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText></maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+<!--Get-AzureSiteRecoveryNetwork-->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Get-AzureSiteRecoveryNetwork
+		</command:name>
+		<maml:description>
+			<maml:para>Get information about Azure Site Recovery Networks for current Azure Site Recovery Vault</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>AzureSiteRecoveryNetwork</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>Get information about Azure Site Recovery Networks for current Azure Site Recovery Vault</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-AzureSiteRecoveryNetwork</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>Server</maml:name>
+				<maml:description>
+					<maml:para>Server object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Server</maml:name>
+			<maml:description>
+				<maml:para>Server object</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			<dev:type>
+				<maml:name>ASRServer</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>PS C:\&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+ $servers = Get-AzureSiteRecoveryServer
+
+PS C:\&gt; Get-AzureSiteRecoveryNetwork -Server $servers[0]
+
+Name                : phase2RecoveryVMNetwork
+ID                  : 7cfd636e-5cc2-4e01-873b-8a7aa4962341
+FabricObjectID      : 7cfd636e-5cc2-4e01-873b-8a7aa4962341
+ServerId            : 774859b0-1966-48cc-9df7-759c441b7a8c
+Type                : NoIsolation
+FabricType          : VMM
+VmNetworkSubnetList : {}
+
+Name                : phase2PrimaryVMNetwork
+ID                  : d903e2c6-3141-4cef-bfe1-04616cd43cbb
+FabricObjectID      : d903e2c6-3141-4cef-bfe1-04616cd43cbb
+ServerId            : 774859b0-1966-48cc-9df7-759c441b7a8c
+Type                : NoIsolation
+FabricType          : VMM
+VmNetworkSubnetList : {}                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText></maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+<!--Get-AzureSiteRecoveryNetworkMapping-->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Get-AzureSiteRecoveryNetworkMapping
+		</command:name>
+		<maml:description>
+			<maml:para>Get information about Azure Site Recovery Network mappings for current Azure Site Recovery Vault</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>AzureSiteRecoveryNetworkMapping</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>Get information about Azure Site Recovery Network mappings for current Azure Site Recovery Vault</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-AzureSiteRecoveryNetworkMapping</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PrimaryServer</maml:name>
+				<maml:description>
+					<maml:para>Primary Server object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RecoveryServer</maml:name>
+				<maml:description>
+					<maml:para>Recovery Server object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureSiteRecoveryNetworkMapping</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PrimaryServer</maml:name>
+				<maml:description>
+					<maml:para>Primary Server object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Azure</maml:name>
+				<maml:description>
+					<maml:para>Azure switch parameter</maml:para>
+				</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PrimaryServer</maml:name>
+			<maml:description>
+				<maml:para>Primary Server object</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			<dev:type>
+				<maml:name>ASRServer</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>RecoveryServer</maml:name>
+			<maml:description>
+				<maml:para>Recovery Server object</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ASRServer</command:parameterValue>
+			<dev:type>
+				<maml:name>ASRServer</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Azure</maml:name>
+			<maml:description>
+				<maml:para>Azure switch parameter</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>PS C:\&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+ $servers = Get-AzureSiteRecoveryServer
+
+PS C:\&gt; Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+
+PrimaryServerId     : 774859b0-1966-48cc-9df7-759c441b7a8c
+PrimaryNetworkId    : 7cfd636e-5cc2-4e01-873b-8a7aa4962341
+PrimaryNetworkName  : phase2RecoveryVMNetwork
+RecoveryServerId    : 774859b0-1966-48cc-9df7-759c441b7a8c
+RecoveryNetworkId   : d903e2c6-3141-4cef-bfe1-04616cd43cbb
+RecoveryNetworkName : phase2PrimaryVMNetwork
+PairingStatus       : OK                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>PS C:\&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+ $servers = Get-AzureSiteRecoveryServer
+
+PS C:\&gt; Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -Azure
+
+PrimaryServerId     : 774859b0-1966-48cc-9df7-759c441b7a8c
+PrimaryNetworkId    : 7cfd636e-5cc2-4e01-873b-8a7aa4962341
+PrimaryNetworkName  : phase2RecoveryVMNetwork
+RecoveryServerId    : 21a9403c-6ec1-44f2-b744-b4e50b792387
+RecoveryNetworkId   : ecb3a462-664f-4f57-873e-d09b5925e1a1
+RecoveryNetworkName : AzureVMNetwork
+PairingStatus       : OK                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText></maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+<!--New-AzureSiteRecoveryNetworkMapping-->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   New-AzureSiteRecoveryNetworkMapping
+		</command:name>
+		<maml:description>
+			<maml:para>Creates a mapping between two Networks</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureSiteRecoveryNetworkMapping</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>Creates a mapping between two Networks</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureSiteRecoveryNetworkMapping</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PrimaryNetwork</maml:name>
+				<maml:description>
+					<maml:para>Primary Network object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRNetwork</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RecoveryNetwork</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRNetwork</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureSiteRecoveryNetworkMapping</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PrimaryNetwork</maml:name>
+				<maml:description>
+					<maml:para>Primary Network object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRNetwork</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>AzureSubscriptionId</maml:name>
+				<maml:description>
+					<maml:para>Azure Subscription Id</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>AzureVMNetworkId</maml:name>
+				<maml:description>
+					<maml:para>Azure VM Network Id</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PrimaryNetwork</maml:name>
+			<maml:description>
+				<maml:para>Primary Network object</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ASRNetwork</command:parameterValue>
+			<dev:type>
+				<maml:name>ASRNetwork</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>RecoveryNetwork</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ASRNetwork</command:parameterValue>
+			<dev:type>
+				<maml:name>ASRNetwork</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>AzureSubscriptionId</maml:name>
+			<maml:description>
+				<maml:para>Azure Subscription Id</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>AzureVMNetworkId</maml:name>
+			<maml:description>
+				<maml:para>Azure VM Network Id</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>PS C:\&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+ $networks = Get-AzureSiteRecoveryNetwork -Server $servers[0]
+
+PS C:\&gt; New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networks[0] -RecoveryNetwork $networks[1]
+
+Name             :
+ID               : 417dc3e8-3f9d-47dd-9c41-b3b3d566c3ac
+ClientRequestId  : 64ed0fcf-263d-404f-8657-4bf971e58730-2015-01-30 05:33:07Z-P
+State            : NotStarted
+StateDescription : NotStarted
+StartTime        :
+EndTime          :
+AllowedActions   :
+Tasks            : {}
+Errors           : {}
+
+
+
+PS C:\&gt; Get-AzureSiteRecoveryJob -Id 417dc3e8-3f9d-47dd-9c41-b3b3d566c3ac
+
+Name             : NetworkPairing
+ID               : 417dc3e8-3f9d-47dd-9c41-b3b3d566c3ac
+ClientRequestId  : 64ed0fcf-263d-404f-8657-4bf971e58730-2015-01-30 05:33:07Z-P
+State            : Succeeded
+StateDescription : Completed
+StartTime        : 1/30/2015 5:33:11 AM
+EndTime          : 1/30/2015 5:33:12 AM
+AllowedActions   :
+Tasks            : {Map network, Attach network (0)}
+Errors           : {}                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>PS C:\&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+ $networks = Get-AzureSiteRecoveryNetwork -Server $servers[0]
+
+PS C:\&gt; $subscriptions = Get-AzureSubscription
+
+PS C:\&gt; $azureVmNetworks = Get-AzureVNetSite
+
+PS C:\&gt; New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networks[0] -AzureSubscriptionId $subscriptions[0].SubscriptionId -AzureVMNetworkId $azureVmNetworks[0].Id
+
+Name             :
+ID               : f4fef3b3-e151-47ac-90a0-b5b8712fd14e
+ClientRequestId  : 56948c99-4e0c-4a86-8dcb-751b150e79fd-2015-01-30 05:38:29Z-P
+State            : NotStarted
+StateDescription : NotStarted
+StartTime        :
+EndTime          :
+AllowedActions   :
+Tasks            : {}
+Errors           : {}
+
+
+
+PS C:\&gt; Get-AzureSiteRecoveryJob -Id f4fef3b3-e151-47ac-90a0-b5b8712fd14e
+
+Name             : NetworkPairing
+ID               : f4fef3b3-e151-47ac-90a0-b5b8712fd14e
+ClientRequestId  : 56948c99-4e0c-4a86-8dcb-751b150e79fd-2015-01-30 05:38:29Z-P
+State            : Succeeded
+StateDescription : Completed
+StartTime        : 1/30/2015 5:38:34 AM
+EndTime          : 1/30/2015 5:38:36 AM
+AllowedActions   :
+Tasks            : {Map network, Attach network (0)}
+Errors           : {}                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText></maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+
+<!--Remove-AzureSiteRecoveryNetworkMapping-->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Remove-AzureSiteRecoveryNetworkMapping
+		</command:name>
+		<maml:description>
+			<maml:para>Removes a Network mapping for current Azure Site Recovery Vault</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Remove</command:verb>
+		<command:noun>AzureSiteRecoveryNetworkMapping</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>Removes a Network mapping for current Azure Site Recovery Vault</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Remove-AzureSiteRecoveryNetworkMapping</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>NetworkMapping</maml:name>
+				<maml:description>
+					<maml:para>Network Mapping object</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRNetworkMapping</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>NetworkMapping</maml:name>
+			<maml:description>
+				<maml:para>Network Mapping object</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ASRNetworkMapping</command:parameterValue>
+			<dev:type>
+				<maml:name>ASRNetworkMapping</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>PS C:\&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+ $networkMapping = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+
+PS C:\&gt; Remove-AzureSiteRecoveryNetworkMapping -NetworkMapping $networkMapping
+
+Name             :
+ID               : d797b3da-a976-4b1c-ab15-b42938a72738
+ClientRequestId  : 086b3ca2-338d-4491-8668-c0a43238fa5d-2015-01-30 05:34:27Z-P
+State            : NotStarted
+StateDescription : NotStarted
+StartTime        :
+EndTime          :
+AllowedActions   :
+Tasks            : {}
+Errors           : {}
+
+
+
+PS C:\&gt; Get-AzureSiteRecoveryJob -Id d797b3da-a976-4b1c-ab15-b42938a72738
+
+Name             : NetworkUnPairing
+ID               : d797b3da-a976-4b1c-ab15-b42938a72738
+ClientRequestId  : 086b3ca2-338d-4491-8668-c0a43238fa5d-2015-01-30 05:34:27Z-P
+State            : Succeeded
+StateDescription : Completed
+StartTime        : 1/30/2015 5:34:31 AM
+EndTime          : 1/30/2015 5:34:33 AM
+AllowedActions   :
+Tasks            : {Unmap network, Detach network (0)}
+Errors           : {}                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>PS C:\&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+ $networkMapping = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -Azure
+
+PS C:\&gt; Remove-AzureSiteRecoveryNetworkMapping -NetworkMapping $networkMapping
+
+Name             :
+ID               : 5ed061e7-5f03-4f7f-bdec-fc50d96c1df3
+ClientRequestId  : fc86ee05-c24e-4169-a8fe-7b549dc8c284-2015-01-30 05:40:53Z-P
+State            : NotStarted
+StateDescription : NotStarted
+StartTime        :
+EndTime          :
+AllowedActions   :
+Tasks            : {}
+Errors           : {}
+
+
+
+PS C:\&gt; Get-AzureSiteRecoveryJob -Id 5ed061e7-5f03-4f7f-bdec-fc50d96c1df3
+
+Name             : NetworkUnPairing
+ID               : 5ed061e7-5f03-4f7f-bdec-fc50d96c1df3
+ClientRequestId  : fc86ee05-c24e-4169-a8fe-7b549dc8c284-2015-01-30 05:40:53Z-P
+State            : Succeeded
+StateDescription : Completed
+StartTime        : 1/30/2015 5:40:58 AM
+EndTime          : 1/30/2015 5:40:58 AM
+AllowedActions   :
+Tasks            : {Unmap network, Detach network (0)}
+Errors           : {}                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText></maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
 </helpItems>
