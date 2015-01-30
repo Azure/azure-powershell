@@ -128,6 +128,7 @@
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesCloudServiceClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesProtectionProfileClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesClientHelper.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesSiteClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStorageClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStorageMappingClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesNetworkMappingClient.cs" />
@@ -146,6 +147,9 @@
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVMClient.cs" />
     <Compile Include="RecoveryServicesCmdletBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\NewAzureSiteRecoverySite.cs" />
+    <Compile Include="Service\GetAzureSiteRecoverySite.cs" />
+    <Compile Include="Service\SetAzureSiteRecoveryVirtualMachine.cs" />
     <Compile Include="Service\StartAzureSiteRecoveryProtectionProfileAssociationJob.cs" />
     <Compile Include="Service\CreateAzureSiteRecoveryProtectionProfileObject.cs" />
     <Compile Include="Service\CreateAzureSiteRecoveryVault.cs" />

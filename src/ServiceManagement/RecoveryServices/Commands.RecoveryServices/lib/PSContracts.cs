@@ -123,6 +123,53 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
+    /// Fabric type class.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    public class FabricProviders
+    {
+        /// <summary>
+        /// Unknown type.
+        /// </summary>
+        public const string Other = "Other";
+
+        /// <summary>
+        /// VMM server type.
+        /// </summary>
+        public const string VMM = "VMM";
+
+        /// <summary>
+        /// Azure fabric type.
+        /// </summary>
+        public const string Azure = "Azure";
+
+        /// <summary>
+        /// HyperVSite server type.
+        /// </summary>
+        public const string HyperVSite = "HyperVSite";
+
+        /// <summary>
+        /// InMage server type.
+        /// </summary>
+        public const string VCenter = "VCenter";
+    }
+
+    /// <summary>
+    /// Error contract returned when some exception occurs in ASR REST API.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract]
+    public class ErrorInException : Error
+    {
+    }
+
+    /// <summary>
     /// Error contract returned when some exception occurs in ASR REST API.
     /// </summary>
     [SuppressMessage(

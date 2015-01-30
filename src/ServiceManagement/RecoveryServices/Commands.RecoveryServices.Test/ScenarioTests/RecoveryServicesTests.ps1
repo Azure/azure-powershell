@@ -15,6 +15,7 @@
 ########################## Recovery Services Tests #############################
 
 # Followings are the switch to control validation which can be tuned from outside later to control the test result in case of some product misbehaviour.
+
 $Validate_EnableProtection_JobSucceeded = $true;
 $Validate_DisableProtection_JobSucceeded = $true;
 $Validate_PFO_JobSucceeded = $true;
@@ -24,7 +25,123 @@ $Validate_EnableProtection_WaitForCanFailover = $true;
 $Validate_RRAfterFailback_JobSucceeded = $true;
 $Validate_Failback_JobSucceeded = $true;
 $Validate_TFO_JobSucceeded = $true;
+$Validate_TFO_JobSuspended = $true;
 $Validate_UFO_JobSucceeded = $true;
+$Validate_TFO_JobSuspended = $true;
+$Validate_PFORP_JobSucceeded = $true;
+$Validate_PFOFailbackRP_JobSucceeded = $true;
+$Validate_ProfileDissociation_JobSucceeded = $true;
+$Validate_ProfileAssociation_JobSucceeded = $true;
+
+
+<#
+.SYNOPSIS
+Recovery Services DeleteAndDissociate Tests
+#>
+function Test-E2E_DeleteAndDissociate
+{
+	param([string] $vaultSettingsFilePath)
+	#$vaultSettingsFilePath = $vaultFile;
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+
+		# Enumerate Protection Entities under each configured Protection Containers
+		if ($protectionContainer.Role -eq "Primary")
+		{
+	        foreach($profile in $protectionContainer.AvailableProtectionProfiles)
+	        {        
+                if ($profile.ReplicationProvider -eq "HyperVReplica")
+                {
+                    if ($profile.HyperVReplicaProviderSettingsObject.CanDissociate -eq $false)
+					{
+						continue;
+					}
+
+                    foreach ($association in $profile.HyperVReplicaProviderSettingsObject.AssociationDetail)
+                    {
+                        if ($association.AssociationStatus -eq "Paired")
+                        {
+                            // We have got the paired profile. Fire delete and dissociate
+                            $pcPri = Get-AzureSiteRecoveryProtectionContainer -Id $association.PrimaryProtectionContainerId
+                            $pcRec = Get-AzureSiteRecoveryProtectionContainer -Id $association.RecoveryProtectionContainerId
+                            $job = Start-AzureSiteRecoveryProtectionProfileDissociationJob -PrimaryProtectionContainer $pcPri -RecoveryProtectionContainer $pcRec -ProtectionProfile $profile
+
+							# Validate_ProfileDissociation_JobSucceeded
+							if ($Validate_ProfileDissociation_JobSucceeded -eq $true)
+							{
+								WaitForJobCompletion -JobId $job.ID
+								Assert-True { $job.State -eq "Succeeded" }
+							}
+
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    throw("No PC found for E2E_DeleteAndDissociate");
+
+}
+
+
+<#
+.SYNOPSIS
+Recovery Services E2E_CreateAndAssociate Tests
+#>
+function Test-E2E_CreateAndAssociate
+{
+	param([string] $vaultSettingsFilePath)
+	#$vaultSettingsFilePath = $vaultFile;
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+    $priPC = $null
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+		# Enumerate Protection Entities under each configured Protection Containers
+		if ($protectionContainer.Role -eq "")
+		{
+            if ($priPC -eq $null)
+            {
+                $priPC = $protectionContainer;
+                continue;
+            }
+
+            # we have got second pc as well create profile and associate
+            $pp = New-AzureSiteRecoveryProtectionProfile -ReplicationProvider HyperVReplica -ReplicationMethod Online -ReplicationFrequencyInSeconds 300 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 1 -CompressionEnabled -ReplicationPort 8083 -Authentication Kerberos -AllowReplicaDeletion
+
+            $job = Start-AzureSiteRecoveryProtectionProfileAssociationJob -ProtectionProfile $pp -PrimaryProtectionContainer $priPC -RecoveryProtectionContainer $protectionContainer
+
+			# Validate_ProfileAssociation_JobSucceeded
+			if ($Validate_ProfileAssociation_JobSucceeded -eq $true)
+			{
+				WaitForJobCompletion -JobId $job.ID
+				Assert-True { $job.State -eq "Succeeded" }
+			}
+
+            return;
+        }
+    }
+
+    throw("No PC found for E2E_CreateAndAssociate");
+}
 
 <#
 .SYNOPSIS
@@ -410,7 +527,6 @@ function Test-Failback
 	# Import Azure Site Recovery Vault Settings
 	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
-	# Enable protection for an un protected Protection Entity
 	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
 	Assert-True { $protectionContainers.Count -gt 0 }
 	Assert-NotNull($protectionContainers)
@@ -464,7 +580,6 @@ function Test-RRAfterFailback
 	# Import Azure Site Recovery Vault Settings
 	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
-	# Enable protection for an un protected Protection Entity
 	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
 	Assert-True { $protectionContainers.Count -gt 0 }
 	Assert-NotNull($protectionContainers)
@@ -502,6 +617,56 @@ function Test-RRAfterFailback
     throw("No VM found for RRAfterFailback");
 }
 
+
+<#
+.SYNOPSIS
+Recovery Services Commit_PFO Tests
+#>
+function Test-RRAfterFailover
+{
+	param([string] $vaultSettingsFilePath)
+	#$vaultSettingsFilePath = $vaultFile;
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+
+		# Enumerate Protection Entities under each configured Protection Containers
+		if ($protectionContainer.Role -eq "Primary")
+		{
+			$protectionEntities = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer
+			Assert-NotNull($protectionEntities)
+			foreach($protectionEntity in $protectionEntities)
+			{
+				Assert-NotNull($protectionEntity.Name)
+				Assert-NotNull($protectionEntity.ID)
+				if ($protectionEntity.CanReverseReplicate -eq $true)
+				{
+					$job = Update-AzureSiteRecoveryProtectionDirection -ProtectionEntity $protectionEntity -Direction RecoveryToPrimary -WaitForCompletion
+					
+                    # Validate_PFO_JobSucceeded
+                    if ($Validate_Commit_PFO_JobSucceeded -eq $true)
+                    {
+                        $job = Get-AzureSiteRecoveryJob -Id $job.ID
+                        Assert-True { $job.State -eq "Succeeded" }
+                    }
+
+                    return;
+				}
+			}
+		}
+	}
+
+    Assert("No VM found for RR");
+}
+
 <#
 .SYNOPSIS
 Recovery Services Commit_PFO Tests
@@ -513,7 +678,6 @@ function Test-CommitPFO
 	# Import Azure Site Recovery Vault Settings
 	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
-	# Enable protection for an un protected Protection Entity
 	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
 	Assert-True { $protectionContainers.Count -gt 0 }
 	Assert-NotNull($protectionContainers)
@@ -533,7 +697,7 @@ function Test-CommitPFO
 				Assert-NotNull($protectionEntity.ID)
 				if ($protectionEntity.CanCommit -eq $true)
 				{
-					$job = Start-AzureSiteRecoveryCommitFailoverJob -ProtectionEntity $protectionEntity -WaitForCompletion
+					$job = Start-AzureSiteRecoveryCommitFailoverJob -ProtectionEntity $protectionEntity  -Direction PrimaryToRecovery -WaitForCompletion
 					
                     # Validate_PFO_JobSucceeded
                     if ($Validate_Commit_PFO_JobSucceeded -eq $true)
@@ -563,7 +727,6 @@ function Test-PFO
 	# Import Azure Site Recovery Vault Settings
 	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
-	# Enable protection for an un protected Protection Entity
 	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
 	Assert-True { $protectionContainers.Count -gt 0 }
 	Assert-NotNull($protectionContainers)
@@ -601,10 +764,233 @@ function Test-PFO
     throw("No VM found for PFO");
 }
 
+<#
+.SYNOPSIS
+Recovery Services PFORP Tests
+#>
+function Test-PFORP ($vaultSettingsFilePath)
+{
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$rps = Get-AzureSiteRecoveryRecoveryPlan ; $rps
+	Assert-NotNull($rps)
+	Assert-True { $rps.Count -gt 0 }
+	foreach($rp in $rps)
+	{
+		Assert-NotNull($rps.Name)
+		Assert-NotNull($rps.ID)
+
+		$job = Start-AzureSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -RecoveryPlan $rp -WaitForCompletion
+					
+        # Validate_PFORP_JobSucceeded
+        if ($Validate_PFORP_JobSucceeded -eq $true)
+        {
+            $job = Get-AzureSiteRecoveryJob -Id $job.ID
+            Assert-True { $job.State -eq "Succeeded" }
+        }
+
+        return;
+    }
+
+    Assert("No RP found for PFO");
+}
+
 
 <#
 .SYNOPSIS
-Recovery Services UFO Tests
+Recovery Services TFORP Tests
+#>
+function Test-TFORP ($vaultSettingsFilePath)
+{
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$rps = Get-AzureSiteRecoveryRecoveryPlan ; $rps
+	Assert-NotNull($rps)
+	Assert-True { $rps.Count -gt 0 }
+	foreach($rp in $rps)
+	{
+		Assert-NotNull($rps.Name)
+		Assert-NotNull($rps.ID)
+
+		$job = Start-AzureSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -RecoveryPlan $rp -WaitForCompletion
+					
+        # Validate_PFORP_JobSucceeded
+        if ($Validate_PFORP_JobSucceeded -eq $true)
+        {
+            $job = Get-AzureSiteRecoveryJob -Id $job.ID
+            Assert-True { $job.State -eq "Succeeded" }
+        }
+
+        return;
+    }
+
+    Assert("No RP found for TFORP");
+}
+
+<#
+.SYNOPSIS
+Recovery Services UFORP Tests
+#>
+function Test-UFORP ($vaultSettingsFilePath)
+{
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$rps = Get-AzureSiteRecoveryRecoveryPlan ; $rps
+	Assert-NotNull($rps)
+	Assert-True { $rps.Count -gt 0 }
+	foreach($rp in $rps)
+	{
+		Assert-NotNull($rps.Name)
+		Assert-NotNull($rps.ID)
+
+		$job = Start-AzureSiteRecoveryUnplannedFailoverJob -Direction PrimaryToRecovery -RecoveryPlan $rp -PrimaryAction $true -WaitForCompletion
+					
+        # Validate_UFORP_JobSucceeded
+        if ($Validate_PFORP_JobSucceeded -eq $true)
+        {
+            $job = Get-AzureSiteRecoveryJob -Id $job.ID
+            Assert-True { $job.State -eq "Succeeded" }
+        }
+
+        return;
+    }
+
+    Assert("No RP found for UFORP");
+}
+
+<#
+.SYNOPSIS
+Recovery Services FailbackRP Tests
+#>
+function Test-FailbackRP ($vaultSettingsFilePath)
+{
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$rps = Get-AzureSiteRecoveryRecoveryPlan ; $rps
+	Assert-NotNull($rps)
+	Assert-True { $rps.Count -gt 0 }
+	foreach($rp in $rps)
+	{
+		Assert-NotNull($rps.Name)
+		Assert-NotNull($rps.ID)
+
+		$job = Start-AzureSiteRecoveryPlannedFailoverJob -Direction RecoveryToPrimary -RecoveryPlan $rp -WaitForCompletion
+					
+        # Validate_PFORP_JobSucceeded
+        if ($Validate_PFOFailbackRP_JobSucceeded -eq $true)
+        {
+            $job = Get-AzureSiteRecoveryJob -Id $job.ID
+            Assert-True { $job.State -eq "Succeeded" }
+        }
+
+        return;
+    }
+
+    Assert("No RP found for FailbackRP");
+}
+<#
+.SYNOPSIS
+Recovery Services RRRP Tests
+#>
+function Test-RRRP ($vaultSettingsFilePath)
+{
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$rps = Get-AzureSiteRecoveryRecoveryPlan ; $rps
+	Assert-NotNull($rps)
+	Assert-True { $rps.Count -gt 0 }
+	foreach($rp in $rps)
+	{
+		Assert-NotNull($rps.Name)
+		Assert-NotNull($rps.ID)
+
+		$job = Update-AzureSiteRecoveryProtectionDirection -RecoveryPlan $rp  -Direction PrimaryToRecovery -WaitForCompletion
+					
+        # Validate_RRRP_JobSucceeded
+        if ($Validate_RRRP_JobSucceeded -eq $true)
+        {
+            $job = Get-AzureSiteRecoveryJob -Id $job.ID
+            Assert-True { $job.State -eq "Succeeded" }
+        }
+
+        return;
+    }
+
+    Assert("No RP found for RRRP");
+}
+
+<#
+.SYNOPSIS
+Recovery Services CommitRP Tests
+#>
+function Test-CommitRP ($vaultSettingsFilePath)
+{
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$rps = Get-AzureSiteRecoveryRecoveryPlan ; $rps
+	Assert-NotNull($rps)
+	Assert-True { $rps.Count -gt 0 }
+	foreach($rp in $rps)
+	{
+		Assert-NotNull($rps.Name)
+		Assert-NotNull($rps.ID)
+
+		$job = Start-AzureSiteRecoveryCommitFailoverJob -RecoveryPlan $rp  -Direction PrimaryToRecovery -WaitForCompletion
+					
+        # Validate_PFORP_JobSucceeded
+        if ($Validate_PFOFailbackRP_JobSucceeded -eq $true)
+        {
+            $job = Get-AzureSiteRecoveryJob -Id $job.ID
+            Assert-True { $job.State -eq "Succeeded" }
+        }
+
+        return;
+    }
+
+    Assert("No RP found for CommitRP");
+}
+
+<#
+.SYNOPSIS
+Recovery Services FailbackRP Tests
+#>
+function Test-FailbackRP ($vaultSettingsFilePath)
+{
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$rps = Get-AzureSiteRecoveryRecoveryPlan ; $rps
+	Assert-NotNull($rps)
+	Assert-True { $rps.Count -gt 0 }
+	foreach($rp in $rps)
+	{
+		Assert-NotNull($rps.Name)
+		Assert-NotNull($rps.ID)
+
+		$job = Start-AzureSiteRecoveryPlannedFailoverJob -Direction RecoveryToPrimary -RecoveryPlan $rp -WaitForCompletion
+					
+        # Validate_PFORP_JobSucceeded
+        if ($Validate_PFOFailbackRP_JobSucceeded -eq $true)
+        {
+            $job = Get-AzureSiteRecoveryJob -Id $job.ID
+            Assert-True { $job.State -eq "Succeeded" }
+        }
+
+        return;
+    }
+
+    Assert("No RP found for PFO");
+}
+
+<#
+.SYNOPSIS
+Recovery Services PFO Tests
 #>
 function Test-UFO
 {
@@ -613,7 +999,6 @@ function Test-UFO
 	# Import Azure Site Recovery Vault Settings
 	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
-	# Enable protection for an un protected Protection Entity
 	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
 	Assert-True { $protectionContainers.Count -gt 0 }
 	Assert-NotNull($protectionContainers)
@@ -663,7 +1048,6 @@ function Test-TFO
 	# Import Azure Site Recovery Vault Settings
 	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
-	# Enable protection for an un protected Protection Entity
 	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
 	Assert-True { $protectionContainers.Count -gt 0 }
 	Assert-NotNull($protectionContainers)
@@ -686,6 +1070,14 @@ function Test-TFO
 					$job = Start-AzureSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -WaitForCompletion
 					
                     # Validate_TFO_JobSucceeded
+                    if ($Validate_TFO_JobSuspended -eq $true)
+                    {
+                        $job = Get-AzureSiteRecoveryJob -Id $job.ID
+                        Assert-True { $job.State -eq "Suspended" }
+                    }
+                    
+                    # Resume Job
+                    Resume-AzureSiteRecoveryJob -Id $job.ID
                     if ($Validate_TFO_JobSucceeded -eq $true)
                     {
                         $job = Get-AzureSiteRecoveryJob -Id $job.ID
@@ -712,7 +1104,6 @@ function Test-EnableProtection
 	# Import Azure Site Recovery Vault Settings
 	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
-	# Enable protection for an un protected Protection Entity
 	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
 	Assert-True { $protectionContainers.Count -gt 0 }
 	Assert-NotNull($protectionContainers)
@@ -767,7 +1158,6 @@ function Test-DisableProtection
 	# Import Azure Site Recovery Vault Settings
 	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
-	# Enable protection for an un protected Protection Entity
 	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
 	Assert-True { $protectionContainers.Count -gt 0 }
 	Assert-NotNull($protectionContainers)
@@ -841,7 +1231,7 @@ Usage:
 #>
 function WaitForJobCompletion
 {
-    param([string] $JobId, [Int] $NumOfSecondsToWait = 30)
+    param([string] $JobId, [Int] $NumOfSecondsToWait = 120)
 	$endStateDescription = @('Succeeded','Failed','Cancelled','Suspended')
 
 	$timeElapse = 0;
