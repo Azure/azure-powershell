@@ -16,17 +16,28 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
+using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Server.
+    /// Retrieves Azure Site Recovery Site.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVault")]
-    [OutputType(typeof(List<ASRVault>))]
-    public class GetAzureSiteRecoveryVaults : RecoveryServicesCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoverySite")]
+    [OutputType(typeof(List<Site>))]
+    public class GetAzureSiteRecoverySite : RecoveryServicesCmdletBase
     {
+        #region Parameters
+
+        /// <summary>
+        /// Gets or sets the vault name
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = false, HelpMessage = "Vault Object for which the site list is to be fetched")]
+        [ValidateNotNullOrEmpty]
+        public ASRVault Vault { get; set; }
+
+        #endregion
+
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
@@ -34,21 +45,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                IEnumerable<CloudService> cloudServiceList = RecoveryServicesClient.GetCloudServices();
+                SiteListResponse response = RecoveryServicesClient.GetAzureSiteRecoverySites(this.Vault);
 
-                List<ASRVault> vaultList = new List<ASRVault>();
-                foreach (var cloudService in cloudServiceList)
-                {
-                    foreach (var vault in cloudService.Resources)
-                    {
-                        if (vault.Type.Equals(Constants.ASRVaultType, StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            vaultList.Add(new ASRVault(cloudService, vault));
-                        }
-                    }
-                }
-
-                this.WriteVaults(vaultList);
+                this.WriteSites(response.Sites);
             }
             catch (Exception exception)
             {
@@ -57,12 +56,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Writes Vaults
+        /// Writes Sites
         /// </summary>
-        /// <param name="vaultList">List of Vaults</param>
-        private void WriteVaults(IList<ASRVault> vaultList)
+        /// <param name="siteList">List of Sites</param>
+        private void WriteSites(IList<Site> siteList)
         {
-            this.WriteObject(vaultList, true);
+            this.WriteObject(siteList, true);
         }
     }
 }
