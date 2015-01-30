@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Creates Azure Site Recovery Protection Profile object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSiteRecoveryProtectionProfile", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+    [Cmdlet(VerbsCommon.New, "AzureSiteRecoveryProtectionProfileObject", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
     [OutputType(typeof(ASRProtectionProfile))]
     public class CreateAzureSiteRecoveryProtectionProfileObject : RecoveryServicesCmdletBase
     {
@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateSet(
             Constants.OnlineReplicationMethod,
             Constants.OfflineReplicationMethod)]
-        [DefaultValue(Constants.OnlineReplicationMethod)]
         public string ReplicationMethod { get; set; }
 
         /// <summary>
@@ -80,7 +79,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [ValidateNotNullOrEmpty]
-        public ushort ReplicationFrequencyInSeconds { get; set; }
+        [ValidateSet(
+            Constants.Thirty,
+            Constants.ThreeHundred,
+            Constants.NineHundred)]
+        public string ReplicationFrequencyInSeconds { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Points of the Protection Profile.
@@ -112,7 +115,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [ValidateNotNullOrEmpty]
-        [DefaultValue(0)]
         public ushort ReplicationPort { get; set; }
 
         /// <summary>
@@ -131,7 +133,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [ValidateNotNullOrEmpty]
-        [DefaultValue(null)]
         public TimeSpan? ReplicationStartTime { get; set; }
 
         /// <summary>
@@ -151,12 +152,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                switch (this.ReplicationProvider)
+                switch (this.ParameterSetName)
                 {
-                    case Constants.HyperVReplica:
+                    case ASRParameterSets.EnterpriseToEnterprise:
                         this.EnterpriseToEnterpriseProtectionProfileObject();
                         break;
-                    case Constants.HyperVReplicaAzure:
+                    case ASRParameterSets.EnterpriseToAzure:
                         this.EnterpriseToAzureProtectionProfileObject();
                         break;
                 }
@@ -182,13 +183,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void EnterpriseToAzureProtectionProfileObject()
         {
-            //// Verify whether the storage account is associated with the account or not.
-            //// PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
+            if (string.Compare(this.ReplicationProvider, Constants.HyperVReplicaAzure, StringComparison.OrdinalIgnoreCase) != 0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.IncorrectReplicationProvider,
+                    this.ReplicationProvider));
+            }
 
             // Verify whether the subscription is associated with the account or not.
             PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
 
-            this.ValidateReplicationStartTime(this.ReplicationStartTime);
+            // Verify whether the storage account is associated with the subscription or not.
+            //// PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
+
+            PSRecoveryServicesClientHelper.ValidateReplicationStartTime(this.ReplicationStartTime);
+
+            ushort replicationFrequencyInSeconds = PSRecoveryServicesClientHelper.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
@@ -198,7 +209,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                     RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
                     EncryptStoredData = this.EncryptStoredData,
-                    ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
+                    ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
                     RecoveryPoints = this.RecoveryPoints,
                     ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
                     ReplicationStartTime = this.ReplicationStartTime,
@@ -210,29 +221,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Validates if the time span object has a valid value.
-        /// </summary>
-        /// <param name="timeSpan">Time span object to be validated</param>
-        private void ValidateReplicationStartTime(TimeSpan? timeSpan)
-        {
-            if (timeSpan == null)
-            {
-                return;
-            }
-
-            if (TimeSpan.Compare(timeSpan.Value, new TimeSpan(24, 0, 0)) == 1)
-            {
-                throw new InvalidOperationException(
-                    string.Format(Properties.Resources.ReplicationStartTimeInvalid));
-            }
-        }
-
-        /// <summary>
         /// Creates an E2E Protection Profile object
         /// </summary>
         private void EnterpriseToEnterpriseProtectionProfileObject()
         {
-            this.ValidateReplicationStartTime(this.ReplicationStartTime);
+            if (string.Compare(this.ReplicationProvider, Constants.HyperVReplica, StringComparison.OrdinalIgnoreCase) != 0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.IncorrectReplicationProvider,
+                    this.ReplicationProvider));
+            }
+
+            PSRecoveryServicesClientHelper.ValidateReplicationStartTime(this.ReplicationStartTime);
+
+            ushort replicationFrequencyInSeconds = PSRecoveryServicesClientHelper.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
@@ -241,7 +244,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 HyperVReplicaProviderSettingsObject = new HyperVReplicaProviderSettings()
                 {
                     ReplicationMethod = this.ReplicationMethod,
-                    ReplicationFrequencyInSeconds = this.ReplicationFrequencyInSeconds,
+                    ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
                     RecoveryPoints = this.RecoveryPoints,
                     ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
                     CompressionEnabled = this.CompressionEnabled,

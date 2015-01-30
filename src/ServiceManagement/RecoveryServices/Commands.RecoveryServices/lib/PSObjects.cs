@@ -182,6 +182,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Authentication Type as Kerberos.
         /// </summary>
         public const string AuthenticationTypeKerberos = "Kerberos";
+
+        /// <summary>
+        /// Acceptable values of Replication Frequency in seconds (as per portal).
+        /// </summary>
+        public const string Thirty = "30";
+
+        /// <summary>
+        /// Acceptable values of Replication Frequency in seconds (as per portal).
+        /// </summary>
+        public const string ThreeHundred = "300";
+
+        /// <summary>
+        /// Acceptable values of Replication Frequency in seconds (as per portal).
+        /// </summary>
+        public const string NineHundred = "900";
     }
 
     /// <summary>
