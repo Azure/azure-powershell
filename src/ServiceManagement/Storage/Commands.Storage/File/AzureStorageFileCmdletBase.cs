@@ -45,14 +45,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             }
         }
 
-        protected AccessCondition AccessCondition
-        {
-            get
-            {
-                return AccessCondition.GenerateEmptyCondition();
-            }
-        }
-
         protected override IStorageFileManagement CreateChannel()
         {
             if (this.Channel == null || !this.ShareChannel)

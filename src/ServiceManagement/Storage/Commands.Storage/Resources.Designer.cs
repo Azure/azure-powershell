@@ -844,7 +844,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ICloudBlob &quot;{0}&quot; should contain container properties..
+        ///   Looks up a localized string similar to CloudBlob &quot;{0}&quot; should contain container properties..
         /// </summary>
         internal static string InvalidBlobWithoutContainer {
             get {

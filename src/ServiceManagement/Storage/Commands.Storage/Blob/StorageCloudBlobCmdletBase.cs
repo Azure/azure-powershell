@@ -57,12 +57,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// Make sure the pipeline blob is valid and already existing
         /// </summary>
-        /// <param name="blob">ICloudBlob object</param>
-        internal void ValidatePipelineICloudBlob(ICloudBlob blob)
+        /// <param name="blob">CloudBlob object</param>
+        internal void ValidatePipelineCloudBlob(CloudBlob blob)
         {
             if (null == blob)
             {
-                throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, typeof(ICloudBlob).Name));
+                throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
             }
 
             if (!NameUtil.IsValidBlobName(blob.Name))
@@ -132,19 +132,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// whether the specified blob is a snapshot
         /// </summary>
-        /// <param name="blob">ICloudBlob object</param>
+        /// <param name="blob">CloudBlob object</param>
         /// <returns>true if the specified blob is snapshot, otherwise false</returns>
-        internal bool IsSnapshot(ICloudBlob blob)
+        internal bool IsSnapshot(CloudBlob blob)
         {
             return !string.IsNullOrEmpty(blob.Name) && blob.SnapshotTime != null;
         }
 
         /// <summary>
-        /// Write ICloudBlob to output using specified service channel
+        /// Write CloudBlob to output using specified service channel
         /// </summary>
-        /// <param name="blob">The output ICloudBlob object</param>
+        /// <param name="blob">The output CloudBlob object</param>
         /// <param name="channel">IStorageBlobManagement channel object</param>
-        internal void WriteICloudBlobObject(long taskId, IStorageBlobManagement channel, ICloudBlob blob, BlobContinuationToken continuationToken = null)
+        internal void WriteCloudBlobObject(long taskId, IStorageBlobManagement channel, CloudBlob blob, BlobContinuationToken continuationToken = null)
         {
             AzureStorageBlob azureBlob = new AzureStorageBlob(blob);
             azureBlob.Context = channel.StorageContext;
@@ -153,9 +153,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         }
 
         /// <summary>
-        /// Write ICloudBlob to output using specified service channel
+        /// Write CloudBlob to output using specified service channel
         /// </summary>
-        /// <param name="blob">The output ICloudBlob object</param>
+        /// <param name="blob">The output CloudBlob object</param>
         /// <param name="channel">IStorageBlobManagement channel object</param>
         internal void WriteCloudContainerObject(long taskId, IStorageBlobManagement channel,
             CloudBlobContainer container, BlobContainerPermissions permissions, BlobContinuationToken continuationToken = null)

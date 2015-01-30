@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Net;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
 
@@ -47,6 +51,63 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
 
             return string.Format(sizeFormats[order], size);
+        }
+
+        public static CloudBlob GetBlobReferenceFromServer(
+            CloudBlobContainer container, 
+            string blobName, 
+            AccessCondition accessCondition = null,
+            BlobRequestOptions options = null,
+            OperationContext operationContext = null)
+        {
+            CloudBlob blob = container.GetBlobReference(blobName);
+            return GetBlobReferenceFromServer(blob, accessCondition, options, operationContext);
+        }
+
+        public static CloudBlob GetBlobReferenceFromServer(CloudBlobClient client, Uri blobUri)
+        {
+            CloudBlob blob = new CloudBlob(blobUri, client.Credentials);
+            return GetBlobReferenceFromServer(blob);
+        }
+
+        private static CloudBlob GetBlobReferenceFromServer(
+            CloudBlob blob,
+            AccessCondition accessCondition = null,
+            BlobRequestOptions options = null,
+            OperationContext operationContext = null)
+        {
+            try
+            {
+                blob.FetchAttributes(accessCondition, options, operationContext);
+            }
+            catch (StorageException se)
+            {
+                if (se.RequestInformation == null ||
+                    (se.RequestInformation.HttpStatusCode != (int)HttpStatusCode.NotFound))
+                {
+                    throw;
+                }
+
+                return null;
+            }
+
+            return GetCorespondingTypeBlobReference(blob);
+        }
+
+        public static CloudBlob GetCorespondingTypeBlobReference(CloudBlob blob)
+        {
+
+            if (BlobType.BlockBlob == blob.Properties.BlobType)
+            {
+                return new CloudBlockBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+            }
+
+            if (BlobType.PageBlob == blob.Properties.BlobType)
+            {
+                return new CloudPageBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+            }
+
+            throw new InvalidOperationException(string.Format("Not supported blob type: {0}", blob.Properties.BlobType));
         }
     }
 }

@@ -101,7 +101,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 if (this.ShouldProcess(directoryToBeRemoved.GetFullPath()))
                 {
-                    await this.Channel.DeleteDirectoryAsync(directoryToBeRemoved, this.AccessCondition, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                    await this.Channel.DeleteDirectoryAsync(directoryToBeRemoved, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
                 }
 
                 if (this.PassThru)

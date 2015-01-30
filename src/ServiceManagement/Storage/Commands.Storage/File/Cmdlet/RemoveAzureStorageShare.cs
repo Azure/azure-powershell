@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 if (this.ShouldProcess(share.Name))
                 {
-                    await this.Channel.DeleteShareAsync(share, this.AccessCondition, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                    await this.Channel.DeleteShareAsync(share, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
                 }
 
                 if (this.PassThru)

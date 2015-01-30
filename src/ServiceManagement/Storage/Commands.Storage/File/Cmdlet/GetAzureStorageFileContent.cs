@@ -15,21 +15,22 @@
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
 using Microsoft.WindowsAzure.Storage.File;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Storage.DataMovement;
+    using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
 
-    [Cmdlet(VerbsCommon.Get, Constants.FileContentCmdletName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = Constants.ShareNameParameterSetName)]
+    [Cmdlet(VerbsCommon.Get, LocalConstants.FileContentCmdletName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase
     {
         [Parameter(
            Position = 0,
            Mandatory = true,
-           ParameterSetName = Constants.ShareNameParameterSetName,
+           ParameterSetName = LocalConstants.ShareNameParameterSetName,
            HelpMessage = "Name of the file share where the file would be downloaded.")]
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
@@ -38,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.ShareParameterSetName,
+            ParameterSetName = LocalConstants.ShareParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share where the file would be downloaded.")]
         [ValidateNotNull]
         public CloudFileShare Share { get; set; }
@@ -47,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.DirectoryParameterSetName,
+            ParameterSetName = LocalConstants.DirectoryParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be downloaded.")]
         [ValidateNotNull]
         public CloudFileDirectory Directory { get; set; }
@@ -56,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.FileParameterSetName,
+            ParameterSetName = LocalConstants.FileParameterSetName,
             HelpMessage = "CloudFile object indicated the cloud file to be downloaded.")]
         [ValidateNotNull]
         public CloudFile File { get; set; }
@@ -64,36 +65,36 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ParameterSetName = Constants.ShareNameParameterSetName,
+            ParameterSetName = LocalConstants.ShareNameParameterSetName,
             HelpMessage = "Path to the cloud file to be downloaded.")]
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ParameterSetName = Constants.ShareParameterSetName,
+            ParameterSetName = LocalConstants.ShareParameterSetName,
             HelpMessage = "Path to the cloud file to be downloaded.")]
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ParameterSetName = Constants.DirectoryParameterSetName,
+            ParameterSetName = LocalConstants.DirectoryParameterSetName,
             HelpMessage = "Path to the cloud file to be downloaded.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
         [Parameter(
             Position = 2,
-            ParameterSetName = Constants.ShareNameParameterSetName,
+            ParameterSetName = LocalConstants.ShareNameParameterSetName,
             HelpMessage = "Path to the local file or directory when the downloaded file would be put.")]
         [Parameter(
             Position = 2,
-            ParameterSetName = Constants.ShareParameterSetName,
+            ParameterSetName = LocalConstants.ShareParameterSetName,
             HelpMessage = "Path to the local file or directory when the downloaded file would be put.")]
         [Parameter(
             Position = 2,
-            ParameterSetName = Constants.DirectoryParameterSetName,
+            ParameterSetName = LocalConstants.DirectoryParameterSetName,
             HelpMessage = "Path to the local file or directory when the downloaded file would be put.")]
         [Parameter(
             Position = 1,
-            ParameterSetName = Constants.FileParameterSetName,
+            ParameterSetName = LocalConstants.FileParameterSetName,
             HelpMessage = "Path to the local file or directory when the downloaded file would be put.")]
         [ValidateNotNullOrEmpty]
         public string Destination { get; set; }
@@ -107,20 +108,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             string[] path = NamingUtil.ValidatePath(this.Path, true);
             switch (this.ParameterSetName)
             {
-                case Constants.FileParameterSetName:
+                case LocalConstants.FileParameterSetName:
                     fileToBeDownloaded = this.File;
                     break;
 
-                case Constants.ShareNameParameterSetName:
+                case LocalConstants.ShareNameParameterSetName:
                     var share = this.BuildFileShareObjectFromName(this.ShareName);
                     fileToBeDownloaded = share.GetRootDirectoryReference().GetFileReferenceByPath(path);
                     break;
 
-                case Constants.ShareParameterSetName:
+                case LocalConstants.ShareParameterSetName:
                     fileToBeDownloaded = this.Share.GetRootDirectoryReference().GetFileReferenceByPath(path);
                     break;
 
-                case Constants.DirectoryParameterSetName:
+                case LocalConstants.DirectoryParameterSetName:
                     fileToBeDownloaded = this.Directory.GetFileReferenceByPath(path);
                     break;
 
@@ -150,11 +151,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             this.RunTask(async taskId =>
             {
-                var downloadJob = new FileDownloadJob()
-                {
-                    SourceFile = fileToBeDownloaded,
-                    DestPath = targetFile
-                };
+                var downloadJob = new TransferJob(
+                    new TransferLocation(fileToBeDownloaded),
+                    new TransferLocation(targetFile),
+                    TransferMethod.SyncCopy);
 
                 var progressRecord = new ProgressRecord(
                     this.OutputStream.GetProgressId(taskId),
