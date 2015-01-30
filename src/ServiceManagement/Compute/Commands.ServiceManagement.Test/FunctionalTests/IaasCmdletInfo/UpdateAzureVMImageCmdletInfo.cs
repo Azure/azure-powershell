@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Uri privacyUri,
             DateTime publishedDate, 
             string language,
-            Uri iconUri,
-            Uri smallIconUri,
+            string iconUri,
+            string smallIconUri,
             bool showInGui)
             : this(imageName, label, recommendedSize, null, !showInGui)
         {
@@ -81,11 +81,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 cmdletParams.Add(new CmdletParam("Language", language));
             }
-            if (iconUri != null)
+            if (!string.IsNullOrEmpty(iconUri))
             {
                 cmdletParams.Add(new CmdletParam("IconUri", iconUri));
             }
-            if (smallIconUri != null)
+            if (!string.IsNullOrEmpty(smallIconUri))
             {
                 cmdletParams.Add(new CmdletParam("SmallIconUri", smallIconUri));
             }
