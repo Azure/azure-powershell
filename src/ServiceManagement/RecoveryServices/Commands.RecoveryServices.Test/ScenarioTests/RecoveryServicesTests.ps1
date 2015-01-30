@@ -15,7 +15,6 @@
 ########################## Recovery Services Tests #############################
 
 # Followings are the switch to control validation which can be tuned from outside later to control the test result in case of some product misbehaviour.
-Test-E2E_CreateAndAssociate 'E:\d\E2E_SKVault_Wednesday,January28,2015.VaultCredentials'
 
 $Validate_EnableProtection_JobSucceeded = $true;
 $Validate_DisableProtection_JobSucceeded = $true;
