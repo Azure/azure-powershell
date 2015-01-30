@@ -14,9 +14,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Management.Automation;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 
@@ -78,17 +81,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             bool associatedAccount = false;
 
-            SubscriptionCloudCredentials creds 
-                = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(AzureSession.CurrentContext);
-            StorageManagementClient storageManagementClient = new StorageManagementClient(creds);
-
-            StorageAccountListResponse storageAccounts = storageManagementClient.StorageAccounts.List();
-            foreach (StorageAccount storage in storageAccounts)
+            using (System.Management.Automation.PowerShell powerShellInstance = System.Management.Automation.PowerShell.Create())
             {
-                if (azureStorageAccount.Equals(storage.Name, StringComparison.OrdinalIgnoreCase))
+                powerShellInstance.AddCommand("Get-AzureStorageAccount");
+                Collection<PSObject> powershellOutput = powerShellInstance.Invoke();
+
+                foreach (var storage in powershellOutput)
                 {
-                    associatedAccount = true;
-                    break;
+                    if (storage.BaseObject is StorageServicePropertiesOperationContext)
+                    {
+                        StorageServicePropertiesOperationContext storageAccount = (StorageServicePropertiesOperationContext)storage.BaseObject;
+                        if (azureStorageAccount.Equals(storageAccount.StorageAccountName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            associatedAccount = true;
+                            break;
+                        }
+                    }
                 }
             }
 
@@ -108,6 +116,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>A UShort corresponding to the value.</returns>
         public static ushort ConvertReplicationFrequencyToUshort(string replicationFrequencyString)
         {
+            if (replicationFrequencyString == null)
+            {
+                return 0;
+            }
+
             ushort replicationFrequency;
 
             if (!ushort.TryParse(replicationFrequencyString, out replicationFrequency))

@@ -152,12 +152,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                switch (this.ReplicationProvider)
+                switch (this.ParameterSetName)
                 {
-                    case Constants.HyperVReplica:
+                    case ASRParameterSets.EnterpriseToEnterprise:
                         this.EnterpriseToEnterpriseProtectionProfileObject();
                         break;
-                    case Constants.HyperVReplicaAzure:
+                    case ASRParameterSets.EnterpriseToAzure:
                         this.EnterpriseToAzureProtectionProfileObject();
                         break;
                 }
@@ -183,11 +183,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void EnterpriseToAzureProtectionProfileObject()
         {
-            //// Verify whether the storage account is associated with the account or not.
-            //// PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
+            if (string.Compare(this.ReplicationProvider, Constants.HyperVReplicaAzure, StringComparison.OrdinalIgnoreCase) != 0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.IncorrectReplicationProvider,
+                    this.ReplicationProvider));
+            }
 
             // Verify whether the subscription is associated with the account or not.
             PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
+
+            // Verify whether the storage account is associated with the account or not.
+            PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
 
             PSRecoveryServicesClientHelper.ValidateReplicationStartTime(this.ReplicationStartTime);
 
@@ -217,6 +225,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void EnterpriseToEnterpriseProtectionProfileObject()
         {
+            if (string.Compare(this.ReplicationProvider, Constants.HyperVReplica, StringComparison.OrdinalIgnoreCase) != 0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.IncorrectReplicationProvider,
+                    this.ReplicationProvider));
+            }
+
             PSRecoveryServicesClientHelper.ValidateReplicationStartTime(this.ReplicationStartTime);
 
             ushort replicationFrequencyInSeconds = PSRecoveryServicesClientHelper.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
