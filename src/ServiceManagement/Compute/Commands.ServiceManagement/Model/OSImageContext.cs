@@ -39,5 +39,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public virtual string PublisherName { get; set; }
         public virtual string IOType { get; set; }
         public virtual bool? ShowInGui { get; set; }
+
+        public virtual string IconName
+        {
+            get
+            {
+                return IconUri;
+            }
+        }
+
+        public virtual string SmallIconName
+        {
+            get
+            {
+                return SmallIconUri;
+            }
+        }
     }
 }

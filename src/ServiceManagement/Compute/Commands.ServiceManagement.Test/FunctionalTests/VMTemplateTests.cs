@@ -558,7 +558,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 UpdateAzureVMImageDetails(vmImageName);
 
                 string disk1Name,disk2Name;
-                UpdateVMImageOsAndDataDiskAnderifyChanges(  diskConfig,out disk1Name,out disk2Name);
+                UpdateVMImageOsAndDataDiskAnderifyChanges(diskConfig, out disk1Name, out disk2Name);
 
                 //Update VMImage using DiskConfig set prepared manually.
                 UpdateVmImageUsingDiskConfigSetAndVerifyChanges(diskConfig, disk1Name, disk2Name);
@@ -709,7 +709,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Utilities.ExecuteAndLog(() =>
                 {
                     vmPowershellCmdlets.UpdateAzureVMImage(imageName, imageName, imageContext.ImageFamily, imageContext.ShowInGui.Value, imageContext.RecommendedVMSize, imageContext.Description, imageContext.Eula,
-                         imageContext.PrivacyUri, imageContext.PublishedDate, imageContext.Language, imageContext.IconUri, imageContext.SmallIconUri);
+                         imageContext.PrivacyUri, imageContext.PublishedDate, imageContext.Language, imageContext.IconName, imageContext.SmallIconName);
                 }, "Update Azure VM Image details");
 
             VerifyVMImageProperties(imageContext);
@@ -728,6 +728,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.Eula, vmImageContext.Eula), "Eula");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.Description, vmImageContext.Description), "Description");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.IconUri, vmImageContext.IconUri), "IconUri");
+                    Utilities.LogAssert(() => Assert.AreEqual(imageContext.IconName, vmImageContext.IconName), "IconName");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.ImageFamily, vmImageContext.ImageFamily), "ImageFamily");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.ImageName, vmImageContext.ImageName), "ImageName");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.Label, vmImageContext.Label), "Label");
@@ -737,6 +738,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.RecommendedVMSize, vmImageContext.RecommendedVMSize), "RecommendedVMSize");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.ShowInGui, vmImageContext.ShowInGui), "ShowInGui");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.SmallIconUri, vmImageContext.SmallIconUri), "SmallIconUri");
+                    Utilities.LogAssert(() => Assert.AreEqual(imageContext.SmallIconName, vmImageContext.SmallIconName), "SmallIconName");
                 }, "Verify VM image details");
         }
 
