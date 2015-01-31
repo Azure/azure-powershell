@@ -174,6 +174,51 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmPowershellCmdlets.RemoveAzureVMImage(newImageName, false);
                 Assert.IsTrue(Utilities.CheckRemove(vmPowershellCmdlets.GetAzureVMImage, newImageName));
 
+                // Unique Container Prefix
+                var containerPrefix = Utilities.GetUniqueShortName("vmimg");
+
+                // Disk Blobs
+                var srcVhdName = "os1.vhd";
+                var srcVhdContainer = vhdContainerName;
+                var dstOSVhdContainer = containerPrefix.ToLower() + "os" + vhdContainerName;
+                CredentialHelper.CopyTestData(srcVhdContainer, srcVhdName, dstOSVhdContainer);
+                string osVhdLink = string.Format("{0}{1}/{2}", blobUrlRoot, dstOSVhdContainer, srcVhdName);
+
+                var dstDataVhdContainer = containerPrefix.ToLower() + "data" + vhdContainerName;
+                CredentialHelper.CopyTestData(srcVhdContainer, srcVhdName, dstDataVhdContainer);
+                string dataVhdLink = string.Format("{0}{1}/{2}", blobUrlRoot, dstDataVhdContainer, srcVhdName);
+
+                // VM Image OS/Data Disk Configuration
+                var addVMImageName = containerPrefix + "Image";
+                var diskConfig = new VirtualMachineImageDiskConfigSet
+                {
+                    OSDiskConfiguration = new OSDiskConfiguration
+                    {
+                        HostCaching = HostCaching.ReadWrite.ToString(),
+                        OS = OSType.Windows.ToString(),
+                        OSState = "Generalized",
+                        MediaLink = new Uri(osVhdLink)
+                    },
+                    DataDiskConfigurations = new DataDiskConfigurationList
+                    {
+                        new DataDiskConfiguration
+                        {
+                            HostCaching = HostCaching.ReadOnly.ToString(),
+                            Lun = 0,
+                            MediaLink = new Uri(dataVhdLink)
+                        }
+                    }
+                };
+
+                // Add-AzureVMImage
+                vmPowershellCmdlets.AddAzureVMImage(addVMImageName, addVMImageName, diskConfig);
+
+                // Get-AzureVMImage
+                var vmImage = vmPowershellCmdlets.GetAzureVMImageReturningVMImages(addVMImageName).First();
+
+                // Remove-AzureVMImage
+                vmPowershellCmdlets.RemoveAzureVMImage(addVMImageName);
+
                 pass = true;
             }
             catch (Exception e)

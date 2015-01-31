@@ -15,6 +15,7 @@
 using System;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo
 {
@@ -94,6 +95,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             if(publishedDate != null)
             {
                 cmdletParams.Add(new CmdletParam("PublishedDate", publishedDate.ToString()));
+            }
+        }
+
+        public AddAzureVMImageCmdletInfo(string imageName, string label, VirtualMachineImageDiskConfigSet diskConfig)
+        {
+            cmdletName = Utilities.AddAzureVMImageCmdletName;
+
+            cmdletParams.Add(new CmdletParam("ImageName", imageName));
+
+            cmdletParams.Add(new CmdletParam("Label", label));
+
+            if (diskConfig != null)
+            {
+                cmdletParams.Add(new CmdletParam("DiskConfig", diskConfig));
             }
         }
     }

@@ -1370,6 +1370,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return result;
         }
 
+        public void AddAzureVMImage(string imageName, string label, SM.VirtualMachineImageDiskConfigSet diskConfig)
+        {
+            RunPSCmdletAndReturnFirst<ManagementOperationContext>(new AddAzureVMImageCmdletInfo(imageName, label, diskConfig));
+        }
+
         public SM.OSImageContext UpdateAzureVMImage(string imageName, string label, string recommendedSize = null)
         {
             return RunPSCmdletAndReturnFirst<SM.OSImageContext>(new UpdateAzureVMImageCmdletInfo(imageName, label, recommendedSize, null, null));
