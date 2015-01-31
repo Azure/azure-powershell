@@ -155,6 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             try
             {
+                // BVT Tests for OS Images
                 OSImageContext result = vmPowershellCmdlets.AddAzureVMImage(newImageName, mediaLocation, OS.Windows, oldLabel, vmSize, iconUri, smallIconUri, showInGui);
 
                 OSImageContext resultReturned = vmPowershellCmdlets.GetAzureVMImage(newImageName)[0];
@@ -174,6 +175,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmPowershellCmdlets.RemoveAzureVMImage(newImageName, false);
                 Assert.IsTrue(Utilities.CheckRemove(vmPowershellCmdlets.GetAzureVMImage, newImageName));
 
+                // BVT Tests for VM Images
                 // Unique Container Prefix
                 var containerPrefix = Utilities.GetUniqueShortName("vmimg");
 
@@ -211,10 +213,55 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 };
 
                 // Add-AzureVMImage
-                vmPowershellCmdlets.AddAzureVMImage(addVMImageName, addVMImageName, diskConfig);
+                string label = addVMImageName;
+                string description = "test";
+                string eula = "http://www.bing.com/";
+                string imageFamily = "Windows";
+                DateTime? publishedDate = new DateTime(2015, 1, 1);
+                string privacyUri = "http://www.bing.com/";
+                string recommendedVMSize = vmSize;
+                string iconName = "iconName";
+                string smallIconName = "smallIconName";
+
+                vmPowershellCmdlets.AddAzureVMImage(
+                    addVMImageName,
+                    label,
+                    diskConfig,
+                    description,
+                    eula,
+                    imageFamily,
+                    publishedDate,
+                    privacyUri,
+                    recommendedVMSize,
+                    iconName,
+                    smallIconName,
+                    showInGui);
 
                 // Get-AzureVMImage
                 var vmImage = vmPowershellCmdlets.GetAzureVMImageReturningVMImages(addVMImageName).First();
+
+                Assert.IsTrue(vmImage.ImageName == addVMImageName);
+                Assert.IsTrue(vmImage.Label == label);
+                Assert.IsTrue(vmImage.Description == description);
+                Assert.IsTrue(vmImage.Eula == eula);
+                Assert.IsTrue(vmImage.ImageFamily == imageFamily);
+                Assert.IsTrue(vmImage.PublishedDate.Value.Year == publishedDate.Value.Year);
+                Assert.IsTrue(vmImage.PublishedDate.Value.Month == publishedDate.Value.Month);
+                Assert.IsTrue(vmImage.PublishedDate.Value.Day == publishedDate.Value.Day);
+                Assert.IsTrue(vmImage.PrivacyUri.AbsoluteUri.ToString() == privacyUri);
+                Assert.IsTrue(vmImage.RecommendedVMSize == recommendedVMSize);
+                Assert.IsTrue(vmImage.IconName == iconName);
+                Assert.IsTrue(vmImage.IconUri == iconName);
+                Assert.IsTrue(vmImage.SmallIconName == smallIconName);
+                Assert.IsTrue(vmImage.SmallIconUri == smallIconName);
+                Assert.IsTrue(vmImage.ShowInGui == showInGui);
+                Assert.IsTrue(vmImage.OSDiskConfiguration.HostCaching == diskConfig.OSDiskConfiguration.HostCaching);
+                Assert.IsTrue(vmImage.OSDiskConfiguration.OS == diskConfig.OSDiskConfiguration.OS);
+                Assert.IsTrue(vmImage.OSDiskConfiguration.OSState == diskConfig.OSDiskConfiguration.OSState);
+                Assert.IsTrue(vmImage.OSDiskConfiguration.MediaLink == diskConfig.OSDiskConfiguration.MediaLink);
+                Assert.IsTrue(vmImage.DataDiskConfigurations.First().HostCaching == diskConfig.DataDiskConfigurations.First().HostCaching);
+                Assert.IsTrue(vmImage.DataDiskConfigurations.First().Lun == diskConfig.DataDiskConfigurations.First().Lun);
+                Assert.IsTrue(vmImage.DataDiskConfigurations.First().MediaLink == diskConfig.DataDiskConfigurations.First().MediaLink);
 
                 // Remove-AzureVMImage
                 vmPowershellCmdlets.RemoveAzureVMImage(addVMImageName);
