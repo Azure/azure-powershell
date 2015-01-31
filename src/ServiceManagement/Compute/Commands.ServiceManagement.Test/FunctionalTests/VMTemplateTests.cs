@@ -695,7 +695,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Eula = "End user licensce agreement value",
                 ImageFamily = OS.Windows.ToString(),
                 Description = "Description",
-                IconUri = @"http://www.bing.com/",
+                IconUri = "IconName",
                 ImageName = imageName,
                 Label = imageName,
                 Language = "English",
@@ -703,7 +703,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 PublishedDate = DateTime.Now,
                 RecommendedVMSize = InstanceSize.Medium.ToString(),
                 ShowInGui = false,
-                SmallIconUri = @"http://www.bing.com/",
+                SmallIconUri = "SmallIconName",
             };
 
             Utilities.ExecuteAndLog(() =>
