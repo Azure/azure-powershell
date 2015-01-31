@@ -98,7 +98,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        public AddAzureVMImageCmdletInfo(string imageName, string label, VirtualMachineImageDiskConfigSet diskConfig)
+        public AddAzureVMImageCmdletInfo(
+            string imageName,
+            string label,
+            VirtualMachineImageDiskConfigSet diskConfig,
+            string description,
+            string eula,
+            string imageFamily,
+            DateTime? publishedDate,
+            string privacyUri,
+            string recommendedVMSize,
+            string iconName,
+            string smallIconName,
+            bool? showInGui)
         {
             cmdletName = Utilities.AddAzureVMImageCmdletName;
 
@@ -109,6 +121,51 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             if (diskConfig != null)
             {
                 cmdletParams.Add(new CmdletParam("DiskConfig", diskConfig));
+            }
+
+            if (!string.IsNullOrEmpty(description))
+            {
+                cmdletParams.Add(new CmdletParam("Description", description));
+            }
+
+            if (!string.IsNullOrEmpty(eula))
+            {
+                cmdletParams.Add(new CmdletParam("Eula", eula));
+            }
+
+            if (!string.IsNullOrEmpty(imageFamily))
+            {
+                cmdletParams.Add(new CmdletParam("ImageFamily", imageFamily));
+            }
+
+            if (publishedDate != null)
+            {
+                cmdletParams.Add(new CmdletParam("PublishedDate", publishedDate));
+            }
+
+            if (!string.IsNullOrEmpty(privacyUri))
+            {
+                cmdletParams.Add(new CmdletParam("PrivacyUri", privacyUri));
+            }
+
+            if (!string.IsNullOrEmpty(recommendedVMSize))
+            {
+                cmdletParams.Add(new CmdletParam("RecommendedVMSize", recommendedVMSize));
+            }
+
+            if (!string.IsNullOrEmpty(iconName))
+            {
+                cmdletParams.Add(new CmdletParam("IconName", iconName));
+            }
+
+            if (!string.IsNullOrEmpty(smallIconName))
+            {
+                cmdletParams.Add(new CmdletParam("SmallIconName", smallIconName));
+            }
+
+            if (showInGui != null)
+            {
+                cmdletParams.Add(new CmdletParam("ShowInGui", showInGui));
             }
         }
     }
