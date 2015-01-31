@@ -21,12 +21,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
     [Cmdlet(
         VerbsCommon.Set,
-        AzureDataDiskConfigurationNoun),
+        AzureDataDiskConfigurationNoun,
+        DefaultParameterSetName = UpdateAzureVMImageParamSet),
     OutputType(
         typeof(VirtualMachineImageDiskConfigSet))]
     public class SetAzureVMImageDataDiskConfig : PSCmdlet
     {
         protected const string AzureDataDiskConfigurationNoun = "AzureVMImageDataDiskConfig";
+        protected const string UpdateAzureVMImageParamSet = "UpdateAzureVMImageParamSet";
+        protected const string AddAzureVMImageParamSet = "AddAzureVMImageParamSet";
 
         [Parameter(
             Position = 0,
@@ -38,6 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         public VirtualMachineImageDiskConfigSet DiskConfig { get; set; }
 
         [Parameter(
+            ParameterSetName = UpdateAzureVMImageParamSet,
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -46,7 +50,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         public string DataDiskName { get; set; }
 
         [Parameter(
+            ParameterSetName = UpdateAzureVMImageParamSet,
             Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Lun")]
+        [Parameter(
+            ParameterSetName = AddAzureVMImageParamSet,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Lun")]
@@ -54,7 +65,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         public int Lun { get; set; }
 
         [Parameter(
+            ParameterSetName = UpdateAzureVMImageParamSet,
             Position = 3,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Controls the platform caching behavior of the data disk blob for read efficiency.")]
+        [Parameter(
+            ParameterSetName = AddAzureVMImageParamSet,
+            Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Controls the platform caching behavior of the data disk blob for read efficiency.")]
@@ -63,20 +81,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         public string HostCaching { get; set; }
 
         [Parameter(
-            Position = 4,
-            Mandatory = false,
+            ParameterSetName = AddAzureVMImageParamSet,
+            Position = 3,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The media link.")]
         [ValidateNotNullOrEmpty]
         public Uri MediaLink { get; set; }
-
-        [Parameter(
-            Position = 5,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The logical disk size in GB.")]
-        [ValidateNotNullOrEmpty]
-        public int LogicalDiskSizeInGB { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -100,7 +111,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             diskConfig.HostCaching = this.HostCaching;
             diskConfig.Lun = this.Lun;
             diskConfig.MediaLink  = this.MediaLink;
-            diskConfig.LogicalDiskSizeInGB = this.LogicalDiskSizeInGB;
 
             WriteObject(DiskConfig);
         }
