@@ -1370,6 +1370,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return result;
         }
 
+        public void AddAzureVMImage(string imageName, string label, SM.VirtualMachineImageDiskConfigSet diskConfig)
+        {
+            RunPSCmdletAndReturnFirst<ManagementOperationContext>(new AddAzureVMImageCmdletInfo(imageName, label, diskConfig));
+        }
+
         public SM.OSImageContext UpdateAzureVMImage(string imageName, string label, string recommendedSize = null)
         {
             return RunPSCmdletAndReturnFirst<SM.OSImageContext>(new UpdateAzureVMImageCmdletInfo(imageName, label, recommendedSize, null, null));
@@ -1386,8 +1391,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         public void UpdateAzureVMImage(string imageName, string label, string imageFamily, bool showInGui = false, string recommendedSize = null,
-            string description = null, string eula = null, Uri privacyUri = null, DateTime? publishedDate = null, string language = null, Uri iconUri = null,
-            Uri smallIconUri = null)
+            string description = null, string eula = null, Uri privacyUri = null, DateTime? publishedDate = null, string language = null, string iconUri = null,
+            string smallIconUri = null)
         {
             RunPSCmdletAndReturnFirst<ManagementOperationContext>(new UpdateAzureVMImageCmdletInfo(imageName, label, recommendedSize, description, eula, imageFamily,
                 privacyUri, publishedDate.Value, language, iconUri, smallIconUri, showInGui));

@@ -75,11 +75,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = true, HelpMessage = " Specifies the size to use for the virtual machine that is created from the OS image.")]
         public string RecommendedVMSize { get; set; }
 
+        [Alias("IconUri")]
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = true, HelpMessage = "Icon Uri.")]
-        public Uri IconUri { get; set; }
+        public string IconName { get; set; }
 
+        [Alias("SmallIconUri")]
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = true, HelpMessage = "Small Icon Uri.")]
-        public Uri SmallIconUri { get; set; }
+        public string SmallIconName { get; set; }
 
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = true, HelpMessage = "To show in GUI.")]
         public SwitchParameter ShowInGui { get; set; }
@@ -107,7 +109,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                     {
                         HostCaching = d.HostCaching,
                         LogicalUnitNumber = d.Lun,
-                        LogicalSizeInGB = d.LogicalDiskSizeInGB,
                         MediaLink = d.MediaLink
                     }).ToList(),
                     Label = string.IsNullOrEmpty(this.Label) ? this.ImageName : this.Label,
@@ -117,8 +118,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                     PublishedDate = this.PublishedDate,
                     PrivacyUri = this.PrivacyUri,
                     RecommendedVMSize = this.RecommendedVMSize,
-                    IconUri = this.IconUri,
-                    SmallIconUri = this.SmallIconUri,
+                    IconUri = this.IconName,
+                    SmallIconUri = this.SmallIconName,
                     ShowInGui = this.ShowInGui
                 };
 
@@ -141,8 +142,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                     PublishedDate = this.PublishedDate,
                     PrivacyUri = this.PrivacyUri,
                     RecommendedVMSize = this.RecommendedVMSize,
-                    IconUri = this.IconUri,
-                    SmallIconUri = this.SmallIconUri,
+                    IconUri = this.IconName,
+                    SmallIconUri = this.SmallIconName,
                     ShowInGui = this.ShowInGui
                 };
 
