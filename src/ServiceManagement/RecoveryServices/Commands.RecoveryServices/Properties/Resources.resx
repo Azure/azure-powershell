@@ -229,6 +229,7 @@ ClientRequestId: {3}</value>
   </data>
   <data name="NetworkArgumentsMissingForUpdateVmProperties" xml:space="preserve">
     <value>Please pass on both Source Nic and Recovery Target to update</value>
+  </data>
   <data name="InvalidReplicationFrequency" xml:space="preserve">
     <value>Replication Frequency {0} is invalid</value>
   </data>
