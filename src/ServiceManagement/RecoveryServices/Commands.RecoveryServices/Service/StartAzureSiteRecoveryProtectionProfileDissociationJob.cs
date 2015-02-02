@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Protection Profile object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionProfile ProtectionProfile { get; set; }
 

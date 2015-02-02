@@ -147,6 +147,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replication Frequency {0} is invalid.
+        /// </summary>
+        internal static string InvalidReplicationFrequency {
+            get {
+                return ResourceManager.GetString("InvalidReplicationFrequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resource is not associted with the selected Cloud Service.
         /// </summary>
         internal static string InvalidResource {

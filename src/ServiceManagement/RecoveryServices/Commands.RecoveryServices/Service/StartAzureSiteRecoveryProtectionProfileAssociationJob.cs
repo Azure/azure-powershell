@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Protection Profile object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionProfile ProtectionProfile { get; set; }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public ASRProtectionContainer PrimaryProtectionContainer { get; set; }
 
         /// <summary>
-        /// Gets or sets Protection Container to be applied the Protection Profile settings on.
+        /// Gets or sets Recovery Protection Container to be applied the Protection Profile settings on.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             var storageAccount = new CustomerStorageAccount();
             storageAccount.StorageAccountName = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureStorageAccountName;
             storageAccount.SubscriptionId = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureSubscription;
-            
+
             hyperVReplicaAzureProtectionProfileInput.StorageAccounts = new System.Collections.Generic.List<CustomerStorageAccount>();
             hyperVReplicaAzureProtectionProfileInput.StorageAccounts.Add(storageAccount);
 
