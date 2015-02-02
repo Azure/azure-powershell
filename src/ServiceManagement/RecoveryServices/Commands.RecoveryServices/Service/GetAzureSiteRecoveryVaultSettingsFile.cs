@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets the site id
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory = false, HelpMessage = "The site name if the vault credentials to be downloaded for a Hyper-V sites.")]
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory = false, HelpMessage = "The site Id if the vault credentials to be downloaded for a Hyper-V sites.")]
         public string SiteId { get; set; }
 
         /// <summary>

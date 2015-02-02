@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Site.
+    /// Creates Azure Site Recovery Site.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSiteRecoverySite")]
     [OutputType(typeof(ASRJob))]

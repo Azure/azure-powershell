@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Server.
+    /// Retrieves Azure Site Recovery Vault.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVault")]
     [OutputType(typeof(List<ASRVault>))]

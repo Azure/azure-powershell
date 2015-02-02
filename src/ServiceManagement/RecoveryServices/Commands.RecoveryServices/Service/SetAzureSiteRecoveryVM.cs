@@ -21,9 +21,9 @@ using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
-    /// Set Protection Entity protection state.
+    /// Updates protected Virtual Machine properties.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSiteRecoveryVirtualMachine")]
+    [Cmdlet(VerbsCommon.Set, "AzureSiteRecoveryVM")]
     [OutputType(typeof(ASRJob))]
     public class SetAzureSiteRecoveryVirtualMachine : RecoveryServicesCmdletBase
     {
@@ -74,7 +74,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            // validate the srouce nic & target network together
+            // Check for at least one option
+            if (string.IsNullOrEmpty(this.Name) && 
+                string.IsNullOrEmpty(this.Size) && 
+                string.IsNullOrEmpty(this.PrimaryNic) && 
+                string.IsNullOrEmpty(this.RecoveryNetworkId))
+            {
+                this.WriteWarning(Properties.Resources.ArgumentsMissingForUpdateVmProperties.ToString());
+                return;
+            }
+
+            // Both primary & recovery inputs should be present
+            if (string.IsNullOrEmpty(this.PrimaryNic) ^
+                string.IsNullOrEmpty(this.RecoveryNetworkId))
+            {
+                this.WriteWarning(Properties.Resources.NetworkArgumentsMissingForUpdateVmProperties.ToString());
+                return;
+            }
+
             UpdateVmPropertiesInput updateVmPropertiesInput = new UpdateVmPropertiesInput();
             updateVmPropertiesInput.RecoveryAzureVmGivenName = this.Name;
             updateVmPropertiesInput.RecoveryAzureVmSize = this.Size;
