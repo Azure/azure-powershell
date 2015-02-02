@@ -16,8 +16,8 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.TrafficManager.Utilities;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.TrafficManager
 {
@@ -36,8 +36,8 @@ namespace Microsoft.WindowsAzure.Commands.TrafficManager
 
         private string GetDomainNameToCheck(string domainName)
         {
-            string TrafficManagerSuffix = !string.IsNullOrEmpty(AzureSession.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix)) ?
-                AzureSession.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix) :
+            string TrafficManagerSuffix = !string.IsNullOrEmpty(AzureSession.Profile.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix)) ?
+                AzureSession.Profile.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix) :
                 AzureEnvironmentConstants.AzureTrafficManagerDnsSuffix;
 
             if (!string.IsNullOrEmpty(domainName) && !domainName.ToLower().EndsWith(TrafficManagerSuffix))

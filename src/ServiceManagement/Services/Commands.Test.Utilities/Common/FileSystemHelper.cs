@@ -18,7 +18,7 @@ using System.IO;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -288,7 +288,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
             AzureSdkPath = CreateDirectory("AzureSdk");
             ProfileClient client = new ProfileClient();
-            ProfileClient.DataStore.WriteFile(publishSettingsPath, File.ReadAllText(publishSettingsPath));
+            AzureSession.DataStore.WriteFile(publishSettingsPath, File.ReadAllText(publishSettingsPath));
             client.ImportPublishSettings(publishSettingsPath, null);
             client.Profile.Save();
 

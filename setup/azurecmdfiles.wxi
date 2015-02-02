@@ -24,7 +24,7 @@
                             <File Id="fil94E921383821891E9BEEC43DE026AA50" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Batch\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmp73F5A74A9817B8C108F9D19F5CA44202" Guid="*">
-                            <File Id="fil83CB56A822F5856F3B58C9019D4BDA78" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Batch\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil83CB56A822F5856F3B58C9019D4BDA78" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Batch\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmpE76C18CD6E7A1621CB83C4FDBA75A1D9" Guid="*">
                             <File Id="filBAE155B6754D51B8CC5A754C39AA16F2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Batch\Microsoft.Azure.Common.NetFramework.dll" />
@@ -86,7 +86,7 @@
                             <File Id="fil6E342A558F9E908AB2C756AD33A7326E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\DataFactories\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpA2132BD97DE8188CD54DF61B0E1D6BE9" Guid="*">
-                            <File Id="fil7EA787693B0570EC2617DCF15ACB2548" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\DataFactories\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil7EA787693B0570EC2617DCF15ACB2548" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\DataFactories\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmp17C8052411378D4FBD409F0DBF5A3AAB" Guid="*">
                             <File Id="fil2E35075DE57E122E9A32BCFB07EFEB7F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\DataFactories\Microsoft.Azure.Common.NetFramework.dll" />
@@ -184,7 +184,7 @@
                             <File Id="fil02A6B777772BCABCFD54A8FD41462834" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\KeyVault\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpE0476D6FF9C5AD631CA21AEAFC3B918B" Guid="*">
-                            <File Id="fil5D7B6CAFADAF0BE2577E8865EEE1B6AE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\KeyVault\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil5D7B6CAFADAF0BE2577E8865EEE1B6AE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\KeyVault\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmpBA50088476D481806FA8A46CA2C5CEBE" Guid="*">
                             <File Id="fil21E8691D4482B7702FD47A93501119F7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\KeyVault\Microsoft.Azure.Common.NetFramework.dll" />
@@ -255,7 +255,7 @@
                             <File Id="filB57964B6A710424BC3278D25B9908D1B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\RedisCache\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpC8999C17C99EAA91AC0BBF394F453A5C" Guid="*">
-                            <File Id="fil0C738A6C104F6A882AE987033C45EA46" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\RedisCache\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil0C738A6C104F6A882AE987033C45EA46" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\RedisCache\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmpC685313F6F9A6D1F74D1F6E5C7845756" Guid="*">
                             <File Id="fil14DE0BEEB1164395CEFA6A735A32BAC8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\RedisCache\Microsoft.Azure.Common.NetFramework.dll" />
@@ -377,7 +377,7 @@
                             <File Id="filAE71192D4C3379FE539A02BDAE51BFE8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Resources\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmp54B8CFF78DF2E98BA8D87F78AB456490" Guid="*">
-                            <File Id="fil1A0A17D7092DAD251E32AB31D97536B1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Resources\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil1A0A17D7092DAD251E32AB31D97536B1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Resources\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmpF2DEF9C932BBA13B4976DA039F73E689" Guid="*">
                             <File Id="fil50B184B7EF3CDA8D8BD6D7652E10CA04" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Resources\Microsoft.Azure.Common.NetFramework.dll" />
@@ -478,7 +478,7 @@
                             <File Id="filE991471C60545FA490D8B538A60200C0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Sql\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpBFF71DD769C60D86AF8CB6EE01886777" Guid="*">
-                            <File Id="fil45AA08C48D7E0C895973AF6772F27FB9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Sql\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil45AA08C48D7E0C895973AF6772F27FB9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Sql\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmp2C144B41FAE124CE1C9921E8B7DB9776" Guid="*">
                             <File Id="fil51DFA1EBD383C7255F27902642A86751" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Sql\Microsoft.Azure.Common.NetFramework.dll" />
@@ -555,7 +555,7 @@
                             <File Id="fil964434CA0455AFB87C7693CC685F6635" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\StreamAnalytics\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpBD2E9FC7F38215AE3FA4EFA1851ED94B" Guid="*">
-                            <File Id="fil1A616F241CA99C5046D8B673A0872785" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\StreamAnalytics\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil1A616F241CA99C5046D8B673A0872785" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\StreamAnalytics\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmp4C4A177B8EA12C43941AF159F0A16E07" Guid="*">
                             <File Id="filF04DF221394957BD9BD32EB75B606B20" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\StreamAnalytics\Microsoft.Azure.Common.NetFramework.dll" />
@@ -641,7 +641,7 @@
                             <File Id="fil6FDDF0E35C0B8F28517C4C887FE65F42" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Tags\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmp9E322859CE6409A30CDC2577035CAE96" Guid="*">
-                            <File Id="filB6C2E24CCF79947A1F075FE6D4485F65" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Tags\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="filB6C2E24CCF79947A1F075FE6D4485F65" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Tags\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmpB6083B5CE8CED6F1724591BB34F19995" Guid="*">
                             <File Id="fil46D3230BBAA55CB775751019D1F76864" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Tags\Microsoft.Azure.Common.NetFramework.dll" />
@@ -734,7 +734,7 @@
                             <File Id="filE2B318C5CB0FDBA05F158B7AEDAB6A5B" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Automation\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpB92C664A5015BD36E1B201D7BAE583E6" Guid="*">
-                            <File Id="fil108DB1CF731C686E2F9BD7258F2F9503" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Automation\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil108DB1CF731C686E2F9BD7258F2F9503" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Automation\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmpCFF660734313D3C9592DB86F0D4B4EFE" Guid="*">
                             <File Id="filD8D1F471ACDC72E34B1D13DA591F7B3F" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Automation\Microsoft.Azure.Common.NetFramework.dll" />
@@ -847,7 +847,7 @@
                             <File Id="fil0B1361097C92E2D0E34AA5248E7CD4C7" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpCFB708324CF26BF9DD3B1FD4E3F92189" Guid="*">
-                            <File Id="fil4B41B6F3756D228E37F0C9D144178AAC" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil4B41B6F3756D228E37F0C9D144178AAC" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmp42FE31D214E88600BC5DE868A244BA20" Guid="*">
                             <File Id="filD6668B53C1E9BB018419C62B94B1EDCC" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.Azure.Common.NetFramework.dll" />
@@ -1020,7 +1020,7 @@
                             <File Id="fil5E6D60B396C852A77892E64E72D65A91" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ExpressRoute\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpE4294CB2294ECB8308F7B9CC825DC63A" Guid="*">
-                            <File Id="fil63C8C41570CA6722AD59FA9219A536A6" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ExpressRoute\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil63C8C41570CA6722AD59FA9219A536A6" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ExpressRoute\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmp63899C7FF83CD37A1CB64BED258A0C47" Guid="*">
                             <File Id="fil5057B5C924EE1B09D3B270C03B2E5548" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ExpressRoute\Microsoft.Azure.Common.NetFramework.dll" />
@@ -1082,7 +1082,7 @@
                             <File Id="filA06DCF8E53EC3673785CE6B476F55886" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpE35662DA7780AF244B9FAB5703B92E57" Guid="*">
-                            <File Id="filCC32C5C6F9484B513D38D2DF8B81CDC4" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="filCC32C5C6F9484B513D38D2DF8B81CDC4" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmp524E28243CC9788C41819437014F3F7D" Guid="*">
                             <File Id="fil6BD7B8BB425C2B1E0D24EEEDD1C1FDD8" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.Azure.Common.NetFramework.dll" />
@@ -1231,7 +1231,7 @@
                             <File Id="fil569A472BAB3F5E633579CC227AD18958" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ManagedCache\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpDDBE95F12ACAA3746566DC1EC073050F" Guid="*">
-                            <File Id="fil4FE11DE62BD31C7D93AB25A22DF938B9" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ManagedCache\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil4FE11DE62BD31C7D93AB25A22DF938B9" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ManagedCache\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmp5FF3FBE070BD35E9B47D2CE060362F16" Guid="*">
                             <File Id="fil6836A532C6A1B67960712BAE8A220E39" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ManagedCache\Microsoft.Azure.Common.NetFramework.dll" />
@@ -1383,7 +1383,7 @@
                             <File Id="filC0CD3B7FD2B506B190D9BB8A15A3FEF5" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Network\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpB10A69A41B30CA241757014423F5891D" Guid="*">
-                            <File Id="filDFDB85B1ECF1D2860F835EE79C23D8BB" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Network\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="filDFDB85B1ECF1D2860F835EE79C23D8BB" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Network\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmpD00445EE9165D0354D3386C5EB9C720C" Guid="*">
                             <File Id="filE3CA7A15B15AD7C1388D128FB5006EED" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Network\Microsoft.Azure.Common.NetFramework.dll" />
@@ -1460,7 +1460,7 @@
                             <File Id="filD24F4EB26C2FA956CA7A93BCAF4A2AD7" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmp30D11971FAF2E117532F338E91D61A10" Guid="*">
-                            <File Id="fil76A32414B59758BDBD59E8551E2C18DB" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil76A32414B59758BDBD59E8551E2C18DB" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmp18ED74EDB82DE2351B9655ED86ACA19A" Guid="*">
                             <File Id="fil991D5398DD029BC4DCB17B2FA601C01B" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Common.NetFramework.dll" />
@@ -1564,7 +1564,7 @@
                             <File Id="fil9BDFB8474099CD0A3269404DA202F766" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmp1AE2F0258EF6B0C5AD91CB0BD47DE198" Guid="*">
-                            <File Id="filFAB5C27B8F542B2EFA398800E56D3989" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="filFAB5C27B8F542B2EFA398800E56D3989" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmp9960D1074D8095DBAE42055E438F961F" Guid="*">
                             <File Id="fil3BCD736B5CDDB4236FB5116EC7C6AA63" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.Azure.Common.NetFramework.dll" />
@@ -2046,7 +2046,7 @@
                             <File Id="fil28C291CD5B424B1A4BE17AA38F99DF12" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpE88A9C7B1FCE8230A77A8498C9485A59" Guid="*">
-                            <File Id="fil91299B7C3D677AAE4DF0003E70C5B9CA" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil91299B7C3D677AAE4DF0003E70C5B9CA" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmpB6B3D29C26A5E102831B92476CC50A1D" Guid="*">
                             <File Id="fil97338A2F6E90AC46248EA428088019D8" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Microsoft.Azure.Common.NetFramework.dll" />
@@ -2213,7 +2213,7 @@
                             <File Id="fil36143E91B113155E606004018795987F" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Storage\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmp3AFAD8B9DA8046405B8ABDFF50131653" Guid="*">
-                            <File Id="fil8C5ADD885BA6C9EF0135617A7EAB661B" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Storage\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="fil8C5ADD885BA6C9EF0135617A7EAB661B" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Storage\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmp502D3855BF8F1F90ED4CC748F48B23AE" Guid="*">
                             <File Id="fil0616532585F696C15368541CFE7666D0" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Storage\Microsoft.Azure.Common.NetFramework.dll" />
@@ -2302,7 +2302,7 @@
                             <File Id="filB7A4B25F40CE730D374967CEFF6C356B" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\StorSimple\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmpA56A6E7903A81BFA919217AE52A9F37B" Guid="*">
-                            <File Id="filD41DFC831F3C94E18C0BFA2FE920FD4F" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\StorSimple\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="filD41DFC831F3C94E18C0BFA2FE920FD4F" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\StorSimple\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmp3AC709C29C5C98FAE63EC5ACF073B2AF" Guid="*">
                             <File Id="filBD421847424CAE48F72C74C69770D8C0" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\StorSimple\Microsoft.Azure.Common.NetFramework.dll" />
@@ -2361,7 +2361,7 @@
                             <File Id="fil810FF52C980AFBCC54E32096ADD5CC42" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\TrafficManager\Microsoft.Azure.Common.dll" />
                         </Component>
                         <Component Id="cmp650509EFAB3198FBC7036F3B637A31A3" Guid="*">
-                            <File Id="filDD6182EE7AB518B759151EBC0DF496D2" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\TrafficManager\Microsoft.Azure.Common.Extensions.dll" />
+                            <File Id="filDD6182EE7AB518B759151EBC0DF496D2" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\TrafficManager\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
                         <Component Id="cmp60C52F8E3D2C4A2FBFA3AC5E7544E17F" Guid="*">
                             <File Id="fil572C8A30D7CFE5D250BF9BEA6F317C30" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\TrafficManager\Microsoft.Azure.Common.NetFramework.dll" />

@@ -21,7 +21,7 @@ using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.PowerShellTestAbstraction.Concretes;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.PowerShellTestAbstraction.Interfaces;
@@ -35,7 +35,7 @@ using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCluste
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.ServiceLocation;
 using Microsoft.WindowsAzure.Management.HDInsight.Framework.Core;
 using Microsoft.WindowsAzure.Management.HDInsight.Logging;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
 {
@@ -184,7 +184,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
             var cmdletManager = ServiceLocator.Instance.Locate<IServiceLocationSimulationManager>();
             cmdletManager.MockingLevel = ServiceLocationMockingLevel.ApplyFullMocking;
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
-            ProfileClient.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MockDataStore();
         }
 
         public void ApplyIndividualTestMockingOnly()

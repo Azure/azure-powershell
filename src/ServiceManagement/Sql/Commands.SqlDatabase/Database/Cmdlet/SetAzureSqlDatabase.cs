@@ -16,12 +16,12 @@ using System;
 using System.Globalization;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -280,7 +280,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             try
             {
                 // Get the current subscription data.
-                AzureSubscription subscription = AzureSession.CurrentContext.Subscription;
+                AzureSubscription subscription = AzureSession.Profile.CurrentContext.Subscription;
 
                 // Create a temporary context
                 ServerDataServiceCertAuth context =

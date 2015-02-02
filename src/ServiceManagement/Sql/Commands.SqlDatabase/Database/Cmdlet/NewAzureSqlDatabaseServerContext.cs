@@ -18,12 +18,12 @@ using System.Linq;
 using System.Management.Automation;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -151,7 +151,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             {
                 if (string.IsNullOrEmpty(SubscriptionName))
                 {
-                    return AzureSession.CurrentContext.Subscription;
+                    return AzureSession.Profile.CurrentContext.Subscription;
                 }
 
                 ProfileClient client = new ProfileClient();
@@ -311,7 +311,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     // and append the azure database DNS suffix.
                     return new Uri(
                         Uri.UriSchemeHttps + Uri.SchemeDelimiter +
-                        this.ServerName + AzureSession.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix));
+                        this.ServerName + AzureSession.Profile.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix));
                 case FullyQualifiedServerNameWithSqlAuthParamSet:
                 case FullyQualifiedServerNameWithCertAuthParamSet:
                     // The fully qualified server name was specified, 

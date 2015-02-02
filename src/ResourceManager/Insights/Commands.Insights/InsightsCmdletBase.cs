@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Insights;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 

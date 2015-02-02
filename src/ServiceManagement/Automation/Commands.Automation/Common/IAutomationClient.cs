@@ -16,7 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {

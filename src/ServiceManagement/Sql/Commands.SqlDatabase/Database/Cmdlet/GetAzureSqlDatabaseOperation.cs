@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -111,7 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     break;
 
                 case ByServerName:
-                    context = ServerDataServiceCertAuth.Create(this.ServerName, AzureSession.CurrentContext.Subscription);
+                    context = ServerDataServiceCertAuth.Create(this.ServerName, AzureSession.Profile.CurrentContext.Subscription);
                     break;
             }
             ProcessWithContext(context);

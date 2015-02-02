@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Moq;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
@@ -56,7 +56,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 CommandRuntime = new MockCommandRuntime(),
                 WebsitesClient = clientMock.Object
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription { Id = new Guid(base.subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             getAzureWebsiteCommand.ExecuteCmdlet();
             Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline.Count);
@@ -97,7 +100,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Name = "website1",
                 WebsitesClient = clientMock.Object
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             getAzureWebsiteCommand.ExecuteCmdlet();
             Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline.Count);
@@ -115,7 +121,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Name = "WEBSiTe1",
                 WebsitesClient = clientMock.Object
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             getAzureWebsiteCommand.ExecuteCmdlet();
             Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline.Count);
@@ -135,10 +144,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             {
                 CommandRuntime = new MockCommandRuntime()
             };
-            AzureSession.SetCurrentContext(null, null, null);
+            AzureSession.Profile = new AzureProfile();
 
 
-            Testing.AssertThrows<Exception>(getAzureWebsiteCommand.ExecuteCmdlet, Resources.InvalidCurrentSubscription);
+            Testing.AssertThrows<Exception>(getAzureWebsiteCommand.ExecuteCmdlet, Resources.InvalidDefaultSubscription);
         }
 
         [Fact]
@@ -165,7 +174,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = websitesClientMock.Object,
                 Slot = slot
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             // Test
             getAzureWebsiteCommand.ExecuteCmdlet();
@@ -207,7 +219,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = clientMock.Object,
                 Slot = slot
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             getAzureWebsiteCommand.ExecuteCmdlet();
             Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline.Count);
@@ -249,7 +264,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = clientMock.Object,
                 Slot = slot
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             getAzureWebsiteCommand.ExecuteCmdlet();
             IEnumerable<Site> sites = ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline[0] as IEnumerable<Site>;

@@ -20,8 +20,8 @@ using System.Xml;
 using System.Net.Security;
 using System.Runtime.Caching;
 using Hyak.Common;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Management.Scheduler;
 using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     StorSimpleContext.ResourceName, StorSimpleContext.ResourceId,
                     StorSimpleContext.ResourceProviderNameSpace, StorSimpleContext.StampId,
                     this.cloudServicesClient.Credentials,
-                    AzureSession.CurrentContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
+                    AzureSession.Profile.CurrentContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
             
             if (storSimpleClient == null)
             {

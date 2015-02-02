@@ -18,7 +18,7 @@ using System.IO;
 using System.Net;
 using System.Threading;
 using Xunit;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
@@ -31,7 +31,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using Moq;
 using MockStorageService = Microsoft.WindowsAzure.Commands.Test.Utilities.Common.MockStorageService;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities

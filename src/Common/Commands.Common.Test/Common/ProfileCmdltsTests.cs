@@ -12,24 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.Profile;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Language;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.Profile;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions.Authentication;
-using Moq;
 using Xunit;
-using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
@@ -46,10 +42,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public ProfileCmdltsTests() : base()
         {
             dataStore = new MockDataStore();
-            ProfileClient.DataStore = dataStore;
+            AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             SetMockData();
-            AzureSession.SetCurrentContext(null, null, null);
+            AzureSession.Profile = new AzureProfile();
         }
 
         [Fact]
@@ -155,13 +151,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         {
             //setup
             string testFileName = @"c:\foobar\TokenCache.dat";
-            ProfileClient.DataStore.WriteFile(testFileName, new byte[] { 0, 1 });
+            AzureSession.DataStore.WriteFile(testFileName, new byte[] { 0, 1 });
             
             //Act
             ProtectedFileTokenCache tokenCache = new ProtectedFileTokenCache(testFileName);
 
             //Assert
-            Assert.False(ProfileClient.DataStore.FileExists(testFileName));
+            Assert.False(AzureSession.DataStore.FileExists(testFileName));
         }
 
         [Fact]
@@ -403,11 +399,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             ImportAzurePublishSettingsCommand cmdlt = new ImportAzurePublishSettingsCommand();
 
             // Setup
-            ProfileClient.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
+            AzureSession.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
                 Properties.Resources.ValidProfileChina);
             ProfileClient client = new ProfileClient();
             var oldDataStore = FileUtilities.DataStore;
-            FileUtilities.DataStore = ProfileClient.DataStore;
+            FileUtilities.DataStore = AzureSession.DataStore;
             var expectedEnv = "AzureChinaCloud";
             var expected = client.ImportPublishSettings("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings", null);
 
@@ -442,11 +438,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             ImportAzurePublishSettingsCommand cmdlt = new ImportAzurePublishSettingsCommand();
 
             // Setup
-            ProfileClient.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
+            AzureSession.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
                 Properties.Resources.ValidProfileChina);
             ProfileClient client = new ProfileClient();
             var oldDataStore = FileUtilities.DataStore;
-            FileUtilities.DataStore = ProfileClient.DataStore;
+            FileUtilities.DataStore = AzureSession.DataStore;
             var expectedEnv = "AzureCloud";
             var expected = client.ImportPublishSettings("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings", expectedEnv);
 
@@ -510,7 +506,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SetParameterSet("SelectSubscriptionByNameParameterSet");
             cmdlt.SubscriptionName = azureSubscription2.Name;
-            Assert.Null(AzureSession.CurrentContext.Subscription);
+            Assert.Null(AzureSession.Profile.CurrentContext.Subscription);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -518,8 +514,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.NotNull(AzureSession.CurrentContext.Subscription);
-            Assert.Equal(azureSubscription2.Id, AzureSession.CurrentContext.Subscription.Id);
+            Assert.NotNull(AzureSession.Profile.CurrentContext.Subscription);
+            Assert.Equal(azureSubscription2.Id, AzureSession.Profile.CurrentContext.Subscription.Id);
         }
 
         [Fact]
@@ -532,7 +528,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SetParameterSet("SelectSubscriptionByNameParameterSet");
             cmdlt.SubscriptionName = azureSubscription2.Name;
-            Assert.Null(AzureSession.CurrentContext.Subscription);
+            Assert.Null(AzureSession.Profile.CurrentContext.Subscription);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -554,7 +550,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.SetParameterSet("SelectSubscriptionByNameParameterSet");
             cmdlt.SubscriptionName = azureSubscription2.Name;
             cmdlt.PassThru = new SwitchParameter(true);
-            Assert.Null(AzureSession.CurrentContext.Subscription);
+            Assert.Null(AzureSession.Profile.CurrentContext.Subscription);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -616,7 +612,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
             cmdlt.SubscriptionId = azureSubscription2.Id.ToString();
-            Assert.Null(AzureSession.CurrentContext.Subscription);
+            Assert.Null(AzureSession.Profile.CurrentContext.Subscription);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -624,8 +620,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.NotNull(AzureSession.CurrentContext.Subscription);
-            Assert.Equal(azureSubscription2.Id, AzureSession.CurrentContext.Subscription.Id);
+            Assert.NotNull(AzureSession.Profile.CurrentContext.Subscription);
+            Assert.Equal(azureSubscription2.Id, AzureSession.Profile.CurrentContext.Subscription.Id);
 
             cmdlt = new SelectAzureSubscriptionCommand();
 
@@ -640,7 +636,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.Null(AzureSession.CurrentContext.Subscription);
+            Assert.Null(AzureSession.Profile.CurrentContext.Subscription);
         }
 
         [Fact]
@@ -654,7 +650,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
             string invalidGuid = Guid.NewGuid().ToString();
             cmdlt.SubscriptionId = invalidGuid;
-            Assert.Null(AzureSession.CurrentContext.Subscription);
+            Assert.Null(AzureSession.Profile.CurrentContext.Subscription);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -680,7 +676,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
             string invalidGuid = "foo";
             cmdlt.SubscriptionId = invalidGuid;
-            Assert.Null(AzureSession.CurrentContext.Subscription);
+            Assert.Null(AzureSession.Profile.CurrentContext.Subscription);
 
             // Act
             cmdlt.InvokeBeginProcessing();

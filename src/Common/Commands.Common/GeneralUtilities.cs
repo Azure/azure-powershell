@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Properties;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;

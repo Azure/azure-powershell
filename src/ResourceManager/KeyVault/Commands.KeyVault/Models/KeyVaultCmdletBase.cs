@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 {
                     this.dataServiceClient = new KeyVaultDataServiceClient(
                         AzureSession.AuthenticationFactory,
-                        AzureSession.CurrentContext,
+                        AzureSession.Profile.CurrentContext,
                         new HttpClient());
                 }
 

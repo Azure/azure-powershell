@@ -16,7 +16,7 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 

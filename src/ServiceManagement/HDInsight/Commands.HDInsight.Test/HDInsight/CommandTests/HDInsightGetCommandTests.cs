@@ -18,7 +18,7 @@ using System.Linq;
 using Microsoft.Hadoop.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities;
 using Microsoft.WindowsAzure.Management.HDInsight;
@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImpleme
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.ServiceLocation;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
 {
@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             var waSubscription = GetCurrentSubscription();
             ProfileClient profileClient = new ProfileClient();
 
-            var subscriptionCreds = getClustersCommand.GetSubscriptionCredentials(waSubscription, AzureSession.CurrentContext.Environment, profileClient.Profile);
+            var subscriptionCreds = getClustersCommand.GetSubscriptionCredentials(waSubscription, AzureSession.Profile.CurrentContext.Environment, profileClient.Profile);
 
             Assert.IsInstanceOfType(subscriptionCreds, typeof(HDInsightCertificateCredential));
             var asCertificateCreds = subscriptionCreds as HDInsightCertificateCredential;
@@ -135,7 +135,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             profileClient.Profile.Save();
 
             waSubscription.Account = "test";
-            var accessTokenCreds = getClustersCommand.GetSubscriptionCredentials(waSubscription, AzureSession.CurrentContext.Environment, profileClient.Profile);
+            var accessTokenCreds = getClustersCommand.GetSubscriptionCredentials(waSubscription, AzureSession.Profile.CurrentContext.Environment, profileClient.Profile);
             Assert.IsInstanceOfType(accessTokenCreds, typeof(HDInsightAccessTokenCredential));
             var asAccessTokenCreds = accessTokenCreds as HDInsightAccessTokenCredential;
             Assert.AreEqual("abc", asAccessTokenCreds.AccessToken);
@@ -152,7 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
 
             var subscriptionCreds = getClustersCommand.GetJobSubmissionClientCredentials(
                 waSubscription,
-                AzureSession.CurrentContext.Environment,
+                AzureSession.Profile.CurrentContext.Environment,
                 IntegrationTestBase.TestCredentials.WellKnownCluster.DnsName,
                 profileClient.Profile);
 
@@ -186,7 +186,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             profileClient.Profile.Save();
             var accessTokenCreds = getClustersCommand.GetJobSubmissionClientCredentials(
                 waSubscription,
-                AzureSession.CurrentContext.Environment,
+                AzureSession.Profile.CurrentContext.Environment,
                 IntegrationTestBase.TestCredentials.WellKnownCluster.DnsName,
                 profileClient.Profile);
             Assert.IsInstanceOfType(accessTokenCreds, typeof(HDInsightAccessTokenCredential));
@@ -209,7 +209,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             var profile = new AzureProfile();
             var accessTokenCreds = getClustersCommand.GetJobSubmissionClientCredentials(
                 waSubscription,
-                AzureSession.CurrentContext.Environment,
+                AzureSession.Profile.CurrentContext.Environment,
                 IntegrationTestBase.TestCredentials.WellKnownCluster.DnsName, profile);
             Assert.IsInstanceOfType(accessTokenCreds, typeof(BasicAuthCredential));
             var asBasicAuthCredentials = accessTokenCreds as BasicAuthCredential;

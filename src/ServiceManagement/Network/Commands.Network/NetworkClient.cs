@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 namespace Microsoft.Azure.Commands.Network
 {
     using System;
@@ -31,8 +30,8 @@ namespace Microsoft.Azure.Commands.Network
     using WindowsAzure.Management.Network;
     using WindowsAzure.Management.Network.Models;
     using WindowsAzure.Storage.Auth;
-    using Microsoft.Azure.Common.Extensions.Models;
-    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
 
     public class NetworkClient

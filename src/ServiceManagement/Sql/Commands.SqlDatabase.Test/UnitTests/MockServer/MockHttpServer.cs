@@ -22,11 +22,11 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
 {
@@ -171,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
         public static void SetupCertificates()
         {
             TestingTracingInterceptor.AddToContext();
-            ProfileClient.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MockDataStore();
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var newGuid = Guid.NewGuid();
             ProfileClient client = new ProfileClient();
@@ -209,8 +209,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                         }
             };
-            AzureSession.SetCurrentContext(client.Profile.Subscriptions[newGuid],
-                null, client.Profile.Accounts["test"]);
+            client.SetSubscriptionAsDefault(newGuid, "test");
+            AzureSession.Profile = client.Profile;
 
             client.Profile.Save();
 

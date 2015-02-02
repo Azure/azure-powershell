@@ -12,18 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Reflection;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Hadoop.Client;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImplementations;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.BaseInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.Extensions;
+using System;
 using System.Diagnostics;
-using Microsoft.Azure.Common.Extensions.Authentication;
-using Microsoft.Azure.Common.Extensions;
+using System.Reflection;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters
 {
@@ -60,7 +57,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             return new HDInsightCertificateCredential
             {
                 SubscriptionId = currentSubscription.Id,
-                Certificate = ProfileClient.DataStore.GetCertificate(currentSubscription.Account),
+                Certificate = AzureSession.DataStore.GetCertificate(currentSubscription.Account),
                 Endpoint = environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement),
             };
         }
@@ -69,12 +66,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             AzureSubscription currentSubscription, AzureAccount azureAccount, AzureEnvironment environment)
         {
             ProfileClient profileClient = new ProfileClient();
-            AzureContext azureContext = new AzureContext
-            {
-                Subscription = currentSubscription,
-                Environment = environment,
-                Account = azureAccount
-            };
+            AzureContext azureContext = new AzureContext(currentSubscription, azureAccount, environment);
 
             var cloudCredentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureContext) as AccessTokenCredential;
             if (cloudCredentials != null)
