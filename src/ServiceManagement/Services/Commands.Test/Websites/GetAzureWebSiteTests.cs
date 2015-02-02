@@ -147,7 +147,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             AzureSession.Profile = new AzureProfile();
 
 
-            Testing.AssertThrows<Exception>(getAzureWebsiteCommand.ExecuteCmdlet, Resources.InvalidCurrentSubscription);
+            Testing.AssertThrows<Exception>(getAzureWebsiteCommand.ExecuteCmdlet, Resources.InvalidDefaultSubscription);
         }
 
         [Fact]
