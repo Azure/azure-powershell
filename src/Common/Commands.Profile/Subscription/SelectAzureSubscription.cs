@@ -94,23 +94,25 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             switch (ParameterSetName)
             {
                 case SelectSubscriptionByNameParameterSet:
-                    azureSubscription = ProfileClient.SetSubscriptionAsCurrent(SubscriptionName, Account);
+                    azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionName, Account);
                     break;
 
                 case SelectSubscriptionByIdParameterSet:
-                    azureSubscription = ProfileClient.SetSubscriptionAsCurrent(SubscriptionIdAsGuid(), Account);
+                    azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionIdAsGuid(), Account);
                     break;
 
                 case SelectDefaultSubscriptionByNameParameterSet:
                     azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionName, Account);
+                    WriteWarning("Current and Default parameters have been deprecated. Select-AzureSubscription will always update the Default Subscription.");
                     break;
 
                 case SelectDefaultSubscriptionByIdParameterSet:
                     azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionIdAsGuid(), Account);
+                    WriteWarning("Current and Default parameters have been deprecated. Select-AzureSubscription will always update the Default Subscription.");
                     break;
 
                 case NoCurrentSubscriptionParameterSet:
-                    AzureSession.SetCurrentContext(null, null, null);
+                    WriteWarning("Current parameter set has been deprecated. Use Select-AzureSubscription -NoDefault instead.");
                     break;
 
                 case NoDefaultSubscriptionParameterSet:

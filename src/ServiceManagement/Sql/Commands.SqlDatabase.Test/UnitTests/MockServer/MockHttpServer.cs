@@ -209,8 +209,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                         }
             };
-            AzureSession.SetCurrentContext(client.Profile.Subscriptions[newGuid],
-                null, client.Profile.Accounts["test"]);
+            client.SetSubscriptionAsDefault(newGuid, "test");
+            AzureSession.Profile = client.Profile;
 
             client.Profile.Save();
 

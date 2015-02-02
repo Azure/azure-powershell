@@ -66,12 +66,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             AzureSubscription currentSubscription, AzureAccount azureAccount, AzureEnvironment environment)
         {
             ProfileClient profileClient = new ProfileClient();
-            AzureContext azureContext = new AzureContext
-            {
-                Subscription = currentSubscription,
-                Environment = environment,
-                Account = azureAccount
-            };
+            AzureContext azureContext = new AzureContext(currentSubscription, azureAccount, environment);
 
             var cloudCredentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureContext) as AccessTokenCredential;
             if (cloudCredentials != null)

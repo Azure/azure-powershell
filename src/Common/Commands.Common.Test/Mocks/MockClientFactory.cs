@@ -58,12 +58,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             if (HttpMockServer.GetCurrentMode() != HttpRecorderMode.Playback)
             {
                 ProfileClient profileClient = new ProfileClient();
-                AzureContext context = new AzureContext()
-                {
-                    Account = profileClient.GetAccount(subscription.Account),
-                    Environment = profileClient.GetEnvironmentOrDefault(subscription.Environment),
-                    Subscription = subscription
-                };
+                AzureContext context = new AzureContext(
+                    subscription,
+                    profileClient.GetAccount(subscription.Account),
+                    profileClient.GetEnvironmentOrDefault(subscription.Environment)
+                );
 
                 creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
             }

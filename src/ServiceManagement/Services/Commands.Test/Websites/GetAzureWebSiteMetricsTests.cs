@@ -66,7 +66,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 CommandRuntime = new MockCommandRuntime(),
                 WebsitesClient = clientMock.Object
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription { Id = new Guid(base.subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             command.ExecuteCmdlet();
             Assert.Equal(1, ((MockCommandRuntime)command.CommandRuntime).OutputPipeline.Count);

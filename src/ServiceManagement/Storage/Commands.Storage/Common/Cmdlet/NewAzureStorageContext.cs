@@ -332,7 +332,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <summary>
         /// Get storage account and use specific azure environment
         /// </summary>
-        /// <param name="credential">Storage credentail</param>
+        /// <param name="credential">Storage credential</param>
         /// <param name="storageAccountName">Storage account name, it's used for build end point</param>
         /// <param name="useHttps">Use secure Http protocol</param>
         /// <param name="azureEnvironmentName">Environment name</param>
@@ -344,7 +344,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             
             if (string.IsNullOrEmpty(azureEnvironmentName))
             {
-                azureEnvironment = AzureSession.CurrentContext.Environment;
+                azureEnvironment = AzureSession.Profile.CurrentContext.Environment;
             }
             else
             {
