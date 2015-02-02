@@ -165,7 +165,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         {
                             if (this.Protection == Constants.EnableProtection)
                             {
+                                string profileId = string.Empty;
                                 var input = new EnableProtectionInput();
+
+                                // Get the replciation provider from profile object otherwise assume its E2E.
+                                // Let the call go without profileId set.
+                                string replicationProvider = Constants.HyperVReplica;
+                                if (this.ProtectionProfile != null)
+                                {
+                                    profileId = this.ProtectionProfile.ID;
+                                    replicationProvider = this.ProtectionProfile.ReplicationProvider;
+                                }
 
                                 if (this.ProtectionEntity == null)
                                 {
@@ -174,10 +184,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                         this.Id);
                                     this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
 
-                                    this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+                                    this.ValidateUsageById(replicationProvider);
                                 }
 
-                                if (this.ProtectionProfile.ReplicationProvider == Constants.HyperVReplicaAzure)
+                                if (replicationProvider == Constants.HyperVReplicaAzure)
                                 {
                                     input.ProtectionProfileId = this.ProtectionProfile.ID;
                                     AzureEnableProtectionInput azureInput = new AzureEnableProtectionInput();
@@ -208,10 +218,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
                                     input.ReplicationProviderInput = DataContractUtils.Serialize<AzureEnableProtectionInput>(azureInput);
                                 }
+                                else if (string.IsNullOrWhiteSpace(profileId))
+                                {
+                                    input = null;
+                                }
                                 else
                                 {
                                     input.ReplicationProviderInput = string.Empty;
-                                    input.ProtectionProfileId = this.ProtectionProfile.ID;
+                                    input.ProtectionProfileId = profileId;
                                 }
 
                                 this.jobResponse =
