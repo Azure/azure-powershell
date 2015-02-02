@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Profile
             }
             else
             {
-                ProfileClient = new ProfileClient();
+                ProfileClient = new ProfileClient(AzureSession.Profile);
             }
             ProfileClient.WarningLog = WriteWarning;
             ProfileClient.DebugLog = WriteDebug;

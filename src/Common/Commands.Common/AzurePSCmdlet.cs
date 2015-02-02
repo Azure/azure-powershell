@@ -29,9 +29,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         static AzurePSCmdlet()
         {
-            AzureSession.Profile = new AzureProfile(
-                Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-
             if (!TestMockSupport.RunningMocked)
             {
                 AzureSession.ClientFactory.AddAction(new RPRegistrationAction());
@@ -42,6 +39,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public AzurePSCmdlet()
         {
+            AzureSession.Profile = new AzureProfile(
+                Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+
             DefaultProfileClient = new ProfileClient(AzureSession.Profile);
         }
 
