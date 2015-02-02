@@ -34,7 +34,7 @@ $Validate_PFOFailbackRP_JobSucceeded = $true;
 $Validate_ProfileDissociation_JobSucceeded = $true;
 $Validate_ProfileAssociation_JobSucceeded = $true;
 
-Test-EnableProtection 'E:\d\E2E_SKVault_Wednesday,January28,2015.VaultCredentials'
+#Test-EnableProtection 'E:\d\E2E_SKVault_Wednesday,January28,2015.VaultCredentials'
 
 <#
 .SYNOPSIS
