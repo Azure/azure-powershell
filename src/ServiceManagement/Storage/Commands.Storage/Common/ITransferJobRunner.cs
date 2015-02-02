@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage.DataMovement;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Storage.DataMovement;
+
     /// <summary>
     /// Provides the interface for transfer job runners.
     /// </summary>

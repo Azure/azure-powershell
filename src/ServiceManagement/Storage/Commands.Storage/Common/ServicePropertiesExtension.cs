@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+
     public static class ServicePropertiesExtension
     {
         /// <summary>

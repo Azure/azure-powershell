@@ -12,20 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Management.Automation;
-using System.Security.Permissions;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Commands.Storage.Table;
-using Microsoft.WindowsAzure.Storage.Table;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Table;
+    using Microsoft.WindowsAzure.Storage.Table;
+
     [Cmdlet(VerbsCommon.Get, StorageNouns.TableStoredAccessPolicy), OutputType(typeof(SharedAccessTablePolicy))]
     public class GetAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {

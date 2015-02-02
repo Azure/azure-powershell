@@ -12,27 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Management.Automation;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Storage.File;
-using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.File;
-using Microsoft.WindowsAzure.Storage.Queue;
-using Microsoft.WindowsAzure.Storage.Table;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Globalization;
+    using System.Management.Automation;
+    using System.Net;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.File;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.File;
+    using Microsoft.WindowsAzure.Storage.Queue;
+    using Microsoft.WindowsAzure.Storage.Table;
+
     /// <summary>
     /// Base cmdlet for all storage cmdlet that works with cloud
     /// </summary>

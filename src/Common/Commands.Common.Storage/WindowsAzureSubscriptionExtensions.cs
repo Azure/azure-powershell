@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.Azure.Common.Extensions;
-
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Management.Storage;
+    using Microsoft.WindowsAzure.Storage;
+
     public static class WindowsAzureSubscriptionExtensions
     {
         private static Dictionary<Guid, CloudStorageAccount> storageAccountCache = new Dictionary<Guid,CloudStorageAccount>();

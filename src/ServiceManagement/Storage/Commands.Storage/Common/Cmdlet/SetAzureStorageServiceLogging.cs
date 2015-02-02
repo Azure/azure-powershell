@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Security.Permissions;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
     using StorageClient = WindowsAzure.Storage.Shared.Protocol;
 
     /// <summary>

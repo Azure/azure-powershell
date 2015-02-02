@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
-using System.IO;
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Storage.File;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using System.Globalization;
+    using System.IO;
+    using System.Management.Automation;
     using Microsoft.WindowsAzure.Storage.DataMovement;
+    using Microsoft.WindowsAzure.Storage.File;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;

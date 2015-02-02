@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Security.Permissions;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+
     /// <summary>
     /// Show azure storage service properties
     /// </summary>

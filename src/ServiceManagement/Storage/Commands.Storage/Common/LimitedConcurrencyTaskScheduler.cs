@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Concurrent;
-using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Diagnostics;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     /// <summary>
     /// A task scheduler with limited concurrency.
     /// </summary>

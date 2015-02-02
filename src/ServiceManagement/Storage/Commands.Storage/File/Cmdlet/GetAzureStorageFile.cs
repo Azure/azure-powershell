@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Storage.File;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using System.Globalization;
+    using System.Management.Automation;
+    using Microsoft.WindowsAzure.Storage.File;
+
     [Cmdlet(VerbsCommon.Get, Constants.FileCmdletName, DefaultParameterSetName = Constants.ShareNameParameterSetName)]
     public class GetAzureStorageFile : AzureStorageFileCmdletBase
     {

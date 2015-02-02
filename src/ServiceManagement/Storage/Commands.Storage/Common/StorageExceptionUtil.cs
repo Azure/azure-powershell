@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.WindowsAzure.Storage;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using Microsoft.WindowsAzure.Storage;
+
     /// <summary>
     /// Storage exception utility
     /// </summary>
