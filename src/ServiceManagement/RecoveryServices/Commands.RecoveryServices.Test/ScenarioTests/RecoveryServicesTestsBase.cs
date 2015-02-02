@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
                 asrVaultCreds.CloudServiceName,
                 asrVaultCreds.ResourceName,
                 (SubscriptionCloudCredentials)environment.Credentials,
-                AzureSession.CurrentContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)).WithHandler(HttpMockServer.CreateInstance());
+                AzureSession.Profile.CurrentContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)).WithHandler(HttpMockServer.CreateInstance());
         }
 
         private static bool IgnoreCertificateErrorHandler

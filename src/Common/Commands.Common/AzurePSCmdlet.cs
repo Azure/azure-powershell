@@ -38,35 +38,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public AzurePSCmdlet()
         {
-            DefaultProfileClient = new ProfileClient();
-
-            if (AzureSession.CurrentContext.Subscription == null &&
-               DefaultProfileClient.Profile.DefaultSubscription != null)
-            {
-                try
-                {
-                    AzureSession.SetCurrentContext(
-                        DefaultProfileClient.Profile.DefaultSubscription,
-                        DefaultProfileClient.GetEnvironmentOrDefault(
-                            DefaultProfileClient.Profile.DefaultSubscription.Environment),
-                        DefaultProfileClient.GetAccountOrNull(DefaultProfileClient.Profile.DefaultSubscription.Account));
-                }
-                catch
-                {
-                    // Ignore anything at this point
-                }
-            }
-
+            DefaultProfileClient = new ProfileClient(AzureSession.Profile);
         }
 
         public AzureContext CurrentContext
         {
-            get { return AzureSession.CurrentContext; }
+            get { return AzureSession.Profile.CurrentContext; }
         }
 
         public bool HasCurrentSubscription
         {
-            get { return AzureSession.CurrentContext.Subscription != null; }
+            get { return AzureSession.Profile.CurrentContext.Subscription != null; }
         }
 
         public ProfileClient DefaultProfileClient { get; private set; }

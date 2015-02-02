@@ -53,7 +53,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.WebHostingPlans
                 CommandRuntime = new MockCommandRuntime(),
                 WebsitesClient = clientMock.Object
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             command.ExecuteCmdlet();
             Assert.Equal(1, ((MockCommandRuntime)command.CommandRuntime).OutputPipeline.Count);
@@ -81,7 +84,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.WebHostingPlans
                 CommandRuntime = new MockCommandRuntime(),
                 WebsitesClient = clientMock.Object
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             command.ExecuteCmdlet();
             Assert.Equal(1, ((MockCommandRuntime)command.CommandRuntime).OutputPipeline.Count);

@@ -43,13 +43,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             {
                 AzureSession.DataStore = new MockDataStore();
             }
-            if (AzureSession.CurrentContext.Subscription == null)
+            if (AzureSession.Profile.CurrentContext.Subscription == null)
             {
                 var newGuid = Guid.NewGuid();
-                AzureSession.SetCurrentContext(
-                    new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" },
-                    null,
-                    new AzureAccount
+                AzureSession.Profile.Subscriptions[newGuid] = new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" };
+                AzureSession.Profile.Accounts["test"] = new AzureAccount
                     {
                         Id = "test",
                         Type = AzureAccount.AccountType.User,
@@ -57,7 +55,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
                         {
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                         }
-                    });
+                    };
+                AzureSession.Profile.DefaultSubscription = AzureSession.Profile.Subscriptions[newGuid];
             }
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }

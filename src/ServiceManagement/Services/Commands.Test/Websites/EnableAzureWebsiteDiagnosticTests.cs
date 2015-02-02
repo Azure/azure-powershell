@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Websites;
 using Moq;
 using Xunit;
 using Microsoft.Azure.Common.Authentication;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
@@ -64,7 +65,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 LogLevel = LogEntryType.Information
             };
 
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription { Id = new Guid(base.subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             // Test
             enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
@@ -102,7 +106,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 StorageTableName = tableName
             };
 
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             // Test
             enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
@@ -139,8 +146,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 StorageTableName = tableName
             };
 
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
-            AzureSession.CurrentContext.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            AzureSession.Profile.CurrentContext.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
 
             // Test
             enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
@@ -178,7 +188,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 StorageBlobContainerName = blobContainerName
             };
 
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             // Test
             enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
@@ -215,8 +228,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 StorageBlobContainerName = blobContainerName
             };
 
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
-            AzureSession.CurrentContext.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            AzureSession.Profile.CurrentContext.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
 
             // Test
             enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
@@ -251,7 +267,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Slot = slot
             };
 
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
+            AzureSession.Profile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             // Test
             enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();

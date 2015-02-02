@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 {
                     this.dataServiceClient = new KeyVaultDataServiceClient(
                         AzureSession.AuthenticationFactory,
-                        AzureSession.CurrentContext,
+                        AzureSession.Profile.CurrentContext,
                         new HttpClient());
                 }
 

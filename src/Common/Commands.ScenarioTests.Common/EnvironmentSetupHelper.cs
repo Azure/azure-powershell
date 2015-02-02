@@ -141,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 client.Profile.Subscriptions[testSubscription.Id] = testSubscription;
                 client.Profile.Accounts[testAccount.Id] = testAccount;
-                client.SetSubscriptionAsCurrent(testSubscription.Name, testSubscription.Account);
+                client.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
             }
         }
 

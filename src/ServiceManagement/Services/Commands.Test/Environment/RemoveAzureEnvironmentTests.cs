@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
 
         public void Cleanup()
         {
-            AzureSession.SetCurrentContext(null, null, null);
+            AzureSession.Profile = new AzureProfile();
         }
 
         [Fact]

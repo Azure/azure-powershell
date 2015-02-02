@@ -201,7 +201,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             try
             {
                 // Get the current subscription data.
-                AzureSubscription subscription = AzureSession.CurrentContext.Subscription;
+                AzureSubscription subscription = AzureSession.Profile.CurrentContext.Subscription;
 
                 // Create a temporary context
                 ServerDataServiceCertAuth context =
