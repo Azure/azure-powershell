@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
@@ -28,6 +29,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         static AzurePSCmdlet()
         {
+            AzureSession.Profile = new AzureProfile(
+                Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+
             if (!TestMockSupport.RunningMocked)
             {
                 AzureSession.ClientFactory.AddAction(new RPRegistrationAction());
