@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Uri privacyUri,
             DateTime publishedDate, 
             string language,
-            Uri iconUri,
-            Uri smallIconUri,
+            string iconUri,
+            string smallIconUri,
             bool showInGui)
             : this(imageName, label, recommendedSize, null, !showInGui)
         {

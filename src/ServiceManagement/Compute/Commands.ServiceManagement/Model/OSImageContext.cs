@@ -32,8 +32,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public virtual string ImageFamily { get; set; }
         public virtual DateTime? PublishedDate { get; set; }
         public virtual bool? IsPremium { get; set; }
-        public virtual Uri IconUri { get; set; }
-        public virtual Uri SmallIconUri { get; set; }
+        public virtual string IconUri { get; set; }
+        public virtual string SmallIconUri { get; set; }
         public virtual Uri PrivacyUri { get; set; }
         public virtual string RecommendedVMSize { get; set; }
         public virtual string PublisherName { get; set; }

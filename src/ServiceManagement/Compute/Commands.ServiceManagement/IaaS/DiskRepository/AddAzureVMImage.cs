@@ -67,10 +67,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
         public string RecommendedVMSize { get; set; }
 
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = true, HelpMessage = "Icon Uri.")]
-        public Uri IconUri { get; set; }
+        public string IconUri { get; set; }
 
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = true, HelpMessage = "Small Icon Uri.")]
-        public Uri SmallIconUri { get; set; }
+        public string SmallIconUri { get; set; }
 
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = true, HelpMessage = "To show in GUI.")]
         public SwitchParameter ShowInGui { get; set; }
