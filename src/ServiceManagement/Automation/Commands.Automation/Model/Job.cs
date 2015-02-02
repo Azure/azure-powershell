@@ -39,13 +39,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
             Requires.Argument("accountName", accountName).NotNull();
 
             this.AutomationAccountName = accountName;
-            this.Location = job.Location;
-            this.Type = job.Type;
-            this.Tags = job.Tags ?? new Dictionary<string, string>();
-            this.Id = Guid.Parse(job.Name);
 
             if (job.Properties == null) return;
 
+            this.Id = job.Properties.JobId;
             this.CreationTime = job.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = job.Properties.LastModifiedTime.ToLocalTime();
             this.StartTime = job.Properties.StartTime;
@@ -74,21 +71,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the job id.
         /// </summary>
         public Guid Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the location.
-        /// </summary>
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type.
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tags.
-        /// </summary>
-        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.

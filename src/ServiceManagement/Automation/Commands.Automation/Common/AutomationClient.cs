@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             catch (CloudException cloudException)
             {
-                if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
                 {
                     throw new ResourceNotFoundException(typeof(Schedule),
                         string.Format(CultureInfo.CurrentCulture, Resources.ScheduleNotFound, scheduleName));
@@ -144,6 +144,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             AutomationManagement.Models.Schedule scheduleModel = this.GetScheduleModel(automationAccountName,
                 scheduleName);
+            isEnabled = (isEnabled.HasValue) ? isEnabled : scheduleModel.Properties.IsEnabled;
+            description = description ?? scheduleModel.Properties.Description; ;
             return this.UpdateScheduleHelper(automationAccountName, scheduleModel, isEnabled, description);
         }
 
@@ -228,7 +230,20 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public void DeleteRunbook(string automationAccountName, string runbookName)
         {
-            this.automationManagementClient.Runbooks.Delete(automationAccountName, runbookName);
+            try
+            {
+                this.automationManagementClient.Runbooks.Delete(automationAccountName, runbookName);
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    throw new ResourceNotFoundException(typeof(Connection), string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
+                }
+
+                throw;
+            }
+
         }
 
         public Runbook UpdateRunbook(string automationAccountName, string runbookName, string description,
@@ -249,7 +264,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             runbookUpdateParameters.Properties =  new RunbookUpdateProperties();
             runbookUpdateParameters.Properties.Description = description ?? runbookModel.Properties.Description;
             runbookUpdateParameters.Properties.LogProgress = (logProgress.HasValue) ?  logProgress.Value : runbookModel.Properties.LogProgress;
-            runbookUpdateParameters.Properties.LogVerbose = (logProgress.HasValue) ? logProgress.Value : runbookModel.Properties.LogVerbose;
+            runbookUpdateParameters.Properties.LogVerbose = (logVerbose.HasValue) ? logVerbose.Value : runbookModel.Properties.LogVerbose;
 
             var runbook = this.automationManagementClient.Runbooks.Update(automationAccountName, runbookUpdateParameters).Runbook;
 
@@ -266,8 +281,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
             }
 
-            if ((0 ==
-                 String.Compare(runbook.Properties.State, RunbookState.Edit, CultureInfo.InvariantCulture,
+            if ((0 !=
+                 String.Compare(runbook.Properties.State, RunbookState.Published, CultureInfo.InvariantCulture,
                      CompareOptions.IgnoreCase) && overwrite == false))
             {
                 throw new ResourceCommonException(typeof(Runbook),
@@ -295,19 +310,40 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
             }
 
-            if (0 !=
-                String.Compare(runbook.Properties.State, RunbookState.Published, CultureInfo.InvariantCulture,
-                    CompareOptions.IgnoreCase) && isDraft != null && isDraft.Value == true)
+            var draftContent = String.Empty;
+            var publishedContent = String.Empty;
+
+            if (0 != String.Compare(runbook.Properties.State, RunbookState.Published, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
             {
-                var draftContent =
-                    this.automationManagementClient.RunbookDraft.Content(automationAccountName, runbookName).Stream;
-                ret.Add(new RunbookDefinition(automationAccountName, runbook, draftContent, Constants.Draft));
+                draftContent = this.automationManagementClient.RunbookDraft.Content(automationAccountName, runbookName).Stream;
             }
-            else
+            if (0 != String.Compare(runbook.Properties.State, RunbookState.New, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
             {
-                var publishedContent =
-                    this.automationManagementClient.Runbooks.Content(automationAccountName, runbookName).Stream;
-                ret.Add(new RunbookDefinition(automationAccountName, runbook, publishedContent, Constants.Published));
+                publishedContent = this.automationManagementClient.Runbooks.Content(automationAccountName, runbookName).Stream;
+            }
+
+            // if no slot specified return both draft and publish content
+            if (false == isDraft.HasValue)
+            {
+                if (false == String.IsNullOrEmpty(draftContent)) ret.Add(new RunbookDefinition(automationAccountName, runbook, draftContent, Constants.Draft));
+                if (false == String.IsNullOrEmpty(publishedContent)) ret.Add(new RunbookDefinition(automationAccountName, runbook, publishedContent, Constants.Published));
+            }
+            else 
+            {
+                if (isDraft.Value == true)
+                {
+
+                    if (String.IsNullOrEmpty(draftContent)) throw new ResourceCommonException(typeof(Runbook),
+                            string.Format(CultureInfo.CurrentCulture, Resources.RunbookHasNoDraftVersion, runbookName));
+                    if (false == String.IsNullOrEmpty(draftContent)) ret.Add(new RunbookDefinition(automationAccountName, runbook, draftContent, Constants.Draft));
+                }
+                else
+                {
+                    if (String.IsNullOrEmpty(publishedContent)) throw new ResourceCommonException(typeof(Runbook),
+                            string.Format(CultureInfo.CurrentCulture, Resources.RunbookHasNoPublishedVersion, runbookName));
+
+                    if (false == String.IsNullOrEmpty(publishedContent)) ret.Add(new RunbookDefinition(automationAccountName, runbook, publishedContent, Constants.Published));
+                }
             }
 
             return ret;
@@ -421,10 +457,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     this.automationManagementClient.Variables.Delete(automationAccountName, variableName);
                 }
             }
-            catch (ResourceNotFoundException)
+            catch (CloudException cloudException)
             {
-                // the variable does not exists or already deleted. Do nothing. Return.
-                return;
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    throw new ResourceNotFoundException(typeof(Variable),
+                        string.Format(CultureInfo.CurrentCulture, Resources.VariableNotFound, variableName));
+                }
+
+                throw;
             }
         }
 
@@ -583,10 +624,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public CredentialInfo UpdateCredential(string automationAccountName, string name, string userName, string password,
             string description)
         {
+            var exisitngCredential = this.GetCredential(automationAccountName, name);
             var credentialUpdateParams = new AutomationManagement.Models.CredentialUpdateParameters();
             credentialUpdateParams.Name = name;
             credentialUpdateParams.Properties = new AutomationManagement.Models.CredentialUpdateProperties();
-            if (description != null) credentialUpdateParams.Properties.Description = description;
+            credentialUpdateParams.Properties.Description = description ?? exisitngCredential.Description;
 
             credentialUpdateParams.Properties.UserName = userName;
             credentialUpdateParams.Properties.Password = password;
@@ -647,7 +689,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
                 {
-                    throw new ResourceNotFoundException(typeof(Schedule), string.Format(CultureInfo.CurrentCulture, Resources.CredentialNotFound, name));
+                    throw new ResourceNotFoundException(typeof(Credential), string.Format(CultureInfo.CurrentCulture, Resources.CredentialNotFound, name));
                 }
 
                 throw;
@@ -757,9 +799,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             catch (CloudException cloudException)
             {
-                if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    throw new ResourceNotFoundException(typeof(Schedule), string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+                    throw new ResourceNotFoundException(typeof(Module), string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
                 }
 
                 throw;
@@ -1129,7 +1171,19 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public void DeleteCertificate(string automationAccountName, string name)
         {
-            this.automationManagementClient.Certificates.Delete(automationAccountName, name);
+            try
+            {
+                this.automationManagementClient.Certificates.Delete(automationAccountName, name);
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    throw new ResourceNotFoundException(typeof(Schedule), string.Format(CultureInfo.CurrentCulture, Resources.CertificateNotFound, name));
+                }
+
+                throw;
+            }
         }
 
         #endregion 
@@ -1230,7 +1284,19 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public void DeleteConnection(string automationAccountName, string name)
         {
-            this.automationManagementClient.Connections.Delete(automationAccountName, name);
+            try
+            {
+                this.automationManagementClient.Connections.Delete(automationAccountName, name);
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    throw new ResourceNotFoundException(typeof(Connection), string.Format(CultureInfo.CurrentCulture, Resources.ConnectionNotFound, name));
+                }
+
+                throw;
+            }
         }
 
         #endregion

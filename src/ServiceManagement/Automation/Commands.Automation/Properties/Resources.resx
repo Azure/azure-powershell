@@ -172,7 +172,8 @@
     <comment>Automation</comment>
   </data>
   <data name="ResourceExists" xml:space="preserve">
-    <value>Resource exists.</value>
+    <value>Resource exist.</value>
+    <comment>Automation</comment>
   </data>
   <data name="RunbookNotFound" xml:space="preserve">
     <value>The Runbook was not found. Runbook name: {0}.</value>
@@ -247,7 +248,7 @@
     <comment>Automation</comment>
   </data>
   <data name="ResourceNotFound" xml:space="preserve">
-    <value>Resource does not exists.</value>
+    <value>Resource does not exist.</value>
     <comment>Automation</comment>
   </data>
   <data name="ConnectionAlreadyExists" xml:space="preserve">
@@ -264,6 +265,10 @@
   </data>
   <data name="SetCertificateInvalidArgs" xml:space="preserve">
     <value>Password and Exportable parameters cannot be updated for an existing certificate. They can only be specified when overwriting this certificate with a new one, via the Path parameter</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookHasNoDraftVersion" xml:space="preserve">
+    <value>The runbook has no draft version. Runbook name {0}.</value>
     <comment>Automation</comment>
   </data>
 </root>
