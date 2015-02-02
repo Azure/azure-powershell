@@ -83,12 +83,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (CurrentContext.Subscription == null)
             {
-                throw new ArgumentException(Resources.InvalidCurrentSubscription);
+                throw new ArgumentException(Resources.InvalidDefaultSubscription);
             }
 
             if (CurrentContext.Account == null)
             {
-                throw new ArgumentException(Resources.InvalidCurrentSuscriptionCertificate);
+                throw new ArgumentException(Resources.AccountNeedsToBeSpecified);
             }
 
             if (Channel == null || force)
