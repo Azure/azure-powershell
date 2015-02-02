@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase
             if (subscription == null)
             {
                 throw new ArgumentException(
-                    Common.Properties.Resources.InvalidCurrentSubscription);
+                    Common.Properties.Resources.InvalidDefaultSubscription);
             }
         }
 

@@ -138,7 +138,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             AzureSession.SetCurrentContext(null, null, null);
 
 
-            Testing.AssertThrows<Exception>(getAzureWebsiteCommand.ExecuteCmdlet, Resources.InvalidCurrentSubscription);
+            Testing.AssertThrows<Exception>(getAzureWebsiteCommand.ExecuteCmdlet, Resources.InvalidDefaultSubscription);
         }
 
         [Fact]
