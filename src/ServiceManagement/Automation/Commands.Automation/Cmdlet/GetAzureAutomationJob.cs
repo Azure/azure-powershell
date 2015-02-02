@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
          /// <summary> 
          /// Gets or sets the runbook name of the job. 
          /// </summary> 
-         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, HelpMessage = "The runbook name of the job.")] 
+         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, HelpMessage = "The runbook name of the job.")]
+         [Alias("Name")] 
          public string RunbookName { get; set; }
 
          /// <summary> 

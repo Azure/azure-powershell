@@ -39,8 +39,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             this.AutomationAccountName = resource.Name;
             this.Location = cloudService.GeoRegion;
-            this.Plan = resource.Plan;
-
             switch (resource.State)
             {
                 case AutomationManagement.Models.AutomationResourceState.Started:
@@ -53,6 +51,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
                     this.State = resource.State;
                     break;
             }
+
+            if (resource.IntrinsicSettings != null) this.Plan = resource.IntrinsicSettings.SubscriptionPlan;
         }
 
         /// <summary>

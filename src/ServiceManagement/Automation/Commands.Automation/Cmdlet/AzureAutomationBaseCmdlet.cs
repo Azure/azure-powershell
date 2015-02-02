@@ -85,9 +85,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     }
                 }
 
-                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent || cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
                 {
-                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ResourceNotFound), cloudException);
+                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.AutomationAccountNotFound), cloudException);
                 }
 
                 throw;
