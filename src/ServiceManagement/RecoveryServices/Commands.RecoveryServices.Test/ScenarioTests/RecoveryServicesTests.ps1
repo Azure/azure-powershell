@@ -18,6 +18,7 @@
 
 $Validate_EnableProtection_JobSucceeded = $true;
 $Validate_DisableProtection_JobSucceeded = $true;
+
 $Validate_PFO_JobSucceeded = $true;
 $Validate_Commit_PFO_JobSucceeded = $true;
 $Validate_Commit_Failback_JobSucceeded = $true;
@@ -33,6 +34,7 @@ $Validate_PFOFailbackRP_JobSucceeded = $true;
 $Validate_ProfileDissociation_JobSucceeded = $true;
 $Validate_ProfileAssociation_JobSucceeded = $true;
 
+#Test-EnableProtection 'E:\d\E2E_SKVault_Wednesday,January28,2015.VaultCredentials'
 
 <#
 .SYNOPSIS
@@ -79,6 +81,7 @@ function Test-E2E_DeleteAndDissociate
 							if ($Validate_ProfileDissociation_JobSucceeded -eq $true)
 							{
 								WaitForJobCompletion -JobId $job.ID
+                                $job = Get-AzureSiteRecoveryJob -Id $job.ID
 								Assert-True { $job.State -eq "Succeeded" }
 							}
 
@@ -90,8 +93,7 @@ function Test-E2E_DeleteAndDissociate
         }
     }
 
-    throw("No PC found for E2E_DeleteAndDissociate");
-
+    Assert-NotNull($job) "No PC found for E2E_DeleteAndDissociate"
 }
 
 
@@ -133,6 +135,7 @@ function Test-E2E_CreateAndAssociate
 			if ($Validate_ProfileAssociation_JobSucceeded -eq $true)
 			{
 				WaitForJobCompletion -JobId $job.ID
+                $job = Get-AzureSiteRecoveryJob -Id $job.ID
 				Assert-True { $job.State -eq "Succeeded" }
 			}
 
@@ -140,7 +143,7 @@ function Test-E2E_CreateAndAssociate
         }
     }
 
-    throw("No PC found for E2E_CreateAndAssociate");
+    Assert-NotNull($job) "No PC found for E2E_CreateAndAssociate"
 }
 
 <#
@@ -565,7 +568,7 @@ function Test-Failback
 		}
 	}
 
-    throw("No VM found for failback");
+    Assert-NotNull($job) "No VM found for failback"
 }
 
 
@@ -614,7 +617,7 @@ function Test-RRAfterFailback
 		}
 	}
 
-    throw("No VM found for RRAfterFailback");
+    Assert-NotNull($job) "No VM found for RRAfterFailback";
 }
 
 
@@ -656,6 +659,12 @@ function Test-RRAfterFailover
                     {
                         $job = Get-AzureSiteRecoveryJob -Id $job.ID
                         Assert-True { $job.State -eq "Succeeded" }
+                    }
+
+                    # Validate_EnableProtection_WaitForCanFailover
+                    if ($Validate_EnableProtection_WaitForCanFailover -eq $true)
+                    {
+                        WaitForCanFailover $protectionEntity.ProtectionContainerId $protectionEntity.ID 
                     }
 
                     return;
@@ -712,7 +721,7 @@ function Test-CommitPFO
 		}
 	}
 
-    throw("No VM found for Commit_PFO");
+    Assert-NotNull($job) "No VM found for Commit_PFO"
 }
 
 
@@ -761,7 +770,7 @@ function Test-PFO
 		}
 	}
 
-    throw("No VM found for PFO");
+    Assert-NotNull($job) "No VM found for PFO"
 }
 
 <#
@@ -1033,7 +1042,7 @@ function Test-UFO
 		}
 	}
 
-    throw("No VM found for UFO");
+    Assert-NotNull($job) "No VM found for UFO"
 }
 
 
@@ -1090,7 +1099,7 @@ function Test-TFO
 		}
 	}
 
-    throw("No VM found for TFO");
+    Assert-NotNull($job) "No VM found for TFO"
 }
 
 <#
@@ -1124,18 +1133,20 @@ function Test-EnableProtection
 				if ($protectionEntity.Protected -eq $false)
 				{
 					$job = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity -Protection "Enable" -Force -ProtectionProfile $protectionContainer.AvailableProtectionProfiles[0] -WaitForCompletion
+    				Assert-NotNull($job.State) 
+	    			Assert-NotNull($job.ID) 
 					
                     # Validate_EnableProtection_JobSucceeded
                     if ($Validate_EnableProtection_JobSucceeded -eq $true)
                     {
                         $job = Get-AzureSiteRecoveryJob -Id $job.ID
-                        Assert-True { $job.State -eq "Succeeded" }
+                        Assert-True { $job.State -eq "Succeeded" } "Job state is not not Succeeded. $job.State "
                     }
 
                     # Validate_EnableProtection_WaitForCanFailover
                     if ($Validate_EnableProtection_WaitForCanFailover -eq $true)
                     {
-                        WaitForCanFailover $protectionEntity.Id
+                        WaitForCanFailover $protectionEntity.ProtectionContainerId $protectionEntity.ID 
                     }
 
                     return;
@@ -1144,7 +1155,7 @@ function Test-EnableProtection
 		}
 	}
 
-    throw("No VM found for Enable Protection");
+    Assert-NotNull($job)  "No VM found for Enable Protection"
 }
 
 <#
@@ -1175,16 +1186,18 @@ function Test-DisableProtection
 			{
 				Assert-NotNull($protectionEntity.Name)
 				Assert-NotNull($protectionEntity.ID)
-                Write-Host "Checking PE"
+                Write-Output "Checking PE"
                 $protectionEntity
 				if ($protectionEntity.Protected -eq $true)
 				{
-                    Write-Host "Disabling protection for PE: " + $protectionEntity.Name + " (" + $protectionEntity.ID + ")"
+                    Write-Output "Disabling protection for PE: " + $protectionEntity.Name + " (" + $protectionEntity.ID + ")"
 					$job = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity -Protection "Disable" -Force -WaitForCompletion
-                    
+                    Assert-NotNull($job);
+
                     # Validate_DisableProtection_JobSucceeded
                     if ($Validate_DisableProtection_JobSucceeded -eq $true)
                     {
+                        $job = Get-AzureSiteRecoveryJob -Id $job.ID
                         Assert-True { $job.State -eq "Succeeded" }
                     }
 
@@ -1194,7 +1207,7 @@ function Test-DisableProtection
 		}
 	}
     
-    throw("No VM found for Disable Protection");
+    Assert-NotNull($job) "No VM found for Disable Protection"
 }
 
 <#
@@ -1203,23 +1216,18 @@ Recovery Services Enable Protection Tests
 #>
 function WaitForCanFailover
 {
-    param([string] $peId)
+    param([string] $pcId, [string] $peId)
     $count = 20
 	do
 	{
 		Start-Sleep 5
-		$pe = Get-AzureSiteRecoveryProtectionEntity -Id peId;
-        if ($count -ne 0)
-        {
-            $count = $count -1;
-        }
-        else
-        {
-            throw("WaitForCanFailover failed.");
-            return;
-        }
+		$pes = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainerId $pcId;
 
-	} while( -not ($pe.CanFailover -eq $true))
+        $count = $count -1;
+
+    	Assert-True { $count -gt 0 } "Job did not reached desired state within 5*$count seconds."
+
+	} while(-not ($pes[0].CanFailover -eq $true))
 }
 
 <#
