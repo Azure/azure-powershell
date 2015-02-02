@@ -35,6 +35,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+	<DelaySign>true</DelaySign>
+	<SignAssembly>true</SignAssembly>
+	<AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common">
@@ -137,6 +140,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="Resources\DSC\Configurations\CorporateClientConfiguration.ps1" />
     <None Include="Resources\DSC\Configurations\DomainControllerConfiguration.ps1" />
