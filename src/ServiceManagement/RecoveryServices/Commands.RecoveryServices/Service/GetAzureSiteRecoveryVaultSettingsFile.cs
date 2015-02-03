@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets site object
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = false, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public Site Site { get; set; }
 
@@ -113,8 +113,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                 Name = this.SiteName
                             };
                         }
-
-                        break;
                     default:
                         this.GetByObject();
                         break;
