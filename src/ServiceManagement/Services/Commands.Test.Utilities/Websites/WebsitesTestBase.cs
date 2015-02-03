@@ -17,6 +17,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Websites
 {
@@ -24,6 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Websites
     public class WebsitesTestBase : TestBase
     {
         protected string subscriptionId = "035B9E16-BA8E-40A3-BEEA-4998F452C203";
+        protected AzureProfile currentProfile;
 
         [TestInitialize]
         public virtual void SetupTest()

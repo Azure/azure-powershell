@@ -28,6 +28,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
     /// </summary>
     public abstract class TestBase
     {
+        protected AzureProfile currentProfile;
+
         public TestBase()
         {
             BaseSetup();

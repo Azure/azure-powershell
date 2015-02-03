@@ -49,10 +49,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Slot = slot
             };
 
-            AzureSession.Profile = new AzureProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription { Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
-            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
             
             // Delete existing website
             removeAzureWebsiteCommand.ExecuteCmdlet();
