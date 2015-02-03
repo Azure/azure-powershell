@@ -113,6 +113,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                 Name = this.SiteName
                             };
                         }
+
+                        this.GetByObject();
+                        break;
                     default:
                         this.GetByObject();
                         break;
