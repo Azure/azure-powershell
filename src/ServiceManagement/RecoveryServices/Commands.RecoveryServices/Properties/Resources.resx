@@ -225,10 +225,10 @@ ClientRequestId: {3}</value>
     <value>Replication Provider {0} entered invalid for the current set of parameters.</value>
   </data>
   <data name="ArgumentsMissingForUpdateVmProperties" xml:space="preserve">
-    <value>Please pass on required VM properties to update</value>
+    <value>Please provide required VM properties to update</value>
   </data>
   <data name="NetworkArgumentsMissingForUpdateVmProperties" xml:space="preserve">
-    <value>Please pass on both Source Nic and Recovery Target to update</value>
+    <value>Please provide both Source Nic and Recovery Target to update</value>
   </data>
   <data name="InvalidReplicationFrequency" xml:space="preserve">
     <value>Replication Frequency {0} is invalid</value>

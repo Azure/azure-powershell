@@ -703,11 +703,11 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Get-AzureSiteRecoveryVaultSettings
+ Get-AzureSiteRecoveryVaultSettings
 
-          ResourceName                                                CloudServiceName
-          ------------                                                ----------------
-          ContosoVault                                                RecoveryServices-6JP23WE3SKKOM5AFQG2YQAI22MNOWK52QDKWMUP...
+ResourceName                                                CloudServiceName
+------------                                                ----------------
+ContosoVault                                                RecoveryServices-6JP23WE3SKKOM5AFQG2YQAI22MNOWK52QDKWMUP...
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -1650,13 +1650,13 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Import-AzureSiteRecoveryVaultSettingsFile -Path &quot;C:\Users\Contoso\Contosovault Monday, October 6, 2014.VaultCredentials&quot;
+ Import-AzureSiteRecoveryVaultSettingsFile -Path &quot;C:\Users\Contoso\Contosovault Monday, October 6, 2014.VaultCredentials&quot;
 
-          VERBOSE: Vault Settings File path: C:\Users\Contoso\Contosovault Monday, October 6, 2014.VaultCredentials
+VERBOSE: Vault Settings File path: C:\Users\Contoso\Contosovault Monday, October 6, 2014.VaultCredentials
 
-          ResourceName                                                CloudServiceName
-          ------------                                                ----------------
-          Contosovault                                                RecoveryServices-6JP23WE3SKKOM5AFQG2YQAI22MNOWK52QDKWMUP...
+ResourceName                                                CloudServiceName
+------------                                                ----------------
+Contosovault                                                RecoveryServices-6JP23WE3SKKOM5AFQG2YQAI22MNOWK52QDKWMUP...
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -4865,8 +4865,8 @@
     </maml:relatedLinks>
   </command:command>
 
-  <!--New-AzureSiteRecoveryProtectionProfileObject-->
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+<!--New-AzureSiteRecoveryProtectionProfileObject-->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
         New-AzureSiteRecoveryProtectionProfileObject
@@ -5281,8 +5281,8 @@
     </maml:relatedLinks>
   </command:command>
 
-  <!-- Start-AzureSiteRecoveryProtectionProfileAssociationJob -->
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+<!-- Start-AzureSiteRecoveryProtectionProfileAssociationJob -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
         Start-AzureSiteRecoveryProtectionProfileAssociationJob
@@ -5481,8 +5481,8 @@
     </maml:relatedLinks>
   </command:command>
 
-  <!-- Set-AzureSiteRecoveryProtectionProfile -->
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+<!-- Set-AzureSiteRecoveryProtectionProfile -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
         Set-AzureSiteRecoveryProtectionProfile
@@ -5835,8 +5835,8 @@
     </maml:relatedLinks>
   </command:command>
 
-  <!-- Start-AzureSiteRecoveryProtectionProfileDissociationJob -->
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+<!-- Start-AzureSiteRecoveryProtectionProfileDissociationJob -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
         Start-AzureSiteRecoveryProtectionProfileDissociationJob
@@ -6036,7 +6036,7 @@
     </maml:relatedLinks>
   </command:command>
 
-  <!--Get-AzureSiteRecoveryStorage-->
+<!--Get-AzureSiteRecoveryStorage-->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -7663,11 +7663,11 @@ Errors           : {}                        </dev:code>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          New-AzureSiteRecoveryVault -Name testVault -Location &quot;West US&quot;
+ New-AzureSiteRecoveryVault -Name testVault -Location &quot;West US&quot;
 
-          Response
-          --------
-          Vault has been created
+Response
+--------
+Vault has been created
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -7779,15 +7779,15 @@ Errors           : {}                        </dev:code>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Get-AzureSiteRecoveryVault
+ Get-AzureSiteRecoveryVault
 
-          Name             : testVault
-          ID               : 6467459117934545458
-          CloudServiceName : CS-West-US-RecoveryServices
-          SubscriptionId   : a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba
-          StatusReason     :
-          Status           : Active
-          Location         : West US
+Name             : testVault
+ID               : 6467459117934545458
+CloudServiceName : CS-West-US-RecoveryServices
+SubscriptionId   : a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba
+StatusReason     :
+Status           : Active
+Location         : West US
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -8022,11 +8022,11 @@ Errors           : {}                        </dev:code>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Get-AzureSiteRecoveryVaultSettingsFile -Vault $vaults[0]
+ Get-AzureSiteRecoveryVaultSettingsFile -Vault $vaults[0]
 
-          FilePath&#160;
-          --------&#160;
-          C:\Users\testUser\AppData\Local\Temp\testVault_2015-02-02T05-39-23.VaultCredentials
+FilePath&#160;
+--------&#160;
+C:\Users\testUser\AppData\Local\Temp\testVault_2015-02-02T05-39-23.VaultCredentials
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -8198,22 +8198,22 @@ Errors           : {}                        </dev:code>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          New-AzureSiteRecoverySite -Name testSite
+ New-AzureSiteRecoverySite -Name testSite
 
-          ActivityId       : 8d5b9957-3a1d-4881-bbee-eaaa704564a7-2015-02-02 04:34:11Z-P
-          AllowedActions   : {}
-          DisplayName      :
-          EndTime          :
-          Errors           : {}
-          StartTime        :
-          State            : NotStarted
-          StateDescription : NotStarted
-          TargetObjectId   :
-          TargetObjectName :
-          TargetObjectType : ProtectionEntity
-          Tasks            : {}
-          Name             :
-          ID               : 127f77e6-b7d4-421d-8679-a98319622b99
+ActivityId       : 8d5b9957-3a1d-4881-bbee-eaaa704564a7-2015-02-02 04:34:11Z-P
+AllowedActions   : {}
+DisplayName      :
+EndTime          :
+Errors           : {}
+StartTime        :
+State            : NotStarted
+StateDescription : NotStarted
+TargetObjectId   :
+TargetObjectName :
+TargetObjectType : ProtectionEntity
+Tasks            : {}
+Name             :
+ID               : 127f77e6-b7d4-421d-8679-a98319622b99
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -8345,11 +8345,248 @@ Errors           : {}                        </dev:code>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Get-AzureSiteRecoverySite
+ Get-AzureSiteRecoverySite
 
-          Type                                    Name                                    ID
-          ----                                    ----                                    --
-          HyperVSite                              testSite                                f16829b4-5b01-4209-a6cf-8e0aff1fe328
+Type                                    Name                                    ID
+----                                    ----                                    --
+HyperVSite                              testSite                                f16829b4-5b01-4209-a6cf-8e0aff1fe328
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+
+<!--Set-AzureSiteRecoveryVM-->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Set-AzureSiteRecoveryVM
+      </command:name>
+      <maml:description>
+        <maml:para>Allows the update on a protected Virtual Machine for onpre-Azure scenarios</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Set</command:verb>
+      <command:noun>AzureSiteRecoveryVM</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Allows the update on a protected Virtual Machine for onpre-Azure scenarios. Please provide required parameters to update.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Set-AzureSiteRecoveryVM</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>VirtualMachine</maml:name>
+          <maml:description>
+            <maml:para>Virtual Machine obect</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ASRVirtualMachine</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Name of the target Virtual Machine</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>PrimaryNic</maml:name>
+          <maml:description>
+            <maml:para>Primary NIC</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>RecoveryNetworkId</maml:name>
+          <maml:description>
+            <maml:para>Recovery Network ID</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Size</maml:name>
+          <maml:description>
+            <maml:para>Target size, should be limited to set of values of Azure VM sizes</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Name of the target Virtual Machine</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>PrimaryNic</maml:name>
+        <maml:description>
+          <maml:para>Primary NIC</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>RecoveryNetworkId</maml:name>
+        <maml:description>
+          <maml:para>Recovery Network ID</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Size</maml:name>
+        <maml:description>
+          <maml:para>Target size, should be limited to set of values of Azure VM sizes</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>VirtualMachine</maml:name>
+        <maml:description>
+          <maml:para>Virtual Machine obect</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ASRVirtualMachine</command:parameterValue>
+        <dev:type>
+          <maml:name>ASRVirtualMachine</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>PS C:&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+ Set-AzureSiteRecoveryVM -VirtualMachine $VMs[0] -Name newVM5
+
+Name             :
+ID               : 8170d274-1e48-404a-b080-172ada140bc3
+ClientRequestId  : 09354052-8430-4fa8-9a35-63196dd4b2b4-2015-02-03 04:19:06Z-P
+State            : NotStarted
+StateDescription : NotStarted
+StartTime        :
+EndTime          :
+AllowedActions   :
+Tasks            : {}
+Errors           : {}
+
+
+PS C:\Users\administrator&gt; Get-AzureSiteRecoveryJob -Id 8170d274-1e48-404a-b080-172ada140bc3
+
+Name             : UpdateVmProperties
+ID               : 8170d274-1e48-404a-b080-172ada140bc3
+ClientRequestId  : 09354052-8430-4fa8-9a35-63196dd4b2b4-2015-02-03 04:19:06Z-P
+State            : Succeeded
+StateDescription : Completed
+StartTime        : 2/3/2015 4:19:08 AM
+EndTime          : 2/3/2015 4:19:08 AM
+AllowedActions   :
+Tasks            : {Update the virtual machine properties}
+Errors           : {}
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
