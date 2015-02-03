@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Name = variable.Name,
                     Properties = new AutomationManagement.Models.EncryptedVariableCreateProperties()
                     {
-                        Value = JsonConvert.SerializeObject(variable.Value),
+                        Value = PowerShellJsonConverter.Serialize(variable.Value),
                         Description = variable.Description
                     }
                 };
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Name = variable.Name,
                     Properties = new AutomationManagement.Models.VariableCreateProperties()
                     {
-                        Value = JsonConvert.SerializeObject(variable.Value),
+                        Value = PowerShellJsonConverter.Serialize(variable.Value),
                         Description = variable.Description
                     }
                 };
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     updateParams.Properties = new AutomationManagement.Models.EncryptedVariableUpdateProperties()
                     {
-                        Value = JsonConvert.SerializeObject(variable.Value)
+                        Value = PowerShellJsonConverter.Serialize(variable.Value)
                     };
                 }
 
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     updateParams.Properties = new AutomationManagement.Models.VariableUpdateProperties()
                     {
-                        Value = JsonConvert.SerializeObject(variable.Value)
+                        Value = PowerShellJsonConverter.Serialize(variable.Value)
                     };
                 }
 
@@ -1226,8 +1226,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             if (connectionModel.Properties.FieldDefinitionValues.ContainsKey(connectionFieldName))
             {
                 connectionModel.Properties.FieldDefinitionValues[connectionFieldName] =
-                    JsonConvert.SerializeObject(value,
-                        new JsonSerializerSettings() {DateFormatHandling = DateFormatHandling.MicrosoftDateFormat});
+                    PowerShellJsonConverter.Serialize(value);
             }
             else
             {
@@ -1534,7 +1533,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     object paramValue = parameters[runbookParameter.Key];
                     try
                     {
-                        filteredParameters.Add(runbookParameter.Key, JsonConvert.SerializeObject(paramValue, new JsonSerializerSettings() { DateFormatHandling = DateFormatHandling.MicrosoftDateFormat }));
+                        filteredParameters.Add(runbookParameter.Key, PowerShellJsonConverter.Serialize(paramValue));
                     }
                     catch (JsonSerializationException)
                     {
