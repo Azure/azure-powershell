@@ -195,7 +195,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             Utilities.PrintHeader("Listing the available VM extensions");
             var extensionsInfo = vmPowershellCmdlets.GetAzureVMAvailableExtension(ConstCustomScriptExtensionName, ConstCustomScriptExtensionPublisher, true);
-            //customScriptExtension = extensionsInfo.OrderBy(c => c.Version).LastOrDefault();
             customScriptExtension = extensionsInfo.Where(c => c.Version.Equals("1.1")).FirstOrDefault();
 
             Match m = Regex.Match(customScriptExtension.Version, @"((\.).*?){2}");

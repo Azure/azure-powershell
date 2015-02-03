@@ -79,27 +79,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            try
+            switch (ParameterSetName)
             {
-                switch (ParameterSetName)
-                {
-                    case BySecretNameParameterSet:
-                        var secret = DataServiceClient.GetSecret(VaultName, Name, Version);
-                        WriteObject(secret);
-                        break;
+                case BySecretNameParameterSet:
+                    var secret = DataServiceClient.GetSecret(VaultName, Name, Version);
+                    WriteObject(secret);
+                    break;
 
-                    case ByVaultNameParameterSet:
-                        var secrets = DataServiceClient.GetSecrets(VaultName);
-                        WriteObject(secrets, true);
-                        break;
+                case ByVaultNameParameterSet:
+                    var secrets = DataServiceClient.GetSecrets(VaultName);
+                    WriteObject(secrets, true);
+                    break;
 
-                    default:
-                        throw new ArgumentException(Resources.BadParameterSetName);
-                }
-            }
-            catch (Exception ex)
-            {
-                this.WriteErrorDetails(ex);
+                default:
+                    throw new ArgumentException(Resources.BadParameterSetName);
             }
         }
     }

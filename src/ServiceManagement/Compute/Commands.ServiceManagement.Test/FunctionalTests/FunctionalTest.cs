@@ -751,11 +751,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 // Create a VNet
                 var vnetConfig = vmPowershellCmdlets.GetAzureVNetConfig(null);
-                //if (vnetConfig.Count > 0)
-                //{
-                //    vmPowershellCmdlets.RunPSScript("Get-AzureService | Remove-AzureService -Force");
-                //    Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.RemoveAzureVNetConfig(), "in use", 5, 30);
-                //}
                 vmPowershellCmdlets.SetAzureVNetConfig(Directory.GetCurrentDirectory() + "\\VnetconfigWithLocation.netcfg");
                 var sites = vmPowershellCmdlets.GetAzureVNetSite(null);
                 var subnet = sites[0].Subnets.First().Name;
