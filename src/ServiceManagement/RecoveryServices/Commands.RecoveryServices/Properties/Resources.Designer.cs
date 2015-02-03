@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please pass on required VM properties to update.
+        ///   Looks up a localized string similar to Please provide required VM properties to update.
         /// </summary>
         internal static string ArgumentsMissingForUpdateVmProperties {
             get {
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please pass on both Source Nic and Recovery Target to update.
+        ///   Looks up a localized string similar to Please provide both Source Nic and Recovery Target to update.
         /// </summary>
         internal static string NetworkArgumentsMissingForUpdateVmProperties {
             get {
