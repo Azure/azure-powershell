@@ -44,5 +44,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             public const string Suspended = "Suspended";
         }
+
+        public const string PsCommandConvertToJson = "ConvertTo-Json";
+
+        public const string PsCommandConvertFromJson = "ConvertFrom-Json";
+
+        public const string PsCommandParamInputObject = "InputObject";
+
+        public const string PsCommandParamDepth = "Depth";
+
+        public const int PsCommandValueDepth = 10;
+
     }
 }
