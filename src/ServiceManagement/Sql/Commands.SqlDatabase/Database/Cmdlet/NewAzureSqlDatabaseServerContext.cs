@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Common.Authentication;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -154,7 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     return AzureSession.Profile.CurrentContext.Subscription;
                 }
 
-                ProfileClient client = new ProfileClient();
+                ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
                 return client.Profile.Subscriptions.Values.First(
                         s => SubscriptionName == s.Name);

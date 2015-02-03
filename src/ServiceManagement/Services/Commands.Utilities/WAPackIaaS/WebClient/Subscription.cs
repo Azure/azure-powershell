@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Common.Authentication;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.WebClient
 {
@@ -58,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.WebClient
                 throw new ArgumentNullException();
             }
 
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var environment = client.GetEnvironmentOrDefault(azureSubscription.Environment);
 
             this.SubscriptionName = azureSubscription.Name;

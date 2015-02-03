@@ -26,6 +26,7 @@ using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -41,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public EnvironmentSetupHelper()
         {
             AzureSession.DataStore = new MockDataStore();
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;

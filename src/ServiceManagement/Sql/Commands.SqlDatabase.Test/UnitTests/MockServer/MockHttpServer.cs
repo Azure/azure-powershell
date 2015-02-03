@@ -174,7 +174,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
             AzureSession.DataStore = new MockDataStore();
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var newGuid = Guid.NewGuid();
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.Profile.Subscriptions[newGuid] = new AzureSubscription
             {
                 Id = newGuid,

@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
@@ -52,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             configPath = service.Paths.CloudConfiguration;
             settings = ServiceSettingsTestData.Instance.Data[ServiceSettingsState.Default];
             AzureSession.DataStore = new MockDataStore();
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             AzureSession.DataStore.WriteFile(Test.Utilities.Common.Data.ValidPublishSettings.First(),
                 File.ReadAllText(Test.Utilities.Common.Data.ValidPublishSettings.First()));
             client.ImportPublishSettings(Test.Utilities.Common.Data.ValidPublishSettings.First(), null);

@@ -27,6 +27,7 @@ using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.ServiceLocation;
 using Microsoft.Azure.Common.Authentication;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
 {
@@ -102,7 +103,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
         {
             var getClustersCommand = new GetAzureHDInsightClusterCommand();
             var waSubscription = GetCurrentSubscription();
-            ProfileClient profileClient = new ProfileClient();
+            ProfileClient profileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
             var subscriptionCreds = getClustersCommand.GetSubscriptionCredentials(waSubscription, AzureSession.Profile.CurrentContext.Environment, profileClient.Profile);
 
@@ -121,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
                 {
                     Id = IntegrationTestBase.TestCredentials.SubscriptionId,
                 };
-            ProfileClient profileClient = new ProfileClient();
+            ProfileClient profileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             profileClient.Profile.Accounts["test"] = new AzureAccount
             {
                 Id = "test",
@@ -148,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
         {
             var getClustersCommand = new GetAzureHDInsightJobCommand();
             var waSubscription = GetCurrentSubscription();
-            ProfileClient profileClient = new ProfileClient();
+            ProfileClient profileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
             var subscriptionCreds = getClustersCommand.GetJobSubmissionClientCredentials(
                 waSubscription,
@@ -172,7 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
                 Id = IntegrationTestBase.TestCredentials.SubscriptionId,
                 Account = "test"
             };
-            ProfileClient profileClient = new ProfileClient();
+            ProfileClient profileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             profileClient.Profile.Accounts["test"] = new AzureAccount
             {
                 Id = "test",

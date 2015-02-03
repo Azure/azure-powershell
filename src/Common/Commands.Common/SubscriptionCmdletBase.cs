@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
@@ -40,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Profile
         {
             if (!string.IsNullOrEmpty(SubscriptionDataFile))
             {
-                ProfileClient = new ProfileClient(SubscriptionDataFile);
+                ProfileClient = new ProfileClient(new AzureProfile(SubscriptionDataFile));
                 WriteWarning(Resources.SubscriptionDataFileDeprecated);
             }
             else

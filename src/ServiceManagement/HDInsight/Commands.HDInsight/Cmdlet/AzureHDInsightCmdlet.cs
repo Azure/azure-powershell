@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Logging;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.ServiceLocation;
 using Microsoft.WindowsAzure.Management.HDInsight.Logging;
 using Microsoft.Azure.Common.Authentication;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
 {
@@ -118,7 +119,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             {
                 this.WriteWarning("The -Subscription parameter is deprecated, Please use Select-AzureSubscription -Current to select a subscription to use.");
 
-                ProfileClient client = new ProfileClient();
+                ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
                 var subscriptionResolver =
                     ServiceLocator.Instance.Locate<IAzureHDInsightSubscriptionResolverFactory>().Create(client.Profile);

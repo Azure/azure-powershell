@@ -39,8 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public AzurePSCmdlet()
         {
-            AzureSession.Profile = new AzureProfile(
-                Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            AzureSession.Profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
 
             DefaultProfileClient = new ProfileClient(AzureSession.Profile);
         }

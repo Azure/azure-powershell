@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         {
             ClearAzureProfileCommand cmdlt = new ClearAzureProfileCommand();
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             Assert.Equal(0, client.Profile.Subscriptions.Count);
             Assert.Equal(0, client.Profile.Accounts.Count);
             Assert.Equal(2, client.Profile.Environments.Count); //only default environments
@@ -81,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             ClearAzureProfileCommand cmdlt = new ClearAzureProfileCommand();
             // Setup
-            ProfileClient client = new ProfileClient(subscriptionDataFile);
+            ProfileClient client = new ProfileClient(new AzureProfile(subscriptionDataFile));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
@@ -97,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient(subscriptionDataFile);
+            client = new ProfileClient(new AzureProfile(subscriptionDataFile));
             Assert.Equal(0, client.Profile.Subscriptions.Count);
             Assert.Equal(0, client.Profile.Accounts.Count);
             Assert.Equal(2, client.Profile.Environments.Count); //only default environments
@@ -177,7 +177,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             var newAccount = client.Profile.Accounts[SampleCertificate.Thumbprint];
             Assert.Equal(cmdlt.SubscriptionName, newSubscription.Name);
@@ -194,7 +194,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public void SetAzureSubscriptionDerivesEnvironmentFromEnvironmentParameterOnAdd()
         {
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetEnvironment(azureEnvironment);
             client.Profile.Save();
             SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
@@ -212,7 +212,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             Assert.Equal(cmdlt.SubscriptionName, newSubscription.Name);
             Assert.Equal(cmdlt.Environment, newSubscription.Environment);
@@ -224,7 +224,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         {
             SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetEnvironment(azureEnvironment);
             client.Profile.Save();
 
@@ -243,7 +243,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public void SetAzureSubscriptionDerivesEnvironmentFromEnvironmentParameterOnSet()
         {
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
@@ -261,7 +261,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             Assert.Equal(cmdlt.Environment, newSubscription.Environment);
             Assert.Equal(cmdlt.CurrentStorageAccountName, newSubscription.GetProperty(AzureSubscription.Property.StorageAccount));
@@ -271,7 +271,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public void SetAzureSubscriptionDerivesEnvironmentFromServiceEndpointParameterOnSet()
         {
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
@@ -289,7 +289,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             Assert.Equal(cmdlt.Environment, newSubscription.Environment);
             Assert.Equal(cmdlt.CurrentStorageAccountName,
@@ -300,7 +300,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public void SetAzureSubscriptionDerivesEnvironmentFromResourcesEndpointParameterOnSet()
         {
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
@@ -318,7 +318,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             Assert.Equal(cmdlt.Environment, newSubscription.Environment);
             Assert.Equal(cmdlt.CurrentStorageAccountName, newSubscription.GetProperty(AzureSubscription.Property.StorageAccount));
@@ -328,7 +328,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public void SetAzureSubscriptionDerivesEnvironmentFromBothEndpointParameters()
         {
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
@@ -348,7 +348,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             Assert.Equal(cmdlt.Environment, newSubscription.Environment);
             Assert.Equal(cmdlt.CurrentStorageAccountName, newSubscription.GetProperty(AzureSubscription.Property.StorageAccount));
@@ -358,7 +358,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public void SetAzureSubscriptionUpdatesSubscriptionWithCertificate()
         {
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
@@ -377,7 +377,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             var newAccount = client.Profile.Accounts[SampleCertificate.Thumbprint];
             var existingAccount = client.Profile.Accounts[azureAccount.Id];
@@ -402,14 +402,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             // Setup
             AzureSession.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
                 Properties.Resources.ValidProfileChina);
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var oldDataStore = FileUtilities.DataStore;
             FileUtilities.DataStore = AzureSession.DataStore;
             var expectedEnv = "AzureChinaCloud";
             var expected = client.ImportPublishSettings("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings", null);
 
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.ProfileClient = new ProfileClient();
+            cmdlt.ProfileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             cmdlt.PublishSettingsFile = "ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings";
 
             try
@@ -441,14 +441,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             // Setup
             AzureSession.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
                 Properties.Resources.ValidProfileChina);
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var oldDataStore = FileUtilities.DataStore;
             FileUtilities.DataStore = AzureSession.DataStore;
             var expectedEnv = "AzureCloud";
             var expected = client.ImportPublishSettings("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings", expectedEnv);
 
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.ProfileClient = new ProfileClient();
+            cmdlt.ProfileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             cmdlt.PublishSettingsFile = "ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings";
             cmdlt.Environment = expectedEnv;
 
@@ -492,7 +492,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             Assert.NotNull(client.Profile.DefaultSubscription);
             Assert.Equal(azureSubscription2.Id, client.Profile.DefaultSubscription.Id);
         }
@@ -580,7 +580,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             Assert.NotNull(client.Profile.DefaultSubscription);
             Assert.Equal(azureSubscription2.Id, client.Profile.DefaultSubscription.Id);
 
@@ -597,7 +597,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             Assert.Null(client.Profile.DefaultSubscription);
         }
 
@@ -654,7 +654,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
         private ProfileClient SetupDefaultProfile()
         {
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetSubscription(azureSubscription1);

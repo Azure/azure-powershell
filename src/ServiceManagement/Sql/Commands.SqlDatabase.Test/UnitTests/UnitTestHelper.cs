@@ -298,7 +298,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
                 "clientCertificate",
                 certificate);
 
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.Profile.Environments[UnitTestEnvironmentName] = new AzureEnvironment
                 {
                     Name = UnitTestEnvironmentName,

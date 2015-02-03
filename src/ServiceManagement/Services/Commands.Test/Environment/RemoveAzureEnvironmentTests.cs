@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using Xunit;
 using Microsoft.Azure.Common.Authentication;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
@@ -49,7 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             const string name = "test";
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetEnvironment(new AzureEnvironment
             {
                 Name = name
@@ -67,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             Assert.False(client.Profile.Environments.ContainsKey(name));
         }
 
