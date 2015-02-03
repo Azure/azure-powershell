@@ -1071,7 +1071,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.Name = job.Name;
             this.TargetObjectId = job.TargetObjectId;
             this.TargetObjectName = job.TargetObjectName;
-            this.TargetObjectType = job.TargetObjectType;
+
+            if (!string.IsNullOrEmpty(job.TargetObjectId))
+            {
+                this.TargetObjectType = job.TargetObjectType;
+            }
+
             this.Tasks = new List<ASRTask>();
             foreach (var task in job.Tasks)
             {
