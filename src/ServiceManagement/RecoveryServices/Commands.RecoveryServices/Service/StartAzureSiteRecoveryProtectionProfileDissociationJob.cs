@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Adds Azure Site Recovery Protection Profile settings to a Protection Container.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureSiteRecoveryProtectionProfileDissociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+    [Cmdlet(VerbsLifecycle.Start, "AzureSiteRecoveryProtectionProfileDissociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
     [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryProtectionProfileDissociationJob : RecoveryServicesCmdletBase
     {
@@ -65,10 +65,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                string recoveryContainerId = string.Empty;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.EnterpriseToAzure:
+                        if (this.ProtectionProfile.ReplicationProvider != Constants.HyperVReplicaAzure)
+                        {
+                            throw new Exception("Please provide recovery contianer object.");
+                        }
+                        else
+                        {
+                            recoveryContainerId = Constants.AzureContainer;
+                        }
+
+                        break;
+                    case ASRParameterSets.EnterpriseToEnterprise:
+                             recoveryContainerId = this.RecoveryProtectionContainer.ID;
+                       break;
+                }
+
                 ProtectionProfileAssociationInput protectionProfileAssociationInput =
                     new ProtectionProfileAssociationInput(
                         this.PrimaryProtectionContainer.ID,
-                        this.RecoveryProtectionContainer.ID);
+                        recoveryContainerId);
 
                 this.jobResponse = RecoveryServicesClient.StartDeleteAndDissociateAzureSiteRecoveryProtectionProfileJob(
                     this.ProtectionProfile.ID,

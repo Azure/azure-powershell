@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Adds Azure Site Recovery Protection Profile settings to a Protection Container.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureSiteRecoveryProtectionProfileAssociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+    [Cmdlet(VerbsLifecycle.Start, "AzureSiteRecoveryProtectionProfileAssociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
     [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryProtectionProfileAssociationJob : RecoveryServicesCmdletBase
     {
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             ProtectionProfileAssociationInput protectionProfileAssociationInput =
                 new ProtectionProfileAssociationInput(
                     this.PrimaryProtectionContainer.ID,
-                    this.RecoveryProtectionContainer.ID);
+                    Constants.AzureContainer);
 
             CreateAndAssociateProtectionProfileInput createAndAssociateProtectionProfileInput =
                 new CreateAndAssociateProtectionProfileInput(
