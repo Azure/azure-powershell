@@ -144,8 +144,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             {
                 CommandRuntime = new MockCommandRuntime()
             };
-            AzureSession.Profile = new AzureProfile();
-
 
             Testing.AssertThrows<Exception>(getAzureWebsiteCommand.ExecuteCmdlet, Resources.InvalidDefaultSubscription);
         }

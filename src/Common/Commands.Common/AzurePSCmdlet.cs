@@ -40,14 +40,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             AzureSession.ClientFactory.UserAgents.Add(AzurePowerShell.UserAgentValue);
         }
 
-        protected AzurePSCmdlet() { }
-
-
         /// <summary>
         /// Cmdlet begin process. Write to logs, setup Http Tracing and initialize profile
         /// </summary>
         protected override void BeginProcessing()
         {
+            InitializeProfile();
+
             if (string.IsNullOrEmpty(ParameterSetName))
             {
                 WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithoutParameterSetLog, this.GetType().Name));
@@ -64,8 +63,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
 
-            InitializeProfile();
-
             base.BeginProcessing();
         }
 
@@ -73,7 +70,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             // Load profile from disk 
             var profileFromDisk = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzureSession.Profile = profileFromDisk;
+            if (AzureSession.Profile == null ||
+                AzureSession.Profile.ProfilePath == profileFromDisk.ProfilePath)
+            {
+                AzureSession.Profile = profileFromDisk;
+            }
 
             // If profile parameter is not specified, use one from session
             if (Profile == null)
@@ -98,12 +99,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public AzureContext CurrentContext
         {
-            get { return AzureSession.Profile.CurrentContext; }
+            get { return Profile.CurrentContext; }
         }
 
         public bool HasCurrentSubscription
         {
-            get { return AzureSession.Profile.CurrentContext.Subscription != null; }
+            get { return Profile.CurrentContext.Subscription != null; }
         }
 
         protected string CurrentPath()

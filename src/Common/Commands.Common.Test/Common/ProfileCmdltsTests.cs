@@ -45,7 +45,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             SetMockData();
-            AzureSession.Profile = new AzureProfile();
         }
 
         [Fact]
@@ -507,7 +506,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SetParameterSet("SelectSubscriptionByNameParameterSet");
             cmdlt.SubscriptionName = azureSubscription2.Name;
-            Assert.NotEqual(azureSubscription2.Id, AzureSession.Profile.CurrentContext.Subscription.Id);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -637,7 +635,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
             string invalidGuid = "foo";
             cmdlt.SubscriptionId = invalidGuid;
-            Assert.Null(AzureSession.Profile.CurrentContext.Subscription);
 
             // Act
             cmdlt.InvokeBeginProcessing();

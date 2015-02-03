@@ -344,7 +344,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             
             if (string.IsNullOrEmpty(azureEnvironmentName))
             {
-                azureEnvironment = AzureSession.Profile.CurrentContext.Environment;
+                azureEnvironment = Profile.CurrentContext.Environment;
             }
             else
             {
