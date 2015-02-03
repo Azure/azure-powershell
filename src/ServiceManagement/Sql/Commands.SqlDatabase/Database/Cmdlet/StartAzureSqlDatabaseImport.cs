@@ -14,7 +14,7 @@
 using System;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.ImportExport;
@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 using Microsoft.WindowsAzure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Sql.Models;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -233,7 +233,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 
                 // Retrieve the fully qualified server name
                 string fullyQualifiedServerName =
-                    this.SqlConnectionContext.ServerName + AzureSession.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix);
+                    this.SqlConnectionContext.ServerName + AzureSession.Profile.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix);
                 
                 // Issue the request
                 ImportExportRequest context = this.ImportSqlAzureDatabaseProcess(

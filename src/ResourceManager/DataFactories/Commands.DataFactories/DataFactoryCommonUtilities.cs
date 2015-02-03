@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {

@@ -16,10 +16,10 @@ using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -39,17 +39,15 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         [TestInitialize]
         public void BaseSetup()
         {
-            if (ProfileClient.DataStore != null && !(ProfileClient.DataStore is MockDataStore))
+            if (AzureSession.DataStore != null && !(AzureSession.DataStore is MockDataStore))
             {
-                ProfileClient.DataStore = new MockDataStore();
+                AzureSession.DataStore = new MockDataStore();
             }
-            if (AzureSession.CurrentContext.Subscription == null)
+            if (AzureSession.Profile.CurrentContext.Subscription == null)
             {
                 var newGuid = Guid.NewGuid();
-                AzureSession.SetCurrentContext(
-                    new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" },
-                    null,
-                    new AzureAccount
+                AzureSession.Profile.Subscriptions[newGuid] = new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" };
+                AzureSession.Profile.Accounts["test"] = new AzureAccount
                     {
                         Id = "test",
                         Type = AzureAccount.AccountType.User,
@@ -57,7 +55,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
                         {
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                         }
-                    });
+                    };
+                AzureSession.Profile.DefaultSubscription = AzureSession.Profile.Subscriptions[newGuid];
             }
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }

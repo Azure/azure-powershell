@@ -14,10 +14,10 @@
 
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Websites
 {
@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
             AzureEnvironment environment;
             if (string.IsNullOrEmpty(Environment))
             {
-                environment = AzureSession.CurrentContext.Environment;
+                environment = AzureSession.Profile.CurrentContext.Environment;
             }
             else
             {

@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using System;
@@ -83,12 +83,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (CurrentContext.Subscription == null)
             {
-                throw new ArgumentException(Resources.InvalidCurrentSubscription);
+                throw new ArgumentException(Resources.InvalidDefaultSubscription);
             }
 
             if (CurrentContext.Account == null)
             {
-                throw new ArgumentException(Resources.InvalidCurrentSuscriptionCertificate);
+                throw new ArgumentException(Resources.AccountNeedsToBeSpecified);
             }
 
             if (Channel == null || force)
@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return ChannelHelper.CreateServiceManagementChannel<T>(
                 ServiceBinding,
                 CurrentContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement),
-                ProfileClient.DataStore.GetCertificate(certificateThumbprint),
+                AzureSession.DataStore.GetCertificate(certificateThumbprint),
                 new HttpRestMessageInspector(WriteDebug));
         }
 

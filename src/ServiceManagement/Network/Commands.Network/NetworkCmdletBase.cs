@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using Microsoft.Azure.Common.Extensions;
-    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
     using WindowsAzure.Commands.Common;
     using WindowsAzure.Commands.Utilities.Common;
     using WindowsAzure.Commands.Utilities.Profile;
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
 
         protected AzureSubscription CurrentSubscription
         {
-            get { return AzureSession.CurrentContext.Subscription; }
+            get { return AzureSession.Profile.CurrentContext.Subscription; }
         }
 
         protected NetworkClient Client
