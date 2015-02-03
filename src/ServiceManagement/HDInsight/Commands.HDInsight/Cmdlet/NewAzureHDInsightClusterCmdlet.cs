@@ -94,6 +94,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 var result = new AzureHDInsightConfig();
                 result.ClusterSizeInNodes = this.command.ClusterSizeInNodes;
                 result.HeadNodeVMSize = this.command.HeadNodeSize;
+                result.DataNodeVMSize = this.command.DataNodeSize;
+                result.ZookeeperNodeVMSize = this.command.ZookeeperNodeSize;
                 result.ClusterType = this.command.ClusterType;
                 result.VirtualNetworkId = this.command.VirtualNetworkId;
                 result.SubnetName = this.command.SubnetName;
@@ -128,6 +130,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 this.command.VirtualNetworkId = value.VirtualNetworkId;
                 this.command.SubnetName = value.SubnetName;
                 this.command.HeadNodeSize = value.HeadNodeVMSize;
+                this.command.DataNodeSize = value.DataNodeVMSize;
+                this.command.ZookeeperNodeSize = value.ZookeeperNodeVMSize;
                 this.command.DefaultStorageAccountName = value.DefaultStorageAccount.StorageAccountName;
                 this.command.DefaultStorageAccountKey = value.DefaultStorageAccount.StorageAccountKey;
                 this.command.DefaultStorageContainerName = value.DefaultStorageAccount.StorageContainerName;
@@ -257,7 +261,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// <inheritdoc />
         [Parameter(Position = 13, Mandatory = false, HelpMessage = "The size of the headnode VM.",
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
-        public NodeVMSize HeadNodeVMSize
+        public string HeadNodeVMSize
         {
             get { return this.command.HeadNodeSize; }
             set { this.command.HeadNodeSize = value; }
@@ -288,6 +292,24 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         {
             get { return this.command.SubnetName; }
             set { this.command.SubnetName = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 17, Mandatory = false, HelpMessage = "The size of the datanode VM.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public string DataNodeVMSize
+        {
+            get { return this.command.DataNodeSize; }
+            set { this.command.DataNodeSize = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 18, Mandatory = false, HelpMessage = "The size of the zookeeper VM.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public string ZookeeperNodeVMSize
+        {
+            get { return this.command.ZookeeperNodeSize; }
+            set { this.command.ZookeeperNodeSize = value; }
         }
 
         /// <inheritdoc />

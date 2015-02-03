@@ -49,7 +49,11 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInt
 
         string Location { get; set; }
 
-        NodeVMSize HeadNodeSize { get; set; }
+        string HeadNodeSize { get; set; }
+
+        string DataNodeSize { get; set; }
+
+        string ZookeeperNodeSize { get; set; }
 
         ClusterType ClusterType { get; set; }
 

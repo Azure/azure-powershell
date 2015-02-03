@@ -46,7 +46,13 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
         public int ClusterSizeInNodes { get; set; }
 
         /// <inheritdoc />
-        public NodeVMSize HeadNodeSize { get; set; }
+        public string HeadNodeSize { get; set; }
+
+        /// <inheritdoc />
+        public string DataNodeSize { get; set; }
+
+        /// <inheritdoc />
+        public string ZookeeperNodeSize { get; set; }
 
         /// <inheritdoc />
         public ConfigValuesCollection CoreConfiguration { get; set; }
@@ -111,14 +117,15 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
         {
             IHDInsightClient client = this.GetClient();
             client.ClusterProvisioning += this.ClientOnClusterProvisioning;
-            ClusterCreateParameters createClusterRequest = this.GetClusterCreateParameters();
+            ClusterCreateParametersV2 createClusterRequest = this.GetClusterCreateParameters();
             var cluster = await client.CreateClusterAsync(createClusterRequest);
             this.Output.Add(new AzureHDInsightCluster(cluster));
         }
 
-        internal ClusterCreateParameters GetClusterCreateParameters()
+        internal ClusterCreateParametersV2 GetClusterCreateParameters()
         {
-            var createClusterRequest = new ClusterCreateParameters();
+            var createClusterRequest = new ClusterCreateParametersV2();
+
             createClusterRequest.Name = this.Name;
             createClusterRequest.Version = this.Version;
             createClusterRequest.Location = this.Location;
@@ -136,7 +143,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             createClusterRequest.StormConfiguration.AddRange(this.StormConfiguration);
             createClusterRequest.HBaseConfiguration.AdditionalLibraries = this.HBaseConfiguration.AdditionalLibraries;
             createClusterRequest.HBaseConfiguration.ConfigurationCollection.AddRange(this.HBaseConfiguration.ConfigurationCollection);
-            createClusterRequest.HeadNodeSize = this.HeadNodeSize;
+       
             createClusterRequest.DefaultStorageAccountName = this.DefaultStorageAccountName;
             createClusterRequest.DefaultStorageAccountKey = this.DefaultStorageAccountKey;
             createClusterRequest.DefaultStorageContainer = this.DefaultStorageContainerName;
@@ -171,6 +178,22 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
                     this.OozieMetastore.Credential.UserName,
                     this.OozieMetastore.Credential.GetCleartextPassword());
             }
+
+            if (!string.IsNullOrEmpty(this.HeadNodeSize))
+            {
+                createClusterRequest.HeadNodeSize = this.HeadNodeSize;
+            }
+
+            if (!string.IsNullOrEmpty(this.DataNodeSize))
+            {
+                createClusterRequest.DataNodeSize = this.DataNodeSize;
+            }
+
+            if (!string.IsNullOrEmpty(this.ZookeeperNodeSize))
+            {
+                createClusterRequest.ZookeeperNodeSize = this.ZookeeperNodeSize;
+            }
+
             return createClusterRequest;
         }
 
