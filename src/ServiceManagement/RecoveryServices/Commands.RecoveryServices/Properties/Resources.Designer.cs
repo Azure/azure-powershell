@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please pass on required VM properties to update.
+        /// </summary>
+        internal static string ArgumentsMissingForUpdateVmProperties {
+            get {
+                return ResourceManager.GetString("ArgumentsMissingForUpdateVmProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AzureVMNetwork {0} is not associated with the Subscription {1}.
         /// </summary>
         internal static string AzureVMNetworkIsNotAssociatedWithTheSubscription {
@@ -179,6 +188,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string MissingVaultSettings {
             get {
                 return ResourceManager.GetString("MissingVaultSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please pass on both Source Nic and Recovery Target to update.
+        /// </summary>
+        internal static string NetworkArgumentsMissingForUpdateVmProperties {
+            get {
+                return ResourceManager.GetString("NetworkArgumentsMissingForUpdateVmProperties", resourceCulture);
             }
         }
         

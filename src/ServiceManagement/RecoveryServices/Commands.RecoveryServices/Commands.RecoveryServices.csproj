@@ -149,10 +149,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\NewAzureSiteRecoverySite.cs" />
     <Compile Include="Service\GetAzureSiteRecoverySite.cs" />
-    <Compile Include="Service\SetAzureSiteRecoveryVirtualMachine.cs" />
+    <Compile Include="Service\SetAzureSiteRecoveryVM.cs" />
     <Compile Include="Service\StartAzureSiteRecoveryProtectionProfileAssociationJob.cs" />
     <Compile Include="Service\CreateAzureSiteRecoveryProtectionProfileObject.cs" />
-    <Compile Include="Service\CreateAzureSiteRecoveryVault.cs" />
+    <Compile Include="Service\NewAzureSiteRecoveryVault.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryStorage.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryStorageMapping.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryVaults.cs" />
