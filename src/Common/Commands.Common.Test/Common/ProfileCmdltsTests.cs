@@ -89,7 +89,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Force = new SwitchParameter(true);
-            cmdlt.SubscriptionDataFile = subscriptionDataFile;
+            cmdlt.Profile = new AzureProfile(subscriptionDataFile);
 
             // Act
             cmdlt.InvokeBeginProcessing();

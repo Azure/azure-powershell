@@ -350,7 +350,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             {
                 try
                 {
-                    azureEnvironment = DefaultProfileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                    var profileClient = new ProfileClient(Profile);
+                    azureEnvironment = profileClient.GetEnvironmentOrDefault(azureEnvironmentName);
                 }
                 catch (ArgumentException e)
                 {
