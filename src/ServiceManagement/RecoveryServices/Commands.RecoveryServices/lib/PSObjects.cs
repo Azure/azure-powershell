@@ -139,6 +139,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string HyperVReplicaAzure = "HyperVReplicaAzure";
 
         /// <summary>
+        /// Represents HyperVReplica string constant.
+        /// </summary>
+        public const string AzureContainer = "Microsoft Azure";
+
+        /// <summary>
         /// Represents OnlineReplicationMethod string constant.
         /// </summary>
         public const string OnlineReplicationMethod = "Online";
@@ -1064,6 +1069,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.StartTime = job.StartTime;
             this.AllowedActions = job.AllowedActions as List<string>;
             this.Name = job.Name;
+            this.TargetObjectId = job.TargetObjectId;
+            this.TargetObjectName = job.TargetObjectName;
+            this.TargetObjectType = job.TargetObjectType;
             this.Tasks = new List<ASRTask>();
             foreach (var task in job.Tasks)
             {
@@ -1117,6 +1125,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets End timestamp.
         /// </summary>
         public string EndTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets TargetObjectId.
+        /// </summary>
+        public string TargetObjectId { get; set; }
+
+        /// <summary>
+        /// Gets or sets TargetObjectType.
+        /// </summary>
+        public string TargetObjectType { get; set; }
+
+        /// <summary>
+        /// Gets or sets End timestamp.
+        /// </summary>
+        public string TargetObjectName { get; set; }
 
         /// <summary>
         /// Gets or sets list of allowed actions.
