@@ -17,7 +17,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
     [TestClass]
-    public class CleanUp : ServiceManagementTest
+    public class ServiceManagementCleanUp : ServiceManagementTest
     {
 
         /// <summary>
