@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
 
         public void Cleanup()
         {
-            AzureSession.Profile = new AzureProfile();
+            AzureSession.Profile = null;
         }
 
         [Fact]

@@ -210,8 +210,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
                         }
             };
             client.SetSubscriptionAsDefault(newGuid, "test");
-            AzureSession.Profile = client.Profile;
-
             client.Profile.Save();
 
 

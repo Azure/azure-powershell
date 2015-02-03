@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
 
         protected AzureSubscription CurrentSubscription
         {
-            get { return AzureSession.Profile.CurrentContext.Subscription; }
+            get { return Profile.CurrentContext.Subscription; }
         }
 
         protected NetworkClient Client

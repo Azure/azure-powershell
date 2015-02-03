@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             {
                 if (this.storSimpleClient == null)
                 {
-                    this.storSimpleClient = new StorSimpleClient(CurrentContext.Subscription);
+                    this.storSimpleClient = new StorSimpleClient(CurrentContext.Subscription, Profile);
                 }
                 storSimpleClient.ClientRequestId = Guid.NewGuid().ToString("D") + "_PS";
                 WriteVerbose(string.Format(Resources.ClientRequestIdMessage, storSimpleClient.ClientRequestId));

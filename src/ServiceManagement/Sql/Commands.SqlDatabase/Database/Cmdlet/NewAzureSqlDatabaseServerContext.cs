@@ -152,7 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             {
                 if (string.IsNullOrEmpty(SubscriptionName))
                 {
-                    return AzureSession.Profile.CurrentContext.Subscription;
+                    return Profile.CurrentContext.Subscription;
                 }
 
                 ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
@@ -312,7 +312,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     // and append the azure database DNS suffix.
                     return new Uri(
                         Uri.UriSchemeHttps + Uri.SchemeDelimiter +
-                        this.ServerName + AzureSession.Profile.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix));
+                        this.ServerName + Profile.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix));
                 case FullyQualifiedServerNameWithSqlAuthParamSet:
                 case FullyQualifiedServerNameWithCertAuthParamSet:
                     // The fully qualified server name was specified, 

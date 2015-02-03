@@ -344,13 +344,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             
             if (string.IsNullOrEmpty(azureEnvironmentName))
             {
-                azureEnvironment = AzureSession.Profile.CurrentContext.Environment;
+                azureEnvironment = Profile.CurrentContext.Environment;
             }
             else
             {
                 try
                 {
-                    azureEnvironment = DefaultProfileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                    var profileClient = new ProfileClient(Profile);
+                    azureEnvironment = profileClient.GetEnvironmentOrDefault(azureEnvironmentName);
                 }
                 catch (ArgumentException e)
                 {

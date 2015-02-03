@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
 
             AzureSubscription defaultSubscription = ProfileClient.Profile.DefaultSubscription;
-            Debug.Assert(AzureSession.Profile.CurrentContext != null);
+            Debug.Assert(Profile.CurrentContext != null);
         }
 
         private bool IsDirectory()
