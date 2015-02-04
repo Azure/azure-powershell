@@ -13,7 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -50,6 +53,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (galleryTemplatesClient == null)
                 {
+                    if(Profile == null)
+                    {
+                        Profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                    }
+
                     galleryTemplatesClient = new GalleryTemplatesClient(Profile.Context);
                 }
                 return galleryTemplatesClient;
