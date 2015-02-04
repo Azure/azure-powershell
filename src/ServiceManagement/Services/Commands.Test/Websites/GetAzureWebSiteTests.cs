@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Xunit;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Moq;
-using Microsoft.Azure.Common.Authentication;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
@@ -50,18 +49,15 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 .Returns(new List<Site> { new Site { Name = "website1", WebSpace = "webspace1" },
                 new Site { Name = "website2", WebSpace = "webspace2" }});
 
+            SetupProfile(null);
             // Test
             var getAzureWebsiteCommand = new GetAzureWebsiteCommand
             {
                 CommandRuntime = new MockCommandRuntime(),
                 WebsitesClient = clientMock.Object
             };
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription { Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
-            getAzureWebsiteCommand.ExecuteCmdlet();
+            getAzureWebsiteCommand.ExecuteWithProcessing();
             Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline.Count);
             var sites = (IEnumerable<Site>)((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline.FirstOrDefault();
             Assert.NotNull(sites);
@@ -92,6 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                     PublishingUsername = "user1"}
                 );
 
+            SetupProfile(null);
 
             // Test
             var getAzureWebsiteCommand = new GetAzureWebsiteCommand
@@ -100,12 +97,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Name = "website1",
                 WebsitesClient = clientMock.Object
             };
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
-            getAzureWebsiteCommand.ExecuteCmdlet();
+            getAzureWebsiteCommand.ExecuteWithProcessing();
             Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline.Count);
 
             SiteWithConfig website = ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline[0] as SiteWithConfig;
@@ -114,6 +107,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             Assert.Equal("website1", website.Name);
             Assert.Equal("webspace1", website.WebSpace);
 
+            SetupProfile(null);
+
             // Run with mixed casing
             getAzureWebsiteCommand = new GetAzureWebsiteCommand
             {
@@ -121,12 +116,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Name = "WEBSiTe1",
                 WebsitesClient = clientMock.Object
             };
-            currentProfile = new AzureProfile();
-            subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
-            getAzureWebsiteCommand.ExecuteCmdlet();
+            getAzureWebsiteCommand.ExecuteWithProcessing();
             Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline.Count);
 
             website = ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline[0] as SiteWithConfig;
@@ -145,7 +136,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 CommandRuntime = new MockCommandRuntime()
             };
 
-            Testing.AssertThrows<Exception>(getAzureWebsiteCommand.ExecuteCmdlet, Resources.InvalidDefaultSubscription);
+            Testing.AssertThrows<Exception>(getAzureWebsiteCommand.ExecuteWithProcessing, Resources.InvalidDefaultSubscription);
         }
 
         [Fact]
@@ -165,6 +156,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             websitesClientMock.Setup(c => c.GetWebsiteConfiguration(It.IsAny<string>(), slot))
                 .Returns(new SiteConfig {PublishingUsername = "user1"});
 
+            SetupProfile(null);
+
             var getAzureWebsiteCommand = new GetAzureWebsiteCommand
             {
                 CommandRuntime = new MockCommandRuntime(),
@@ -172,13 +165,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = websitesClientMock.Object,
                 Slot = slot
             };
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             // Test
-            getAzureWebsiteCommand.ExecuteCmdlet();
+            getAzureWebsiteCommand.ExecuteWithProcessing();
 
             // Assert
             Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline.Count);
@@ -209,6 +198,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                     PublishingUsername = "user1"
                 });
 
+            SetupProfile(null);
             // Test
             var getAzureWebsiteCommand = new GetAzureWebsiteCommand
             {
@@ -217,12 +207,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = clientMock.Object,
                 Slot = slot
             };
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
-            getAzureWebsiteCommand.ExecuteCmdlet();
+            getAzureWebsiteCommand.ExecuteWithProcessing();
             Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline.Count);
 
             var website = ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline[0] as SiteWithConfig;
@@ -255,6 +241,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                     PublishingUsername = "user1"
                 });
 
+            SetupProfile(null);
+
             // Test
             var getAzureWebsiteCommand = new GetAzureWebsiteCommand
             {
@@ -262,12 +250,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = clientMock.Object,
                 Slot = slot
             };
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
-            getAzureWebsiteCommand.ExecuteCmdlet();
+            getAzureWebsiteCommand.ExecuteWithProcessing();
             IEnumerable<Site> sites = ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline[0] as IEnumerable<Site>;
 
             var website1 = sites.ElementAt(0);

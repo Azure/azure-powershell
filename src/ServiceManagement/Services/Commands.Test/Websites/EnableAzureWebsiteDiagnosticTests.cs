@@ -12,18 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.DeploymentEntities;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Moq;
-using Xunit;
-using Microsoft.Azure.Common.Authentication;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
@@ -56,6 +57,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsiteDiagnosticOutput.FileSystem,
                 properties, null));
 
+            SetupProfile(null);
+
             enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -65,13 +68,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 LogLevel = LogEntryType.Information
             };
 
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription { Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
-
             // Test
-            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteWithProcessing();
 
             // Assert
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
@@ -95,6 +93,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsiteDiagnosticOutput.StorageTable,
                 properties, null));
 
+            SetupProfile(null);
+
             enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -106,13 +106,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 StorageTableName = tableName
             };
 
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
-
             // Test
-            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteWithProcessing();
 
             // Assert
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
@@ -136,6 +131,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsiteDiagnosticOutput.StorageTable,
                 properties, null));
 
+            SetupProfile(storageName);
+
             enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -146,14 +143,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 StorageTableName = tableName
             };
 
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
-            currentProfile.Context.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
-
             // Test
-            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteWithProcessing();
 
             // Assert
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
@@ -177,6 +168,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsiteDiagnosticOutput.StorageBlob,
                 properties, null));
 
+            SetupProfile(null);
+
             enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -188,13 +181,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 StorageBlobContainerName = blobContainerName
             };
 
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
-
             // Test
-            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteWithProcessing();
 
             // Assert
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
@@ -218,6 +206,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsiteDiagnosticOutput.StorageBlob,
                 properties, null));
 
+            SetupProfile(storageName);
+
             enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -228,14 +218,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 StorageBlobContainerName = blobContainerName
             };
 
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
-            currentProfile.Context.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
-
             // Test
-            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteWithProcessing();
 
             // Assert
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
@@ -256,6 +240,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsiteDiagnosticOutput.FileSystem,
                 properties,
                 slot));
+            
+            SetupProfile(null);
 
             enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
             {
@@ -267,13 +253,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Slot = slot
             };
 
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
-
             // Test
-            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteWithProcessing();
 
             // Assert
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(

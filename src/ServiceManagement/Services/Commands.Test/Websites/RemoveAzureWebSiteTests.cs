@@ -17,6 +17,7 @@ using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities;
@@ -40,6 +41,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 .Returns(new Site { Name = "website1", WebSpace = "webspace1" });
             mockClient.Setup(c => c.DeleteWebsite("webspace1", "website1", slot)).Verifiable();
 
+            SetupProfile(null);
+
             // Test
             RemoveAzureWebsiteCommand removeAzureWebsiteCommand = new RemoveAzureWebsiteCommand
             {
@@ -48,14 +51,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Name = "website1",
                 Slot = slot
             };
-
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription { Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
             
             // Delete existing website
-            removeAzureWebsiteCommand.ExecuteCmdlet();
+            removeAzureWebsiteCommand.ExecuteWithProcessing();
             mockClient.Verify(c => c.DeleteWebsite("webspace1", "website1", slot), Times.Once());
         }
     }
