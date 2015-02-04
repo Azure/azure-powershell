@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = accountName;
             this.Name = runbook.Name;
             this.Location = runbook.Location;
-            this.Type = runbook.Type;
             this.Tags = runbook.Tags ?? new Dictionary<string, string>();
 
             if (runbook.Properties == null) return;
@@ -84,11 +83,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the location.
         /// </summary>
         public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type.
-        /// </summary>
-        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.

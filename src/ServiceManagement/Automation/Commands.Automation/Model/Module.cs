@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = automationAccountName;
             this.Name = module.Name;
             this.Location = module.Location;
-            this.Type = module.Type;
             this.Tags = module.Tags ?? new Dictionary<string, string>();
 
             if (module.Properties == null) return;
@@ -68,11 +67,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the location.
         /// </summary>
         public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type.
-        /// </summary>
-        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const string AutomationServicePrefix = "OaasCS";
 
-        public const string JobStartedByParameterName = "JobStartedBy";
+        public const string JobStartedByParameterName = "MicrosoftApplicationManagementStartedBy";
 
         // default schedule expiry time for daily schedule, consistent with UX
         // 12/31/9999 12:00:00 AM
