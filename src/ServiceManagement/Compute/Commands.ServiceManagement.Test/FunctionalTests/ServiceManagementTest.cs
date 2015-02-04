@@ -89,70 +89,61 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public static void AssemblyInit(TestContext context)
         {
             SetTestSettings();
+
+            vmPowershellCmdlets = new ServiceManagementCmdletTestHelper();
+
+            try
+            {
+                vmPowershellCmdlets.RunPSScript("Get-AzureService | Remove-AzureService -Force");
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                vmPowershellCmdlets.RunPSScript("Get-AzureDisk | Remove-AzureDisk");
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                vmPowershellCmdlets.RunPSScript(@"Get-AzureVMImage | where {$_.Category -eq 'User'} | Remove-AzureVMImage");
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                vmPowershellCmdlets.RunPSScript("Remove-AzureVNetConfig");
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                vmPowershellCmdlets.RunPSScript("Get-AzureAffinityGroup | Remove-AzureAffinityGroup");
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                vmPowershellCmdlets.RunPSScript("Get-AzureReservedIP | Remove-AzureReservedIP -Force");
+            }
+            catch
+            {
+            }
         }
 
         [AssemblyCleanup]
         public static void CleanUpAssembly()
         {
-            vmPowershellCmdlets = new ServiceManagementCmdletTestHelper();
-
-            // Cleaning up affinity groups
-            var affGroup = vmPowershellCmdlets.GetAzureAffinityGroup();
-            if (affGroup.Count > 0)
-            {
-                foreach (var aff in affGroup)
-                {
-                    try
-                    {
-                        vmPowershellCmdlets.RemoveAzureAffinityGroup(aff.Name);
-                    }
-                    catch (Exception e)
-                    {
-                        if (e.ToString().Contains(BadRequestException))
-                        {
-                            Console.WriteLine("Affinity Group, {0}, is not deleted.", aff.Name);
-                        }
-                    }
-                }
-            }
-
-            if (defaultAzureSubscription != null)
-            {
-                // Cleaning up virtual disks
-                try
-                {
-                    Retry(String.Format("Get-AzureDisk | Where {{$_.DiskName.Contains(\"{0}\")}} | Remove-AzureDisk", serviceNamePrefix), "in use");
-                    if (deleteDefaultStorageAccount)
-                    {
-                        //vmPowershellCmdlets.RemoveAzureStorageAccount(defaultAzureSubscription.CurrentStorageAccountName);
-                    }
-                }
-                catch
-                {
-                    Console.WriteLine("Error occurred during cleaning up disks..");
-                }
-
-                // Cleaning up vm images
-                try
-                {
-                    vmPowershellCmdlets.RunPSScript("Get-AzureVMImage | Where {$_.Categori -eq \"User\"} | Remove-AzureVMImage");
-                }
-                catch
-                {
-                    Console.WriteLine("Error occurred during cleaning up vm images..");
-                }
-
-                // Cleaning up reserved ips
-                try
-                {
-                    vmPowershellCmdlets.RunPSScript("Get-AzureReservedIp | Remove-AzureReservedIp -Force");
-                }
-                catch
-                {
-                    Console.WriteLine("Error occurred during cleaning up reserved ips..");
-                }
-            }
-
             if (string.IsNullOrEmpty(currentEnvName))
             {
                 vmPowershellCmdlets.RunPSScript(string.Format("Remove-AzureEnvironment -Name {0} -Force", TempEnvName));
@@ -380,19 +371,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         protected void VerifyRDP(string serviceName, string rdpPath)
         {
-            Utilities.GetDeploymentAndWaitForReady(serviceName, DeploymentSlotType.Production, 10, 600);
-
+            Console.WriteLine("Fetching Azure VM RDP file");
             vmPowershellCmdlets.GetAzureRemoteDesktopFile("WebRole1_IN_0", serviceName, rdpPath, false);
-
-            string dns;
-
-            using (var stream = new StreamReader(rdpPath))
-            {
-                string firstLine = stream.ReadLine();
-                dns = Utilities.FindSubstring(firstLine, ':', 2);
-            }
-
-            Assert.IsTrue((Utilities.RDPtestPaaS(dns, "WebRole1", 0, username, password, true)), "Cannot RDP to the instance!!");
+            Console.WriteLine("Azure VM RDP file downloaded.");
         }
 
         protected string UploadVhdFile()

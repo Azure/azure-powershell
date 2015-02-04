@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -43,6 +44,38 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         [ValidateSet("ReadOnly", "ReadWrite", IgnoreCase = true)]
         public string HostCaching { get; set; }
 
+        [Parameter(
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The media link.")]
+        [ValidateNotNullOrEmpty]
+        public Uri MediaLink { get; set; }
+
+        [Parameter(
+            Position = 3,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The logical disk size in GB.")]
+        [ValidateNotNullOrEmpty]
+        public string OSState { get; set; }
+
+        [Parameter(
+            Position = 4,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The OS.")]
+        [ValidateNotNullOrEmpty]
+        public string OS { get; set; }
+
+        [Parameter(
+            Position = 5,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The logical disk size in GB.")]
+        [ValidateNotNullOrEmpty]
+        public int LogicalDiskSizeInGB { get; set; }
+
         protected override void ProcessRecord()
         {
             ServiceManagementProfile.Initialize();
@@ -53,6 +86,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             }
 
             DiskConfig.OSDiskConfiguration.HostCaching = this.HostCaching;
+            DiskConfig.OSDiskConfiguration.MediaLink = this.MediaLink;
+            DiskConfig.OSDiskConfiguration.LogicalDiskSizeInGB = this.LogicalDiskSizeInGB;
+            DiskConfig.OSDiskConfiguration.OS = this.OS;
+            DiskConfig.OSDiskConfiguration.OSState = this.OSState;
 
             WriteObject(DiskConfig);
         }

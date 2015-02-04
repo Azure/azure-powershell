@@ -1714,6 +1714,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid tag format. Expect @{Name = &quot;tagName&quot;} or @{Name = &quot;tagName&quot;; Value = &quot;tagValue&quot;}.
+        /// </summary>
+        public static string InvalidTagFormat {
+            get {
+                return ResourceManager.GetString("InvalidTagFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = &quot;tagName1&quot;; Value = &quot;tagValue1&quot;}, @{Name = &quot;tagName2&quot;; Value = &quot;tagValue2&quot;}.
+        /// </summary>
+        public static string InvalidTagFormatNotUniqueName {
+            get {
+                return ResourceManager.GetString("InvalidTagFormatNotUniqueName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Role {0} VM size should be ExtraSmall, Small, Medium, Large or ExtraLarge..
         /// </summary>
         public static string InvalidVMSize {
