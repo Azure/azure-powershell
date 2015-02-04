@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -24,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.Websites;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Xunit;
 
@@ -130,6 +132,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         [Fact]
         public void ProcessGetWebsiteWithNullSubscription()
         {
+            currentProfile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            currentProfile.Subscriptions.Clear();
+            currentProfile.Save();
+
             // Test
             var getAzureWebsiteCommand = new GetAzureWebsiteCommand
             {
