@@ -11,9 +11,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Properties;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Exception = job.Properties.Exception;
             this.EndTime = job.Properties.EndTime;
             this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
-            this.JobParameters = job.Properties.Parameters ?? new Dictionary<string, string>();
+            this.JobParameters = job.Properties.Parameters.ToDictionary(item => item.Key, item => (object)PowerShellJsonConverter.Deserialize(item.Value)) ?? new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the parameters of the job.
         /// </summary>
-        public IDictionary<string, string> JobParameters { get; set; }
+        public IDictionary<string, object> JobParameters { get; set; }
 
         /// <summary>
         /// Gets or sets the runbook.

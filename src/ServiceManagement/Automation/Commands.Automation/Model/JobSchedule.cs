@@ -13,9 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Properties;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.JobScheduleId = jobSchedule.Properties.Id;
             this.RunbookName = jobSchedule.Properties.Runbook.Name;
             this.ScheduleName = jobSchedule.Properties.Schedule.Name;
-            this.Parameters = jobSchedule.Properties.Parameters ?? new Dictionary<string, string>();
+            this.Parameters = jobSchedule.Properties.Parameters.ToDictionary(item => item.Key, item => (object)PowerShellJsonConverter.Deserialize(item.Value)) ?? new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -70,6 +69,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the runbook parameters.
         /// </summary>
-        public IDictionary<string, string> Parameters { get; set; }
+        public IDictionary<string, object> Parameters { get; set; }
     }
 }
