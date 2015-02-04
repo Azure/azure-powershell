@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : CurrentContext.Subscription.Id.ToString()
+                    Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : Profile.Context.Subscription.Id.ToString()
                 }
             };
 

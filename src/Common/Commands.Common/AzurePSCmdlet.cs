@@ -56,9 +56,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithParameterSetLog, this.GetType().Name, ParameterSetName));
             }
 
-            if (CurrentContext != null && CurrentContext.Account != null && CurrentContext.Account.Id != null)
+            if (Profile.Context != null && Profile.Context.Account != null && Profile.Context.Account.Id != null)
             {
-                WriteDebugWithTimestamp(string.Format("using account id '{0}'...", CurrentContext.Account.Id));
+                WriteDebugWithTimestamp(string.Format("using account id '{0}'...", Profile.Context.Account.Id));
             }
 
             RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
@@ -70,16 +70,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             // Load profile from disk 
             var profileFromDisk = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            if (AzureSession.Profile == null ||
-                AzureSession.Profile.ProfilePath == profileFromDisk.ProfilePath)
+            if (Profile == null ||
+                Profile.ProfilePath == profileFromDisk.ProfilePath)
             {
-                AzureSession.Profile = profileFromDisk;
-            }
-
-            // If profile parameter is not specified, use one from session
-            if (Profile == null)
-            {
-                Profile = AzureSession.Profile;
+                Profile = profileFromDisk;
             }
         }
 
@@ -97,14 +91,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             base.EndProcessing();
         }
 
-        public AzureContext CurrentContext
+        /*public AzureContext Profile.Context
         {
-            get { return Profile.CurrentContext; }
-        }
+            get { return Profile.Context; }
+        }*/
 
         public bool HasCurrentSubscription
         {
-            get { return Profile.CurrentContext.Subscription != null; }
+            get { return Profile.Context.Subscription != null; }
         }
 
         protected string CurrentPath()

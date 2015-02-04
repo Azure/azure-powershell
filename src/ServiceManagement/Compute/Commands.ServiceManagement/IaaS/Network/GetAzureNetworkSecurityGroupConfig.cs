@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
             else
             {
-                var networkClient = new NetworkClient(Profile.CurrentContext.Subscription, CommandRuntime);
+                var networkClient = new NetworkClient(Profile, Profile.Context.Subscription, CommandRuntime);
                 INetworkSecurityGroup networkSecurityGroup = networkClient.GetNetworkSecurityGroup(networkSecurityGroupName, Detailed);
 
                 WriteObject(networkSecurityGroup, true);

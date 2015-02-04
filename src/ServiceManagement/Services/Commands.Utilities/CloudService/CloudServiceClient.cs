@@ -544,6 +544,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         /// <param name="verboseStream">Action used to log detailed client progress</param>
         /// <param name="warningStream">Action used to log warning messages</param>
         public CloudServiceClient(
+            AzureProfile profile, 
             AzureSubscription subscription,
             string currentLocation = null,
             Action<string> debugStream = null,
@@ -554,9 +555,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
             Subscription = subscription;
             CloudBlobUtility = new CloudBlobUtility();
 
-            ManagementClient = AzureSession.ClientFactory.CreateClient<ManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            StorageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            ComputeClient = AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            ManagementClient = AzureSession.ClientFactory.CreateClient<ManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            StorageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            ComputeClient = AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         private CloudServiceClient(string currentLocation, Action<string> debugStream, Action<string> verboseStream,

@@ -76,11 +76,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(AzureSubscription azureSubscription, AzureProfile azureProfile)
+        public PSRecoveryServicesClient(AzureProfile azureProfile, AzureSubscription azureSubscription)
         {
             this.Profile = azureProfile;
             this.recoveryServicesClient =
-                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             SiteRecoveryManagementClient siteRecoveryClient =
                 AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, 
                 asrVaultCreds.ResourceName, recoveryServicesClient.Credentials, 
-                Profile.CurrentContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
+                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
 
             if (null == siteRecoveryClient)
             {

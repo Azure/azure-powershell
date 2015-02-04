@@ -150,7 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
-            currentProfile.CurrentContext.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
+            currentProfile.Context.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
 
             // Test
             enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
@@ -232,7 +232,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
-            currentProfile.CurrentContext.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
+            currentProfile.Context.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
 
             // Test
             enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();

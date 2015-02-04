@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
 
         protected AzureSubscription CurrentSubscription
         {
-            get { return Profile.CurrentContext.Subscription; }
+            get { return Profile.Context.Subscription; }
         }
 
         protected NetworkClient Client
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (client == null)
                 {
-                    client = new NetworkClient(CurrentSubscription, CommandRuntime);
+                    client = new NetworkClient(Profile, CurrentSubscription, CommandRuntime);
                 }
                 return client;
             }

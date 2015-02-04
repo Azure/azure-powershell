@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (resourcesClient == null)
                 {
-                    resourcesClient = new ResourcesClient(CurrentContext)
+                    resourcesClient = new ResourcesClient(Profile.Context)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (galleryTemplatesClient == null)
                 {
-                    galleryTemplatesClient = new GalleryTemplatesClient(CurrentContext);
+                    galleryTemplatesClient = new GalleryTemplatesClient(Profile.Context);
                 }
                 return galleryTemplatesClient;
             }
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (policiesClient == null)
                 {
-                    policiesClient = new AuthorizationClient(CurrentContext);
+                    policiesClient = new AuthorizationClient(Profile.Context);
                 }
                 return policiesClient;
             }

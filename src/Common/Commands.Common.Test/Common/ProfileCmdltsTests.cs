@@ -499,7 +499,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void SelectAzureSubscriptionByNameUpdatesProfile()
         {
-            SetupDefaultProfile();
+            var profileClient = SetupDefaultProfile();
             SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
 
             // Setup
@@ -513,8 +513,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.NotNull(AzureSession.Profile.CurrentContext.Subscription);
-            Assert.Equal(azureSubscription2.Id, AzureSession.Profile.CurrentContext.Subscription.Id);
+            Assert.NotNull(profileClient.Profile.Context.Subscription);
+            Assert.Equal(azureSubscription2.Id, profileClient.Profile.Context.Subscription.Id);
         }
 
         [Fact]
