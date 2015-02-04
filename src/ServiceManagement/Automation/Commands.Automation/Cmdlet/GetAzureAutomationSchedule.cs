@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The schedule name.")]
+        [Alias("ScheduleName")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>

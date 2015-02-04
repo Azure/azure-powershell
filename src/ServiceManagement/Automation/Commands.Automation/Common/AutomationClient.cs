@@ -145,8 +145,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             AutomationManagement.Models.Schedule scheduleModel = this.GetScheduleModel(automationAccountName,
                 scheduleName);
             isEnabled = (isEnabled.HasValue) ? isEnabled : scheduleModel.Properties.IsEnabled;
-            description = description ?? scheduleModel.Properties.Description; ;
-            return this.UpdateScheduleHelper(automationAccountName, scheduleModel, isEnabled, description);
+            description = description ?? scheduleModel.Properties.Description;
+            return this.UpdateScheduleHelper(automationAccountName, scheduleName, isEnabled, description);
         }
 
         #endregion
@@ -1529,26 +1529,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         private Schedule UpdateScheduleHelper(string automationAccountName,
-            AutomationManagement.Models.Schedule schedule, bool? isEnabled, string description)
+            string scheduleName, bool? isEnabled, string description)
         {
-
-            if (isEnabled.HasValue)
-            {
-                schedule.Properties.IsEnabled = isEnabled.Value;
-            }
-
-            if (description != null)
-            {
-                schedule.Properties.Description = description;
-            }
-
             var scheduleUpdateParameters = new AutomationManagement.Models.ScheduleUpdateParameters
             {
-                Name = schedule.Name,
+                Name = scheduleName,
                 Properties = new AutomationManagement.Models.ScheduleUpdateProperties
                 {
-                    Description = schedule.Properties.Description,
-                    IsEnabled = schedule.Properties.IsEnabled
+                    Description = description,
+                    IsEnabled = isEnabled
                 }
             };
 
@@ -1556,7 +1545,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 automationAccountName,
                 scheduleUpdateParameters);
 
-            return this.GetSchedule(automationAccountName, schedule.Name);
+            return this.GetSchedule(automationAccountName, scheduleName);
         }
 
         private Certificate CreateCertificateInternal(string automationAccountName, string name, string path,
