@@ -1560,7 +1560,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (!hasJobStartedBy)
             {
-                filteredParameters.Add(Constants.JobStartedByParameterName, Constants.ClientIdentity);
+                filteredParameters.Add(Constants.JobStartedByParameterName, PowerShellJsonConverter.Serialize(Constants.ClientIdentity));
             }
 
             return filteredParameters;
