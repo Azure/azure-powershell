@@ -241,6 +241,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         continue;
                     }
 
+                    if ((BlobType.BlockBlob != blob.BlobType)
+                        && (BlobType.PageBlob != blob.BlobType))
+                    {
+                        // Block append blob here.
+                        continue;
+                    }
+
                     if (blobFilter == null || blobFilter(blob))
                     {
                         WriteCloudBlobObject(taskId, localChannel, blob, blobResult.ContinuationToken);

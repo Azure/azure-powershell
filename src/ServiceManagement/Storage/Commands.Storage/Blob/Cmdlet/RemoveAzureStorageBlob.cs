@@ -114,6 +114,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <returns>true if the blob is removed successfully, false if user cancel the remove operation</returns>
         internal async Task RemoveAzureBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, bool isValidBlob)
         {
+            ValidateBlobType(blob);
+
             if (!isValidBlob)
             {
                 ValidatePipelineCloudBlob(blob);
@@ -147,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
             try
             {
-                await DeleteICloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
+                await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
                 retryDeleteSnapshot = false;
             }
             catch (StorageException e)
@@ -170,7 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 if (await OutputStream.ConfirmAsync(message))
                 {
                     deleteSnapshotsOption = DeleteSnapshotsOption.IncludeSnapshots;
-                    await DeleteICloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
+                    await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
                 }
                 else
                 {
@@ -180,7 +182,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
         }
 
-        internal async Task DeleteICloudAsync(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption)
+        internal async Task DeleteCloudAsync(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption)
         {
             AccessCondition accessCondition = null;
             BlobRequestOptions requestOptions = null;
@@ -215,8 +217,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             AccessCondition accessCondition = null;
             BlobRequestOptions requestOptions = null;
 
-            CloudBlob blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition,
-                    requestOptions, OperationContext, CmdletCancellationToken);
+            CloudBlob blob = null;
+
+            try
+            {
+                blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition,
+                      requestOptions, OperationContext, CmdletCancellationToken);
+            }
+            catch (InvalidOperationException)
+            {
+                blob = null;
+            }
 
             if (null == blob && container.ServiceClient.Credentials.IsSharedKey)
             {

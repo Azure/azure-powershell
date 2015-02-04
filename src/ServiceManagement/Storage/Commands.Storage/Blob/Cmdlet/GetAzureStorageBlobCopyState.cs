@@ -219,12 +219,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             ValidateBlobName(blobName);
             ValidateContainerName(container.Name);
 
-            CloudBlob blob = Channel.GetBlobReferenceFromServer(container, blobName, accessCondition, options, OperationContext);
-
-            if (blob == null)
-            {
-                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, container.Name));
-            }
+            CloudBlob blob = GetBlobReferenceFromServerWithContainer(Channel, container, blobName, accessCondition, options, OperationContext);
 
             return GetCloudBlobObject(blob);
         }
@@ -237,6 +232,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private CloudBlob GetCloudBlobObject(CloudBlob blob)
         {
             ValidateBlobName(blob.Name);
+
+            ValidateBlobType(blob);
+
             return blob;
         }
 

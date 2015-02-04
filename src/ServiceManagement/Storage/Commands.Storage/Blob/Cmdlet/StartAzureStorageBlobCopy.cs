@@ -257,6 +257,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <returns>Destination CloudBlob object</returns>
         private void StartCopyBlob(IStorageBlobManagement destChannel, CloudBlob srcCloudBlob, CloudBlob destCloudBlob)
         {
+            ValidateBlobType(srcCloudBlob);
+
             Func<long, Task> taskGenerator = (taskId) => StartCopyInTransferManager(taskId, destChannel, srcCloudBlob, destCloudBlob);
             RunTask(taskGenerator);
         }
@@ -312,7 +314,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (sourceUri.Host.ToLower() == contextUri.Host.ToLower())
                 {
                     CloudBlobClient blobClient = context.StorageAccount.CreateCloudBlobClient();
-                    CloudBlob blobReference = Util.GetBlobReferenceFromServer(blobClient, sourceUri);
+                    CloudBlob blobReference = null;
+
+                    try
+                    {
+                        blobReference = Util.GetBlobReferenceFromServer(blobClient, sourceUri);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        blobReference = null;
+                    }
+
+                    if (null == blobReference)
+                    {
+                        throw new ResourceNotFoundException(String.Format(Resources.BlobUriNotFound, sourceUri.ToString()));
+                    }
+
                     StartCopyBlob(destChannel, blobReference, destContainer, destBlobName);
                 }
                 else
@@ -352,12 +369,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             AccessCondition accessCondition = null;
             BlobRequestOptions options = RequestOptions;
             CloudBlobContainer container = SrcChannel.GetContainerReference(srcContainerName);
-            CloudBlob blob = SrcChannel.GetBlobReferenceFromServer(container, srcBlobName, accessCondition, options, OperationContext);
-
-            if (blob == null)
-            {
-                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, srcBlobName, srcContainerName));
-            }
+            CloudBlob blob = GetBlobReferenceFromServerWithContainer(SrcChannel, container, srcBlobName, accessCondition, options, OperationContext);
 
             this.StartCopyBlob(destChannel, blob, destContainerName, destBlobName);
         }

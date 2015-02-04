@@ -15,6 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using System;
+    using System.Globalization;
     using System.Net;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
@@ -91,12 +92,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 return null;
             }
 
-            return GetCorespondingTypeBlobReference(blob);
+            return GetCorrespondingTypeBlobReference(blob);
         }
 
-        public static CloudBlob GetCorespondingTypeBlobReference(CloudBlob blob)
+        public static CloudBlob GetCorrespondingTypeBlobReference(CloudBlob blob)
         {
-
             if (BlobType.BlockBlob == blob.Properties.BlobType)
             {
                 return new CloudBlockBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
@@ -107,7 +107,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 return new CloudPageBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
             }
 
-            throw new InvalidOperationException(string.Format("Not supported blob type: {0}", blob.Properties.BlobType));
+            throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidBlobType, blob.Name));
         }
     }
 }
