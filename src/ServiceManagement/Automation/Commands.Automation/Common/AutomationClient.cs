@@ -405,41 +405,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Resources.VariableAlreadyExists, variable.Name));
             }
 
-            if (variable.Encrypted)
+            var createParams = new AutomationManagement.Models.VariableCreateParameters()
             {
-                var createParams = new AutomationManagement.Models.EncryptedVariableCreateParameters()
+                Name = variable.Name,
+                Properties = new AutomationManagement.Models.VariableCreateProperties()
                 {
-                    Name = variable.Name,
-                    Properties = new AutomationManagement.Models.EncryptedVariableCreateProperties()
-                    {
-                        Value = PowerShellJsonConverter.Serialize(variable.Value),
-                        Description = variable.Description
-                    }
-                };
+                    Value = PowerShellJsonConverter.Serialize(variable.Value),
+                    Description = variable.Description,
+                    IsEncrypted = variable.Encrypted
+                }
+            };
 
-                var sdkCreatedVariable =
-                    this.automationManagementClient.EncryptedVariables.Create(variable.AutomationAccountName, createParams)
-                        .EncryptedVariable;
+            var sdkCreatedVariable =
+                this.automationManagementClient.Variables.Create(variable.AutomationAccountName, createParams).Variable;
 
-                return new Variable(sdkCreatedVariable, variable.AutomationAccountName);
-            }
-            else
-            {
-                var createParams = new AutomationManagement.Models.VariableCreateParameters()
-                {
-                    Name = variable.Name,
-                    Properties = new AutomationManagement.Models.VariableCreateProperties()
-                    {
-                        Value = PowerShellJsonConverter.Serialize(variable.Value),
-                        Description = variable.Description
-                    }
-                };
-
-                var sdkCreatedVariable =
-                    this.automationManagementClient.Variables.Create(variable.AutomationAccountName, createParams).Variable;
-
-                return new Variable(sdkCreatedVariable, variable.AutomationAccountName);
-            }
+            return new Variable(sdkCreatedVariable, variable.AutomationAccountName);
         }
 
         public void DeleteVariable(string automationAccountName, string variableName)
@@ -448,14 +428,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 var existingVarible = this.GetVariable(automationAccountName, variableName);
 
-                if (existingVarible.Encrypted)
-                {
-                    this.automationManagementClient.EncryptedVariables.Delete(automationAccountName, variableName);
-                }
-                else
-                {
-                    this.automationManagementClient.Variables.Delete(automationAccountName, variableName);
-                }
+                this.automationManagementClient.Variables.Delete(automationAccountName, variableName);
             }
             catch (CloudException cloudException)
             {
@@ -479,75 +452,33 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     string.Format(CultureInfo.CurrentCulture, Resources.VariableEncryptionCannotBeChanged, variable.Name, existingVariable.Encrypted));
             }
 
-            if (variable.Encrypted)
+            var updateParams = new AutomationManagement.Models.VariableUpdateParameters()
             {
-                var updateParams = new AutomationManagement.Models.EncryptedVariableUpdateParameters()
+                Name = variable.Name,
+            };
+
+            if (updateFields == VariableUpdateFields.OnlyDescription)
+            {
+                updateParams.Properties = new AutomationManagement.Models.VariableUpdateProperties()
                 {
-                    Name = variable.Name
+                    Description = variable.Description
                 };
-
-                if (updateFields == VariableUpdateFields.OnlyDescription)
-                {
-                    updateParams.Properties = new AutomationManagement.Models.EncryptedVariableUpdateProperties()
-                    {
-                        Description = variable.Description
-                    };
-                }
-                else
-                {
-                    updateParams.Properties = new AutomationManagement.Models.EncryptedVariableUpdateProperties()
-                    {
-                        Value = PowerShellJsonConverter.Serialize(variable.Value)
-                    };
-                }
-
-                this.automationManagementClient.EncryptedVariables.Update(variable.AutomationAccountName, updateParams);
             }
             else
             {
-                var updateParams = new AutomationManagement.Models.VariableUpdateParameters()
+                updateParams.Properties = new AutomationManagement.Models.VariableUpdateProperties()
                 {
-                    Name = variable.Name,
+                    Value = PowerShellJsonConverter.Serialize(variable.Value)
                 };
-
-                if (updateFields == VariableUpdateFields.OnlyDescription)
-                {
-                    updateParams.Properties = new AutomationManagement.Models.VariableUpdateProperties()
-                    {
-                        Description = variable.Description
-                    };
-                }
-                else
-                {
-                    updateParams.Properties = new AutomationManagement.Models.VariableUpdateProperties()
-                    {
-                        Value = PowerShellJsonConverter.Serialize(variable.Value)
-                    };
-                }
-
-                this.automationManagementClient.Variables.Update(variable.AutomationAccountName, updateParams);
             }
 
+            this.automationManagementClient.Variables.Update(variable.AutomationAccountName, updateParams);
+            
             return this.GetVariable(variable.AutomationAccountName, variable.Name);
         }
 
         public Variable GetVariable(string automationAccountName, string name)
         {
-            try
-            {
-                var sdkEncryptedVariable = this.automationManagementClient.EncryptedVariables.Get(
-                    automationAccountName, name).EncryptedVariable;
-
-                if (sdkEncryptedVariable != null)
-                {
-                    return new Variable(sdkEncryptedVariable, automationAccountName);
-                }
-            }
-            catch (CloudException)
-            {
-                // do nothing
-            }
-
             try
             {
                 var sdkVarible = this.automationManagementClient.Variables.Get(automationAccountName, name).Variable;
@@ -556,14 +487,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     return new Variable(sdkVarible, automationAccountName);
                 }
+
+                throw new ResourceNotFoundException(typeof(Variable),
+                    string.Format(CultureInfo.CurrentCulture, Resources.VariableNotFound, name));
             }
             catch (CloudException)
             {
-                // do nothing
+                throw new ResourceNotFoundException(typeof(Variable),
+                    string.Format(CultureInfo.CurrentCulture, Resources.VariableNotFound, name));
             }
-
-            throw new ResourceNotFoundException(typeof(Variable),
-                string.Format(CultureInfo.CurrentCulture, Resources.VariableNotFound, name));
         }
 
         public IEnumerable<Variable> ListVariables(string automationAccountName)
@@ -577,20 +509,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                        response, response.Variables);
                });
 
-            var result = variables.Select(variable => this.CreateVariableFromVariableModel(variable, automationAccountName)).ToList();
-
-            IList<AutomationManagement.Models.EncryptedVariable> encryptedVariables = AutomationManagementClient.ContinuationTokenHandler(
-               skipToken =>
-               {
-                   var response = this.automationManagementClient.EncryptedVariables.List(
-                       automationAccountName);
-                   return new ResponseWithSkipToken<AutomationManagement.Models.EncryptedVariable>(
-                       response, response.EncryptedVariables);
-               });
-
-            result.AddRange(encryptedVariables.Select(variable => this.CreateVariableFromVariableModel(variable, automationAccountName)).ToList());
-
-            return result;
+            return variables.Select(variable => this.CreateVariableFromVariableModel(variable, automationAccountName)).ToList();
         }
         #endregion 
 
@@ -1580,14 +1499,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             return new Variable(variable, automationAccountName);
         }
-
-        private Variable CreateVariableFromVariableModel(AutomationManagement.Models.EncryptedVariable variable, string automationAccountName)
-        {
-            Requires.Argument("variable", variable).NotNull();
-
-            return new Variable(variable, automationAccountName);
-        }
-
 
         private AutomationManagement.Models.Schedule GetScheduleModel(string automationAccountName, string scheduleName)
         {

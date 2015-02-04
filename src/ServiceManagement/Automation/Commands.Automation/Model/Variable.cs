@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.CreationTime = variable.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = variable.Properties.LastModifiedTime.ToLocalTime();
 
-            if (variable.Properties.Value == null)
+            if (variable.Properties.Value == null || variable.Properties.IsEncrypted)
             {
                 this.Value = null;
             }
@@ -50,29 +50,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             }
 
             this.Description = variable.Properties.Description;
-            this.Encrypted = false;
+            this.Encrypted = variable.Properties.IsEncrypted;
             this.AutomationAccountName = automationAccoutName;
-        }
-
-        // <summary>
-        /// Initializes a new instance of the <see cref="Variable"/> class.
-        /// </summary>
-        /// <param name="variable">
-        /// The variable.
-        /// </param>
-        /// <exception cref="System.ArgumentException">
-        /// </exception>
-        public Variable(AutomationManagement.Models.EncryptedVariable variable, string automationAccountName)
-        {
-            Requires.Argument("variable", variable).NotNull();
-
-            this.Name = variable.Name;
-            this.CreationTime = variable.Properties.CreationTime.ToLocalTime();
-            this.LastModifiedTime = variable.Properties.LastModifiedTime.ToLocalTime();
-            this.Value = null;
-            this.Description = variable.Properties.Description;
-            this.Encrypted = true;
-            this.AutomationAccountName = automationAccountName;
         }
 
         /// <summary>
