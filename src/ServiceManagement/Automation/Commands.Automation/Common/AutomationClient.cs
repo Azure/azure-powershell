@@ -426,8 +426,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             try
             {
-                var existingVarible = this.GetVariable(automationAccountName, variableName);
-
                 this.automationManagementClient.Variables.Delete(automationAccountName, variableName);
             }
             catch (CloudException cloudException)
@@ -644,13 +642,20 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public Module GetModule(string automationAccountName, string name)
         {
-            var module = this.automationManagementClient.Modules.Get(automationAccountName, name).Module;
-            if (module == null)
+            try
             {
-                throw new ResourceNotFoundException(typeof(Module), string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+                var module = this.automationManagementClient.Modules.Get(automationAccountName, name).Module;
+                return new Module(automationAccountName, module);
             }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Module), string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+                }
 
-            return new Module(automationAccountName, module);
+                throw;
+            }
         }
 
         public IEnumerable<Module> ListModules(string automationAccountName)
@@ -669,6 +674,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public Module UpdateModule(string automationAccountName, IDictionary tags, string name, Uri contentLinkUri)
         {
+            var existingModule = this.GetModule(automationAccountName, name);
+
             if(tags != null && contentLinkUri != null)
             {
                 var moduleCreateParameters = new AutomationManagement.Models.ModuleCreateParameters();
@@ -692,6 +699,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 moduleUpdateParameters.Properties = new ModuleUpdateProperties();
                 moduleUpdateParameters.Properties.ContentLink = new AutomationManagement.Models.ContentLink();
                 moduleUpdateParameters.Properties.ContentLink.Uri = contentLinkUri;
+                moduleUpdateParameters.Tags = existingModule.Tags;
 
                 this.automationManagementClient.Modules.Update(automationAccountName, moduleUpdateParameters);
             }
