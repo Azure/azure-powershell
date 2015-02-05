@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Recovery Plan object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObjectE2AFailback, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
@@ -65,6 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Protection Entity object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AFailback, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionEntity ProtectionEntity { get; set; }
 
@@ -86,6 +88,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets the Optimize value.
         /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AFailback)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AFailback)]
         [ValidateSet(
             Constants.ForDowntime,
             Constants.ForSynchronization)]
@@ -160,8 +164,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 else
                 {
                     var blob = new AzureFailbackInput();
-                    blob.CreateRecoveryVmIfDoesntExist = false;
-                    blob.SkipDataSync = true;
+                    blob.CreateRecoveryVmIfDoesntExist = true;
+                    blob.SkipDataSync = this.Optimize == Constants.ForDowntime ? true : false;
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailbackInput>(blob);
                 }
             }

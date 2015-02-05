@@ -174,6 +174,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 throw new Exception("Call using ID parameter is not supported.");
             }
+            else
+            {
+                this.WriteWarning("Call using 'ID' parameter will not be supported from next release. Please use full object parameter instead.");
+            }
         }
 
         /// <summary>
