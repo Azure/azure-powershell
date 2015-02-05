@@ -14,14 +14,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Management.Automation;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.WindowsAzure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -80,25 +74,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             bool associatedAccount = false;
-
-            using (System.Management.Automation.PowerShell powerShellInstance = System.Management.Automation.PowerShell.Create())
-            {
-                powerShellInstance.AddCommand("Get-AzureStorageAccount");
-                Collection<PSObject> powershellOutput = powerShellInstance.Invoke();
-
-                foreach (var storage in powershellOutput)
-                {
-                    if (storage.BaseObject is StorageServicePropertiesOperationContext)
-                    {
-                        StorageServicePropertiesOperationContext storageAccount = (StorageServicePropertiesOperationContext)storage.BaseObject;
-                        if (azureStorageAccount.Equals(storageAccount.StorageAccountName, StringComparison.OrdinalIgnoreCase))
-                        {
-                            associatedAccount = true;
-                            break;
-                        }
-                    }
-                }
-            }
 
             if (!associatedAccount)
             {

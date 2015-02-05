@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Creates Azure Site Recovery Protection Profile object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSiteRecoveryProtectionProfileObject", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+    [Cmdlet(VerbsCommon.New, "AzureSiteRecoveryProtectionProfileObject", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
     [OutputType(typeof(ASRProtectionProfile))]
     public class CreateAzureSiteRecoveryProtectionProfileObject : RecoveryServicesCmdletBase
     {
@@ -76,8 +76,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Replication Frequency of the Protection Profile in seconds.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             Constants.Thirty,
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets the Replication Port of the Protection Profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ushort ReplicationPort { get; set; }
 
