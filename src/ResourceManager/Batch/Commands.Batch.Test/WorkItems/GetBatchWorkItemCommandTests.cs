@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
             // Setup cmdlet to get a WorkItem by name
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.WorkItemName = "testWorkItem";
+            cmdlet.Name = "testWorkItem";
             cmdlet.Filter = null;
 
             // Build a WorkItem instead of querying the service on a GetWorkItem call
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
             {
                 if (request is GetWorkItemRequest)
                 {
-                    GetWorkItemResponse response = BatchTestHelpers.CreateGetWorkItemResponse(cmdlet.WorkItemName);
+                    GetWorkItemResponse response = BatchTestHelpers.CreateGetWorkItemResponse(cmdlet.Name);
                     Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
                     return task;
                 }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
 
             // Verify that the cmdlet wrote the WorkItem returned from the OM to the pipeline
             Assert.Equal(1, pipeline.Count);
-            Assert.Equal(cmdlet.WorkItemName, pipeline[0].Name);
+            Assert.Equal(cmdlet.Name, pipeline[0].Name);
         }
 
         [Fact]
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
             // Setup cmdlet to list WorkItems using an OData filter
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.WorkItemName = null;
+            cmdlet.Name = null;
             cmdlet.Filter = "startswith(name,'test')";
 
             string[] namesOfConstructedWorkItems = new[] {"test1", "test2"};
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
             // Setup cmdlet to list WorkItems without filters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.WorkItemName = null;
+            cmdlet.Name = null;
             cmdlet.Filter = null;
 
             string[] namesOfConstructedWorkItems = new[] { "name1", "name2", "name3" };

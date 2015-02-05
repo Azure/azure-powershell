@@ -25,23 +25,22 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Get, "AzureBatchWorkItem", DefaultParameterSetName = Constants.NameParameterSet),
         OutputType(typeof(PSCloudWorkItem), ParameterSetName = new string[] { Constants.NameParameterSet }),
         OutputType(typeof(IEnumerableAsyncExtended<PSCloudWorkItem>), ParameterSetName = new string[] { Constants.ODataFilterParameterSet })]
-    public class GetBatchWorkItemCommand : BatchOMCmdletBase
+    public class GetBatchWorkItemCommand : BatchObjectModelCmdletBase
     {
-        [Alias("Name")]
         [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the WorkItem to query.")]
         [ValidateNotNullOrEmpty]
-        public string WorkItemName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "OData filter to use when querying for WorkItems.")]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
-        protected override void ServiceRequest()
+        public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(WorkItemName))
+            if (!string.IsNullOrEmpty(Name))
             {
-                WriteVerboseWithTimestamp(Resources.GBWI_GetByName, WorkItemName);
-                PSCloudWorkItem workItem = GetWorkItem(WorkItemName, additionalBehaviors: AdditionalBehaviors);
+                WriteVerboseWithTimestamp(Resources.GBWI_GetByName, Name);
+                PSCloudWorkItem workItem = GetWorkItem(Name, additionalBehaviors: AdditionalBehaviors);
                 WriteObject(workItem);
             }
             else
