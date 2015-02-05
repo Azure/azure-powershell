@@ -24,8 +24,10 @@ using Microsoft.Azure.Management.ManagedCache;
 using Microsoft.Azure.Management.ManagedCache.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Extensions;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.ManagedCache
 {
@@ -427,7 +429,7 @@ namespace Microsoft.Azure.Commands.ManagedCache
                 parameters.GeoRegion = location;
                 parameters.Description = cloudServiceName;
                 parameters.Label = cloudServiceName;
-                OperationResponse response = client.CloudServices.Create(cloudServiceName, parameters);
+                AzureOperationResponse response = client.CloudServices.Create(cloudServiceName, parameters);
             }
             return cloudServiceName;
         }

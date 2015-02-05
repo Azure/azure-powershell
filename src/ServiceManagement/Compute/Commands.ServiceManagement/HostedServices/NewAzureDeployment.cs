@@ -16,16 +16,18 @@
 using System;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 {
     using PVM = Model;
+    using Hyak.Common;
 
     /// <summary>
     /// Create a new deployment. Note that there shouldn't be a deployment 
@@ -111,7 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             AssertNoPersistenVmRoleExistsInDeployment(PVM.DeploymentSlotType.Production);
             AssertNoPersistenVmRoleExistsInDeployment(PVM.DeploymentSlotType.Staging);
 
-            var storageName = CurrentContext.Subscription.GetProperty(Commands.Common.Models.AzureSubscription.Property.StorageAccount);
+            var storageName = CurrentContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
 
             Uri packageUrl;
             if (this.Package.StartsWith(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) ||
@@ -121,6 +123,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             }
             else
             {
+                if (string.IsNullOrEmpty(storageName))
+                {
+                    throw new ArgumentException(Resources.CurrentStorageAccountIsNotSet);
+                }
+
                 var progress = new ProgressRecord(0, Resources.WaitForUploadingPackage, Resources.UploadingPackage);
                 WriteProgress(progress);
                 removePackage = true;
@@ -262,11 +269,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             if (string.IsNullOrEmpty(this.Label))
             {
                 this.Label = this.Name;
-            }
-
-            if (string.IsNullOrEmpty(this.CurrentContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount)))
-            {
-                throw new ArgumentException(Resources.CurrentStorageAccountIsNotSet);
             }
         }
     }

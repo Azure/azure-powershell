@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ExtensionTests
 {
@@ -279,11 +280,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 port = int.Parse(dnsAndport[1]);
             }
             Console.WriteLine("Azure VM RDP file downloaded.");
-
-            Console.WriteLine("Waiting to sleep for 4 mins before trying to login VM ");
-            Thread.Sleep(300000);
-            ValidateLogin(dns, port, vmAccessUserName, vmAccessPassword);
-
         }
 
         private void DisableExtension(string vmName, string serviceName)
@@ -293,12 +289,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             vm = vmPowershellCmdlets.SetAzureVMAccessExtension(vm,disable:true);
             vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
             Console.WriteLine("Disabled VM Access extesnion for the vm {0}", vmName);
-        }
-
-
-        private void ValidateLogin(string dns, int port, string vmAccessUserName, string vmAccessPassword)
-        {
-            Assert.IsTrue((Utilities.RDPtestIaaS(dns, port, vmAccessUserName, vmAccessPassword, true)), "Cannot RDP to the instance!!");
         }
 
         #endregion Helper Methods

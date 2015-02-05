@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
-using Microsoft.WindowsAzure.Management.Network;
-
 namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
 {
+    using System.Net;
+    using Microsoft.WindowsAzure.Management.Network;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.WindowsAzure.Testing;
     using Xunit;
     using Microsoft.WindowsAzure.Management;
+    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Test;
 
     public class NSGScenarioTests
     {

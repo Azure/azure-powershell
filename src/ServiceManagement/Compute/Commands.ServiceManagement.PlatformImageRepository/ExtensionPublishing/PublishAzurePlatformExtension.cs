@@ -20,6 +20,8 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.
 using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.ExtensionPublishing
 {

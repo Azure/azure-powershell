@@ -205,6 +205,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing application ....
+        /// </summary>
+        internal static string RemoveApplication {
+            get {
+                return ResourceManager.GetString("RemoveApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing resource group ....
         /// </summary>
         internal static string RemoveResourceGroupMessage {
@@ -219,6 +228,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RemoveResourceMessage {
             get {
                 return ResourceManager.GetString("RemoveResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing service principal ....
+        /// </summary>
+        internal static string RemoveServicePrincipal {
+            get {
+                return ResourceManager.GetString("RemoveServicePrincipal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove application with object id &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovingApplication {
+            get {
+                return ResourceManager.GetString("RemovingApplication", resourceCulture);
             }
         }
         
@@ -246,6 +273,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RemovingRoleAssignment {
             get {
                 return ResourceManager.GetString("RemovingRoleAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove service principal with object id &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovingServicePrincipal {
+            get {
+                return ResourceManager.GetString("RemovingServicePrincipal", resourceCulture);
             }
         }
         
@@ -309,6 +345,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RoleDefinitionNotFound {
             get {
                 return ResourceManager.GetString("RoleDefinitionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service principal with object id &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ServicePrincipalDoesntExist {
+            get {
+                return ResourceManager.GetString("ServicePrincipalDoesntExist", resourceCulture);
             }
         }
         

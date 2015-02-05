@@ -271,7 +271,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             {
                 SharedAccessExpiryTime =
                     DateTime.UtcNow.AddHours(1),
-                Permissions = SharedAccessBlobPermissions.Read
+                Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
             };
 
             var configurationBlobName = this.ConfigurationArchive;
