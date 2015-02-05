@@ -121,7 +121,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
             Assert.Null(getAzureVmDscExtensionStatusCmdlet.Name);
             Assert.NotNull(getAzureVmDscExtensionStatusCmdlet.VmName);
             Assert.Equal(dscExtensionStatusContexts.Count, 1);
-            Assert.NotNull(getAzureVmDscExtensionStatusCmdlet.Name);
         }
 
         [Fact]
