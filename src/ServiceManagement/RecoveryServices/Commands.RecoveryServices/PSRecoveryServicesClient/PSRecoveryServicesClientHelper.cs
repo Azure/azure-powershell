@@ -14,14 +14,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Management.Automation;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.WindowsAzure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
