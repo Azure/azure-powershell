@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.UnitTests
 {
     using NSM = Management.Compute.Models;
 
-    [TestClass]
     public class GetAzureVmDscExtensionStatusUnitTest
     {
         private readonly GetAzureVmDscExtensionStatusCommand getAzureVmDscExtensionStatusCmdlet;
@@ -20,45 +19,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
             getAzureVmDscExtensionStatusCmdlet = new GetAzureVmDscExtensionStatusCommand();
         }
 
-        public TestContext TestContext { get; set; }
-
-        #region Additional test attributes
-
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-
-        #endregion
-
-        [TestMethod]
+        [Fact]
         public void TestGetService()
         {
             //when service name is passed as argument in the cmdlet
-            getAzureVmDscExtensionStatusCmdlet.GetService(ServiceName, null);   
-            Assert.AreEqual(ServiceName, getAzureVmDscExtensionStatusCmdlet.Service);
+            getAzureVmDscExtensionStatusCmdlet.GetService(ServiceName, null);
+            Assert.Equal(ServiceName, getAzureVmDscExtensionStatusCmdlet.Service);
 
             //when vm object is passed as argument in the cmdlet
             getAzureVmDscExtensionStatusCmdlet.GetService("", GetAzureVM(ServiceName, ServiceName));
-            Assert.AreEqual(ServiceName, getAzureVmDscExtensionStatusCmdlet.Service);
+            Assert.Equal(ServiceName, getAzureVmDscExtensionStatusCmdlet.Service);
         }
 
-        [TestMethod]
+        [Fact]
         public void TestGetVirtualMachineDscStatusContextListWithServiceName()
         {
             getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
@@ -75,14 +48,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
             var dscExtensionStatusContexts =
                 getAzureVmDscExtensionStatusCmdlet
                     .GetVirtualMachineDscStatusContextList(deploymentResponse);
-            Assert.IsNull(getAzureVmDscExtensionStatusCmdlet.Name);
-            Assert.IsNull(getAzureVmDscExtensionStatusCmdlet.VmName);
-            Assert.IsNotNull(dscExtensionStatusContexts);
-            Assert.AreEqual(dscExtensionStatusContexts.Count, 2);
+            Assert.Null(getAzureVmDscExtensionStatusCmdlet.Name);
+            Assert.Null(getAzureVmDscExtensionStatusCmdlet.VmName);
+            Assert.NotNull(dscExtensionStatusContexts);
+            Assert.Equal(dscExtensionStatusContexts.Count, 2);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void TestGetVirtualMachineDscStatusContextListWithServiceNameAndVmName()
         {
             getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
@@ -100,14 +73,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
             var dscExtensionStatusContexts =
                 getAzureVmDscExtensionStatusCmdlet
                     .GetVirtualMachineDscStatusContextList(deploymentResponse);
-            Assert.IsNotNull(getAzureVmDscExtensionStatusCmdlet.Name);
-            Assert.IsNull(getAzureVmDscExtensionStatusCmdlet.VmName);
-            Assert.IsNotNull(dscExtensionStatusContexts);
-            Assert.AreEqual(dscExtensionStatusContexts.Count, 1);
+            Assert.NotNull(getAzureVmDscExtensionStatusCmdlet.Name);
+            Assert.Null(getAzureVmDscExtensionStatusCmdlet.VmName);
+            Assert.NotNull(dscExtensionStatusContexts);
+            Assert.Equal(dscExtensionStatusContexts.Count, 1);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void TestGetVirtualMachineDscStatusContextListWithServiceNameAndIncorrectVmName()
         {
             getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
@@ -125,13 +98,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
             var dscExtensionStatusContexts =
                 getAzureVmDscExtensionStatusCmdlet
                     .GetVirtualMachineDscStatusContextList(deploymentResponse);
-            Assert.IsNotNull(getAzureVmDscExtensionStatusCmdlet.Name);
-            Assert.IsNull(getAzureVmDscExtensionStatusCmdlet.VmName);
-            Assert.AreEqual(dscExtensionStatusContexts.Count, 0);
+            Assert.NotNull(getAzureVmDscExtensionStatusCmdlet.Name);
+            Assert.Null(getAzureVmDscExtensionStatusCmdlet.VmName);
+            Assert.Equal(dscExtensionStatusContexts.Count, 0);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void TestGetVirtualMachineDscStatusContextListWithVm()
         {
             getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
@@ -145,13 +118,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
             var dscExtensionStatusContexts =
                 getAzureVmDscExtensionStatusCmdlet
                     .GetVirtualMachineDscStatusContextList(deploymentResponse);
-            Assert.IsNull(getAzureVmDscExtensionStatusCmdlet.Name);
-            Assert.IsNotNull(getAzureVmDscExtensionStatusCmdlet.VmName);
-            Assert.AreEqual(dscExtensionStatusContexts.Count, 1);
-
+            Assert.Null(getAzureVmDscExtensionStatusCmdlet.Name);
+            Assert.NotNull(getAzureVmDscExtensionStatusCmdlet.VmName);
+            Assert.Equal(dscExtensionStatusContexts.Count, 1);
+            Assert.NotNull(getAzureVmDscExtensionStatusCmdlet.Name);
         }
 
-        [TestMethod]
+        [Fact]
         public void TestCreateDscStatusContext()
         {
             getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
@@ -161,13 +134,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.
             var context =
                 getAzureVmDscExtensionStatusCmdlet.CreateDscStatusContext(
                     roles[0], roleInstances[0]);
-            Assert.IsNotNull(context);
-            Assert.AreEqual(context.Name, "dscmachine02");
-            Assert.AreEqual(context.StatusCode, 1);
-            Assert.AreEqual(context.ServiceName, ServiceName);
-            Assert.AreEqual(context.Status, "Success");
-            Assert.AreEqual(context.StatusMessage, "Dsc Configuration was applied successful");
-            Assert.AreEqual(context.DscConfigurationLog.Count(), GetFormattedMessage().Count());
+            Assert.NotNull(context);
+            Assert.Equal(context.Name, "dscmachine02");
+            Assert.Equal(context.StatusCode, 1);
+            Assert.Equal(context.ServiceName, ServiceName);
+            Assert.Equal(context.Status, "Success");
+            Assert.Equal(context.StatusMessage, "Dsc Configuration was applied successful");
+            Assert.Equal(context.DscConfigurationLog.Count(), GetFormattedMessage().Count());
         }
 
         private IPersistentVM GetAzureVM(String roleName, String serviceName)

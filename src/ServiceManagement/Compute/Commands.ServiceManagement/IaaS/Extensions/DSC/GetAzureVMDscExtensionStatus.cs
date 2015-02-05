@@ -39,7 +39,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     /// Get-AzureVMDscExtensionStatus -ServiceName service -Name VM-name
     /// Get-AzureVMDscExtensionStatus -VM vm
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, VirtualMachineDscStatusCmdletNoun, DefaultParameterSetName = GetStatusByServiceAndVmNameParamSet), OutputType(typeof(VirtualMachineDscExtensionStatusContext))]
+    [Cmdlet(
+        VerbsCommon.Get, 
+        VirtualMachineDscStatusCmdletNoun, 
+        DefaultParameterSetName = GetStatusByServiceAndVmNameParamSet), 
+        OutputType(typeof(VirtualMachineDscExtensionStatusContext))]
     public class GetAzureVmDscExtensionStatusCommand : IaaSDeploymentManagementCmdletBase
     {
         /// <summary>
@@ -81,6 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected const string VirtualMachineDscStatusCmdletNoun = "AzureVMDscExtensionStatus";
         protected const string GetStatusByServiceAndVmNameParamSet = "GetStatusByServiceAndVMName";
         protected const string GetStatusByVmParamSet = "GetStatusByVM";
+
         internal string Service;
         internal string VmName;
 
@@ -170,7 +175,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             //filter the deployment info for a vm, if specified. 
             var vmRoles = new List<NSM.Role>(deployment.Roles.Where(
                 r => (string.IsNullOrEmpty(Name) && string.IsNullOrEmpty(VmName))
-                  || r.RoleName.Equals(Name, StringComparison.InvariantCultureIgnoreCase) || r.RoleName.Equals(VmName, StringComparison.InvariantCultureIgnoreCase)));
+                  || r.RoleName.Equals(Name, StringComparison.InvariantCultureIgnoreCase) 
+                  || r.RoleName.Equals(VmName, StringComparison.InvariantCultureIgnoreCase)));
 
             foreach (var vm in vmRoles)
             {
@@ -203,11 +209,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         internal VirtualMachineDscExtensionStatusContext CreateDscStatusContext(NSM.Role vmRole, NSM.RoleInstance roleInstance) 
         {
             var message = string.Empty;
+            var extension = VirtualMachineDscExtensionCmdletBase.ExtensionPublishedNamespace + "." 
+                               + VirtualMachineDscExtensionCmdletBase.ExtensionPublishedName;
             NSM.ResourceExtensionConfigurationStatus extensionSettingStatus = null;
             
             if (roleInstance != null && roleInstance.ResourceExtensionStatusList != null)
             {
-                foreach (var resourceExtensionStatus in roleInstance.ResourceExtensionStatusList.Where(resourceExtensionStatus => resourceExtensionStatus.HandlerName.Equals(VirtualMachineDscExtensionCmdletBase.ExtensionPublishedNamespace + "." + VirtualMachineDscExtensionCmdletBase.ExtensionPublishedName, StringComparison.InvariantCultureIgnoreCase)).Where(resourceExtensionStatus => resourceExtensionStatus.ExtensionSettingStatus != null))
+                foreach (var resourceExtensionStatus in 
+                    roleInstance.ResourceExtensionStatusList.Where(
+                    resourceExtensionStatus => resourceExtensionStatus.HandlerName.Equals(
+                        extension, StringComparison.InvariantCultureIgnoreCase)).
+                        Where(resourceExtensionStatus => resourceExtensionStatus.ExtensionSettingStatus != null))
                 {
                     extensionSettingStatus = resourceExtensionStatus.ExtensionSettingStatus;
 
@@ -230,7 +242,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 Name = vmRole == null ? string.Empty : vmRole.RoleName,
                 Status = extensionSettingStatus.Status ?? string.Empty,
                 StatusCode = extensionSettingStatus.Code ?? -1,
-                StatusMessage = (extensionSettingStatus.FormattedMessage == null || extensionSettingStatus.FormattedMessage.Message == null) ? string.Empty : extensionSettingStatus.FormattedMessage.Message.ToString(CultureInfo.CurrentUICulture),
+                StatusMessage = (extensionSettingStatus.FormattedMessage == null || 
+                    extensionSettingStatus.FormattedMessage.Message == null) ? string.Empty : 
+                    extensionSettingStatus.FormattedMessage.Message.ToString(CultureInfo.CurrentUICulture),
                 DscConfigurationLog = !string.Empty.Equals(message) ? message.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None) : new List<String>().ToArray(),
                 Timestamp = extensionSettingStatus.Timestamp == null ? DateTime.MinValue : extensionSettingStatus.Timestamp.Value
             };
