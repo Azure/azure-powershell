@@ -32,10 +32,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     OutputType(typeof(VirtualMachineDscExtensionContext))]
     public class GetAzureVMDscExtensionCommand : VirtualMachineDscExtensionCmdletBase
     {
-
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true)]
-        public override string Version { get; set; }
-
         internal void ExecuteCommand()
         {
             List<ResourceExtensionReference> extensionRefs = GetPredicateExtensionList();
