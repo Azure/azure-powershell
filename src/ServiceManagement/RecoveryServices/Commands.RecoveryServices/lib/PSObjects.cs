@@ -99,6 +99,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string ResourceNamespace = "WAHyperVRecoveryManager";
 
         /// <summary>
+        /// Represents None string value.
+        /// </summary>
+        public const string None = "None";
+
+        /// <summary>
+        /// Represents Existing string value.
+        /// </summary>
+        public const string Existing = "Existing";
+
+        /// <summary>
+        /// Represents New string value.
+        /// </summary>
+        public const string New = "New";
+
+        /// <summary>
         /// Represents direction primary to secondary.
         /// </summary>
         public const string PrimaryToRecovery = "PrimaryToRecovery";

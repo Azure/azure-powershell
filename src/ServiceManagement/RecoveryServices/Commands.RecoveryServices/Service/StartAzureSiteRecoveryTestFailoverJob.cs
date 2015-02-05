@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Used to initiate a commit operation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureSiteRecoveryTestFailoverJob", DefaultParameterSetName = ASRParameterSets.ByRPObject)]
+    [Cmdlet(VerbsLifecycle.Start, "AzureSiteRecoveryTestFailoverJob", DefaultParameterSetName = ASRParameterSets.ByPEId)]
     [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryTestFailoverJob : RecoveryServicesCmdletBase
     {
@@ -47,28 +47,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets ID of the Recovery Plan.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPIdWithLogicalNetworkID, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPIdWithVMNetworkID, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPIdWithVMNetwork, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string RpId { get; set; }
 
         /// <summary>
-        /// Gets or sets ID of the Recovery Plan.
+        /// Gets or sets Network.
         /// </summary>
+        [Parameter]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectWithVMNetwork, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObjectWithVMNetwork, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPIdWithVMNetwork, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithVMNetwork, Mandatory = true)]
         public ASRNetwork Network { get; set; }
+
+        /// <summary>
+        /// Gets or sets NetworkType.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        [ValidateSet(
+            Constants.None,
+            Constants.New,
+            Constants.Existing)]
+        public string NetworkType { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Plan object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObjectWithLogicalNetworkID, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObjectWithVMNetworkID, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObjectWithVMNetwork, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         /// <summary>
         /// Gets or sets failover direction for the recovery plan.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
+        [Parameter(Mandatory = true)]
         [ValidateSet(
           Constants.PrimaryToRecovery,
           Constants.RecoveryToPrimary)]
@@ -80,6 +98,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithLogicalNetworkID, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithVMNetworkID, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithVMNetwork, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string ProtectionEntityId { get; set; }
 
@@ -89,6 +108,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithLogicalNetworkID, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithVMNetworkID, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithVMNetwork, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string ProtectionContainerId { get; set; }
 
@@ -98,6 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectWithLogicalNetworkID, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectWithVMNetworkID, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectWithVMNetwork, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionEntity ProtectionEntity { get; set; }
 
@@ -112,6 +133,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectWithLogicalNetworkID, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithLogicalNetworkID, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObjectWithLogicalNetworkID, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPIdWithLogicalNetworkID, Mandatory = true)]
         public string LogicalNetworkId { get; set; }
 
         /// <summary>
@@ -119,6 +142,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectWithVMNetworkID, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEIdWithVMNetworkID, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObjectWithVMNetworkID, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPIdWithVMNetworkID, Mandatory = true)]
         public string VmNetworkId { get; set; }
         #endregion Parameters
 
@@ -129,13 +154,60 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                if (this.NetworkType == null)
+                {
+                    this.WriteWarning("'NetworkType' will be a mandatory paramter from next release.");
+                }
+
+                if (this.VmNetworkId != null)
+                {
+                    this.WriteWarning("Call using 'NetworkId' parameter will not be supported from next release. Please use 'Network' parameter instead.");
+                }
+
+                if (this.NetworkType == Constants.Existing && (this.Network == null && this.VmNetworkId == null))
+                {
+                    throw new Exception("Existing Network details were not supplied.");
+                }
+
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ByRPObject:
                         this.RpId = this.RecoveryPlan.ID;
+                        this.networkType = "DisconnectedVMNetworkTypeForTestFailover";
                         this.StartRpTestFailover();
                         break;
                     case ASRParameterSets.ByRPId:
+                        this.networkType = "DisconnectedVMNetworkTypeForTestFailover";
+                        this.StartRpTestFailover();
+                        break;
+                    case ASRParameterSets.ByRPObjectWithVMNetwork:
+                        this.networkType = "UseVMNetworkTypeForTestFailover";
+                        this.networkId = this.Network.ID;
+                        this.StartRpTestFailover();
+                        break;
+                    case ASRParameterSets.ByRPObjectWithVMNetworkID:
+                        this.networkType = "UseVMNetworkTypeForTestFailover";
+                        this.networkId = this.VmNetworkId;
+                        this.StartRpTestFailover();
+                        break;
+                    case ASRParameterSets.ByRPIdWithVMNetwork:
+                        this.networkType = "UseVMNetworkTypeForTestFailover";
+                        this.networkId = this.Network.ID;
+                        this.StartRpTestFailover();
+                        break;
+                    case ASRParameterSets.ByRPIdWithVMNetworkID:
+                        this.networkType = "UseVMNetworkTypeForTestFailover";
+                        this.networkId = this.VmNetworkId;
+                        this.StartRpTestFailover();
+                        break;
+                    case ASRParameterSets.ByRPIdWithLogicalNetworkID:
+                        this.networkType = "CreateVMNetworkTypeForTestFailover";
+                        this.networkId = this.LogicalNetworkId;
+                        this.StartRpTestFailover();
+                        break;
+                    case ASRParameterSets.ByRPObjectWithLogicalNetworkID:
+                        this.networkType = "CreateVMNetworkTypeForTestFailover";
+                        this.networkId = this.LogicalNetworkId;
                         this.StartRpTestFailover();
                         break;
                     case ASRParameterSets.ByPEObject:
@@ -152,7 +224,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         this.networkId = this.VmNetworkId;
                         this.UpdateRequiredParametersAndStartFailover();
                         break;
+                    case ASRParameterSets.ByPEObjectWithVMNetwork:
+                        this.networkType = "UseVMNetworkTypeForTestFailover";
+                        this.networkId = this.Network.ID;
+                        this.UpdateRequiredParametersAndStartFailover();
+                        break;
                     case ASRParameterSets.ByPEId:
+                        this.networkType = "DisconnectedVMNetworkTypeForTestFailover";
                         this.StartPETestFailover();
                         break;
                     case ASRParameterSets.ByPEIdWithLogicalNetworkID:
@@ -163,6 +241,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     case ASRParameterSets.ByPEIdWithVMNetworkID:
                         this.networkType = "UseVMNetworkTypeForTestFailover";
                         this.networkId = this.VmNetworkId;
+                        this.StartPETestFailover();
+                        break;
+                    case ASRParameterSets.ByPEIdWithVMNetwork:
+                        this.networkType = "UseVMNetworkTypeForTestFailover";
+                        this.networkId = this.Network.ID;
                         this.StartPETestFailover();
                         break;
                 }
@@ -179,20 +262,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private void StartRpTestFailover()
         {
             RpTestFailoverRequest request = new RpTestFailoverRequest();
-
-            if (this.Network != null)
-            {
-                request.NetworkID = this.Network.ID;
-                request.NetworkType = "UseVMNetworkTypeForTestFailover";
-            }
-            else
-            {
-                request.NetworkID = this.networkId;
-                if (string.IsNullOrEmpty(this.networkType))
-                {
-                    request.NetworkType = "DisconnectedVMNetworkTypeForTestFailover";
-                }
-            }
 
             if (this.RecoveryPlan == null)
             {
@@ -214,6 +283,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
                 }
             }
+
+            request.NetworkID = this.networkId;
+            request.NetworkType = this.networkType;
 
             request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
             request.FailoverDirection = this.Direction;
@@ -262,17 +334,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
             request.FailoverDirection = this.Direction;
 
-            if (this.Network != null)
-            {
-                request.NetworkID = this.Network.ID;
-                this.networkType = "UseVMNetworkTypeForTestFailover";
-            }
-            else
-            {
-                request.NetworkID = this.networkId;
-            }
-
-            request.FailoverDirection = this.Direction;
+            request.NetworkID = this.networkId;
             request.NetworkType = this.networkType;
 
             this.jobResponse =
