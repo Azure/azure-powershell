@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/locations",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9sb2NhdGlvbnM=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -43,7 +42,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/60e50193060c3821b32cd0da28808d4a",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzYwZTUwMTkzMDYwYzM4MjFiMzJjZDBkYTI4ODA4ZDRh",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -84,7 +82,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/networksecuritygroups",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9zZXJ2aWNlcy9uZXR3b3JraW5nL25ldHdvcmtzZWN1cml0eWdyb3Vwcw==",
       "RequestMethod": "POST",
       "RequestBody": "<NetworkSecurityGroup xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Name>onesdk882</Name>\r\n  <Label>Scenario Test NSG</Label>\r\n  <Location>North Europe</Location>\r\n</NetworkSecurityGroup>",
       "RequestHeaders": {
@@ -131,7 +128,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/9b1fdf82d162323fad9c582ec17b7a12",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzliMWZkZjgyZDE2MjMyM2ZhZDljNTgyZWMxN2I3YTEy",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -175,7 +171,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/9b1fdf82d162323fad9c582ec17b7a12",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zLzliMWZkZjgyZDE2MjMyM2ZhZDljNTgyZWMxN2I3YTEy",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -218,8 +213,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/networksecuritygroups/onesdk882?",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9zZXJ2aWNlcy9uZXR3b3JraW5nL25ldHdvcmtzZWN1cml0eWdyb3Vwcy9vbmVzZGs4ODI/",
+      "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/networksecuritygroups/onesdk882",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -260,7 +254,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/networksecuritygroups/onesdk882/rules/onesdk2653",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9zZXJ2aWNlcy9uZXR3b3JraW5nL25ldHdvcmtzZWN1cml0eWdyb3Vwcy9vbmVzZGs4ODIvcnVsZXMvb25lc2RrMjY1Mw==",
       "RequestMethod": "PUT",
       "RequestBody": "<Rule xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Type>Outbound</Type>\r\n  <Priority>500</Priority>\r\n  <Action>Deny</Action>\r\n  <SourceAddressPrefix>*</SourceAddressPrefix>\r\n  <SourcePortRange>*</SourcePortRange>\r\n  <DestinationAddressPrefix>*</DestinationAddressPrefix>\r\n  <DestinationPortRange>*</DestinationPortRange>\r\n  <Protocol>TCP</Protocol>\r\n</Rule>",
       "RequestHeaders": {
@@ -307,7 +300,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/a2517969fc2f38449e844903c9bcb51a",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zL2EyNTE3OTY5ZmMyZjM4NDQ5ZTg0NDkwM2M5YmNiNTFh",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -351,7 +343,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/operations/a2517969fc2f38449e844903c9bcb51a",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9vcGVyYXRpb25zL2EyNTE3OTY5ZmMyZjM4NDQ5ZTg0NDkwM2M5YmNiNTFh",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -395,7 +386,6 @@
     },
     {
       "RequestUri": "/0a312069-c667-43e9-97c0-d104eced63f7/services/networking/networksecuritygroups/onesdk882?detaillevel=Full",
-      "EncodedRequestUri": "LzBhMzEyMDY5LWM2NjctNDNlOS05N2MwLWQxMDRlY2VkNjNmNy9zZXJ2aWNlcy9uZXR3b3JraW5nL25ldHdvcmtzZWN1cml0eWdyb3Vwcy9vbmVzZGs4ODI/ZGV0YWlsbGV2ZWw9RnVsbA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

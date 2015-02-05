@@ -1,8 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/providers?&api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Byb3ZpZGVycz8mYXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/providers?api-version=2014-04-01-preview",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -50,7 +49,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourcegroups/onesdk764?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlZ3JvdXBzL29uZXNkazc2ND9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "HEAD",
       "RequestBody": "",
       "RequestHeaders": {
@@ -98,7 +96,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourcegroups/onesdk764?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlZ3JvdXBzL29uZXNkazc2ND9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "HEAD",
       "RequestBody": "",
       "RequestHeaders": {
@@ -143,7 +140,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourcegroups/onesdk764?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlZ3JvdXBzL29uZXNkazc2ND9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
@@ -196,8 +192,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/onesdk764/resources?&api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlR3JvdXBzL29uZXNkazc2NC9yZXNvdXJjZXM/JmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/onesdk764/resources?api-version=2014-04-01-preview",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -245,7 +240,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourcegroups/onesdk764/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlZ3JvdXBzL29uZXNkazc2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcGVybWlzc2lvbnM/YXBpLXZlcnNpb249MjAxNC0wNy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -296,7 +290,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -344,7 +337,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/onesdk764/providers/Microsoft.Batch/batchAccounts/onesdk631?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlR3JvdXBzL29uZXNkazc2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvb25lc2RrNjMxP2FwaS12ZXJzaW9uPTIwMTQtMDUtMDEtcHJpdmF0ZXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"testtag1\": \"testval1\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -410,7 +402,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/onesdk764/providers/Microsoft.Batch/batchAccounts/onesdk631?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlR3JvdXBzL29uZXNkazc2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvb25lc2RrNjMxP2FwaS12ZXJzaW9uPTIwMTQtMDUtMDEtcHJpdmF0ZXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus\",\r\n  \"tags\": {\r\n    \"testtag2\": \"testval2\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -479,7 +470,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/onesdk764/providers/Microsoft.Batch/batchAccounts/onesdk631/operationResults/773d87a1-b969-4264-85c4-e86d681420cf?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlR3JvdXBzL29uZXNkazc2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvb25lc2RrNjMxL29wZXJhdGlvblJlc3VsdHMvNzczZDg3YTEtYjk2OS00MjY0LTg1YzQtZTg2ZDY4MTQyMGNmP2FwaS12ZXJzaW9uPTIwMTQtMDUtMDEtcHJpdmF0ZXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -542,7 +532,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/onesdk764/providers/Microsoft.Batch/batchAccounts/onesdk631/operationResults/773d87a1-b969-4264-85c4-e86d681420cf?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlR3JvdXBzL29uZXNkazc2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvb25lc2RrNjMxL29wZXJhdGlvblJlc3VsdHMvNzczZDg3YTEtYjk2OS00MjY0LTg1YzQtZTg2ZDY4MTQyMGNmP2FwaS12ZXJzaW9uPTIwMTQtMDUtMDEtcHJpdmF0ZXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -608,7 +597,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/onesdk764/providers/Microsoft.Batch/batchAccounts/onesdk631?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlR3JvdXBzL29uZXNkazc2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvb25lc2RrNjMxP2FwaS12ZXJzaW9uPTIwMTQtMDUtMDEtcHJpdmF0ZXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -671,7 +659,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/onesdk764/providers/Microsoft.Batch/batchAccounts/onesdk631?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlR3JvdXBzL29uZXNkazc2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvb25lc2RrNjMxP2FwaS12ZXJzaW9uPTIwMTQtMDUtMDEtcHJpdmF0ZXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -734,7 +721,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/onesdk764/providers/Microsoft.Batch/batchAccounts/onesdk631?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlR3JvdXBzL29uZXNkazc2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvb25lc2RrNjMxP2FwaS12ZXJzaW9uPTIwMTQtMDUtMDEtcHJpdmF0ZXByZXZpZXc=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -794,7 +780,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/onesdk764/providers/Microsoft.Batch/batchAccounts/onesdk631/operationResults/156ce073-e10d-41db-ba97-3cd2df1e5046?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlR3JvdXBzL29uZXNkazc2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvb25lc2RrNjMxL29wZXJhdGlvblJlc3VsdHMvMTU2Y2UwNzMtZTEwZC00MWRiLWJhOTctM2NkMmRmMWU1MDQ2P2FwaS12ZXJzaW9uPTIwMTQtMDUtMDEtcHJpdmF0ZXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -857,7 +842,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/onesdk764/providers/Microsoft.Batch/batchAccounts/onesdk631/operationResults/156ce073-e10d-41db-ba97-3cd2df1e5046?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlR3JvdXBzL29uZXNkazc2NC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvb25lc2RrNjMxL29wZXJhdGlvblJlc3VsdHMvMTU2Y2UwNzMtZTEwZC00MWRiLWJhOTctM2NkMmRmMWU1MDQ2P2FwaS12ZXJzaW9uPTIwMTQtMDUtMDEtcHJpdmF0ZXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -920,7 +904,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourcegroups/onesdk764?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL3Jlc291cmNlZ3JvdXBzL29uZXNkazc2ND9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -974,7 +957,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs3NjQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ==?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczNOalF0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRPT0/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1031,7 +1013,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs3NjQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ==?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczNOalF0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRPT0/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1088,7 +1069,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs3NjQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ==?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczNOalF0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRPT0/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1145,7 +1125,6 @@
     },
     {
       "RequestUri": "/subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs3NjQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ==?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGEwNmZlMjQtYzE5Ny00MzUzLWFkYzEtMDU4ZDFhNTE5MjRlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczNOalF0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRPT0/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

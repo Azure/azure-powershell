@@ -72,11 +72,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
 
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = true, HelpMessage = "IconUri.")]
         [ValidateNotNullOrEmpty]
-        public Uri IconUri { get; set; }
+        public string IconUri { get; set; }
 
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = true, HelpMessage = "SmallIconUri.")]
         [ValidateNotNullOrEmpty]
-        public Uri SmallIconUri { get; set; }
+        public string SmallIconUri { get; set; }
 
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = true, HelpMessage = "DontShowInGui.")]
         public SwitchParameter DontShowInGui { get; set; }
