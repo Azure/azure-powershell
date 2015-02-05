@@ -20,17 +20,14 @@ using System.Security.AccessControl;
 using System.Security.Permissions;
 using System.Security.Principal;
 using System.Text;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.Scaffolding;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceDefinitionSchema;
-<<<<<<< HEAD
-=======
 using Microsoft.WindowsAzure.Commands.Utilities;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Extensions;
->>>>>>> dev
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 {
