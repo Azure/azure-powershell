@@ -57,8 +57,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the contentLinkVersion
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The ContentLinkUri version.")]
-        public string ContentLinkUriVersion { get; set; }
+            HelpMessage = "The ContentLink version.")]
+        public string ContentLinkVersion { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            var updatedModule = this.AutomationClient.UpdateModule(this.AutomationAccountName, Tags, Name, ContentLinkUri, ContentLinkUriVersion);
+            var updatedModule = this.AutomationClient.UpdateModule(this.AutomationAccountName, Tags, Name, ContentLinkUri, ContentLinkVersion);
             
             this.WriteObject(updatedModule);
         }

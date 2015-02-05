@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 
-        [Fact(Skip = "Fix to make x86 compatible.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationStartAndStopRunbook()
@@ -56,6 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAutomationSuspendAndResumeJob()
         {
+            RunPowerShellTest("Assert-True $true");
             RunPowerShellTest("Test-AutomationSuspendAndResumeJob -runbookPath Resources\\Automation\\Use-WorkflowCheckpointSample.ps1");
         }
 

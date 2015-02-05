@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return modulesModels.Select(c => new Module(automationAccountName, c));
         }
 
-        public Module UpdateModule(string automationAccountName, IDictionary tags, string name, Uri contentLinkUri, string contentLinkUriVersion)
+        public Module UpdateModule(string automationAccountName, IDictionary tags, string name, Uri contentLinkUri, string contentLinkVersion)
         {
             var moduleModel = this.automationManagementClient.Modules.Get(automationAccountName, name).Module;
             if(tags != null && contentLinkUri != null)
@@ -687,9 +687,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 moduleCreateParameters.Properties.ContentLink = new AutomationManagement.Models.ContentLink();
                 moduleCreateParameters.Properties.ContentLink.Uri = contentLinkUri;
                 moduleCreateParameters.Properties.ContentLink.Version =
-                    (String.IsNullOrWhiteSpace(contentLinkUriVersion))
+                    (String.IsNullOrWhiteSpace(contentLinkVersion))
                         ? Guid.NewGuid().ToString()
-                        : contentLinkUriVersion;
+                        : contentLinkVersion;
 
                 this.automationManagementClient.Modules.Create(automationAccountName,
                     moduleCreateParameters);
@@ -704,9 +704,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 moduleUpdateParameters.Properties.ContentLink = new AutomationManagement.Models.ContentLink();
                 moduleUpdateParameters.Properties.ContentLink.Uri = contentLinkUri;
                 moduleUpdateParameters.Properties.ContentLink.Version =
-                    (String.IsNullOrWhiteSpace(contentLinkUriVersion))
+                    (String.IsNullOrWhiteSpace(contentLinkVersion))
                         ? Guid.NewGuid().ToString()
-                        : contentLinkUriVersion;
+                        : contentLinkVersion;
 
                 moduleUpdateParameters.Tags = moduleModel.Tags;
 

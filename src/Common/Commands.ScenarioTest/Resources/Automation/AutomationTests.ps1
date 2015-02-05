@@ -17,7 +17,8 @@
 Checks whether the first string contains the second one
 #>
 
-$accountName='AutomationAccount'
+$accountName='safeer'
+$location = "East US"
 
 function AssertContains
 {
@@ -127,15 +128,25 @@ function Test-AutomationStartAndStopRunbook
     param([string] $runbookPath)
         
     #Setup
-    $automationAccount = Get-AzureAutomationAccount -Name $accountName
+	#$automation = Get-AzureAutomationAccount  | where {$_.Name -eq $accountName} 
+ #   if ($automation.Count -eq 1)
+ #   {
+ #       Remove-AzureAutomationAccount $accountName  -Force
+ #   }
+	#else
+	#{
+	#	$automationAccount = New-AzureAutomationAccount -Name $accountName -Location $location
+	#}
+
+	$automationAccount = Get-AzureAutomationAccount -Name $accountName
     Assert-NotNull $automationAccount "Automation account $accountName does not exist."
 
     $runbook = CreateRunbook $runbookPath
     Assert-NotNull $runbook  "runBook $runbookPath does not import successfully."
-    $automationAccount | Publish-AzureAutomationRunbook -Id $runbook.Id
+    $automationAccount | Publish-AzureAutomationRunbook -Name 
     
     #Test
-    $job = $automationAccount | Start-AzureAutomationRunbook -Id $runbook.Id
+    $job = Start-AzureAutomationRunbook -Name $runbook.Name -AutomationAccountName $automationAccount.AutomationAccountName
     WaitForJobStatus -Id $job.Id -Status "Running"
     $automationAccount | Stop-AzureAutomationJob -Id $job.Id
     WaitForJobStatus -Id $job.Id -Status "Stopped"
