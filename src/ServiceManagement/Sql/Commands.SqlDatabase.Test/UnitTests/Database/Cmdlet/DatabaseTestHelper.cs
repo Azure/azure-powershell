@@ -25,12 +25,22 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
         /// The unique GUID for identifying the Shared SLO.
         /// </summary>
         public static readonly Guid SharedSloGuid = new Guid("910b4fcb-8a29-4c3e-958f-f7ba794388b2");
-
+        
         /// <summary>
         /// The unique GUID for identifying the System SLO.
         /// </summary>
         public static readonly Guid SystemSloGuid = new Guid("26e021db-f1f9-4c98-84c6-92af8ef433d7");
 
+        /// <summary>
+        /// The unique GUID for identifying the System2 SLO.
+        /// </summary>
+        public static readonly Guid System2SloGuid = new Guid("620323bf-2879-4807-b30d-c2e6d7b3b3aa");
+
+        /// <summary>
+        /// The unique GUID for identifying the Business SLO.
+        /// </summary>
+        public static readonly Guid BusinessSloGuid = new Guid("4518ce8e-6026-4113-b4fd-3b5d777c6881");
+        
         /// <summary>
         /// The unique GUID for identifying the Basic SLO.
         /// </summary>
