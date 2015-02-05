@@ -18,6 +18,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -69,7 +70,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 
             if (this.Slot != null)
             {
-                isDraft = this.Slot == Constants.Draft;
+                isDraft = (0 == String.Compare(this.Slot, Constants.Draft, CultureInfo.InvariantCulture,
+                              CompareOptions.OrdinalIgnoreCase));
             }
 
             return isDraft;

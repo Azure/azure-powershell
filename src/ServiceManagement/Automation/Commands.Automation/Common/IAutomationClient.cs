@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Module GetModule(string automationAccountName, string name);
 
-        Module UpdateModule(string automationAccountName, IDictionary tags, string name, Uri contentLink);
+        Module UpdateModule(string automationAccountName, IDictionary tags, string name, Uri contentLink, string contentLinkUriVersion);
 
         IEnumerable<Module> ListModules(string automationAccountName);
 

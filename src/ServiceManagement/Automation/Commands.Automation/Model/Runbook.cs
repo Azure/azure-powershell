@@ -13,9 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Management.Automation.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
@@ -45,7 +48,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = accountName;
             this.Name = runbook.Name;
             this.Location = runbook.Location;
-            this.Tags = runbook.Tags ?? new Dictionary<string, string>();
+            this.Tags = new Hashtable();
+            foreach (var kvp in runbook.Tags)
+            {
+                this.Tags.Add(kvp.Key, kvp.Value);
+            }
 
             if (runbook.Properties == null) return;
 
@@ -59,7 +66,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.JobCount = runbook.Properties.JobCount;
             this.RunbookType = runbook.Properties.RunbookType;
 
-            this.Parameters = runbook.Properties.Parameters ?? new Dictionary<string, RunbookParameter>();
+            this.Parameters = new Hashtable();
+            foreach (var kvp in runbook.Properties.Parameters)
+            {
+                this.Parameters.Add(kvp.Key, (object)kvp.Value);
+            }
         }
 
         /// <summary>
@@ -87,7 +98,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the tags.
         /// </summary>
-        public IDictionary<string, string> Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the JobCount.
@@ -117,7 +128,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the parameters.
         /// </summary>
-        public IDictionary<string, RunbookParameter> Parameters { get; set; }
+        public Hashtable Parameters { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether log verbose is enabled.

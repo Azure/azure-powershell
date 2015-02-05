@@ -45,10 +45,14 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.CreationTime = connection.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = connection.Properties.LastModifiedTime.ToLocalTime();
             this.ConnectionTypeName = connection.Properties.ConnectionType.Name;
-            this.FieldDefinitionValues = connection.Properties.FieldDefinitionValues;
+            this.FieldDefinitionValues = new Hashtable();
+            foreach (var kvp in connection.Properties.FieldDefinitionValues)
+            {
+                this.FieldDefinitionValues.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+            }
         }
 
-         /// <summary>
+        /// <summary>
         /// Initializes a new instance of the <see cref="Connection"/> class.
         /// </summary>
         public Connection()
@@ -70,6 +74,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
         public string ConnectionTypeName { get; set; }
 
-        public IDictionary<string, string> FieldDefinitionValues { get; set; }
+        public Hashtable FieldDefinitionValues { get; set; }
     }
 }

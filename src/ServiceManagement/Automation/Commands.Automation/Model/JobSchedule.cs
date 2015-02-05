@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.JobScheduleId = jobSchedule.Properties.Id;
             this.RunbookName = jobSchedule.Properties.Runbook.Name;
             this.ScheduleName = jobSchedule.Properties.Schedule.Name;
-            this.Parameters = jobSchedule.Properties.Parameters.ToDictionary(item => item.Key, item => (object)PowerShellJsonConverter.Deserialize(item.Value)) ?? new Dictionary<string, object>();
+            this.Parameters = new Hashtable();
+            foreach (var kvp in jobSchedule.Properties.Parameters)
+            {
+                this.Parameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+            }
         }
 
         /// <summary>
@@ -69,6 +74,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the runbook parameters.
         /// </summary>
-        public IDictionary<string, object> Parameters { get; set; }
+        public Hashtable Parameters { get; set; }
     }
 }

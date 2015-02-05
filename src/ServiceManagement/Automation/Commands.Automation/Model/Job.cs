@@ -10,6 +10,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
 using System;
 using System.Collections.Generic;
@@ -52,7 +53,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Exception = job.Properties.Exception;
             this.EndTime = job.Properties.EndTime;
             this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
-            this.JobParameters = job.Properties.Parameters.ToDictionary(item => item.Key, item => (object)PowerShellJsonConverter.Deserialize(item.Value)) ?? new Dictionary<string, object>();
+            this.JobParameters = new Hashtable();
+            foreach (var kvp in job.Properties.Parameters)
+            {
+                this.JobParameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+            }
         }
 
         /// <summary>
@@ -115,7 +120,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the parameters of the job.
         /// </summary>
-        public IDictionary<string, object> JobParameters { get; set; }
+        public Hashtable JobParameters { get; set; }
 
         /// <summary>
         /// Gets or sets the runbook.

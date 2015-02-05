@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Properties;
 using System;
@@ -33,7 +34,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = automationAccountName;
             this.Name = module.Name;
             this.Location = module.Location;
-            this.Tags = module.Tags ?? new Dictionary<string, string>();
+            this.Tags = new Hashtable();
+            foreach (var kvp in module.Tags)
+            {
+                this.Tags.Add(kvp.Key, kvp.Value);
+            }
 
             if (module.Properties == null) return;
             
@@ -71,7 +76,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the tags.
         /// </summary>
-        public IDictionary<string, string> Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the IsGlobal.
@@ -107,11 +112,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the ProvisioningState.
         /// </summary>
         public string ProvisioningState { get; set; }
-
-        /// <summary>
-        /// Gets or sets the ContentLink.
-        /// </summary>
-        public ContentLink ContentLink { get; set; }
     }
 
     public class ContentLink

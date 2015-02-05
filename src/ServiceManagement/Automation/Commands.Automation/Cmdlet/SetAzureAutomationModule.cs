@@ -54,12 +54,19 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public Uri ContentLinkUri { get; set; }
 
         /// <summary>
+        /// Gets or sets the contentLinkVersion
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The ContentLinkUri version.")]
+        public string ContentLinkUriVersion { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            var updatedModule = this.AutomationClient.UpdateModule(this.AutomationAccountName, Tags, Name, ContentLinkUri);
+            var updatedModule = this.AutomationClient.UpdateModule(this.AutomationAccountName, Tags, Name, ContentLinkUri, ContentLinkUriVersion);
             
             this.WriteObject(updatedModule);
         }

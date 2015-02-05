@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
@@ -313,11 +314,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var draftContent = String.Empty;
             var publishedContent = String.Empty;
 
-            if (0 != String.Compare(runbook.Properties.State, RunbookState.Published, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
+            if (0 != String.Compare(runbook.Properties.State, RunbookState.Published, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && (!isDraft.HasValue || isDraft.Value))
             {
                 draftContent = this.automationManagementClient.RunbookDraft.Content(automationAccountName, runbookName).Stream;
             }
-            if (0 != String.Compare(runbook.Properties.State, RunbookState.New, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
+            if (0 != String.Compare(runbook.Properties.State, RunbookState.New, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && (!isDraft.HasValue || !isDraft.Value))
             {
                 publishedContent = this.automationManagementClient.Runbooks.Content(automationAccountName, runbookName).Stream;
             }
@@ -330,7 +331,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             else 
             {
-                if (isDraft.Value == true)
+                if (true == isDraft.Value)
                 {
 
                     if (String.IsNullOrEmpty(draftContent)) throw new ResourceCommonException(typeof(Runbook),
@@ -672,10 +673,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return modulesModels.Select(c => new Module(automationAccountName, c));
         }
 
-        public Module UpdateModule(string automationAccountName, IDictionary tags, string name, Uri contentLinkUri)
+        public Module UpdateModule(string automationAccountName, IDictionary tags, string name, Uri contentLinkUri, string contentLinkUriVersion)
         {
-            var existingModule = this.GetModule(automationAccountName, name);
-
+            var moduleModel = this.automationManagementClient.Modules.Get(automationAccountName, name).Module;
             if(tags != null && contentLinkUri != null)
             {
                 var moduleCreateParameters = new AutomationManagement.Models.ModuleCreateParameters();
@@ -686,6 +686,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 moduleCreateParameters.Properties = new ModuleCreateProperties();
                 moduleCreateParameters.Properties.ContentLink = new AutomationManagement.Models.ContentLink();
                 moduleCreateParameters.Properties.ContentLink.Uri = contentLinkUri;
+                moduleCreateParameters.Properties.ContentLink.Version =
+                    (String.IsNullOrWhiteSpace(contentLinkUriVersion))
+                        ? Guid.NewGuid().ToString()
+                        : contentLinkUriVersion;
 
                 this.automationManagementClient.Modules.Create(automationAccountName,
                     moduleCreateParameters);
@@ -699,7 +703,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 moduleUpdateParameters.Properties = new ModuleUpdateProperties();
                 moduleUpdateParameters.Properties.ContentLink = new AutomationManagement.Models.ContentLink();
                 moduleUpdateParameters.Properties.ContentLink.Uri = contentLinkUri;
-                moduleUpdateParameters.Tags = existingModule.Tags;
+                moduleUpdateParameters.Properties.ContentLink.Version =
+                    (String.IsNullOrWhiteSpace(contentLinkUriVersion))
+                        ? Guid.NewGuid().ToString()
+                        : contentLinkUriVersion;
+
+                moduleUpdateParameters.Tags = moduleModel.Tags;
 
                 this.automationManagementClient.Modules.Update(automationAccountName, moduleUpdateParameters);
             }
@@ -986,7 +995,20 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 // ArgumentException is thrown when account does not exists, so ignore it
             }
 
-            this.automationManagementClient.CreateAutomationAccount(automationAccountName, location);
+            try
+            {
+                this.automationManagementClient.CreateAutomationAccount(automationAccountName, location);
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    throw new ResourceCommonException(typeof (AutomationAccount),
+                        string.Format(CultureInfo.CurrentCulture, Resources.AccountCreateInvalidArgs,
+                            automationAccountName, location));
+                }
+                throw;
+            }
 
             return this.ListAutomationAccounts(automationAccountName, location).FirstOrDefault();
         }
@@ -1436,7 +1458,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return certificate;
         }
 
-        private IDictionary<string, RunbookParameter> ListRunbookParameters(string automationAccountName, string runbookName)
+        private IEnumerable<KeyValuePair<string, RunbookParameter>> ListRunbookParameters(string automationAccountName, string runbookName)
         {
             Runbook runbook = this.GetRunbook(automationAccountName, runbookName);
             if (0 == String.Compare(runbook.State, RunbookState.New, CultureInfo.InvariantCulture,
@@ -1444,13 +1466,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.RunbookHasNoPublishedVersion, runbookName));
             }
-            return runbook.Parameters;
+            return runbook.Parameters.Cast<DictionaryEntry>().ToDictionary(k => k.Key.ToString(), k => (RunbookParameter)k.Value);
         }
 
         private IDictionary<string, string> ProcessRunbookParameters(string automationAccountName, string runbookName, IDictionary parameters)
         {
             parameters = parameters ?? new Dictionary<string, string>();
-            IDictionary<string, RunbookParameter> runbookParameters = this.ListRunbookParameters(automationAccountName, runbookName);
+            IEnumerable<KeyValuePair<string, RunbookParameter>> runbookParameters = this.ListRunbookParameters(automationAccountName, runbookName);
             var filteredParameters = new Dictionary<string, string>();
 
             foreach (var runbookParameter in runbookParameters)

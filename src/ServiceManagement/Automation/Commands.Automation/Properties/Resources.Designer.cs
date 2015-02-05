@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create account arguments are invalid. Provide valid account name and location. Account Name: {0}, Location: {1} .
+        /// </summary>
+        internal static string AccountCreateInvalidArgs {
+            get {
+                return ResourceManager.GetString("AccountCreateInvalidArgs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Automation account already exists.
         /// </summary>
         internal static string AutomationAccountAlreadyExists {
