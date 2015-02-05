@@ -1,8 +1,7 @@
 ﻿This project is divided into Unit Tests and Scenario Tests.  
 All the Scenario Tests can be found under the ScenarioTests folder.  All other test classes are Unit Tests.
 
-The Unit Tests run in the xUnit test framework.  The "xunit.runner.visualstudio" NuGet package this project
-references allows the xUnit tests to be executed from the Visual Studio Test Explorer.
+The Unit Tests run in the xUnit test framework.  
 xUnit Documentation: http://xunit.github.io/
 
 The Unit Tests make use of the Moq framework to create mock objects of the PowerShell runtime and the 
