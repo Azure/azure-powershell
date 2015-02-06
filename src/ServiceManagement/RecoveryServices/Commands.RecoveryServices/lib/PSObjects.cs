@@ -538,7 +538,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 this.HyperVReplicaProviderSettingsObject.CompressionEnabled =
                     details.CompressionEnabled;
-                this.HyperVReplicaProviderSettingsObject.ReplicationFrequencyInSeconds = 0;
+                this.HyperVReplicaProviderSettingsObject.ReplicationFrequencyInSeconds =
+                    details.ReplicationFrequencyInSeconds;
 
                 this.HyperVReplicaProviderSettingsObject.RecoveryPoints = details.RecoveryPoints;
                 this.HyperVReplicaProviderSettingsObject.ReplicationMethod = details.OnlineReplicationMethod ?
