@@ -139,6 +139,7 @@ namespace Microsoft.WindowsAzure.Commands.HDInsight.Cmdlet.PSCmdlets
                     getCommand.CurrentSubscription = currentSubscription;
                     getCommand.Name = Name;
                     var getTask = getCommand.EndProcessing();
+                    this.WriteObject("This operation may take several minutes...");
                     while (!getTask.IsCompleted)
                     {
                         WriteDebugLog();
