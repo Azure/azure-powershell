@@ -72,7 +72,7 @@ function Test-E2E_DeleteAndDissociate
                     {
                         if ($association.AssociationStatus -eq "Paired")
                         {
-                            // We have got the paired profile. Fire delete and dissociate
+                            # We have got the paired profile. Fire delete and dissociate
                             $pcPri = Get-AzureSiteRecoveryProtectionContainer -Id $association.PrimaryProtectionContainerId
                             $pcRec = Get-AzureSiteRecoveryProtectionContainer -Id $association.RecoveryProtectionContainerId
                             $job = Start-AzureSiteRecoveryProtectionProfileDissociationJob -PrimaryProtectionContainer $pcPri -RecoveryProtectionContainer $pcRec -ProtectionProfile $profile
@@ -80,7 +80,7 @@ function Test-E2E_DeleteAndDissociate
 							# Validate_ProfileDissociation_JobSucceeded
 							if ($Validate_ProfileDissociation_JobSucceeded -eq $true)
 							{
-								WaitForJobCompletion -JobId $job.ID
+								WaitForJobCompletion -JobId $job.ID -NumOfSecondsToWait 600
                                 $job = Get-AzureSiteRecoveryJob -Id $job.ID
 								Assert-True { $job.State -eq "Succeeded" }
 							}
@@ -127,14 +127,14 @@ function Test-E2E_CreateAndAssociate
             }
 
             # we have got second pc as well create profile and associate
-            $pp = New-AzureSiteRecoveryProtectionProfile -ReplicationProvider HyperVReplica -ReplicationMethod Online -ReplicationFrequencyInSeconds 300 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 1 -CompressionEnabled -ReplicationPort 8083 -Authentication Kerberos -AllowReplicaDeletion
+            $pp = New-AzureSiteRecoveryProtectionProfileObject -ReplicationProvider HyperVReplica -ReplicationMethod Online -ReplicationFrequencyInSeconds 300 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 1 -CompressionEnabled -ReplicationPort 8083 -Authentication Kerberos -AllowReplicaDeletion
 
             $job = Start-AzureSiteRecoveryProtectionProfileAssociationJob -ProtectionProfile $pp -PrimaryProtectionContainer $priPC -RecoveryProtectionContainer $protectionContainer
 
 			# Validate_ProfileAssociation_JobSucceeded
 			if ($Validate_ProfileAssociation_JobSucceeded -eq $true)
 			{
-				WaitForJobCompletion -JobId $job.ID
+				WaitForJobCompletion -JobId $job.ID -NumOfSecondsToWait 600
                 $job = Get-AzureSiteRecoveryJob -Id $job.ID
 				Assert-True { $job.State -eq "Succeeded" }
 			}
@@ -547,13 +547,9 @@ function Test-Failback
 			{
 				Assert-NotNull($protectionEntity.Name)
 				Assert-NotNull($protectionEntity.ID)
-                Write-Host "Checking PE"
-                $protectionEntity
 				if ($protectionEntity.CanFailover -eq $true -and $protectionEntity.ActiveLocation -eq "Recovery")
 				{
-                    Write-Host "Firing failback"
-
-					$job = Start-AzureSiteRecoveryPlannedFailoverJob -Direction RecoveryToPrimary -Optimize ForDowntime -ProtectionEntity $protectionEntity -WaitForCompletion
+					$job = Start-AzureSiteRecoveryPlannedFailoverJob -Direction RecoveryToPrimary -ProtectionEntity $protectionEntity -WaitForCompletion
 					
                     # Validate_Failback_JobSucceeded
                     if ($Validate_Failback_JobSucceeded -eq $true)

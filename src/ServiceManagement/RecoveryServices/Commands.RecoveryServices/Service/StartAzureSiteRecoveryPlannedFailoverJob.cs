@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets the Optimize value.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AFailback)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AFailback)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AFailback, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObjectE2AFailback, Mandatory = true)]
         [ValidateSet(
             Constants.ForDowntime,
             Constants.ForSynchronization)]
