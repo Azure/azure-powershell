@@ -56,13 +56,13 @@
     <Reference Include="Microsoft.Data.Services.Client, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Hadoop.Client, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Hadoop.Client, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.4.3\lib\net45\Microsoft.Hadoop.Client.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.4.5\lib\net45\Microsoft.Hadoop.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.HDInsight.Net.Http.Formatting, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.HDInsight.Net.Http.Formatting, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.4.3\lib\net45\Microsoft.HDInsight.Net.Http.Formatting.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.4.5\lib\net45\Microsoft.HDInsight.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
@@ -82,25 +82,27 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.4.3\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.4.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Contracts, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Contracts, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.4.3\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Contracts.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.4.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Contracts.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Framework, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Framework, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.4.3\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.4.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Framework.Core">
-      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.4.3\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Framework.Core, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c66ce9294aae1300, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.4.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=3.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\WindowsAzure.Storage.3.0.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
