@@ -175,6 +175,7 @@
     <Compile Include="FunctionalTests\AzureServiceExtensionTests.cs" />
     <Compile Include="FunctionalTests\AzureVhdTest.cs" />
     <Compile Include="FunctionalTests\BVTTest.cs" />
+    <Compile Include="FunctionalTests\CleanUp.cs" />
     <Compile Include="FunctionalTests\ConfigDataInfo\ACLAction.cs" />
     <Compile Include="FunctionalTests\ConfigDataInfo\HostCaching.cs" />
     <Compile Include="FunctionalTests\ConfigDataInfo\InstanceSize.cs" />
