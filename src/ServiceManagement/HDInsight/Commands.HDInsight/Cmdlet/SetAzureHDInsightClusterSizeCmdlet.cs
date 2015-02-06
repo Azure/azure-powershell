@@ -19,6 +19,7 @@ using System.Management.Automation;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters;
@@ -160,11 +161,19 @@ namespace Microsoft.WindowsAzure.Commands.HDInsight.Cmdlet.PSCmdlets
                 command.Location = cluster.Location;
                 if (ClusterSizeInNodes < cluster.ClusterSizeInNodes)
                 {
-                    var task = ConfirmSetAction(
-                        "You are requesting a cluster size that is less than the current cluster size. We recommend not running jobs till the operation is complete as all running jobs will fail at end of resize operation and may impact the health of your cluster. Do you want to continue?",
-                        "Continuing with set cluster operation.",
-                        ClusterSizeInNodes.ToString(CultureInfo.InvariantCulture),
-                        action);
+                    Task task;
+                    if (cluster.ClusterType == ClusterType.Hadoop)
+                    {
+                        task = ConfirmSetAction(
+                            "You are requesting a cluster size that is less than the current cluster size. We recommend not running jobs till the operation is complete as all running jobs will fail at end of resize operation and may impact the health of your cluster. Do you want to continue?",
+                            "Continuing with set cluster operation.",
+                            ClusterSizeInNodes.ToString(CultureInfo.InvariantCulture),
+                            action);
+                    }
+                    else
+                    {
+                        task = action();
+                    }
                     if (task == null)
                     {
                         throw new OperationCanceledException("The change cluster size operation was aborted.");
