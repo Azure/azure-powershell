@@ -23,10 +23,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Retrieves Azure Site Recovery Vault.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVault")]
+    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVault", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(List<ASRVault>))]
     public class GetAzureSiteRecoveryVaults : RecoveryServicesCmdletBase
     {
+        #region Parameters
+        /// <summary>
+        /// Gets or sets name of the Vault.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+        #endregion Parameters
+        
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
@@ -34,25 +43,69 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                IEnumerable<CloudService> cloudServiceList = RecoveryServicesClient.GetCloudServices();
-
-                List<ASRVault> vaultList = new List<ASRVault>();
-                foreach (var cloudService in cloudServiceList)
+                switch (this.ParameterSetName)
                 {
-                    foreach (var vault in cloudService.Resources)
-                    {
-                        if (vault.Type.Equals(Constants.ASRVaultType, StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            vaultList.Add(new ASRVault(cloudService, vault));
-                        }
-                    }
+                    case ASRParameterSets.ByName:
+                        this.GetByName();
+                        break;
+                    case ASRParameterSets.Default:
+                        this.GetByDefault();
+                        break;
                 }
-
-                this.WriteVaults(vaultList);
             }
             catch (Exception exception)
             {
                 this.HandleException(exception);
+            }
+        }
+
+        private void GetByDefault()
+        {
+            IEnumerable<CloudService> cloudServiceList = RecoveryServicesClient.GetCloudServices();
+
+            List<ASRVault> vaultList = new List<ASRVault>();
+            foreach (var cloudService in cloudServiceList)
+            {
+                foreach (var vault in cloudService.Resources)
+                {
+                    if (vault.Type.Equals(Constants.ASRVaultType, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        vaultList.Add(new ASRVault(cloudService, vault));
+                    }
+                }
+            }
+
+            this.WriteVaults(vaultList);
+        }
+
+        private void GetByName()
+        {
+            bool vaultFound = false;
+
+            IEnumerable<CloudService> cloudServiceList = RecoveryServicesClient.GetCloudServices();
+
+            List<ASRVault> vaultList = new List<ASRVault>();
+            foreach (var cloudService in cloudServiceList)
+            {
+                foreach (var vault in cloudService.Resources)
+                {
+                    if (vault.Type.Equals(Constants.ASRVaultType, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        if (string.Compare(this.Name, vault.Name, StringComparison.OrdinalIgnoreCase) == 0)
+                        {
+                            vaultFound = true;
+                            this.WriteVault(new ASRVault(cloudService, vault));
+                        }
+                    }
+                }
+            }
+
+            if (!vaultFound)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.VaultNotFound,
+                    this.Name));
             }
         }
 
@@ -63,6 +116,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private void WriteVaults(IList<ASRVault> vaultList)
         {
             this.WriteObject(vaultList, true);
+        }
+
+        /// <summary>
+        /// Writes Vaults
+        /// </summary>
+        /// <param name="vault">Vault object</param>
+        private void WriteVault(ASRVault vault)
+        {
+            this.WriteObject(vault);
         }
     }
 }

@@ -354,6 +354,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vault {0} is not associated with the given subscription..
+        /// </summary>
+        internal static string VaultNotFound {
+            get {
+                return ResourceManager.GetString("VaultNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vault settings file not found, please pass the file downloaded from portal.
         /// </summary>
         internal static string VaultSettingFileNotFound {
