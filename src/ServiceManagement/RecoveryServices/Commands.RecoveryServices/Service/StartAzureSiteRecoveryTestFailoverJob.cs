@@ -156,12 +156,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 if (this.NetworkType == null)
                 {
-                    this.WriteWarning("'NetworkType' will be a mandatory paramter from next release.");
+                    this.WriteDebugWithTimestamp(
+                        Properties.Resources.MandatoryParamFromNextRelease,
+                        Constants.NetworkType);
                 }
 
                 if (this.VmNetworkId != null)
                 {
-                    this.WriteWarning("Call using 'NetworkId' parameter will not be supported from next release. Please use 'Network' parameter instead.");
+                    this.WriteDebugWithTimestamp(
+                        Properties.Resources.IDBasedParamUsageNotSupportedFromNextRelease,
+                        "VmNetworkId");
                 }
 
                 if (this.NetworkType == Constants.Existing && (this.Network == null && this.VmNetworkId == null))
@@ -269,7 +273,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.RpId);
                 this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
 
-                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider);
+                this.ValidateUsageById(
+                    this.RecoveryPlan.ReplicationProvider,
+                    Constants.RPId);
             }
 
             request.ReplicationProviderSettings = string.Empty;
@@ -316,7 +322,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ProtectionEntityId);
                 this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
 
-                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+                this.ValidateUsageById(
+                    this.ProtectionEntity.ReplicationProvider,
+                    Constants.ProtectionEntityId);
             }
 
             request.ReplicationProviderSettings = string.Empty;

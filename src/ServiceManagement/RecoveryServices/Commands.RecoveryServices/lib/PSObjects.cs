@@ -189,6 +189,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string DisableProtection = "Disable";
 
         /// <summary>
+        /// Represents Direction string value.
+        /// </summary>
+        public const string Direction = "Direction";
+
+        /// <summary>
+        /// Represents RPId string value.
+        /// </summary>
+        public const string RPId = "RPId";
+
+        /// <summary>
+        /// Represents ID string value.
+        /// </summary>
+        public const string ID = "ID";
+
+        /// <summary>
+        /// Represents NetworkType string value.
+        /// </summary>
+        public const string NetworkType = "NetworkType";
+
+        /// <summary>
+        /// Represents ProtectionEntityId string value.
+        /// </summary>
+        public const string ProtectionEntityId = "ProtectionEntityId";
+
+        /// <summary>
         /// Azure fabric Id. In E2A context Recovery Server Id is always this.
         /// </summary>
         public const string AzureFabricId = "21a9403c-6ec1-44f2-b744-b4e50b792387";

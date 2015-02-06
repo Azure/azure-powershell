@@ -129,7 +129,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.RPId);
                 this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
 
-                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider);
+                this.ValidateUsageById(
+                    this.RecoveryPlan.ReplicationProvider,
+                    Constants.RPId);
             }
 
             request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
@@ -170,7 +172,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ProtectionEntityId);
                 this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
 
-                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+                this.ValidateUsageById(
+                    this.ProtectionEntity.ReplicationProvider,
+                    this.ProtectionEntityId);
             }
 
             request.ReplicationProviderSettings = string.Empty;
