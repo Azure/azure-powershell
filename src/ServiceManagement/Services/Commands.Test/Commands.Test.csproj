@@ -171,11 +171,9 @@
   <ItemGroup>
     <Compile Include="CloudService\PublishAzureServiceProjectTests.cs" />
     <Compile Include="CloudService\Development\DisableAzureRemoteDesktopCommandTest.cs" />
-    <Compile Include="CloudService\Development\EnableAzureMemcacheRoleTests.cs" />
     <Compile Include="CloudService\Development\EnableAzureRemoteDesktopCommandTest.cs" />
     <Compile Include="CloudService\Development\GetAzureServiceProjectRuntimesTest.cs" />
     <Compile Include="CloudService\Development\SaveAzureServiceProjectPackageTests.cs" />
-    <Compile Include="CloudService\Development\Scaffolding\AddAzureCacheWorkerRoleTests.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzureNodeWebRoleTests.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzureNodeWorkerRoleTests.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzurePHPWebRoleTests.cs" />
