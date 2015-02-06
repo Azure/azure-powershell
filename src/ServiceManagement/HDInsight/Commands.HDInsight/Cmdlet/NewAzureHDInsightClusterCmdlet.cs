@@ -114,6 +114,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 result.MapReduceConfiguration.CapacitySchedulerConfigurationCollection.AddRange(
                     this.command.MapReduceConfiguration.CapacitySchedulerConfigurationCollection);
                 result.StormConfiguration.AddRange(this.command.StormConfiguration);
+                result.SparkConfiguration.AddRange(this.command.SparkConfiguration);
                 result.HBaseConfiguration.AdditionalLibraries = this.command.HBaseConfiguration.AdditionalLibraries;
                 result.HBaseConfiguration.ConfigurationCollection.AddRange(this.command.HBaseConfiguration.ConfigurationCollection);
                 return result;
@@ -151,6 +152,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 this.command.HiveMetastore = value.HiveMetastore;
                 this.command.OozieMetastore = value.OozieMetastore;
                 this.command.StormConfiguration.AddRange(value.StormConfiguration);
+                this.command.SparkConfiguration.AddRange(value.SparkConfiguration);
                 this.command.HBaseConfiguration.AdditionalLibraries = value.HBaseConfiguration.AdditionalLibraries;
                 this.command.HBaseConfiguration.ConfigurationCollection.AddRange(value.HBaseConfiguration.ConfigurationCollection);
             }

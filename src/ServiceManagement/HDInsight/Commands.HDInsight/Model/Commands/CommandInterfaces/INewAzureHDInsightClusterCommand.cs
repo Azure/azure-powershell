@@ -63,6 +63,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInt
 
         ConfigValuesCollection StormConfiguration { get; set; }
 
+        ConfigValuesCollection SparkConfiguration { get; set; }
+
         HBaseConfiguration HBaseConfiguration { get; set; }
     }
 }

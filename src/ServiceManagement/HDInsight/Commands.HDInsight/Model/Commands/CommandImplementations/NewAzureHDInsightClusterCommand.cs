@@ -37,6 +37,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             this.HiveConfiguration = new HiveConfiguration();
             this.OozieConfiguration = new OozieConfiguration();
             this.StormConfiguration = new ConfigValuesCollection();
+            this.SparkConfiguration = new ConfigValuesCollection();
             this.HBaseConfiguration = new HBaseConfiguration();
         }
 
@@ -98,6 +99,9 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
         public ConfigValuesCollection StormConfiguration { get; set; }
 
         /// <inheritdoc />
+        public ConfigValuesCollection SparkConfiguration { get; set; }
+
+        /// <inheritdoc />
         public HBaseConfiguration HBaseConfiguration { get; set; }
 
         public ICollection<AzureHDInsightConfigAction> ConfigActions { get; set; }
@@ -141,6 +145,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             createClusterRequest.OozieConfiguration.AdditionalSharedLibraries = this.OozieConfiguration.AdditionalSharedLibraries;
             createClusterRequest.OozieConfiguration.AdditionalActionExecutorLibraries = this.OozieConfiguration.AdditionalActionExecutorLibraries;
             createClusterRequest.StormConfiguration.AddRange(this.StormConfiguration);
+            createClusterRequest.SparkConfiguration.AddRange(this.SparkConfiguration);
             createClusterRequest.HBaseConfiguration.AdditionalLibraries = this.HBaseConfiguration.AdditionalLibraries;
             createClusterRequest.HBaseConfiguration.ConfigurationCollection.AddRange(this.HBaseConfiguration.ConfigurationCollection);
        

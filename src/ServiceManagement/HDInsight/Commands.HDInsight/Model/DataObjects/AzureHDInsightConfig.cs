@@ -41,6 +41,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
             this.ZookeeperNodeVMSize = null;
             this.ClusterType = ClusterType.Hadoop;
             this.StormConfiguration = new ConfigValuesCollection();
+            this.SparkConfiguration = new ConfigValuesCollection();
             this.HBaseConfiguration = new HBaseConfiguration();
         }
 
@@ -147,6 +148,11 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         ///     Gets a collection of configuration properties to customize the Storm service.
         /// </summary>
         public ConfigValuesCollection StormConfiguration { get; private set; }
+
+        /// <summary>
+        ///     Gets a collection of configuration properties to customize the Spark service.
+        /// </summary>
+        public ConfigValuesCollection SparkConfiguration { get; private set; }
 
         /// <summary>
         ///     Gets a collection of configuration properties to customize the HBase service.
