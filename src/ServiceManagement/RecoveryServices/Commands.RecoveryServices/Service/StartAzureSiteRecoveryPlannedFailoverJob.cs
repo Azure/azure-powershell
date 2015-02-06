@@ -58,7 +58,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Recovery Plan object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObjectE2AFailback, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
@@ -66,7 +65,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Protection Entity object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AFailback, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionEntity ProtectionEntity { get; set; }
 
@@ -88,8 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets the Optimize value.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AFailback)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AFailback)]
+        [Parameter]
         [ValidateSet(
             Constants.ForDowntime,
             Constants.ForSynchronization)]
@@ -112,12 +109,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ByRPObject:
-                    case ASRParameterSets.ByRPObjectE2AFailback:
                         this.RPId = this.RecoveryPlan.ID;
                         this.StartRpPlannedFailover();
                         break;
                     case ASRParameterSets.ByPEObject:
-                    case ASRParameterSets.ByPEObjectE2AFailback:
                        this.ProtectionEntityId = this.ProtectionEntity.ID;
                         this.ProtectionContainerId = this.ProtectionEntity.ProtectionContainerId;
                         this.StartPEPlannedFailover();

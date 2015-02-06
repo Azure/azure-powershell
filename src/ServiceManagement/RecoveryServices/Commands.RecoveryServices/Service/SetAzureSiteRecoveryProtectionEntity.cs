@@ -168,6 +168,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                 string profileId = string.Empty;
                                 var input = new EnableProtectionInput();
 
+                                if (this.ProtectionEntity == null)
+                                {
+                                    var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                                        this.ProtectionContainerId,
+                                        this.Id);
+                                    this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+                                }
+
                                 // Get the replciation provider from profile object otherwise assume its E2E.
                                 // Let the call go without profileId set.
                                 string replicationProvider = null;
@@ -179,6 +187,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                 }
                                 else
                                 {
+                                    this.WriteDebugWithTimestamp(
+                                        Properties.Resources.MandatoryParamFromNextRelease,
+                                        "ProtectionProfile");
                                     string pcId = this.ProtectionContainerId ?? this.ProtectionEntity.ProtectionContainerId;
                                     var pc = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(
                                         pcId);
@@ -195,14 +206,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                     }
                                 }
 
-                                if (this.ProtectionEntity == null)
+                                if (this.ParameterSetName == ASRParameterSets.ByIDs)
                                 {
-                                    var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
-                                        this.ProtectionContainerId,
-                                        this.Id);
-                                    this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
-
-                                    this.ValidateUsageById(replicationProvider, Constants.ID);
+                                    this.ValidateUsageById(replicationProvider, "Id");
                                 }
 
                                 if (replicationProvider == Constants.HyperVReplicaAzure)
