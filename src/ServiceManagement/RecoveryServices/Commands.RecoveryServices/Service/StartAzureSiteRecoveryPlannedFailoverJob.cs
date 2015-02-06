@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ProtectionEntityId);
                 this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
 
-                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider, Constants.ProtectionEntityId);
             }
 
             if (this.ProtectionEntity.ReplicationProvider == Constants.HyperVReplicaAzure)
@@ -203,7 +203,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.RPId);
                 this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
 
-                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider);
+                this.ValidateUsageById(
+                    this.RecoveryPlan.ReplicationProvider,
+                    Constants.RPId);
             }
 
             if (this.RecoveryPlan.ReplicationProvider == Constants.HyperVReplicaAzure)
