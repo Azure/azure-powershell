@@ -77,6 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
         private void EnsureCloudServiceClientInitialized(AzureSubscription subscription)
         {
             this.CloudServiceClient = this.CloudServiceClient ?? new CloudServiceClient(
+                Profile,
                 subscription,
                 SessionState.Path.CurrentLocation.Path,
                 WriteDebug,
@@ -97,21 +98,21 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
 
             if (Service.IsPresent)
             {
-                IsDNSAvailable(CurrentContext.Subscription, Name);
+                IsDNSAvailable(Profile.Context.Subscription, Name);
             }
             else if (Storage.IsPresent)
             {
-                IsStorageServiceAvailable(CurrentContext.Subscription, Name);
+                IsStorageServiceAvailable(Profile.Context.Subscription, Name);
             }
             else if (Website.IsPresent)
             {
-                WebsitesClient = WebsitesClient ?? new WebsitesClient(CurrentContext.Subscription, WriteDebug);
+                WebsitesClient = WebsitesClient ?? new WebsitesClient(Profile, Profile.Context.Subscription, WriteDebug);
                 IsWebsiteAvailable(Name);
             }
             else
             {
-                ServiceBusClient = ServiceBusClient ?? new ServiceBusClientExtensions(CurrentContext.Subscription);
-                IsServiceBusNamespaceAvailable(CurrentContext.Subscription.Id.ToString(), Name);
+                ServiceBusClient = ServiceBusClient ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
+                IsServiceBusNamespaceAvailable(Profile.Context.Subscription.Id.ToString(), Name);
             }
         }
 

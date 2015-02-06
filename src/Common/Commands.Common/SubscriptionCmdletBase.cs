@@ -13,10 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Profile
 {
@@ -27,39 +24,32 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Profile
     /// </summary>
     public abstract class SubscriptionCmdletBase : AzurePSCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "[Deprecated]: File storing subscription data, if not set uses default.")]
-        public string SubscriptionDataFile { get; set; }
-
         private readonly bool _saveProfile;
 
-        protected SubscriptionCmdletBase(bool saveProfile)
+        protected SubscriptionCmdletBase(bool saveProfile) 
         {
-            this._saveProfile = saveProfile;
+            _saveProfile = saveProfile;
         }
 
         protected override void BeginProcessing()
         {
-            if (!string.IsNullOrEmpty(SubscriptionDataFile))
-            {
-                ProfileClient = new ProfileClient(new AzureProfile(SubscriptionDataFile));
-                WriteWarning(Resources.SubscriptionDataFileDeprecated);
-            }
-            else
-            {
-                ProfileClient = new ProfileClient(AzureSession.Profile);
-            }
+            base.BeginProcessing();
+
+            ProfileClient = new ProfileClient(Profile);
             ProfileClient.WarningLog = WriteWarning;
             ProfileClient.DebugLog = WriteDebug;
         }
-
         protected override void EndProcessing()
         {
+
             if (_saveProfile)
             {
-                ProfileClient.Profile.Save();
+                Profile.Save();
             }
-        }
 
+            base.EndProcessing();
+        }
         public ProfileClient ProfileClient { get; set; }
+
     }
 }

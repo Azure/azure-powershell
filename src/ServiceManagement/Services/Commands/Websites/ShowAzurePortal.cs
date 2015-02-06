@@ -57,11 +57,11 @@ namespace Microsoft.WindowsAzure.Commands.Websites
             AzureEnvironment environment;
             if (string.IsNullOrEmpty(Environment))
             {
-                environment = AzureSession.Profile.CurrentContext.Environment;
+                environment = Profile.Context.Environment;
             }
             else
             {
-                environment = DefaultProfileClient.Profile.Environments[Environment];
+                environment = Profile.Environments[Environment];
             }
 
             string managementPortalUrl = environment.GetManagementPortalUrlWithRealm(Realm);

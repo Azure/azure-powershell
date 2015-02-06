@@ -49,10 +49,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Name = "website1",
                 WebsitesClient = mockClient.Object
             };
-            AzureSession.Profile = new AzureProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
-            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             // Show existing website
             showAzureWebsiteCommand.ExecuteCmdlet();

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 if (batchClient == null)
                 {
-                    batchClient = new BatchClient(CurrentContext);
+                    batchClient = new BatchClient(Profile.Context);
                 }
                 return batchClient;
             }

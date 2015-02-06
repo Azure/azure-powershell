@@ -179,7 +179,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             if (string.Equals(this.ParameterSetName, SetCustomScriptExtensionByContainerBlobsParamSetName))
             {
                 this.StorageEndpointSuffix = string.IsNullOrEmpty(this.StorageEndpointSuffix) ?
-                    AzureSession.Profile.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix) : this.StorageEndpointSuffix;
+                    Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix) : this.StorageEndpointSuffix;
                 var sName = string.IsNullOrEmpty(this.StorageAccountName) ? GetStorageName() : this.StorageAccountName;
                 var sKey = string.IsNullOrEmpty(this.StorageAccountKey) ? GetStorageKey(sName) : this.StorageAccountKey;
 
@@ -204,7 +204,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         protected string GetStorageName()
         {
-            return CurrentContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            return Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
         }
 
         protected string GetStorageKey(string storageName)

@@ -55,11 +55,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
         /// Creates new Scheduler Management Convenience Client
         /// </summary>
         /// <param name="subscription">Subscription containing websites to manipulate</param>
-        public SchedulerMgmntClient(AzureSubscription subscription)
+        public SchedulerMgmntClient(AzureProfile profile, AzureSubscription subscription)
         {
             currentSubscription = subscription;
-            csmClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            schedulerManagementClient = AzureSession.ClientFactory.CreateClient<SchedulerManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            csmClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            schedulerManagementClient = AzureSession.ClientFactory.CreateClient<SchedulerManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
 
             //Get RP properties
             IDictionary<string, string> dict = schedulerManagementClient.GetResourceProviderProperties().Properties;
