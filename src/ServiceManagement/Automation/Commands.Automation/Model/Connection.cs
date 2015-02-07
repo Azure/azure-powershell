@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.CreationTime = connection.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = connection.Properties.LastModifiedTime.ToLocalTime();
             this.ConnectionTypeName = connection.Properties.ConnectionType.Name;
-            this.FieldDefinitionValues = new Hashtable();
+            this.FieldDefinitionValues = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in connection.Properties.FieldDefinitionValues)
             {
                 this.FieldDefinitionValues.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));

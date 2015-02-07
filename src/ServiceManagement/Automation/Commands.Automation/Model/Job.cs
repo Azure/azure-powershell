@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Exception = job.Properties.Exception;
             this.EndTime = job.Properties.EndTime;
             this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
-            this.JobParameters = new Hashtable();
+            this.JobParameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in job.Properties.Parameters)
             {
                 this.JobParameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));

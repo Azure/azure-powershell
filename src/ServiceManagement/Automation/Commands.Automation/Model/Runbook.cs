@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.JobCount = runbook.Properties.JobCount;
             this.RunbookType = runbook.Properties.RunbookType;
 
-            this.Parameters = new Hashtable();
+            this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in runbook.Properties.Parameters)
             {
                 this.Parameters.Add(kvp.Key, (object)kvp.Value);

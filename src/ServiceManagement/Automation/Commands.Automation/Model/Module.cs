@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = automationAccountName;
             this.Name = module.Name;
             this.Location = module.Location;
-            this.Tags = new Hashtable();
+            this.Tags = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in module.Tags)
             {
                 this.Tags.Add(kvp.Key, kvp.Value);
