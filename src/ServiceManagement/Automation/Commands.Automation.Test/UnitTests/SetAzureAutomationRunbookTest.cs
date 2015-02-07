@@ -69,8 +69,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             string accountName = "automation";
             string runbookName = "runbook";
             bool? logProgress = false;
-            var tags = new Dictionary<string, string>();
-            tags.Add("tag1", "tags2");
+            string[] tags = { "tag1", "tags2" };
 
             this.mockAutomationClient.Setup(f => f.UpdateRunbook(accountName, runbookName, null, tags, logProgress, null));
 
