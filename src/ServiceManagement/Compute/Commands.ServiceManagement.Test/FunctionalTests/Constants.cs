@@ -21,6 +21,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test
         public const string Functional = "Functional";
         public const string Preview = "Preview";
         public const string Sequential = "Sequential";
+        public const string Network = "Network";
+        public const string Upload = "AzureRTUpload";
     }
 
     public class LoadBalancerDistribution

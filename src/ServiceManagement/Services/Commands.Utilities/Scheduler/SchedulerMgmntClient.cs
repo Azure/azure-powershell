@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Management.Scheduler.Models;
 using Microsoft.WindowsAzure.Scheduler;
 using Microsoft.WindowsAzure.Scheduler.Models;
 using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
 {
@@ -492,7 +493,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
 
                 SchedulerClient schedClient = AzureSession.ClientFactory.CreateCustomClient<SchedulerClient>(region.ToCloudServiceName(), jobCollection, csmClient.Credentials, schedulerManagementClient.BaseUri);
 
-                OperationResponse response = schedClient.Jobs.Delete(jobName);
+                AzureOperationResponse response = schedClient.Jobs.Delete(jobName);
                 return response.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
             }
             else if (string.IsNullOrEmpty(region))
@@ -513,7 +514,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
                                     {
                                         SchedulerClient schedClient = AzureSession.ClientFactory.CreateCustomClient<SchedulerClient>(cs.Name, jobCollection, csmClient.Credentials, schedulerManagementClient.BaseUri);
 
-                                        OperationResponse response = schedClient.Jobs.Delete(jobName);
+                                        AzureOperationResponse response = schedClient.Jobs.Delete(jobName);
                                         return response.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
                                     }
                                 }

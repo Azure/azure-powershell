@@ -13,6 +13,7 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.ADDomain;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {

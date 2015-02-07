@@ -32,6 +32,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const int WindowsMaxFileNameLength = 256;
 
         /// <summary>
+        /// Max length for Stored Access Policy name
+        /// </summary>
+        public const int MaxStoredAccessPolicyNameLength = 64;
+
+        /// <summary>
         /// Is valid container name <see cref="http://msdn.microsoft.com/en-us/library/windowsazure/dd135715.aspx"/>
         /// </summary>
         /// <param name="containerName">Container name</param>
@@ -206,6 +211,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 bool forbidden = forbiddenList.Contains(realName);
                 return !forbidden;
             }
+        }
+
+        public static bool IsValidStoredAccessPolicyName(string policyName)
+        {
+            if (string.IsNullOrEmpty(policyName) || policyName.Length > MaxStoredAccessPolicyNameLength)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public static string ResolveBlobName(string blobName)
