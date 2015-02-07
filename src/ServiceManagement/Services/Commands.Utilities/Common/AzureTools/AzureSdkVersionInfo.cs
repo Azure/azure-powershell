@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Common.Extensions.Authentication
+namespace Microsoft.WindowsAzure.Commands.Utilities.Common.AzureTools
 {
-    public enum ShowDialog
+    internal class AzureSdkVersionInfo
     {
-        Auto,
-        Always,
-        Never
+        //When intergrate with new Azure SDK, please update the versions here.
+        //If you find there are other version strings to update, please move them to here.
+        public const string SupportAzureSdkVersionRegKey = "v2.5";
+        public const string SupportAzureSdkVersion = "2.5.0";
     }
 }
