@@ -17,7 +17,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    using AutomationManagement = Management.Automation;
+    using AutomationManagement = WindowsAzure.Management.Automation;
 
     /// <summary>
     /// The Variable.

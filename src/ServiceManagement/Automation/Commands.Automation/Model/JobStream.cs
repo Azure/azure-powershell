@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    using AutomationManagement = Management.Automation;
+    using AutomationManagement = WindowsAzure.Management.Automation;
 
     /// <summary>
     /// The Job Stream.

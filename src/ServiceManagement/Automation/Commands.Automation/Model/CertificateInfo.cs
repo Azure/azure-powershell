@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public CertificateInfo(string accountAcccountName, Azure.Management.Automation.Models.Certificate certificate)
+        public CertificateInfo(string accountAcccountName, WindowsAzure.Management.Automation.Models.Certificate certificate)
         {
             Requires.Argument("certificate", certificate).NotNull();
             this.AutomationAccountName = accountAcccountName;

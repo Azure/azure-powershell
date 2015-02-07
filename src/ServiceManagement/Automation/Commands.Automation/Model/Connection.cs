@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public Connection(string accountAcccountName, Azure.Management.Automation.Models.Connection connection)
+        public Connection(string accountAcccountName, WindowsAzure.Management.Automation.Models.Connection connection)
         {
             Requires.Argument("connection", connection).NotNull();
             this.AutomationAccountName = accountAcccountName;

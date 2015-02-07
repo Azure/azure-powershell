@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    using AutomationManagement = Management.Automation;
+    using AutomationManagement = Microsoft.WindowsAzure.Management.Automation;
 
     /// <summary>
     /// The automation account.

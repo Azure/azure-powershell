@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="schedule">
         /// The schedule.
         /// </param>
-        public Schedule(string automationAccountName, Azure.Management.Automation.Models.Schedule schedule)
+        public Schedule(string automationAccountName, WindowsAzure.Management.Automation.Models.Schedule schedule)
         {
             Requires.Argument("schedule", schedule).NotNull();
             this.AutomationAccountName = automationAccountName;

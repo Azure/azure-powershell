@@ -17,12 +17,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Management.Automation.Models;
+using Microsoft.WindowsAzure.Management.Automation.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    using AutomationManagement = Management.Automation;
+    using AutomationManagement = WindowsAzure.Management.Automation;
 
     /// <summary>
     /// The Runbook.
@@ -48,11 +48,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = accountName;
             this.Name = runbook.Name;
             this.Location = runbook.Location;
-            this.Tags = new Hashtable();
-            foreach (var kvp in runbook.Tags)
-            {
-                this.Tags.Add(kvp.Key, kvp.Value);
-            }
+            this.Tags = null;
 
             if (runbook.Properties == null) return;
 
@@ -98,7 +94,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the tags.
         /// </summary>
-        public Hashtable Tags { get; set; }
+        public string[] Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the JobCount.

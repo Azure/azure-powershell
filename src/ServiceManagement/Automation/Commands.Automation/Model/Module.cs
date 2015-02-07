@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="Module">
         /// The Module.
         /// </param>
-        public Module(string automationAccountName, Azure.Management.Automation.Models.Module module)
+        public Module(string automationAccountName, WindowsAzure.Management.Automation.Models.Module module)
         {
             Requires.Argument("module", module).NotNull();
             this.AutomationAccountName = automationAccountName;

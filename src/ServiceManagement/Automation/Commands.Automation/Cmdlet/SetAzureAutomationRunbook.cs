@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the runbook tags.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook tags.")]
-        public IDictionary Tags { get; set; }
+        public string[] Tags { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether progress logging should be turned on or off.

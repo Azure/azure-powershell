@@ -65,15 +65,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<Runbook> ListRunbooks(string automationAccountName);
 
-        Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description, IDictionary tags);
+        Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description, string[] tags);
 
-        Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description, IDictionary tags);
+        Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description, string[] tags);
         
         void DeleteRunbook(string automationAccountName, string runbookName);
 
         Runbook PublishRunbook(string automationAccountName, string runbookName);
 
-        Runbook UpdateRunbook(string automationAccountName, string runbookName, string description, IDictionary tags, bool? logProgress, bool? logVerbose);
+        Runbook UpdateRunbook(string automationAccountName, string runbookName, string description, string[] tags, bool? logProgress, bool? logVerbose);
 
         RunbookDefinition UpdateRunbookDefinition(string automationAccountName, string runbookName, string runbookPath, bool overwrite);
 

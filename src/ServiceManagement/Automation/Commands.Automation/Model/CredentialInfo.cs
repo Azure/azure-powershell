@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="Credential">
         /// The Credential.
         /// </param>
-        public CredentialInfo(string accountAcccountName, Azure.Management.Automation.Models.Credential credential)
+        public CredentialInfo(string accountAcccountName, WindowsAzure.Management.Automation.Models.Credential credential)
         {
             Requires.Argument("credential", credential).NotNull();
             this.AutomationAccountName = accountAcccountName;

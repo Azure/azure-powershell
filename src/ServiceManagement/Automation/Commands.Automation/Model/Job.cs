@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public Job(string accountName, Azure.Management.Automation.Models.Job job)
+        public Job(string accountName, WindowsAzure.Management.Automation.Models.Job job)
         {
             Requires.Argument("job", job).NotNull();
             Requires.Argument("accountName", accountName).NotNull();

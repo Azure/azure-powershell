@@ -23,8 +23,8 @@ using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
-using Microsoft.Azure.Management.Automation;
-using Microsoft.Azure.Management.Automation.Models;
+using Microsoft.WindowsAzure.Management.Automation;
+using Microsoft.WindowsAzure.Management.Automation.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 
@@ -41,7 +41,7 @@ using Connection = Microsoft.Azure.Commands.Automation.Model.Connection;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
-    using AutomationManagement = Management.Automation;
+    using AutomationManagement = WindowsAzure.Management.Automation;
     using Microsoft.Azure.Common.Extensions.Models;
     using Microsoft.Azure.Common.Extensions;
     using Hyak.Common;
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description,
-            IDictionary tags)
+            string[] tags)
         {
             var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
             if (runbookModel != null)
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Draft = new RunbookDraft()
             };
 
-            var rdcparam = new RunbookCreateDraftParameters() { Name = runbookName, Properties = rdcprop, Tags = (tags != null) ? tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString()) : null };
+            var rdcparam = new RunbookCreateDraftParameters() { Name = runbookName, Properties = rdcprop, Tags = null };
 
             this.automationManagementClient.Runbooks.CreateWithDraft(automationAccountName, rdcparam);
 
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description,
-            IDictionary tags)
+            string[] tags)
         {
 
             var runbookName = Path.GetFileNameWithoutExtension(runbookPath);
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Runbook UpdateRunbook(string automationAccountName, string runbookName, string description,
-            IDictionary tags, bool? logProgress, bool? logVerbose)
+            string[] tags, bool? logProgress, bool? logVerbose)
         {
             var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
             if (runbookModel == null)
@@ -259,9 +259,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             var runbookUpdateParameters = new RunbookUpdateParameters();
             runbookUpdateParameters.Name = runbookName;
-            runbookUpdateParameters.Tags = (tags != null)
-                    ? tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString())
-                    : runbookModel.Tags;
+            runbookUpdateParameters.Tags = null;
             runbookUpdateParameters.Properties =  new RunbookUpdateProperties();
             runbookUpdateParameters.Properties.Description = description ?? runbookModel.Properties.Description;
             runbookUpdateParameters.Properties.LogProgress = (logProgress.HasValue) ?  logProgress.Value : runbookModel.Properties.LogProgress;
@@ -1416,9 +1414,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return new JobSchedule(automationAccountName, jobSchedule);
         }
 
-        private Management.Automation.Models.Runbook TryGetRunbookModel(string automationAccountName, string runbookName)
+        private WindowsAzure.Management.Automation.Models.Runbook TryGetRunbookModel(string automationAccountName, string runbookName)
         {
-            Management.Automation.Models.Runbook runbook = null;
+            WindowsAzure.Management.Automation.Models.Runbook runbook = null;
             try
             {
                 runbook = this.automationManagementClient.Runbooks.Get(automationAccountName, runbookName).Runbook;
@@ -1437,9 +1435,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return runbook;
         }
 
-        private Management.Automation.Models.Certificate TryGetCertificateModel(string automationAccountName, string certificateName)
+        private WindowsAzure.Management.Automation.Models.Certificate TryGetCertificateModel(string automationAccountName, string certificateName)
         {
-            Management.Automation.Models.Certificate certificate = null;
+            WindowsAzure.Management.Automation.Models.Certificate certificate = null;
             try
             {
                 certificate = this.automationManagementClient.Certificates.Get(automationAccountName, certificateName).Certificate;
@@ -1600,9 +1598,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return new Certificate(automationAccountName, certificate);
         }
 
-        private Management.Automation.Models.Connection TryGetConnectionModel(string automationAccountName, string connectionName)
+        private WindowsAzure.Management.Automation.Models.Connection TryGetConnectionModel(string automationAccountName, string connectionName)
         {
-            Management.Automation.Models.Connection connection = null;
+            WindowsAzure.Management.Automation.Models.Connection connection = null;
             try
             {
                 connection = this.automationManagementClient.Connections.Get(automationAccountName, connectionName).Connection;

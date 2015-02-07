@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="jobSchedule">
         /// The job schedule.
         /// </param>
-        public JobSchedule(string automationAccountName, Azure.Management.Automation.Models.JobSchedule jobSchedule)
+        public JobSchedule(string automationAccountName, WindowsAzure.Management.Automation.Models.JobSchedule jobSchedule)
         {
             Requires.Argument("jobSchedule", jobSchedule).NotNull();
             this.AutomationAccountName = automationAccountName;

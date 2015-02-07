@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook tags.")]
         [Alias("Tag")]
-        public IDictionary Tags { get; set; }
+        public string[] Tags { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
