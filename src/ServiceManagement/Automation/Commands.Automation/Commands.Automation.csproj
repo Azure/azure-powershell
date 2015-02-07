@@ -93,7 +93,7 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.0.0\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Automation">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Automation.0.15.1-preview\lib\net40\Microsoft.WindowsAzure.Management.Automation.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Automation.1.0.0\lib\net40\Microsoft.WindowsAzure.Management.Automation.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
