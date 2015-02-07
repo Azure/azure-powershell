@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Globalization;
 using Microsoft.Azure.Commands.Automation.Common;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.RunbookName = jobSchedule.Properties.Runbook.Name;
             this.ScheduleName = jobSchedule.Properties.Schedule.Name;
             this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
-            foreach (var kvp in jobSchedule.Properties.Parameters)
+            foreach (var kvp in jobSchedule.Properties.Parameters.Where(kvp => 0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture,
+                CompareOptions.IgnoreCase)))
             {
                 this.Parameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
             }
