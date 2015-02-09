@@ -7711,16 +7711,36 @@ Vault has been created
       <dev:version></dev:version>
     </command:details>
     <maml:description>
-      <maml:para>Retrieves Azure Site Recovery Vault</maml:para>
+      <maml:para>Retrieves the information of the active  Azure Site Recovery Vault</maml:para>
     </maml:description>
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-AzureSiteRecoveryVault</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
     <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para></maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <!-- Input - Output section-->
     <command:inputTypes>
@@ -7779,15 +7799,15 @@ Vault has been created
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
- Get-AzureSiteRecoveryVault
+          Get-AzureSiteRecoveryVault
 
-Name             : testVault
-ID               : 6467459117934545458
-CloudServiceName : CS-West-US-RecoveryServices
-SubscriptionId   : a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba
-StatusReason     :
-Status           : Active
-Location         : West US
+          Name             : testVault
+          ID               : 6467459117934545458
+          CloudServiceName : CS-West-US-RecoveryServices
+          SubscriptionId   : a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba
+          StatusReason     :
+          Status           : Active
+          Location         : West US
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
