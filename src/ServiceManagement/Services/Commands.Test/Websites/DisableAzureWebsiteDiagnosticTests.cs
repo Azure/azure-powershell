@@ -57,10 +57,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 File = true,
             };
 
-            AzureSession.Profile = new AzureProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
-            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             // Test
             disableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
@@ -89,10 +89,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 TableStorage = true
             };
 
-            AzureSession.Profile = new AzureProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
-            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             // Test
             disableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
@@ -121,10 +121,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 BlobStorage = true
             };
 
-            AzureSession.Profile = new AzureProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
-            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             // Test
             disableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
@@ -155,10 +155,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Slot = slot
             };
 
-            AzureSession.Profile = new AzureProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
-            AzureSession.Profile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             // Test
             disableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();

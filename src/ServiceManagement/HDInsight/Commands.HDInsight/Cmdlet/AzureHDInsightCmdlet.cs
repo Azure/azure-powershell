@@ -147,12 +147,12 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 // we need this for the tests to mock out the current subscription.
                 if (this.HasCurrentSubscription)
                 {
-                    return this.CurrentContext.Subscription;
+                    return this.Profile.Context.Subscription;
                 }
 
                 return testSubscription;
 #else
-                return this.CurrentContext.Subscription;
+                return this.Profile.Context.Subscription;
 #endif
             }
         }

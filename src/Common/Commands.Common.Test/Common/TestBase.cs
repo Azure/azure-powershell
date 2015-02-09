@@ -28,6 +28,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
     /// </summary>
     public abstract class TestBase
     {
+        protected AzureProfile currentProfile;
+
         public TestBase()
         {
             BaseSetup();
@@ -43,11 +45,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             {
                 AzureSession.DataStore = new MockDataStore();
             }
-            if (AzureSession.Profile.CurrentContext.Subscription == null)
+            currentProfile = new AzureProfile();
+
+            if (currentProfile.Context.Subscription == null)
             {
                 var newGuid = Guid.NewGuid();
-                AzureSession.Profile.Subscriptions[newGuid] = new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" };
-                AzureSession.Profile.Accounts["test"] = new AzureAccount
+                currentProfile.Subscriptions[newGuid] = new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" };
+                currentProfile.Accounts["test"] = new AzureAccount
                     {
                         Id = "test",
                         Type = AzureAccount.AccountType.User,
@@ -56,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                         }
                     };
-                AzureSession.Profile.DefaultSubscription = AzureSession.Profile.Subscriptions[newGuid];
+                currentProfile.DefaultSubscription = currentProfile.Subscriptions[newGuid];
             }
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }

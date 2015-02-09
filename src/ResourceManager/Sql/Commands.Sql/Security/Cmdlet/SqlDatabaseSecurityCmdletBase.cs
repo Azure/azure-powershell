@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            PolicyHandler = new SqlClient(CurrentContext.Subscription);
+            PolicyHandler = new SqlClient(Profile, Profile.Context.Subscription);
             AuditingPolicy policy = this.GetPolicy();
             this.UpdatePolicy(policy);
             this.SendPolicy(policy);

@@ -87,9 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
             profileClient.Profile.Subscriptions[newSubscription.Id] = newSubscription;
             
             profileClient.Profile.Save();
-
-            AzureSession.Profile = profileClient.Profile;
-
+            
             return profileClient.Profile.Subscriptions[newSubscription.Id];
         }
 

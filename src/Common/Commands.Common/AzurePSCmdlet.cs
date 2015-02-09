@@ -25,7 +25,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public abstract class AzurePSCmdlet : PSCmdlet
     {
-        private readonly RecordingTracingInterceptor httpTracingInterceptor = new RecordingTracingInterceptor();
+        private readonly RecordingTracingInterceptor _httpTracingInterceptor = new RecordingTracingInterceptor();
+
+        [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
+        public AzureProfile Profile { get; set; }
 
         static AzurePSCmdlet()
         {
@@ -37,24 +40,66 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             AzureSession.ClientFactory.UserAgents.Add(AzurePowerShell.UserAgentValue);
         }
 
-        public AzurePSCmdlet()
+        /// <summary>
+        /// Cmdlet begin process. Write to logs, setup Http Tracing and initialize profile
+        /// </summary>
+        protected override void BeginProcessing()
         {
-            AzureSession.Profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            InitializeProfile();
 
-            DefaultProfileClient = new ProfileClient(AzureSession.Profile);
+            if (string.IsNullOrEmpty(ParameterSetName))
+            {
+                WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithoutParameterSetLog, this.GetType().Name));
+            }
+            else
+            {
+                WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithParameterSetLog, this.GetType().Name, ParameterSetName));
+            }
+
+            if (Profile.Context != null && Profile.Context.Account != null && Profile.Context.Account.Id != null)
+            {
+                WriteDebugWithTimestamp(string.Format("using account id '{0}'...", Profile.Context.Account.Id));
+            }
+
+            RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
+
+            base.BeginProcessing();
         }
 
-        public AzureContext CurrentContext
+        private void InitializeProfile()
         {
-            get { return AzureSession.Profile.CurrentContext; }
+            // Load profile from disk 
+            var profileFromDisk = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            if (Profile == null ||
+                Profile.ProfilePath == profileFromDisk.ProfilePath)
+            {
+                Profile = profileFromDisk;
+            }
         }
+
+        /// <summary>
+        /// End processing. Flush messages in tracing interceptor and save profile.
+        /// </summary>
+        protected override void EndProcessing()
+        {
+            string message = string.Format(Resources.EndProcessingLog, this.GetType().Name);
+            WriteDebugWithTimestamp(message);
+
+            RecordingTracingInterceptor.RemoveFromContext(_httpTracingInterceptor);
+            FlushMessagesFromTracingInterceptor();
+
+            base.EndProcessing();
+        }
+
+        /*public AzureContext Profile.Context
+        {
+            get { return Profile.Context; }
+        }*/
 
         public bool HasCurrentSubscription
         {
-            get { return AzureSession.Profile.CurrentContext.Subscription != null; }
+            get { return Profile.Context.Subscription != null; }
         }
-
-        public ProfileClient DefaultProfileClient { get; private set; }
 
         protected string CurrentPath()
         {
@@ -192,51 +237,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        /// <summary>
-        /// Cmdlet begin process
-        /// </summary>
-        protected override void BeginProcessing()
-        {
-            if (string.IsNullOrEmpty(ParameterSetName))
-            {
-                WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithoutParameterSetLog, this.GetType().Name));
-            }
-            else
-            {
-                WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithParameterSetLog, this.GetType().Name, ParameterSetName));
-            }
-
-            if (CurrentContext != null && CurrentContext.Account != null && CurrentContext.Account.Id != null)
-            {
-                WriteDebugWithTimestamp(string.Format("using account id '{0}'...", CurrentContext.Account.Id));
-            }
-
-            RecordingTracingInterceptor.AddToContext(httpTracingInterceptor);
-
-            base.BeginProcessing();
-        }
-
         private void FlushMessagesFromTracingInterceptor()
         {
             string message;
-            while (httpTracingInterceptor.MessageQueue.TryDequeue(out message))
+            while (_httpTracingInterceptor.MessageQueue.TryDequeue(out message))
             {
                 base.WriteDebug(message);
             }
-        }
-
-        /// <summary>
-        /// End processing
-        /// </summary>
-        protected override void EndProcessing()
-        {
-            string message = string.Format(Resources.EndProcessingLog, this.GetType().Name);
-            WriteDebugWithTimestamp(message);
-
-            RecordingTracingInterceptor.RemoveFromContext(httpTracingInterceptor);
-            FlushMessagesFromTracingInterceptor();
-
-            base.EndProcessing();
         }
 
         /// <summary>
