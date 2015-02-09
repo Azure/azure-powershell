@@ -180,9 +180,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
             else
             {
-                this.WriteDebugWithTimestamp(
+                this.WriteWarningWithTimestamp(
+                    string.Format(
                     Properties.Resources.IDBasedParamUsageNotSupportedFromNextRelease,
-                    paramName);
+                    paramName));
             }
         }
 
