@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Policy {get; set; }
 
-        [Parameter(HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"audq\".")]
+        [Parameter(HelpMessage = "Permissions for a container. Permissions can be any subset of \"rwdl\".")]
         public string Permission { get; set; }
 
         [Parameter(HelpMessage = "Start Time")]
@@ -93,8 +93,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             localChannel.SetContainerPermissions(container, blobContainerPermissions);
             return policyName;
         }
-
-
 
         /// <summary>
         /// execute command

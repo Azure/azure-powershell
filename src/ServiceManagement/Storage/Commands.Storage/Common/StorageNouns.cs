@@ -125,6 +125,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const string TableStoredAccessPolicy = "AzureStorageTableStoredAccessPolicy";
 
         /// <summary>
+        /// Azure storage share stored access policy
+        /// </summary>
+        public const string ShareStoredAccessPolicy = "AzureStorageShareStoredAccessPolicy";
+
+        /// <summary>
         /// Azure storage container stored access policy
         /// </summary>
         public const string ContainerStoredAccessPolicy = "AzureStorageContainerStoredAccessPolicy";
