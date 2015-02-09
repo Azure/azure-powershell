@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     /// Hyper-V Replica specific protection profile details.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    public class HyperVReplicaProtectionProfileDetails
+    public class HyperVReplicaSP1ProtectionProfileDetails
     {
         /// <summary>
         /// Gets or sets a value indicating the number of recovery points.
@@ -846,7 +846,14 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember]
         public string ReplicaDeletionOption { get; set; }
+    }
 
+    /// <summary>
+    /// Hyper-V Replica Blue specific protection profile details.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class HyperVReplicaProtectionProfileDetails : HyperVReplicaSP1ProtectionProfileDetails
+    {
         /// <summary>
         /// Gets or sets a value indicating the replication interval.
         /// </summary>
