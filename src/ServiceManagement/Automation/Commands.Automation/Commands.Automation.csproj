@@ -202,6 +202,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\StreamType.cs" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

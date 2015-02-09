@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -28,27 +29,27 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the variable name.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "The variable name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the variable encrypted Property.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The encrypted property of the variable.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The encrypted property of the variable.")]
         [ValidateNotNull]
         public bool Encrypted { get; set; }
         
         /// <summary>
         /// Gets or sets the variable description.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the variable.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the variable.")]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets the variable value.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value of the variable.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value of the variable.")]
         public object Value { get; set; }
 
         /// <summary>

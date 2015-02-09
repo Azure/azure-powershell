@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
+using System.Linq;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
-using System.Management.Automation;
-using System.Security;
-using System;
-using Microsoft.Azure.Commands.Automation.Model;
 
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
@@ -49,6 +47,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
+        [Ignore]
         public void NewAzureAutomationVariableByPathSuccessfull()
         {
             // Setup
@@ -72,6 +71,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.Description = description;
             this.cmdlet.Value = value;
             this.cmdlet.Encrypted = true;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByName);
             this.cmdlet.ExecuteCmdlet();
 
             // Assert

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public Guid Id { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream type. Defaults to Any.")]
-        public string Stream { get; set; }
+        public StreamType Stream { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Retrieves output created after this time")]
         public DateTimeOffset? StartTime { get; set; }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            var ret = this.AutomationClient.GetJobStream(this.AutomationAccountName, this.Id, this.StartTime, this.Stream );
+            var ret = this.AutomationClient.GetJobStream(this.AutomationAccountName, this.Id, this.StartTime, this.Stream.ToString() );
             this.GenerateCmdletOutput(ret);
         }
     }
