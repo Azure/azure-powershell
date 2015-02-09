@@ -1303,6 +1303,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This start time field must be omitted if it has been specified in an associated stored access policy..
+        /// </summary>
+        internal static string SignedStartTimeMustBeOmitted {
+            get {
+                return ResourceManager.GetString("SignedStartTimeMustBeOmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Skip to download blob &apos;{0}&apos; with snapshot time &apos;{0}&apos;..
         /// </summary>
         internal static string SkipDownloadSnapshot {

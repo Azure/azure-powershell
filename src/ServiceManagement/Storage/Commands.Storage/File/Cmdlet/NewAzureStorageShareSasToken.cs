@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using System;
+    using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
@@ -48,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
         private string accessPolicyIdentifier;
 
-        [Parameter(HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"rwdl\".",
+        [Parameter(HelpMessage = "Permissions for a share. Permissions can be any subset of \"rwdl\".",
             ParameterSetName = SasPermissionParameterSet)]
         public string Permission { get; set; }
 
@@ -75,19 +84,38 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             if (String.IsNullOrEmpty(ShareName)) return;
             CloudFileShare fileShare = Channel.GetShareReference(this.ShareName);
             SharedAccessFilePolicy accessPolicy = new SharedAccessFilePolicy();
-            bool shouldSetExpiryTime = SasTokenHelper.ValidateShareAccessPolicy(Channel, this.ShareName, accessPolicy, accessPolicyIdentifier);
+
+            bool shouldSetExpiryTime = SasTokenHelper.ValidateShareAccessPolicy(
+                Channel, 
+                this.ShareName, 
+                accessPolicyIdentifier, 
+                !string.IsNullOrEmpty(this.Permission),
+                this.StartTime.HasValue,
+                this.ExpiryTime.HasValue);
+
             SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
             string sasToken = fileShare.GetSharedAccessSignature(accessPolicy, accessPolicyIdentifier);
 
             if (FullUri)
             {
-                string fullUri = fileShare.Uri.ToString() + sasToken;
+                string fullUri = SasTokenHelper.GetFullUriWithSASToken(fileShare.Uri.AbsoluteUri.ToString(), sasToken);
+
                 WriteObject(fullUri);
             }
             else
             {
                 WriteObject(sasToken);
             }
+        }
+
+        protected override IStorageFileManagement CreateChannel()
+        {
+            if (this.Channel == null || !this.ShareChannel)
+            {
+                this.Channel = new StorageFileManagement(this.GetCmdletStorageContext());
+            }
+
+            return this.Channel;
         }
 
         /// <summary>
@@ -114,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         internal void SetupAccessPolicyPermission(SharedAccessFilePolicy policy, string permission)
         {
             if (string.IsNullOrEmpty(permission)) return;
-            permission = permission.ToLower();
+            permission = permission.ToLower(CultureInfo.CurrentCulture);
             policy.Permissions = SharedAccessFilePolicy.PermissionsFromString(permission);
         }
     }

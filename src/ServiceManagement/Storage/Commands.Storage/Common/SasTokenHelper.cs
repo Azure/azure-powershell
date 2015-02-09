@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <param name="policy">SharedAccessFilePolicy object</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
         public static bool ValidateShareAccessPolicy(IStorageFileManagement channel, string shareName,
-            SharedAccessFilePolicy policy, string policyIdentifier)
+             string policyIdentifier, bool shouldNoPermission, bool shouldNoStartTime, bool shouldNoExpiryTime)
         {
             if (string.IsNullOrEmpty(policyIdentifier)) return true;
             CloudFileShare fileShare = channel.GetShareReference(shareName);
@@ -72,14 +72,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             SharedAccessFilePolicy sharedAccessPolicy =
                 GetExistingPolicy<SharedAccessFilePolicy>(permission.SharedAccessPolicies, policyIdentifier);
 
-            if (policy.Permissions != SharedAccessFilePermissions.None)
+            if (shouldNoPermission && sharedAccessPolicy.Permissions != SharedAccessFilePermissions.None)
             {
-                throw new ArgumentException(Resources.SignedPermissionsMustBeOmitted);
+                throw new InvalidOperationException(Resources.SignedPermissionsMustBeOmitted);
             }
 
-            if (policy.SharedAccessExpiryTime.HasValue && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
+            if (shouldNoStartTime && sharedAccessPolicy.SharedAccessStartTime.HasValue)
             {
-                throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
+                throw new InvalidOperationException(Resources.SignedStartTimeMustBeOmitted);
+            }
+
+            if (shouldNoExpiryTime && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
+            {
+                throw new InvalidOperationException(Resources.SignedExpiryTimeMustBeOmitted);
             }
 
             return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
@@ -198,6 +203,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 throw new ArgumentException(String.Format(Resources.ExpiryTimeGreatThanStartTime,
                     SharedAccessExpiryTime.ToString(), SharedAccessStartTime.ToString()));
+            }
+        }
+
+        public static string GetFullUriWithSASToken(string absoluteUri, string sasToken)
+        {
+
+            if (absoluteUri.Contains("?"))
+            {
+                // There is already a query string in the URI,
+                // remove "?" from sas token.
+                return absoluteUri + sasToken.Substring(1);
+            }
+            else
+            {
+                return absoluteUri + sasToken;
             }
         }
     }

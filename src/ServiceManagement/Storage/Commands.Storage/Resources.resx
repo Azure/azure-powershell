@@ -592,6 +592,9 @@ Failed: {2}.</value>
   <data name="BlobIsNotReadable" xml:space="preserve">
     <value>Can't read the blob properties.</value>
   </data>
+  <data name="SignedStartTimeMustBeOmitted" xml:space="preserve">
+    <value>This start time field must be omitted if it has been specified in an associated stored access policy.</value>
+  </data>
   <data name="SignedExpiryTimeMustBeOmitted" xml:space="preserve">
     <value>This expiry time field must be omitted if it has been specified in an associated stored access policy.</value>
   </data>
