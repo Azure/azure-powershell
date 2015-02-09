@@ -135,6 +135,15 @@
   <data name="GBA_ResGroupAccounts" xml:space="preserve">
     <value>Getting accounts in resource group {0}</value>
   </data>
+  <data name="GBP_GetByName" xml:space="preserve">
+    <value>Getting Pool "{0}"</value>
+  </data>
+  <data name="GBP_GetByOData" xml:space="preserve">
+    <value>Getting enumerator for Pools matching the specified OData filter</value>
+  </data>
+  <data name="GBP_NoFilter" xml:space="preserve">
+    <value>Getting enumerator for all Pools associated with the Batch account</value>
+  </data>
   <data name="GBWI_GetByName" xml:space="preserve">
     <value>Getting WorkItem "{0}"</value>
   </data>

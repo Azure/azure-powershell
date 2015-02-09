@@ -96,6 +96,44 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a GetPoolResponse object
+        /// </summary>
+        public static GetPoolResponse CreateGetPoolResponse(string poolName)
+        {
+            GetPoolResponse response = new GetPoolResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            Pool pool = new Pool();
+            SetProperty(pool, "Name", poolName);
+
+            SetProperty(response, "Pool", pool);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a ListPoolsResponse object
+        /// </summary>
+        public static ListPoolsResponse CreateListPoolsResponse(IEnumerable<string> poolNames)
+        {
+            ListPoolsResponse response = new ListPoolsResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            List<Pool> pools = new List<Pool>();
+
+            foreach (string name in poolNames)
+            {
+                Pool pool = new Pool();
+                SetProperty(pool, "Name", name);
+                pools.Add(pool);
+            }
+
+            SetProperty(response, "Pools", pools);
+
+            return response;
+        }
+
+        /// <summary>
         /// Builds a GetWorkItemResponse object
         /// </summary>
         public static GetWorkItemResponse CreateGetWorkItemResponse(string workItemName)

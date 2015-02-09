@@ -115,6 +115,33 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting Pool &quot;{0}&quot;.
+        /// </summary>
+        internal static string GBP_GetByName {
+            get {
+                return ResourceManager.GetString("GBP_GetByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting enumerator for Pools matching the specified OData filter.
+        /// </summary>
+        internal static string GBP_GetByOData {
+            get {
+                return ResourceManager.GetString("GBP_GetByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting enumerator for all Pools associated with the Batch account.
+        /// </summary>
+        internal static string GBP_NoFilter {
+            get {
+                return ResourceManager.GetString("GBP_NoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting WorkItem &quot;{0}&quot;.
         /// </summary>
         internal static string GBWI_GetByName {
