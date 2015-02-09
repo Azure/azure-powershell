@@ -110,6 +110,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const string BlobSas = "AzureStorageBlobSASToken";
 
         /// <summary>
+        /// Azure storage file share sas
+        /// </summary>
+        public const string ShareSas = "AzureStorageShareSASToken";
+
+        /// <summary>
         /// Azure storage table sas
         /// </summary>
         public const string TableSas = "AzureStorageTableSASToken";

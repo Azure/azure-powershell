@@ -19,6 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.File;
     using Microsoft.WindowsAzure.Storage.Queue;
     using Microsoft.WindowsAzure.Storage.Queue.Protocol;
     using Microsoft.WindowsAzure.Storage.Table;
@@ -44,6 +45,34 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 GetExistingPolicy<SharedAccessBlobPolicy>(permission.SharedAccessPolicies, policyIdentifier);
 
             if (policy.Permissions != SharedAccessBlobPermissions.None)
+            {
+                throw new ArgumentException(Resources.SignedPermissionsMustBeOmitted);
+            }
+
+            if (policy.SharedAccessExpiryTime.HasValue && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
+            {
+                throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
+            }
+
+            return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
+        }
+        
+        /// <summary>
+        /// Validate the file share access policy
+        /// </summary>
+        /// <param name="policy">SharedAccessFilePolicy object</param>
+        /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
+        public static bool ValidateShareAccessPolicy(IStorageFileManagement channel, string shareName,
+            SharedAccessFilePolicy policy, string policyIdentifier)
+        {
+            if (string.IsNullOrEmpty(policyIdentifier)) return true;
+            CloudFileShare fileShare = channel.GetShareReference(shareName);
+            FileSharePermissions permission = fileShare.GetPermissions();
+
+            SharedAccessFilePolicy sharedAccessPolicy =
+                GetExistingPolicy<SharedAccessFilePolicy>(permission.SharedAccessPolicies, policyIdentifier);
+
+            if (policy.Permissions != SharedAccessFilePermissions.None)
             {
                 throw new ArgumentException(Resources.SignedPermissionsMustBeOmitted);
             }
