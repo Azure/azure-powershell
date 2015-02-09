@@ -19,8 +19,6 @@ using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -44,6 +42,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// Creates new BatchClient instance
         /// </summary>
         /// <param name="batchManagementClient">The IBatchManagementClient instance</param>
+        /// <param name="resourceManagementClient">The IResourceManagementClient instance</param>
         public BatchClient(IBatchManagementClient batchManagementClient, IResourceManagementClient resourceManagementClient)
         {
             BatchManagementClient = batchManagementClient;
@@ -51,9 +50,9 @@ namespace Microsoft.Azure.Commands.Batch
         }
 
         /// <summary>
-        /// Creates new ResourceManagementClient
+        /// Creates new BatchClient
         /// </summary>
-        /// <param name="subscription">Context with subscription containing a batch account to manipulate</param>
+        /// <param name="context">Context with subscription containing a batch account to manipulate</param>
         public BatchClient(AzureContext context)
             : this(AzureSession.ClientFactory.CreateClient<BatchManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
             AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
@@ -257,7 +256,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// Lists all accounts in a subscription or in a resource group if its name is specified
         /// </summary>
-        /// <param name="nextLink">Next link to use when querying for accounts</param>
+        /// <param name="NextLink">Next link to use when querying for accounts</param>
         /// <returns>The status of list operation</returns>
         internal BatchAccountListResponse ListNextAccounts(string NextLink)
         {

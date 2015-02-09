@@ -41,6 +41,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Azure.Batch">
+      <HintPath>..\..\..\packages\Azure.Batch.1.1.0\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+    </Reference>
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.1\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
@@ -69,6 +72,12 @@
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.11.10918.1222\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
@@ -85,12 +94,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.0.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.2.1.0.4\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
@@ -106,6 +123,11 @@
       <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accounts\RemoveBatchAccountCommand.cs" />
@@ -117,14 +139,61 @@
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
     <Compile Include="BatchClient.cs" />
     <Compile Include="BatchCmdletBase.cs" />
+    <Compile Include="BatchObjectModelCmdletBase.cs" />
     <Compile Include="Models\BatchAccountContext.cs" />
+    <Compile Include="Models\PSAffinitiyInformation.cs" />
+    <Compile Include="Models\PSAsyncEnumerable.cs" />
+    <Compile Include="Models\PSAutoPoolSpecification.cs" />
+    <Compile Include="Models\PSAutoScaleRun.cs" />
+    <Compile Include="Models\PSAutoScaleRunError.cs" />
+    <Compile Include="Models\PSCertificateReference.cs" />
+    <Compile Include="Models\PSCloudJob.cs" />
+    <Compile Include="Models\PSCloudPool.cs" />
+    <Compile Include="Models\PSCloudTask.cs" />
+    <Compile Include="Models\PSCloudWorkItem.cs" />
+    <Compile Include="Models\PSEnvironmentSetting.cs" />
+    <Compile Include="Models\PSFileProperties.cs" />
+    <Compile Include="Models\PSJobConstraints.cs" />
+    <Compile Include="Models\PSJobExecutionEnvironment.cs" />
+    <Compile Include="Models\PSJobExecutionInformation.cs" />
+    <Compile Include="Models\PSJobManager.cs" />
+    <Compile Include="Models\PSJobSchedulingError.cs" />
+    <Compile Include="Models\PSJobSpecification.cs" />
+    <Compile Include="Models\PSJobStatistics.cs" />
+    <Compile Include="Models\PSMetadataItem.cs" />
+    <Compile Include="Models\PSNameValuePair.cs" />
+    <Compile Include="Models\PSPoolSpecification.cs" />
+    <Compile Include="Models\PSPoolStatistics.cs" />
+    <Compile Include="Models\PSRecentJob.cs" />
+    <Compile Include="Models\PSResizeError.cs" />
+    <Compile Include="Models\PSResourceFile.cs" />
+    <Compile Include="Models\PSResourceStatistics.cs" />
+    <Compile Include="Models\PSSchedulingPolicy.cs" />
+    <Compile Include="Models\PSStartTask.cs" />
+    <Compile Include="Models\PSStartTaskInformation.cs" />
     <Compile Include="Models\PSTagValuePair.cs" />
+    <Compile Include="Models\PSTaskConstraints.cs" />
+    <Compile Include="Models\PSTaskExecutionInformation.cs" />
+    <Compile Include="Models\PSTaskFile.cs" />
+    <Compile Include="Models\PSTaskInformation.cs" />
+    <Compile Include="Models\PSTaskSchedulingError.cs" />
+    <Compile Include="Models\PSTaskStatistics.cs" />
+    <Compile Include="Models\PSUsageStatistics.cs" />
+    <Compile Include="Models\PSUser.cs" />
+    <Compile Include="Models\PSVM.cs" />
+    <Compile Include="Models\PSVMError.cs" />
+    <Compile Include="Models\PSVMInformation.cs" />
+    <Compile Include="Models\PSWorkItemExecutionInformation.cs" />
+    <Compile Include="Models\PSWorkItemSchedule.cs" />
+    <Compile Include="Models\PSWorkItemStatistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Constants.cs" />
+    <Compile Include="WorkItems\GetBatchWorkItemCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.Azure.Commands.Batch.format.ps1xml">

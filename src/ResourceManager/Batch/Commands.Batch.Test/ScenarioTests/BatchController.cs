@@ -19,8 +19,6 @@ using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Test;
 using System;
 using System.Linq;
 
