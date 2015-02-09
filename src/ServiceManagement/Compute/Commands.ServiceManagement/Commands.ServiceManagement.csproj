@@ -69,7 +69,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Extensions, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Extensions.0.13.0-preview\lib\net45\Microsoft.Azure.Common.Extensions.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Extensions.0.14.0-preview\lib\net45\Microsoft.Azure.Common.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.1\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -109,9 +109,9 @@
     <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.0.0\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.0.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -206,6 +206,7 @@
     <Compile Include="IaaS\Extensions\DSC\DscPrivateSettings.cs" />
     <Compile Include="IaaS\Extensions\DSC\DscPublicSettings.cs" />
     <Compile Include="IaaS\Extensions\DSC\DscSettingsSerializer.cs" />
+    <Compile Include="IaaS\Extensions\DSC\GetAzureVMDscExtensionStatus.cs" />
     <Compile Include="IaaS\Extensions\DSC\GetDscResourceException.cs" />
     <Compile Include="IaaS\Extensions\DSC\RemoveAzureVMDscExtension.cs" />
     <Compile Include="IaaS\Extensions\DSC\GetAzureVMDscExtension.cs" />
@@ -216,6 +217,7 @@
     <Compile Include="IaaS\Extensions\DSC\ConfigurationParseResult.cs" />
     <Compile Include="IaaS\Extensions\DSC\ServiceManagementBaseCmdletExtentions.cs" />
     <Compile Include="IaaS\Extensions\DSC\PublishAzureVMDscConfiguration.cs" />
+    <Compile Include="IaaS\Extensions\DSC\VirtualMachineDscExtensionStatusContext.cs" />
     <Compile Include="IaaS\Extensions\MicrosoftAntimalware\GetAzureVMMicrosoftAntimalwareExtension.cs" />
     <Compile Include="IaaS\Extensions\MicrosoftAntimalware\RemoveAzureVMMicrosoftAntimalwareExtension.cs" />
     <Compile Include="IaaS\Extensions\MicrosoftAntimalware\SetAzureVMMicrosoftAntimalwareExtension.cs" />
