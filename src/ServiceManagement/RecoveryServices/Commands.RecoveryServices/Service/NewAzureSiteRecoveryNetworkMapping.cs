@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private void EnterpriseToAzureNetworkMapping()
         {
             // Verify whether the subscription is associated with the account or not.
-            PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.AzureSubscriptionId);
+            PSRecoveryServicesClient.ValidateSubscriptionAccountAssociation(this.AzureSubscriptionId);
 
             // Check if the Azure VM Network is associated with the Subscription or not.
             string azureVMNetworkName;

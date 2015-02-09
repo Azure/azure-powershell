@@ -14,15 +14,17 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
     /// Recovery Services Client Helper Methods class
     /// </summary>
-    public class PSRecoveryServicesClientHelper
+    public partial class PSRecoveryServicesClient
     {
         /// <summary>
         /// Validates whether the subscription belongs to the currently logged account or not.
@@ -57,30 +59,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     string.Format(
                     Properties.Resources.SubscriptionIsNotAssociatedWithTheAccount,
                     azureSubscriptionId));
-            }
-        }
-
-        /// <summary>
-        /// Validates whether the storage belongs to the currently logged account or not.
-        /// </summary>
-        /// <param name="azureStorageAccount">Storage Account details</param>
-        public static void ValidateStorageAccountAssociation(string azureStorageAccount)
-        {
-            if (string.IsNullOrEmpty(azureStorageAccount))
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.StorageAccountNameIsNotValid));
-            }
-
-            bool associatedAccount = false;
-
-            if (!associatedAccount)
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.StorageIsNotAssociatedWithTheAccount,
-                    azureStorageAccount));
             }
         }
 
@@ -124,6 +102,53 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 throw new InvalidOperationException(
                     string.Format(Properties.Resources.ReplicationStartTimeInvalid));
+            }
+        }
+
+        /// <summary>
+        /// Validates whether the storage belongs to the currently logged account or not.
+        /// </summary>
+        /// <param name="azureStorageAccount">Storage Account details</param>
+        public void ValidateStorageAccountAssociation(string azureStorageAccount)
+        {
+            if (string.IsNullOrEmpty(azureStorageAccount))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.StorageAccountNameIsNotValid));
+            }
+
+            bool associatedAccount = false;
+            ProfileClient pc = new ProfileClient();
+            List<AzureSubscription> azureSubscriptions =
+                pc.RefreshSubscriptions(AzureSession.CurrentContext.Environment);
+
+            foreach (AzureSubscription subscription in azureSubscriptions)
+            {
+                StorageListResponse azureStorageListResponse =
+                    this.GetSiteRecoveryClient().Storages.ListAzureStorages(subscription.Id.ToString());
+
+                foreach (var storage in azureStorageListResponse.Storages)
+                {
+                    if (string.Compare(azureStorageAccount, storage.Name, StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        associatedAccount = true;
+                        break;
+                    }
+                }
+
+                if (associatedAccount)
+                {
+                    break;
+                }
+            }
+
+            if (!associatedAccount)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.StorageIsNotAssociatedWithTheAccount,
+                    azureStorageAccount));
             }
         }
     }

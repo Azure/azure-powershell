@@ -192,14 +192,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             // Verify whether the subscription is associated with the account or not.
-            PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
+            PSRecoveryServicesClient.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
 
             // Verify whether the storage account is associated with the subscription or not.
-            //// PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
+            //// RecoveryServicesClient.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
 
-            PSRecoveryServicesClientHelper.ValidateReplicationStartTime(this.ReplicationStartTime);
+            PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
 
-            ushort replicationFrequencyInSeconds = PSRecoveryServicesClientHelper.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+            ushort replicationFrequencyInSeconds = PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
@@ -233,9 +233,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ReplicationProvider));
             }
 
-            PSRecoveryServicesClientHelper.ValidateReplicationStartTime(this.ReplicationStartTime);
+            PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
 
-            ushort replicationFrequencyInSeconds = PSRecoveryServicesClientHelper.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+            ushort replicationFrequencyInSeconds = PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
