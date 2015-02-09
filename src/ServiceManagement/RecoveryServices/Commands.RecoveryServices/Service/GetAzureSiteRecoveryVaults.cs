@@ -59,6 +59,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
+        /// <summary>
+        /// Queries all, by default.
+        /// </summary>
         private void GetByDefault()
         {
             IEnumerable<CloudService> cloudServiceList = RecoveryServicesClient.GetCloudServices();
@@ -78,6 +81,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.WriteVaults(vaultList);
         }
 
+        /// <summary>
+        /// Queries by name.
+        /// </summary>
         private void GetByName()
         {
             bool vaultFound = false;
@@ -119,7 +125,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Writes Vaults
+        /// Writes Vault
         /// </summary>
         /// <param name="vault">Vault object</param>
         private void WriteVault(ASRVault vault)
