@@ -95,9 +95,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 if (string.IsNullOrEmpty(this.Direction))
                 {
-                    this.WriteDebugWithTimestamp(
-                        Properties.Resources.MandatoryParamFromNextRelease,
-                        Constants.Direction);
+                    this.WriteWarningWithTimestamp(
+                        string.Format(
+                            Properties.Resources.MandatoryParamFromNextRelease,
+                            Constants.Direction));
                 }
 
                 switch (this.ParameterSetName)

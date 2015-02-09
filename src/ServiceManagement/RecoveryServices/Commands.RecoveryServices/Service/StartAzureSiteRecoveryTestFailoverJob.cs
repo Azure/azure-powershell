@@ -156,16 +156,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 if (this.NetworkType == null)
                 {
-                    this.WriteDebugWithTimestamp(
-                        Properties.Resources.MandatoryParamFromNextRelease,
-                        Constants.NetworkType);
+                    this.WriteWarningWithTimestamp(
+                        string.Format(
+                            Properties.Resources.MandatoryParamFromNextRelease,
+                            Constants.NetworkType));
                 }
 
                 if (this.VmNetworkId != null)
                 {
-                    this.WriteDebugWithTimestamp(
-                        Properties.Resources.IDBasedParamUsageNotSupportedFromNextRelease,
-                        "VmNetworkId");
+                    this.WriteWarningWithTimestamp(
+                        string.Format(
+                            Properties.Resources.IDBasedParamUsageNotSupportedFromNextRelease,
+                            "VmNetworkId"));
                 }
 
                 if (this.NetworkType == Constants.Existing && (this.Network == null && this.VmNetworkId == null))

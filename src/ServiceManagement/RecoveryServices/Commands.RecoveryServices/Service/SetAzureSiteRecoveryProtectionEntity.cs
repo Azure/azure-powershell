@@ -187,9 +187,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                 }
                                 else
                                 {
-                                    this.WriteDebugWithTimestamp(
+                                    this.WriteWarningWithTimestamp(
+                                        string.Format(
                                         Properties.Resources.MandatoryParamFromNextRelease,
-                                        "ProtectionProfile");
+                                        "ProtectionProfile"));
                                     string pcId = this.ProtectionContainerId ?? this.ProtectionEntity.ProtectionContainerId;
                                     var pc = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(
                                         pcId);
