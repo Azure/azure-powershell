@@ -240,6 +240,10 @@
       <Project>{d470e50a-9607-48d6-a924-4f9f86502704}</Project>
       <Name>Commands.Batch</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Insights\Commands.Insights\Commands.Insights.csproj">
+      <Project>{dea446a1-84e2-46cc-b780-eb4afde2460e}</Project>
+      <Name>Commands.Insights</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\KeyVault\Commands.KeyVault\Commands.KeyVault.csproj">
       <Project>{9ffc40cc-a341-4d0c-a25d-dc6b78ef6c94}</Project>
       <Name>Commands.KeyVault</Name>
