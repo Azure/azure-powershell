@@ -168,23 +168,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                 string profileId = string.Empty;
                                 var input = new EnableProtectionInput();
 
-                                // Get the replciation provider from profile object otherwise assume its E2E.
-                                // Let the call go without profileId set.
-                                string replicationProvider = Constants.HyperVReplica;
-                                if (this.ProtectionProfile != null)
-                                {
-                                    profileId = this.ProtectionProfile.ID;
-                                    replicationProvider = this.ProtectionProfile.ReplicationProvider;
-                                }
-
                                 if (this.ProtectionEntity == null)
                                 {
                                     var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
                                         this.ProtectionContainerId,
                                         this.Id);
                                     this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+                                }
 
-                                    this.ValidateUsageById(replicationProvider);
+                                // Get the replciation provider from profile object otherwise assume its E2E.
+                                // Let the call go without profileId set.
+                                string replicationProvider = null;
+
+                                if (this.ProtectionProfile != null)
+                                {
+                                    profileId = this.ProtectionProfile.ID;
+                                    replicationProvider = this.ProtectionProfile.ReplicationProvider;
+                                }
+                                else
+                                {
+                                    this.WriteWarningWithTimestamp(
+                                        string.Format(
+                                        Properties.Resources.MandatoryParamFromNextRelease,
+                                        "ProtectionProfile"));
+                                    string pcId = this.ProtectionContainerId ?? this.ProtectionEntity.ProtectionContainerId;
+                                    var pc = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(
+                                        pcId);
+
+                                    // PC will have all profiles associated with same replciation providers only.
+                                    replicationProvider =
+                                        pc.ProtectionContainer.AvailableProtectionProfiles.Count < 1 ?
+                                        null :
+                                        pc.ProtectionContainer.AvailableProtectionProfiles[0].ReplicationProvider;
+
+                                    if (replicationProvider != Constants.HyperVReplica)
+                                    {
+                                        throw new Exception("Please provide the protection profile object. It can be chosen from available protection profiles of the protection container.");
+                                    }
+                                }
+
+                                if (this.ParameterSetName == ASRParameterSets.ByIDs)
+                                {
+                                    this.ValidateUsageById(replicationProvider, "Id");
                                 }
 
                                 if (replicationProvider == Constants.HyperVReplicaAzure)

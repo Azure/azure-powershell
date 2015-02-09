@@ -168,11 +168,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Validates if the usage by ID is allowed or not.
         /// </summary>
         /// <param name="replicationProvider">Replication provider.</param>
-        protected void ValidateUsageById(string replicationProvider)
+        /// <param name="paramName">Parameter name.</param>
+        protected void ValidateUsageById(string replicationProvider, string paramName)
         {
             if (replicationProvider != Constants.HyperVReplica)
             {
-                throw new Exception("Call using ID parameter is not supported.");
+                throw new Exception(
+                    string.Format(
+                    Properties.Resources.IDBasedParamUsageNotSupportedFromNextRelease,
+                    paramName));
+            }
+            else
+            {
+                this.WriteWarningWithTimestamp(
+                    string.Format(
+                    Properties.Resources.IDBasedParamUsageNotSupportedFromNextRelease,
+                    paramName));
             }
         }
 

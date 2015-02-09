@@ -72,7 +72,7 @@ function Test-E2E_DeleteAndDissociate
                     {
                         if ($association.AssociationStatus -eq "Paired")
                         {
-                            // We have got the paired profile. Fire delete and dissociate
+                            # We have got the paired profile. Fire delete and dissociate
                             $pcPri = Get-AzureSiteRecoveryProtectionContainer -Id $association.PrimaryProtectionContainerId
                             $pcRec = Get-AzureSiteRecoveryProtectionContainer -Id $association.RecoveryProtectionContainerId
                             $job = Start-AzureSiteRecoveryProtectionProfileDissociationJob -PrimaryProtectionContainer $pcPri -RecoveryProtectionContainer $pcRec -ProtectionProfile $profile
@@ -80,7 +80,7 @@ function Test-E2E_DeleteAndDissociate
 							# Validate_ProfileDissociation_JobSucceeded
 							if ($Validate_ProfileDissociation_JobSucceeded -eq $true)
 							{
-								WaitForJobCompletion -JobId $job.ID
+								WaitForJobCompletion -JobId $job.ID -NumOfSecondsToWait 600
                                 $job = Get-AzureSiteRecoveryJob -Id $job.ID
 								Assert-True { $job.State -eq "Succeeded" }
 							}
@@ -134,7 +134,7 @@ function Test-E2E_CreateAndAssociate
 			# Validate_ProfileAssociation_JobSucceeded
 			if ($Validate_ProfileAssociation_JobSucceeded -eq $true)
 			{
-				WaitForJobCompletion -JobId $job.ID
+				WaitForJobCompletion -JobId $job.ID -NumOfSecondsToWait 600
                 $job = Get-AzureSiteRecoveryJob -Id $job.ID
 				Assert-True { $job.State -eq "Succeeded" }
 			}

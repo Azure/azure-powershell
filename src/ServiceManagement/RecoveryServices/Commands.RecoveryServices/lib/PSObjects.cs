@@ -99,6 +99,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string ResourceNamespace = "WAHyperVRecoveryManager";
 
         /// <summary>
+        /// Represents None string value.
+        /// </summary>
+        public const string None = "None";
+
+        /// <summary>
+        /// Represents Existing string value.
+        /// </summary>
+        public const string Existing = "Existing";
+
+        /// <summary>
+        /// Represents New string value.
+        /// </summary>
+        public const string New = "New";
+
+        /// <summary>
         /// Represents direction primary to secondary.
         /// </summary>
         public const string PrimaryToRecovery = "PrimaryToRecovery";
@@ -172,6 +187,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Represents Disable protection.
         /// </summary>
         public const string DisableProtection = "Disable";
+
+        /// <summary>
+        /// Represents Direction string value.
+        /// </summary>
+        public const string Direction = "Direction";
+
+        /// <summary>
+        /// Represents RPId string value.
+        /// </summary>
+        public const string RPId = "RPId";
+
+        /// <summary>
+        /// Represents ID string value.
+        /// </summary>
+        public const string ID = "ID";
+
+        /// <summary>
+        /// Represents NetworkType string value.
+        /// </summary>
+        public const string NetworkType = "NetworkType";
+
+        /// <summary>
+        /// Represents ProtectionEntityId string value.
+        /// </summary>
+        public const string ProtectionEntityId = "ProtectionEntityId";
 
         /// <summary>
         /// Azure fabric Id. In E2A context Recovery Server Id is always this.

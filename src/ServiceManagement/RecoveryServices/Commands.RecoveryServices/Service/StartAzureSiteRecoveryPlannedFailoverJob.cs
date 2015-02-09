@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets the Optimize value.
         /// </summary>
+        [Parameter]
         [ValidateSet(
             Constants.ForDowntime,
             Constants.ForSynchronization)]
@@ -108,12 +109,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ByRPObject:
-                    case ASRParameterSets.ByRPObjectE2AFailback:
                         this.RPId = this.RecoveryPlan.ID;
                         this.StartRpPlannedFailover();
                         break;
                     case ASRParameterSets.ByPEObject:
-                    case ASRParameterSets.ByPEObjectE2AFailback:
                        this.ProtectionEntityId = this.ProtectionEntity.ID;
                         this.ProtectionContainerId = this.ProtectionEntity.ProtectionContainerId;
                         this.StartPEPlannedFailover();
@@ -146,7 +145,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ProtectionEntityId);
                 this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
 
-                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider, Constants.ProtectionEntityId);
             }
 
             if (this.ProtectionEntity.ReplicationProvider == Constants.HyperVReplicaAzure)
@@ -160,8 +159,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 else
                 {
                     var blob = new AzureFailbackInput();
-                    blob.CreateRecoveryVmIfDoesntExist = false;
-                    blob.SkipDataSync = true;
+                    blob.CreateRecoveryVmIfDoesntExist = true;
+                    blob.SkipDataSync = this.Optimize == Constants.ForDowntime ? true : false;
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailbackInput>(blob);
                 }
             }
@@ -199,7 +198,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.RPId);
                 this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
 
-                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider);
+                this.ValidateUsageById(
+                    this.RecoveryPlan.ReplicationProvider,
+                    Constants.RPId);
             }
 
             if (this.RecoveryPlan.ReplicationProvider == Constants.HyperVReplicaAzure)
