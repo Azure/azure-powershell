@@ -81,7 +81,7 @@ function Test-E2E_DeleteAndDissociate
 							if ($Validate_ProfileDissociation_JobSucceeded -eq $true)
 							{
 								WaitForJobCompletion -JobId $job.ID -NumOfSecondsToWait 600
-                                $job = Get-AzureSiteRecoveryJob -Id $job.ID
+								$job = Get-AzureSiteRecoveryJob -Id $job.ID
 								Assert-True { $job.State -eq "Succeeded" }
 							}
 
