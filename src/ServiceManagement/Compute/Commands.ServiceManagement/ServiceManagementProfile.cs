@@ -185,14 +185,31 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
             Mapper.CreateMap<NSM.VirtualMachineVMImageListResponse.DataDiskConfiguration, PVM.DataDiskConfiguration>()
                   .ForMember(c => c.Lun, o => o.MapFrom(r => r.LogicalUnitNumber));
 
+            Mapper.CreateMap<IList<NSM.DataDiskConfigurationCreateParameters>, List<PVM.DataDiskConfiguration>>();
+            Mapper.CreateMap<List<NSM.DataDiskConfigurationCreateParameters>, List<PVM.DataDiskConfiguration>>();
+            Mapper.CreateMap<IList<NSM.DataDiskConfigurationCreateParameters>, PVM.DataDiskConfigurationList>();
             Mapper.CreateMap<IList<NSM.DataDiskConfigurationUpdateParameters>, List<PVM.DataDiskConfiguration>>();
             Mapper.CreateMap<List<NSM.DataDiskConfigurationUpdateParameters>, List<PVM.DataDiskConfiguration>>();
             Mapper.CreateMap<IList<NSM.DataDiskConfigurationUpdateParameters>, PVM.DataDiskConfigurationList>();
 
+            Mapper.CreateMap<PVM.OSDiskConfiguration, NSM.OSDiskConfigurationCreateParameters>()
+                  .ForMember(c => c.HostCaching, o => o.MapFrom(r => r.HostCaching))
+                  .ForMember(c => c.MediaLink, o => o.MapFrom(r => r.MediaLink))
+                  .ForMember(c => c.OS, o => o.MapFrom(r => r.OS))
+                  .ForMember(c => c.OSState, o => o.MapFrom(r => r.OSState));
+            Mapper.CreateMap<PVM.DataDiskConfiguration, NSM.DataDiskConfigurationCreateParameters>()
+                  .ForMember(c => c.LogicalUnitNumber, o => o.MapFrom(r => r.Lun));
             Mapper.CreateMap<PVM.OSDiskConfiguration, NSM.OSDiskConfigurationUpdateParameters>();
             Mapper.CreateMap<PVM.DataDiskConfiguration, NSM.DataDiskConfigurationUpdateParameters>()
                   .ForMember(c => c.LogicalUnitNumber, o => o.MapFrom(r => r.Lun));
 
+            Mapper.CreateMap<IList<PVM.DataDiskConfiguration>, IList<NSM.DataDiskConfigurationCreateParameters>>();
+            Mapper.CreateMap<List<PVM.DataDiskConfiguration>, List<NSM.DataDiskConfigurationCreateParameters>>();
+            Mapper.CreateMap<PVM.DataDiskConfigurationList, Collection<PVM.DataDiskConfiguration>>();
+            Mapper.CreateMap<Collection<PVM.DataDiskConfiguration>, IList<NSM.DataDiskConfigurationCreateParameters>>();
+            Mapper.CreateMap<Collection<PVM.DataDiskConfiguration>, List<NSM.DataDiskConfigurationCreateParameters>>();
+            Mapper.CreateMap<PVM.DataDiskConfigurationList, IList<NSM.DataDiskConfigurationCreateParameters>>();
+            Mapper.CreateMap<PVM.DataDiskConfigurationList, List<NSM.DataDiskConfigurationCreateParameters>>();
             Mapper.CreateMap<IList<PVM.DataDiskConfiguration>, IList<NSM.DataDiskConfigurationUpdateParameters>>();
             Mapper.CreateMap<List<PVM.DataDiskConfiguration>, List<NSM.DataDiskConfigurationUpdateParameters>>();
             Mapper.CreateMap<PVM.DataDiskConfigurationList, Collection<PVM.DataDiskConfiguration>>();

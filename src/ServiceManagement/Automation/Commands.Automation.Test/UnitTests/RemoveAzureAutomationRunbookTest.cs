@@ -44,25 +44,6 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void RemoveAzureAutomationRunbookByIdSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            var runbookId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.DeleteRunbook(accountName, runbookId));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = runbookId;
-            this.cmdlet.Force = true;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.DeleteRunbook(accountName, runbookId), Times.Once());
-        }
-
-        [TestMethod]
         public void RemoveAzureAutomationRunbookByNameSuccessfull()
         {
             // Setup
