@@ -340,12 +340,22 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
 
         public Collection<string> ListAvailableLocations()
         {
-            Task<Collection<string>> listTask = this.ListAvailableLocationsAsync();
+            return ListAvailableLocations(OSType.Windows);
+        }
+
+        public Task<Collection<string>> ListAvailableLocationsAsync()
+        {
+            return ListAvailableLocationsAsync(OSType.Windows);
+        }
+
+        public Collection<string> ListAvailableLocations(OSType osType)
+        {
+            Task<Collection<string>> listTask = this.ListAvailableLocationsAsync(osType);
             listTask.Wait();
             return listTask.Result;
         }
 
-        public Task<Collection<string>> ListAvailableLocationsAsync()
+        public Task<Collection<string>> ListAvailableLocationsAsync(OSType osType)
         {
             return TaskEx2.FromResult(new Collection<string> { "East US", "East US 2", "West US", "North Europe" });
         }
