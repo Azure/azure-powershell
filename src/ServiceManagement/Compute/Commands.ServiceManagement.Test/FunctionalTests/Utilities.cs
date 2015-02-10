@@ -38,7 +38,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
     internal class Utilities 
     {
-
         #region Constants
 
         public static string windowsAzurePowershellPath = Path.Combine(Environment.CurrentDirectory, "ServiceManagement\\Azure");
