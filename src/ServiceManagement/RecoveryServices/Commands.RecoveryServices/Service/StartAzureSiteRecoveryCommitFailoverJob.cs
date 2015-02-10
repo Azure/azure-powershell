@@ -93,6 +93,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                if (string.IsNullOrEmpty(this.Direction))
+                {
+                    this.WriteWarningWithTimestamp(
+                        string.Format(
+                            Properties.Resources.MandatoryParamFromNextRelease,
+                            Constants.Direction));
+                }
+
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ByRPObject:
@@ -131,7 +139,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.RPId);
                 this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
 
-                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider);
+                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider, "RPId");
             }
 
             request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
@@ -164,7 +172,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ProtectionEntityId);
                 this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
 
-                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider);
+                this.ValidateUsageById(
+                    this.ProtectionEntity.ReplicationProvider, 
+                    Constants.ProtectionEntityId);
             }
 
             request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;

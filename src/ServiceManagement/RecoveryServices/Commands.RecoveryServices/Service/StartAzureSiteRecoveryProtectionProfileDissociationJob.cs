@@ -71,10 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     case ASRParameterSets.EnterpriseToAzure:
                         if (this.ProtectionProfile.ReplicationProvider != Constants.HyperVReplicaAzure)
                         {
-                            throw new InvalidOperationException(
-                                string.Format(
-                                Properties.Resources.IncorrectReplicationProvider,
-                                this.ProtectionProfile.ReplicationProvider)); 
+                            throw new Exception("Please provide recovery container object.");
                         }
                         else
                         {

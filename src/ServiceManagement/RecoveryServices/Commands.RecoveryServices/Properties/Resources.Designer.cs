@@ -119,6 +119,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;Calls using ID based parameter &apos;{0}&apos; will not be supported from next release. Please use its corresponding full object parameter instead.&quot;.
+        /// </summary>
+        internal static string IDBasedParamUsageNotSupportedFromNextRelease {
+            get {
+                return ResourceManager.GetString("IDBasedParamUsageNotSupportedFromNextRelease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Provider {0} entered invalid for the current set of parameters..
         /// </summary>
         internal static string IncorrectReplicationProvider {
@@ -170,6 +179,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string InvalidXml {
             get {
                 return ResourceManager.GetString("InvalidXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;&apos;{0}&apos; will be a mandatory paramter from next release.&quot;.
+        /// </summary>
+        internal static string MandatoryParamFromNextRelease {
+            get {
+                return ResourceManager.GetString("MandatoryParamFromNextRelease", resourceCulture);
             }
         }
         
@@ -350,6 +368,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string VaultCreationSuccessMessage {
             get {
                 return ResourceManager.GetString("VaultCreationSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vault {0} is not associated with the given subscription..
+        /// </summary>
+        internal static string VaultNotFound {
+            get {
+                return ResourceManager.GetString("VaultNotFound", resourceCulture);
             }
         }
         

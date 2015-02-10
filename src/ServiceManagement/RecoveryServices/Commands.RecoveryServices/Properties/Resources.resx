@@ -230,7 +230,16 @@ ClientRequestId: {3}</value>
   <data name="NetworkArgumentsMissingForUpdateVmProperties" xml:space="preserve">
     <value>Please provide both Source Nic and Recovery Target to update</value>
   </data>
+  <data name="MandatoryParamFromNextRelease" xml:space="preserve">
+    <value>"'{0}' will be a mandatory paramter from next release."</value>
+  </data>
+  <data name="IDBasedParamUsageNotSupportedFromNextRelease" xml:space="preserve">
+    <value>"Calls using ID based parameter '{0}' will not be supported from next release. Please use its corresponding full object parameter instead."</value>
+  </data>
   <data name="InvalidReplicationFrequency" xml:space="preserve">
     <value>Replication Frequency {0} is invalid</value>
+  </data>
+  <data name="VaultNotFound" xml:space="preserve">
+    <value>Vault {0} is not associated with the given subscription.</value>
   </data>
 </root>
