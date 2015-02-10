@@ -18,7 +18,7 @@ Sets context to default resource
 #>
 function Set-DefaultResource
 {
-    $selectedResource = Select-AzureStorSimpleResource -ResourceName OneSDK-Resource
+    $selectedResource = Select-AzureStorSimpleResource -ResourceName OneSDK-Resource -RegistrationKey "1975530557201809476:eOqMQdvHon3lGwKVYctxZVnwpZcqi8ZS1uyCLJAl6Wg=:JovQDqP1KyWdh4m3mYkdzQ==#4edfc1cde41104e5"
 }
 
 <#
@@ -33,7 +33,7 @@ function Test-NewBackupPolicyAddConfig
 	Assert-AreEqual $config.Recurrence.RecurrenceType 'Daily' 'RecurrenceType doesnt match'
 	Assert-AreEqual $config.Recurrence.RecurrenceValue 1 'RecurrentValue doesnt match'
 	Assert-AreEqual $config.Status Disabled 'Status doesnt match'
-	Assert-AreEqual $config.StartTime 2014-10-23T07:00:00+05:30 'StartTime doesnt match'
+	#Assert-AreEqual $config.StartTime 2014-10-23T07:00:00+05:30 'StartTime doesnt match'	#timezone specific test
 	Assert-AreEqual $config.RetentionCount 1 'RetentionCount doesnt match'
 }
 

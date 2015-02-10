@@ -115,11 +115,56 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BackupPolicyName should not have characters &quot;[]=&apos;;&quot;.
+        /// </summary>
+        internal static string BackupPolicyNameHasDisallowedChars {
+            get {
+                return ResourceManager.GetString("BackupPolicyNameHasDisallowedChars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} backups found!.
         /// </summary>
         internal static string BackupsReturnedCount {
             get {
                 return ResourceManager.GetString("BackupsReturnedCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BackupType cannot be Invalid.
+        /// </summary>
+        internal static string BackupTypeInvalid {
+            get {
+                return ResourceManager.GetString("BackupTypeInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not retrieve secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again..
+        /// </summary>
+        internal static string CIKFetchFailed {
+            get {
+                return ResourceManager.GetString("CIKFetchFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid value for Registration Key. CIK could not be retrieved from Registration Key. Please provide the value as such from the portal!.
+        /// </summary>
+        internal static string CIKInvalid {
+            get {
+                return ResourceManager.GetString("CIKInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find the persisted secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again..
+        /// </summary>
+        internal static string CIKNotPersisted {
+            get {
+                return ResourceManager.GetString("CIKNotPersisted", resourceCulture);
             }
         }
         
@@ -147,6 +192,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string DeviceGet_StatusMessage {
             get {
                 return ResourceManager.GetString("DeviceGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The device name you have specified is not yet configured fully. Please complete the configuration and retry..
+        /// </summary>
+        internal static string DeviceNotConfiguredMessage {
+            get {
+                return ResourceManager.GetString("DeviceNotConfiguredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No StorSimple device is currently registered with this resource. Please register at least one device to the resource and rerun this command..
+        /// </summary>
+        internal static string DeviceNotRegisteredMessage {
+            get {
+                return ResourceManager.GetString("DeviceNotRegisteredMessage", resourceCulture);
             }
         }
         
@@ -484,11 +547,65 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Secret was persisted earlier, but seems to have been corrupted. Please use Select-AzureStorSimpleResource and provide the Registration key once again..
+        /// </summary>
+        internal static string PersistedCIKCorrupted {
+            get {
+                return ResourceManager.GetString("PersistedCIKCorrupted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retrieved secret successfully, but was NULL..
+        /// </summary>
+        internal static string PersistedCIKIsNull {
+            get {
+                return ResourceManager.GetString("PersistedCIKIsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to validate persisted secret..
+        /// </summary>
+        internal static string PersistedCIKValidationFailed {
+            get {
+                return ResourceManager.GetString("PersistedCIKValidationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not persist secret.
+        /// </summary>
+        internal static string PersistSecretFailed {
+            get {
+                return ResourceManager.GetString("PersistSecretFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registration key is provided. Persisting for later use!.
         /// </summary>
         internal static string ProvidedRegistrationKey {
             get {
                 return ResourceManager.GetString("ProvidedRegistrationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RecurrenceType cannot be Invalid.
+        /// </summary>
+        internal static string RecurrenceTypeInvalid {
+            get {
+                return ResourceManager.GetString("RecurrenceTypeInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RecurrenceValue should be &gt;=0.
+        /// </summary>
+        internal static string RecurrenceValueLessThanZero {
+            get {
+                return ResourceManager.GetString("RecurrenceValueLessThanZero", resourceCulture);
             }
         }
         
@@ -637,11 +754,38 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context..
+        /// </summary>
+        internal static string ResourceContextNotSetMessage {
+            get {
+                return ResourceManager.GetString("ResourceContextNotSetMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} StorSimple resource{1} found!.
         /// </summary>
         internal static string ResourceGet_StatusMessage {
             get {
                 return ResourceManager.GetString("ResourceGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ResourceId must be specified.
+        /// </summary>
+        internal static string ResourceIdMissing {
+            get {
+                return ResourceManager.GetString("ResourceIdMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RetentionCount value should be 1 - 64.
+        /// </summary>
+        internal static string RetentionCountRangeInvalid {
+            get {
+                return ResourceManager.GetString("RetentionCountRangeInvalid", resourceCulture);
             }
         }
         

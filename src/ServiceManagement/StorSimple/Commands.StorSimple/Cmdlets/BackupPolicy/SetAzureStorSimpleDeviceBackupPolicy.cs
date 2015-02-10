@@ -1,4 +1,18 @@
-﻿using System.Diagnostics;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
@@ -47,8 +61,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         private string deviceId = null;
         private List<BackupScheduleBase> schedulesToAdd = null;
         private List<BackupScheduleUpdateRequest> schedulesToUpdate = null;
-        private List<String> scheduleIdsTodelete = null;
-        private List<String> volumeIdsToUpdate = null;
+        private List<string> scheduleIdsTodelete = null;
+        private List<string> volumeIdsToUpdate = null;
 
         private UpdateBackupPolicyConfig updateConfig = null;
         public override void ExecuteCmdlet()
@@ -98,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             deviceId = StorSimpleClient.GetDeviceId(DeviceName);
             if (deviceId == null)
             {
-                WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 WriteObject(null);
                 return false;
             }
@@ -145,7 +159,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 scheduleIdsTodelete = new List<string>();
                 foreach (var deleteSchedule in BackupScheduleIdsToDelete)
                 {
-                    String scheduleIdToDelete = (String)deleteSchedule.BaseObject;
+                    string scheduleIdToDelete = (string)deleteSchedule.BaseObject;
                     scheduleIdsTodelete.Add(scheduleIdToDelete);
                 }
             }
@@ -159,22 +173,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 volumeIdsToUpdate = new List<string>();
                 foreach (var volume in VolumeIdsToUpdate)
                 {
-                    String volumeId = (String)volume.BaseObject;
+                    string volumeId = (string)volume.BaseObject;
                     volumeIdsToUpdate.Add(volumeId);
                 }
             }
             updateConfig.VolumeIds = volumeIdsToUpdate;
-        }
-
-        private void ValidatePolicyNameHasNoDisallowedChars(string name)
-        {
-            // Backup policy name can't have characters "[]=';"
-            Regex disallowedCharsRegex = new Regex("\\[|\\]|=|'|;");
-
-            if (disallowedCharsRegex.IsMatch(name))
-            {
-                throw new ArgumentException("BackupPolicyName should not have characters \"[]=';\"", "Name");
-            }
         }
     }
 }

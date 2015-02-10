@@ -1,4 +1,18 @@
-﻿using System.Linq;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure;
@@ -21,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageNewBackupPolicyName)]
         [ValidateNotNullOrEmptyAttribute]
-        public String BackupPolicyName { get; set; }
+        public string BackupPolicyName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupsToAddList)]
         public PSObject[] BackupSchedulesToAdd { get; set; }
@@ -33,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         public SwitchParameter WaitForComplete { get; set; }
 
         private string deviceId = null;
-        private List<String> volumeIdsToAddList = null;
+        private List<string> volumeIdsToAddList = null;
         private NewBackupPolicyConfig newConfig = null;
 
         public override void ExecuteCmdlet()
@@ -72,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             deviceId = StorSimpleClient.GetDeviceId(DeviceName);
             if (deviceId == null)
             {
-                WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 WriteObject(null);
                 return false;
             }
@@ -102,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         }
 
         /// <summary>
-        /// reads the PSObject[] containing VolumeId objects (String) and generates a list out of them
+        /// reads the PSObject[] containing VolumeId objects (string) and generates a list out of them
         /// </summary>
         private void ProcessAddVolumeIds()
         {
@@ -111,7 +125,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 foreach (var volume in VolumeIdsToAdd)
                 {
-                    volumeIdsToAddList.Add((String) volume.BaseObject);
+                    volumeIdsToAddList.Add((string) volume.BaseObject);
                 }
             }
             else

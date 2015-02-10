@@ -1,17 +1,27 @@
-﻿
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
 using System;
 using System.Management.Automation;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
+using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System.Collections.Generic;
-using System.Net;
 using System.Linq;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    using Properties;
-
     /// <summary>
     /// Edit the Storage Account Cred
     /// </summary>
@@ -45,25 +55,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var existingSac = allSACs.Where(x => x.Name.Equals(StorageAccountName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (existingSac == null)
                 {
-                    WriteVerbose(String.Format(Resources.SACNotFoundWithName,StorageAccountName));
+                    WriteVerbose(string.Format(Resources.SACNotFoundWithName,StorageAccountName));
                     return;
                 }
 
-                String encryptedKey = null;
-                StorSimpleCryptoManager storSimpleCryptoManager = new StorSimpleCryptoManager(StorSimpleClient);
-                if (!String.IsNullOrEmpty(StorageAccountKey))
+                string encryptedKey;
+                string thumbprint;
+                string endpoint = GetEndpointFromHostname(existingSac.Hostname);
+                if (!ValidateAndEncryptStorageCred(StorageAccountName, StorageAccountKey, endpoint, out encryptedKey, out thumbprint))
                 {
-                    //validate storage account credentials
-                    string hostname = existingSac.Hostname;
-                    string endpoint = hostname.Substring(hostname.IndexOf('.') + 1);
-                    if (!ValidStorageAccountCred(StorageAccountName, StorageAccountKey, endpoint))
-                    {
-                        WriteVerbose(Resources.StorageCredentialVerificationFailureMessage);
-                        return;
-                    }
-                    WriteVerbose(Resources.StorageCredentialVerificationSuccessMessage);
-                    WriteVerbose(Resources.EncryptionInProgressMessage);
-                    storSimpleCryptoManager.EncryptSecretWithRakPub(StorageAccountKey, out encryptedKey);
+                    return;
                 }
 
                 var serviceConfig = new ServiceConfiguration()
@@ -86,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                 VolumeCount = existingSac.VolumeCount,
                                 Name = existingSac.Name,
                                 IsDefault = existingSac.IsDefault,
-                                PasswordEncryptionCertThumbprint = storSimpleCryptoManager.GetSecretsEncryptionThumbprint(),
+                                PasswordEncryptionCertThumbprint = thumbprint,
                                 Location = existingSac.Location
                             },
                         }
