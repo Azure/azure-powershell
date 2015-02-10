@@ -12,42 +12,47 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Automation.Model
+
+namespace Microsoft.Azure.Commands.Automation.Common
 {
-    using AutomationManagement = Management.Automation;
-
     /// <summary>
-    /// The job parameter.
+    /// StreamType enum represents the 6 types of Powershell Streams supported.
     /// </summary>
-    public class JobParameter
+    public enum StreamType
     {
-        public JobParameter(AutomationManagement.Models.JobParameter jobParameter)
-        {
-            this.Name = jobParameter.Name;
-            this.Value = jobParameter.Value;
-            this.Type = jobParameter.Type;
-        }
+        /// <summary>
+        /// Indicates Progress Record streams
+        /// </summary>
+        Progress,
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobParameter"/> class.
+        /// Indicates Output Record streams
         /// </summary>
-        public JobParameter()
-        {
-        }
+        Output,
 
         /// <summary>
-        /// Gets or sets the name.
+        /// Indicates Warning Record streams
         /// </summary>
-        public string Name { get; set; }
+        Warning,
 
         /// <summary>
-        /// Gets or sets the value.
+        /// Indicates Error Record streams
         /// </summary>
-        public string Value { get; set; }
+        Error,
 
         /// <summary>
-        /// Gets or sets the type.
+        /// Indicates Debug Record streams
         /// </summary>
-        public string Type { get; set; }
+        Debug,
+
+        /// <summary>
+        /// Indicates Verbose Record streams
+        /// </summary>
+        Verbose,
+
+        /// <summary>
+        /// Indicates Generic stream. Used for querying all the streams regardless of the type.
+        /// </summary>
+        Any
     }
 }

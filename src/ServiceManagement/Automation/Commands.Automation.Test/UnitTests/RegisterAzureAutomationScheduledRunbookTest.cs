@@ -44,27 +44,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void RegisterAzureAutomationScheduledRunbookByRunbookIdSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            string scheduleName = "schedule";
-            var runbookId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.RegisterScheduledRunbook(accountName, runbookId, null, scheduleName));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = runbookId;
-            this.cmdlet.ScheduleName = scheduleName;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.RegisterScheduledRunbook(accountName, runbookId, null, scheduleName), Times.Once());
-        }
-
-        [TestMethod]
-        public void RegisterAzureAutomationScheduledRunbookByRunbookNameSuccessfull()
+        public void RegisterAzureAutomationScheduledRunbookSuccessfull()
         {
             // Setup
             string accountName = "automation";
@@ -72,16 +52,16 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             string scheduleName = "schedule";
 
             this.mockAutomationClient.Setup(
-                f => f.RegisterScheduledRunbook(accountName, runbookName, null, scheduleName));
+                f => f.RegisterScheduledRunbook(accountName, runbookName, scheduleName, null));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = runbookName;
+            this.cmdlet.RunbookName = runbookName;
             this.cmdlet.ScheduleName = scheduleName;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.RegisterScheduledRunbook(accountName, runbookName, null, scheduleName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.RegisterScheduledRunbook(accountName, runbookName, scheduleName, null), Times.Once());
         }
     }
 }
