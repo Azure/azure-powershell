@@ -624,7 +624,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         private static void SetVNetForStaticCAtest()
         {
-            vmPowershellCmdlets.SetAzureVNetConfig(Directory.GetCurrentDirectory() + "\\StaticCAvnetconfig.netcfg");
+            Utilities.RetryActionUntilSuccess(
+                () => vmPowershellCmdlets.SetAzureVNetConfig(Directory.GetCurrentDirectory() + "\\StaticCAvnetconfig.netcfg"),
+                "in use", 10, 30);
         }
 
         private static void CleanUpVnetConfigForStaticCA()
