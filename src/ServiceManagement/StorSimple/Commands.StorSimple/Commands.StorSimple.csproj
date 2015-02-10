@@ -145,6 +145,7 @@
     <Compile Include="Library\CryptoHelper.cs" />
     <Compile Include="Library\IKeyManager.cs" />
     <Compile Include="Library\LocalKeyStoreManager.cs" />
+    <Compile Include="Library\MiscUtils.cs" />
     <Compile Include="Models\TaskReport.cs" />
     <Compile Include="Models\PSContracts.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

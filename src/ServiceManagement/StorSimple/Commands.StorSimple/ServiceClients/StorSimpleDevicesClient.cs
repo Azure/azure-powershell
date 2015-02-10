@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
+using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
@@ -36,6 +37,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             }
             return deviceDetailsResponse.DeviceDetails;
         }
+
+        //public TaskStatusInfo UpdateDeviceDetails(DeviceDetails updatedDetails)
+        //{
+        //    // Copy stuff over from the DeviceDetails object into a new DeviceDetailsRequest object.
+        //    var request = new DeviceDetailsRequest();
+        //    MiscUtils.CopyProperties(updatedDetails, request);
+        //    var taskStatusInfo = this.GetStorSimpleClient().DeviceDetails.UpdateDeviceDetailsAsync(request);
+        //    return taskStatusInfo;
+        //}
 
         public string GetDeviceId(string deviceToUse)
         {
