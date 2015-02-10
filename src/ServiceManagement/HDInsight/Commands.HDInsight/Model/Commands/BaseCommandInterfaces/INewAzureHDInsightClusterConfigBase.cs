@@ -29,7 +29,23 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.BaseComman
         /// <value>
         /// The size of the head node VM.
         /// </value>
-        NodeVMSize HeadNodeVMSize { get; set; }
+        string HeadNodeVMSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the size of the data node VMs.
+        /// </summary>
+        /// <value>
+        /// The size of the data node VM.
+        /// </value>
+        string DataNodeVMSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the size of the zookeeper node VMs.
+        /// </summary>
+        /// <value>
+        /// The size of the zookeeper node VM.
+        /// </value>
+        string ZookeeperNodeVMSize { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the cluster.
