@@ -32,10 +32,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     OutputType(typeof(VirtualMachineDscExtensionContext))]
     public class GetAzureVMDscExtensionCommand : VirtualMachineDscExtensionCmdletBase
     {
-
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true)]
-        public override string Version { get; set; }
-
         internal void ExecuteCommand()
         {
             List<ResourceExtensionReference> extensionRefs = GetPredicateExtensionList();
@@ -72,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         State = r.State,
                         RoleName = VM.GetInstance().RoleName,
                         PublicConfiguration = PublicConfiguration,
-                        PrivateConfiguration = SecureStringHelper.GetSecureString(PrivateConfiguration),
+                        PrivateConfiguration = SecureStringHelper.GetSecureString(PrivateConfiguration)
                     };
 
                     if (publicSettings == null)
@@ -99,6 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             base.ProcessRecord();
             ExecuteCommand();
         }
+
     }
 }
 

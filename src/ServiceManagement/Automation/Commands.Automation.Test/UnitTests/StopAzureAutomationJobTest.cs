@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -48,7 +50,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         {
             // Setup
             string accountName = "automation";
-            var jobId = new Guid();
+            Guid jobId = Guid.NewGuid();
 
             this.mockAutomationClient.Setup(f => f.StopJob(accountName, jobId));
 
