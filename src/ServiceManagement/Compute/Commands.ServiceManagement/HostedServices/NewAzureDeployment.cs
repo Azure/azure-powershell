@@ -123,6 +123,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             }
             else
             {
+                if (string.IsNullOrEmpty(storageName))
+                {
+                    throw new ArgumentException(Resources.CurrentStorageAccountIsNotSet);
+                }
+
                 var progress = new ProgressRecord(0, Resources.WaitForUploadingPackage, Resources.UploadingPackage);
                 WriteProgress(progress);
                 removePackage = true;
@@ -264,11 +269,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             if (string.IsNullOrEmpty(this.Label))
             {
                 this.Label = this.Name;
-            }
-
-            if (string.IsNullOrEmpty(this.Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount)))
-            {
-                throw new ArgumentException(Resources.CurrentStorageAccountIsNotSet);
             }
         }
     }
