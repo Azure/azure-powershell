@@ -38,14 +38,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return deviceDetailsResponse.DeviceDetails;
         }
 
-        //public TaskStatusInfo UpdateDeviceDetails(DeviceDetails updatedDetails)
-        //{
-        //    // Copy stuff over from the DeviceDetails object into a new DeviceDetailsRequest object.
-        //    var request = new DeviceDetailsRequest();
-        //    MiscUtils.CopyProperties(updatedDetails, request);
-        //    var taskStatusInfo = this.GetStorSimpleClient().DeviceDetails.UpdateDeviceDetailsAsync(request);
-        //    return taskStatusInfo;
-        //}
+        public TaskStatusInfo UpdateDeviceDetails(DeviceDetails updatedDetails)
+        {
+            // Copy stuff over from the DeviceDetails object into a new DeviceDetailsRequest object.
+            var request = new DeviceDetailsRequest();
+            MiscUtils.CopyProperties(updatedDetails, request);
+            var taskStatusInfo = this.GetStorSimpleClient().DeviceDetails.UpdateDeviceDetails(request, this.GetCustomRequestHeaders());
+            return taskStatusInfo;
+        }
 
         public string GetDeviceId(string deviceToUse)
         {
