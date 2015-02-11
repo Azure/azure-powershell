@@ -13,14 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
@@ -346,7 +348,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             }
             else
             {
-                azureEnvironment = DefaultProfileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                try
+                {
+                    azureEnvironment = DefaultProfileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                }
+                catch (ArgumentException e)
+                {
+                    throw new ArgumentException(e.Message + " " + string.Format(CultureInfo.CurrentCulture, Resources.ValidEnvironmentName, EnvironmentName.AzureCloud, EnvironmentName.AzureChinaCloud)); 
+                }
             }
 
             Uri blobEndPoint = azureEnvironment.GetStorageBlobEndpoint(storageAccountName, useHttps);

@@ -24,15 +24,16 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Monitoring.Events;
 using Newtonsoft.Json;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using System.Diagnostics;
+using Microsoft.Azure.Common.Extensions;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -49,7 +50,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
 
-        public IEventsClient EventsClient { get; set; }
+        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+        //public IEventsClient EventsClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
 
@@ -65,7 +67,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
             : this(
                 AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                 new GalleryTemplatesClient(context),
-                AzureSession.ClientFactory.CreateClient<EventsClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+                // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+                //AzureSession.ClientFactory.CreateClient<EventsClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                 AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
@@ -80,12 +83,15 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
             GalleryTemplatesClient galleryTemplatesClient,
-            IEventsClient eventsClient,
+            // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+            //IEventsClient eventsClient,
             IAuthorizationManagementClient authorizationManagementClient)
         {
             ResourceManagementClient = resourceManagementClient;
             GalleryTemplatesClient = galleryTemplatesClient;
-            EventsClient = eventsClient;
+
+            // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+            //EventsClient = eventsClient;
             AuthorizationManagementClient = authorizationManagementClient;
         }
 

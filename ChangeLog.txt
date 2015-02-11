@@ -1,10 +1,52 @@
+2015.01.08 version 0.8.13
+* Key Vault Service - new cmdlets in AzureResourceManager mode:
+  * Keys:
+    * Add-AzureKeyVaultKey
+    * Get-AzureKeyVaultKey
+    * Set-AzureKeyVaultKey
+    * Backup-AzureKeyVaultKey
+    * Restore-AzureKeyVaultKey
+    * Remove-AzureKeyVaultKey
+  * Secrets:
+    * Get-AzureKeyVaultSecret
+    * Set-AzureKeyVaultSecret
+    * Remove-AzureKeyVaultSecret
+
+2014.12.12 version 0.8.12
+* StreamAnalytics
+  * New cmdlets in AzureResourceManager mode
+    * New-AzureStreamAnalyticsJob
+    * New-AzureStreamAnalyticsInput
+    * New-AzureStreamAnalyticsOutput
+    * New-AzureStreamAnalyticsTransformation
+    * Get-AzureStreamAnalyticsJob
+    * Get-AzureStreamAnalyticsInput
+    * Get-AzureStreamAnalyticsOutput
+    * Get-AzureStreamAnalyticsTransformation
+    * Get-AzureStreamAnalyticsQuota
+    * Remove-AzureStreamAnalyticsJob
+    * Remove-AzureStreamAnalyticsInput
+    * Remove-AzureStreamAnalyticsOutput
+    * Test-AzureStreamAnalyticsInput
+    * Test-AzureStreamAnalyticsOutput
+    * Start-AzureStreamAnalyticsJob
+    * Stop-AzureStreamAnalyticsJob
+* Batch
+  * Fixed issue with Delete-AzureBatchAccount
+* Profile
+  * Fixed issues with Select-AzureSubscription to allow selecting subscriptions by Id
+  * Deprecated SubscriptionDataFile parameter
+* Compute
+  * Set-AzureVMImage cmdlets - added IconUri, SmallIconUri, and ShowInGui parameters
+* Sql
+  *  Added Sql Servver v12 support to SQL authentication context for SqlAzure cmdlets
+
 2014.11.14 Version 0.8.11
 * Profile
   * Clear-AzureProfile: remove all subscription and credential data from the user store
   * Select-AzureSubscription: fixed output types in default and PassThru mode
 * Compute
   * Get-AzureVMSqlServerExtension
-  * New-AzureVMSqlServerExtension
   * Set-AzureVMSqlServerExtension
   * Remove-AzureVMSqlServerExtension
 * HDInsight

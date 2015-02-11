@@ -71,15 +71,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://az413943.vo.msecnd.net/cache/2.5.2.exe.
-        /// </summary>
-        public static string CacheRuntimeUrl {
-            get {
-                return ResourceManager.GetString("CacheRuntimeUrl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] InvalidProfile {

@@ -20,7 +20,7 @@ using System.Linq;
 using System.Threading;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.Properties;
@@ -69,13 +69,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         private TestContext testContextInstance;
 
-        private const string VhdFilesContainerName = "vhdfiles";
-        private static readonly string[] VhdFiles = new[]
-            {
-                "dynamic_50.vhd", "dynamic_50_child01.vhd", "dynamic_50_child02.vhd",
-                "fixed_50.vhd", "fixed_50_child01.vhd", "fixed_50_child02.vhd"
-            };
-
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.
@@ -101,65 +94,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         [AssemblyCleanup]
         public static void CleanUpAssembly()
         {
-            vmPowershellCmdlets = new ServiceManagementCmdletTestHelper();
-
-            // Cleaning up affinity groups
-            var affGroup = vmPowershellCmdlets.GetAzureAffinityGroup();
-            if (affGroup.Count > 0)
-            {
-                foreach (var aff in affGroup)
-                {
-                    try
-                    {
-                        vmPowershellCmdlets.RemoveAzureAffinityGroup(aff.Name);
-                    }
-                    catch (Exception e)
-                    {
-                        if (e.ToString().Contains(BadRequestException))
-                        {
-                            Console.WriteLine("Affinity Group, {0}, is not deleted.", aff.Name);
-                        }
-                    }
-                }
-            }
-
-            if (defaultAzureSubscription != null)
-            {
-                // Cleaning up virtual disks
-                try
-                {
-                    Retry(String.Format("Get-AzureDisk | Where {{$_.DiskName.Contains(\"{0}\")}} | Remove-AzureDisk", serviceNamePrefix), "in use");
-                    if (deleteDefaultStorageAccount)
-                    {
-                        //vmPowershellCmdlets.RemoveAzureStorageAccount(defaultAzureSubscription.CurrentStorageAccountName);
-                    }
-                }
-                catch
-                {
-                    Console.WriteLine("Error occurred during cleaning up disks..");
-                }
-
-                // Cleaning up vm images
-                try
-                {
-                    vmPowershellCmdlets.RunPSScript("Get-AzureVMImage | Where {$_.Categori -eq \"User\"} | Remove-AzureVMImage");
-                }
-                catch
-                {
-                    Console.WriteLine("Error occurred during cleaning up vm images..");
-                }
-
-                // Cleaning up reserved ips
-                try
-                {
-                    vmPowershellCmdlets.RunPSScript("Get-AzureReservedIp | Remove-AzureReservedIp -Force");
-                }
-                catch
-                {
-                    Console.WriteLine("Error occurred during cleaning up reserved ips..");
-                }
-            }
-
             if (string.IsNullOrEmpty(currentEnvName))
             {
                 vmPowershellCmdlets.RunPSScript(string.Format("Remove-AzureEnvironment -Name {0} -Force", TempEnvName));
@@ -200,26 +134,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
 
             return null;
-        }
-
-        private static string GetSubscriptionName(string publishSettingsFile)
-        {
-            try
-            {
-                XDocument psf = XDocument.Load(publishSettingsFile);
-                XElement pubData = psf.Descendants().FirstOrDefault();
-                XElement pubProfile = pubData.Elements().ToList()[0];
-                XElement sub = pubProfile.Elements().ToList()[0];
-                string subName = sub.Attribute("Name").Value;
-                Console.WriteLine("Getting subscription: {0}", subName);
-
-                return subName;
-            }
-            catch
-            {
-                Console.WriteLine("Error occurred during loading publish settings file...");
-                return null;
-            }
         }
 
         private static string GetServiceManagementUrl(string publishSettingsFile)
@@ -346,15 +260,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Console.WriteLine("Error occurred during Get-AzureVMImageName... imageName is not set.");
             }
 
-            try
-            {
-                DownloadVhds();
-            }
-            catch
-            {
-                Console.WriteLine("Error occurred during downloading vhds...");
-            }
-
             if (String.IsNullOrEmpty(imageName))
             {
                 Console.WriteLine("No image is selected!");
@@ -414,56 +319,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Utilities.TryAndIgnore(() => vmPowershellCmdlets.RemoveAzureService(svcName, true), "does not exist");
         }
 
-        protected static void DownloadVhds()
-        {
-            storageAccountKey = vmPowershellCmdlets.GetAzureStorageAccountKey(defaultAzureSubscription.CurrentStorageAccountName);
-
-            foreach (var vhdFile in VhdFiles)
-            {
-                string vhdBlobLocation = string.Format("{0}{1}/{2}", blobUrlRoot, VhdFilesContainerName, vhdFile);
-
-                var vhdLocalPath = new FileInfo(Directory.GetCurrentDirectory() + "\\" + vhdFile);
-
-                if (!File.Exists(vhdLocalPath.FullName))
-                {
-                    // Set the source blob
-                    BlobHandle blobHandle = Utilities.GetBlobHandle(vhdBlobLocation, storageAccountKey.Primary);
-
-                    SaveVhd(blobHandle, vhdLocalPath, storageAccountKey.Primary);
-                }
-            }
-        }
-
-        protected static void SaveVhd(BlobHandle destination, FileInfo locFile, string storageKey, int? numThread = null, bool overwrite = false)
-        {
-            try
-            {
-                Console.WriteLine("Downloading a VHD from {0} to {1}...", destination.Blob.Uri.ToString(), locFile.FullName);
-                DateTime startTime = DateTime.Now;
-                vmPowershellCmdlets.SaveAzureVhd(destination.Blob.Uri, locFile, numThread, storageKey, overwrite);
-                Console.WriteLine("Downloading completed in {0} seconds.", (DateTime.Now - startTime).TotalSeconds);
-            }
-            catch (Exception e)
-            {
-                Assert.Fail(e.InnerException.ToString());
-            }
-        }
-
         protected void VerifyRDP(string serviceName, string rdpPath)
         {
-            Utilities.GetDeploymentAndWaitForReady(serviceName, DeploymentSlotType.Production, 10, 600);
-
+            Console.WriteLine("Fetching Azure VM RDP file");
             vmPowershellCmdlets.GetAzureRemoteDesktopFile("WebRole1_IN_0", serviceName, rdpPath, false);
-
-            string dns;
-
-            using (var stream = new StreamReader(rdpPath))
-            {
-                string firstLine = stream.ReadLine();
-                dns = Utilities.FindSubstring(firstLine, ':', 2);
-            }
-
-            Assert.IsTrue((Utilities.RDPtestPaaS(dns, "WebRole1", 0, username, password, true)), "Cannot RDP to the instance!!");
+            Console.WriteLine("Azure VM RDP file downloaded.");
         }
 
         protected string UploadVhdFile()

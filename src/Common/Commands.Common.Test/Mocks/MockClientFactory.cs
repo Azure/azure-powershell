@@ -14,17 +14,22 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using Microsoft.Azure.Utilities.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.Common.Factories;
-using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Common;
+using System.Net.Http.Headers;
+using Hyak.Common;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Azure.Common;
+using Microsoft.Azure.Common.Extensions.Factories;
+using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
-    public class MockClientFactory : ClientFactory
+    public class MockClientFactory : IClientFactory
     {
         private readonly bool throwWhenNotAvailable;
 
@@ -32,11 +37,22 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
         {
+            UserAgents = new List<ProductInfoHeaderValue>();
             ManagementClients = clients.ToList();
             throwWhenNotAvailable = throwIfClientNotSpecified;
         }
 
-        public override TClient CreateClient<TClient>(AzureSubscription subscription, AzureEnvironment.Endpoint endpoint)
+        public TClient CreateClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        {
+            Debug.Assert(context != null);
+
+            SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
+            TClient client = CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
+
+            return client;
+        }
+
+        public TClient CreateClient<TClient>(AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
         {
             SubscriptionCloudCredentials creds = new TokenCloudCredentials(subscription.Id.ToString(), "fake_token");
             if (HttpMockServer.GetCurrentMode() != HttpRecorderMode.Playback)
@@ -56,7 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return CreateCustomClient<TClient>(creds, endpointUri);
         }
 
-        public override TClient CreateCustomClient<TClient>(params object[] parameters)
+        public TClient CreateCustomClient<TClient>(params object[] parameters) where TClient : ServiceClient<TClient>
         {
             TClient client = ManagementClients.FirstOrDefault(o => o is TClient) as TClient;
             if (client == null)
@@ -69,7 +85,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 }
                 else
                 {
-                    var realClient = base.CreateCustomClient<TClient>(parameters);
+                    var realClientFactory = new ClientFactory();
+                    var realClient = realClientFactory.CreateCustomClient<TClient>(parameters);
                     var newRealClient = realClient.WithHandler(HttpMockServer.CreateInstance());
                     realClient.Dispose();
                     return newRealClient;
@@ -79,7 +96,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return client;
         }
 
-        public override HttpClient CreateHttpClient(string serviceUrl, HttpMessageHandler effectiveHandler)
+        public HttpClient CreateHttpClient(string endpoint, ICredentials credentials)
+        {
+            return CreateHttpClient(endpoint, ClientFactory.CreateHttpClientHandler(endpoint, credentials));
+        }
+
+        public HttpClient CreateHttpClient(string serviceUrl, HttpMessageHandler effectiveHandler)
         {
             if (serviceUrl == null)
             {
@@ -102,5 +124,17 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
             return client;
         }
+
+        public void AddAction(IClientAction action)
+        {
+            // Do nothing
+        }
+
+        public void RemoveAction(Type actionType)
+        {
+            // Do nothing
+        }
+
+        public List<ProductInfoHeaderValue> UserAgents { get; set; }
     }
 }

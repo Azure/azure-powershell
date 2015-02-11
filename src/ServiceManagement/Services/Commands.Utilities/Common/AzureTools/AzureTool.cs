@@ -17,12 +17,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Win32;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common.AzureTools;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools
 {
     public class AzureTool
     {
+        public const string SupportAzureSdkVersion = "2.5.0";
+
         public static void Validate()
         {
             // This instantiation will throw if user is running with incompatible Microsoft Azure SDK version.
@@ -82,9 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools
 
         private static string GetSdkVersionRegistryValue()
         {
-            string version = string.Empty; 
-            string min = Resources.MinSupportAzureSdkVersion;
-            string max = Resources.MaxSupportAzureSdkVersion;
+            string version = string.Empty;
             try
             {
                 using (RegistryKey key = Registry.LocalMachine.OpenSubKey(Resources.AzureSdkRegistryKeyName))
@@ -93,13 +94,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools
                     {
                         throw new InvalidOperationException(Resources.AzureToolsNotInstalledMessage);
                     }
-                    version = key.GetSubKeyNames()
-                        .Where(n => (n.CompareTo(min) == 1 && n.CompareTo(max) == -1) || n.CompareTo(min) == 0 || n.CompareTo(max) == 0)
-                        .Max<string>();
+                    version = key.GetSubKeyNames().FirstOrDefault(n => n == AzureSdkVersionInfo.SupportAzureSdkVersionRegKey);
 
                     if (string.IsNullOrEmpty(version) && key.GetSubKeyNames().Length > 0)
                     {
-                        throw new InvalidOperationException(string.Format(Resources.AzureSdkVersionNotSupported, min, max));
+                        throw new InvalidOperationException(string.Format(Resources.AzureSdkVersionNotSupported, AzureSdkVersionInfo.SupportAzureSdkVersionRegKey));
                     }
                     else if (string.IsNullOrEmpty(version) && key.GetSubKeyNames().Length == 0)
                     {
@@ -109,10 +108,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools
             }
             catch (InvalidOperationException)
             {
-                //temporary workaround: catch exception and fall back to v2.5
                 if (IgnoreMissingSDKError)
                 {
-                    version = "v2.5";
+                    version = AzureSdkVersionInfo.SupportAzureSdkVersionRegKey;
                 }
                 else
                 {

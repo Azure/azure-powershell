@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -76,9 +77,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     using (Stream stream = new MemoryStream())
                     {
-                        if (cloudException.ErrorMessage != null)
+                        if (cloudException.Error.Message != null)
                         {
-                            byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.ErrorMessage);
+                            byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.Error.Message);
                             stream.Write(data, 0, data.Length);
                             stream.Position = 0;
 
@@ -108,7 +109,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     throw new XmlException(
                         string.Format(
                         Properties.Resources.InvalidCloudExceptionErrorMessage,
-                        cloudException.ErrorMessage),
+                        cloudException.Error.Message),
                         cloudException);
                 }
                 catch (SerializationException)
@@ -116,7 +117,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     throw new SerializationException(
                         string.Format(
                         Properties.Resources.InvalidCloudExceptionErrorMessage,
-                        clientRequestIdMsg + cloudException.ErrorMessage),
+                        clientRequestIdMsg + cloudException.Error.Message),
                         cloudException);
                 }
             }

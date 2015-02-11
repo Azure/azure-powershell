@@ -14,6 +14,7 @@
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Management.MediaServices.Models;
 using Microsoft.WindowsAzure.Management.Storage.Models;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.MediaServices
 {
@@ -47,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.MediaServices
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        Task<OperationResponse> DeleteAzureMediaServiceAccountAsync(string name);
+        Task<AzureOperationResponse> DeleteAzureMediaServiceAccountAsync(string name);
 
         /// <summary>
         ///     Regenerates azure media service account key async.
@@ -55,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.MediaServices
         /// <param name="name">The name.</param>
         /// <param name="keyType">Key Type</param>
         /// <returns></returns>
-        Task<OperationResponse> RegenerateMediaServicesAccountAsync(string name, MediaServicesKeyType keyType);
+        Task<AzureOperationResponse> RegenerateMediaServicesAccountAsync(string name, MediaServicesKeyType keyType);
 
         /// <summary>
         /// Gets the storage service keys.

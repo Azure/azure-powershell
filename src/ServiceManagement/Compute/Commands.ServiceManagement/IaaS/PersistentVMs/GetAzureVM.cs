@@ -20,8 +20,10 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using AutoMapper;
+using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -170,6 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 OperationStatus             = deployment == null ? string.Empty : deployment.StatusCode.ToString(),
                 OperationDescription        = CommandRuntime.ToString(),
                 NetworkInterfaces           = roleInstance == null ? null : Mapper.Map<PVM.NetworkInterfaceList>(roleInstance.NetworkInterfaces),
+                VirtualNetworkName          = deployment == null ? null : deployment.VirtualNetworkName,
                 VM = new PVM.PersistentVM
                 {
                     AvailabilitySetName               = vmRole == null ? string.Empty : vmRole.AvailabilitySetName,

@@ -493,6 +493,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parameter -ExpiryTime and -NoExpiryTime are mutually exclusive.
+        /// </summary>
+        internal static string ExpiryTimeParameterConflict {
+            get {
+                return ResourceManager.GetString("ExpiryTimeParameterConflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File &apos;{0}&apos; already exists..
         /// </summary>
         internal static string FileAlreadyExists {
@@ -781,6 +790,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Access policy name &apos;{0}&apos; is invalid. Valid names should be 1 through 64 characters long..
+        /// </summary>
+        internal static string InvalidAccessPolicyName {
+            get {
+                return ResourceManager.GetString("InvalidAccessPolicyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Access policy type is invalid, only SharedAccessBlobPolicy, SharedAccessQueuePolicy, and SharedAccessTablePolicy are supported.
+        /// </summary>
+        internal static string InvalidAccessPolicyType {
+            get {
+                return ResourceManager.GetString("InvalidAccessPolicyType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to invalid parameter combination, please see the command help..
         /// </summary>
         internal static string InvalidAccountParameterCombination {
@@ -1024,6 +1051,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Policy &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string PolicyAlreadyExists {
+            get {
+                return ResourceManager.GetString("PolicyAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can not find policy &apos;{0}&apos;..
+        /// </summary>
+        internal static string PolicyNotFound {
+            get {
+                return ResourceManager.GetString("PolicyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prepare to download blob..
         /// </summary>
         internal static string PrepareDownloadingBlob {
@@ -1128,6 +1173,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string RemoveContainerSuccessfully {
             get {
                 return ResourceManager.GetString("RemoveContainerSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The remove operation of policy &apos;{0}&apos; has been cancelled..
+        /// </summary>
+        internal static string RemovePolicyCancelled {
+            get {
+                return ResourceManager.GetString("RemovePolicyCancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removed policy &apos;{0}&apos; successfully..
+        /// </summary>
+        internal static string RemovePolicySuccessfully {
+            get {
+                return ResourceManager.GetString("RemovePolicySuccessfully", resourceCulture);
             }
         }
         
@@ -1281,6 +1344,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string StartRemoteCall {
             get {
                 return ResourceManager.GetString("StartRemoteCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter -StartTime and -NoStartTime are mutually exclusive.
+        /// </summary>
+        internal static string StartTimeParameterConflict {
+            get {
+                return ResourceManager.GetString("StartTimeParameterConflict", resourceCulture);
             }
         }
         
@@ -1456,6 +1528,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string UseStorageAccountFromContext {
             get {
                 return ResourceManager.GetString("UseStorageAccountFromContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid environment names are: &apos;{0}&apos; and &apos;{1}&apos;.
+        /// </summary>
+        internal static string ValidEnvironmentName {
+            get {
+                return ResourceManager.GetString("ValidEnvironmentName", resourceCulture);
             }
         }
         

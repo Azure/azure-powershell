@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
 {
     internal class AzureHDInsightClusterManagementClientSimulator : IHDInsightClient
     {
-        internal static ClusterCreateParameters LastCreateRequest;
+        internal static ClusterCreateParametersV2 LastCreateRequest;
 
         private static readonly Collection<SimulatorClusterContainer> Clusters = new Collection<SimulatorClusterContainer>
         {
@@ -176,9 +176,12 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
         {
         }
 
+      
+
         public ClusterDetails CreateCluster(ClusterCreateParameters cluster)
         {
-            Task<ClusterDetails> createTask = this.CreateClusterAsync(cluster);
+            Task<ClusterDetails> createTask = this.CreateClusterAsync(
+                new ClusterCreateParametersV2( cluster));
             createTask.Wait();
             return createTask.Result;
         }
@@ -188,7 +191,24 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             return this.CreateCluster(cluster);
         }
 
+        public ClusterDetails CreateCluster(ClusterCreateParametersV2 cluster)
+        {
+            Task<ClusterDetails> createTask = this.CreateClusterAsync(cluster);
+            createTask.Wait();
+            return createTask.Result;
+        }
+
+        public ClusterDetails CreateCluster(ClusterCreateParametersV2 cluster, TimeSpan timeout)
+        {
+            return this.CreateCluster(cluster);
+        }
+
         public Task<ClusterDetails> CreateClusterAsync(ClusterCreateParameters clusterCreateParameters)
+        {
+            return CreateClusterAsync(new ClusterCreateParametersV2(clusterCreateParameters));
+        }
+
+        public Task<ClusterDetails> CreateClusterAsync(ClusterCreateParametersV2 clusterCreateParameters)
         {
             this.LogMessage("Creating cluster '{0}' in location {1}", clusterCreateParameters.Name, clusterCreateParameters.Location);
             LastCreateRequest = clusterCreateParameters;
@@ -218,6 +238,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             this.DeleteClusterAsync(dnsName).Wait();
         }
 
+        public void DeleteCluster(string dnsName, string location)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCluster(string dnsName, string location, TimeSpan timeout)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task DeleteClusterAsync(string name)
         {
             ClusterDetails cluster = await this.GetClusterAsync(name);
@@ -228,6 +258,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
 
             this.LogMessage("Deleting cluster '{0}' in location {1}", name, cluster.Location);
             Clusters.Remove(GetClusterInternal(name));
+        }
+
+        public Task DeleteClusterAsync(string name, string location)
+        {
+            throw new NotImplementedException();
         }
 
         public void DisableHttp(string dnsName, string location)
@@ -265,12 +300,24 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             return getTask.Result;
         }
 
+        public ClusterDetails GetCluster(string dnsName, string location)
+        {
+            Task<ClusterDetails> getTask = this.GetClusterAsync(dnsName, location);
+            getTask.Wait();
+            return getTask.Result;
+        }
+
         public async Task<ClusterDetails> GetClusterAsync(string name)
         {
             this.LogMessage("Getting hdinsight clusters for subscriptionid : {0}", this.credentials.SubscriptionId.ToString());
             ICollection<ClusterDetails> knownClusters = await this.ListClustersAsync();
             ClusterDetails cluster = knownClusters.FirstOrDefault(c => string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase));
             return cluster;
+        }
+
+        public Task<ClusterDetails> GetClusterAsync(string name, string location)
+        {
+            throw new NotImplementedException();
         }
 
         public ClusterDetails ChangeClusterSize(string dnsName, string location, int newSize)
