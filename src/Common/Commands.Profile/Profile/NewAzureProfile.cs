@@ -62,9 +62,6 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
         public string Path { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
         
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
@@ -90,21 +87,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                     profileClient.InitializeProfile(Environment, new Guid(SubscriptionId), userAccount, 
                         Credential.Password, StorageAccount);
                     break;
-                case AccessTokenParameterSet:
-                    AzureAccount tokenAccount = new AzureAccount
-                    {
-                        Id = AccountId,
-                        Type = AzureAccount.AccountType.User
-                    };
-                    profileClient.InitializeProfile(Environment, new Guid(SubscriptionId), tokenAccount, 
-                        Credential.Password, StorageAccount);
-                    break;
             }
 
-            if (PassThru)
-            {
-                WriteObject(azureProfile);
-            }
+            WriteObject(azureProfile);
         }
     }
 }
