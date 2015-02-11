@@ -33,6 +33,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             this.Hive = new AzureHDInsightHiveConfiguration();
             this.Oozie = new AzureHDInsightOozieConfiguration();
             this.Storm = new Hashtable();
+            this.Spark = new Hashtable();
             this.HBase = new AzureHDInsightHBaseConfiguration();
         }
 
@@ -52,6 +53,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
 
         public Hashtable Storm { get; set; }
 
+        public Hashtable Spark { get; set; }
+
         public AzureHDInsightHBaseConfiguration HBase { get; set; }
 
         public override Task EndProcessing()
@@ -65,6 +68,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             this.Config.HiveConfiguration.ConfigurationCollection.AddRange(this.Hive.Configuration.ToKeyValuePairs());
             this.Config.OozieConfiguration.ConfigurationCollection.AddRange(this.Oozie.Configuration.ToKeyValuePairs());
             this.Config.StormConfiguration.AddRange(this.Storm.ToKeyValuePairs());
+            this.Config.SparkConfiguration.AddRange(this.Spark.ToKeyValuePairs());
             this.Config.HBaseConfiguration.ConfigurationCollection.AddRange(this.HBase.Configuration.ToKeyValuePairs());
 
             if (this.Hive.AdditionalLibraries != null)
