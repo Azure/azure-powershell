@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account {0} is not associated with the account.
+        ///   Looks up a localized string similar to Storage account {0} is not associated with the given subscription {1}.
         /// </summary>
         internal static string StorageIsNotAssociatedWithTheAccount {
             get {

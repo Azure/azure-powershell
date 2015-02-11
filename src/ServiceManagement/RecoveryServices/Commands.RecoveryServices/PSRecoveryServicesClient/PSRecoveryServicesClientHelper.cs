@@ -108,9 +108,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Validates whether the storage belongs to the currently logged account or not.
         /// </summary>
+        /// <param name="azureSubscription">Subscription ID</param>
         /// <param name="azureStorageAccount">Storage Account details</param>
-        public void ValidateStorageAccountAssociation(string azureStorageAccount)
+        public void ValidateStorageAccountAssociation(string azureSubscription, string azureStorageAccount)
         {
+            if (string.IsNullOrEmpty(azureSubscription))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.SubscriptionIdIsNotValid));
+            }
+
             if (string.IsNullOrEmpty(azureStorageAccount))
             {
                 throw new InvalidOperationException(
@@ -119,26 +127,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             bool associatedAccount = false;
-            ProfileClient pc = new ProfileClient();
-            List<AzureSubscription> azureSubscriptions =
-                pc.RefreshSubscriptions(AzureSession.CurrentContext.Environment);
 
-            foreach (AzureSubscription subscription in azureSubscriptions)
+            StorageAccountListResponse azureStorageListResponse =
+                this.GetSiteRecoveryClient().Storages.ListAzureStorages(azureSubscription);
+
+            foreach (var storage in azureStorageListResponse.StorageAccounts)
             {
-                StorageListResponse azureStorageListResponse =
-                    this.GetSiteRecoveryClient().Storages.ListAzureStorages(subscription.Id.ToString());
-
-                foreach (var storage in azureStorageListResponse.Storages)
+                if (string.Compare(azureStorageAccount, storage.Name, StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    if (string.Compare(azureStorageAccount, storage.Name, StringComparison.OrdinalIgnoreCase) == 0)
-                    {
-                        associatedAccount = true;
-                        break;
-                    }
-                }
-
-                if (associatedAccount)
-                {
+                    associatedAccount = true;
                     break;
                 }
             }
@@ -148,7 +145,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 throw new InvalidOperationException(
                     string.Format(
                     Properties.Resources.StorageIsNotAssociatedWithTheAccount,
-                    azureStorageAccount));
+                    azureStorageAccount,
+                    azureSubscription));
             }
         }
     }

@@ -191,11 +191,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ReplicationProvider));
             }
 
-            // Verify whether the subscription is associated with the account or not.
-            PSRecoveryServicesClient.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
-
             // Verify whether the storage account is associated with the subscription or not.
-            //// RecoveryServicesClient.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
+            RecoveryServicesClient.ValidateStorageAccountAssociation(
+                this.RecoveryAzureSubscription, 
+                this.RecoveryAzureStorageAccount);
 
             PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
 

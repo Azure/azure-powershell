@@ -207,7 +207,7 @@ ClientRequestId: {3}</value>
     <value>Cannot generate vault settings file for this vault. Download it from the Azure Portal.</value>
   </data>
   <data name="StorageIsNotAssociatedWithTheAccount" xml:space="preserve">
-    <value>Storage account {0} is not associated with the account</value>
+    <value>Storage account {0} is not associated with the given subscription {1}</value>
   </data>
   <data name="VaultCreationSuccessMessage" xml:space="preserve">
     <value>Vault has been created</value>

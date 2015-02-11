@@ -74,12 +74,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private void GetByName()
         {
             List<ASRVault> vaultList = this.GetVaults();
+            List<ASRVault> vaultListByName = new List<ASRVault>();
 
             foreach (var vault in vaultList)
             {
                 if (string.Compare(this.Name, vault.Name, StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    vaultList.Remove(vault);
+                    vaultListByName.Add(vault);
                 }
             }
 
