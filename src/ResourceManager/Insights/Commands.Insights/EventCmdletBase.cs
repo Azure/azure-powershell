@@ -16,8 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights
@@ -159,22 +159,19 @@ namespace Microsoft.Azure.Commands.Insights
         {
             string queryFilter = this.ProcessParameters();
 
-            // Call the proper API methods to return a list of raw records. In the future this pattern can be extended to include DigestRecords
-            Func<string, string, EventDataListResponse> initialCall = (f, s) => this.InsightsClient.EventOperations.ListEvents(filterString: f, selectedProperties: s);
-            Func<string, EventDataListResponse> nextCall = (n) => this.InsightsClient.EventOperations.ListEventsNext(nextLink: n);
-
             // Retrieve the records
             var fullDetails = this.DetailedOutput.IsPresent;
 
+            // Call the proper API methods to return a list of raw records. In the future this pattern can be extended to include DigestRecords
             // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
-            EventDataListResponse response = initialCall.Invoke(queryFilter, fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery);
+            EventDataListResponse response = this.InsightsClient.EventOperations.ListEventsAsync(filterString: queryFilter, selectedProperties: fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery, cancellationToken: CancellationToken.None).Result;
             var records = new List<IPSEventData>(response.EventDataCollection.Value.Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
             string nextLink = response.EventDataCollection.NextLink;
 
             // Adding a safety check to stop returning records if too many have been read already.
             while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < MaxNumberOfReturnedRecords)
             {
-                response = nextCall.Invoke(nextLink);
+                response = this.InsightsClient.EventOperations.ListEventsNextAsync(nextLink: nextLink, cancellationToken: CancellationToken.None).Result;
                 records.AddRange(response.EventDataCollection.Value.Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
                 nextLink = response.EventDataCollection.NextLink;
             }

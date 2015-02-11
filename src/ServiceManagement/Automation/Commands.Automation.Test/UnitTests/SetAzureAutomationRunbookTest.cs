@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -44,31 +45,13 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void SetAzureAutomationRunbookByIdSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            var runbookId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.UpdateRunbook(accountName, runbookId, null, null, null, null, null));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = runbookId;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.UpdateRunbook(accountName, runbookId, null, null, null, null, null), Times.Once());
-        }
-
-        [TestMethod]
         public void SetAzureAutomationRunbookByNameSuccessfull()
         {
             // Setup
             string accountName = "automation";
             string runbookName = "runbook";
 
-            this.mockAutomationClient.Setup(f => f.UpdateRunbook(accountName, runbookName, null, null, null, null, null));
+            this.mockAutomationClient.Setup(f => f.UpdateRunbook(accountName, runbookName, null, null, null, null));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
@@ -76,31 +59,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.UpdateRunbook(accountName, runbookName, null, null, null, null, null), Times.Once());
-        }
-
-        [TestMethod]
-        public void SetAzureAutomationRunbookByIdWithParametersSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            string description = "desc";
-            bool? logDebug = true;
-            bool? logVerbose = false;
-            var runbookId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.UpdateRunbook(accountName, runbookId, description, null, logDebug, null, logVerbose));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = runbookId;
-            this.cmdlet.Description = description;
-            this.cmdlet.LogDebug = logDebug;
-            this.cmdlet.LogVerbose = logVerbose;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.UpdateRunbook(accountName, runbookId, description, null, logDebug, null, logVerbose), Times.Once());
+            this.mockAutomationClient.Verify(f => f.UpdateRunbook(accountName, runbookName, null, null, null, null), Times.Once());
         }
 
         [TestMethod]
@@ -110,9 +69,9 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             string accountName = "automation";
             string runbookName = "runbook";
             bool? logProgress = false;
-            var tags = new string[] { "tag1", "tag2" };
+            string[] tags = { "tag1", "tags2" };
 
-            this.mockAutomationClient.Setup(f => f.UpdateRunbook(accountName, runbookName, null, tags, null, logProgress, null));
+            this.mockAutomationClient.Setup(f => f.UpdateRunbook(accountName, runbookName, null, tags, logProgress, null));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
@@ -122,7 +81,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.UpdateRunbook(accountName, runbookName, null, tags, null, logProgress, null), Times.Once());
+            this.mockAutomationClient.Verify(f => f.UpdateRunbook(accountName, runbookName, null, tags, logProgress, null), Times.Once());
         }
     }
 }
