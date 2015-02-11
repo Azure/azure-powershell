@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -184,7 +185,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
                     this.OozieMetastore.Credential.GetCleartextPassword());
             }
 
-            if (!string.IsNullOrEmpty(this.HeadNodeSize))
+            if (!string.IsNullOrEmpty(this.HeadNodeSize) && !this.HeadNodeSize.Equals("Default", StringComparison.OrdinalIgnoreCase))
             {
                 createClusterRequest.HeadNodeSize = this.HeadNodeSize;
             }
