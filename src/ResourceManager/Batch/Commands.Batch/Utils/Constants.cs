@@ -18,9 +18,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
     {
         public const string NameParameterSet = "Name";
         public const string ODataFilterParameterSet = "ODataFilter";
-        public const string ParentObjectWithNameParameterSet = "ParentObjectWithName";
-        public const string ParentObjectWithODataFilterParameterSet = "ParentObjectWithODataFilter";
-        public const string ParentCollectionWithNameParameterSet = "ParentCollectionWithName";
-        public const string ParentCollectionWithODataFilterParameterSet = "ParentCollectionWithODataFilter";
+        public const string ParentObjectParameterSet = "ParentObject";
+        public const string ParentCollectionParameterSet = "ParentCollection";
     }
 }

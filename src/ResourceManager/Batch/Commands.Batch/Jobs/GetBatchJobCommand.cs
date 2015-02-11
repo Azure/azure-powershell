@@ -23,8 +23,8 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet(VerbsCommon.Get, "AzureBatchJob", DefaultParameterSetName = Constants.NameParameterSet),
-        OutputType(typeof(PSCloudJob), ParameterSetName = new string[] { Constants.NameParameterSet, Constants.ParentObjectWithNameParameterSet }),
-        OutputType(typeof(IEnumerableAsyncExtended<PSCloudJob>), ParameterSetName = new string[] { Constants.ODataFilterParameterSet, Constants.ParentObjectWithODataFilterParameterSet, Constants.ParentCollectionWithNameParameterSet, Constants.ParentCollectionWithODataFilterParameterSet })]
+        OutputType(typeof(PSCloudJob), ParameterSetName = new string[] { Constants.NameParameterSet }),
+        OutputType(typeof(IEnumerableAsyncExtended<PSCloudJob>), ParameterSetName = new string[] { Constants.ODataFilterParameterSet, Constants.ParentObjectParameterSet, Constants.ParentCollectionParameterSet })]
     public class GetBatchJobCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the WorkItem containing the Job to query.")]
@@ -33,49 +33,29 @@ namespace Microsoft.Azure.Commands.Batch
         public string WorkItemName { get; set; }
 
         [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, HelpMessage = "The name of the Job to query.")]
-        [Parameter(Position = 1, ParameterSetName = Constants.ParentObjectWithNameParameterSet)]
-        [Parameter(Position = 1, ParameterSetName = Constants.ParentCollectionWithNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectWithNameParameterSet, ValueFromPipeline = true, HelpMessage = "The WorkItem containing the Jobs to query.")]
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectWithODataFilterParameterSet, ValueFromPipeline = true)]
+        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The WorkItem containing the Jobs to query.")]
         [ValidateNotNullOrEmpty]
-        public PSCloudWorkItem Parent { get; set; }
+        public PSCloudWorkItem WorkItem { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentCollectionWithNameParameterSet, ValueFromPipeline = true, HelpMessage = "The WorkItems containing the Jobs to query.")]
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentCollectionWithODataFilterParameterSet, ValueFromPipeline = true)]
+        [Parameter(Position = 0, ParameterSetName = Constants.ParentCollectionParameterSet, ValueFromPipeline = true, HelpMessage = "The WorkItems containing the Jobs to query.")]
         [ValidateNotNullOrEmpty]
-        public IEnumerableAsyncExtended<PSCloudWorkItem> ParentCollection { get; set; }
+        public IEnumerableAsyncExtended<PSCloudWorkItem> WorkItemCollection { get; set; }
             
         [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "OData filter to use when querying for Jobs.")]
-        [Parameter(ParameterSetName = Constants.ParentObjectWithODataFilterParameterSet)]
-        [Parameter(ParameterSetName = Constants.ParentCollectionWithODataFilterParameterSet)]
+        [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
+        [Parameter(ParameterSetName = Constants.ParentCollectionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteVerboseWithTimestamp(string.Format("WorkItemName: {0}, Name: {1}, Filter: {2}, Parent: {3}, ParentCollection: {4}", WorkItemName, Name, Filter, Parent, ParentCollection));
-
-            if (!string.IsNullOrEmpty(Name))
+            if (!string.IsNullOrEmpty(WorkItemName) && !string.IsNullOrEmpty(Name))
             {
                 //WriteVerboseWithTimestamp(Resources.GBP_GetByName, Name);
-                if (Parent != null)
-                {
-                    WriteObject(GetJob(Parent, Name, additionalBehaviors: AdditionalBehaviors));
-                }
-                else if (ParentCollection != null)
-                {
-                    foreach (PSCloudWorkItem workItem in ParentCollection)
-                    {
-                        WriteObject(GetJob(workItem, Name, additionalBehaviors: AdditionalBehaviors));
-                    }
-                }
-                else
-                {
-                    WriteObject(GetJob(WorkItemName, Name, additionalBehaviors: AdditionalBehaviors));
-                }
+                WriteObject(GetJob(WorkItemName, Name, additionalBehaviors: AdditionalBehaviors));
             }
             else
             {
@@ -89,13 +69,13 @@ namespace Microsoft.Azure.Commands.Batch
                 {
                     //WriteVerboseWithTimestamp(Resources.GBP_NoFilter);
                 }
-                if (Parent != null)
+                if (WorkItem != null)
                 {
-                    WriteObject(ListJobs(Parent, odata, AdditionalBehaviors));
+                    WriteObject(ListJobs(WorkItem, odata, AdditionalBehaviors));
                 }
-                else if (ParentCollection != null)
+                else if (WorkItemCollection != null)
                 {
-                    foreach (PSCloudWorkItem workItem in ParentCollection)
+                    foreach (PSCloudWorkItem workItem in WorkItemCollection)
                     {
                         WriteObject(ListJobs(workItem, odata, AdditionalBehaviors));
                     }
@@ -115,13 +95,6 @@ namespace Microsoft.Azure.Commands.Batch
                 ICloudJob job = wiManager.GetJob(workItemName, jobName, detailLevel, additionalBehaviors);
                 return new PSCloudJob(job);
             }
-        }
-
-        private PSCloudJob GetJob(PSCloudWorkItem workItem, string jobName, ODATADetailLevel detailLevel = null,
-            IEnumerable<BatchClientBehavior> additionalBehaviors = null)
-        {
-            ICloudJob job = workItem.omObject.GetJob(jobName, detailLevel, additionalBehaviors);
-            return new PSCloudJob(job);
         }
 
         private PSAsyncEnumerable<PSCloudJob, ICloudJob> ListJobs(string workItemName, ODATADetailLevel detailLevel = null,
