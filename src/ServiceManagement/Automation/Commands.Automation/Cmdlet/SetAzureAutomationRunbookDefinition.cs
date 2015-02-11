@@ -15,6 +15,7 @@
 using System;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -23,38 +24,19 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets an azure automation runbook definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureAutomationRunbookDefinition", DefaultParameterSetName = ByRunbookName)]
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationRunbookDefinition", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(RunbookDefinition))]
     public class SetAzureAutomationRunbookDefinition : AzureAutomationBaseCmdlet
     {
-        /// <summary>
-        /// The set runbook definition by runbook id parameter set.
-        /// </summary>
-        private const string ByRunbookId = "ByRunbookId";
-
-        /// <summary>
-        /// The set runbook definition by runbook name parameter set.
-        /// </summary>
-        private const string ByRunbookName = "ByRunbookName";
-
         /// <summary>
         /// True to overwrite the existing draft runbook definition; false otherwise.
         /// </summary>
         private bool overwriteExistingRunbookDefinition;
 
         /// <summary>
-        /// Gets or sets the runbook Id
-        /// </summary>
-        [Parameter(ParameterSetName = ByRunbookId, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The runbook id.")]
-        [Alias("RunbookId")]
-        public Guid? Id { get; set; }
-
-        /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [ValidateNotNullOrEmpty]
         [Alias("RunbookName")]
         public string Name { get; set; }
@@ -62,8 +44,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the path of the updated runbook script
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The path of the updated runbook script.")]
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, HelpMessage = "The path to the updated runbook script.")]
         [ValidateNotNullOrEmpty]
         [Alias("RunbookPath")]
         public string Path { get; set; }
@@ -71,8 +52,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets a value indicating whether to overwrite the existing draft runbook definition.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To overwrite the exisiting draft runbook definition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that the new draft runbook overwrites the existing draft, if one exists.")]
         public SwitchParameter Overwrite
         {
             get { return this.overwriteExistingRunbookDefinition; }
@@ -85,19 +65,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            RunbookDefinition runbookDefinition;
-            if (this.Id.HasValue)
-            {
-                // ByRunbookId
-                runbookDefinition = this.AutomationClient.UpdateRunbookDefinition(
-                    this.AutomationAccountName, this.Id.Value, this.ResolvePath(this.Path), this.Overwrite);
-            }
-            else
-            {
-                // ByRunbookName
-                runbookDefinition = this.AutomationClient.UpdateRunbookDefinition(
+            // ByRunbookName
+            var runbookDefinition = this.AutomationClient.UpdateRunbookDefinition(
                     this.AutomationAccountName, this.Name, this.ResolvePath(this.Path), this.Overwrite);
-            }
 
             this.WriteObject(runbookDefinition);
         }

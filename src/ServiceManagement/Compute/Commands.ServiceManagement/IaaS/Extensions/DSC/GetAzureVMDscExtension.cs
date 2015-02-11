@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         State = r.State,
                         RoleName = VM.GetInstance().RoleName,
                         PublicConfiguration = PublicConfiguration,
-                        PrivateConfiguration = SecureStringHelper.GetSecureString(PrivateConfiguration),
+                        PrivateConfiguration = SecureStringHelper.GetSecureString(PrivateConfiguration)
                     };
 
                     if (publicSettings == null)
@@ -95,6 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             base.ProcessRecord();
             ExecuteCommand();
         }
+
     }
 }
 

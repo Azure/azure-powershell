@@ -52,15 +52,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the automation account name.
         /// </summary>
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The automation account name.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
+        [Alias("AutomationAccountName")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the location.
         /// </summary>
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The geo region of the automation account")]
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The geo region of the automation account")]
         public string Location { get; set; }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            IEnumerable<AutomationAccount> accounts = this.AutomationClient.ListAutomationAccounts(this.Name, this.Location);
+            var accounts = this.AutomationClient.ListAutomationAccounts(this.Name, this.Location);
             this.WriteObject(accounts, true);
         }
     }
