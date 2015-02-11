@@ -147,6 +147,7 @@
     <Content Include="Microsoft.WindowsAzure.Commands.SqlDatabase.Types.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <Compile Include="Database\Cmdlet\CmdletCommon.cs" />
     <Compile Include="Database\Cmdlet\GetAzureSqlRecoverableDatabase.cs" />
