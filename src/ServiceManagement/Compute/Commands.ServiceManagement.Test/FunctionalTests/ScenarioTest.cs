@@ -1115,6 +1115,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Assert.IsTrue(resultContext.Restart == false);
                 Assert.IsTrue(resultContext.Version == "1.*");
 
+                vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
+
                 // Domain Config
                 var domainName = "test.bing.com";
                 config = vmPowershellCmdlets.NewAzureServiceDomainJoinExtensionConfig(
@@ -1124,13 +1126,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Assert.IsTrue(config.PublicConfiguration.Contains(domainName));
                 Assert.IsTrue(config.PublicConfiguration.Contains("35"));
 
-                vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Staging, deploymentLabel, deploymentName, false, false, config);
+                vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Production, deploymentLabel, deploymentName, false, false, config);
 
-                vmPowershellCmdlets.RemoveAzureServiceDomainJoinExtension(serviceName, DeploymentSlotType.Staging);
+                vmPowershellCmdlets.RemoveAzureServiceDomainJoinExtension(serviceName, DeploymentSlotType.Production);
 
                 // Join a Domain
                 vmPowershellCmdlets.SetAzureServiceDomainJoinExtension(
-                    domainName, cred, 35, false, serviceName, DeploymentSlotType.Staging, null, (X509Certificate2)null, null, (PSCredential)null, null, "1.*");
+                    domainName, cred, 35, false, serviceName, DeploymentSlotType.Production, null, (X509Certificate2)null, null, (PSCredential)null, null, "1.*");
 
                 resultContext = vmPowershellCmdlets.GetAzureServiceDomainJoinExtension(serviceName);
                 Assert.IsTrue(resultContext.User == cred.UserName);
@@ -1140,10 +1142,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Assert.IsTrue(resultContext.Version == "1.*");
 
                 vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
-                vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Staging, true);
 
                 pass &= Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDeployment, serviceName, DeploymentSlotType.Production);
-                pass &= Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDeployment, serviceName, DeploymentSlotType.Staging);
             }
             catch (Exception e)
             {
