@@ -43,7 +43,6 @@ using Connection = Microsoft.Azure.Commands.Automation.Model.Connection;
 namespace Microsoft.Azure.Commands.Automation.Common
 {
     using AutomationManagement = WindowsAzure.Management.Automation;
-    using Microsoft.Azure.Common.Extensions.Models;
     using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
 
