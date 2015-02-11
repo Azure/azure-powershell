@@ -127,9 +127,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             bool associatedAccount = false;
+            StorageAccountListResponse azureStorageListResponse = null;
 
-            StorageAccountListResponse azureStorageListResponse =
-                this.GetSiteRecoveryClient().Storages.ListAzureStorages(azureSubscription);
+            try
+            {
+                azureStorageListResponse =
+                    this.GetSiteRecoveryClient().Storages.ListAzureStorages(azureSubscription);
+            }
+            catch (Exception)
+            {
+                return;
+            }
 
             foreach (var storage in azureStorageListResponse.StorageAccounts)
             {
