@@ -110,7 +110,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="azureSubscription">Subscription ID</param>
         /// <param name="azureStorageAccount">Storage Account details</param>
-        public void ValidateStorageAccountAssociation(string azureSubscription, string azureStorageAccount)
+        /// <returns>Validation successful</returns>
+        public bool ValidateStorageAccountAssociation(string azureSubscription, string azureStorageAccount)
         {
             if (string.IsNullOrEmpty(azureSubscription))
             {
@@ -134,9 +135,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 azureStorageListResponse =
                     this.GetSiteRecoveryClient().Storages.ListAzureStorages(azureSubscription);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return;
+                return false;
             }
 
             foreach (var storage in azureStorageListResponse.StorageAccounts)
@@ -156,6 +157,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     azureStorageAccount,
                     azureSubscription));
             }
+
+            return true;
         }
     }
 }

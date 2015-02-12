@@ -1573,4 +1573,7 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="RemoveProfileMessage" xml:space="preserve">
     <value>Removing the Azure profile</value>
   </data>
+  <data name="StorageAccountValidationUnsuccessful" xml:space="preserve">
+    <value>The Subscription or Storage account couldn’t be validated. For failovers to be successful, the Subscription should belong to your account, the Storage account to the Subscription and Storage account location must be the same as location of your Vault.</value>
+  </data>
 </root>

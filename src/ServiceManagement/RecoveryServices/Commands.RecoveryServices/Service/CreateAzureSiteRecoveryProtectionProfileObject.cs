@@ -17,6 +17,7 @@ using System.ComponentModel;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 
@@ -192,9 +193,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             // Verify whether the storage account is associated with the subscription or not.
-            RecoveryServicesClient.ValidateStorageAccountAssociation(
+            bool validationSuccessful = RecoveryServicesClient.ValidateStorageAccountAssociation(
                 this.RecoveryAzureSubscription,
                 this.RecoveryAzureStorageAccount);
+
+            if (!validationSuccessful)
+            {
+                this.WriteWarning(string.Format(Resources.StorageAccountValidationUnsuccessful));
+            }
 
             PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
 
