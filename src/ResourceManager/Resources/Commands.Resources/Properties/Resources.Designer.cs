@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not find the feature &apos;{0}&apos; for the resource provider &apos;{1}&apos;..
+        /// </summary>
+        internal static string FeatureNotFound {
+            get {
+                return ResourceManager.GetString("FeatureNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided file path &apos;{0}&apos; already exists, do you want to override it?.
         /// </summary>
         internal static string FileAlreadyExists {
@@ -201,6 +210,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string OverrdingFile {
             get {
                 return ResourceManager.GetString("OverrdingFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find a registered feature named &apos;{0}&apos; for the resource provider &apos;{1}&apos;..
+        /// </summary>
+        internal static string RegisteredFeatureNotFound {
+            get {
+                return ResourceManager.GetString("RegisteredFeatureNotFound", resourceCulture);
             }
         }
         
@@ -327,6 +345,33 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string ResourceGroupDoesntExistsAdd {
             get {
                 return ResourceManager.GetString("ResourceGroupDoesntExistsAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the resource provider &apos;{0}&apos;..
+        /// </summary>
+        internal static string ResourceProviderNotFound {
+            get {
+                return ResourceManager.GetString("ResourceProviderNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not register the resource provider &apos;{0}&apos;.
+        /// </summary>
+        internal static string ResourceProviderRegistrationFailed {
+            get {
+                return ResourceManager.GetString("ResourceProviderRegistrationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not unregister the resource provider &apos;{0}&apos;.
+        /// </summary>
+        internal static string ResourceProviderUnregistrationFailed {
+            get {
+                return ResourceManager.GetString("ResourceProviderUnregistrationFailed", resourceCulture);
             }
         }
         

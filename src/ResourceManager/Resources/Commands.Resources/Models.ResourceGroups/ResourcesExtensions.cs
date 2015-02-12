@@ -103,9 +103,26 @@ namespace Microsoft.Azure.Commands.Resources.Models
             };
         }
 
-        public static PSResourceProviderType ToPSResourceProviderType(this ProviderResourceType resourceType, string providerNamespace)
+        public static PSResourceProvider ToPSResourceProvider(this Provider provider)
         {
-            PSResourceProviderType result = new PSResourceProviderType();
+            return new PSResourceProvider
+            {
+                ProviderName = provider.Namespace,
+                RegistrationState = provider.RegistrationState,
+                ResourceTypes =
+                    provider.ResourceTypes.Select(
+                        resourceType =>
+                            new PSResourceProviderResourceType
+                            {
+                                ResourceTypeName = resourceType.Name,
+                                Locations = resourceType.Locations.ToArray()
+                            }).ToArray(),
+            };
+        }
+
+        public static PSResourceProviderLocationInfo ToPSResourceProviderLocationInfo(this ProviderResourceType resourceType, string providerNamespace)
+        {
+            PSResourceProviderLocationInfo result = new PSResourceProviderLocationInfo();
             if (resourceType != null)
             {
                 resourceType.Locations = resourceType.Locations ?? new List<string>();

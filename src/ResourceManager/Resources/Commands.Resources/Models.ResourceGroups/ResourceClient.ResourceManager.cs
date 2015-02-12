@@ -561,14 +561,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         /// <param name="resourceTypes">The resource types</param>
         /// <returns>Mapping between each resource type and its available locations</returns>
-        public virtual List<PSResourceProviderType> GetLocations(params string[] resourceTypes)
+        public virtual List<PSResourceProviderLocationInfo> GetLocations(params string[] resourceTypes)
         {
             if (resourceTypes == null)
             {
                 resourceTypes = new string[0];
             }
             List<string> providerNames = resourceTypes.Select(r => r.Split('/').First()).ToList();
-            List<PSResourceProviderType> result = new List<PSResourceProviderType>();
+            List<PSResourceProviderLocationInfo> result = new List<PSResourceProviderLocationInfo>();
             List<Provider> providers = new List<Provider>();
 
             if (resourceTypes.Length == 0 || resourceTypes.Any(r => r.Equals(ResourceGroupTypeName, StringComparison.OrdinalIgnoreCase)))
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 {
                     Name = ResourceGroupTypeName,
                     Locations = KnownLocations
-                }.ToPSResourceProviderType(null));
+                }.ToPSResourceProviderLocationInfo(null));
             }
 
             if (resourceTypes.Length > 0)
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
 
             result.AddRange(providers.SelectMany(p => p.ResourceTypes
-                .Select(r => r.ToPSResourceProviderType(p.Namespace)))
+                .Select(r => r.ToPSResourceProviderLocationInfo(p.Namespace)))
                 .Where(r => r.Locations != null && r.Locations.Count > 0));
 
             return result;

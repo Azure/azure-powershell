@@ -73,9 +73,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.17.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager">
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.13.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.14.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -135,6 +135,8 @@
     <Compile Include="ActiveDirectory\NewAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ProviderFeatures\AzureProviderFeatureCmdletsBase.cs" />
+    <Compile Include="ProviderFeatures\GetAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryBaseCmdlet.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryClientExtensions.cs" />
     <Compile Include="Models.ActiveDirectory\ADObjectFilterOptions.cs" />
@@ -157,6 +159,11 @@
     <Compile Include="Models.Authorization\PSRoleAssignment.cs" />
     <Compile Include="Models.Authorization\PSRoleDefinition.cs" />
     <Compile Include="Models.Authorization\PSPermission.cs" />
+    <Compile Include="Models.ProviderFeatures\ProviderFeatureClient.cs" />
+    <Compile Include="Models.ProviderFeatures\FeatureResponseExtentions.cs" />
+    <Compile Include="Models.ProviderFeatures\PSProviderFeature.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceProvider.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceProviderResourceType.cs" />
     <Compile Include="Models.ResourceGroups\TemplateValidationInfo.cs" />
     <Compile Include="Models.ResourceGroups\PSGalleryItem.cs" />
     <Compile Include="Models.ResourceGroups\PSResourceManagerError.cs" />
@@ -173,13 +180,17 @@
     <Compile Include="Models.ResourceGroups\PSDeploymentEventData.cs" />
     <Compile Include="Models.ResourceGroups\ResourceClient.Events.cs" />
     <Compile Include="Models.ResourceGroups\FilterResourceGroupDeploymentOptions.cs" />
-    <Compile Include="Models.ResourceGroups\PSResourceProviderType.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceProviderLocationInfo.cs" />
     <Compile Include="Models.ResourceGroups\BasePSResourceParameters.cs" />
     <Compile Include="Models.ResourceGroups\UpdatePSResourceGroupParameters.cs" />
     <Compile Include="Models.ResourceGroups\UpdatePSResourceParameters.cs" />
     <Compile Include="Models.ResourceGroups\TemplateFileResource.cs" />
     <Compile Include="Models.ResourceGroups\ValidatePSResourceGroupDeploymentParameters.cs" />
     <Compile Include="Models.Authorization\AuthorizationClient.cs" />
+    <Compile Include="ProviderFeatures\RegisterAzureProviderFeatureCmdlet.cs" />
+    <Compile Include="Providers\GetAzureProviderCmdlet.cs" />
+    <Compile Include="Providers\RegisterAzureProviderCmdlet.cs" />
+    <Compile Include="Providers\UnregisterAzureProviderCmdlet.cs" />
     <Compile Include="ResourceGroups\GetAzureResourceGroupLogCommand.cs" />
     <Compile Include="ResourceGroups\GetAzureLocationCommand.cs" />
     <Compile Include="ResourceGroups\SetAzureResourceGroupCommand.cs" />
@@ -277,6 +288,7 @@
     <Content Include="AzureResourceManager.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="PostBuild.ps1" />

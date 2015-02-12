@@ -12,16 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.Resources.Models
 {
-    public class PSResourceProviderType
+    public class PSResourceProviderResourceType
     {
-        public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the resource type.
+        /// </summary>
+        public string ResourceTypeName { get; set; }
 
-        public List<string> Locations { get; set; }
-
-        public string LocationsString { get; set; }
+        /// <summary>
+        /// Gets or sets the locations this resource is available in.
+        /// </summary>
+        public string[] Locations { get; set; }
     }
 }
