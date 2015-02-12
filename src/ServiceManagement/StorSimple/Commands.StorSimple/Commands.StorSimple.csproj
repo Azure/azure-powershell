@@ -49,6 +49,12 @@
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.1\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
+    <!--
+    <Reference Include="Microsoft.WindowsAzure.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
+    </Reference>
+    -->
     <Reference Include="Microsoft.Azure.Common.Extensions">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.Extensions.0.13.0-preview\lib\net45\Microsoft.Azure.Common.Extensions.dll</HintPath>
     </Reference>
@@ -78,11 +84,17 @@
     <Reference Include="Microsoft.WindowsAzure.Management.Scheduler">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
     </Reference>
+    <!--
     <Reference Include="Microsoft.WindowsAzure.Management.StorSimple">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.StorSimple.0.9.0-preview\lib\net40\Microsoft.WindowsAzure.Management.StorSimple.dll</HintPath>
     </Reference>
+    -->
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="StorSimple.Tests, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\hydra-specs-pr\StorSimple\StorSimple.Tests\bin\Debug\StorSimple.Tests.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -126,6 +138,16 @@
     <Compile Include="Cmdlets\GetAzureStorSimpleResource.cs" />
     <Compile Include="Cmdlets\GetAzureStorSimpleResourceContext.cs" />
     <Compile Include="Cmdlets\Task\GetAzureStorSimpleTask.cs" />
+    <Compile Include="Cmdlets\Migration\ConfirmAzureStorSimpleLegacyVolumeContainerStatus.cs" />
+    <Compile Include="Cmdlets\Migration\GetAzureStorSimpleLegacyVolumeContainerConfirmStatus.cs" />
+    <Compile Include="Cmdlets\Migration\GetAzureStorSimpleLegacyVolumeContainerStatus.cs" />
+    <Compile Include="Cmdlets\Migration\ImportAzureStorSimpleLegacyVolumeContainer.cs" />
+    <Compile Include="Helpers\Migration\MigrationServiceSecretsEncryptor.cs" />
+    <Compile Include="Helpers\Migration\LegacyApplianceConfigDecryptor.cs" />
+    <Compile Include="Cmdlets\Migration\GetAzureStorSimpleLegacyVolumeContainerMigrationPlan.cs" />
+    <Compile Include="Cmdlets\Migration\StartAzureStorSimpleLegacyVolumeContainerMigrationPlan.cs" />
+    <Compile Include="Cmdlets\Migration\ImportAzureStorSimpleLegacyApplianceConfig.cs" />
+    <Compile Include="Helpers\Migration\LegacyApplianceConfigParser.cs" />
     <Compile Include="Cmdlets\ServiceConfig\GetAzureStorSimpleStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\SelectAzureStorSimpleResource.cs" />
@@ -145,6 +167,7 @@
     <Compile Include="Library\CryptoHelper.cs" />
     <Compile Include="Library\IKeyManager.cs" />
     <Compile Include="Library\LocalKeyStoreManager.cs" />
+    <Compile Include="Models\LegacyApplianceMigrationModels.cs" />
     <Compile Include="Models\TaskReport.cs" />
     <Compile Include="Models\PSContracts.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -158,6 +181,7 @@
     <Compile Include="ServiceClients\StorSimpleClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceClients\StorSimpleContextClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleMigrationClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDCClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDevicesClient.cs" />
     <Compile Include="ServiceClients\StorSimpleServiceConfigClient.cs" />

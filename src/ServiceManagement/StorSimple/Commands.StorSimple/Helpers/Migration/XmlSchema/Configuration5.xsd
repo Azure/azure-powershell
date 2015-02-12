@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/StorSimple" />
+  <xs:complexType name="ScheduleType">
+	<xs:sequence>
+	  <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q3:InnerSchedule" />
+	  <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q4:StartBoundary" />
+	  <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q5:StopBoundary" />
+	  <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q6:Interval" />
+	</xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DailySchedule">
+    <xs:complexContent>
+	<xs:restriction xmlns:sn1="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" base="sn1:ScheduleType">
+	<xs:sequence>
+	  <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q3:InnerSchedule" />
+	  <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q4:StartBoundary" />
+	  <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q5:StopBoundary" />
+	  <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q6:Interval" />
+	</xs:sequence>
+	</xs:restriction>
+	</xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="IntervalSchedule">
+    <xs:complexContent>
+    <xs:restriction xmlns:sn1="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" base="sn1:ScheduleType">
+	<xs:sequence>
+	  <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q3:InnerSchedule" />
+	  <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q4:StartBoundary" />
+	  <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q5:StopBoundary" />
+	  <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q6:Interval" />
+	</xs:sequence>
+	</xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>  
+  <xs:complexType name="MonthlySchedule">
+    <xs:complexContent>
+    <xs:restriction xmlns:sn1="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" base="sn1:ScheduleType">
+	<xs:sequence>
+	  <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q3:InnerSchedule" />
+	  <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q4:StartBoundary" />
+	  <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q5:StopBoundary" />
+	  <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q6:Interval" />
+	</xs:sequence>
+	</xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>  
+  <xs:complexType name="OneTimeSchedule">
+    <xs:complexContent>
+    <xs:restriction xmlns:sn1="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" base="sn1:ScheduleType">
+	<xs:sequence>
+	  <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q3:InnerSchedule" />
+	  <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q4:StartBoundary" />
+	  <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q5:StopBoundary" />
+	  <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q6:Interval" />
+	</xs:sequence>
+	</xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WeeklySchedule">
+    <xs:complexContent>
+    <xs:restriction xmlns:sn1="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" base="sn1:ScheduleType">
+	<xs:sequence>
+	  <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q3:InnerSchedule" />
+	  <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q4:StartBoundary" />
+	  <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q5:StopBoundary" />
+	  <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" ref="q6:Interval" />
+	</xs:sequence>
+	</xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>  
+  <xs:element name="InnerSchedule" nillable="true" />
+  <xs:element name="StartBoundary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/StorSimple" ref="q1:_d" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StopBoundary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/StorSimple" ref="q2:_d" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Interval" type="xs:string" />
+</xs:schema>

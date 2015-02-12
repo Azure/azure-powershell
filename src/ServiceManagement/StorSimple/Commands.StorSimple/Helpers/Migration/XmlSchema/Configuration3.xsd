@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Backup.Agent.Types" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Backup.Agent.Types" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/StorSimple" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" />
+  <xs:element name="BackupPolicyInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Alias" type="xs:string" />
+        <xs:element name="BackupType" type="xs:string" />
+        <xs:element name="CloudClone" type="xs:boolean" />
+        <xs:element name="CollectionId" type="xs:string" />
+        <xs:element name="CreatedOn">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/StorSimple" ref="q1:_d" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Disabled" type="xs:boolean" />
+        <xs:element name="Id" type="xs:string" />
+        <xs:element name="LastRun">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/StorSimple" ref="q2:_d" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MaxRetentionCount" type="xs:unsignedByte" />
+        <xs:element name="Schedule" xmlns:sn1="http://schemas.datacontract.org/2004/07/StorSimple.Scheduling" type="sn1:ScheduleType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CollectionInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Alias" type="xs:string" />
+        <xs:element name="Applications" nillable="true" />
+        <xs:element name="AutoCollectionVsn" nillable="true" />
+        <xs:element name="ExplicitVolumes" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+			 <xs:element maxOccurs="unbounded" name="VolumeInfo">
+				 <xs:complexType>
+				 <xs:sequence>
+					 <xs:element name="ApplianceVolume">
+					 <xs:complexType>
+						 <xs:sequence>
+						 <xs:element name="Appliance" type="xs:string" />
+						 <xs:element name="Clones" />
+						 <xs:element name="HostPartitionOffset" nillable="true" />
+						 <xs:element name="Id" type="xs:string" />
+						 <xs:element name="Name" type="xs:string" />
+						 <xs:element name="VolumeType" type="xs:string" />
+						 </xs:sequence>
+					 </xs:complexType>
+					 </xs:element>
+					 <xs:element name="Host" type="xs:string" />
+					 <xs:element name="Id" type="xs:string" />
+					 <xs:element name="IsBackupSupported" type="xs:boolean" />
+					 <xs:element name="IsOffline" type="xs:boolean" />
+					 <xs:element name="Name" type="xs:string" />
+					 <xs:element name="PartitionOffset" type="xs:unsignedByte" />
+					 <xs:element name="Spans" nillable="true" />
+					 <xs:element name="Type" type="xs:string" />
+				 </xs:sequence>
+				 </xs:complexType>
+			 </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Id" type="xs:string" />
+        <xs:element name="IsDeleted" type="xs:boolean" />
+        <xs:element name="IsImported" type="xs:boolean" />
+        <xs:element name="Type" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

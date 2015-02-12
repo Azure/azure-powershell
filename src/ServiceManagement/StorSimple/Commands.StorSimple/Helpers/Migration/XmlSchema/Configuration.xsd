@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns:d2p1="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Datapath.Support" xmlns:d3p1="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Backup.Agent.Types" xmlns:d4p1="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Native" xmlns:d6p1="http://schemas.datacontract.org/2004/07/StorSimple" xmlns:d5p1="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Native" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Configuration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Datapath.Support.AccessControlGroup" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/StorSimple.Appliance" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Backup.Agent.Types" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Datapath.Support" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Qos" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/StorSimple" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Authentication" />
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" />
+  <xs:element name="ApplianceConfigurationData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AccessControlGroup">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element maxOccurs="unbounded" xmlns:q1="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Datapath.Support.AccessControlGroup" ref="q1:GroupData" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AlertSettings">
+          <xs:complexType>
+            <xs:sequence  minOccurs="0">
+              <xs:element maxOccurs="unbounded" xmlns:q2="http://schemas.datacontract.org/2004/07/StorSimple.Appliance" ref="q2:AlertSetting" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BackupData">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BackupPolicies">
+                <xs:complexType>
+				  <xs:sequence minOccurs="0">
+                    <xs:element maxOccurs="unbounded" ref="d3p1:BackupPolicyInfo" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="BackupRuns" nillable="true" />
+              <xs:element name="Collections">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0">
+                    <xs:element maxOccurs="unbounded" ref="d3p1:CollectionInfo" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Jobs" nillable="true" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CRC32" type="xs:unsignedInt" minOccurs="0" />
+        <xs:element name="CloudConfigurations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" ref="d2p1:CloudConfigurationInfo" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CloudCredentials">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" ref="d2p1:CloudCredentialInfo" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataPathTimeZoneId" type="xs:string" />
+        <xs:element name="DatapathVersion" type="xs:string" />
+        <xs:element name="HostInformation">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="d2p1:Interfaces" />
+              <xs:element ref="d2p1:NameInfo" />
+              <xs:element ref="d2p1:ProxyInfo" />
+              <xs:element ref="d2p1:SNMPInfo" />
+              <xs:element ref="d2p1:SecurityInfo" />
+              <xs:element ref="d2p1:TimeInfo" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="InBoundScsiChap" />
+        <xs:element name="ManagementVersion" type="xs:string" />
+        <xs:element name="OutBoundScsiChap">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element ref="d2p1:Id" />
+              <xs:element ref="d2p1:Name" />
+              <xs:element ref="d2p1:Password" />
+              <xs:element ref="d2p1:Valid" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="QosTemplates">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element maxOccurs="unbounded" xmlns:q3="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Qos" ref="q3:QosTemplateInfo" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SNMPInfo">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element ref="d2p1:Community" />
+              <xs:element ref="d2p1:Contact" />
+              <xs:element ref="d2p1:EnableAuthTraps" />
+              <xs:element ref="d2p1:EnableInterfaceTraps" />
+              <xs:element ref="d2p1:Inform" />
+              <xs:element ref="d2p1:Location" />
+              <xs:element ref="d2p1:ROCommunity" />
+              <xs:element ref="d2p1:ROUser" />
+              <xs:element ref="d2p1:RWCommunity" />
+              <xs:element ref="d2p1:RWUser" />
+              <xs:element ref="d2p1:Receiver" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SmtpSettings" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q4:AuthenticationType" />
+              <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q5:CopyStorSimple" />
+              <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q6:Domain" />
+              <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q7:EnableCallHome" />
+              <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q8:EnableEmailAlerts" />
+              <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q9:EncryptionType" />
+              <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q10:FirstRunAfterUpgrade" minOccurs="0"/>
+              <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q11:FromEmail" />
+              <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q12:Hostname" />
+              <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q13:IncludeStats" />
+              <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q14:Password" />
+              <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q15:PortNumber" />
+              <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q16:ToEmail" />
+              <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Settings" ref="q17:Username" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Timestamp">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element ref="d6p1:_d" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Users">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element maxOccurs="unbounded" xmlns:q17="http://schemas.datacontract.org/2004/07/StorSimple.Appliance.Authentication" ref="q17:CsaUserInfo" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Volumes">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element maxOccurs="unbounded" ref="d2p1:Volume" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q18="http://www.w3.org/2000/09/xmldsig#" ref="q18:Signature" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

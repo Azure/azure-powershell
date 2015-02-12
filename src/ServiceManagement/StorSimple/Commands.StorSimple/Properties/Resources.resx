@@ -423,4 +423,112 @@
   <data name="ResourceContextNotSetMessage" xml:space="preserve">
     <value>Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context.</value>
   </data>
+  <data name="ConfirmMigrationSuccessMessage" xml:space="preserve">
+    <value>Please check the commit/discard status using Get-AzureStorSimpleLegacyVolumeContainerConfirmStatus</value>
+  </data>
+  <data name="ImportLegacyApplianceConfigSuccessMessage" xml:space="preserve">
+    <value>Successfully Imported Legacy Appliance's Config! Please save config id and volume container groups for future reference</value>
+  </data>
+  <data name="MigrationConfigFileNotFound" xml:space="preserve">
+    <value>Legacy Appliance config not found</value>
+  </data>
+  <data name="StartMigrationPlanSuccessMessage" xml:space="preserve">
+    <value>Successfully started estimating the Migration Plan. Please check details with Get-AzureStorSimpleLegacyVolumeContainerMigrationPlan</value>
+  </data>
+  <data name="MigrationSchemaParsingError" xml:space="preserve">
+    <value>Error parsing Xml Schema. Schema Input : {0}. </value>
+  </data>
+  <data name="ServiceSecretEncryptionFailure" xml:space="preserve">
+    <value>Unable to encrypt the secrets. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
+  </data>
+  <data name="MigrationConfigDecryptionKeyNotFound" xml:space="preserve">
+    <value>Key Null or Empty</value>
+  </data>
+  <data name="MigrationConfigFileEmpty" xml:space="preserve">
+    <value>Config file is empty</value>
+  </data>
+  <data name="MigrationExpectedACRNotFound" xml:space="preserve">
+    <value>Expected AccessControlRecord details not found, AccessControlRecord Id {0}</value>
+  </data>
+  <data name="MigrationExpectedSACNotFound" xml:space="preserve">
+    <value>Expected StorageAccountCredential details not found, StorageAccountCredential Id {0}</value>
+  </data>
+  <data name="MigrationExpectedVolumeContainerNotFound" xml:space="preserve">
+    <value>Expected VolumeContainer details not found, Volume Container Id {0}</value>
+  </data>
+  <data name="MigrationExpectedVolumeNotFound" xml:space="preserve">
+    <value>Expected Volume details not found, Volume Name {0}</value>
+  </data>
+  <data name="MigrationAssociatedBandwidthSettingIncomplete" xml:space="preserve">
+    <value>Bandwidth Settings for below volume container needs attention. Please fix the same after migration completes.</value>
+  </data>
+  <data name="MigrationBackupSchedulesNotMigrated" xml:space="preserve">
+    <value>Backup schedules cannot be migrated. Please update the schedules onces migration completed.</value>
+  </data>
+  <data name="MigrationDefaultPolicyAssigned" xml:space="preserve">
+    <value>Default Policies Assigned to Volume Containers</value>
+  </data>
+  <data name="MigrationInvalidPolicyNotSupported" xml:space="preserve">
+    <value>Cloud clone cannot be migrated. Below polices are ignored </value>
+  </data>
+  <data name="MigrationLocalSnapshotPolicyNotSupported" xml:space="preserve">
+    <value>Local snapshots cannot be migrated. Below polices are ignored</value>
+  </data>
+  <data name="MigrationManagementVersionNotFound" xml:space="preserve">
+    <value>Management Version not found in the config xml. Please reimport config and retry.</value>
+  </data>
+  <data name="MigrationManagementVersionNotSupported" xml:space="preserve">
+    <value>Management Version not supported, Current Version {0}, Minimum supported version {1}. Please import the config after updating the legacy appliance and retry.</value>
+  </data>
+  <data name="MigrationNonCloudSnapshotVDGIgnored" xml:space="preserve">
+    <value>Volume Group not associated any Cloud snapshots are not Migrated. Below volume groups are ignored</value>
+  </data>
+  <data name="MigrationPolicyUpdated" xml:space="preserve">
+    <value>Default Policy {0} will be assigned to Volume Group {1}</value>
+  </data>
+  <data name="MigrationErrorInDisplayingDetails" xml:space="preserve">
+    <value>Unexpected error occured while displaying parsed details. Reimport config and retry or Contact microsoft support. Exception details {0}</value>
+  </data>
+  <data name="MigrationVolumeToVolumeContainerMapNotFound" xml:space="preserve">
+    <value>Volume container {0} cannot be correctly identified for volume {1}. Please reimport config and retry.</value>
+  </data>
+  <data name="MigrationVolumeContainerRelatedGroupHeader" xml:space="preserve">
+    <value>Related Data Container to be migrated together :</value>
+  </data>
+  <data name="MigrationVolumeContainerRelatedGroupingNotFound" xml:space="preserve">
+    <value>No volume container group list formed!</value>
+  </data>
+  <data name="MigrationMultiplePolicyIgnored" xml:space="preserve">
+    <value>Ignoring Below Policies. Already a policy is associated with corresponding volume group.</value>
+  </data>
+  <data name="MigrationErrorInParsingDisplayContent" xml:space="preserve">
+    <value>Unexpected error occured in displaying the output. You can continue to next step or contact Microsoft support.</value>
+  </data>
+  <data name="MigrationInfoNoDisplayContent" xml:space="preserve">
+    <value>No status obtained. Please retry after sometime.</value>
+  </data>
+  <data name="MigrationBackupSetNotFound" xml:space="preserve">
+    <value>No Backup sets found</value>
+  </data>
+  <data name="MigrationNoDataContainerInGivenStateOfMigration" xml:space="preserve">
+    <value>No volume container are found to be in {0} state of Migration</value>
+  </data>
+  <data name="MigrationConfirmMigrationStatusReturnedEmpty" xml:space="preserve">
+    <value>No migration status found for ConfigID {0}. Execute Confirm-AzureStorSimpleLegacyVolumeContainerConfirmStatus to confirm/rollback migration. </value>
+  </data>
+  <data name="MigrationImportDataContainerSuccessMessage" xml:space="preserve">
+    <value>Import started, Please check status with Get-AzureStorSimpleLegacyVolumeContainerStatus commandlet</value>
+  </data>
+  <data name="MigrationPlanConfigList" xml:space="preserve">
+    <value>List of config Ids on the resource:</value>
+  </data>
+  <data name="MigrationPlanNoConfigs" xml:space="preserve">
+    <value>There are no configs on the resource.</value>
+  </data>
+  <data name="MigrationPlanNotFound" xml:space="preserve">
+    <value>No migration plan found corresponding to the configId.</value>
+  </data>
+  <data name="VolumeContainerList" xml:space="preserve">
+    <value>List of volume containers:</value>
+  </data>
 </root>

@@ -79,5 +79,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string HelpMessageBackupScheduleBaseObjsToDelete = "List of Instance Id of BackupSchedule objects to be deleted";
         public const string HelpMessageVolumeObjsToUpdate = "List of VolumeIds to be updated";
         public const string HelpMessageResourceName = "Name of the resource which needs to be retrieved";
+        public const string HelpMessageMigrationConfigFilePath = "The legacy appliance's config file for migration";
+        public const string HelpMessageMigrationTargetDevice = "The target appliance to which migration needs to be performed";
+        public const string HelpMessageMigrationConfigDecryptionKey = "The key to decrypt the legacy appliance config file";
+        public const string HelpMessageMigrationLegacyDataContainers = "Names of data containers to be migrated seperated by ','";
+        public const string HelpMessageMigrationConfigId = "Legacy config id";
+        public const string HelpMessageMigrationOperation = "Commit or Rollback";
     }
 }
