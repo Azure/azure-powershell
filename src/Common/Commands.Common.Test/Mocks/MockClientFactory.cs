@@ -60,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public TClient CreateClient<TClient>(AzureProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
         {
-            SubscriptionCloudCredentials creds = new TokenCloudCredentials(subscription.Id.ToString(), "fake_token");
+            SubscriptionCloudCredentials creds = new TokenCloudCredentials(subscription == null ? "fake_subscription" : subscription.Id.ToString(), "fake_token");
             if (HttpMockServer.GetCurrentMode() != HttpRecorderMode.Playback)
             {
                 ProfileClient profileClient = new ProfileClient(
