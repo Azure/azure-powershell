@@ -19,6 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
 
     /// <summary>
@@ -52,6 +53,41 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             {
                 return (BlobRequestOptions) GetRequestOptions(StorageServiceType.Blob);
             }
+        }
+
+        protected static CloudBlob GetBlobReferenceFromServerWithContainer(
+            IStorageBlobManagement localChannel,
+            CloudBlobContainer container,
+            string blobName,
+            AccessCondition accessCondition = null,
+            BlobRequestOptions requestOptions = null,
+            OperationContext operationContext = null)
+        {
+            return GetBlobReferenceWrapper(() =>
+                {
+                    try
+                    {
+                        return localChannel.GetBlobReferenceFromServer(container, blobName, accessCondition, requestOptions, operationContext);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        return null;
+                    }
+                },
+                blobName,
+                container.Name);
+        }
+
+        protected static CloudBlob GetBlobReferenceWrapper(Func<CloudBlob> getBlobReference, string blobName, string containerName)
+        {
+            CloudBlob blob = getBlobReference();
+
+            if (null == blob)
+            {
+                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));
+            }
+
+            return blob;
         }
 
         /// <summary>
@@ -175,6 +211,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             if (!NameUtil.IsValidBlobName(name))
             {
                 throw new ArgumentException(String.Format(Resources.InvalidBlobName, name));
+            }
+        }
+
+        protected void ValidateBlobType(CloudBlob blob)
+        {
+            if ((BlobType.BlockBlob != blob.BlobType)
+                && (BlobType.PageBlob != blob.BlobType))
+            {
+                throw new InvalidOperationException(string.Format(Resources.InvalidBlobType, blob.Name));
             }
         }
 

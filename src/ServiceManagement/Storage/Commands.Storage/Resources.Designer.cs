@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find blob &apos;{0}&apos; in container &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Can not find blob &apos;{0}&apos; in container &apos;{1}&apos;, or the blob type is unsupported..
         /// </summary>
         internal static string BlobNotFound {
             get {
@@ -147,6 +147,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string BlobTypeMismatch {
             get {
                 return ResourceManager.GetString("BlobTypeMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can not find blob &apos;{0}&apos;, or the blob type is unsupported..
+        /// </summary>
+        internal static string BlobUriNotFound {
+            get {
+                return ResourceManager.GetString("BlobUriNotFound", resourceCulture);
             }
         }
         

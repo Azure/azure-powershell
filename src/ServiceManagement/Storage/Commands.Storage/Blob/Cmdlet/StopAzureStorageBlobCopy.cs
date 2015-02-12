@@ -145,12 +145,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             AccessCondition accessCondition = null;
             BlobRequestOptions options = RequestOptions;
-            CloudBlob blob = localChannel.GetBlobReferenceFromServer(container, blobName, accessCondition, options, OperationContext);
-
-            if (blob == null)
-            {
-                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, container.Name));
-            }
+            CloudBlob blob = GetBlobReferenceFromServerWithContainer(localChannel, container, blobName, accessCondition, options, OperationContext);
 
             await StopCopyBlob(taskId, localChannel, blob, copyId);
         }
@@ -162,6 +157,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="copyId">Copy id</param>
         private async Task StopCopyBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, string copyId, bool fetchCopyIdFromBlob = false)
         {
+            ValidateBlobType(blob);
+
             AccessCondition accessCondition = null;
             BlobRequestOptions abortRequestOption = RequestOptions ?? new BlobRequestOptions();
 

@@ -174,12 +174,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobRequestOptions requestOptions = RequestOptions;
             AccessCondition accessCondition = null;
 
-            CloudBlob blob = Channel.GetBlobReferenceFromServer(container, blobName, accessCondition, requestOptions, OperationContext);
-
-            if (null == blob)
-            {
-                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));
-            }
+            CloudBlob blob = GetBlobReferenceFromServerWithContainer(Channel, container, blobName, accessCondition, requestOptions, OperationContext);
 
             GetBlobContent(blob, fileName, true);
         }
@@ -203,12 +198,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             ValidatePipelineCloudBlobContainer(container);
             AccessCondition accessCondition = null;
             BlobRequestOptions requestOptions = RequestOptions;
-            CloudBlob blob = Channel.GetBlobReferenceFromServer(container, blobName, accessCondition, requestOptions, OperationContext);
 
-            if (null == blob)
-            {
-                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, container.Name));
-            }
+            CloudBlob blob = GetBlobReferenceFromServerWithContainer(Channel, container, blobName, accessCondition, requestOptions, OperationContext);
 
             GetBlobContent(blob, filePath, true);
         }
@@ -226,6 +217,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 throw new ArgumentNullException(typeof(CloudBlob).Name, String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
             }
+
+            ValidateBlobType(blob);
 
             //skip download the snapshot except the CloudBlob pipeline
             if (IsSnapshot(blob) && ParameterSetName != BlobParameterSet)

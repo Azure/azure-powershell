@@ -124,7 +124,12 @@
     <value>Can not find blob name or container name.</value>
   </data>
   <data name="BlobNotFound" xml:space="preserve">
-    <value>Can not find blob '{0}' in container '{1}'.</value>
+    <value>Can not find blob '{0}' in container '{1}', or the blob type is unsupported.</value>
+    <comment>DRAFT</comment>
+  </data>
+    <data name="BlobUriNotFound" xml:space="preserve">
+    <value>Can not find blob '{0}', or the blob type is unsupported.</value>
+    <comment>DRAFT</comment>
   </data>
   <data name="ConfirmRemoveContainer" xml:space="preserve">
     <value>Are you sure to remove container '{0}'?</value>
