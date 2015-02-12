@@ -23,9 +23,9 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public class PSEventDataNoDetails : IPSEventData
     {
         /// <summary>
-        /// Lsit of fields to be fetched when no details are needed
+        /// List of fields to be fetched when no details are needed
         /// </summary>
-        internal static string SelectedFieldsForQuery = "Authorization,Caller,CorrelationId,EventSource,EventTimestamp,OperationName,ResourceGroupName,ResourceUri,Status,SubscriptionId,SubStatus";
+        public static string SelectedFieldsForQuery = "Authorization,Caller,CorrelationId,EventSource,EventTimestamp,OperationName,ResourceGroupName,ResourceUri,Status,SubscriptionId,SubStatus";
 
         /// <summary>
         /// Gets or sets the authorization. This is the authorization used by the user who has performed the operation that led to this event.
