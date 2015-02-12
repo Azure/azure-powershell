@@ -12,24 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
-using System.IO;
-using System.Management.Automation;
-using System.Net;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
-using Microsoft.WindowsAzure.Storage.File;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Set, Constants.FileContentCmdletName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = Constants.ShareNameParameterSetName)]
+    using System.Globalization;
+    using System.IO;
+    using System.Management.Automation;
+    using System.Net;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.DataMovement;
+    using Microsoft.WindowsAzure.Storage.File;
+    using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
+
+    [Cmdlet(VerbsCommon.Set, LocalConstants.FileContentCmdletName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase
     {
         [Parameter(
            Position = 0,
            Mandatory = true,
-           ParameterSetName = Constants.ShareNameParameterSetName,
+           ParameterSetName = LocalConstants.ShareNameParameterSetName,
            HelpMessage = "Name of the file share where the file would be uploaded to.")]
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
@@ -38,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.ShareParameterSetName,
+            ParameterSetName = LocalConstants.ShareParameterSetName,
             HelpMessage = "CloudFileShare object indicated the share where the file would be uploaded to.")]
         [ValidateNotNull]
         public CloudFileShare Share { get; set; }
@@ -47,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.DirectoryParameterSetName,
+            ParameterSetName = LocalConstants.DirectoryParameterSetName,
             HelpMessage = "CloudFileDirectory object indicated the cloud directory where the file would be uploaded.")]
         [ValidateNotNull]
         public CloudFileDirectory Directory { get; set; }
@@ -87,11 +88,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 string[] path = NamingUtil.ValidatePath(this.Path, out isDirectory);
                 var cloudFileToBeUploaded = await this.BuildCloudFileInstanceFromPathAsync(localFile.Name, path, isDirectory);
 
-                var uploadJob = new FileUploadJob()
-                {
-                    SourcePath = localFile.FullName,
-                    DestFile = cloudFileToBeUploaded,
-                };
+                var uploadJob = new TransferJob(
+                    new TransferLocation(localFile.FullName),
+                    new TransferLocation(cloudFileToBeUploaded),
+                    TransferMethod.SyncCopy);
 
                 var progressRecord = new ProgressRecord(
                     this.OutputStream.GetProgressId(taskId),
@@ -113,16 +113,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             bool isPathEmpty = path.Length == 0;
             switch (this.ParameterSetName)
             {
-                case Constants.DirectoryParameterSetName:
+                case LocalConstants.DirectoryParameterSetName:
                     baseDirectory = this.Directory;
                     break;
 
-                case Constants.ShareNameParameterSetName:
+                case LocalConstants.ShareNameParameterSetName:
                     NamingUtil.ValidateShareName(this.ShareName, false);
                     baseDirectory = this.BuildFileShareObjectFromName(this.ShareName).GetRootDirectoryReference();
                     break;
 
-                case Constants.ShareParameterSetName:
+                case LocalConstants.ShareParameterSetName:
                     baseDirectory = this.Share.GetRootDirectoryReference();
                     break;
 

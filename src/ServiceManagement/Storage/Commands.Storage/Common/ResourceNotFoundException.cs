@@ -12,10 +12,10 @@
 // limitations under the License.
 // ------------------------------------------------------------------------------------
 
-using System;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+
     /// <summary>
     /// Resource not found exception
     /// </summary>

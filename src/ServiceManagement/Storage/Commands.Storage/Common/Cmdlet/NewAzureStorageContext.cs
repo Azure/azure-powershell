@@ -12,20 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using System.Management.Automation;
-using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.Azure.Common.Extensions;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Auth;
+
     /// <summary>
     /// New storage context
     /// </summary>

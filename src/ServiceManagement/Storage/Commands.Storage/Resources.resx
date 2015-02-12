@@ -258,7 +258,7 @@
     <value>Blob End Point: {0}.</value>
   </data>
   <data name="InvalidBlobWithoutContainer" xml:space="preserve">
-    <value>ICloudBlob "{0}" should contain container properties.</value>
+    <value>CloudBlob "{0}" should contain container properties.</value>
   </data>
   <data name="ObjectCannotBeNull" xml:space="preserve">
     <value>Object '{0}' cannot be null.</value>

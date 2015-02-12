@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.RegularExpressions;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Text.RegularExpressions;
+
     /// <summary>
     /// File name resolver class for translating Azure file names to Windows file names.
     /// </summary>

@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Storage.File;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using System.Globalization;
+    using System.Management.Automation;
+    using Microsoft.WindowsAzure.Storage.File;
+
     [Cmdlet(VerbsCommon.Get, Constants.ShareCmdletName, DefaultParameterSetName = Constants.MatchingPrefixParameterSetName)]
     public class GetAzureStorageShare : AzureStorageFileCmdletBase
     {
@@ -44,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     case Constants.SpecificParameterSetName:
                         NamingUtil.ValidateShareName(this.Name, false);
                         var share = this.Channel.GetShareReference(this.Name);
-                        await this.Channel.FetchShareAttributesAsync(share, this.AccessCondition, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                        await this.Channel.FetchShareAttributesAsync(share, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
                         this.OutputStream.WriteObject(taskId, share);
 
                         break;

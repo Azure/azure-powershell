@@ -22,7 +22,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Common;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Model.Contract;
-    using Model.ResourceModel;
 
     /// <summary>
     /// create a new azure container

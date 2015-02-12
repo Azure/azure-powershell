@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Storage.DataMovement;
+
     /// <summary>
     /// Provides the interface for transfer job runners.
     /// </summary>
     internal interface ITransferJobRunner : IDisposable
     {
-        Task RunTransferJob(TransferJobBase job, Action<double, double> progressReport, CancellationToken cancellationToken);
+        Task RunTransferJob(TransferJob job, Action<double, double> progressReport, CancellationToken cancellationToken);
     }
 }
