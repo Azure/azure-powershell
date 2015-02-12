@@ -17,6 +17,9 @@ $testCertData = [Convert]::FromBase64String("MIIKJAIBAzCCCeQGCSqGSIb3DQEHAaCCCdU
 $testCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2
 $testCert.Import($testCertData)
 
+$secPasswd = ConvertTo-SecureString "TestPassw0rd" -AsPlainText -Force
+$testCreds = New-Object System.Management.Automation.PSCredential ("test@mail.com", $secPasswd)
+
 <#
 .SYNOPSIS
 Tests creating new azure profile with certificate
@@ -29,5 +32,37 @@ function Test-CreatesNewAzureProfileWithCertificate
     # Assert
     Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.Context.Subscription.Id
 	Assert-AreEqual "AzureCloud" $actual.Context.Environment.Name
+	Assert-AreEqual "Certificate" $actual.Context.Account.Type
+}
 
+<#
+.SYNOPSIS
+Tests creating new azure profile with user creds
+#>
+function Test-CreatesNewAzureProfileWithUserCredentials
+{
+	# Test
+    $actual = New-AzureProfile -SubscriptionId "058de55e-28e0-49e7-8cf2-6701d4a88ef5" -StorageAccount myStorage -Credentials $testCreds -Tenant "testTenant"
+
+    # Assert
+    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.Context.Subscription.Id
+	Assert-AreEqual "AzureCloud" $actual.Context.Environment.Name
+	Assert-AreEqual "test@mail.com" $actual.Context.Account.Id
+	Assert-AreEqual "User" $actual.Context.Account.Type
+}
+
+<#
+.SYNOPSIS
+Tests creating new azure profile with access token
+#>
+function Test-CreatesNewAzureProfileWithAccessToken
+{
+	# Test
+    $actual = New-AzureProfile -SubscriptionId "058de55e-28e0-49e7-8cf2-6701d4a88ef5" -StorageAccount myStorage -AccessToken "123456"
+
+    # Assert
+    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.Context.Subscription.Id
+	Assert-AreEqual "AzureCloud" $actual.Context.Environment.Name
+	Assert-AreEqual "123456" $actual.Context.Account.Id
+	Assert-AreEqual "AccessToken" $actual.Context.Account.Type
 }

@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
 
         private void SetupManagementClients()
         {
-            helper.SetupManagementClients();
+            helper.SetupSomeOfManagementClients();
         }
 
     }

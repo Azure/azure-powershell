@@ -12,9 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Test.Profile;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Internal.Subscriptions.Csm.Models;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using CSMSubscription = Microsoft.Azure.Internal.Subscriptions.Csm.Models.Subscription;
+using RDFESubscription = Microsoft.Azure.Internal.Subscriptions.Rdfe.Models.Subscription;
 
 namespace Microsoft.Azure.Commands.Test.Profile
 {
@@ -25,6 +33,20 @@ namespace Microsoft.Azure.Commands.Test.Profile
         public void TestCreatesNewAzureProfileWithCertificate()
         {
             ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithCertificate");
+        }
+
+        [Fact(Skip = "Need support from mocking framework")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreatesNewAzureProfileWithUserCredentials()
+        {
+            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithUserCredentials");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreatesNewAzureProfileWithAccessToken()
+        {
+            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithAccessToken");
         }
     }
 }
