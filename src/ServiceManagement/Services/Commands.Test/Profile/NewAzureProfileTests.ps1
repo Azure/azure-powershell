@@ -58,11 +58,11 @@ Tests creating new azure profile with access token
 function Test-CreatesNewAzureProfileWithAccessToken
 {
 	# Test
-    $actual = New-AzureProfile -SubscriptionId "058de55e-28e0-49e7-8cf2-6701d4a88ef5" -StorageAccount myStorage -AccessToken "123456"
+    $actual = New-AzureProfile -SubscriptionId "058de55e-28e0-49e7-8cf2-6701d4a88ef5" -StorageAccount myStorage -AccessToken "123456" -AccountId myAccount
 
     # Assert
     Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.Context.Subscription.Id
 	Assert-AreEqual "AzureCloud" $actual.Context.Environment.Name
-	Assert-AreEqual "123456" $actual.Context.Account.Id
+	Assert-AreEqual "myAccount" $actual.Context.Account.Id
 	Assert-AreEqual "AccessToken" $actual.Context.Account.Type
 }

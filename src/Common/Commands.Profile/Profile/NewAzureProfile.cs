@@ -69,6 +69,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [Parameter(Mandatory = true, Position = 3, ValueFromPipelineByPropertyName = true, ParameterSetName = AccessTokenParameterSet)]
         public string AccessToken { get; set; }
 
+        [Parameter(Mandatory = true, Position = 4, ValueFromPipelineByPropertyName = true, ParameterSetName = AccessTokenParameterSet)]
+        public string AccountId { get; set; }
+
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
         public string Path { get; set; }
         
@@ -98,13 +101,8 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                         Credential.Password, StorageAccount);
                     break;
                 case AccessTokenParameterSet:
-                    AzureAccount tokenAccount = new AzureAccount
-                    {
-                        Id = AccessToken,
-                        Type = AzureAccount.AccountType.AccessToken
-                    };
-                    profileClient.InitializeProfile(Environment, new Guid(SubscriptionId), tokenAccount, 
-                        null, StorageAccount);
+                    profileClient.InitializeProfile(Environment, new Guid(SubscriptionId), AccessToken, 
+                        AccountId, StorageAccount);
                     break;
                 case ServicePrincipalParameterSet:
                     AzureAccount servicePrincipalAccount = new AzureAccount
