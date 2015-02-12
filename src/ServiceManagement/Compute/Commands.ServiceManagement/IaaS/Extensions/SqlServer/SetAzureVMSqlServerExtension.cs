@@ -16,8 +16,13 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using System.Net;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -33,8 +38,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         typeof(IPersistentVM))]
     public class SetAzureVMSqlServerExtensionCommand : VirtualMachineSqlServerExtensionCmdletBase
     {
-        protected const string EnableExtensionParamSetName             = "EnableSqlServerExtension";
-        protected const string DisableSqlServerExtensionParamSetName   = "DisableSqlServerExtension";
+        protected const string EnableExtensionParamSetName = "EnableSqlServerExtension";
+        protected const string DisableSqlServerExtensionParamSetName = "DisableSqlServerExtension";
         protected const string UninstallSqlServerExtensionParamSetName = "UninstallSqlServerExtension";
 
         [Parameter(
@@ -105,10 +110,58 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         {
             base.ValidateParameters();
             this.ReferenceName = string.IsNullOrEmpty(this.ReferenceName) ? ExtensionDefaultName : this.ReferenceName;
-
+            this.SetupAutoTelemetrySettings();
             this.PublicConfiguration = GetPublicConfiguration();
             this.PrivateConfiguration = GetPrivateConfiguration();
             this.Version = this.Version ?? ExtensionDefaultVersion;
+        }
+
+        private void SetupAutoTelemetrySettings()
+        {
+            if (this.AutoTelemetrySettings == null || string.IsNullOrEmpty(this.AutoTelemetrySettings.Region))
+            {
+                foreach (var hs in this.ComputeClient.HostedServices.List().HostedServices)
+                {
+                    try
+                    {
+                        var deployment = this.ComputeClient.Deployments.GetBySlot(hs.ServiceName, Management.Compute.Models.DeploymentSlot.Production);
+                        if (deployment != null)
+                        {
+                            var role = deployment.RoleInstances.FirstOrDefault(r => r.RoleName == VM.GetInstance().RoleName);
+
+                            string location = String.Empty;
+                            if (role != null)
+                            {
+                                if (null != hs.Properties)
+                                {
+                                    if (!string.IsNullOrEmpty(hs.Properties.Location))
+                                    {
+                                        location = hs.Properties.Location;
+                                    }
+                                    else
+                                    {
+                                        if (!string.IsNullOrEmpty(hs.Properties.AffinityGroup))
+                                        {
+                                            location = this.ManagementClient.AffinityGroups.Get(hs.Properties.AffinityGroup).Location;
+                                        }
+                                    }
+                                }
+
+                                this.AutoTelemetrySettings = new AutoTelemetrySettings() { Region = location };
+                                WriteVerboseWithTimestamp("VM Location:" + location);
+                                break;
+                            }
+                        }
+                    }
+                    catch (CloudException e)
+                    {
+                        if (e.Response.StatusCode != HttpStatusCode.NotFound)
+                        {
+                            throw;
+                        }
+                    }
+                }
+            }
         }
     }
 }

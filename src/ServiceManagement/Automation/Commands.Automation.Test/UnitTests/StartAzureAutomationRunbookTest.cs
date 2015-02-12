@@ -44,24 +44,6 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void StartAzureAutomationRunbookByIdSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            var runbookId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.StartRunbook(accountName, runbookId, null));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = runbookId;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.StartRunbook(accountName, runbookId, null), Times.Once());
-        }
-
-        [TestMethod]
         public void StartAzureAutomationRunbookByNameSuccessfull()
         {
             // Setup

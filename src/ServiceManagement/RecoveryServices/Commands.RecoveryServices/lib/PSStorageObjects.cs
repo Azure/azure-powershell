@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// parameters.
         /// </summary>
         /// <param name="storage">Storage object</param>
-        public ASRStorage(Storage storage)
+        public ASRStorage(AsrStorage storage)
         {
             this.ID = storage.ID;
             this.Name = storage.Name;

@@ -120,6 +120,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const string QueueSas = "AzureStorageQueueSASToken";
 
         /// <summary>
+        /// Azure storage table stored access policy
+        /// </summary>
+        public const string TableStoredAccessPolicy = "AzureStorageTableStoredAccessPolicy";
+
+        /// <summary>
+        /// Azure storage container stored access policy
+        /// </summary>
+        public const string ContainerStoredAccessPolicy = "AzureStorageContainerStoredAccessPolicy";
+
+
+        /// <summary>
+        /// Azure storage container stored access policy
+        /// </summary>
+        public const string QueueStoredAccessPolicy = "AzureStorageQueueStoredAccessPolicy";
+
+        /// <summary>
         /// Default service metrics version
         /// </summary>
         public const string DefaultMetricsVersion = "1.0";

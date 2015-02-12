@@ -13,6 +13,7 @@
 // ---------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
@@ -155,6 +156,30 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public QueuePermissions GetPermissions(CloudQueue queue, QueueRequestOptions options, OperationContext operationContext)
         {
             return queue.GetPermissions(options, operationContext);
+        }
+
+        /// <summary>
+        /// Get queue permission async
+        /// </summary>
+        /// <param name="queue"></param>
+        /// <param name="requestOptions"></param>
+        /// <param name="operationContext"></param>
+        /// <returns></returns>
+        public Task<QueuePermissions> GetPermissionsAsync(CloudQueue queue, QueueRequestOptions requestOptions, OperationContext operationContext)
+        {
+            return queue.GetPermissionsAsync(requestOptions, operationContext);
+        }
+
+        /// <summary>
+        /// set queue permission
+        /// </summary>
+        /// <param name="queue"></param>
+        /// <param name="queuePermissions"></param>
+        /// <param name="requestOptions"></param>
+        /// <param name="operationContext"></param>
+        public void SetPermissions(CloudQueue queue, QueuePermissions queuePermissions, QueueRequestOptions requestOptions, OperationContext operationContext)
+        {
+            queue.SetPermissions(queuePermissions, requestOptions, operationContext);
         }
     }
 }

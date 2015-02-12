@@ -85,6 +85,18 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
 
         [TestMethod]
         [TestCategory("CheckIn")]
+        public void CanCallTheAddConfigValuesCmdletTestsCmdlet_SparkConfig()
+        {
+            using (IRunspace runspace = this.GetPowerShellRunspace())
+            {
+                var sparkConfig = new Hashtable();
+                sparkConfig.Add("spark.fakeconfig.value", "12345");
+                RunConfigOptionstest(runspace, CmdletConstants.SparkConfig, sparkConfig, c => c.SparkConfiguration);
+            }
+        }
+
+        [TestMethod]
+        [TestCategory("CheckIn")]
         public void CanCallTheAddConfigValuesCmdletTestsCmdlet_HiveConfig()
         {
             using (IRunspace runspace = this.GetPowerShellRunspace())
@@ -373,7 +385,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
                 var coreConfig = new Hashtable();
                 var yarnConfig = new Hashtable();
                 var stormConfig = new Hashtable();
+                var sparkConfig = new Hashtable();
                 stormConfig.Add("storm.fakekey", "123");
+                sparkConfig.Add("spark.fakekey", "123");
                 var clusterConfig = new AzureHDInsightConfig
                 {
                     HiveMetastore =
@@ -401,12 +415,14 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
                             .WithParameter(CmdletConstants.CoreConfig, coreConfig)
                             .WithParameter(CmdletConstants.YarnConfig, yarnConfig)
                             .WithParameter(CmdletConstants.StormConfig, stormConfig)
+                            .WithParameter(CmdletConstants.SparkConfig, sparkConfig)
                             .Invoke();
                 AzureHDInsightConfig config = results.Results.ToEnumerable<AzureHDInsightConfig>().First();
 
                 Assert.AreEqual(config.CoreConfiguration.Count, coreConfig.Count);
                 Assert.AreEqual(config.YarnConfiguration.Count, yarnConfig.Count);
                 Assert.AreEqual(config.StormConfiguration.Count, stormConfig.Count);
+                Assert.AreEqual(config.SparkConfiguration.Count, sparkConfig.Count);
 
                 foreach (object entry in coreConfig.Keys)
                 {
@@ -430,6 +446,14 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
                         config.StormConfiguration.FirstOrDefault(c => string.Equals(c.Key, entry.ToString(), StringComparison.Ordinal));
                     Assert.IsNotNull(configUnderTest, "Unable to find storm config option with name '{0}'", entry);
                     Assert.AreEqual(stormConfig[entry], configUnderTest.Value, "value doesn't match for storm config option with name '{0}'", entry);
+                }
+
+                foreach (object entry in sparkConfig.Keys)
+                {
+                    KeyValuePair<string, string> configUnderTest =
+                        config.SparkConfiguration.FirstOrDefault(c => string.Equals(c.Key, entry.ToString(), StringComparison.Ordinal));
+                    Assert.IsNotNull(configUnderTest, "Unable to find spark config option with name '{0}'", entry);
+                    Assert.AreEqual(sparkConfig[entry], configUnderTest.Value, "value doesn't match for spark config option with name '{0}'", entry);
                 }
 
                 Assert.AreEqual(clusterConfig.HiveMetastore.DatabaseName, config.HiveMetastore.DatabaseName);
