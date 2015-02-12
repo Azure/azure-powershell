@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.HybridServicesCore;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 using rpError = Microsoft.Azure.Commands.RecoveryServices.RestApiInfra;
 
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="extendedInfoArgs">extended info to be created</param>
         /// <returns>Vault Extended Information</returns>
-        public OperationResponse CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
+        public AzureOperationResponse CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
         {
             return this.GetSiteRecoveryClient().VaultExtendedInfo.CreateExtendedInfo(extendedInfoArgs, this.GetRequestHeaders(false));
         }

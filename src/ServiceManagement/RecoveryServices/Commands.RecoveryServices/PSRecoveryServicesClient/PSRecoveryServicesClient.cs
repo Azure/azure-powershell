@@ -32,7 +32,6 @@ using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices

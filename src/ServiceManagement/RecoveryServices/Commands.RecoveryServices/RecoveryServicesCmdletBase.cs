@@ -20,9 +20,10 @@ using System.Xml;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
+using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -77,9 +78,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     using (Stream stream = new MemoryStream())
                     {
-                        if (cloudException.Error.Message != null)
+                        if (cloudException.Message != null)
                         {
-                            byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.Error.Message);
+                            byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.Message);
                             stream.Write(data, 0, data.Length);
                             stream.Position = 0;
 
@@ -109,7 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     throw new XmlException(
                         string.Format(
                         Properties.Resources.InvalidCloudExceptionErrorMessage,
-                        cloudException.Error.Message),
+                        cloudException.Message),
                         cloudException);
                 }
                 catch (SerializationException)
@@ -117,7 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     throw new SerializationException(
                         string.Format(
                         Properties.Resources.InvalidCloudExceptionErrorMessage,
-                        clientRequestIdMsg + cloudException.Error.Message),
+                        clientRequestIdMsg + cloudException.Message),
                         cloudException);
                 }
             }

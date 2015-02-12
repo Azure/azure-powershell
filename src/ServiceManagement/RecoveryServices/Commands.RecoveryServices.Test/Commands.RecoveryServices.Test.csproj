@@ -38,10 +38,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.RecoveryServices, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Commands.RecoveryServices\lib\Microsoft.Azure.RecoveryServices.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Utilities.HttpRecorder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
     </Reference>
     <Reference Include="Hyak.Common">
@@ -87,12 +83,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.0.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.SiteRecovery, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.0.4.1-preview\lib\net40\Microsoft.WindowsAzure.Management.SiteRecovery.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Testing, Version=1.0.5417.13285, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Hydra.SpecTestSupport.1.0.5417.13285-prerelease\lib\net45\Microsoft.WindowsAzure.Testing.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.SiteRecovery">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.0.4.0-preview\lib\net40\Microsoft.WindowsAzure.Management.SiteRecovery.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -129,10 +126,6 @@
     <Reference Include="xunit.core">
       <HintPath>..\..\..\packages\xunit.core.2.0.0-beta5-build2785\lib\portable-net45+aspnetcore50+win+wpa81+wp80+monotouch+monoandroid\xunit.core.dll</HintPath>
     </Reference>
-    <Reference Include="xunit, Version=1.9.2.1705, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ScenarioTests\RecoveryServicesTests.cs" />
@@ -140,7 +133,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ScenarioTests\RecoveryServicesTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -17,9 +17,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
