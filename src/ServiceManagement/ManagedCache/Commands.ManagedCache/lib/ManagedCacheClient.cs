@@ -2954,7 +2954,6 @@ namespace Microsoft.Azure.Management.ManagedCache
                 TracingAdapter.Enter(invocationId, this, "CreateCacheServiceAsync", tracingParameters);
             }
             
- 
             cancellationToken.ThrowIfCancellationRequested();
             AzureOperationResponse response = await client.CacheServices.BeginCreatingCacheServiceAsync(cloudServiceName, cacheServiceName, parameters, cancellationToken).ConfigureAwait(false);
             cancellationToken.ThrowIfCancellationRequested();
