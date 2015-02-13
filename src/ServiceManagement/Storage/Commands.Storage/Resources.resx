@@ -354,8 +354,8 @@
     <value>{0} begin processing with ParameterSet '{1}'.</value>
   </data>
   <data name="InvalidBlobType" xml:space="preserve">
-    <value>Blob type of "{0}" is invalid, only page blob or block blob are supported.</value>
-    <comment>0 for blob name</comment>
+    <value>Blob type '{0}' of blob '{1}' is not supported.</value>
+    <comment>0 for blob type, 1 is the blob name. DRAFT</comment>
   </data>
   <data name="CannotDeleteSnapshotForSnapshot" xml:space="preserve">
     <value>The specified blob '{0}' is already a snapshot with snapshot time {1}. Can't use "DeleteSnapshot" option for it.</value>

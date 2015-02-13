@@ -157,23 +157,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private string GetBlobSharedAccessSignature(CloudBlob blob, SharedAccessBlobPolicy accessPolicy, string policyIdentifier)
         {
             CloudBlobContainer container = blob.Container;
-            string signature = String.Empty;
-
-            switch (blob.BlobType)
-            {
-                case BlobType.BlockBlob:
-                    CloudBlockBlob blockBlob = blob as CloudBlockBlob;
-                    signature = blockBlob.GetSharedAccessSignature(accessPolicy, policyIdentifier);
-                    break;
-                case BlobType.PageBlob:
-                    CloudPageBlob pageBlob = blob as CloudPageBlob;
-                    signature = pageBlob.GetSharedAccessSignature(accessPolicy, policyIdentifier);
-                    break;
-                default:
-                    throw new ArgumentException(Resources.UnknownBlob);
-            }
-
-            return signature;
+            return blob.GetSharedAccessSignature(accessPolicy, policyIdentifier);
         }
 
         /// <summary>

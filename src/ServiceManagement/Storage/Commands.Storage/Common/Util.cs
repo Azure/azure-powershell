@@ -97,17 +97,40 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
         public static CloudBlob GetCorrespondingTypeBlobReference(CloudBlob blob)
         {
-            if (BlobType.BlockBlob == blob.Properties.BlobType)
+            switch(blob.Properties.BlobType)
             {
-                return new CloudBlockBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                case BlobType.BlockBlob:
+                    return new CloudBlockBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                case BlobType.PageBlob:
+                    return new CloudPageBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                case BlobType.AppendBlob:
+                    return new CloudAppendBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                default:
+                    throw new InvalidOperationException(string.Format(
+                        CultureInfo.CurrentCulture,
+                        Resources.InvalidBlobType,
+                        blob.Properties.BlobType,
+                        blob.Name));
             }
+        }
 
-            if (BlobType.PageBlob == blob.Properties.BlobType)
+        public static CloudBlob GetBlobReference(CloudBlobContainer container, string blobName, BlobType blobType)
+        {
+            switch(blobType)
             {
-                return new CloudPageBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                case BlobType.BlockBlob:
+                    return container.GetBlockBlobReference(blobName);
+                case BlobType.PageBlob:
+                    return container.GetPageBlobReference(blobName);
+                case BlobType.AppendBlob:
+                    return container.GetAppendBlobReference(blobName);
+                default:
+                    throw new ArgumentException(String.Format(
+                        CultureInfo.CurrentCulture,
+                        Resources.InvalidBlobType,
+                        blobType,
+                        blobName));
             }
-
-            throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidBlobType, blob.Name));
         }
     }
 }

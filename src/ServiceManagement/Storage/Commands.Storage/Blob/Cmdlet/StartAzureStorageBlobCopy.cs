@@ -280,19 +280,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             ValidateBlobName(destBlobName);
 
             CloudBlobContainer container = destChannel.GetContainerReference(destContainer);
-            CloudBlob destBlob = null;
-            if (BlobType.PageBlob == srcCloudBlob.BlobType)
-            {
-                destBlob = container.GetPageBlobReference(destBlobName);
-            }
-            else if (BlobType.BlockBlob == srcCloudBlob.BlobType)
-            {
-                destBlob = container.GetBlockBlobReference(destBlobName);
-            }
-            else
-            {
-                throw new ArgumentException(String.Format(Resources.InvalidBlobType, srcCloudBlob.Name));
-            }
+            CloudBlob destBlob = Util.GetBlobReference(container, destBlobName, srcCloudBlob.BlobType);
 
             this.StartCopyBlob(destChannel, srcCloudBlob, destBlob);
         }
