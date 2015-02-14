@@ -81,6 +81,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 this.command.Config.SubnetName = value.SubnetName;
                 this.command.Config.StormConfiguration.AddRange(value.StormConfiguration);
                 this.command.Config.HBaseConfiguration.ConfigurationCollection.AddRange(value.HBaseConfiguration.ConfigurationCollection);
+                this.command.Config.SparkConfiguration.AddRange(value.SparkConfiguration);
             }
         }
 
@@ -159,6 +160,17 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         {
             get { return this.command.Storm; }
             set { this.command.Storm = value; }
+        }
+
+        /// <summary>
+        ///     Gets or sets a collection of configuration properties to customize the Spark service.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Ease of use in Powershell")]
+        [Parameter(Mandatory = false, HelpMessage = "a collection of configuration properties to customize the Spark service.")]
+        public Hashtable Spark
+        {
+            get { return this.command.Spark; }
+            set { this.command.Spark = value; }
         }
 
         /// <summary>

@@ -120,36 +120,5 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
                 Assert.True(File.Exists(packagePath));
             }
         }
-
-        [Fact]
-        public void ThrowsErrorForInvalidCacheVersion()
-        {
-            using (FileSystemHelper files = new FileSystemHelper(this))
-            {
-                files.CreateAzureSdkDirectoryAndImportPublishSettings();
-                files.CreateNewService("NEW_SERVICE");
-                string rootPath = Path.Combine(files.RootPath, "NEW_SERVICE");
-                string packagePath = Path.Combine(rootPath, Resources.CloudPackageFileName);
-                string cacheRoleName = "WorkerRole1";
-                AddAzureCacheWorkerRoleCommand addCacheWorkerCmdlet = new AddAzureCacheWorkerRoleCommand()
-                {
-                    CommandRuntime = mockCommandRuntime
-                };
-                EnableAzureMemcacheRoleCommand enableCacheCmdlet = new EnableAzureMemcacheRoleCommand()
-                {
-                    CacheRuntimeVersion = "1.8.0",
-                    CommandRuntime = mockCommandRuntime
-                };
-
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath("Services"));
-                service.AddWebRole(Test.Utilities.Common.Data.NodeWebRoleScaffoldingPath);
-                addCacheWorkerCmdlet.AddAzureCacheWorkerRoleProcess(cacheRoleName, 1, rootPath);
-                enableCacheCmdlet.EnableAzureMemcacheRoleProcess("WebRole1", cacheRoleName, rootPath);
-
-                Testing.AssertThrows<Exception>(
-                    () => cmdlet.ExecuteCmdlet(),
-                    string.Format(Resources.CacheMismatchMessage, "WebRole1", "2.5.0"));
-            }
-        }
     }
 }

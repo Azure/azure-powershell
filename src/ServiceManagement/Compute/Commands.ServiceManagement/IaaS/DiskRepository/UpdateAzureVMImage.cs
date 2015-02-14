@@ -70,13 +70,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
         [ValidateNotNullOrEmpty]
         public string Language { get; set; }
 
+        [Alias("IconUri")]
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = true, HelpMessage = "IconUri.")]
         [ValidateNotNullOrEmpty]
-        public Uri IconUri { get; set; }
+        public string IconName { get; set; }
 
+        [Alias("SmallIconUri")]
         [Parameter(Position = 11, ValueFromPipelineByPropertyName = true, HelpMessage = "SmallIconUri.")]
         [ValidateNotNullOrEmpty]
-        public Uri SmallIconUri { get; set; }
+        public string SmallIconName { get; set; }
 
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = true, HelpMessage = "DontShowInGui.")]
         public SwitchParameter DontShowInGui { get; set; }
@@ -106,8 +108,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                     PrivacyUri        = this.PrivacyUri,
                     RecommendedVMSize = this.RecommendedVMSize,
                     Language          = this.Language,
-                    IconUri           = this.IconUri,
-                    SmallIconUri      = this.SmallIconUri,
+                    IconUri           = this.IconName,
+                    SmallIconUri      = this.SmallIconName,
                     ShowInGui         = this.DontShowInGui.IsPresent ? (bool?)false : null
                 };
 
@@ -139,8 +141,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                         Name              = d.Name
                     }).ToList(),
                     Language               = this.Language,
-                    IconUri                = this.IconUri,
-                    SmallIconUri           = this.SmallIconUri,
+                    IconUri                = this.IconName,
+                    SmallIconUri           = this.SmallIconName,
                     ShowInGui              = this.DontShowInGui.IsPresent ? (bool?)false : null
                 };
 

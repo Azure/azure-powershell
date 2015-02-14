@@ -168,18 +168,6 @@
   <data name="AzureDirectory" xml:space="preserve">
     <value>Windows Azure Powershell\</value>
   </data>
-  <data name="AzureEmulatorDirectory" xml:space="preserve">
-    <value>Emulator</value>
-  </data>
-  <data name="AzureEmulatorNotInstalledMessage" xml:space="preserve">
-    <value>Azure Emulator is not installed and is required</value>
-  </data>
-  <data name="AzureEmulatorPathPortion" xml:space="preserve">
-    <value>Azure Emulator\emulator</value>
-  </data>
-  <data name="AzureEmulatorRegistryKey" xml:space="preserve">
-    <value>SOFTWARE\Microsoft\Windows Azure Emulator</value>
-  </data>
   <data name="AzurePortalUrl" xml:space="preserve">
     <value>https://manage.windowsazure.com</value>
   </data>
@@ -188,22 +176,6 @@
   </data>
   <data name="AzureSdkDirectory" xml:space="preserve">
     <value>Azure SDK\{0}\</value>
-  </data>
-  <data name="AzureSdkInstallPathRegistryKeyValue" xml:space="preserve">
-    <value>InstallPath</value>
-  </data>
-  <data name="AzureSdkRegistryKeyName" xml:space="preserve">
-    <value>SOFTWARE\Microsoft\Microsoft SDKs\ServiceHosting</value>
-  </data>
-  <data name="AzureSdkVersionNotSupported" xml:space="preserve">
-    <value>The installed Azure SDK version is not supported. Make sure you version is between {0} and {1} inclusive</value>
-  </data>
-  <data name="AzureException_WrapExistingError_DetailedErrorFormat" xml:space="preserve">
-    <value>Azure service management error
-{0}</value>
-  </data>
-  <data name="AzureToolsNotInstalledMessage" xml:space="preserve">
-    <value>Azure Authoring Tools are not installed and are required. Installation of Azure SDK for .NET is recommended with Microsoft Web Platform Installer (PI) available at http://www.microsoft.com/web/downloads/platform.aspx.</value>
   </data>
   <data name="BaseUriEmpty" xml:space="preserve">
     <value>Base Uri was empty.</value>
@@ -224,31 +196,6 @@
   <data name="BlobEndpointUriEnv" xml:space="preserve">
     <value>AZURE_BLOBSTORAGE_TEMPLATE</value>
   </data>
-  <data name="CacheAlreadyEnabledMessage" xml:space="preserve">
-    <value>Memcache is already enabled for role '{0}'.</value>
-  </data>
-  <data name="CacheAutoDiscoveryConfig" xml:space="preserve">
-    <value>&lt;configuration&gt;
-  &lt;configSections&gt;
-    &lt;section name="dataCacheClients" type="Microsoft.ApplicationServer.Caching.DataCacheClientsSection, Microsoft.ApplicationServer.Caching.Core" allowLocation="true" 	allowDefinition="Everywhere" /&gt;
-  &lt;/configSections&gt;
-  &lt;dataCacheClients&gt;
-    &lt;tracing sinkType="DiagnosticSink" traceLevel="Error" /&gt;
-    &lt;dataCacheClient name="DefaultShimConfig" useLegacyProtocol="false"&gt;
-      &lt;autoDiscover isEnabled="true" identifier="$RoleName$" /&gt;
-    &lt;/dataCacheClient&gt;
-  &lt;/dataCacheClients&gt;
-&lt;/configuration&gt;</value>
-  </data>
-  <data name="CacheClientDiagnosticLevelAssemblyName" xml:space="preserve">
-    <value>Microsoft.WindowsAzure.Plugins.Caching.ClientDiagnosticLevel</value>
-  </data>
-  <data name="CacheDiagnosticStoreName" xml:space="preserve">
-    <value>DiagnosticStore</value>
-  </data>
-  <data name="CacheMismatchMessage" xml:space="preserve">
-    <value>Please upgrade the cache runtime of role '{0}' to '{1}' using Set-AzureServiceProjectRole -RoleName {0} -Runtime Cache -Version {1}</value>
-  </data>
   <data name="CacheRuntimeUrl" xml:space="preserve">
     <value>CACHERUNTIMEURL</value>
   </data>
@@ -258,26 +205,8 @@
   <data name="CacheRuntimeVersionKey" xml:space="preserve">
     <value>CacheRuntimeVersion</value>
   </data>
-  <data name="CacheScaffolding" xml:space="preserve">
-    <value>Resources\Scaffolding\Cache</value>
-  </data>
-  <data name="CacheStartupCommand" xml:space="preserve">
-    <value>setup_cache.cmd &gt; cache_log.txt</value>
-  </data>
   <data name="CacheVersionWarningText" xml:space="preserve">
     <value>Installing caching version {0} for Role '{1}' (the caching version locally installed is: {2})</value>
-  </data>
-  <data name="CachingCacheSizePercentageSettingName" xml:space="preserve">
-    <value>Microsoft.WindowsAzure.Plugins.Caching.CacheSizePercentage</value>
-  </data>
-  <data name="CachingConfigStoreConnectionStringSettingName" xml:space="preserve">
-    <value>Microsoft.WindowsAzure.Plugins.Caching.ConfigStoreConnectionString</value>
-  </data>
-  <data name="CachingConfigStoreConnectionStringSettingValue" xml:space="preserve">
-    <value>DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}</value>
-  </data>
-  <data name="CachingModuleName" xml:space="preserve">
-    <value>Caching</value>
   </data>
   <data name="CannotFind" xml:space="preserve">
     <value>Cannot find {0} with name {1}.</value>
@@ -646,18 +575,6 @@ Please follow these steps in the portal:
   </data>
   <data name="ManifestUri" xml:space="preserve">
     <value>http://az413943.vo.msecnd.net/node/runtimemanifest_0.7.5.2.xml</value>
-  </data>
-  <data name="MaxSupportAzureSdkVersion" xml:space="preserve">
-    <value>v2.5</value>
-  </data>
-  <data name="MemcacheEndpointName" xml:space="preserve">
-    <value>memcache_default</value>
-  </data>
-  <data name="MemcacheEndpointPort" xml:space="preserve">
-    <value>11211</value>
-  </data>
-  <data name="MinSupportAzureSdkVersion" xml:space="preserve">
-    <value>v2.5</value>
   </data>
   <data name="MissingPythonPreReq" xml:space="preserve">
     <value>Python 2.7 is not installed.  Please install it as well as Django 1.4.</value>
