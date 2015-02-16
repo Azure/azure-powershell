@@ -343,17 +343,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             }
             return true;
         }
-	
+
         /// <summary>
-        /// this method verifies that the devicename parameter specified is completely configured
-        /// no operation should be allowed to perform on a non-configured device
+        /// Helper method to determine if this device has already been configured or not
         /// </summary>
-        public void VerifyDeviceConfigurationCompleteForDevice(string deviceId)
+        /// <returns></returns>
+        public bool IsDeviceConfigurationCompleteForDevice(DeviceDetails details)
         {
-            DeviceDetails details = storSimpleClient.GetDeviceDetails(deviceId);
             bool data0Configured = false;
 
-            if(details.NetInterfaceList!=null)
+            if (details.NetInterfaceList != null)
             {
                 NetInterface data0 = details.NetInterfaceList.Where(x => x.InterfaceId == NetInterfaceId.Data0).ToList<NetInterface>().First<NetInterface>();
                 if (data0 != null
@@ -362,6 +361,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     && !string.IsNullOrEmpty(data0.NicIPv4Settings.Controller0IPv4Address))
                     data0Configured = true;
             }
+            return data0Configured;
+        }
+	
+        /// <summary>
+        /// this method verifies that the devicename parameter specified is completely configured
+        /// no operation should be allowed to perform on a non-configured device
+        /// </summary>
+        public void VerifyDeviceConfigurationCompleteForDevice(string deviceId)
+        {
+            var details = storSimpleClient.GetDeviceDetails(deviceId);
+            var data0Configured = IsDeviceConfigurationCompleteForDevice(details);
             if (!data0Configured)
                 throw GetGenericException(Resources.DeviceNotConfiguredMessage, null);
         }

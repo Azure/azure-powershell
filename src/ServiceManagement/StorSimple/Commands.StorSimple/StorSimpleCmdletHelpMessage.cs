@@ -79,5 +79,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string HelpMessageBackupScheduleBaseObjsToDelete = "List of Instance Id of BackupSchedule objects to be deleted";
         public const string HelpMessageVolumeObjsToUpdate = "List of VolumeIds to be updated";
         public const string HelpMessageResourceName = "Name of the resource which needs to be retrieved";
+        public const string HelpMessageController0IPv4Address = "IPv4 address of controller0. Should be set on Data0 only.";
+        public const string HelpMessageController1IPv4Address = "IPv4 address of controller1. Should be set on Data0 only.";
+        public const string HelpMessageInterfaceAlias = "Alias of interface the network config is for. Must be one of the values from Data0 to Data5";
+        public const string HelpMessageIPv4Address = "IPv4 Address for the net interface";
+        public const string HelpMessageIPv4Gateway = "IPv4 Address of gateway";
+        public const string HelpMessageIPv4Netmask = "IPv4 netmask for this interface";
+        public const string HelpMessageIPv6Gateway = "IPv4 net mask for interface";
+        public const string HelpMessageIPv6Prefix = "IPv6 Prefix for the net interface";
+        public const string HelpMessageIsCloudEnabled = "Whether the net interface is cloud enabled/disabled";
+        public const string HelpMessageIsIscsiEnabled = "Whether the net interface is iscsi enabled/disabled";
+        public const string HelpMessagePrimaryDnsServer = "Primary DNS server for the device.";
+        public const string HelpMessageSecondaryDnsServer = "Secondary DNS server for the device.";
+        public const string HelpMessageStorSimpleNetworkConfig = "A collection of network configs for interfaces on the device.";
+        public const string HelpMessageTimeZone = "TimeZone for the device.";
+        public const string HelpMessageNewDeviceName = "New friendly name for the device.";
     }
 }

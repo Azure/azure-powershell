@@ -26,12 +26,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// <summary>
         /// Is network interface iscsi enabled.
         /// </summary>
-        public bool IsIscsiEnabled { get; set; }
+        public bool? IsIscsiEnabled { get; set; }
 
         /// <summary>
         /// Is network interface cloud enabled
         /// </summary>
-        public bool IsCloudEnabled { get; set; }
+        public bool? IsCloudEnabled { get; set; }
 
         /// <summary>
         /// Ip Address of Controller0. To be set only on Data0

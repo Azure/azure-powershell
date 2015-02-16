@@ -30,9 +30,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         #region Parameters
         /// <summary>
         /// The following is the definition of the input parameter "Controller0IPv4Address".       
-        /// IPv4Address for controller 1, should be used only with Data0 interface
+        /// IPv4Address for controller 0, should be used only with Data0 interface
         /// </summary>
-        [Parameter(Position = 2)]
+        [Parameter(Position = 2, HelpMessage=StorSimpleCmdletHelpMessage.HelpMessageController0IPv4Address)]
+        [ValidateNotNullOrEmptyAttribute]
         public System.Net.IPAddress Controller0IPv4Address
         {
             get { return this.controller0ipv4address; }
@@ -44,7 +45,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// The following is the definition of the input parameter "Controller1IPv4Address".       
         /// IPv4Address for controller 1, should be used only with Data0 interface
         /// </summary>
-        [Parameter(Position = 3)]
+        [Parameter(Position = 3, HelpMessage=StorSimpleCmdletHelpMessage.HelpMessageController1IPv4Address)]
+        [ValidateNotNullOrEmptyAttribute]
         public System.Net.IPAddress Controller1IPv4Address
         {
             get { return this.controller1ipv4address; }
@@ -57,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// Interface alias of interface for which settings are being supplied. A value 
         /// from Data0 to Data5
         /// </summary>
-        [Parameter(Position = 9)]
+        [Parameter(Mandatory=true, Position = 9, HelpMessage=StorSimpleCmdletHelpMessage.HelpMessageInterfaceAlias)]
         [ValidateSetAttribute(new string[] { "Data0", "Data1", "Data2", "Data3", "Data4", "Data5" })]
         public NetInterfaceId InterfaceAlias
         {
@@ -70,7 +72,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// The following is the definition of the input parameter "IPv4Address".       
         /// IPv4 Address for the net interface
         /// </summary>
-        [Parameter(Position = 6)]
+        [Parameter(Position = 6, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv4Address)]
+        [ValidateNotNullOrEmptyAttribute]
         public System.Net.IPAddress IPv4Address
         {
             get { return this.ipv4address; }
@@ -82,7 +85,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// The following is the definition of the input parameter "IPv4Gateway".       
         /// IPv4 Address of gateway
         /// </summary>
-        [Parameter(Position = 5)]
+        [Parameter(Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv4Gateway)]
+        [ValidateNotNullOrEmptyAttribute]
         public System.Net.IPAddress IPv4Gateway
         {
             get { return this.ipv4gateway; }
@@ -94,7 +98,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// The following is the definition of the input parameter "IPv4Netmask".       
         /// IPv4 netmask for this interface
         /// </summary>
-        [Parameter(Position = 8)]
+        [Parameter(Position = 8, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv4Netmask)]
+        [ValidateNotNullOrEmptyAttribute]
         public System.Net.IPAddress IPv4Netmask
         {
             get { return this.ipv4netmask; }
@@ -106,7 +111,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// The following is the definition of the input parameter "IPv6Gateway".       
         /// IPv4 net mask for interface
         /// </summary>
-        [Parameter(Position = 4)]
+        [Parameter(Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv6Gateway)]
+        [ValidateNotNullOrEmptyAttribute]
         public System.Net.IPAddress IPv6Gateway
         {
             get { return this.ipv6gateway; }
@@ -118,7 +124,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// The following is the definition of the input parameter "IPv6Prefix".       
         /// IPv6 Prefix for the net interface
         /// </summary>
-        [Parameter(Position = 7)]
+        [Parameter(Position = 7, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv6Prefix)]
+        [ValidateNotNullOrEmptyAttribute]
         public string IPv6Prefix
         {
             get { return this.ipv6prefix; }
@@ -130,25 +137,27 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// The following is the definition of the input parameter "IsCloudEnabled".       
         /// Whether the net interface is cloud enabled/disabled
         /// </summary>
-        [Parameter(Position = 1)]
-        public System.Boolean IsCloudEnabled
+        [Parameter(Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIsCloudEnabled)]
+        [ValidateNotNullOrEmptyAttribute]
+        public bool? IsCloudEnabled
         {
             get { return this.iscloudenabled; }
             set { this.iscloudenabled = value; }
         }
-        private System.Boolean iscloudenabled;
+        private bool? iscloudenabled;
 
         /// <summary>
         /// The following is the definition of the input parameter "IsIscsiEnabled".       
         /// Whether the net interface is iscsi enabled/disabled
         /// </summary>
-        [Parameter(Position = 0)]
-        public System.Boolean IsIscsiEnabled
+        [Parameter(Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIsIscsiEnabled)]
+        [ValidateNotNullOrEmptyAttribute]
+        public bool? IsIscsiEnabled
         {
             get { return this.isiscsienabled; }
             set { this.isiscsienabled = value; }
         }
-        private System.Boolean isiscsienabled;
+        private bool? isiscsienabled;
         #endregion
 
         public override void ExecuteCmdlet()

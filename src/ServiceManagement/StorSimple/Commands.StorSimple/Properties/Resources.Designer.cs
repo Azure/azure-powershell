@@ -385,11 +385,29 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IP Address information (IPv4Address and IPv4Netmask or IPv6Prefix)  must be provided for {0} network interface, since it is being enabled.
+        /// </summary>
+        internal static string IPAddressesNotProvidedForNetInterfaceBeingEnabled {
+            get {
+                return ResourceManager.GetString("IPAddressesNotProvidedForNetInterfaceBeingEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} Iscsi Connection{1} found!.
         /// </summary>
         internal static string IscsiConnectionGet_StatusMessage {
             get {
                 return ResourceManager.GetString("IscsiConnectionGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone and Primary DNS Server information is mandatory when configuring the device for the first time.
+        /// </summary>
+        internal static string MandatoryParamsMissingForInitialDeviceConfiguration {
+            get {
+                return ResourceManager.GetString("MandatoryParamsMissingForInitialDeviceConfiguration", resourceCulture);
             }
         }
         

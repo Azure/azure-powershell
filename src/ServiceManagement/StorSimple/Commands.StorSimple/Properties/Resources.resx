@@ -423,4 +423,10 @@
   <data name="ResourceContextNotSetMessage" xml:space="preserve">
     <value>Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context.</value>
   </data>
+  <data name="IPAddressesNotProvidedForNetInterfaceBeingEnabled" xml:space="preserve">
+    <value>IP Address information (IPv4Address and IPv4Netmask or IPv6Prefix)  must be provided for {0} network interface, since it is being enabled</value>
+  </data>
+  <data name="MandatoryParamsMissingForInitialDeviceConfiguration" xml:space="preserve">
+    <value>Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone and Primary DNS Server information is mandatory when configuring the device for the first time</value>
+  </data>
 </root>
