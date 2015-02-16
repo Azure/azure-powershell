@@ -92,6 +92,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             WriteVerbose(msg);
         }
 
+        internal virtual void HandleDeviceJobResponse(JobResponse deviceJobResponse, string operationName)
+        {
+            string msg = string.Empty;
+
+            msg = string.Format(Resources.DeviceJobResponseMessage, operationName, deviceJobResponse.JobId);
+            WriteObject(deviceJobResponse.JobId);
+            
+            WriteVerbose(msg);
+        }
+
         internal virtual void HandleSyncTaskResponse(TaskStatusInfo taskStatus, string operationName)
         {
             string msg = string.Empty;

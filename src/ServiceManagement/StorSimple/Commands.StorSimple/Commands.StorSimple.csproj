@@ -78,11 +78,11 @@
     <Reference Include="Microsoft.WindowsAzure.Management.Scheduler">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.StorSimple">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.StorSimple.0.9.0-preview\lib\net40\Microsoft.WindowsAzure.Management.StorSimple.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="StorSimple.Tests">
+      <HintPath>..\..\..\..\..\hydra-specs-pr\StorSimple\StorSimple.Tests\bin\Debug\StorSimple.Tests.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -136,6 +136,7 @@
     <Compile Include="Cmdlets\ServiceConfig\RemoveAzureStorSimpleStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\SetAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\ServiceConfig\SetAzureStorSimpleStorageAccountCredential.cs" />
+    <Compile Include="Cmdlets\VirtualDevice\NewAzureStorSimpleVirtualDeviceCommand.cs" />
     <Compile Include="Cmdlets\Volume\GetAzureStorSimpleDeviceVolume .cs" />
     <Compile Include="Cmdlets\Volume\NewAzureStorSimpleDeviceVolume.cs" />
     <Compile Include="Cmdlets\Volume\RemoveAzureStorSimpleDeviceVolume .cs" />
@@ -161,6 +162,7 @@
     <Compile Include="ServiceClients\StorSimpleDCClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDevicesClient.cs" />
     <Compile Include="ServiceClients\StorSimpleServiceConfigClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleVirtualDeviceClient.cs" />
     <Compile Include="ServiceClients\StorSimpleVolumeClient.cs" />
     <Compile Include="StorSimpleCmdletBase.cs" />
     <Compile Include="StorSimpleCmdletHelpMessage.cs" />

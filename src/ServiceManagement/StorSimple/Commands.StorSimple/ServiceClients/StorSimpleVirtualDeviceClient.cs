@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Management.StorSimple;
+using Microsoft.WindowsAzure.Management.StorSimple.Models;
+
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
-    internal static class StorSimpleCmdletParameterSet
+    public partial class StorSimpleClient
     {
-        public const string Empty = "Empty";
-        public const string IdentifyById = "IdentifyById";
-        public const string IdentifyByName = "IdentifyByName";
-        public const string IdentifyByObject = "IdentifyByObject";
-        public const string IdentifyByParentObject = "IdentifyByParentObject";
-        public const string IdentifyById2 = "IdentifyById2";
-        public const string IdentifyByObject2 = "IdentifyByObject2";
-        public const string CreateNewStorageAccountSet = "CreateNewStorageAccountSet";
+        public JobResponse CreateVirtualDevice(VirtualApplianceProvisioningInfo virtualApplianceProvisioningInfo)
+        {
+            return this.GetStorSimpleClient().VirtualDevice.Create(virtualApplianceProvisioningInfo, this.GetCustomRequestHeaders());
+        }
     }
 }

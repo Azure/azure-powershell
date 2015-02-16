@@ -423,4 +423,7 @@
   <data name="ResourceContextNotSetMessage" xml:space="preserve">
     <value>Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context.</value>
   </data>
+  <data name="DeviceJobResponseMessage" xml:space="preserve">
+    <value>The {0} Device Job is submitted successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the task's status</value>
+  </data>
 </root>
