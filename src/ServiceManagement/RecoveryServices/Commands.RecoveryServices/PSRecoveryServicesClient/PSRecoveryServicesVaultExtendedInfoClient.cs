@@ -15,11 +15,11 @@
 using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Hyak.Common;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.HybridServicesCore;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 using rpError = Microsoft.Azure.Commands.RecoveryServices.RestApiInfra;
