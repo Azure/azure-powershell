@@ -36,12 +36,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceId)]
         [ValidateNotNullOrEmptyAttribute]
-        public System.Guid DeviceId
+        public string DeviceId
         {
             get { return this.deviceid; }
             set { this.deviceid = value; }
         }
-        private System.Guid deviceid;
+        private string deviceid;
 
         /// <summary>
         /// Friendly Name of the device to configure.
@@ -352,7 +352,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     WriteObject(null);
                     return false;
                 }
-                DeviceId = new Guid(deviceId);
+                DeviceId = deviceId;
             }
             return true;
         }
