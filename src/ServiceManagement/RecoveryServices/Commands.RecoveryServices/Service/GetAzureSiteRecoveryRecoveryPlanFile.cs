@@ -16,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices

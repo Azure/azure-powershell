@@ -18,7 +18,6 @@ using System.Management.Automation;
 using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Common.Extensions;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 

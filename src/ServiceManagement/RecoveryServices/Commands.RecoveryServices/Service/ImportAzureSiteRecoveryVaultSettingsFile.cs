@@ -21,7 +21,6 @@ using System.Runtime.Serialization;
 using System.Xml;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices

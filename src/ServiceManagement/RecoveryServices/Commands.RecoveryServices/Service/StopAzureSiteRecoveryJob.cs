@@ -15,7 +15,6 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.WindowsAzure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
