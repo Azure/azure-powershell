@@ -423,4 +423,16 @@
   <data name="ResourceContextNotSetMessage" xml:space="preserve">
     <value>Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context.</value>
   </data>
+  <data name="ReturnedCountDataContainerGroupMessage" xml:space="preserve">
+    <value>{0} volume container group{1} found!</value>
+  </data>
+  <data name="StartDeviceFailoverJobMessage" xml:space="preserve">
+    <value>Started failing over selected volume containers from device {0} to device {1}...</value>
+  </data>
+  <data name="StartDeviceFailoverJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to failover the selected volume containers from device {0} to device {1}?</value>
+  </data>
+  <data name="VolumeContainerGroupNotEligibleForFailoverError" xml:space="preserve">
+    <value>Volume Container Group \"{0}\" is not eligible for failover due to the reason: {1}</value>
+  </data>
 </root>

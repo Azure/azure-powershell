@@ -790,6 +790,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} volume container group{1} found!.
+        /// </summary>
+        internal static string ReturnedCountDataContainerGroupMessage {
+            get {
+                return ResourceManager.GetString("ReturnedCountDataContainerGroupMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} volume container{1} found!.
         /// </summary>
         internal static string ReturnedCountDataContainerMessage {
@@ -867,6 +876,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string StartASSDBackupRestoreJobWarningMessage {
             get {
                 return ResourceManager.GetString("StartASSDBackupRestoreJobWarningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started failing over selected volume containers from device {0} to device {1}....
+        /// </summary>
+        internal static string StartDeviceFailoverJobMessage {
+            get {
+                return ResourceManager.GetString("StartDeviceFailoverJobMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the selected volume containers from device {0} to device {1}?.
+        /// </summary>
+        internal static string StartDeviceFailoverJobWarningMessage {
+            get {
+                return ResourceManager.GetString("StartDeviceFailoverJobWarningMessage", resourceCulture);
             }
         }
         
@@ -966,6 +993,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string ValidationSuccessfulRegistrationKey {
             get {
                 return ResourceManager.GetString("ValidationSuccessfulRegistrationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume Container Group \&quot;{0}\&quot; is not eligible for failover due to the reason: {1}.
+        /// </summary>
+        internal static string VolumeContainerGroupNotEligibleForFailoverError {
+            get {
+                return ResourceManager.GetString("VolumeContainerGroupNotEligibleForFailoverError", resourceCulture);
             }
         }
         
