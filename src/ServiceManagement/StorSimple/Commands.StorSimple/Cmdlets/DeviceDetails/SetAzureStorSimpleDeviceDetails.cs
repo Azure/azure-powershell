@@ -116,8 +116,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         }
         private PSObject[] storsimplenetworkconfig;
 
-        
-
         public override void ExecuteCmdlet()
         {
             try
@@ -127,7 +125,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     return;
                 }
-
 
                 // Get the current device details.
                 var deviceDetails = StorSimpleClient.GetDeviceDetails(DeviceId.ToString());
