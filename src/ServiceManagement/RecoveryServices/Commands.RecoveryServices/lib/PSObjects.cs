@@ -154,6 +154,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string HyperVReplicaAzure = "HyperVReplicaAzure";
 
         /// <summary>
+        /// Represents San string constant.
+        /// </summary>
+        public const string San = "San";
+
+        /// <summary>
         /// Represents HyperVReplica string constant.
         /// </summary>
         public const string AzureContainer = "Microsoft Azure";
@@ -242,6 +247,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Acceptable values of Replication Frequency in seconds (as per portal).
         /// </summary>
         public const string NineHundred = "900";
+
+        /// <summary>
+        /// Replication type - async.
+        /// </summary>
+        public const string Sync = "Sync";
+
+        /// <summary>
+        /// Replication type - async.
+        /// </summary>
+        public const string Async = "Async";
     }
 
     /// <summary>
@@ -525,6 +540,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.HyperVReplicaProviderSettingsObject = new HyperVReplicaProviderSettings();
                 this.HyperVReplicaProviderSettingsObject.AssociationDetail = new List<ASRProtectionProfileAssociationDetails>();
             }
+            else if (profile.ReplicationProvider == Constants.San)
+            {
+                this.SanProviderSettingsObject = new SanProviderSettings();
+                this.SanProviderSettingsObject.AssociationDetail = new List<ASRProtectionProfileAssociationDetails>();
+            }
 
             foreach (var profileAssosicationDetail in profile.AssociationDetail)
             {
@@ -542,6 +562,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 else if (profile.ReplicationProvider == Constants.HyperVReplica)
                 {
                     this.HyperVReplicaProviderSettingsObject.AssociationDetail.Add(asrProfileDetail);
+                }
+                else if (profile.ReplicationProvider == Constants.San)
+                {
+                    this.SanProviderSettingsObject.AssociationDetail.Add(asrProfileDetail);
                 }
             }
 
@@ -589,6 +613,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.HyperVReplicaProviderSettingsObject.ReplicationStartTime = details.OnlineReplicationStartTime;
                 this.HyperVReplicaProviderSettingsObject.CanDissociate = profile.CanDissociate;
             }
+            else if (profile.ReplicationProvider == Constants.San)
+            {
+                // San does not have a protection profile associated with it for now. So ReplicationProviderSetting might be empty. 
+                // If we are unable to deserialze, ignore it for now.
+                try
+                {
+                    var details = DataContractUtils<SanProtectionProfileInput>.Deserialize(
+                        profile.ReplicationProviderSetting);
+                    this.SanProviderSettingsObject.CloudId = details.CloudId;
+                    this.SanProviderSettingsObject.RemoteCloudId = details.RemoteCloudId;
+                    this.SanProviderSettingsObject.ArrayUniqueId = details.ArrayUniqueId;
+                    this.SanProviderSettingsObject.RemoteArrayUniqueId = details.RemoteArrayUniqueId;
+                }
+                catch
+                {
+                    // ignore. 
+                }
+
+                this.SanProviderSettingsObject.CanDissociate = profile.CanDissociate;
+            }
 
             this.ID = profile.ID;
             this.Name = profile.Name;
@@ -607,7 +651,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets Replication Type (HyperVReplica, HyperVReplicaAzure)
+        /// Gets or sets Replication Type (HyperVReplica, HyperVReplicaAzure, San)
         /// </summary>
         public string ReplicationProvider { get; set; }
 
@@ -620,6 +664,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets HyperVReplicaAzureProviderSettings
         /// </summary>
         public HyperVReplicaAzureProviderSettings HyperVReplicaAzureProviderSettingsObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets SanProviderSettings
+        /// </summary>
+        public SanProviderSettings SanProviderSettingsObject { get; set; }
 
         #endregion Properties
     }

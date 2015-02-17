@@ -183,5 +183,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Mapping between Enterprise to Azure.
         /// </summary>
         internal const string EnterpriseToAzure = "EnterpriseToAzure";
+
+        /// <summary>
+        /// Mapping between Enterprise to Enterprise San.
+        /// </summary>
+        internal const string EnterpriseToEnterpriseSan = "EnterpriseToEnterpriseSan";
+
+        /// <summary>
+        /// For Enable replication group parameter set.
+        /// </summary>
+        internal const string EnableReplicationGroup = "EnableReplicationGroup";
+
+        /// <summary>
+        /// For Disable replication group parameter set.
+        /// </summary>
+        internal const string DisableReplicationGroup = "DisableReplicationGroup";
     }
 }
