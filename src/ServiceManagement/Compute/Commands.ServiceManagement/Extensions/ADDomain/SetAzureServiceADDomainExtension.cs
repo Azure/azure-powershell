@@ -204,6 +204,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = true, ParameterSetName = DomainThumbprintParameterSet)]
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = true, ParameterSetName = DomainJoinOptionParameterSet)]
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = true, ParameterSetName = DomainJoinOptionThumbprintParameterSet)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = true, ParameterSetName = WorkgroupParameterSet)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = true, ParameterSetName = WorkgroupThumbprintParameterSet)]
         [ValidateNotNullOrEmpty]
         public override string Version
         {
