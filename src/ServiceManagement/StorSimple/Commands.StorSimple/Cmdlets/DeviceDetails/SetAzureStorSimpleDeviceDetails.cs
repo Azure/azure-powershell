@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using System.Net.Sockets;
+using System.Net;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -35,15 +36,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// Device Id of the device to configure.
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceId)]
-        [ValidateNotNullOrEmptyAttribute] { get; set; }
-        private string deviceid;
+        [ValidateNotNullOrEmptyAttribute] 
+        public string DeviceId { get; set; };
 
         /// <summary>
         /// Friendly Name of the device to configure.
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
-        [ValidateNotNullOrEmptyAttribute] { get; set; }
-        private string devicename;
+        [ValidateNotNullOrEmptyAttribute] 
+        public string DeviceName { get; set; };
 
         /// <summary>
         /// New friendly name for the device.
@@ -57,15 +58,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// TimeZone for the device.
         /// </summary>
         [Parameter(Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageTimeZone)]
-        [ValidateNotNullOrEmptyAttribute] { get; set; }
-        private System.TimeZone timezone;
+        [ValidateNotNullOrEmptyAttribute] 
+        public TimeZone TimeZone { get; set; };
 
         /// <summary>
         /// Primary DNS server for the device.
         /// </summary>
         [Parameter(Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessagePrimaryDnsServer)]
         [ValidateNotNullOrEmptyAttribute]
-        public System.Net.IPAddress PrimaryDnsServer { get; set; }
+        public IPAddress PrimaryDnsServer { get; set; }
         
         /// <summary>
         /// Secondary DNS server for the device.

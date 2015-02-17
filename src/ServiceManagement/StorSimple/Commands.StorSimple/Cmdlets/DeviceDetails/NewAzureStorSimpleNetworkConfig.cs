@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
+using System.Net;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -34,50 +35,50 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// </summary>
         [Parameter(Position = 2, HelpMessage=StorSimpleCmdletHelpMessage.HelpMessageController0IPv4Address)]
         [ValidateNotNullOrEmptyAttribute]
-        public System.Net.IPAddress Controller0IPv4Address { get; set; }
+        public IPAddress Controller0IPv4Address { get; set; }
         
         /// <summary>
         /// IPv4Address for controller 1, should be used only with Data0 interface
         /// </summary>
         [Parameter(Position = 3, HelpMessage=StorSimpleCmdletHelpMessage.HelpMessageController1IPv4Address)]
         [ValidateNotNullOrEmptyAttribute]
-        public System.Net.IPAddress Controller1IPv4Address { get; set; }
+        public IPAddress Controller1IPv4Address { get; set; }
         
         /// <summary>
         /// Interface alias of interface for which settings are being supplied. A value 
         /// from Data0 to Data5
         /// </summary>
         [Parameter(Mandatory=true, Position = 9, HelpMessage=StorSimpleCmdletHelpMessage.HelpMessageInterfaceAlias)]
-        [ValidateSetAttribute(new string[] { "Data0", "Data1", "Data2", "Data3", "Data4", "Data5" })] { get; set; }
-        private NetInterfaceId interfacealias;
+        [ValidateSetAttribute(new string[] { "Data0", "Data1", "Data2", "Data3", "Data4", "Data5" })] 
+        public string InterfaceAlias { get; set; }
 
         /// <summary>
         /// IPv4 Address for the net interface
         /// </summary>
         [Parameter(Position = 6, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv4Address)]
         [ValidateNotNullOrEmptyAttribute]
-        public System.Net.IPAddress IPv4Address { get; set; }
+        public IPAddress IPv4Address { get; set; }
         
         /// <summary>
         /// IPv4 Address of gateway
         /// </summary>
         [Parameter(Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv4Gateway)]
         [ValidateNotNullOrEmptyAttribute]
-        public System.Net.IPAddress IPv4Gateway { get; set; }
+        public IPAddress IPv4Gateway { get; set; }
         
         /// <summary>
         /// IPv4 netmask for this interface
         /// </summary>
         [Parameter(Position = 8, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv4Netmask)]
         [ValidateNotNullOrEmptyAttribute]
-        public System.Net.IPAddress IPv4Netmask { get; set; }
+        public IPAddress IPv4Netmask { get; set; }
         
         /// <summary>
         /// IPv4 net mask for interface
         /// </summary>
         [Parameter(Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv6Gateway)]
         [ValidateNotNullOrEmptyAttribute]
-        public System.Net.IPAddress IPv6Gateway { get; set; }
+        public IPAddress IPv6Gateway { get; set; }
         
         /// <summary>
         /// IPv6 Prefix for the net interface
@@ -117,7 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     IPv4Address = IPv4Address,
                     IPv6Prefix = IPv6Prefix,
                     IPv4Netmask = IPv4Netmask,
-                    InterfaceAlias = InterfaceAlias
+                    InterfaceAlias = (NetInterfaceId)Enum.Parse(typeof(NetInterfaceId), InterfaceAlias)
                 };
 
                 WriteObject(netConfig);
