@@ -29,22 +29,22 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// If the device is being configured for the first time, then some of the
     /// arguments will be mandatory - TimeZone, PrimaryDnsServer, Config for Data0
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureStorSimpleDeviceDetails"), OutputType(typeof(DeviceDetails))]
-    public class SetAzureStorSimpleDeviceDetails : StorSimpleCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureStorSimpleDevice"), OutputType(typeof(DeviceDetails))]
+    public class SetAzureStorSimpleDevice : StorSimpleCmdletBase
     {
                 /// <summary>
         /// Device Id of the device to configure.
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceId)]
         [ValidateNotNullOrEmptyAttribute] 
-        public string DeviceId { get; set; };
+        public string DeviceId { get; set; }
 
         /// <summary>
         /// Friendly Name of the device to configure.
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
         [ValidateNotNullOrEmptyAttribute] 
-        public string DeviceName { get; set; };
+        public string DeviceName { get; set; }
 
         /// <summary>
         /// New friendly name for the device.
@@ -59,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// </summary>
         [Parameter(Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageTimeZone)]
         [ValidateNotNullOrEmptyAttribute] 
-        public TimeZone TimeZone { get; set; };
+        public TimeZone TimeZone { get; set; }
 
         /// <summary>
         /// Primary DNS server for the device.
@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// </summary>
         [Parameter(Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageSecondaryDnsServer)]
         [ValidateNotNullOrEmptyAttribute]
-        public System.Net.IPAddress SecondaryDnsServer { get; set; }
+        public IPAddress SecondaryDnsServer { get; set; }
         
         /// <summary>
         /// A collection of network configs for interfaces on the device.
@@ -202,7 +202,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 deviceDetails.DeviceProperties.FriendlyName = this.NewName;
             }
 
-            if (this.timezone != null)
+            if (this.TimeZone != null)
             {
                 deviceDetails.TimeServer.TimeZone = this.TimeZone.StandardName;
             }

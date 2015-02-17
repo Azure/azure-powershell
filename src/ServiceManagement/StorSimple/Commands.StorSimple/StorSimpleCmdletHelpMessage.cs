@@ -94,5 +94,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string HelpMessageStorSimpleNetworkConfig = "A collection of network configs for interfaces on the device.";
         public const string HelpMessageTimeZone = "TimeZone for the device.";
         public const string HelpMessageNewDeviceName = "New friendly name for the device.";
+        public const string HelpMessageDeviceJobId = "Instance id of the device job";
     }
 }

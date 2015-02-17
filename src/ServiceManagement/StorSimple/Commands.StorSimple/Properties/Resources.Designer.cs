@@ -196,6 +196,42 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More jobs are available for your query. To access the next page of your result use \&quot;-First {0} -Skip {1}\&quot; in your commandlet.
+        /// </summary>
+        internal static string DeviceJobsNextPageFormatMessage {
+            get {
+                return ResourceManager.GetString("DeviceJobsNextPageFormatMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More backups are available in the subsequent pages for your query. To access the next page use \&quot;-Skip {0}\&quot;  in your commandlet.
+        /// </summary>
+        internal static string DeviceJobsNextPagewithNoFirstMessage {
+            get {
+                return ResourceManager.GetString("DeviceJobsNextPagewithNoFirstMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No more jobs are present for your query!.
+        /// </summary>
+        internal static string DeviceJobsNoMorePagesMessage {
+            get {
+                return ResourceManager.GetString("DeviceJobsNoMorePagesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} jobs found!.
+        /// </summary>
+        internal static string DeviceJobsReturnedCount {
+            get {
+                return ResourceManager.GetString("DeviceJobsReturnedCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The device name you have specified is not yet configured fully. Please complete the configuration and retry..
         /// </summary>
         internal static string DeviceNotConfiguredMessage {
@@ -412,6 +448,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully created a StorSimple Network Configuration for interface {0}.
+        /// </summary>
+        internal static string NewNetworkConfigCreated {
+            get {
+                return ResourceManager.GetString("NewNetworkConfigCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No backuppolicy with name : {0} found in your device: {1} !.
         /// </summary>
         internal static string NoBackupPolicyWithGivenNameFound {
@@ -462,6 +507,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string NoDeviceFoundWithGivenTypeInResourceMessage {
             get {
                 return ResourceManager.GetString("NoDeviceFoundWithGivenTypeInResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Job found with the specified Id : {0}.
+        /// </summary>
+        internal static string NoDeviceJobFoundWithGivenIdMessage {
+            get {
+                return ResourceManager.GetString("NoDeviceJobFoundWithGivenIdMessage", resourceCulture);
             }
         }
         
@@ -898,6 +952,42 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stopping job with id {0}.
+        /// </summary>
+        internal static string StopASSJobMessage {
+            get {
+                return ResourceManager.GetString("StopASSJobMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop the job with id {0}.
+        /// </summary>
+        internal static string StopASSJobWarningMessage {
+            get {
+                return ResourceManager.GetString("StopASSJobWarningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully stopped job..
+        /// </summary>
+        internal static string StopDeviceJobSucceeded {
+            get {
+                return ResourceManager.GetString("StopDeviceJobSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About to stop a job! Id : {0} .
+        /// </summary>
+        internal static string StoppingDeviceJob {
+            get {
+                return ResourceManager.GetString("StoppingDeviceJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cleaning up objects, retry count: {0}.
         /// </summary>
         internal static string StorageAccountCleanupRetryMessage {
@@ -939,6 +1029,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string StorageCredentialVerificationSuccessMessage {
             get {
                 return ResourceManager.GetString("StorageCredentialVerificationSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully updated configuration for device {0}.
+        /// </summary>
+        internal static string StorSimpleDeviceUpdatedSuccessfully {
+            get {
+                return ResourceManager.GetString("StorSimpleDeviceUpdatedSuccessfully", resourceCulture);
             }
         }
         

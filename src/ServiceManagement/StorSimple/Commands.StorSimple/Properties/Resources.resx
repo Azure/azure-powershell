@@ -429,4 +429,37 @@
   <data name="MandatoryParamsMissingForInitialDeviceConfiguration" xml:space="preserve">
     <value>Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone and Primary DNS Server information is mandatory when configuring the device for the first time</value>
   </data>
+  <data name="DeviceJobsNextPageFormatMessage" xml:space="preserve">
+    <value>More jobs are available for your query. To access the next page of your result use \"-First {0} -Skip {1}\" in your commandlet</value>
+  </data>
+  <data name="DeviceJobsNextPagewithNoFirstMessage" xml:space="preserve">
+    <value>More backups are available in the subsequent pages for your query. To access the next page use \"-Skip {0}\"  in your commandlet</value>
+  </data>
+  <data name="DeviceJobsNoMorePagesMessage" xml:space="preserve">
+    <value>No more jobs are present for your query!</value>
+  </data>
+  <data name="DeviceJobsReturnedCount" xml:space="preserve">
+    <value>{0} jobs found!</value>
+  </data>
+  <data name="NewNetworkConfigCreated" xml:space="preserve">
+    <value>Successfully created a StorSimple Network Configuration for interface {0}</value>
+  </data>
+  <data name="NoDeviceJobFoundWithGivenIdMessage" xml:space="preserve">
+    <value>No Job found with the specified Id : {0}</value>
+  </data>
+  <data name="StopASSJobMessage" xml:space="preserve">
+    <value>Stopping job with id {0}</value>
+  </data>
+  <data name="StopASSJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to stop the job with id {0}</value>
+  </data>
+  <data name="StopDeviceJobSucceeded" xml:space="preserve">
+    <value>Successfully stopped job.</value>
+  </data>
+  <data name="StoppingDeviceJob" xml:space="preserve">
+    <value>About to stop a job! Id : {0} </value>
+  </data>
+  <data name="StorSimpleDeviceUpdatedSuccessfully" xml:space="preserve">
+    <value>Successfully updated configuration for device {0}</value>
+  </data>
 </root>
