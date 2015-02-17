@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.WebKey;
 using Microsoft.Azure.Common.Extensions;
 using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Common.Internals;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -85,13 +85,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
             Client.KeyAttributes clientAttributes = (Client.KeyAttributes)keyAttributes;
 
-            Client.KeyBundle clientKeyBundle =
-                this.keyVaultClient.CreateKeyAsync(
-                    vaultAddress,
-                    keyName,
-                    keyAttributes.KeyType,
-                    key_ops: keyAttributes.KeyOps,
-                    keyAttributes: clientAttributes).GetAwaiter().GetResult();
+            Client.KeyBundle clientKeyBundle;
+            try
+            {
+                clientKeyBundle = 
+                    this.keyVaultClient.CreateKeyAsync(
+                        vaultAddress,
+                        keyName,
+                        keyAttributes.KeyType,
+                        key_ops: keyAttributes.KeyOps,
+                        keyAttributes: clientAttributes).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
 
             return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
         }
@@ -126,7 +134,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 Key = webKey
             };
 
-            clientKeyBundle = this.keyVaultClient.ImportKeyAsync(vaultAddress, keyName, clientKeyBundle, importToHsm).GetAwaiter().GetResult();
+            try
+            {
+                clientKeyBundle = this.keyVaultClient.ImportKeyAsync(vaultAddress, keyName, clientKeyBundle, importToHsm).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
 
             return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
         }
@@ -150,7 +165,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            var clientKeyBundle = this.keyVaultClient.UpdateKeyAsync(vaultAddress, keyName, keyAttributes.KeyOps, attributes: clientAttributes).GetAwaiter().GetResult();
+            Client.KeyBundle clientKeyBundle;
+            try
+            {
+                clientKeyBundle = this.keyVaultClient.UpdateKeyAsync(vaultAddress, keyName, keyAttributes.KeyOps, attributes: clientAttributes).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
 
             return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
         }
@@ -168,7 +191,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            Client.KeyBundle clientKeyBundle = this.keyVaultClient.GetKeyAsync(vaultAddress, keyName, keyVersion).GetAwaiter().GetResult();
+            Client.KeyBundle clientKeyBundle;
+            try
+            {
+                clientKeyBundle = this.keyVaultClient.GetKeyAsync(vaultAddress, keyName, keyVersion).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex); 
+            }
 
             return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
         }
@@ -182,8 +213,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            return (this.keyVaultClient.GetKeysAsync(vaultAddress).GetAwaiter().GetResult()).
-                Select((keyItem) => { return new KeyIdentityItem(keyItem, this.vaultUriHelper); });
+            IEnumerable<Client.KeyItem> clientKeyBundles;
+            try
+            {
+                clientKeyBundles = this.keyVaultClient.GetKeysAsync(vaultAddress).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+            return (clientKeyBundles).Select((keyItem) => { return new KeyIdentityItem(keyItem, this.vaultUriHelper); });
         }
 
         public KeyBundle DeleteKey(string vaultName, string keyName)
@@ -199,7 +238,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            Client.KeyBundle clientKeyBundle = this.keyVaultClient.DeleteKeyAsync(vaultAddress, keyName).GetAwaiter().GetResult();
+            Client.KeyBundle clientKeyBundle;
+            try
+            {
+                clientKeyBundle = this.keyVaultClient.DeleteKeyAsync(vaultAddress, keyName).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
 
             return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
         }
@@ -221,7 +268,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            Client.Secret clientSecret = this.keyVaultClient.SetSecretAsync(vaultAddress, secretName, secretValue).GetAwaiter().GetResult();
+            Client.Secret clientSecret;
+            try
+            {
+                clientSecret = this.keyVaultClient.SetSecretAsync(vaultAddress, secretName, secretValue).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
 
             return new Secret(clientSecret, this.vaultUriHelper);
         }
@@ -240,7 +295,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
             var secretIdentifier = new Client.SecretIdentifier(vaultAddress, secretName, secretVersion);
-            Client.Secret clientSecret = this.keyVaultClient.GetSecretAsync(secretIdentifier.Identifier).GetAwaiter().GetResult();
+            Client.Secret clientSecret;
+            try
+            {
+                clientSecret = this.keyVaultClient.GetSecretAsync(secretIdentifier.Identifier).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
 
             return new Secret(clientSecret, this.vaultUriHelper);
         }
@@ -254,8 +317,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            return (this.keyVaultClient.GetSecretsAsync(vaultAddress).GetAwaiter().GetResult()).
-                Select((secretItem) => { return new SecretIdentityItem(secretItem, this.vaultUriHelper); });
+            IEnumerable<Client.SecretItem> secretItems;
+            try
+            {
+                secretItems = this.keyVaultClient.GetSecretsAsync(vaultAddress).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return (secretItems).Select((secretItem) => { return new SecretIdentityItem(secretItem, this.vaultUriHelper); });
         }
 
         public Secret DeleteSecret(string vaultName, string secretName)
@@ -271,7 +343,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            Client.Secret clientSecret = this.keyVaultClient.DeleteSecretAsync(vaultAddress, secretName).GetAwaiter().GetResult();
+            Client.Secret clientSecret;
+            try
+            {
+                clientSecret = this.keyVaultClient.DeleteSecretAsync(vaultAddress, secretName).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
 
             return new Secret(clientSecret, this.vaultUriHelper);
         }
@@ -293,7 +373,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            var backupBlob = this.keyVaultClient.BackupKeyAsync(vaultAddress, keyName).GetAwaiter().GetResult();
+            byte[] backupBlob;
+            try
+            {
+                backupBlob = this.keyVaultClient.BackupKeyAsync(vaultAddress, keyName).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
 
             File.WriteAllBytes(outputBlobPath, backupBlob);
 
@@ -315,25 +403,39 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            var clientKeyBundle = this.keyVaultClient.RestoreKeyAsync(vaultAddress, backupBlob).GetAwaiter().GetResult();
+            Client.KeyBundle clientKeyBundle;
+            try
+            {
+                clientKeyBundle = this.keyVaultClient.RestoreKeyAsync(vaultAddress, backupBlob).GetAwaiter().GetResult();
+            }
+            catch(Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
 
             return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
         }
 
         private void SendRequestCallback(string correlationId, HttpRequestMessage request)
         {
-            if (CloudContext.Configuration.Tracing.IsEnabled)
+            if (TracingAdapter.IsEnabled)
             {
-                Tracing.SendRequest(correlationId, request);
+                TracingAdapter.SendRequest(correlationId, request);
             }
         }
 
         private void ReceiveResponseCallback(string correlationId, HttpResponseMessage response)
         {
-            if (CloudContext.Configuration.Tracing.IsEnabled)
+            if (TracingAdapter.IsEnabled)
             {
-                Tracing.ReceiveResponse(correlationId, response);
+                TracingAdapter.ReceiveResponse(correlationId, response);
             }
+        }
+
+        private Exception GetInnerException(Exception exception)
+        {
+            while (exception.InnerException != null) exception = exception.InnerException;
+            return exception;
         }
 
         private VaultUriHelper vaultUriHelper;

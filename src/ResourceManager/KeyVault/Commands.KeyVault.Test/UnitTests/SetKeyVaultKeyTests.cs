@@ -83,11 +83,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                         && kt.KeyOps == keyAttributes.KeyOps)))
                 .Throws(new Exception("exception")).Verifiable();
 
-            cmdlet.ExecuteCmdlet();
+            try
+            {
+                cmdlet.ExecuteCmdlet();
+            }
+            catch { }
 
             // Assert
             keyVaultClientMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteError(It.IsAny<ErrorRecord>()), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<KeyBundle>()), Times.Never());
         }
     }
 }

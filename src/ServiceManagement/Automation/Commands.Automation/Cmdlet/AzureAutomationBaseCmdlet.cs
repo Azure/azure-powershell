@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
@@ -25,6 +26,7 @@ using Microsoft.Azure.Commands.Automation.DataContract;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -57,8 +59,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the automation account name.
         /// </summary>
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The automation account name.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
         public string AutomationAccountName { get; set; }
 
         protected virtual void AutomationExecuteCmdlet()
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             }
             catch (CloudException cloudException)
             {
-                if (string.IsNullOrEmpty(cloudException.ErrorCode) && string.IsNullOrEmpty(cloudException.ErrorMessage))
+                if (string.IsNullOrEmpty(cloudException.Error.Code) && string.IsNullOrEmpty(cloudException.Error.Message))
                 {
                     string message = this.ParseErrorMessage(cloudException.Response.Content);
                     if (!string.IsNullOrEmpty(message))
@@ -93,12 +94,44 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             }
         }
 
+        protected bool GenerateCmdletOutput(object result)
+        {
+            var ret = true;
+
+            try
+            {
+                WriteObject(result);
+            }
+            catch (PipelineStoppedException)
+            {
+                ret = false;
+            }
+
+            return ret;
+        }
+
+        protected bool GenerateCmdletOutput(IEnumerable<object> results)
+        {
+            var ret = true;
+            foreach (var result in results)
+            {
+                try
+                {
+                    WriteObject(result);
+                }
+                catch (PipelineStoppedException)
+                {
+                    ret = false;
+                }
+            }
+
+            return ret;
+        }
+
         private string ParseErrorMessage(string errorMessage)
         {
             // The errorMessage is expected to be the error details in JSON format.
-            // e.g. <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-            //          {"odata.error":{"code":"","message":{"lang":"en-US","value":"Runbook definition is invalid. Missing closing '}' in statement block."}}}
-            //      </string>
+            // e.g. <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">{"code":"NotFound","message":"Certificate not found."}</string>
             try
             {
                 using (var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(XDocument.Load(new StringReader(errorMessage)).Root.Value)))
@@ -106,9 +139,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     var serializer = new DataContractJsonSerializer(typeof(ErrorResponse));
                     var errorResponse = (ErrorResponse)serializer.ReadObject(memoryStream);
 
-                    if (!string.IsNullOrWhiteSpace(errorResponse.OdataError.Message.Value))
+                    if (!string.IsNullOrWhiteSpace(errorResponse.Message))
                     {
-                        return errorResponse.OdataError.Message.Value;
+                        return errorResponse.Message;
                     }
                 }
             }

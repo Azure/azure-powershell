@@ -32,6 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
     using ServiceBusNamespaceDescription = Management.ServiceBus.Models.NamespaceDescription;
     using Microsoft.Azure.Common.Extensions.Models;
     using Microsoft.Azure.Common.Extensions;
+    using Hyak.Common;
 
     public class ServiceBusClientExtensions
     {

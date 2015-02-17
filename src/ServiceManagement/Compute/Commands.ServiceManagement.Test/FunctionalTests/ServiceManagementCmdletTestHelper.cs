@@ -41,7 +41,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.Iaa
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PaasCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PIRCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PreviewCmdletInfo;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.SubscriptionCmdletInfo;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Network;
@@ -719,30 +719,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         public ManagementOperationContext NewAzureQuickVM(OS os, string name, string serviceName, string imageName,
-            string userName, string password, string locationName, string instanceSize, string disableWinRMHttps, string reservedIpName = null, string vnetName = null)
+            string userName, string password, string locationName, string instanceSize, string disableWinRMHttps,
+            string reservedIpName = null, string vnetName = null)
         {
             var result = new ManagementOperationContext();
             try
             {
-                result =
-                    RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(os, name,
-                        serviceName, imageName, userName, password, locationName, instanceSize, disableWinRMHttps, reservedIpName, vnetName));
+                result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(
+                    os, name, serviceName, imageName, userName, password, locationName,
+                    instanceSize, disableWinRMHttps, reservedIpName, vnetName));
             }
             catch (Exception e)
             {
-                if (e.ToString().Contains("409"))
+                if (e.ToString().Contains("Service already exists") ||
+                    (e.InnerException != null && e.InnerException.ToString().Contains("Service already exists")))
                 {
-                    Utilities.RetryActionUntilSuccess(
-                        () =>
-                            result =
-                                RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(os,
-                                    name, serviceName, imageName, userName, password, null, instanceSize,
-                                    disableWinRMHttps, reservedIpName, vnetName)),
-                        "409", 4, 60);
+                    RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(
+                        os, name, serviceName, imageName, userName, password, null,
+                        instanceSize, disableWinRMHttps, reservedIpName, vnetName));
                 }
                 else
                 {
-                    Console.WriteLine(e.InnerException.ToString());
+                    Console.WriteLine(e.ToString());
+                    if (e.InnerException != null)
+                    {
+                        Console.WriteLine(e.InnerException.ToString());
+                    }
                     throw;
                 }
             }
@@ -755,25 +757,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return NewAzureQuickVM(os, name, serviceName, imageName, userName, password, locationName, null);
         }
 
-        public ManagementOperationContext NewAzureQuickVM(OS os, string name, string serviceName, string imageName,
-            string[] subnetNames, InstanceSize instanceSize, string userName, string password, string vNetName, string affinityGroup, string reservedIP = null)
+        public ManagementOperationContext NewAzureQuickVM(OS os, string name, string serviceName, string imageName, string[] subnetNames,
+            InstanceSize instanceSize, string userName, string password, string vNetName, string affinityGroup, string reservedIP = null)
         {
             var result = new ManagementOperationContext();
             try
             {
-                result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(os, name, serviceName, imageName, instanceSize.ToString(), userName, password, vNetName, subnetNames, affinityGroup, reservedIP));
+                result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(
+                    os, name, serviceName, imageName, instanceSize.ToString(), userName, password,
+                    vNetName, subnetNames, affinityGroup, reservedIP));
             }
             catch (Exception e)
             {
-                if (e.ToString().Contains("409"))
+                if (e.ToString().Contains("Service already exists") ||
+                    (e.InnerException != null && e.InnerException.ToString().Contains("Service already exists")))
                 {
-                    Utilities.RetryActionUntilSuccess(
-                        () => result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(os, name, serviceName, imageName, userName, password, null, instanceSize.ToString())),
-                        "409", 4, 60);
+                    RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(
+                        os, name, serviceName, imageName, instanceSize.ToString(), userName, password,
+                        vNetName, subnetNames, null, reservedIP));
                 }
                 else
                 {
-                    Console.WriteLine(e.InnerException.ToString());
+                    Console.WriteLine(e.ToString());
+                    if (e.InnerException != null)
+                    {
+                        Console.WriteLine(e.InnerException.ToString());
+                    }
                     throw;
                 }
             }
@@ -841,10 +850,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         #endregion
 
         #region AzureReservedIP
-        internal ManagementOperationContext NewAzureReservedIP(string name, string aff, string svc, string dep, string label = null)
-        {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureReservedIPCmdletInfo(name, aff, label, svc, dep));
-        }
 
         internal ManagementOperationContext NewAzureReservedIP(string name, string location, string label = null)
         {
@@ -1365,6 +1370,37 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return result;
         }
 
+        public void AddAzureVMImage(
+            string imageName,
+            string label,
+            SM.VirtualMachineImageDiskConfigSet diskConfig,
+            string description = null,
+            string eula = null,
+            string imageFamily = null,
+            DateTime? publishedDate = null,
+            string privacyUri = null,
+            string recommendedVMSize = null,
+            string iconName = null,
+            string smallIconName = null,
+            bool? showInGui = null)
+        {
+            var cmdletInfo = new AddAzureVMImageCmdletInfo(
+                imageName,
+                label,
+                diskConfig,
+                description,
+                eula,
+                imageFamily,
+                publishedDate,
+                privacyUri,
+                recommendedVMSize,
+                iconName,
+                smallIconName,
+                showInGui);
+
+            RunPSCmdletAndReturnFirst<ManagementOperationContext>(cmdletInfo);
+        }
+
         public SM.OSImageContext UpdateAzureVMImage(string imageName, string label, string recommendedSize = null)
         {
             return RunPSCmdletAndReturnFirst<SM.OSImageContext>(new UpdateAzureVMImageCmdletInfo(imageName, label, recommendedSize, null, null));
@@ -1381,8 +1417,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         public void UpdateAzureVMImage(string imageName, string label, string imageFamily, bool showInGui = false, string recommendedSize = null,
-            string description = null, string eula = null, Uri privacyUri = null, DateTime? publishedDate = null, string language = null, Uri iconUri = null,
-            Uri smallIconUri = null)
+            string description = null, string eula = null, Uri privacyUri = null, DateTime? publishedDate = null, string language = null, string iconUri = null,
+            string smallIconUri = null)
         {
             RunPSCmdletAndReturnFirst<ManagementOperationContext>(new UpdateAzureVMImageCmdletInfo(imageName, label, recommendedSize, description, eula, imageFamily,
                 privacyUri, publishedDate.Value, language, iconUri, smallIconUri, showInGui));
@@ -1397,9 +1433,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return result;
         }
 
-        public void SaveAzureVMImage(string serviceName, string vmName, string newImageName, string osState = null,string newImageLabel = null)
+        public void SaveAzureVMImage(string serviceName, string vmName, string newImageName, string osState = null, string newImageLabel = null, bool debug = false, bool retryOnConflict = false)
         {
-            RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SaveAzureVMImageCmdletInfo(serviceName, vmName, newImageName, newImageLabel, osState));
+            RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SaveAzureVMImageCmdletInfo(serviceName, vmName, newImageName, newImageLabel, osState), debug, retryOnConflict);
         }
 
         public Collection<SM.OSImageContext> GetAzureVMImage(string imageName = null)
@@ -1409,7 +1445,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         public Collection<SM.VMImageContext> GetAzureVMImageReturningVMImages(string imageName = null)
         {
-            return RunPSCmdletAndReturnAll<SM.VMImageContext>(new GetAzureVMImageCmdletInfo(imageName));
+            Collection<SM.OSImageContext> images = GetAzureVMImage(imageName);
+            Collection<SM.VMImageContext> vmImages = new Collection<SM.VMImageContext>();
+            foreach (SM.OSImageContext image in images)
+            {
+                if (image is SM.VMImageContext)
+                {
+                    vmImages.Add((SM.VMImageContext)image);
+                }
+            }
+
+            return vmImages;
         }
 
         public string GetAzureVMImageName(string[] keywords, bool exactMatch = true)
