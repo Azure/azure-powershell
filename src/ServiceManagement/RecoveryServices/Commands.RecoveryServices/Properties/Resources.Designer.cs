@@ -137,6 +137,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vault information (Name: {0}, Location: {1}) is not correct.
+        /// </summary>
+        internal static string InCorrectVaultInformation {
+            get {
+                return ResourceManager.GetString("InCorrectVaultInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation failed.
         ///{0}.
         /// </summary>

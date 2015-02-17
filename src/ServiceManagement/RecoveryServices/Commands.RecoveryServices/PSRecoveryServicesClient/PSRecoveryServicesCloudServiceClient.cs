@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             IEnumerable<CloudService> cloudServiceList = this.GetCloudServices();
             CloudService cloudServiceToReturn = null;
 
+            Vault selectedVault = null;
             foreach (var cloudService in cloudServiceList)
             {
-                Vault selectedVault = null;
                 if (cloudService.GeoRegion.Equals(vault.Location, StringComparison.InvariantCultureIgnoreCase))
                 {
                     foreach (var resource in cloudService.Resources)
@@ -66,6 +66,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     cloudServiceToReturn = cloudService;
                     break;
                 }
+            }
+
+            if (null == selectedVault)
+            {
+                throw new ArgumentException(
+                    string.Format(
+                    Properties.Resources.InCorrectVaultInformation,
+                    vault.Name,
+                    vault.Location));
             }
 
             return cloudServiceToReturn;
