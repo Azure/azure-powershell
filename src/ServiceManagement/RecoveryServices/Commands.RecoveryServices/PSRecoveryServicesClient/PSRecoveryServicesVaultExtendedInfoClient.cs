@@ -71,6 +71,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>credential object</returns>
         public ASRVaultCreds GenerateVaultCredential(X509Certificate2 managementCert, ASRVault vault, Site site)
         {
+            string currentResourceName = PSRecoveryServicesClient.asrVaultCreds.ResourceName;
+            string currentCloudServiceName = PSRecoveryServicesClient.asrVaultCreds.CloudServiceName;
+
+            // Update vault settings with the working vault to generate file
             Utilities.UpdateVaultSettings(new ASRVaultCreds()
             {
                 CloudServiceName = vault.CloudServiceName,
@@ -99,6 +103,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                                 channelIntegrityKey,
                                                 vault,
                                                 site);
+
+            // Update back the original vault settings
+            Utilities.UpdateVaultSettings(new ASRVaultCreds()
+            {
+                CloudServiceName = currentCloudServiceName,
+                ResourceName = currentResourceName
+            });
 
             return asrVaultCreds;
         }

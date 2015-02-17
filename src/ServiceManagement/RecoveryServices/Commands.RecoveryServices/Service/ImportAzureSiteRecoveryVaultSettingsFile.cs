@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     asrVaultCreds.ResourceName,
                     asrVaultCreds.CloudServiceName);
 
-                this.ImportAzureSiteRecoveryVaultSettings(asrVaultCreds);
+                Utilities.UpdateVaultSettings(asrVaultCreds);
                 this.WriteObject(new ASRVaultSettings(
                     asrVaultCreds.ResourceName,
                     asrVaultCreds.CloudServiceName));
@@ -115,24 +115,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             catch (Exception exception)
             {
                 this.HandleException(exception);
-            }
-        }
-
-        /// <summary>
-        /// Imports Azure Site Recovery Vault settings.
-        /// </summary>
-        /// <param name="asrVaultCreds">ASR Vault credentials</param>
-        public void ImportAzureSiteRecoveryVaultSettings(ASRVaultCreds asrVaultCreds)
-        {
-            object updateVaultSettingsOneAtATime = new object();
-            lock (updateVaultSettingsOneAtATime)
-            {
-                PSRecoveryServicesClient.asrVaultCreds.ResourceName =
-                    asrVaultCreds.ResourceName;
-                PSRecoveryServicesClient.asrVaultCreds.CloudServiceName =
-                    asrVaultCreds.CloudServiceName;
-                PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey =
-                    asrVaultCreds.ChannelIntegrityKey;
             }
         }
     }
