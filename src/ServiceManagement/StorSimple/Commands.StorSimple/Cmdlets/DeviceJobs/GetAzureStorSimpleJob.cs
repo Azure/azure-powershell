@@ -84,6 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByDeviceName)]
         [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
         [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByStatus)]
+        [ValidateRange(0, Int32.MaxValue)]
         public int? Skip { get; set; }
 
         /// <summary>
@@ -93,6 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByDeviceName)]
         [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
         [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByStatus)]
+        [ValidateRange(0, Int32.MaxValue)]
         public int? First { get; set; }
         #endregion params
 

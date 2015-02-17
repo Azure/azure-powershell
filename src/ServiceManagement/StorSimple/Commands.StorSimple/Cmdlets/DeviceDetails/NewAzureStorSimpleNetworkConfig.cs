@@ -30,6 +30,21 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class NewAzureStorSimpleNetworkConfig : StorSimpleCmdletBase
     {
         #region Parameters
+
+        /// <summary>
+        /// Whether the net interface is iscsi enabled/disabled
+        /// </summary>
+        [Parameter(Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIsIscsiEnabled)]
+        [ValidateNotNullOrEmptyAttribute]
+        public bool? IsIscsiEnabled { get; set; }
+
+        /// <summary>
+        /// Whether the net interface is cloud enabled/disabled
+        /// </summary>
+        [Parameter(Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIsCloudEnabled)]
+        [ValidateNotNullOrEmptyAttribute]
+        public bool? IsCloudEnabled { get; set; }
+        
         /// <summary>
         /// IPv4Address for controller 0, should be used only with Data0 interface
         /// </summary>
@@ -43,14 +58,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Position = 3, HelpMessage=StorSimpleCmdletHelpMessage.HelpMessageController1IPv4Address)]
         [ValidateNotNullOrEmptyAttribute]
         public IPAddress Controller1IPv4Address { get; set; }
-        
+
         /// <summary>
-        /// Interface alias of interface for which settings are being supplied. A value 
-        /// from Data0 to Data5
+        /// IPv4 net mask for interface
         /// </summary>
-        [Parameter(Mandatory=true, Position = 9, HelpMessage=StorSimpleCmdletHelpMessage.HelpMessageInterfaceAlias)]
-        [ValidateSetAttribute(new string[] { "Data0", "Data1", "Data2", "Data3", "Data4", "Data5" })] 
-        public string InterfaceAlias { get; set; }
+        [Parameter(Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv6Gateway)]
+        [ValidateNotNullOrEmptyAttribute]
+        public IPAddress IPv6Gateway { get; set; }
+
+        /// <summary>
+        /// IPv4 Address of gateway
+        /// </summary>
+        [Parameter(Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv4Gateway)]
+        [ValidateNotNullOrEmptyAttribute]
+        public IPAddress IPv4Gateway { get; set; }
 
         /// <summary>
         /// IPv4 Address for the net interface
@@ -58,49 +79,28 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Position = 6, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv4Address)]
         [ValidateNotNullOrEmptyAttribute]
         public IPAddress IPv4Address { get; set; }
-        
-        /// <summary>
-        /// IPv4 Address of gateway
-        /// </summary>
-        [Parameter(Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv4Gateway)]
-        [ValidateNotNullOrEmptyAttribute]
-        public IPAddress IPv4Gateway { get; set; }
-        
-        /// <summary>
-        /// IPv4 netmask for this interface
-        /// </summary>
-        [Parameter(Position = 8, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv4Netmask)]
-        [ValidateNotNullOrEmptyAttribute]
-        public IPAddress IPv4Netmask { get; set; }
-        
-        /// <summary>
-        /// IPv4 net mask for interface
-        /// </summary>
-        [Parameter(Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv6Gateway)]
-        [ValidateNotNullOrEmptyAttribute]
-        public IPAddress IPv6Gateway { get; set; }
-        
+
         /// <summary>
         /// IPv6 Prefix for the net interface
         /// </summary>
         [Parameter(Position = 7, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv6Prefix)]
         [ValidateNotNullOrEmptyAttribute]
         public string IPv6Prefix { get; set; }
-        
-        /// <summary>
-        /// Whether the net interface is cloud enabled/disabled
-        /// </summary>
-        [Parameter(Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIsCloudEnabled)]
-        [ValidateNotNullOrEmptyAttribute]
-        public bool? IsCloudEnabled { get; set; }
-        
-        /// <summary>
-        /// Whether the net interface is iscsi enabled/disabled
-        /// </summary>
-        [Parameter(Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIsIscsiEnabled)]
-        [ValidateNotNullOrEmptyAttribute]
-        public bool? IsIscsiEnabled { get; set; }
                 
+        /// <summary>
+        /// IPv4 netmask for this interface
+        /// </summary>
+        [Parameter(Position = 8, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIPv4Netmask)]
+        [ValidateNotNullOrEmptyAttribute]
+        public IPAddress IPv4Netmask { get; set; }
+
+        /// <summary>
+        /// Interface alias of interface for which settings are being supplied. A value 
+        /// from Data0 to Data5
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 9, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageInterfaceAlias)]
+        [ValidateSetAttribute(new string[] { "Data0", "Data1", "Data2", "Data3", "Data4", "Data5" })]
+        public string InterfaceAlias { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()

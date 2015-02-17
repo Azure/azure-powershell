@@ -95,5 +95,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string HelpMessageTimeZone = "TimeZone for the device.";
         public const string HelpMessageNewDeviceName = "New friendly name for the device.";
         public const string HelpMessageDeviceJobId = "Instance id of the device job";
+        public const string HelpMessageSEK = "Service Encryption Key for the resource of the virtual device.";
     }
 }

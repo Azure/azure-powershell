@@ -54,7 +54,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         public string NewName { get; set; }
         
         /// <summary>
-        /// The following is the definition of the input parameter "TimeZone".       
         /// TimeZone for the device.
         /// </summary>
         [Parameter(Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageTimeZone)]
@@ -93,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
 
                 // Get the current device details.
-                var deviceDetails = StorSimpleClient.GetDeviceDetails(DeviceId.ToString());
+                var deviceDetails = StorSimpleClient.GetDeviceDetails(DeviceId);
                 if (deviceDetails == null)
                 {
                     WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenIdInResourceMessage, StorSimpleContext.ResourceName, DeviceId));

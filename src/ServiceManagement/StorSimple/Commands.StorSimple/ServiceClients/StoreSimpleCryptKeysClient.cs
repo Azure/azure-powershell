@@ -23,5 +23,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         {
             return this.GetStorSimpleClient().ResourceEncryptionKeys.Get(GetCustomRequestHeaders());
         }
+
+        public string GetDevicePublicKey()
+        {
+            // Fetch the actual public key
+            return "test_public_key_cert";
+        }
     }
 }
