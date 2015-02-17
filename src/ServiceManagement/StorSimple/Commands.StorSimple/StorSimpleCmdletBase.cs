@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
             if (opResponse.StatusCode != HttpStatusCode.Accepted && opResponse.StatusCode != HttpStatusCode.OK)
             {
-                msg = string.Format(Resources.FailureMessageSubmitJob, operationName);
+                msg = string.Format(Resources.FailureMessageSubmitTask, operationName);
             }
 
             else
@@ -77,14 +77,43 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 if (opResponse.GetType().Equals(typeof(TaskResponse)))
                 {
                     var taskResponse = opResponse as TaskResponse;
-                    msg = string.Format(Resources.SuccessMessageSubmitJob, operationName, taskResponse.TaskId);
+                    msg = string.Format(Resources.SuccessMessageSubmitTask, operationName, taskResponse.TaskId);
                     WriteObject(taskResponse.TaskId);
                 }
 
                 else if (opResponse.GetType().Equals(typeof(GuidTaskResponse)))
                 {
                     var guidTaskResponse = opResponse as GuidTaskResponse;
-                    msg = string.Format(Resources.SuccessMessageSubmitJob, operationName, guidTaskResponse.TaskId);
+                    msg = string.Format(Resources.SuccessMessageSubmitTask, operationName, guidTaskResponse.TaskId);
+                    WriteObject(guidTaskResponse.TaskId);
+                }
+            }
+
+            WriteVerbose(msg);
+        }
+
+        internal virtual void HandleDeviceJobResponse(AzureOperationResponse opResponse, string operationName)
+        {
+            string msg = string.Empty;
+
+            if (opResponse.StatusCode != HttpStatusCode.Accepted && opResponse.StatusCode != HttpStatusCode.OK)
+            {
+                msg = string.Format(Resources.FailureMessageSubmitTask, operationName);
+            }
+
+            else
+            {
+                if (opResponse.GetType().Equals(typeof(TaskResponse)))
+                {
+                    var taskResponse = opResponse as TaskResponse;
+                    msg = string.Format(Resources.SuccessMessageSubmitDeviceJob, operationName, taskResponse.TaskId);
+                    WriteObject(taskResponse.TaskId);
+                }
+
+                else if (opResponse.GetType().Equals(typeof(GuidTaskResponse)))
+                {
+                    var guidTaskResponse = opResponse as GuidTaskResponse;
+                    msg = string.Format(Resources.SuccessMessageSubmitDeviceJob, operationName, guidTaskResponse.TaskId);
                     WriteObject(guidTaskResponse.TaskId);
                 }
             }

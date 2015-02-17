@@ -35,10 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string TargetDeviceName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
-        public SwitchParameter WaitForComplete { get; set; }
-
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageForce)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageForce)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -78,17 +75,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             ReturnWorkflowId = true
                         };
 
-                        if (WaitForComplete.IsPresent)
-                        {
-                            var taskstatusInfo = StorSimpleClient.TriggerFailover(deviceId, drRequest);
-                            HandleSyncTaskResponse(taskstatusInfo, "start");
-                        }
-                        else
-                        {
-                            //async scenario
-                            var taskresult = StorSimpleClient.TriggerFailoverAsync(deviceId, drRequest);
-                            HandleAsyncTaskResponse(taskresult, "start");
-                        }
+                        var taskResponse = StorSimpleClient.TriggerFailoverAsync(deviceId, drRequest);
+                        HandleDeviceJobResponse(taskResponse, "start");
                     });
             }
             catch (Exception exception)
