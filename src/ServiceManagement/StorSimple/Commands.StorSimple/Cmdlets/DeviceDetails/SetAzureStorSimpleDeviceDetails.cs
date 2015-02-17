@@ -31,28 +31,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsCommon.Set, "AzureStorSimpleDeviceDetails"), OutputType(typeof(DeviceDetails))]
     public class SetAzureStorSimpleDeviceDetails : StorSimpleCmdletBase
     {
-        /// <summary>
+                /// <summary>
         /// Device Id of the device to configure.
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceId)]
-        [ValidateNotNullOrEmptyAttribute]
-        public string DeviceId
-        {
-            get { return this.deviceid; }
-            set { this.deviceid = value; }
-        }
+        [ValidateNotNullOrEmptyAttribute] { get; set; }
         private string deviceid;
 
         /// <summary>
         /// Friendly Name of the device to configure.
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
-        [ValidateNotNullOrEmptyAttribute]
-        public string DeviceName
-        {
-            get { return this.devicename; }
-            set { this.devicename = value; }
-        }
+        [ValidateNotNullOrEmptyAttribute] { get; set; }
         private string devicename;
 
         /// <summary>
@@ -60,24 +50,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// </summary>
         [Parameter(Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageNewDeviceName)]
         [ValidateNotNullOrEmptyAttribute]
-        public string NewName
-        {
-            get { return this.newName; }
-            set { this.newName = value; }
-        }
-        private string newName;
-
+        public string NewName { get; set; }
+        
         /// <summary>
         /// The following is the definition of the input parameter "TimeZone".       
         /// TimeZone for the device.
         /// </summary>
         [Parameter(Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageTimeZone)]
-        [ValidateNotNullOrEmptyAttribute]
-        public System.TimeZone TimeZone
-        {
-            get { return this.timezone; }
-            set { this.timezone = value; }
-        }
+        [ValidateNotNullOrEmptyAttribute] { get; set; }
         private System.TimeZone timezone;
 
         /// <summary>
@@ -85,36 +65,21 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// </summary>
         [Parameter(Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessagePrimaryDnsServer)]
         [ValidateNotNullOrEmptyAttribute]
-        public System.Net.IPAddress PrimaryDnsServer
-        {
-            get { return this.primarydnsserver; }
-            set { this.primarydnsserver = value; }
-        }
-        private System.Net.IPAddress primarydnsserver;
-
+        public System.Net.IPAddress PrimaryDnsServer { get; set; }
+        
         /// <summary>
         /// Secondary DNS server for the device.
         /// </summary>
         [Parameter(Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageSecondaryDnsServer)]
         [ValidateNotNullOrEmptyAttribute]
-        public System.Net.IPAddress SecondaryDnsServer
-        {
-            get { return this.secondarydnsserver; }
-            set { this.secondarydnsserver = value; }
-        }
-        private System.Net.IPAddress secondarydnsserver;
-
+        public System.Net.IPAddress SecondaryDnsServer { get; set; }
+        
         /// <summary>
         /// A collection of network configs for interfaces on the device.
         /// </summary>
         [Parameter(Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageStorSimpleNetworkConfig)]
         [ValidateNotNullOrEmptyAttribute]
-        public PSObject[] StorSimpleNetworkConfig
-        {
-            get { return this.storsimplenetworkconfig; }
-            set { this.storsimplenetworkconfig = value; }
-        }
-        private PSObject[] storsimplenetworkconfig;
+        public PSObject[] StorSimpleNetworkConfig { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -160,6 +125,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     var updatedDetails = StorSimpleClient.GetDeviceDetails(DeviceId.ToString());
                     WriteObject(updatedDetails);
+                    WriteVerbose(string.Format(Resources.StorSimpleDeviceUpdatedSuccessfully, updatedDetails.DeviceProperties.FriendlyName));
                 }
 
             }
