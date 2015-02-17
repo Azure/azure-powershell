@@ -36,9 +36,12 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
             this.MapReduceConfiguration = new MapReduceConfiguration();
             this.HiveConfiguration = new HiveConfiguration();
             this.OozieConfiguration = new OozieConfiguration();
-            this.HeadNodeVMSize = NodeVMSize.Default;
+            this.HeadNodeVMSize = NodeVMSize.Large.ToString();
+            this.DataNodeVMSize = NodeVMSize.Large.ToString();
+            this.ZookeeperNodeVMSize = null;
             this.ClusterType = ClusterType.Hadoop;
             this.StormConfiguration = new ConfigValuesCollection();
+            this.SparkConfiguration = new ConfigValuesCollection();
             this.HBaseConfiguration = new HBaseConfiguration();
         }
 
@@ -53,7 +56,23 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         /// <value>
         /// The size of the head node VM.
         /// </value>
-        public NodeVMSize HeadNodeVMSize { get; set; }
+        public string HeadNodeVMSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the size of the head node VM.
+        /// </summary>
+        /// <value>
+        /// The size of the head node VM.
+        /// </value>
+        public string DataNodeVMSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the size of the head node VM.
+        /// </summary>
+        /// <value>
+        /// The size of the head node VM.
+        /// </value>
+        public string ZookeeperNodeVMSize { get; set; }
 
         /// <summary>
         ///     Gets or sets the size of the cluster in data nodes.
@@ -129,6 +148,11 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         ///     Gets a collection of configuration properties to customize the Storm service.
         /// </summary>
         public ConfigValuesCollection StormConfiguration { get; private set; }
+
+        /// <summary>
+        ///     Gets a collection of configuration properties to customize the Spark service.
+        /// </summary>
+        public ConfigValuesCollection SparkConfiguration { get; private set; }
 
         /// <summary>
         ///     Gets a collection of configuration properties to customize the HBase service.
