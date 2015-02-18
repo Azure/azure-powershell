@@ -157,7 +157,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PsTag.cs" />
     <Compile Include="Util\PowerShellExtension.cs" />
-    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="README" />
     <Compile Include="StorageObjectType.cs" />
