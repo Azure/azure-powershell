@@ -312,6 +312,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
+                // In case of SAN we don't have a protection profile associated yet. So we are giving a dummy ID now.
                 ID = this.PrimaryContainerId,
                 ReplicationProvider = this.ReplicationProvider,
                 HyperVReplicaAzureProviderSettingsObject = null,

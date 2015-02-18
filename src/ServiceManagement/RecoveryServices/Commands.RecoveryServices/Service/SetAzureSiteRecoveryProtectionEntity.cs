@@ -328,21 +328,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                     sanInput.TargetCloudIdForLunDeletion = recoveryCloudId;
 
                                     input.ReplicationProviderInput = DataContractUtils.Serialize<SanDisableProtectionInput>(sanInput);
+                                }
 
-                                    this.jobResponse =
+                                this.jobResponse =
                                     RecoveryServicesClient.DisableProtection(
-                                        this.ProtectionContainerId,
-                                        this.ProtectionEntity.FabricObjectId,
-                                        input);
-                                }
-                                else
-                                {
-                                    this.jobResponse =
-                                        RecoveryServicesClient.DisableProtection(
-                                        this.ProtectionContainerId,
-                                        this.Id,
-                                        input);
-                                }
+                                    this.ProtectionContainerId,
+                                    this.Id,
+                                    input);
                             }
 
                             this.WriteJob(this.jobResponse.Job);

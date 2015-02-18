@@ -1208,6 +1208,150 @@ function Test-DisableProtection
 
 <#
 .SYNOPSIS
+Recovery Services San E2E test
+#>
+function Test-SanE2E
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$servers = Get-AzureSiteRecoveryServer
+	$primaryVmm = $servers[1]
+	$recoveryVmm = $servers[0]
+	$storagePri = Get-AzureSiteRecoveryStorage -Server $primaryVmm
+	$storageRec = Get-AzureSiteRecoveryStorage -Server $recoveryVmm
+
+	# Find primary array and pool.
+	foreach($storage in $storagePri)
+	{		
+		# Find primary array
+		if ($storage.Name.Contains("HRMPROSVM01"))
+		{
+			$primaryArray = $storage
+
+			foreach($pool in $primaryArray.StoragePools)
+			{
+				# Find primary pool
+				if ($pool.Name.Contains("SanOneSDKPrimaryPool"))
+				{
+					$primaryStoragePool = $pool
+					break
+				}
+			}
+		}
+	}
+
+	# Find recovery array and pool.
+	foreach($storage in $storageRec)
+	{		
+		# Find recovery array
+		if ($storage.Name.Contains("HRMDRSVM01"))
+		{
+			$recoveryArray = $storage
+
+			foreach($pool in $recoveryArray.StoragePools)
+			{
+				# Find recovery pool
+				if ($pool.Name.Contains("SanOneSDKRecoveryPool"))
+				{
+					$recoveryStoragePool = $pool
+					break
+				}
+			}
+		}
+	}
+
+	# Pair pools
+	$job = New-AzureSiteRecoveryStoragePoolMapping -PrimaryStorage $primaryArray -PrimaryStoragePoolId $primaryStoragePool.Id -RecoveryStorage $recoveryArray -RecoveryStoragePoolId $recoveryStoragePool.Id
+	Assert-NotNull($job);
+	
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+
+		# Find primary cloud
+		if ($protectionContainer.Name.Contains("SanPrimaryCloud"))
+		{
+			$primaryContainer = $protectionContainer
+		}
+			
+		# Find recovery cloud
+		if ($protectionContainer.Name.Contains("SanRecoverySanCloud"))
+		{
+			$recoveryContainer = $protectionContainer
+		}
+	}
+    
+	# Create protection profile
+    $pp = New-AzureSiteRecoveryProtectionProfileObject -ReplicationProvider San -PrimaryContainerId $primaryContainer.ID -RecoveryContainerId $recoveryContainer.ID -PrimaryArrayId $primaryArray.ID -RecoveryArrayId $recoveryArray.ID
+
+	# Start cloud pairing
+	$job = Start-AzureSiteRecoveryProtectionProfileAssociationJob -ProtectionProfile $pp -PrimaryProtectionContainer $primaryContainer -RecoveryProtectionContainer $recoveryContainer
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 600
+	
+	# Get protection Entity (RG)
+	$pe = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $primaryContainer
+
+	# Enable RG
+	$job = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $pe -Protection Enable -RPO 0 -Replicationtype Async -RecoveryArrayId $recoveryArray.ID
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 900
+
+	# Get protection Entity (RG) again after enable
+	$pe = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $primaryContainer
+
+	# Test failover RG
+	$job = Start-AzureSiteRecoveryTestFailoverJob -ProtectionEntity $pe -WaitForCompletion -Direction PrimaryToRecovery
+	Assert-NotNull($job);	
+
+	# Resume Job on manual action
+    $job = Resume-AzureSiteRecoveryJob -Id $job.ID
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 900
+
+	# Planned failover RG
+	$job = Start-AzureSiteRecoveryPlannedFailoverJob -ProtectionEntity $pe -Direction PrimaryToRecovery
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 900
+
+	# Reverse RG
+	$job = Update-AzureSiteRecoveryProtection -ProtectionEntity $pe -Direction RecoveryToPrimary
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 600
+
+	# UnPlanned failover RG
+	$job = Start-AzureSiteRecoveryUnPlannedFailoverJob -ProtectionEntity $pe -Direction RecoveryToPrimary
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 900
+
+	# Reverse RG
+	$job = Update-AzureSiteRecoveryProtection -ProtectionEntity $pe -Direction PrimaryToRecovery
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 600
+
+	# Disable RG
+	$job = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $pe -Protection Disable -DeleteReplicaLuns -RecoveryContainerId $recoveryContainer.ID
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 900
+
+	# Start cloud unpairing
+	$job = Start-AzureSiteRecoveryProtectionProfileDissociationJob -ProtectionProfile $pp -PrimaryProtectionContainer $primaryContainer -RecoveryProtectionContainer $recoveryContainer
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 600	
+
+	# UnPair pools
+	$job = Remove-AzureSiteRecoveryStoragePoolMapping -PrimaryStorage $primaryArray -PrimaryStoragePoolId $primaryStoragePool.Id -RecoveryStorage $recoveryArray -RecoveryStoragePoolId $recoveryStoragePool.Id
+	Assert-NotNull($job);
+}
+
+<#
+.SYNOPSIS
 Recovery Services Enable Protection Tests
 #>
 function WaitForCanFailover
@@ -1248,4 +1392,19 @@ function WaitForJobCompletion
 	} while((-not ($endStateDescription -ccontains $job.State)) -and ($timeElapse -lt $NumOfSecondsToWait))
 
 	Assert-True { $endStateDescription -ccontains $job.State } "Job did not reached desired state within $NumOfSecondsToWait seconds."
+}
+
+<#
+.SYNOPSIS
+Wait for job completion and validate the job
+Usage:
+	WaitAndValidatetheJob -JobId $job.ID
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 10
+#>
+function WaitAndValidatetheJob
+{
+	param([string] $JobId, [Int] $NumOfSecondsToWait = 120)
+    WaitForJobCompletion -JobId $JobId -NumOfSecondsToWait $NumOfSecondsToWait
+	$job = Get-AzureSiteRecoveryJob -Id $job.ID
+	Assert-True { $job.State -eq "Succeeded" }
 }
