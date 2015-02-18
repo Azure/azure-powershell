@@ -13,30 +13,33 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class GetAzureAutomationJobOutputTest : TestBase
+    public class GetAzureAutomationCertificateTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private GetAzureAutomationJobOutput cmdlet;
+        private GetAzureAutomationCertificate cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new GetAzureAutomationJobOutput
+            this.cmdlet = new GetAzureAutomationCertificate
                               {
                                   AutomationClient = this.mockAutomationClient.Object,
                                   CommandRuntime = this.mockCommandRuntime
@@ -44,47 +47,38 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void GetAzureAutomationJobOutputStreamAnySuccessfull()
+        public void GetAzureAutomationCertificateByNameSuccessfull()
         {
             // Setup
             string accountName = "automation";
-            string stream = Constants.JobOutputParameter.Any;
-            DateTime startTime = default(DateTime);
-            var jobId = new Guid();
+            string certificateName = "certificate";
 
-            this.mockAutomationClient.Setup(f => f.ListJobStreamItems(accountName, jobId, startTime, null));
+            this.mockAutomationClient.Setup(f => f.GetCertificate(accountName, certificateName));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = jobId;
-            this.cmdlet.StartTime = startTime;
-            this.cmdlet.Stream = stream;
+            this.cmdlet.Name = certificateName;
+            this.cmdlet.SetParameterSet("ByCertificateName");
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListJobStreamItems(accountName, jobId, startTime, null), Times.Once());
+            this.mockAutomationClient.Verify(f => f.GetCertificate(accountName, certificateName), Times.Once());
         }
 
         [TestMethod]
-        public void GetAzureAutomationJobOutputStreamDebugSuccessfull()
+        public void GetAzureAutomationCertificateByAllSuccessfull()
         {
             // Setup
             string accountName = "automation";
-            DateTime startTime = default(DateTime);
-            string stream = Constants.JobOutputParameter.Debug;
-            var jobId = new Guid();
 
-            this.mockAutomationClient.Setup(f => f.ListJobStreamItems(accountName, jobId, startTime, stream));
+            this.mockAutomationClient.Setup(f => f.ListCertificates(accountName)).Returns((string a) => new List<CertificateInfo>());
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = jobId;
-            this.cmdlet.StartTime = startTime;
-            this.cmdlet.Stream = stream;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListJobStreamItems(accountName, jobId, startTime, stream), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListCertificates(accountName), Times.Once());
         }
     }
 }
