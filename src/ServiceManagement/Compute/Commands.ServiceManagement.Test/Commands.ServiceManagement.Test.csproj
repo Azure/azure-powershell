@@ -437,9 +437,14 @@
     <None Include="Resources\overwrite_VHD.csv" />
     <None Include="Resources\package.csv" />
     <None Include="Resources\packageADDomain.csv" />
+    <None Include="Resources\packageReservedIP.csv" />
     <None Include="Resources\packageScenario.csv" />
     <None Include="Resources\patch_VHD.csv" />
     <None Include="Resources\rdpcert.pfx" />
+    <None Include="Resources\ReservedIPConfig1.cscfg" />
+    <None Include="Resources\ReservedIPConfig1update.cscfg" />
+    <None Include="Resources\ReservedIPConfig2.cscfg" />
+    <None Include="Resources\ReservedIPConfig2update.cscfg" />
     <None Include="Resources\resume_VHD.csv" />
     <None Include="Resources\SampleAppV1.cscfg" />
     <None Include="Resources\SampleAppV2.cscfg" />
