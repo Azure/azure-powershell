@@ -25,18 +25,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
     {
         public DataContainerGroupsGetResponse GetFaileoverDataContainerGroups(string deviceId)
         {
-            return this.GetStorSimpleClient().DeviceRestore.ListDCGroups(deviceId, this.GetCustomRequestHeaders());
+            return this.GetStorSimpleClient().DeviceFailover.ListDCGroups(deviceId, this.GetCustomRequestHeaders());
         }
 
-        public TaskStatusInfo TriggerFailover(string deviceId, DeviceRestoreRequest drRequest)
+        public TaskResponse TriggerFailover(string deviceId, DeviceFailoverRequest drRequest)
         {
-            return GetStorSimpleClient().DeviceRestore.Trigger(deviceId, drRequest, GetCustomRequestHeaders());
+            return GetStorSimpleClient().DeviceFailover.Trigger(deviceId, drRequest, GetCustomRequestHeaders());
 
-        }
-
-        public TaskResponse TriggerFailoverAsync(string deviceId, DeviceRestoreRequest drRequest)
-        {
-            return GetStorSimpleClient().DeviceRestore.BeginTriggering(deviceId, drRequest, GetCustomRequestHeaders());
         }
 
 

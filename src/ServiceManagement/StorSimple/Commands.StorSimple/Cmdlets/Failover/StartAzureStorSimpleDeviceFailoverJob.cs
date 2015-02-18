@@ -67,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                         var vcIdList = StorSimpleClient.GetVcIdListFromVcGroups(VolumecontainerGroups);
 
-                        var drRequest = new DeviceRestoreRequest()
+                        var drRequest = new DeviceFailoverRequest()
                         {
                             DataContainerIds = vcIdList,
                             TargetDeviceId = targetDeviceId,
@@ -75,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             ReturnWorkflowId = true
                         };
 
-                        var taskResponse = StorSimpleClient.TriggerFailoverAsync(deviceId, drRequest);
+                        var taskResponse = StorSimpleClient.TriggerFailover(deviceId, drRequest);
                         HandleDeviceJobResponse(taskResponse, "start");
                     });
             }
