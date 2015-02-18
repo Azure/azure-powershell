@@ -14,12 +14,11 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 using Microsoft.Azure.Common.Extensions;
 using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Management.SiteRecovery;
+using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
