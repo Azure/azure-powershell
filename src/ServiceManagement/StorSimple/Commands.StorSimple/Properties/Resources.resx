@@ -423,4 +423,10 @@
   <data name="ResourceContextNotSetMessage" xml:space="preserve">
     <value>Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context.</value>
   </data>
+  <data name="StartASSBackupCloneJobMessage" xml:space="preserve">
+    <value>Cloning backup with backupId {0}...</value>
+  </data>
+  <data name="StartASSBackupCloneJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to clone the backup with backupId{0}?</value>
+  </data>
 </root>

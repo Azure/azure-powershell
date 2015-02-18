@@ -45,9 +45,9 @@ Returns default values for the test
 function Get-DefaultValue ($key)
 {
     $defaults = @{
-		StorageAccountName = "wuscisclcis1diagj5sy4";
-		StorageAccountPrimaryAccessKey = "gLm0tjCPJAUKzBFEVjN92ZtEwKnQK8MLasuX/ymNwMRQWFGmUA5sWZUZt9u8JfouhhYyzb3v5RQWtZSX+GxMbg==";
-		StorageAccountSecondaryAccessKey = "zLo+ziNdEX86ffu6OURQFNRL5lrLJpf9J9T8TOk6ne/Mpl7syq1DUp4TIprBt+DGPzo4ytAON+H1N4p6GRwVHg=="
+		StorageAccountName = "bugtest2";
+		StorageAccountPrimaryAccessKey = "oFIiw+BZO13G+WZecBE5+i+aUajr9dvSbI/B003mzyOU+ZoE0806PWtNt3EHY2JZwI93cbNNoSfG10cr9Of63Q==";
+		StorageAccountSecondaryAccessKey = "ofYadBCein2T0s1K+JOFW4t7+XdOjXMlVm1gbWPKV2lPsAiCzEhTq/3wGsEysiUCkyebOCM2RI7aoLyUfkzUWw=="
 	}
 
 	return $defaults[$key];
@@ -59,7 +59,7 @@ Gets device name to use for the test
 #>
 function Get-DeviceName ()
 {
-    $selectedResource = Select-AzureStorSimpleResource -ResourceName OneSDK-Resource -RegistrationKey "1975530557201809476:eOqMQdvHon3lGwKVYctxZVnwpZcqi8ZS1uyCLJAl6Wg=:JovQDqP1KyWdh4m3mYkdzQ==#4edfc1cde41104e5"
+    $selectedResource = Select-AzureStorSimpleResource -ResourceName "JanoopurOCS02" -RegistrationKey "5931618384417340478:kCgjjcl3hGvX4xwPdH0oJ8L7p5kPVKGT3IkaaCITc8c=:FNM6ctswzaDa7qzMx3FLcA==#a46b369281fe310e"
 	$deviceName = (Get-AzureStorSimpleDevice) | Where{$_.Status -eq "Online"} | Select-Object -first 1 -wait | Select -ExpandProperty "FriendlyName"
     $pass = Assert-NotNull $deviceName
     $deviceName
