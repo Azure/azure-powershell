@@ -26,6 +26,7 @@ using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.WindowsAzure.Management.Automation;
 using Microsoft.WindowsAzure.Management.Automation.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Common.Authentication.Models;
 using Newtonsoft.Json;
 
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
@@ -42,8 +43,7 @@ using Connection = Microsoft.Azure.Commands.Automation.Model.Connection;
 namespace Microsoft.Azure.Commands.Automation.Common
 {
     using AutomationManagement = WindowsAzure.Management.Automation;
-    using Microsoft.Azure.Common.Extensions.Models;
-    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
 
 
@@ -56,10 +56,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
         }
 
-        public AutomationClient(AzureSubscription subscription)
+        public AutomationClient(AzureProfile profile, AzureSubscription subscription)
             : this(subscription,
-                AzureSession.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(subscription,
-                    AzureEnvironment.Endpoint.ServiceManagement))
+            AzureSession.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
         {
         }
 
