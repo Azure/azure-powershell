@@ -2674,13 +2674,13 @@ Contosovault                                                RecoveryServices-6JP
   </command:command>
 
 <!--Start-AzureSiteRecoveryTestFailoverJob-->
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
         Start-AzureSiteRecoveryTestFailoverJob
       </command:name>
       <maml:description>
-        <maml:para>Start the Test Failover operation for a Virtual Machine or Recovery Plan under Azure Site Recovery</maml:para>
+        <maml:para>Start the Test Failover operation for a Protection Entity or Recovery Plan under Azure Site Recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para></maml:para>
@@ -2696,6 +2696,13 @@ Contosovault                                                RecoveryServices-6JP
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Start-AzureSiteRecoveryTestFailoverJob</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Direction</maml:name>
+          <maml:description>
+            <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>RecoveryPlan</maml:name>
           <maml:description>
@@ -2703,13 +2710,6 @@ Contosovault                                                RecoveryServices-6JP
           </maml:description>
           <command:parameterValue required="true" variableLength="false">ASRRecoveryPlan</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Direction</maml:name>
-          <maml:description>
-            <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>WaitForCompletion</maml:name>
           <maml:description>
@@ -2719,6 +2719,13 @@ Contosovault                                                RecoveryServices-6JP
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Start-AzureSiteRecoveryTestFailoverJob</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Direction</maml:name>
+          <maml:description>
+            <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>RpId</maml:name>
           <maml:description>
@@ -2726,12 +2733,28 @@ Contosovault                                                RecoveryServices-6JP
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>WaitForCompletion</maml:name>
+          <maml:description>
+            <maml:para>Waits till the operation completes</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Start-AzureSiteRecoveryTestFailoverJob</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Direction</maml:name>
           <maml:description>
             <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>ProtectionEntity</maml:name>
+          <maml:description>
+            <maml:para>Protection Entity object</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ASRProtectionEntity</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>WaitForCompletion</maml:name>
@@ -2742,35 +2765,12 @@ Contosovault                                                RecoveryServices-6JP
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Start-AzureSiteRecoveryTestFailoverJob</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-          <maml:name>ProtectionEntity</maml:name>
-          <maml:description>
-            <maml:para>Protection Entity object</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ASRProtectionEntity</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Direction</maml:name>
           <maml:description>
             <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>WaitForCompletion</maml:name>
-          <maml:description>
-            <maml:para>Waits till the operation completes</maml:para>
-          </maml:description>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Start-AzureSiteRecoveryTestFailoverJob</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-          <maml:name>ProtectionEntity</maml:name>
-          <maml:description>
-            <maml:para>Protection Entity object</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ASRProtectionEntity</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LogicalNetworkId</maml:name>
@@ -2779,12 +2779,12 @@ Contosovault                                                RecoveryServices-6JP
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Direction</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>ProtectionEntity</maml:name>
           <maml:description>
-            <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
+            <maml:para>Protection Entity object</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">ASRProtectionEntity</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>WaitForCompletion</maml:name>
@@ -2795,6 +2795,13 @@ Contosovault                                                RecoveryServices-6JP
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Start-AzureSiteRecoveryTestFailoverJob</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Direction</maml:name>
+          <maml:description>
+            <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ProtectionEntity</maml:name>
           <maml:description>
@@ -2809,13 +2816,6 @@ Contosovault                                                RecoveryServices-6JP
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Direction</maml:name>
-          <maml:description>
-            <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>WaitForCompletion</maml:name>
           <maml:description>
@@ -2825,6 +2825,13 @@ Contosovault                                                RecoveryServices-6JP
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Start-AzureSiteRecoveryTestFailoverJob</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Direction</maml:name>
+          <maml:description>
+            <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ProtectionContainerId</maml:name>
           <maml:description>
@@ -2839,13 +2846,6 @@ Contosovault                                                RecoveryServices-6JP
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Direction</maml:name>
-          <maml:description>
-            <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>WaitForCompletion</maml:name>
           <maml:description>
@@ -2856,16 +2856,9 @@ Contosovault                                                RecoveryServices-6JP
       <command:syntaxItem>
         <maml:name>Start-AzureSiteRecoveryTestFailoverJob</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ProtectionContainerId</maml:name>
+          <maml:name>Direction</maml:name>
           <maml:description>
-            <maml:para>Id of the Protection Container</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ProtectionEntityId</maml:name>
-          <maml:description>
-            <maml:para>Id of the Protection Entity</maml:para>
+            <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
@@ -2877,9 +2870,16 @@ Contosovault                                                RecoveryServices-6JP
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Direction</maml:name>
+          <maml:name>ProtectionContainerId</maml:name>
           <maml:description>
-            <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
+            <maml:para>Id of the Protection Container</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ProtectionEntityId</maml:name>
+          <maml:description>
+            <maml:para>Id of the Protection Entity</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
@@ -2892,6 +2892,13 @@ Contosovault                                                RecoveryServices-6JP
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Start-AzureSiteRecoveryTestFailoverJob</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Direction</maml:name>
+          <maml:description>
+            <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ProtectionContainerId</maml:name>
           <maml:description>
@@ -2910,13 +2917,6 @@ Contosovault                                                RecoveryServices-6JP
           <maml:name>VmNetworkId</maml:name>
           <maml:description>
             <maml:para>Id of the VM Network</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Direction</maml:name>
-          <maml:description>
-            <maml:para>Direction of the failover, either PrimaryToRecovery or RecoveryToPrimary</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
@@ -3116,6 +3116,47 @@ Contosovault                                                RecoveryServices-6JP
           EndTime          :
           AllowedActions   : {}
           Name             :
+          Tasks            : {}
+          Errors           : {}
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          $RP = Get-AzureSiteRecoveryRecoveryPlan -Name &quot;RP1&quot;
+          Start-AzureSiteRecoveryTestFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery
+
+          Name             :
+          ID               : 4a991243-a97f-4617-97be-a6e0dc99a2ff
+          ClientRequestId  : 0ae1226f-b68d-4131-b2e8-17bb4c19fa29-2015-02-17 14:35:46Z-P
+          State            : NotStarted
+          StateDescription : NotStarted
+          StartTime        :
+          EndTime          :
+          TargetObjectId   :
+          TargetObjectType :
+          TargetObjectName :
+          AllowedActions   :
           Tasks            : {}
           Errors           : {}
         </dev:code>
