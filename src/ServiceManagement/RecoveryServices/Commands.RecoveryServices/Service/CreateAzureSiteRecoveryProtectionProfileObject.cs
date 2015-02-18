@@ -30,6 +30,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [OutputType(typeof(ASRProtectionProfile))]
     public class CreateAzureSiteRecoveryProtectionProfileObject : RecoveryServicesCmdletBase
     {
+        /// <summary>
+        /// Holds either Name (if it is passed) of the protection profile object.
+        /// </summary>
+        private string targetName = string.Empty;
+
         #region Parameters
 
         /// <summary>
@@ -144,6 +149,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [DefaultValue(false)]
         public SwitchParameter AllowReplicaDeletion { get; set; }
 
+        /// <summary>
+        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -200,29 +211,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             if (!validationSuccessful)
             {
                 this.WriteWarning(string.Format(Resources.StorageAccountValidationUnsuccessful));
+
+                this.ConfirmAction(
+                    this.Force.IsPresent,
+                    string.Format(Properties.Resources.ValidationUnsuccessfulWarning, this.targetName),
+                    string.Format(Properties.Resources.NewProtectionProfileObjectWhatIfMessage),
+                    this.targetName,
+                    () =>
+                        {
+                            PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
+
+                            ushort replicationFrequencyInSeconds = PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+
+                            ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
+                            {
+                                ReplicationProvider = this.ReplicationProvider,
+                                HyperVReplicaAzureProviderSettingsObject = new HyperVReplicaAzureProviderSettings()
+                                {
+                                    RecoveryAzureSubscription = this.RecoveryAzureSubscription,
+                                    RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
+                                    EncryptStoredData = this.EncryptStoredData,
+                                    ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
+                                    RecoveryPoints = this.RecoveryPoints,
+                                    ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
+                                    ReplicationStartTime = this.ReplicationStartTime,
+                                },
+                                HyperVReplicaProviderSettingsObject = null
+                            };
+
+                            this.WriteObject(protectionProfile);
+                        });
             }
-
-            PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
-
-            ushort replicationFrequencyInSeconds = PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
-
-            ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
-            {
-                ReplicationProvider = this.ReplicationProvider,
-                HyperVReplicaAzureProviderSettingsObject = new HyperVReplicaAzureProviderSettings()
-                {
-                    RecoveryAzureSubscription = this.RecoveryAzureSubscription,
-                    RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
-                    EncryptStoredData = this.EncryptStoredData,
-                    ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
-                    RecoveryPoints = this.RecoveryPoints,
-                    ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
-                    ReplicationStartTime = this.ReplicationStartTime,
-                },
-                HyperVReplicaProviderSettingsObject = null
-            };
-
-            this.WriteObject(protectionProfile);
         }
 
         /// <summary>

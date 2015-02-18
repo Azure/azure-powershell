@@ -219,6 +219,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creates a new in-memory protection profile association object..
+        /// </summary>
+        internal static string NewProtectionProfileObjectWhatIfMessage {
+            get {
+                return ResourceManager.GetString("NewProtectionProfileObjectWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RecoveryServices client is null, please check Resource, Cloud Service information in Vault Settings.
         /// </summary>
         internal static string NullRecoveryServicesClient {
@@ -359,6 +368,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string SubscriptionIsNotAssociatedWithTheAccount {
             get {
                 return ResourceManager.GetString("SubscriptionIsNotAssociatedWithTheAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not validate the storage account and subscription given.
+        ///Are you sure you want to continue {0}?.
+        /// </summary>
+        internal static string ValidationUnsuccessfulWarning {
+            get {
+                return ResourceManager.GetString("ValidationUnsuccessfulWarning", resourceCulture);
             }
         }
         
