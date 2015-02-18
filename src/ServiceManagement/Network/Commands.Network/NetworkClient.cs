@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 namespace Microsoft.Azure.Commands.Network
 {
     using System;
@@ -31,8 +30,8 @@ namespace Microsoft.Azure.Commands.Network
     using WindowsAzure.Management.Network;
     using WindowsAzure.Management.Network.Models;
     using WindowsAzure.Storage.Auth;
-    using Microsoft.Azure.Common.Extensions.Models;
-    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
 
     public class NetworkClient
@@ -41,9 +40,9 @@ namespace Microsoft.Azure.Commands.Network
         private readonly ManagementClient managementClient;
         private readonly ICommandRuntime commandRuntime;
 
-        public NetworkClient(AzureSubscription subscription, ICommandRuntime commandRuntime)
-            : this(CreateClient<NetworkManagementClient>(subscription),
-                   CreateClient<ManagementClient>(subscription),
+        public NetworkClient(AzureProfile profile, AzureSubscription subscription, ICommandRuntime commandRuntime)
+            : this(CreateClient<NetworkManagementClient>(profile, subscription),
+                   CreateClient<ManagementClient>(profile, subscription),
                    commandRuntime)
         {   
         }
@@ -362,9 +361,9 @@ namespace Microsoft.Azure.Commands.Network
             operationContext.OperationDescription = commandRuntime.ToString();
         }
 
-        private static ClientType CreateClient<ClientType>(AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
+        private static ClientType CreateClient<ClientType>(AzureProfile profile, AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
         {
-            return AzureSession.ClientFactory.CreateClient<ClientType>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         public void CreateNetworkSecurityGroup(string name, string location, string label)
