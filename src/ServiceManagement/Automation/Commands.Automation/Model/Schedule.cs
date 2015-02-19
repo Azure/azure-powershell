@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Properties;
 using System;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -19,17 +21,43 @@ namespace Microsoft.Azure.Commands.Automation.Model
     /// <summary>
     /// The Schedule.
     /// </summary>
-    public abstract class Schedule
+    public class Schedule
     {
         /// <summary>
-        /// Gets or sets the id.
+        /// Initializes a new instance of the <see cref="Schedule"/> class.
         /// </summary>
-        public Guid Id { get; set; }
+        /// <param name="schedule">
+        /// The schedule.
+        /// </param>
+        public Schedule(string automationAccountName, WindowsAzure.Management.Automation.Models.Schedule schedule)
+        {
+            Requires.Argument("schedule", schedule).NotNull();
+            this.AutomationAccountName = automationAccountName;
+            this.Name = schedule.Name;
+            this.Description = schedule.Properties.Description;
+            this.StartTime = schedule.Properties.StartTime.ToLocalTime();
+            this.ExpiryTime = schedule.Properties.ExpiryTime.ToLocalTime();
+            this.CreationTime = schedule.Properties.CreationTime.ToLocalTime();
+            this.LastModifiedTime = schedule.Properties.LastModifiedTime.ToLocalTime();
+            this.IsEnabled = schedule.Properties.IsEnabled;
+            this.NextRun = schedule.Properties.NextRun.HasValue
+                               ? schedule.Properties.NextRun.Value.ToLocalTime()
+                               : this.NextRun;
+            this.Interval = schedule.Properties.Interval.HasValue ? schedule.Properties.Interval.Value : this.Interval;
+            this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Properties.Frequency, true);
+        }
 
         /// <summary>
-        /// Gets or sets the account id.
+        /// Initializes a new instance of the <see cref="HourlySchedule"/> class.
         /// </summary>
-        public Guid AccountId { get; set; }
+        public Schedule()
+        {
+        }
+
+        /// <summary>
+        /// Gets or sets the automation account name.
+        /// </summary>
+        public string AutomationAccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
@@ -44,22 +72,22 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the start time.
         /// </summary>
-        public DateTime StartTime { get; set; }
+        public DateTimeOffset StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the expiry time.
         /// </summary>
-        public DateTime ExpiryTime { get; set; }
+        public DateTimeOffset ExpiryTime { get; set; }
 
         /// <summary>
         /// Gets or sets the creation time.
         /// </summary>
-        public DateTime CreationTime { get; set; }
+        public DateTimeOffset CreationTime { get; set; }
 
         /// <summary>
         /// Gets or sets the last modified time.
         /// </summary>
-        public DateTime LastModifiedTime { get; set; }
+        public DateTimeOffset LastModifiedTime { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether is enabled.
@@ -69,6 +97,16 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the next run.
         /// </summary>
-        public DateTime? NextRun { get; set; }
+        public DateTimeOffset? NextRun { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule interval.
+        /// </summary>
+        public byte? Interval { get; set; }
+
+        /// <summary>
+        /// Gets or sets the schedule frequency.
+        /// </summary>
+        public ScheduleFrequency Frequency { get; set; }
     }
 }

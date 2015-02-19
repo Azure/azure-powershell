@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
     /// <summary>
-    /// The SqlClient class is resposible for the mapping of data between two models: 
+    /// The SqlClient class is responsible for the mapping of data between two models: 
     /// The communication model as defined by the endpoint APIs and the cmdlet model that is defined by the
     /// AuditingPolicy class. This class knows how to wrap a policy in its communication model and return 
     /// a policy in its cmdlet model and vice versa (i.e., unwrapping).
@@ -32,28 +32,31 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
     {
         private AzureSubscription Subscription { get; set; }
 
+        private AzureProfile Profile { get; set; }
+
         private EndpointsCommunicator Communicator { get; set; }
 
-        // cacheing the fetched properties to prevent constly network interaction in cases it is not needed
+        // Caching the fetched properties to prevent costly network interaction in cases it is not needed
         private DatabaseSecurityPolicyProperties FetchedProperties;
 
         // In cases when storage is not needed and not provided, theres's no need to perform storage related network interaction that may fail
         public bool IgnoreStorage { get; set; }
 
-        public SqlClient(AzureSubscription subscription)
+        public SqlClient(AzureProfile profile, AzureSubscription subscription)
         {
+            Profile = profile;
             Subscription = subscription;
-            Communicator = new EndpointsCommunicator(subscription);
+            Communicator = new EndpointsCommunicator(profile, subscription);
             IgnoreStorage = false;
         }
 
         /// <summary>
         /// Returns the storage account name of the given database server
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resouce group to which the server belongs</param>
+        /// <param name="resourceGroupName">The name of the resource group to which the server belongs</param>
         /// <param name="serverName">The server's name</param>
         /// <param name="requestId">The Id to use in the request</param>
-        /// <returns>The name of the storage accunt, null if it doesn't exist</returns>
+        /// <returns>The name of the storage account, null if it doesn't exist</returns>
         public string GetServerStorageAccount(string resourceGroupName, string serverName, string requestId)
         {
             return Communicator.GetServerSecurityPolicy(resourceGroupName, serverName, requestId).Properties.StorageAccountName;
@@ -258,7 +261,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
                 throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.NoStorageAccountWhenConfiguringAuditingPolicy));
             }
 
-            // no need to do time consuming http inteaction to fetch these properties if the storage account was not changed
+            // no need to do time consuming http interaction to fetch these properties if the storage account was not changed
             if (properties.StorageAccountName == this.FetchedProperties.StorageAccountName)
             {
                 properties.StorageAccountResourceGroupName = this.FetchedProperties.StorageAccountResourceGroupName;
@@ -269,7 +272,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             {
                 properties.StorageAccountSubscriptionId = Subscription.Id.ToString();
                 properties.StorageAccountResourceGroupName = Communicator.GetStorageResourceGroup(properties.StorageAccountName);
-                properties.StorageTableEndpoint = Communicator.GetStorageTableEndpoint(properties.StorageAccountName);
+                properties.StorageTableEndpoint = Communicator.GetStorageTableEndpoint(Profile, properties.StorageAccountName);
             }
 
             if (!IgnoreStorage)

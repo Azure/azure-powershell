@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.Sql;
@@ -45,9 +45,12 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         private static AzureSubscription Subscription {get ; set; }
 
         private static ResourceManagementClient ResourcesClient { get; set; }
+
+        private AzureProfile Profile { get; set; }
  
-        public EndpointsCommunicator(AzureSubscription subscription)
+        public EndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
+            Profile = profile;
             if (subscription != Subscription)
             {
                 Subscription = subscription;
@@ -149,7 +152,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
 
         public string GetStorageResourceGroup(string storageAccountName)
         {
-            ResourceManagementClient resourcesClient = GetCurrentResourcesClient();
+            ResourceManagementClient resourcesClient = GetCurrentResourcesClient(Profile);
             
             ResourceListResult res = resourcesClient.Resources.List(new ResourceListParameters
                     {
@@ -181,11 +184,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// <summary>
         /// Gets the storage table endpoint the given storage account
         /// </summary>
-        public string GetStorageTableEndpoint(string storageAccountName)
+        public string GetStorageTableEndpoint(AzureProfile profile, string storageAccountName)
         {
             try
             {
-                List<Uri> endpoints = new List<Uri>(GetCurrentStorageClient().StorageAccounts.Get(storageAccountName).StorageAccount.Properties.Endpoints);
+                List<Uri> endpoints = new List<Uri>(GetCurrentStorageClient(profile).StorageAccounts.Get(storageAccountName).StorageAccount.Properties.Endpoints);
                 return endpoints.Find(u => u.AbsoluteUri.Contains(".table.")).AbsoluteUri;
             }
             catch
@@ -194,17 +197,17 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             }
         }
 
-        private StorageManagementClient GetCurrentStorageClient()
+        private StorageManagementClient GetCurrentStorageClient(AzureProfile profile)
         {
             if(StorageClient == null)
-                StorageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+                StorageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(profile, Subscription, AzureEnvironment.Endpoint.ServiceManagement);
             return StorageClient;
         }
 
-        private ResourceManagementClient GetCurrentResourcesClient()
+        private ResourceManagementClient GetCurrentResourcesClient(AzureProfile profile)
         {
             if (ResourcesClient == null)
-                ResourcesClient = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(Subscription, AzureEnvironment.Endpoint.ResourceManager);
+                ResourcesClient = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             return ResourcesClient;
         }
 
@@ -218,7 +221,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Subscription, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
                 SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientSessionIdHeaderName, Util.GenerateTracingId());
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);

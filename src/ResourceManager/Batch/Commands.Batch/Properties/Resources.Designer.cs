@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting enumerator for WorkItems matching the specified OData filter.
+        ///   Looks up a localized string similar to Getting WorkItems matching the specified OData filter. A max count of {0} will be returned..
         /// </summary>
         internal static string GBWI_GetByOData {
             get {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting enumerator for all WorkItems associated with the Batch account.
+        ///   Looks up a localized string similar to Getting all WorkItems associated with the Batch account. A max count of {0} will be returned..
         /// </summary>
         internal static string GBWI_NoFilter {
             get {

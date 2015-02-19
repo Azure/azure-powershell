@@ -148,10 +148,10 @@
     <value>Getting WorkItem "{0}"</value>
   </data>
   <data name="GBWI_GetByOData" xml:space="preserve">
-    <value>Getting enumerator for WorkItems matching the specified OData filter</value>
+    <value>Getting WorkItems matching the specified OData filter. A max count of {0} will be returned.</value>
   </data>
   <data name="GBWI_NoFilter" xml:space="preserve">
-    <value>Getting enumerator for all WorkItems associated with the Batch account</value>
+    <value>Getting all WorkItems associated with the Batch account. A max count of {0} will be returned.</value>
   </data>
   <data name="InvalidEndpointType" xml:space="preserve">
     <value>The endpoint is not recognized as valid: {0}</value>
