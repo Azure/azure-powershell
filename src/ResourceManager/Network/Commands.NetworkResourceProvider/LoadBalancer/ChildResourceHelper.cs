@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public static void NormalizeChildResourcesId(PSLoadBalancer loadBalancer)
         {
             // Normalize LoadBalancingRules
-            if (loadBalancer.Properties.InboundNatRules != null)
+            if (loadBalancer.Properties.LoadBalancingRules != null)
             {
                 foreach (var loadBalancingRule in loadBalancer.Properties.LoadBalancingRules)
                 {
@@ -101,9 +101,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
 
             // Normalize Probe
-            foreach (var probe in loadBalancer.Properties.Probes)
+            if (loadBalancer.Properties.Probes != null)
             {
-                probe.Id = string.Empty;
+                foreach (var probe in loadBalancer.Properties.Probes)
+                {
+                    probe.Id = string.Empty;
+                }
             }
 
             // Normalize BackendAddressPool

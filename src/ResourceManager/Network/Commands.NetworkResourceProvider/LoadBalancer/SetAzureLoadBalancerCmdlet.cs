@@ -40,7 +40,10 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             {
                 throw new ArgumentException(Resources.ResourceNotFound);
             }
-            
+
+            // Normalize the IDs
+            ChildResourceHelper.NormalizeChildResourcesId(this.LoadBalancer);
+
             // Map to the sdk object
             var lbModel = Mapper.Map<MNM.LoadBalancerCreateOrUpdateParameters>(this.LoadBalancer);
             lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.LoadBalancer.Tag, validate: true);
