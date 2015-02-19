@@ -161,11 +161,16 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         /// </summary>
         public HBaseConfiguration HBaseConfiguration { get; private set; }
 
-        public void CopyFrom(AzureHDInsightConfig value)
+
+        /// <summary>
+        ///     Copies all parameters from the provided AzureHDInsightConfig object into this object, replacing
+        ///     single-value attributes, and merging collection attributes.
+        /// </summary>
+        public virtual void CopyFrom(AzureHDInsightConfig value)
         {
             if (value==null)
             {
-                throw new ArgumentNullException("value", "The value for the configuration can not be null.");
+                throw new ArgumentNullException("value", "The value for the configuration cannot be null.");
             }
 
             this.ClusterSizeInNodes = value.ClusterSizeInNodes;
