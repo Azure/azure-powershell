@@ -15,7 +15,8 @@
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol.Entities;
 using Hyak.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;
 using System;
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 if (batchClient == null)
                 {
-                    batchClient = new BatchClient(CurrentContext);
+                    batchClient = new BatchClient(Profile.Context);
                     batchClient.VerboseLogger = WriteVerboseWithTimestamp;
                 }
                 return batchClient;

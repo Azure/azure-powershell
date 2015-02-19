@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         protected override void BeginProcessing()
         {
+            base.BeginProcessing();
             WriteVerboseWithTimestamp(Resources.AccountAndKeyInUse, BatchContext.AccountName, BatchContext.KeyInUse);
         }
     }
