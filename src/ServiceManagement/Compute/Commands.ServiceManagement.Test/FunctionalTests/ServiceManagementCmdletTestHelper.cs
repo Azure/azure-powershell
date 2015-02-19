@@ -22,7 +22,7 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
@@ -1370,6 +1370,37 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return result;
         }
 
+        public void AddAzureVMImage(
+            string imageName,
+            string label,
+            SM.VirtualMachineImageDiskConfigSet diskConfig,
+            string description = null,
+            string eula = null,
+            string imageFamily = null,
+            DateTime? publishedDate = null,
+            string privacyUri = null,
+            string recommendedVMSize = null,
+            string iconName = null,
+            string smallIconName = null,
+            bool? showInGui = null)
+        {
+            var cmdletInfo = new AddAzureVMImageCmdletInfo(
+                imageName,
+                label,
+                diskConfig,
+                description,
+                eula,
+                imageFamily,
+                publishedDate,
+                privacyUri,
+                recommendedVMSize,
+                iconName,
+                smallIconName,
+                showInGui);
+
+            RunPSCmdletAndReturnFirst<ManagementOperationContext>(cmdletInfo);
+        }
+
         public SM.OSImageContext UpdateAzureVMImage(string imageName, string label, string recommendedSize = null)
         {
             return RunPSCmdletAndReturnFirst<SM.OSImageContext>(new UpdateAzureVMImageCmdletInfo(imageName, label, recommendedSize, null, null));
@@ -1386,8 +1417,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         public void UpdateAzureVMImage(string imageName, string label, string imageFamily, bool showInGui = false, string recommendedSize = null,
-            string description = null, string eula = null, Uri privacyUri = null, DateTime? publishedDate = null, string language = null, Uri iconUri = null,
-            Uri smallIconUri = null)
+            string description = null, string eula = null, Uri privacyUri = null, DateTime? publishedDate = null, string language = null, string iconUri = null,
+            string smallIconUri = null)
         {
             RunPSCmdletAndReturnFirst<ManagementOperationContext>(new UpdateAzureVMImageCmdletInfo(imageName, label, recommendedSize, description, eula, imageFamily,
                 privacyUri, publishedDate.Value, language, iconUri, smallIconUri, showInGui));

@@ -15,7 +15,7 @@
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             }
             else
             {
-                var storageAccountName = cmdlet.CurrentContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+                var storageAccountName = cmdlet.Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
                 
                 if (!string.IsNullOrEmpty(storageAccountName))
                 {

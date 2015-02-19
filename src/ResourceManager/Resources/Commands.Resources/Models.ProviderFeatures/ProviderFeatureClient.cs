@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.Azure.Common.Extensions;
-    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
