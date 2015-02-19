@@ -60,7 +60,7 @@ namespace Microsoft.AzureStorSimpleDeviceCmdlets.Commands
                     BackupId,
                     () =>
                     {
-                        TaskResponse response = null;
+                        JobResponse response = null;
                         var request = new TriggerCloneRequest()
                         {
                             TargetDeviceId = targetDeviceId,

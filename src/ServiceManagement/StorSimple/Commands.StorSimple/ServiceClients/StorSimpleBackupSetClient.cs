@@ -59,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return GetStorSimpleClient().Backup.BeginCreatingBackup(deviceid, backupPolicyId, request, GetCustomRequestHeaders());
         }
 
-        public TaskResponse CloneVolume(string deviceId, TriggerCloneRequest request)
+        public JobResponse CloneVolume(string deviceId, TriggerCloneRequest request)
         {
             return this.GetStorSimpleClient().CloneVolume.Trigger(deviceId, request, this.GetCustomRequestHeaders());
         }
