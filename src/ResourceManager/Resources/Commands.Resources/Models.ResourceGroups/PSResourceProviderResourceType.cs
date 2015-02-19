@@ -25,5 +25,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// Gets or sets the locations this resource is available in.
         /// </summary>
         public string[] Locations { get; set; }
+
+        /// <summary>
+        /// Gets or sets the api versions that this resource is supported in.
+        /// </summary>
+        public string[] ApiVersions { get; set; }
     }
 }

@@ -12,19 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
 namespace Microsoft.Azure.Commands.Resources.Models
 {
+    using Microsoft.Azure.Commands.Resources.Models.Authorization;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+    /// <summary> 
+    /// Base class for all resources cmdlets
+    /// </summary>
     public abstract class ResourcesBaseCmdlet : AzurePSCmdlet
     {
+        /// <summary>
+        /// Field that holds the resource client instance
+        /// </summary>
         private ResourcesClient resourcesClient;
 
+        /// <summary>
+        /// Field that holds the gallery templates client instance
+        /// </summary>
         private GalleryTemplatesClient galleryTemplatesClient;
 
+        /// <summary>
+        /// Field that holds the policies client instance
+        /// </summary>
         private AuthorizationClient policiesClient;
 
+        /// <summary>
+        /// Gets or sets the resources client
+        /// </summary>
         public ResourcesClient ResourcesClient
         {
             get
@@ -44,6 +59,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
             set { resourcesClient = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the galary templates client
+        /// </summary>
         public GalleryTemplatesClient GalleryTemplatesClient
         {
             get
@@ -58,6 +76,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
             set { galleryTemplatesClient = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the policies client
+        /// </summary>
         public AuthorizationClient PoliciesClient
         {
             get
@@ -70,6 +91,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
 
             set { policiesClient = value; }
+        }
+
+        /// <summary>
+        /// Determines the parameter set name.
+        /// </summary>
+        public virtual string DetermineParameterSetName()
+        {
+            return this.ParameterSetName;
         }
     }
 }

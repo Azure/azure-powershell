@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find the resource provider &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Could not find the resource provider &apos;{0}&apos;..
         /// </summary>
         internal static string ResourceProviderNotFound {
             get {
@@ -426,6 +426,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string UnableToFindGallery {
             get {
                 return ResourceManager.GetString("UnableToFindGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to unregister the provider &apos;{0}&apos;.
+        /// </summary>
+        internal static string UnregisteringProvider {
+            get {
+                return ResourceManager.GetString("UnregisteringProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unregistering provider....
+        /// </summary>
+        internal static string UnregisterProviderMessage {
+            get {
+                return ResourceManager.GetString("UnregisterProviderMessage", resourceCulture);
             }
         }
     }

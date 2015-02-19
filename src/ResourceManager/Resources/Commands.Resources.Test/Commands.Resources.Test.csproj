@@ -144,7 +144,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\GetAzureProvderFeatureCmdletTests.cs" />
+    <Compile Include="Features\GetAzureProviderFeatureCmdletTests.cs" />
     <Compile Include="Features\RegisterProviderFeatureCmdletTests.cs" />
     <Compile Include="Models.ResourceGroups\ExtensionsTests.cs" />
     <Compile Include="Models.ResourceGroups\GalleryTemplatesClientTests.cs" />

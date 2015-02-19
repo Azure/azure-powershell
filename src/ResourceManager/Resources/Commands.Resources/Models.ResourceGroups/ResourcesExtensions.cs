@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             return new PSResourceProvider
             {
-                ProviderName = provider.Namespace,
+                ProviderNamespace = provider.Namespace,
                 RegistrationState = provider.RegistrationState,
                 ResourceTypes =
                     provider.ResourceTypes.Select(
@@ -115,7 +115,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
                             new PSResourceProviderResourceType
                             {
                                 ResourceTypeName = resourceType.Name,
-                                Locations = resourceType.Locations.ToArray()
+                                Locations = resourceType.Locations.ToArray(),
+                                ApiVersions = resourceType.ApiVersions.ToArray(),
                             }).ToArray(),
             };
         }

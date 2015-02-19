@@ -54,13 +54,34 @@ namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
         /// </summary>
         public IFeatureClient FeaturesManagementClient { get; set; }
 
+
+        /// <summary>
+        /// Lists the features that ARM knows about
+        /// </summary>
+        /// <param name="resourceProviderNamespace">When specified, returns all features that are defined by this resource provider namespace</param>
+        /// <param name="featureName">When specified, returns all features that have this name</param>
+        public virtual PSProviderFeature[] ListPSProviderFeatures(string resourceProviderNamespace = null, string featureName = null)
+        {
+            return this.ListPSProviderFeatures(resourceProviderNamespace: resourceProviderNamespace, featureName: featureName, listAvailable: false);
+        }
+
+        /// <summary>
+        /// Lists the features that ARM knows about
+        /// </summary>
+        /// <param name="resourceProviderNamespace">When specified, returns all features that are defined by this resource provider namespace</param>
+        /// <param name="listAvailable">When set to true, lists all features that are available including those not registered on the current subscription</param>
+        public virtual PSProviderFeature[] ListPSProviderFeatures(bool listAvailable, string resourceProviderNamespace = null)
+        {
+            return this.ListPSProviderFeatures(resourceProviderNamespace: resourceProviderNamespace, listAvailable: listAvailable, featureName: null);
+        }
+
         /// <summary>
         /// Lists the features that ARM knows about
         /// </summary>
         /// <param name="resourceProviderNamespace">When specified, returns all features that are defined by this resource provider namespace</param>
         /// <param name="featureName">When specified, returns all features that have this name</param>
         /// <param name="listAvailable">When set to true, lists all features that are available including those not registered on the current subscription</param>
-        public virtual PSProviderFeature[] ListPSProviderFeatures(string resourceProviderNamespace = null, string featureName = null, bool listAvailable = false)
+        private PSProviderFeature[] ListPSProviderFeatures(string resourceProviderNamespace = null, string featureName = null, bool listAvailable = false)
         {
             if (!string.IsNullOrEmpty(featureName) && !string.IsNullOrWhiteSpace(resourceProviderNamespace))
             {
@@ -75,9 +96,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
             }
             else
             {
-                string nextLink = null;
-                var returnList = new List<FeatureResponse>(); 
-
                 Func<FeatureOperationsListResult> listFunc;
                 Func<string, FeatureOperationsListResult> listNextFunc;
 
@@ -92,26 +110,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
                     listNextFunc = next => this.FeaturesManagementClient.Features.ListNext(next);
                 }
 
-                do
+                var returnList = new List<FeatureResponse>(); 
+                var tempResult = listFunc();
+
+                returnList.AddRange(tempResult.Features);
+
+                while(!string.IsNullOrWhiteSpace(tempResult.NextLink))
                 {
-                    FeatureOperationsListResult tempResult;
-
-                    if (returnList.Count == 0 && string.IsNullOrEmpty(nextLink))
-                    {
-                        tempResult = listFunc();
-                    }
-                    else if (!string.IsNullOrEmpty(nextLink))
-                    {
-                        tempResult = listNextFunc(nextLink);
-                    }
-                    else
-                    {
-                        break;
-                    }
-
+                    tempResult = listNextFunc(tempResult.NextLink);
                     returnList.AddRange(tempResult.Features);
-                    nextLink = tempResult.NextLink;
-                } while (!string.IsNullOrEmpty(nextLink));
+                }
 
                 var retVal = listAvailable
                     ? returnList
@@ -128,7 +136,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
         /// </summary>
         /// <param name="providerName">The name of the resource provider</param>
         /// <param name="featureName">The name of the feature</param>
-        /// <returns></returns>
         public PSProviderFeature RegisterProviderFeature(string providerName, string featureName)
         {
             return this.FeaturesManagementClient.Features.Register(providerName, featureName).ToPSProviderFeature();
@@ -138,7 +145,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
         /// Checks if a feature is registered with the current subscription
         /// </summary>
         /// <param name="feature">The feature</param>
-        /// <returns></returns>
         private bool IsFeatureRegistered(FeatureResponse feature)
         {
             return string.Equals(feature.Properties.State, ProviderFeatureClient.RegisteredStateName, StringComparison.InvariantCultureIgnoreCase);

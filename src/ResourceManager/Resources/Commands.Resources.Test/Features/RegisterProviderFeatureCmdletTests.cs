@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.Resources.Test
 {
     using System;
-    using System.Linq;
     using System.Management.Automation;
     using System.Net;
     using System.Threading;
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     /// <summary>
     /// Tests the Azure Provider Feature cmdlets
     /// </summary>
-    public class RegisterAzureProvderFeatureCmdletTests
+    public class RegisterAzureProviderFeatureCmdletTests
     {
         /// <summary>
         /// An instance of the cmdlet
@@ -49,9 +48,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAzureProvderFeatureCmdletTests"/> class.
+        /// Initializes a new instance of the <see cref="GetAzureProviderFeatureCmdletTests"/> class.
         /// </summary>
-        public RegisterAzureProvderFeatureCmdletTests()
+        public RegisterAzureProviderFeatureCmdletTests()
         {
             this.featureOperationsMock = new Mock<IFeatures>();
             var featureClient = new Mock<IFeatureClient>();
@@ -103,7 +102,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 })
                 .Returns(() => Task.FromResult(registeredFeature));
 
-            this.cmdlet.ProviderName = ProviderName;
+            this.cmdlet.ProviderNamespace = ProviderName;
             this.cmdlet.FeatureName = FeatureName;
 
             this.commandRuntimeMock

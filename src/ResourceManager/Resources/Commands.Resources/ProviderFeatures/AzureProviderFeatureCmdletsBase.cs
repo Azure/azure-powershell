@@ -34,10 +34,23 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
         {
             get
             {
-                return this.providerFeatureClient ??
-                       (this.providerFeatureClient = new ProviderFeatureClient(CurrentContext));
+                if (this.providerFeatureClient == null)
+                {
+                    this.providerFeatureClient = new ProviderFeatureClient(CurrentContext);
+                }
+
+                return this.providerFeatureClient;
             }
+
             set { this.providerFeatureClient = value; }
+        }
+
+        /// <summary>
+        /// Determines the parameter set name.
+        /// </summary>
+        public virtual string DetermineParameterSetName()
+        {
+            return this.ParameterSetName;
         }
     }
 }

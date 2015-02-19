@@ -30,17 +30,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
     /// <summary>
     /// Tests the AzureProvider cmdlets
     /// </summary>
-    public class GetAzureProvderCmdletTests
+    public class GetAzureProviderCmdletTests
     {
         /// <summary>
         /// An instance of the cmdlet
         /// </summary>
-        private readonly GetAzureProviderCmdlet cmdlet;
-
-        /// <summary>
-        /// A mock of the client
-        /// </summary>
-        private readonly Mock<IProviderOperations> providerOperationsMock;
+        private readonly GetAzureProviderCmdletTest cmdlet;
 
         /// <summary>
         /// A mock of the command runtime
@@ -48,9 +43,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAzureProvderCmdletTests"/> class.
+        /// A mock of the client
         /// </summary>
-        public GetAzureProvderCmdletTests()
+        private readonly Mock<IProviderOperations> providerOperationsMock;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetAzureProviderCmdletTests"/> class.
+        /// </summary>
+        public GetAzureProviderCmdletTests()
         {
             this.providerOperationsMock = new Mock<IProviderOperations>();
             var resourceManagementClient = new Mock<IResourceManagementClient>();
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 .Returns(() => this.providerOperationsMock.Object);
 
             this.commandRuntimeMock = new Mock<ICommandRuntime>();
-            this.cmdlet = new GetAzureProviderCmdlet()
+            this.cmdlet = new GetAzureProviderCmdletTest
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = new ResourcesClient
@@ -135,7 +134,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.Equal(1, providers.Length);
 
                     var provider = providers.Single();
-                    Assert.Equal(RegisteredProviderNamespace, provider.ProviderName);
+                    Assert.Equal(RegisteredProviderNamespace, provider.ProviderNamespace);
                     Assert.Equal(ResourcesClient.RegisteredStateName, provider.RegistrationState);
 
                     Assert.Equal(1, provider.ResourceTypes.Length);
@@ -144,6 +143,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.Equal(ResourceTypeName, resourceType.ResourceTypeName);
                     Assert.Equal(2, resourceType.Locations.Length);
                 });
+
+            this.cmdlet.ParameterSetOverride = GetAzureProviderCmdlet.ListAvailableParameterSet;
 
             this.cmdlet.ExecuteCmdlet();
 
@@ -166,7 +167,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.VerifyListCallPatternAndReset();
 
             // 3. List a single provider by name
-            this.cmdlet.ProviderName = UnregisteredProviderNamespace;
+            this.cmdlet.ProviderNamespace = UnregisteredProviderNamespace;
 
             this.providerOperationsMock
               .Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
@@ -187,8 +188,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.Equal(1, providers.Length);
 
                     var provider = providers.Single();
-                    Assert.Equal(UnregisteredProviderNamespace, provider.ProviderName);
+                    Assert.Equal(UnregisteredProviderNamespace, provider.ProviderNamespace);
                 });
+
+            this.cmdlet.ParameterSetOverride = GetAzureProviderCmdlet.IndividualProviderParameterSet;
 
             this.cmdlet.ExecuteCmdlet();
 
@@ -196,15 +199,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
         }
 
         /// <summary>
-        /// Verifies the right call patterns are made
+        /// Resets the calls on the mocks
         /// </summary>
-        private void VerifyListCallPatternAndReset()
+        private void ResetCalls()
         {
-            this.providerOperationsMock.Verify(f => f.ListAsync(It.IsAny<ProviderListParameters>(), It.IsAny<CancellationToken>()), Times.Once());
-            this.providerOperationsMock.Verify(f => f.ListNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
-            this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), Times.Once());
-
-            this.ResetCalls();
+            this.providerOperationsMock.ResetCalls();
+            this.commandRuntimeMock.ResetCalls();
         }
 
         /// <summary>
@@ -220,12 +220,34 @@ namespace Microsoft.Azure.Commands.Resources.Test
         }
 
         /// <summary>
-        /// Resets the calls on the mocks
+        /// Verifies the right call patterns are made
         /// </summary>
-        private void ResetCalls()
+        private void VerifyListCallPatternAndReset()
         {
-            this.providerOperationsMock.ResetCalls();
-            this.commandRuntimeMock.ResetCalls();
+            this.providerOperationsMock.Verify(f => f.ListAsync(It.IsAny<ProviderListParameters>(), It.IsAny<CancellationToken>()), Times.Once());
+            this.providerOperationsMock.Verify(f => f.ListNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+            this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), Times.Once());
+
+            this.ResetCalls();
+        }
+
+        /// <summary>
+        /// Helper class that enables setting the parameter set name
+        /// </summary>
+        private class GetAzureProviderCmdletTest : GetAzureProviderCmdlet
+        {
+            /// <summary>
+            /// Sets the parameter set name to return
+            /// </summary>
+            public string ParameterSetOverride { private get; set; }
+
+            /// <summary>
+            /// Determines the parameter set name based on the <see cref="ParameterSetOverride"/> property
+            /// </summary>
+            public override string DetermineParameterSetName()
+            {
+                return this.ParameterSetOverride;
+            }
         }
     }
 }

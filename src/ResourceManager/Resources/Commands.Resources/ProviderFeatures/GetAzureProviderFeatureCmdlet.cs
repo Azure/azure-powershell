@@ -1,4 +1,11 @@
-﻿// Unless required by applicable law or agreed to in writing, software
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
@@ -7,12 +14,13 @@
 
 namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
 {
+    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Resources.Models.ProviderFeatures;
 
     /// <summary>
-    /// Register the previewed features of a certain azure resource provider.
+    /// Gets the preview features of a certain azure resource provider.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureProviderFeature", DefaultParameterSetName = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet)]
     [OutputType(typeof(List<PSProviderFeature>))]
@@ -21,20 +29,20 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
         /// <summary>
         /// The filter unregistered parameter set
         /// </summary>
-        internal const string ListAvailableParameterSet = "ListAvailableParameterSet";
+        public const string ListAvailableParameterSet = "ListAvailableParameterSet";
 
         /// <summary>
         /// The get feature parameter set
         /// </summary>
-        private const string GetFeatureParameterSet = "GetFeature";
+        public const string GetFeatureParameterSet = "GetFeature";
 
         /// <summary>
-        /// Gets or sets the provider name
+        /// Gets or sets the provider namespace
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider name.", ParameterSetName = GetAzureProviderFeatureCmdlet.GetFeatureParameterSet)]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource provider name.", ParameterSetName = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider namespace.", ParameterSetName = GetAzureProviderFeatureCmdlet.GetFeatureParameterSet)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource provider namespace.", ParameterSetName = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string ProviderName { get; set; }
+        public string ProviderNamespace { get; set; }
 
         /// <summary>
         /// Gets or sets the feature name
@@ -51,7 +59,21 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
 
         public override void ExecuteCmdlet()
         {
-            this.WriteObject(this.ProviderFeatureClient.ListPSProviderFeatures(this.ProviderName, this.FeatureName, this.ListAvailable));
+            var parameterSetName = this.DetermineParameterSetName();
+
+            switch (parameterSetName)
+            {
+                case GetAzureProviderFeatureCmdlet.ListAvailableParameterSet:
+                    this.WriteObject(this.ProviderFeatureClient.ListPSProviderFeatures(this.ListAvailable, this.ProviderNamespace));
+                    break;
+
+                case GetAzureProviderFeatureCmdlet.GetFeatureParameterSet:
+                    this.WriteObject(this.ProviderFeatureClient.ListPSProviderFeatures(this.ProviderNamespace, this.FeatureName));
+                    break;
+                    
+                default:
+                    throw new ApplicationException(string.Format("Unknown parameter set encountered: '{0}'", this.ParameterSetName));
+            }
         }
     }
 }

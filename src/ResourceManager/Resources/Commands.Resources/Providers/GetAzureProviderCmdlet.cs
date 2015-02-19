@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Providers
 {
+    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Resources.Models;
 
@@ -26,19 +27,19 @@ namespace Microsoft.Azure.Commands.Providers
         /// <summary>
         /// The individual provider parameter set name
         /// </summary>
-        private const string IndividualProviderParameterSet = "IndividualProvider";
+        public const string IndividualProviderParameterSet = "IndividualProvider";
 
         /// <summary>
         /// The list parameter set name
         /// </summary>
-        internal const string ListAvailableParameterSet = "ListAvailable";
+        public  const string ListAvailableParameterSet = "ListAvailable";
 
         /// <summary>
-        /// Gets or sets the name of the provider
+        /// Gets or sets the provider namespace
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider name.", ParameterSetName = GetAzureProviderCmdlet.IndividualProviderParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider namespace.", ParameterSetName = GetAzureProviderCmdlet.IndividualProviderParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string ProviderName { get; set; }
+        public string ProviderNamespace { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating if unregistered providers should be included in the listing
@@ -51,13 +52,21 @@ namespace Microsoft.Azure.Commands.Providers
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            var providers = this
-                .ResourcesClient
-                .ListPSResourceProviders(
-                    providerName: this.ProviderName,
-                    listAvailable: this.ListAvailable);
+            var parameterSetName = this.DetermineParameterSetName();
 
-            this.WriteObject(providers);
+            switch (parameterSetName)
+            {
+                case GetAzureProviderCmdlet.IndividualProviderParameterSet:
+                    this.WriteObject(this.ResourcesClient.ListPSResourceProviders(providerName: this.ProviderNamespace));
+                    break;
+
+                case GetAzureProviderCmdlet.ListAvailableParameterSet:
+                    this.WriteObject(this.ResourcesClient.ListPSResourceProviders(listAvailable: this.ListAvailable));
+                    break;
+
+                default:
+                    throw new ApplicationException(string.Format("Unknown parameter set encountered: '{0}'", this.ParameterSetName));
+            }
         }
     }
 }

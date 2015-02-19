@@ -238,6 +238,12 @@
     <value>Could not unregister the resource provider '{0}'</value>
   </data>
   <data name="ResourceProviderNotFound" xml:space="preserve">
-    <value>Cannot find the resource provider '{0}'.</value>
+    <value>Could not find the resource provider '{0}'.</value>
+  </data>
+  <data name="UnregisteringProvider" xml:space="preserve">
+    <value>Are you sure you want to unregister the provider '{0}'</value>
+  </data>
+  <data name="UnregisterProviderMessage" xml:space="preserve">
+    <value>Unregistering provider...</value>
   </data>
 </root>

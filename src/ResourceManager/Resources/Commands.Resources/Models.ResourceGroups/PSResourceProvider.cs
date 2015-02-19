@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
     public class PSResourceProvider
     {
         /// <summary>
-        /// Gets or sets the name of the provider.
+        /// Gets or sets the namespace of the provider.
         /// </summary>
-        public string ProviderName { get; set; }
+        public string ProviderNamespace { get; set; }
 
         /// <summary>
         /// Gets or sets the registration state of the provider.

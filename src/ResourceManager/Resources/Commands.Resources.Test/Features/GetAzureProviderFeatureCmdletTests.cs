@@ -31,17 +31,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
     /// <summary>
     /// Tests the Azure Provider Feature cmdlets
     /// </summary>
-    public class GetAzureProvderFeatureCmdletTests
+    public class GetAzureProviderFeatureCmdletTests
     {
         /// <summary>
         /// An instance of the cmdlet
         /// </summary>
-        private readonly GetAzureProviderFeatureCmdlet cmdlet;
-
-        /// <summary>
-        /// A mock of the client
-        /// </summary>
-        private readonly Mock<IFeatures> featureOperationsMock;
+        private readonly GetAzureProviderFeatureCmdletTest cmdlet;
 
         /// <summary>
         /// A mock of the command runtime
@@ -49,9 +44,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAzureProvderFeatureCmdletTests"/> class.
+        /// A mock of the client
         /// </summary>
-        public GetAzureProvderFeatureCmdletTests()
+        private readonly Mock<IFeatures> featureOperationsMock;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetAzureProviderFeatureCmdletTests"/> class.
+        /// </summary>
+        public GetAzureProviderFeatureCmdletTests()
         {
             this.featureOperationsMock = new Mock<IFeatures>();
             var featureClient = new Mock<IFeatureClient>();
@@ -61,7 +61,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 .Returns(() => this.featureOperationsMock.Object);
 
             this.commandRuntimeMock = new Mock<ICommandRuntime>();
-            this.cmdlet = new GetAzureProviderFeatureCmdlet()
+
+            this.cmdlet = new GetAzureProviderFeatureCmdletTest
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 ProviderFeatureClient = new ProviderFeatureClient
@@ -152,6 +153,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.Equal(ProviderFeatureClient.RegisteredStateName, provider.RegistrationState, StringComparer.InvariantCultureIgnoreCase);
                 });
 
+            this.cmdlet.ParameterSetOverride = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet;
+
             this.cmdlet.ExecuteCmdlet();
 
             this.VerifyListAllCallPatternAndReset();
@@ -175,7 +178,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             // 3.a. List only registered features of a particular provider - and they exist
             string providerOfChoice = Provider1Namespace;
             this.cmdlet.ListAvailable = false;
-            this.cmdlet.ProviderName = providerOfChoice;
+            this.cmdlet.ProviderNamespace = providerOfChoice;
             listResult.Features = new[] { provider1RegisteredFeature, provider1UnregisteredFeature };
 
             this.featureOperationsMock
@@ -198,6 +201,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.Equal(ProviderFeatureClient.RegisteredStateName, provider.RegistrationState, StringComparer.InvariantCultureIgnoreCase);
                 });
 
+            this.cmdlet.ParameterSetOverride = GetAzureProviderFeatureCmdlet.GetFeatureParameterSet;
+
             this.cmdlet.ExecuteCmdlet();
 
             this.VerifyListProviderFeaturesCallPatternAndReset();
@@ -205,7 +210,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             // 3.b. List only registered features of a particular provider - and they do not exist
             providerOfChoice = Provider2Namespace;
             this.cmdlet.ListAvailable = false;
-            this.cmdlet.ProviderName = providerOfChoice;
+            this.cmdlet.ProviderNamespace = providerOfChoice;
             listResult.Features = new[] { provider2UnregisteredFeature };
 
             this.commandRuntimeMock
@@ -224,7 +229,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             // 4. List all features of a particular provider
             providerOfChoice = Provider1Namespace;
-            this.cmdlet.ProviderName = providerOfChoice;
+            this.cmdlet.ProviderNamespace = providerOfChoice;
             this.cmdlet.ListAvailable = true;
             listResult.Features = new[] { provider1RegisteredFeature, provider1UnregisteredFeature };
 
@@ -240,12 +245,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
                   Assert.True(features.All(feature => string.Equals(feature.ProviderName, Provider1Namespace, StringComparison.InvariantCultureIgnoreCase)));
               });
 
+            this.cmdlet.ParameterSetOverride = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet;
+
             this.cmdlet.ExecuteCmdlet();
 
             this.VerifyListAllCallPatternAndReset();
 
             // 5. get a single provider feature by name
-            this.cmdlet.ProviderName = Provider2Namespace;
+            this.cmdlet.ProviderNamespace = Provider2Namespace;
             this.cmdlet.FeatureName = Feature1Name;
             this.cmdlet.ListAvailable = false;
 
@@ -271,9 +278,35 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.Equal("Unregistered", feature.RegistrationState, StringComparer.InvariantCultureIgnoreCase);
                 });
 
+            this.cmdlet.ParameterSetOverride = GetAzureProviderFeatureCmdlet.GetFeatureParameterSet;
+
             this.cmdlet.ExecuteCmdlet();
 
             this.VerifyGetCallPatternAndReset();
+        }
+
+        /// <summary>
+        /// Resets the calls on the mocks
+        /// </summary>
+        private void ResetCalls()
+        {
+            this.featureOperationsMock.ResetCalls();
+            this.commandRuntimeMock.ResetCalls();
+        }
+
+        /// <summary>
+        /// Verifies the right call patterns are made
+        /// </summary>
+        private void VerifyGetCallPatternAndReset()
+        {
+            this.featureOperationsMock.Verify(f => f.GetAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once());
+            this.featureOperationsMock.Verify(f => f.ListAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+            this.featureOperationsMock.Verify(f => f.ListAllAsync(It.IsAny<CancellationToken>()), Times.Never);
+            this.featureOperationsMock.Verify(f => f.ListNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+            this.featureOperationsMock.Verify(f => f.ListAllNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+            this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), Times.Once());
+
+            this.ResetCalls();
         }
 
         /// <summary>
@@ -301,27 +334,22 @@ namespace Microsoft.Azure.Commands.Resources.Test
         }
 
         /// <summary>
-        /// Verifies the right call patterns are made
+        /// Helper class that enables setting the parameter set name
         /// </summary>
-        private void VerifyGetCallPatternAndReset()
+        private class GetAzureProviderFeatureCmdletTest : GetAzureProviderFeatureCmdlet
         {
-            this.featureOperationsMock.Verify(f => f.GetAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once());
-            this.featureOperationsMock.Verify(f => f.ListAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
-            this.featureOperationsMock.Verify(f => f.ListAllAsync(It.IsAny<CancellationToken>()), Times.Never);
-            this.featureOperationsMock.Verify(f => f.ListNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
-            this.featureOperationsMock.Verify(f => f.ListAllNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
-            this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), Times.Once());
+            /// <summary>
+            /// Sets the parameter set name to return
+            /// </summary>
+            public string ParameterSetOverride { private get; set; }
 
-            this.ResetCalls();
-        }
-
-        /// <summary>
-        /// Resets the calls on the mocks
-        /// </summary>
-        private void ResetCalls()
-        {
-            this.featureOperationsMock.ResetCalls();
-            this.commandRuntimeMock.ResetCalls();
+            /// <summary>
+            /// Determines the parameter set name based on the <see cref="ParameterSetOverride"/> property
+            /// </summary>
+            public override string DetermineParameterSetName()
+            {
+                return this.ParameterSetOverride;
+            }
         }
     }
 }

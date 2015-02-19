@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -135,16 +136,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public virtual PSResourceProvider UnregisterProvider(string providerName)
         {
             var response = this.ResourceManagementClient.Providers.Unregister(providerName);
-            var provider = response.StatusCode == HttpStatusCode.OK
-                ? this.ListResourceProviders(providerName: providerName, listAvailable: true).Single()
-                : null;
 
-            if (provider == null)
+            if (response.Provider == null)
             {
                 throw new KeyNotFoundException(string.Format(ProjectResources.ResourceProviderUnregistrationFailed, providerName));
             }
 
-            return provider.ToPSResourceProvider();
+            return response.Provider.ToPSResourceProvider();
         }
 
         private string GetTemplate(string templateFile, string galleryTemplateName)
@@ -369,56 +367,49 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return null;
         }
 
-        public virtual PSResourceProvider[] ListPSResourceProviders(string providerName = null, bool listAvailable = true)
+        public virtual PSResourceProvider[] ListPSResourceProviders(string providerName = null)
         {
-            return this.ListResourceProviders(providerName, listAvailable)
+            return this.ListResourceProviders(providerName: providerName, listAvailable: false)
+                .Select(provider => provider.ToPSResourceProvider())
+                .ToArray();
+        }
+
+        public virtual PSResourceProvider[] ListPSResourceProviders(bool listAvailable)
+        {
+            return this.ListResourceProviders(providerName: null, listAvailable: listAvailable)
                 .Select(provider => provider.ToPSResourceProvider())
                 .ToArray();
         }
 
         public virtual List<Provider> ListResourceProviders(string providerName = null, bool listAvailable = true)
         {
-            var returnList = new List<Provider>();
-
             if (!string.IsNullOrEmpty(providerName))
             {
                 var provider = this.ResourceManagementClient.Providers.Get(providerName).Provider;
 
                 if (provider == null)
                 {
-                   throw new KeyNotFoundException(string.Format(ProjectResources.ResourceProviderNotFound, providerName));
+                    throw new KeyNotFoundException(string.Format(ProjectResources.ResourceProviderNotFound, providerName));
                 }
 
-                returnList.Add(provider);
+                return new List<Provider> {provider};
             }
             else
             {
-                string nextLink = null;
-                do
+                var returnList = new List<Provider>();
+                var tempResult = this.ResourceManagementClient.Providers.List(null);
+                returnList.AddRange(tempResult.Providers);
+
+                while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
                 {
-                    ProviderListResult tempResult;
-
-                    if (returnList.Count == 0 && string.IsNullOrEmpty(nextLink))
-                    {
-                        tempResult = this.ResourceManagementClient.Providers.List(null);
-                    }
-                    else if (!string.IsNullOrEmpty(nextLink))
-                    {
-                        tempResult = this.ResourceManagementClient.Providers.ListNext(nextLink);
-                    }
-                    else
-                    {
-                        break;
-                    }
-
+                    tempResult = this.ResourceManagementClient.Providers.ListNext(tempResult.NextLink);
                     returnList.AddRange(tempResult.Providers);
-                    nextLink = tempResult.NextLink;
-                } while (!string.IsNullOrEmpty(nextLink));
-            }
+                }
 
-            return listAvailable
-                ? returnList
-                : returnList.Where(this.IsProviderRegistered).ToList();
+                return listAvailable
+                    ? returnList
+                    : returnList.Where(this.IsProviderRegistered).ToList();
+            }
         }
 
         private bool IsProviderRegistered(Provider provider)
@@ -432,16 +423,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public PSResourceProvider RegisterProvider(string providerName)
         {
             var response = this.ResourceManagementClient.Providers.Register(providerName);
-            var provider = response.StatusCode == HttpStatusCode.OK
-                ? this.ListResourceProviders(providerName: providerName, listAvailable: true).Single()
-                : null;
 
-            if (provider == null)
+            if (response.Provider == null)
             {
                 throw new KeyNotFoundException(string.Format(ProjectResources.ResourceProviderRegistrationFailed, providerName));
             }
 
-            return provider.ToPSResourceProvider();
+            return response.Provider.ToPSResourceProvider();
         }
     }
 }

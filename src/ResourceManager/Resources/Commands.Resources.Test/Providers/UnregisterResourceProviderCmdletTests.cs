@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     /// <summary>
     /// Tests the AzureProvider cmdlets
     /// </summary>
-    public class UnregisterAzureProvderCmdletTests
+    public class UnregisterAzureProviderCmdletTests
     {
         /// <summary>
         /// An instance of the cmdlet
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAzureProvderCmdletTests"/> class.
+        /// Initializes a new instance of the <see cref="GetAzureProviderCmdletTests"/> class.
         /// </summary>
-        public UnregisterAzureProvderCmdletTests()
+        public UnregisterAzureProviderCmdletTests()
         {
             this.providerOperationsMock = new Mock<IProviderOperations>();
             var resourceManagementClient = new Mock<IResourceManagementClient>();
@@ -60,7 +60,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 .Returns(() => this.providerOperationsMock.Object);
 
             this.commandRuntimeMock = new Mock<ICommandRuntime>();
-            this.cmdlet = new UnregisterAzureProviderCmdlet()
+
+            this.commandRuntimeMock
+                .Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(() => true);
+
+            this.cmdlet = new UnregisterAzureProviderCmdlet
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = new ResourcesClient
@@ -114,7 +119,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
                   StatusCode = HttpStatusCode.OK,
               }));
 
-            this.cmdlet.ProviderName = ProviderName;
+            this.cmdlet.Force = true;
+
+            this.cmdlet.ProviderNamespace = ProviderName;
 
             // 1. Unregister succeeds
             this.commandRuntimeMock
@@ -123,7 +130,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 {
                     Assert.IsType<PSResourceProvider>(obj);
                     var providerResult = (PSResourceProvider)obj;
-                    Assert.Equal(ProviderName, providerResult.ProviderName, StringComparer.InvariantCultureIgnoreCase);
+                    Assert.Equal(ProviderName, providerResult.ProviderNamespace, StringComparer.InvariantCultureIgnoreCase);
                 });
 
             unregistrationResult.StatusCode = HttpStatusCode.OK;

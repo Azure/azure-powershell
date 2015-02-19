@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     /// <summary>
     /// Tests the AzureProvider cmdlets
     /// </summary>
-    public class RegisterAzureProvderCmdletTests
+    public class RegisterAzureProviderCmdletTests
     {
         /// <summary>
         /// An instance of the cmdlet
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAzureProvderCmdletTests"/> class.
+        /// Initializes a new instance of the <see cref="GetAzureProviderCmdletTests"/> class.
         /// </summary>
-        public RegisterAzureProvderCmdletTests()
+        public RegisterAzureProviderCmdletTests()
         {
             this.providerOperationsMock = new Mock<IProviderOperations>();
             var resourceManagementClient = new Mock<IResourceManagementClient>();
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                   StatusCode = HttpStatusCode.OK,
               }));
 
-            this.cmdlet.ProviderName = ProviderName;
+            this.cmdlet.ProviderNamespace = ProviderName;
 
             // 1. register succeeds
             this.commandRuntimeMock
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 {
                     Assert.IsType<PSResourceProvider>(obj);
                     var providerResult = (PSResourceProvider)obj;
-                    Assert.Equal(ProviderName, providerResult.ProviderName, StringComparer.InvariantCultureIgnoreCase);
+                    Assert.Equal(ProviderName, providerResult.ProviderNamespace, StringComparer.InvariantCultureIgnoreCase);
                 });
 
             registrationResult.StatusCode = HttpStatusCode.OK;
