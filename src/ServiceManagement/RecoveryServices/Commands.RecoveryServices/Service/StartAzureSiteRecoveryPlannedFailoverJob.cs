@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 else
                 {
                     var blob = new AzureFailbackInput();
-                    blob.CreateRecoveryVmIfDoesntExist = true;
+                    blob.CreateRecoveryVmIfDoesntExist = false;
                     blob.SkipDataSync = this.Optimize == Constants.ForDowntime ? true : false;
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailbackInput>(blob);
                 }
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     var blob = new AzureFailbackInput();
                     blob.CreateRecoveryVmIfDoesntExist = false;
-                    blob.SkipDataSync = true;
+                    blob.SkipDataSync = this.Optimize == Constants.ForDowntime ? true : false;
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailbackInput>(blob);
                 }
             }
