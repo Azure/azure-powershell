@@ -38,6 +38,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         #region Parameters
 
         /// <summary>
+        /// Gets or sets Name of the Protection Profile.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets Replication Provider of the Protection Profile.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
@@ -71,13 +78,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccount { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether stored data needs to be encrypted.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
-        [DefaultValue(false)]
-        public SwitchParameter EncryptStoredData { get; set; }
 
         /// <summary>
         /// Gets or sets Replication Frequency of the Protection Profile in seconds.
@@ -235,12 +235,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
+                Name = this.Name,
                 ReplicationProvider = this.ReplicationProvider,
                 HyperVReplicaAzureProviderSettingsObject = new HyperVReplicaAzureProviderSettings()
                 {
                     RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                     RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
-                    EncryptStoredData = this.EncryptStoredData,
+                    //// Currently Data Encryption is not supported.
+                    EncryptStoredData = false,
                     ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
                     RecoveryPoints = this.RecoveryPoints,
                     ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
@@ -271,6 +273,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
+                Name = this.Name,
                 ReplicationProvider = this.ReplicationProvider,
                 HyperVReplicaAzureProviderSettingsObject = null,
                 HyperVReplicaProviderSettingsObject = new HyperVReplicaProviderSettings()
