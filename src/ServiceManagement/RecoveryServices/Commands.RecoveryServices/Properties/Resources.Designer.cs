@@ -354,6 +354,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Storage account given is in {0} whereas the vault is in {1}.
+        ///Please provide a storage account with the same location as that of the vault..
+        /// </summary>
+        internal static string StorageIsNotInTheSameLocationAsVault {
+            get {
+                return ResourceManager.GetString("StorageIsNotInTheSameLocationAsVault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter the subscription ID details..
         /// </summary>
         internal static string SubscriptionIdIsNotValid {

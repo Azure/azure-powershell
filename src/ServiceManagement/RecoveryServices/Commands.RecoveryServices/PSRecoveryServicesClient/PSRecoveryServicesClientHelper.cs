@@ -111,8 +111,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="azureSubscription">Subscription ID</param>
         /// <param name="azureStorageAccount">Storage Account details</param>
+        /// <param name="vaultLocation">Current Vault Location</param>
         /// <returns>Validation successful</returns>
-        public bool ValidateStorageAccountAssociation(string azureSubscription, string azureStorageAccount)
+        public bool ValidateStorageAccountAssociation(string azureSubscription, string azureStorageAccount, string vaultLocation)
         {
             if (string.IsNullOrEmpty(azureSubscription))
             {
@@ -130,6 +131,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             bool associatedAccount = false;
             StorageAccountListResponse azureStorageListResponse = null;
+            StorageAccountListResponse.StorageAccount currentStorageAccount = null;
 
             try
             {
@@ -146,6 +148,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 if (string.Compare(azureStorageAccount, storage.Name, StringComparison.OrdinalIgnoreCase) == 0)
                 {
                     associatedAccount = true;
+                    currentStorageAccount = storage;
                     break;
                 }
             }
@@ -157,6 +160,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     Properties.Resources.StorageIsNotAssociatedWithTheAccount,
                     azureStorageAccount,
                     azureSubscription));
+            }
+
+            // Validate that the Geo Location of the storage account is the same as that of the vault.
+            if (string.IsNullOrEmpty(currentStorageAccount.Properties.Location))
+            {
+                return false;
+            }
+
+            if (0 != string.Compare(
+                currentStorageAccount.Properties.Location,
+                vaultLocation,
+                StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.StorageIsNotInTheSameLocationAsVault,
+                    currentStorageAccount.Properties.Location,
+                    vaultLocation));
             }
 
             return true;

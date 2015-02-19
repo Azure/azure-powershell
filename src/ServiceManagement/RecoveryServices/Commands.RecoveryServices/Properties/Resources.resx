@@ -249,4 +249,8 @@ ClientRequestId: {3}</value>
     <value>Could not validate the storage account and subscription given.
 Are you sure you want to continue {0}?</value>
   </data>
+  <data name="StorageIsNotInTheSameLocationAsVault" xml:space="preserve">
+    <value>Storage account given is in {0} whereas the vault is in {1}.
+Please provide a storage account with the same location as that of the vault.</value>
+  </data>
 </root>

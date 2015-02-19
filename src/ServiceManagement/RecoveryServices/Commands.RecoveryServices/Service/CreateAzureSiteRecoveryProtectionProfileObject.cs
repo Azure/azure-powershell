@@ -206,7 +206,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // Verify whether the storage account is associated with the subscription or not.
             bool validationSuccessful = RecoveryServicesClient.ValidateStorageAccountAssociation(
                 this.RecoveryAzureSubscription,
-                this.RecoveryAzureStorageAccount);
+                this.RecoveryAzureStorageAccount,
+                this.GetCurrentValutLocation());
 
             if (!validationSuccessful)
             {
@@ -217,31 +218,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     string.Format(Properties.Resources.ValidationUnsuccessfulWarning, this.targetName),
                     string.Format(Properties.Resources.NewProtectionProfileObjectWhatIfMessage),
                     this.targetName,
-                    () =>
-                        {
-                            PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
-
-                            ushort replicationFrequencyInSeconds = PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
-
-                            ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
-                            {
-                                ReplicationProvider = this.ReplicationProvider,
-                                HyperVReplicaAzureProviderSettingsObject = new HyperVReplicaAzureProviderSettings()
-                                {
-                                    RecoveryAzureSubscription = this.RecoveryAzureSubscription,
-                                    RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
-                                    EncryptStoredData = this.EncryptStoredData,
-                                    ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
-                                    RecoveryPoints = this.RecoveryPoints,
-                                    ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
-                                    ReplicationStartTime = this.ReplicationStartTime,
-                                },
-                                HyperVReplicaProviderSettingsObject = null
-                            };
-
-                            this.WriteObject(protectionProfile);
-                        });
+                    new Action(this.ProceedToCreateProtectionProfileObject));
             }
+
+            this.ProceedToCreateProtectionProfileObject();
+        }
+
+        /// <summary>
+        /// Proceeds to Create an E2A Protection Profile Object after all the validations are done.
+        /// </summary>
+        private void ProceedToCreateProtectionProfileObject()
+        {
+            PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
+
+            ushort replicationFrequencyInSeconds = PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+
+            ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
+            {
+                ReplicationProvider = this.ReplicationProvider,
+                HyperVReplicaAzureProviderSettingsObject = new HyperVReplicaAzureProviderSettings()
+                {
+                    RecoveryAzureSubscription = this.RecoveryAzureSubscription,
+                    RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
+                    EncryptStoredData = this.EncryptStoredData,
+                    ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
+                    RecoveryPoints = this.RecoveryPoints,
+                    ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
+                    ReplicationStartTime = this.ReplicationStartTime,
+                },
+                HyperVReplicaProviderSettingsObject = null
+            };
+
+            this.WriteObject(protectionProfile);
         }
 
         /// <summary>
