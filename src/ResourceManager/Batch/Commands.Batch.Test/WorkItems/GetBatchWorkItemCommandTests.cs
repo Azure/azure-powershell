@@ -23,6 +23,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Xunit;
+using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
 {
@@ -103,17 +104,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>> pipeline = new List<PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>>();
+            List<PSCloudWorkItem> pipeline = new List<PSCloudWorkItem>();
             commandRuntimeMock.Setup(r => 
-                r.WriteObject(It.IsAny<PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>>()))
-                .Callback<object>(w => pipeline.Add((PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>)w));
+                r.WriteObject(It.IsAny<PSCloudWorkItem>()))
+                .Callback<object>(w => pipeline.Add((PSCloudWorkItem)w));
 
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the enumerator to the pipeline and that it contains the constructed WorkItems
-            Assert.Equal(1, pipeline.Count);
+            Assert.Equal(2, pipeline.Count);
             int workItemCount = 0;
-            foreach (PSCloudWorkItem w in pipeline[0])
+            foreach (PSCloudWorkItem w in pipeline)
             {
                 Assert.True(namesOfConstructedWorkItems.Contains(w.Name));
                 workItemCount++;
@@ -147,17 +148,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>> pipeline = new List<PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>>();
+            List<PSCloudWorkItem> pipeline = new List<PSCloudWorkItem>();
             commandRuntimeMock.Setup(r => 
-                r.WriteObject(It.IsAny<PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>>()))
-                .Callback<object>(w => pipeline.Add((PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>)w));
+                r.WriteObject(It.IsAny<PSCloudWorkItem>()))
+                .Callback<object>(w => pipeline.Add((PSCloudWorkItem)w));
 
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the enumerator to the pipeline and that it contains the constructed WorkItems
-            Assert.Equal(1, pipeline.Count);
+            Assert.Equal(3, pipeline.Count);
             int workItemCount = 0;
-            foreach (PSCloudWorkItem w in pipeline[0])
+            foreach (PSCloudWorkItem w in pipeline)
             {
                 Assert.True(namesOfConstructedWorkItems.Contains(w.Name));
                 workItemCount++;

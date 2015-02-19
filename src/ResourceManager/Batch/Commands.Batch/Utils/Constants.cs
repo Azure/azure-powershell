@@ -16,6 +16,8 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 {
     public class Constants
     {
+        public const int DefaultMaxCount = 1000;
+
         public const string NameParameterSet = "Name";
         public const string ODataFilterParameterSet = "ODataFilter";
     }

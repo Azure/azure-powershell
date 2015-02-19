@@ -26,8 +26,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class BatchController
     {
-        private const string AADTenant = @"de371010-e80c-4257-8fdc-4bfa4d6efe08";
-
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
 
@@ -69,7 +67,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
+            Action initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -79,12 +77,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 context.Start(callingClassType, mockName);
 
                 this.csmTestFactory = SetupCSMTestEnvironmentFactory();
-
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
-
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
@@ -95,10 +87,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 helper.SetupModules(
                     AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    "Microsoft.Azure.Commands.Batch.Test.dll"
+                    );
 
                 try
                 {
+                    if (initialize != null)
+                    {
+                        initialize();
+                    }
+
                     if (scriptBuilder != null)
                     {
                         var psScripts = scriptBuilder();
@@ -124,7 +123,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             CSMTestEnvironmentFactory factory = new CSMTestEnvironmentFactory();
             // to set test environment to Current add Environment=Current in TEST_CSM_ORGID_AUTHENTICATION env. variable
             // available configurations are: Prod/Dogfood/Next/Current
-            factory.CustomEnvValues[TestEnvironment.AADTenantKey] = AADTenant;
             return factory;
         }
 

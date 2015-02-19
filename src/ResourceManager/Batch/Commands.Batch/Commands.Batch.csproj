@@ -137,10 +137,12 @@
     <Compile Include="Accounts\NewBatchAccountCommand.cs" />
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
-    <Compile Include="BatchClient.cs" />
+    <Compile Include="Models\BatchClient.Accounts.cs" />
+    <Compile Include="Models\BatchClient.cs" />
     <Compile Include="BatchCmdletBase.cs" />
     <Compile Include="BatchObjectModelCmdletBase.cs" />
     <Compile Include="Models\BatchAccountContext.cs" />
+    <Compile Include="Models\BatchClient.WorkItems.cs" />
     <Compile Include="Models\PSAffinitiyInformation.cs" />
     <Compile Include="Models\PSAsyncEnumerable.cs" />
     <Compile Include="Models\PSAutoPoolSpecification.cs" />

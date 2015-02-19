@@ -14,8 +14,6 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Batch.Properties;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Azure.Management.Resources;
@@ -23,43 +21,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Batch
+namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class BatchClient
+    public partial class BatchClient
     {
-        public IBatchManagementClient BatchManagementClient{ get; private set; }
-
-        public IResourceManagementClient ResourceManagementClient { get; private set; }
-
-        private static string batchProvider = "Microsoft.Batch";
-        private static string accountObject = "batchAccounts";
-        private static string accountSearch = batchProvider + "/" + accountObject;
-
-        public BatchClient()
-        { }
-
-        /// <summary>
-        /// Creates new BatchClient instance
-        /// </summary>
-        /// <param name="batchManagementClient">The IBatchManagementClient instance</param>
-        /// <param name="resourceManagementClient">The IResourceManagementClient instance</param>
-        public BatchClient(IBatchManagementClient batchManagementClient, IResourceManagementClient resourceManagementClient)
-        {
-            BatchManagementClient = batchManagementClient;
-            ResourceManagementClient = resourceManagementClient;
-        }
-
-        /// <summary>
-        /// Creates new BatchClient
-        /// </summary>
-        /// <param name="context">Context with subscription containing a batch account to manipulate</param>
-        public BatchClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<BatchManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-            AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
-        {
-        }
-
-        #region Account verbs
         /// <summary>
         /// Creates a new Batch account
         /// </summary>
@@ -78,7 +43,7 @@ namespace Microsoft.Azure.Commands.Batch
             }
 
             Dictionary<string, string> tagDictionary = Helpers.CreateTagDictionary(tags, validate: true);
-            
+
             var response = BatchManagementClient.Accounts.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
             {
                 Location = location,
@@ -251,7 +216,6 @@ namespace Microsoft.Azure.Commands.Batch
             }
             return BatchManagementClient.Accounts.Delete(resourceGroupName, accountName);
         }
-        #endregion
 
         /// <summary>
         /// Lists all accounts in a subscription or in a resource group if its name is specified
