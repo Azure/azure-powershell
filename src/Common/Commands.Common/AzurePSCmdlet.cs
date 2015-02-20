@@ -25,6 +25,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public abstract class AzurePSCmdlet : PSCmdlet
     {
+        private readonly string defaultProfilePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
+
         private readonly RecordingTracingInterceptor _httpTracingInterceptor = new RecordingTracingInterceptor();
 
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
@@ -68,11 +70,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         private void InitializeProfile()
         {
-            // Load profile from disk 
-            var defaultProfile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            if (Profile == null || Profile.ProfilePath == defaultProfile.ProfilePath)
+            // Check if we need to load the default profile from the disk
+            if (Profile == null || Profile.ProfilePath == defaultProfilePath)
             {
-                Profile = defaultProfile;
+                Profile = new AzureProfile(defaultProfilePath);
             }
 
             // Set the DataStore for the current cmdlet
