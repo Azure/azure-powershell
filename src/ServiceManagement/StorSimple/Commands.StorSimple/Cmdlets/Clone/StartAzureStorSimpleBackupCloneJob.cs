@@ -13,7 +13,7 @@ namespace Microsoft.AzureStorSimpleDeviceCmdlets.Commands
     using Microsoft.WindowsAzure.Management.StorSimple.Models;
 
     /// <summary>
-    /// Given a backupId, snapshotId and a targetDeviceId , this commandlet will 
+    /// Given a backupId, snapshot and a targetDeviceName , this commandlet will 
     /// clone it on the given target device.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleBackupCloneJob")]
