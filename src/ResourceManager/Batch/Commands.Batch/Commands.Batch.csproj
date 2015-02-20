@@ -143,6 +143,8 @@
     <Compile Include="BatchObjectModelCmdletBase.cs" />
     <Compile Include="Jobs\GetBatchJobCommand.cs" />
     <Compile Include="Models\BatchAccountContext.cs" />
+    <Compile Include="Models\BatchClient.Jobs.cs" />
+    <Compile Include="Models\BatchClient.Pools.cs" />
     <Compile Include="Models\BatchClient.WorkItems.cs" />
     <Compile Include="Models\PSAffinitiyInformation.cs" />
     <Compile Include="Models\PSAsyncEnumerable.cs" />

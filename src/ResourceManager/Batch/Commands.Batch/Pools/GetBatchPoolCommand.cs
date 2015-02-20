@@ -22,11 +22,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, "AzureBatchPool", DefaultParameterSetName = Constants.NameParameterSet), 
-        OutputType(typeof(PSCloudPool), ParameterSetName = new string[] { Constants.NameParameterSet }),
-        OutputType(typeof(IEnumerableAsyncExtended<PSCloudPool>), ParameterSetName = new string[] { Constants.ODataFilterParameterSet })]
+    [Cmdlet(VerbsCommon.Get, "AzureBatchPool", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudPool))]
     public class GetBatchPoolCommand : BatchObjectModelCmdletBase
     {
+        private int maxCount = Constants.DefaultMaxCount;
+
         [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Pool to query.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -35,49 +35,21 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The maximum number of Pools to return. If a value of 0 or less is specified, then no upper limit will be used.")]
+        public int MaxCount
+        {
+            get { return this.maxCount; }
+            set { this.maxCount = value <= 0 ? Int32.MaxValue : value; }
+        }
+
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
+            // The enumerator will internally query the service in chunks. Using WriteObject with the enumerate flag will enumerate
+            // the entire collection first and then write the items out one by one in a single group.  Using foreach, we can take 
+            // advantage of the enumerator's behavior and write output to the pipeline in bursts.
+            foreach (PSCloudPool pool in BatchClient.ListPools(BatchContext, Name, Filter, MaxCount, AdditionalBehaviors))
             {
-                WriteVerboseWithTimestamp(Resources.GBP_GetByName, Name);
-                PSCloudPool pool = GetPool(Name, additionalBehaviors: AdditionalBehaviors);
                 WriteObject(pool);
-            }
-            else
-            {
-                ODATADetailLevel odata = null;
-                if (!string.IsNullOrEmpty(Filter))
-                {
-                    WriteVerboseWithTimestamp(Resources.GBP_GetByOData);
-                    odata = new ODATADetailLevel(filterClause: Filter);
-                }
-                else
-                {
-                    WriteVerboseWithTimestamp(Resources.GBP_NoFilter);
-                }
-                PSAsyncEnumerable<PSCloudPool, ICloudPool> poolEnumerator = ListPools(odata, AdditionalBehaviors);
-                WriteObject(poolEnumerator);
-            }
-        }
-
-        private PSCloudPool GetPool(string poolName, ODATADetailLevel detailLevel = null,
-            IEnumerable<BatchClientBehavior> additionalBehaviors = null)
-        {
-            using (IPoolManager poolManager = BatchContext.BatchOMClient.OpenPoolManager())
-            {
-                ICloudPool pool = poolManager.GetPool(poolName, detailLevel, additionalBehaviors);
-                return new PSCloudPool(pool);
-            }
-        }
-
-        private PSAsyncEnumerable<PSCloudPool, ICloudPool> ListPools(ODATADetailLevel detailLevel = null,
-            IEnumerable<BatchClientBehavior> additionalBehaviors = null)
-        {
-            using (IPoolManager poolManager = BatchContext.BatchOMClient.OpenPoolManager())
-            {
-                IEnumerableAsyncExtended<ICloudPool> poolEnumerator = poolManager.ListPools(detailLevel, additionalBehaviors);
-                Func<ICloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
-                return new PSAsyncEnumerable<PSCloudPool, ICloudPool>(poolEnumerator, mappingFunction);
             }
         }
     }

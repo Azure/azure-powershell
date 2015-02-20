@@ -115,6 +115,42 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting Job &quot;{0}&quot; from WorkItem &quot;{1}&quot;.
+        /// </summary>
+        internal static string GBJ_GetByName {
+            get {
+                return ResourceManager.GetString("GBJ_GetByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting Jobs matching the specified OData from WorkItem &quot;{0}&quot;. A max count of {1} will be returned..
+        /// </summary>
+        internal static string GBJ_GetByOData {
+            get {
+                return ResourceManager.GetString("GBJ_GetByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all Jobs from WorkItem &quot;{0}&quot;. A max count of {1} will be returned..
+        /// </summary>
+        internal static string GBJ_GetNoFilter {
+            get {
+                return ResourceManager.GetString("GBJ_GetNoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No WorkItem was specified.  Supply a WorkItem name or WorkItem object to query for Jobs..
+        /// </summary>
+        internal static string GBJ_NoWorkItem {
+            get {
+                return ResourceManager.GetString("GBJ_NoWorkItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting Pool &quot;{0}&quot;.
         /// </summary>
         internal static string GBP_GetByName {
@@ -124,7 +160,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting enumerator for Pools matching the specified OData filter.
+        ///   Looks up a localized string similar to Getting Pools matching the specified OData filter. A max count of {0} will be returned..
         /// </summary>
         internal static string GBP_GetByOData {
             get {
@@ -133,7 +169,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting enumerator for all Pools associated with the Batch account.
+        ///   Looks up a localized string similar to Getting all Pools associated with the Batch account. A max count of {0} will be returned..
         /// </summary>
         internal static string GBP_NoFilter {
             get {

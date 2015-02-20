@@ -21,6 +21,7 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Entities;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Test.ScenarioTests;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
@@ -82,7 +83,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
             return context;
         }
 
-
         /// <summary>
         /// Verifies that two BatchAccountContext objects are equal
         /// </summary>
@@ -110,6 +110,19 @@ namespace Microsoft.Azure.Commands.Batch.Test
             Assert.Equal<string>(context1.Subscription, context2.Subscription);
             Assert.Equal<string>(context1.TagsTable, context2.TagsTable);
             Assert.Equal<string>(context1.TaskTenantUrl, context2.TaskTenantUrl);
+        }
+
+        /// <summary>
+        /// Builds a PSCloudWorkItem for testing
+        /// </summary>
+        public static PSCloudWorkItem CreatePSCloudWorkItem()
+        {
+            BatchAccountContext context = CreateBatchContextWithKeys();
+            using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
+            {
+                ICloudWorkItem workItem = wiManager.CreateWorkItem("testWorkItem");
+                return new PSCloudWorkItem(workItem);
+            }
         }
 
         /// <summary>
@@ -186,6 +199,45 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             return response;
         }
+
+        /// <summary>
+        /// Builds a GetJobResponse object
+        /// </summary>
+        public static GetJobResponse CreateGetJobResponse(string jobName)
+        {
+            GetJobResponse response = new GetJobResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            Job job = new Job();
+            SetProperty(job, "Name", jobName);
+
+            SetProperty(response, "Job", job);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a ListJobsResponse object
+        /// </summary>
+        public static ListJobsResponse CreateListJobsResponse(IEnumerable<string> jobNames)
+        {
+            ListJobsResponse response = new ListJobsResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            List<Job> jobs = new List<Job>();
+
+            foreach (string name in jobNames)
+            {
+                Job job = new Job();
+                SetProperty(job, "Name", name);
+                jobs.Add(job);
+            }
+
+            SetProperty(response, "Jobs", jobs);
+
+            return response;
+        }
+
 
         /// <summary>
         /// Creates an account and resource group for use with the Scenario tests

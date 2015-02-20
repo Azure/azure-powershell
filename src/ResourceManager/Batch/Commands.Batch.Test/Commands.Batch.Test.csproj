@@ -151,6 +151,7 @@
     <Compile Include="Accounts\RemoveBatchAccountCommandTests.cs" />
     <Compile Include="Accounts\SetBatchAccountCommandTests.cs" />
     <Compile Include="BatchTestHelpers.cs" />
+    <Compile Include="Jobs\GetBatchJobCommandTests.cs" />
     <Compile Include="Models\BatchAccountContextTest.cs" />
     <Compile Include="Pools\GetBatchPoolCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
