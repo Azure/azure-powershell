@@ -20,10 +20,15 @@ using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleDeviceFailoverJob"), OutputType(typeof(TaskResponse), typeof(TaskStatusInfo))]
+    [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleDeviceFailoverJob", DefaultParameterSetName = StorSimpleCmdletParameterSet.Empty),
+        OutputType(typeof(TaskResponse), typeof(TaskStatusInfo))]
     public class StartAzureStorSimpleDeviceFailoverJob : StorSimpleCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceId)]
+        [ValidateNotNullOrEmpty]
+        public string DeviceId { get; set; }
+
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
@@ -31,7 +36,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNull]
         public List<DataContainerGroup> VolumecontainerGroups { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageFailoverTargetDeviceName)]
+        [Parameter(Position = 2, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageFailoverTargetDeviceId)]
+        [ValidateNotNullOrEmpty]
+        public string TargetDeviceId { get; set; }
+
+        [Parameter(Position = 2, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageFailoverTargetDeviceName)]
         [ValidateNotNullOrEmpty]
         public string TargetDeviceName { get; set; }
 
@@ -49,19 +58,36 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     string.Empty,
                     () =>
                     {
-                        var deviceId = StorSimpleClient.GetDeviceId(DeviceName);
+                        string deviceId = null;
+                        string targetDeviceId = null;
 
-                        if (deviceId == null)
+                        switch(ParameterSetName)
                         {
-                            WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
-                            return;
+                            case StorSimpleCmdletParameterSet.IdentifyById:
+                                deviceId = DeviceId;
+                                targetDeviceId = TargetDeviceId;
+                                break;
+                            case StorSimpleCmdletParameterSet.IdentifyByName:
+                                deviceId = StorSimpleClient.GetDeviceId(DeviceName);
+                                targetDeviceId = StorSimpleClient.GetDeviceId(TargetDeviceName);
+                                if (deviceId == null)
+                                {
+                                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage,
+                                        StorSimpleContext.ResourceName, DeviceName));
+                                }
+                                if (targetDeviceId == null)
+                                {
+                                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, 
+                                        StorSimpleContext.ResourceName, TargetDeviceName));
+                                }
+                                break;
+                            default:
+                                break;
                         }
 
-                        var targetDeviceId = StorSimpleClient.GetDeviceId(TargetDeviceName);
-
-                        if (targetDeviceId == null)
+                        if (String.IsNullOrEmpty(deviceId) || string.IsNullOrEmpty(targetDeviceId))
                         {
-                            WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, TargetDeviceName));
+                            WriteObject(null);
                             return;
                         }
 

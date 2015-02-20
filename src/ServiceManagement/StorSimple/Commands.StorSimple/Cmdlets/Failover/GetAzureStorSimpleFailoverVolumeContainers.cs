@@ -22,10 +22,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
 
 
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleFailoverVolumeContainers"), OutputType(typeof(IList<DataContainerGroup>))]
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleFailoverVolumeContainers", DefaultParameterSetName = StorSimpleCmdletParameterSet.Empty), 
+        OutputType(typeof(IList<DataContainerGroup>))]
     public class GetAzureStorSimpleFailoverVolumeContainers : StorSimpleCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceId)]
+        [ValidateNotNullOrEmpty]
+        public string DeviceId { get; set; }
+
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
@@ -33,15 +38,31 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                var deviceid = StorSimpleClient.GetDeviceId(DeviceName);
+                string deviceid = null;
 
-                if (deviceid == null)
+                switch(ParameterSetName)
                 {
-                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage,
-                        StorSimpleContext.ResourceName, DeviceName));
+                    case StorSimpleCmdletParameterSet.IdentifyById:
+                        deviceid = DeviceId;
+                        break;
+                    case StorSimpleCmdletParameterSet.IdentifyByName:
+                        deviceid = StorSimpleClient.GetDeviceId(DeviceName);
+                        if (deviceid == null)
+                        {
+                            WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage,
+                                StorSimpleContext.ResourceName, DeviceName));
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+                if (string.IsNullOrEmpty(deviceid))
+                {
                     WriteObject(null);
                     return;
                 }
+
                 var dcgroupList = StorSimpleClient.GetFaileoverDataContainerGroups(deviceid).DataContainerGroupResponse.DCGroups;
                 WriteObject(dcgroupList);
                 WriteVerbose(string.Format(Resources.ReturnedCountDataContainerGroupMessage,
