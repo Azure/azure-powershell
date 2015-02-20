@@ -26,5 +26,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 
         public string MacAddress { get; set; }
 
+        public PSResourceId NetworkSecurityGroup { get; set; }
     }
 }

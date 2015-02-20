@@ -237,6 +237,11 @@
     <Compile Include="NetworkInterface\SetAzureNetworkInterfaceCmdlet.cs" />
     <Compile Include="NetworkSecurityGroup\GetAzureNetworkSecurityGroupCmdlet.cs" />
     <Compile Include="NetworkSecurityGroup\NetworkSecurityGroupBaseClient.cs" />
+    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\GetAzureNetworkSecurityRuleConfigCmdlet.cs" />
+    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\RemoveAzureNetworkSecurityRuleConfigCmdlet.cs" />
+    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\SetAzureNetworkSecurityRuleConfigCmdlet.cs" />
+    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\AddAzureNetworkSecurityRuleConfigCmdlet.cs" />
+    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\CommonAzureNetworkSecurityRuleConfigCmdlet.cs" />
     <Compile Include="NetworkSecurityGroup\NewAzureNetworkSecurityGroupCmdlet.cs" />
     <Compile Include="NetworkSecurityGroup\RemoveAzureNetworkSecurityGroupCmdlet.cs" />
     <Compile Include="NetworkSecurityGroup\SetAzureNetworkSecurityGroupCmdlet.cs" />

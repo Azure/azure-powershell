@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
@@ -30,12 +31,27 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
 
+            if (string.Equals(ParameterSetName, Resources.SetByResource))
+            {
+                if (this.NetworkSecurityGroup != null)
+                {
+                    this.NetworkSecurityGroupId = this.NetworkSecurityGroup.Id;
+                }
+            }
+
             var subnet = new PSSubnet();
             subnet.Name = this.Name;
             subnet.Properties = new PSSubnetProperties();
             subnet.Properties.AddressPrefix = this.AddressPrefix;
             subnet.Properties.DhcpOptions = new PSDhcpOptions();
-            subnet.Properties.DhcpOptions.DnsServers = this.DnsServer;
+            subnet.Properties.DhcpOptions.DnsServers = this.DnsServer;  
+
+            if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
+            {
+                subnet.Properties.NetworkSecurityGroup = new PSResourceId();
+                subnet.Properties.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+            }
+
             WriteObject(subnet);
         }
     }
