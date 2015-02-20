@@ -174,7 +174,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
             }
 
             this.ClusterSizeInNodes = value.ClusterSizeInNodes;
-            this.DefaultStorageAccount = value.DefaultStorageAccount;
+            this.DefaultStorageAccount = new AzureHDInsightDefaultStorageAccount(value.DefaultStorageAccount);
             this.AdditionalStorageAccounts.AddRange(value.AdditionalStorageAccounts);
             this.ConfigActions.AddRange(value.ConfigActions);
             this.HiveMetastore = value.HiveMetastore ?? this.HiveMetastore;
