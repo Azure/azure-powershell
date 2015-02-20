@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the enumerator to the pipeline and that it contains the constructed WorkItems
+            // Verify that the cmdlet wrote the constructed WorkItems to the pipeline
             Assert.Equal(2, pipeline.Count);
             int workItemCount = 0;
             foreach (PSCloudWorkItem w in pipeline)
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the enumerator to the pipeline and that it contains the constructed WorkItems
+            // Verify that the cmdlet wrote the constructed WorkItems to the pipeline
             Assert.Equal(3, pipeline.Count);
             int workItemCount = 0;
             foreach (PSCloudWorkItem w in pipeline)
