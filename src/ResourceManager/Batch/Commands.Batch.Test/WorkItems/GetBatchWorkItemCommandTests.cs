@@ -165,5 +165,23 @@ namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
             }
             Assert.Equal(namesOfConstructedWorkItems.Length, workItemCount);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ListWorkItemMaxCountTest()
+        {
+            // Verify default max count
+            Assert.Equal(Microsoft.Azure.Commands.Batch.Utils.Constants.DefaultMaxCount, cmdlet.MaxCount);
+
+            // Verify setting max count greater than 0
+            int maxCount = 5;
+            cmdlet.MaxCount = maxCount;
+            Assert.Equal(maxCount, cmdlet.MaxCount);
+
+            // Verify setting max count <= 0
+            cmdlet.MaxCount = -5;
+            Assert.Equal(int.MaxValue, cmdlet.MaxCount);
+        }
+
     }
 }
