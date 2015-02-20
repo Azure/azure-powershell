@@ -172,6 +172,24 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             // MNM to CNM
             Mapper.CreateMap<MNM.InboundNatRule, CNM.PSInboundNatRule>();
             Mapper.CreateMap<MNM.InboundNatRuleProperties, CNM.PSInboundNatRuleProperties>();
+
+            // NetworkSecurityGroups
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSNetworkSecurityGroup, MNM.NetworkSecurityGroup>();
+            Mapper.CreateMap<CNM.PSNetworkSecurityGroupProperties, MNM.NetworkSecurityGroupProperties>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.NetworkSecurityGroup, CNM.PSNetworkSecurityGroup>();
+            Mapper.CreateMap<MNM.NetworkSecurityGroupProperties, CNM.PSNetworkSecurityGroupProperties>();
+
+            // NetworkSecrityRule
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSNetworkSecurityRule, MNM.NetworkSecurityRule>();
+            Mapper.CreateMap<CNM.PSNetworkSecurityRuleProperties, MNM.NetworkSecurityRuleProperties>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.NetworkSecurityRule, CNM.PSNetworkSecurityRule>();
+            Mapper.CreateMap<MNM.NetworkSecurityRuleProperties, CNM.PSNetworkSecurityRuleProperties>();
         }
     }
 }
