@@ -18,40 +18,40 @@ using Microsoft.WindowsAzure.Management.StorSimple.Models;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.VirtualDevice
 {
-    /// <summary>
-
-    /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureStorSimpleVirtualDevice")]
-    public class NewAzureStorSimpleVirtualDeviceCommand : StorSimpleCmdletBase, IDynamicParameters
+    public class NewAzureStorSimpleVirtualDeviceCommand : StorSimpleCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualDeviceName, ParameterSetName = StorSimpleCmdletParameterSet.Empty)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualDeviceName)]
+        [ValidateNotNullOrEmpty]
         public string VirtualDeviceName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualNetworkName, , ParameterSetName = StorSimpleCmdletParameterSet.Empty)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualNetworkName)]
+        [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
         
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.SubNetName, ParameterSetName = StorSimpleCmdletParameterSet.Empty)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.SubNetName)]
+        [ValidateNotNullOrEmpty]
         public string SubNetName { get; set; }
-        
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.StorageAccountNameForVirtualDevice, ParameterSetName = StorSimpleCmdletParameterSet.Empty)]
-        public string StorageAccountName { get; set; }
-        
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.CreateNewStorageAccount, ParameterSetName = StorSimpleCmdletParameterSet.Empty)]
-        public SwitchParameter CreateNewStorageAccount { get; set; }
 
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.StorageAccountNameForVirtualDevice)]
+        public string StorageAccountName { get; set; }
+
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.CreateNewStorageAccount)]
+        public SwitchParameter CreateNewStorageAccount { get; set; }
+        
         public override void ExecuteCmdlet()
         {
             try
             {
-                var applianceProvisiongInfo = new VirtualApplianceProvisioningInfo()
+                var applianceProvisiongInfo = new VirtualDeviceProvisioningInfo()
                 {
                     SubscriptionId = CurrentContext.Subscription.Id.ToString(),
                     DeviceName = VirtualDeviceName,
                     ReturnWorkflowId = true,
                     VirtualNetworkName = VirtualNetworkName,
                     SubNetName = SubNetName,
-                    StorageAccountName = StorageAccountName,
-                    CreateNewStorageAccount = CreateNewStorageAccount.IsPresent
+                    CreateNewStorageAccount = CreateNewStorageAccount.IsPresent,
+                    StorageAccountName = StorageAccountName
                 };
 
                 var deviceJobResponse = StorSimpleClient.CreateVirtualDevice(applianceProvisiongInfo);
@@ -62,11 +62,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.VirtualDevice
             {
                 this.HandleException(exception);
             }
-        }
-
-        public object GetDynamicParameters()
-        {
-            throw new NotImplementedException();
         }
     }
 

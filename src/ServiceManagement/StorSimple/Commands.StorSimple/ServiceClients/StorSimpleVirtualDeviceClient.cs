@@ -19,7 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
     public partial class StorSimpleClient
     {
-        public JobResponse CreateVirtualDevice(VirtualApplianceProvisioningInfo virtualApplianceProvisioningInfo)
+        public JobResponse CreateVirtualDevice(VirtualDeviceProvisioningInfo virtualApplianceProvisioningInfo)
         {
             return this.GetStorSimpleClient().VirtualDevice.Create(virtualApplianceProvisioningInfo, this.GetCustomRequestHeaders());
         }
