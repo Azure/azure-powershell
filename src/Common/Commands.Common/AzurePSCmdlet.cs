@@ -69,11 +69,20 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private void InitializeProfile()
         {
             // Load profile from disk 
-            var profileFromDisk = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            if (Profile == null ||
-                Profile.ProfilePath == profileFromDisk.ProfilePath)
+            var defaultProfile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            if (Profile == null || Profile.ProfilePath == defaultProfile.ProfilePath)
             {
-                Profile = profileFromDisk;
+                Profile = defaultProfile;
+            }
+
+            // Set the DataStore for the current cmdlet
+            if (string.IsNullOrEmpty(Profile.ProfilePath))
+            {
+                AzureSession.DataStore = new MemoryDataStore();
+            }
+            else
+            {
+                AzureSession.DataStore = new DiskDataStore();
             }
         }
 
@@ -90,11 +99,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             base.EndProcessing();
         }
-
-        /*public AzureContext Profile.Context
-        {
-            get { return Profile.Context; }
-        }*/
 
         public bool HasCurrentSubscription
         {
