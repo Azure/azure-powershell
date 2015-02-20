@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Lists the Pools matching the specified filter options
         /// </summary>
         /// <param name="context">The account details</param>
-        /// <param name="poolName">If specified, the single Pool matching the specified name will be returned</param>
+        /// <param name="poolName">If specified, the single Pool with this name will be returned</param>
         /// <param name="filter">The OData filter to use when querying for Pools</param>
         /// <param name="maxCount">The maximum number of Pools to return</param>
         /// <param name="additionalBehaviors">Additional client behaviors to perform</param>

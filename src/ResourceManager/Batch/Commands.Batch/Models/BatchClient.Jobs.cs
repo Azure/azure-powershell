@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="context">The account details</param>
         /// <param name="workItemName">The name of the WorkItem to query for Jobs</param>
         /// <param name="workItem">The WorkItem to query for Jobs</param>
-        /// <param name="jobName">If specified, the single Job matching the specified name will be returned</param>
+        /// <param name="jobName">If specified, the single Job with this name will be returned</param>
         /// <param name="filter">The OData filter to use when querying for Jobs</param>
         /// <param name="maxCount">The maximum number of Jobs to return</param>
         /// <param name="additionalBehaviors">Additional client behaviors to perform</param>

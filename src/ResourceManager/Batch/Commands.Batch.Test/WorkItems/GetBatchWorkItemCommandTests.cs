@@ -173,14 +173,43 @@ namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
             // Verify default max count
             Assert.Equal(Microsoft.Azure.Commands.Batch.Utils.Constants.DefaultMaxCount, cmdlet.MaxCount);
 
-            // Verify setting max count greater than 0
-            int maxCount = 5;
-            cmdlet.MaxCount = maxCount;
-            Assert.Equal(maxCount, cmdlet.MaxCount);
-
             // Verify setting max count <= 0
             cmdlet.MaxCount = -5;
             Assert.Equal(int.MaxValue, cmdlet.MaxCount);
+
+            // Setup cmdlet to list WorkItems without filters and a max count
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Name = null;
+            cmdlet.Filter = null;
+            int maxCount = 2;
+            cmdlet.MaxCount = maxCount;
+
+            string[] namesOfConstructedWorkItems = new[] { "name1", "name2", "name3" };
+
+            // Build some WorkItems instead of querying the service on a ListWorkItems call
+            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            {
+                if (request is ListWorkItemsRequest)
+                {
+                    ListWorkItemsResponse response = BatchTestHelpers.CreateListWorkItemsResponse(namesOfConstructedWorkItems);
+                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    return task;
+                }
+                return null;
+            });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Setup the cmdlet to write pipeline output to a list that can be examined later
+            List<PSCloudWorkItem> pipeline = new List<PSCloudWorkItem>();
+            commandRuntimeMock.Setup(r =>
+                r.WriteObject(It.IsAny<PSCloudWorkItem>()))
+                .Callback<object>(w => pipeline.Add((PSCloudWorkItem)w));
+
+            cmdlet.ExecuteCmdlet();
+
+            // Verify that the max count was respected
+            Assert.Equal(maxCount, pipeline.Count);
         }
 
     }

@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ListBatchPoolWithoutFiltersTest()
+        public void ListBatchJobsWithoutFiltersTest()
         {
             // Setup cmdlet to list Jobs without filters. Use WorkItem input.
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
@@ -176,14 +176,44 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             // Verify default max count
             Assert.Equal(Microsoft.Azure.Commands.Batch.Utils.Constants.DefaultMaxCount, cmdlet.MaxCount);
 
-            // Verify setting max count greater than 0
-            int maxCount = 5;
-            cmdlet.MaxCount = maxCount;
-            Assert.Equal(maxCount, cmdlet.MaxCount);
-
             // Verify setting max count <= 0
             cmdlet.MaxCount = -5;
             Assert.Equal(int.MaxValue, cmdlet.MaxCount);
+
+            // Setup cmdlet to list Jobs without filters and a max count
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.WorkItem = BatchTestHelpers.CreatePSCloudWorkItem();
+            cmdlet.Name = null;
+            cmdlet.Filter = null;
+            int maxCount = 2;
+            cmdlet.MaxCount = maxCount;
+
+            string[] namesOfConstructedJobs = new[] { "job-0000000001", "job-0000000002", "job-0000000003" };
+
+            // Build some Jobs instead of querying the service on a ListJobs call
+            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            {
+                if (request is ListJobsRequest)
+                {
+                    ListJobsResponse response = BatchTestHelpers.CreateListJobsResponse(namesOfConstructedJobs);
+                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    return task;
+                }
+                return null;
+            });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Setup the cmdlet to write pipeline output to a list that can be examined later
+            List<PSCloudJob> pipeline = new List<PSCloudJob>();
+            commandRuntimeMock.Setup(r =>
+                r.WriteObject(It.IsAny<PSCloudJob>()))
+                .Callback<object>(j => pipeline.Add((PSCloudJob)j));
+
+            cmdlet.ExecuteCmdlet();
+
+            // Verify that the max count was respected
+            Assert.Equal(maxCount, pipeline.Count);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Lists the WorkItems matching the specified filter options
         /// </summary>
         /// <param name="context">The account details</param>
-        /// <param name="workItemName">If specified, the single WorkItem matching the specified name will be returned</param>
+        /// <param name="workItemName">If specified, the single WorkItem with this name will be returned</param>
         /// <param name="filter">The OData filter to use when querying for WorkItems</param>
         /// <param name="maxCount">The maximum number of WorkItems to return</param>
         /// <param name="additionalBehaviors">Additional client behaviors to perform</param>

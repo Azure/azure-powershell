@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting Jobs matching the specified OData from WorkItem &quot;{0}&quot;. A max count of {1} will be returned..
+        ///   Looks up a localized string similar to Getting Jobs matching the specified OData filter from WorkItem &quot;{0}&quot;. A max count of {1} will be returned..
         /// </summary>
         internal static string GBJ_GetByOData {
             get {
@@ -174,6 +174,42 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string GBP_NoFilter {
             get {
                 return ResourceManager.GetString("GBP_NoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting Task &quot;{0}&quot; from Job &quot;{1}&quot; under WorkItem &quot;{2}&quot;.
+        /// </summary>
+        internal static string GBT_GetByName {
+            get {
+                return ResourceManager.GetString("GBT_GetByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting Tasks matching the specified OData filter from Job &quot;{0}&quot;. A max count of {1} will be returned..
+        /// </summary>
+        internal static string GBT_GetByOData {
+            get {
+                return ResourceManager.GetString("GBT_GetByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all Tasks from Job &quot;{0}&quot;. A max count of {1} will be returned..
+        /// </summary>
+        internal static string GBT_GetNoFilter {
+            get {
+                return ResourceManager.GetString("GBT_GetNoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Job was specified. Supply a Job object or a WorkItem namd and Job name to query for Tasks..
+        /// </summary>
+        internal static string GBT_NoJob {
+            get {
+                return ResourceManager.GetString("GBT_NoJob", resourceCulture);
             }
         }
         

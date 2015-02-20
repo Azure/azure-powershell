@@ -145,6 +145,7 @@
     <Compile Include="Models\BatchAccountContext.cs" />
     <Compile Include="Models\BatchClient.Jobs.cs" />
     <Compile Include="Models\BatchClient.Pools.cs" />
+    <Compile Include="Models\BatchClient.Tasks.cs" />
     <Compile Include="Models\BatchClient.WorkItems.cs" />
     <Compile Include="Models\PSAffinitiyInformation.cs" />
     <Compile Include="Models\PSAsyncEnumerable.cs" />
@@ -198,6 +199,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tasks\GetBatchTaskCommand.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="WorkItems\GetBatchWorkItemCommand.cs" />
   </ItemGroup>
@@ -226,9 +228,7 @@
       <Name>Commands.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tasks\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -139,7 +139,7 @@
     <value>Getting Job "{0}" from WorkItem "{1}"</value>
   </data>
   <data name="GBJ_GetByOData" xml:space="preserve">
-    <value>Getting Jobs matching the specified OData from WorkItem "{0}". A max count of {1} will be returned.</value>
+    <value>Getting Jobs matching the specified OData filter from WorkItem "{0}". A max count of {1} will be returned.</value>
   </data>
   <data name="GBJ_GetNoFilter" xml:space="preserve">
     <value>Getting all Jobs from WorkItem "{0}". A max count of {1} will be returned.</value>
@@ -155,6 +155,18 @@
   </data>
   <data name="GBP_NoFilter" xml:space="preserve">
     <value>Getting all Pools associated with the Batch account. A max count of {0} will be returned.</value>
+  </data>
+  <data name="GBT_GetByName" xml:space="preserve">
+    <value>Getting Task "{0}" from Job "{1}" under WorkItem "{2}"</value>
+  </data>
+  <data name="GBT_GetByOData" xml:space="preserve">
+    <value>Getting Tasks matching the specified OData filter from Job "{0}". A max count of {1} will be returned.</value>
+  </data>
+  <data name="GBT_GetNoFilter" xml:space="preserve">
+    <value>Getting all Tasks from Job "{0}". A max count of {1} will be returned.</value>
+  </data>
+  <data name="GBT_NoJob" xml:space="preserve">
+    <value>No Job was specified. Supply a Job object or a WorkItem namd and Job name to query for Tasks.</value>
   </data>
   <data name="GBWI_GetByName" xml:space="preserve">
     <value>Getting WorkItem "{0}"</value>

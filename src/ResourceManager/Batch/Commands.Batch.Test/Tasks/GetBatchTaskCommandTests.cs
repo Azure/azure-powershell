@@ -25,19 +25,19 @@ using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
-namespace Microsoft.Azure.Commands.Batch.Test.Pools
+namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 {
-    public class GetBatchPoolCommandTests
+    public class GetBatchTaskCommandTests
     {
-        private GetBatchPoolCommand cmdlet;
+        private GetBatchTaskCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchPoolCommandTests()
+        public GetBatchTaskCommandTests()
         {
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchPoolCommand()
+            cmdlet = new GetBatchTaskCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,
@@ -46,20 +46,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBatchPoolTest()
+        public void GetBatchTaskTest()
         {
-            // Setup cmdlet to get a Pool by name
+            // Setup cmdlet to get a Task by name
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.Name = "testPool";
+            cmdlet.WorkItemName = "workItem";
+            cmdlet.JobName = "job-0000000001";
+            cmdlet.Name = "task1";
             cmdlet.Filter = null;
 
-            // Build a Pool instead of querying the service on a GetPool call
+            // Build a Task instead of querying the service on a GetJob call
             YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
             {
-                if (request is GetPoolRequest)
+                if (request is GetTaskRequest)
                 {
-                    GetPoolResponse response = BatchTestHelpers.CreateGetPoolResponse(cmdlet.Name);
+                    GetTaskResponse response = BatchTestHelpers.CreateGetTaskResponse(cmdlet.Name);
                     Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
                     return task;
                 }
@@ -68,34 +70,36 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSCloudPool> pipeline = new List<PSCloudPool>();
-            commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSCloudPool>())).Callback<object>(p => pipeline.Add((PSCloudPool)p));
+            List<PSCloudTask> pipeline = new List<PSCloudTask>();
+            commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSCloudTask>())).Callback<object>(t => pipeline.Add((PSCloudTask)t));
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the Pool returned from the OM to the pipeline
+            // Verify that the cmdlet wrote the Task returned from the OM to the pipeline
             Assert.Equal(1, pipeline.Count);
             Assert.Equal(cmdlet.Name, pipeline[0].Name);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ListBatchPoolByODataFilterTest()
+        public void ListBatchTasksByODataFilterTest()
         {
-            // Setup cmdlet to list Pools using an OData filter
+            // Setup cmdlet to list Tasks using an OData filter. Use WorkItemName and JobName input.
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
+            cmdlet.WorkItemName = "workItem";
+            cmdlet.JobName = "job-0000000001";
             cmdlet.Name = null;
             cmdlet.Filter = "startswith(name,'test')";
 
-            string[] namesOfConstructedPools = new[] { "test1", "test2" };
+            string[] namesOfConstructedTasks = new[] { "testTask1", "testTask2" };
 
-            // Build some Pools instead of querying the service on a ListPools call
+            // Build some Tasks instead of querying the service on a ListTasks call
             YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
             {
-                if (request is ListPoolsRequest)
+                if (request is ListTasksRequest)
                 {
-                    ListPoolsResponse response = BatchTestHelpers.CreateListPoolsResponse(namesOfConstructedPools);
+                    ListTasksResponse response = BatchTestHelpers.CreateListTasksResponse(namesOfConstructedTasks);
                     Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
                     return task;
                 }
@@ -104,42 +108,44 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSCloudPool> pipeline = new List<PSCloudPool>();
+            List<PSCloudTask> pipeline = new List<PSCloudTask>();
             commandRuntimeMock.Setup(r =>
-                r.WriteObject(It.IsAny<PSCloudPool>()))
-                .Callback<object>(p => pipeline.Add((PSCloudPool)p));
+                r.WriteObject(It.IsAny<PSCloudTask>()))
+                .Callback<object>(t => pipeline.Add((PSCloudTask)t));
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the constructed Pools to the pipeline
+            // Verify that the cmdlet wrote the constructed Tasks to the pipeline
             Assert.Equal(2, pipeline.Count);
-            int poolCount = 0;
-            foreach (PSCloudPool p in pipeline)
+            int taskCount = 0;
+            foreach (PSCloudTask t in pipeline)
             {
-                Assert.True(namesOfConstructedPools.Contains(p.Name));
-                poolCount++;
+                Assert.True(namesOfConstructedTasks.Contains(t.Name));
+                taskCount++;
             }
-            Assert.Equal(namesOfConstructedPools.Length, poolCount);
+            Assert.Equal(namesOfConstructedTasks.Length, taskCount);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ListBatchPoolWithoutFiltersTest()
+        public void ListBatchTasksWithoutFiltersTest()
         {
-            // Setup cmdlet to list Pools without filters
+            // Setup cmdlet to list Tasks without filters. Use WorkItemName and JobName. A PSCloudJob object is difficult to construct, so save that for the scenario tests.
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
+            cmdlet.WorkItemName = "workItem";
+            cmdlet.JobName = "job-0000000001";
             cmdlet.Name = null;
             cmdlet.Filter = null;
 
-            string[] namesOfConstructedPools = new[] { "name1", "name2", "name3" };
+            string[] namesOfConstructedTasks = new[] { "testTask1", "testTask2", "testTask3" };
 
-            // Build some Pools instead of querying the service on a ListPools call
+            // Build some Tasks instead of querying the service on a ListTasks call
             YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
             {
-                if (request is ListPoolsRequest)
+                if (request is ListTasksRequest)
                 {
-                    ListPoolsResponse response = BatchTestHelpers.CreateListPoolsResponse(namesOfConstructedPools);
+                    ListTasksResponse response = BatchTestHelpers.CreateListTasksResponse(namesOfConstructedTasks);
                     Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
                     return task;
                 }
@@ -148,27 +154,27 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSCloudPool> pipeline = new List<PSCloudPool>();
+            List<PSCloudTask> pipeline = new List<PSCloudTask>();
             commandRuntimeMock.Setup(r =>
-                r.WriteObject(It.IsAny<PSCloudPool>()))
-                .Callback<object>(p => pipeline.Add((PSCloudPool)p));
+                r.WriteObject(It.IsAny<PSCloudTask>()))
+                .Callback<object>(t => pipeline.Add((PSCloudTask)t));
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the constructed Pools to the pipeline
+            // Verify that the cmdlet wrote the constructed Tasks to the pipeline
             Assert.Equal(3, pipeline.Count);
-            int poolCount = 0;
-            foreach (PSCloudPool p in pipeline)
+            int taskCount = 0;
+            foreach (PSCloudTask t in pipeline)
             {
-                Assert.True(namesOfConstructedPools.Contains(p.Name));
-                poolCount++;
+                Assert.True(namesOfConstructedTasks.Contains(t.Name));
+                taskCount++;
             }
-            Assert.Equal(namesOfConstructedPools.Length, poolCount);
+            Assert.Equal(namesOfConstructedTasks.Length, taskCount);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ListPoolsMaxCountTest()
+        public void ListTasksMaxCountTest()
         {
             // Verify default max count
             Assert.Equal(Microsoft.Azure.Commands.Batch.Utils.Constants.DefaultMaxCount, cmdlet.MaxCount);
@@ -177,22 +183,24 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.MaxCount = -5;
             Assert.Equal(int.MaxValue, cmdlet.MaxCount);
 
-            // Setup cmdlet to list Pools without filters and a max count
+            // Setup cmdlet to list Tasks without filters and a max count
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
+            cmdlet.WorkItemName = "workItem";
+            cmdlet.JobName = "job-0000000001";
             cmdlet.Name = null;
             cmdlet.Filter = null;
             int maxCount = 2;
             cmdlet.MaxCount = maxCount;
 
-            string[] namesOfConstructedPools = new[] { "name1", "name2", "name3" };
+            string[] namesOfConstructedTasks = new[] { "testTask1", "testTask2", "testTask3" };
 
-            // Build some Pools instead of querying the service on a ListPools call
+            // Build some Tasks instead of querying the service on a ListTasks call
             YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
             {
-                if (request is ListPoolsRequest)
+                if (request is ListTasksRequest)
                 {
-                    ListPoolsResponse response = BatchTestHelpers.CreateListPoolsResponse(namesOfConstructedPools);
+                    ListTasksResponse response = BatchTestHelpers.CreateListTasksResponse(namesOfConstructedTasks);
                     Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
                     return task;
                 }
@@ -201,10 +209,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSCloudPool> pipeline = new List<PSCloudPool>();
+            List<PSCloudTask> pipeline = new List<PSCloudTask>();
             commandRuntimeMock.Setup(r =>
-                r.WriteObject(It.IsAny<PSCloudPool>()))
-                .Callback<object>(p => pipeline.Add((PSCloudPool)p));
+                r.WriteObject(It.IsAny<PSCloudTask>()))
+                .Callback<object>(t => pipeline.Add((PSCloudTask)t));
 
             cmdlet.ExecuteCmdlet();
 

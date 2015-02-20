@@ -20,30 +20,35 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, "AzureBatchJob", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudJob))]
-    public class GetBatchJobCommand : BatchObjectModelCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureBatchTask", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudTask))]
+    public class GetBatchTaskCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the WorkItem containing the Jobs to query.")]
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the WorkItem containing the Tasks to query.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string WorkItemName { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, HelpMessage = "The name of the Job to query.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Job containing the Tasks to query.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string JobName { get; set; }
+
+        [Parameter(Position = 2, ParameterSetName = Constants.NameParameterSet, HelpMessage = "The name of the Task to query.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The WorkItem containing the Jobs to query.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Job containing the Tasks to query.")]
         [ValidateNotNullOrEmpty]
-        public PSCloudWorkItem WorkItem { get; set; }
-            
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "OData filter to use when querying for Jobs.")]
+        public PSCloudJob Job { get; set; }
+
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "OData filter to use when querying for Tasks.")]
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The maximum number of Jobs to return. If a value of 0 or less is specified, then no upper limit will be used.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The maximum number of Tasks to return. If a value of 0 or less is specified, then no upper limit will be used.")]
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
         public int MaxCount
         {
@@ -56,9 +61,9 @@ namespace Microsoft.Azure.Commands.Batch
             // The enumerator will internally query the service in chunks. Using WriteObject with the enumerate flag will enumerate
             // the entire collection first and then write the items out one by one in a single group.  Using foreach, we can take 
             // advantage of the enumerator's behavior and write output to the pipeline in bursts.
-            foreach (PSCloudJob job in BatchClient.ListJobs(BatchContext, WorkItemName, WorkItem, Name, Filter, MaxCount, AdditionalBehaviors))
+            foreach (PSCloudTask task in BatchClient.ListTasks(BatchContext, WorkItemName, JobName, Job, Name, Filter, MaxCount, AdditionalBehaviors))
             {
-                WriteObject(job);
+                WriteObject(task);
             }
         }
     }

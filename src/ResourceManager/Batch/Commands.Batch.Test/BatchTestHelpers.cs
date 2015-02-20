@@ -239,6 +239,45 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a GetTaskResponse object
+        /// </summary>
+        public static GetTaskResponse CreateGetTaskResponse(string taskName)
+        {
+            GetTaskResponse response = new GetTaskResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            Azure.Batch.Protocol.Entities.Task task = new Azure.Batch.Protocol.Entities.Task();
+            SetProperty(task, "Name", taskName);
+
+            SetProperty(response, "Task", task);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a ListTasksResponse object
+        /// </summary>
+        public static ListTasksResponse CreateListTasksResponse(IEnumerable<string> taskNames)
+        {
+            ListTasksResponse response = new ListTasksResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            List<Azure.Batch.Protocol.Entities.Task> tasks = new List<Azure.Batch.Protocol.Entities.Task>();
+
+            foreach (string name in taskNames)
+            {
+                Azure.Batch.Protocol.Entities.Task task = new Azure.Batch.Protocol.Entities.Task();
+                SetProperty(task, "Name", name);
+                tasks.Add(task);
+            }
+
+            SetProperty(response, "Tasks", tasks);
+
+            return response;
+        }
+
+
+        /// <summary>
         /// Uses Reflection to set a property value on an object. Can be used to bypass restricted set accessors.
         /// </summary>
         internal static void SetProperty(object obj, string propertyName, object propertyValue)
