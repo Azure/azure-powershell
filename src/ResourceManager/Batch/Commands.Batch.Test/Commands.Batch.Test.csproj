@@ -157,6 +157,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\BatchAccountTests.cs" />
     <Compile Include="ScenarioTests\BatchController.cs" />
+    <Compile Include="ScenarioTests\ScenarioTestHelpers.cs" />
     <Compile Include="ScenarioTests\WorkItemTests.cs" />
     <Compile Include="WorkItems\GetBatchWorkItemCommandTests.cs" />
   </ItemGroup>
