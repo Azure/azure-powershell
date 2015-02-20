@@ -87,7 +87,7 @@ namespace Microsoft.AzureStorSimpleDeviceCmdlets.Commands
 
             if (this.sourceDeviceId == null)
             {
-                WriteVerbose(Resources.NotFoundMessageDevice);
+                WriteVerbose(Resources.NoDeviceFoundWithGivenNameInResourceMessage);
                 return false;
             }
 
@@ -95,7 +95,7 @@ namespace Microsoft.AzureStorSimpleDeviceCmdlets.Commands
 
             if (this.targetDeviceId == null)
             {
-                WriteVerbose(Resources.NotFoundMessageDevice);
+                WriteVerbose(Resources.NoDeviceFoundWithGivenNameInResourceMessage);
                 return false;
             }
 

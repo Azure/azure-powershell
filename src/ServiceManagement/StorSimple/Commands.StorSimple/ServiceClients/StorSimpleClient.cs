@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 AzureSession.ClientFactory.CreateCustomClient<StorSimpleManagementClient>(
                     StorSimpleContext.CloudServiceName,
                     StorSimpleContext.ResourceName, StorSimpleContext.ResourceId,
-                    StorSimpleContext.ResourceProviderNameSpace, StorSimpleContext.StampId,
+                    StorSimpleContext.ResourceProviderNameSpace,
                     this.cloudServicesClient.Credentials,
                     AzureSession.CurrentContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
             

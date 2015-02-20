@@ -119,7 +119,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\BackupPolicyTests.cs" />
     <Compile Include="ScenarioTests\BackupTests.cs" />
-    <Compile Include="ScenarioTests\CloneTests.cs" />
     <Compile Include="ScenarioTests\DeviceTests.cs" />
     <Compile Include="ScenarioTests\ResourceTests.cs" />
     <Compile Include="ScenarioTests\ServiceConfigTests.cs" />
@@ -151,9 +150,6 @@
     </None>
     <None Include="ScenarioTests\BackupTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\CloneTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Configuration\ConfigurationReader.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
