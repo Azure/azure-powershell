@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// Gets the InsightsClient to use in the Cmdlet
         /// </summary>
-        protected IInsightsClient InsightsClient
+        public IInsightsClient InsightsClient
         {
             get
             {
@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Insights
 
                 return this.insightsClient;
             }
+            set { this.insightsClient = value; }
         }
 
         /// <summary>

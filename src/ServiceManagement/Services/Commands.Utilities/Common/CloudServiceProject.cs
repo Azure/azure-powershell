@@ -20,13 +20,13 @@ using System.Security.AccessControl;
 using System.Security.Permissions;
 using System.Security.Principal;
 using System.Text;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.Scaffolding;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceDefinitionSchema;
 using Microsoft.WindowsAzure.Commands.Utilities;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
@@ -306,9 +306,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 
         private void VerifyCloudServiceProjectComponents()
         {
-            const string CacheVersion = "2.5.0";
+            string CacheVersion = AzureTool.SupportAzureSdkVersion;
 
-            // Verify caching version is 2.2
             foreach (string roleName in Components.GetRoles())
             {
                 string value = Components.GetStartupTaskVariable(
@@ -319,7 +318,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 
                 if (!string.IsNullOrEmpty(value) && !string.Equals(value, CacheVersion, StringComparison.OrdinalIgnoreCase))
                 {
-                    throw new Exception(string.Format(Resources.CacheMismatchMessage, roleName, CacheVersion));
+                    throw new Exception(string.Format(Microsoft.WindowsAzure.Commands.Utilities.Properties.Resources.CacheMismatchMessage, roleName, CacheVersion));
                 }
             }
         }
