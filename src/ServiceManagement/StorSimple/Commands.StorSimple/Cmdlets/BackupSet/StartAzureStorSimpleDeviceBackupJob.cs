@@ -92,8 +92,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
              }
              backupNowRequest = new BackupNowRequest();
              backupNowRequest.Type = backupTypeSelected;
-
-             
         }
     }
 }
