@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
 
         protected void SetupManagementClients()
         {
-            var dataPipelineManagementClient = GetStreamAnalyticsManagementClient();
+            var streamAnalyticsManagementClient = GetStreamAnalyticsManagementClient();
             var resourceManagementClient = GetResourceManagementClient();
             var subscriptionsClient = GetSubscriptionClient();
             var galleryClient = GetGalleryClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
 
-            helper.SetupManagementClients(dataPipelineManagementClient,
+            helper.SetupManagementClients(streamAnalyticsManagementClient,
                 resourceManagementClient,
                 subscriptionsClient,
                 galleryClient,
