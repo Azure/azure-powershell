@@ -241,6 +241,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} job failed to submit. .
+        /// </summary>
+        internal static string FailureMessageSubmitDeviceJob {
+            get {
+                return ResourceManager.GetString("FailureMessageSubmitDeviceJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} task failed to submit. .
         /// </summary>
         internal static string FailureMessageSubmitTask {
@@ -979,7 +988,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A device job for the {0} task is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job&apos;s status.
+        ///   Looks up a localized string similar to The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job&apos;s status.
         /// </summary>
         internal static string SuccessMessageSubmitDeviceJob {
             get {

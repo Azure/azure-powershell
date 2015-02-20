@@ -101,8 +101,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             ReturnWorkflowId = true
                         };
 
-                        var taskResponse = StorSimpleClient.TriggerFailover(deviceId, drRequest);
-                        HandleDeviceJobResponse(taskResponse, "start");
+                        var jobResponse = StorSimpleClient.TriggerFailover(deviceId, drRequest);
+                        HandleDeviceJobResponse(jobResponse, "start");
                     });
             }
             catch (Exception exception)
