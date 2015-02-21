@@ -6,8 +6,6 @@
     "sku": { 
       "name": "standard"
     },
-    "outputStartMode": "CustomTime",
-	"outputStartTime": "2012-12-12T12:12:12Z",
     "inputs": [
       {
         "name": "Input",
@@ -29,7 +27,8 @@
                   "accountKey": "$EncryptedStringForTesting"
                 }
               ],
-              "container": "samples"
+              "container": "samples",
+			  "pathPattern": ""
             }
           }
         }
