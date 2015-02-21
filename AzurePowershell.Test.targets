@@ -277,12 +277,12 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTFuntional" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
-    <Message Importance="high" Text="Running AzureRT Funtional tests..." />
+  <Target Name="AzureRTFunctional" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+    <Message Importance="high" Text="Running AzureRT Functional tests..." />
 
-    <Delete Files="$(TestOutputDirectory)\RTFuntionalDebug.trx" />
+    <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
     <Exec
-      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:Functional /resultsfile:$(TestOutputDirectory)\RTFuntionalDebug.trx"
+      Command="MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /category:Functional /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug.trx"
       ContinueOnError="false" />
   </Target>
 

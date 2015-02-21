@@ -436,8 +436,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     RoleSizeContext returnedSize;
 
                     var size = instanceSize.InstanceSize;
-                    if (!size.Equals(InstanceSize.A5.ToString()) && !size.Equals(InstanceSize.A6.ToString()) && !size.Equals(InstanceSize.A7.ToString())
-                        && !size.Equals(InstanceSize.A8.ToString()) && !size.Equals(InstanceSize.A9.ToString()) && !size.Contains("Standard_D"))
+                    if (!size.Equals(InstanceSize.A5.ToString()) &&
+                        !size.Equals(InstanceSize.A6.ToString()) &&
+                        !size.Equals(InstanceSize.A7.ToString()) &&
+                        !size.Equals(InstanceSize.A8.ToString()) &&
+                        !size.Equals(InstanceSize.A9.ToString()) &&
+                        !size.Contains("Standard_"))
                     {
                         // Set-AzureVMSize test for regular VM size
                         vmPowershellCmdlets.SetVMSize(vmName, serviceName, new SetAzureVMSizeConfig(size));
