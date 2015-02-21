@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.IO;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Common.Authentication;
@@ -68,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = AccessTokenParameterSet)]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = CredentialsParameterSet)]
         public string StorageAccount { get; set; }
-        
+
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = CertificateParameterSet)]
         public X509Certificate2 Certificate { get; set; }
 
@@ -92,9 +93,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
         public string Path { get; set; }
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName=PropertyBagParameterSet)]
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = PropertyBagParameterSet)]
         public Hashtable Properties { get; set; }
-        
+
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
@@ -107,7 +108,12 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
             else if (ParameterSetName == FileParameterSet)
             {
-                
+                if (string.IsNullOrEmpty(Path) || !File.Exists(Path))
+                {
+                    throw new ArgumentException("Path must specify a valid path to an Azure profile.");
+                }
+
+                azureProfile = new AzureProfile(Path);
             }
             else
             {
@@ -128,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             switch (parameterSet)
             {
                 case CertificateParameterSet:
-                    profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId), settings.Certificate, 
+                    profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId), settings.Certificate,
                         settings.StorageAccount);
                     break;
                 case CredentialsParameterSet:
@@ -137,11 +143,11 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                         Id = settings.Credential.UserName,
                         Type = AzureAccount.AccountType.User
                     };
-                    profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId), userAccount, 
+                    profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId), userAccount,
                         settings.Credential.Password, settings.StorageAccount);
                     break;
                 case AccessTokenParameterSet:
-                    profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId), settings.AccessToken, 
+                    profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId), settings.AccessToken,
                         settings.AccountId, settings.StorageAccount);
                     break;
                 case ServicePrincipalParameterSet:
@@ -167,12 +173,12 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
             if (propertyBag.ContainsKey(StorageAccountKey))
             {
-                settings.StorageAccount = (string) propertyBag[StorageAccountKey];
+                settings.StorageAccount = (string)propertyBag[StorageAccountKey];
             }
 
             if (propertyBag.ContainsKey(EnvironmentKey))
             {
-                var environmentValue = (string) propertyBag[EnvironmentKey];
+                var environmentValue = (string)propertyBag[EnvironmentKey];
                 if (AzureEnvironment.PublicEnvironments.ContainsKey(environmentValue))
                 {
                     settings.Environment = AzureEnvironment.PublicEnvironments[environmentValue];
@@ -181,36 +187,36 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
             if (propertyBag.ContainsKey(CertificateKey))
             {
-                if (!propertyBag[CertificateKey].GetType().IsAssignableFrom(typeof (X509Certificate2)))
+                if (!propertyBag[CertificateKey].GetType().IsAssignableFrom(typeof(X509Certificate2)))
                 {
                     throw new ArgumentException(Resources.MissingCertificateInProfileProperties);
                 }
 
-                settings.Certificate = (X509Certificate2) propertyBag[CertificateKey];
+                settings.Certificate = (X509Certificate2)propertyBag[CertificateKey];
                 parametSetName = CertificateParameterSet;
             }
             else if (propertyBag.ContainsKey(UsernameKey))
             {
-                settings.Credential = CreatePsCredential((string) propertyBag[UsernameKey], propertyBag);
+                settings.Credential = CreatePsCredential((string)propertyBag[UsernameKey], propertyBag);
                 if (propertyBag.ContainsKey(TenantKey))
                 {
-                    settings.Tenant = (string) propertyBag[TenantKey];
+                    settings.Tenant = (string)propertyBag[TenantKey];
                 }
                 parametSetName = CredentialsParameterSet;
             }
             else if (propertyBag.ContainsKey(SPNKey) && propertyBag.ContainsKey(TenantKey))
             {
-                settings.Credential = CreatePsCredential((string) propertyBag[SPNKey], propertyBag);
+                settings.Credential = CreatePsCredential((string)propertyBag[SPNKey], propertyBag);
                 if (propertyBag.ContainsKey(TenantKey))
                 {
-                    settings.Tenant = (string) propertyBag[TenantKey];
+                    settings.Tenant = (string)propertyBag[TenantKey];
                 }
                 parametSetName = ServicePrincipalParameterSet;
             }
             else if (propertyBag.ContainsKey(AccountIdKey) && propertyBag.ContainsKey(TokenKey))
             {
-                settings.AccountId = (string) propertyBag[AccountIdKey];
-                settings.AccessToken = (string) propertyBag[TokenKey];
+                settings.AccountId = (string)propertyBag[AccountIdKey];
+                settings.AccessToken = (string)propertyBag[TokenKey];
                 parametSetName = AccessTokenParameterSet;
             }
             else
@@ -225,17 +231,17 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         private PSCredential CreatePsCredential(string username, Hashtable propertyBag)
         {
             if (!propertyBag.ContainsKey(PasswordKey))
-                {
-                    throw new ArgumentException(Resources.MissingPasswordInProfileProperties);
-                }
+            {
+                throw new ArgumentException(Resources.MissingPasswordInProfileProperties);
+            }
 
-                var password = new SecureString();
-                foreach (var passwordchar in (string) propertyBag[PasswordKey])
-                {
-                    password.AppendChar(passwordchar);
-                }
+            var password = new SecureString();
+            foreach (var passwordchar in (string)propertyBag[PasswordKey])
+            {
+                password.AppendChar(passwordchar);
+            }
 
-                return new PSCredential((string) propertyBag[UsernameKey], password);
+            return new PSCredential((string)propertyBag[UsernameKey], password);
         }
     }
 }
