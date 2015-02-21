@@ -44,6 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
+            TestMockSupport.RunningMocked = true;
             SetMockData();
         }
 
