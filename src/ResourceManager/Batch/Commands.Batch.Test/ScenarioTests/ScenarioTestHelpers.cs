@@ -68,6 +68,37 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Creates a test Pool for use in Scenario tests.
+        /// TODO: Replace with new Pool cmdlet when it exists.
+        /// </summary>
+        public static void CreateTestPool(BatchAccountContext context, string poolName)
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
+                {
+                    ICloudPool pool = poolManager.CreatePool(poolName, "4", "small", 3);
+                    pool.Commit();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deletes a Pool used in a Scenario test.
+        /// TODO: Replace with remove Pool cmdlet when it exists.
+        /// </summary>
+        public static void DeletePool(BatchAccountContext context, string poolName)
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
+                {
+                    poolManager.DeletePool(poolName);
+                }
+            }
+        }
+
+        /// <summary>
         /// Creates a test WorkItem for use in Scenario tests.
         /// TODO: Replace with new WorkItem cmdlet when it exists.
         /// </summary>
