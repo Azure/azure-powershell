@@ -171,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
         public static void SetupCertificates()
         {
             TestingTracingInterceptor.AddToContext();
-            AzureSession.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MemoryDataStore();
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
             var newGuid = Guid.NewGuid();
             ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
