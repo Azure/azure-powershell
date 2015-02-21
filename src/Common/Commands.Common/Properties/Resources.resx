@@ -1364,4 +1364,7 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="MissingPasswordInProfileProperties" xml:space="preserve">
     <value>Property bag Hashtable must contain a 'Password' with an associated 'Username' or 'ServicePrincipal'.</value>
   </data>
+  <data name="MissingSubscriptionInProfileProperties" xml:space="preserve">
+    <value>Property bag Hashtable must contain a 'SubscriptionId'.</value>
+  </data>
 </root>

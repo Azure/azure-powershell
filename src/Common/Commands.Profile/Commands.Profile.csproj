@@ -127,6 +127,7 @@
     <Compile Include="Environment\RemoveAzureEnvironment.cs" />
     <Compile Include="Environment\SetAzureEnvironment.cs" />
     <Compile Include="Environment\GetAzureEnvironment.cs" />
+    <Compile Include="Models\AzureProfileSettings.cs" />
     <Compile Include="Models\PSAzureSubscription.cs" />
     <Compile Include="Models\PSAzureSubscriptionExtended.cs" />
     <Compile Include="Profile\NewAzureProfile.cs" />
