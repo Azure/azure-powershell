@@ -53,11 +53,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (galleryTemplatesClient == null)
                 {
-                    if(Profile == null)
-                    {
-                        Profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-                    }
-
+                    InitializeProfile();
                     galleryTemplatesClient = new GalleryTemplatesClient(Profile.Context);
                 }
                 return galleryTemplatesClient;

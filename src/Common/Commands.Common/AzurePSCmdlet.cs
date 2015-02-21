@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
@@ -25,6 +26,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public abstract class AzurePSCmdlet : PSCmdlet
     {
+        private readonly string defaultProfilePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
+
+        private readonly string defaultTokenCachePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.TokenCacheFile);
+
         private readonly RecordingTracingInterceptor _httpTracingInterceptor = new RecordingTracingInterceptor();
 
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
@@ -35,6 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             if (!TestMockSupport.RunningMocked)
             {
                 AzureSession.ClientFactory.AddAction(new RPRegistrationAction());
+                AzureSession.DataStore = new DiskDataStore();
             }
 
             AzureSession.ClientFactory.UserAgents.Add(AzurePowerShell.UserAgentValue);
@@ -66,14 +72,21 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             base.BeginProcessing();
         }
 
-        private void InitializeProfile()
+        protected void InitializeProfile()
         {
-            // Load profile from disk 
-            var profileFromDisk = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            if (Profile == null ||
-                Profile.ProfilePath == profileFromDisk.ProfilePath)
+            // Check if we need to load the default profile from the disk
+            if (Profile == null /*|| Profile.ProfilePath == defaultProfilePath*/)
             {
-                Profile = profileFromDisk;
+                Profile = new AzureProfile(defaultProfilePath);
+            }
+
+            if (string.IsNullOrEmpty(Profile.ProfilePath) && !(AzureSession.TokenCache is TokenCache))
+            {
+                AzureSession.TokenCache = new TokenCache();
+            }
+            else if (!string.IsNullOrEmpty(Profile.ProfilePath) && !(AzureSession.TokenCache is ProtectedFileTokenCache))
+            {
+                AzureSession.TokenCache = new ProtectedFileTokenCache(defaultTokenCachePath);
             }
         }
 
@@ -90,11 +103,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             base.EndProcessing();
         }
-
-        /*public AzureContext Profile.Context
-        {
-            get { return Profile.Context; }
-        }*/
 
         public bool HasCurrentSubscription
         {

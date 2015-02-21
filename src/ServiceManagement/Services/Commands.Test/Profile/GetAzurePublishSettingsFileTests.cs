@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         public void GetsPublishSettingsFileUrl()
         {
             // Setup
-            AzureSession.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MemoryDataStore();
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             GetAzurePublishSettingsFileCommand cmdlet = new GetAzurePublishSettingsFileCommand()
             {
