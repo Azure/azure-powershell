@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Gateway.Model;
+    using Gateway.Model;    
     using NetworkSecurityGroup.Model;
     using Routes.Model;
     using WindowsAzure;
@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
-
+    using System.Security.Cryptography.X509Certificates;
+    using PowerShellAppGwModel = ApplicationGateway.Model;    
     public class NetworkClient
     {
         private readonly NetworkManagementClient client;
@@ -53,6 +54,379 @@ namespace Microsoft.Azure.Commands.Network
             this.commandRuntime = commandRuntime;
         }
 
+        public PowerShellAppGwModel.ApplicationGateway GetApplicationGateway(string gatewayName)
+        {
+            ApplicationGatewayGetResponse parameters = client.ApplicationGateways.Get(gatewayName);
+
+            PowerShellAppGwModel.SubnetCollection subnets = new PowerShellAppGwModel.SubnetCollection();
+            foreach (string subnet in parameters.Subnets)
+            {
+                subnets.Add(subnet);
+            }
+
+            PowerShellAppGwModel.VirtualIpCollection VirtualIPs = new PowerShellAppGwModel.VirtualIpCollection();
+            foreach (string vip in parameters.VirtualIPs)
+            {
+                VirtualIPs.Add(vip);
+            }
+
+            return (new ApplicationGateway.Model.ApplicationGateway
+            {
+                Name = parameters.Name,
+                Description = parameters.Description,
+                GatewaySize = parameters.GatewaySize,
+                InstanceCount = parameters.InstanceCount,
+                VnetName = parameters.VnetName,
+                Subnets = subnets,
+                State = parameters.State,
+                VirtualIPs = VirtualIPs,
+                DnsName = parameters.DnsName
+            });
+        }
+
+        public IEnumerable<PowerShellAppGwModel.ApplicationGateway> ListApplicationGateway()
+        {
+            ApplicationGatewayListResponse gatewayList = client.ApplicationGateways.List();
+
+            List<ApplicationGateway.Model.ApplicationGateway> psGatewayList = new List<ApplicationGateway.Model.ApplicationGateway>();
+            foreach (ApplicationGatewayGetResponse gateway in gatewayList.ApplicationGateways)
+            {
+                PowerShellAppGwModel.SubnetCollection subnets = new PowerShellAppGwModel.SubnetCollection();
+                foreach (string subnet in gateway.Subnets)
+                {
+                    subnets.Add(subnet);
+                }
+
+                PowerShellAppGwModel.VirtualIpCollection VirtualIPs = new PowerShellAppGwModel.VirtualIpCollection();
+                foreach (string vip in gateway.VirtualIPs)
+                {
+                    VirtualIPs.Add(vip);
+                }
+
+                psGatewayList.Add(new PowerShellAppGwModel.ApplicationGateway
+                {
+                    Name = gateway.Name,
+                    Description = gateway.Description,
+                    GatewaySize = gateway.GatewaySize,
+                    InstanceCount = gateway.InstanceCount,
+                    VnetName = gateway.VnetName,
+                    Subnets = subnets,
+                    State = gateway.State,
+                    VirtualIPs = VirtualIPs,
+                    DnsName = gateway.DnsName
+                });
+            }
+            return psGatewayList;
+        }
+
+        public ApplicationGatewayOperationResponse CreateApplicationGateway(string name, string vnetName, List<string> subnets, string description, uint instanceCount, string gatewaySize)
+        {
+            return client.ApplicationGateways.Create(new CreateApplicationGatewayParameters
+            {
+                Name = name,
+                VnetName = vnetName,
+                Subnets = subnets,
+                Description = description,
+                InstanceCount = instanceCount,
+                GatewaySize = gatewaySize
+            });
+        }
+        public ApplicationGatewayOperationResponse UpdateApplicationGateway(string name, string vnetName, List<string> subnets, string description, uint instanceCount, string gatewaySize)
+        {
+            return client.ApplicationGateways.Update(name,
+                new UpdateApplicationGatewayParameters
+                {
+                    Description = description,
+                    GatewaySize = gatewaySize,
+                    InstanceCount = instanceCount,
+                    Subnets = (((subnets == null) || subnets.Count == 0) ? null : new List<string>(subnets)),
+                    VnetName = vnetName
+                });
+        }
+        public ApplicationGatewayOperationResponse RemoveApplicationGateway(string gatewayName)
+        {
+            return client.ApplicationGateways.Delete(gatewayName);
+        }
+
+        public ApplicationGatewayOperationResponse SetApplicationGatewayConfig(string gatewayName, PowerShellAppGwModel.ApplicationGatewayConfiguration config)
+        {
+            return client.ApplicationGateways.SetConfig(gatewayName, HydraConfigFromPowerShellConfig(config));
+        }
+
+        public PowerShellAppGwModel.ApplicationGatewayConfigContext GetApplicationGatewayConfig(string gatewayName)
+        {
+            ApplicationGatewayGetConfiguration hydraConfig = client.ApplicationGateways.GetConfig(gatewayName);
+            PowerShellAppGwModel.ApplicationGatewayConfiguration psConfig = PowerShellConfigFromHydraConfig(hydraConfig);
+
+            return (new PowerShellAppGwModel.ApplicationGatewayConfigContext
+            {
+                OperationDescription = "Get-ApplicationGatewayConfig",
+                OperationId = hydraConfig.RequestId,
+                OperationStatus = hydraConfig.StatusCode.ToString(),
+                Config = psConfig,
+                XMLConfiguration = PowerShellAppGwModel.ApplicationGatewayConfiguration.Print(psConfig)
+            });
+        }
+
+        public ApplicationGatewayOperationResponse ExecuteApplicationGatewayOperation(string gatewayName, string opName)
+        {
+            ApplicationGatewayOperation op = new ApplicationGatewayOperation();
+            op.OperationType = opName;
+
+            return client.ApplicationGateways.ExecuteOperation(gatewayName, op);
+        }
+
+        public ApplicationGatewayOperationResponse AddApplicationGatewayCertificate(string gatewayName, string certificateName, string password, string certificateFile)
+        {
+            X509Certificate2 cert = new X509Certificate2(certificateFile, password, X509KeyStorageFlags.Exportable);
+
+            ApplicationGatewayCertificate appGwCert = new ApplicationGatewayCertificate()
+            {
+                Data = Convert.ToBase64String(cert.Export(X509ContentType.Pfx, password)),
+                //CertificateFormat = "pfx",
+                Password = password
+            };
+
+            return client.ApplicationGateways.AddCertificate(gatewayName, certificateName, appGwCert);
+        }
+
+        public PowerShellAppGwModel.ApplicationGatewayCertificate GetApplicationGatewayCertificate(string gatewayName, string certificateName)
+        {
+            ApplicationGatewayGetCertificate certificate = client.ApplicationGateways.GetCertificate(gatewayName, certificateName);
+            X509Certificate2 certObject = new X509Certificate2(Convert.FromBase64String(certificate.Data));
+            return (new PowerShellAppGwModel.ApplicationGatewayCertificate
+            {
+                Name = certificate.Name,
+                SubjectName = certObject.SubjectName.Name,
+                Thumbprint = certObject.Thumbprint,
+                ThumbprintAlgo = certObject.SignatureAlgorithm.FriendlyName,
+                State = certificate.State
+            });
+        }
+
+        public List<PowerShellAppGwModel.ApplicationGatewayCertificate> ListApplicationGatewayCertificate(string gatewayName)
+        {
+            ApplicationGatewayListCertificate hydraCertList = client.ApplicationGateways.ListCertificate(gatewayName);
+
+            List<PowerShellAppGwModel.ApplicationGatewayCertificate> psCertList = new List<PowerShellAppGwModel.ApplicationGatewayCertificate>();
+            foreach (ApplicationGatewayGetCertificate certificate in hydraCertList.ApplicationGatewayCertificates)
+            {
+                X509Certificate2 certObject = new X509Certificate2(Convert.FromBase64String(certificate.Data));
+                psCertList.Add(new PowerShellAppGwModel.ApplicationGatewayCertificate
+                {
+                    Name = certificate.Name,
+                    SubjectName = certObject.SubjectName.Name,
+                    Thumbprint = certObject.Thumbprint,
+                    ThumbprintAlgo = certObject.SignatureAlgorithm.FriendlyName,
+                    State = certificate.State
+                });
+            }
+            return psCertList;
+        }
+
+        public ApplicationGatewayOperationResponse RemoveApplicationGatewayCertificate(string gatewayName, string certificateName)
+        {
+            return client.ApplicationGateways.DeleteCertificate(gatewayName, certificateName);
+        }
+
+        private ApplicationGatewaySetConfiguration HydraConfigFromPowerShellConfig(PowerShellAppGwModel.ApplicationGatewayConfiguration config)
+        {
+            ApplicationGatewaySetConfiguration outConfig = new ApplicationGatewaySetConfiguration();
+
+            //Frontend IPs
+            outConfig.FrontendIPConfigurations = new List<FrontendIPConfiguration>();
+
+            //Config without Frontend IPs is also valid
+            if (null != config.FrontendIPConfigurations)
+            {                
+                foreach (PowerShellAppGwModel.FrontendIPConfiguration fip in config.FrontendIPConfigurations)
+                {
+                    outConfig.FrontendIPConfigurations.Add(new FrontendIPConfiguration
+                    {
+                        Name = fip.Name,
+                        Type = fip.Type,
+                        StaticIPAddress = fip.StaticIPAddress
+                    });
+                }
+            }
+
+            //Frontend Port
+            outConfig.FrontendPorts = new List<FrontendPort>();
+            foreach (PowerShellAppGwModel.FrontendPort fp in config.FrontendPorts)
+            {
+                outConfig.FrontendPorts.Add(new FrontendPort
+                {
+                    Name = fp.Name,
+                    Port = fp.Port
+                });
+            }
+
+            //Backend Address Pools 
+            outConfig.BackendAddressPools = new List<BackendAddressPool>();
+            foreach (PowerShellAppGwModel.BackendAddressPool pool in config.BackendAddressPools)
+            {
+                List<BackendServer> servers = new List<BackendServer>();
+                foreach (string server in pool.BackendServers)
+                {
+                    servers.Add(new BackendServer
+                    {
+                        IPAddress = server
+                    });
+                }
+
+                outConfig.BackendAddressPools.Add(new BackendAddressPool
+                {
+                    Name = pool.Name,
+                    BackendServers = servers
+                });
+            }
+
+            //Backend Http Settings List 
+            outConfig.BackendHttpSettingsList = new List<BackendHttpSettings>();
+            foreach (PowerShellAppGwModel.BackendHttpSettings setting in config.BackendHttpSettingsList)
+            {
+                outConfig.BackendHttpSettingsList.Add(new BackendHttpSettings
+                {
+                    Name = setting.Name,
+                    Port = setting.Port,
+                    Protocol = (Protocol)setting.Protocol,
+                    CookieBasedAffinity = setting.CookieBasedAffinity
+                });
+            }
+
+            //Http Listeners 
+            outConfig.HttpListeners = new List<AGHttpListener>();
+            foreach (PowerShellAppGwModel.HttpListener listener in config.HttpListeners)
+            {
+                outConfig.HttpListeners.Add(new AGHttpListener
+                {
+                    Name = listener.Name,
+                    FrontendIP = listener.FrontendIP,
+                    FrontendPort = listener.FrontendPort,
+                    Protocol = (Protocol)listener.Protocol,
+                    SslCert = listener.SslCert
+                });
+            }
+
+            //Http Load Balancing Rules 
+            outConfig.HttpLoadBalancingRules = new List<HttpLoadBalancingRule>();
+            foreach (PowerShellAppGwModel.HttpLoadBalancingRule rule in config.HttpLoadBalancingRules)
+            {
+                outConfig.HttpLoadBalancingRules.Add(new HttpLoadBalancingRule
+                {
+                    Name = rule.Name,
+                    Type = rule.Type,
+                    BackendHttpSettings = rule.BackendHttpSettings,
+                    Listener = rule.Listener,
+                    BackendAddressPool = rule.BackendAddressPool
+                });
+            }
+
+            return outConfig;
+        }
+
+        private PowerShellAppGwModel.ApplicationGatewayConfiguration PowerShellConfigFromHydraConfig(ApplicationGatewayGetConfiguration config)
+        {
+            PowerShellAppGwModel.ApplicationGatewayConfiguration outConfig = new PowerShellAppGwModel.ApplicationGatewayConfiguration();
+
+            //Frontend IPs
+            List<PowerShellAppGwModel.FrontendIPConfiguration> fips = new List<PowerShellAppGwModel.FrontendIPConfiguration>();
+
+            //Config without Frontend IPs is also valid
+            if (null != config.FrontendIPConfigurations)
+            {
+                
+                foreach (FrontendIPConfiguration fip in config.FrontendIPConfigurations)
+                {
+
+                    fips.Add(new PowerShellAppGwModel.FrontendIPConfiguration
+                    {
+                        Name = fip.Name,
+                        Type = fip.Type,
+                        StaticIPAddress = fip.StaticIPAddress
+                    });
+                }
+            }
+
+            //Frontend Port            
+            List<PowerShellAppGwModel.FrontendPort> fps = new List<PowerShellAppGwModel.FrontendPort>();
+            foreach (FrontendPort fp in config.FrontendPorts)
+            {
+
+                fps.Add(new PowerShellAppGwModel.FrontendPort
+                {
+                    Name = fp.Name,
+                    Port = fp.Port
+                });
+            }
+
+            //Backend Address Pools 
+            List<PowerShellAppGwModel.BackendAddressPool> pools = new List<PowerShellAppGwModel.BackendAddressPool>();
+            foreach (BackendAddressPool pool in config.BackendAddressPools)
+            {
+                PowerShellAppGwModel.BackendServerCollection servers = new PowerShellAppGwModel.BackendServerCollection();
+                foreach (BackendServer server in pool.BackendServers)
+                {
+                    servers.Add(server.IPAddress);
+                }
+
+                pools.Add(new PowerShellAppGwModel.BackendAddressPool
+                {
+                    Name = pool.Name,
+                    BackendServers = servers
+                });
+            }
+
+            //Backend Http Settings List 
+            List<PowerShellAppGwModel.BackendHttpSettings> settings = new List<PowerShellAppGwModel.BackendHttpSettings>();
+            foreach (BackendHttpSettings setting in config.BackendHttpSettingsList)
+            {
+                settings.Add(new PowerShellAppGwModel.BackendHttpSettings
+                {
+                    Name = setting.Name,
+                    Port = setting.Port,
+                    Protocol = (PowerShellAppGwModel.Protocol)setting.Protocol,
+                    CookieBasedAffinity = setting.CookieBasedAffinity
+                });
+            }
+
+            //Http Listeners 
+            List<PowerShellAppGwModel.HttpListener> listeners = new List<PowerShellAppGwModel.HttpListener>();
+            foreach (AGHttpListener listener in config.HttpListeners)
+            {
+                listeners.Add(new PowerShellAppGwModel.HttpListener
+                {
+                    Name = listener.Name,
+                    FrontendIP = listener.FrontendIP,
+                    FrontendPort = listener.FrontendPort,
+                    Protocol = (PowerShellAppGwModel.Protocol)listener.Protocol,
+                    SslCert = listener.SslCert
+                });
+            }
+
+            //Http Load Balancing Rules 
+            List<PowerShellAppGwModel.HttpLoadBalancingRule> rules = new List<PowerShellAppGwModel.HttpLoadBalancingRule>();
+            foreach (HttpLoadBalancingRule rule in config.HttpLoadBalancingRules)
+            {
+                rules.Add(new PowerShellAppGwModel.HttpLoadBalancingRule
+                {
+                    Name = rule.Name,
+                    Type = rule.Type,
+                    BackendHttpSettings = rule.BackendHttpSettings,
+                    Listener = rule.Listener,
+                    BackendAddressPool = rule.BackendAddressPool
+                });
+            }
+
+            outConfig.FrontendIPConfigurations = fips;
+            outConfig.FrontendPorts = fps;
+            outConfig.BackendAddressPools = pools;
+            outConfig.BackendHttpSettingsList = settings;
+            outConfig.HttpListeners = listeners;
+            outConfig.HttpLoadBalancingRules = rules;
+
+            return outConfig;
+        }
         public VirtualNetworkGatewayContext GetGateway(string vnetName)
         {
             if (string.IsNullOrWhiteSpace(vnetName))
