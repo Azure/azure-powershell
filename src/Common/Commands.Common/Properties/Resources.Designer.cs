@@ -1137,6 +1137,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Path must specify a valid path to an Azure profile..
+        /// </summary>
+        public static string InvalidNewProfilePath {
+            get {
+                return ResourceManager.GetString("InvalidNewProfilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Value cannot be null. Parameter name: &apos;{0}&apos;.
         /// </summary>
         public static string InvalidNullArgument {

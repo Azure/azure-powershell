@@ -99,10 +99,11 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            AzureProfile azureProfile = new AzureProfile();
+            AzureProfile azureProfile;
             AzureProfileSettings settings;
             if (ParameterSetName == PropertyBagParameterSet)
             {
+                azureProfile = new AzureProfile();
                 var actualParameterSet = ParseHashTableParameters(Properties, out settings);
                 InitializeAzureProfile(azureProfile, actualParameterSet, settings);
             }
@@ -110,13 +111,14 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             {
                 if (string.IsNullOrEmpty(Path) || !File.Exists(Path))
                 {
-                    throw new ArgumentException("Path must specify a valid path to an Azure profile.");
+                    throw new ArgumentException(Resources.InvalidNewProfilePath);
                 }
 
                 azureProfile = new AzureProfile(Path);
             }
             else
             {
+                azureProfile = new AzureProfile();
                 settings = AzureProfileSettings.Create(this);
                 InitializeAzureProfile(azureProfile, ParameterSetName, settings);
             }
