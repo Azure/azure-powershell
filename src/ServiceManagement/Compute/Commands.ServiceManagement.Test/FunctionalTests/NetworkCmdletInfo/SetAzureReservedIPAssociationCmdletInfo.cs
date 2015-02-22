@@ -16,25 +16,13 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.Pow
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo
 {
-    public class NewAzureReservedIPCmdletInfo : CmdletsInfo
+    public class SetAzureReservedIPAssociationCmdletInfo : CmdletsInfo
     {
-        public NewAzureReservedIPCmdletInfo(string name, string location, string label)
+        public SetAzureReservedIPAssociationCmdletInfo(string reservedIpName, string serviceName, string deploymentName)
         {
-            this.cmdletName = Utilities.NewAzureReservedIPCmdletName;
+            this.cmdletName = Utilities.SetAzureReservedIPAssociationCmdletName;
 
-            this.cmdletParams.Add(new CmdletParam("ReservedIPName", name));
-            this.cmdletParams.Add(new CmdletParam("Location", location));
-
-            if (!string.IsNullOrEmpty(label))
-            {
-                this.cmdletParams.Add(new CmdletParam("Label", label));
-            }
-        }
-
-        public NewAzureReservedIPCmdletInfo(string name, string location, string serviceName, string deploymentName, string label): this(name, location, label)
-        {
-            this.cmdletName = Utilities.NewAzureReservedIPCmdletName;
-
+            this.cmdletParams.Add(new CmdletParam("ReservedIPName", reservedIpName));
             this.cmdletParams.Add(new CmdletParam("ServiceName", serviceName));
             this.cmdletParams.Add(new CmdletParam("DeploymentName", deploymentName));
         }

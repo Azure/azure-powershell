@@ -109,6 +109,161 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("avgupt"), Description("Test the cmdlets (Set-AzureReservedIPAssociation, New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
+        public void CreateWindowsVMThenAssociateReservedIP()
+        {
+            try
+            {
+                string reservedIpName = Utilities.GetUniqueShortName("ResrvdIP");
+                string reservedIpLabel = Utilities.GetUniqueShortName(" ResrvdIPLbl", 5);
+                string dnsName = Utilities.GetUniqueShortName("Dns");
+                string vmName = Utilities.GetUniqueShortName(vmNamePrefix);
+                string deploymentName = Utilities.GetUniqueShortName("Depl");
+                var input = new ReservedIPContext()
+                {
+                    //Address = string.Empty,
+                    DeploymentName = string.Empty,
+                    Label = reservedIpLabel,
+                    InUse = false,
+                    Location = locationName,
+                    ReservedIPName = reservedIpName,
+                    State = "Created"
+                };
+
+                // Reserve a new IP
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureReservedIP(reservedIpName, locationName, reservedIpLabel), "Reserve a new IP");
+                //Get the reserved ip and verify the reserved Ip properties.
+                VerifyReservedIpNotInUse(input);
+                // Create a new VM with the reserved ip.
+                DnsServer dns = null;
+                Utilities.ExecuteAndLog(() => { dns = vmPowershellCmdlets.NewAzureDns(dnsName, DNS_IP); }, "Create a new Azure DNS");
+                Utilities.ExecuteAndLog(() =>
+                {
+                    PersistentVM vm = CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows);
+                    vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, vnet, new[] { dns }, location: locationName);
+                }, "Create a new windows azure vm without reserved ip.");
+
+                Utilities.ExecuteAndLog(() => { vmPowershellCmdlets.SetAzureReservedIPAssociation(reservedIpName, serviceName, serviceName); }, "Create a new Azure Reserved IP Association");
+
+
+                VerifyReservedIpInUse(serviceName, input);
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.RemoveAzureVM(vmName, serviceName, true), "Remove Azure VM and verify that a warning is given.");
+                VerifyReservedIpNotInUse(input);
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.RemoveAzureReservedIP(reservedIpName, true), "Release the reserved ip");
+                VerifyReservedIpRemoved(reservedIpName);
+                pass = true;
+            }
+            catch (Exception ex)
+            {
+                pass = false;
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+        }
+
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("avgupt"), Description("Test the cmdlets (Remove-AzureReservedIPAssociation, New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
+        public void CreateWindowsVMWithReservedIPThenDisassociateReservedIP()
+        {
+            try
+            {
+                string reservedIpName = Utilities.GetUniqueShortName("ResrvdIP");
+                string reservedIpLabel = Utilities.GetUniqueShortName(" ResrvdIPLbl", 5);
+                string dnsName = Utilities.GetUniqueShortName("Dns");
+                string vmName = Utilities.GetUniqueShortName(vmNamePrefix);
+                string deploymentName = Utilities.GetUniqueShortName("Depl");
+                var input = new ReservedIPContext()
+                {
+                    //Address = string.Empty,
+                    DeploymentName = string.Empty,
+                    Label = reservedIpLabel,
+                    InUse = false,
+                    Location = locationName,
+                    ReservedIPName = reservedIpName,
+                    State = "Created"
+                };
+
+                // Reserve a new IP
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureReservedIP(reservedIpName, locationName, reservedIpLabel), "Reserve a new IP");
+                //Get the reserved ip and verify the reserved Ip properties.
+                VerifyReservedIpNotInUse(input);
+                // Create a new VM with the reserved ip.
+                DnsServer dns = null;
+                Utilities.ExecuteAndLog(() => { dns = vmPowershellCmdlets.NewAzureDns(dnsName, DNS_IP); }, "Create a new Azure DNS");
+                Utilities.ExecuteAndLog(() =>
+                {
+                    PersistentVM vm = CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows);
+                    vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, vnet, new[] { dns }, location: locationName, reservedIPName: reservedIpName);
+                }, "Create a new windows azure vm with reserved ip.");
+
+                VerifyReservedIpInUse(serviceName, input);
+
+                Utilities.ExecuteAndLog(() => { vmPowershellCmdlets.RemoveAzureReservedIPAssociation(reservedIpName, serviceName, serviceName); }, "Remove an Azure Reserved IP Association");
+
+                VerifyReservedIpNotInUse(input);
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.RemoveAzureVM(vmName, serviceName, true), "Remove Azure VM and verify that a warning is given.");
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.RemoveAzureReservedIP(reservedIpName, true), "Release the reserved ip");
+                VerifyReservedIpRemoved(reservedIpName);
+                pass = true;
+            }
+            catch (Exception ex)
+            {
+                pass = false;
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+        }
+
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("avgupt"), Description("Test the cmdlets (New-AzureReservedIP, Remove-AzureReservedIPAssociation, Get-AzureReservedIP,Remove-AzureReservedIP)")]
+        public void CreateWindowsVMThenReservedExistingIP()
+        {
+            try
+            {
+                string reservedIpName = Utilities.GetUniqueShortName("ResrvdIP");
+                string reservedIpLabel = Utilities.GetUniqueShortName(" ResrvdIPLbl", 5);
+                string dnsName = Utilities.GetUniqueShortName("Dns");
+                string vmName = Utilities.GetUniqueShortName(vmNamePrefix);
+                string deploymentName = Utilities.GetUniqueShortName("Depl");
+                var input = new ReservedIPContext()
+                {
+                    //Address = string.Empty,
+                    DeploymentName = string.Empty,
+                    Label = reservedIpLabel,
+                    InUse = false,
+                    Location = locationName,
+                    ReservedIPName = reservedIpName,
+                    State = "Created"
+                };
+
+                // Create a new VM with the reserved ip.
+                DnsServer dns = null;
+                Utilities.ExecuteAndLog(() => { dns = vmPowershellCmdlets.NewAzureDns(dnsName, DNS_IP); }, "Create a new Azure DNS");
+                Utilities.ExecuteAndLog(() =>
+                {
+                    PersistentVM vm = CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows);
+                    vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, vnet, new[] { dns }, location: locationName);
+                }, "Create a new windows azure vm without reserved ip.");
+
+                // Reserve an existing IP
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureReservedIP(reservedIpName, locationName, serviceName, serviceName, reservedIpLabel), "Reserve existing deployment IP");
+
+                VerifyReservedIpInUse(serviceName, input);
+
+                Utilities.ExecuteAndLog(() => { vmPowershellCmdlets.RemoveAzureReservedIPAssociation(reservedIpName, serviceName, serviceName); }, "Remove an Azure Reserved IP Association");
+
+                VerifyReservedIpNotInUse(input);
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.RemoveAzureVM(vmName, serviceName, true), "Remove Azure VM and verify that a warning is given.");
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.RemoveAzureReservedIP(reservedIpName, true), "Release the reserved ip");
+                VerifyReservedIpRemoved(reservedIpName);
+                pass = true;
+            }
+            catch (Exception ex)
+            {
+                pass = false;
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+        }
+
          [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("hylee"), Description("Test the cmdlets (New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
         public void CreateReservedIPThenLinuxVM()
         {

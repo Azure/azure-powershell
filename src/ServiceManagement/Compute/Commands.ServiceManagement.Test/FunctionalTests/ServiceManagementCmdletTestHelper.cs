@@ -856,6 +856,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureReservedIPCmdletInfo(name, location, label));
         }
 
+        internal ManagementOperationContext NewAzureReservedIP(string name, string location, string serviceName, string deploymentName, string label = null)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureReservedIPCmdletInfo(name, location, serviceName, deploymentName, label));
+        }
+
+        internal ManagementOperationContext SetAzureReservedIPAssociation(string reservedIpName, string serviceName, string deploymentName)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureReservedIPAssociationCmdletInfo(reservedIpName, serviceName, deploymentName));
+        }
+
+        internal ManagementOperationContext RemoveAzureReservedIPAssociation(string reservedIpName, string serviceName, string deploymentName)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureReservedIPAssociationCmdletInfo(reservedIpName, serviceName, deploymentName));
+        }
+
         internal Collection<SM.ReservedIPContext> GetAzureReservedIP(string name = null)
         {
             return RunPSCmdletAndReturnAll<SM.ReservedIPContext>(new GetAzureReservedIPCmdletInfo(name));

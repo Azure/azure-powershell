@@ -15,7 +15,7 @@
       </LocalNetworkSite>
     </LocalNetworkSites>
     <VirtualNetworkSites>
-      <VirtualNetworkSite name="NewVNet4" Location="Central Us">
+      <VirtualNetworkSite name="NewVNet4" Location="West Us">
         <AddressSpace>
           <AddressPrefix>10.0.0.0/8</AddressPrefix>
         </AddressSpace>
@@ -39,7 +39,7 @@
           </ConnectionsToLocalNetwork>
         </Gateway>
       </VirtualNetworkSite>
-      <VirtualNetworkSite name="NewVNet5" Location="Central Us">
+      <VirtualNetworkSite name="NewVNet5" Location="West Us">
         <AddressSpace>
           <AddressPrefix>172.16.0.0/20</AddressPrefix>
         </AddressSpace>
@@ -60,7 +60,7 @@
           </ConnectionsToLocalNetwork>
         </Gateway>
       </VirtualNetworkSite>
-      <VirtualNetworkSite name="NewVNet6" Location="Central Us">
+      <VirtualNetworkSite name="NewVNet6" Location="West Us">
         <AddressSpace>
           <AddressPrefix>192.168.0.0/20</AddressPrefix>
         </AddressSpace>
