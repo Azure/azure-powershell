@@ -54,8 +54,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
 
                 ConfirmMigrationStatusMsg confirmStatusMsg = new ConfirmMigrationStatusMsg(LegacyConfigId, confirmStatus);
-                // WriteObject(confirmStatusMsg);
-                WriteObject(confirmStatusMsg.ToString());
+                
+                WriteObject(confirmStatusMsg);
             }
             catch (Exception except)
             {
