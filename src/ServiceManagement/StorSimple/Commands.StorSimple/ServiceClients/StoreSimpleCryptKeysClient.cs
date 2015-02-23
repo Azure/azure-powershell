@@ -46,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// </summary>
         /// <param name="data">string to be encrypted</param>
         /// <returns>Encrypted string</returns>
-        public string encryptWithDevicePublicKey(string deviceId, string data)
+        public string EncryptWithDevicePublicKey(string deviceId, string data)
         {
             // Get the public key certificate
             var cert = this.GetDevicePublicKey(deviceId);

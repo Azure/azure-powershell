@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var deviceDetails = StorSimpleClient.GetDeviceDetails(deviceId);
 
                 // Update device details.
-                updateDeviceDetails(deviceDetails);
+                UpdateDeviceDetails(deviceDetails);
                 
                 // Make request with updated data
                 WriteVerbose(string.Format(Resources.BeginningDeviceConfiguration, deviceDetails.DeviceProperties.FriendlyName));
@@ -97,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
         }
 
-        private void updateDeviceDetails(DeviceDetails details)
+        private void UpdateDeviceDetails(DeviceDetails details)
         {
             if (NewName != null)
             {
@@ -108,9 +108,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 details.TimeServer.TimeZone = TimeZone.StandardName;
             }
             // encrypt supplied secret with the device public key
-            SecretKey = StorSimpleClient.encryptWithDevicePublicKey(details.DeviceProperties.DeviceId, SecretKey);
+            var encryptedSecretKey = StorSimpleClient.EncryptWithDevicePublicKey(details.DeviceProperties.DeviceId, SecretKey);
 
-            details.VirtualApplianceProperties.EncodedServiceEncryptionKey = SecretKey;
+            details.VirtualApplianceProperties.EncodedServiceEncryptionKey = encryptedSecretKey;
         }        
     }
 }

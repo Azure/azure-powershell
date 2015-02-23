@@ -60,7 +60,7 @@ function Test-GetDeviceJobs{
 	Start-BackupJob $deviceName
 
 	# Fetch all backup jobs on this device. Make sure the list has >1 jobs.
-	$jobs = Get-AzureStorSimpleJob -DeviceName $deviceName -Type Backup
+	$jobs = Get-AzureStorSimpleJob -Type Backup
 	Assert-AreNotEqual 0 @($jobs).Count "Expected to find a backup job on the device."
 	
 	# Verify that all jobs returned have the type backup
@@ -81,7 +81,7 @@ function Test-StopDeviceJob{
 	Start-BackupJob $deviceName
 
 	# Get all jobs on the device and find a running cancellable job
-	$jobs = Get-AzureStorSimpleJob -DeviceName $deviceName -Type Backup
+	$jobs = Get-AzureStorSimpleJob -DeviceName $deviceName
 	Assert-AreNotEqual 0 @($jobs).Count "Expected to find a backup job on the device."
 
 	#filter for cancellable jobs with status running

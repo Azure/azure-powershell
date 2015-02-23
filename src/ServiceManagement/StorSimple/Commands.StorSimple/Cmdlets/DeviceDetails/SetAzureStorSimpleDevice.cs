@@ -122,8 +122,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 // Update device details.
                 this.UpdateDeviceDetails(deviceDetails);
 
-                WriteObject(deviceDetails);
-
                 // Make request with updated data
                 var taskStatusInfo = StorSimpleClient.UpdateDeviceDetails(deviceDetails);
                 HandleSyncTaskResponse(taskStatusInfo, "Setup");

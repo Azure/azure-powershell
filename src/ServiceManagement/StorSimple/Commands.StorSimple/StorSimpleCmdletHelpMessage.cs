@@ -113,5 +113,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string NewDeviceName = "New friendly name for the device.";
         public const string DeviceJobId = "Instance id of the device job";
         public const string SEK = "Service Encryption Key for the resource of the virtual device.";
+        public const string FromTime = "Beginning of time interval for which to filter results.";
+        public const string ToTime = "End of time interval for which to filter results.";
+        public const string DeviceJobStatus = "Status of job. Valid values - Running, Completed, Cancelled, Failed, Cancelling, CompletedWithErrors";
+        public const string DeviceJobType = "Type of job. Valid values - Backup, ManualBackup, Restore, CloneWorkflow, DeviceRestore, Update, SupportPackage, VirtualApplianceProvisioning";
+
     }
 }
