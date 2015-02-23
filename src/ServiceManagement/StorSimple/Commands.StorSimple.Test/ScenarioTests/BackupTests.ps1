@@ -667,4 +667,3 @@ function Test-CreateGetRestoreDeleteBackup_Async
     #Cleanup
     CleanupObjects-BackupScenario $deviceName $dcName $acrName $vdName
 }
-
