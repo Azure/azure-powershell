@@ -33,10 +33,40 @@ namespace Microsoft.Azure.Commands.Test.Profile
             }
         }
 
+        public static ProfileTestController NewRdfeInstance 
+        { 
+            get
+            {
+                return new ProfileTestController(AzureModule.AzureServiceManagement);
+            }
+        }
+
+        public static ProfileTestController NewARMInstance
+        {
+            get
+            {
+                return new ProfileTestController(AzureModule.AzureResourceManager);
+            }
+        }
+
+        public AzureModule Module
+        {
+            get; 
+            private set; 
+        }
         public ProfileTestController()
         {
+            Module = AzureModule.AzureResourceManager;
             helper = new EnvironmentSetupHelper();
         }
+
+        public ProfileTestController(AzureModule module)
+        {
+            Module = module;
+            helper = new EnvironmentSetupHelper();
+        }
+
+
 
         public void RunPsTest(params string[] scripts)
         {
@@ -73,7 +103,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
 
                 SetupManagementClients();
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                helper.SetupEnvironment(this.Module);
                 
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
@@ -106,7 +136,14 @@ namespace Microsoft.Azure.Commands.Test.Profile
 
         private void SetupManagementClients()
         {
-            helper.SetupSomeOfManagementClients();
+            if (this.Module == AzureModule.AzureResourceManager)
+            {
+                helper.SetupSomeOfManagementClients();
+            }
+            else
+            {
+                helper.SetupSomeOfManagementClients();
+            }
         }
 
     }

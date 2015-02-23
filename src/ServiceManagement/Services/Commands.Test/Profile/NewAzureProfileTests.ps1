@@ -26,13 +26,13 @@ $testCreds = New-Object System.Management.Automation.PSCredential ("test@mail.co
 function Create-ARMProfile
 {
     $creds = $(Get-Credential)
-    New-AzureProfile -SubscriptionId $testValidSubscription -Credential $credential 
+    New-AzureProfile -SubscriptionId $testValidSubscription -Credential $creds
 }
 
 function Create-RDFEProfile
 {
     $creds = $(Get-Credential)
-    New-AzureProfile -SubscriptionId $testValidSubscription -Credential $credential
+    New-AzureProfile -SubscriptionId $testValidSubscription -Credential $creds
 }
 <#
 .SYNOPSIS

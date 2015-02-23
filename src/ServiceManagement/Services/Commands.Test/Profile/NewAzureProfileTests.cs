@@ -53,14 +53,14 @@ namespace Microsoft.Azure.Commands.Test.Profile
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeRdfeCallWithCreatedProfile()
         {
-            ProfileTestController.NewInstance.RunPsTest("Test-NewAzureProfileInRDFEMode");
+            ProfileTestController.NewRdfeInstance.RunPsTest("Test-NewAzureProfileInRDFEMode");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeArmCallWithCreatedProfile()
         {
-            ProfileTestController.NewInstance.RunPsTest("Test-NewAzureProfileInARMMode");
+            ProfileTestController.NewARMInstance.RunPsTest("Test-NewAzureProfileInARMMode");
         }
     }
 }
