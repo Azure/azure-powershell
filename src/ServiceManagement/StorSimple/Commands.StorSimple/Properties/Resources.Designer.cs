@@ -252,9 +252,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The {0} task failed to submit. .
         /// </summary>
-        internal static string FailureMessageSubmitJob {
+        internal static string FailureMessageSubmitTask {
             get {
-                return ResourceManager.GetString("FailureMessageSubmitJob", resourceCulture);
+                return ResourceManager.GetString("FailureMessageSubmitTask", resourceCulture);
             }
         }
         
@@ -799,6 +799,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} volume container group{1} found!.
+        /// </summary>
+        internal static string ReturnedCountDataContainerGroupMessage {
+            get {
+                return ResourceManager.GetString("ReturnedCountDataContainerGroupMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} volume container{1} found!.
         /// </summary>
         internal static string ReturnedCountDataContainerMessage {
@@ -876,6 +885,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string StartASSDBackupRestoreJobWarningMessage {
             get {
                 return ResourceManager.GetString("StartASSDBackupRestoreJobWarningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started failing over selected volume containers from device {0} to device {1}....
+        /// </summary>
+        internal static string StartDeviceFailoverJobMessage {
+            get {
+                return ResourceManager.GetString("StartDeviceFailoverJobMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the selected volume containers from device {0} to device {1}?.
+        /// </summary>
+        internal static string StartDeviceFailoverJobWarningMessage {
+            get {
+                return ResourceManager.GetString("StartDeviceFailoverJobWarningMessage", resourceCulture);
             }
         }
         
@@ -961,11 +988,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job&apos;s status.
+        /// </summary>
+        internal static string SuccessMessageSubmitDeviceJob {
+            get {
+                return ResourceManager.GetString("SuccessMessageSubmitDeviceJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} task is submitted successfully. Please use the command Get-AzureStorSimpleTask -InstanceId {1} for tracking the task&apos;s status.
         /// </summary>
-        internal static string SuccessMessageSubmitJob {
+        internal static string SuccessMessageSubmitTask {
             get {
-                return ResourceManager.GetString("SuccessMessageSubmitJob", resourceCulture);
+                return ResourceManager.GetString("SuccessMessageSubmitTask", resourceCulture);
             }
         }
         
@@ -975,6 +1011,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string ValidationSuccessfulRegistrationKey {
             get {
                 return ResourceManager.GetString("ValidationSuccessfulRegistrationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume Container Group \&quot;{0}\&quot; is not eligible for failover due to the reason: {1}.
+        /// </summary>
+        internal static string VolumeContainerGroupNotEligibleForFailoverError {
+            get {
+                return ResourceManager.GetString("VolumeContainerGroupNotEligibleForFailoverError", resourceCulture);
             }
         }
         

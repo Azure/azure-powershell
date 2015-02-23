@@ -126,7 +126,7 @@
   <data name="NoBackupPolicyWithGivenNameFound" xml:space="preserve">
     <value>No backuppolicy with name : {0} found in your device: {1} !</value>
   </data>
-  <data name="FailureMessageSubmitJob" xml:space="preserve">
+  <data name="FailureMessageSubmitTask" xml:space="preserve">
     <value>The {0} task failed to submit. </value>
   </data>
   <data name="NotAllowedErrorDataContainerEncryption" xml:space="preserve">
@@ -192,7 +192,7 @@
   <data name="SuccessMessageSetResourceContext" xml:space="preserve">
     <value>Context set successfully for the given resource name.</value>
   </data>
-  <data name="SuccessMessageSubmitJob" xml:space="preserve">
+  <data name="SuccessMessageSubmitTask" xml:space="preserve">
     <value>The {0} task is submitted successfully. Please use the command Get-AzureStorSimpleTask -InstanceId {1} for tracking the task's status</value>
   </data>
   <data name="InvalidBackupIdParameter" xml:space="preserve">
@@ -423,7 +423,19 @@
   <data name="ResourceContextNotSetMessage" xml:space="preserve">
     <value>Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context.</value>
   </data>
-  <data name="DeviceJobResponseMessage" xml:space="preserve">
-    <value>The {0} Device Job is submitted successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the task's status</value>
+  <data name="ReturnedCountDataContainerGroupMessage" xml:space="preserve">
+    <value>{0} volume container group{1} found!</value>
+  </data>
+  <data name="StartDeviceFailoverJobMessage" xml:space="preserve">
+    <value>Started failing over selected volume containers from device {0} to device {1}...</value>
+  </data>
+  <data name="StartDeviceFailoverJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to failover the selected volume containers from device {0} to device {1}?</value>
+  </data>
+  <data name="VolumeContainerGroupNotEligibleForFailoverError" xml:space="preserve">
+    <value>Volume Container Group \"{0}\" is not eligible for failover due to the reason: {1}</value>
+  </data>
+  <data name="SuccessMessageSubmitDeviceJob" xml:space="preserve">
+    <value>The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job's status</value>
   </data>
 </root>

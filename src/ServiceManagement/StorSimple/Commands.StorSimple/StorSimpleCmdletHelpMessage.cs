@@ -85,5 +85,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string SubNetName = "Name of the Subnet in the Virtual Network which should be used by the Virtual Device.";
         public const string StorageAccountNameForVirtualDevice = "Name of the Storage Account to be used to create the Virtual Device.";
         public const string CreateNewStorageAccount = "Switch which decides whether to create a new storage account.";
+        public const string HelpMessageVolumeContainerGroups = "List of Volme Container Groups to be failed over";
+        public const string HelpMessageFailoverTargetDeviceName = "Name of the StorSimple failover target device";
+        public const string HelpMessageFailoverTargetDeviceId = "The device identifier of the StorSimple failover target device";
     }
 }
