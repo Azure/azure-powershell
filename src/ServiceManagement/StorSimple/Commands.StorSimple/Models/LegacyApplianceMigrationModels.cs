@@ -619,4 +619,142 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             return consoleop.ToString();
         }
     }
+
+    public class MigrationPlanMsg
+    {
+        public string ConfigId { get; set; }
+        public string DeviceName { get; set; }
+        public List<MigrationPlanInfoMsg> MigrationPlanInfoInProgressMsgList { get; set; }
+        public List<MigrationPlanInfoMsg> MigrationPlanInfoNotStartedMsgList { get; set; }
+        public List<MigrationPlanInfoMsg> MigrationPlanInfoCompletedMsgList { get; set; }
+        public List<MigrationPlanInfoMsg> MigrationPlanInfoFailedMsgList { get; set; }
+
+        public MigrationPlanMsg(MigrationPlan migrationPlan)
+        {
+            ConfigId = migrationPlan.ConfigId;
+            DeviceName = migrationPlan.DeviceName;
+            MigrationPlanInfoInProgressMsgList = new List<MigrationPlanInfoMsg>();
+            MigrationPlanInfoNotStartedMsgList = new List<MigrationPlanInfoMsg>();
+            MigrationPlanInfoCompletedMsgList = new List<MigrationPlanInfoMsg>();
+            MigrationPlanInfoFailedMsgList = new List<MigrationPlanInfoMsg>();
+
+            foreach (MigrationPlanInfo migrationPlanInfo in migrationPlan.MigrationPlanInfo)
+            {
+                MigrationPlanInfoMsg migrationPlanInfoMsg = new MigrationPlanInfoMsg(migrationPlanInfo);
+                if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.InProgress)
+                {
+                    MigrationPlanInfoInProgressMsgList.Add(migrationPlanInfoMsg);
+                }
+                else if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.NotStarted)
+                {
+                    MigrationPlanInfoNotStartedMsgList.Add(migrationPlanInfoMsg);
+                }
+                else if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.Completed)
+                {
+                    MigrationPlanInfoCompletedMsgList.Add(migrationPlanInfoMsg);
+                }
+                else if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.Failed)
+                {
+                    MigrationPlanInfoFailedMsgList.Add(migrationPlanInfoMsg);
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder consoleOp = new StringBuilder();
+            consoleOp.AppendLine(string.Format("Config id : {0}", ConfigId));
+            consoleOp.AppendLine(string.Format("Device name : {0}", DeviceName));
+
+            if (MigrationPlanInfoInProgressMsgList.Count == 0 && MigrationPlanInfoNotStartedMsgList.Count == 0 && MigrationPlanInfoCompletedMsgList.Count == 0 && MigrationPlanInfoFailedMsgList.Count == 0)
+            {
+                consoleOp.AppendLine("No data containers found with migration plan with this config Id.");
+            }
+
+            if (MigrationPlanInfoInProgressMsgList.Count != 0)
+            {
+                consoleOp.AppendLine("Data containers with migration plan in progress : ");
+                consoleOp.AppendLine();
+                foreach (MigrationPlanInfoMsg migrationPlanInfoMsg in MigrationPlanInfoInProgressMsgList)
+                {
+                    consoleOp.AppendLine(migrationPlanInfoMsg.ToString());
+                    consoleOp.AppendLine();
+                }
+            }
+
+            if (MigrationPlanInfoNotStartedMsgList.Count != 0)
+            {
+                consoleOp.AppendLine("Data containers with migration plan not started : ");
+                consoleOp.AppendLine();
+                foreach (MigrationPlanInfoMsg migrationPlanInfoMsg in MigrationPlanInfoNotStartedMsgList)
+                {
+                    consoleOp.AppendLine(migrationPlanInfoMsg.ToString());
+                    consoleOp.AppendLine();
+                }
+            }
+
+            if (MigrationPlanInfoCompletedMsgList.Count != 0)
+            {
+                consoleOp.AppendLine("Data containers with migration plan completed : ");
+                consoleOp.AppendLine();
+                foreach (MigrationPlanInfoMsg migrationPlanInfoMsg in MigrationPlanInfoCompletedMsgList)
+                {
+                    consoleOp.AppendLine(migrationPlanInfoMsg.ToString());
+                    consoleOp.AppendLine();
+                }
+            }
+
+            if (MigrationPlanInfoFailedMsgList.Count != 0)
+            {
+                consoleOp.AppendLine("Data containers with migration plan failed : ");
+                consoleOp.AppendLine();
+                foreach (MigrationPlanInfoMsg migrationPlanInfoMsg in MigrationPlanInfoFailedMsgList)
+                {
+                    consoleOp.AppendLine(migrationPlanInfoMsg.ToString());
+                    consoleOp.AppendLine();
+                }
+            }
+
+            return consoleOp.ToString();
+        }
+    }
+
+    public class MigrationPlanInfoMsg
+    {
+        private int assumedBandwidthInMbps;
+        private string dataContainerName;
+        private int estimatedTimeInMinutes;
+        private int estimatedTimeInMinutesForLatestBackup;
+        private string planMessageInfoListMsg;
+
+        public MigrationPlanInfoMsg(MigrationPlanInfo migrationPlanInfo)
+        {
+            assumedBandwidthInMbps = migrationPlanInfo.AssumedBandwidthInMbps;
+            dataContainerName = migrationPlanInfo.DataContainerName;
+            estimatedTimeInMinutes = migrationPlanInfo.EstimatedTimeInMinutes;
+            estimatedTimeInMinutesForLatestBackup = migrationPlanInfo.EstimatedTimeInMinutesForLatestBackup;
+            planMessageInfoListMsg = GetPlanMessageInfo(new List<HcsMessageInfo>(migrationPlanInfo.PlanMessageInfoList));
+        }
+
+        public string GetPlanMessageInfo(List<HcsMessageInfo> planMessageInfoList)
+        {
+            StringBuilder consoleOp = new StringBuilder();
+            foreach (HcsMessageInfo hcsMessageInfo in planMessageInfoList)
+            {
+                consoleOp.AppendLine("ErrorCode : " + hcsMessageInfo.ErrorCode + " Message : " + hcsMessageInfo.Message + " Recommendation : " + hcsMessageInfo.Recommendation + " Severity : " + hcsMessageInfo.Severity);
+            }
+            return consoleOp.ToString();
+        }
+
+        public override string ToString()
+        {
+            StringBuilder consoleOp = new StringBuilder();
+            consoleOp.AppendLine("AssumedBandwidthInMbps : " + assumedBandwidthInMbps);
+            consoleOp.AppendLine("DataContainerName : " + dataContainerName);
+            consoleOp.AppendLine("estimatedTimeInMinutes : " + estimatedTimeInMinutes);
+            consoleOp.AppendLine("estimatedTimeInMinutesForLatestBackup : " + estimatedTimeInMinutesForLatestBackup);
+            consoleOp.AppendLine("PlanMessageInfo : " + planMessageInfoListMsg);
+            return consoleOp.ToString();
+        }
+    }
 }
