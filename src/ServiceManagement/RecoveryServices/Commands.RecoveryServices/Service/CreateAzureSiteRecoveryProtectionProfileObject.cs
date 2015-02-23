@@ -220,8 +220,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.targetName,
                     new Action(this.ProceedToCreateProtectionProfileObject));
             }
-
-            this.ProceedToCreateProtectionProfileObject();
+            else
+            {
+                this.ProceedToCreateProtectionProfileObject();
+            }
         }
 
         /// <summary>
