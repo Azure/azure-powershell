@@ -37,49 +37,49 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// Device Id of the device to configure.
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.DeviceId)]
-        [ValidateNotNullOrEmptyAttribute] 
+        [ValidateNotNullOrEmpty] 
         public string DeviceId { get; set; }
 
         /// <summary>
         /// Friendly Name of the device to configure.
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
-        [ValidateNotNullOrEmptyAttribute] 
+        [ValidateNotNullOrEmpty] 
         public string DeviceName { get; set; }
 
         /// <summary>
         /// New friendly name for the device.
         /// </summary>
         [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.NewDeviceName)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public string NewName { get; set; }
         
         /// <summary>
         /// TimeZone for the device.
         /// </summary>
         [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone)]
-        [ValidateNotNullOrEmptyAttribute] 
+        [ValidateNotNullOrEmpty] 
         public TimeZoneInfo TimeZone { get; set; }
 
         /// <summary>
         /// Primary DNS server for the device.
         /// </summary>
         [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.PrimaryDnsServer)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public IPAddress PrimaryDnsServer { get; set; }
         
         /// <summary>
         /// Secondary DNS server for the device.
         /// </summary>
         [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.SecondaryDnsServer)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public IPAddress SecondaryDnsServer { get; set; }
         
         /// <summary>
         /// A collection of network configs for interfaces on the device.
         /// </summary>
         [Parameter(Mandatory = false, Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.StorSimpleNetworkConfig)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public NetworkConfig[] StorSimpleNetworkConfig { get; set; }
 
         public override void ExecuteCmdlet()
@@ -159,14 +159,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 details.NetInterfaceList.Add(netInterface);
             }
 
-            if (netConfig.IsIscsiEnabled != null)
-            {
-                netInterface.IsIScsiEnabled = (bool)netConfig.IsIscsiEnabled;
-            }
-            if (netConfig.IsCloudEnabled != null)
-            {
-                netInterface.IsCloudEnabled = (bool)netConfig.IsCloudEnabled;
-            }
+            netInterface.IsIScsiEnabled = netConfig.IsIscsiEnabled.HasValue ? netConfig.IsIscsiEnabled.Value : netInterface.IsIScsiEnabled;
+
+            netInterface.IsCloudEnabled = netConfig.IsCloudEnabled.HasValue ? netConfig.IsCloudEnabled.Value : netInterface.IsCloudEnabled;
 
             if (netConfig.InterfaceAlias == NetInterfaceId.Data0)
             {   // Other interfaces are not supposed to have controller IPs

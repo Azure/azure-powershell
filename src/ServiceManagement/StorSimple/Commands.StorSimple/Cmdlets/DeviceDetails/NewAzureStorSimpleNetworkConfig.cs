@@ -35,63 +35,63 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// Whether the net interface is iscsi enabled/disabled
         /// </summary>
         [Parameter(Mandatory=false, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.IsIscsiEnabled)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public bool? EnableIscsi { get; set; }
 
         /// <summary>
         /// Whether the net interface is cloud enabled/disabled
         /// </summary>
         [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.IsCloudEnabled)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public bool? EnableCloud { get; set; }
         
         /// <summary>
         /// IPv4Address for controller 0, should be used only with Data0 interface
         /// </summary>
         [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.Controller0IPv4Address)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public string Controller0IPv4Address { get; set; }
         
         /// <summary>
         /// IPv4Address for controller 1, should be used only with Data0 interface
         /// </summary>
         [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.Controller1IPv4Address)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public string Controller1IPv4Address { get; set; }
 
         /// <summary>
         /// IPv4 net mask for interface
         /// </summary>
         [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.IPv6Gateway)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public string IPv6Gateway { get; set; }
 
         /// <summary>
         /// IPv4 Address of gateway
         /// </summary>
         [Parameter(Mandatory = false, Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Gateway)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public string IPv4Gateway { get; set; }
 
         /// <summary>
         /// IPv4 Address for the net interface
         /// </summary>
         [Parameter(Mandatory = false, Position = 6, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Address)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public string IPv4Address { get; set; }
 
         /// <summary>
         /// IPv6 Prefix for the net interface
         /// </summary>
         [Parameter(Mandatory = false, Position = 7, HelpMessage = StorSimpleCmdletHelpMessage.IPv6Prefix)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public string IPv6Prefix { get; set; }
                 
         /// <summary>
         /// IPv4 netmask for this interface
         /// </summary>
         [Parameter(Mandatory = false, Position = 8, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Netmask)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public string IPv4Netmask { get; set; }
 
         /// <summary>

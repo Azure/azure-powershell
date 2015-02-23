@@ -132,15 +132,15 @@ Tests creating a new network config object for Data0 interface
 #>
 function Test-NewNetworkConfigData0{
 	$netConfig = New-AzureStorSimpleNetworkConfig -EnableCloud $true -Controller0IPv4Address 1.1.1.1 -Controller1IPv4Address 1.2.3.3
-	Assert-AreEqual $netConfig.IsIscsiEnabled $null
-	Assert-AreEqual $netConfig.IsCloudEnabled $true
+	Assert-Null $netConfig.IsIscsiEnabled 
+	Assert-True $netConfig.IsCloudEnabled 
 	Assert-AreEqual $netConfig.Controller0IPv4Address.ToString() 1.1.1.1
 	Assert-AreEqual $netConfig.Controller1IPv4Address.ToString() 1.2.3.3
 	Assert-AreEqual $netConfig.IPv6Gateway null
-    Assert-AreEqual $netConfig.IPv4Gateway $null
-    Assert-AreEqual $netConfig.IPv4Address $null
-    Assert-AreEqual $netConfig.IPv6Prefix $null
-    Assert-AreEqual $netConfig.IPv4Netmask $null
+    Assert-Null $netConfig.IPv4Gateway 
+    Assert-Null $netConfig.IPv4Address 
+    Assert-Null $netConfig.IPv6Prefix 
+    Assert-Null $netConfig.IPv4Netmask 
 	Assert-AreEqual $netConfig.InterfaceAlias.ToString() Data0
 }
 
@@ -150,10 +150,10 @@ Tests creating a new network config object for non data0 interface
 #>
 function Test-NewNetworkConfigOthers{
 	$netConfig = New-AzureStorSimpleNetworkConfig -EnableIscsi $true -EnableCloud $true -IPv6Gateway 12c4:421e:9a8::a4:1c50 -IPv4Gateway 2.3.2.3 -IPv4Address 1.2.2.3 -IPv6Prefix 2001:db8:a::123/64 -IPv4Netmask 255.255.0.0 -InterfaceAlias Data1
-	Assert-AreEqual $netConfig.IsIscsiEnabled $true
-	Assert-AreEqual $netConfig.IsCloudEnabled $true
-	Assert-AreEqual $netConfig.Controller0IPv4Address $null
-	Assert-AreEqual $netConfig.Controller1IPv4Address $null
+	Assert-True $netConfig.IsIscsiEnabled "EnableIscsi should be set"
+	Assert-True $netConfig.IsCloudEnabled "EnableCloud should be set"
+	Assert-Null $netConfig.Controller0IPv4Address "Controller0IPv4Address should not be set on non-Data0 interface"
+	Assert-Null $netConfig.Controller1IPv4Address "Controller1IPv4Address should not be set on non-Data0 interface"
 	Assert-AreEqual $netConfig.IPv6Gateway.ToString() 12c4:421e:9a8::a4:1c50
 	Assert-AreEqual $netConfig.IPv4Gateway.ToString() 2.3.2.3
 	Assert-AreEqual $netConfig.IPv4Address.ToString() 1.2.2.3
@@ -168,9 +168,9 @@ Tests creating a new network config with invalid params ( should get null)
 #>
 function Test-NetworkConfigInvalidParams{
 	$netConfigData0 = New-AzureStorSimpleNetworkConfig -EnableIscsi $true -EnableCloud $true -Controller0IPv4Address 1.1.1.1 -Controller1IPv4Address 1.2.3.3 -IPv6Gateway 12c4:421e:9a8::a4:1c50 -IPv4Gateway 2.3.2.3 -IPv4Address 1.2.2.3 -IPv6Prefix 2001:db8:a::123/64 -IPv4Netmask 255.255.0.0 -InterfaceAlias Data0
-	Assert-AreEqual $netConfigData0 $null
+	Assert-Null $netConfigData0 "Only Controller0IPAddress, Controller1IPAddress and EnableCloud can be specified for Data0"
 	$netConfigData1 = New-AzureStorSimpleNetworkConfig -EnableIscsi $true -EnableCloud $true -Controller0IPv4Address 1.1.1.1 -Controller1IPv4Address 1.2.3.3 -IPv6Gateway 12c4:421e:9a8::a4:1c50 -IPv4Gateway 2.3.2.3 -IPv4Address 1.2.2.3 -IPv6Prefix 2001:db8:a::123/64 -IPv4Netmask 255.255.0.0 -InterfaceAlias Data1
-	Assert-AreEqual $netConfigData1 $null
+	Assert-Null $netConfigData1 "Controller0 and Controller1 IP Addresses cant be specified for non-Data0 interfaces"
 }
 
 

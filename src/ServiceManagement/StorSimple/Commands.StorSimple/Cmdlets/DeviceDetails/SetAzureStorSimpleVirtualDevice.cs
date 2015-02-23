@@ -36,28 +36,28 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// Friendly Name of the device to configure.
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
-        [ValidateNotNullOrEmptyAttribute] 
+        [ValidateNotNullOrEmpty] 
         public string DeviceName { get; set; }
 
         /// <summary>
         /// New friendly name for the device.
         /// </summary>
         [Parameter(Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.NewDeviceName)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public string NewName { get; set; }
         
         /// <summary>
         /// TimeZone for the device.
         /// </summary>
         [Parameter(Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone)]
-        [ValidateNotNullOrEmptyAttribute] 
+        [ValidateNotNullOrEmpty] 
         public TimeZone TimeZone { get; set; }
 
         /// <summary>
         /// Service Encryption Key for the resource.
         /// </summary>
         [Parameter(Mandatory=true, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.SEK)]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public string SecretKey { get; set; }
 
         public override void ExecuteCmdlet()

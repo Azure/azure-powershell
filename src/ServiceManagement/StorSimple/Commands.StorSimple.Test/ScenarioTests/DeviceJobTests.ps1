@@ -50,23 +50,23 @@ function Get-OnlineDevice{
 }
 
 function Test-GetDeviceJobs{
-	Set-DefaultResource	
+    Set-DefaultResource 
 
-	$onlineDevice = Get-OnlineDevice
+    $onlineDevice = Get-OnlineDevice
 
-	$deviceName = ([DeviceDetails]$onlineDevice).DeviceProperties.FriendlyName
+    $deviceName = $onlineDevice.DeviceProperties.FriendlyName
+    
+    # Start a backup job on it.
+    Start-BackupJob $deviceName
 
-	# Start a backup job on it.
-	Start-BackupJob $deviceName
-
-	# Fetch all backup jobs on this device. Make sure the list has >1 jobs.
-	$jobs = Get-AzureStorSimpleJob -Type Backup
-	Assert-AreNotEqual 0 @($jobs).Count "Expected to find a backup job on the device."
-	
-	# Verify that all jobs returned have the type backup
-	for($i=0; $i -lt $jobs.Count; $i++){
-		Assert-AreEqual $jobs[$i].Type "Backup" 
-	}
+    # Fetch all backup jobs on this device. Make sure the list has >1 jobs.
+    $jobs = Get-AzureStorSimpleJob -Type Backup -Skip 0 -First 10
+    Assert-AreNotEqual 0 @($jobs).Count "Expected to find a backup job on the device."
+    
+    # Verify that all jobs returned have the type backup
+    for($i=0; $i -lt $jobs.Count; $i++){
+        Assert-AreEqual $jobs[$i].Type "Backup" 
+    }
 }
 
 function Test-StopDeviceJob{
@@ -75,13 +75,13 @@ function Test-StopDeviceJob{
     # Get hold of an online device.
     $onlineDevice = Get-OnlineDevice
 
-	$deviceName = ([DeviceDetails]$onlineDevice).DeviceProperties.FriendlyName
+	$deviceName = $onlineDevice.DeviceProperties.FriendlyName
 
 	# Schedule a backup job
 	Start-BackupJob $deviceName
 
 	# Get all jobs on the device and find a running cancellable job
-	$jobs = Get-AzureStorSimpleJob -DeviceName $deviceName
+	$jobs = Get-AzureStorSimpleJob -DeviceName $deviceName -First 10
 	Assert-AreNotEqual 0 @($jobs).Count "Expected to find a backup job on the device."
 
 	#filter for cancellable jobs with status running
@@ -90,10 +90,74 @@ function Test-StopDeviceJob{
 	$cancellableJob = $cancellableJobs[-1]
 
 	# cancel the job
-	Stop-AzureStorSimpleJob -JobId $cancellableJob.InstanceId
+	$result = Stop-AzureStorSimpleJob -JobId $cancellableJob.InstanceId
 
-	# Get job details and verify that it has been cancelled
-	$jobDetails = @(Get-AzureStorSimpleJob -JobId $cancellableJob.InstanceId)
-	Assert-AreNotEqual 0 $jobDetails.Count "Job details not found for cancelled job"
-	Assert-AreEqual $jobDetails[0].Status "Cancelled"
+	Assert-AreNotEqual $result $null "Failed to stop the job, got a null object"
+}
+
+function Test-StopDeviceJobsNonCancellable{
+	Set-DefaultResource
+
+    # Get hold of an online device.
+    $onlineDevice = Get-OnlineDevice
+
+	$deviceName = $onlineDevice.DeviceProperties.FriendlyName
+
+	# Get all jobs and find a non-cancellable job
+	$jobs = Get-AzureStorSimpleJob -DeviceName $deviceName
+	Assert-AreNotEqual 0 @($jobs).Count "No jobs available on device."
+
+	$nonCancellableJobs = @($jobs | Where { $_.IsJobCancellable })
+	Assert-AreNotEqual 0 $nonCancellableJobs.Count "No non-cancellable jobs found"
+	$nonCancellableJob = $nonCancellableJobs[-1]
+	
+	$retVal = Stop-AzureStorSimpleJob -JobId $nonCancellableJob.InstanceId
+
+	# Assert throws an exception if possible
+	Assert-AreEqual $retVal $null
+}
+
+function Test-GetAzureStorSimpleJobPagination{
+	Set-DefaultResource
+
+    # Get hold of an online device.
+    $onlineDevice = Get-OnlineDevice
+
+	$deviceName = $onlineDevice.DeviceProperties.FriendlyName
+
+	# Get all jobs and find a non-cancellable job
+	$jobs = @(Get-AzureStorSimpleJob -DeviceName $deviceName -First 100)
+	Assert-AreNotEqual $jobs.Count 0 "No jobs found"
+	Assert-AreEqual ($jobs.Count -gt 3) $true "Need atleast 3 jobs on the device"
+
+	$num_pages = [Math]::Ceiling(($jobs.Count-1)/3)
+	for($i = 0; $i -lt $num_pages; $i++){
+		$skip = 3 * $i
+		$jobsInPage = @(Get-AzureStorSimpleJob -DeviceName $deviceName -skip $skip -First 3)
+		$expected = 3
+		if($i -eq $num_pages-1){
+			$expected = ($jobs.Count-1) % 3
+		}
+		Assert-AreEqual ($jobsInPage.Count-1) $expected
+	}
+}
+
+
+function Test-GetJobsByStatus{
+	# It is expected that by the time this test runs, there will be some completed jobs in the resource
+
+    Set-DefaultResource 
+
+    $onlineDevice = Get-OnlineDevice
+
+    $deviceName = $onlineDevice.DeviceProperties.FriendlyName
+    
+    # Fetch all backup jobs on this device. Make sure the list has >1 jobs.
+    $jobs = Get-AzureStorSimpleJob -Status Completed -Skip 0 -First 10
+    Assert-AreNotEqual 0 @($jobs).Count "No completed jobs found on the device."
+    
+    # Verify that all jobs returned have the type backup
+    for($i=0; $i -lt $jobs.Count-1; $i++){
+        Assert-AreEqual $jobs[$i].Status "Completed"
+    }
 }

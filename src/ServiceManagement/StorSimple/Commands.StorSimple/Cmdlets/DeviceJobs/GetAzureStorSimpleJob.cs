@@ -71,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByStatus, HelpMessage = StorSimpleCmdletHelpMessage.FromTime)]
         [Parameter(Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.FromTime)]
         [Parameter(Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByDeviceName, HelpMessage = StorSimpleCmdletHelpMessage.FromTime)]
-        public DateTime From { get; set; }
+        public DateTime? From { get; set; }
 
         /// <summary>
         /// Filter jobs that were created till specified time
@@ -80,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByDeviceName, HelpMessage = StorSimpleCmdletHelpMessage.ToTime)]
         [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.ToTime)]
         [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByStatus, HelpMessage = StorSimpleCmdletHelpMessage.ToTime)]
-        public DateTime To { get; set; }
+        public DateTime? To { get; set; }
 
         /// <summary>
         /// Number of results to skip
@@ -173,9 +173,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
             // Need to use xml convert because we want ISO 8601 formatting to avoid deserialization
             // probs in the backend.
-            fromDateTimeIsoString = From != null ? XmlConvert.ToString(From) : null;
+            fromDateTimeIsoString = From.HasValue ? XmlConvert.ToString(From.Value) : null;
 
-            toDateTimeIsoString = To != null ? XmlConvert.ToString(To) : null;           
+            toDateTimeIsoString = To.HasValue ? XmlConvert.ToString(To.Value) : null;           
 
             deviceId = null;
 
