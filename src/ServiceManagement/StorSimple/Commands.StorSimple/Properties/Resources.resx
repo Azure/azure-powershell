@@ -442,6 +442,6 @@
     <value>Cloning backup with backupId {0}...</value>
   </data>
   <data name="StartASSBackupCloneJobWarningMessage" xml:space="preserve">
-    <value>Are you sure you want to clone the backup with backupId{0}?</value>
+    <value>Are you sure you want to clone the backup with backupId {0}?</value>
   </data>
 </root>

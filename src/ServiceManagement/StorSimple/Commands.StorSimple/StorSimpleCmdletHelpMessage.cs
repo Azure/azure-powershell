@@ -50,7 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string BackupPolicyName = "Name of the Backup policy that you wish to retrieve. Skip this parameter to get all policies";
         public const string BackupIdToDelete = "InstanceId of the Backup that needs to be deleted";
         public const string BackupIdToRestore = "InstanceId of the Backup that needs to be restored";
-        public const string snapshotIdToRestore = "InstanceId of the Snapshot that needs to be restored";
+        public const string SnapshotIdToRestore = "InstanceId of the Snapshot that needs to be restored";
         public const string BackupPolicyIdToDelete = "InstanceId of the BackupPolicy that needs to be deleted";
         public const string BackupPolicyToDelete = "The BackupPolicyDetails object that needs to be deleted";
         public const string BackupTypeDesc = "Enter LocalSnapshot or CloudSnapshot";

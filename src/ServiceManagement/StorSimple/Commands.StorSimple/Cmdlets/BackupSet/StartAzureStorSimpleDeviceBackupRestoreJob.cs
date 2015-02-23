@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.BackupIdToRestore, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
         public string BackupId { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.snapshotIdToRestore, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.SnapshotIdToRestore, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
         public string SnapshotId { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]

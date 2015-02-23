@@ -196,15 +196,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} Device Job is submitted successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the task&apos;s status.
-        /// </summary>
-        internal static string DeviceJobResponseMessage {
-            get {
-                return ResourceManager.GetString("DeviceJobResponseMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The device name you have specified is not yet configured fully. Please complete the configuration and retry..
         /// </summary>
         internal static string DeviceNotConfiguredMessage {
@@ -880,7 +871,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to clone the backup with backupId{0}?.
+        ///   Looks up a localized string similar to Are you sure you want to clone the backup with backupId {0}?.
         /// </summary>
         internal static string StartASSBackupCloneJobWarningMessage {
             get {
