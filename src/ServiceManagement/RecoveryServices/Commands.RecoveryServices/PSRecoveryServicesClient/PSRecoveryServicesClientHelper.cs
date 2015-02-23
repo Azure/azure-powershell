@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 azureStorageListResponse =
                     this.GetSiteRecoveryClient().Storages.ListAzureStorages(azureSubscription);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

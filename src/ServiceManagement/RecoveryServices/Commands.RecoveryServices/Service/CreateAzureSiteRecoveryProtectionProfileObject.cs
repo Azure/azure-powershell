@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public class CreateAzureSiteRecoveryProtectionProfileObject : RecoveryServicesCmdletBase
     {
         /// <summary>
-        /// Holds either Name (if it is passed) of the protection profile object.
+        /// Holds Name (if passed) of the protection profile object.
         /// </summary>
         private string targetName = string.Empty;
 
