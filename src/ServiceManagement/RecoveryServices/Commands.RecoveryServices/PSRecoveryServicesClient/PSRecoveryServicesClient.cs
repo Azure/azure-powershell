@@ -25,13 +25,15 @@ using System.Web.Script.Serialization;
 using System.Xml;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -56,6 +58,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
+        /// Azure profile
+        /// </summary>
+        public AzureProfile Profile { get; set; }
+
         /// <summary>
         /// Amount of time to sleep before fetching job details again.
         /// </summary>
@@ -76,18 +82,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private RecoveryServicesManagementClient recoveryServicesClient;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class.
-        /// </summary>
-        public PSRecoveryServicesClient()
-        {
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(AzureSubscription azureSubscription)
+        public PSRecoveryServicesClient(AzureProfile azureProfile, AzureSubscription azureSubscription)
         {
             if (ServicePointManager.ServerCertificateValidationCallback == null)
             {
@@ -95,8 +94,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     delegate { return true; };
             }
 
+            this.Profile = azureProfile;
             this.recoveryServicesClient =
-                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>
@@ -256,7 +256,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             SiteRecoveryManagementClient siteRecoveryClient =
-                AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, asrVaultCreds.ResourceName, recoveryServicesClient.Credentials, AzureSession.CurrentContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
+                AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, 
+                asrVaultCreds.ResourceName, recoveryServicesClient.Credentials, 
+                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
 
             if (null == siteRecoveryClient)
             {

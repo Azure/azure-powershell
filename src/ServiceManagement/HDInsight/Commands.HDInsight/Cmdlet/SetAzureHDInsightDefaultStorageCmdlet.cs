@@ -56,30 +56,26 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                     throw new ArgumentNullException("value", "The value for the configuration can not be null.");
                 }
 
-                if (value.CoreConfiguration != null)
-                {
-                    this.command.Config.CoreConfiguration.AddRange(value.CoreConfiguration);
-                }
-
-                if (value.YarnConfiguration != null)
-                {
-                    this.command.Config.YarnConfiguration.AddRange(value.YarnConfiguration);
-                }
                 this.command.Config.ClusterSizeInNodes = value.ClusterSizeInNodes;
+                this.command.Config.DefaultStorageAccount = value.DefaultStorageAccount;
                 this.command.Config.AdditionalStorageAccounts.AddRange(value.AdditionalStorageAccounts);
                 this.command.Config.ConfigActions.AddRange(value.ConfigActions);
                 this.command.Config.HiveMetastore = value.HiveMetastore ?? this.command.Config.HiveMetastore;
                 this.command.Config.OozieMetastore = value.OozieMetastore ?? this.command.Config.OozieMetastore;
+                this.command.Config.CoreConfiguration.AddRange(value.CoreConfiguration);
+                this.command.Config.YarnConfiguration.AddRange(value.YarnConfiguration);
+                this.command.Config.HdfsConfiguration.AddRange(value.HdfsConfiguration);
+                this.command.Config.MapReduceConfiguration.ConfigurationCollection.AddRange(value.MapReduceConfiguration.ConfigurationCollection);
+                this.command.Config.MapReduceConfiguration.CapacitySchedulerConfigurationCollection.AddRange(
+                    value.MapReduceConfiguration.CapacitySchedulerConfigurationCollection);
+                this.command.Config.HiveConfiguration.ConfigurationCollection.AddRange(value.HiveConfiguration.ConfigurationCollection);
+                this.command.Config.OozieConfiguration.ConfigurationCollection.AddRange(value.OozieConfiguration.ConfigurationCollection);
                 this.command.Config.HeadNodeVMSize = value.HeadNodeVMSize;
                 this.command.Config.ClusterType = value.ClusterType;
-                if (!string.IsNullOrEmpty(value.VirtualNetworkId))
-                {
-                    this.command.Config.VirtualNetworkId = value.VirtualNetworkId;
-                }
-                if (!string.IsNullOrEmpty(value.SubnetName))
-                {
-                    this.command.Config.SubnetName = value.SubnetName;
-                }
+                this.command.Config.VirtualNetworkId = value.VirtualNetworkId;
+                this.command.Config.SubnetName = value.SubnetName;
+                this.command.Config.StormConfiguration.AddRange(value.StormConfiguration);
+                this.command.Config.HBaseConfiguration.ConfigurationCollection.AddRange(value.HBaseConfiguration.ConfigurationCollection);
             }
         }
 
