@@ -32,14 +32,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// <summary>
         /// Device job id of the job to stop.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceJobId)]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.DeviceJobId)]
         [ValidateNotNullOrEmptyAttribute]
         public string JobId { get; set; }
 
         /// <summary>
         /// Wheter to prompt for permission or not.
         /// </summary>
-        [Parameter(Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageForce)]
+        [Parameter(Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.Force)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()

@@ -100,7 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             throw new InvalidOperationException(
                 string.Format(error.Message,"\n",error.HttpCode,"\n",error.ExtendedCode));
         }
-
+        
         private CustomRequestHeaders GetCustomRequestHeaders()
         {
             var hdrs = new CustomRequestHeaders()

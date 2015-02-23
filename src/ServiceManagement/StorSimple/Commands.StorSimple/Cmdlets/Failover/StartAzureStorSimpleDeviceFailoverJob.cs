@@ -24,27 +24,27 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         OutputType(typeof(TaskResponse), typeof(TaskStatusInfo))]
     public class StartAzureStorSimpleDeviceFailoverJob : StorSimpleCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceId)]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.DeviceId)]
         [ValidateNotNullOrEmpty]
         public string DeviceId { get; set; }
 
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeContainerGroups)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeContainerGroups)]
         [ValidateNotNull]
         public List<DataContainerGroup> VolumecontainerGroups { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageFailoverTargetDeviceId)]
+        [Parameter(Position = 2, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.FailoverTargetDeviceId)]
         [ValidateNotNullOrEmpty]
         public string TargetDeviceId { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageFailoverTargetDeviceName)]
+        [Parameter(Position = 2, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.FailoverTargetDeviceName)]
         [ValidateNotNullOrEmpty]
         public string TargetDeviceName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageForce)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.Force)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()

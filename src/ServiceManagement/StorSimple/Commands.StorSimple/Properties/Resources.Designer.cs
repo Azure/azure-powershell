@@ -979,6 +979,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cloning backup with backupId {0}....
+        /// </summary>
+        internal static string StartASSBackupCloneJobMessage {
+            get {
+                return ResourceManager.GetString("StartASSBackupCloneJobMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to clone the backup with backupId {0}?.
+        /// </summary>
+        internal static string StartASSBackupCloneJobWarningMessage {
+            get {
+                return ResourceManager.GetString("StartASSBackupCloneJobWarningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Restoring backup with backupId {0}....
         /// </summary>
         internal static string StartASSDBackupRestoreJobMessage {

@@ -86,7 +86,8 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="StorSimple.Tests">
+    <Reference Include="StorSimple.Tests, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\hydra-specs-pr\StorSimple\StorSimple.Tests\bin\Debug\StorSimple.Tests.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -121,6 +122,7 @@
     <Compile Include="Cmdlets\BackupPolicy\SetAzureStorSimpleDeviceBackupPolicy.cs" />
     <Compile Include="Cmdlets\BackupSet\GetAzureStorSimpleDeviceBackup.cs" />
     <Compile Include="Cmdlets\BackupSet\RemoveAzureStorSimpleDeviceBackup.cs" />
+    <Compile Include="Cmdlets\Clone\StartAzureStorSimpleBackupCloneJob.cs" />
     <Compile Include="Cmdlets\BackupSet\StartAzureStorSimpleDeviceBackupJob.cs" />
     <Compile Include="Cmdlets\BackupSet\StartAzureStorSimpleDeviceBackupRestoreJob.cs" />
     <Compile Include="Cmdlets\DataContainer\GetAzureStorSimpleDeviceVolumeContainer.cs" />

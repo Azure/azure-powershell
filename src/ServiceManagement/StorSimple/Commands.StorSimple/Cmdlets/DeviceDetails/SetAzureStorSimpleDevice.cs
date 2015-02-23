@@ -36,49 +36,49 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 /// <summary>
         /// Device Id of the device to configure.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceId)]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.DeviceId)]
         [ValidateNotNullOrEmptyAttribute] 
         public string DeviceId { get; set; }
 
         /// <summary>
         /// Friendly Name of the device to configure.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
         [ValidateNotNullOrEmptyAttribute] 
         public string DeviceName { get; set; }
 
         /// <summary>
         /// New friendly name for the device.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageNewDeviceName)]
+        [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.NewDeviceName)]
         [ValidateNotNullOrEmptyAttribute]
         public string NewName { get; set; }
         
         /// <summary>
         /// TimeZone for the device.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageTimeZone)]
+        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone)]
         [ValidateNotNullOrEmptyAttribute] 
         public TimeZoneInfo TimeZone { get; set; }
 
         /// <summary>
         /// Primary DNS server for the device.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessagePrimaryDnsServer)]
+        [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.PrimaryDnsServer)]
         [ValidateNotNullOrEmptyAttribute]
         public IPAddress PrimaryDnsServer { get; set; }
         
         /// <summary>
         /// Secondary DNS server for the device.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageSecondaryDnsServer)]
+        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.SecondaryDnsServer)]
         [ValidateNotNullOrEmptyAttribute]
         public IPAddress SecondaryDnsServer { get; set; }
         
         /// <summary>
         /// A collection of network configs for interfaces on the device.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageStorSimpleNetworkConfig)]
+        [Parameter(Mandatory = false, Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.StorSimpleNetworkConfig)]
         [ValidateNotNullOrEmptyAttribute]
         public NetworkConfig[] StorSimpleNetworkConfig { get; set; }
 

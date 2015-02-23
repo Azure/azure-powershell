@@ -23,35 +23,35 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsCommon.Set, "AzureStorSimpleDeviceVolume"), OutputType(typeof(TaskStatusInfo))]
     public class SetAzureStorSimpleDeviceVolume : StorSimpleCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
         [Alias("Name")]
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeName)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeName)]
         [ValidateNotNullOrEmpty]
         public string VolumeName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeOnline)]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.VolumeOnline)]
         [ValidateNotNullOrEmpty]
         public bool? Online { get; set; }
 
         [Alias("SizeInBytes")]
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeSize)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.VolumeSize)]
         [ValidateNotNullOrEmpty]
         public Int64? VolumeSizeInBytes { get; set; }
 
         [Alias("AppType")]
         [ValidateSet("PrimaryVolume","ArchiveVolume")]
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeAppType)]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.VolumeAppType)]
         [ValidateNotNullOrEmpty]
         public AppType? VolumeAppType { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeAcrList)]
+        [Parameter(Position = 5, Mandatory = false, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeAcrList)]
         [ValidateNotNullOrEmpty]
         public List<AccessControlRecord> AccessControlRecords { get; set; }
 
-        [Parameter(Position = 6, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
 
         public override void ExecuteCmdlet()

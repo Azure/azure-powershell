@@ -492,4 +492,10 @@
   <data name="SuccessMessageSubmitDeviceJob" xml:space="preserve">
     <value>The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job's status</value>
   </data>
+  <data name="StartASSBackupCloneJobMessage" xml:space="preserve">
+    <value>Cloning backup with backupId {0}...</value>
+  </data>
+  <data name="StartASSBackupCloneJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to clone the backup with backupId {0}?</value>
+  </data>
 </root>
