@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Management.StorSimple.Models;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.VirtualDevice
 {
-    [Cmdlet(VerbsCommon.New, "AzureStorSimpleVirtualDevice")]
+    [Cmdlet(VerbsCommon.New, "AzureStorSimpleVirtualDevice"), OutputType(typeof(string))]
     public class NewAzureStorSimpleVirtualDeviceCommand : StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualDeviceName)]
