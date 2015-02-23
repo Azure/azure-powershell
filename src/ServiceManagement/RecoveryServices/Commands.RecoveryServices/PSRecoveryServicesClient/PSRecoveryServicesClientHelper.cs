@@ -14,8 +14,8 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
@@ -27,42 +27,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// </summary>
     public partial class PSRecoveryServicesClient
     {
-        /// <summary>
-        /// Validates whether the subscription belongs to the currently logged account or not.
-        /// </summary>
-        /// <param name="azureSubscriptionId">Azure Subscription ID</param>
-        public static void ValidateSubscriptionAccountAssociation(string azureSubscriptionId)
-        {
-            if (string.IsNullOrEmpty(azureSubscriptionId))
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.SubscriptionIdIsNotValid));
-            }
-
-            bool associatedSubscription = false;
-            ProfileClient pc = new ProfileClient();
-            List<AzureSubscription> subscriptions =
-                pc.RefreshSubscriptions(AzureSession.CurrentContext.Environment);
-
-            foreach (AzureSubscription sub in subscriptions)
-            {
-                if (azureSubscriptionId.Equals(sub.Id.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    associatedSubscription = true;
-                    break;
-                }
-            }
-
-            if (!associatedSubscription)
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.SubscriptionIsNotAssociatedWithTheAccount,
-                    azureSubscriptionId));
-            }
-        }
-
         /// <summary>
         /// Converts the Parameter set string of Replication Frequency in seconds to UShort.
         /// </summary>
@@ -103,6 +67,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 throw new InvalidOperationException(
                     string.Format(Properties.Resources.ReplicationStartTimeInvalid));
+            }
+        }
+
+        /// <summary>
+        /// Validates whether the subscription belongs to the currently logged account or not.
+        /// </summary>
+        /// <param name="azureSubscriptionId">Azure Subscription ID</param>
+        public void ValidateSubscriptionAccountAssociation(string azureSubscriptionId)
+        {
+            if (string.IsNullOrEmpty(azureSubscriptionId))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.SubscriptionIdIsNotValid));
+            }
+
+            bool associatedSubscription = false;
+            List<AzureSubscription> subscriptions =
+                new List<AzureSubscription>(this.Profile.Subscriptions.Values);
+
+            foreach (AzureSubscription sub in subscriptions)
+            {
+                if (azureSubscriptionId.Equals(sub.Id.ToString(), StringComparison.OrdinalIgnoreCase))
+                {
+                    associatedSubscription = true;
+                    break;
+                }
+            }
+
+            if (!associatedSubscription)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.SubscriptionIsNotAssociatedWithTheAccount,
+                    azureSubscriptionId));
             }
         }
 

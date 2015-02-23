@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
@@ -1183,12 +1183,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         /// Gets or sets Start timestamp.
         /// </summary>
-        public DateTimeOffset? StartTime { get; set; }
+        public string StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets End timestamp.
         /// </summary>
-        public DateTimeOffset? EndTime { get; set; }
+        public string EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets TargetObjectId.
@@ -1245,12 +1245,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="cloudService">cloud service object</param>
         /// <param name="vault">vault object</param>
-        public ASRVault(CloudService cloudService, Vault vault)
+        /// <param name="subscription">Current subscription</param>
+        public ASRVault(CloudService cloudService, Vault vault, string subscription)
         {
             this.CloudServiceName = cloudService.Name;
             this.Location = cloudService.GeoRegion;
             this.Name = vault.Name;
-            this.SubscriptionId = AzureSession.CurrentContext.Subscription.Id.ToString();
+            this.SubscriptionId = subscription;
             this.Status = this.ParseStatus(vault.OperationStatus);
             this.ID = this.ParseVaultId(vault.OutputItems);
             if (vault.OperationStatus.Error != null)
