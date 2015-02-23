@@ -23,9 +23,15 @@ namespace Microsoft.Azure.Commands.Automation.DataContract
     public class ErrorResponse
     {
         /// <summary>
-        /// Gets or sets the odata error.
+        /// Gets or sets the code.
         /// </summary>
-        [DataMember(Name = "odata.error")]
-        public OdataError OdataError { get; set; }
+        [DataMember(Name = "code")]
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        [DataMember(Name = "message")]
+        public string Message { get; set; }
     }
 }
