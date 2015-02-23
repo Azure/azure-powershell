@@ -149,6 +149,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Creates a test Task for use in Scenario tests.
+        /// TODO: Replace with new Task client method when it exists.
+        /// </summary>
+        public static void CreateTestTask(BatchAccountContext context, string workItemName, string jobName, string taskName)
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
+                {
+                    ICloudTask task = new CloudTask(taskName, "cmd /c dir /s");
+                    wiManager.AddTask(workItemName, jobName, task);
+                }
+            }
+        }
+
+        /// <summary>
         /// Deletes a WorkItem used in a Scenario test.
         /// TODO: Replace with remove WorkItem client method when it exists.
         /// </summary>
