@@ -16,26 +16,21 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
-using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Entities;
 using Microsoft.Azure.Commands.Batch.Models;
-using Microsoft.Azure.Commands.Batch.Test.ScenarioTests;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
-using Xunit;
-using JobExecutionEnvironment = Microsoft.Azure.Batch.Protocol.Entities.JobExecutionEnvironment;
+using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -69,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         /// <summary>
         /// Creates a test Pool for use in Scenario tests.
-        /// TODO: Replace with new Pool cmdlet when it exists.
+        /// TODO: Replace with new Pool client method when it exists.
         /// </summary>
         public static void CreateTestPool(BatchAccountContext context, string poolName)
         {
@@ -85,7 +80,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         /// <summary>
         /// Deletes a Pool used in a Scenario test.
-        /// TODO: Replace with remove Pool cmdlet when it exists.
+        /// TODO: Replace with remove Pool client method when it exists.
         /// </summary>
         public static void DeletePool(BatchAccountContext context, string poolName)
         {
@@ -100,9 +95,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         /// <summary>
         /// Creates a test WorkItem for use in Scenario tests.
-        /// TODO: Replace with new WorkItem cmdlet when it exists.
+        /// TODO: Replace with new WorkItem client method when it exists.
         /// </summary>
-        public static void CreateTestWorkItem(BatchAccountContext context, string workItemName)
+        public static void CreateTestWorkItem(BatchAccountContext context, string workItemName, TimeSpan? recurrenceInterval)
         {
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
@@ -111,14 +106,51 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ICloudWorkItem workItem = wiManager.CreateWorkItem(workItemName);
                     workItem.JobExecutionEnvironment = new Azure.Batch.JobExecutionEnvironment();
                     workItem.JobExecutionEnvironment.PoolName = "testPool";
+                    if (recurrenceInterval != null)
+                    {
+                        workItem.Schedule = new Azure.Batch.WorkItemSchedule();
+                        workItem.Schedule.RecurrenceInterval = recurrenceInterval;
+                    }
                     workItem.Commit();
                 }
             }
         }
 
         /// <summary>
+        /// Creates a test WorkItem for use in Scenario tests.
+        /// </summary>
+        public static void CreateTestWorkItem(BatchAccountContext context, string workItemName)
+        {
+            CreateTestWorkItem(context, workItemName, null);
+        }
+
+        /// <summary>
+        /// Waits for a Recent Job on a WorkItem and returns its name. If a previous job is specified, this method waits until a new Recent Job is created.
+        /// </summary>
+        public static string WaitForRecentJob(BatchController controller, BatchAccountContext context, string workItemName, string previousJob = null)
+        {
+            DateTime timeout = DateTime.Now.AddMinutes(2);
+
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            PSCloudWorkItem workItem = client.ListWorkItems(context, workItemName, null, Constants.DefaultMaxCount, behaviors).First();
+
+            while (workItem.ExecutionInformation.RecentJob == null || string.Equals(workItem.ExecutionInformation.RecentJob.Name, previousJob, StringComparison.OrdinalIgnoreCase))
+            {
+                if (DateTime.Now > timeout)
+                {
+                    throw new TimeoutException("Timed out waiting for recent job");
+                }
+                Sleep(5000);
+                workItem = client.ListWorkItems(context, workItemName, null, Constants.DefaultMaxCount, behaviors).First();
+            }
+            return workItem.ExecutionInformation.RecentJob.Name;
+        }
+
+        /// <summary>
         /// Deletes a WorkItem used in a Scenario test.
-        /// TODO: Replace with remove WorkItem cmdlet when it exists.
+        /// TODO: Replace with remove WorkItem client method when it exists.
         /// </summary>
         public static void DeleteWorkItem(BatchAccountContext context, string workItemName)
         {
@@ -127,6 +159,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
                 {
                     wiManager.DeleteWorkItem(workItemName);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Terminates a Job
+        /// TODO: Replace with terminate Job client method when it exists.
+        /// </summary>
+        public static void TerminateJob(BatchAccountContext context, string workItemName, string jobName)
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
+                {
+                    wiManager.TerminateJob(workItemName, jobName);
                 }
             }
         }
@@ -254,6 +301,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 }
             }
             return batchResponse;
+        }
+
+        /// <summary>
+        /// Sleep method used for Scenario Tests. Only sleep when recording.
+        /// </summary>
+        private static void Sleep(int milliseconds)
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                Thread.Sleep(milliseconds);
+            }
         }
     }
 }
