@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// <returns>DeviceJobDetails of the queried job. Null if job not found.</returns>
         public DeviceJobDetails GetDeviceJobById(string instanceId)
         {
-            var deviceJobsResponse = this.GetStorSimpleClient().DeviceJob.Get(null, null, null, instanceId, null, null, 0, 10, this.GetCustomRequestHeaders());
+            var deviceJobsResponse = this.GetStorSimpleClient().DeviceJob.Get(null, null, null, instanceId, null, null, 0, 1, this.GetCustomRequestHeaders());
             if (deviceJobsResponse == null)
             {
                 return null;
@@ -38,6 +38,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return deviceJobsResponse.DeviceJobList.FirstOrDefault();
         }
 
+        /// <summary>
+        /// Get paginated list of device jobs based on provided filters.
+        /// </summary>
+        /// <param name="deviceId">id of device to filter jobs by</param>
+        /// <param name="jobType">type of jobs to include in result.</param>
+        /// <param name="jobStatus">status of jobs to include in result.</param>
+        /// <param name="jobId">InstanceId of the job if single job is being fetched.</param>
+        /// <param name="startTime">start of time interval for which to get jobs</param>
+        /// <param name="endTime">end of time interval for which to get jobs</param>
+        /// <param name="skip">number of results to be skipped</param>
+        /// <param name="top">number of results to include.</param>
+        /// <returns></returns>
         public GetDeviceJobResponse GetDeviceJobs(string deviceId, string jobType, string jobStatus, string jobId, string startTime, string endTime, int skip=0, int top=0) 
         {
             var deviceJobsResponse = this.GetStorSimpleClient().DeviceJob.Get(deviceId, jobType, jobStatus, jobId, startTime, endTime, skip, top, this.GetCustomRequestHeaders());
