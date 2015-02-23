@@ -79,6 +79,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string HelpMessageBackupScheduleBaseObjsToDelete = "List of Instance Id of BackupSchedule objects to be deleted";
         public const string HelpMessageVolumeObjsToUpdate = "List of VolumeIds to be updated";
         public const string HelpMessageResourceName = "Name of the resource which needs to be retrieved";
+
+        public const string VirtualDeviceName = "Name of the Virtual Device to be created.";
+        public const string VirtualNetworkName = "Name of the Virtual Network to be used by the Virtual Device.";
+        public const string SubNetName = "Name of the Subnet in the Virtual Network which should be used by the Virtual Device.";
+        public const string StorageAccountNameForVirtualDevice = "Name of the Storage Account to be used to create the Virtual Device.";
+        public const string CreateNewStorageAccount = "Switch which decides whether to create a new storage account.";
         public const string HelpMessageVolumeContainerGroups = "List of Volme Container Groups to be failed over";
         public const string HelpMessageFailoverTargetDeviceName = "Name of the StorSimple failover target device";
         public const string HelpMessageFailoverTargetDeviceId = "The device identifier of the StorSimple failover target device";

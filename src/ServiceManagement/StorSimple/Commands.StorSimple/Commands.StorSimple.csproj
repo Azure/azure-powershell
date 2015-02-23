@@ -143,6 +143,7 @@
     <Compile Include="Cmdlets\ServiceConfig\RemoveAzureStorSimpleStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\SetAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\ServiceConfig\SetAzureStorSimpleStorageAccountCredential.cs" />
+    <Compile Include="Cmdlets\VirtualDevice\NewAzureStorSimpleVirtualDeviceCommand.cs" />
     <Compile Include="Cmdlets\Volume\GetAzureStorSimpleDeviceVolume .cs" />
     <Compile Include="Cmdlets\Volume\NewAzureStorSimpleDeviceVolume.cs" />
     <Compile Include="Cmdlets\Volume\RemoveAzureStorSimpleDeviceVolume .cs" />
@@ -169,6 +170,7 @@
     <Compile Include="ServiceClients\StorSimpleDeviceFailoverClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDevicesClient.cs" />
     <Compile Include="ServiceClients\StorSimpleServiceConfigClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleVirtualDeviceClient.cs" />
     <Compile Include="ServiceClients\StorSimpleVolumeClient.cs" />
     <Compile Include="StorSimpleCmdletBase.cs" />
     <Compile Include="StorSimpleCmdletHelpMessage.cs" />
