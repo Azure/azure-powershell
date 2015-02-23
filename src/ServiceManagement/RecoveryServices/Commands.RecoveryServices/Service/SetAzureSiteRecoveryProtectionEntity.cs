@@ -61,14 +61,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Protection Entity Object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AEnable, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionEntity ProtectionEntity { get; set; }
 
         /// <summary>
         /// Gets or sets Protection profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AEnable, Mandatory = true)]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public ASRProtectionProfile ProtectionProfile { get; set; }
 
@@ -85,14 +84,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets OS disk name.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AEnable)]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public string OSDiskName { get; set; }
 
         /// <summary>
         /// Gets or sets OS.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AEnable)]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             Constants.OSWindows,
@@ -120,7 +119,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByPEObject:
-                case ASRParameterSets.ByPEObjectE2AEnable:
                     this.Id = this.ProtectionEntity.ID;
                     this.ProtectionContainerId = this.ProtectionEntity.ProtectionContainerId;
                     this.targetNameOrId = this.ProtectionEntity.Name;
@@ -143,8 +141,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 this.Protection.Equals(Constants.EnableProtection, StringComparison.OrdinalIgnoreCase))
             {
                 throw new ArgumentException(
-                    Properties.Resources.ProtectionEntityAlreadyEnabled,
-                    this.targetNameOrId);
+                    string.Format(                   
+                        Properties.Resources.ProtectionEntityAlreadyEnabled,
+                        this.targetNameOrId));
             }
             else if (!this.alreadyEnabled &&
                 this.Protection.Equals(Constants.DisableProtection, StringComparison.OrdinalIgnoreCase))
@@ -187,10 +186,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                 }
                                 else
                                 {
-                                    this.WriteWarningWithTimestamp(
-                                        string.Format(
-                                        Properties.Resources.MandatoryParamFromNextRelease,
-                                        "ProtectionProfile"));
                                     string pcId = this.ProtectionContainerId ?? this.ProtectionEntity.ProtectionContainerId;
                                     var pc = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(
                                         pcId);
