@@ -65,7 +65,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private void GetByDefault()
         {
             List<ASRVault> vaultList = this.GetVaults();
-
             this.WriteVaults(vaultList);
         }
 
@@ -74,11 +73,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void GetByName()
         {
-            bool vaultFound = false;
+            List<ASRVault> vaultList = this.GetVaults();
+            List<ASRVault> vaultListByName = new List<ASRVault>();
 
-            List<ASRVault> vaultList = this.GetVaults(out vaultFound);
+            foreach (var vault in vaultList)
+            {
+                if (string.Compare(this.Name, vault.Name, StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    vaultListByName.Add(vault);
+                }
+            }
 
-            if (!vaultFound)
+            if (vaultListByName.Count == 0)
             {
                 throw new InvalidOperationException(
                     string.Format(
@@ -90,24 +96,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Overloaded GetVaults method so as to pass the out variable
+        /// Gets the vaults in the cloud service.
         /// </summary>
         /// <returns>List of ASR Vaults</returns>
         private List<ASRVault> GetVaults()
         {
-            bool temp = false;
-            return this.GetVaults(out temp);
-        }
-
-        /// <summary>
-        /// Gets the vaults in the cloud service.
-        /// </summary>
-        /// <param name="vaultFound">Out variable to indicate if the vault was found</param>
-        /// <returns>List of ASR Vaults</returns>
-        private List<ASRVault> GetVaults(out bool vaultFound)
-        {
-            vaultFound = false;
-
             IEnumerable<CloudService> cloudServiceList = RecoveryServicesClient.GetCloudServices();
 
             List<ASRVault> vaultList = new List<ASRVault>();
@@ -117,18 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     if (vault.Type.Equals(Constants.ASRVaultType, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        if (string.Compare(this.ParameterSetName, ASRParameterSets.ByName, StringComparison.OrdinalIgnoreCase) == 0)
-                        {
-                            if (string.Compare(this.Name, vault.Name, StringComparison.OrdinalIgnoreCase) == 0)
-                            {
-                                vaultFound = true;
-                                vaultList.Add(new ASRVault(cloudService, vault));
-                            }
-                        }
-                        else
-                        {
-                            vaultList.Add(new ASRVault(cloudService, vault));
-                        }
+                        vaultList.Add(new ASRVault(cloudService, vault));
                     }
                 }
             }
@@ -143,15 +125,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private void WriteVaults(IList<ASRVault> vaultList)
         {
             this.WriteObject(vaultList, true);
-        }
-
-        /// <summary>
-        /// Writes Vault
-        /// </summary>
-        /// <param name="vault">Vault object</param>
-        private void WriteVault(ASRVault vault)
-        {
-            this.WriteObject(vault);
         }
     }
 }

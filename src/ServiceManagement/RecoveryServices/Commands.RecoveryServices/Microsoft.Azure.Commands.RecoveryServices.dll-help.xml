@@ -5161,420 +5161,488 @@
   </command:command>
 
   <!--New-AzureSiteRecoveryProtectionProfileObject-->
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
-    <command:details>
-      <command:name>
-        New-AzureSiteRecoveryProtectionProfileObject
-      </command:name>
-      <maml:description>
-        <maml:para>Creates a Protection profile object in memory. This command can be used to return a protection profile object to be further supplied for Protection Profile related operations.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para></maml:para>
-      </maml:copyright>
-      <command:verb>New</command:verb>
-      <command:noun>AzureSiteRecoveryProtectionProfileObject</command:noun>
-      <dev:version></dev:version>
-    </command:details>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+                   New-AzureSiteRecoveryProtectionProfileObject
+    </command:name>
     <maml:description>
-      <maml:para>Creates a Protection profile object in memory. This command can be used to return a protection profile object to be further supplied for Protection Profile related operations.</maml:para>
+      <maml:para>Creates a Protection profile object . This is an in memory object to be further supplied for Protection Profile related operations.</maml:para>
     </maml:description>
-    <!-- Cmdlet syntax section-->
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>New-AzureSiteRecoveryProtectionProfileObject</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ReplicationProvider</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>AllowReplicaDeletion</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ApplicationConsistentSnapshotFrequencyInHours</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Authentication</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>CompressionEnabled</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>RecoveryPoints</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ReplicationFrequencyInSeconds</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ReplicationMethod</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ReplicationPort</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ReplicationStartTime</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>New-AzureSiteRecoveryProtectionProfileObject</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ReplicationProvider</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ApplicationConsistentSnapshotFrequencyInHours</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>EncryptStoredData</maml:name>
-          <maml:description>
-            <maml:para>Switch parameter indicating whether encryption should be enabled on stored data.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>RecoveryAzureStorageAccount</maml:name>
-          <maml:description>
-            <maml:para>Azure Storage account name on which the Azure replica entity would be located.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>RecoveryAzureSubscription</maml:name>
-          <maml:description>
-            <maml:para>Azure Subscription ID corresponding to the storage account on which the Azure replica entity would be located.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>RecoveryPoints</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ReplicationFrequencyInSeconds</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ReplicationStartTime</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <!-- Cmdlet parameter section  -->
-    <command:parameters>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>AllowReplicaDeletion</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
-        <dev:type>
-          <maml:name>bool</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ApplicationConsistentSnapshotFrequencyInHours</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        <dev:type>
-          <maml:name>int</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Authentication</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>CompressionEnabled</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
-        <dev:type>
-          <maml:name>bool</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>EncryptStoredData</maml:name>
-        <maml:description>
-          <maml:para>Switch parameter indicating whether encryption should be enabled on stored data.</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">bool</command:parameterValue>
-        <dev:type>
-          <maml:name>bool</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>RecoveryAzureStorageAccount</maml:name>
-        <maml:description>
-          <maml:para>Azure Storage account name on which the Azure replica entity would be located.</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>RecoveryAzureSubscription</maml:name>
-        <maml:description>
-          <maml:para>Azure Subscription ID corresponding to the storage account on which the Azure replica entity would be located.</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>RecoveryPoints</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        <dev:type>
-          <maml:name>int</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>New</command:verb>
+    <command:noun>AzureSiteRecoveryProtectionProfileObject</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para>Creates a Protection profile object in memory. This command can be used to return a protection profile object to be further supplied for Protection Profile related operations.</maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>New-AzureSiteRecoveryProtectionProfileObject</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ReplicationFrequencyInSeconds</maml:name>
         <maml:description>
-          <maml:para></maml:para>
-
+          <maml:para>Replication frequency interval in seconds.
+As of now, only three possible values supported.
+30 seconds, 300 seconds, 900 seconds.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ReplicationMethod</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ReplicationPort</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        <dev:type>
-          <maml:name>int</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ReplicationProvider</maml:name>
         <maml:description>
-          <maml:para></maml:para>
-
+          <maml:para>Type of Replication Provider either HyperVReplica or HyperVReplicaAzure.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AllowReplicaDeletion</maml:name>
+        <maml:description>
+          <maml:para>Switch parameter indicating whether replica entity deletion is to be enabled.</maml:para>
+        </maml:description>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationConsistentSnapshotFrequencyInHours</maml:name>
+        <maml:description>
+          <maml:para>Frequency of Application Consistent Snapshot in hours.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Authentication</maml:name>
+        <maml:description>
+          <maml:para>Type of authentication to be used. Possible values are Certificate and Kerberos.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>CompressionEnabled</maml:name>
+        <maml:description>
+          <maml:para>Switch parameter indicating whether compression is to be Enabled.</maml:para>
+        </maml:description>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Specify this to bypass the confirm action and take the default (Y).</maml:para>
+        </maml:description>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Can be used to provide a name to the protection profile settings object that is to be created.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>RecoveryPoints</maml:name>
+        <maml:description>
+          <maml:para>Number of hours to retain Recovery points.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ReplicationMethod</maml:name>
+        <maml:description>
+          <maml:para>Replication Method either Online - over the network or Offline.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ReplicationPort</maml:name>
+        <maml:description>
+          <maml:para>Port on which the replication would take place.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ReplicationStartTime</maml:name>
         <maml:description>
-          <maml:para></maml:para>
-
+          <maml:para>Replication Start Time. It should be within the next 24 hours of the start of the job.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
-        <dev:type>
-          <maml:name>TimeSpan</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-    </command:parameters>
-    <!-- Input - Output section-->
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri/>
-          <maml:description />
-        </dev:type>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>New-AzureSiteRecoveryProtectionProfileObject</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>RecoveryAzureStorageAccount</maml:name>
         <maml:description>
-          <maml:para>
-            <!-- description  -->
-
-          </maml:para>
+          <maml:para>Azure Storage account name on which the Azure replica entity would be located.</maml:para>
         </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>ASRProtectionProfile</maml:name>
-          <maml:uri />
-          <maml:description />
-        </dev:type>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>RecoveryAzureSubscription</maml:name>
         <maml:description>
-          <maml:para>
-            <!-- description  -->
-
-          </maml:para>
+          <maml:para>Azure Subscription ID corresponding to the storage account on which the Azure replica entity would be located.</maml:para>
         </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <!-- Error section-->
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <!-- Notes section  -->
-    <maml:alertSet>
-      <maml:title></maml:title>
-      <maml:alert>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ReplicationFrequencyInSeconds</maml:name>
+        <maml:description>
+          <maml:para>Replication frequency interval in seconds.
+As of now, only three possible values supported.
+30 seconds, 300 seconds, 900 seconds.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ReplicationProvider</maml:name>
+        <maml:description>
+          <maml:para>Type of Replication Provider either HyperVReplica or HyperVReplicaAzure.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationConsistentSnapshotFrequencyInHours</maml:name>
+        <maml:description>
+          <maml:para>Frequency of Application Consistent Snapshot in hours.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Specify this to bypass the confirm action and take the default (Y).</maml:para>
+        </maml:description>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Can be used to provide a name to the protection profile settings object that is to be created.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>RecoveryPoints</maml:name>
+        <maml:description>
+          <maml:para>Number of hours to retain Recovery points.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ReplicationStartTime</maml:name>
+        <maml:description>
+          <maml:para>Replication Start Time. It should be within the next 24 hours of the start of the job.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AllowReplicaDeletion</maml:name>
+      <maml:description>
+        <maml:para>Switch parameter indicating whether replica entity deletion is to be enabled.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ApplicationConsistentSnapshotFrequencyInHours</maml:name>
+      <maml:description>
+        <maml:para>Frequency of Application Consistent Snapshot in hours.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      <dev:type>
+        <maml:name>int</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Authentication</maml:name>
+      <maml:description>
+        <maml:para>Type of authentication to be used. Possible values are Certificate and Kerberos.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>CompressionEnabled</maml:name>
+      <maml:description>
+        <maml:para>Switch parameter indicating whether compression is to be Enabled.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Force</maml:name>
+      <maml:description>
+        <maml:para>Specify this to bypass the confirm action and take the default (Y).</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>Can be used to provide a name to the protection profile settings object that is to be created.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>RecoveryAzureStorageAccount</maml:name>
+      <maml:description>
+        <maml:para>Azure Storage account name on which the Azure replica entity would be located.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>RecoveryAzureSubscription</maml:name>
+      <maml:description>
+        <maml:para>Azure Subscription ID corresponding to the storage account on which the Azure replica entity would be located.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>RecoveryPoints</maml:name>
+      <maml:description>
+        <maml:para>Number of hours to retain Recovery points.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      <dev:type>
+        <maml:name>int</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ReplicationFrequencyInSeconds</maml:name>
+      <maml:description>
+        <maml:para>Replication frequency interval in seconds.
+As of now, only three possible values supported.
+30 seconds, 300 seconds, 900 seconds.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ReplicationMethod</maml:name>
+      <maml:description>
+        <maml:para>Replication Method either Online - over the network or Offline.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ReplicationPort</maml:name>
+      <maml:description>
+        <maml:para>Port on which the replication would take place.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      <dev:type>
+        <maml:name>int</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ReplicationProvider</maml:name>
+      <maml:description>
+        <maml:para>Type of Replication Provider either HyperVReplica or HyperVReplicaAzure.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ReplicationStartTime</maml:name>
+      <maml:description>
+        <maml:para>Replication Start Time. It should be within the next 24 hours of the start of the job.</maml:para>
+                
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+      <dev:type>
+        <maml:name>TimeSpan</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
         <maml:para>
-
+          <!-- description  -->
+          
         </maml:para>
-      </maml:alert>
-      <maml:alert>
-        <maml:para></maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <!-- Example section  -->
-    <command:examples>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name>ASRProtectionProfile</maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>   
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+          
+        </maml:para>
+      </maml:description> 
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+                          
+                        </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  --> 
+  <command:examples>
 
-      <command:example>
-        <maml:title>
-          -------------------------- EXAMPLE 1 --------------------------
-        </maml:title>
-        <maml:introduction>
-          <maml:para>C:\PS&gt;</maml:para>
-        </maml:introduction>
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title> 
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction> 
         <dev:code>
-          New-AzureSiteRecoveryProtectionProfileObject -ReplicationProvider HyperVReplica -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 2 -ApplicationConsistentSnapshotFrequencyInHours 1 -CompressionEnabled -ReplicationPort 8085 -ReplicationStartTime 1 -AllowReplicaDeletion
+New-AzureSiteRecoveryProtectionProfileObject -ReplicationProvider HyperVReplica -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 2 -ApplicationConsistentSnapshotFrequencyInHours 1 -CompressionEnabled -ReplicationPort 8085 -ReplicationStartTime 1 -AllowReplicaDeletion
 
           Name                                     :
           ID                                       :
           ReplicationProvider                      : HyperVReplica
-          HyperVReplicaProviderSettingsObject      : Microsoft.Azure.Portal.RecoveryServices.Models.Common.HyperVReplicaProviderSettings
-          HyperVReplicaAzureProviderSettingsObject :
-        </dev:code>
-        <dev:remarks>
-          <maml:para>Description</maml:para>
-          <maml:para>-----------</maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
+          HyperVReplicaProviderSettingsObject      : Microsoft.Azure.Portal.RecoveryServices.Models.Common.HyperVReplicaProviderS
+                                                     ettings
+          HyperVReplicaAzureProviderSettingsObject :                        </dev:code>
+             <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                <maml:para></maml:para>
+                          <maml:para></maml:para>
+                          <maml:para></maml:para>
+                          <maml:para></maml:para>
+                          <maml:para></maml:para>
         </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText></command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <!-- Link section  -->
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText></maml:linkText>
-        <maml:uri/>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title> 
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction> 
+        <dev:code>
+New-AzureSiteRecoveryProtectionProfileObject -Name protProfile -ReplicationProvider HyperVReplicaAzure -RecoveryAzureSubscription cb53d0c3-bd59-4721-89bc-06916a9147ef -RecoveryAzureStorageAccount test -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -Force
+
+Name                                     : protProfile
+ID                                       :
+ReplicationProvider                      : HyperVReplicaAzure
+HyperVReplicaProviderSettingsObject      :
+HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServices.Models.Common.HyperVReplicaAzureProv
+                                           iderSettings                        </dev:code>
+             <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                <maml:para></maml:para>
+                          <maml:para></maml:para>
+                          <maml:para></maml:para>
+                          <maml:para></maml:para>
+                          <maml:para></maml:para>
+        </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
 
   <!-- Start-AzureSiteRecoveryProtectionProfileAssociationJob -->
   <!-- v 1.3.0.36 -->
