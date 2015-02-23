@@ -71,7 +71,7 @@ namespace Microsoft.AzureStorSimpleDeviceCmdlets.Commands
                             TargetACRList = TargetAccessControlRecords
                         };
                         response = StorSimpleClient.CloneVolume(sourceDeviceId, request);
-                        HandleAsyncTaskResponse(response, "start");
+                        HandleDeviceJobResponse(response, "start");
                     }
                     );
             }
