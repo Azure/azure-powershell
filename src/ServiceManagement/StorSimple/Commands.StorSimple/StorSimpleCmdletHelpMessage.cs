@@ -79,5 +79,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string HelpMessageBackupScheduleBaseObjsToDelete = "List of Instance Id of BackupSchedule objects to be deleted";
         public const string HelpMessageVolumeObjsToUpdate = "List of VolumeIds to be updated";
         public const string HelpMessageResourceName = "Name of the resource which needs to be retrieved";
+        public const string HelpMessageVolumeContainerGroups = "List of Volme Container Groups to be failed over";
+        public const string HelpMessageFailoverTargetDeviceName = "Name of the StorSimple failover target device";
+        public const string HelpMessageFailoverTargetDeviceId = "The device identifier of the StorSimple failover target device";
     }
 }

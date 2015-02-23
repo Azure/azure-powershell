@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
             if (opResponse.StatusCode != HttpStatusCode.Accepted && opResponse.StatusCode != HttpStatusCode.OK)
             {
-                msg = string.Format(Resources.FailureMessageSubmitJob, operationName);
+                msg = string.Format(Resources.FailureMessageSubmitTask, operationName);
             }
 
             else
@@ -77,18 +77,25 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 if (opResponse.GetType().Equals(typeof(TaskResponse)))
                 {
                     var taskResponse = opResponse as TaskResponse;
-                    msg = string.Format(Resources.SuccessMessageSubmitJob, operationName, taskResponse.TaskId);
+                    msg = string.Format(Resources.SuccessMessageSubmitTask, operationName, taskResponse.TaskId);
                     WriteObject(taskResponse.TaskId);
                 }
 
                 else if (opResponse.GetType().Equals(typeof(GuidTaskResponse)))
                 {
                     var guidTaskResponse = opResponse as GuidTaskResponse;
-                    msg = string.Format(Resources.SuccessMessageSubmitJob, operationName, guidTaskResponse.TaskId);
+                    msg = string.Format(Resources.SuccessMessageSubmitTask, operationName, guidTaskResponse.TaskId);
                     WriteObject(guidTaskResponse.TaskId);
                 }
             }
 
+            WriteVerbose(msg);
+        }
+
+        internal virtual void HandleDeviceJobResponse(JobResponse jobResponse, string operationName)
+        {
+            string msg = string.Format(Resources.SuccessMessageSubmitDeviceJob, operationName, jobResponse.JobId);
+            WriteObject(jobResponse.JobId);
             WriteVerbose(msg);
         }
 
