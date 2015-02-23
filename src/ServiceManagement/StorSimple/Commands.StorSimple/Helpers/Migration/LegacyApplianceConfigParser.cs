@@ -471,7 +471,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             List<VirtualDiskGroup> virtualDiskGroupWithNoPolicy = this.virtualDiskGroupList.FindAll(virtualDiskGroup => !virtualDiskGroupIdListWithPolicy.Contains(virtualDiskGroup.InstanceId));
             foreach(VirtualDiskGroup virtualDiskGroup in virtualDiskGroupWithNoPolicy)
             {
-                MigrationBackupPolicy backupPolicy = this.CreateDefaultBackupPolicy(virtualDiskGroup.InstanceId);
+                MigrationBackupPolicy backupPolicy = this.CreateDefaultBackupPolicy(virtualDiskGroup.InstanceId, virtualDiskGroup.Name);
                 this.policyList.Add(backupPolicy);
                 this.AddMessage(LegacyObjectsSupported.VirtualDiskGroup, Resources.MigrationDefaultPolicyAssigned, string.Format(Resources.MigrationPolicyUpdated, backupPolicy.Name, virtualDiskGroup.Name), MessageType.Info);
             }
@@ -482,13 +482,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// </summary>
         /// <param name="virtualDiskGroupId">virtual disk group id associated with policy</param>
         /// <returns>Migration backup policy object</returns>
-        private MigrationBackupPolicy CreateDefaultBackupPolicy(string virtualDiskGroupId)
+        private MigrationBackupPolicy CreateDefaultBackupPolicy(string virtualDiskGroupId, string policyNameSuffix)
         {
             MigrationBackupPolicy backupPolicy = new MigrationBackupPolicy();
             backupPolicy.InstanceId = Guid.NewGuid().ToString();
             backupPolicy.LastRunTime = null;
             backupPolicy.MaxRetentionCount = MaxRetentionCount;
-            backupPolicy.Name = "Default" + Guid.NewGuid().ToString();
+            backupPolicy.Name = "Default_" + policyNameSuffix;
             backupPolicy.Type = BackupType.CloudSnapshot;
             backupPolicy.VirtualDiskGroupId = virtualDiskGroupId;
             backupPolicy.OperationInProgress = OperationInProgress.None;
