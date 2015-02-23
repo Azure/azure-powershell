@@ -345,15 +345,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account {0} is not associated with the given subscription {1}.
-        /// </summary>
-        internal static string StorageIsNotAssociatedWithTheAccount {
-            get {
-                return ResourceManager.GetString("StorageIsNotAssociatedWithTheAccount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Storage account given is in {0} whereas the vault is in {1}.
         ///Please provide a storage account with the same location as that of the vault..
         /// </summary>

@@ -161,11 +161,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             if (!associatedAccount)
             {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.StorageIsNotAssociatedWithTheAccount,
-                    azureStorageAccount,
-                    azureSubscription));
+                return false;
             }
 
             return true;
