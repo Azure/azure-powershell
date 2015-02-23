@@ -14,8 +14,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
-    using System.Globalization;
-
+    
     internal static class StorSimpleCmdletHelpMessage
     {
         public const string ACRName = "The access control record name.";
