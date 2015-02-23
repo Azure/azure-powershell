@@ -175,7 +175,6 @@
     <Compile Include="Common\TestEnvironment.cs" />
     <Compile Include="Common\TestEnvironmentFactory.cs" />
     <Compile Include="Common\TokenCloudCredentialsHelper.cs" />
-    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Resources\CredentialTests\AddAccountForArmTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

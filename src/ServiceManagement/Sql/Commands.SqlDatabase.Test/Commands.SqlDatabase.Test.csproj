@@ -194,7 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FunctionalTests\Readme.txt" />
-    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="TestScripts\CommonFunctions.ps1" />

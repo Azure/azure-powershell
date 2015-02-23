@@ -51,7 +51,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
