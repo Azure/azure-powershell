@@ -206,9 +206,6 @@ ClientRequestId: {3}</value>
   <data name="VaultSettingsGenerationUnSupported" xml:space="preserve">
     <value>Cannot generate vault settings file for this vault. Download it from the Azure Portal.</value>
   </data>
-  <data name="StorageIsNotAssociatedWithTheAccount" xml:space="preserve">
-    <value>Storage account {0} is not associated with the account</value>
-  </data>
   <data name="VaultCreationSuccessMessage" xml:space="preserve">
     <value>Vault has been created</value>
   </data>
@@ -241,5 +238,16 @@ ClientRequestId: {3}</value>
   </data>
   <data name="VaultNotFound" xml:space="preserve">
     <value>Vault {0} is not associated with the given subscription.</value>
+  </data>
+  <data name="NewProtectionProfileObjectWhatIfMessage" xml:space="preserve">
+    <value>Creates a new in-memory protection profile association object.</value>
+  </data>
+  <data name="ValidationUnsuccessfulWarning" xml:space="preserve">
+    <value>Could not validate the storage account and subscription given.
+Are you sure you want to continue {0}?</value>
+  </data>
+  <data name="StorageIsNotInTheSameLocationAsVault" xml:space="preserve">
+    <value>Storage account given is in {0} whereas the vault is in {1}.
+Please provide a storage account with the same location as that of the vault.</value>
   </data>
 </root>
