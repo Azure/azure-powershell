@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices?api-version=2014-12-08",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXM/YXBpLXZlcnNpb249MjAxNC0xMi0wOA==",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices?api-version=2015-02-10",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -16,44 +16,34 @@
           "Microsoft.WindowsAzure.Management.RecoveryServices.RecoveryServicesManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us</Name>\r\n    <Label>f90edd07-4cad-44ba-9be6-4c6a372d5c54</Label>\r\n    <Description>df229cc5-c58a-4e35-a7c2-df6cc8c228e8</Description>\r\n    <GeoRegion>west us</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>phase2Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>ef43c4c5-5a85-438b-962c-2756563af4e3</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3436017660824950348</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>1e5aaac5-aca7-4277-8fe5-e6a4b932af7b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3240230310675798038</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>92bed69c-c5fb-4062-95b3-6c0771221ece</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>281390890575660880</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>testVaultSrriamvu</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>c4d0f544-3e16-4254-a930-de0c33c7575b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1714633737509937753</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CS-West-US-RecoveryServices</Name>\r\n    <Label>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Label>\r\n    <Description>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US</Name>\r\n    <Label>0425da7f-bb6b-433a-8c51-8552af88aa82</Label>\r\n    <Description>10f2b605-0935-49d2-89dc-e1befc67e406</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>Hosters-FC-BVT-Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>04d7d387-7bc1-4b85-902d-42c7913f9c68</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>6776506762078999256</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>VS-iamanewaccount-Group</Name>\r\n    <Label>VS-iamanewaccount-Group</Label>\r\n    <Description>Resource group based cloud service.</Description>\r\n    <GeoRegion>North Central US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>visualstudio</ResourceProviderNamespace>\r\n        <Type>account</Type>\r\n        <Name>iamanewaccount</Name>\r\n        <ETag>6a05b50f-981c-4bda-8cb7-7dc1675b17ae</ETag>\r\n        <State>NotFound</State>\r\n        <OutputItems />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
       "ResponseHeaders": {
         "Content-Length": [
-          "3178"
+          "1868"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
-        ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:03 GMT"
+          "application/xml; charset=utf-8"
         ],
         "x-ms-request-id": [
-          "68aa0adea72426b784dcfa90dd938672"
+          "98f044e1b80b959bbaf32494c6608f08"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5",
-          "1.0.6198.176",
-          "(rd_rdfe_stable.141216-1945)",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
         "Date": [
-          "Fri, 09 Jan 2015 12:00:03 GMT"
+          "Fri, 20 Feb 2015 12:25:22 GMT"
+        ],
+        "Server": [
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices?api-version=2014-12-08",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXM/YXBpLXZlcnNpb249MjAxNC0xMi0wOA==",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices?api-version=2015-02-10",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -67,44 +57,34 @@
           "Microsoft.WindowsAzure.Management.RecoveryServices.RecoveryServicesManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us</Name>\r\n    <Label>f90edd07-4cad-44ba-9be6-4c6a372d5c54</Label>\r\n    <Description>df229cc5-c58a-4e35-a7c2-df6cc8c228e8</Description>\r\n    <GeoRegion>west us</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>phase2Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>ef43c4c5-5a85-438b-962c-2756563af4e3</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3436017660824950348</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>1e5aaac5-aca7-4277-8fe5-e6a4b932af7b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3240230310675798038</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>92bed69c-c5fb-4062-95b3-6c0771221ece</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>281390890575660880</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>testVaultSrriamvu</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>c4d0f544-3e16-4254-a930-de0c33c7575b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1714633737509937753</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CS-West-US-RecoveryServices</Name>\r\n    <Label>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Label>\r\n    <Description>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US</Name>\r\n    <Label>0425da7f-bb6b-433a-8c51-8552af88aa82</Label>\r\n    <Description>10f2b605-0935-49d2-89dc-e1befc67e406</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>Hosters-FC-BVT-Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>04d7d387-7bc1-4b85-902d-42c7913f9c68</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>6776506762078999256</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>VS-iamanewaccount-Group</Name>\r\n    <Label>VS-iamanewaccount-Group</Label>\r\n    <Description>Resource group based cloud service.</Description>\r\n    <GeoRegion>North Central US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>visualstudio</ResourceProviderNamespace>\r\n        <Type>account</Type>\r\n        <Name>iamanewaccount</Name>\r\n        <ETag>6a05b50f-981c-4bda-8cb7-7dc1675b17ae</ETag>\r\n        <State>NotFound</State>\r\n        <OutputItems />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
       "ResponseHeaders": {
         "Content-Length": [
-          "3178"
+          "1868"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
-        ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:06 GMT"
+          "application/xml; charset=utf-8"
         ],
         "x-ms-request-id": [
-          "d372efbdbd07203393f33c78cd81d8b6"
+          "fedcbd63b61a9db19e6c851c85fdf0ed"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5",
-          "1.0.6198.176",
-          "(rd_rdfe_stable.141216-1945)",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
         "Date": [
-          "Fri, 09 Jan 2015 12:00:06 GMT"
+          "Fri, 20 Feb 2015 12:25:23 GMT"
+        ],
+        "Server": [
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices?api-version=2014-12-08",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXM/YXBpLXZlcnNpb249MjAxNC0xMi0wOA==",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices?api-version=2015-02-10",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -118,44 +98,34 @@
           "Microsoft.WindowsAzure.Management.RecoveryServices.RecoveryServicesManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us</Name>\r\n    <Label>f90edd07-4cad-44ba-9be6-4c6a372d5c54</Label>\r\n    <Description>df229cc5-c58a-4e35-a7c2-df6cc8c228e8</Description>\r\n    <GeoRegion>west us</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>phase2Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>ef43c4c5-5a85-438b-962c-2756563af4e3</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3436017660824950348</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>1e5aaac5-aca7-4277-8fe5-e6a4b932af7b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3240230310675798038</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>92bed69c-c5fb-4062-95b3-6c0771221ece</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>281390890575660880</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>testVaultSrriamvu</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>c4d0f544-3e16-4254-a930-de0c33c7575b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1714633737509937753</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CS-West-US-RecoveryServices</Name>\r\n    <Label>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Label>\r\n    <Description>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US</Name>\r\n    <Label>0425da7f-bb6b-433a-8c51-8552af88aa82</Label>\r\n    <Description>10f2b605-0935-49d2-89dc-e1befc67e406</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>Hosters-FC-BVT-Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>04d7d387-7bc1-4b85-902d-42c7913f9c68</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>6776506762078999256</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>VS-iamanewaccount-Group</Name>\r\n    <Label>VS-iamanewaccount-Group</Label>\r\n    <Description>Resource group based cloud service.</Description>\r\n    <GeoRegion>North Central US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>visualstudio</ResourceProviderNamespace>\r\n        <Type>account</Type>\r\n        <Name>iamanewaccount</Name>\r\n        <ETag>6a05b50f-981c-4bda-8cb7-7dc1675b17ae</ETag>\r\n        <State>NotFound</State>\r\n        <OutputItems />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
       "ResponseHeaders": {
         "Content-Length": [
-          "3178"
+          "1868"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
-        ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:08 GMT"
+          "application/xml; charset=utf-8"
         ],
         "x-ms-request-id": [
-          "da03278966792a1f9568545c603a9124"
+          "210ffe0307bf92db986d088926e9f27f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5",
-          "1.0.6198.176",
-          "(rd_rdfe_stable.141216-1945)",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
         "Date": [
-          "Fri, 09 Jan 2015 12:00:08 GMT"
+          "Fri, 20 Feb 2015 12:25:29 GMT"
+        ],
+        "Server": [
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices?api-version=2014-12-08",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXM/YXBpLXZlcnNpb249MjAxNC0xMi0wOA==",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices?api-version=2015-02-10",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -169,44 +139,34 @@
           "Microsoft.WindowsAzure.Management.RecoveryServices.RecoveryServicesManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us</Name>\r\n    <Label>f90edd07-4cad-44ba-9be6-4c6a372d5c54</Label>\r\n    <Description>df229cc5-c58a-4e35-a7c2-df6cc8c228e8</Description>\r\n    <GeoRegion>west us</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>phase2Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>ef43c4c5-5a85-438b-962c-2756563af4e3</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3436017660824950348</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>1e5aaac5-aca7-4277-8fe5-e6a4b932af7b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3240230310675798038</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>92bed69c-c5fb-4062-95b3-6c0771221ece</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>281390890575660880</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>testVaultSrriamvu</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>c4d0f544-3e16-4254-a930-de0c33c7575b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1714633737509937753</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CS-West-US-RecoveryServices</Name>\r\n    <Label>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Label>\r\n    <Description>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US</Name>\r\n    <Label>0425da7f-bb6b-433a-8c51-8552af88aa82</Label>\r\n    <Description>10f2b605-0935-49d2-89dc-e1befc67e406</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>Hosters-FC-BVT-Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>04d7d387-7bc1-4b85-902d-42c7913f9c68</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>6776506762078999256</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>VS-iamanewaccount-Group</Name>\r\n    <Label>VS-iamanewaccount-Group</Label>\r\n    <Description>Resource group based cloud service.</Description>\r\n    <GeoRegion>North Central US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>visualstudio</ResourceProviderNamespace>\r\n        <Type>account</Type>\r\n        <Name>iamanewaccount</Name>\r\n        <ETag>6a05b50f-981c-4bda-8cb7-7dc1675b17ae</ETag>\r\n        <State>NotFound</State>\r\n        <OutputItems />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
       "ResponseHeaders": {
         "Content-Length": [
-          "3178"
+          "1868"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
-        ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:11 GMT"
+          "application/xml; charset=utf-8"
         ],
         "x-ms-request-id": [
-          "98f1c7fd2bdc2ba2b502f2c3d6a26e26"
+          "38f1ff88e04b9ceeaabf5d0085705944"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5",
-          "1.0.6198.176",
-          "(rd_rdfe_stable.141216-1945)",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
         "Date": [
-          "Fri, 09 Jan 2015 12:00:11 GMT"
+          "Fri, 20 Feb 2015 12:25:32 GMT"
+        ],
+        "Server": [
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices?api-version=2014-12-08",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXM/YXBpLXZlcnNpb249MjAxNC0xMi0wOA==",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices?api-version=2015-02-10",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -220,44 +180,34 @@
           "Microsoft.WindowsAzure.Management.RecoveryServices.RecoveryServicesManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us</Name>\r\n    <Label>f90edd07-4cad-44ba-9be6-4c6a372d5c54</Label>\r\n    <Description>df229cc5-c58a-4e35-a7c2-df6cc8c228e8</Description>\r\n    <GeoRegion>west us</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>phase2Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>ef43c4c5-5a85-438b-962c-2756563af4e3</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3436017660824950348</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>1e5aaac5-aca7-4277-8fe5-e6a4b932af7b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3240230310675798038</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>92bed69c-c5fb-4062-95b3-6c0771221ece</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>281390890575660880</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>testVaultSrriamvu</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>c4d0f544-3e16-4254-a930-de0c33c7575b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1714633737509937753</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CS-West-US-RecoveryServices</Name>\r\n    <Label>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Label>\r\n    <Description>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US</Name>\r\n    <Label>0425da7f-bb6b-433a-8c51-8552af88aa82</Label>\r\n    <Description>10f2b605-0935-49d2-89dc-e1befc67e406</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>Hosters-FC-BVT-Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>04d7d387-7bc1-4b85-902d-42c7913f9c68</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>6776506762078999256</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>VS-iamanewaccount-Group</Name>\r\n    <Label>VS-iamanewaccount-Group</Label>\r\n    <Description>Resource group based cloud service.</Description>\r\n    <GeoRegion>North Central US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>visualstudio</ResourceProviderNamespace>\r\n        <Type>account</Type>\r\n        <Name>iamanewaccount</Name>\r\n        <ETag>6a05b50f-981c-4bda-8cb7-7dc1675b17ae</ETag>\r\n        <State>NotFound</State>\r\n        <OutputItems />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
       "ResponseHeaders": {
         "Content-Length": [
-          "3178"
+          "1868"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
-        ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:14 GMT"
+          "application/xml; charset=utf-8"
         ],
         "x-ms-request-id": [
-          "f7be4d49a6e02310951ae486aed6fae1"
+          "cddcf598a2099dc2b18192fa9c929508"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5",
-          "1.0.6198.176",
-          "(rd_rdfe_stable.141216-1945)",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
         "Date": [
-          "Fri, 09 Jan 2015 12:00:14 GMT"
+          "Fri, 20 Feb 2015 12:25:34 GMT"
+        ],
+        "Server": [
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices?api-version=2014-12-08",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXM/YXBpLXZlcnNpb249MjAxNC0xMi0wOA==",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices?api-version=2015-02-10",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -271,44 +221,34 @@
           "Microsoft.WindowsAzure.Management.RecoveryServices.RecoveryServicesManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us</Name>\r\n    <Label>f90edd07-4cad-44ba-9be6-4c6a372d5c54</Label>\r\n    <Description>df229cc5-c58a-4e35-a7c2-df6cc8c228e8</Description>\r\n    <GeoRegion>west us</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>phase2Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>ef43c4c5-5a85-438b-962c-2756563af4e3</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3436017660824950348</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>1e5aaac5-aca7-4277-8fe5-e6a4b932af7b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3240230310675798038</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>92bed69c-c5fb-4062-95b3-6c0771221ece</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>281390890575660880</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>testVaultSrriamvu</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>c4d0f544-3e16-4254-a930-de0c33c7575b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1714633737509937753</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CS-West-US-RecoveryServices</Name>\r\n    <Label>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Label>\r\n    <Description>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US</Name>\r\n    <Label>0425da7f-bb6b-433a-8c51-8552af88aa82</Label>\r\n    <Description>10f2b605-0935-49d2-89dc-e1befc67e406</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>Hosters-FC-BVT-Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>04d7d387-7bc1-4b85-902d-42c7913f9c68</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>6776506762078999256</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>VS-iamanewaccount-Group</Name>\r\n    <Label>VS-iamanewaccount-Group</Label>\r\n    <Description>Resource group based cloud service.</Description>\r\n    <GeoRegion>North Central US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>visualstudio</ResourceProviderNamespace>\r\n        <Type>account</Type>\r\n        <Name>iamanewaccount</Name>\r\n        <ETag>6a05b50f-981c-4bda-8cb7-7dc1675b17ae</ETag>\r\n        <State>NotFound</State>\r\n        <OutputItems />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
       "ResponseHeaders": {
         "Content-Length": [
-          "3178"
+          "1868"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
-        ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:22 GMT"
+          "application/xml; charset=utf-8"
         ],
         "x-ms-request-id": [
-          "5760b7729d392b60a0fdf22d69fb1d92"
+          "f7d842b0b5739358996efefc9ce30927"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5",
-          "1.0.6198.176",
-          "(rd_rdfe_stable.141216-1945)",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
         "Date": [
-          "Fri, 09 Jan 2015 12:00:22 GMT"
+          "Fri, 20 Feb 2015 12:25:42 GMT"
+        ],
+        "Server": [
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices?api-version=2014-12-08",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXM/YXBpLXZlcnNpb249MjAxNC0xMi0wOA==",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices?api-version=2015-02-10",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -322,44 +262,34 @@
           "Microsoft.WindowsAzure.Management.RecoveryServices.RecoveryServicesManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us</Name>\r\n    <Label>f90edd07-4cad-44ba-9be6-4c6a372d5c54</Label>\r\n    <Description>df229cc5-c58a-4e35-a7c2-df6cc8c228e8</Description>\r\n    <GeoRegion>west us</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>phase2Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>ef43c4c5-5a85-438b-962c-2756563af4e3</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3436017660824950348</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault1</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>1e5aaac5-aca7-4277-8fe5-e6a4b932af7b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>3240230310675798038</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>sriramvuVault2</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>92bed69c-c5fb-4062-95b3-6c0771221ece</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>281390890575660880</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>testVaultSrriamvu</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>c4d0f544-3e16-4254-a930-de0c33c7575b</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>1714633737509937753</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CS-West-US-RecoveryServices</Name>\r\n    <Label>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Label>\r\n    <Description>Q1MtV2VzdC1VUy1SZWNvdmVyeVNlcnZpY2Vz</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US</Name>\r\n    <Label>0425da7f-bb6b-433a-8c51-8552af88aa82</Label>\r\n    <Description>10f2b605-0935-49d2-89dc-e1befc67e406</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>WAHyperVRecoveryManager</ResourceProviderNamespace>\r\n        <Type>HyperVRecoveryManagerVault</Type>\r\n        <Name>Hosters-FC-BVT-Vault</Name>\r\n        <Plan />\r\n        <SchemaVersion>1.1</SchemaVersion>\r\n        <ETag>04d7d387-7bc1-4b85-902d-42c7913f9c68</ETag>\r\n        <State>Started</State>\r\n        <SubState>Ok</SubState>\r\n        <OutputItems>\r\n          <OutputItem>\r\n            <Key>StampId</Key>\r\n            <Value>abeb635b-e186-4605-b464-c7c9e55b226a</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>ResourceId</Key>\r\n            <Value>6776506762078999256</Value>\r\n          </OutputItem>\r\n          <OutputItem>\r\n            <Key>BackendStampId</Key>\r\n            <Value>75d5c811-a801-4332-8f96-43640cad60e9</Value>\r\n          </OutputItem>\r\n        </OutputItems>\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n        <Label />\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>VS-iamanewaccount-Group</Name>\r\n    <Label>VS-iamanewaccount-Group</Label>\r\n    <Description>Resource group based cloud service.</Description>\r\n    <GeoRegion>North Central US</GeoRegion>\r\n    <Resources>\r\n      <Resource>\r\n        <ResourceProviderNamespace>visualstudio</ResourceProviderNamespace>\r\n        <Type>account</Type>\r\n        <Name>iamanewaccount</Name>\r\n        <ETag>6a05b50f-981c-4bda-8cb7-7dc1675b17ae</ETag>\r\n        <State>NotFound</State>\r\n        <OutputItems />\r\n        <OperationStatus>\r\n          <Type>Create</Type>\r\n          <Result>Succeeded</Result>\r\n        </OperationStatus>\r\n      </Resource>\r\n    </Resources>\r\n  </CloudService>\r\n</CloudServices>",
       "ResponseHeaders": {
         "Content-Length": [
-          "3178"
+          "1868"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
-        ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:25 GMT"
+          "application/xml; charset=utf-8"
         ],
         "x-ms-request-id": [
-          "3675b8fedd5625479227b8c438983928"
+          "d8d336f204389a52854eae33eb62e4eb"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/8.5",
-          "1.0.6198.176",
-          "(rd_rdfe_stable.141216-1945)",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
         "Date": [
-          "Fri, 09 Jan 2015 12:00:24 GMT"
+          "Fri, 20 Feb 2015 12:25:46 GMT"
+        ],
+        "Server": [
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices/RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/phase2Vault/Servers?api-version=2014-12-08",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXMvUmVjb3ZlcnlTZXJ2aWNlcy00WldWTUQ2RURINEVVN09ISzRDU0ZFSEVTNUlQNldLSUpJQ1pWTlNMWE5HT0lZMlRCV0xBLXdlc3QtdXMvcmVzb3VyY2VzL1dBSHlwZXJWUmVjb3ZlcnlNYW5hZ2VyL34vSHlwZXJWUmVjb3ZlcnlNYW5hZ2VyVmF1bHQvcGhhc2UyVmF1bHQvU2VydmVycz9hcGktdmVyc2lvbj0yMDE0LTEyLTA4",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices/RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/Hosters-FC-BVT-Vault/Servers?api-version=2015-02-10",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzL1JlY292ZXJ5U2VydmljZXMtVDJSTVQ2SDdRRjdBRU5TNjZaVjdLUzJRWkEyQlhSQVVQT0VDUVhHWFgyUTRWM1ZRNk1VUS1XZXN0LVVTL3Jlc291cmNlcy9XQUh5cGVyVlJlY292ZXJ5TWFuYWdlci9+L0h5cGVyVlJlY292ZXJ5TWFuYWdlclZhdWx0L0hvc3RlcnMtRkMtQlZULVZhdWx0L1NlcnZlcnM/YXBpLXZlcnNpb249MjAxNS0wMi0xMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -367,7 +297,7 @@
           "application/xml"
         ],
         "x-ms-client-request-id": [
-          "7060654b-dfba-463a-80ff-350ce6064e4d-2015-01-09 12:00:06Z-P"
+          "b375d8c2-1e14-4545-9356-8c5e3455f298-2015-02-20 12:25:24Z-P"
         ],
         "x-ms-version": [
           "2013-03-01"
@@ -376,52 +306,52 @@
           "Microsoft.WindowsAzure.Management.SiteRecovery.SiteRecoveryManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<ArrayOfServer xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Server>\r\n    <ID>57f95c35-6c83-42ce-bb21-2c4f10f92d8e</ID>\r\n    <Name>sriramvu-hv2.fareast.corp.microsoft.com</Name>\r\n    <Connected>false</Connected>\r\n    <LastHeartbeat>0001-01-01T00:00:00</LastHeartbeat>\r\n    <ProviderVersion i:nil=\"true\" />\r\n    <ServerVersion i:nil=\"true\" />\r\n    <FabricObjectID>57f95c35-6c83-42ce-bb21-2c4f10f92d8e</FabricObjectID>\r\n    <FabricType>VMM</FabricType>\r\n    <Type>VMM</Type>\r\n  </Server>\r\n  <Server>\r\n    <ID>a70f17c8-3916-47da-b9fe-f6d4f54e8052</ID>\r\n    <Name>5</Name>\r\n    <Connected>false</Connected>\r\n    <LastHeartbeat>0001-01-01T00:00:00</LastHeartbeat>\r\n    <ProviderVersion i:nil=\"true\" />\r\n    <ServerVersion i:nil=\"true\" />\r\n    <FabricObjectID>a70f17c8-3916-47da-b9fe-f6d4f54e8052</FabricObjectID>\r\n    <FabricType>VMM</FabricType>\r\n    <Type>VMM</Type>\r\n  </Server>\r\n</ArrayOfServer>",
+      "ResponseBody": "<ArrayOfServer xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Server>\r\n    <ID>774859b0-1966-48cc-9df7-759c441b7a8c</ID>\r\n    <Name>HRM-04-019.dratest.nttest.microsoft.com</Name>\r\n    <Connected>true</Connected>\r\n    <LastHeartbeat>2015-02-20T12:24:29.7429936Z</LastHeartbeat>\r\n    <ProviderVersion>3.5.708.0</ProviderVersion>\r\n    <ServerVersion>3.2.7768.0</ServerVersion>\r\n    <FabricObjectID>774859b0-1966-48cc-9df7-759c441b7a8c</FabricObjectID>\r\n    <FabricType>VMM</FabricType>\r\n    <Type>VMM</Type>\r\n  </Server>\r\n  <Server>\r\n    <ID>dc1ed9b2-7b90-4534-9977-12881d278fb5</ID>\r\n    <Name>HRM-04-021.dratest.nttest.microsoft.com</Name>\r\n    <Connected>true</Connected>\r\n    <LastHeartbeat>2015-02-20T12:24:28.5508405Z</LastHeartbeat>\r\n    <ProviderVersion>3.5.708.0</ProviderVersion>\r\n    <ServerVersion>3.2.7768.0</ServerVersion>\r\n    <FabricObjectID>dc1ed9b2-7b90-4534-9977-12881d278fb5</FabricObjectID>\r\n    <FabricType>VMM</FabricType>\r\n    <Type>VMM</Type>\r\n  </Server>\r\n</ArrayOfServer>",
       "ResponseHeaders": {
         "Content-Length": [
-          "829"
+          "929"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
+          "application/xml; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:06 GMT"
-        ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "a5f13962-236a-4879-b787-2723375058db 12:00"
-        ],
         "Strict-Transport-Security": [
-          "max-age=15724800; includeSubDomains"
+          "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-client-request-id": [
+          "b375d8c2-1e14-4545-9356-8c5e3455f298-2015-02-20 12:25:24Z-P"
+        ],
+        "x-ms-request-id": [
+          "8fc02c85d69992caa767b5d60f574ebc"
         ],
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Fri, 20 Feb 2015 12:25:27 GMT"
+        ],
         "Server": [
-          "Microsoft-IIS/8.5",
-          "Microsoft-IIS/8.5"
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
         ],
         "X-Powered-By": [
-          "ASP.NET",
           "ASP.NET"
-        ],
-        "Date": [
-          "Fri, 09 Jan 2015 12:00:06 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices/RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/phase2Vault/Networks?api-version=2014-12-08&ServerId=57f95c35-6c83-42ce-bb21-2c4f10f92d8e",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXMvUmVjb3ZlcnlTZXJ2aWNlcy00WldWTUQ2RURINEVVN09ISzRDU0ZFSEVTNUlQNldLSUpJQ1pWTlNMWE5HT0lZMlRCV0xBLXdlc3QtdXMvcmVzb3VyY2VzL1dBSHlwZXJWUmVjb3ZlcnlNYW5hZ2VyL34vSHlwZXJWUmVjb3ZlcnlNYW5hZ2VyVmF1bHQvcGhhc2UyVmF1bHQvTmV0d29ya3M/YXBpLXZlcnNpb249MjAxNC0xMi0wOCZTZXJ2ZXJJZD01N2Y5NWMzNS02YzgzLTQyY2UtYmIyMS0yYzRmMTBmOTJkOGU=",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices/RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/Hosters-FC-BVT-Vault/Networks?api-version=2015-02-10&ServerId=774859b0-1966-48cc-9df7-759c441b7a8c",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzL1JlY292ZXJ5U2VydmljZXMtVDJSTVQ2SDdRRjdBRU5TNjZaVjdLUzJRWkEyQlhSQVVQT0VDUVhHWFgyUTRWM1ZRNk1VUS1XZXN0LVVTL3Jlc291cmNlcy9XQUh5cGVyVlJlY292ZXJ5TWFuYWdlci9+L0h5cGVyVlJlY292ZXJ5TWFuYWdlclZhdWx0L0hvc3RlcnMtRkMtQlZULVZhdWx0L05ldHdvcmtzP2FwaS12ZXJzaW9uPTIwMTUtMDItMTAmU2VydmVySWQ9Nzc0ODU5YjAtMTk2Ni00OGNjLTlkZjctNzU5YzQ0MWI3YThj",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -429,7 +359,7 @@
           "application/xml"
         ],
         "x-ms-client-request-id": [
-          "6fdb3517-5ee4-455e-b92b-3faeaa3a0e24-2015-01-09 12:00:08Z-P"
+          "ee2973dc-624a-4359-af61-7193b5ea30b2-2015-02-20 12:25:29Z-P"
         ],
         "x-ms-version": [
           "2013-03-01"
@@ -438,52 +368,52 @@
           "Microsoft.WindowsAzure.Management.SiteRecovery.SiteRecoveryManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<ArrayOfNetwork xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Network>\r\n    <ID>16f0dae7-cfe7-45da-905e-26f0ae472c00</ID>\r\n    <Name>vmNetwork2</Name>\r\n    <FabricObjectID>16f0dae7-cfe7-45da-905e-26f0ae472c00</FabricObjectID>\r\n    <FabricType>VMM</FabricType>\r\n    <ServerID>57f95c35-6c83-42ce-bb21-2c4f10f92d8e</ServerID>\r\n    <Type>NoIsolation</Type>\r\n    <VmNetworkSubnetList i:nil=\"true\" />\r\n  </Network>\r\n  <Network>\r\n    <ID>2764c51b-a77e-45ff-9f5b-0302f33b5d8f</ID>\r\n    <Name>vmNetwork1</Name>\r\n    <FabricObjectID>2764c51b-a77e-45ff-9f5b-0302f33b5d8f</FabricObjectID>\r\n    <FabricType>VMM</FabricType>\r\n    <ServerID>57f95c35-6c83-42ce-bb21-2c4f10f92d8e</ServerID>\r\n    <Type>NoIsolation</Type>\r\n    <VmNetworkSubnetList i:nil=\"true\" />\r\n  </Network>\r\n  <Network>\r\n    <ID>509a4ddd-67f5-4f0f-8bc0-9161c69e409c</ID>\r\n    <Name>corp</Name>\r\n    <FabricObjectID>509a4ddd-67f5-4f0f-8bc0-9161c69e409c</FabricObjectID>\r\n    <FabricType>VMM</FabricType>\r\n    <ServerID>57f95c35-6c83-42ce-bb21-2c4f10f92d8e</ServerID>\r\n    <Type>NoIsolation</Type>\r\n    <VmNetworkSubnetList i:nil=\"true\" />\r\n  </Network>\r\n</ArrayOfNetwork>",
+      "ResponseBody": "<ArrayOfNetwork xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Network>\r\n    <ID>2fbfbdd9-5609-4625-ba7f-e478424e6445</ID>\r\n    <Name>phase2PrimaryVMNetwork</Name>\r\n    <FabricObjectID>2fbfbdd9-5609-4625-ba7f-e478424e6445</FabricObjectID>\r\n    <FabricType>VMM</FabricType>\r\n    <ServerID>774859b0-1966-48cc-9df7-759c441b7a8c</ServerID>\r\n    <Type>NoIsolation</Type>\r\n    <VmNetworkSubnetList i:nil=\"true\" />\r\n  </Network>\r\n  <Network>\r\n    <ID>f3da261e-5114-4bdf-8d61-d65997950a4f</ID>\r\n    <Name>phase2RecoveryVMNetwork</Name>\r\n    <FabricObjectID>f3da261e-5114-4bdf-8d61-d65997950a4f</FabricObjectID>\r\n    <FabricType>VMM</FabricType>\r\n    <ServerID>774859b0-1966-48cc-9df7-759c441b7a8c</ServerID>\r\n    <Type>NoIsolation</Type>\r\n    <VmNetworkSubnetList i:nil=\"true\" />\r\n  </Network>\r\n</ArrayOfNetwork>",
       "ResponseHeaders": {
         "Content-Length": [
-          "1032"
+          "760"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
+          "application/xml; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:09 GMT"
-        ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "a26722d5-f2c3-433c-8e7d-62d139308ad3 12:00"
-        ],
         "Strict-Transport-Security": [
-          "max-age=15724800; includeSubDomains"
+          "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-client-request-id": [
+          "ee2973dc-624a-4359-af61-7193b5ea30b2-2015-02-20 12:25:29Z-P"
+        ],
+        "x-ms-request-id": [
+          "44ac5ae84d6a916f86775769f44557a5"
         ],
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Fri, 20 Feb 2015 12:25:30 GMT"
+        ],
         "Server": [
-          "Microsoft-IIS/8.5",
-          "Microsoft-IIS/8.5"
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
         ],
         "X-Powered-By": [
-          "ASP.NET",
           "ASP.NET"
-        ],
-        "Date": [
-          "Fri, 09 Jan 2015 12:00:08 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices/RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/phase2Vault/NetworkMappings?api-version=2014-12-08&PrimaryServerId=57f95c35-6c83-42ce-bb21-2c4f10f92d8e&RecoveryServerId=57f95c35-6c83-42ce-bb21-2c4f10f92d8e",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXMvUmVjb3ZlcnlTZXJ2aWNlcy00WldWTUQ2RURINEVVN09ISzRDU0ZFSEVTNUlQNldLSUpJQ1pWTlNMWE5HT0lZMlRCV0xBLXdlc3QtdXMvcmVzb3VyY2VzL1dBSHlwZXJWUmVjb3ZlcnlNYW5hZ2VyL34vSHlwZXJWUmVjb3ZlcnlNYW5hZ2VyVmF1bHQvcGhhc2UyVmF1bHQvTmV0d29ya01hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDgmUHJpbWFyeVNlcnZlcklkPTU3Zjk1YzM1LTZjODMtNDJjZS1iYjIxLTJjNGYxMGY5MmQ4ZSZSZWNvdmVyeVNlcnZlcklkPTU3Zjk1YzM1LTZjODMtNDJjZS1iYjIxLTJjNGYxMGY5MmQ4ZQ==",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices/RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/Hosters-FC-BVT-Vault/NetworkMappings?api-version=2015-02-10&PrimaryServerId=774859b0-1966-48cc-9df7-759c441b7a8c&RecoveryServerId=774859b0-1966-48cc-9df7-759c441b7a8c",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzL1JlY292ZXJ5U2VydmljZXMtVDJSTVQ2SDdRRjdBRU5TNjZaVjdLUzJRWkEyQlhSQVVQT0VDUVhHWFgyUTRWM1ZRNk1VUS1XZXN0LVVTL3Jlc291cmNlcy9XQUh5cGVyVlJlY292ZXJ5TWFuYWdlci9+L0h5cGVyVlJlY292ZXJ5TWFuYWdlclZhdWx0L0hvc3RlcnMtRkMtQlZULVZhdWx0L05ldHdvcmtNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDE1LTAyLTEwJlByaW1hcnlTZXJ2ZXJJZD03NzQ4NTliMC0xOTY2LTQ4Y2MtOWRmNy03NTljNDQxYjdhOGMmUmVjb3ZlcnlTZXJ2ZXJJZD03NzQ4NTliMC0xOTY2LTQ4Y2MtOWRmNy03NTljNDQxYjdhOGM=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -491,7 +421,7 @@
           "application/xml"
         ],
         "x-ms-client-request-id": [
-          "b1f9cc9c-fbab-414a-b8e6-39accf3195e2-2015-01-09 12:00:11Z-P"
+          "4880a0e0-d43b-4ded-8fb9-87a3a7c4390a-2015-02-20 12:25:32Z-P"
         ],
         "x-ms-version": [
           "2013-03-01"
@@ -500,52 +430,52 @@
           "Microsoft.WindowsAzure.Management.SiteRecovery.SiteRecoveryManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<ArrayOfNetworkMapping xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/windowsazure\" />",
+      "ResponseBody": "<ArrayOfNetworkMapping xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" />",
       "ResponseHeaders": {
         "Content-Length": [
-          "127"
+          "126"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
+          "application/xml; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:12 GMT"
-        ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "8ffcd0f0-3c34-4790-b043-74133c35cc3f 12:00"
-        ],
         "Strict-Transport-Security": [
-          "max-age=15724800; includeSubDomains"
+          "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-client-request-id": [
+          "4880a0e0-d43b-4ded-8fb9-87a3a7c4390a-2015-02-20 12:25:32Z-P"
+        ],
+        "x-ms-request-id": [
+          "c201143254ff9c789bb5805d144201fe"
         ],
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Fri, 20 Feb 2015 12:25:33 GMT"
+        ],
         "Server": [
-          "Microsoft-IIS/8.5",
-          "Microsoft-IIS/8.5"
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
         ],
         "X-Powered-By": [
-          "ASP.NET",
           "ASP.NET"
-        ],
-        "Date": [
-          "Fri, 09 Jan 2015 12:00:11 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices/RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/phase2Vault/NetworkMappings?api-version=2014-12-08&PrimaryServerId=57f95c35-6c83-42ce-bb21-2c4f10f92d8e&RecoveryServerId=57f95c35-6c83-42ce-bb21-2c4f10f92d8e",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXMvUmVjb3ZlcnlTZXJ2aWNlcy00WldWTUQ2RURINEVVN09ISzRDU0ZFSEVTNUlQNldLSUpJQ1pWTlNMWE5HT0lZMlRCV0xBLXdlc3QtdXMvcmVzb3VyY2VzL1dBSHlwZXJWUmVjb3ZlcnlNYW5hZ2VyL34vSHlwZXJWUmVjb3ZlcnlNYW5hZ2VyVmF1bHQvcGhhc2UyVmF1bHQvTmV0d29ya01hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDgmUHJpbWFyeVNlcnZlcklkPTU3Zjk1YzM1LTZjODMtNDJjZS1iYjIxLTJjNGYxMGY5MmQ4ZSZSZWNvdmVyeVNlcnZlcklkPTU3Zjk1YzM1LTZjODMtNDJjZS1iYjIxLTJjNGYxMGY5MmQ4ZQ==",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices/RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/Hosters-FC-BVT-Vault/NetworkMappings?api-version=2015-02-10&PrimaryServerId=774859b0-1966-48cc-9df7-759c441b7a8c&RecoveryServerId=774859b0-1966-48cc-9df7-759c441b7a8c",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzL1JlY292ZXJ5U2VydmljZXMtVDJSTVQ2SDdRRjdBRU5TNjZaVjdLUzJRWkEyQlhSQVVQT0VDUVhHWFgyUTRWM1ZRNk1VUS1XZXN0LVVTL3Jlc291cmNlcy9XQUh5cGVyVlJlY292ZXJ5TWFuYWdlci9+L0h5cGVyVlJlY292ZXJ5TWFuYWdlclZhdWx0L0hvc3RlcnMtRkMtQlZULVZhdWx0L05ldHdvcmtNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDE1LTAyLTEwJlByaW1hcnlTZXJ2ZXJJZD03NzQ4NTliMC0xOTY2LTQ4Y2MtOWRmNy03NTljNDQxYjdhOGMmUmVjb3ZlcnlTZXJ2ZXJJZD03NzQ4NTliMC0xOTY2LTQ4Y2MtOWRmNy03NTljNDQxYjdhOGM=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -553,7 +483,7 @@
           "application/xml"
         ],
         "x-ms-client-request-id": [
-          "62a96bb3-1bdd-4710-93f6-2ddc492cf64c-2015-01-09 12:00:25Z-P"
+          "5c4e935e-6c43-43c6-a6d6-bd6cac3c10ff-2015-02-20 12:25:46Z-P"
         ],
         "x-ms-version": [
           "2013-03-01"
@@ -562,69 +492,69 @@
           "Microsoft.WindowsAzure.Management.SiteRecovery.SiteRecoveryManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<ArrayOfNetworkMapping xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <NetworkMapping>\r\n    <PairingStatus>Paired</PairingStatus>\r\n    <PrimaryNetworkId>16f0dae7-cfe7-45da-905e-26f0ae472c00</PrimaryNetworkId>\r\n    <PrimaryNetworkName>vmNetwork2</PrimaryNetworkName>\r\n    <PrimaryServerId>57f95c35-6c83-42ce-bb21-2c4f10f92d8e</PrimaryServerId>\r\n    <RecoveryNetworkId>2764c51b-a77e-45ff-9f5b-0302f33b5d8f</RecoveryNetworkId>\r\n    <RecoveryNetworkName>vmNetwork1</RecoveryNetworkName>\r\n    <RecoveryServerId>57f95c35-6c83-42ce-bb21-2c4f10f92d8e</RecoveryServerId>\r\n  </NetworkMapping>\r\n</ArrayOfNetworkMapping>",
+      "ResponseBody": "<ArrayOfNetworkMapping xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <NetworkMapping>\r\n    <PairingStatus>OK</PairingStatus>\r\n    <PrimaryNetworkId>2fbfbdd9-5609-4625-ba7f-e478424e6445</PrimaryNetworkId>\r\n    <PrimaryNetworkName>phase2PrimaryVMNetwork</PrimaryNetworkName>\r\n    <PrimaryServerId>774859b0-1966-48cc-9df7-759c441b7a8c</PrimaryServerId>\r\n    <RecoveryNetworkId>f3da261e-5114-4bdf-8d61-d65997950a4f</RecoveryNetworkId>\r\n    <RecoveryNetworkName>phase2RecoveryVMNetwork</RecoveryNetworkName>\r\n    <RecoveryServerId>774859b0-1966-48cc-9df7-759c441b7a8c</RecoveryServerId>\r\n  </NetworkMapping>\r\n</ArrayOfNetworkMapping>",
       "ResponseHeaders": {
         "Content-Length": [
-          "615"
+          "636"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
+          "application/xml; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:25 GMT"
-        ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "e1d5a4af-ceb3-4c45-8066-d4bb55efc3e0 12:00"
-        ],
         "Strict-Transport-Security": [
-          "max-age=15724800; includeSubDomains"
+          "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-client-request-id": [
+          "5c4e935e-6c43-43c6-a6d6-bd6cac3c10ff-2015-02-20 12:25:46Z-P"
+        ],
+        "x-ms-request-id": [
+          "15363386de5b99ba9269206f824cff44"
         ],
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Fri, 20 Feb 2015 12:25:47 GMT"
+        ],
         "Server": [
-          "Microsoft-IIS/8.5",
-          "Microsoft-IIS/8.5"
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
         ],
         "X-Powered-By": [
-          "ASP.NET",
           "ASP.NET"
-        ],
-        "Date": [
-          "Fri, 09 Jan 2015 12:00:25 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices/RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/phase2Vault/NetworkMappings?api-version=2014-12-08",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXMvUmVjb3ZlcnlTZXJ2aWNlcy00WldWTUQ2RURINEVVN09ISzRDU0ZFSEVTNUlQNldLSUpJQ1pWTlNMWE5HT0lZMlRCV0xBLXdlc3QtdXMvcmVzb3VyY2VzL1dBSHlwZXJWUmVjb3ZlcnlNYW5hZ2VyL34vSHlwZXJWUmVjb3ZlcnlNYW5hZ2VyVmF1bHQvcGhhc2UyVmF1bHQvTmV0d29ya01hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDg=",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices/RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/Hosters-FC-BVT-Vault/NetworkMappings?api-version=2015-02-10",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzL1JlY292ZXJ5U2VydmljZXMtVDJSTVQ2SDdRRjdBRU5TNjZaVjdLUzJRWkEyQlhSQVVQT0VDUVhHWFgyUTRWM1ZRNk1VUS1XZXN0LVVTL3Jlc291cmNlcy9XQUh5cGVyVlJlY292ZXJ5TWFuYWdlci9+L0h5cGVyVlJlY292ZXJ5TWFuYWdlclZhdWx0L0hvc3RlcnMtRkMtQlZULVZhdWx0L05ldHdvcmtNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDE1LTAyLTEw",
       "RequestMethod": "POST",
-      "RequestBody": "<NetworkMappingInput xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <NetworkTargetType>Server</NetworkTargetType>\r\n  <CreateNetworkMappingInput>&lt;CreateNetworkMappingInput xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/windowsazure\"&gt;\r\n  &lt;PrimaryServerId&gt;57f95c35-6c83-42ce-bb21-2c4f10f92d8e&lt;/PrimaryServerId&gt;\r\n  &lt;PrimaryNetworkId&gt;16f0dae7-cfe7-45da-905e-26f0ae472c00&lt;/PrimaryNetworkId&gt;\r\n  &lt;RecoveryServerId&gt;57f95c35-6c83-42ce-bb21-2c4f10f92d8e&lt;/RecoveryServerId&gt;\r\n  &lt;RecoveryNetworkId&gt;2764c51b-a77e-45ff-9f5b-0302f33b5d8f&lt;/RecoveryNetworkId&gt;\r\n&lt;/CreateNetworkMappingInput&gt;</CreateNetworkMappingInput>\r\n</NetworkMappingInput>",
+      "RequestBody": "<NetworkMappingInput xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <NetworkTargetType>SCVMM</NetworkTargetType>\r\n  <CreateNetworkMappingInput>&lt;CreateNetworkMappingInput xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/windowsazure\"&gt;\r\n  &lt;PrimaryServerId&gt;774859b0-1966-48cc-9df7-759c441b7a8c&lt;/PrimaryServerId&gt;\r\n  &lt;PrimaryNetworkId&gt;2fbfbdd9-5609-4625-ba7f-e478424e6445&lt;/PrimaryNetworkId&gt;\r\n  &lt;RecoveryServerId&gt;774859b0-1966-48cc-9df7-759c441b7a8c&lt;/RecoveryServerId&gt;\r\n  &lt;RecoveryNetworkId&gt;f3da261e-5114-4bdf-8d61-d65997950a4f&lt;/RecoveryNetworkId&gt;\r\n&lt;/CreateNetworkMappingInput&gt;</CreateNetworkMappingInput>\r\n</NetworkMappingInput>",
       "RequestHeaders": {
         "Content-Type": [
           "application/xml"
         ],
         "Content-Length": [
-          "730"
+          "729"
         ],
         "Accept": [
           "application/xml"
         ],
         "Agent-Authentication": [
-          "{\"NotBeforeTimestamp\":\"\\/Date(1420801214487)\\/\",\"NotAfterTimestamp\":\"\\/Date(1420822814487)\\/\",\"ClientRequestId\":\"1db54650-1ec9-4ed6-9d78-97ddac44a96e-2015-01-09 12:00:14Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"4UXl15+lhmf6WB95EkxeG2MRwGtgjHB2aXdKztPDp+E=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
+          "{\"NotBeforeTimestamp\":\"\\/Date(1424431534430)\\/\",\"NotAfterTimestamp\":\"\\/Date(1424453134430)\\/\",\"ClientRequestId\":\"5cd741ab-e104-4702-a64b-050b216cfd07-2015-02-20 12:25:34Z-P\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"w7ZD6UQU20hBT/CjOJnbD43s0Ji81BXRxwe42XNhzvk=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}"
         ],
         "x-ms-client-request-id": [
-          "1db54650-1ec9-4ed6-9d78-97ddac44a96e-2015-01-09 12:00:14Z-P"
+          "5cd741ab-e104-4702-a64b-050b216cfd07-2015-02-20 12:25:34Z-P"
         ],
         "x-ms-version": [
           "2013-03-01"
@@ -633,52 +563,52 @@
           "Microsoft.WindowsAzure.Management.SiteRecovery.SiteRecoveryManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<ServiceResource xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ID>b5a806f3-8a23-467f-a2b6-51ef78a0d1e3</ID>\r\n  <ActivityId>1db54650-1ec9-4ed6-9d78-97ddac44a96e-2015-01-09 12:00:14Z-P</ActivityId>\r\n  <AllowedActions xmlns:d2p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n  <EndTimestamp i:nil=\"true\" />\r\n  <Errors />\r\n  <Name i:nil=\"true\" />\r\n  <StartTimestamp i:nil=\"true\" />\r\n  <State>NotStarted</State>\r\n  <StateDescription>NotStarted</StateDescription>\r\n  <Tasks />\r\n</ServiceResource>",
+      "ResponseBody": "<Job xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>bce08078-42d3-486d-bef2-ce5d7daf5aef</ID>\r\n  <ActivityId>5cd741ab-e104-4702-a64b-050b216cfd07-2015-02-20 12:25:34Z-P</ActivityId>\r\n  <AllowedActions xmlns:d2p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n  <DisplayName i:nil=\"true\" />\r\n  <EndTime i:nil=\"true\" />\r\n  <Errors />\r\n  <Name i:nil=\"true\" />\r\n  <StartTime i:nil=\"true\" />\r\n  <State>NotStarted</State>\r\n  <StateDescription>NotStarted</StateDescription>\r\n  <TargetObjectId i:nil=\"true\" />\r\n  <TargetObjectName i:nil=\"true\" />\r\n  <TargetObjectType>ProtectionEntity</TargetObjectType>\r\n  <Tasks />\r\n</Job>",
       "ResponseHeaders": {
         "Content-Length": [
-          "527"
+          "629"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
+          "application/xml; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:15 GMT"
-        ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "f8202d8e-e281-41fb-af4b-0ecf1f7fc009 12:00"
-        ],
         "Strict-Transport-Security": [
-          "max-age=15724800; includeSubDomains"
+          "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-client-request-id": [
+          "5cd741ab-e104-4702-a64b-050b216cfd07-2015-02-20 12:25:34Z-P"
+        ],
+        "x-ms-request-id": [
+          "9e6f883925889c98ba34e811ad4a5698"
         ],
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Fri, 20 Feb 2015 12:25:37 GMT"
+        ],
         "Server": [
-          "Microsoft-IIS/8.5",
-          "Microsoft-IIS/8.5"
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
         ],
         "X-Powered-By": [
-          "ASP.NET",
           "ASP.NET"
-        ],
-        "Date": [
-          "Fri, 09 Jan 2015 12:00:14 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/RdfeProxy.svc/62633f66-ce59-4114-b65d-a50beb5bd8d8/cloudservices/RecoveryServices-4ZWVMD6EDH4EU7OHK4CSFEHES5IP6WKIJICZVNSLXNGOIY2TBWLA-west-us/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/phase2Vault/Jobs/b5a806f3-8a23-467f-a2b6-51ef78a0d1e3?api-version=2014-12-08",
-      "EncodedRequestUri": "L1JkZmVQcm94eS5zdmMvNjI2MzNmNjYtY2U1OS00MTE0LWI2NWQtYTUwYmViNWJkOGQ4L2Nsb3Vkc2VydmljZXMvUmVjb3ZlcnlTZXJ2aWNlcy00WldWTUQ2RURINEVVN09ISzRDU0ZFSEVTNUlQNldLSUpJQ1pWTlNMWE5HT0lZMlRCV0xBLXdlc3QtdXMvcmVzb3VyY2VzL1dBSHlwZXJWUmVjb3ZlcnlNYW5hZ2VyL34vSHlwZXJWUmVjb3ZlcnlNYW5hZ2VyVmF1bHQvcGhhc2UyVmF1bHQvSm9icy9iNWE4MDZmMy04YTIzLTQ2N2YtYTJiNi01MWVmNzhhMGQxZTM/YXBpLXZlcnNpb249MjAxNC0xMi0wOA==",
+      "RequestUri": "/a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba/cloudservices/RecoveryServices-T2RMT6H7QF7AENS66ZV7KS2QZA2BXRAUPOECQXGXX2Q4V3VQ6MUQ-West-US/resources/WAHyperVRecoveryManager/~/HyperVRecoveryManagerVault/Hosters-FC-BVT-Vault/Jobs/bce08078-42d3-486d-bef2-ce5d7daf5aef?api-version=2015-02-10",
+      "EncodedRequestUri": "L2E1YWE1OTk3LTMzZTUtNDZjYy04YWI4LThiZDg5Yjc2YjdiYS9jbG91ZHNlcnZpY2VzL1JlY292ZXJ5U2VydmljZXMtVDJSTVQ2SDdRRjdBRU5TNjZaVjdLUzJRWkEyQlhSQVVQT0VDUVhHWFgyUTRWM1ZRNk1VUS1XZXN0LVVTL3Jlc291cmNlcy9XQUh5cGVyVlJlY292ZXJ5TWFuYWdlci9+L0h5cGVyVlJlY292ZXJ5TWFuYWdlclZhdWx0L0hvc3RlcnMtRkMtQlZULVZhdWx0L0pvYnMvYmNlMDgwNzgtNDJkMy00ODZkLWJlZjItY2U1ZDdkYWY1YWVmP2FwaS12ZXJzaW9uPTIwMTUtMDItMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -686,7 +616,7 @@
           "application/xml"
         ],
         "x-ms-client-request-id": [
-          "7215a553-b328-4107-a74c-cd340839efbf-2015-01-09 12:00:22Z-P"
+          "858fe8c8-d5a4-4fec-b481-66ea682d0747-2015-02-20 12:25:43Z-P"
         ],
         "x-ms-version": [
           "2013-03-01"
@@ -695,45 +625,45 @@
           "Microsoft.WindowsAzure.Management.SiteRecovery.SiteRecoveryManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "<ServiceResource xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ID>b5a806f3-8a23-467f-a2b6-51ef78a0d1e3</ID>\r\n  <ActivityId>1db54650-1ec9-4ed6-9d78-97ddac44a96e-2015-01-09 12:00:14Z-P</ActivityId>\r\n  <AllowedActions xmlns:d2p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n    <d2p1:string>Cancel</d2p1:string>\r\n    <d2p1:string>Restart</d2p1:string>\r\n  </AllowedActions>\r\n  <EndTimestamp>09-01-2015 12:00:20</EndTimestamp>\r\n  <Errors />\r\n  <Name>Map</Name>\r\n  <StartTimestamp>09-01-2015 12:00:14</StartTimestamp>\r\n  <State>Succeeded</State>\r\n  <StateDescription>Completed</StateDescription>\r\n  <Tasks>\r\n    <Task>\r\n      <ID>3a6d76c0-5449-4f07-9517-06e548702958</ID>\r\n      <Name>Map network</Name>\r\n      <Actions xmlns:d4p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n      <ChildJobId i:nil=\"true\" />\r\n      <EndTime>2015-01-09T12:00:19.7780092Z</EndTime>\r\n      <ExtendedDetails>&lt;Task xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/windowsazure\"&gt;\r\n  &lt;ID i:nil=\"true\" /&gt;\r\n  &lt;Name i:nil=\"true\" /&gt;\r\n  &lt;Actions xmlns:d2p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" i:nil=\"true\" /&gt;\r\n  &lt;ChildJobId i:nil=\"true\" /&gt;\r\n  &lt;EndTime&gt;0001-01-01T00:00:00&lt;/EndTime&gt;\r\n  &lt;ExtendedDetails i:nil=\"true\" /&gt;\r\n  &lt;StartTime&gt;0001-01-01T00:00:00&lt;/StartTime&gt;\r\n  &lt;State i:nil=\"true\" /&gt;\r\n  &lt;StateDescription i:nil=\"true\" /&gt;\r\n  &lt;TaskType i:nil=\"true\" /&gt;\r\n&lt;/Task&gt;</ExtendedDetails>\r\n      <StartTime>2015-01-09T12:00:16.0788491Z</StartTime>\r\n      <State>Succeeded</State>\r\n      <StateDescription>Completed</StateDescription>\r\n      <TaskType>TaskDetails</TaskType>\r\n    </Task>\r\n    <Task>\r\n      <ID>7a510090-e013-4242-9c4b-2938984828c8</ID>\r\n      <Name>Attach network (0)</Name>\r\n      <Actions xmlns:d4p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n      <ChildJobId i:nil=\"true\" />\r\n      <EndTime>0001-01-01T00:00:00</EndTime>\r\n      <ExtendedDetails>&lt;GroupTaskDetails xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.Azure.SiteRecovery.V2014_10_27\"&gt;\r\n  &lt;ChildTasks xmlns:d2p1=\"http://schemas.microsoft.com/windowsazure\" /&gt;\r\n&lt;/GroupTaskDetails&gt;</ExtendedDetails>\r\n      <StartTime>0001-01-01T00:00:00</StartTime>\r\n      <State>Succeeded</State>\r\n      <StateDescription>Skipped</StateDescription>\r\n      <TaskType>GroupTaskDetails</TaskType>\r\n    </Task>\r\n  </Tasks>\r\n</ServiceResource>",
+      "ResponseBody": "<Job xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>bce08078-42d3-486d-bef2-ce5d7daf5aef</ID>\r\n  <ActivityId>5cd741ab-e104-4702-a64b-050b216cfd07-2015-02-20 12:25:34Z-P</ActivityId>\r\n  <AllowedActions xmlns:d2p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n    <d2p1:string>Cancel</d2p1:string>\r\n    <d2p1:string>Restart</d2p1:string>\r\n  </AllowedActions>\r\n  <DisplayName>Map</DisplayName>\r\n  <EndTime>2/20/2015 12:25:39 PM</EndTime>\r\n  <Errors />\r\n  <Name>NetworkPairing</Name>\r\n  <StartTime>2/20/2015 12:25:36 PM</StartTime>\r\n  <State>Succeeded</State>\r\n  <StateDescription>Completed</StateDescription>\r\n  <TargetObjectId>2fbfbdd9-5609-4625-ba7f-e478424e6445</TargetObjectId>\r\n  <TargetObjectName>phase2PrimaryVMNetwork</TargetObjectName>\r\n  <TargetObjectType>Network</TargetObjectType>\r\n  <Tasks>\r\n    <Task>\r\n      <ID>b208f7d7-92b7-4e84-8c37-f80c1e373197</ID>\r\n      <Name>Map network</Name>\r\n      <Actions xmlns:d4p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n      <ChildJobId i:nil=\"true\" />\r\n      <EndTime>2015-02-20T12:25:39.2880634Z</EndTime>\r\n      <ExtendedDetails>&lt;Task xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/windowsazure\"&gt;\r\n  &lt;ID i:nil=\"true\" /&gt;\r\n  &lt;Name i:nil=\"true\" /&gt;\r\n  &lt;Actions xmlns:d2p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" i:nil=\"true\" /&gt;\r\n  &lt;ChildJobId i:nil=\"true\" /&gt;\r\n  &lt;EndTime&gt;0001-01-01T00:00:00&lt;/EndTime&gt;\r\n  &lt;ExtendedDetails i:nil=\"true\" /&gt;\r\n  &lt;StartTime&gt;0001-01-01T00:00:00&lt;/StartTime&gt;\r\n  &lt;State i:nil=\"true\" /&gt;\r\n  &lt;StateDescription i:nil=\"true\" /&gt;\r\n  &lt;TaskType i:nil=\"true\" /&gt;\r\n&lt;/Task&gt;</ExtendedDetails>\r\n      <StartTime>2015-02-20T12:25:37.1491382Z</StartTime>\r\n      <State>Succeeded</State>\r\n      <StateDescription>Completed</StateDescription>\r\n      <TaskType>TaskDetails</TaskType>\r\n    </Task>\r\n    <Task>\r\n      <ID>de28ea12-4bc0-4d32-afb7-393b8bfcbf2a</ID>\r\n      <Name>Attach network (0)</Name>\r\n      <Actions xmlns:d4p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" />\r\n      <ChildJobId i:nil=\"true\" />\r\n      <EndTime>0001-01-01T00:00:00</EndTime>\r\n      <ExtendedDetails>&lt;GroupTaskDetails xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.datacontract.org/2004/07/Microsoft.Azure.SiteRecovery.V2014_10_27\"&gt;\r\n  &lt;ChildTasks xmlns:d2p1=\"http://schemas.microsoft.com/windowsazure\" /&gt;\r\n&lt;/GroupTaskDetails&gt;</ExtendedDetails>\r\n      <StartTime>0001-01-01T00:00:00</StartTime>\r\n      <State>Succeeded</State>\r\n      <StateDescription>Skipped</StateDescription>\r\n      <TaskType>GroupTaskDetails</TaskType>\r\n    </Task>\r\n  </Tasks>\r\n</Job>",
       "ResponseHeaders": {
         "Content-Length": [
-          "2358"
+          "2513"
         ],
         "Content-Type": [
-          "text/html; charset=utf-8"
+          "application/xml; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ],
-        "Last-Modified": [
-          "Fri, 09 Jan 2015 12:00:22 GMT"
-        ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "8ddb9bfe-d6dc-48f3-900b-129fb9799da3 12:00"
-        ],
         "Strict-Transport-Security": [
-          "max-age=15724800; includeSubDomains"
+          "max-age=15724800; includeSubDomains,max-age=15724800; includeSubDomains"
+        ],
+        "x-ms-client-request-id": [
+          "858fe8c8-d5a4-4fec-b481-66ea682d0747-2015-02-20 12:25:43Z-P"
+        ],
+        "x-ms-request-id": [
+          "409bf7deae379b418eaaa6f39bfd1bf5"
         ],
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Fri, 20 Feb 2015 12:25:44 GMT"
+        ],
         "Server": [
-          "Microsoft-IIS/8.5",
-          "Microsoft-IIS/8.5"
+          "1.0.6196.1444",
+          "(rd_rdfe.150212-0800)",
+          "Microsoft-HTTPAPI/2.0"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
         ],
         "X-Powered-By": [
-          "ASP.NET",
           "ASP.NET"
-        ],
-        "Date": [
-          "Fri, 09 Jan 2015 12:00:22 GMT"
         ]
       },
       "StatusCode": 200
@@ -741,6 +671,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "62633f66-ce59-4114-b65d-a50beb5bd8d8"
+    "SubscriptionId": "a5aa5997-33e5-46cc-8ab8-8bd89b76b7ba"
   }
 }
