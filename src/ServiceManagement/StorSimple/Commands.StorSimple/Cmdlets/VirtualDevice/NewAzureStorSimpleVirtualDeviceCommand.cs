@@ -22,10 +22,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.VirtualDevice
     public class NewAzureStorSimpleVirtualDeviceCommand : StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualDeviceName)]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string VirtualDeviceName { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualNetworkName)]
+        [Alias("VNetName")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
         
@@ -56,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.VirtualDevice
 
                 var deviceJobResponse = StorSimpleClient.CreateVirtualDevice(applianceProvisiongInfo);
 
-                HandleDeviceJobResponse(deviceJobResponse, "add");
+                HandleDeviceJobResponse(deviceJobResponse, "create");
             }
             catch (Exception exception)
             {
