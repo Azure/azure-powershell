@@ -390,5 +390,37 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         {
             return new Exception(exceptionMessage, innerException);
         }
+
+        /// <summary>
+        /// Validate that all network configs are valid.
+        /// 
+        /// Its mandatory to provide either (IPv4 Address and netmask) or IPv6 orefix for an interface that
+        /// is being enabled. ( Was previously disabled and is now being configured)
+        /// </summary>
+        /// <returns></returns>
+        internal bool ValidateNetworkConfigs(DeviceDetails details, NetworkConfig[] StorSimpleNetworkConfig)
+        {
+            if (StorSimpleNetworkConfig == null)
+            {
+                return true;
+            }
+            foreach (var netConfig in StorSimpleNetworkConfig)
+            {
+                // get corresponding netInterface in device details.
+                var netInterface = details.NetInterfaceList.FirstOrDefault(x => x.InterfaceId == netConfig.InterfaceAlias);
+                // If its being enabled and its not Data0, it must have IP Address info
+                if (netInterface == null || (netInterface.InterfaceId != NetInterfaceId.Data0 && !netInterface.IsEnabled))
+                {
+                    // If its not an enabled interface either IPv6(prefix) or IPv4(address and mask) must be provided.
+                    if ((netConfig.IPv4Address == null || netConfig.IPv4Netmask == null) && netConfig.IPv6Prefix == null)
+                    {
+                        WriteVerbose(string.Format(Resources.IPAddressesNotProvidedForNetInterfaceBeingEnabled, StorSimpleContext.ResourceName, details.DeviceProperties.DeviceId));
+                        WriteObject(null);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

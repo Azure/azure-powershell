@@ -15,7 +15,7 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common;
+using Hyak.Common;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Commands.StorSimple;
@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// <summary>
     /// Stop the specified device job if its in progress and is cancellable.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleJob"), 
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleJob", DefaultParameterSetName=StorSimpleCmdletParameterSet.IdentifyByDeviceName), 
      OutputType(typeof(IList<DeviceJobDetails>), typeof(DeviceJobDetails))]
     public class GetAzureStorSimpleJob : StorSimpleCmdletBase
     {
@@ -99,9 +99,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         #endregion params
 
         // Private helper properties.
-        private string deviceId { get; set; }
-        private string fromDateTimeIsoString { get; set; }
-        private string toDateTimeIsoString { get; set; }
+        private string deviceId;
+        private string fromDateTimeIsoString;
+        private string toDateTimeIsoString;
 
         public override void ExecuteCmdlet()
         {
@@ -155,14 +155,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
             catch (Exception exception)
             {
+                HandleException(exception);
             }
         }
 
         private bool ProcessParameters()
         {
-            First = First == null ? 0 : First;
+            // Default values for first and skip are 0
+            First = First ?? 0;
 
-            Skip = Skip == null ? 0 : Skip;
+            Skip = Skip ?? 0;
 
             // Need to use xml convert because we want ISO 8601 formatting to avoid deserialization
             // probs in the backend.

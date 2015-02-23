@@ -460,6 +460,21 @@
     <value>About to stop a job! Id : {0} </value>
   </data>
   <data name="StorSimpleDeviceUpdatedSuccessfully" xml:space="preserve">
-    <value>Successfully updated configuration for device {0}</value>
+    <value>Successfully updated configuration for device {0} with id {1}</value>
+  </data>
+  <data name="BeginningDeviceConfiguration" xml:space="preserve">
+    <value>About to configure the device : {0} !</value>
+  </data>
+  <data name="InvalidIPAddressProvidedMessage" xml:space="preserve">
+    <value>Invalid IP address provided for {0} ! Please make sure it is in the correct format.</value>
+  </data>
+  <data name="NetworkConfigControllerIPsNotAllowedOnOthers" xml:space="preserve">
+    <value>Controller0IPAddress and Controller1IPAddress cannot be configured on interfaces other than Data0</value>
+  </data>
+  <data name="NetworkConfigData0AllowedSettings" xml:space="preserve">
+    <value>Controller0IPAddress, Controller1IPAddress and EnableIscsi are the only configuration settings that can be changed on the Data0 interface!</value>
+  </data>
+  <data name="ErrorRetrievingDevicePublicKey" xml:space="preserve">
+    <value>Could not retrieve encryption key for device. Please make sure you have specified the correct device.</value>
   </data>
 </root>

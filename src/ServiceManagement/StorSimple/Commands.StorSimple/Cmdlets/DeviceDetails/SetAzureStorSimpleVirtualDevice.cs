@@ -15,7 +15,7 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common;
+using Hyak.Common;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using System.Net.Sockets;
@@ -80,19 +80,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 updateDeviceDetails(deviceDetails);
                 
                 // Make request with updated data
-                WriteVerbose("About to run a task to configure the device for the first time!");
+                WriteVerbose(string.Format(Resources.BeginningDeviceConfiguration, deviceDetails.DeviceProperties.FriendlyName));
                 var taskStatusInfo = StorSimpleClient.UpdateDeviceDetails(deviceDetails);
                 HandleSyncTaskResponse(taskStatusInfo, "Setup");
                 if (taskStatusInfo.AsyncTaskAggregatedResult == AsyncTaskAggregatedResult.Succeeded)
                 {
                     var updatedDetails = StorSimpleClient.GetDeviceDetails(deviceId);
                     WriteObject(updatedDetails);
-                    WriteVerbose(string.Format(Resources.StorSimpleDeviceUpdatedSuccessfully, updatedDetails.DeviceProperties.FriendlyName));
+                    WriteVerbose(string.Format(Resources.StorSimpleDeviceUpdatedSuccessfully, updatedDetails.DeviceProperties.FriendlyName, updatedDetails.DeviceProperties.DeviceId));
                 }
 
             }
             catch (Exception exception)
             {
+                this.HandleException(exception);
             }
         }
 
@@ -107,23 +108,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 details.TimeServer.TimeZone = TimeZone.StandardName;
             }
             // encrypt supplied secret with the device public key
-            SecretKey = encryptWithDevicePublicKey(SecretKey);
+            SecretKey = StorSimpleClient.encryptWithDevicePublicKey(details.DeviceProperties.DeviceId, SecretKey);
+
             details.VirtualApplianceProperties.EncodedServiceEncryptionKey = SecretKey;
-        }
-
-        /// <summary>
-        /// Encrypts specified data with the Device Public Key
-        /// </summary>
-        /// <param name="data">string to be encrypted</param>
-        /// <returns>Encrypted string</returns>
-        private string encryptWithDevicePublicKey(string data)
-        {
-            // Get the public key certificate
-            var cert = StorSimpleClient.GetDevicePublicKey();
-            return CryptoHelper.EncryptSecretRSAPKCS(data, cert);
-        }
-
-        
+        }        
     }
 }
 

@@ -69,7 +69,7 @@ function Get-DeviceName ()
 .SYNOPSIS
 Creates pre-req objects for backup related tests
 #>
-function SetupObjects-BackupScenario($deviceName, $dcName, $acrName, $iqn, $vdName)
+function SetupObjects-BackupScenario($deviceName, $dcName, $acrName, $iqn, $vdName, $vdSize=2000000000)
 {
     $storageAccountName = Get-DefaultValue -key "StorageAccountName"
     $storageAccountKey = Get-DefaultValue -Key "StorageAccountPrimaryAccessKey"
@@ -90,7 +90,7 @@ function SetupObjects-BackupScenario($deviceName, $dcName, $acrName, $iqn, $vdNa
     $acrList += Get-AzureStorSimpleAccessControlRecord -ACRName $acrName
     Assert-AreNotEqual 0 @($acrList).Count
     
-    $dcToUse | New-AzureStorSimpleDeviceVolume -DeviceName $deviceName -Name $vdName -Size 2000000000 -AccessControlRecords $acrList -AppType PrimaryVolume -Online $true -EnableDefaultBackup $false -EnableMonitoring $false -WaitForComplete
+    $dcToUse | New-AzureStorSimpleDeviceVolume -DeviceName $deviceName -Name $vdName -Size $vdSize -AccessControlRecords $acrList -AppType PrimaryVolume -Online $true -EnableDefaultBackup $false -EnableMonitoring $false -WaitForComplete
     $vdToUse = Get-AzureStorSimpleDeviceVolume -DeviceName $deviceName -VolumeName $vdName
     Assert-NotNull $vdToUse
 }

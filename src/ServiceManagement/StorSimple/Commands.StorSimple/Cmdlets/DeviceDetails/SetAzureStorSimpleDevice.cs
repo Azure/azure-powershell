@@ -15,11 +15,12 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common;
+using Hyak.Common;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using System.Net.Sockets;
 using System.Net;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -29,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// If the device is being configured for the first time, then some of the
     /// arguments will be mandatory - TimeZone, PrimaryDnsServer, Config for Data0
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureStorSimpleDevice"), OutputType(typeof(DeviceDetails))]
+    [Cmdlet(VerbsCommon.Set, "AzureStorSimpleDevice", DefaultParameterSetName=StorSimpleCmdletParameterSet.IdentifyByName), OutputType(typeof(DeviceDetails))]
     public class SetAzureStorSimpleDevice : StorSimpleCmdletBase
     {
                 /// <summary>
@@ -49,37 +50,37 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// <summary>
         /// New friendly name for the device.
         /// </summary>
-        [Parameter(Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageNewDeviceName)]
+        [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageNewDeviceName)]
         [ValidateNotNullOrEmptyAttribute]
         public string NewName { get; set; }
         
         /// <summary>
         /// TimeZone for the device.
         /// </summary>
-        [Parameter(Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageTimeZone)]
+        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageTimeZone)]
         [ValidateNotNullOrEmptyAttribute] 
-        public TimeZone TimeZone { get; set; }
+        public TimeZoneInfo TimeZone { get; set; }
 
         /// <summary>
         /// Primary DNS server for the device.
         /// </summary>
-        [Parameter(Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessagePrimaryDnsServer)]
+        [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessagePrimaryDnsServer)]
         [ValidateNotNullOrEmptyAttribute]
         public IPAddress PrimaryDnsServer { get; set; }
         
         /// <summary>
         /// Secondary DNS server for the device.
         /// </summary>
-        [Parameter(Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageSecondaryDnsServer)]
+        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageSecondaryDnsServer)]
         [ValidateNotNullOrEmptyAttribute]
         public IPAddress SecondaryDnsServer { get; set; }
         
         /// <summary>
         /// A collection of network configs for interfaces on the device.
         /// </summary>
-        [Parameter(Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageStorSimpleNetworkConfig)]
+        [Parameter(Mandatory = false, Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageStorSimpleNetworkConfig)]
         [ValidateNotNullOrEmptyAttribute]
-        public PSObject[] StorSimpleNetworkConfig { get; set; }
+        public NetworkConfig[] StorSimpleNetworkConfig { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -93,6 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 // Get the current device details.
                 var deviceDetails = StorSimpleClient.GetDeviceDetails(DeviceId);
+
                 if (deviceDetails == null)
                 {
                     WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenIdInResourceMessage, StorSimpleContext.ResourceName, DeviceId));
@@ -109,84 +111,96 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     return;
                 }
 
-                if (!this.ValidateNetworkConfigs(deviceDetails))
+                if (!this.ValidateNetworkConfigs(deviceDetails, StorSimpleNetworkConfig))
                 {
                     return;
                 }
 
+                
+                WriteVerbose(string.Format(Resources.BeginningDeviceConfiguration, deviceDetails.DeviceProperties.FriendlyName));
+
                 // Update device details.
                 this.UpdateDeviceDetails(deviceDetails);
-                
+
+                WriteObject(deviceDetails);
+
                 // Make request with updated data
-                WriteVerbose("About to run a task to configure the device for the first time!");
                 var taskStatusInfo = StorSimpleClient.UpdateDeviceDetails(deviceDetails);
                 HandleSyncTaskResponse(taskStatusInfo, "Setup");
                 if (taskStatusInfo.AsyncTaskAggregatedResult == AsyncTaskAggregatedResult.Succeeded)
                 {
                     var updatedDetails = StorSimpleClient.GetDeviceDetails(DeviceId.ToString());
                     WriteObject(updatedDetails);
-                    WriteVerbose(string.Format(Resources.StorSimpleDeviceUpdatedSuccessfully, updatedDetails.DeviceProperties.FriendlyName));
+                    WriteVerbose(string.Format(Resources.StorSimpleDeviceUpdatedSuccessfully, updatedDetails.DeviceProperties.FriendlyName, updatedDetails.DeviceProperties.DeviceId));
                 }
 
             }
             catch (Exception exception)
             {
+                this.HandleException(exception);
             }
         }
 
         /// <summary>
-        /// Validate that all network configs are valid.
-        /// 
-        /// Its mandatory to provide either (IPv4 Address and netmask) or IPv6 orefix for an interface that
-        /// is being enabled. ( Was previously disabled and is now being configured)
+        /// Update the specified DeviceDetails object with given network config data
         /// </summary>
-        /// <returns></returns>
-        private bool ValidateNetworkConfigs(DeviceDetails details)
+        /// <param name="details">DeviceDetails object to be updated</param>
+        /// <param name="netConfig">network config object to pick new details from</param>
+        private void UpdateDeviceDetailsWithNetworkConfig(DeviceDetails details, NetworkConfig netConfig)
         {
-            if(StorSimpleNetworkConfig == null){
-                return true;
-            }
-            foreach(var netConfigObj in StorSimpleNetworkConfig){
-                var config = (NetworkConfig)netConfigObj.BaseObject;
-                // get corresponding netInterface in device details.
-                var netInterface = details.NetInterfaceList.FirstOrDefault(x => x.InterfaceId == config.InterfaceAlias);
-                // If its being enabled and its not Data0, it must have IP Address info
-                if (netInterface == null || (netInterface.InterfaceId!=NetInterfaceId.Data0 && !netInterface.IsEnabled))
+            // See if deviceDetails already has an object for the interface for which network config has been provided.
+            // If not, then a new object is to be provided.
+            var netInterface = details.NetInterfaceList.FirstOrDefault(x => x.InterfaceId == netConfig.InterfaceAlias);
+            if (netInterface == null)
+            {
+                netInterface = new NetInterface
                 {
-                    // If its not an enabled interface either IPv6(prefix) or IPv4(address and mask) must be provided.
-                    if ((config.IPv4Address == null || config.IPv4Netmask == null) && config.IPv6Prefix == null)
-                    {
-                        WriteVerbose(string.Format(Resources.IPAddressesNotProvidedForNetInterfaceBeingEnabled, StorSimpleContext.ResourceName, DeviceId));
-                        WriteObject(null);
-                        return false;
-                    }
+                    NicIPv4Settings = new NicIPv4(),
+                    NicIPv6Settings = new NicIPv6()
+                };
+                details.NetInterfaceList.Add(netInterface);
+            }
+
+            if (netConfig.IsIscsiEnabled != null)
+            {
+                netInterface.IsIScsiEnabled = (bool)netConfig.IsIscsiEnabled;
+            }
+            if (netConfig.IsCloudEnabled != null)
+            {
+                netInterface.IsCloudEnabled = (bool)netConfig.IsCloudEnabled;
+            }
+
+            if (netConfig.InterfaceAlias == NetInterfaceId.Data0)
+            {   // Other interfaces are not supposed to have controller IPs
+                if (netConfig.Controller0IPv4Address != null)
+                {
+                    netInterface.NicIPv4Settings.Controller0IPv4Address = netConfig.Controller0IPv4Address.ToString();
+                }
+                if (netConfig.Controller1IPv4Address != null)
+                {
+                    netInterface.NicIPv4Settings.Controller1IPv4Address = netConfig.Controller1IPv4Address.ToString();
                 }
             }
-            return true;
-        }
-
-        /// <summary>
-        /// Validate that all mandatory data for the first Device Configuration has been provided.
-        /// </summary>
-        /// <returns>bool indicating whether all mandatory data is there or not.</returns>
-        private bool ValidParamsForFirstDeviceConfiguration()
-        {
-            if (StorSimpleNetworkConfig == null)
+            if (netConfig.IPv4Gateway != null)
             {
-                return false;
+                netInterface.NicIPv4Settings.IPv4Gateway = netConfig.IPv4Gateway.ToString();
             }
-            // Make sure network config for Data0 has been provided with atleast Controller0 IP Address
-            var data0 = StorSimpleNetworkConfig.FirstOrDefault(x => ((NetworkConfig)x.BaseObject).InterfaceAlias == NetInterfaceId.Data0);
-            if (data0 == null || ((NetworkConfig)data0.BaseObject).Controller0IPv4Address == null)
+            if (netConfig.IPv4Address != null)
             {
-                return false;
+                netInterface.NicIPv4Settings.IPv4Address = netConfig.IPv4Address.ToString();
             }
-            // Timezone and Primary Dns Server are also mandatory
-            if (TimeZone == null || PrimaryDnsServer == null)
+            if (netConfig.IPv4Netmask != null)
             {
-                return false;
+                netInterface.NicIPv4Settings.IPv4Netmask = netConfig.IPv4Netmask.ToString();
             }
-            return true;
+            if (netConfig.IPv6Prefix != null)
+            {
+                netInterface.NicIPv6Settings.IPv6Prefix = netConfig.IPv6Prefix.ToString();
+            }
+            if (netConfig.IPv6Gateway != null)
+            {
+                netInterface.NicIPv6Settings.IPv6Gateway = netConfig.IPv6Gateway.ToString();
+            }
         }
 
         /// <summary>
@@ -238,72 +252,44 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 foreach (var netConfig in this.StorSimpleNetworkConfig)
                 {
-                    UpdateDeviceDetailsWithNetworkConfig(deviceDetails, (NetworkConfig)netConfig.BaseObject);
+                    UpdateDeviceDetailsWithNetworkConfig(deviceDetails, netConfig);
                 }
             }
+
+            // There are a bunch of details that this cmdlet never edits and the service considers null
+            // values there to mean that there have been no changes.
+            deviceDetails.AlertNotification = null;
+            deviceDetails.Chap = null;
+            deviceDetails.RemoteMgmtSettingsInfo = null;
+            deviceDetails.RemoteMinishellSecretInfo = null;
+            deviceDetails.SecretEncryptionCertThumbprint = null;
+            deviceDetails.Snapshot = null;
+            deviceDetails.VirtualApplianceProperties = null;
+            deviceDetails.WebProxy = null;
         }
 
         /// <summary>
-        /// Update the specified DeviceDetails object with given network config data
+        /// Validate that all mandatory data for the first Device Configuration has been provided.
         /// </summary>
-        /// <param name="details">DeviceDetails object to be updated</param>
-        /// <param name="netConfig">network config object to pick new details from</param>
-        internal void UpdateDeviceDetailsWithNetworkConfig(DeviceDetails details, NetworkConfig netConfig)
+        /// <returns>bool indicating whether all mandatory data is there or not.</returns>
+        private bool ValidParamsForFirstDeviceConfiguration()
         {
-            // See if deviceDetails already has an object for the interface for which network config has been provided.
-            // If not, then a new object is to be provided.
-            var netInterface = details.NetInterfaceList.FirstOrDefault(x => x.InterfaceId == netConfig.InterfaceAlias);
-            if (netInterface == null)
+            if (StorSimpleNetworkConfig == null)
             {
-                netInterface = new NetInterface
-                {
-                    NicIPv4Settings = new NicIPv4(),
-                    NicIPv6Settings = new NicIPv6()
-                };
-                details.NetInterfaceList.Add(netInterface);
+                return false;
             }
-
-            if (netConfig.IsIscsiEnabled != null)
+            // Make sure network config for Data0 has been provided with atleast Controller0 IP Address
+            var data0 = StorSimpleNetworkConfig.FirstOrDefault(x => x.InterfaceAlias == NetInterfaceId.Data0);
+            if (data0 == null || data0.Controller0IPv4Address == null)
             {
-                netInterface.IsIScsiEnabled = (bool)netConfig.IsIscsiEnabled;
+                return false;
             }
-            if (netConfig.IsCloudEnabled != null)
+            // Timezone and Primary Dns Server are also mandatory
+            if (TimeZone == null || PrimaryDnsServer == null)
             {
-                netInterface.IsCloudEnabled = (bool)netConfig.IsCloudEnabled;
+                return false;
             }
-            
-            if (netConfig.InterfaceAlias == NetInterfaceId.Data0)
-            {   // Other interfaces are not supposed to have controller IPs
-                if (netConfig.Controller0IPv4Address != null)
-                {
-                    netInterface.NicIPv4Settings.Controller0IPv4Address = netConfig.Controller0IPv4Address.ToString();
-                }
-                if (netConfig.Controller1IPv4Address != null)
-                {
-                    netInterface.NicIPv4Settings.Controller1IPv4Address = netConfig.Controller1IPv4Address.ToString();
-                }
-            }
-            if (netConfig.IPv4Gateway != null)
-            {
-                netInterface.NicIPv4Settings.IPv4Gateway = netConfig.IPv4Gateway.ToString();
-            }
-            if (netConfig.IPv4Address != null)
-            {
-                netInterface.NicIPv4Settings.IPv4Address = netConfig.IPv4Address.ToString();
-            }
-            if (netConfig.IPv4Netmask != null)
-            {
-                netInterface.NicIPv4Settings.IPv4Netmask = netConfig.IPv4Netmask.ToString();
-            }
-            if (netConfig.IPv6Prefix != null)
-            {
-                netInterface.NicIPv6Settings.IPv6Prefix = netConfig.IPv6Prefix.ToString();
-            }
-            if (netConfig.IPv6Gateway != null)
-            {
-                netInterface.NicIPv6Settings.IPv6Gateway = netConfig.IPv6Gateway.ToString();
-            }
-
+            return true;
         }
 
         private bool ProcessParameters()

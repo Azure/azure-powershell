@@ -142,6 +142,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About to configure the device : {0} !.
+        /// </summary>
+        internal static string BeginningDeviceConfiguration {
+            get {
+                return ResourceManager.GetString("BeginningDeviceConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not retrieve secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again..
         /// </summary>
         internal static string CIKFetchFailed {
@@ -264,6 +273,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string EncryptionInProgressMessage {
             get {
                 return ResourceManager.GetString("EncryptionInProgressMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not retrieve encryption key for device. Please make sure you have specified the correct device..
+        /// </summary>
+        internal static string ErrorRetrievingDevicePublicKey {
+            get {
+                return ResourceManager.GetString("ErrorRetrievingDevicePublicKey", resourceCulture);
             }
         }
         
@@ -403,6 +421,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid IP address provided for {0} ! Please make sure it is in the correct format..
+        /// </summary>
+        internal static string InvalidIPAddressProvidedMessage {
+            get {
+                return ResourceManager.GetString("InvalidIPAddressProvidedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provide valid datetime string for To parameter!.
         /// </summary>
         internal static string InvalidToMessage {
@@ -444,6 +471,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string MandatoryParamsMissingForInitialDeviceConfiguration {
             get {
                 return ResourceManager.GetString("MandatoryParamsMissingForInitialDeviceConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Controller0IPAddress and Controller1IPAddress cannot be configured on interfaces other than Data0.
+        /// </summary>
+        internal static string NetworkConfigControllerIPsNotAllowedOnOthers {
+            get {
+                return ResourceManager.GetString("NetworkConfigControllerIPsNotAllowedOnOthers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Controller0IPAddress, Controller1IPAddress and EnableIscsi are the only configuration settings that can be changed on the Data0 interface!.
+        /// </summary>
+        internal static string NetworkConfigData0AllowedSettings {
+            get {
+                return ResourceManager.GetString("NetworkConfigData0AllowedSettings", resourceCulture);
             }
         }
         
@@ -1033,7 +1078,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Successfully updated configuration for device {0}.
+        ///   Looks up a localized string similar to Successfully updated configuration for device {0} with id {1}.
         /// </summary>
         internal static string StorSimpleDeviceUpdatedSuccessfully {
             get {
