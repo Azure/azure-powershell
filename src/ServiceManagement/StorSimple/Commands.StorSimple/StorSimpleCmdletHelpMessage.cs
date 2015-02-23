@@ -88,5 +88,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string CloneVolumeName = "The name to be assigned to the newly cloned volume on the target device";
         public const string SnapshotIdToClone = "The identifier of the backup snapshot to clone";
         public const string SnapshotToClone = "The snapshot object to be cloned";
+        public const string VirtualDeviceName = "Name of the Virtual Device to be created.";
+        public const string VirtualNetworkName = "Name of the Virtual Network to be used by the Virtual Device.";
+        public const string SubNetName = "Name of the Subnet in the Virtual Network which should be used by the Virtual Device.";
+        public const string StorageAccountNameForVirtualDevice = "Name of the Storage Account to be used to create the Virtual Device.";
+        public const string CreateNewStorageAccount = "Switch which decides whether to create a new storage account.";
+        public const string VolumeContainerGroups = "List of Volme Container Groups to be failed over";
+        public const string FailoverTargetDeviceName = "Name of the StorSimple failover target device";
+        public const string FailoverTargetDeviceId = "The device identifier of the StorSimple failover target device";
     }
 }

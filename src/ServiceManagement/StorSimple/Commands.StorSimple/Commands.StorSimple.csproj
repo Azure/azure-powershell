@@ -128,6 +128,8 @@
     <Compile Include="Cmdlets\DataContainer\GetAzureStorSimpleDeviceVolumeContainer.cs" />
     <Compile Include="Cmdlets\DataContainer\NewAzureStorSimpleDeviceVolumeContainer.cs" />
     <Compile Include="Cmdlets\DataContainer\RemoveAzureStorSimpleDeviceVolumeContainer.cs" />
+    <Compile Include="Cmdlets\Failover\GetAzureStorSimpleFailoverVolumeContainers.cs" />
+    <Compile Include="Cmdlets\Failover\StartAzureStorSimpleDeviceFailoverJob.cs" />
     <Compile Include="Cmdlets\GetAzureStorSimpleDevice.cs" />
     <Compile Include="Cmdlets\GetAzureStorSimpleDeviceConnectedInitiator.cs" />
     <Compile Include="Cmdlets\GetAzureStorSimpleResource.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="Cmdlets\ServiceConfig\RemoveAzureStorSimpleStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\SetAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\ServiceConfig\SetAzureStorSimpleStorageAccountCredential.cs" />
+    <Compile Include="Cmdlets\VirtualDevice\NewAzureStorSimpleVirtualDeviceCommand.cs" />
     <Compile Include="Cmdlets\Volume\GetAzureStorSimpleDeviceVolume .cs" />
     <Compile Include="Cmdlets\Volume\NewAzureStorSimpleDeviceVolume.cs" />
     <Compile Include="Cmdlets\Volume\RemoveAzureStorSimpleDeviceVolume .cs" />
@@ -166,8 +169,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceClients\StorSimpleContextClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDCClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleDeviceFailoverClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDevicesClient.cs" />
     <Compile Include="ServiceClients\StorSimpleServiceConfigClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleVirtualDeviceClient.cs" />
     <Compile Include="ServiceClients\StorSimpleVolumeClient.cs" />
     <Compile Include="StorSimpleCmdletBase.cs" />
     <Compile Include="StorSimpleCmdletHelpMessage.cs" />
