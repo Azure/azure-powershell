@@ -113,7 +113,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="azureStorageAccount">Storage Account details</param>
         /// <param name="vaultLocation">Current Vault Location</param>
         /// <returns>Validation successful</returns>
-        public bool ValidateStorageAccountAssociation(string azureSubscription, string azureStorageAccount, string vaultLocation)
+        public bool ValidateStorageAccountAssociation(
+            string azureSubscription,
+            string azureStorageAccount,
+            string vaultLocation)
         {
             if (string.IsNullOrEmpty(azureSubscription))
             {
@@ -145,7 +148,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             foreach (var storage in azureStorageListResponse.StorageAccounts)
             {
-                if (string.Compare(azureStorageAccount, storage.Name, StringComparison.OrdinalIgnoreCase) == 0)
+                if (string.Compare(
+                    azureStorageAccount,
+                    storage.Name,
+                    StringComparison.OrdinalIgnoreCase) == 0)
                 {
                     associatedAccount = true;
                     currentStorageAccount = storage;

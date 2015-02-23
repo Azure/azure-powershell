@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 }
             }
 
-            if (vaultList.Count == 0)
+            if (vaultListByName.Count == 0)
             {
                 throw new InvalidOperationException(
                     string.Format(

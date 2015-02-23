@@ -195,7 +195,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void EnterpriseToAzureProtectionProfileObject()
         {
-            if (string.Compare(this.ReplicationProvider, Constants.HyperVReplicaAzure, StringComparison.OrdinalIgnoreCase) != 0)
+            if (string.Compare(
+                this.ReplicationProvider,
+                Constants.HyperVReplicaAzure,
+                StringComparison.OrdinalIgnoreCase) != 0)
             {
                 throw new InvalidOperationException(
                     string.Format(
@@ -233,7 +236,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
 
-            ushort replicationFrequencyInSeconds = PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+            ushort replicationFrequencyInSeconds = 
+                PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(
+                this.ReplicationFrequencyInSeconds);
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
