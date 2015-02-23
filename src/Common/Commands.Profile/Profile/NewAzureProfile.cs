@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using System.Linq;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Common.Authentication;
@@ -33,23 +34,23 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     [Cmdlet(VerbsCommon.New, "AzureProfile"), OutputType(typeof(AzureProfile))]
     public class NewAzureProfileCommand : AzurePSCmdlet
     {
-        private const string CertificateParameterSet = "Certificate";
-        private const string CredentialsParameterSet = "Credentials";
-        private const string ServicePrincipalParameterSet = "ServicePrincipal";
-        private const string AccessTokenParameterSet = "Token";
-        private const string FileParameterSet = "File";
-        private const string PropertyBagParameterSet = "PropertyBag";
+        internal const string CertificateParameterSet = "Certificate";
+        internal const string CredentialsParameterSet = "Credentials";
+        internal const string ServicePrincipalParameterSet = "ServicePrincipal";
+        internal const string AccessTokenParameterSet = "Token";
+        internal const string FileParameterSet = "File";
+        internal const string PropertyBagParameterSet = "PropertyBag";
 
-        private const string SubscriptionIdKey = "SubscriptionId";
-        private const string CertificateKey = "Certificate";
-        private const string UsernameKey = "Username";
-        private const string PasswordKey = "Password";
-        private const string SPNKey = "ServicePrincipal";
-        private const string TenantKey = "Tenant";
-        private const string AccountIdKey = "AccountId";
-        private const string TokenKey = "Token";
-        private const string EnvironmentKey = "Environment";
-        private const string StorageAccountKey = "StorageAccount";
+        internal const string SubscriptionIdKey = "SubscriptionId";
+        internal const string CertificateKey = "Certificate";
+        internal const string UsernameKey = "Username";
+        internal const string PasswordKey = "Password";
+        internal const string SPNKey = "ServicePrincipal";
+        internal const string TenantKey = "Tenant";
+        internal const string AccountIdKey = "AccountId";
+        internal const string TokenKey = "Token";
+        internal const string EnvironmentKey = "Environment";
+        internal const string StorageAccountKey = "StorageAccount";
 
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = CertificateParameterSet)]
@@ -173,6 +174,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 throw new ArgumentException(Resources.MissingSubscriptionInProfileProperties);
             }
 
+            settings.SubscriptionId = (string) propertyBag[SubscriptionIdKey];
             if (propertyBag.ContainsKey(StorageAccountKey))
             {
                 settings.StorageAccount = (string)propertyBag[StorageAccountKey];
