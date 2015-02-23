@@ -51,10 +51,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
+                string sourceDeviceIdentifierInMessage = string.IsNullOrEmpty(DeviceName) ? DeviceId : DeviceName;
+                string targetDeviceIdentifierInMessage = string.IsNullOrEmpty(TargetDeviceName) ? TargetDeviceId : TargetDeviceName;
                 ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Resources.StartDeviceFailoverJobWarningMessage, DeviceName, TargetDeviceName),
-                    string.Format(Resources.StartDeviceFailoverJobMessage, DeviceName, TargetDeviceName),
+                    string.Format(Resources.StartDeviceFailoverJobWarningMessage, sourceDeviceIdentifierInMessage, targetDeviceIdentifierInMessage),
+                    string.Format(Resources.StartDeviceFailoverJobMessage, sourceDeviceIdentifierInMessage, targetDeviceIdentifierInMessage),
                     string.Empty,
                     () =>
                     {

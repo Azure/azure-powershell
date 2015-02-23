@@ -241,15 +241,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} job failed to submit. .
-        /// </summary>
-        internal static string FailureMessageSubmitDeviceJob {
-            get {
-                return ResourceManager.GetString("FailureMessageSubmitDeviceJob", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The {0} task failed to submit. .
         /// </summary>
         internal static string FailureMessageSubmitTask {

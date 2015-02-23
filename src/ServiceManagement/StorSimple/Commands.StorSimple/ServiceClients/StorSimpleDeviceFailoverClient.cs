@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
     {
         public DataContainerGroupsGetResponse GetFaileoverDataContainerGroups(string deviceId)
         {
-            return this.GetStorSimpleClient().DeviceFailover.ListDCGroups(deviceId, this.GetCustomRequestHeaders());
+            return GetStorSimpleClient().DeviceFailover.ListDCGroups(deviceId, this.GetCustomRequestHeaders());
         }
 
         public JobResponse TriggerFailover(string deviceId, DeviceFailoverRequest drRequest)

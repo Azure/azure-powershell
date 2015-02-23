@@ -438,7 +438,4 @@
   <data name="SuccessMessageSubmitDeviceJob" xml:space="preserve">
     <value>The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job's status</value>
   </data>
-  <data name="FailureMessageSubmitDeviceJob" xml:space="preserve">
-    <value>The {0} job failed to submit. </value>
-  </data>
 </root>
