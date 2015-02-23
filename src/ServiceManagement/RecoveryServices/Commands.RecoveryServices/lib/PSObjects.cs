@@ -858,6 +858,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.ReplicationHealth = pe.ReplicationHealth;
             this.TestFailoverStateDescription = pe.TestFailoverStateDescription;
 
+            if (!string.IsNullOrWhiteSpace(pe.ReplicationProviderSettings))
+            {
+                AzureVmDiskDetails diskDetails;
+                DataContractUtils.Deserialize<AzureVmDiskDetails>(
+                    pe.ReplicationProviderSettings, out diskDetails);
+
+                this.Disks = diskDetails.Disks;
+                this.OSDiskId = diskDetails.VHDId;
+                this.OSDiskName = diskDetails.OsDisk;
+                this.OS = diskDetails.OsType;
+            }
+
             if (pe.ProtectionProfile != null &&
                 !string.IsNullOrWhiteSpace(pe.ProtectionProfile.ID))
             {
@@ -1107,10 +1119,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.StateDescription = job.StateDescription;
             this.EndTime = job.EndTime;
             this.StartTime = job.StartTime;
-            this.AllowedActions = job.AllowedActions as List<string>;
             this.Name = job.Name;
             this.TargetObjectId = job.TargetObjectId;
             this.TargetObjectName = job.TargetObjectName;
+            if (job.AllowedActions != null && job.AllowedActions.Count > 0)
+            {
+                this.AllowedActions = new List<string>();
+                foreach (var action in job.AllowedActions)
+                {
+                    this.AllowedActions.Add(action);
+                }
+            }
 
             if (!string.IsNullOrEmpty(job.TargetObjectId))
             {
@@ -1164,12 +1183,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         /// Gets or sets Start timestamp.
         /// </summary>
-        public string StartTime { get; set; }
+        public DateTimeOffset? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets End timestamp.
         /// </summary>
-        public string EndTime { get; set; }
+        public DateTimeOffset? EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets TargetObjectId.

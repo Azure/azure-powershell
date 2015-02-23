@@ -85,8 +85,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets a value indicating whether primary site actions are required or not.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = false)]
         public bool PrimaryAction { get; set; }
 
         /// <summary>

@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 throw new Exception(
                     string.Format(
-                    Properties.Resources.IDBasedParamUsageNotSupportedFromNextRelease,
+                    "Call using ID based parameter {0} is not supported for this provider. Please use its corresponding full object parameter instead",
                     paramName));
             }
             else
