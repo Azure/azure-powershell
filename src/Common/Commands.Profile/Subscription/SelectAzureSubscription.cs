@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -94,20 +95,20 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             switch (ParameterSetName)
             {
                 case SelectSubscriptionByNameParameterSet:
-                    azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionName, Account);
+                    azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionName, GetAccount());
                     break;
 
                 case SelectSubscriptionByIdParameterSet:
-                    azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionIdAsGuid(), Account);
+                    azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionIdAsGuid(), GetAccount());
                     break;
 
                 case SelectDefaultSubscriptionByNameParameterSet:
-                    azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionName, Account);
+                    azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionName, GetAccount());
                     WriteWarning("Current and Default parameters have been deprecated. Select-AzureSubscription will always update the Default Subscription.");
                     break;
 
                 case SelectDefaultSubscriptionByIdParameterSet:
-                    azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionIdAsGuid(), Account);
+                    azureSubscription = ProfileClient.SetSubscriptionAsDefault(SubscriptionIdAsGuid(), GetAccount());
                     WriteWarning("Current and Default parameters have been deprecated. Select-AzureSubscription will always update the Default Subscription.");
                     break;
 
@@ -123,6 +124,31 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             if (PassThru.IsPresent && azureSubscription != null)
             {
                 WriteObject(azureSubscription);
+            }
+        }
+
+        /// <summary>
+        /// Returns Account specified in the parameter or current account of the subscription
+        /// </summary>
+        /// <returns></returns>
+        private string GetAccount()
+        {
+            if (!string.IsNullOrEmpty(Account))
+            {
+                return Account;
+            }
+
+            AzureSubscription subscription = ProfileClient.Profile.Subscriptions.Values
+                .FirstOrDefault(s => s.Name.Equals(SubscriptionName, StringComparison.InvariantCultureIgnoreCase) ||
+                                     s.Id.ToString().Equals(SubscriptionId, StringComparison.InvariantCultureIgnoreCase));
+
+            if (subscription != null)
+            {
+                return subscription.Account;
+            }
+            else
+            {
+                return null;
             }
         }
 
