@@ -624,47 +624,70 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
     {
         public string ConfigId { get; set; }
         public string DeviceName { get; set; }
-        public List<MigrationPlanInfoMsg> MigrationPlanInfoInProgressMsgList { get; set; }
-        public List<MigrationPlanInfoMsg> MigrationPlanInfoNotStartedMsgList { get; set; }
-        public List<MigrationPlanInfoMsg> MigrationPlanInfoCompletedMsgList { get; set; }
-        public List<MigrationPlanInfoMsg> MigrationPlanInfoFailedMsgList { get; set; }
+        public MigrationPlanInfoMsgList MigrationPlanInfoInProgressMsgList { get; set; }
+        public MigrationPlanInfoMsgList MigrationPlanInfoNotStartedMsgList { get; set; }
+        public MigrationPlanInfoMsgList MigrationPlanInfoCompletedMsgList { get; set; }
+        public MigrationPlanInfoMsgList MigrationPlanInfoFailedMsgList { get; set; }
 
+        public class MigrationPlanInfoMsgList
+        {
+            public List<MigrationPlanInfoMsg> migrationPlanInfoMsgList { get; set; }
+            public string MigrationPlanStatus { get; set; }
+
+            public MigrationPlanInfoMsgList(string status)
+            {
+                MigrationPlanStatus = status;
+            }
+            public override string ToString()
+            {
+                StringBuilder consoleOp = new StringBuilder();
+                consoleOp.AppendLine("Data containers with migration plan " + MigrationPlanStatus + " : ");
+                foreach (MigrationPlanInfoMsg migrationPlanInfoMsg in migrationPlanInfoMsgList)
+                {
+                    consoleOp.AppendLine(migrationPlanInfoMsg.ToString());
+                    consoleOp.AppendLine();
+                }
+                return consoleOp.ToString();
+            }   
+        }
+    
         public MigrationPlanMsg(MigrationPlan migrationPlan)
         {
             ConfigId = migrationPlan.ConfigId;
             DeviceName = migrationPlan.DeviceName;
-            MigrationPlanInfoInProgressMsgList = new List<MigrationPlanInfoMsg>();
-            MigrationPlanInfoNotStartedMsgList = new List<MigrationPlanInfoMsg>();
-            MigrationPlanInfoCompletedMsgList = new List<MigrationPlanInfoMsg>();
-            MigrationPlanInfoFailedMsgList = new List<MigrationPlanInfoMsg>();
+            MigrationPlanInfoInProgressMsgList = new MigrationPlanInfoMsgList("InProgress");
+            MigrationPlanInfoInProgressMsgList.migrationPlanInfoMsgList = new List<MigrationPlanInfoMsg>();
+            MigrationPlanInfoNotStartedMsgList = new MigrationPlanInfoMsgList("NotStarted");
+            MigrationPlanInfoNotStartedMsgList.migrationPlanInfoMsgList = new List<MigrationPlanInfoMsg>();
+            MigrationPlanInfoCompletedMsgList = new MigrationPlanInfoMsgList("Completed");
+            MigrationPlanInfoCompletedMsgList.migrationPlanInfoMsgList = new List<MigrationPlanInfoMsg>();
+            MigrationPlanInfoFailedMsgList = new MigrationPlanInfoMsgList("Failed");
+            MigrationPlanInfoFailedMsgList.migrationPlanInfoMsgList = new List<MigrationPlanInfoMsg>();
 
             foreach (MigrationPlanInfo migrationPlanInfo in migrationPlan.MigrationPlanInfo)
             {
                 MigrationPlanInfoMsg migrationPlanInfoMsg = new MigrationPlanInfoMsg(migrationPlanInfo);
                 if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.InProgress)
                 {
-                    MigrationPlanInfoInProgressMsgList.Add(migrationPlanInfoMsg);
+                    MigrationPlanInfoInProgressMsgList.migrationPlanInfoMsgList.Add(migrationPlanInfoMsg);
                 }
                 else if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.NotStarted)
                 {
-                    MigrationPlanInfoNotStartedMsgList.Add(migrationPlanInfoMsg);
+                    MigrationPlanInfoNotStartedMsgList.migrationPlanInfoMsgList.Add(migrationPlanInfoMsg);
                 }
                 else if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.Completed)
                 {
-                    MigrationPlanInfoCompletedMsgList.Add(migrationPlanInfoMsg);
+                    MigrationPlanInfoCompletedMsgList.migrationPlanInfoMsgList.Add(migrationPlanInfoMsg);
                 }
                 else if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.Failed)
                 {
-                    MigrationPlanInfoFailedMsgList.Add(migrationPlanInfoMsg);
+                    MigrationPlanInfoFailedMsgList.migrationPlanInfoMsgList.Add(migrationPlanInfoMsg);
                 }
             }
         }
-
+        /*
         public override string ToString()
         {
-            StringBuilder consoleOp = new StringBuilder();
-            consoleOp.AppendLine(string.Format("Config id : {0}", ConfigId));
-            consoleOp.AppendLine(string.Format("Device name : {0}", DeviceName));
 
             if (MigrationPlanInfoInProgressMsgList.Count == 0 && MigrationPlanInfoNotStartedMsgList.Count == 0 && MigrationPlanInfoCompletedMsgList.Count == 0 && MigrationPlanInfoFailedMsgList.Count == 0)
             {
@@ -717,6 +740,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
 
             return consoleOp.ToString();
         }
+        */
     }
 
     public class MigrationPlanInfoMsg
