@@ -8784,9 +8784,9 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PrimaryNic</maml:name>
+          <maml:name>PrimaryNetworkId</maml:name>
           <maml:description>
-            <maml:para>Primary NIC</maml:para>
+            <maml:para>Primary Network Id</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
@@ -8822,9 +8822,9 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>PrimaryNic</maml:name>
+        <maml:name>PrimaryNetworkId</maml:name>
         <maml:description>
-          <maml:para>Primary NIC</maml:para>
+          <maml:para>Primary Network Id</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
