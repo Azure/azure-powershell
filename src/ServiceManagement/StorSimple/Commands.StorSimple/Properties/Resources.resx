@@ -498,4 +498,7 @@
   <data name="StartASSBackupCloneJobWarningMessage" xml:space="preserve">
     <value>Are you sure you want to clone the backup with backupId {0}?</value>
   </data>
+  <data name="InvalidInterfaceId" xml:space="preserve">
+    <value>{0} is not a valid InterfaceAlias!</value>
+  </data>
 </root>

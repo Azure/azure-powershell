@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// <summary>
         /// Device job id of the job to stop.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.DeviceJobId)]
+        [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.DeviceJobId)]
         [ValidateNotNullOrEmptyAttribute]
         public string JobId { get; set; }
 

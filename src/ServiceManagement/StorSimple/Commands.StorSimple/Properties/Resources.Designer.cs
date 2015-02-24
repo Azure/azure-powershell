@@ -421,6 +421,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is not a valid InterfaceAlias!.
+        /// </summary>
+        internal static string InvalidInterfaceId {
+            get {
+                return ResourceManager.GetString("InvalidInterfaceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid IP address provided for {0} ! Please make sure it is in the correct format..
         /// </summary>
         internal static string InvalidIPAddressProvidedMessage {

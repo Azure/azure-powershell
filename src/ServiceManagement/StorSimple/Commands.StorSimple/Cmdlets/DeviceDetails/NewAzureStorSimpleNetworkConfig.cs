@@ -109,6 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         private IPAddress ipv4Gateway;
         private IPAddress ipv4Netmask;
         private IPAddress ipv6Gateway;
+        NetInterfaceId interfaceAlias;
 
         public override void ExecuteCmdlet()
         {
@@ -130,7 +131,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     IPv4Address = ipv4Address,
                     IPv6Prefix = IPv6Prefix,
                     IPv4Netmask = ipv4Netmask,
-                    InterfaceAlias = (NetInterfaceId)Enum.Parse(typeof(NetInterfaceId), InterfaceAlias)
+                    InterfaceAlias = interfaceAlias
                 };
 
                 WriteObject(netConfig);
@@ -144,6 +145,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         }
 
         private bool ProcessParameters(){
+            // parse interfaceAlias
+            if (!Enum.TryParse<NetInterfaceId>(InterfaceAlias, out interfaceAlias))
+            {
+                WriteVerbose(string.Format(Resources.InvalidInterfaceId, InterfaceAlias));
+                return false;
+            }
+
+            // Try and set all the IP address
             if (!TrySetIPAddress(Controller0IPv4Address, out controller0Address, "Controller0IPv4Address"))
             {
                 return false;

@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// <summary>
         /// InstanceId/JobId of the job to retrieve
         /// </summary>
-        [Parameter(Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById,
+        [Parameter(Mandatory=true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById,
             HelpMessage = StorSimpleCmdletHelpMessage.DeviceJobId)]
         public string JobId { get; set; }
 
@@ -160,8 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
             Skip = Skip ?? 0;
 
-            // Need to use xml convert because we want ISO 8601 formatting to avoid deserialization
-            // probs in the backend.
+            // Need to use xml convert because we want ISO 8601 formatting - which is a mandatory requirement from the backend.
             fromDateTimeIsoString = From.HasValue ? XmlConvert.ToString(From.Value) : null;
 
             toDateTimeIsoString = To.HasValue ? XmlConvert.ToString(To.Value) : null;           
