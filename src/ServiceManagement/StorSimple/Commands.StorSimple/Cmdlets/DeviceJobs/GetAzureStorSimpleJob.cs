@@ -67,38 +67,26 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// <summary>
         /// Filter jobs that were created after specified time
         /// </summary>
-        [Parameter(Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByType, HelpMessage=StorSimpleCmdletHelpMessage.FromTime)]
-        [Parameter(Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByStatus, HelpMessage = StorSimpleCmdletHelpMessage.FromTime)]
-        [Parameter(Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.FromTime)]
-        [Parameter(Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByDeviceName, HelpMessage = StorSimpleCmdletHelpMessage.FromTime)]
+        [Parameter(Position = 1, Mandatory=false, HelpMessage = StorSimpleCmdletHelpMessage.FromTime)]
         public DateTime? From { get; set; }
 
         /// <summary>
         /// Filter jobs that were created till specified time
-        /// </summary>
-        [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByType, HelpMessage = StorSimpleCmdletHelpMessage.ToTime)]
-        [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByDeviceName, HelpMessage = StorSimpleCmdletHelpMessage.ToTime)]
-        [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.ToTime)]
-        [Parameter(Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByStatus, HelpMessage = StorSimpleCmdletHelpMessage.ToTime)]
+        /// </summary
+        [Parameter(Position = 2, Mandatory=false, HelpMessage = StorSimpleCmdletHelpMessage.ToTime)]
         public DateTime? To { get; set; }
 
         /// <summary>
         /// Number of results to skip
         /// </summary>
-        [Parameter(Position = 3, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByType, HelpMessage=StorSimpleCmdletHelpMessage.SkipDesc)]
-        [Parameter(Position = 3, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByDeviceName, HelpMessage = StorSimpleCmdletHelpMessage.SkipDesc)]
-        [Parameter(Position = 3, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.SkipDesc)]
-        [Parameter(Position = 3, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByStatus, HelpMessage = StorSimpleCmdletHelpMessage.SkipDesc)]
+        [Parameter(Position = 3, Mandatory=false, HelpMessage = StorSimpleCmdletHelpMessage.SkipDesc)]
         [ValidateRange(0, Int32.MaxValue)]
         public int? Skip { get; set; }
 
         /// <summary>
         /// Number of results to include.
         /// </summary>
-        [Parameter(Position = 4, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByType, HelpMessage=StorSimpleCmdletHelpMessage.FirstDesc)]
-        [Parameter(Position = 4, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByDeviceName, HelpMessage = StorSimpleCmdletHelpMessage.FirstDesc)]
-        [Parameter(Position = 4, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.FirstDesc)]
-        [Parameter(Position = 4, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByStatus, HelpMessage = StorSimpleCmdletHelpMessage.FirstDesc)]
+        [Parameter(Position = 4, Mandatory=false, HelpMessage = StorSimpleCmdletHelpMessage.FirstDesc)]
         [ValidateRange(0, Int32.MaxValue)]
         public int? First { get; set; }
         #endregion params
@@ -135,9 +123,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 else
                 {
                     WriteObject(response.DeviceJobList);
-                    WriteVerbose(string.Format(Resources.DeviceJobsReturnedCount, response.DeviceJobList.Count));
+                    WriteVerbose(string.Format(Resources.DeviceJobsReturnedCount, response.DeviceJobList.Count, 
+                        response.DeviceJobList.Count > 1 ? "s" : string.Empty));
                     if (response.NextPageUri != null
-                        && response.NextPageStartIdentifier != "1")
+                        && response.NextPageStartIdentifier != "-1")
                     {
                         if (First != null)
                         {

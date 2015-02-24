@@ -144,27 +144,27 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         }
 
         private bool ProcessParameters(){
-            if (!TrySetIPv4Address(Controller0IPv4Address, out controller0Address, "Controller0IPv4Address"))
+            if (!TrySetIPAddress(Controller0IPv4Address, out controller0Address, "Controller0IPv4Address"))
             {
                 return false;
             }
-            if (!TrySetIPv4Address(Controller1IPv4Address, out controller1Address, "Controller1IPv4Address"))
+            if (!TrySetIPAddress(Controller1IPv4Address, out controller1Address, "Controller1IPv4Address"))
             {
                 return false;
             }
-            if (!TrySetIPv4Address(IPv4Address, out ipv4Address, "IPv4Address"))
+            if (!TrySetIPAddress(IPv4Address, out ipv4Address, "IPv4Address"))
             {
                 return false;
             }
-            if (!TrySetIPv4Address(IPv4Gateway, out ipv4Gateway, "IPv4Gateway"))
+            if (!TrySetIPAddress(IPv4Gateway, out ipv4Gateway, "IPv4Gateway"))
             {
                 return false;
             }
-            if (!TrySetIPv4Address(IPv4Netmask, out ipv4Netmask, "IPv4Netmask"))
+            if (!TrySetIPAddress(IPv4Netmask, out ipv4Netmask, "IPv4Netmask"))
             {
                 return false;
             }
-            if(!TrySetIPv4Address(IPv6Gateway, out ipv6Gateway, "IPv6Gateway"))
+            if(!TrySetIPAddress(IPv6Gateway, out ipv6Gateway, "IPv6Gateway"))
             {
                 return false;
             }
@@ -192,27 +192,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             return true;
         }
 
-        /// <summary>
-        /// Try to parse an IP Address from the provided string
-        /// </summary>
-        /// <param name="data">IP Address string</param>
-        /// <param name="ipAddress"></param>
-        /// <param name="paramName">Name of the param which is being processed (to be used for errors)</param>
-        private bool TrySetIPv4Address(string data, out IPAddress ipAddress, string paramName){
-            if(data == null){
-                ipAddress = null;
-                return true;
-            }
-            try{
-                ipAddress = IPAddress.Parse(data);
-                return true;
-            }
-            catch(FormatException){
-                ipAddress = null;
-                WriteVerbose(string.Format(Resources.InvalidIPAddressProvidedMessage,paramName));
-                return false;
-            }
-        }
     }
 }
 

@@ -232,7 +232,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} jobs found!.
+        ///   Looks up a localized string similar to {0} Job{1} found!.
         /// </summary>
         internal static string DeviceJobsReturnedCount {
             get {
@@ -1044,18 +1044,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Stopping job with id {0}.
         /// </summary>
-        internal static string StopASSJobMessage {
+        internal static string StopAzureStorSimpleJobMessage {
             get {
-                return ResourceManager.GetString("StopASSJobMessage", resourceCulture);
+                return ResourceManager.GetString("StopAzureStorSimpleJobMessage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to stop the job with id {0}.
         /// </summary>
-        internal static string StopASSJobWarningMessage {
+        internal static string StopAzureStorSimpleJobWarningMessage {
             get {
-                return ResourceManager.GetString("StopASSJobWarningMessage", resourceCulture);
+                return ResourceManager.GetString("StopAzureStorSimpleJobWarningMessage", resourceCulture);
             }
         }
         

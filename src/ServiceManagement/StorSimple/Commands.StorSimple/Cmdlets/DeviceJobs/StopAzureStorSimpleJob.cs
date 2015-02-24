@@ -48,8 +48,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 ConfirmAction(
                    Force.IsPresent,
-                   string.Format(Resources.StopASSJobWarningMessage, JobId),
-                   string.Format(Resources.StopASSJobMessage, JobId),
+                   string.Format(Resources.StopAzureStorSimpleJobWarningMessage, JobId),
+                   string.Format(Resources.StopAzureStorSimpleJobMessage, JobId),
                   JobId,
                   () =>
                   {
@@ -70,11 +70,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                       {
                           WriteVerbose(Resources.StopDeviceJobSucceeded);
                           WriteObject(deviceJobDetails);
-                          return;
                       }
-                      return;
                   });
-                return;
             }
             catch (Exception exception)
             {

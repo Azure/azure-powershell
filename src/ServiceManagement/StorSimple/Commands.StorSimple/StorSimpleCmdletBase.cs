@@ -373,7 +373,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 	
         /// <summary>
         /// this method verifies that the devicename parameter specified is completely configured
-        /// no operation should be allowed to perform on a non-configured device
+        /// most operations are not allowed on a non-configured device
         /// </summary>
         public void VerifyDeviceConfigurationCompleteForDevice(string deviceId)
         {
@@ -426,6 +426,56 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                         return false;
                     }
                 }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Try to parse an IP Address from the provided string
+        /// </summary>
+        /// <param name="data">IP Address string</param>
+        /// <param name="ipAddress"></param>
+        /// <param name="paramName">Name of the param which is being processed (to be used for errors)</param>
+        internal bool TrySetIPAddress(string data, out IPAddress ipAddress, string paramName)
+        {
+            if (data == null)
+            {
+                ipAddress = null;
+                return true;
+            }
+            try
+            {
+                ipAddress = IPAddress.Parse(data);
+                return true;
+            }
+            catch (FormatException)
+            {
+                ipAddress = null;
+                WriteVerbose(string.Format(Resources.InvalidIPAddressProvidedMessage, paramName));
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Validate that all mandatory data for the first Device Configuration has been provided.
+        /// </summary>
+        /// <returns>bool indicating whether all mandatory data is there or not.</returns>
+        internal bool ValidParamsForFirstDeviceConfiguration(NetworkConfig[] netConfigs, TimeZoneInfo timeZone, string primaryDnsServer)
+        {
+            if (netConfigs == null)
+            {
+                return false;
+            }
+            // Make sure network config for Data0 has been provided with atleast Controller0 IP Address
+            var data0 = netConfigs.FirstOrDefault(x => x.InterfaceAlias == NetInterfaceId.Data0);
+            if (data0 == null || data0.Controller0IPv4Address == null)
+            {
+                return false;
+            }
+            // Timezone and Primary Dns Server are also mandatory
+            if (timeZone == null || string.IsNullOrEmpty(primaryDnsServer))
+            {
+                return false;
             }
             return true;
         }

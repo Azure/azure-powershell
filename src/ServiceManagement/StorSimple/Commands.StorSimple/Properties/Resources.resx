@@ -439,7 +439,7 @@
     <value>No more jobs are present for your query!</value>
   </data>
   <data name="DeviceJobsReturnedCount" xml:space="preserve">
-    <value>{0} jobs found!</value>
+    <value>{0} Job{1} found!</value>
   </data>
   <data name="NewNetworkConfigCreated" xml:space="preserve">
     <value>Successfully created a StorSimple Network Configuration for interface {0}</value>
@@ -447,10 +447,10 @@
   <data name="NoDeviceJobFoundWithGivenIdMessage" xml:space="preserve">
     <value>No Job found with the specified Id : {0}</value>
   </data>
-  <data name="StopASSJobMessage" xml:space="preserve">
+  <data name="StopAzureStorSimpleJobMessage" xml:space="preserve">
     <value>Stopping job with id {0}</value>
   </data>
-  <data name="StopASSJobWarningMessage" xml:space="preserve">
+  <data name="StopAzureStorSimpleJobWarningMessage" xml:space="preserve">
     <value>Are you sure you want to stop the job with id {0}</value>
   </data>
   <data name="StopDeviceJobSucceeded" xml:space="preserve">

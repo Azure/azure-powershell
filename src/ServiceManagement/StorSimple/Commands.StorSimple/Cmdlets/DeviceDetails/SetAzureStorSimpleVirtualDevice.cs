@@ -42,16 +42,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// <summary>
         /// New friendly name for the device.
         /// </summary>
-        [Parameter(Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.NewDeviceName)]
+        [Parameter(Mandatory=false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.NewDeviceName)]
         [ValidateNotNullOrEmpty]
         public string NewName { get; set; }
         
         /// <summary>
         /// TimeZone for the device.
         /// </summary>
-        [Parameter(Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone)]
+        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone)]
         [ValidateNotNullOrEmpty] 
-        public TimeZone TimeZone { get; set; }
+        public TimeZoneInfo TimeZone { get; set; }
 
         /// <summary>
         /// Service Encryption Key for the resource.
@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var deviceDetails = StorSimpleClient.GetDeviceDetails(deviceId);
 
                 // Update device details.
-                UpdateDeviceDetails(deviceDetails);
+                StorSimpleClient.UpdateVirtualDeviceDetails(deviceDetails, NewName, TimeZone, SecretKey);
                 
                 // Make request with updated data
                 WriteVerbose(string.Format(Resources.BeginningDeviceConfiguration, deviceDetails.DeviceProperties.FriendlyName));
@@ -96,22 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 this.HandleException(exception);
             }
         }
-
-        private void UpdateDeviceDetails(DeviceDetails details)
-        {
-            if (NewName != null)
-            {
-                details.DeviceProperties.FriendlyName = NewName;
-            }
-            if (TimeZone != null)
-            {
-                details.TimeServer.TimeZone = TimeZone.StandardName;
-            }
-            // encrypt supplied secret with the device public key
-            var encryptedSecretKey = StorSimpleClient.EncryptWithDevicePublicKey(details.DeviceProperties.DeviceId, SecretKey);
-
-            details.VirtualApplianceProperties.EncodedServiceEncryptionKey = encryptedSecretKey;
-        }        
+        
     }
 }
 
