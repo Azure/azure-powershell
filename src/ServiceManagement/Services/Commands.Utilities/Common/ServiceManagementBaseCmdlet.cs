@@ -21,14 +21,14 @@ using System.ServiceModel;
 using System.ServiceModel.Dispatcher;
 using AutoMapper;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure;
 using Hyak.Common;
 
@@ -53,22 +53,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public ManagementClient CreateClient()
         {
-            return AzureSession.ClientFactory.CreateClient<ManagementClient>(CurrentContext.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.ClientFactory.CreateClient<ManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         public ComputeManagementClient CreateComputeClient()
         {
-            return AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(CurrentContext.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         public StorageManagementClient CreateStorageClient()
         {
-            return AzureSession.ClientFactory.CreateClient<StorageManagementClient>(CurrentContext.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.ClientFactory.CreateClient<StorageManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         public NetworkManagementClient CreateNetworkClient()
         {
-            return AzureSession.ClientFactory.CreateClient<NetworkManagementClient>(CurrentContext.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.ClientFactory.CreateClient<NetworkManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         private Lazy<ManagementClient> client;
