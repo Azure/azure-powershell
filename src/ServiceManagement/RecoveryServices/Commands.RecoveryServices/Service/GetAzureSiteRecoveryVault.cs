@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     if (vault.Type.Equals(Constants.ASRVaultType, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        vaultList.Add(new ASRVault(cloudService, vault));
+                        vaultList.Add(new ASRVault(cloudService, vault, this.Profile.Context.Subscription.ToString()));
                     }
                 }
             }

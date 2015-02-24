@@ -17,8 +17,8 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void GetByObject()
         {
-            AzureSubscription subscription = AzureSession.CurrentContext.Subscription;
+            AzureSubscription subscription = this.Profile.Context.Subscription;
             this.Vault.SubscriptionId = subscription.Id.ToString();
 
             CloudService cloudService = RecoveryServicesClient.GetCloudServiceForVault(this.Vault);

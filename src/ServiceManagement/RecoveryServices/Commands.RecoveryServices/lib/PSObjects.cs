@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
@@ -858,6 +858,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.ReplicationHealth = pe.ReplicationHealth;
             this.TestFailoverStateDescription = pe.TestFailoverStateDescription;
 
+            if (!string.IsNullOrWhiteSpace(pe.ReplicationProviderSettings))
+            {
+                AzureVmDiskDetails diskDetails;
+                DataContractUtils.Deserialize<AzureVmDiskDetails>(
+                    pe.ReplicationProviderSettings, out diskDetails);
+
+                this.Disks = diskDetails.Disks;
+                this.OSDiskId = diskDetails.VHDId;
+                this.OSDiskName = diskDetails.OsDisk;
+                this.OS = diskDetails.OsType;
+            }
+
             if (pe.ProtectionProfile != null &&
                 !string.IsNullOrWhiteSpace(pe.ProtectionProfile.ID))
             {
@@ -1107,10 +1119,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.StateDescription = job.StateDescription;
             this.EndTime = job.EndTime;
             this.StartTime = job.StartTime;
-            this.AllowedActions = job.AllowedActions as List<string>;
             this.Name = job.Name;
             this.TargetObjectId = job.TargetObjectId;
             this.TargetObjectName = job.TargetObjectName;
+            if (job.AllowedActions != null && job.AllowedActions.Count > 0)
+            {
+                this.AllowedActions = new List<string>();
+                foreach (var action in job.AllowedActions)
+                {
+                    this.AllowedActions.Add(action);
+                }
+            }
 
             if (!string.IsNullOrEmpty(job.TargetObjectId))
             {
@@ -1226,12 +1245,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="cloudService">cloud service object</param>
         /// <param name="vault">vault object</param>
-        public ASRVault(CloudService cloudService, Vault vault)
+        /// <param name="subscription">Current subscription</param>
+        public ASRVault(CloudService cloudService, Vault vault, string subscription)
         {
             this.CloudServiceName = cloudService.Name;
             this.Location = cloudService.GeoRegion;
             this.Name = vault.Name;
-            this.SubscriptionId = AzureSession.CurrentContext.Subscription.Id.ToString();
+            this.SubscriptionId = subscription;
             this.Status = this.ParseStatus(vault.OperationStatus);
             this.ID = this.ParseVaultId(vault.OutputItems);
             if (vault.OperationStatus.Error != null)

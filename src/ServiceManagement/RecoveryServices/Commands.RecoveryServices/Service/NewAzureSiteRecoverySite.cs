@@ -37,13 +37,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the site to be created
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = false, HelpMessage = "Type of the site to be created")]
-        [ValidateNotNullOrEmpty]
-        public string Type { get; set; }
-
-        /// <summary>
         /// Gets or sets the vault name
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = false, HelpMessage = "Vault Object for which the site has to be created")]
@@ -59,7 +52,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                JobResponse response = RecoveryServicesClient.CreateAzureSiteRecoverySite(this.Name, this.Type, this.Vault);
+                // Currently we support only FabricProviders.HyperVSite.
+                JobResponse response = 
+                    RecoveryServicesClient.CreateAzureSiteRecoverySite(
+                    this.Name,
+                    FabricProviders.HyperVSite,
+                    this.Vault);
 
                 this.WriteObject(response.Job, true);
             }

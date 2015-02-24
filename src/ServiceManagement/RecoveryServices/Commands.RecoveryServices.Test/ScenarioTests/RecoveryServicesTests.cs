@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             this.RunPowerShellTest("Test-RecoveryServicesEnumerationTests -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesProtectionTests()
         {
@@ -61,84 +60,72 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             this.RunPowerShellTest("Test-NetworkUnMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesAzureNetworkMappingTest()
         {
             this.RunPowerShellTest("Test-AzureNetworkMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesAzureNetworkUnMappingTest()
         {
             this.RunPowerShellTest("Test-AzureNetworkUnMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesFailbackTest()
         {
             this.RunPowerShellTest("Test-Failback -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesRRAfterFailoverTest()
         {
             this.RunPowerShellTest("Test-RRAfterFailover -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesRRAfterFailbackTest()
         {
             this.RunPowerShellTest("Test-RRAfterFailback -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesCommitPFOTest()
         {
             this.RunPowerShellTest("Test-CommitPFO -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesCommitAfterFailbackTest()
         {
             this.RunPowerShellTest("Test-CommitAfterFailback -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesPFOTest()
         {
             this.RunPowerShellTest("Test-PFO -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesUFOTest()
         {
             this.RunPowerShellTest("Test-UFO -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesTFOTest()
         {
             this.RunPowerShellTest("Test-TFO -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesEnableProtectionTest()
         {
             this.RunPowerShellTest("Test-EnableProtection -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesDisableProtectionTest()
         {
@@ -159,42 +146,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             this.RunPowerShellTest("Test-E2E_CreateAndAssociate -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesPFORPTest()
         {
             this.RunPowerShellTest("Test-PFORP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesTFORPTest()
         {
             this.RunPowerShellTest("Test-TFORP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesUFORPTest()
         {
             this.RunPowerShellTest("Test-UFORP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesFailbackRPTest()
         {
             this.RunPowerShellTest("Test-FailbackRP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesRRRPTest()
         {
             this.RunPowerShellTest("Test-RRRP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RecoveryServicesCommitRPTest()
         {

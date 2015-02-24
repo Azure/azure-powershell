@@ -61,6 +61,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Add-AzureApplicationGatewaySslCertificate.
+        /// </summary>
+        internal static string AddAzureApplicationGatewaySslCertificateBeginOperation {
+            get {
+                return ResourceManager.GetString("AddAzureApplicationGatewaySslCertificateBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Add-AzureApplicationGatewaySslCertificate.
+        /// </summary>
+        internal static string AddAzureApplicationGatewaySslCertificateCompletedOperation {
+            get {
+                return ResourceManager.GetString("AddAzureApplicationGatewaySslCertificateCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not able to find the cache service just now created.
         /// </summary>
         internal static string CacheServiceMissing {
@@ -133,6 +151,60 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Get-AzureApplicationGateway.
+        /// </summary>
+        internal static string GetAzureApplicationGatewayBeginOperation {
+            get {
+                return ResourceManager.GetString("GetAzureApplicationGatewayBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Get-AzureApplicationGateway.
+        /// </summary>
+        internal static string GetAzureApplicationGatewayCompletedOperation {
+            get {
+                return ResourceManager.GetString("GetAzureApplicationGatewayCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Get-AzureApplicationGatewayConfig.
+        /// </summary>
+        internal static string GetAzureApplicationGatewayConfigBeginOperation {
+            get {
+                return ResourceManager.GetString("GetAzureApplicationGatewayConfigBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Get-AzureApplicationGatewayConfig.
+        /// </summary>
+        internal static string GetAzureApplicationGatewayConfigCompletedOperation {
+            get {
+                return ResourceManager.GetString("GetAzureApplicationGatewayConfigCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Get-AzureApplicationGatewaySslCertificate.
+        /// </summary>
+        internal static string GetAzureApplicationGatewaySslCertificateBeginOperation {
+            get {
+                return ResourceManager.GetString("GetAzureApplicationGatewaySslCertificateBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Get-AzureApplicationGatewaySslCertificate.
+        /// </summary>
+        internal static string GetAzureApplicationGatewaySslCertificateCompletedOperation {
+            get {
+                return ResourceManager.GetString("GetAzureApplicationGatewaySslCertificateCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Intializing parameters....
         /// </summary>
         internal static string InitializingCacheParameters {
@@ -178,6 +250,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: New-AzureApplicationGateway.
+        /// </summary>
+        internal static string NewAzureApplicationGatewayBeginOperation {
+            get {
+                return ResourceManager.GetString("NewAzureApplicationGatewayBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: New-AzureApplicationGateway.
+        /// </summary>
+        internal static string NewAzureApplicationGatewayCompletedOperation {
+            get {
+                return ResourceManager.GetString("NewAzureApplicationGatewayCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to reduce the cache memory? Cache data will be lost..
         /// </summary>
         internal static string PromptOnCacheMemoryReduce {
@@ -192,6 +282,42 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string PromptOnCachePlanChange {
             get {
                 return ResourceManager.GetString("PromptOnCachePlanChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Remove-AzureApplicationGateway.
+        /// </summary>
+        internal static string RemoveAzureApplicationGatewayBeginOperation {
+            get {
+                return ResourceManager.GetString("RemoveAzureApplicationGatewayBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Remove-AzureApplicationGateway.
+        /// </summary>
+        internal static string RemoveAzureApplicationGatewayCompletedOperation {
+            get {
+                return ResourceManager.GetString("RemoveAzureApplicationGatewayCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Remove-AzureApplicationGatewaySslCertificate.
+        /// </summary>
+        internal static string RemoveAzureApplicationGatewaySslCertificateBeginOperation {
+            get {
+                return ResourceManager.GetString("RemoveAzureApplicationGatewaySslCertificateBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Remove-AzureApplicationGatewaySslCertificate.
+        /// </summary>
+        internal static string RemoveAzureApplicationGatewaySslCertificateCompletedOperation {
+            get {
+                return ResourceManager.GetString("RemoveAzureApplicationGatewaySslCertificateCompletedOperation", resourceCulture);
             }
         }
         
@@ -277,11 +403,83 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Set-AzureApplicationGatewayConfig.
+        /// </summary>
+        internal static string SetAzureApplicationGatewayConfigBeginOperation {
+            get {
+                return ResourceManager.GetString("SetAzureApplicationGatewayConfigBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Set-AzureApplicationGatewayConfig.
+        /// </summary>
+        internal static string SetAzureApplicationGatewayConfigCompletedOperation {
+            get {
+                return ResourceManager.GetString("SetAzureApplicationGatewayConfigCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Start-AzureApplicationGateway.
+        /// </summary>
+        internal static string StartAzureApplicationGatewayBeginOperation {
+            get {
+                return ResourceManager.GetString("StartAzureApplicationGatewayBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Start-AzureApplicationGateway.
+        /// </summary>
+        internal static string StartAzureApplicationGatewayCompletedOperation {
+            get {
+                return ResourceManager.GetString("StartAzureApplicationGatewayCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Stop-AzureApplicationGateway.
+        /// </summary>
+        internal static string StopAzureApplicationGatewayBeginOperation {
+            get {
+                return ResourceManager.GetString("StopAzureApplicationGatewayBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Stop-AzureApplicationGateway.
+        /// </summary>
+        internal static string StopAzureApplicationGatewayCompletedOperation {
+            get {
+                return ResourceManager.GetString("StopAzureApplicationGatewayCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Time out to wait for cache service ready.
         /// </summary>
         internal static string TimeoutWaitForCacheServiceReady {
             get {
                 return ResourceManager.GetString("TimeoutWaitForCacheServiceReady", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Update-AzureApplicationGateway.
+        /// </summary>
+        internal static string UpdateAzureApplicationGatewayBeginOperation {
+            get {
+                return ResourceManager.GetString("UpdateAzureApplicationGatewayBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Update-AzureApplicationGateway.
+        /// </summary>
+        internal static string UpdateAzureApplicationGatewayCompletedOperation {
+            get {
+                return ResourceManager.GetString("UpdateAzureApplicationGatewayCompletedOperation", resourceCulture);
             }
         }
         
