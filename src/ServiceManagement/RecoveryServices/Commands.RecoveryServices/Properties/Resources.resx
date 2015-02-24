@@ -252,4 +252,7 @@ Are you sure you want to continue {0}?</value>
     <value>Storage account given is in {0} whereas the vault is in {1}.
 Please provide a storage account with the same location as that of the vault.</value>
   </data>
+  <data name="StorageAccountValidationUnsuccessful" xml:space="preserve">
+    <value>The Subscription or Storage account couldn’t be validated. For failovers to be successful, the Subscription should belong to your account, the Storage account to the Subscription and Storage account location must be the same as location of your Vault.</value>
+  </data>
 </root>
