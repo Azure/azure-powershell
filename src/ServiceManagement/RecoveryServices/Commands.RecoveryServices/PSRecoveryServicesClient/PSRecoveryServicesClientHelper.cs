@@ -163,6 +163,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 return false;
             }
 
+            // Validate that the Geo Location of the storage account is the same as that of the vault.
+            if (string.IsNullOrEmpty(currentStorageAccount.Properties.Location))
+            {
+                return false;
+            }
+
+            if (0 != string.Compare(
+                currentStorageAccount.Properties.Location,
+                vaultLocation,
+                StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.StorageIsNotInTheSameLocationAsVault,
+                    currentStorageAccount.Properties.Location,
+                    vaultLocation));
+            }
+
             return true;
         }
     }
