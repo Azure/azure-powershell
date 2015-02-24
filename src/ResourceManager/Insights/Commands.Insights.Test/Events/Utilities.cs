@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
             Assert.True(string.Equals(PSEventDataNoDetails.SelectedFieldsForQuery, selected, StringComparison.OrdinalIgnoreCase), "Incorrect selected clause without optional parameters");
 
             // Calling with only start date
-            cmdlet.StartTime = startDate.ToString("O");
+            cmdlet.StartTime = startDate;
             cmdlet.ExecuteCmdlet();
 
             VerifyFilterIsUsable(filter: filter);
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
             VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
 
             // Calling with only start and end date
-            cmdlet.EndTime = startDate.AddSeconds(2).ToString("O");
+            cmdlet.EndTime = startDate.AddSeconds(2);
             cmdlet.ExecuteCmdlet();
 
             VerifyFilterIsUsable(filter: filter);
@@ -245,6 +245,18 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
 
             VerifyDetailedOutput(cmdlet: cmdlet, selected: ref selected);
             VerifyContinuationToken(response: response, insinsightsEventOperationsMockightsClientMock: insinsightsEventOperationsMockightsClientMock, cmdlet: cmdlet);
+
+            // Execute negative tests
+            cmdlet.StartTime = DateTime.Now.AddSeconds(1);
+            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+
+            cmdlet.StartTime = DateTime.Now.Subtract(TimeSpan.FromSeconds(20));
+            cmdlet.EndTime = DateTime.Now.Subtract(TimeSpan.FromSeconds(21));
+            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+
+            cmdlet.StartTime = DateTime.Now.Subtract(TimeSpan.FromDays(30));
+            cmdlet.EndTime = DateTime.Now.Subtract(TimeSpan.FromDays(14));
+            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
         }
     }
 }
