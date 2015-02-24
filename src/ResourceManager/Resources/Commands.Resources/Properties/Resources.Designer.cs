@@ -178,6 +178,33 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Moving resource(s) ....
+        /// </summary>
+        internal static string MoveResourcesMessage {
+            get {
+                return ResourceManager.GetString("MoveResourcesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the following resource(s): &apos;{0}&apos;.
+        /// </summary>
+        internal static string MovingResources {
+            get {
+                return ResourceManager.GetString("MovingResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moving resources from different source resource groups is not allowed..
+        /// </summary>
+        internal static string MovingResourcesFromDifferentSourceResourceGroupsNotAllowed {
+            get {
+                return ResourceManager.GetString("MovingResourcesFromDifferentSourceResourceGroupsNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replacing resource group ....
         /// </summary>
         internal static string NewResourceGroupMessage {
@@ -439,7 +466,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unregistering provider....
+        ///   Looks up a localized string similar to Unregistering provider ....
         /// </summary>
         internal static string UnregisterProviderMessage {
             get {

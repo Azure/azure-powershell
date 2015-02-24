@@ -354,6 +354,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         /// <param name="name">The resource group name.</param>
         /// <param name="tag">The resource group tag.</param>
+        /// <param name="detailed">Whether the  return is detailed or not.</param>
         /// <returns>The filtered resource groups</returns>
         public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed)
         {
@@ -428,6 +429,23 @@ namespace Microsoft.Azure.Commands.Resources.Models
         }
 
         /// <summary>
+        /// Moves a number of resources from one resource group to another
+        /// </summary>
+        /// <param name="sourceResourceGroupName"></param>
+        /// <param name="destinationResourceGroup"></param>
+        /// <param name="resourceIds"></param>
+        public virtual AzureOperationResponse MoveResources(string sourceResourceGroupName, string destinationResourceGroup, string[] resourceIds)
+        {
+            var resourcesMoveInfo = new ResourcesMoveInfo
+            {
+                Resources = resourceIds,
+                TargetResourceGroup = destinationResourceGroup,
+            };
+
+            return ResourceManagementClient.Resources.MoveResources(sourceResourceGroupName, resourcesMoveInfo);
+        }
+
+        /// <summary>
         /// Deletes a given resource group
         /// </summary>
         /// <param name="name">The resource group name</param>
@@ -438,7 +456,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 throw new ArgumentException(ProjectResources.ResourceGroupDoesntExists);
             }
 
-            ResourceManagementClient.ResourceGroups.Delete(name);
+           ResourceManagementClient.ResourceGroups.Delete(name);
         }
 
         /// <summary>

@@ -244,6 +244,15 @@
     <value>Are you sure you want to unregister the provider '{0}'</value>
   </data>
   <data name="UnregisterProviderMessage" xml:space="preserve">
-    <value>Unregistering provider...</value>
+    <value>Unregistering provider ...</value>
+  </data>
+  <data name="MoveResourcesMessage" xml:space="preserve">
+    <value>Moving resource(s) ...</value>
+  </data>
+  <data name="MovingResources" xml:space="preserve">
+    <value>Are you sure you want to remove the following resource(s): '{0}'</value>
+  </data>
+  <data name="MovingResourcesFromDifferentSourceResourceGroupsNotAllowed" xml:space="preserve">
+    <value>Moving resources from different source resource groups is not allowed.</value>
   </data>
 </root>

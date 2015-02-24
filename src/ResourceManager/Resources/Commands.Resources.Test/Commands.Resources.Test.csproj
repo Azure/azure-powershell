@@ -155,6 +155,7 @@
     <Compile Include="ResourceGroups\GetAzureLocationCommandTests.cs" />
     <Compile Include="ResourceGroups\SetAzureResourceGroupCommandTests.cs" />
     <Compile Include="Resources\GetAzureResourceCommandTests.cs" />
+    <Compile Include="Resources\MoveAzureResourceCommandTests.cs" />
     <Compile Include="Resources\NewAzureResourceCommandTests.cs" />
     <Compile Include="Resources\RemoveAzureResourceCommandTests.cs" />
     <Compile Include="Resources\SetAzureResourceCommandTests.cs" />

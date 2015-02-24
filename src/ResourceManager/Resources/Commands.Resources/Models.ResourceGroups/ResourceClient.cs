@@ -429,5 +429,30 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             return response.Provider.ToPSResourceProvider();
         }
+
+        /// <summary>
+        /// Parses an array of resource ids to extract the resource group name
+        /// </summary>
+        /// <param name="resourceIds">An array of resource ids</param>
+        public string[] ExtractResourceGroups(string[] resourceIds)
+        {
+            var splitResourceIds = resourceIds
+               .Select(resourceId => resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries))
+               .ToArray();
+
+            if (splitResourceIds.Any(splitResourceId => splitResourceId.Length % 2 != 0 ||
+                splitResourceId.Length < 8 ||
+                !string.Equals("subscriptions", splitResourceId[0], StringComparison.InvariantCultureIgnoreCase) ||
+                !string.Equals("resourceGroups", splitResourceId[2], StringComparison.InvariantCultureIgnoreCase) ||
+                !string.Equals("providers", splitResourceId[4], StringComparison.InvariantCultureIgnoreCase)))
+            {
+                throw new System.Management.Automation.PSArgumentException(ProjectResources.InvalidFormatOfResourceId);
+            }
+
+            return splitResourceIds
+                .Select(splitResourceId => splitResourceId[3])
+                .Distinct(StringComparer.InvariantCultureIgnoreCase)
+                .ToArray();
+        }
     }
 }
