@@ -22,12 +22,13 @@ using System.Management.Automation;
 using System.Net;
 using System.Net.Cache;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
@@ -1058,6 +1059,98 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #endregion
 
+
+
+        [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "PAAS"), Priority(1), Owner("huangpf"), Description("Test the ADDomain cmdlets.")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\package.csv", "package#csv", DataAccessMethod.Sequential)]
+        public void AzureServiceADDomainExtensionTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+
+            // Choose the package and config files from local machine
+            string packageName = Convert.ToString(TestContext.DataRow["upgradePackage"]);
+            string configName = Convert.ToString(TestContext.DataRow["upgradeConfig"]);
+            var packagePath1 = new FileInfo(Directory.GetCurrentDirectory() + "\\" + packageName);
+            var configPath1 = new FileInfo(Directory.GetCurrentDirectory() + "\\" + configName);
+
+            Assert.IsTrue(File.Exists(packagePath1.FullName), "VHD file not exist={0}", packagePath1);
+            Assert.IsTrue(File.Exists(configPath1.FullName), "VHD file not exist={0}", configPath1);
+
+            string deploymentName = "deployment1";
+            string deploymentLabel = "label1";
+            DeploymentInfoContext result;
+
+            PSCredential cred = new PSCredential(username, Utilities.convertToSecureString(password));
+
+            try
+            {
+                serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
+                vmPowershellCmdlets.NewAzureService(serviceName, serviceName, locationName);
+                Console.WriteLine("service, {0}, is created.", serviceName);
+
+                // Workgroup Config
+                var workGroupName = "test";
+                ExtensionConfigurationInput config = vmPowershellCmdlets.NewAzureServiceDomainJoinExtensionConfig(
+                    workGroupName, null, null, false, null, null, null);
+
+                vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Production, deploymentLabel, deploymentName, false, false, config);
+
+                result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
+                pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 2);
+                Console.WriteLine("successfully deployed the package");
+
+                var resultContext = vmPowershellCmdlets.GetAzureServiceDomainJoinExtension(serviceName);
+                Assert.IsTrue(string.IsNullOrEmpty(resultContext.User));
+                Assert.IsTrue(resultContext.Name == workGroupName);
+                Assert.IsTrue(resultContext.Restart == false);
+
+                vmPowershellCmdlets.RemoveAzureServiceDomainJoinExtension(serviceName, DeploymentSlotType.Production);
+
+                // Join a Workgroup
+                vmPowershellCmdlets.SetAzureServiceDomainJoinExtension(
+                    workGroupName, serviceName, DeploymentSlotType.Production, null, null, false, null, null, "1.*");
+                resultContext = vmPowershellCmdlets.GetAzureServiceDomainJoinExtension(serviceName);
+                Assert.IsTrue(string.IsNullOrEmpty(resultContext.User));
+                Assert.IsTrue(resultContext.Name == workGroupName);
+                Assert.IsTrue(resultContext.Restart == false);
+                Assert.IsTrue(resultContext.Version == "1.*");
+
+                vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
+
+                // Domain Config
+                var domainName = "test.bing.com";
+                config = vmPowershellCmdlets.NewAzureServiceDomainJoinExtensionConfig(
+                    domainName, null, null, null, null, null, 35, true, cred, "1.*");
+                Assert.IsTrue(config.Roles.Any(r => r.Default));
+                Assert.IsTrue(config.PublicConfiguration.Contains(cred.UserName));
+                Assert.IsTrue(config.PublicConfiguration.Contains(domainName));
+                Assert.IsTrue(config.PublicConfiguration.Contains("35"));
+
+                vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Production, deploymentLabel, deploymentName, false, false, config);
+
+                vmPowershellCmdlets.RemoveAzureServiceDomainJoinExtension(serviceName, DeploymentSlotType.Production);
+
+                // Join a Domain
+                vmPowershellCmdlets.SetAzureServiceDomainJoinExtension(
+                    domainName, cred, 35, false, serviceName, DeploymentSlotType.Production, null, (X509Certificate2)null, null, (PSCredential)null, null, "1.*");
+
+                resultContext = vmPowershellCmdlets.GetAzureServiceDomainJoinExtension(serviceName);
+                Assert.IsTrue(resultContext.User == cred.UserName);
+                Assert.IsTrue(resultContext.Name == domainName);
+                Assert.IsTrue(resultContext.JoinOption == 35);
+                Assert.IsTrue(resultContext.Restart == false);
+                Assert.IsTrue(resultContext.Version == "1.*");
+
+                vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
+
+                pass &= Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDeployment, serviceName, DeploymentSlotType.Production);
+            }
+            catch (Exception e)
+            {
+                pass = false;
+                Assert.Fail("Exception occurred: {0}", e.ToString());
+            }
+        }
 
         #region AzureServiceRemoteDesktopExtension Tests
 

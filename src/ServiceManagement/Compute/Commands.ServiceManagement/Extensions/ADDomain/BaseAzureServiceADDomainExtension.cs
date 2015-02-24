@@ -181,6 +181,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         public BaseAzureServiceADDomainExtensionCmdlet()
             : base()
         {
+            PrivateConfig.Password = string.Empty;
+            PrivateConfig.UnjoinDomainPassword = string.Empty;
         }
 
         protected override void ValidateParameters()
@@ -188,8 +190,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             base.ValidateParameters();
             ProviderNamespace = DomainExtensionNamespace;
             ExtensionName = DomainExtensionType;
-            PrivateConfig.Password = string.Empty;
-            PrivateConfig.UnjoinDomainPassword = string.Empty;
         }
 
         protected override void ValidateConfiguration()

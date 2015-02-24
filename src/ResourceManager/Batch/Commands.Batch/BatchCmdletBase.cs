@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 if (batchClient == null)
                 {
-                    batchClient = new BatchClient(CurrentContext);
+                    batchClient = new BatchClient(Profile.Context);
                 }
                 return batchClient;
             }
