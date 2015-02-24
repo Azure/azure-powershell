@@ -17,6 +17,7 @@ using System.ComponentModel;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 
@@ -29,7 +30,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [OutputType(typeof(ASRProtectionProfile))]
     public class CreateAzureSiteRecoveryProtectionProfileObject : RecoveryServicesCmdletBase
     {
+        /// <summary>
+        /// Holds Name (if passed) of the protection profile object.
+        /// </summary>
+        private string targetName = string.Empty;
+
         #region Parameters
+
+        /// <summary>
+        /// Gets or sets Name of the Protection Profile.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets Replication Provider of the Protection Profile.
@@ -65,13 +78,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccount { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether stored data needs to be encrypted.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
-        [DefaultValue(false)]
-        public SwitchParameter EncryptStoredData { get; set; }
 
         /// <summary>
         /// Gets or sets Replication Frequency of the Protection Profile in seconds.
@@ -143,6 +149,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [DefaultValue(false)]
         public SwitchParameter AllowReplicaDeletion { get; set; }
 
+        /// <summary>
+        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -183,7 +195,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void EnterpriseToAzureProtectionProfileObject()
         {
-            if (string.Compare(this.ReplicationProvider, Constants.HyperVReplicaAzure, StringComparison.OrdinalIgnoreCase) != 0)
+            if (string.Compare(
+                this.ReplicationProvider,
+                Constants.HyperVReplicaAzure,
+                StringComparison.OrdinalIgnoreCase) != 0)
             {
                 throw new InvalidOperationException(
                     string.Format(
@@ -191,24 +206,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ReplicationProvider));
             }
 
-            // Verify whether the subscription is associated with the account or not.
-            PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.RecoveryAzureSubscription);
-
             // Verify whether the storage account is associated with the subscription or not.
-            //// PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
+            bool validationSuccessful = RecoveryServicesClient.ValidateStorageAccountAssociation(
+                this.RecoveryAzureSubscription,
+                this.RecoveryAzureStorageAccount,
+                this.GetCurrentValutLocation());
 
-            PSRecoveryServicesClientHelper.ValidateReplicationStartTime(this.ReplicationStartTime);
+            if (!validationSuccessful)
+            {
+                this.WriteWarning(string.Format(Resources.StorageAccountValidationUnsuccessful));
 
-            ushort replicationFrequencyInSeconds = PSRecoveryServicesClientHelper.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+                this.ConfirmAction(
+                    this.Force.IsPresent,
+                    string.Format(Properties.Resources.ValidationUnsuccessfulWarning, this.targetName),
+                    string.Format(Properties.Resources.NewProtectionProfileObjectWhatIfMessage),
+                    this.targetName,
+                    new Action(this.ProceedToCreateProtectionProfileObject));
+            }
+            else
+            {
+                this.ProceedToCreateProtectionProfileObject();
+            }
+        }
+
+        /// <summary>
+        /// Proceeds to Create an E2A Protection Profile Object after all the validations are done.
+        /// </summary>
+        private void ProceedToCreateProtectionProfileObject()
+        {
+            PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
+
+            ushort replicationFrequencyInSeconds = 
+                PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(
+                this.ReplicationFrequencyInSeconds);
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
+                Name = this.Name,
                 ReplicationProvider = this.ReplicationProvider,
                 HyperVReplicaAzureProviderSettingsObject = new HyperVReplicaAzureProviderSettings()
                 {
                     RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                     RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
-                    EncryptStoredData = this.EncryptStoredData,
+                    //// Currently Data Encryption is not supported.
+                    EncryptStoredData = false,
                     ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
                     RecoveryPoints = this.RecoveryPoints,
                     ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
@@ -233,12 +274,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ReplicationProvider));
             }
 
-            PSRecoveryServicesClientHelper.ValidateReplicationStartTime(this.ReplicationStartTime);
+            PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
 
-            ushort replicationFrequencyInSeconds = PSRecoveryServicesClientHelper.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+            ushort replicationFrequencyInSeconds = PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
 
             ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
             {
+                Name = this.Name,
                 ReplicationProvider = this.ReplicationProvider,
                 HyperVReplicaAzureProviderSettingsObject = null,
                 HyperVReplicaProviderSettingsObject = new HyperVReplicaProviderSettings()

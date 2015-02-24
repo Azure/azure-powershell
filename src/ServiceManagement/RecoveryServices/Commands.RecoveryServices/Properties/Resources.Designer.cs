@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;Calls using ID based parameter &apos;{0}&apos; will not be supported from next release. Please use its corresponding full object parameter instead.&quot;.
+        ///   Looks up a localized string similar to &quot;Calls using ID based parameter {0} will not be supported from next release. Please use its corresponding full object parameter instead.&quot;.
         /// </summary>
         internal static string IDBasedParamUsageNotSupportedFromNextRelease {
             get {
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;&apos;{0}&apos; will be a mandatory paramter from next release.&quot;.
+        ///   Looks up a localized string similar to &quot;{0} will be a mandatory paramter from next release.&quot;.
         /// </summary>
         internal static string MandatoryParamFromNextRelease {
             get {
@@ -224,6 +224,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string NetworkArgumentsMissingForUpdateVmProperties {
             get {
                 return ResourceManager.GetString("NetworkArgumentsMissingForUpdateVmProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creates a new in-memory protection profile association object..
+        /// </summary>
+        internal static string NewProtectionProfileObjectWhatIfMessage {
+            get {
+                return ResourceManager.GetString("NewProtectionProfileObjectWhatIfMessage", resourceCulture);
             }
         }
         
@@ -345,11 +354,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account {0} is not associated with the account.
+        ///   Looks up a localized string similar to Storage account given is in {0} whereas the vault is in {1}.
+        ///Please provide a storage account with the same location as that of the vault..
         /// </summary>
-        internal static string StorageIsNotAssociatedWithTheAccount {
+        internal static string StorageIsNotInTheSameLocationAsVault {
             get {
-                return ResourceManager.GetString("StorageIsNotAssociatedWithTheAccount", resourceCulture);
+                return ResourceManager.GetString("StorageIsNotInTheSameLocationAsVault", resourceCulture);
             }
         }
         
@@ -368,6 +378,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string SubscriptionIsNotAssociatedWithTheAccount {
             get {
                 return ResourceManager.GetString("SubscriptionIsNotAssociatedWithTheAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not validate the storage account and subscription given.
+        ///Are you sure you want to continue {0}?.
+        /// </summary>
+        internal static string ValidationUnsuccessfulWarning {
+            get {
+                return ResourceManager.GetString("ValidationUnsuccessfulWarning", resourceCulture);
             }
         }
         

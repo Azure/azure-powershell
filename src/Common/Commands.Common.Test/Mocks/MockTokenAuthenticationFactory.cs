@@ -13,9 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Authentication;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using System;
 using System.Security;
 
@@ -62,7 +61,19 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 account.Id = "test";
             }
 
-            return TokenProvider(account, environment, tenant);
+            if (TokenProvider == null)
+            {
+                return new MockAccessToken()
+                {
+                    AccessToken = account.Id,
+                    LoginType = LoginType.OrgId,
+                    UserId = account.Id
+                };
+            }
+            else
+            {
+                return TokenProvider(account, environment, tenant);
+            }
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
