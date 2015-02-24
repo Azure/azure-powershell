@@ -146,8 +146,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             Assert.Equal(1, tokenCache.ReadItems().Count());
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
-
-
             // Verify
             Assert.Equal(0, tokenCache.ReadItems().Count());
         }
@@ -422,6 +420,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             {
                 // Act
                 cmdlt.InvokeBeginProcessing();
+                AzureSession.DataStore = FileUtilities.DataStore;
                 cmdlt.ExecuteCmdlet();
                 cmdlt.InvokeEndProcessing();
 
@@ -462,6 +461,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             {
                 // Act
                 cmdlt.InvokeBeginProcessing();
+                AzureSession.DataStore = FileUtilities.DataStore;
                 cmdlt.ExecuteCmdlet();
                 cmdlt.InvokeEndProcessing();
 

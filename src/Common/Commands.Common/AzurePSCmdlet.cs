@@ -80,8 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 AzureSession.TokenCache = new ProtectedFileTokenCache(tokenCacheFile);
                 AzureSession.DataStore = new DiskDataStore();
             }
-
-            if (AzureSession.TokenCache == null)
+            else
             {
                 AzureSession.TokenCache = TokenCache.DefaultShared;
             }
