@@ -96,5 +96,27 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string VolumeContainerGroups = "List of Volme Container Groups to be failed over";
         public const string FailoverTargetDeviceName = "Name of the StorSimple failover target device";
         public const string FailoverTargetDeviceId = "The device identifier of the StorSimple failover target device";
+        public const string Controller0IPv4Address = "IPv4 address of controller0. Should be set on Data0 only.";
+        public const string Controller1IPv4Address = "IPv4 address of controller1. Should be set on Data0 only.";
+        public const string InterfaceAlias = "Alias of interface the network config is for. Must be one of the values from Data0 to Data5";
+        public const string IPv4Address = "IPv4 Address for the net interface";
+        public const string IPv4Gateway = "IPv4 Address of gateway";
+        public const string IPv4Netmask = "IPv4 netmask for this interface";
+        public const string IPv6Gateway = "IPv4 net mask for interface";
+        public const string IPv6Prefix = "IPv6 Prefix for the net interface";
+        public const string IsCloudEnabled = "Whether the net interface is cloud enabled/disabled";
+        public const string IsIscsiEnabled = "Whether the net interface is iscsi enabled/disabled";
+        public const string PrimaryDnsServer = "Primary DNS server for the device.";
+        public const string SecondaryDnsServer = "Secondary DNS server for the device.";
+        public const string StorSimpleNetworkConfig = "A collection of network configs for interfaces on the device.";
+        public const string TimeZone = "TimeZone for the device.";
+        public const string NewDeviceName = "New friendly name for the device.";
+        public const string DeviceJobId = "Instance id of the device job";
+        public const string SEK = "Service Encryption Key for the resource of the virtual device.";
+        public const string FromTime = "Beginning of time interval for which to filter results.";
+        public const string ToTime = "End of time interval for which to filter results.";
+        public const string DeviceJobStatus = "Status of job. Valid values - Running, Completed, Cancelled, Failed, Cancelling, CompletedWithErrors";
+        public const string DeviceJobType = "Type of job. Valid values - Backup, ManualBackup, Restore, CloneWorkflow, DeviceRestore, Update, SupportPackage, VirtualApplianceProvisioning";
+
     }
 }

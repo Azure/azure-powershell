@@ -17,6 +17,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
+using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
+using System.Net;
+using System.Net.Sockets;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
@@ -37,6 +40,41 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return deviceDetailsResponse.DeviceDetails;
         }
 
+        /// <summary>
+        /// Update device details for specified device given the specified data
+        /// </summary>
+        /// <param name="deviceDetails">Current device details for the device.</param>
+        /// <param name="newName">New friendly name for the device. Null if its not to be changed</param>
+        /// <param name="timeZone">New timeZone value for the device. Null if its not to be changed</param>
+        /// <param name="primaryDnsServer">New primary DNS server address for the device. Null if its not to be changed</param>
+        /// <param name="secondaryDnsServer">New Secondary DNS Server address for the device. Null if its not to be changed</param>
+        /// <param name="networkConfigs">An array or NetworkConfig objects for different interfaces. Null if its not to be changed</param>
+        /// <returns></returns>
+        public TaskStatusInfo UpdateDeviceDetails(DeviceDetails deviceDetails, string newName, TimeZoneInfo timeZone, IPAddress primaryDnsServer,
+            IPAddress secondaryDnsServer, NetworkConfig[] networkConfigs)
+        {
+            // Update the object
+            this.UpdateDeviceDetailsObject(deviceDetails, newName, timeZone, primaryDnsServer, secondaryDnsServer, networkConfigs);
+            // Copy stuff over from the DeviceDetails object into a new DeviceDetailsRequest object.
+            var request = new DeviceDetailsRequest();
+            MiscUtils.CopyProperties(deviceDetails, request);
+            var taskStatusInfo = this.GetStorSimpleClient().DeviceDetails.UpdateDeviceDetails(request, this.GetCustomRequestHeaders());
+            return taskStatusInfo;
+        }
+
+        /// <summary>
+        /// Update device details for a device by passing the updated details themselves.
+        /// </summary>
+        /// <param name="updatedDetails">The new state of DeviceDetails for the device.</param>
+        /// <returns></returns>
+        public TaskStatusInfo UpdateDeviceDetails(DeviceDetails updatedDetails)
+        {
+            var request = new DeviceDetailsRequest();
+            MiscUtils.CopyProperties(updatedDetails, request);
+            var taskStatusInfo = this.GetStorSimpleClient().DeviceDetails.UpdateDeviceDetails(request, this.GetCustomRequestHeaders());
+            return taskStatusInfo;
+        }
+
         public string GetDeviceId(string deviceToUse)
         {
             if (deviceToUse == null) throw new ArgumentNullException("deviceToUse");
@@ -52,6 +90,146 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 return null;
             }
             return iscsiConnectionResponse.IscsiConnections.ToList();
+        }
+
+        /// <summary>
+        /// Update the specified DeviceDetails object with given network config data
+        /// </summary>
+        /// <param name="details">DeviceDetails object to be updated</param>
+        /// <param name="netConfig">network config object to pick new details from</param>
+        private void UpdateDeviceDetailsWithNetworkConfig(DeviceDetails details, NetworkConfig netConfig)
+        {
+            // See if deviceDetails already has an object for the interface for which network config has been provided.
+            // If not, then a new object is to be provided.
+            var netInterface = details.NetInterfaceList.FirstOrDefault(x => x.InterfaceId == netConfig.InterfaceAlias);
+            if (netInterface == null)
+            {
+                netInterface = new NetInterface
+                {
+                    NicIPv4Settings = new NicIPv4(),
+                    NicIPv6Settings = new NicIPv6()
+                };
+                details.NetInterfaceList.Add(netInterface);
+            }
+
+            netInterface.IsIScsiEnabled = netConfig.IsIscsiEnabled.HasValue ? netConfig.IsIscsiEnabled.Value : netInterface.IsIScsiEnabled;
+
+            netInterface.IsCloudEnabled = netConfig.IsCloudEnabled.HasValue ? netConfig.IsCloudEnabled.Value : netInterface.IsCloudEnabled;
+
+            if (netConfig.InterfaceAlias == NetInterfaceId.Data0)
+            {   // Other interfaces are not supposed to have controller IPs
+                if (netConfig.Controller0IPv4Address != null)
+                {
+                    netInterface.NicIPv4Settings.Controller0IPv4Address = netConfig.Controller0IPv4Address.ToString();
+                }
+                if (netConfig.Controller1IPv4Address != null)
+                {
+                    netInterface.NicIPv4Settings.Controller1IPv4Address = netConfig.Controller1IPv4Address.ToString();
+                }
+            }
+            if (netConfig.IPv4Gateway != null)
+            {
+                netInterface.NicIPv4Settings.IPv4Gateway = netConfig.IPv4Gateway.ToString();
+            }
+            if (netConfig.IPv4Address != null)
+            {
+                netInterface.NicIPv4Settings.IPv4Address = netConfig.IPv4Address.ToString();
+            }
+            if (netConfig.IPv4Netmask != null)
+            {
+                netInterface.NicIPv4Settings.IPv4Netmask = netConfig.IPv4Netmask.ToString();
+            }
+            if (netConfig.IPv6Prefix != null)
+            {
+                netInterface.NicIPv6Settings.IPv6Prefix = netConfig.IPv6Prefix.ToString();
+            }
+            if (netConfig.IPv6Gateway != null)
+            {
+                netInterface.NicIPv6Settings.IPv6Gateway = netConfig.IPv6Gateway.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Modify the provided DeviceDetails object with the data provided
+        /// </summary>
+        /// <param name="details"></param>
+        private void UpdateDeviceDetailsObject(DeviceDetails deviceDetails, string newName, TimeZoneInfo timeZone, IPAddress primaryDnsServer, 
+            IPAddress secondaryDnsServer, NetworkConfig[] networkConfigs)
+        {
+            // modify details for non-null data provided to cmdlet
+
+            if (!string.IsNullOrEmpty(newName))
+            {
+                deviceDetails.DeviceProperties.FriendlyName = newName;
+            }
+
+            if (timeZone != null)
+            {
+                deviceDetails.TimeServer.TimeZone = timeZone.StandardName;
+            }
+            if (primaryDnsServer != null)
+            {
+                var primaryDnsString = primaryDnsServer.ToString();
+                var primaryDnsType = primaryDnsServer.AddressFamily;
+                if (primaryDnsType == AddressFamily.InterNetwork)   // IPv4
+                {
+                    deviceDetails.DnsServer.PrimaryIPv4 = primaryDnsString;
+                }
+                else if (primaryDnsType == AddressFamily.InterNetworkV6)
+                {
+                    deviceDetails.DnsServer.PrimaryIPv6 = primaryDnsString;
+                }
+            }
+            if (secondaryDnsServer != null)
+            {
+                var secondaryDnsString = secondaryDnsServer.ToString();
+                var secondaryDnsType = secondaryDnsServer.AddressFamily;
+                if (secondaryDnsType == AddressFamily.InterNetwork)   // IPv4
+                {
+                    deviceDetails.DnsServer.SecondaryIPv4.Clear();
+                    deviceDetails.DnsServer.SecondaryIPv4.Add(secondaryDnsString);
+                }
+                else if (secondaryDnsType == AddressFamily.InterNetworkV6)
+                {
+                    deviceDetails.DnsServer.SecondaryIPv6.Clear();
+                    deviceDetails.DnsServer.SecondaryIPv6.Add(secondaryDnsString);
+                }
+            }
+
+            if (networkConfigs != null && networkConfigs.Count()  > 0)
+            {
+                foreach (var netConfig in networkConfigs)
+                {
+                    this.UpdateDeviceDetailsWithNetworkConfig(deviceDetails, netConfig);
+                }
+            }
+
+            // There are a bunch of details that this cmdlet never edits and the service considers null
+            // values there to mean that there have been no changes.
+            deviceDetails.AlertNotification = null;
+            deviceDetails.Chap = null;
+            deviceDetails.RemoteMgmtSettingsInfo = null;
+            deviceDetails.RemoteMinishellSecretInfo = null;
+            deviceDetails.SecretEncryptionCertThumbprint = null;
+            deviceDetails.Snapshot = null;
+            deviceDetails.VirtualApplianceProperties = null;
+            deviceDetails.WebProxy = null;
+        }
+
+        public void UpdateVirtualDeviceDetails(DeviceDetails details, string newName, TimeZoneInfo timeZone, string sek)
+        {
+            if (newName != null)
+            {
+                details.DeviceProperties.FriendlyName = newName;
+            }
+            if (timeZone != null)
+            {
+                details.TimeServer.TimeZone = timeZone.StandardName;
+            }
+            // encrypt supplied secret with the device public key
+            var encryptedSecretKey = this.EncryptWithDevicePublicKey(details.DeviceProperties.DeviceId, sek);
+
+            details.VirtualApplianceProperties.EncodedServiceEncryptionKey = encryptedSecretKey;
         }
     }
 }
