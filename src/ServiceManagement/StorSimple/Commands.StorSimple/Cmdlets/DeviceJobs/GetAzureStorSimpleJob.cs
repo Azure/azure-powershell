@@ -134,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
                 else
                 {
-                    WriteObject(response.DeviceJobList, true);
+                    WriteObject(response.DeviceJobList);
                     WriteVerbose(string.Format(Resources.DeviceJobsReturnedCount, response.DeviceJobList.Count));
                     if (response.NextPageUri != null
                         && response.NextPageStartIdentifier != "1")

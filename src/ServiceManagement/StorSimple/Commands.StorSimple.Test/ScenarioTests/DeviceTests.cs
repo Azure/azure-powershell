@@ -71,57 +71,5 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
         }
         #endregion Get-AzureStorSimpleDevice
 
-        #region New-AzureStorSimpleNetworkConfig
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewNetworkConfig_Data0()
-        {
-            RunPowerShellTest("Test-NewNetworkConfigData0");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewNetworkConfig_Others()
-        {
-            RunPowerShellTest("Test-NewNetworkConfigOthers");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewNetworkConfig_InvalidParams()
-        {
-            RunPowerShellTest("Test-NewNetworkConfigInvalidParams");
-        }
-        
-        #endregion
-
-        #region Set-AzureStorSimpleDevice
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDeviceConfig_FirstTimeSetup()
-        {
-            RunPowerShellTest("Test-DeviceConfigFirstTimeSetup");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDeviceConfig_FullSetup()
-        {
-            RunPowerShellTest("Test-DeviceConfigFullSetup");
-        }
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDeviceConfig_InvalidFirstTimeSetup()
-        {
-            RunPowerShellTest("Test-DeviceConfigInvalidFirstTimeSetup");
-        }
-        #endregion
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualDeviceConfig()
-        {
-            RunPowerShellTest("Test-VirtualDeviceConfig");
-        }
     }
 }

@@ -210,8 +210,9 @@ function Test-DeviceConfigFirstTimeSetup{
 	#assert stuff on updated details.
 	Assert-AreEqual $newDetails.DeviceProperties.FriendlyName $newName
 	$newData0 = $newDetails.NetInterfaceList | where {$_.InterfaceId.ToString() -eq "Data0"}
-	Assert-AreEqual $newData0.NicIPv4Settings.Controller0IPv4Address 10.67.64.48
-	Assert-AreEqual $newData0.NicIPv4Settings.Controller1IPv4Address 10.67.64.49
+	Assert-NotNull $newData0 "Data0 interface not found"
+	Assert-AreEqual $newData0.NicIPv4Settings.Controller0IPv4Address 10.67.64.48 "Controller0 IP address is not as expected"
+	Assert-AreEqual $newData0.NicIPv4Settings.Controller1IPv4Address 10.67.64.49 "Controller1 IP address is not as expected"
 }
 
 <#

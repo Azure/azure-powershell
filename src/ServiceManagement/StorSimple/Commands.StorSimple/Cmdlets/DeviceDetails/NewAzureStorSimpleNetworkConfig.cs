@@ -114,6 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             if (!ProcessParameters())
             {
+                WriteObject(null);
                 return;
             }
             try
@@ -171,26 +172,22 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             // Only EnableCloud, Controller0 and controller1 IP Addresses can be set on Data0
             if (InterfaceAlias == NetInterfaceId.Data0.ToString())
             {
-                if(IPv4Address != null && IPv4Gateway != null && IPv4Netmask != null
-                    && IPv6Gateway != null && IPv6Prefix != null && EnableCloud != null)
+                if(IPv4Address != null || IPv4Gateway != null || IPv4Netmask != null
+                    && IPv6Gateway != null || IPv6Prefix != null || EnableIscsi != null)
                 {
                     WriteVerbose(Resources.NetworkConfigData0AllowedSettings);
-                    WriteObject(null);
                     return false;
                 }
             }
-            // On other interfaces, Controller0 and Controller1 IP Addresses cannot be set
+            // On other interfaces (non-Data0), Controller0 and Controller1 IP Addresses cannot be set
             else
             {
-                if (Controller0IPv4Address != null && Controller1IPv4Address != null)
+                if (Controller0IPv4Address != null || Controller1IPv4Address != null)
                 {
                     WriteVerbose(Resources.NetworkConfigControllerIPsNotAllowedOnOthers);
-                    WriteObject(null);
                     return false;
                 }
             }
-
-            // Controller0 and Controller1 IP Address cant be set on non Data0 interfaces
 
             return true;
         }
@@ -213,7 +210,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             catch(FormatException){
                 ipAddress = null;
                 WriteVerbose(string.Format(Resources.InvalidIPAddressProvidedMessage,paramName));
-                WriteObject(null);
                 return false;
             }
         }
