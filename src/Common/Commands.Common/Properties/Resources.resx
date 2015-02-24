@@ -1346,9 +1346,6 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="RemoveProfileMessage" xml:space="preserve">
     <value>Removing the Azure profile</value>
   </data>
-  <data name="StorageAccountValidationUnsuccessful" xml:space="preserve">
-    <value>The Subscription or Storage account couldn’t be validated. For failovers to be successful, the Subscription should belong to your account, the Storage account to the Subscription and Storage account location must be the same as location of your Vault.</value>
-  </data>
   <data name="SubscriptionDataFileDeprecated" xml:space="preserve">
     <value>The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information.</value>
   </data>

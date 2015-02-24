@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             if (!validationSuccessful)
             {
-                this.WriteWarning(string.Format(Resources.StorageAccountValidationUnsuccessful));
+                this.WriteWarning(string.Format(Properties.Resources.StorageAccountValidationUnsuccessful));
 
                 this.ConfirmAction(
                     this.Force.IsPresent,

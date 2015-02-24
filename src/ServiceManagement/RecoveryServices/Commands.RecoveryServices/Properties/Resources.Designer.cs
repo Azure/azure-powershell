@@ -345,6 +345,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Subscription or Storage account couldn’t be validated. For failovers to be successful, the Subscription should belong to your account, the Storage account to the Subscription and Storage account location must be the same as location of your Vault..
+        /// </summary>
+        internal static string StorageAccountValidationUnsuccessful {
+            get {
+                return ResourceManager.GetString("StorageAccountValidationUnsuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage account given is in {0} whereas the vault is in {1}.
         ///Please provide a storage account with the same location as that of the vault..
         /// </summary>
