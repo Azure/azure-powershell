@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
@@ -69,12 +70,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private void InitializeProfile()
         {
             // Load profile from disk 
-            var profileFromDisk = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            var profileFromDisk = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
             if (Profile == null ||
-                Profile.ProfilePath == profileFromDisk.ProfilePath)
+                string.Equals(Profile.ProfilePath, profileFromDisk, StringComparison.OrdinalIgnoreCase))
             {
-                Profile = profileFromDisk;
+                Profile = new AzureProfile(profileFromDisk);
+                var tokenCacheFile = Path.Combine(AzureSession.ProfileDirectory, "TokenCache.dat");
+                AzureSession.TokenCacheFile = tokenCacheFile;
+                AzureSession.TokenCache = new ProtectedFileTokenCache(tokenCacheFile);
+                AzureSession.DataStore = new DiskDataStore();
             }
+
+            if (AzureSession.TokenCache == null)
+            {
+                AzureSession.TokenCache = TokenCache.DefaultShared;
+            }
+
         }
 
         /// <summary>

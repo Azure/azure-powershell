@@ -245,7 +245,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 password.AppendChar(passwordchar);
             }
 
-            return new PSCredential((string)propertyBag[UsernameKey], password);
+            return new PSCredential(username, password);
         }
     }
 }

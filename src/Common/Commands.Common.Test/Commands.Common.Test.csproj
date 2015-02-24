@@ -156,7 +156,6 @@
   <ItemGroup>
     <Compile Include="Common\AuthenticationFactoryTests.cs" />
     <Compile Include="Common\MockSubsciptionFactory.cs" />
-    <Compile Include="Common\ProfileCmdltsTests.cs" />
     <Compile Include="Common\ServicePrincipalStoreTests.cs" />
     <Compile Include="Common\GeneralUtilitiesTests.cs" />
     <Compile Include="Common\Data.cs" />

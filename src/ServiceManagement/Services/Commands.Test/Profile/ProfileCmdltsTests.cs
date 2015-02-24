@@ -19,6 +19,7 @@ using Hyak.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -31,7 +32,7 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using Xunit;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
+namespace Microsoft.WindowsAzure.Commands.Test.Profile
 {
     public class ProfileCmdltsTests
     {
@@ -50,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             SetMockData();
-            AzureSession.AuthenticationFactory= new MockTokenAuthenticationFactory();
+            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }
 
         [Fact]
@@ -111,8 +112,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void ClearAzureProfileClearsTokenCache()
         {
-            string cacheFileName = Path.Combine(AzurePowerShell.ProfileDirectory, "TokenCache.dat");
-            ProtectedFileTokenCache tokenCache = new ProtectedFileTokenCache(cacheFileName);
+
+            ClearAzureProfileCommand cmdlt = new ClearAzureProfileCommand();
+
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.Force = new SwitchParameter(true);
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            var tokenCache = AzureSession.TokenCache as ProtectedFileTokenCache;
             tokenCache.HasStateChanged = true;
 
             // HACK: Do not look at this code
@@ -136,16 +144,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             tokenCache.AfterAccess.Invoke(args);
 
             Assert.Equal(1, tokenCache.ReadItems().Count());
-
-            ClearAzureProfileCommand cmdlt = new ClearAzureProfileCommand();
-
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.Force = new SwitchParameter(true);
-
-            // Act
-            cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
+
 
             // Verify
             Assert.Equal(0, tokenCache.ReadItems().Count());
@@ -406,7 +407,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             // Setup
             AzureSession.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
-                Properties.Resources.ValidProfileChina);
+                Commands.Common.Test.Properties.Resources.ValidProfileChina);
             ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var oldDataStore = FileUtilities.DataStore;
             FileUtilities.DataStore = AzureSession.DataStore;
@@ -445,7 +446,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             // Setup
             AzureSession.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
-                Properties.Resources.ValidProfileChina);
+                Commands.Common.Test.Properties.Resources.ValidProfileChina);
             ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var oldDataStore = FileUtilities.DataStore;
             FileUtilities.DataStore = AzureSession.DataStore;
@@ -684,7 +685,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 (cmdlet) =>
                 {
                     cmdlet.Credential = credential;
-                }, NewAzureProfileCommand.CredentialsParameterSet, 
+                }, NewAzureProfileCommand.CredentialsParameterSet,
                 (profile) => ValidateCredential(credential, profile, AzureAccount.AccountType.User));
         }
 
@@ -698,7 +699,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 {
                     cmdlet.Properties[NewAzureProfileCommand.UsernameKey] = credential.UserName;
                     cmdlet.Properties[NewAzureProfileCommand.PasswordKey] = password;
-                },  (profile) => ValidateCredential(credential, profile, AzureAccount.AccountType.User));
+                }, (profile) => ValidateCredential(credential, profile, AzureAccount.AccountType.User));
         }
 
         [Fact]
@@ -709,12 +710,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 (cmdlet) =>
                 {
                     cmdlet.Credential = credential;
-                }, NewAzureProfileCommand.ServicePrincipalParameterSet, 
+                }, NewAzureProfileCommand.ServicePrincipalParameterSet,
                 (profile) => ValidateCredential(credential, profile, AzureAccount.AccountType.ServicePrincipal));
         }
 
         [Fact]
-       public void CanCreateProfileFromHashWithSPAuth()
+        public void CanCreateProfileFromHashWithSPAuth()
         {
             var password = GeneratePassword();
             var credential = GenerateCredential(password);
@@ -723,7 +724,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 {
                     cmdlet.Properties[NewAzureProfileCommand.SPNKey] = credential.UserName;
                     cmdlet.Properties[NewAzureProfileCommand.PasswordKey] = password;
-                },  (profile) => ValidateCredential(credential, profile, AzureAccount.AccountType.ServicePrincipal));
+                    cmdlet.Properties[NewAzureProfileCommand.TenantKey] = Guid.NewGuid().ToString();
+                }, (profile) => ValidateCredential(credential, profile, AzureAccount.AccountType.ServicePrincipal));
         }
 
         [Fact]
@@ -736,7 +738,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 {
                     cmdlet.AccountId = credential.UserName;
                     cmdlet.AccessToken = token;
-                }, NewAzureProfileCommand.AccessTokenParameterSet, 
+                }, NewAzureProfileCommand.AccessTokenParameterSet,
                 (profile) => ValidateCredential(credential, profile, AzureAccount.AccountType.AccessToken));
         }
 
@@ -753,7 +755,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 }, (profile) => ValidateCredential(credential, profile, AzureAccount.AccountType.AccessToken));
         }
 
-       [Fact]
+        [Fact]
         public void CanCreateAzureProfileWithFile()
         {
 
@@ -809,19 +811,36 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         private void RunCreateProfileTest(Action<NewAzureProfileCommand> prepare, string parameterSet,
             Guid subscription, Action<AzureProfile> validate)
         {
-            var cmdlet = new NewAzureProfileCommand();
-            prepare(cmdlet);
-            cmdlet.CommandRuntime = commandRuntimeMock;
-            cmdlet.SetParameterSet(parameterSet);
-            cmdlet.ExecuteCmdlet();
-            AzureProfile profile = commandRuntimeMock.OutputPipeline.First() as AzureProfile;
-            Assert.NotNull(profile);
-            Assert.NotNull(profile.Subscriptions);
-            Assert.NotNull(profile.DefaultSubscription);
-            Assert.Equal(profile.DefaultSubscription.Id, subscription);
-            Assert.Equal(profile.Subscriptions.Count, 1);
-            Assert.Equal(profile.Subscriptions.Values.First().Id, subscription);
-            validate(profile);
+            var clientFactory = AzureSession.ClientFactory;
+            try
+            {
+
+                AzureSession.ClientFactory =
+                    new MockClientFactory(
+                        new List<object>
+                        {
+                            ProfileClientHelper.CreateRdfeSubscriptionClient(subscription.ToString()),
+                            ProfileClientHelper.CreateCsmSubscriptionClient(new List<string>{subscription.ToString()}, new List<string>{subscription.ToString()})
+                        }, true);
+
+                var cmdlet = new NewAzureProfileCommand();
+                prepare(cmdlet);
+                cmdlet.CommandRuntime = commandRuntimeMock;
+                cmdlet.SetParameterSet(parameterSet);
+                cmdlet.ExecuteCmdlet();
+                AzureProfile profile = commandRuntimeMock.OutputPipeline.First() as AzureProfile;
+                Assert.NotNull(profile);
+                Assert.NotNull(profile.Subscriptions);
+                Assert.NotNull(profile.DefaultSubscription);
+                Assert.Equal(profile.DefaultSubscription.Id, subscription);
+                Assert.Equal(profile.Subscriptions.Count, 1);
+                Assert.Equal(profile.Subscriptions.Values.First().Id, subscription);
+                validate(profile);
+            }
+            finally
+            {
+                AzureSession.ClientFactory = clientFactory;
+            }
 
         }
 
@@ -836,7 +855,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
         }
 
-        private void ValidateCredential(PSCredential credential, AzureProfile profile, 
+        private void ValidateCredential(PSCredential credential, AzureProfile profile,
             AzureAccount.AccountType accountType)
         {
             Assert.NotNull(profile.Accounts);

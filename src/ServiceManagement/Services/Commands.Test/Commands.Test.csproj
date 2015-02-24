@@ -229,6 +229,8 @@
     <Compile Include="MediaServices\NewMediaServicesAccountTests.cs" />
     <Compile Include="MediaServices\RemoveMediaServicesAccountTests.cs" />
     <Compile Include="Profile\NewAzureProfileTests.cs" />
+    <Compile Include="Profile\ProfileClientHelper.cs" />
+    <Compile Include="Profile\ProfileCmdltsTests.cs" />
     <Compile Include="Profile\ProfileTestController.cs" />
     <Compile Include="ServiceBus\GetAzureSBLocationTest.cs" />
     <Compile Include="ServiceBus\GetAzureSBNamespaceTest.cs" />
