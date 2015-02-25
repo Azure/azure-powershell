@@ -23,7 +23,10 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.Azure;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 {
@@ -190,7 +193,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 }
                 catch (CloudException ex)
                 {
-                    if (string.Equals(ex.ErrorCode, "ConflictError"))
+                    if (string.Equals(ex.Error.Code, "ConflictError"))
                     {
                         HostedServiceGetResponse existingService = this.ComputeClient.HostedServices.Get(this.ServiceName);
 
@@ -207,7 +210,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                         {
                             // The same service name is already created under the same subscription,
                             // and its affinity group or location is matched with the given parameter.
-                            this.WriteWarning(ex.ErrorMessage);
+                            this.WriteWarning(ex.Error.Message);
                         }
                         else
                         {
@@ -278,7 +281,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                         Label = this.DeploymentLabel ?? this.ServiceName,
                         VirtualNetworkName = this.VNetName,
                         Roles = { persistentVMs[0] },
-                        ReservedIPName = ReservedIPName,
+                        ReservedIPName = ReservedIPName
                     };
 
                     if (this.DnsSettings != null)
@@ -367,7 +370,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     RoleSize = persistentVMs[i].RoleSize,
                     ProvisionGuestAgent = persistentVMs[i].ProvisionGuestAgent,
                     ResourceExtensionReferences = persistentVMs[i].ProvisionGuestAgent != null && persistentVMs[i].ProvisionGuestAgent.Value ? persistentVMs[i].ResourceExtensionReferences : null,
-                    VMImageName = VMTuples[i].Item3 ? persistentVMs[i].VMImageName : null
+                    VMImageName = VMTuples[i].Item3 ? persistentVMs[i].VMImageName : null,
+                    MediaLocation = VMTuples[i].Item3 ? persistentVMs[i].MediaLocation : null
                 };
 
                 if (parameter.OSVirtualHardDisk != null)
@@ -428,7 +432,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 Label = persistentVM.Label,
                 ProvisionGuestAgent = persistentVM.ProvisionGuestAgent,
                 ResourceExtensionReferences = persistentVM.ProvisionGuestAgent != null && persistentVM.ProvisionGuestAgent.Value ? Mapper.Map<List<ResourceExtensionReference>>(persistentVM.ResourceExtensionReferences) : null,
-                VMImageName = isVMImage ? persistentVM.OSVirtualHardDisk.SourceImageName : null
+                VMImageName = isVMImage ? persistentVM.OSVirtualHardDisk.SourceImageName : null,
+                MediaLocation = isVMImage ? persistentVM.OSVirtualHardDisk.MediaLink : null
             };
 
             if (result.OSVirtualHardDisk != null)

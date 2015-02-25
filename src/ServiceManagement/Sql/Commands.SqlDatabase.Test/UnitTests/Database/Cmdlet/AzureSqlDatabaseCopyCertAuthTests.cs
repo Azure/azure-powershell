@@ -92,7 +92,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                                                 testSession);
         }
 
-
         [TestCleanup]
         public void CleanupTest()
         {

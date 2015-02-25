@@ -13,8 +13,8 @@
 // limitations under the License.
 //
 
+using Hyak.Common;
 using System;
-using Microsoft.WindowsAzure.Common.Internals;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
 {
@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             catch (ArgumentException exception)
             {
                 // allow running gallery tests
-                Tracing.Information("Node.exe was not found on the system, please install the x86 version of node.exe to run tests, received exception {0}", exception);
+                TracingAdapter.Information("Node.exe was not found on the system, please install the x86 version of node.exe to run tests, received exception {0}", exception);
             }
 
             string galleryUri = Environment.GetEnvironmentVariable(TestCSMGalleryUri);

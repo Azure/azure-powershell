@@ -12,12 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common.TransientFaultHandling;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Model;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
-using Microsoft.WindowsAzure.Common.Internals;
 using Microsoft.WindowsAzure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Sql.Models;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
@@ -105,9 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
             SqlManagementClient sqlManagementClient = GetCurrentSqlClient();
 
             // Set the retry policty to not retry attempts.
-            CloudExtensions.SetRetryPolicy<SqlManagementClient>(
-                sqlManagementClient,
-                new WindowsAzure.Common.TransientFaultHandling.RetryPolicy(new WindowsAzure.Common.TransientFaultHandling.DefaultHttpErrorDetectionStrategy(), 0));
+            sqlManagementClient.SetRetryPolicy(new RetryPolicy(new DefaultHttpErrorDetectionStrategy(), 0));
 
             // Issue the create server request
             ServerCreateResponse response = sqlManagementClient.Servers.Create(
@@ -119,14 +120,26 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
                     Version = version.HasValue ? version.Value.ToString("F1") : null
                 });
 
+            var newServer = sqlManagementClient.Servers.List().Servers.Where(s => s.Name == response.ServerName).FirstOrDefault();
+
+            if (newServer == null)
+            {
+                throw new ItemNotFoundException(string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.CreateServerServerNotFound,
+                    response.ServerName));
+            }
+
             SqlDatabaseServerContext operationContext = new SqlDatabaseServerContext()
             {
                 OperationStatus = Services.Constants.OperationSuccess,
                 OperationDescription = CommandRuntime.ToString(),
                 OperationId = response.RequestId,
-                ServerName = response.ServerName,
+                ServerName = newServer.Name,
                 Location = location,
                 AdministratorLogin = adminLogin,
+                State = newServer.State,
+                Version = newServer.Version
             };
 
             return operationContext;
