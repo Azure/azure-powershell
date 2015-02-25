@@ -133,8 +133,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             return new SiteRecoveryManagementClient(
                 asrVaultCreds.CloudServiceName,
                 asrVaultCreds.ResourceName,
-                RecoveryServicesMgmtClient.Credentials,
-                RecoveryServicesMgmtClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
+                (SubscriptionCloudCredentials)environment.Credentials,
+                AzureEnvironment.PublicEnvironments["AzureCloud"].GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)).WithHandler(HttpMockServer.CreateInstance());
         }
 
         private static bool IgnoreCertificateErrorHandler

@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -32,21 +33,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string Path { get; set; }
+        public string Path {get; set;}
 
         /// <summary>
         /// Gets or sets ID of the Recovery Plan.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ById, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string Id {get; set;}
 
         /// <summary>
         /// Gets or sets Recovery Plan object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRRecoveryPlan RecoveryPlan { get; set; }
+        public ASRRecoveryPlan RecoveryPlan {get; set;}
         #endregion Parameters
 
         /// <summary>

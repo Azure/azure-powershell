@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.Management.Automation;
 using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -44,20 +45,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ById, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string Id {get; set;}
 
         /// <summary>
         /// Gets or sets Recovery Plan object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRRecoveryPlan RecoveryPlan { get; set; }
+        public ASRRecoveryPlan RecoveryPlan {get; set;}
 
         /// <summary>
         /// Gets or sets switch parameter. This is required to wait for job completion.
         /// </summary>
         [Parameter]
-        public SwitchParameter WaitForCompletion { get; set; }
+        public SwitchParameter WaitForCompletion {get; set;}
 
         /// <summary>
         /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
@@ -82,8 +83,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     break;
             }
 
-            this.ConfirmAction(
-                this.Force.IsPresent,
+            ConfirmAction(
+                Force.IsPresent,
                 string.Format(Properties.Resources.RemoveRPWarning, this.targetNameOrId),
                 Properties.Resources.RemoveRPWhatIfMessage,
                 this.targetNameOrId,

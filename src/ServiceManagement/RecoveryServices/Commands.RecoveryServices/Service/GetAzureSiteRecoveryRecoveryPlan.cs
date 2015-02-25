@@ -14,9 +14,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
+using System.Linq;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Name {get; set;}
         #endregion Parameters
 
         /// <summary>

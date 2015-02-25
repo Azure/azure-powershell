@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Management.SiteRecovery;
+using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
+using Microsoft.WindowsAzure.Management.SiteRecovery;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {

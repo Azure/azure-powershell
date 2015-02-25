@@ -79,8 +79,7 @@ NestedModules = @(
     '.\Batch\Microsoft.Azure.Commands.Batch.dll',
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.dll',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',
-    '.\Insights\Microsoft.Azure.Commands.Insights.dll',
-    '.\Websites\Microsoft.Azure.Commands.Websites.dll'
+    '.\Insights\Microsoft.Azure.Commands.Insights.dll'
 )
 
 # Functions to export from this module

@@ -78,6 +78,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
+        /// Gets or initializes the azure profile
+        /// </summary>
+        protected AzureProfile GetOrInitializeAzureProfile()
+        {
+            if (this.Profile == null)
+            {
+                this.InitializeProfile();
+            }
+
+            return this.Profile;
+        }
+
+        /// <summary>
         /// End processing. Flush messages in tracing interceptor and save profile.
         /// </summary>
         protected override void EndProcessing()

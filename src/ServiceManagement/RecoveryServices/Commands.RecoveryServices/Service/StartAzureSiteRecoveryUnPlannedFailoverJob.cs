@@ -17,7 +17,7 @@ using System.Diagnostics;
 using System.Management.Automation;
 using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -40,35 +40,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string RPId { get; set; }
+        public string RPId {get; set;}
 
         /// <summary>
         /// Gets or sets ID of the PE.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ProtectionEntityId { get; set; }
+        public string ProtectionEntityId {get; set;}
 
         /// <summary>
         /// Gets or sets ID of the Recovery Plan.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ProtectionContainerId { get; set; }
+        public string ProtectionContainerId {get; set;}
 
         /// <summary>
         /// Gets or sets Recovery Plan object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRRecoveryPlan RecoveryPlan { get; set; }
+        public ASRRecoveryPlan RecoveryPlan {get; set;}
 
         /// <summary>
         /// Gets or sets Protection Entity object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRProtectionEntity ProtectionEntity { get; set; }
+        public ASRProtectionEntity ProtectionEntity {get; set;}
 
         /// <summary>
         /// Gets or sets Failover direction for the recovery plan.
@@ -78,29 +78,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true)]
         [ValidateSet(
-            Constants.PrimaryToRecovery,
-            Constants.RecoveryToPrimary)]
-        public string Direction { get; set; }
+            PSRecoveryServicesClient.PrimaryToRecovery,
+            PSRecoveryServicesClient.RecoveryToPrimary)]
+        public string Direction {get; set;}
 
         /// <summary>
         /// Gets or sets a value indicating whether primary site actions are required or not.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = false)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = false)]
-        public bool PrimaryAction { get; set; }
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = true)]
+        public bool PrimaryAction {get; set;}
 
         /// <summary>
         /// Gets or sets a value indicating whether can do source site operations.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = false)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = false)]
-        public bool PerformSourceSiteOperations { get; set; }
+        public bool PerformSourceSiteOperations {get; set;}
 
         /// <summary>
         /// Gets or sets switch parameter. This is required to wait for job completion.
         /// </summary>
         [Parameter]
-        public SwitchParameter WaitForCompletion { get; set; }
+        public SwitchParameter WaitForCompletion {get; set;}
         #endregion Parameters
 
         /// <summary>
@@ -140,40 +140,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void StartPEUnplannedFailover()
         {
-            var request = new UnplannedFailoverRequest();
-            if (this.ProtectionEntity == null)
-            {
-                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
-                    this.ProtectionContainerId,
-                    this.ProtectionEntityId);
-                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
-
-                this.ValidateUsageById(
-                    this.ProtectionEntity.ReplicationProvider,
-                    Constants.ProtectionEntityId);
-            }
-
-            request.ReplicationProviderSettings = string.Empty;
-
-            if (this.ProtectionEntity.ReplicationProvider == Constants.HyperVReplicaAzure)
-            {
-                request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
-                if (this.Direction == Constants.PrimaryToRecovery)
-                {
-                    var blob = new AzureFailoverInput();
-                    blob.VaultLocation = this.GetCurrentValutLocation();
-                    request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
-                }
-            }
-
-            request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
-            request.FailoverDirection = this.Direction;
-            request.SourceSiteOperations = this.PerformSourceSiteOperations;
+            var ufoReqeust = new UnplannedFailoverRequest();
+            ufoReqeust.FailoverDirection = this.Direction;
+            ufoReqeust.SourceSiteOperations = this.PerformSourceSiteOperations;
             this.jobResponse =
                 RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
                 this.ProtectionContainerId,
                 this.ProtectionEntityId,
-                request);
+                ufoReqeust);
             this.WriteJob(this.jobResponse.Job);
 
             if (this.WaitForCompletion.IsPresent)
@@ -187,39 +161,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void StartRpUnPlannedFailover()
         {
-            RpUnplannedFailoverRequest request = new RpUnplannedFailoverRequest();
-
-            if (this.RecoveryPlan == null)
-            {
-                var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(
-                    this.RPId);
-                this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
-
-                this.ValidateUsageById(
-                    this.RecoveryPlan.ReplicationProvider,
-                    Constants.RPId);
-            }
-
-            request.ReplicationProviderSettings = string.Empty;
-
-            if (this.RecoveryPlan.ReplicationProvider == Constants.HyperVReplicaAzure)
-            {
-                request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
-                if (this.Direction == Constants.PrimaryToRecovery)
-                {
-                    var blob = new AzureFailoverInput();
-                    blob.VaultLocation = this.GetCurrentValutLocation();
-                    request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
-                }
-            }
-
-            request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
-            request.FailoverDirection = this.Direction;
-            request.PrimaryAction = this.PrimaryAction;
-
+            RpUnplannedFailoverRequest recoveryPlanUnPlannedFailoverRequest = new RpUnplannedFailoverRequest();
+            recoveryPlanUnPlannedFailoverRequest.FailoverDirection = this.Direction;
+            recoveryPlanUnPlannedFailoverRequest.PrimaryAction = this.PrimaryAction;
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
                 this.RPId,
-                request);
+                recoveryPlanUnPlannedFailoverRequest);
 
             this.WriteJob(this.jobResponse.Job);
 
