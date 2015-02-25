@@ -15,12 +15,234 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Runtime.Serialization;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
+    /// <summary>
+    /// Constant definition
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class Constants
+    {
+        /// <summary>
+        /// ASR vault type
+        /// </summary>
+        public const string ASRVaultType = "HyperVRecoveryManagerVault";
+
+        /// <summary>
+        /// Vault Credential version.
+        /// </summary>
+        public const string VaultCredentialVersion = "1.0";
+
+        /// <summary>
+        /// The version of Extended resource info.
+        /// </summary>
+        public const string VaultSecurityInfoVersion = "1.0";
+
+        /// <summary>
+        /// extended information version.
+        /// </summary>
+        public const string VaultExtendedInfoContractVersion = "V2014_09";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Type
+        /// </summary>
+        public const string RdfeOperationStatusTypeCreate = "Create";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Type
+        /// </summary>
+        public const string RdfeOperationStatusTypeDelete = "Delete";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Result
+        /// </summary>
+        public const string RdfeOperationStatusResultSucceeded = "Succeeded";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.Failed
+        /// </summary>
+        public const string RdfeOperationStatusResultFailed = "Failed";
+
+        /// <summary>
+        /// A valid value for the string field Microsoft.WindowsAzure.CloudServiceManagement.resource.OperationStatus.InProgress
+        /// </summary>
+        public const string RdfeOperationStatusResultInProgress = "InProgress";
+
+        /// <summary>
+        /// Cloud service name prefix
+        /// </summary>
+        public const string CloudServiceNameExtensionPrefix = "CS-";
+
+        /// <summary>
+        /// Cloud service name suffix
+        /// </summary>
+        public const string CloudServiceNameExtensionSuffix = "-RecoveryServices";
+
+        /// <summary>
+        /// Schema Version of RP
+        /// </summary>
+        public const string RpSchemaVersion = "1.1";
+
+        /// <summary>
+        /// Resource Provider Namespace.
+        /// </summary>
+        public const string ResourceNamespace = "WAHyperVRecoveryManager";
+
+        /// <summary>
+        /// Represents None string value.
+        /// </summary>
+        public const string None = "None";
+
+        /// <summary>
+        /// Represents Existing string value.
+        /// </summary>
+        public const string Existing = "Existing";
+
+        /// <summary>
+        /// Represents New string value.
+        /// </summary>
+        public const string New = "New";
+
+        /// <summary>
+        /// Represents direction primary to secondary.
+        /// </summary>
+        public const string PrimaryToRecovery = "PrimaryToRecovery";
+
+        /// <summary>
+        /// Represents direction secondary to primary.
+        /// </summary>
+        public const string RecoveryToPrimary = "RecoveryToPrimary";
+
+        /// <summary>
+        /// Represents Optimize value ForDowntime.
+        /// </summary>
+        public const string ForDowntime = "ForDowntime";
+
+        /// <summary>
+        /// Represents Optimize value for Synchronization.
+        /// </summary>
+        public const string ForSynchronization = "ForSynchronization";
+
+        /// <summary>
+        /// Represents primary location.
+        /// </summary>
+        public const string PrimaryLocation = "Primary";
+
+        /// <summary>
+        /// Represents Recovery location.
+        /// </summary>
+        public const string RecoveryLocation = "Recovery";
+
+        /// <summary>
+        /// Represents HyperVReplica string constant.
+        /// </summary>
+        public const string HyperVReplica = "HyperVReplica";
+
+        /// <summary>
+        /// Represents HyperVReplica string constant.
+        /// </summary>
+        public const string HyperVReplicaAzure = "HyperVReplicaAzure";
+
+        /// <summary>
+        /// Represents HyperVReplica string constant.
+        /// </summary>
+        public const string AzureContainer = "Microsoft Azure";
+
+        /// <summary>
+        /// Represents OnlineReplicationMethod string constant.
+        /// </summary>
+        public const string OnlineReplicationMethod = "Online";
+
+        /// <summary>
+        /// Represents OfflineReplicationMethod string constant.
+        /// </summary>
+        public const string OfflineReplicationMethod = "Offline";
+
+        /// <summary>
+        /// Represents OS Windows.
+        /// </summary>
+        public const string OSWindows = "Windows";
+
+        /// <summary>
+        /// Represents OS Linux.
+        /// </summary>
+        public const string OSLinux = "Linux";
+
+        /// <summary>
+        /// Represents Enable protection.
+        /// </summary>
+        public const string EnableProtection = "Enable";
+
+        /// <summary>
+        /// Represents Disable protection.
+        /// </summary>
+        public const string DisableProtection = "Disable";
+
+        /// <summary>
+        /// Represents Direction string value.
+        /// </summary>
+        public const string Direction = "Direction";
+
+        /// <summary>
+        /// Represents RPId string value.
+        /// </summary>
+        public const string RPId = "RPId";
+
+        /// <summary>
+        /// Represents ID string value.
+        /// </summary>
+        public const string ID = "ID";
+
+        /// <summary>
+        /// Represents NetworkType string value.
+        /// </summary>
+        public const string NetworkType = "NetworkType";
+
+        /// <summary>
+        /// Represents ProtectionEntityId string value.
+        /// </summary>
+        public const string ProtectionEntityId = "ProtectionEntityId";
+
+        /// <summary>
+        /// Azure fabric Id. In E2A context Recovery Server Id is always this.
+        /// </summary>
+        public const string AzureFabricId = "21a9403c-6ec1-44f2-b744-b4e50b792387";
+
+        /// <summary>
+        /// Authentication Type as Certificate based authentication.
+        /// </summary>
+        public const string AuthenticationTypeCertificate = "Certificate";
+
+        /// <summary>
+        /// Authentication Type as Kerberos.
+        /// </summary>
+        public const string AuthenticationTypeKerberos = "Kerberos";
+
+        /// <summary>
+        /// Acceptable values of Replication Frequency in seconds (as per portal).
+        /// </summary>
+        public const string Thirty = "30";
+
+        /// <summary>
+        /// Acceptable values of Replication Frequency in seconds (as per portal).
+        /// </summary>
+        public const string ThreeHundred = "300";
+
+        /// <summary>
+        /// Acceptable values of Replication Frequency in seconds (as per portal).
+        /// </summary>
+        public const string NineHundred = "900";
+    }
+
     /// <summary>
     /// Azure Site Recovery Vault Settings.
     /// </summary>
@@ -38,10 +260,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVaultSettings" /> class with Resource
+        /// Initializes a new instance of the <see cref="ASRVaultSettings" /> class with vault
         /// and Cloud Service names.
         /// </summary>
-        /// <param name="resourceName">Resource Name</param>
+        /// <param name="resourceName">vault Name</param>
         /// <param name="cloudServiceName">Cloud Service Name</param>
         public ASRVaultSettings(string resourceName, string cloudServiceName)
         {
@@ -90,6 +312,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.LastHeartbeat = server.LastHeartbeat;
             this.ProviderVersion = server.ProviderVersion;
             this.ServerVersion = server.ServerVersion;
+            this.Connected = server.Connected;
+            this.FabricObjectID = server.FabricObjectID;
+            this.FabricType = server.FabricType;
+            this.Type = server.Type;
         }
 
         #region Properties
@@ -102,6 +328,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets Server ID.
         /// </summary>
         public string ID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Type of Management entity – VMM, V-Center.
+        /// </summary>
+        [DataMember]
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of Fabric - VMM.
+        /// </summary>
+        [DataMember]
+        public string FabricType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID of the on premise fabric.
+        /// </summary>
+        [DataMember]
+        public string FabricObjectID { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether server is connected or not.
+        /// </summary>
+        [DataMember]
+        public bool Connected { get; set; }
 
         /// <summary>
         /// Gets or sets Last communicated time.
@@ -143,12 +393,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="pc">Protection container object</param>
         public ASRProtectionContainer(ProtectionContainer pc)
         {
+            if (pc.AvailableProtectionProfiles != null)
+            {
+                this.AvailableProtectionProfiles = new List<ASRProtectionProfile>();
+                foreach (var profile in pc.AvailableProtectionProfiles)
+                {
+                    this.AvailableProtectionProfiles.Add(
+                        new ASRProtectionProfile(profile));
+                }
+            }
+
             this.ID = pc.ID;
             this.Name = pc.Name;
-            this.ConfigurationStatus = pc.ConfigurationStatus;
             this.Role = pc.Role;
             this.ServerId = pc.ServerId;
             this.FabricObjectId = pc.FabricObjectId;
+            this.FabricType = pc.FabricType;
+            this.Type = pc.Type;
         }
 
         #region Properties
@@ -168,21 +429,198 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string FabricObjectId { get; set; }
 
         /// <summary>
+        /// Gets or sets the type of Fabric - VMM.
+        /// </summary>
+        [DataMember]
+        public string FabricType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type e.g. VMM, HyperVSite etc.
+        /// </summary>
+        [DataMember]
+        public string Type { get; set; }
+
+        /// <summary>
         /// Gets or sets Server ID.
         /// </summary>
         public string ServerId { get; set; }
-
-        /// <summary>
-        /// Gets or sets configuration status.
-        /// </summary>
-        public string ConfigurationStatus { get; set; }
 
         /// <summary>
         /// Gets or sets a role of the protection container.
         /// </summary>
         public string Role { get; set; }
 
+        /// <summary>
+        /// Gets or sets the list of protection profiles.
+        /// </summary>
+        [DataMember]
+        public List<ASRProtectionProfile> AvailableProtectionProfiles { get; set; }
         #endregion
+    }
+
+    /// <summary>
+    /// Protection profile association details.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related public classes together.")]
+    public class ASRProtectionProfileAssociationDetails
+    {
+        /// <summary>
+        /// Gets or sets the PrimaryProtectionContainerId.
+        /// </summary>
+        [DataMember(Order = 1)]
+        public string PrimaryProtectionContainerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the RecoveryProtectionContainerId.
+        /// </summary>
+        [DataMember(Order = 2)]
+        public string RecoveryProtectionContainerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the association status. This is a string representation of the 
+        /// enumeration type <see cref="CloudPairingStatus"/>.
+        /// </summary>
+        [DataMember(Order = 3)]
+        public string AssociationStatus { get; set; }
+    }
+
+    /// <summary>
+    /// Azure Site Recovery Protection Profile.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class ASRProtectionProfile
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRProtectionProfile" /> class.
+        /// </summary>
+        public ASRProtectionProfile()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRProtectionProfile" /> class with 
+        /// required parameters.
+        /// </summary>
+        /// <param name="profile">Protection container object</param>
+        public ASRProtectionProfile(ProtectionProfile profile)
+        {
+            this.ID = profile.ID;
+            this.Name = profile.Name;
+            this.ReplicationProvider = profile.ReplicationProvider;
+            if (profile.ReplicationProvider == Constants.HyperVReplicaAzure)
+            {
+                this.HyperVReplicaAzureProviderSettingsObject = new HyperVReplicaAzureProviderSettings();
+                this.HyperVReplicaAzureProviderSettingsObject.AssociationDetail = new List<ASRProtectionProfileAssociationDetails>();
+            }
+            else if (profile.ReplicationProvider == Constants.HyperVReplica)
+            {
+                this.HyperVReplicaProviderSettingsObject = new HyperVReplicaProviderSettings();
+                this.HyperVReplicaProviderSettingsObject.AssociationDetail = new List<ASRProtectionProfileAssociationDetails>();
+            }
+
+            foreach (var profileAssosicationDetail in profile.AssociationDetail)
+            {
+                var asrProfileDetail = new ASRProtectionProfileAssociationDetails();
+                asrProfileDetail.AssociationStatus = profileAssosicationDetail.AssociationStatus;
+                asrProfileDetail.PrimaryProtectionContainerId =
+                    profileAssosicationDetail.PrimaryProtectionContainerId;
+                asrProfileDetail.RecoveryProtectionContainerId =
+                    profileAssosicationDetail.RecoveryProtectionContainerId;
+
+                if (profile.ReplicationProvider == Constants.HyperVReplicaAzure)
+                {
+                    this.HyperVReplicaAzureProviderSettingsObject.AssociationDetail.Add(asrProfileDetail);
+                }
+                else if (profile.ReplicationProvider == Constants.HyperVReplica)
+                {
+                    this.HyperVReplicaProviderSettingsObject.AssociationDetail.Add(asrProfileDetail);
+                }
+            }
+
+            if (profile.ReplicationProvider == Constants.HyperVReplicaAzure)
+            {
+                var details = DataContractUtils<HyperVReplicaAzureProtectionProfileDetails>.Deserialize(
+                    profile.ReplicationProviderSetting);
+
+                this.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours =
+                    details.ApplicationConsistentSnapshotFrequencyInHours;
+                this.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureStorageAccountName =
+                    details.ActiveStorageAccount.StorageAccountName;
+                this.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureSubscription =
+                    details.ActiveStorageAccount.SubscriptionId;
+
+                this.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds =
+                    (ushort)details.ReplicationInterval;
+                this.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime = details.OnlineReplicationStartTime;
+
+                this.HyperVReplicaAzureProviderSettingsObject.RecoveryPoints
+                    = details.RecoveryPointHistoryDuration;
+
+                this.HyperVReplicaAzureProviderSettingsObject.CanDissociate = profile.CanDissociate;
+            }
+            else if (profile.ReplicationProvider == Constants.HyperVReplica)
+            {
+                var details = DataContractUtils<HyperVReplicaProtectionProfileDetails>.Deserialize(
+                    profile.ReplicationProviderSetting);
+
+                this.HyperVReplicaProviderSettingsObject.AllowReplicaDeletion =
+                    details.ReplicaDeletionOption == "OnRecoveryCloud";
+                this.HyperVReplicaProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours =
+                    details.ApplicationConsistentSnapshotFrequencyInHours;
+
+                this.HyperVReplicaProviderSettingsObject.CompressionEnabled =
+                    details.CompressionEnabled;
+                this.HyperVReplicaProviderSettingsObject.ReplicationFrequencyInSeconds =
+                    details.ReplicationFrequencyInSeconds;
+
+                this.HyperVReplicaProviderSettingsObject.RecoveryPoints = details.RecoveryPoints;
+                this.HyperVReplicaProviderSettingsObject.ReplicationMethod = details.OnlineReplicationMethod ?
+                    Constants.OnlineReplicationMethod :
+                    Constants.OfflineReplicationMethod;
+                this.HyperVReplicaProviderSettingsObject.ReplicationPort = details.ReplicationPort;
+                this.HyperVReplicaProviderSettingsObject.ReplicationStartTime = details.OnlineReplicationStartTime;
+                this.HyperVReplicaProviderSettingsObject.CanDissociate = profile.CanDissociate;
+            }
+
+            this.ID = profile.ID;
+            this.Name = profile.Name;
+            this.ReplicationProvider = profile.ReplicationProvider;
+        }
+
+        #region Properties
+        /// <summary>
+        /// Gets or sets name of the Protection profile.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets Protection profile ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication Type (HyperVReplica, HyperVReplicaAzure)
+        /// </summary>
+        public string ReplicationProvider { get; set; }
+
+        /// <summary>
+        /// Gets or sets HyperVReplicaProviderSettings
+        /// </summary>
+        public HyperVReplicaProviderSettings HyperVReplicaProviderSettingsObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets HyperVReplicaAzureProviderSettings
+        /// </summary>
+        public HyperVReplicaAzureProviderSettings HyperVReplicaAzureProviderSettingsObject { get; set; }
+
+        #endregion Properties
     }
 
     /// <summary>
@@ -201,6 +639,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVirtualMachine" /> class.
+        /// </summary>
+        /// <param name="vm">Virtual Machine</param>
         public ASRVirtualMachine(VirtualMachine vm)
             : base(
                 vm.ID,
@@ -415,6 +857,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.ActiveLocation = pe.ActiveLocation;
             this.ReplicationHealth = pe.ReplicationHealth;
             this.TestFailoverStateDescription = pe.TestFailoverStateDescription;
+
+            if (!string.IsNullOrWhiteSpace(pe.ReplicationProviderSettings))
+            {
+                AzureVmDiskDetails diskDetails;
+                DataContractUtils.Deserialize<AzureVmDiskDetails>(
+                    pe.ReplicationProviderSettings, out diskDetails);
+
+                this.Disks = diskDetails.Disks;
+                this.OSDiskId = diskDetails.VHDId;
+                this.OSDiskName = diskDetails.OsDisk;
+                this.OS = diskDetails.OsType;
+            }
+
+            if (pe.ProtectionProfile != null &&
+                !string.IsNullOrWhiteSpace(pe.ProtectionProfile.ID))
+            {
+                this.ProtectionProfile = new ASRProtectionProfile(pe.ProtectionProfile);
+            }
         }
 
         /// <summary>
@@ -544,6 +1004,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string TestFailoverStateDescription { get; set; }
 
         /// <summary>
+        /// Gets or sets ProtectionProfile.
+        /// </summary>
+        public ASRProtectionProfile ProtectionProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets OSDiskVHDId.
+        /// </summary>
+        public string OSDiskId { get; set; }
+
+        /// <summary>
+        /// Gets or sets OS DiskName.
+        /// </summary>
+        public string OSDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets OS.
+        /// </summary>
+        public string OS { get; set; }
+
+        /// <summary>
+        /// Gets or sets OS.
+        /// </summary>
+        public List<VirtualHardDisk> Disks { get; set; }
+
+        /// <summary>
         /// Gets or sets Replication provider.
         /// </summary>
         public string ReplicationProvider { get; set; }
@@ -605,7 +1090,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public DateTime EndTime { get; set; }
     }
-    
+
     /// <summary>
     /// Azure Site Recovery Job.
     /// </summary>
@@ -632,10 +1117,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.ClientRequestId = job.ActivityId;
             this.State = job.State;
             this.StateDescription = job.StateDescription;
-            this.EndTime = job.EndTimestamp;
-            this.StartTime = job.StartTimestamp;
-            this.AllowedActions = job.AllowedActions as List<string>;
+            this.EndTime = job.EndTime;
+            this.StartTime = job.StartTime;
             this.Name = job.Name;
+            this.TargetObjectId = job.TargetObjectId;
+            this.TargetObjectName = job.TargetObjectName;
+            if (job.AllowedActions != null && job.AllowedActions.Count > 0)
+            {
+                this.AllowedActions = new List<string>();
+                foreach (var action in job.AllowedActions)
+                {
+                    this.AllowedActions.Add(action);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(job.TargetObjectId))
+            {
+                this.TargetObjectType = job.TargetObjectType;
+            }
+
             this.Tasks = new List<ASRTask>();
             foreach (var task in job.Tasks)
             {
@@ -665,7 +1165,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public string ID { get; set; }
 
-       /// <summary>
+        /// <summary>
         /// Gets or sets Activity ID.
         /// </summary>
         public string ClientRequestId { get; set; }
@@ -691,6 +1191,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string EndTime { get; set; }
 
         /// <summary>
+        /// Gets or sets TargetObjectId.
+        /// </summary>
+        public string TargetObjectId { get; set; }
+
+        /// <summary>
+        /// Gets or sets TargetObjectType.
+        /// </summary>
+        public string TargetObjectType { get; set; }
+
+        /// <summary>
+        /// Gets or sets End timestamp.
+        /// </summary>
+        public string TargetObjectName { get; set; }
+
+        /// <summary>
         /// Gets or sets list of allowed actions.
         /// </summary>
         public List<string> AllowedActions { get; set; }
@@ -704,6 +1219,169 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets list of Errors.
         /// </summary>
         public List<ASRErrorDetails> Errors { get; set; }
+        #endregion
+    }
+
+    /// <summary>
+    /// Azure Site Recovery Vault.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class ASRVault
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVault" /> class.
+        /// </summary>
+        public ASRVault()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVault" /> class.
+        /// </summary>
+        /// <param name="cloudService">cloud service object</param>
+        /// <param name="vault">vault object</param>
+        /// <param name="subscription">Current subscription</param>
+        public ASRVault(CloudService cloudService, Vault vault, string subscription)
+        {
+            this.CloudServiceName = cloudService.Name;
+            this.Location = cloudService.GeoRegion;
+            this.Name = vault.Name;
+            this.SubscriptionId = subscription;
+            this.Status = this.ParseStatus(vault.OperationStatus);
+            this.ID = this.ParseVaultId(vault.OutputItems);
+            if (vault.OperationStatus.Error != null)
+            {
+                this.StatusReason = vault.OperationStatus.Error.Message;
+            }
+        }
+
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Gets or sets Job display name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets Job ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        /// Gets or sets cloud service name.
+        /// </summary>
+        public string CloudServiceName { get; set; }
+
+        /// <summary>
+        /// Gets or sets subscription id
+        /// </summary>
+        public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets reason for the status
+        /// </summary>
+        public string StatusReason { get; set; }
+
+        /// <summary>
+        /// Gets or sets the status
+        /// </summary>
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets location.
+        /// </summary>
+        public string Location { get; set; }
+
+        #endregion
+
+        #region Private methods
+
+        /// <summary>
+        /// Method to parse status of the vault
+        /// </summary>
+        /// <param name="operationStatus">operation status returned</param>
+        /// <returns>status as string</returns>
+        private string ParseStatus(ResourceOperationStatus operationStatus)
+        {
+            string vaultStatus = string.Empty;
+
+            // Type and Result fields of OperationStatus is used to figured out the vault status.
+            // Type:Create & Result:Succeeded --> vault created in RDFE and RP.
+            // Type:Create & Result:InProgress --> vault created in RDFE and not created in RP.
+            // Type:Create & Result:Failed --> vault created in RDFE but failed in RP.
+            // Type:Delete & Result:InProgress --> vault is being deleted in RP & RDFE.
+            // Type:Delete & Result:Failed --> vault deletion happens first in RP then in RDFE.
+            if (!string.IsNullOrWhiteSpace(operationStatus.Type) && !string.IsNullOrWhiteSpace(operationStatus.Result))
+            {
+                switch (operationStatus.Type)
+                {
+                    case Constants.RdfeOperationStatusTypeCreate:
+                        switch (operationStatus.Result)
+                        {
+                            case Constants.RdfeOperationStatusResultSucceeded:
+                                vaultStatus = VaultStatus.Active.ToString();
+                                break;
+                            case Constants.RdfeOperationStatusResultInProgress:
+                                vaultStatus = VaultStatus.Creating.ToString();
+                                break;
+                            case Constants.RdfeOperationStatusResultFailed:
+                                vaultStatus = VaultStatus.Disabled.ToString();
+                                break;
+                        }
+
+                        break;
+                    case Constants.RdfeOperationStatusTypeDelete:
+                        switch (operationStatus.Result)
+                        {
+                            case Constants.RdfeOperationStatusResultInProgress:
+                                vaultStatus = VaultStatus.Removing.ToString();
+                                break;
+                            case Constants.RdfeOperationStatusResultFailed:
+                                vaultStatus = VaultStatus.Active.ToString();
+                                break;
+                        }
+
+                        break;
+                }
+            }
+
+            // In case if the resource has multiple create calls, then we might not know the result of first create. 
+            // So we are checking if the stamp id is returned or not. Also the vault name is required for all rdfe calls.
+            // Without these fields the vault can't be drilled down.
+            if (vaultStatus.Equals(VaultStatus.Active.ToString(), StringComparison.OrdinalIgnoreCase) && string.IsNullOrWhiteSpace(this.Name))
+            {
+                vaultStatus = VaultStatus.Disabled.ToString();
+            }
+
+            return vaultStatus;
+        }
+
+        /// <summary>
+        /// Method to extract vault id
+        /// </summary>
+        /// <param name="outputItems">the output item from vault</param>
+        /// <returns>returns the vault id as string</returns>
+        private string ParseVaultId(IList<OutputItem> outputItems)
+        {
+            string vaultId = string.Empty;
+            foreach (var outputItem in outputItems)
+            {
+                if (outputItem.Key == "ResourceId")
+                {
+                    vaultId = outputItem.Value;
+                    break;
+                }
+            }
+
+            return vaultId;
+        }
+
         #endregion
     }
 
@@ -748,6 +1426,58 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             : base(serviceError)
         {
         }
+    }
+
+    /// <summary>
+    /// Class to define the output of the vault settings file generation.
+    /// </summary>
+    public class VaultSettingsFilePath
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultSettingsFilePath" /> class
+        /// </summary>
+        public VaultSettingsFilePath()
+        {
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the path of generated credential file.
+        /// </summary>
+        public string FilePath { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Class to define the output object for the vault operations.
+    /// </summary>
+    public class VaultOperationOutput
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultOperationOutput" /> class
+        /// </summary>
+        public VaultOperationOutput()
+        {
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the operation tracking id of the operation performed.
+        /// </summary>
+        public string Response { get; set; }
+
+        #endregion
     }
 
     /// <summary>
@@ -811,5 +1541,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the Error level.
         /// </summary>
         public string ErrorLevel { get; set; }
+    }
+
+    /// <summary>
+    /// Disk details.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class VirtualHardDisk
+    {
+        /// <summary>
+        /// Gets or sets the VHD id.
+        /// </summary>
+        [DataMember]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        [DataMember]
+        public string Name { get; set; }
     }
 }

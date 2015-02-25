@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ManagedCache
             {
                 if (cacheClient == null)
                 {
-                    cacheClient = new PSCacheClient(CurrentContext.Subscription);
+                    cacheClient = new PSCacheClient(Profile, Profile.Context.Subscription);
                 }
                 return cacheClient;
             }
