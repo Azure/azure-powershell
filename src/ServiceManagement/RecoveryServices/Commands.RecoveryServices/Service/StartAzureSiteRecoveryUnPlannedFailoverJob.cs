@@ -29,11 +29,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryUnplannedFailoverJob : RecoveryServicesCmdletBase
     {
-        #region Parameters
+        /// <summary>
+        /// Primary actions.
+        /// </summary>
+        private bool? primaryAction;       
+        
+        /// <summary>
+        /// Perform Source SiteOperations.
+        /// </summary>
+        private bool? performSourceSiteOperations;
+
         /// <summary>
         /// Job response.
         /// </summary>
-        private JobResponse jobResponse = null;
+        private JobResponse jobResponse = null;    
+        
+        #region Parameters
 
         /// <summary>
         /// Gets or sets ID of the Recovery Plan.
@@ -87,14 +98,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = false)]
         [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = false)]
-        public bool PrimaryAction { get; set; }
+        public bool PrimaryAction 
+        { 
+            get
+            {
+                return this.primaryAction.HasValue ? this.primaryAction.Value : false;
+            } 
+
+            set
+            {
+                this.primaryAction = value;
+                this.PerformSourceSideActions = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether can do source site operations.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = false)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = false)]
-        public bool PerformSourceSiteOperations { get; set; }
+        public bool PerformSourceSiteOperations
+        {
+            get
+            {
+                return this.performSourceSiteOperations.HasValue ?
+                    this.performSourceSiteOperations.Value : 
+                    false;
+            } 
+
+            set
+            {
+                this.performSourceSiteOperations = value;
+                this.PerformSourceSideActions = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets switch parameter. This is required to PerformSourceSideActions.
+        /// </summary>
+        [Parameter]
+        public SwitchParameter PerformSourceSideActions { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. This is required to wait for job completion.
@@ -110,6 +153,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                if (this.primaryAction.HasValue)
+                {
+                    this.WriteWarningWithTimestamp(
+                          "PrimaryAction parameter will not be supported from next release. " +
+                          "Please use PerformSourceSideActions parameter instead.");
+                }
+
+                if (this.performSourceSiteOperations.HasValue)
+                {
+                    this.WriteWarningWithTimestamp(
+                          "PerformSourceSiteOperations parameter will not be supported from next release. " +
+                          "Please use PerformSourceSideActions parameter instead.");
+                }
+
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ByRPObject:
@@ -168,7 +225,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
             request.FailoverDirection = this.Direction;
-            request.SourceSiteOperations = this.PerformSourceSiteOperations;
+            request.SourceSiteOperations = this.PerformSourceSideActions;
             this.jobResponse =
                 RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
                 this.ProtectionContainerId,
@@ -215,7 +272,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
             request.FailoverDirection = this.Direction;
-            request.PrimaryAction = this.PrimaryAction;
+            request.PrimaryAction = this.PerformSourceSideActions;
 
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
                 this.RPId,
