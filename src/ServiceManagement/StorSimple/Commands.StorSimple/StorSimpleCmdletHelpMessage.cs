@@ -98,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string FailoverTargetDeviceId = "The device identifier of the StorSimple failover target device";
         public const string Controller0IPv4Address = "IPv4 address of controller0. Should be set on Data0 only.";
         public const string Controller1IPv4Address = "IPv4 address of controller1. Should be set on Data0 only.";
-        public const string InterfaceAlias = "Alias of interface the network config is for. Must be one of the values from Data0 to Data5";
+        public const string InterfaceAlias = "Alias of interface the network config is for.";
         public const string IPv4Address = "IPv4 Address for the net interface";
         public const string IPv4Gateway = "IPv4 Address of gateway";
         public const string IPv4Netmask = "IPv4 netmask for this interface";
@@ -115,8 +115,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string SEK = "Service Encryption Key for the resource of the virtual device.";
         public const string FromTime = "Beginning of time interval for which to filter results.";
         public const string ToTime = "End of time interval for which to filter results.";
-        public const string DeviceJobStatus = "Status of job. Valid values - Running, Completed, Cancelled, Failed, Cancelling, CompletedWithErrors";
-        public const string DeviceJobType = "Type of job. Valid values - Backup, ManualBackup, Restore, CloneWorkflow, DeviceRestore, Update, SupportPackage, VirtualApplianceProvisioning";
+        public const string DeviceJobStatus = "Status of job.";
+        public const string DeviceJobType = "Type of job.";
 
     }
 }
