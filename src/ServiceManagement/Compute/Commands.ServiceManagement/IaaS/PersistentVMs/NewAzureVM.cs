@@ -18,7 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using AutoMapper;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -157,11 +157,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 
         public void NewAzureVMProcess()
         {
-            AzureSubscription currentSubscription = CurrentContext.Subscription;
+            AzureSubscription currentSubscription = Profile.Context.Subscription;
             CloudStorageAccount currentStorage = null;
             try
             {
-                currentStorage = currentSubscription.GetCloudStorageAccount();
+                currentStorage = currentSubscription.GetCloudStorageAccount(Profile);
             }
             catch (Exception ex) // couldn't access
             {
@@ -281,7 +281,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                         Label = this.DeploymentLabel ?? this.ServiceName,
                         VirtualNetworkName = this.VNetName,
                         Roles = { persistentVMs[0] },
-                        ReservedIPName = ReservedIPName,
+                        ReservedIPName = ReservedIPName
                     };
 
                     if (this.DnsSettings != null)
@@ -370,7 +370,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     RoleSize = persistentVMs[i].RoleSize,
                     ProvisionGuestAgent = persistentVMs[i].ProvisionGuestAgent,
                     ResourceExtensionReferences = persistentVMs[i].ProvisionGuestAgent != null && persistentVMs[i].ProvisionGuestAgent.Value ? persistentVMs[i].ResourceExtensionReferences : null,
-                    VMImageName = VMTuples[i].Item3 ? persistentVMs[i].VMImageName : null
+                    VMImageName = VMTuples[i].Item3 ? persistentVMs[i].VMImageName : null,
+                    MediaLocation = VMTuples[i].Item3 ? persistentVMs[i].MediaLocation : null
                 };
 
                 if (parameter.OSVirtualHardDisk != null)
@@ -431,7 +432,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 Label = persistentVM.Label,
                 ProvisionGuestAgent = persistentVM.ProvisionGuestAgent,
                 ResourceExtensionReferences = persistentVM.ProvisionGuestAgent != null && persistentVM.ProvisionGuestAgent.Value ? Mapper.Map<List<ResourceExtensionReference>>(persistentVM.ResourceExtensionReferences) : null,
-                VMImageName = isVMImage ? persistentVM.OSVirtualHardDisk.SourceImageName : null
+                VMImageName = isVMImage ? persistentVM.OSVirtualHardDisk.SourceImageName : null,
+                MediaLocation = isVMImage ? persistentVM.OSVirtualHardDisk.MediaLink : null
             };
 
             if (result.OSVirtualHardDisk != null)

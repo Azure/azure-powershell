@@ -18,7 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Model;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdlet;
@@ -91,7 +91,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
             MockHttpServer = new MockHttpServer(ExceptionManager, MockHttpServer.DefaultHttpsServerPrefixUri,
                                                 testSession);
         }
-
 
         [TestCleanup]
         public void CleanupTest()
