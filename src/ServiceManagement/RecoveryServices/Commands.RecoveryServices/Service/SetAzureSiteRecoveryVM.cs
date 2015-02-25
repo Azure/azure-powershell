@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public string PrimaryNetworkId { get; set; }
+        public string PrimaryNic { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Azure Network Id
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // Check for at least one option
             if (string.IsNullOrEmpty(this.Name) && 
                 string.IsNullOrEmpty(this.Size) && 
-                string.IsNullOrEmpty(this.PrimaryNetworkId) &&
+                string.IsNullOrEmpty(this.PrimaryNic) && 
                 string.IsNullOrEmpty(this.RecoveryNetworkId))
             {
                 this.WriteWarning(Properties.Resources.ArgumentsMissingForUpdateVmProperties.ToString());
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             // Both primary & recovery inputs should be present
-            if (string.IsNullOrEmpty(this.PrimaryNetworkId) ^
+            if (string.IsNullOrEmpty(this.PrimaryNic) ^
                 string.IsNullOrEmpty(this.RecoveryNetworkId))
             {
                 this.WriteWarning(Properties.Resources.NetworkArgumentsMissingForUpdateVmProperties.ToString());
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             UpdateVmPropertiesInput updateVmPropertiesInput = new UpdateVmPropertiesInput();
             updateVmPropertiesInput.RecoveryAzureVmGivenName = this.Name;
             updateVmPropertiesInput.RecoveryAzureVmSize = this.Size;
-            updateVmPropertiesInput.SelectedPrimaryNicId = this.PrimaryNetworkId;
+            updateVmPropertiesInput.SelectedPrimaryNicId = this.PrimaryNic;
             updateVmPropertiesInput.RecoveryAzureNetworkId = this.RecoveryNetworkId;
 
             this.jobResponse = RecoveryServicesClient.UpdateVmProperties(
