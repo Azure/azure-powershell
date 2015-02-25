@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading;
@@ -27,9 +28,9 @@ namespace Microsoft.Azure.Commands.Insights
     /// </summary>
     public abstract class EventCmdletBase : InsightsCmdletBase
     {
-        internal static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromHours(-1);
-
-        internal static int MaxNumberOfReturnedRecords = 100000;
+        private static readonly TimeSpan MaximumDateDifferenceAllowedInDays = TimeSpan.FromDays(15);
+        private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromHours(1);
+        private const int MaxNumberOfReturnedRecords = 100000;
 
         internal const string SubscriptionLevelName = "Query at subscription level";
         internal const string ResourceProviderName = "Query on ResourceProvider";
@@ -43,15 +44,13 @@ namespace Microsoft.Azure.Commands.Insights
         /// Gets or sets the starttime parameter of the cmdlet
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The startTime of the query")]
-        [ValidateNotNullOrEmpty]
-        public string StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the endtime parameter of the cmdlet
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The endTime of the query")]
-        [ValidateNotNullOrEmpty]
-        public string EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets the status parameter of the cmdlet
@@ -90,39 +89,55 @@ namespace Microsoft.Azure.Commands.Insights
         }
 
         /// <summary>
+        /// Gets the default query time range
+        /// </summary>
+        /// <returns>The default query time range for this class</returns>
+        protected virtual TimeSpan GetDefaultQueryTimeRange()
+        {
+            return DefaultQueryTimeRange;
+        }
+
+        /// <summary>
+        /// Validates that the range of dates (start / end) makes sense, it is not to great (less 15 days), and adds the defaul values if needed
+        /// </summary>
+        /// <returns>A query filter string with the time conditions</returns>
+        private string ValidateDateTimeRangeAndAdddefaults()
+        {
+            // EndTime is optional
+            DateTime endTime = this.EndTime.HasValue ? this.EndTime.Value : DateTime.Now;
+
+            // StartTime is optional
+            DateTime startTime = this.StartTime.HasValue ? this.StartTime.Value : endTime.Subtract(this.GetDefaultQueryTimeRange());
+
+            // Check the value of StartTime
+            if (startTime > DateTime.Now)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "StartDate {0:o} is invalid. It is later than Now: {1:o}", startTime, DateTime.Now));
+            }
+
+            // Check that the dateTime range makes sense
+            if (endTime < startTime)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "EndDate {0:o} is earlier than StartDate {1:o}", endTime, startTime));
+            }
+
+            // Validate start and end dates difference is reasonable (<= MaximumDateDifferenceAllowedInDays)
+            var dateDifference = endTime.Subtract(startTime);
+            if (dateDifference > MaximumDateDifferenceAllowedInDays)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Start and end dates are too far appart. Separation {0} days. Maximum allowed {1} days", dateDifference.TotalDays, MaximumDateDifferenceAllowedInDays.TotalDays));
+            }
+
+            return string.Format("eventTimestamp ge '{0:o}' and eventTimestamp le '{1:o}'", startTime.ToUniversalTime(), endTime.ToUniversalTime());
+        }
+
+        /// <summary>
         /// Process the parameters defined by this class
         /// </summary>
         /// <returns>The query filter with the conditions for general parameters (i.e. defined by this class) added</returns>
         private string ProcessGeneralParameters()
         {
-            DateTime startTime;
-            if (string.IsNullOrWhiteSpace(this.StartTime))
-            {
-                // Default to one hour from Now
-                startTime = DateTime.Now.Subtract(DefaultQueryTimeRange);
-            }
-            else if (!DateTime.TryParse(this.StartTime, out startTime))
-            {
-                throw new ArgumentException("Unable to parse startTime argument");
-            }
-
-            string queryFilter;
-
-            // EndTime is optional
-            if (string.IsNullOrWhiteSpace(this.EndTime))
-            {
-                queryFilter = string.Format("eventTimestamp ge '{0:o}'", startTime.ToUniversalTime());
-            }
-            else
-            {
-                DateTime endTime;
-                if (!DateTime.TryParse(this.EndTime, out endTime))
-                {
-                    throw new ArgumentException("Unable to parse endTime argument");
-                }
-
-                queryFilter = string.Format("eventTimestamp ge '{0:o}' and eventTimestamp le '{1:o}'", startTime.ToUniversalTime(), endTime.ToUniversalTime());
-            }
+            string queryFilter = this.ValidateDateTimeRangeAndAdddefaults();
 
             // Include the status if present
             queryFilter = this.AddConditionIfPResent(queryFilter, "status", this.Status);
