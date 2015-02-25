@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.RemoteApp.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             {
                 if (client == null)
                 {
-                    client = AzureSession.ClientFactory.CreateClient<RemoteAppManagementClient>(AzureSession.CurrentContext.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+                    client = AzureSession.ClientFactory.CreateClient<RemoteAppManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
                     client.RdfeNamespace = "remoteapp";
 
                     // Read the namespace if defined as an environment variable from the session configuration
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             // register the subscription with RDFE to use the RemoteApp resource
             Microsoft.WindowsAzure.Management.ManagementClient mgmtClient = 
-                AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.ManagementClient>(AzureSession.CurrentContext.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+                AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.ManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
 
             try
             {
