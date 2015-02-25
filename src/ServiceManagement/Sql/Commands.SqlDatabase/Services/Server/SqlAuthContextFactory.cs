@@ -92,8 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                 context = new TSqlConnectionContext(
                     sessionActivityId,
                     manageUrl.Host,
-                    credentials.UserName,
-                    credentials.Password);
+                    credentials);
             }
             else
             {
