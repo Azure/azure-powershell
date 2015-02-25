@@ -17,13 +17,10 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Xml;
-using Hyak.Common;
-using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.RecoveryServices;
-using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
-using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -78,13 +75,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     using (Stream stream = new MemoryStream())
                     {
-                        if (cloudException.Message != null)
+                        if (cloudException.Error.Message != null)
                         {
-                            byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.Message);
+                            byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.Error.Message);
                             stream.Write(data, 0, data.Length);
                             stream.Position = 0;
 
-                            var deserializer = new DataContractSerializer(typeof(ErrorInException));
+                            var deserializer = new DataContractSerializer(typeof(Error));
                             error = (Error)deserializer.ReadObject(stream);
 
                             throw new InvalidOperationException(
@@ -110,7 +107,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     throw new XmlException(
                         string.Format(
                         Properties.Resources.InvalidCloudExceptionErrorMessage,
-                        cloudException.Message),
+                        cloudException.Error.Message),
                         cloudException);
                 }
                 catch (SerializationException)
@@ -118,7 +115,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     throw new SerializationException(
                         string.Format(
                         Properties.Resources.InvalidCloudExceptionErrorMessage,
-                        clientRequestIdMsg + cloudException.Message),
+                        clientRequestIdMsg + cloudException.Error.Message),
                         cloudException);
                 }
             }
@@ -164,51 +161,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // Ctrl + C and etc
             base.StopProcessing();
             this.StopProcessingFlag = true;
-        }
-
-        /// <summary>
-        /// Validates if the usage by ID is allowed or not.
-        /// </summary>
-        /// <param name="replicationProvider">Replication provider.</param>
-        /// <param name="paramName">Parameter name.</param>
-        protected void ValidateUsageById(string replicationProvider, string paramName)
-        {
-            if (replicationProvider != Constants.HyperVReplica)
-            {
-                throw new Exception(
-                    string.Format(
-                    "Call using ID based parameter {0} is not supported for this provider. Please use its corresponding full object parameter instead",
-                    paramName));
-            }
-            else
-            {
-                this.WriteWarningWithTimestamp(
-                    string.Format(
-                    Properties.Resources.IDBasedParamUsageNotSupportedFromNextRelease,
-                    paramName));
-            }
-        }
-
-        /// <summary>
-        /// Gets the current vault location.
-        /// </summary>
-        /// <returns>The current vault location.</returns>
-        protected string GetCurrentValutLocation()
-        {
-            string location = string.Empty;
-
-            CloudServiceListResponse response =  
-                this.RecoveryServicesClient.GetRecoveryServicesClient.CloudServices.List();
-            foreach (var cloudService in response.CloudServices)
-            {
-                if (cloudService.Name == PSRecoveryServicesClient.asrVaultCreds.CloudServiceName)
-                {
-                    location = cloudService.GeoRegion;
-                    break;
-                }
-            }
-
-            return location;
         }
     }
 }

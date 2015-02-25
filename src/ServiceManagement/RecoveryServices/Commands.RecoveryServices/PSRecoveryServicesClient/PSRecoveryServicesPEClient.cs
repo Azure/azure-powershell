@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
@@ -23,6 +24,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// </summary>
     public partial class PSRecoveryServicesClient
     {
+        /// <summary>
+        /// Represents Enable protection.
+        /// </summary>
+        public const string EnableProtection = "Enable";
+
+        /// <summary>
+        /// Represents Disable protection.
+        /// </summary>
+        public const string DisableProtection = "Disable";
+
         /// <summary>
         /// Retrieves Protection Entity.
         /// </summary>
@@ -60,34 +71,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="protectionContainerId">Protection Container ID</param>
         /// <param name="virtualMachineId">Virtual Machine ID</param>
-        /// <param name="input">Enable protection input.</param>
+        /// <param name="protection">Protection state to set</param>
         /// <returns>Job response</returns>
-        public JobResponse EnableProtection(
+        public JobResponse SetProtectionOnProtectionEntity(
             string protectionContainerId,
             string virtualMachineId,
-            EnableProtectionInput input)
+            string protection)
         {
-            return this.GetSiteRecoveryClient().ProtectionEntity.EnableProtection(
-                protectionContainerId,
-                virtualMachineId,
-                input,
-                this.GetRequestHeaders());
-        }
+            var requestHeaders = this.GetRequestHeaders();
+            
+            JobResponse jobResponse = null;
 
-        /// <summary>
-        /// Sets protection on Protection entity.
-        /// </summary>
-        /// <param name="protectionContainerId">Protection Container ID</param>
-        /// <param name="virtualMachineId">Virtual Machine ID</param>
-        /// <returns>Job response</returns>
-        public JobResponse DisbleProtection(
-            string protectionContainerId,
-            string virtualMachineId)
-        {
-            return this.GetSiteRecoveryClient().ProtectionEntity.DisableProtection(
-                protectionContainerId,
-                virtualMachineId,
-                this.GetRequestHeaders());
+            if (0 == string.Compare(EnableProtection, protection, StringComparison.OrdinalIgnoreCase))
+            {
+                jobResponse =
+                    this.GetSiteRecoveryClient().ProtectionEntity.EnableProtection(
+                    protectionContainerId,
+                    virtualMachineId,
+                    requestHeaders);
+            }
+            else if (0 == string.Compare(DisableProtection, protection, StringComparison.OrdinalIgnoreCase))
+            {
+                jobResponse =
+                    this.GetSiteRecoveryClient().ProtectionEntity.DisableProtection(
+                    protectionContainerId,
+                    virtualMachineId,
+                    requestHeaders);
+            }
+
+            return jobResponse;
         }
 
         /// <summary>
@@ -152,18 +164,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="protectionContainerId">Protection Container ID</param>
         /// <param name="protectionEntityId">Recovery Plan ID</param>
-        /// <param name="request">Commit failover request.</param>
         /// <returns>Job response</returns>
         public JobResponse StartAzureSiteRecoveryCommitFailover(
             string protectionContainerId,
-            string protectionEntityId,
-            CommitFailoverRequest request)
+            string protectionEntityId)
         {
             return this.GetSiteRecoveryClient().ProtectionEntity.CommitFailover(
-                 protectionContainerId,
-                 protectionEntityId,
-                 request,
-                 this.GetRequestHeaders());
+                protectionContainerId,
+                protectionEntityId,
+                this.GetRequestHeaders());
         }
 
         /// <summary>
@@ -171,34 +180,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="protectionContainerId">Protection Container ID</param>
         /// <param name="protectionEntityId">Recovery Plan ID</param>
-        /// <param name="request">Re-protect request.</param>
         /// <returns>Job response</returns>
         public JobResponse StartAzureSiteRecoveryReprotection(
             string protectionContainerId,
-            string protectionEntityId,
-            ReprotectRequest request)
+            string protectionEntityId)
         {
+            var request = new ReprotectRequest();
             return this.GetSiteRecoveryClient().ProtectionEntity.Reprotect(
                 protectionContainerId,
                 protectionEntityId,
                 request,
-                this.GetRequestHeaders());
-        }
-
-        /// <summary>
-        /// Currently available only for E2E replication provider, 
-        /// syncs owner role information on Protection entity.
-        /// </summary>
-        /// <param name="protectionContainerId">Protection Container ID</param>
-        /// <param name="protectionEntityId">Protection Entity ID</param>
-        /// <returns>Job response</returns>
-        public JobResponse UpdateAzureSiteRecoveryProtectionEntity(
-            string protectionContainerId,
-            string protectionEntityId)
-        {
-            return this.GetSiteRecoveryClient().ProtectionEntity.SyncOwnerInformation(
-                protectionContainerId,
-                protectionEntityId,
                 this.GetRequestHeaders());
         }
     }

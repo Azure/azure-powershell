@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.Management.Automation;
 using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -39,50 +40,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string RPId { get; set; }
+        public string RPId {get; set;}
 
         /// <summary>
         /// Gets or sets ID of the PE.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ProtectionEntityId { get; set; }
+        public string ProtectionEntityId {get; set;}
 
         /// <summary>
         /// Gets or sets ID of the Recovery Plan.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ProtectionContainerId { get; set; }
+        public string ProtectionContainerId {get; set;}
 
         /// <summary>
         /// Gets or sets Recovery Plan object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRRecoveryPlan RecoveryPlan { get; set; }
+        public ASRRecoveryPlan RecoveryPlan {get; set;}
 
         /// <summary>
         /// Gets or sets Protection Entity object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRProtectionEntity ProtectionEntity { get; set; }
-
-        /// <summary>
-        /// Gets or sets Failover direction for the recovery plan.
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        [ValidateSet(
-            Constants.PrimaryToRecovery,
-            Constants.RecoveryToPrimary)]
-        public string Direction { get; set; }
+        public ASRProtectionEntity ProtectionEntity {get; set;}
 
         /// <summary>
         /// Gets or sets switch parameter. This is required to wait for job completion.
         /// </summary>
         [Parameter]
-        public SwitchParameter WaitForCompletion { get; set; }
+        public SwitchParameter WaitForCompletion {get; set;}
         #endregion Parameters
 
         /// <summary>
@@ -92,14 +84,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                if (string.IsNullOrEmpty(this.Direction))
-                {
-                    this.WriteWarningWithTimestamp(
-                        string.Format(
-                            Properties.Resources.MandatoryParamFromNextRelease,
-                            Constants.Direction));
-                }
-
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ByRPObject:
@@ -130,22 +114,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void SetRpCommit()
         {
-            var request = new CommitFailoverRequest();
-
-            if (this.RecoveryPlan == null)
-            {
-                var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(
-                    this.RPId);
-                this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
-
-                this.ValidateUsageById(this.RecoveryPlan.ReplicationProvider, "RPId");
-            }
-
-            request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
-            request.ReplicationProviderSettings = string.Empty;
-
-            request.FailoverDirection = this.Direction;
-
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(
                 this.RPId);
 
@@ -162,36 +130,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void SetPECommit()
         {
-            var request = new CommitFailoverRequest();
-
-            if (this.ProtectionEntity == null)
-            {
-                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
-                    this.ProtectionContainerId,
-                    this.ProtectionEntityId);
-                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
-
-                this.ValidateUsageById(
-                    this.ProtectionEntity.ReplicationProvider, 
-                    Constants.ProtectionEntityId);
-            }
-
-            request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
-            request.ReplicationProviderSettings = string.Empty;
- 
-            if (this.ProtectionEntity.ActiveLocation == Constants.PrimaryLocation)
-            {
-                request.FailoverDirection = Constants.RecoveryToPrimary;
-            }
-            else
-            {
-                request.FailoverDirection = Constants.PrimaryToRecovery;
-            }
-
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(
                 this.ProtectionContainerId,
-                this.ProtectionEntityId,
-                request);
+                this.ProtectionEntityId);
 
             this.WriteJob(this.jobResponse.Job);
 

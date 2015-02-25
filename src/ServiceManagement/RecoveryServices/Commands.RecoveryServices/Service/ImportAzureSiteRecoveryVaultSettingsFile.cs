@@ -21,6 +21,7 @@ using System.Runtime.Serialization;
 using System.Xml;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             HelpMessage = "AzureSiteRecovery vault settings file path", 
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string Path { get; set; }
+        public string Path {get; set;}
         #endregion Parameters
 
         /// <summary>
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     asrVaultCreds.ResourceName,
                     asrVaultCreds.CloudServiceName);
 
-                Utilities.UpdateVaultSettings(asrVaultCreds);
+                this.ImportAzureSiteRecoveryVaultSettings(asrVaultCreds);
                 this.WriteObject(new ASRVaultSettings(
                     asrVaultCreds.ResourceName,
                     asrVaultCreds.CloudServiceName));
@@ -115,6 +116,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             catch (Exception exception)
             {
                 this.HandleException(exception);
+            }
+        }
+
+        /// <summary>
+        /// Imports Azure Site Recovery Vault settings.
+        /// </summary>
+        /// <param name="asrVaultCreds">ASR Vault credentials</param>
+        public void ImportAzureSiteRecoveryVaultSettings(ASRVaultCreds asrVaultCreds)
+        {
+            object updateVaultSettingsOneAtATime = new object();
+            lock (updateVaultSettingsOneAtATime)
+            {
+                PSRecoveryServicesClient.asrVaultCreds.ResourceName =
+                    asrVaultCreds.ResourceName;
+                PSRecoveryServicesClient.asrVaultCreds.CloudServiceName =
+                    asrVaultCreds.CloudServiceName;
+                PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey =
+                    asrVaultCreds.ChannelIntegrityKey;
             }
         }
     }

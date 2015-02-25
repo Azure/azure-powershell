@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Name = recoveryPlan.Name;
             this.ServerId = recoveryPlan.ServerId;
             this.TargetServerId = recoveryPlan.TargetServerId;
-            this.ReplicationProvider = recoveryPlan.ReplicationProvider;
         }
 
         #region Properties
@@ -64,11 +63,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets target Server ID.
         /// </summary>
         public string TargetServerId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Replication provider.
-        /// </summary>
-        public string ReplicationProvider { get; set; }
 
         #endregion
     }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
@@ -23,6 +24,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// </summary>
     public partial class PSRecoveryServicesClient
     {
+        /// <summary>
+        /// Represents direction primary to secondary.
+        /// </summary>
+        public const string PrimaryToRecovery = "PrimaryToRecovery";
+
+        /// <summary>
+        /// Represents direction secondary to primary.
+        /// </summary>
+        public const string RecoveryToPrimary = "RecoveryToPrimary";
+
+        /// <summary>
+        /// Represents primary location.
+        /// </summary>
+        public const string PrimaryLocation = "Primary";
+
+        /// <summary>
+        /// Represents Recovery location.
+        /// </summary>
+        public const string RecoveryLocation = "Recovery";
+
         /// <summary>
         /// Gets Azure Site Recovery Plan.
         /// </summary>
