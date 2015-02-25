@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             IEnumerable<CloudService> cloudServiceList = this.GetCloudServices();
 
-            Vault selectedVault = null;
             foreach (var cloudService in cloudServiceList)
             {
+                Vault selectedVault = null;
                 if (cloudService.GeoRegion.Equals(vault.Location, StringComparison.InvariantCultureIgnoreCase))
                 {
                     foreach (var resource in cloudService.Resources)
