@@ -241,6 +241,7 @@ ClientRequestId: {3}</value>
   </data>
   <data name="InCorrectVaultInformation" xml:space="preserve">
     <value>Vault information (Name: {0}, Location: {1}) is not correct</value>
+  </data>
   <data name="NewProtectionProfileObjectWhatIfMessage" xml:space="preserve">
     <value>Creates a new in-memory protection profile association object.</value>
   </data>

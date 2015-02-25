@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public CloudService GetCloudServiceForVault(ASRVault vault)
         {
             IEnumerable<CloudService> cloudServiceList = this.GetCloudServices();
-            CloudService cloudServiceToReturn = null;
 
             Vault selectedVault = null;
             foreach (var cloudService in cloudServiceList)
@@ -56,28 +55,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         if (resource.Name.Equals(vault.Name, StringComparison.InvariantCultureIgnoreCase))
                         {
                             selectedVault = resource;
-                            break;
+                            return cloudService;
                         }
                     }
                 }
-
-                if (selectedVault != null)
-                {
-                    cloudServiceToReturn = cloudService;
-                    break;
-                }
             }
 
-            if (null == selectedVault)
-            {
-                throw new ArgumentException(
-                    string.Format(
-                    Properties.Resources.InCorrectVaultInformation,
-                    vault.Name,
-                    vault.Location));
-            }
-
-            return cloudServiceToReturn;
+            throw new ArgumentException(
+                string.Format(
+                Properties.Resources.InCorrectVaultInformation,
+                vault.Name,
+                vault.Location));
         }
 
         /// <summary>
