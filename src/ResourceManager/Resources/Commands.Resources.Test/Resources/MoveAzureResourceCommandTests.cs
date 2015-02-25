@@ -119,7 +119,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             this.cmdlet.PassThru = true;
             this.cmdlet.Force = true;
-
             this.cmdlet.DestinationResourceGroupName = TargetResourceGroupName;
 
             // move one resource to a resource group

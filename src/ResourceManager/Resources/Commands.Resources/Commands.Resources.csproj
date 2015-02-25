@@ -277,6 +277,10 @@
       <Project>{F49A314A-A235-47D3-A654-1EC19ACA366C}</Project>
       <Name>Commands.StreamAnalytics</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Websites\Commands.Websites\Commands.Websites.csproj">
+      <Project>{80a92297-7c92-456b-8ee7-9fb6ce30149d}</Project>
+      <Name>Commands.Websites</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Resources.dll-Help.xml">
