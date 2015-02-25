@@ -444,4 +444,7 @@
   <data name="StartASSBackupCloneJobWarningMessage" xml:space="preserve">
     <value>Are you sure you want to clone the backup with backupId {0}?</value>
   </data>
+  <data name="DeviceFailoverSourceAndTargetDeviceSameError" xml:space="preserve">
+    <value>Source and Target device in a failover operation can not be the same.</value>
+  </data>
 </root>
