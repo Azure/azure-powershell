@@ -142,6 +142,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About to configure the device : {0} !.
+        /// </summary>
+        internal static string BeginningDeviceConfiguration {
+            get {
+                return ResourceManager.GetString("BeginningDeviceConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not retrieve secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again..
         /// </summary>
         internal static string CIKFetchFailed {
@@ -205,6 +214,42 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More jobs are available for your query. To access the next page of your result use \&quot;-First {0} -Skip {1}\&quot; in your commandlet.
+        /// </summary>
+        internal static string DeviceJobsNextPageFormatMessage {
+            get {
+                return ResourceManager.GetString("DeviceJobsNextPageFormatMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More jobs are available in the subsequent pages for your query. To access the next page use \&quot;-Skip {0}\&quot;  in your commandlet.
+        /// </summary>
+        internal static string DeviceJobsNextPagewithNoFirstMessage {
+            get {
+                return ResourceManager.GetString("DeviceJobsNextPagewithNoFirstMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No more jobs are present for your query!.
+        /// </summary>
+        internal static string DeviceJobsNoMorePagesMessage {
+            get {
+                return ResourceManager.GetString("DeviceJobsNoMorePagesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Job{1} found!.
+        /// </summary>
+        internal static string DeviceJobsReturnedCount {
+            get {
+                return ResourceManager.GetString("DeviceJobsReturnedCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The device name you have specified is not yet configured fully. Please complete the configuration and retry..
         /// </summary>
         internal static string DeviceNotConfiguredMessage {
@@ -237,6 +282,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string EncryptionInProgressMessage {
             get {
                 return ResourceManager.GetString("EncryptionInProgressMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not retrieve encryption key for device. Please make sure you have specified the correct device..
+        /// </summary>
+        internal static string ErrorRetrievingDevicePublicKey {
+            get {
+                return ResourceManager.GetString("ErrorRetrievingDevicePublicKey", resourceCulture);
             }
         }
         
@@ -376,6 +430,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is not a valid InterfaceAlias!.
+        /// </summary>
+        internal static string InvalidInterfaceId {
+            get {
+                return ResourceManager.GetString("InvalidInterfaceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid IP address provided for {0} ! Please make sure it is in the correct format..
+        /// </summary>
+        internal static string InvalidIPAddressProvidedMessage {
+            get {
+                return ResourceManager.GetString("InvalidIPAddressProvidedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provide valid datetime string for To parameter!.
         /// </summary>
         internal static string InvalidToMessage {
@@ -394,11 +466,56 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IP Address information (IPv4Address and IPv4Netmask or IPv6Prefix)  must be provided for {0} network interface, since it is being enabled.
+        /// </summary>
+        internal static string IPAddressesNotProvidedForNetInterfaceBeingEnabled {
+            get {
+                return ResourceManager.GetString("IPAddressesNotProvidedForNetInterfaceBeingEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} Iscsi Connection{1} found!.
         /// </summary>
         internal static string IscsiConnectionGet_StatusMessage {
             get {
                 return ResourceManager.GetString("IscsiConnectionGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone and Primary DNS Server information is mandatory when configuring the device for the first time.
+        /// </summary>
+        internal static string MandatoryParamsMissingForInitialDeviceConfiguration {
+            get {
+                return ResourceManager.GetString("MandatoryParamsMissingForInitialDeviceConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Controller0IPAddress and Controller1IPAddress cannot be configured on interfaces other than Data0.
+        /// </summary>
+        internal static string NetworkConfigControllerIPsNotAllowedOnOthers {
+            get {
+                return ResourceManager.GetString("NetworkConfigControllerIPsNotAllowedOnOthers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Controller0IPAddress, Controller1IPAddress and EnableIscsi are the only configuration settings that can be changed on the Data0 interface!.
+        /// </summary>
+        internal static string NetworkConfigData0AllowedSettings {
+            get {
+                return ResourceManager.GetString("NetworkConfigData0AllowedSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully created a StorSimple Network Configuration for interface {0}.
+        /// </summary>
+        internal static string NewNetworkConfigCreated {
+            get {
+                return ResourceManager.GetString("NewNetworkConfigCreated", resourceCulture);
             }
         }
         
@@ -453,6 +570,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string NoDeviceFoundWithGivenTypeInResourceMessage {
             get {
                 return ResourceManager.GetString("NoDeviceFoundWithGivenTypeInResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Job found with the specified Id : {0}.
+        /// </summary>
+        internal static string NoDeviceJobFoundWithGivenIdMessage {
+            get {
+                return ResourceManager.GetString("NoDeviceJobFoundWithGivenIdMessage", resourceCulture);
             }
         }
         
@@ -934,6 +1060,42 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stopping job with id {0}.
+        /// </summary>
+        internal static string StopAzureStorSimpleJobMessage {
+            get {
+                return ResourceManager.GetString("StopAzureStorSimpleJobMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop the job with id {0}.
+        /// </summary>
+        internal static string StopAzureStorSimpleJobWarningMessage {
+            get {
+                return ResourceManager.GetString("StopAzureStorSimpleJobWarningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully stopped job..
+        /// </summary>
+        internal static string StopDeviceJobSucceeded {
+            get {
+                return ResourceManager.GetString("StopDeviceJobSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About to stop a job! Id : {0} .
+        /// </summary>
+        internal static string StoppingDeviceJob {
+            get {
+                return ResourceManager.GetString("StoppingDeviceJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cleaning up objects, retry count: {0}.
         /// </summary>
         internal static string StorageAccountCleanupRetryMessage {
@@ -975,6 +1137,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string StorageCredentialVerificationSuccessMessage {
             get {
                 return ResourceManager.GetString("StorageCredentialVerificationSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully updated configuration for device {0} with id {1}.
+        /// </summary>
+        internal static string StorSimpleDeviceUpdatedSuccessfully {
+            get {
+                return ResourceManager.GetString("StorSimpleDeviceUpdatedSuccessfully", resourceCulture);
             }
         }
         

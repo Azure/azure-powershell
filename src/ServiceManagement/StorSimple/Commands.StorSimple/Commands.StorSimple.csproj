@@ -124,6 +124,11 @@
     <Compile Include="Cmdlets\DataContainer\GetAzureStorSimpleDeviceVolumeContainer.cs" />
     <Compile Include="Cmdlets\DataContainer\NewAzureStorSimpleDeviceVolumeContainer.cs" />
     <Compile Include="Cmdlets\DataContainer\RemoveAzureStorSimpleDeviceVolumeContainer.cs" />
+    <Compile Include="Cmdlets\DeviceDetails\SetAzureStorSimpleVirtualDevice.cs" />
+    <Compile Include="Cmdlets\DeviceDetails\SetAzureStorSimpleDevice.cs" />
+    <Compile Include="Cmdlets\DeviceDetails\NewAzureStorSimpleNetworkConfig.cs" />
+    <Compile Include="Cmdlets\DeviceJobs\GetAzureStorSimpleJob.cs" />
+    <Compile Include="Cmdlets\DeviceJobs\StopAzureStorSimpleJob.cs" />
     <Compile Include="Cmdlets\Failover\GetAzureStorSimpleFailoverVolumeContainers.cs" />
     <Compile Include="Cmdlets\Failover\StartAzureStorSimpleDeviceFailoverJob.cs" />
     <Compile Include="Cmdlets\GetAzureStorSimpleDevice.cs" />
@@ -151,6 +156,8 @@
     <Compile Include="Library\CryptoHelper.cs" />
     <Compile Include="Library\IKeyManager.cs" />
     <Compile Include="Library\LocalKeyStoreManager.cs" />
+    <Compile Include="Library\MiscUtils.cs" />
+    <Compile Include="Models\NetworkConfig.cs" />
     <Compile Include="Models\TaskReport.cs" />
     <Compile Include="Models\PSContracts.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -165,6 +172,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceClients\StorSimpleContextClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDCClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleJobsClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDeviceFailoverClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDevicesClient.cs" />
     <Compile Include="ServiceClients\StorSimpleServiceConfigClient.cs" />
@@ -191,8 +199,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

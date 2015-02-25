@@ -423,6 +423,60 @@
   <data name="ResourceContextNotSetMessage" xml:space="preserve">
     <value>Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context.</value>
   </data>
+  <data name="IPAddressesNotProvidedForNetInterfaceBeingEnabled" xml:space="preserve">
+    <value>IP Address information (IPv4Address and IPv4Netmask or IPv6Prefix)  must be provided for {0} network interface, since it is being enabled</value>
+  </data>
+  <data name="MandatoryParamsMissingForInitialDeviceConfiguration" xml:space="preserve">
+    <value>Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone and Primary DNS Server information is mandatory when configuring the device for the first time</value>
+  </data>
+  <data name="DeviceJobsNextPageFormatMessage" xml:space="preserve">
+    <value>More jobs are available for your query. To access the next page of your result use \"-First {0} -Skip {1}\" in your commandlet</value>
+  </data>
+  <data name="DeviceJobsNextPagewithNoFirstMessage" xml:space="preserve">
+    <value>More jobs are available in the subsequent pages for your query. To access the next page use \"-Skip {0}\"  in your commandlet</value>
+  </data>
+  <data name="DeviceJobsNoMorePagesMessage" xml:space="preserve">
+    <value>No more jobs are present for your query!</value>
+  </data>
+  <data name="DeviceJobsReturnedCount" xml:space="preserve">
+    <value>{0} Job{1} found!</value>
+  </data>
+  <data name="NewNetworkConfigCreated" xml:space="preserve">
+    <value>Successfully created a StorSimple Network Configuration for interface {0}</value>
+  </data>
+  <data name="NoDeviceJobFoundWithGivenIdMessage" xml:space="preserve">
+    <value>No Job found with the specified Id : {0}</value>
+  </data>
+  <data name="StopAzureStorSimpleJobMessage" xml:space="preserve">
+    <value>Stopping job with id {0}</value>
+  </data>
+  <data name="StopAzureStorSimpleJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to stop the job with id {0}</value>
+  </data>
+  <data name="StopDeviceJobSucceeded" xml:space="preserve">
+    <value>Successfully stopped job.</value>
+  </data>
+  <data name="StoppingDeviceJob" xml:space="preserve">
+    <value>About to stop a job! Id : {0} </value>
+  </data>
+  <data name="StorSimpleDeviceUpdatedSuccessfully" xml:space="preserve">
+    <value>Successfully updated configuration for device {0} with id {1}</value>
+  </data>
+  <data name="BeginningDeviceConfiguration" xml:space="preserve">
+    <value>About to configure the device : {0} !</value>
+  </data>
+  <data name="InvalidIPAddressProvidedMessage" xml:space="preserve">
+    <value>Invalid IP address provided for {0} ! Please make sure it is in the correct format.</value>
+  </data>
+  <data name="NetworkConfigControllerIPsNotAllowedOnOthers" xml:space="preserve">
+    <value>Controller0IPAddress and Controller1IPAddress cannot be configured on interfaces other than Data0</value>
+  </data>
+  <data name="NetworkConfigData0AllowedSettings" xml:space="preserve">
+    <value>Controller0IPAddress, Controller1IPAddress and EnableIscsi are the only configuration settings that can be changed on the Data0 interface!</value>
+  </data>
+  <data name="ErrorRetrievingDevicePublicKey" xml:space="preserve">
+    <value>Could not retrieve encryption key for device. Please make sure you have specified the correct device.</value>
+  </data>
   <data name="ReturnedCountDataContainerGroupMessage" xml:space="preserve">
     <value>{0} volume container group{1} found!</value>
   </data>
@@ -443,6 +497,9 @@
   </data>
   <data name="StartASSBackupCloneJobWarningMessage" xml:space="preserve">
     <value>Are you sure you want to clone the backup with backupId {0}?</value>
+  </data>
+  <data name="InvalidInterfaceId" xml:space="preserve">
+    <value>{0} is not a valid InterfaceAlias!</value>
   </data>
   <data name="DeviceFailoverSourceAndTargetDeviceSameError" xml:space="preserve">
     <value>Source and Target device in a failover operation can not be the same.</value>
