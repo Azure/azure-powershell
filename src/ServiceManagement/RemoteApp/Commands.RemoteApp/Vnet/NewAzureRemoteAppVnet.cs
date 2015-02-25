@@ -1,0 +1,56 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Management.RemoteApp.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
+
+namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+{
+    [Cmdlet(VerbsCommon.New, "AzureRemoteAppVNet"), OutputType(typeof(TrackingResult))]
+    public class NewAzureRemoteAppVNet : CreateUpdateVnetCmdletBase
+    {
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "Virtual network region.")]
+
+        public string Region { get; set; }
+
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "Virtual network gateway type")]
+
+        public GatewayType GatewayType { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            VNetParameter payload = null;
+
+
+            payload = new VNetParameter()
+            {
+                Region = Region,
+                VnetAddressSpaces = new List<string>(VirtualNetworkAddressSpace),
+                LocalAddressSpaces = new List<string>(LocalNetworkAddressSpace),
+                DnsServers = new List<string>(DnsServerIpAddress),
+                VpnAddress = VpnDeviceIpAddress,
+                GatewayType = GatewayType
+            };
+
+            RegisterSubscriptionWithRdfeForRemoteApp();
+
+            WriteVNet(payload);
+        }
+    }
+}
