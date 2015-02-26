@@ -196,6 +196,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Source and Target device in a failover operation can not be the same..
+        /// </summary>
+        internal static string DeviceFailoverSourceAndTargetDeviceSameError {
+            get {
+                return ResourceManager.GetString("DeviceFailoverSourceAndTargetDeviceSameError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} StorSimple device{1} found!.
         /// </summary>
         internal static string DeviceGet_StatusMessage {

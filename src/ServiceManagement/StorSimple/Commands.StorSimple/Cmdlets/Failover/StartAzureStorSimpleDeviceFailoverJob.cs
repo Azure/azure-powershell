@@ -87,8 +87,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                 break;
                         }
 
-                        if (String.IsNullOrEmpty(deviceId) || string.IsNullOrEmpty(targetDeviceId))
+                        if (string.IsNullOrEmpty(deviceId) || string.IsNullOrEmpty(targetDeviceId))
                         {
+                            WriteObject(null);
+                            return;
+                        }
+
+                        if(deviceId.Equals(targetDeviceId, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            WriteVerbose(Resources.DeviceFailoverSourceAndTargetDeviceSameError);
                             WriteObject(null);
                             return;
                         }

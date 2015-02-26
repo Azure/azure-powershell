@@ -501,4 +501,7 @@
   <data name="InvalidInterfaceId" xml:space="preserve">
     <value>{0} is not a valid InterfaceAlias!</value>
   </data>
+  <data name="DeviceFailoverSourceAndTargetDeviceSameError" xml:space="preserve">
+    <value>Source and Target device in a failover operation can not be the same.</value>
+  </data>
 </root>
