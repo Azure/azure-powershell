@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights
     /// <summary>
     /// Base class for the Azure SDK EventService Cmdlets
     /// </summary>
-    public abstract class EventCmdletBase : InsightsCmdletBase
+    public abstract class EventCmdletBase : InsightsClientCmdletBase
     {
         private static readonly TimeSpan MaximumDateDifferenceAllowedInDays = TimeSpan.FromDays(15);
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromHours(1);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Insights
         internal const string ResourceUriName = "Query on ResourceUriName";
         internal const string CorrelationIdName = "Query on CorrelationId";
 
-        #region Optional parameters declarations
+        #region Parameters declarations
 
         /// <summary>
         /// Gets or sets the starttime parameter of the cmdlet
@@ -168,31 +168,52 @@ namespace Microsoft.Azure.Commands.Insights
         #endregion
 
         /// <summary>
+        /// A predicate to filter in/out the records from original list of records obtained from the SDK.
+        /// <para>This method is intended to allow descendants of this class to further filter the results.</para>
+        /// <para>An example of this is when the filtering is needed based on EventSource and ResourceUri at the same time. 
+        /// The SDK does not allow these two fields to be in the query filter togheter. So the call should filter by one and then use this function to filter by the second one.</para>
+        /// </summary>
+        /// <param name="record">A record from the original list of records obtained from the sdk</param>
+        /// <returns>true if the record should kept in the result, false if it should be filtered out</returns>
+        protected virtual bool KeepTheRecord(EventData record)
+        {
+            // Do not filter in this funtion, use a filter in the descendants only
+            return true;
+        }
+
+        /// <summary>
         /// Execute the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            string queryFilter = this.ProcessParameters();
-
-            // Retrieve the records
-            var fullDetails = this.DetailedOutput.IsPresent;
-
-            // Call the proper API methods to return a list of raw records. In the future this pattern can be extended to include DigestRecords
-            // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
-            EventDataListResponse response = this.InsightsClient.EventOperations.ListEventsAsync(filterString: queryFilter, selectedProperties: fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery, cancellationToken: CancellationToken.None).Result;
-            var records = new List<IPSEventData>(response.EventDataCollection.Value.Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
-            string nextLink = response.EventDataCollection.NextLink;
-
-            // Adding a safety check to stop returning records if too many have been read already.
-            while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < MaxNumberOfReturnedRecords)
+            try
             {
-                response = this.InsightsClient.EventOperations.ListEventsNextAsync(nextLink: nextLink, cancellationToken: CancellationToken.None).Result;
-                records.AddRange(response.EventDataCollection.Value.Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
-                nextLink = response.EventDataCollection.NextLink;
-            }
+                string queryFilter = this.ProcessParameters();
 
-            // Returns an object that contains a link to the set of subsequent records or null if not more records are available, called Next, and an array of records, called Value
-            WriteObject(sendToPipeline: records, enumerateCollection: true);
+                // Retrieve the records
+                var fullDetails = this.DetailedOutput.IsPresent;
+
+                // Call the proper API methods to return a list of raw records. In the future this pattern can be extended to include DigestRecords
+                // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
+                EventDataListResponse response = this.InsightsClient.EventOperations.ListEventsAsync(filterString: queryFilter, selectedProperties: fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery, cancellationToken: CancellationToken.None).Result;
+                var records = new List<IPSEventData>(response.EventDataCollection.Value.Where(this.KeepTheRecord).Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
+                string nextLink = response.EventDataCollection.NextLink;
+
+                // Adding a safety check to stop returning records if too many have been read already.
+                while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < MaxNumberOfReturnedRecords)
+                {
+                    response = this.InsightsClient.EventOperations.ListEventsNextAsync(nextLink: nextLink, cancellationToken: CancellationToken.None).Result;
+                    records.AddRange(response.EventDataCollection.Value.Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
+                    nextLink = response.EventDataCollection.NextLink;
+                }
+
+                // Returns an object that contains a link to the set of subsequent records or null if not more records are available, called Next, and an array of records, called Value
+                WriteObject(sendToPipeline: records, enumerateCollection: true);
+            }
+            catch (AggregateException ex)
+            {
+                throw ex.Flatten().InnerException;
+            }
         }
     }
 }

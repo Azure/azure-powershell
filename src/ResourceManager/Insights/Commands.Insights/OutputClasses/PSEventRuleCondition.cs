@@ -13,46 +13,45 @@
 // ----------------------------------------------------------------------------------
 
 using System.Text;
+using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the EventDataAuthorization to provide a better output format for the PS command lets.
+    /// Wrapps around the ManagementEventRuleCondition class
     /// </summary>
-    public class PSEventDataAuthorization
+    public class PSEventRuleCondition : IPSRuleCondition
     {
         /// <summary>
-        /// Gets or sets the scope
+        /// Gets or sets the DataSource of the rule condition
         /// </summary>
-        public string Scope { get; set; }
+        public RuleManagementEventDataSource DataSource { get; set; }
 
         /// <summary>
-        /// Gets or sets the action
+        /// Gets or sets the AggregationCondition of the rule condition
         /// </summary>
-        public string Action { get; set; }
+        public ManagementEventAggregationCondition AggregationCondition { get; set; }
 
         /// <summary>
-        /// Gets or sets the role
+        /// Initializes a new instance of the PSEventRuleCondition class
         /// </summary>
-        public string Role { get; set; }
+        /// <param name="ruleCondition">The rule condition</param>
+        public PSEventRuleCondition(ManagementEventRuleCondition ruleCondition)
+        {
+            this.DataSource = ruleCondition.DataSource as RuleManagementEventDataSource;
+            this.AggregationCondition = ruleCondition.Aggregation;
+        }
 
         /// <summary>
-        /// Gets or sets the condition
+        /// A string representation of the object
         /// </summary>
-        public string Condition { get; set; }
-
-        /// <summary>
-        /// A string representation of the PSEventDataAuthorization
-        /// </summary>
-        /// <returns>A string representation of the PSEventDataAuthorization</returns>
+        /// <returns></returns>
         public override string ToString()
         {
             StringBuilder output = new StringBuilder();
             output.AppendLine();
-            output.AppendLine("Scope     : " + Scope);
-            output.AppendLine("Action    : " + Action);
-            output.AppendLine("Role      : " + Role);
-            output.Append("Condition : " + Condition);
+            output.AppendLine("    DataSource : " + this.DataSource.ToString(2));
+            output.Append("    Condition  : " + this.AggregationCondition.ToString(2));
             return output.ToString();
         }
     }
