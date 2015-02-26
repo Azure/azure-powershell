@@ -191,4 +191,66 @@ ClientRequestId: {3}</value>
   <data name="RemoveRPWhatIfMessage" xml:space="preserve">
     <value>Removing Recovery Plan</value>
   </data>
+  <data name="SubscriptionIsNotAssociatedWithTheAccount" xml:space="preserve">
+    <value>Subscription {0} is not associated with the account</value>
+  </data>
+  <data name="ProtectionEntityAlreadyDisabled" xml:space="preserve">
+    <value>Protection entity {0} is already disabled</value>
+  </data>
+  <data name="ProtectionEntityAlreadyEnabled" xml:space="preserve">
+    <value>Protection entity {0} is already enabled</value>
+  </data>
+  <data name="AzureVMNetworkIsNotAssociatedWithTheSubscription" xml:space="preserve">
+    <value>AzureVMNetwork {0} is not associated with the Subscription {1}</value>
+  </data>
+  <data name="VaultSettingsGenerationUnSupported" xml:space="preserve">
+    <value>Cannot generate vault settings file for this vault. Download it from the Azure Portal.</value>
+  </data>
+  <data name="VaultCreationSuccessMessage" xml:space="preserve">
+    <value>Vault has been created</value>
+  </data>
+  <data name="ReplicationStartTimeInvalid" xml:space="preserve">
+    <value>Replication Start Time span value cannot be greater then 24 hours.</value>
+  </data>
+  <data name="StorageAccountNameIsNotValid" xml:space="preserve">
+    <value>Please enter the storage account name details in the protection profile.</value>
+  </data>
+  <data name="SubscriptionIdIsNotValid" xml:space="preserve">
+    <value>Please enter the subscription ID details.</value>
+  </data>
+  <data name="IncorrectReplicationProvider" xml:space="preserve">
+    <value>Replication Provider {0} entered invalid for the current set of parameters.</value>
+  </data>
+  <data name="ArgumentsMissingForUpdateVmProperties" xml:space="preserve">
+    <value>Please provide required VM properties to update</value>
+  </data>
+  <data name="NetworkArgumentsMissingForUpdateVmProperties" xml:space="preserve">
+    <value>Please provide both Source Nic and Recovery Target to update</value>
+  </data>
+  <data name="MandatoryParamFromNextRelease" xml:space="preserve">
+    <value>"{0} will be a mandatory paramter from next release."</value>
+  </data>
+  <data name="IDBasedParamUsageNotSupportedFromNextRelease" xml:space="preserve">
+    <value>"Calls using ID based parameter {0} will not be supported from next release. Please use its corresponding full object parameter instead."</value>
+  </data>
+  <data name="InvalidReplicationFrequency" xml:space="preserve">
+    <value>Replication Frequency {0} is invalid</value>
+  </data>
+  <data name="VaultNotFound" xml:space="preserve">
+    <value>Vault {0} is not associated with the given subscription.</value>
+  </data>
+  <data name="NewProtectionProfileObjectWhatIfMessage" xml:space="preserve">
+    <value>Creates a new in-memory protection profile association object.</value>
+  </data>
+  <data name="ValidationUnsuccessfulWarning" xml:space="preserve">
+    <value>Could not validate the storage account and subscription given.
+Are you sure you want to continue {0}?</value>
+  </data>
+  <data name="StorageIsNotInTheSameLocationAsVault" xml:space="preserve">
+    <value>Storage account given is in {0} whereas the vault is in {1}.
+Please provide a storage account with the same location as that of the vault.</value>
+  </data>
+  <data name="StorageAccountValidationUnsuccessful" xml:space="preserve">
+    <value>The Subscription or Storage account couldn’t be validated. For failovers to be successful, the Subscription should belong to your account, the Storage account to the Subscription and Storage account location must be the same as location of your Vault.</value>
+  </data>
 </root>

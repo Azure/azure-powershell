@@ -17,6 +17,7 @@
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
     <DebugBuildConfig>Configuration=Debug;Platform=Any CPU</DebugBuildConfig>
     <ReleaseBuildConfig>Configuration=Release;Platform=Any CPU</ReleaseBuildConfig>
+    <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
   </PropertyGroup>
   <ItemGroup>
     <AzurePowerShellSln Include=".\src\AzurePowerShell.sln" />
@@ -104,11 +105,13 @@
       Projects="@(AzurePowerShellSln)"
       Targets="Build"
       Properties="$(DebugBuildConfig)"
+      BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
     <MSBuild
       Projects="@(AzurePowerShellSln)"
       Targets="Build"
       Properties="$(ReleaseBuildConfig)"
+      BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
   </Target>
 
@@ -160,6 +163,7 @@
       Projects="@(AzurePowerShellSln)"
       Targets="Build"
       Properties="$(ReleaseBuildConfig)"
+      BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
   </Target>
 
@@ -170,6 +174,7 @@
       Projects="@(AzurePowerShellSln)"
       Targets="Build"
       Properties="$(DebugBuildConfig)"
+      BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
   </Target>
 
@@ -183,7 +188,7 @@
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BuildDebug;BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
-    <CallTarget Targets="KeyVaultTests; SqlTests; CommonTests; TestManagement; TestHDInsight; TestManagedCache; TestServiceManagement; TestServiceManagementExtensions; TestSqlDatabase; TestStorage; TestResourceManager; MockedScenarioTests; TestDSCExtension_x64; TestBatch; TestDataFactoryManager; TestRecoveryServices; TestStreamAnalyticsManager; TestStorSimple"/>
+    <CallTarget Targets="InvokeXUnit; TestHDInsight; TestServiceManagement; TestServiceManagementExtensions; TestSqlDatabase; TestStorage;  TestDSCExtension_x64"/>
   </Target>
   
   <!-- Run Full switch with scenario tests -->
