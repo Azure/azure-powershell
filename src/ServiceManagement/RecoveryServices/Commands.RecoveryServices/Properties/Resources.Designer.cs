@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account given is in {0} whereas the vault is in {1}.
+        ///   Looks up a localized string similar to Storage account given is in a different location as compared to the current vault.
         ///Please provide a storage account with the same location as that of the vault..
         /// </summary>
         internal static string StorageIsNotInTheSameLocationAsVault {
