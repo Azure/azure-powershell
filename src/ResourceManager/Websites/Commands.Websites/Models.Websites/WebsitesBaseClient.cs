@@ -21,7 +21,6 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Websites.Utilities;
 
-
 namespace Microsoft.Azure.Commands.Websites.Models.Websites
 {
     public abstract class WebsitesBaseClient : AzurePSCmdlet
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.Websites.Models.Websites
             {
                 if (_websitesClient == null)
                 {
-                    _websitesClient = new WebsitesClient(CurrentContext);
+                    _websitesClient = new WebsitesClient(this.Profile.Context);
                 }
                 return _websitesClient;
             }

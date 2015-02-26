@@ -1183,12 +1183,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         /// Gets or sets Start timestamp.
         /// </summary>
-        public string StartTime { get; set; }
+        public DateTimeOffset? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets End timestamp.
         /// </summary>
-        public string EndTime { get; set; }
+        public DateTimeOffset? EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets TargetObjectId.
@@ -1219,6 +1219,56 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets list of Errors.
         /// </summary>
         public List<ASRErrorDetails> Errors { get; set; }
+        #endregion
+    }
+
+    /// <summary>
+    /// Azure Site Recovery Site object.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class ASRSite
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRSite" /> class.
+        /// </summary>
+        public ASRSite()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRSite" /> class.
+        /// </summary>
+        /// <param name="site">Hydra site object.</param>
+        public ASRSite(Site site)
+        {
+            this.Name = site.Name;
+            this.ID = site.ID;
+            this.Type = site.Type;
+        }
+
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Gets or sets display name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        /// Gets or sets site type.
+        /// </summary>
+        public string Type { get; set; }
+
         #endregion
     }
 

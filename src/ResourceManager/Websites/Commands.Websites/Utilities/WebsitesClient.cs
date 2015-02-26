@@ -25,8 +25,8 @@ using Microsoft.Azure.Commands;
 using Microsoft.Azure.Management.WebSites;
 using System.Net;
 using Hyak.Common;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.Websites.Utilities
