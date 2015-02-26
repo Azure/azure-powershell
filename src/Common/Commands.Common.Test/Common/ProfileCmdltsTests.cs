@@ -518,6 +518,50 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        public void SelectAzureSubscriptionByNameWithoutAccountPreservesTheAccount()
+        {
+            SetupDefaultProfile();
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.SetParameterSet("SelectSubscriptionByNameParameterSet");
+            cmdlt.SubscriptionName = azureSubscription2.Name;
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            // Verify
+            Assert.NotNull(cmdlt.Profile.Context.Subscription);
+            Assert.Equal(azureSubscription2.Account, cmdlt.Profile.Context.Subscription.Account);
+            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.Context.Subscription.Id);
+        }
+
+        [Fact]
+        public void SelectAzureSubscriptionByIdWithoutAccountPreservesTheAccount()
+        {
+            SetupDefaultProfile();
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
+            cmdlt.SubscriptionId = azureSubscription2.Id.ToString();
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            // Verify
+            Assert.NotNull(cmdlt.Profile.Context.Subscription);
+            Assert.Equal(azureSubscription2.Account, cmdlt.Profile.Context.Subscription.Account);
+            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.Context.Subscription.Id);
+        }
+
+        [Fact]
         public void SelectAzureSubscriptionWithoutPassthroughDoesNotPrint()
         {
             SetupDefaultProfile();
