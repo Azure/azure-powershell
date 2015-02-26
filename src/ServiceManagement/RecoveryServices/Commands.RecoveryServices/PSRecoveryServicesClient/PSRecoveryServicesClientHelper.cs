@@ -111,11 +111,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="azureSubscription">Subscription ID</param>
         /// <param name="azureStorageAccount">Storage Account details</param>
         /// <param name="vaultLocation">Current Vault Location</param>
-        /// <returns>Validation successful</returns>
-        public bool ValidateStorageAccountAssociation(
+        /// <param name="validationSuccessful">Out variable to indicate if validation was successful</param>
+        /// <param name="locationValid">Out variable to indicate if location of storage account is valid</param>
+        public void ValidateStorageAccountAssociation(
             string azureSubscription,
             string azureStorageAccount,
-            string vaultLocation)
+            string vaultLocation,
+            out bool validationSuccessful,
+            out bool locationValid)
         {
             if (string.IsNullOrEmpty(azureSubscription))
             {
@@ -142,7 +145,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
             catch (Exception)
             {
-                return false;
+                validationSuccessful = false;
             }
 
             foreach (var storage in azureStorageListResponse.StorageAccounts)
@@ -160,13 +163,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             if (!associatedAccount)
             {
-                return false;
+                validationSuccessful = false;
             }
 
             // Validate that the Geo Location of the storage account is the same as that of the vault.
             if (string.IsNullOrEmpty(currentStorageAccount.Properties.Location))
             {
-                return false;
+                validationSuccessful = false;
             }
 
             if (0 != string.Compare(
@@ -174,14 +177,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 vaultLocation,
                 StringComparison.OrdinalIgnoreCase))
             {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.StorageIsNotInTheSameLocationAsVault,
-                    currentStorageAccount.Properties.Location,
-                    vaultLocation));
+                locationValid = true;
             }
 
-            return true;
+            validationSuccessful = true;
+            locationValid = true;
         }
     }
 }

@@ -183,6 +183,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Location couldn’t be validated. For failovers to be successful, Storage account location must be the same as location of your Vault..
+        /// </summary>
+        internal static string LocationInvalidWarning {
+            get {
+                return ResourceManager.GetString("LocationInvalidWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;{0} will be a mandatory paramter from next release.&quot;.
         /// </summary>
         internal static string MandatoryParamFromNextRelease {
