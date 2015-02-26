@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Websites.Models.Websites
             {
                 if (_websitesClient == null)
                 {
-                    _websitesClient = new WebsitesClient(CurrentContext);
+                    _websitesClient = new WebsitesClient(Profile.Context);
                 }
                 return _websitesClient;
             }
