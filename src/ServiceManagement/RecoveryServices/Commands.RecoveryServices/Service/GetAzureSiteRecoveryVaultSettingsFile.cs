@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             string fileName;
             string format = "yyyy-MM-ddTHH-mm-ss";
-            if (string.IsNullOrEmpty(this.Site.Name))
+            if (null == this.Site || string.IsNullOrEmpty(this.Site.Name))
             {
                 fileName = string.Format("{0}_{1}.VaultCredentials", this.Vault.Name, DateTime.UtcNow.ToString(format));
             }

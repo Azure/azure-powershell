@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;Calls using ID based parameter {0} will not be supported from next release. Please use its corresponding full object parameter instead.&quot;.
+        ///   Looks up a localized string similar to Calls using ID based parameter {0} will not be supported from next release. Please use its corresponding full object parameter instead..
         /// </summary>
         internal static string IDBasedParamUsageNotSupportedFromNextRelease {
             get {
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;{0} will be a mandatory paramter from next release.&quot;.
+        ///   Looks up a localized string similar to {0} will be a mandatory paramter from next release..
         /// </summary>
         internal static string MandatoryParamFromNextRelease {
             get {
