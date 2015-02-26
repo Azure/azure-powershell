@@ -91,6 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
         public const string StatusFolder = "StatusFolder";
         public const string YarnConfig = "Yarn";
         public const string StormConfig = "Storm";
+        public const string SparkConfig = "Spark";
         public const string HBaseConfig = "HBase";
 
         public const string StdErr = "StandardError";

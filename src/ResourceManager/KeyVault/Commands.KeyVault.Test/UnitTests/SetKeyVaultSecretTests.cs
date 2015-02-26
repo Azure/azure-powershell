@@ -67,11 +67,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             cmdlet.Name = SecretName;
             cmdlet.SecretValue = secureSecretValue;
-            cmdlet.ExecuteCmdlet();
+            try
+            {
+                cmdlet.ExecuteCmdlet();
+            }
+            catch{}
 
-            // Assert
             keyVaultClientMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteError(It.IsAny<ErrorRecord>()), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<Cmdlet.Secret>()), Times.Never());
         }
     }
 }

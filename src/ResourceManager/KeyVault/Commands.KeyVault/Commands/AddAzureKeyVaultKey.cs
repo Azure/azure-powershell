@@ -167,37 +167,30 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            try
+            KeyBundle keyBundle;
+            switch (ParameterSetName)
             {
-                KeyBundle keyBundle;
-                switch (ParameterSetName)
-                {
-                    case CreateParameterSet:
-                        keyBundle = this.DataServiceClient.CreateKey(
-                            VaultName,
-                            Name,
-                            CreateKeyAttributes());
-                        break;
+                case CreateParameterSet:
+                    keyBundle = this.DataServiceClient.CreateKey(
+                        VaultName,
+                        Name,
+                        CreateKeyAttributes());
+                    break;
 
-                    case ImportParameterSet:
-                        bool? importToHsm = null;
-                        keyBundle = this.DataServiceClient.ImportKey(
-                            VaultName, Name,
-                            CreateKeyAttributes(),
-                            CreateWebKeyFromFile(),
-                            string.IsNullOrEmpty(Destination) ? importToHsm : HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase));
-                        break;
+                case ImportParameterSet:
+                    bool? importToHsm = null;
+                    keyBundle = this.DataServiceClient.ImportKey(
+                        VaultName, Name,
+                        CreateKeyAttributes(),
+                        CreateWebKeyFromFile(),
+                        string.IsNullOrEmpty(Destination) ? importToHsm : HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase));
+                    break;
 
-                    default:
-                        throw new ArgumentException(Resources.BadParameterSetName);
-                }
-
-                this.WriteObject(keyBundle);
+                default:
+                    throw new ArgumentException(Resources.BadParameterSetName);
             }
-            catch (Exception ex)
-            {
-                this.WriteErrorDetails(ex);
-            }
+
+            this.WriteObject(keyBundle);
         }
 
         internal KeyAttributes CreateKeyAttributes()

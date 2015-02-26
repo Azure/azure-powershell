@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Insights;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -32,18 +32,19 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// Gets the InsightsClient to use in the Cmdlet
         /// </summary>
-        protected IInsightsClient InsightsClient
+        public IInsightsClient InsightsClient
         {
             get
             {
                 if (this.insightsClient == null)
                 {
                     // The premise is that a command to establish a context (like Add-AzureAccount) has been called before this command in order to have a correct CurrentContext
-                    this.insightsClient = AzureSession.ClientFactory.CreateClient<InsightsClient>(CurrentContext, AzureEnvironment.Endpoint.ResourceManager);
+                    this.insightsClient = AzureSession.ClientFactory.CreateClient<InsightsClient>(Profile.Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.insightsClient;
             }
+            set { this.insightsClient = value; }
         }
 
         /// <summary>

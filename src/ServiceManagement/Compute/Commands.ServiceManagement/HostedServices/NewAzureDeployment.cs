@@ -16,7 +16,7 @@
 using System;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
@@ -113,7 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             AssertNoPersistenVmRoleExistsInDeployment(PVM.DeploymentSlotType.Production);
             AssertNoPersistenVmRoleExistsInDeployment(PVM.DeploymentSlotType.Staging);
 
-            var storageName = CurrentContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            var storageName = Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
 
             Uri packageUrl;
             if (this.Package.StartsWith(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) ||
@@ -123,6 +123,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             }
             else
             {
+                if (string.IsNullOrEmpty(storageName))
+                {
+                    throw new ArgumentException(Resources.CurrentStorageAccountIsNotSet);
+                }
+
                 var progress = new ProgressRecord(0, Resources.WaitForUploadingPackage, Resources.UploadingPackage);
                 WriteProgress(progress);
                 removePackage = true;
@@ -264,11 +269,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             if (string.IsNullOrEmpty(this.Label))
             {
                 this.Label = this.Name;
-            }
-
-            if (string.IsNullOrEmpty(this.CurrentContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount)))
-            {
-                throw new ArgumentException(Resources.CurrentStorageAccountIsNotSet);
             }
         }
     }

@@ -66,6 +66,12 @@ namespace Microsoft.Azure.Commands.DataFactories
                             parameters.Name,
                             parameters.RawJsonContent))
                     {DataFactoryName = parameters.DataFactoryName, ResourceGroupName = parameters.ResourceGroupName};
+
+                if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(hub.ProvisioningState))
+                {
+                    // ToDo: service side should set the error message for provisioning failures.
+                    throw new ProvisioningFailedException(Resources.HubProvisioningFailed);
+                }
             };
 
             if (parameters.Force)
@@ -93,12 +99,6 @@ namespace Microsoft.Azure.Commands.DataFactories
                         parameters.DataFactoryName),
                     parameters.Name,
                     createHub);
-            }
-
-            if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(hub.ProvisioningState))
-            {
-                // ToDo: service side should set the error message for provisioning failures.
-                throw new ProvisioningFailedException(Resources.HubProvisioningFailed);
             }
 
             return hub;
