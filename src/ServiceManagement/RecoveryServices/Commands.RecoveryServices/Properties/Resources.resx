@@ -247,7 +247,7 @@ ClientRequestId: {3}</value>
 Are you sure you want to continue {0}?</value>
   </data>
   <data name="StorageIsNotInTheSameLocationAsVault" xml:space="preserve">
-    <value>Storage account given is in {0} whereas the vault is in {1}.
+    <value>Storage account given is in a different location as compared to the current vault.
 Please provide a storage account with the same location as that of the vault.</value>
   </data>
   <data name="StorageAccountValidationUnsuccessful" xml:space="preserve">

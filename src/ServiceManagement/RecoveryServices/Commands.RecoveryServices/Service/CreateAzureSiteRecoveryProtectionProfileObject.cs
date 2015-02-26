@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 this.WriteWarning(string.Format(Properties.Resources.StorageAccountValidationUnsuccessful));
             }
 
-            if (!locationValid)
+            if (validationSuccessful && !locationValid)
             {
                 this.WriteWarning(string.Format(Properties.Resources.StorageIsNotInTheSameLocationAsVault));
             }
