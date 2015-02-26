@@ -216,20 +216,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 out validationSuccessful,
                 out locationValid);
 
+            if (!validationSuccessful)
+            {
+                this.WriteWarning(string.Format(Properties.Resources.StorageAccountValidationUnsuccessful));
+            }
+
             if (!locationValid)
             {
                 this.WriteWarning(string.Format(Properties.Resources.StorageIsNotInTheSameLocationAsVault));
-                this.ConfirmAction(
-                    this.Force.IsPresent,
-                    string.Format(Properties.Resources.LocationInvalidWarning, this.targetName),
-                    string.Format(Properties.Resources.NewProtectionProfileObjectWhatIfMessage),
-                    this.targetName,
-                    new Action(this.ProceedToCreateProtectionProfileObject));
             }
-            else if (!validationSuccessful)
-            {
-                this.WriteWarning(string.Format(Properties.Resources.StorageAccountValidationUnsuccessful));
 
+            if (!validationSuccessful || !locationValid)
+            {
                 this.ConfirmAction(
                     this.Force.IsPresent,
                     string.Format(Properties.Resources.ValidationUnsuccessfulWarning, this.targetName),

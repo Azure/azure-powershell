@@ -253,7 +253,4 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="StorageAccountValidationUnsuccessful" xml:space="preserve">
     <value>The Subscription or Storage account couldn’t be validated. For failovers to be successful, the Subscription should belong to your account, the Storage account to the Subscription and Storage account location must be the same as location of your Vault.</value>
   </data>
-  <data name="LocationInvalidWarning" xml:space="preserve">
-    <value>The Location couldn’t be validated. For failovers to be successful, Storage account location must be the same as location of your Vault.</value>
-  </data>
 </root>

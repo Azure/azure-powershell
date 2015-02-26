@@ -146,6 +146,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             catch (Exception)
             {
                 validationSuccessful = false;
+                locationValid = false;
+                return;
             }
 
             foreach (var storage in azureStorageListResponse.StorageAccounts)
@@ -164,12 +166,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             if (!associatedAccount)
             {
                 validationSuccessful = false;
+                locationValid = false;
+                return;
             }
 
             // Validate that the Geo Location of the storage account is the same as that of the vault.
             if (string.IsNullOrEmpty(currentStorageAccount.Properties.Location))
             {
                 validationSuccessful = false;
+                locationValid = false;
+                return;
             }
 
             if (0 != string.Compare(
@@ -177,7 +183,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 vaultLocation,
                 StringComparison.OrdinalIgnoreCase))
             {
+                validationSuccessful = true;
                 locationValid = true;
+                return;
             }
 
             validationSuccessful = true;
