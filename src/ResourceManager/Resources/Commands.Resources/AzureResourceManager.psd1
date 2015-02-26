@@ -69,7 +69,8 @@ FormatsToProcess = @(
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',
     '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',
-    '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.format.ps1xml')
+    '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.format.ps1xml'
+)
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(

@@ -105,7 +105,7 @@ function Test-VirtualMachineExtension
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        Retry-IfException { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p; }
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
 
         # Virtual Machine Extension
         $extname = 'csetest';

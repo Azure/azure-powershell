@@ -19,14 +19,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
     public class BackupPolicyTests:StorSimpleTestBase
     {
         #region New-AzureStorSimpleDeviceBackupScheduleAddConfig
-        [Fact]
+        [Fact(Skip = "Skip for CRP2.")]
         [Trait("StorSimpleCmdlets", "New-BackupPolicyConfig")]
         public void TestNewBackupPolicyConfig()
         {
             RunPowerShellTest("Test-NewBackupPolicyAddConfig");
         }
 
-        [Fact]
+        [Fact(Skip = "Skip for CRP2.")]
         [Trait("StorSimpleCmdlets", "New-BackupPolicyConfig")]
         public void TestNewBackupPolicyAddConfigDefaultValues()
         {
