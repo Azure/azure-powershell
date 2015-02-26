@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 StringComparison.OrdinalIgnoreCase))
             {
                 validationSuccessful = true;
-                locationValid = true;
+                locationValid = false;
                 return;
             }
 
