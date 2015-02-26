@@ -66,6 +66,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             base.BeginProcessing();
         }
 
+        /// <summary>
+        /// Gets or initializes the azure profile.
+        /// </summary>
+        protected AzureProfile GetOrInitializeAzureProfile()
+        {
+            if (this.Profile == null)
+            {
+                this.InitializeProfile();
+            }
+
+            return this.Profile;
+        }
+
         private void InitializeProfile()
         {
             // Load profile from disk 
