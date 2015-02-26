@@ -12,29 +12,41 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.IO;
-
 namespace Microsoft.Azure.Commands.Resources.Models
 {
+    using Microsoft.Azure.Commands.Resources.Models.Authorization;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+    /// <summary> 
+    /// Base class for all resources cmdlets
+    /// </summary>
     public abstract class ResourcesBaseCmdlet : AzurePSCmdlet
     {
+        /// <summary>
+        /// Field that holds the resource client instance
+        /// </summary>
         private ResourcesClient resourcesClient;
 
+        /// <summary>
+        /// Field that holds the gallery templates client instance
+        /// </summary>
         private GalleryTemplatesClient galleryTemplatesClient;
 
+        /// <summary>
+        /// Field that holds the policies client instance
+        /// </summary>
         private AuthorizationClient policiesClient;
 
+        /// <summary>
+        /// Gets or sets the resources client
+        /// </summary>
         public ResourcesClient ResourcesClient
         {
             get
             {
                 if (resourcesClient == null)
                 {
-                    resourcesClient = new ResourcesClient(Profile.Context)
+                    resourcesClient = new ResourcesClient(this.GetOrInitializeAzureProfile().Context)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
@@ -47,18 +59,16 @@ namespace Microsoft.Azure.Commands.Resources.Models
             set { resourcesClient = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the gallery templates client
+        /// </summary>
         public GalleryTemplatesClient GalleryTemplatesClient
         {
             get
             {
                 if (galleryTemplatesClient == null)
                 {
-                    if(Profile == null)
-                    {
-                        Profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-                    }
-
-                    galleryTemplatesClient = new GalleryTemplatesClient(Profile.Context);
+                    galleryTemplatesClient = new GalleryTemplatesClient(this.GetOrInitializeAzureProfile().Context);
                 }
                 return galleryTemplatesClient;
             }
@@ -66,18 +76,29 @@ namespace Microsoft.Azure.Commands.Resources.Models
             set { galleryTemplatesClient = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the policies client
+        /// </summary>
         public AuthorizationClient PoliciesClient
         {
             get
             {
                 if (policiesClient == null)
                 {
-                    policiesClient = new AuthorizationClient(Profile.Context);
+                    policiesClient = new AuthorizationClient(this.GetOrInitializeAzureProfile().Context);
                 }
                 return policiesClient;
             }
 
             set { policiesClient = value; }
+        }
+
+        /// <summary>
+        /// Determines the parameter set name.
+        /// </summary>
+        public virtual string DetermineParameterSetName()
+        {
+            return this.ParameterSetName;
         }
     }
 }

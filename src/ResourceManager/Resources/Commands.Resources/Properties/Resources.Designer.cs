@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not find the feature &apos;{0}&apos; for the resource provider &apos;{1}&apos;..
+        /// </summary>
+        internal static string FeatureNotFound {
+            get {
+                return ResourceManager.GetString("FeatureNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided file path &apos;{0}&apos; already exists, do you want to override it?.
         /// </summary>
         internal static string FileAlreadyExists {
@@ -169,6 +178,33 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Moving resource(s) ....
+        /// </summary>
+        internal static string MoveResourcesMessage {
+            get {
+                return ResourceManager.GetString("MoveResourcesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the following resource(s): &apos;{0}&apos;.
+        /// </summary>
+        internal static string MovingResources {
+            get {
+                return ResourceManager.GetString("MovingResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moving resources from different source resource groups is not allowed..
+        /// </summary>
+        internal static string MovingResourcesFromDifferentSourceResourceGroupsNotAllowed {
+            get {
+                return ResourceManager.GetString("MovingResourcesFromDifferentSourceResourceGroupsNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replacing resource group ....
         /// </summary>
         internal static string NewResourceGroupMessage {
@@ -201,6 +237,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string OverrdingFile {
             get {
                 return ResourceManager.GetString("OverrdingFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find a registered feature named &apos;{0}&apos; for the resource provider &apos;{1}&apos;..
+        /// </summary>
+        internal static string RegisteredFeatureNotFound {
+            get {
+                return ResourceManager.GetString("RegisteredFeatureNotFound", resourceCulture);
             }
         }
         
@@ -331,6 +376,33 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not find the resource provider &apos;{0}&apos;..
+        /// </summary>
+        internal static string ResourceProviderNotFound {
+            get {
+                return ResourceManager.GetString("ResourceProviderNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not register the resource provider &apos;{0}&apos;.
+        /// </summary>
+        internal static string ResourceProviderRegistrationFailed {
+            get {
+                return ResourceManager.GetString("ResourceProviderRegistrationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not unregister the resource provider &apos;{0}&apos;.
+        /// </summary>
+        internal static string ResourceProviderUnregistrationFailed {
+            get {
+                return ResourceManager.GetString("ResourceProviderUnregistrationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resource type needs to be in the ResourceProvider/type format. For example Microsoft.Web/sites..
         /// </summary>
         internal static string ResourceTypeFormat {
@@ -381,6 +453,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string UnableToFindGallery {
             get {
                 return ResourceManager.GetString("UnableToFindGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to unregister the provider &apos;{0}&apos;.
+        /// </summary>
+        internal static string UnregisteringProvider {
+            get {
+                return ResourceManager.GetString("UnregisteringProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unregistering provider ....
+        /// </summary>
+        internal static string UnregisterProviderMessage {
+            get {
+                return ResourceManager.GetString("UnregisterProviderMessage", resourceCulture);
             }
         }
     }

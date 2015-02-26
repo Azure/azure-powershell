@@ -225,4 +225,34 @@
   <data name="ServicePrincipalDoesntExist" xml:space="preserve">
     <value>Service principal with object id '{0}' does not exist.</value>
   </data>
+  <data name="FeatureNotFound" xml:space="preserve">
+    <value>Could not find the feature '{0}' for the resource provider '{1}'.</value>
+  </data>
+  <data name="RegisteredFeatureNotFound" xml:space="preserve">
+    <value>Could not find a registered feature named '{0}' for the resource provider '{1}'.</value>
+  </data>
+  <data name="ResourceProviderRegistrationFailed" xml:space="preserve">
+    <value>Could not register the resource provider '{0}'</value>
+  </data>
+  <data name="ResourceProviderUnregistrationFailed" xml:space="preserve">
+    <value>Could not unregister the resource provider '{0}'</value>
+  </data>
+  <data name="ResourceProviderNotFound" xml:space="preserve">
+    <value>Could not find the resource provider '{0}'.</value>
+  </data>
+  <data name="UnregisteringProvider" xml:space="preserve">
+    <value>Are you sure you want to unregister the provider '{0}'</value>
+  </data>
+  <data name="UnregisterProviderMessage" xml:space="preserve">
+    <value>Unregistering provider ...</value>
+  </data>
+  <data name="MoveResourcesMessage" xml:space="preserve">
+    <value>Moving resource(s) ...</value>
+  </data>
+  <data name="MovingResources" xml:space="preserve">
+    <value>Are you sure you want to remove the following resource(s): '{0}'</value>
+  </data>
+  <data name="MovingResourcesFromDifferentSourceResourceGroupsNotAllowed" xml:space="preserve">
+    <value>Moving resources from different source resource groups is not allowed.</value>
+  </data>
 </root>
