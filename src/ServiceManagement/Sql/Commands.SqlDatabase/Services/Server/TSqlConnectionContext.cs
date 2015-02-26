@@ -168,7 +168,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// <returns>A connection string builder</returns>
         private SqlConnectionStringBuilder GenerateSqlConnectionBuilder(string fullyQualifiedServerName, string username, string password)
         {
-            this.serverName = fullyQualifiedServerName.Split('.').First();
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder["Server"] = fullyQualifiedServerName;
             builder.UserID = username + "@" + serverName;
@@ -202,8 +201,9 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// </summary>
         /// <param name="fullyQualifiedServerName">The full server name</param>
         /// <param name="credentials">The login credentials for the server</param>
-        public TSqlConnectionContext(Guid sessionActivityId, string fullyQualifiedServerName, SqlAuthenticationCredentials credentials)
+        public TSqlConnectionContext(Guid sessionActivityId, string fullyQualifiedServerName, SqlAuthenticationCredentials credentials, string serverName)
         {
+            this.serverName = serverName;
             this.sessionActivityId = sessionActivityId;
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
             this.credentials = credentials;
