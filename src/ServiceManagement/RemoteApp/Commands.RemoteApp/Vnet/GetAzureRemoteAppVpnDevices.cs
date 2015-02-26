@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppVpnDevices"), OutputType(typeof(VNetVpnDevices))]
+    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppVpnDevices"), OutputType(typeof(Vendor))]
     public class GetAzureRemoteAppVpnDevices : RdsCmdlet
     {
         [Parameter(Mandatory = true,
@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            VNetVpnDevicesResult response = CallClient(() => Client.VNet.GetVpnDevices(VNetName), Client.VNet);
-            WriteObject(response.VpnDevices);
+            VNetVpnDeviceResult response = CallClient(() => Client.VNet.GetVpnDevices(VNetName), Client.VNet);
+            WriteObject(response.Vendors, true);
         }
 
     }

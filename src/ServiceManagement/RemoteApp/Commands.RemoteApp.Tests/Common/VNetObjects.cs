@@ -167,23 +167,20 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
 
         public static int SetUpDefaultVpnDevice(Mock<IRemoteAppManagementClient> clientMock, string name)
         {
-            ISetup<IRemoteAppManagementClient, Task<VNetVpnDevicesResult>> setup = null;
+            ISetup<IRemoteAppManagementClient, Task<VNetVpnDeviceResult>> setup = null;
 
-            VNetVpnDevicesResult response = new VNetVpnDevicesResult()
+            VNetVpnDeviceResult response = new VNetVpnDeviceResult()
             {
                 RequestId = "23411-345",
                 StatusCode = System.Net.HttpStatusCode.OK,
-                VpnDevices = new VNetVpnDevices()
-                {
-                    Version = "0.9",
-                    Vendors = new List<Vendor>()
+                Vendors = new Vendor[]
                     { 
                         new Vendor()
                         {
                             Name = "Acme",
-                            VpnDevices = new List<VpnDevice>()
+                            Platforms = new List<Platform>()
                             { 
-                                new VpnDevice()
+                                new Platform()
                                 {
                                     Name = "BasicVPN",
                                     OsFamilies = new List<OsFamily>()
@@ -191,13 +188,9 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
                             }
                         }
                     }
-                }
             };
 
-            mockVpnList = new List<VNetVpnDevices>()
-            {
-                response.VpnDevices
-            };
+            mockVpnList = new List<Vendor>(response.Vendors);
 
             setup = clientMock.Setup(c => c.VNet.GetVpnDevicesAsync(name, It.IsAny<CancellationToken>()));
             setup.Returns(Task.Factory.StartNew(() => response));
@@ -226,21 +219,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
         public static bool ContainsExpectedVendor(List<Vendor> vendors, Vendor vendor)
         {
             return false;
-        }
-
-        public static bool ContainsExpectedVpnDevices(List<VNetVpnDevices> expectedResult, VNetVpnDevices operationResult)
-        {
-            bool isIdentical = false;
-            foreach (VNetVpnDevices expected in expectedResult)
-            {
-                isIdentical = expected.Version == operationResult.Version;
-                if (isIdentical)
-                {
-                    break;
-                }
-            }
-
-            return isIdentical;
         }
 
         public static bool ContainsExpectedSharedKeyResult(List<VNetOperationStatus> expectedResult, VNetOperationStatus operationResult)

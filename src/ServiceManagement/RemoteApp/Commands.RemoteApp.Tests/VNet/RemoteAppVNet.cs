@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         [TestMethod]
         public void GetVpnDevices()
         {
-            List<VNetVpnDevices> vpnDevices = null; 
+            List<Vendor> vpnDevices = null; 
             int countOfExpectedVNetVpnDevices = 0;
             GetAzureRemoteAppVpnDevices mockCmdlet = SetUpTestCommon<GetAzureRemoteAppVpnDevices>();
 
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
                 );
             }
 
-            vpnDevices = MockObject.ConvertList<VNetVpnDevices>(mockCmdlet.runTime().OutputPipeline);
+            vpnDevices = MockObject.ConvertList<Vendor>(mockCmdlet.runTime().OutputPipeline);
             Assert.IsNotNull(vpnDevices);
 
             Assert.IsTrue(vpnDevices.Count == countOfExpectedVNetVpnDevices,
@@ -314,10 +314,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
                     countOfExpectedVNetVpnDevices,
                     vpnDevices.Count
                 )
-            );
-
-            Assert.IsTrue(MockObject.HasExpectedResults<VNetVpnDevices>(vpnDevices, MockObject.ContainsExpectedVpnDevices),
-                 "The actual result does not match the expected"
             );
 
             Log("The test for Get-AzureRemoteAppVNet with {0} VNets completed successfully", countOfExpectedVNetVpnDevices);

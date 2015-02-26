@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
 
         internal static IList<StartMenuApplication> mockStartMenuList { get; set; }
 
-        internal static IList<VNetVpnDevices> mockVpnList { get; set; }
+        internal static IList<Vendor> mockVpnList { get; set; }
 
         internal static IList<VNetOperationStatus> mockVNetStatusList { get; set; }
 
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
             {
                 expectedResults = ConvertList<T>(mockVNetList);
             }
-            else if (typeof(T) == typeof(VNetVpnDevices))
+            else if (typeof(T) == typeof(Vendor))
             {
                 expectedResults = ConvertList<T>(mockVpnList);
             }
