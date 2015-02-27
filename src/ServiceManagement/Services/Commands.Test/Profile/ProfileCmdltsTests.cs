@@ -83,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         [Fact]
         public void ClearAzureProfileClearsCustomProfile()
         {
-            string subscriptionDataFile = "C:\\foo.json";
+            string subscriptionDataFile = Path.GetTempFileName();
 
             ClearAzureProfileCommand cmdlt = new ClearAzureProfileCommand();
             // Setup
@@ -198,7 +198,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         public void SetAzureSubscriptionDerivesEnvironmentFromEnvironmentParameterOnAdd()
         {
             // Setup
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            AzurePSCmdlet.CurrentProfile =
+                new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            ProfileClient client = new ProfileClient(AzurePSCmdlet.CurrentProfile);
             client.AddOrSetEnvironment(azureEnvironment);
             client.Profile.Save();
             SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
@@ -275,7 +277,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         public void SetAzureSubscriptionDerivesEnvironmentFromServiceEndpointParameterOnSet()
         {
             // Setup
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            AzurePSCmdlet.CurrentProfile =
+                new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            ProfileClient client = new ProfileClient(AzurePSCmdlet.CurrentProfile);
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
@@ -362,7 +366,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         public void SetAzureSubscriptionUpdatesSubscriptionWithCertificate()
         {
             // Setup
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            AzurePSCmdlet.CurrentProfile =
+                new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            ProfileClient client = new ProfileClient(AzurePSCmdlet.CurrentProfile);
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
@@ -442,7 +448,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         public void ImportPublishSettingsFileOverwritesEnvironment()
         {
             ImportAzurePublishSettingsCommand cmdlt = new ImportAzurePublishSettingsCommand();
-
+            var oldAzureDataStore = AzureSession.DataStore;
+            AzureSession.DataStore = new MockDataStore();
             // Setup
             AzureSession.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
                 Commands.Common.Test.Properties.Resources.ValidProfileChina);
@@ -461,7 +468,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             {
                 // Act
                 cmdlt.InvokeBeginProcessing();
-                AzureSession.DataStore = FileUtilities.DataStore;
                 cmdlt.ExecuteCmdlet();
                 cmdlt.InvokeEndProcessing();
 
@@ -476,6 +482,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             {
                 // Cleanup
                 FileUtilities.DataStore = oldDataStore;
+                AzureSession.DataStore = oldAzureDataStore;
             }
         }
 
@@ -868,7 +875,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
         private ProfileClient SetupDefaultProfile()
         {
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            AzurePSCmdlet.CurrentProfile =
+                new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            ProfileClient client = new ProfileClient(AzurePSCmdlet.CurrentProfile);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetSubscription(azureSubscription1);

@@ -441,7 +441,7 @@ function getTestCredentialFromString
 {
   param([string] $connectionString)
   $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectionString)
-  if (-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::UserIdKey) -or ((-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::AADPasswordKey))
+  if (-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::UserIdKey) -or ((-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::AADPasswordKey))))))
   {
     throw "The connection string '$connectionString' must have a valid value, including username and password " +`
 		    "in the following format: SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
@@ -460,7 +460,7 @@ function getSubscriptionFromString
 {
   param([string] $connectionString)
   $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectionString)
-  if (-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::SubscriptionIdKey))
+  if (-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::SubscriptionIdKey)))
   {
     throw "The connection string '$connectionString' must have a valid value, including subscription " +`
 		    "in the following format: SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
@@ -492,7 +492,7 @@ function getCredentialFromEnvironment
 	   }
 
 	   $environmentValue = [System.Environment]::GetEnvironmentVariable($environmentVariable)
-	   if ([System.string]::IsNullOrEmpty($environmentValue)
+	   if ([System.string]::IsNullOrEmpty($environmentValue))
 	   {
 	      throw "The environment variable '$environmentVariable' must have a valid value, including username and password " +`
 		    "in the following format: $environmentVariable=SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
@@ -529,7 +529,7 @@ function getSubscriptionFromEnvironment
 	   }
 
 	   $environmentValue = [System.Environment]::GetEnvironmentVariable($environmentVariable)
-	   if ([System.string]::IsNullOrEmpty($environmentValue)
+	   if ([System.string]::IsNullOrEmpty($environmentValue))
 	   {
 	      throw "The environment variable '$environmentVariable' must have a valid value, including subscription id" +`
 		    "in the following format: $environmentVariable=SubscriptionId=<subscription>;UserName=<username>;Password=<password>"

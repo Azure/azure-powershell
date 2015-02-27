@@ -19,30 +19,15 @@ $testCert.Import($testCertData)
 
 # The subscription ID to use for live tests
 $testValidSubscription = "c9cbd920-c00c-427c-852b-8aaf38badaeb";
-$testCreds = $(createTestCredential "test@mail.com" TestPassw0rd")
+$testCreds = $(createTestCredential "test@mail.com" "TestPassw0rd")
 
-function Create-ARMProfile
+function Create-Profile
 {
-    $creds = $(getCredentialFromEnvironment "csm")
-	if ($creds -eq $null)
-	{
-	    $creds = $testCreds
-	}
-	$subscription = $(getSubscriptionFromEnvironment)
-    New-AzureProfile -SubscriptionId $subscription -Credential $creds
+    param([string] $token, [string] $user, [string] $sub)   
+    New-AzureProfile -SubscriptionId $sub -AccessToken $token -AccountId $user
 }
 
-function Create-RDFEProfile
-{
-    $creds =  $(getCredentialFromEnvironment "rdfe")
-	if ($creds -eq $null)
-	{
-	    $creds = $testCreds
-	}
 
-	$subscription = $(getSubscriptionFromEnvironment)
-    New-AzureProfile -SubscriptionId $subscription -Credential $creds
-}
 <#
 .SYNOPSIS
 Tests creating new azure profile with certificate
@@ -96,8 +81,10 @@ Tests using a profile to run an RDFE cmdlet
 #>
 function Test-NewAzureProfileInRDFEMode
 {
-    $profile = Create-RDFEProfile
+    param([string] $token, [string] $user, [string] $sub)
+    $profile = $(Create-Profile $token $user $sub)
 	Assert-AreEqual "AzureCloud" $profile.Context.Environment.Name
+	Clear-AzureProfile -Force
 	$locations = Get-AzureLocation -Profile $profile
 	Assert-NotNull $locations
 	Assert-True {$locations.Count -gt 1}
@@ -110,8 +97,10 @@ Tests using a profile to run an ARM cmdlet
 #>
 function Test-NewAzureProfileInARMMode
 {
-    $profile = Create-ARMProfile
-	Assert-AreEqual "AzureCloud" $profile.Context.Environment.Name
+    param([string] $token, [string] $user, [string] $sub)
+    $profile = $(Create-Profile $token $user $sub)
+	Assert-AreEqual "AzureCloud" $($profile.Context.Environment.Name) "Expecting the azure cloud environment"
+	Clear-AzureProfile -Force
 	$locations = Get-AzureLocation -Profile $profile
 	Assert-NotNull $locations
 	Assert-True {$locations.Count -gt 1}

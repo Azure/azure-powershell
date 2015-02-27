@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Management.Automation.Language;
 using Microsoft.Azure.Commands.Test.Profile;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -53,14 +54,14 @@ namespace Microsoft.Azure.Commands.Test.Profile
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeRdfeCallWithCreatedProfile()
         {
-            ProfileTestController.NewRdfeInstance.RunPsTest("Test-NewAzureProfileInRDFEMode");
+            ProfileTestController.NewRdfeInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureProfileInRDFEMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeArmCallWithCreatedProfile()
         {
-            ProfileTestController.NewARMInstance.RunPsTest("Test-NewAzureProfileInARMMode");
+            ProfileTestController.NewARMInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureProfileInARMMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
         }
     }
 }
