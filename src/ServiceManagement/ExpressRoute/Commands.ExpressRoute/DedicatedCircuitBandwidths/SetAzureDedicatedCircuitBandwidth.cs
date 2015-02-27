@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     using Management.ExpressRoute.Models;
 
     [Cmdlet(VerbsCommon.Set, "AzureDedicatedCircuitBandwidth"), OutputType(typeof(AzureDedicatedCircuit))]
-    public class RemoveAzureDedicatedCircuitBandwidthCommand : ExpressRouteBaseCmdlet
+    public class SetAzureDedicatedCircuitBandwidthCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Key of Azure Dedicated Circuit to be removed")]
