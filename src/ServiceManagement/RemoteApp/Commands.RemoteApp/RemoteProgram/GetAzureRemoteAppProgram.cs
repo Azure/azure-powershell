@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         [Parameter(Mandatory = false,
             Position = 1,
-            HelpMessage = "Name of the program, wild cards are supported for filtering.",
+            HelpMessage = "Name of the program. Wildcards are permitted.",
             ParameterSetName = FilterByName)]
         [ValidateNotNullOrEmpty()]
         public string RemoteAppProgram { get; set; }

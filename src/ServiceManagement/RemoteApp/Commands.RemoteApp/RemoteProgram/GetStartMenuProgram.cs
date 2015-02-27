@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     {
         [Parameter(Mandatory = false,
             Position = 1,
-            HelpMessage = "Unique alias of the program")]
+            HelpMessage = "Unique alias of the program, Wildcards are permitted.")]
         [ValidateNotNullOrEmpty()]
         public string ProgramName { get; set; }
 
