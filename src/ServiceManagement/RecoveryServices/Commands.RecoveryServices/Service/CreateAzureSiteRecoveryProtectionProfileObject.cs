@@ -207,15 +207,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             // Verify whether the storage account is associated with the subscription or not.
-            bool validationSuccessful = RecoveryServicesClient.ValidateStorageAccountAssociation(
+            bool validationSuccessful;
+            bool locationValid;
+            RecoveryServicesClient.ValidateStorageAccountAssociation(
                 this.RecoveryAzureSubscription,
                 this.RecoveryAzureStorageAccount,
-                this.GetCurrentValutLocation());
+                this.GetCurrentValutLocation(),
+                out validationSuccessful,
+                out locationValid);
 
             if (!validationSuccessful)
             {
                 this.WriteWarning(string.Format(Properties.Resources.StorageAccountValidationUnsuccessful));
+            }
 
+            if (validationSuccessful && !locationValid)
+            {
+                this.WriteWarning(string.Format(Properties.Resources.StorageIsNotInTheSameLocationAsVault));
+            }
+
+            if (!validationSuccessful || !locationValid)
+            {
                 this.ConfirmAction(
                     this.Force.IsPresent,
                     string.Format(Properties.Resources.ValidationUnsuccessfulWarning, this.targetName),

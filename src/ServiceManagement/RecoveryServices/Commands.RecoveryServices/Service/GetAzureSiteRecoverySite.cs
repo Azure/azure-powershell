@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Retrieves Azure Site Recovery Site.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSiteRecoverySite")]
-    [OutputType(typeof(List<Site>))]
+    [OutputType(typeof(List<ASRSite>))]
     public class GetAzureSiteRecoverySite : RecoveryServicesCmdletBase
     {
         #region Parameters
@@ -56,12 +57,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Writes Sites
+        /// Writes ASRSites
         /// </summary>
-        /// <param name="siteList">List of Sites</param>
+        /// <param name="siteList">List of Hydra Sites</param>
         private void WriteSites(IList<Site> siteList)
         {
-            this.WriteObject(siteList, true);
+            this.WriteObject(siteList.Select(s => new ASRSite(s)), true);
         }
     }
 }

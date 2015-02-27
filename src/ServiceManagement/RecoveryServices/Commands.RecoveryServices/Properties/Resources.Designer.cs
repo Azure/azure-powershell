@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;Calls using ID based parameter {0} will not be supported from next release. Please use its corresponding full object parameter instead.&quot;.
+        ///   Looks up a localized string similar to Calls using ID based parameter {0} will not be supported from next release. Please use its corresponding full object parameter instead..
         /// </summary>
         internal static string IDBasedParamUsageNotSupportedFromNextRelease {
             get {
@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string IncorrectReplicationProvider {
             get {
                 return ResourceManager.GetString("IncorrectReplicationProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vault information (Name: {0}, Location: {1}) is not correct.
+        /// </summary>
+        internal static string InCorrectVaultInformation {
+            get {
+                return ResourceManager.GetString("InCorrectVaultInformation", resourceCulture);
             }
         }
         
@@ -183,7 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;{0} will be a mandatory paramter from next release.&quot;.
+        ///   Looks up a localized string similar to {0} will be a mandatory paramter from next release..
         /// </summary>
         internal static string MandatoryParamFromNextRelease {
             get {
@@ -354,7 +363,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account given is in {0} whereas the vault is in {1}.
+        ///   Looks up a localized string similar to Storage account given is in a different location as compared to the current vault.
         ///Please provide a storage account with the same location as that of the vault..
         /// </summary>
         internal static string StorageIsNotInTheSameLocationAsVault {
