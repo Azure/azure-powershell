@@ -140,52 +140,52 @@
     <None Include="ScenarioTests\vaultSettings.vaultcredentials">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesAzureNetworkMappingTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\AzureNetworkMappingTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesCommitPFOTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\CommitPFOTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesDisableProtectionTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\DisableProtectionTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesE2E_CreateAndAssociateTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\E2E_CreateAndAssociateTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesE2E_DeleteAndDissociateTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\E2E_DeleteAndDissociateTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesEnableProtectionTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\EnableProtectionTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesEnumerationTests.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\EnumerationTests.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesFailbackTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\FailbackTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesNetworkMappingTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\NetworkMappingTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesNetworkUnMappingTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\NetworkUnMappingTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesPFOTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\PFOTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesProtectionTests.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\ProtectionTests.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesRRAfterFailbackTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RRAfterFailbackTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesRRAfterFailoverTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RRAfterFailoverTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesStorageMappingTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\StorageMappingTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\RecoveryServicesStorageUnMappingTest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\StorageUnMappingTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
