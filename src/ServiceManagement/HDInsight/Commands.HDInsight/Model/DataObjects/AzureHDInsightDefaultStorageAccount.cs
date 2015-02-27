@@ -19,6 +19,23 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
     public class AzureHDInsightDefaultStorageAccount : AzureHDInsightStorageAccount
     {
         /// <summary>
+        ///     Creates a new default storage account object with the same attributes as the passed in storage account
+        /// </summary>
+        public AzureHDInsightDefaultStorageAccount(AzureHDInsightDefaultStorageAccount value) : base()
+        {
+            this.StorageAccountName = value.StorageAccountName;
+            this.StorageAccountKey = value.StorageAccountKey;
+            this.StorageContainerName = value.StorageContainerName;
+        }
+
+        /// <summary>
+        ///     Creates an empty default storage account 
+        /// </summary>
+        public AzureHDInsightDefaultStorageAccount() : base()
+        {
+        }
+        
+        /// <summary>
         ///     Gets or sets the Storage Container for the Default Storage Account.
         /// </summary>
         public string StorageContainerName { get; set; }

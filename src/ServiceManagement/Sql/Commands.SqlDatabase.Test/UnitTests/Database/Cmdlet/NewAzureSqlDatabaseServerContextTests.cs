@@ -18,7 +18,8 @@ using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
@@ -42,6 +43,19 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
         public void TestGetManageUrl()
         {
             NewAzureSqlDatabaseServerContext contextCmdlet = new NewAzureSqlDatabaseServerContext();
+            var profile = new AzureProfile();
+            var account = new AzureAccount {Id = "mockAccount", Type = AzureAccount.AccountType.User};
+            var subscription = new AzureSubscription
+            {
+                Account = "mockAccount",
+                Environment = EnvironmentName.AzureCloud,
+                Id = Guid.NewGuid(),
+                Name = "mockSubscription"
+            };
+            profile.Accounts.Add(account.Id, account);
+            profile.Subscriptions.Add(subscription.Id, subscription);
+            profile.DefaultSubscription = subscription;
+            contextCmdlet.Profile = profile;
 
             // Make sure that server name to Manage Url conversion is working
             contextCmdlet.ServerName = "server0001";

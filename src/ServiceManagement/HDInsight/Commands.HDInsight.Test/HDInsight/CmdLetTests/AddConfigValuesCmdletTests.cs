@@ -522,6 +522,257 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
             }
         }
 
+        [TestMethod]
+        [TestCategory("CheckIn")]
+        public void CanCallAllConfigCmdlets_PreserveAll()
+        {
+            using (IRunspace runspace = this.GetPowerShellRunspace())
+            {
+
+                var clusterConfig = new AzureHDInsightConfig
+                {
+                        ClusterType = Management.HDInsight.ClusterProvisioning.Data.ClusterType.HBase,
+                        ClusterSizeInNodes = 7,
+                        VirtualNetworkId = Guid.NewGuid().ToString(),
+                        SubnetName = Guid.NewGuid().ToString(),
+                        HeadNodeVMSize = Guid.NewGuid().ToString(),
+                        DataNodeVMSize = Guid.NewGuid().ToString(),
+                        ZookeeperNodeVMSize = Guid.NewGuid().ToString()
+                };
+
+                var coreConfig = new Hashtable();
+                coreConfig.Add("core.fakekey", Guid.NewGuid().ToString());
+                var yarnConfig = new Hashtable();
+                yarnConfig.Add("yarn.fakekey", Guid.NewGuid().ToString());
+                var stormConfig = new Hashtable();
+                stormConfig.Add("storm.fakekey", Guid.NewGuid().ToString());
+                var sparkConfig = new Hashtable();
+                sparkConfig.Add("spark.fakekey", Guid.NewGuid().ToString());
+
+                var hiveConfig = new Hashtable();
+                hiveConfig.Add("hive.config.fakekey", Guid.NewGuid().ToString());
+                var hiveServiceConfig = new AzureHDInsightHiveConfiguration
+                {
+                    Configuration = hiveConfig,
+                    AdditionalLibraries =
+                        new AzureHDInsightDefaultStorageAccount
+                        {
+                            StorageAccountKey = Guid.NewGuid().ToString(),
+                            StorageAccountName = Guid.NewGuid().ToString(),
+                            StorageContainerName = Guid.NewGuid().ToString()
+                        }
+                };
+
+                var hbaseConfig = new Hashtable();
+                hbaseConfig.Add("hbase.config.fakekey", Guid.NewGuid().ToString());
+                var hbaseServiceConfig = new AzureHDInsightHBaseConfiguration
+                {
+                    Configuration = hbaseConfig,
+                    AdditionalLibraries =
+                        new AzureHDInsightDefaultStorageAccount
+                        {
+                            StorageAccountKey = Guid.NewGuid().ToString(),
+                            StorageAccountName = Guid.NewGuid().ToString(),
+                            StorageContainerName = Guid.NewGuid().ToString()
+                        }
+                };
+
+                var oozieConfig = new Hashtable();
+                oozieConfig.Add("oozie.config.fakekey", Guid.NewGuid().ToString());
+                var oozieServiceConfig = new AzureHDInsightOozieConfiguration
+                {
+                    Configuration = oozieConfig, 
+                    AdditionalSharedLibraries =
+                        new AzureHDInsightDefaultStorageAccount
+                        {
+                            StorageAccountKey = Guid.NewGuid().ToString(),
+                            StorageAccountName = Guid.NewGuid().ToString(),
+                            StorageContainerName = Guid.NewGuid().ToString()
+                        },
+                    AdditionalActionExecutorLibraries =
+                        new AzureHDInsightDefaultStorageAccount
+                        {
+                            StorageAccountKey = Guid.NewGuid().ToString(),
+                            StorageAccountName = Guid.NewGuid().ToString(),
+                            StorageContainerName = Guid.NewGuid().ToString()
+                        }
+                };
+
+                var mapredConfig = new Hashtable();
+                mapredConfig.Add("mapred.config.fakekey", Guid.NewGuid().ToString());
+                var mapredCSConfig = new Hashtable();
+                mapredCSConfig.Add("mapred.schedule.fakekey", Guid.NewGuid().ToString());
+                var mapredServiceConfig = new AzureHDInsightMapReduceConfiguration
+                {
+                    Configuration = mapredConfig, 
+                    CapacitySchedulerConfiguration = mapredCSConfig
+                };
+
+
+                IPipelineResult results1 =
+                    runspace.NewPipeline()
+                    .AddCommand(CmdletConstants.AddAzureHDInsightConfigValues)
+                    .WithParameter(CmdletConstants.ClusterConfig, clusterConfig)
+                    .WithParameter(CmdletConstants.CoreConfig, coreConfig)
+                    .WithParameter(CmdletConstants.YarnConfig, yarnConfig)
+                    .WithParameter(CmdletConstants.StormConfig, stormConfig)
+                    .WithParameter(CmdletConstants.SparkConfig, sparkConfig)
+                    .WithParameter(CmdletConstants.HiveConfig, hiveServiceConfig)
+                    .WithParameter(CmdletConstants.HBaseConfig, hbaseServiceConfig)
+                    .WithParameter(CmdletConstants.OozieConfig, oozieServiceConfig)
+                    .WithParameter(CmdletConstants.MapReduceConfig, mapredServiceConfig)
+                    .Invoke();
+                AzureHDInsightConfig config1 = results1.Results.ToEnumerable<AzureHDInsightConfig>().First();
+
+                Assert.AreEqual(config1.ClusterType, clusterConfig.ClusterType);
+                Assert.AreEqual(config1.ClusterSizeInNodes, clusterConfig.ClusterSizeInNodes);
+                Assert.AreEqual(config1.VirtualNetworkId, clusterConfig.VirtualNetworkId);
+                Assert.AreEqual(config1.SubnetName, clusterConfig.SubnetName);
+                Assert.AreEqual(config1.HeadNodeVMSize, clusterConfig.HeadNodeVMSize);
+                Assert.AreEqual(config1.DataNodeVMSize, clusterConfig.DataNodeVMSize);
+                Assert.AreEqual(config1.ZookeeperNodeVMSize, clusterConfig.ZookeeperNodeVMSize);
+                
+                ValidateConfigurationOptions(coreConfig, config1.CoreConfiguration);
+                ValidateConfigurationOptions(yarnConfig, config1.YarnConfiguration);
+                ValidateConfigurationOptions(stormConfig, config1.StormConfiguration);
+                ValidateConfigurationOptions(sparkConfig, config1.SparkConfiguration);
+
+                Assert.AreEqual(config1.HiveConfiguration.AdditionalLibraries.Container, hiveServiceConfig.AdditionalLibraries.StorageContainerName);
+                Assert.AreEqual(config1.HiveConfiguration.AdditionalLibraries.Key, hiveServiceConfig.AdditionalLibraries.StorageAccountKey);
+                Assert.AreEqual(config1.HiveConfiguration.AdditionalLibraries.Name, hiveServiceConfig.AdditionalLibraries.StorageAccountName);
+                ValidateConfigurationOptions(hiveConfig, config1.HiveConfiguration.ConfigurationCollection);
+
+                Assert.AreEqual(config1.OozieConfiguration.AdditionalSharedLibraries.Container, oozieServiceConfig.AdditionalSharedLibraries.StorageContainerName);
+                Assert.AreEqual(config1.OozieConfiguration.AdditionalSharedLibraries.Key, oozieServiceConfig.AdditionalSharedLibraries.StorageAccountKey);
+                Assert.AreEqual(config1.OozieConfiguration.AdditionalSharedLibraries.Name, oozieServiceConfig.AdditionalSharedLibraries.StorageAccountName);
+                Assert.AreEqual(config1.OozieConfiguration.AdditionalActionExecutorLibraries.Container, oozieServiceConfig.AdditionalActionExecutorLibraries.StorageContainerName);
+                Assert.AreEqual(config1.OozieConfiguration.AdditionalActionExecutorLibraries.Key, oozieServiceConfig.AdditionalActionExecutorLibraries.StorageAccountKey);
+                Assert.AreEqual(config1.OozieConfiguration.AdditionalActionExecutorLibraries.Name, oozieServiceConfig.AdditionalActionExecutorLibraries.StorageAccountName);
+                ValidateConfigurationOptions(oozieConfig, config1.OozieConfiguration.ConfigurationCollection);
+
+                Assert.AreEqual(config1.HBaseConfiguration.AdditionalLibraries.Container, hbaseServiceConfig.AdditionalLibraries.StorageContainerName);
+                Assert.AreEqual(config1.HBaseConfiguration.AdditionalLibraries.Key, hbaseServiceConfig.AdditionalLibraries.StorageAccountKey);
+                Assert.AreEqual(config1.HBaseConfiguration.AdditionalLibraries.Name, hbaseServiceConfig.AdditionalLibraries.StorageAccountName);
+                ValidateConfigurationOptions(hbaseConfig, config1.HBaseConfiguration.ConfigurationCollection);
+
+                ValidateConfigurationOptions(mapredConfig, config1.MapReduceConfiguration.ConfigurationCollection);
+                ValidateConfigurationOptions(mapredCSConfig, config1.MapReduceConfiguration.CapacitySchedulerConfigurationCollection);
+                
+                // Now run through all of the other cmdlets
+
+
+                var hiveMetastore =
+                        new AzureHDInsightMetastore
+                        {
+                            MetastoreType = AzureHDInsightMetastoreType.HiveMetastore,
+                            Credential = GetPSCredential("hadoop", Guid.NewGuid().ToString()),
+                            DatabaseName = Guid.NewGuid().ToString(),
+                            SqlAzureServerName = Guid.NewGuid().ToString()
+                        };
+                var oozieMetastore =
+                        new AzureHDInsightMetastore
+                        {
+                            MetastoreType = AzureHDInsightMetastoreType.OozieMetastore,
+                            Credential = GetPSCredential("hadoop", Guid.NewGuid().ToString()),
+                            DatabaseName = Guid.NewGuid().ToString(),
+                            SqlAzureServerName = Guid.NewGuid().ToString()
+                        };
+                var defaultStorage =
+                        new AzureHDInsightDefaultStorageAccount
+                        {
+                            StorageAccountKey = Guid.NewGuid().ToString(),
+                            StorageAccountName = Guid.NewGuid().ToString(),
+                            StorageContainerName = Guid.NewGuid().ToString()
+                        };
+                var additionalStorage =
+                        new AzureHDInsightDefaultStorageAccount
+                        {
+                            StorageAccountKey = Guid.NewGuid().ToString(),
+                            StorageAccountName = Guid.NewGuid().ToString(),
+                        };
+                var scriptAction =
+                        new AzureHDInsightScriptAction
+                        {
+                            Name = Guid.NewGuid().ToString(),
+                            Parameters = Guid.NewGuid().ToString(),
+                            Uri = new Uri("http://somehost/script.ps1"),
+                            ClusterRoleCollection = new ClusterNodeType[] { ClusterNodeType.DataNode, ClusterNodeType.HeadNode }
+                        };
+
+                IPipelineResult results2 =
+                    runspace.NewPipeline()
+                    .AddCommand(CmdletConstants.AddAzureHDInsightMetastore)
+                    .WithParameter(CmdletConstants.ClusterConfig, config1)
+                    .WithParameter(CmdletConstants.MetastoreType, hiveMetastore.MetastoreType)
+                    .WithParameter(CmdletConstants.Credential, hiveMetastore.Credential)
+                    .WithParameter(CmdletConstants.SqlAzureServerName, hiveMetastore.SqlAzureServerName)
+                    .WithParameter(CmdletConstants.DatabaseName, hiveMetastore.DatabaseName)
+                    .AddCommand(CmdletConstants.AddAzureHDInsightMetastore)
+                    .WithParameter(CmdletConstants.MetastoreType, oozieMetastore.MetastoreType)
+                    .WithParameter(CmdletConstants.Credential, oozieMetastore.Credential)
+                    .WithParameter(CmdletConstants.SqlAzureServerName, oozieMetastore.SqlAzureServerName)
+                    .WithParameter(CmdletConstants.DatabaseName, oozieMetastore.DatabaseName)
+                    .AddCommand(CmdletConstants.SetAzureHDInsightDefaultStorage)
+                    .WithParameter(CmdletConstants.StorageAccountKey, defaultStorage.StorageAccountKey)
+                    .WithParameter(CmdletConstants.StorageAccountName, defaultStorage.StorageAccountName)
+                    .WithParameter(CmdletConstants.StorageContainerName, defaultStorage.StorageContainerName)
+                    .AddCommand(CmdletConstants.AddAzureHDInsightStorage)
+                    .WithParameter(CmdletConstants.StorageAccountKey, additionalStorage.StorageAccountKey)
+                    .WithParameter(CmdletConstants.StorageAccountName, additionalStorage.StorageAccountName)
+                    .AddCommand(CmdletConstants.AddAzureHDInsightScriptAction)
+                    .WithParameter(CmdletConstants.Name, scriptAction.Name)
+                    .WithParameter(CmdletConstants.ScriptActionParameters, scriptAction.Parameters)
+                    .WithParameter(CmdletConstants.ScriptActionUri, scriptAction.Uri)
+                    .WithParameter(CmdletConstants.ConfigActionClusterRoleCollection, scriptAction.ClusterRoleCollection)
+                    .Invoke();
+                AzureHDInsightConfig config2 = results2.Results.ToEnumerable<AzureHDInsightConfig>().First();
+
+                Assert.AreEqual(config2.ClusterType, clusterConfig.ClusterType);
+                Assert.AreEqual(config2.ClusterSizeInNodes, clusterConfig.ClusterSizeInNodes);
+                Assert.AreEqual(config2.VirtualNetworkId, clusterConfig.VirtualNetworkId);
+                Assert.AreEqual(config2.SubnetName, clusterConfig.SubnetName);
+                Assert.AreEqual(config2.HeadNodeVMSize, clusterConfig.HeadNodeVMSize);
+                Assert.AreEqual(config2.DataNodeVMSize, clusterConfig.DataNodeVMSize);
+                Assert.AreEqual(config2.ZookeeperNodeVMSize, clusterConfig.ZookeeperNodeVMSize);
+
+                ValidateConfigurationOptions(coreConfig, config2.CoreConfiguration);
+                ValidateConfigurationOptions(yarnConfig, config2.YarnConfiguration);
+                ValidateConfigurationOptions(stormConfig, config2.StormConfiguration);
+                ValidateConfigurationOptions(sparkConfig, config2.SparkConfiguration);
+
+                Assert.IsNotNull(config2.HiveConfiguration.AdditionalLibraries);
+                Assert.AreEqual(config2.HiveConfiguration.AdditionalLibraries.Container, hiveServiceConfig.AdditionalLibraries.StorageContainerName);
+                Assert.AreEqual(config2.HiveConfiguration.AdditionalLibraries.Key, hiveServiceConfig.AdditionalLibraries.StorageAccountKey);
+                Assert.AreEqual(config2.HiveConfiguration.AdditionalLibraries.Name, hiveServiceConfig.AdditionalLibraries.StorageAccountName);
+                ValidateConfigurationOptions(hiveConfig, config2.HiveConfiguration.ConfigurationCollection);
+
+                Assert.IsNotNull(config2.OozieConfiguration.AdditionalSharedLibraries);
+                Assert.IsNotNull(config2.OozieConfiguration.AdditionalActionExecutorLibraries);
+                Assert.AreEqual(config2.OozieConfiguration.AdditionalSharedLibraries.Container, oozieServiceConfig.AdditionalSharedLibraries.StorageContainerName);
+                Assert.AreEqual(config2.OozieConfiguration.AdditionalSharedLibraries.Key, oozieServiceConfig.AdditionalSharedLibraries.StorageAccountKey);
+                Assert.AreEqual(config2.OozieConfiguration.AdditionalSharedLibraries.Name, oozieServiceConfig.AdditionalSharedLibraries.StorageAccountName);
+                Assert.AreEqual(config2.OozieConfiguration.AdditionalActionExecutorLibraries.Container, oozieServiceConfig.AdditionalActionExecutorLibraries.StorageContainerName);
+                Assert.AreEqual(config2.OozieConfiguration.AdditionalActionExecutorLibraries.Key, oozieServiceConfig.AdditionalActionExecutorLibraries.StorageAccountKey);
+                Assert.AreEqual(config2.OozieConfiguration.AdditionalActionExecutorLibraries.Name, oozieServiceConfig.AdditionalActionExecutorLibraries.StorageAccountName);
+                ValidateConfigurationOptions(oozieConfig, config2.OozieConfiguration.ConfigurationCollection);
+
+                Assert.IsNotNull(config2.HBaseConfiguration.AdditionalLibraries);
+                Assert.AreEqual(config2.HBaseConfiguration.AdditionalLibraries.Container, hbaseServiceConfig.AdditionalLibraries.StorageContainerName);
+                Assert.AreEqual(config2.HBaseConfiguration.AdditionalLibraries.Key, hbaseServiceConfig.AdditionalLibraries.StorageAccountKey);
+                Assert.AreEqual(config2.HBaseConfiguration.AdditionalLibraries.Name, hbaseServiceConfig.AdditionalLibraries.StorageAccountName);
+                ValidateConfigurationOptions(hbaseConfig, config2.HBaseConfiguration.ConfigurationCollection);
+                
+                Assert.IsNotNull(config2.MapReduceConfiguration);
+                ValidateConfigurationOptions(mapredConfig, config2.MapReduceConfiguration.ConfigurationCollection);
+                ValidateConfigurationOptions(mapredCSConfig, config2.MapReduceConfiguration.CapacitySchedulerConfigurationCollection);
+                
+                // This test currently only validates that the originally set values are not overwriten by Add-AzureHDInsightMetastore,
+                // Add-AzureHDInsightScriptAction, Add-AzureHDInsightStorage, Set-AzureHDInsightDefaultStorage.  There are lots of
+                // combinations of sequences, but the use of a shared copyfrom function should simplify the possible ways this can
+                // break.
+            }
+        }
+
         [TestInitialize]
         public override void Initialize()
         {
