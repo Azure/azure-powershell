@@ -23,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
     public class MockRdfeSubscriptionClient : Microsoft.Azure.Subscriptions.Rdfe.SubscriptionClient
     {
         private IList<string> _subscriptions = new List<string>();
+        public string Tenant { get; set; }
         public IList<String> ReturnedSubscriptions
         {
             get { return this._subscriptions; }
@@ -32,12 +33,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
         public override Microsoft.Azure.Subscriptions.Rdfe.ISubscriptionOperations Subscriptions
         {
-            get { return MockRdfeSubscriptionOperations.Create(this.ReturnedSubscriptions); }
+            get { return MockRdfeSubscriptionOperations.Create(this.ReturnedSubscriptions, this.Tenant); }
         }
     }
     public class MockRdfeSubscriptionOperations : Microsoft.Azure.Subscriptions.Rdfe.ISubscriptionOperations
     {
         private List<string> _subscriptions = new List<string>();
+        private string _tenant = Guid.NewGuid().ToString();
 
         private MockRdfeSubscriptionOperations()
         {
@@ -49,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         /// </summary>
         /// <param name="knownSubscriptions">The list of existing subscriptions.</param>
         /// <returns>A mock of RDFE subscription operations</returns>
-        public static MockRdfeSubscriptionOperations Create(IList<string> knownSubscriptions)
+        public static MockRdfeSubscriptionOperations Create(IList<string> knownSubscriptions, string tenant)
         {
             var operations = new MockRdfeSubscriptionOperations();
             foreach (var subscription in knownSubscriptions)
@@ -57,16 +59,18 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
                 operations._subscriptions.Add(subscription);
             }
 
+            operations._tenant = tenant;
             return operations;
         }
 
-        private static Azure.Subscriptions.Rdfe.Models.Subscription CreateSubscription(string subscriptionId)
+        private Azure.Subscriptions.Rdfe.Models.Subscription CreateSubscription(string subscriptionId)
         {
             return new Azure.Subscriptions.Rdfe.Models.Subscription
             {
                 SubscriptionId = subscriptionId,
                 SubscriptionName = string.Format("Test Mock Subscription {0}", subscriptionId),
-                SubscriptionStatus = Microsoft.Azure.Subscriptions.Rdfe.Models.SubscriptionStatus.Active
+                SubscriptionStatus = Microsoft.Azure.Subscriptions.Rdfe.Models.SubscriptionStatus.Active,
+                ActiveDirectoryTenantId = _tenant.ToString()
             };
         }
 
@@ -258,11 +262,12 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
     public static class ProfileClientHelper
     {
         public static Microsoft.Azure.Subscriptions.Rdfe.SubscriptionClient CreateRdfeSubscriptionClient(
-            params string[] subscriptionsToReturn)
+            Guid tenantToReturn = default(Guid), params string[] subscriptionsToReturn)
         {
             return new MockRdfeSubscriptionClient
             {
-                ReturnedSubscriptions = subscriptionsToReturn
+                ReturnedSubscriptions = subscriptionsToReturn,
+                Tenant = tenantToReturn.ToString()
             };
         }
 
