@@ -160,6 +160,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                         details.DnsServers = DnsServers.Split(new char[] { ',' });
 
                         ValidateCustomerVNetParams(details.VnetName, details.SubnetName, details.DnsServers);
+
+                        details.Region = Region;
                     }
 
                     details.AdInfo = new ActiveDirectoryConfig()
