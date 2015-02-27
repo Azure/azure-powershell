@@ -18,21 +18,22 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppResetVpnSharedKey"), OutputType(typeof(VNetOperationStatus))]
-    public class GetAzureRemoteAppResetVpnSharedKeyOperation : RdsCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppLocation"), OutputType(typeof(Region))]
+    public class GetAzureRemoteAppLocation : RdsCmdlet
     {
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            HelpMessage = "Tracking Id returned by ResetVpnSharedKey.")]
-        public string TrackingId { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            VNetOperationStatusResult response = CallClient(() => Client.VNet.GetResetVpnSharedKeyOperationStatus(TrackingId), Client.VNet);
-            if (response != null)
+            RegionListResult response = null;
+
+            response = CallClient(() => Client.Collections.RegionList(), Client.Collections);
+
+            if (response != null && response.Regions.Count > 0)
             {
-                WriteObject(response.Status);
+                WriteObject(response.Regions, true);
+            }
+            else
+            {
+                WriteVerboseWithTimestamp("No locations found.");
             }
         }
     }

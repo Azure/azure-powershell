@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     {
         [Parameter(Mandatory = false,
             Position = 1,
-            HelpMessage = "RemoteApp collection name")]
+            HelpMessage = "RemoteApp collection name. Wildcards are permitted.")]
         [ValidatePattern(NameValidatorStringWithWildCards)]
         public string CollectionName { get; set; }
 

@@ -18,23 +18,21 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppRegionList"), OutputType(typeof(Region))]
-    public class GetAzureRemoteAppRegionList : RdsCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppVpnDevice"), OutputType(typeof(Vendor))]
+    public class GetAzureRemoteAppVpnDevice : RdsCmdlet
     {
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "RemoteApp virtual network name.")]
+        [ValidatePattern(VNetNameValidatorStringWithWildCards)]
+        public string VNetName { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            RegionListResult response = null;
-
-            response = CallClient(() => Client.Collections.RegionList(), Client.Collections);
-
-            if (response != null && response.Regions.Count > 0)
-            {
-                WriteObject(response.Regions, true);
-            }
-            else
-            {
-                WriteVerboseWithTimestamp("No regions found.");
-            }
+            VNetVpnDeviceResult response = CallClient(() => Client.VNet.GetVpnDevices(VNetName), Client.VNet);
+            WriteObject(response.Vendors, true);
         }
+
     }
 }

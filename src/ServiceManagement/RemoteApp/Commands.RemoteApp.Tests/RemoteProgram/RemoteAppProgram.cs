@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
     {
 
         [TestMethod]
+        [Ignore]
         public void GetAllRemoteApps()
         {
             List<PublishedApplicationDetails> remoteApps = null;
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         {
             List<StartMenuApplication> remoteApps = null;
             int countOfExpectedApps = 0;
-            GetStartMenuApplication mockCmdlet = SetUpTestCommon<GetStartMenuApplication>();
+            GetStartMenuProgram mockCmdlet = SetUpTestCommon<GetStartMenuProgram>();
 
             // Required parameters for this test
             mockCmdlet.CollectionName = collectionName;
@@ -172,16 +173,16 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         {
             List<StartMenuApplication> remoteApps = null;
             int countOfExpectedApps = 1;
-            GetStartMenuApplication mockCmdlet = SetUpTestCommon<GetStartMenuApplication>();
+            GetStartMenuProgram mockCmdlet = SetUpTestCommon<GetStartMenuProgram>();
 
             // Required parameters for this test
             mockCmdlet.CollectionName = collectionName;
-            mockCmdlet.ApplicationName = "notepad";
+            mockCmdlet.ProgramName = "notepad";
 
             // Setup the environment for testing this cmdlet
             MockObject.SetUpDefaultRemoteAppCollectionByName(remoteAppManagementClientMock, mockCmdlet.CollectionName);
             MockObject.SetUpDefaultRemoteAppStartMenu(remoteAppManagementClientMock, mockCmdlet.CollectionName);
-            countOfExpectedApps = MockObject.SetUpDefaultRemoteAppStartMenuByName(remoteAppManagementClientMock, mockCmdlet.CollectionName, mockCmdlet.ApplicationName);
+            countOfExpectedApps = MockObject.SetUpDefaultRemoteAppStartMenuByName(remoteAppManagementClientMock, mockCmdlet.CollectionName, mockCmdlet.ProgramName);
 
             mockCmdlet.ResetPipelines();
 

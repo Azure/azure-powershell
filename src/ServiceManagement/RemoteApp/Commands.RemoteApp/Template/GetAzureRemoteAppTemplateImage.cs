@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [Parameter(Mandatory = false,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "Template image name")]
+            HelpMessage = "Template image name. Wildcards are permitted.")]
         [ValidateNotNullOrEmpty()]
         public string ImageName { get; set; }
 

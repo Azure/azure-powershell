@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
 
-    [Cmdlet(VerbsCommon.Reset, "AzureRemoteAppVpnSharedKey", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(TrackingResult))]
+    [Cmdlet(VerbsCommon.Reset, "AzureRemoteAppVpnSharedKey", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(VNet))]
     public class ResetAzureRemoteAppVpnSharedKey : RdsCmdlet
     {
         [Parameter(Mandatory = false,
@@ -41,11 +41,40 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             {
                 response = CallClient(() => Client.VNet.ResetVpnSharedKey(VNetName), Client.VNet);
             }
- 
+
             if (response != null)
             {
-                TrackingResult trackingId = new TrackingResult(response);
-                WriteObject(trackingId);
+                VNetOperationStatusResult operationStatus = null;
+                int maxRetries = 600; // 5 minutes?
+                // wait for the reset key operation to succeed to get the new key
+                do
+                {
+                    System.Threading.Thread.Sleep(5000); //wait a while before the next check
+                    operationStatus = CallClient(() => Client.VNet.GetResetVpnSharedKeyOperationStatus(response.TrackingId), Client.VNet);
+
+                }
+                while (operationStatus.Status != VNetOperationStatus.Failed &&
+                    operationStatus.Status != VNetOperationStatus.Success &&
+                    --maxRetries > 0);
+
+                if (operationStatus.Status == VNetOperationStatus.Success)
+                {
+                    VNetResult vnet = CallClient(() => Client.VNet.Get(VNetName, true), Client.VNet);
+                    WriteObject(vnet.VNet);
+
+                    WriteVerboseWithTimestamp("The request completed successfully.");
+                }
+                else
+                {
+                    if (maxRetries > 0)
+                    {
+                        WriteErrorWithTimestamp("The request failed.");
+                    }
+                    else
+                    {
+                        WriteErrorWithTimestamp("The request took a long time to complete.");
+                    }
+                }
             }
         }
 

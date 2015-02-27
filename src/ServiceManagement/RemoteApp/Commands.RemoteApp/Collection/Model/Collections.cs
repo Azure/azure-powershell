@@ -46,7 +46,7 @@ namespace LocalModels
             SubnetName = col.SubnetName;
             TemplateImageName = col.TemplateImageName;
             TrialOnly = col.TrialOnly;
-            VnetName = col.VnetName;
+            VnetName = String.IsNullOrWhiteSpace(col.VnetName) || col.VnetName.StartsWith ("simplevnet-") ? "" : col.VnetName;
         }
     }
 }
