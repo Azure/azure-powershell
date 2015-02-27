@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         {
             List<TrackingResult> trackingIds = null;
             int countOfExpectedCollections = 0;
-            UpdaAzureRemoteAppCollection mockCmdlet = SetUpTestCommon<UpdaAzureRemoteAppCollection>();
+            UpdateAzureRemoteAppCollection mockCmdlet = SetUpTestCommon<UpdateAzureRemoteAppCollection>();
 
             // Required parameters for this test
             mockCmdlet.CollectionName = collectionName;

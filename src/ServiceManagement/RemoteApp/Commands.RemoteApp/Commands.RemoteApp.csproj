@@ -178,7 +178,6 @@
       <DependentUpon>Commands.RemoteApp.resx</DependentUpon>
     </Compile>
     <Compile Include="Common\CmdRuntime.cs" />
-    <Compile Include="Common\CmdletWithCollection.cs" />
     <Compile Include="Common\Exception.cs" />
     <Compile Include="Common\LongRunningTask.cs" />
     <Compile Include="Common\RdsCmdlet.cs" />
@@ -194,16 +193,16 @@
     <Compile Include="SecurityPrincipals\RemoveAzureAppMSAUser.cs" />
     <Compile Include="SecurityPrincipals\RemoveAzureAppOrgIDUser.cs" />
     <Compile Include="SecurityPrincipals\SecurityPrincipals.cs" />
-    <Compile Include="Sessions\SendMessageToAzureRemoteAppSessions.cs" />
+    <Compile Include="Sessions\SendAzureRemoteAppSessionMessage.cs" />
     <Compile Include="Sessions\DisconnectAzureRemoteAppSession.cs" />
-    <Compile Include="Sessions\LogoffAzureRemoteAppSession.cs" />
+    <Compile Include="Sessions\InvokeAzureRemoteAppSessionLogoff.cs" />
+    <Compile Include="TemplateImage\GetAzureRemoteAppTemplateImage.cs" />
     <Compile Include="Sessions\GetAzureRemoteAppSession.cs" />
-    <Compile Include="Template\GetAzureRemoteAppTemplateImage.cs" />
     <Compile Include="SecurityPrincipals\GetAzureRemoteAppUsers.cs" />
-    <Compile Include="Template\NewAzureRemoteAppTemplateImage.cs" />
-    <Compile Include="Template\RemoveAzureRemoteAppTemplateImage.cs" />
-    <Compile Include="Template\RenameAzureRemoteAppTemplateImage.cs" />
-    <Compile Include="Template\TemplateImage.cs" />
+    <Compile Include="TemplateImage\NewAzureRemoteAppTemplateImage.cs" />
+    <Compile Include="TemplateImage\RemoveAzureRemoteAppTemplateImage.cs" />
+    <Compile Include="TemplateImage\RenameAzureRemoteAppTemplateImage.cs" />
+    <Compile Include="TemplateImage\TemplateImage.cs" />
     <Compile Include="Vnet\CreateUpdateVnetCmdletBase.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVnet.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVpnDeviceConfigScript.cs" />

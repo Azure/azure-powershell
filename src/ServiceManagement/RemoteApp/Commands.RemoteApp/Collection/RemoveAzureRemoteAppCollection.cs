@@ -19,8 +19,16 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRemoteAppCollection", SupportsShouldProcess = true), OutputType(typeof(TrackingResult))]
-    public class RemoveAzureRemoteAppCollection : CmdletWithCollection
+    public class RemoveAzureRemoteAppCollection : RdsCmdlet
     {
+        [Parameter (Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern (NameValidatorStringWithWildCards)]
+        public string CollectionName { get; set; }
+
+
+
         public override void ExecuteCmdlet()
         {
             Collection collection = null;

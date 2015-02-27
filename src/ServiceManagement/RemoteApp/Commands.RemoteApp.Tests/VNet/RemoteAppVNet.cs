@@ -126,11 +126,10 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             };
             int countOfAddedVNets = 0;
             NewAzureRemoteAppVNet mockCmdlet = SetUpTestCommon<NewAzureRemoteAppVNet>();
-            string vnetName = "vNetTest1";
 
 
             // Required parameters for this test
-            mockCmdlet.VnetName = vnetName;
+            mockCmdlet.VNetName = "vNetTest1";
             mockCmdlet.Region = vNetDetails.Region;
             mockCmdlet.VirtualNetworkAddressSpace = vNetDetails.VnetAddressSpaces.ToArray();
             mockCmdlet.LocalNetworkAddressSpace = vNetDetails.LocalAddressSpaces.ToArray();
@@ -180,7 +179,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
 
             // Required parameters for this test
-            mockCmdlet.VnetName = "vNetTest1";
+            mockCmdlet.VNetName = "vNetTest1";
             mockCmdlet.VirtualNetworkAddressSpace = vNetDetails.VnetAddressSpaces.ToArray();
             mockCmdlet.LocalNetworkAddressSpace = vNetDetails.LocalAddressSpaces.ToArray();
             mockCmdlet.DnsServerIpAddress = vNetDetails.DnsServers.ToArray();
@@ -219,10 +218,10 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             RemoveAzureRemoteAppVNet mockCmdlet = SetUpTestCommon<RemoveAzureRemoteAppVNet>();
 
             // Required parameters for this test
-            mockCmdlet.VnetName = "vNetTest";
+            mockCmdlet.VNetName = "vNetTest";
 
             // Setup the environment for testing this cmdlet
-            MockObject.SetUpDefaultRemoteAppRemoveVNet(remoteAppManagementClientMock, mockCmdlet.VnetName);
+            MockObject.SetUpDefaultRemoteAppRemoveVNet(remoteAppManagementClientMock, mockCmdlet.VNetName);
             mockCmdlet.ResetPipelines();
 
             Log("Calling Remove-AzureRemoteAppVNet");

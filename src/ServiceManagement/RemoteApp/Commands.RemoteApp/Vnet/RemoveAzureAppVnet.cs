@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             HelpMessage = "RemoteApp virtual network name")]
         [ValidatePattern(VNetNameValidatorString)]
 
-        public string VnetName { get; set; }
+        public string VNetName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            OperationResultWithTrackingId response = CallClient(() => Client.VNet.Delete(VnetName), Client.VNet);
+            OperationResultWithTrackingId response = CallClient(() => Client.VNet.Delete(VNetName), Client.VNet);
             if (response != null)
             {
                 TrackingResult trackingId = new TrackingResult(response);

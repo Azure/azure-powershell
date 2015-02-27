@@ -23,8 +23,14 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppStartMenuProgram"), OutputType(typeof(StartMenuApplication))]
-    public class GetStartMenuProgram : CmdletWithCollection
+    public class GetStartMenuProgram : RdsCmdlet
     {
+        [Parameter (Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern (NameValidatorStringWithWildCards)]
+        public string CollectionName { get; set; }
+
         [Parameter(Mandatory = false,
             Position = 1,
             HelpMessage = "Unique alias of the program, Wildcards are permitted.")]

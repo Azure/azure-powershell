@@ -26,10 +26,18 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
     [Cmdlet(VerbsCommon.New, "AzureRemoteAppCollection", DefaultParameterSetName = NoDomain), OutputType(typeof(TrackingResult))]
 
-    public class NewAzureRemoteAppCollection : CmdletWithCollection
+    public class NewAzureRemoteAppCollection : RdsCmdlet
     {
         private const string DomainJoined = "DomainJoined";
         private const string NoDomain = "NoDomain";
+
+
+
+        [Parameter (Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern (NameValidatorStringWithWildCards)]
+        public string CollectionName { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 1,
@@ -115,6 +123,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         )]
         [ValidateNotNullOrEmpty]
         public string CustomRdpProperty { get; set; }
+
+
 
         public override void ExecuteCmdlet()
         {
