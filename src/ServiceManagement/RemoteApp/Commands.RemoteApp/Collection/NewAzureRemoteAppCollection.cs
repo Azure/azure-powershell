@@ -144,6 +144,18 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
                     if (SubnetName != null && DnsServers != null)
                     {
+                        if (!IsFeatureEnabled(EnabledFeatures.azureVNet))
+                        {
+                            ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                     string.Format("\"Link Azure VNet\" Feature not enabled"),
+                                     String.Empty,
+                                     Client.Account,
+                                     ErrorCategory.InvalidOperation
+                                     );
+
+                            ThrowTerminatingError(er);
+                        }
+
                         details.SubnetName = SubnetName;
                         details.DnsServers = DnsServers.Split(new char[] { ',' });
 
@@ -180,7 +192,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         {
             NetworkListResponse.VirtualNetworkSite azureVNet = GetAzureVNet(name);
             bool isValidSubnetName = false;
-            bool isValidDnsServers = true;
 
             if (azureVNet == null)
             {
@@ -215,39 +226,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 ThrowTerminatingError(er);
             }
 
-            foreach (string dnsServerName in dns)
-            {
-                bool isValidDnsServer = false;
-
-                foreach (var dnsServer in azureVNet.DnsServers)
-                {
-                    if (string.Compare(dnsServerName, dnsServer.Name, true) == 0)
-                    {
-                        isValidDnsServer = true;
-                        break;
-                    }
-                }
-
-                if (!isValidDnsServer)
-                {
-                    isValidDnsServers = false;
-                    break;
-                }
-            }
-
-            if (!isValidDnsServers)
-            {
-                ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                        String.Format("Invalid Argument DnsServers: {0} not found", dns),
-                                        String.Empty,
-                                        Client.Collections,
-                                        ErrorCategory.InvalidArgument
-                                        );
-
-                ThrowTerminatingError(er);
-            }
-
-            return true;            
+            return isValidSubnetName;            
         }
 
         private NetworkListResponse.VirtualNetworkSite GetAzureVNet(string name)

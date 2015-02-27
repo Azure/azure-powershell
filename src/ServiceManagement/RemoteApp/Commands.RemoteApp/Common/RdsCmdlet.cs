@@ -39,7 +39,11 @@ namespace Microsoft.Azure.Management.RemoteApp.Models
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-
+    public class EnabledFeatures
+    {
+        public const string azureVNet = "AzureVNet";
+        public const string goldImageImport = "GoldImageImport";
+    }
 
     public abstract partial class RdsCmdlet : AzurePSCmdlet
     {
@@ -301,6 +305,33 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             WriteVerboseWithTimestamp("Please use the following tracking id with Get-AzureRemoteAppOperationResult cmdlet:");
             WriteObject(response.TrackingId, true);
+        }
+
+        public bool IsFeatureEnabled(string featureName)
+        {
+            EnabledFeaturesResult features = Client.Account.GetEnabledFeatures();
+
+            if (features.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                     string.Format("Failed to enumerate enabled features"),
+                                     String.Empty,
+                                     Client.Account,
+                                     ErrorCategory.ConnectionError
+                                     );
+
+                ThrowTerminatingError(er);
+            }
+
+            foreach (string feature in features.EnabledFeatures)
+            {
+                if (string.Compare(feature, featureName, true) == 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

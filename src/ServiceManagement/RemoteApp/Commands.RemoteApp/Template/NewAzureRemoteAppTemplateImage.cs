@@ -83,10 +83,11 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 RunspaceConfiguration runspaceConfiguration = RunspaceConfiguration.Create();
                 Runspace runspace = RunspaceFactory.CreateRunspace(runspaceConfiguration);
                 string uploadFilePath = string.Concat(Environment.GetEnvironmentVariable("temp"), "\\uploadScript.ps1");
-                File.WriteAllText(uploadFilePath, response.Script);
-
+                Collection<PSObject> results = null;
                 Pipeline pipeline = runspace.CreatePipeline();
                 Command myCommand = new Command(uploadFilePath);
+
+                File.WriteAllText(uploadFilePath, response.Script);
 
                 myCommand.Parameters.Add(new CommandParameter("sas", image.Sas));
                 myCommand.Parameters.Add(new CommandParameter("uri", image.Uri));
@@ -95,7 +96,31 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 pipeline.Commands.Add(myCommand);
 
                 runspace.Open();
-                Collection<PSObject> results = pipeline.Invoke();
+                results = pipeline.Invoke();
+
+                if (pipeline.HadErrors)
+                {
+                    if (pipeline.Error.Count > 0)
+                    {
+                        Collection<ErrorRecord> errors = pipeline.Error.Read() as Collection<ErrorRecord>;
+
+                        if (errors != null)
+                        {
+                            foreach(ErrorRecord error in errors)
+                            {
+                                task.Error.Add(error);
+                            }
+
+                            task.SetState(JobState.Failed, new Exception("Upload script failed"));
+                        }
+                    }
+                    else
+                    {
+                        task.SetState(JobState.Failed, new Exception("Image upload script failed."));
+                    }
+                }
+
+                runspace.Close();
             }
         }
 
@@ -169,11 +194,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                     Region = Region
                 };
 
-                if (ParameterSetName == azureVmUpload)
-                {
-                    details.SourceImageSasUri = GetAzureVmSasUri(AzureVmImageName);
-                }
-
                 response = CallClient_ThrowOnError(() => Client.TemplateImages.Set(details));
 
                 templateImage = response.TemplateImage;
@@ -190,8 +210,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         {
             TemplateImageResult response = null;
             TemplateImageDetails details = null;
-
-            var features = Client.Account.GetEnabledFeatures();
 
             EnsureStorageInRegion(Region);
             FilterTemplateImage(ImageName, Operation.Create);
@@ -214,13 +232,17 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         private string GetAzureVmSasUri(string vmImageName)
         {
             ComputeManagementClient computeClient = new ComputeManagementClient(this.Client.Credentials, this.Client.BaseUri);
-            VirtualMachineOSImageListResponse imageListResponse = computeClient.VirtualMachineOSImages.List();
-            VirtualMachineOSImageListResponse.VirtualMachineOSImage vmImage = null;
+            VirtualMachineOSImageGetResponse imageGetResponse = computeClient.VirtualMachineOSImages.Get(vmImageName);
+            Uri uri = null;
+            StorageManagementClient storageClient = null;
+            string storageAccountName = null;
+            StorageAccountGetKeysResponse getKeysResponse = null;
+            ErrorRecord er = null;
 
-            if (imageListResponse.Images == null || imageListResponse.Images.Count == 0)
+            if (imageGetResponse == null || string.IsNullOrEmpty(imageGetResponse.Name))
             {
-                ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                     "Invalid Argument: No OS Image is found.",
+                er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                     string.Format("Image with name {0} not found.", vmImageName),
                                      String.Empty,
                                      Client.TemplateImages,
                                      ErrorCategory.InvalidArgument
@@ -229,67 +251,77 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 ThrowTerminatingError(er);
             }
 
-            foreach (VirtualMachineOSImageListResponse.VirtualMachineOSImage Image in imageListResponse.Images)
+            if (string.Compare(imageGetResponse.OperatingSystemType, "Windows", true) != 0)
             {
-                if (string.Compare(Image.Name, vmImageName, true) == 0)
-                {
-                    if (string.Compare(Image.OperatingSystemType, "Windows", true) != 0)
-                    {
-                        ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                             String.Format("Invalid Argument: OS Image type is {0}. It must be Windows.", Image.OperatingSystemType),
-                                             String.Empty,
-                                             Client.TemplateImages,
-                                             ErrorCategory.InvalidArgument
-                                             );
+                er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                        String.Format("Invalid Argument: OS Image type is {0}. It must be Windows.", imageGetResponse.OperatingSystemType),
+                                        String.Empty,
+                                        Client.TemplateImages,
+                                        ErrorCategory.InvalidArgument
+                                        );
 
-                        ThrowTerminatingError(er);
-                    }
-                    else if (Image.MediaLinkUri == null || string.IsNullOrEmpty(Image.MediaLinkUri.AbsoluteUri))
-                    {
-                        ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                             String.Format("Invalid Argument: Cannot use {0} because it is an Azure Gallery image. Only uploaded images can be used.", vmImageName),
-                                             String.Empty,
-                                             Client.TemplateImages,
-                                             ErrorCategory.InvalidArgument
-                                             );
+                ThrowTerminatingError(er);
+            }
+            
+            if (imageGetResponse.MediaLinkUri == null || string.IsNullOrEmpty(imageGetResponse.MediaLinkUri.AbsoluteUri))
+            {
+                er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                        String.Format("Invalid Argument: Cannot use {0} because it is an Azure Gallery image. Only uploaded images can be used.", vmImageName),
+                                        String.Empty,
+                                        Client.TemplateImages,
+                                        ErrorCategory.InvalidArgument
+                                        );
 
-                        ThrowTerminatingError(er);
-                    }
-                    else
-                    {
-                        vmImage = Image;
-                        break;
-                    }
-                }
+                ThrowTerminatingError(er);
             }
 
-            if (vmImage != null)
+            // If reached so far, the image is good
+            uri = new Uri(imageGetResponse.MediaLinkUri.AbsoluteUri);
+            storageClient = new StorageManagementClient(this.Client.Credentials, this.Client.BaseUri);
+            storageAccountName = uri.Authority.Split('.')[0];
+            getKeysResponse = storageClient.StorageAccounts.GetKeys(storageAccountName);
+
+            if (getKeysResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                Uri uri = new Uri(vmImage.MediaLinkUri.AbsoluteUri);
-                StorageManagementClient storageClient = new StorageManagementClient(this.Client.Credentials, this.Client.BaseUri);
-                string storageAccountName = uri.Authority.Split('.')[0];
-                StorageAccountGetKeysResponse getKeysResponse = storageClient.StorageAccounts.GetKeys(storageAccountName);
+                StorageCredentials credentials = new StorageCredentials(storageAccountName, getKeysResponse.SecondaryKey);
+                SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();
+                CloudPageBlob pageBlob = null;
+                string sas = null;
 
-                if (getKeysResponse.StatusCode == System.Net.HttpStatusCode.OK)
+                pageBlob = new CloudPageBlob(uri, credentials);
+
+                accessPolicy.Permissions = SharedAccessBlobPermissions.Read;
+                accessPolicy.SharedAccessStartTime = DateTime.Now;
+                accessPolicy.SharedAccessExpiryTime = DateTime.Now.AddHours(12);
+
+                sas = pageBlob.GetSharedAccessSignature(accessPolicy);
+
+                if (sas != null)
                 {
-                    StorageCredentials credentials = new StorageCredentials(storageAccountName, getKeysResponse.SecondaryKey);
-                    SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();
-                    CloudPageBlob pageBlob = null;
-                    string sas = null;
-
-                    pageBlob = new CloudPageBlob(uri, credentials);
-
-                    accessPolicy.Permissions = SharedAccessBlobPermissions.Read;
-                    accessPolicy.SharedAccessStartTime = DateTime.Now;
-                    accessPolicy.SharedAccessExpiryTime = DateTime.Now.AddHours(12);
-
-                    sas = pageBlob.GetSharedAccessSignature(accessPolicy);
-
-                    if (sas != null)
-                    {
-                        return vmImage.MediaLinkUri.AbsoluteUri + sas;
-                    }
+                    return imageGetResponse.MediaLinkUri.AbsoluteUri + sas;
                 }
+                else
+                {
+                    er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                        String.Format("Couldn't get Sas for template imge uri. Error {0}", imageGetResponse.StatusCode.ToString()),
+                                        String.Empty,
+                                        Client.TemplateImages,
+                                        ErrorCategory.ConnectionError
+                                        );
+
+                    ThrowTerminatingError(er);
+                }
+            }
+            else
+            {
+                er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                        String.Format("Couldn't get storage account keys. Error {0}", getKeysResponse.StatusCode.ToString()),
+                                        String.Empty,
+                                        Client.TemplateImages,
+                                        ErrorCategory.ConnectionError
+                                        );
+
+                ThrowTerminatingError(er);
             }
 
             return null;
@@ -331,8 +363,22 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                     }
                 case azureVmUpload:
                     {
-                        ImportTemplateImage();
+                        if (IsFeatureEnabled(EnabledFeatures.goldImageImport))
+                        {
+                            ImportTemplateImage();
+                        }
+                        else
+                        {
+                            ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                     string.Format("\"Import Image\" Feature not enabled"),
+                                     String.Empty,
+                                     Client.Account,
+                                     ErrorCategory.InvalidOperation
+                                     );
 
+                            ThrowTerminatingError(er);
+                        }
+                        
                         break;
                     }
             }
