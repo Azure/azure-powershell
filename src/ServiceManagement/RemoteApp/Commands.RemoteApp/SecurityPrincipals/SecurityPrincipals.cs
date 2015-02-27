@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-    public class SecurityPrincipals : CmdletWithCollection
+    public class SecurityPrincipals : RdsCmdlet
     {
         protected enum Operation
         {

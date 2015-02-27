@@ -21,13 +21,19 @@ using Microsoft.Azure.Commands.RemoteApp;
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsData.Unpublish, "AzureRemoteAppProgram", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(PublishingOperationResult))]
-    public class UnpublishAzureRemoteAppProgram : CmdletWithCollection
+    public class UnpublishAzureRemoteAppProgram : RdsCmdlet
     {
+        [Parameter (Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern (NameValidatorStringWithWildCards)]
+        public string CollectionName { get; set; }
+
         [Parameter(Mandatory = false,
-            Position = 1,
-            HelpMessage = "Unique alias of application")]
+                   Position = 1,
+                   HelpMessage = "Aliases of the programs to unpublish")]
         [ValidateNotNullOrEmpty()]
-        public string[] ApplicationAliases { get; set; }
+        public string[] Alias { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -35,7 +41,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             AliasesListParameter appAlias = new AliasesListParameter()
             {
-                AliasesList = new List<string>(ApplicationAliases)
+                AliasesList = new List<string>(Alias)
             };
 
             if (appAlias.AliasesList.Count == 0)
@@ -49,7 +55,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             }
             else
             {
-                appAlias.AliasesList = new List<string>(ApplicationAliases);
+                appAlias.AliasesList = new List<string>(Alias);
                 result = CallClient(() => Client.Publishing.Unpublish(CollectionName, appAlias), Client.Publishing);
             }
 

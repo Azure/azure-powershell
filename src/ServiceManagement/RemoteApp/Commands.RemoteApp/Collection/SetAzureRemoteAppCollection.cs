@@ -21,11 +21,19 @@ using System.Net;
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsCommon.Set, "AzureRemoteAppCollection"), OutputType(typeof(TrackingResult))]
- 
-    public class SetAzureRemoteAppCollection : CmdletWithCollection
+    public class SetAzureRemoteAppCollection : RdsCmdlet
     {
         private const string DomainJoined = "DomainJoined";
         private const string NoDomain = "NoDomain";
+
+
+
+        [Parameter (Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern (NameValidatorStringWithWildCards)]
+        public string CollectionName { get; set; }
+
 
         [Parameter(Mandatory = false,
                    Position = 1,

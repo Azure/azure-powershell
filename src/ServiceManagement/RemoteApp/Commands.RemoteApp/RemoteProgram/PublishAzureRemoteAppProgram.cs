@@ -22,10 +22,17 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
 
     [Cmdlet(VerbsData.Publish, "AzureRemoteAppProgram", DefaultParameterSetName = AppId), OutputType(typeof(PublishingOperationResult))]
-    public class PublishAzureRemoteAppProgram : CmdletWithCollection
+    public class PublishAzureRemoteAppProgram : RdsCmdlet
     {
         private const string AppPath = "App Path";
         private const string AppId = "App Id";
+
+
+        [Parameter (Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern (NameValidatorStringWithWildCards)]
+        public string CollectionName { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 1,
