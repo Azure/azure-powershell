@@ -46,15 +46,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// <param name="deviceDetails">Current device details for the device.</param>
         /// <param name="newName">New friendly name for the device. Null if its not to be changed</param>
         /// <param name="timeZone">New timeZone value for the device. Null if its not to be changed</param>
-        /// <param name="primaryDnsServer">New primary DNS server address for the device. Null if its not to be changed</param>
         /// <param name="secondaryDnsServer">New Secondary DNS Server address for the device. Null if its not to be changed</param>
         /// <param name="networkConfigs">An array or NetworkConfig objects for different interfaces. Null if its not to be changed</param>
         /// <returns></returns>
-        public TaskStatusInfo UpdateDeviceDetails(DeviceDetails deviceDetails, string newName, TimeZoneInfo timeZone, IPAddress primaryDnsServer,
-            IPAddress secondaryDnsServer, NetworkConfig[] networkConfigs)
+        public TaskStatusInfo UpdateDeviceDetails(DeviceDetails deviceDetails, string newName, TimeZoneInfo timeZone, IPAddress secondaryDnsServer, NetworkConfig[] networkConfigs)
         {
             // Update the object
-            this.UpdateDeviceDetailsObject(deviceDetails, newName, timeZone, primaryDnsServer, secondaryDnsServer, networkConfigs);
+            this.UpdateDeviceDetailsObject(deviceDetails, newName, timeZone, secondaryDnsServer, networkConfigs);
             // Copy stuff over from the DeviceDetails object into a new DeviceDetailsRequest object.
             var request = new DeviceDetailsRequest();
             MiscUtils.CopyProperties(deviceDetails, request);
@@ -153,8 +151,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// Modify the provided DeviceDetails object with the data provided
         /// </summary>
         /// <param name="details"></param>
-        private void UpdateDeviceDetailsObject(DeviceDetails deviceDetails, string newName, TimeZoneInfo timeZone, IPAddress primaryDnsServer, 
-            IPAddress secondaryDnsServer, NetworkConfig[] networkConfigs)
+        private void UpdateDeviceDetailsObject(DeviceDetails deviceDetails, string newName, TimeZoneInfo timeZone, IPAddress secondaryDnsServer, NetworkConfig[] networkConfigs)
         {
             // modify details for non-null data provided to cmdlet
 
@@ -167,19 +164,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             {
                 deviceDetails.TimeServer.TimeZone = timeZone.StandardName;
             }
-            if (primaryDnsServer != null)
-            {
-                var primaryDnsString = primaryDnsServer.ToString();
-                var primaryDnsType = primaryDnsServer.AddressFamily;
-                if (primaryDnsType == AddressFamily.InterNetwork)   // IPv4
-                {
-                    deviceDetails.DnsServer.PrimaryIPv4 = primaryDnsString;
-                }
-                else if (primaryDnsType == AddressFamily.InterNetworkV6)
-                {
-                    deviceDetails.DnsServer.PrimaryIPv6 = primaryDnsString;
-                }
-            }
+
             if (secondaryDnsServer != null)
             {
                 var secondaryDnsString = secondaryDnsServer.ToString();

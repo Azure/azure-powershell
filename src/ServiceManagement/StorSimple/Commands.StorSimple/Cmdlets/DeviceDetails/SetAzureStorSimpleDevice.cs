@@ -62,27 +62,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         public TimeZoneInfo TimeZone { get; set; }
 
         /// <summary>
-        /// Primary DNS server for the device.
-        /// </summary>
-        [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.PrimaryDnsServer)]
-        [ValidateNotNullOrEmpty]
-        public string PrimaryDnsServer { get; set; }
-        
-        /// <summary>
         /// Secondary DNS server for the device.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.SecondaryDnsServer)]
+        [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.SecondaryDnsServer)]
         [ValidateNotNullOrEmpty]
         public string SecondaryDnsServer { get; set; }
         
         /// <summary>
         /// A collection of network configs for interfaces on the device.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.StorSimpleNetworkConfig)]
+        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.StorSimpleNetworkConfig)]
         [ValidateNotNullOrEmpty]
         public NetworkConfig[] StorSimpleNetworkConfig { get; set; }
 
-        private IPAddress primaryDnsServer;
         private IPAddress secondaryDnsServer;
 
         public override void ExecuteCmdlet()
@@ -107,7 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 // If the device is being configured for the first time, validate that mandatory params 
                 // for first setup have been provided
-                if (!this.IsDeviceConfigurationCompleteForDevice(deviceDetails) && !ValidParamsForFirstDeviceConfiguration(StorSimpleNetworkConfig, TimeZone,PrimaryDnsServer))
+                if (!deviceDetails.DeviceProperties.IsConfigUpdated && !ValidParamsForFirstDeviceConfiguration(StorSimpleNetworkConfig, TimeZone, SecondaryDnsServer))
                 {
                     WriteVerbose(Resources.MandatoryParamsMissingForInitialDeviceConfiguration);
                     WriteObject(null);
@@ -124,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 // Update device details objects with the details provided to the cmdlet
                 // and make request with updated data
-                var taskStatusInfo = StorSimpleClient.UpdateDeviceDetails(deviceDetails, this.NewName, this.TimeZone, this.primaryDnsServer, this.secondaryDnsServer, this.StorSimpleNetworkConfig);
+                var taskStatusInfo = StorSimpleClient.UpdateDeviceDetails(deviceDetails, this.NewName, this.TimeZone, this.secondaryDnsServer, this.StorSimpleNetworkConfig);
 
                 HandleSyncTaskResponse(taskStatusInfo, "Setup");
                 if (taskStatusInfo.AsyncTaskAggregatedResult == AsyncTaskAggregatedResult.Succeeded)
@@ -154,10 +146,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     return false;
                 }
                 DeviceId = deviceId;
-            }
-            if (!TrySetIPAddress(PrimaryDnsServer, out primaryDnsServer, "PrimaryDnsServer"))
-            {
-                return false;
             }
             if (!TrySetIPAddress(SecondaryDnsServer, out secondaryDnsServer, "SecondaryDnsServer"))
             {

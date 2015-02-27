@@ -460,7 +460,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// Validate that all mandatory data for the first Device Configuration has been provided.
         /// </summary>
         /// <returns>bool indicating whether all mandatory data is there or not.</returns>
-        internal bool ValidParamsForFirstDeviceConfiguration(NetworkConfig[] netConfigs, TimeZoneInfo timeZone, string primaryDnsServer)
+        internal bool ValidParamsForFirstDeviceConfiguration(NetworkConfig[] netConfigs, TimeZoneInfo timeZone, string secondaryDnsServer)
         {
             if (netConfigs == null)
             {
@@ -468,12 +468,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             }
             // Make sure network config for Data0 has been provided with atleast Controller0 IP Address
             var data0 = netConfigs.FirstOrDefault(x => x.InterfaceAlias == NetInterfaceId.Data0);
-            if (data0 == null || data0.Controller0IPv4Address == null)
+            if (data0 == null || data0.Controller0IPv4Address == null || data0.Controller1IPv4Address == null)
             {
                 return false;
             }
-            // Timezone and Primary Dns Server are also mandatory
-            if (timeZone == null || string.IsNullOrEmpty(primaryDnsServer))
+            // Timezone and Secondary Dns Server are also mandatory
+            if (timeZone == null || string.IsNullOrEmpty(secondaryDnsServer))
             {
                 return false;
             }

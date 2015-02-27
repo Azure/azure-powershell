@@ -106,7 +106,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string IPv6Prefix = "IPv6 Prefix for the net interface";
         public const string IsCloudEnabled = "Whether the net interface is cloud enabled/disabled";
         public const string IsIscsiEnabled = "Whether the net interface is iscsi enabled/disabled";
-        public const string PrimaryDnsServer = "Primary DNS server for the device.";
         public const string SecondaryDnsServer = "Secondary DNS server for the device.";
         public const string StorSimpleNetworkConfig = "A collection of network configs for interfaces on the device.";
         public const string TimeZone = "TimeZone for the device.";
