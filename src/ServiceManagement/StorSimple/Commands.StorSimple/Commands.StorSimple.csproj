@@ -44,28 +44,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common">
-      <HintPath>..\..\..\packages\Hyak.Common.1.0.1\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.1\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.2\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Extensions, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Extensions.0.14.0-preview\lib\net45\Microsoft.Azure.Common.Extensions.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Common.Authentication">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.8-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.1\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.2\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.12.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.11.10918.1222\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.11.10918.1222\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
@@ -86,7 +82,8 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="StorSimple.Tests">
+    <Reference Include="StorSimple.Tests, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\hydra-specs-pr\StorSimple\StorSimple.Tests\bin\Debug\StorSimple.Tests.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -121,11 +118,17 @@
     <Compile Include="Cmdlets\BackupPolicy\SetAzureStorSimpleDeviceBackupPolicy.cs" />
     <Compile Include="Cmdlets\BackupSet\GetAzureStorSimpleDeviceBackup.cs" />
     <Compile Include="Cmdlets\BackupSet\RemoveAzureStorSimpleDeviceBackup.cs" />
+    <Compile Include="Cmdlets\Clone\StartAzureStorSimpleBackupCloneJob.cs" />
     <Compile Include="Cmdlets\BackupSet\StartAzureStorSimpleDeviceBackupJob.cs" />
     <Compile Include="Cmdlets\BackupSet\StartAzureStorSimpleDeviceBackupRestoreJob.cs" />
     <Compile Include="Cmdlets\DataContainer\GetAzureStorSimpleDeviceVolumeContainer.cs" />
     <Compile Include="Cmdlets\DataContainer\NewAzureStorSimpleDeviceVolumeContainer.cs" />
     <Compile Include="Cmdlets\DataContainer\RemoveAzureStorSimpleDeviceVolumeContainer.cs" />
+    <Compile Include="Cmdlets\DeviceDetails\SetAzureStorSimpleVirtualDevice.cs" />
+    <Compile Include="Cmdlets\DeviceDetails\SetAzureStorSimpleDevice.cs" />
+    <Compile Include="Cmdlets\DeviceDetails\NewAzureStorSimpleNetworkConfig.cs" />
+    <Compile Include="Cmdlets\DeviceJobs\GetAzureStorSimpleJob.cs" />
+    <Compile Include="Cmdlets\DeviceJobs\StopAzureStorSimpleJob.cs" />
     <Compile Include="Cmdlets\Failover\GetAzureStorSimpleFailoverVolumeContainers.cs" />
     <Compile Include="Cmdlets\Failover\StartAzureStorSimpleDeviceFailoverJob.cs" />
     <Compile Include="Cmdlets\GetAzureStorSimpleDevice.cs" />
@@ -153,6 +156,8 @@
     <Compile Include="Library\CryptoHelper.cs" />
     <Compile Include="Library\IKeyManager.cs" />
     <Compile Include="Library\LocalKeyStoreManager.cs" />
+    <Compile Include="Library\MiscUtils.cs" />
+    <Compile Include="Models\NetworkConfig.cs" />
     <Compile Include="Models\TaskReport.cs" />
     <Compile Include="Models\PSContracts.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -167,6 +172,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceClients\StorSimpleContextClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDCClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleJobsClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDeviceFailoverClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDevicesClient.cs" />
     <Compile Include="ServiceClients\StorSimpleServiceConfigClient.cs" />
@@ -193,8 +199,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

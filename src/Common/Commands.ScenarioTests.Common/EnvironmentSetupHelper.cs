@@ -18,14 +18,15 @@ using System.Collections.ObjectModel;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Diagnostics;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -40,8 +41,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public EnvironmentSetupHelper()
         {
-            ProfileClient.DataStore = new MockDataStore();
-            client = new ProfileClient();
+            AzureSession.DataStore = new MockDataStore();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
@@ -141,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 client.Profile.Subscriptions[testSubscription.Id] = testSubscription;
                 client.Profile.Accounts[testAccount.Id] = testAccount;
-                client.SetSubscriptionAsCurrent(testSubscription.Name, testSubscription.Account);
+                client.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
             }
         }
 

@@ -31,31 +31,31 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsCommon.Set, "AzureStorSimpleDeviceBackupPolicy"), OutputType(typeof(BackupPolicyDetails))]
     public class SetAzureStorSimpleDeviceBackupPolicy: StorSimpleCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
         [ValidateNotNullOrEmptyAttribute]
         public string DeviceName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupPolicyIdToUpdate)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.BackupPolicyIdToUpdate)]
         [ValidateNotNullOrEmptyAttribute]
         public string BackupPolicyId { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupPolicyNameChange)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.BackupPolicyNameChange)]
         [ValidateNotNullOrEmptyAttribute]
         public string BackupPolicyName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupScheduleBaseObjsToAdd)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.BackupScheduleBaseObjsToAdd)]
         public PSObject[] BackupSchedulesToAdd { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupScheduleBaseObjsToUpdate)]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.BackupScheduleBaseObjsToUpdate)]
         public PSObject[] BackupSchedulesToUpdate { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupScheduleBaseObjsToDelete)]
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.BackupScheduleBaseObjsToDelete)]
         public PSObject[] BackupScheduleIdsToDelete { get; set; }
 
-        [Parameter(Position = 6, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeObjsToUpdate)]
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.VolumeObjsToUpdate)]
         public PSObject[] VolumeIdsToUpdate { get; set; }
 
-        [Parameter(Position = 7, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
 
         private string deviceId = null;

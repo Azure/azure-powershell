@@ -28,12 +28,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class GetAzureStorSimpleDeviceConnectedInitiator : StorSimpleCmdletBase
     {
         [Alias("ID")]
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceId)]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.DeviceId)]
         [ValidateNotNullOrEmpty]
         public string DeviceId { get; set; }
 
         [Alias("Name")]
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 

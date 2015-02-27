@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class GetAzureStorSimpleAccessControlRecord : StorSimpleCmdletBase
     {
         [Alias("Name")]
-        [Parameter(Position = 0, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageACRName)]
+        [Parameter(Position = 0, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.ACRName)]
         public string ACRName { get; set; }
 
         public override void ExecuteCmdlet()

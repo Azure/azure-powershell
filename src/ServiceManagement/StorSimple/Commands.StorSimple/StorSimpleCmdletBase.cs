@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             {
                 if (this.storSimpleClient == null)
                 {
-                    this.storSimpleClient = new StorSimpleClient(CurrentContext.Subscription);
+                    this.storSimpleClient = new StorSimpleClient(Profile, Profile.Context.Subscription);
                 }
                 storSimpleClient.ClientRequestId = Guid.NewGuid().ToString("D") + "_PS";
                 WriteVerbose(string.Format(Resources.ClientRequestIdMessage, storSimpleClient.ClientRequestId));
@@ -350,17 +350,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             }
             return true;
         }
-	
+
         /// <summary>
-        /// this method verifies that the devicename parameter specified is completely configured
-        /// no operation should be allowed to perform on a non-configured device
+        /// Helper method to determine if this device has already been configured or not
         /// </summary>
-        public void VerifyDeviceConfigurationCompleteForDevice(string deviceId)
+        /// <returns></returns>
+        public bool IsDeviceConfigurationCompleteForDevice(DeviceDetails details)
         {
-            DeviceDetails details = storSimpleClient.GetDeviceDetails(deviceId);
             bool data0Configured = false;
 
-            if(details.NetInterfaceList!=null)
+            if (details.NetInterfaceList != null)
             {
                 NetInterface data0 = details.NetInterfaceList.Where(x => x.InterfaceId == NetInterfaceId.Data0).ToList<NetInterface>().First<NetInterface>();
                 if (data0 != null
@@ -369,6 +368,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     && !string.IsNullOrEmpty(data0.NicIPv4Settings.Controller0IPv4Address))
                     data0Configured = true;
             }
+            return data0Configured;
+        }
+	
+        /// <summary>
+        /// this method verifies that the devicename parameter specified is completely configured
+        /// most operations are not allowed on a non-configured device
+        /// </summary>
+        public void VerifyDeviceConfigurationCompleteForDevice(string deviceId)
+        {
+            var details = storSimpleClient.GetDeviceDetails(deviceId);
+            var data0Configured = IsDeviceConfigurationCompleteForDevice(details);
             if (!data0Configured)
                 throw GetGenericException(Resources.DeviceNotConfiguredMessage, null);
         }
@@ -386,6 +396,88 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         internal Exception GetGenericException(string exceptionMessage, Exception innerException)
         {
             return new Exception(exceptionMessage, innerException);
+        }
+
+        /// <summary>
+        /// Validate that all network configs are valid.
+        /// 
+        /// Its mandatory to provide either (IPv4 Address and netmask) or IPv6 orefix for an interface that
+        /// is being enabled. ( Was previously disabled and is now being configured)
+        /// </summary>
+        /// <returns></returns>
+        internal bool ValidateNetworkConfigs(DeviceDetails details, NetworkConfig[] StorSimpleNetworkConfig)
+        {
+            if (StorSimpleNetworkConfig == null)
+            {
+                return true;
+            }
+            foreach (var netConfig in StorSimpleNetworkConfig)
+            {
+                // get corresponding netInterface in device details.
+                var netInterface = details.NetInterfaceList.FirstOrDefault(x => x.InterfaceId == netConfig.InterfaceAlias);
+                // If its being enabled and its not Data0, it must have IP Address info
+                if (netInterface == null || (netInterface.InterfaceId != NetInterfaceId.Data0 && !netInterface.IsEnabled))
+                {
+                    // If its not an enabled interface either IPv6(prefix) or IPv4(address and mask) must be provided.
+                    if ((netConfig.IPv4Address == null || netConfig.IPv4Netmask == null) && netConfig.IPv6Prefix == null)
+                    {
+                        WriteVerbose(string.Format(Resources.IPAddressesNotProvidedForNetInterfaceBeingEnabled, StorSimpleContext.ResourceName, details.DeviceProperties.DeviceId));
+                        WriteObject(null);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Try to parse an IP Address from the provided string
+        /// </summary>
+        /// <param name="data">IP Address string</param>
+        /// <param name="ipAddress"></param>
+        /// <param name="paramName">Name of the param which is being processed (to be used for errors)</param>
+        internal bool TrySetIPAddress(string data, out IPAddress ipAddress, string paramName)
+        {
+            if (data == null)
+            {
+                ipAddress = null;
+                return true;
+            }
+            try
+            {
+                ipAddress = IPAddress.Parse(data);
+                return true;
+            }
+            catch (FormatException)
+            {
+                ipAddress = null;
+                WriteVerbose(string.Format(Resources.InvalidIPAddressProvidedMessage, paramName));
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Validate that all mandatory data for the first Device Configuration has been provided.
+        /// </summary>
+        /// <returns>bool indicating whether all mandatory data is there or not.</returns>
+        internal bool ValidParamsForFirstDeviceConfiguration(NetworkConfig[] netConfigs, TimeZoneInfo timeZone, string primaryDnsServer)
+        {
+            if (netConfigs == null)
+            {
+                return false;
+            }
+            // Make sure network config for Data0 has been provided with atleast Controller0 IP Address
+            var data0 = netConfigs.FirstOrDefault(x => x.InterfaceAlias == NetInterfaceId.Data0);
+            if (data0 == null || data0.Controller0IPv4Address == null)
+            {
+                return false;
+            }
+            // Timezone and Primary Dns Server are also mandatory
+            if (timeZone == null || string.IsNullOrEmpty(primaryDnsServer))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

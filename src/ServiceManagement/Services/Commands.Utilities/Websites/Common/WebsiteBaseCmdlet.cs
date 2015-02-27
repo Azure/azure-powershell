@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Common
             {
                 if (websitesClient == null)
                 {
-                    websitesClient = new WebsitesClient(CurrentContext.Subscription, WriteDebug);
+                    websitesClient = new WebsitesClient(Profile, Profile.Context.Subscription, WriteDebug);
                 }
                 return websitesClient;
             }

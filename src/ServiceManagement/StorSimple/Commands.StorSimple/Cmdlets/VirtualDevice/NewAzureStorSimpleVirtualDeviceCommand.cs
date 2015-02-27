@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.VirtualDevice
             {
                 var applianceProvisiongInfo = new VirtualDeviceProvisioningInfo()
                 {
-                    SubscriptionId = CurrentContext.Subscription.Id.ToString(),
+                    SubscriptionId = Profile.Context.Subscription.Id.ToString(),
                     DeviceName = VirtualDeviceName,
                     ReturnWorkflowId = true,
                     VirtualNetworkName = VirtualNetworkName,
