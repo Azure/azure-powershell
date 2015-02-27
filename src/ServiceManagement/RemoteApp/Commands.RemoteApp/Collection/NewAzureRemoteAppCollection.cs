@@ -210,6 +210,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 if (string.Compare(azureSubnet.Name, subnet, true) == 0)
                 {
                     isValidSubnetName = true;
+
+                    Region = azureVNet.Location;
                     break;
                 }
             }
