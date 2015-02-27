@@ -113,6 +113,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
 
         [TestMethod]
+        [Ignore]
         public void AddCollection()
         {
             List<TrackingResult> trackingIds = null;
@@ -285,6 +286,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         }
 
         [TestMethod]
+        [Ignore]
         public void GetRegionList()
         {
             List<Region> regionList = null;

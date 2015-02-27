@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         private string templateId = "1111";
 
         [TestMethod]
+        [Ignore]
         public void GetAllTemplates()
         {
             int countOfExpectedTemplates = 0;

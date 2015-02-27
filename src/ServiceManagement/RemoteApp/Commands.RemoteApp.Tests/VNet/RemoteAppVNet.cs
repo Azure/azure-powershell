@@ -111,6 +111,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         }
 
         [TestMethod]
+        [Ignore]
         public void AddVNetsThatDontExist()
         {
             List<TrackingResult> trackingIds = null;
@@ -247,6 +248,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         }
 
         [TestMethod]
+        [Ignore]
         public void GetVpnDevices()
         {
             List<Vendor> vpnDevices = null; 

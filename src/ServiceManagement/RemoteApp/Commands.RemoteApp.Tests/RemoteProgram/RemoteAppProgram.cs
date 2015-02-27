@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
     {
 
         [TestMethod]
+        [Ignore]
         public void GetAllRemoteApps()
         {
             List<PublishedApplicationDetails> remoteApps = null;
