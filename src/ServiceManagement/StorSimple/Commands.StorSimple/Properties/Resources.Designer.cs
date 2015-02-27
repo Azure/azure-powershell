@@ -1177,7 +1177,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job&apos;s status.
+        ///   Looks up a localized string similar to The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -JobId {1} for tracking the job&apos;s status.
         /// </summary>
         internal static string SuccessMessageSubmitDeviceJob {
             get {
