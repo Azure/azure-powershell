@@ -87,7 +87,15 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 Pipeline pipeline = runspace.CreatePipeline();
                 Command myCommand = new Command(uploadFilePath);
 
-                File.WriteAllText(uploadFilePath, response.Script);
+                try
+                {
+                    File.WriteAllText(uploadFilePath, response.Script);
+                }
+                catch (Exception ex)
+                {
+                    task.SetState(JobState.Failed, new Exception(string.Format("Failed to write file {0}. Error {1}", uploadFilePath, ex.Message)));
+                    return;
+                }
 
                 myCommand.Parameters.Add(new CommandParameter("sas", image.Sas));
                 myCommand.Parameters.Add(new CommandParameter("uri", image.Uri));
