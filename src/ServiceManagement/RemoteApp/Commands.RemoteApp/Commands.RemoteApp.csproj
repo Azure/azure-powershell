@@ -200,7 +200,6 @@
     <Compile Include="Sessions\GetAzureRemoteAppSessions.cs" />
     <Compile Include="Template\GetAzureRemoteAppTemplateImage.cs" />
     <Compile Include="SecurityPrincipals\GetAzureRemoteAppUsers.cs" />
-    <Compile Include="Template\GetAzureRemoteAppUploadScript.cs" />
     <Compile Include="Template\NewAzureRemoteAppTemplateImage.cs" />
     <Compile Include="Template\RemoveAzureRemoteAppTemplateImage.cs" />
     <Compile Include="Template\RenameAzureRemoteAppTemplateImage.cs" />
