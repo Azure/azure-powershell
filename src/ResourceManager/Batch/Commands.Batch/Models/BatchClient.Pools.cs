@@ -26,22 +26,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// Lists the Pools matching the specified filter options
         /// </summary>
-        /// <param name="context">The account details</param>
-        /// <param name="poolName">If specified, the single Pool with this name will be returned</param>
-        /// <param name="filter">The OData filter to use when querying for Pools</param>
-        /// <param name="maxCount">The maximum number of Pools to return</param>
-        /// <param name="additionalBehaviors">Additional client behaviors to perform</param>
+        /// <param name="options">The options to use when querying for Pools</param>
         /// <returns>The Pools matching the specified filter options</returns>
-        public IEnumerable<PSCloudPool> ListPools(BatchAccountContext context, string poolName, string filter, int maxCount,
-            IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public IEnumerable<PSCloudPool> ListPools(ListPoolOptions options)
         {
-            // Get the single Pool matching the specified name
-            if (!string.IsNullOrEmpty(poolName))
+            if (options == null)
             {
-                WriteVerbose(string.Format(Resources.GBP_GetByName, poolName));
-                using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
+                throw new ArgumentNullException("options");
+            }
+
+            // Get the single Pool matching the specified name
+            if (!string.IsNullOrEmpty(options.PoolName))
+            {
+                WriteVerbose(string.Format(Resources.GBP_GetByName, options.PoolName));
+                using (IPoolManager poolManager = options.Context.BatchOMClient.OpenPoolManager())
                 {
-                    ICloudPool pool = poolManager.GetPool(poolName, additionalBehaviors: additionalBehaviors);
+                    ICloudPool pool = poolManager.GetPool(options.PoolName, additionalBehaviors: options.AdditionalBehaviors);
                     PSCloudPool psPool = new PSCloudPool(pool);
                     return new PSCloudPool[] { psPool };
                 }
@@ -49,21 +49,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // List Pools using the specified filter
             else
             {
-                ODATADetailLevel odata = null;
-                if (!string.IsNullOrEmpty(filter))
+                if (options.MaxCount <= 0)
                 {
-                    WriteVerbose(string.Format(Resources.GBP_GetByOData, maxCount));
-                    odata = new ODATADetailLevel(filterClause: filter);
+                    options.MaxCount = Int32.MaxValue;
+                }
+                ODATADetailLevel odata = null;
+                if (!string.IsNullOrEmpty(options.Filter))
+                {
+                    WriteVerbose(string.Format(Resources.GBP_GetByOData, options.MaxCount));
+                    odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBP_NoFilter, maxCount));
+                    WriteVerbose(string.Format(Resources.GBP_NoFilter, options.MaxCount));
                 }
-                using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
+                using (IPoolManager poolManager = options.Context.BatchOMClient.OpenPoolManager())
                 {
-                    IEnumerableAsyncExtended<ICloudPool> pools = poolManager.ListPools(odata, additionalBehaviors);
+                    IEnumerableAsyncExtended<ICloudPool> pools = poolManager.ListPools(odata, options.AdditionalBehaviors);
                     Func<ICloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
-                    return new PSAsyncEnumerable<PSCloudPool, ICloudPool>(pools, mappingFunction).Take(maxCount);
+                    return new PSAsyncEnumerable<PSCloudPool, ICloudPool>(pools, mappingFunction).Take(options.MaxCount);
                 }
             }
         }

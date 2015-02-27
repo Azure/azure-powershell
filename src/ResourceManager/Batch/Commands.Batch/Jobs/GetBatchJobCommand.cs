@@ -48,15 +48,26 @@ namespace Microsoft.Azure.Commands.Batch
         public int MaxCount
         {
             get { return this.maxCount; }
-            set { this.maxCount = value <= 0 ? Int32.MaxValue : value; }
+            set { this.maxCount = value; }
         }
 
         public override void ExecuteCmdlet()
         {
+            ListJobOptions options = new ListJobOptions()
+            {
+                Context = this.BatchContext,
+                WorkItemName = this.WorkItemName,
+                JobName = this.Name,
+                WorkItem = this.WorkItem,
+                Filter = this.Filter,
+                MaxCount = this.MaxCount,
+                AdditionalBehaviors = this.AdditionalBehaviors
+            };
+
             // The enumerator will internally query the service in chunks. Using WriteObject with the enumerate flag will enumerate
             // the entire collection first and then write the items out one by one in a single group.  Using foreach, we can take 
             // advantage of the enumerator's behavior and write output to the pipeline in bursts.
-            foreach (PSCloudJob job in BatchClient.ListJobs(BatchContext, WorkItemName, WorkItem, Name, Filter, MaxCount, AdditionalBehaviors))
+            foreach (PSCloudJob job in BatchClient.ListJobs(options))
             {
                 WriteObject(job);
             }

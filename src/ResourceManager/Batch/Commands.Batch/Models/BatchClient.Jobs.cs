@@ -26,30 +26,28 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// Lists the Jobs matching the specified filter options
         /// </summary>
-        /// <param name="context">The account details</param>
-        /// <param name="workItemName">The name of the WorkItem to query for Jobs</param>
-        /// <param name="workItem">The WorkItem to query for Jobs</param>
-        /// <param name="jobName">If specified, the single Job with this name will be returned</param>
-        /// <param name="filter">The OData filter to use when querying for Jobs</param>
-        /// <param name="maxCount">The maximum number of Jobs to return</param>
-        /// <param name="additionalBehaviors">Additional client behaviors to perform</param>
+        /// <param name="options">The options to use when querying for Jobs</param>
         /// <returns>The Jobs matching the specified filter options</returns>
-        public IEnumerable<PSCloudJob> ListJobs(BatchAccountContext context, string workItemName, PSCloudWorkItem workItem, string jobName,
-            string filter, int maxCount, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public IEnumerable<PSCloudJob> ListJobs(ListJobOptions options)
         {
-            if (string.IsNullOrEmpty(workItemName) && workItem == null)
+            if (options == null)
+            {
+                throw new ArgumentNullException("options");
+            }
+
+            if (string.IsNullOrEmpty(options.WorkItemName) && options.WorkItem == null)
             {
                 throw new ArgumentNullException(Resources.GBJ_NoWorkItem);    
             }
-            string wiName = workItem == null ? workItemName : workItem.Name;
+            string wiName = options.WorkItem == null ? options.WorkItemName : options.WorkItem.Name;
 
             // Get the single Job matching the specified name
-            if (!string.IsNullOrEmpty(jobName))
+            if (!string.IsNullOrEmpty(options.JobName))
             {
-                WriteVerbose(string.Format(Resources.GBJ_GetByName, jobName, wiName));
-                using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
+                WriteVerbose(string.Format(Resources.GBJ_GetByName, options.JobName, wiName));
+                using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
                 {
-                    ICloudJob job = wiManager.GetJob(wiName, jobName, additionalBehaviors: additionalBehaviors);
+                    ICloudJob job = wiManager.GetJob(wiName, options.JobName, additionalBehaviors: options.AdditionalBehaviors);
                     PSCloudJob psJob = new PSCloudJob(job);
                     return new PSCloudJob[] { psJob };
                 }
@@ -57,22 +55,26 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // List Jobs using the specified filter
             else
             {
-                ODATADetailLevel odata = null;
-                if (!string.IsNullOrEmpty(filter))
+                if (options.MaxCount <= 0)
                 {
-                    WriteVerbose(string.Format(Resources.GBJ_GetByOData, wiName, maxCount));
-                    odata = new ODATADetailLevel(filterClause: filter);
+                    options.MaxCount = Int32.MaxValue;
+                }
+                ODATADetailLevel odata = null;
+                if (!string.IsNullOrEmpty(options.Filter))
+                {
+                    WriteVerbose(string.Format(Resources.GBJ_GetByOData, wiName, options.MaxCount));
+                    odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBJ_GetNoFilter, wiName, maxCount));
+                    WriteVerbose(string.Format(Resources.GBJ_GetNoFilter, wiName, options.MaxCount));
                 }
 
-                using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
+                using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
                 {
-                    IEnumerableAsyncExtended<ICloudJob> jobs = wiManager.ListJobs(wiName, odata, additionalBehaviors);
+                    IEnumerableAsyncExtended<ICloudJob> jobs = wiManager.ListJobs(wiName, odata, options.AdditionalBehaviors);
                     Func<ICloudJob, PSCloudJob> mappingFunction = j => { return new PSCloudJob(j); };
-                    return new PSAsyncEnumerable<PSCloudJob, ICloudJob>(jobs, mappingFunction).Take(maxCount);           
+                    return new PSAsyncEnumerable<PSCloudJob, ICloudJob>(jobs, mappingFunction).Take(options.MaxCount);           
                 }             
             }
         }

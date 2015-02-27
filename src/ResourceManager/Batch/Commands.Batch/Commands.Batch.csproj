@@ -152,6 +152,10 @@
     <Compile Include="Models\BatchClient.Pools.cs" />
     <Compile Include="Models\BatchClient.Tasks.cs" />
     <Compile Include="Models\BatchClient.WorkItems.cs" />
+    <Compile Include="Models\ListJobOptions.cs" />
+    <Compile Include="Models\ListPoolOptions.cs" />
+    <Compile Include="Models\ListTaskOptions.cs" />
+    <Compile Include="Models\ListWorkItemOptions.cs" />
     <Compile Include="Models\PSAffinitiyInformation.cs" />
     <Compile Include="Models\PSAsyncEnumerable.cs" />
     <Compile Include="Models\PSAutoPoolSpecification.cs" />

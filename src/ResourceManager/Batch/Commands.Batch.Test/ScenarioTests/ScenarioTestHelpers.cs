@@ -134,7 +134,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-            PSCloudWorkItem workItem = client.ListWorkItems(context, workItemName, null, Constants.DefaultMaxCount, behaviors).First();
+
+            ListWorkItemOptions options = new ListWorkItemOptions()
+            {
+                Context = context,
+                WorkItemName = workItemName,
+                Filter = null,
+                MaxCount = Constants.DefaultMaxCount,
+                AdditionalBehaviors = behaviors
+            };
+            PSCloudWorkItem workItem = client.ListWorkItems(options).First();
 
             while (workItem.ExecutionInformation.RecentJob == null || string.Equals(workItem.ExecutionInformation.RecentJob.Name, previousJob, StringComparison.OrdinalIgnoreCase))
             {
@@ -143,7 +152,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     throw new TimeoutException("Timed out waiting for recent job");
                 }
                 Sleep(5000);
-                workItem = client.ListWorkItems(context, workItemName, null, Constants.DefaultMaxCount, behaviors).First();
+                workItem = client.ListWorkItems(options).First();
             }
             return workItem.ExecutionInformation.RecentJob.Name;
         }

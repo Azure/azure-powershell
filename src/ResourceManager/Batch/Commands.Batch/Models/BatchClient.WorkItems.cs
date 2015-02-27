@@ -26,22 +26,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// Lists the WorkItems matching the specified filter options
         /// </summary>
-        /// <param name="context">The account details</param>
-        /// <param name="workItemName">If specified, the single WorkItem with this name will be returned</param>
-        /// <param name="filter">The OData filter to use when querying for WorkItems</param>
-        /// <param name="maxCount">The maximum number of WorkItems to return</param>
-        /// <param name="additionalBehaviors">Additional client behaviors to perform</param>
+        /// <param name="options">The options to use when querying for WorkItems</param>
         /// <returns>The WorkItems matching the specified filter options</returns>
-        public IEnumerable<PSCloudWorkItem> ListWorkItems(BatchAccountContext context, string workItemName, string filter, int maxCount,
-            IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public IEnumerable<PSCloudWorkItem> ListWorkItems(ListWorkItemOptions options)
         {
-            // Get the single WorkItem matching the specified name
-            if (!string.IsNullOrEmpty(workItemName))
+            if (options == null)
             {
-                WriteVerbose(string.Format(Resources.GBWI_GetByName, workItemName));
-                using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
+                throw new ArgumentNullException("options");
+            }
+
+            // Get the single WorkItem matching the specified name
+            if (!string.IsNullOrEmpty(options.WorkItemName))
+            {
+                WriteVerbose(string.Format(Resources.GBWI_GetByName, options.WorkItemName));
+                using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
                 {
-                    ICloudWorkItem workItem = wiManager.GetWorkItem(workItemName, additionalBehaviors: additionalBehaviors);
+                    ICloudWorkItem workItem = wiManager.GetWorkItem(options.WorkItemName, additionalBehaviors: options.AdditionalBehaviors);
                     PSCloudWorkItem psWorkItem = new PSCloudWorkItem(workItem);
                     return new PSCloudWorkItem[] { psWorkItem };
                 }
@@ -49,21 +49,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // List WorkItems using the specified filter
             else
             {
-                ODATADetailLevel odata = null;
-                if (!string.IsNullOrEmpty(filter))
+                if (options.MaxCount <= 0)
                 {
-                    WriteVerbose(string.Format(Resources.GBWI_GetByOData, maxCount));
-                    odata = new ODATADetailLevel(filterClause: filter);
+                    options.MaxCount = Int32.MaxValue;
+                }
+                ODATADetailLevel odata = null;
+                if (!string.IsNullOrEmpty(options.Filter))
+                {
+                    WriteVerbose(string.Format(Resources.GBWI_GetByOData, options.MaxCount));
+                    odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBWI_NoFilter, maxCount));
+                    WriteVerbose(string.Format(Resources.GBWI_NoFilter, options.MaxCount));
                 }
-                using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
+                using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
                 {
-                    IEnumerableAsyncExtended<ICloudWorkItem> workItems = wiManager.ListWorkItems(odata, additionalBehaviors);
+                    IEnumerableAsyncExtended<ICloudWorkItem> workItems = wiManager.ListWorkItems(odata, options.AdditionalBehaviors);
                     Func<ICloudWorkItem, PSCloudWorkItem> mappingFunction = w => { return new PSCloudWorkItem(w); };
-                    return new PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>(workItems, mappingFunction).Take(maxCount);
+                    return new PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>(workItems, mappingFunction).Take(options.MaxCount);
                 }
             }
         }

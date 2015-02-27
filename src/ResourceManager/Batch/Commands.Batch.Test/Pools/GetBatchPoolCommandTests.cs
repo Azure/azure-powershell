@@ -173,10 +173,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             // Verify default max count
             Assert.Equal(Microsoft.Azure.Commands.Batch.Utils.Constants.DefaultMaxCount, cmdlet.MaxCount);
 
-            // Verify setting max count <= 0
-            cmdlet.MaxCount = -5;
-            Assert.Equal(int.MaxValue, cmdlet.MaxCount);
-
             // Setup cmdlet to list Pools without filters and a max count
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
@@ -210,6 +206,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Verify that the max count was respected
             Assert.Equal(maxCount, pipeline.Count);
+
+            // Verify setting max count <= 0 doesn't return nothing
+            cmdlet.MaxCount = -5;
+            pipeline.Clear();
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(namesOfConstructedPools.Length, pipeline.Count);
         }
     }
 }
