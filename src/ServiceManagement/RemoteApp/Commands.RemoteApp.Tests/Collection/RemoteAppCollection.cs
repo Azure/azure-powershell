@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         {
             List<Region> regionList = null;
             List<string> regions = null;
-            GetAzureRemoteAppRegionList mockCmdlet = SetUpTestCommon<GetAzureRemoteAppRegionList>();
+            GetAzureRemoteAppLocation mockCmdlet = SetUpTestCommon<GetAzureRemoteAppLocation>();
 
             // Setup the environment for testing this cmdlet
             MockObject.SetUpDefaultRemoteAppRegionList(remoteAppManagementClientMock);

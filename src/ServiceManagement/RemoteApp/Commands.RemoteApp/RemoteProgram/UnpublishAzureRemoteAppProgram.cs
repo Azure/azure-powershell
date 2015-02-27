@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     {
         [Parameter(Mandatory = false,
             Position = 1,
-            HelpMessage = "Unique alias of application")]
+            HelpMessage = "Unique alias of the program to unpublish")]
         [ValidateNotNullOrEmpty()]
         public string[] ApplicationAliases { get; set; }
 

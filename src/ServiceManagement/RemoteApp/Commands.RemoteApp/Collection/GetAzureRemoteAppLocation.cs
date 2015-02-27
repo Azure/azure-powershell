@@ -18,8 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppRegionList"), OutputType(typeof(Region))]
-    public class GetAzureRemoteAppRegionList : RdsCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppLocation"), OutputType(typeof(Region))]
+    public class GetAzureRemoteAppLocation : RdsCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             }
             else
             {
-                WriteVerboseWithTimestamp("No regions found.");
+                WriteVerboseWithTimestamp("No locations found.");
             }
         }
     }

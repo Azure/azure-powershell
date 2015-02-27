@@ -162,11 +162,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Billing\GetAzureRemoteAppBillingPlans.cs" />
+    <Compile Include="Billing\GetAzureRemoteAppBillingPlan.cs" />
     <Compile Include="Collection\GetAzureRemoteAppCollectionUsageDetails.cs" />
     <Compile Include="Collection\GetAzureRemoteAppCollectionUsageSummary.cs" />
     <Compile Include="Collection\GetAzureRemoteAppCollection.cs" />
-    <Compile Include="Collection\GetAzureRemoteAppRegionList.cs" />
+    <Compile Include="Collection\GetAzureRemoteAppLocation.cs" />
     <Compile Include="Collection\Model\Collections.cs" />
     <Compile Include="Collection\NewAzureRemoteAppCollection.cs" />
     <Compile Include="Collection\RemoveAzureRemoteAppCollection.cs" />
@@ -185,7 +185,7 @@
     <Compile Include="Common\RemoteAppRegEx.cs" />
     <Compile Include="OperationalResult\GetAzureRemoteAppOperationResult.cs" />
     <Compile Include="RemoteProgram\GetAzureRemoteAppProgram.cs" />
-    <Compile Include="RemoteProgram\GetStartMenuApplication.cs" />
+    <Compile Include="RemoteProgram\GetStartMenuProgram.cs" />
     <Compile Include="RemoteProgram\PublishAzureRemoteAppProgram.cs" />
     <Compile Include="RemoteProgram\UnpublishAzureRemoteAppProgram.cs" />
     <Compile Include="SecurityPrincipals\AddAzureRemoteAppMSAUser.cs" />
@@ -197,7 +197,7 @@
     <Compile Include="Sessions\SendMessageToAzureRemoteAppSessions.cs" />
     <Compile Include="Sessions\DisconnectAzureRemoteAppSession.cs" />
     <Compile Include="Sessions\LogoffAzureRemoteAppSession.cs" />
-    <Compile Include="Sessions\GetAzureRemoteAppSessions.cs" />
+    <Compile Include="Sessions\GetAzureRemoteAppSession.cs" />
     <Compile Include="Template\GetAzureRemoteAppTemplateImage.cs" />
     <Compile Include="SecurityPrincipals\GetAzureRemoteAppUsers.cs" />
     <Compile Include="Template\GetAzureRemoteAppUploadScript.cs" />
@@ -209,7 +209,7 @@
     <Compile Include="Vnet\GetAzureRemoteAppResetVpnSharedKeyOperation.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVnet.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVpnDeviceConfigScript.cs" />
-    <Compile Include="Vnet\GetAzureRemoteAppVpnDevices.cs" />
+    <Compile Include="Vnet\GetAzureRemoteAppVpnDevice.cs" />
     <Compile Include="Vnet\NewAzureRemoteAppVnet.cs" />
     <Compile Include="Vnet\RemoveAzureAppVnet.cs" />
     <Compile Include="Vnet\ResetAzureRemoteAppVpnSharedKey.cs" />

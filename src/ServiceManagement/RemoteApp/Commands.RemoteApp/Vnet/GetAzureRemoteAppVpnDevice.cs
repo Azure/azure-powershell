@@ -12,28 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-
-    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppBillingPlans"), OutputType(typeof(BillingPlan))]
-    public class GetAzureRemoteAppBillingPlans : RdsCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppVpnDevice"), OutputType(typeof(Vendor))]
+    public class GetAzureRemoteAppVpnDevice : RdsCmdlet
     {
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "RemoteApp virtual network name.")]
+        [ValidatePattern(VNetNameValidatorStringWithWildCards)]
+        public string VNetName { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            ListBillingPlansResult billingPlans = CallClient(() => Client.Account.ListBillingPlans(), Client.Account);
-
-            if (billingPlans.PlanList.Count > 0)
-            {
-                WriteObject(billingPlans.PlanList, true);
-            }
-            else
-            {
-                WriteVerboseWithTimestamp("No billing plans found.");
-            }
+            VNetVpnDeviceResult response = CallClient(() => Client.VNet.GetVpnDevices(VNetName), Client.VNet);
+            WriteObject(response.Vendors, true);
         }
+
     }
 }

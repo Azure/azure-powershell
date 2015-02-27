@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         {
             List<Vendor> vpnDevices = null; 
             int countOfExpectedVNetVpnDevices = 0;
-            GetAzureRemoteAppVpnDevices mockCmdlet = SetUpTestCommon<GetAzureRemoteAppVpnDevices>();
+            GetAzureRemoteAppVpnDevice mockCmdlet = SetUpTestCommon<GetAzureRemoteAppVpnDevice>();
 
             // Required parameters for this test
             mockCmdlet.VNetName = "Vnet";
