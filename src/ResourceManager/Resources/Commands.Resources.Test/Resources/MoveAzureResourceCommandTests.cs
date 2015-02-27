@@ -204,24 +204,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             {
                 this.VerifyCallPatternAndReset(started: false);
             }
-
-            // move fails
-            cmdletOutput = false;
-            resourcesToMove = new[]
-            {
-                "/subscriptions/subId/resourceGroups/rg1/providers/Providers.Test/ResourceType1/resource1",
-            };
-
-            moveResult.StatusCode = HttpStatusCode.NotFound;
-            this.cmdlet.ResourceId = resourcesToMove;
-
-            this.cmdlet.PassThru = false;
-            this.cmdlet.ExecuteCmdlet();
-            this.VerifyCallPatternAndReset();
-
-            this.cmdlet.PassThru = true;
-            this.cmdlet.ExecuteCmdlet();
-            this.VerifyCallPatternAndReset();
         }
 
         /// <summary>

@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             this.cmdlet.ExecuteCmdlet();
 
-            this.VerifyListAllCallPatternAndReset();
+            this.VerifyListProviderFeaturesCallPatternAndReset();
 
             // 5. get a single provider feature by name
             this.cmdlet.ProviderNamespace = Provider2Namespace;
