@@ -161,6 +161,8 @@
     <Compile Include="Resources\SetAzureResourceCommandTests.cs" />
     <Compile Include="ScenarioTests\ActiveDirectoryTests.cs" />
     <Compile Include="ScenarioTests\AuthorizationTests.cs" />
+    <None Include="ScenarioTests\FeaturesTest.ps1" />
+    <None Include="ScenarioTests\ProviderTests.ps1" />
     <Compile Include="ScenarioTests\ResourcesController.cs" />
     <Compile Include="ScenarioTests\DeploymentTests.cs" />
     <Compile Include="ScenarioTests\ResourceGroupTests.cs" />

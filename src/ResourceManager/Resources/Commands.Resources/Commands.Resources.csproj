@@ -135,7 +135,6 @@
     <Compile Include="ActiveDirectory\NewAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
-    <Compile Include="Models.ResourceGroups\AzureOperationResponseExtensions.cs" />
     <Compile Include="ProviderFeatures\AzureProviderFeatureCmdletsBase.cs" />
     <Compile Include="ProviderFeatures\GetAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryBaseCmdlet.cs" />

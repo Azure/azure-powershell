@@ -74,18 +74,16 @@ namespace Microsoft.Azure.Commands.Resources
 
             var targetMessage = Environment.NewLine + string.Join(Environment.NewLine, this.ResourceId);
 
-            AzureOperationResponse response = null;
-
             this.ConfirmAction(
                 this.Force,
                 string.Format(ProjectResources.MovingResources, targetMessage),
                 ProjectResources.MoveResourcesMessage,
                 targetMessage,
-                () => response = this.ResourcesClient.MoveResources(sourceResourceGroup, this.DestinationResourceGroupName, this.ResourceId));
+                () => this.ResourcesClient.MoveResources(sourceResourceGroup, this.DestinationResourceGroupName, this.ResourceId));
 
-            if (PassThru)
+            if (this.PassThru)
             {
-                WriteObject(response != null && response.IsSuccessfulRequest());
+                this.WriteObject(true);
             }
         }
     }
