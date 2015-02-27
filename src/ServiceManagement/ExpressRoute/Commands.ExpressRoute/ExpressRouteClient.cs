@@ -149,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 
             if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
             {
-                return GetAzureDedicatedCircuit(result.Data);
+                return GetAzureDedicatedCircuit(serviceKey);
             }
             else
             {

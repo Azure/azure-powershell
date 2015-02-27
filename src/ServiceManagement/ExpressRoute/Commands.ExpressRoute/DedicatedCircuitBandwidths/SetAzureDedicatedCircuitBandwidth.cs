@@ -40,8 +40,8 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.SetAzureDedicatedCircuitBandwidthWarning, ServiceKey),
-                Resources.SetAzureDedicatedCircuitBandwidthWarning,
+                string.Format(Resources.SetAzureDedicatedCircuitBandwidthWarning, ServiceKey, Bandwidth),
+                Resources.SetAzureDedicatedCircuitBandwidthMessage,
                 ServiceKey,
                 () =>
                 {
