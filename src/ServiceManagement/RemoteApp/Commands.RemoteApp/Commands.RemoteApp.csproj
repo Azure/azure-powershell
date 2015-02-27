@@ -206,7 +206,6 @@
     <Compile Include="Template\RenameAzureRemoteAppTemplateImage.cs" />
     <Compile Include="Template\TemplateImage.cs" />
     <Compile Include="Vnet\CreateUpdateVnetCmdletBase.cs" />
-    <Compile Include="Vnet\GetAzureRemoteAppResetVpnSharedKeyOperation.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVnet.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVpnDeviceConfigScript.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVpnDevices.cs" />

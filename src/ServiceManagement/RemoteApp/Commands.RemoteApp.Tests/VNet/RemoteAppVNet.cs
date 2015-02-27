@@ -247,40 +247,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         }
 
         [TestMethod]
-        public void GetVNetSharedKeyResult()
-        {
-            List<VNetOperationStatus> sharedKeyResults = null;
-            int countOfExpectedVNetSharedKeys = 0;
-            GetAzureRemoteAppResetVpnSharedKeyOperation mockCmdlet = SetUpTestCommon<GetAzureRemoteAppResetVpnSharedKeyOperation>();
-
-            // Required parameters for this test
-            mockCmdlet.TrackingId = trackingId;
-
-            // Setup the environment for testing this cmdlet
-            countOfExpectedVNetSharedKeys = MockObject.SetUpDefaultResetVpnSharedKey(remoteAppManagementClientMock, mockCmdlet.TrackingId);
-            mockCmdlet.ResetPipelines();
-
-            Log("Calling Get-AzureRemoteAppVNet which should have {0} VNets", countOfExpectedVNetSharedKeys);
-
-            mockCmdlet.ExecuteCmdlet();
-            if (mockCmdlet.runTime().ErrorStream.Count != 0)
-            {
-                Assert.Fail(
-                    String.Format("Get-AzureRemoteAppVNet returned the following error {0}",
-                        mockCmdlet.runTime().ErrorStream[0].Exception.Message
-                    )
-                );
-            }
-
-            sharedKeyResults = MockObject.ConvertList<VNetOperationStatus>(mockCmdlet.runTime().OutputPipeline);
-            Assert.IsNotNull(sharedKeyResults);
-            Assert.IsTrue(sharedKeyResults.Count == 1);
-            Assert.IsTrue(sharedKeyResults[0] == MockObject.mockVNetStatusList[0]);
-
-            Log("The test for Get-AzureRemoteAppVNet with {0} VNets completed successfully", countOfExpectedVNetSharedKeys);
-        }
-
-        [TestMethod]
         public void GetVpnDevices()
         {
             List<Vendor> vpnDevices = null; 
