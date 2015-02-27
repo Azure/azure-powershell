@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         [Parameter(Mandatory = false,
             Position = 1,
-            HelpMessage = "Name of Application",
+            HelpMessage = "Name of the program. Wildcards are permitted.",
             ParameterSetName = FilterByName)]
         [ValidateNotNullOrEmpty()]
         public string RemoteAppProgram { get; set; }
 
         [Parameter(Mandatory = false,
             Position = 1,
-            HelpMessage = "Published application alias",
+            HelpMessage = "Published program alias",
             ParameterSetName = FilterByAlias)]
         [ValidateNotNullOrEmpty()]
         public string Alias { get; set; }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                     if (!found)
                     {
                         WriteErrorWithTimestamp(
-                            String.Format("Collection {0} does not have a published application matching alias {1}.",
+                            String.Format("Collection {0} does not have a published program matching alias {1}.",
                                 CollectionName,
                                 Alias)
                             );
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                     if (!found)
                     {
                         WriteVerboseWithTimestamp(
-                            String.Format("Collection {0} has no published applications matching: {1}.",
+                            String.Format("Collection {0} has no published program matching: {1}.",
                                 CollectionName,
                                 RemoteAppProgram)
                             );

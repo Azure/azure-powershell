@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,
-                   Position = 1,
+            Position = 1,
                    HelpMessage = "Aliases of the programs to unpublish")]
         [ValidateNotNullOrEmpty()]
         public string[] Alias { get; set; }

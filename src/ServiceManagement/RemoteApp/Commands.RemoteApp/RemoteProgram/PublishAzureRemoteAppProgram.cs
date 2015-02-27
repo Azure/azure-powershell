@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AppId,
-            HelpMessage = "Start menu application ID of the program to be published.")]
+            HelpMessage = "Start menu program ID of the program to be published.")]
         public string StartMenuAppId { get; set; }
 
         [Parameter(Mandatory = false,

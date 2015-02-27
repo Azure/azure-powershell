@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [Parameter(Mandatory = false,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "RemoteApp virtual network name.")]
+            HelpMessage = "RemoteApp virtual network name. Wildcards are permitted.")]
         public string VNetName { get; set; }
 
         [Parameter(Mandatory = false,

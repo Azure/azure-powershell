@@ -20,8 +20,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
 
-    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppSessions"), OutputType(typeof(RemoteAppSession))]
-    public class GetAzureRemoteAppSessions : RdsCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppSession"), OutputType(typeof(RemoteAppSession))]
+    public class GetAzureRemoteAppSession : RdsCmdlet
     {
         [Parameter(Mandatory = true,
             Position = 0,
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             Position = 1,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Session user UPN.")]
+            HelpMessage = "Session user UPN. Wildcards are permitted.")]
         [ValidatePattern(NameValidatorString)]
         public string UserUpn { get; set; }
 
