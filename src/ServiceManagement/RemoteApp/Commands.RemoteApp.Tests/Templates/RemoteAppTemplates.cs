@@ -212,36 +212,5 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
             Log("The test for Remove-AzureRemoteAppTemplate completed successfully");
         }
-
-        [TestMethod]
-        public void GetUploadScript()
-        {
-            List<string> uploadScript = null;
-            GetAzureRemoteAppUploadScript mockCmdlet = SetUpTestCommon<GetAzureRemoteAppUploadScript>();
-
-            // Setup the environment for testing this cmdlet
-            MockObject.SetUpDefaultRemoteAppUploadScriptTemplate(remoteAppManagementClientMock);
-            mockCmdlet.ResetPipelines();
-
-            mockCmdlet.ExecuteCmdlet();
-            if (mockCmdlet.runTime().ErrorStream.Count != 0)
-            {
-                Assert.Fail(
-                    String.Format("Get-AzureRemoteAppUploadScript returned the following error {0}",
-                        mockCmdlet.runTime().ErrorStream[0].Exception.Message
-                    )
-                );
-            }
-
-            uploadScript = MockObject.ConvertList<string>(mockCmdlet.runTime().OutputPipeline);
-            Assert.IsNotNull(uploadScript);
-            Assert.IsTrue(uploadScript.Count == 1);
-
-            Assert.IsTrue(MockObject.mockTemplateScript == uploadScript[0],
-                 "The actual result does not match the expected"
-            );
-
-            Log("The test for Get-AzureRemoteAppUploadScript completed successfully");
-        }
     }
 }

@@ -28,103 +28,88 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         private const string NoDomain = "NoDomain";
 
         [Parameter(Mandatory = false,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Billing Plan to use for this collection. Use Get-AzureRemoteAppBillingPlans to see the plans available."
-        )]
+                   Position = 1,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Billing Plan to use for this collection. Use Get-AzureRemoteAppBillingPlans to see the plans available.")]
         [ValidateNotNullOrEmpty]
         public string BillingPlan { get; set; }
 
         [Parameter(Mandatory = false,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = DomainJoined,
-            HelpMessage = "Credentials of a user that has permission to add computers to the domain."
-        )]
+                   Position = 2,
+                   ValueFromPipelineByPropertyName = true,
+                   ParameterSetName = DomainJoined,
+                   HelpMessage = "Credentials of a user that has permission to add computers to the domain.")]
         [ValidateNotNull]
         public PSCredential Credential { get; set; }
 
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = DomainJoined,
-            HelpMessage = "The name of your organizational unit to join the RD Session Host servers, e.g. OU=MyOu,DC=MyDomain,DC=ParentDomain,DC=com. Attributes such as OU, DC, etc. must be in uppercase."
-        )]
-        [ValidatePattern(OrgIDValidatorString)]
-        public string OrganizationalUnit { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Description of what this collection is used for."
-        )]
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Description of what this collection is used for.")]
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
 
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Used to allow RDP redirection."
-        )]
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Used to allow RDP redirection.")]
         [ValidateNotNullOrEmpty]
         public string CustomRdpProperty { get; set; }
 
         public override void ExecuteCmdlet()
         {
-
             NetworkCredential creds = null;
             CollectionCreationDetails details = null;
             OperationResultWithTrackingId response = null;
             Collection collection = null;
 
             collection = FindCollection(CollectionName);
-
-            if (collection != null)
+            if (collection == null)
             {
-                details = new CollectionCreationDetails()
-                {
-                    Name = CollectionName,
-                    BillingPlanName = String.IsNullOrWhiteSpace(BillingPlan) ? collection.BillingPlanName : BillingPlan,
-                    Description = String.IsNullOrWhiteSpace(Description) ? collection.Description : Description,
-                    CustomRdpProperty = String.IsNullOrWhiteSpace(CustomRdpProperty) ? collection.CustomRdpProperty : CustomRdpProperty,
-                    TemplateImageName = collection.TemplateImageName
-                };
+                return;
+            }
+
+            details = new CollectionCreationDetails()
+            {
+                Name = CollectionName,
+                BillingPlanName = String.IsNullOrWhiteSpace(BillingPlan) ? collection.BillingPlanName : BillingPlan,
+                Description = String.IsNullOrWhiteSpace(Description) ? collection.Description : Description,
+                CustomRdpProperty = String.IsNullOrWhiteSpace(CustomRdpProperty) ? collection.CustomRdpProperty : CustomRdpProperty,
+                TemplateImageName = collection.TemplateImageName
+            };
 
 
-                switch (ParameterSetName)
-                {
-                    case DomainJoined:
+            switch (ParameterSetName)
+            {
+                case DomainJoined:
+                    {
+                        if (collection.AdInfo == null)
                         {
-                            if (collection.AdInfo == null)
-                            {
-                                ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                    String.Format("AdInfo cannot be added to a ClouldOnly Collection"),
-                                        String.Empty,
-                                        Client.Collections,
-                                        ErrorCategory.InvalidArgument
-                                );
-                                ThrowTerminatingError(er);
-                            }
-
-                            details.AdInfo = new ActiveDirectoryConfig();
-                            details.VnetName = collection.VnetName;
-                            details.AdInfo.DomainName = collection.AdInfo.DomainName;
-                            details.AdInfo.OrganizationalUnit = String.IsNullOrWhiteSpace(OrganizationalUnit) ? collection.AdInfo.OrganizationalUnit : OrganizationalUnit;
-
-                            if (Credential != null)
-                            {
-                                creds = Credential.GetNetworkCredential();
-                                details.AdInfo.UserName = creds.UserName;
-                                details.AdInfo.Password = creds.Password;
-                            }
-                            break;
+                            ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString("AdInfo cannot be added to a ClouldOnly Collection",
+                                                                                                       String.Empty,
+                                                                                                       Client.Collections,
+                                                                                                       ErrorCategory.InvalidArgument);
+                            ThrowTerminatingError(er);
                         }
-                }
 
-                response = CallClient(() => Client.Collections.Set(CollectionName, false, false, details), Client.Collections);
+                        details.AdInfo = new ActiveDirectoryConfig();
+                        details.VnetName = collection.VnetName;
+                        details.AdInfo.DomainName = collection.AdInfo.DomainName;
+                        details.AdInfo.OrganizationalUnit = collection.AdInfo.OrganizationalUnit;
 
-                if (response != null)
-                {
-                    TrackingResult trackingId = new TrackingResult(response);
-                    WriteObject(trackingId);
-                }
+                        if (Credential != null)
+                        {
+                            creds = Credential.GetNetworkCredential();
+                            details.AdInfo.UserName = creds.UserName;
+                            details.AdInfo.Password = creds.Password;
+                        }
+                        break;
+                    }
+            }
+
+            response = CallClient(() => Client.Collections.Set(CollectionName, false, false, details), Client.Collections);
+            if (response != null)
+            {
+                TrackingResult trackingId = new TrackingResult(response);
+                WriteObject(trackingId);
             }
         }
     }
