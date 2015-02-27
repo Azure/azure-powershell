@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.Name));
             }
 
-            this.WriteVaults(vaultList);
+            this.WriteVaults(vaultListByName);
         }
 
         /// <summary>
