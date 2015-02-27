@@ -161,8 +161,14 @@
     <Compile Include="Resources\SetAzureResourceCommandTests.cs" />
     <Compile Include="ScenarioTests\ActiveDirectoryTests.cs" />
     <Compile Include="ScenarioTests\AuthorizationTests.cs" />
-    <None Include="ScenarioTests\FeaturesTest.ps1" />
-    <None Include="ScenarioTests\ProviderTests.ps1" />
+    <Content Include="ScenarioTests\ProviderFeatureTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ScenarioTests\ProviderTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="ScenarioTests\ProviderFeatureTests.cs" />
+    <Compile Include="ScenarioTests\ProviderTests.cs" />
     <Compile Include="ScenarioTests\ResourcesController.cs" />
     <Compile Include="ScenarioTests\DeploymentTests.cs" />
     <Compile Include="ScenarioTests\ResourceGroupTests.cs" />

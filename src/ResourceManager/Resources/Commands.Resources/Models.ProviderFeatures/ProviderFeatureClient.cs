@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
                 Func<FeatureOperationsListResult> listFunc;
                 Func<string, FeatureOperationsListResult> listNextFunc;
 
-                if (listAvailable || string.IsNullOrWhiteSpace(resourceProviderNamespace))
+                if (string.IsNullOrWhiteSpace(resourceProviderNamespace))
                 {
                     listFunc = () => this.FeaturesManagementClient.Features.ListAll();
                     listNextFunc = next => this.FeaturesManagementClient.Features.ListAllNext(next);

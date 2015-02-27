@@ -16,7 +16,7 @@
     .SYNOPSIS
     Tests registering and un-registering resource providers.
 #>
-    function Test-AzureProvider
+function Test-AzureProvider
 {
     $defaultProviders = Get-AzureProvider
 
@@ -39,10 +39,10 @@
 
     Unregister-AzureProvider -ProviderName "Microsoft.ApiManagement"
 
-    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Unregistered")
+    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "NotRegistered")
     {
         sleep 1
     }
 
-    Assert-True { @(Get-AzureProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Unregistered" }
+    Assert-True { @(Get-AzureProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "NotRegistered" }
  }

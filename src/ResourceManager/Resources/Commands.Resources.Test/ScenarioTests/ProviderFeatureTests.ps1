@@ -14,9 +14,9 @@
 
 <#
     .SYNOPSIS
-    Tests registering and un-registering resource providers.
+    Tests registering and a resource provider feature.
 #>
-    function Test-AzureProviderFeature
+function Test-AzureProviderFeature
 {
     $defaultProviderFeatures = Get-AzureProviderFeature
 
@@ -26,23 +26,17 @@
 
     Assert-True { $allProviderFeatures.Length -gt $defaultProviderFeatures.Length }
 
-    Register-AzureProviderFeature -ProviderName "Microsoft.ApiManagement"
+    $batchFeatures = Get-AzureProviderFeature -ProviderName "Microsoft.Batch"
 
-    $endTime = [DateTime]::UtcNow.AddMinutes(5)
+    Assert-True { $batchFeatures.Length -eq 0 }
 
-    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Registered")
-    {
-        sleep 1
-    }
+    $batchFeatures = Get-AzureProviderFeature -ProviderName "Microsoft.Batch" -ListAvailable
 
-    Assert-True { @(Get-AzureProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Registered" }
+    Assert-True { $batchFeatures.Length -ne 0 }
 
-    Unregister-AzureProvider -ProviderName "Microsoft.ApiManagement"
+    Register-AzureProviderFeature -ProviderName "Microsoft.Batch" -FeatureName "betaAccess"
 
-    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Unregistered")
-    {
-        sleep 1
-    }
+    $batchFeatures = Get-AzureProviderFeature -ProviderName "Microsoft.Batch"
 
-    Assert-True { @(Get-AzureProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Unregistered" }
- }
+    Assert-True { $batchFeatures.Length -eq 1 }
+}
