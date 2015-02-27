@@ -12,22 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
-    using System;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Management.Automation;
-    using System.Management.Automation.Runspaces;
-using System.Threading;
-
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.New, "AzureRemoteAppTemplateImage", DefaultParameterSetName = UploadLocalVhd), OutputType(typeof(TemplateImageResult))]
- 
+    using Microsoft.Azure.Management.RemoteApp;
+    using Microsoft.Azure.Management.RemoteApp.Models;
+    using Microsoft.WindowsAzure.Management.Compute;
+    using Microsoft.WindowsAzure.Management.Compute.Models;
+    using Microsoft.WindowsAzure.Management.Storage;
+    using Microsoft.WindowsAzure.Management.Storage.Models;
+    using Microsoft.WindowsAzure.Storage.Auth;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Management.Automation;
+    using System.Management.Automation.Runspaces;
+    using System.Threading;
+
+    [Cmdlet(VerbsCommon.New, "AzureRemoteAppTemplateImage", DefaultParameterSetName = uploadLocalVhd), OutputType(typeof(TemplateImageResult))]
+
     public class NewAzureRemoteAppTemplateImage : GoldImage
     {
-        private const string UploadLocalVhd = "UploadLocalVhd";
+        private const string uploadLocalVhd = "UploadLocalVhd";
+        private const string azureVmUpload = "AzureVmUpload";
 
         [Parameter(Mandatory = true,
             Position = 0,
@@ -44,13 +53,20 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [Parameter(Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = UploadLocalVhd,
+            ParameterSetName = azureVmUpload,
+            HelpMessage = "Sysprep-generalized VM image name in Azure")]
+        public string AzureVmImageName { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = uploadLocalVhd,
             HelpMessage = "Local path to the RemoteApp vhd")]
         public string Path { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            ParameterSetName = UploadLocalVhd,
+            ParameterSetName = uploadLocalVhd,
             HelpMessage = "Resumes disrupted upload of an in-progress image")]
         public SwitchParameter Resume { get; set; }
 
@@ -60,9 +76,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         private void UploadVhd(TemplateImage image)
         {
             UploadScriptResult response = null;
-
-            task.SetStatus("Calling the RemoteApp script to upload the " + ImageName + " to your storage " + image.Sas);
-
             response = CallClient_ThrowOnError(() => Client.TemplateImages.GetUploadScript());
 
             if (response != null && response.Script != null)
@@ -70,11 +83,10 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 RunspaceConfiguration runspaceConfiguration = RunspaceConfiguration.Create();
                 Runspace runspace = RunspaceFactory.CreateRunspace(runspaceConfiguration);
                 string uploadFilePath = string.Concat(Environment.GetEnvironmentVariable("temp"), "\\uploadScript.ps1");
+                File.WriteAllText(uploadFilePath, response.Script);
+
                 Pipeline pipeline = runspace.CreatePipeline();
                 Command myCommand = new Command(uploadFilePath);
-                Collection<PSObject> results;
-
-                File.WriteAllText(uploadFilePath, response.Script);
 
                 myCommand.Parameters.Add(new CommandParameter("sas", image.Sas));
                 myCommand.Parameters.Add(new CommandParameter("uri", image.Uri));
@@ -83,26 +95,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 pipeline.Commands.Add(myCommand);
 
                 runspace.Open();
-                results = pipeline.Invoke();
-
-                if (pipeline.Error.Count > 0)
-                {
-                    Collection<ErrorRecord> errors = pipeline.Error.Read() as Collection<ErrorRecord>;
-
-                    if (errors != null)
-                    {
-                        foreach(ErrorRecord error in errors)
-                        {
-                            task.Error.Add(error);
-                        }
-
-                        task.SetState(JobState.Failed, new Exception("Upload script failed"));
-                    }
-                }
-            }
-            else
-            {
-                throw new RemoteAppServiceException("Failed to get upload script", ErrorCategory.ConnectionError);
+                Collection<PSObject> results = pipeline.Invoke();
             }
         }
 
@@ -146,7 +139,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 op = Operation.Resume;
             }
 
-            if (ParameterSetName == UploadLocalVhd)
+            if (ParameterSetName == uploadLocalVhd)
             {
                 VerifySessionIsElevated();
             }
@@ -163,7 +156,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             TemplateImage templateImage = null;
 
             EnsureStorageInRegion(Region);
-            
+
             if (Resume)
             {
                 templateImage = image;
@@ -176,49 +169,172 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                     Region = Region
                 };
 
+                if (ParameterSetName == azureVmUpload)
+                {
+                    details.SourceImageSasUri = GetAzureVmSasUri(AzureVmImageName);
+                }
+
                 response = CallClient_ThrowOnError(() => Client.TemplateImages.Set(details));
 
-                if (response.StatusCode != System.Net.HttpStatusCode.OK || response.TemplateImage == null)
+                templateImage = response.TemplateImage;
+                if (templateImage == null)
                 {
                     throw new RemoteAppServiceException("Unable to find template by this name in that region", ErrorCategory.ObjectNotFound);
                 }
-
-                templateImage = response.TemplateImage;
             }
 
             return templateImage;
         }
 
+        private void ImportTemplateImage()
+        {
+            TemplateImageResult response = null;
+            TemplateImageDetails details = null;
+
+            var features = Client.Account.GetEnabledFeatures();
+
+            EnsureStorageInRegion(Region);
+            FilterTemplateImage(ImageName, Operation.Create);
+
+            details = new TemplateImageDetails()
+            {
+                Name = ImageName,
+                Region = Region,
+                SourceImageSasUri = GetAzureVmSasUri(AzureVmImageName)
+            };
+
+            response = CallClient(() => Client.TemplateImages.Set(details), Client.TemplateImages);
+
+            if (response != null)
+            {
+                WriteObject(response.TemplateImage);
+            }
+        }
+
+        private string GetAzureVmSasUri(string vmImageName)
+        {
+            ComputeManagementClient computeClient = new ComputeManagementClient(this.Client.Credentials, this.Client.BaseUri);
+            VirtualMachineOSImageListResponse imageListResponse = computeClient.VirtualMachineOSImages.List();
+            VirtualMachineOSImageListResponse.VirtualMachineOSImage vmImage = null;
+
+            if (imageListResponse.Images == null || imageListResponse.Images.Count == 0)
+            {
+                ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                     "Invalid Argument: No OS Image is found.",
+                                     String.Empty,
+                                     Client.TemplateImages,
+                                     ErrorCategory.InvalidArgument
+                                     );
+
+                ThrowTerminatingError(er);
+            }
+
+            foreach (VirtualMachineOSImageListResponse.VirtualMachineOSImage Image in imageListResponse.Images)
+            {
+                if (string.Compare(Image.Name, vmImageName, true) == 0)
+                {
+                    if (string.Compare(Image.OperatingSystemType, "Windows", true) != 0)
+                    {
+                        ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                             String.Format("Invalid Argument: OS Image type is {0}. It must be Windows.", Image.OperatingSystemType),
+                                             String.Empty,
+                                             Client.TemplateImages,
+                                             ErrorCategory.InvalidArgument
+                                             );
+
+                        ThrowTerminatingError(er);
+                    }
+                    else if (Image.MediaLinkUri == null || string.IsNullOrEmpty(Image.MediaLinkUri.AbsoluteUri))
+                    {
+                        ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                             String.Format("Invalid Argument: Cannot use {0} because it is an Azure Gallery image. Only uploaded images can be used.", vmImageName),
+                                             String.Empty,
+                                             Client.TemplateImages,
+                                             ErrorCategory.InvalidArgument
+                                             );
+
+                        ThrowTerminatingError(er);
+                    }
+                    else
+                    {
+                        vmImage = Image;
+                        break;
+                    }
+                }
+            }
+
+            if (vmImage != null)
+            {
+                Uri uri = new Uri(vmImage.MediaLinkUri.AbsoluteUri);
+                StorageManagementClient storageClient = new StorageManagementClient(this.Client.Credentials, this.Client.BaseUri);
+                string storageAccountName = uri.Authority.Split('.')[0];
+                StorageAccountGetKeysResponse getKeysResponse = storageClient.StorageAccounts.GetKeys(storageAccountName);
+
+                if (getKeysResponse.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    StorageCredentials credentials = new StorageCredentials(storageAccountName, getKeysResponse.SecondaryKey);
+                    SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();
+                    CloudPageBlob pageBlob = null;
+                    string sas = null;
+
+                    pageBlob = new CloudPageBlob(uri, credentials);
+
+                    accessPolicy.Permissions = SharedAccessBlobPermissions.Read;
+                    accessPolicy.SharedAccessStartTime = DateTime.Now;
+                    accessPolicy.SharedAccessExpiryTime = DateTime.Now.AddHours(12);
+
+                    sas = pageBlob.GetSharedAccessSignature(accessPolicy);
+
+                    if (sas != null)
+                    {
+                        return vmImage.MediaLinkUri.AbsoluteUri + sas;
+                    }
+                }
+            }
+
+            return null;
+        }
+
         public override void ExecuteCmdlet()
         {
+            // register the subscription for this service if it has not been before
+            // sebsequent call to register is redundent
+            RegisterSubscriptionWithRdfeForRemoteApp();
+
             switch (ParameterSetName)
             {
-                case UploadLocalVhd:
-                {
-                    string scriptBlock = "Test-Path -Path " + Path;
-                    Collection<bool> pathValid = CallPowershellWithReturnType<bool>(scriptBlock);
-                    TemplateImage image = null;
-
-                    if (pathValid[0] == false)
+                case uploadLocalVhd:
                     {
-                        throw new RemoteAppServiceException("Could not validate path to VHD", ErrorCategory.ObjectNotFound);
+                        string scriptBlock = "Test-Path -Path " + Path;
+                        Collection<bool> pathValid = CallPowershellWithReturnType<bool>(scriptBlock);
+                        TemplateImage image = null;
+
+                        if (pathValid[0] == false)
+                        {
+                            throw new RemoteAppServiceException("Could not validate path to VHD", ErrorCategory.ObjectNotFound);
+                        }
+
+                        image = VerifyPreconditions();
+                        image = StartTemplateUpload(image);
+
+                        task = new LongRunningTask<NewAzureRemoteAppTemplateImage>(this, "RemoteAppTemplateImageUpload", "Upload RemoteApp Template Image");
+
+                        task.ProcessJob(() =>
+                        {
+                            UploadVhd(image);
+                            task.SetStatus("ProcessJob completed");
+                        });
+
+                        WriteObject(task);
+
+                        break;
                     }
-
-                    image = VerifyPreconditions();
-                    image = StartTemplateUpload(image);
-
-                    task = new LongRunningTask<NewAzureRemoteAppTemplateImage>(this, "RemoteAppTemplateImageUpload", "Upload RemoteApp Template Image");
-
-                    task.ProcessJob(() =>
+                case azureVmUpload:
                     {
-                        UploadVhd(image);
-                        task.SetStatus("ProcessJob completed");
-                    });
+                        ImportTemplateImage();
 
-                    WriteObject(task);
-
-                    break;
-                }
+                        break;
+                    }
             }
         }
     }

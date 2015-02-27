@@ -12,14 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
-using System.Management.Automation;
-using System.Net;
-
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
+    using Microsoft.Azure.Management.RemoteApp;
+    using Microsoft.Azure.Management.RemoteApp.Models;
+    using Microsoft.WindowsAzure.Management.Network;
+    using Microsoft.WindowsAzure.Management.Network.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
+    using System.Net;
+    using System.Threading.Tasks;
+
     [Cmdlet(VerbsCommon.New, "AzureRemoteAppCollection", DefaultParameterSetName = NoDomain), OutputType(typeof(TrackingResult))]
+
     public class NewAzureRemoteAppCollection : CmdletWithCollection
     {
         private const string DomainJoined = "DomainJoined";
@@ -54,6 +60,22 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             HelpMessage = "The name of the RemoteApp or Azure VNet to create the collection in."
         )]
         public string VNetName { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DomainJoined,
+            HelpMessage = "For Azure VNets only, a comma-separated list of DNS servers for the VNet."
+        )]
+        [ValidateNotNullOrEmpty]
+        public string DnsServers { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DomainJoined,
+            HelpMessage = "For Azure VNets only, the name of the subnet."
+        )]
+        [ValidateNotNullOrEmpty]
+        public string SubnetName { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 4,
@@ -96,6 +118,10 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         public override void ExecuteCmdlet()
         {
+            // register the subscription for this service if it has not been before
+            // sebsequent call to register is redundent
+            RegisterSubscriptionWithRdfeForRemoteApp();
+
             NetworkCredential creds = null;
             CollectionCreationDetails details = new CollectionCreationDetails()
             {
@@ -112,30 +138,33 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             switch (ParameterSetName)
             {
                 case DomainJoined:
-                    {
-                        creds = Credential.GetNetworkCredential();
-                        details.VnetName = VNetName;
+                {
+                    creds = Credential.GetNetworkCredential();
+                    details.VnetName = VNetName;
 
-                        details.AdInfo = new ActiveDirectoryConfig()
-                        {
-                            DomainName = Domain,
-                            OrganizationalUnit = OrganizationalUnit,
-                            UserName = creds.UserName,
-                            Password = creds.Password,
-                        };
-                        break;
+                    if (SubnetName != null && DnsServers != null)
+                    {
+                        details.SubnetName = SubnetName;
+                        details.DnsServers = DnsServers.Split(new char[] { ',' });
+
+                        ValidateCustomerVNetParams(details.VnetName, details.SubnetName, details.DnsServers);
                     }
+
+                    details.AdInfo = new ActiveDirectoryConfig()
+                    {
+                        DomainName = Domain,
+                        OrganizationalUnit = OrganizationalUnit,
+                        UserName = creds.UserName,
+                        Password = creds.Password,
+                    };
+                    break;
+                }
                 case NoDomain:
-                    {
-                        details.Region = Region;
-                        break;
-                    }
+                {
+                    details.Region = Region;
+                    break;
+                }
             }
-
-            // register the subscription for this service if it has not been before
-            // sebsequent call to register is redundent
-
-            RegisterSubscriptionWithRdfeForRemoteApp();
 
             response = CallClient(() => Client.Collections.Create(false, details), Client.Collections);
 
@@ -145,6 +174,103 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 WriteObject(trackingId);
             }
 
+        }
+
+        private bool ValidateCustomerVNetParams(string name, string subnet, IEnumerable<string> dns)
+        {
+            NetworkListResponse.VirtualNetworkSite azureVNet = GetAzureVNet(name);
+            bool isValidSubnetName = false;
+            bool isValidDnsServers = true;
+
+            if (azureVNet == null)
+            {
+                ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                        String.Format("Invalid Argument VNetName: {0} not found", name),
+                                        String.Empty,
+                                        Client.Collections,
+                                        ErrorCategory.InvalidArgument
+                                        );
+
+                ThrowTerminatingError(er);
+            }
+
+            foreach (NetworkListResponse.Subnet azureSubnet in azureVNet.Subnets)
+            {
+                if (string.Compare(azureSubnet.Name, subnet, true) == 0)
+                {
+                    isValidSubnetName = true;
+                    break;
+                }
+            }
+
+            if (!isValidSubnetName)
+            {
+                ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                        String.Format("Invalid Argument SubnetName: {0} not found", subnet),
+                                        String.Empty,
+                                        Client.Collections,
+                                        ErrorCategory.InvalidArgument
+                                        );
+
+                ThrowTerminatingError(er);
+            }
+
+            foreach (string dnsServerName in dns)
+            {
+                bool isValidDnsServer = false;
+
+                foreach (var dnsServer in azureVNet.DnsServers)
+                {
+                    if (string.Compare(dnsServerName, dnsServer.Name, true) == 0)
+                    {
+                        isValidDnsServer = true;
+                        break;
+                    }
+                }
+
+                if (!isValidDnsServer)
+                {
+                    isValidDnsServers = false;
+                    break;
+                }
+            }
+
+            if (!isValidDnsServers)
+            {
+                ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                        String.Format("Invalid Argument DnsServers: {0} not found", dns),
+                                        String.Empty,
+                                        Client.Collections,
+                                        ErrorCategory.InvalidArgument
+                                        );
+
+                ThrowTerminatingError(er);
+            }
+
+            return true;            
+        }
+
+        private NetworkListResponse.VirtualNetworkSite GetAzureVNet(string name)
+        {
+            NetworkManagementClient networkClient = new NetworkManagementClient(this.Client.Credentials, this.Client.BaseUri);
+            Task<NetworkListResponse> listNetworkTask = networkClient.Networks.ListAsync();
+
+            listNetworkTask.Wait();
+
+            if (listNetworkTask.Status == TaskStatus.RanToCompletion)
+            {
+                NetworkListResponse networkList = listNetworkTask.Result;
+
+                foreach (NetworkListResponse.VirtualNetworkSite network in networkList.VirtualNetworkSites)
+                {
+                    if (network.Name == name)
+                    {
+                        return network;
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }
