@@ -17,18 +17,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRemoteAppMsaUser"), OutputType(typeof(SecurityPrincipalOperationsResult))]
-    public class RemoveAzureRemoteAppMsaUser : SecurityPrincipals
+    [Cmdlet(VerbsCommon.Remove, "AzureRemoteAppUser"), OutputType(typeof(SecurityPrincipalOperationsResult))]
+    public class RemoveAzureRemoteAppUser : SecurityPrincipals
     {
-        [Parameter(Mandatory = true,
-            Position = 1,
-            ValueFromPipeline = false,
-            HelpMessage = "One or more MSA user UPNs to remove from the RemoteApp collection.")]
-        public string[] Names { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            RemoveUsers(CollectionName, Names, PrincipalProviderType.MicrosoftAccount);
+            RemoveUsers(CollectionName, UserUpn, Type);
         }
     }
 }

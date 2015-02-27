@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     {
         [Parameter(Mandatory = false,
             Position = 1,
-            HelpMessage = "User name")]
+            HelpMessage = "User name. Wildcard pattern supported.")]
         [ValidateNotNullOrEmpty()]
-        public string Name { get; set; }
+        public string UserUpn { get; set; }
 
         public class ServicePrincipalComparer : IComparer<SecurityPrincipalInfo>
         {
@@ -63,12 +63,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         {
             SecurityPrincipalInfoListResult response = null;
             ConsentStatusModel model = null;
-            bool showAllUsers = String.IsNullOrWhiteSpace(Name);
+            bool showAllUsers = String.IsNullOrWhiteSpace(UserUpn);
             bool found = false;
 
             if (showAllUsers == false)
             {
-                CreateWildcardPattern(Name);
+                CreateWildcardPattern(UserUpn);
             }
 
             response = CallClient(() => Client.Principals.List(CollectionName), Client.Principals);
@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                     SecurityPrincipalInfo userconsent = null;
 
                     userconsent = response.SecurityPrincipalInfoList.FirstOrDefault(user => user.SecurityPrincipal.SecurityPrincipalType == PrincipalType.User &&
-                         String.Equals(user.SecurityPrincipal.Name, Name, StringComparison.OrdinalIgnoreCase));
+                         String.Equals(user.SecurityPrincipal.Name, UserUpn, StringComparison.OrdinalIgnoreCase));
 
                     if (userconsent == null)
                     {
-                        WriteErrorWithTimestamp("User: " + Name + " does not exist in collection " + CollectionName);
+                        WriteErrorWithTimestamp("User: " + UserUpn + " does not exist in collection " + CollectionName);
                         found = false;
                     }
                     else
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             if (!found && !showAllUsers)
             {
-                WriteVerboseWithTimestamp(String.Format("User '{0}' is not assigned to Collection '{1}'.", Name, CollectionName));
+                WriteVerboseWithTimestamp(String.Format("User '{0}' is not assigned to Collection '{1}'.", UserUpn, CollectionName));
             }
 
         }

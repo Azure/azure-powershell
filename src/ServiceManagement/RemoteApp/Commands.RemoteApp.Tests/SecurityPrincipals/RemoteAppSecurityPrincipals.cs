@@ -81,14 +81,14 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
             // Required parameters for this test
             MockCmdlet.CollectionName = collectionName;
-            MockCmdlet.Name = userName;
+            MockCmdlet.UserUpn = userName;
 
             // Setup the environment for testing this cmdlet
             MockObject.SetUpDefaultRemoteAppCollectionByName(remoteAppManagementClientMock, collectionName);
             MockObject.SetUpDefaultRemoteAppSecurityPrincipals(remoteAppManagementClientMock, collectionName, userName);
             MockCmdlet.ResetPipelines();
 
-            Log("Calling Get-AzureRemoteAppUser to get this user {0}.", MockCmdlet.Name);
+            Log("Calling Get-AzureRemoteAppUser to get this user {0}.", MockCmdlet.UserUpn);
 
             MockCmdlet.ExecuteCmdlet();
 
@@ -124,11 +124,11 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         {
             int countOfExistingUsers = 0;
             int countOfNewUsers = 0;
-            AddAzureRemoteAppMsaUser MockCmdlet = SetUpTestCommon<AddAzureRemoteAppMsaUser>();
+            AddAzureRemoteAppUser MockCmdlet = SetUpTestCommon<AddAzureRemoteAppUser>();
 
             // Required parameters for this test
             MockCmdlet.CollectionName = collectionName;
-            MockCmdlet.Names = new string[]
+            MockCmdlet.UserUpn = new string[]
             {
                 "testUser1",
                 "testUser2",
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             // Setup the environment for testing this cmdlet
             MockObject.SetUpDefaultRemoteAppCollectionByName(remoteAppManagementClientMock, collectionName);
             countOfExistingUsers = MockObject.SetUpDefaultRemoteAppSecurityPrincipals(remoteAppManagementClientMock, collectionName, userName);
-            countOfNewUsers = MockObject.SetUpRemoteAppUserToAdd(remoteAppManagementClientMock, collectionName, PrincipalProviderType.MicrosoftAccount, MockCmdlet.Names);
+            countOfNewUsers = MockObject.SetUpRemoteAppUserToAdd(remoteAppManagementClientMock, collectionName, PrincipalProviderType.MicrosoftAccount, MockCmdlet.UserUpn);
             MockCmdlet.ResetPipelines();
 
             Log("Calling Add-AzureRemoteAppMSAUser and adding {0} users.", countOfNewUsers);
@@ -168,11 +168,12 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         {
             int countOfExistingUsers = 0;
             int countOfNewUsers = 0;
-            AddAzureRemoteOrgIdUser MockCmdlet = SetUpTestCommon<AddAzureRemoteOrgIdUser>();
+            AddAzureRemoteAppUser MockCmdlet = SetUpTestCommon<AddAzureRemoteAppUser>();
 
             // Required parameters for this test
             MockCmdlet.CollectionName = collectionName;
-            MockCmdlet.Names = new string[]
+            MockCmdlet.Type = PrincipalProviderType.OrgId;
+            MockCmdlet.UserUpn = new string[]
             {
                 "testUser1",
                 "testUser2",
@@ -181,7 +182,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             // Setup the environment for testing this cmdlet
             MockObject.SetUpDefaultRemoteAppCollectionByName(remoteAppManagementClientMock, collectionName);
             countOfExistingUsers = MockObject.SetUpDefaultRemoteAppSecurityPrincipals(remoteAppManagementClientMock, collectionName, userName);
-            countOfNewUsers = MockObject.SetUpRemoteAppUserToAdd(remoteAppManagementClientMock, collectionName, PrincipalProviderType.OrgId, MockCmdlet.Names);
+            countOfNewUsers = MockObject.SetUpRemoteAppUserToAdd(remoteAppManagementClientMock, collectionName, PrincipalProviderType.OrgId, MockCmdlet.UserUpn);
             MockCmdlet.ResetPipelines();
 
             Log("Calling Add-AzureRemoteAppOrgIDUser and adding {0} users.", countOfNewUsers);
@@ -212,11 +213,12 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         {
             int countOfExistingUsers = 0;
             int countOfDeletedUsers = 0;
-            RemoveAzureRemoteAppMsaUser MockCmdlet = SetUpTestCommon<RemoveAzureRemoteAppMsaUser>();
+            RemoveAzureRemoteAppUser MockCmdlet = SetUpTestCommon<RemoveAzureRemoteAppUser>();
 
             // Required parameters for this test
             MockCmdlet.CollectionName = collectionName;
-            MockCmdlet.Names = new string[]
+            MockCmdlet.Type = PrincipalProviderType.MicrosoftAccount;
+            MockCmdlet.UserUpn = new string[]
             {
                 userName
             };
@@ -224,7 +226,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             // Setup the environment for testing this cmdlet
             MockObject.SetUpDefaultRemoteAppCollectionByName(remoteAppManagementClientMock, collectionName);
             countOfExistingUsers = MockObject.SetUpDefaultRemoteAppSecurityPrincipals(remoteAppManagementClientMock, collectionName, userName);
-            countOfDeletedUsers = MockObject.SetUpDefaultRemoteAppUserToRemove(remoteAppManagementClientMock, collectionName, PrincipalProviderType.MicrosoftAccount, MockCmdlet.Names);
+            countOfDeletedUsers = MockObject.SetUpDefaultRemoteAppUserToRemove(remoteAppManagementClientMock, collectionName, PrincipalProviderType.MicrosoftAccount, MockCmdlet.UserUpn);
             MockCmdlet.ResetPipelines();
 
             Log("Calling Remove-AzureRemoteAppMSAUser and removing {0} users.", countOfDeletedUsers);
@@ -254,11 +256,12 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         {
             int countOfExistingUsers = 0;
             int countOfDeletedUsers = 0;
-            RemoveAzureRemoteAppOrgIdUser MockCmdlet = SetUpTestCommon<RemoveAzureRemoteAppOrgIdUser>();
+            RemoveAzureRemoteAppUser MockCmdlet = SetUpTestCommon<RemoveAzureRemoteAppUser>();
 
             // Required parameters for this test
             MockCmdlet.CollectionName = collectionName;
-            MockCmdlet.Names = new string[]
+            MockCmdlet.Type = PrincipalProviderType.OrgId;
+            MockCmdlet.UserUpn = new string[]
             {
                 userName
             };
@@ -266,7 +269,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             // Setup the environment for testing this cmdlet
             MockObject.SetUpDefaultRemoteAppCollectionByName(remoteAppManagementClientMock, collectionName);
             countOfExistingUsers = MockObject.SetUpDefaultRemoteAppSecurityPrincipals(remoteAppManagementClientMock, collectionName, userName);
-            countOfDeletedUsers = MockObject.SetUpDefaultRemoteAppUserToRemove(remoteAppManagementClientMock, collectionName, PrincipalProviderType.OrgId, MockCmdlet.Names);
+            countOfDeletedUsers = MockObject.SetUpDefaultRemoteAppUserToRemove(remoteAppManagementClientMock, collectionName, PrincipalProviderType.OrgId, MockCmdlet.UserUpn);
             MockCmdlet.ResetPipelines();
 
             Log("Calling Remove-AzureRemoteAppOrgIdUser and removing {0} users.", countOfDeletedUsers);

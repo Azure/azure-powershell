@@ -22,6 +22,18 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
     public class SecurityPrincipals : CmdletWithCollection
     {
+        [Parameter(Mandatory = true,
+            Position = 1,
+            HelpMessage = "The user type"
+            )]
+        public PrincipalProviderType Type { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 2,
+            ValueFromPipeline = false,
+            HelpMessage = "One or more user UPNs to add to the RemoteApp collection.")]
+        public string[] UserUpn { get; set; }
+
         protected enum Operation
         {
             Add,
