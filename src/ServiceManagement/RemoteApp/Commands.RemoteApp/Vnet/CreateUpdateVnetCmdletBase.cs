@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             HelpMessage = "RemoteApp virtual network name.")]
         [ValidatePattern(VNetNameValidatorString)]
 
-        public string VnetName { get; set; }
+        public string VNetName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         {
             OperationResultWithTrackingId response = null;
 
-            response = CallClient(() => Client.VNet.CreateOrUpdate(VnetName, payload), Client.VNet);
+            response = CallClient(() => Client.VNet.CreateOrUpdate(VNetName, payload), Client.VNet);
             if (response != null)
             {
                 TrackingResult trackingId = new TrackingResult(response);

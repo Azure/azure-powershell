@@ -20,8 +20,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-    public class SecurityPrincipals : CmdletWithCollection
+    public class SecurityPrincipals : RdsCmdlet
     {
+        [Parameter(Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorStringWithWildCards)]
+        public string CollectionName { get; set; }
+
         [Parameter(Mandatory = true,
             Position = 1,
             HelpMessage = "The user type"

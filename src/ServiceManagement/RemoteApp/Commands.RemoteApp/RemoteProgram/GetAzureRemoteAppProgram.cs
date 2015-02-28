@@ -23,10 +23,16 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
 
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppProgram", DefaultParameterSetName = FilterByName), OutputType(typeof(PublishedApplicationDetails))]
-    public class GetAzureRemoteAppProgram : CmdletWithCollection
+    public class GetAzureRemoteAppProgram : RdsCmdlet
     {
         private const string FilterByName = "FilterByName";
         private const string FilterByAlias = "FilterByAlias";
+
+        [Parameter (Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern (NameValidatorStringWithWildCards)]
+        public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,
             Position = 1,

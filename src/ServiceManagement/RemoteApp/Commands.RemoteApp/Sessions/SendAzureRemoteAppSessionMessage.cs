@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
 
     [Cmdlet(VerbsCommunications.Send, "AzureRemoteAppSessionMessage"), OutputType(typeof(string))]
-    public class SendMessageAzureRemoteAppSessions : RdsCmdlet
+    public class SendAzureRemoteAppSessionMessage : RdsCmdlet
     {
         [Parameter(Mandatory = true,
             Position = 0,

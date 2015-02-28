@@ -24,8 +24,14 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
 
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppUser"), OutputType(typeof(ConsentStatusModel))]
-    public class GetAzureRemoteAppUser : CmdletWithCollection
+    public class GetAzureRemoteAppUser : RdsCmdlet
     {
+        [Parameter (Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern (NameValidatorStringWithWildCards)]
+        public string CollectionName { get; set; }
+
         [Parameter(Mandatory = false,
             Position = 1,
             HelpMessage = "User name. Wildcard pattern supported.")]

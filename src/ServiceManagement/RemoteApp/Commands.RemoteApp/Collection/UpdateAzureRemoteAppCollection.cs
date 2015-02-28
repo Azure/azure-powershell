@@ -20,8 +20,15 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsData.Update, "AzureRemoteAppCollection", SupportsShouldProcess = true), OutputType(typeof(TrackingResult))]
 
-    public class UpdaAzureRemoteAppCollection : CmdletWithCollection
+    public class UpdateAzureRemoteAppCollection : RdsCmdlet
     {
+        [Parameter (Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern (NameValidatorStringWithWildCards)]
+        public string CollectionName { get; set; }
+
+
         [Parameter(Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
