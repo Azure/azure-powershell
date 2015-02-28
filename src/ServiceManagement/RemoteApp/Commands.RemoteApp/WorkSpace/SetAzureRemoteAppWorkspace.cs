@@ -42,8 +42,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             if (response != null)
             {
-                TrackingResult trackingId = new TrackingResult(response);
-                WriteObject(trackingId);
+                WriteTrackingId(response);
             }
         }
 

@@ -19,13 +19,17 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     {
         protected const string NameValidatorStringWithWildCards = @"^[?*A-Za-z\u007F-\uFFFF][?*\w]{2,12}$";
 
-        protected const string NameValidatorString = @"^[A-Za-z\u007F-\uFFFF][?*\w]{2,12}$";
+        protected const string NameValidatorString = @"^[A-Za-z\u007F-\uFFFF]{2,12}$";
 
         protected const string VNetNameValidatorStringWithWildCards = @"^[?*A-Za-z][?*-A-Za-z0-9]{3,49}(?<!-)$";
 
         protected const string VNetNameValidatorString = @"^[A-Za-z][-A-Za-z0-9]{3,49}(?<!-)$";
 
         protected const string DomainNameValidatorString = @"^[a-zA-Z\u007F-\uFFFF]+[\w\-\.]+$";
+
+        protected const string UserNameValidatorString = @"[^@\""/\[\]:;|=,+*?<>\s]+";
+
+        protected const string UserPrincipalValdatorString = UserNameValidatorString + "@" + DomainNameValidatorString;
 
         protected const string IPv4ValidatorString = @"^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$";
 

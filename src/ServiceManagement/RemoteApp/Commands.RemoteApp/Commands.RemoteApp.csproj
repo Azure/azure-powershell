@@ -201,7 +201,6 @@
     <Compile Include="TemplateImage\RemoveAzureRemoteAppTemplateImage.cs" />
     <Compile Include="TemplateImage\RenameAzureRemoteAppTemplateImage.cs" />
     <Compile Include="TemplateImage\TemplateImage.cs" />
-    <Compile Include="Vnet\CreateUpdateVnetCmdletBase.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVnet.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVpnDeviceConfigScript.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVpnDevice.cs" />

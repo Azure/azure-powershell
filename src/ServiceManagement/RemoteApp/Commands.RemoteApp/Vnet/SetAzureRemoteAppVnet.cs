@@ -19,12 +19,42 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsCommon.Set, "AzureRemoteAppVNet"), OutputType(typeof(TrackingResult))]
-    public class SetAzureRemoteAppVNet : CreateUpdateVnetCmdletBase
+    public class SetAzureRemoteAppVNet : RdsCmdlet
     {
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "RemoteApp virtual network name.")]
+        [ValidatePattern(VNetNameValidatorString)]
+        public string VNetName { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Virtual network address space. Must be in private IP address range and cannot overlap the Local network address space.")]
+        [ValidatePattern(IPv4CIDR)]
+        public string[] VirtualNetworkAddressSpace { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Local network address space. Cannot overlap the virtual network address space.")]
+        [ValidatePattern(IPv4CIDR)]
+        public string[] LocalNetworkAddressSpace { get; set; }
+
+        [Parameter(Mandatory = false,
+             ValueFromPipeline = true,
+            HelpMessage = "DNS Server IP addresses. These must be IPv4 addresses")]
+        [ValidatePattern(IPv4ValidatorString)]
+        public string[] DnsServerIpAddress { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Address of the VPN device. Must be a public facing address in the private IP address range.)")]
+        [ValidatePattern(IPv4ValidatorString)]
+        public string VpnDeviceIpAddress { get; set; }
 
         public override void ExecuteCmdlet()
         {
             VNetParameter payload = null;
+            OperationResultWithTrackingId response = null;
 
             payload = new VNetParameter()
             {
@@ -34,7 +64,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 VpnAddress = VpnDeviceIpAddress,
             };
 
-            WriteVNet(payload);
+            response = CallClient(() => Client.VNet.CreateOrUpdate(VNetName, payload), Client.VNet);
+            if (response != null)
+            {
+                WriteTrackingId(response);
+            }
+
         }
     }
 }

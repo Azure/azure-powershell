@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Session user UPN. Wildcards are permitted.")]
-        [ValidatePattern(NameValidatorString)]
         public string UserUpn { get; set; }
 
         public override void ExecuteCmdlet()

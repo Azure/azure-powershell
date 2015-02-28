@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     using System.Management.Automation.Runspaces;
     using System.Threading;
 
-    [Cmdlet(VerbsCommon.New, "AzureRemoteAppTemplateImage", DefaultParameterSetName = uploadLocalVhd), OutputType(typeof(TemplateImageResult))]
+    [Cmdlet(VerbsCommon.New, "AzureRemoteAppTemplateImage", DefaultParameterSetName = UploadLocalVhd), OutputType(typeof(TemplateImageResult))]
 
     public class NewAzureRemoteAppTemplateImage : GoldImage
     {
-        private const string uploadLocalVhd = "UploadLocalVhd";
-        private const string azureVmUpload = "AzureVmUpload";
+        private const string UploadLocalVhd = "UploadLocalVhd";
+        private const string AzureVmUpload = "AzureVmUpload";
 
         [Parameter(Mandatory = true,
             Position = 0,
@@ -53,20 +53,20 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [Parameter(Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = azureVmUpload,
+            ParameterSetName = AzureVmUpload,
             HelpMessage = "Sysprep-generalized VM image name in Azure")]
         public string AzureVmImageName { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = uploadLocalVhd,
+            ParameterSetName = UploadLocalVhd,
             HelpMessage = "Local path to the RemoteApp vhd")]
         public string Path { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            ParameterSetName = uploadLocalVhd,
+            ParameterSetName = UploadLocalVhd,
             HelpMessage = "Resumes disrupted upload of an in-progress image")]
         public SwitchParameter Resume { get; set; }
 
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 op = Operation.Resume;
             }
 
-            if (ParameterSetName == uploadLocalVhd)
+            if (ParameterSetName == UploadLocalVhd)
             {
                 VerifySessionIsElevated();
             }
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             switch (ParameterSetName)
             {
-                case uploadLocalVhd:
+                case UploadLocalVhd:
                     {
                         string scriptBlock = "Test-Path -Path " + Path;
                         Collection<bool> pathValid = CallPowershellWithReturnType<bool>(scriptBlock);
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
                         break;
                     }
-                case azureVmUpload:
+                case AzureVmUpload:
                     {
                         if (IsFeatureEnabled(EnabledFeatures.goldImageImport))
                         {

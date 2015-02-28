@@ -19,28 +19,56 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsCommon.New, "AzureRemoteAppVNet"), OutputType(typeof(TrackingResult))]
-    public class NewAzureRemoteAppVNet : CreateUpdateVnetCmdletBase
+    public class NewAzureRemoteAppVNet : RdsCmdlet
     {
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "Virtual network region.")]
+            HelpMessage = "RemoteApp virtual network name.")]
+        [ValidatePattern(VNetNameValidatorString)]
+        public string VNetName { get; set; }
 
-        public string Region { get; set; }
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "Virtual network address space. Must be in private IP address range and cannot overlap the Local network address space.")]
+        [ValidatePattern(IPv4CIDR)]
+        public string[] VirtualNetworkAddressSpace { get; set; }
+
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "Local network address space. Cannot overlap the virtual network address space.")]
+        [ValidatePattern(IPv4CIDR)]
+        public string[] LocalNetworkAddressSpace { get; set; }
+
+        [Parameter(Mandatory = true,
+             ValueFromPipeline = true,
+            HelpMessage = "DNS Server IP addresses. These must be IPv4 addresses")]
+        [ValidatePattern(IPv4ValidatorString)]
+        public string[] DnsServerIpAddress { get; set; }
+
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "Address of the VPN device. Must be a public-facing address in the private IP address range.)")]
+        [ValidatePattern(IPv4ValidatorString)]
+        public string VpnDeviceIpAddress { get; set; }
+
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "Virtual network location.")]
+        public string Location { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "Virtual network gateway type")]
-
         public GatewayType GatewayType { get; set; }
 
         public override void ExecuteCmdlet()
         {
             VNetParameter payload = null;
-
+            OperationResultWithTrackingId response = null;
 
             payload = new VNetParameter()
             {
-                Region = Region,
+                Region = Location,
                 VnetAddressSpaces = new List<string>(VirtualNetworkAddressSpace),
                 LocalAddressSpaces = new List<string>(LocalNetworkAddressSpace),
                 DnsServers = new List<string>(DnsServerIpAddress),
@@ -50,7 +78,11 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             RegisterSubscriptionWithRdfeForRemoteApp();
 
-            WriteVNet(payload);
+            response = CallClient(() => Client.VNet.CreateOrUpdate(VNetName, payload), Client.VNet);
+            if (response != null)
+            {
+                WriteTrackingId(response);
+            }
         }
     }
 }

@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
             // Required parameters for this test
             mockCmdlet.VNetName = "vNetTest1";
-            mockCmdlet.Region = vNetDetails.Region;
+            mockCmdlet.Location = vNetDetails.Region;
             mockCmdlet.VirtualNetworkAddressSpace = vNetDetails.VnetAddressSpaces.ToArray();
             mockCmdlet.LocalNetworkAddressSpace = vNetDetails.LocalAddressSpaces.ToArray();
             mockCmdlet.DnsServerIpAddress = vNetDetails.DnsServers.ToArray();

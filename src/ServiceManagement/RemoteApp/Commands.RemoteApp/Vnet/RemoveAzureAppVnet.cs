@@ -34,8 +34,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             OperationResultWithTrackingId response = CallClient(() => Client.VNet.Delete(VNetName), Client.VNet);
             if (response != null)
             {
-                TrackingResult trackingId = new TrackingResult(response);
-                WriteObject(trackingId);
+                WriteTrackingId(response);
             }
         }
     }

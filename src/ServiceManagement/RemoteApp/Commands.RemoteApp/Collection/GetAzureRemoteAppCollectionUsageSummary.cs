@@ -26,17 +26,20 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     public class GetAzureRemoteAppCollectionUsageSummary : RdsCmdlet
     {
         [Parameter(Mandatory = true,
+		           Position = 0,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "RemoteApp collection name")]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,
-                   HelpMessage = "Number of the month (MM) to report usage")]
+            Position = 1,
+            HelpMessage = "Number of the month (MM) to report usage")]
         [ValidatePattern("^(0[1-9]|1[0-2])$")]
         public string UsageMonth { get; set; }
 
         [Parameter(Mandatory = false,
-                   HelpMessage = "Year (YYYY) to report usage")]
+            Position = 2,
+            HelpMessage = "Year (YYYY) to report usage")]
         [ValidatePattern(@"^(19|20)\d\d$")]
         public string UsageYear { get; set; }
 

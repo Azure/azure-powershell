@@ -21,33 +21,23 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     [Cmdlet(VerbsCommon.Remove, "AzureRemoteAppCollection", SupportsShouldProcess = true), OutputType(typeof(TrackingResult))]
     public class RemoveAzureRemoteAppCollection : RdsCmdlet
     {
-        [Parameter (Mandatory = true,
-                    Position = 0,
-                    HelpMessage = "RemoteApp collection name")]
-        [ValidatePattern (NameValidatorStringWithWildCards)]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
         public string CollectionName { get; set; }
-
-
 
         public override void ExecuteCmdlet()
         {
-            Collection collection = null;
             OperationResultWithTrackingId response = null;
 
-            collection = FindCollection(CollectionName);
-
-            if (collection != null)
+            if (ShouldProcess(CollectionName, "Remove collection"))
             {
-                if (ShouldProcess(CollectionName, "Remove collection"))
+                response = CallClient(() => Client.Collections.Delete(CollectionName), Client.Collections);
+                if (response != null)
                 {
-                    response = CallClient(() => Client.Collections.Delete(collection.Name), Client.Collections);
+                    WriteTrackingId(response);
                 }
-            }
-
-            if (response != null)
-            {
-                TrackingResult trackingId = new TrackingResult(response);
-                WriteObject(trackingId);
             }
         }
     }

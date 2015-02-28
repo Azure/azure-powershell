@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             ValueFromPipeline = false,
             Position = 1,
             HelpMessage = "User UPN")]
-        [ValidatePattern(".@.")]
+        [ValidatePattern(UserPrincipalValdatorString)]
         public string UserUpn { get; set; }
 
         public override void ExecuteCmdlet()

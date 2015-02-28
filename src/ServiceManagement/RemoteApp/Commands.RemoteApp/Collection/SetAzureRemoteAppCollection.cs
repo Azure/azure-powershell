@@ -26,12 +26,10 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         private const string DomainJoined = "DomainJoined";
         private const string NoDomain = "NoDomain";
 
-
-
-        [Parameter (Mandatory = true,
-                    Position = 0,
-                    HelpMessage = "RemoteApp collection name")]
-        [ValidatePattern (NameValidatorStringWithWildCards)]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
         public string CollectionName { get; set; }
 
 

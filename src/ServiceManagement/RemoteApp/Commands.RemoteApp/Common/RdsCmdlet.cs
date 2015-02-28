@@ -304,7 +304,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         {
 
             WriteVerboseWithTimestamp("Please use the following tracking id with Get-AzureRemoteAppOperationResult cmdlet:");
-            WriteObject(response.TrackingId, true);
+            TrackingResult trackingId = new TrackingResult(response);
+            WriteObject(trackingId);
         }
 
         public bool IsFeatureEnabled(string featureName)

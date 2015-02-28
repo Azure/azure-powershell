@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         private const string FilterByName = "FilterByName";
         private const string FilterByAlias = "FilterByAlias";
 
-        [Parameter (Mandatory = true,
+        [Parameter(Mandatory = true,
                     Position = 0,
                     HelpMessage = "RemoteApp collection name")]
-        [ValidatePattern (NameValidatorStringWithWildCards)]
+        [ValidatePattern(NameValidatorString)]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,
@@ -95,38 +95,31 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            Collection collection = null;
-
-            collection = FindCollection(CollectionName);
-
-            if (collection != null)
+            if (!String.IsNullOrWhiteSpace(Alias))
             {
-                if (!String.IsNullOrWhiteSpace(Alias))
+                found = GetPublishedApp();
+                if (!found)
                 {
-                    found = GetPublishedApp();
-                    if (!found)
-                    {
-                        WriteErrorWithTimestamp(
-                            String.Format("Collection {0} does not have a published program matching alias {1}.",
-                                CollectionName,
-                                Alias)
-                            );
-                    }
+                    WriteErrorWithTimestamp(
+                        String.Format("Collection {0} does not have a published program matching alias {1}.",
+                            CollectionName,
+                            Alias)
+                        );
                 }
-                else
+            }
+            else
+            {
+                CreateWildcardPattern(RemoteAppProgram);
+
+                found = GetAllPublishedApps();
+
+                if (!found)
                 {
-                    CreateWildcardPattern(RemoteAppProgram);
-
-                    found = GetAllPublishedApps();
-
-                    if (!found)
-                    {
-                        WriteVerboseWithTimestamp(
-                            String.Format("Collection {0} has no published program matching: {1}.",
-                                CollectionName,
-                                RemoteAppProgram)
-                            );
-                    }
+                    WriteVerboseWithTimestamp(
+                        String.Format("Collection {0} has no published program matching: {1}.",
+                            CollectionName,
+                            RemoteAppProgram)
+                        );
                 }
             }
         }
