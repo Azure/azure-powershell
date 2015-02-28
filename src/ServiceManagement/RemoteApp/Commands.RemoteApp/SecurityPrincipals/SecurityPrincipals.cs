@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             Position = 2,
             ValueFromPipeline = false,
             HelpMessage = "One or more user UPNs to add to the RemoteApp collection.")]
+        [ValidatePattern(UserPrincipalValdatorString)]
         public string[] UserUpn { get; set; }
 
         protected enum Operation
