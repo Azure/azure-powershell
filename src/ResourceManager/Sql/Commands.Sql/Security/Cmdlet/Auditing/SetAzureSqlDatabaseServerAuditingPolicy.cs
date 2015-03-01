@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
 {
     /// <summary>
-    /// Sets the auditing policy properties for a specific database.
+    /// Sets the auditing policy properties for a specific database server.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseServerAuditingPolicy"), OutputType(typeof(ServerAuditingPolicyModel))]
     public class SetAzureSqlDatabaseServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase

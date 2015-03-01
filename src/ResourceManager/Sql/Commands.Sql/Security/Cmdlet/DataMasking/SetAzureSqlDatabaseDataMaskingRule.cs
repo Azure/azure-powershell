@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Linq;
-using System.Globalization;
 using Microsoft.Azure.Commands.Sql.Security.Services;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {

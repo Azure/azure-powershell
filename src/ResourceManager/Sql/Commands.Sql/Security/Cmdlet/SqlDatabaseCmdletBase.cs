@@ -12,15 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Commands.Sql.Security.Services;
-using Microsoft.Azure.Commands.Sql.Services;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
 {
     /// <summary>
-    /// The base class for all Azure Sql Database security Management Cmdlets
+    /// The base class for all Azure Sql database cmdlets
     /// </summary>
     public abstract class SqlDatabaseCmdletBase<M, A> : SqlCmdletBase<M, A>
     {

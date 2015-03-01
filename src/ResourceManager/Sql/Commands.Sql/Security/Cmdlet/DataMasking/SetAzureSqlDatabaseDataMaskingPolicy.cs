@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {
     /// <summary>
-    /// Sets the auditing policy properties for a specific database.
+    /// Sets the data masking policy properties for a specific database.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseDataMaskingPolicy"), OutputType(typeof(DatabaseDataMaskingPolicyModel))]
     public class SetAzureSqlDatabaseDataMaskingPolicy : SqlDatabaseDataMaskingPolicyCmdletBase

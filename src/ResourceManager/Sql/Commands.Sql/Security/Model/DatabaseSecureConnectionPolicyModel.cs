@@ -12,16 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Management.Storage.Models;
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
-
-
     public class DatabaseSecureConnectionPolicyModel : BaseSecureConnectionPolicyModel
     {
-
-        private ConnectionStrings m_ConnectionStrings;
-        
+        private ConnectionStrings m_ConnectionStrings;  
         public string DatabaseName { get; set; }
 
         public ConnectionStrings ConnectionStrings 

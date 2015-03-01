@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {
     /// <summary>
-    /// Returns the auditing policy of a specific database.
+    /// Returns the data masking policy of a specific database.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseDataMaskingPolicy"), OutputType(typeof(DatabaseDataMaskingPolicyModel))]
     public class GetAzureSqlDatabaseDataMaskingPolicy : SqlDatabaseDataMaskingPolicyCmdletBase

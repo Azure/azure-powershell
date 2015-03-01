@@ -13,16 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Linq;
-using System.Globalization;
 using Microsoft.Azure.Commands.Sql.Security.Services;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {
     /// <summary>
-    /// Returns the auditing policy of a specific database.
+    /// Returns a new data masking rule for a specific database
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseDataMaskingRule")]
     public class NewAzureSqlDatabaseDataMaskingRule : BuildAzureSqlDatabaseDataMaskingRule

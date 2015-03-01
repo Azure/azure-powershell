@@ -14,14 +14,13 @@
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
     public class DataMaskingTests : SqlTestsBase
     {
 
-        [Fact]//(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingPolicyEnablementToggling()
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-DatabaseDataMaskingPolicyEnablementToggling");
         }
 
-        [Fact]//(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingLevelChanges()
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-DatabaseDataMaskingLevelChanges");
         }
 
-        [Fact]//(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingPrivilegedLoginsChanges()
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-DatabaseDataMaskingPrivilegedLoginsChanges");
         }
 
-        [Fact]//(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingBasicRuleLifecycle()

@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
 {
     /// <summary>
-    /// Disables direct access to an Azure Sql database
+    /// Enables direct access to an Azure Sql database
     /// </summary>
     [Cmdlet(VerbsLifecycle.Enable, "AzureSqlDatabaseDirectAccess"), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
     public class EnableAzureSqlDatabaseDirectAccess : SqlDatabaseSecureConnectionCmdletBase

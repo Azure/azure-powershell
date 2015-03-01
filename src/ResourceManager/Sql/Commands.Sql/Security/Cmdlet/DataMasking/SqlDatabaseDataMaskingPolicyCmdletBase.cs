@@ -19,7 +19,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {
     /// <summary>
-    /// The base class for all Azure Sql Database security Management Cmdlets
+    /// The base class for all Azure Sql Database data masking policy Cmdlets
     /// </summary>
     public abstract class SqlDatabaseDataMaskingPolicyCmdletBase : SqlDatabaseCmdletBase<DatabaseDataMaskingPolicyModel, SqlDataMaskingAdapter>
     {

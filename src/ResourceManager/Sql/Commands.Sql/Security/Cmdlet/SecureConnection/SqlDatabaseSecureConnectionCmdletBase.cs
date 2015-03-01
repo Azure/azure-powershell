@@ -19,7 +19,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
 {
     /// <summary>
-    /// The base class for all Azure Sql Database security Management Cmdlets
+    /// The base class for all Azure Sql Database security management cmdlets
     /// </summary>
     public abstract class SqlDatabaseSecureConnectionCmdletBase : SqlDatabaseCmdletBase<DatabaseSecureConnectionPolicyModel, SqlSecureConnectionAdapter>
     {

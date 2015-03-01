@@ -21,7 +21,7 @@ using System.Globalization;
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {
     /// <summary>
-    /// Returns the auditing policy of a specific database.
+    /// Removes a data masking rule from a given database
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureSqlDatabaseDataMaskingRule", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]

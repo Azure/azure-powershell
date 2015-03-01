@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {
     /// <summary>
-    /// Returns the auditing policy of a specific database.
+    /// Returns a data masking rule or all the rules for a given database
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseDataMaskingRule"), OutputType(typeof(IEnumerable<DatabaseDataMaskingRuleModel>))]
     public class GetAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase

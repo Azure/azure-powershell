@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
-
     public enum MaskingFunction { Number, Text, CreditCardNumber, SocialSecurityNumber, Email, Default, NoMasking };
 
     public class BaseDataMaskingRuleModel

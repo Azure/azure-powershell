@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Management.Storage.Models;
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
-
     // types of storage keys
 
     public enum StorageKeyKind { Primary, Secondary };

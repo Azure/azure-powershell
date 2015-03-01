@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {
     /// <summary>
-    /// The base class for all Azure Sql Database data masking rules Management Cmdlets
+    /// The base class for all Azure Sql Database data masking rules cmdlets
     /// </summary>
     public abstract class SqlDatabaseDataMaskingRuleCmdletBase : SqlDatabaseCmdletBase<IEnumerable<DatabaseDataMaskingRuleModel>, SqlDataMaskingAdapter>
     {

@@ -14,11 +14,11 @@
 
 using System;
 using System.Text;
+
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
     public class ConnectionStrings
-    {
-        
+    {      
         public ConnectionStrings(string proxyDnsName, string port, string serverName, string dbName)
         {
             AdoNetConnectionString = ConstructAdoNetConnectionString(proxyDnsName, port, serverName, dbName);

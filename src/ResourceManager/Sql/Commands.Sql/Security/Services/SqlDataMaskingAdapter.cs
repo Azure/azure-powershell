@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
-using Microsoft.Azure.Common.Authentication.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {

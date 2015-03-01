@@ -13,17 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.WindowsAzure.Management.Storage.Models;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;

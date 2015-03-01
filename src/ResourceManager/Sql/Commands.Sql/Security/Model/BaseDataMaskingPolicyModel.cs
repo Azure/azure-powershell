@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Management.Storage.Models;
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
     public enum MaskingLevelType { Standard, Extended };

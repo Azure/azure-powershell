@@ -12,11 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Management.Storage.Models;
-
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
-
     public enum SecureConnectionStateType { Required, Optional };
     
     public abstract class BaseSecureConnectionPolicyModel

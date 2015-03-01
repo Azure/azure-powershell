@@ -15,11 +15,7 @@
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.WindowsAzure.Management.Storage.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
@@ -29,10 +25,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
     public class SqlSecureConnectionAdapter
     {
         private AzureSubscription Subscription { get; set; }
-
         private SecureConnectionEndpointsCommunicator Communicator { get; set; }
         public AzureProfile Profile { get; set; }
-
 
         public SqlSecureConnectionAdapter(AzureProfile profile , AzureSubscription subscription)
         {
