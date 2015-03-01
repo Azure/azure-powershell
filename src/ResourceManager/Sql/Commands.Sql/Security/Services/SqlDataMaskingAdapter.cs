@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
@@ -30,11 +30,13 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         private AzureSubscription Subscription { get; set; }
 
         private DataMaskingEndpointsCommunicator Communicator { get; set; }
+        public AzureProfile Profile { get; set; }
 
-        public SqlDataMaskingAdapter(AzureSubscription subscription)
+        public SqlDataMaskingAdapter(AzureProfile profile, AzureSubscription subscription)
         {
+            Profile = profile;
             Subscription = subscription;
-            Communicator = new DataMaskingEndpointsCommunicator(subscription);
+            Communicator = new DataMaskingEndpointsCommunicator(profile, subscription);
         }
 
         public DatabaseDataMaskingPolicyModel GetDatabaseDataMaskingPolicy(string resourceGroup, string serverName, string databaseName, string requestId)

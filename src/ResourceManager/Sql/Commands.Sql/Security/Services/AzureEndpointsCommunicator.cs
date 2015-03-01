@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
 
         private static ResourceManagementClient ResourcesClient { get; set; }
 
-        private AzureProfile Profile { get; set; }
- 
-        public AzureEndpointsCommunicator(AzureSubscription subscription)
+        public AzureProfile Profile { get; set; }
+
+        public AzureEndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)
@@ -179,13 +179,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-<<<<<<< HEAD:src/ResourceManager/Sql/Commands.Sql/Security/Services/AzureEndpointsCommunicator.cs
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Subscription, AzureEnvironment.Endpoint.ResourceManager);
-         //       SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientSessionIdHeaderName, Util.GenerateTracingId());
-=======
                 SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
-                SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientSessionIdHeaderName, Util.GenerateTracingId());
->>>>>>> 064327bd56c8c45571263180c515447b883f1117:src/ResourceManager/Sql/Commands.Sql/Security/Services/EndpointsCommunicator.cs
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

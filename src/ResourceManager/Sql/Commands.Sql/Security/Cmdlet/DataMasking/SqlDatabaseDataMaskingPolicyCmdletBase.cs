@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Security.Services;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 
         protected override SqlDataMaskingAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new SqlDataMaskingAdapter(subscription);
+            return new SqlDataMaskingAdapter(Profile, subscription);
         }
 
         protected override void SendModel(DatabaseDataMaskingPolicyModel model)

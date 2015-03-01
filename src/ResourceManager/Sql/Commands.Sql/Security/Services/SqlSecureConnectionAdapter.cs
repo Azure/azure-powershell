@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 using System;
@@ -31,11 +31,14 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         private AzureSubscription Subscription { get; set; }
 
         private SecureConnectionEndpointsCommunicator Communicator { get; set; }
+        public AzureProfile Profile { get; set; }
 
-        public SqlSecureConnectionAdapter(AzureSubscription subscription)
+
+        public SqlSecureConnectionAdapter(AzureProfile profile , AzureSubscription subscription)
         {
+            Profile = profile;
             Subscription = subscription;
-            Communicator = new SecureConnectionEndpointsCommunicator(subscription);
+            Communicator = new SecureConnectionEndpointsCommunicator(profile, subscription);
         }
 
         public DatabaseSecureConnectionPolicyModel GetDatabaseSecureConnectionPolicy(string resourceGroup, string serverName, string databaseName, string requestId)

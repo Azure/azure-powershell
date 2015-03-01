@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+//using Microsoft.Azure.Common.Extensions;
+//using Microsoft.Azure.Common.Extensions.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.Sql;
@@ -44,9 +46,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         private static AzureSubscription Subscription {get ; set; }
 
         private static ResourceManagementClient ResourcesClient { get; set; }
+        public AzureProfile Profile { get; set; }
 
-        public AuditingEndpointsCommunicator(AzureSubscription subscription)
+        public AuditingEndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
+            Profile = profile;
             if (subscription != Subscription)
             {
                 Subscription = subscription;
@@ -114,8 +118,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Subscription, AzureEnvironment.Endpoint.ResourceManager);
-             //   SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientSessionIdHeaderName, Util.GenerateTracingId());
+                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

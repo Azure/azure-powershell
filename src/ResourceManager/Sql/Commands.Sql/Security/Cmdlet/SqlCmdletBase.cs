@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Security.Services;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
         /// Executes the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
-        {            
-            ModelAdapter = InitModelAdapter(CurrentContext.Subscription); 
+        {
+            ModelAdapter = InitModelAdapter(Profile.Context.Subscription); 
             M model = this.GetModel();
             M updatedModel = this.UpdateModel(model);
             this.SendModel(updatedModel);

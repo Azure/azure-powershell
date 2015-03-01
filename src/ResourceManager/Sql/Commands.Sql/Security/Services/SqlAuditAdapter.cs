@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 using System;
@@ -42,11 +42,14 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         // In cases when storage is not needed and not provided, theres's no need to perform storage related network interaction that may fail
         public bool IgnoreStorage { get; set; }
 
-        public SqlAuditAdapter(AzureSubscription subscription)
+        public AzureProfile Profile { get; set; }
+
+        public SqlAuditAdapter(AzureProfile profile, AzureSubscription subscription)
         {
+            Profile = profile;
             Subscription = subscription;
-            Communicator = new AuditingEndpointsCommunicator(subscription);
-            AzureCommunicator = new AzureEndpointsCommunicator(subscription);
+            Communicator = new AuditingEndpointsCommunicator(Profile, subscription);
+            AzureCommunicator = new AzureEndpointsCommunicator(Profile, subscription);
             IgnoreStorage = false;
         }
 
@@ -291,7 +294,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             {
                 return FetchedStorageAccountTableEndpoint;
             }
-            return AzureCommunicator.GetStorageTableEndpoint(storageName);
+            return AzureCommunicator.GetStorageTableEndpoint(Profile, storageName);
         }
 
         private string ExtractStorageAccountSubscriptionId(string storageName)

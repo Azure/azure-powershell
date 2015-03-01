@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Security.Services;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
 {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
 
         protected override SqlSecureConnectionAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new SqlSecureConnectionAdapter(subscription);
+            return new SqlSecureConnectionAdapter(Profile, subscription);
         }
 
         protected override void SendModel(DatabaseSecureConnectionPolicyModel model)

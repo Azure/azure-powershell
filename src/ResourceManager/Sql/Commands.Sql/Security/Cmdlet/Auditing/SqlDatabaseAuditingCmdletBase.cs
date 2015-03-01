@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Security.Services;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
 {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
 
         protected override SqlAuditAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new SqlAuditAdapter(subscription);
+            return new SqlAuditAdapter(Profile, subscription);
         }
 
         protected override void SendModel(DatabaseAuditingPolicyModel model)
