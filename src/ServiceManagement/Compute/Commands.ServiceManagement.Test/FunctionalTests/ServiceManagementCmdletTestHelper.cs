@@ -1956,16 +1956,30 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         #endregion AzureVM BGInfo Extension
 
         #region Generic VM Extension cmdlets
-        public SM.PersistentVM SetAzureVMExtension(SM.IPersistentVM vm, string extensionName, string publisher, string version, string referenceName = null,
-            string publicConfiguration = null, string privateConfiguration = null, string publicConfigKey = null, string privateConfigKey = null, string publicConfigPath = null, string privateConfigPath = null, bool disable = false)
+        public SM.PersistentVM SetAzureVMExtension(SM.IPersistentVM vm,
+            string extensionName, string publisher,
+            string version, string referenceName = null,
+            string publicConfiguration = null, string privateConfiguration = null,
+            string publicConfigKey = null, string privateConfigKey = null,
+            string publicConfigPath = null, string privateConfigPath = null,
+            bool disable = false, bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMExtensionCmdletInfo(vm, extensionName, publisher, version, referenceName,
-             publicConfiguration, privateConfiguration, publicConfigKey, privateConfigKey, publicConfigPath, privateConfigPath, disable));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMExtensionCmdletInfo(vm,
+                extensionName, publisher,
+                version, referenceName,
+                publicConfiguration, privateConfiguration,
+                publicConfigKey, privateConfigKey,
+                publicConfigPath, privateConfigPath,
+                disable, forceUpdate));
         }
 
-        public SM.PersistentVM RemoveAzureVMExtension(SM.PersistentVM vm, string extensionName, string publisher, string referenceName=null, bool removeAll=false)
+        public SM.PersistentVM RemoveAzureVMExtension(SM.PersistentVM vm,
+            string extensionName, string publisher,
+            string referenceName = null, bool removeAll = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new RemoveAzureVMExtensionCmdletInfo(vm, extensionName, publisher, referenceName, removeAll));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new RemoveAzureVMExtensionCmdletInfo(vm,
+                extensionName, publisher,
+                referenceName, removeAll));
         }
 
         public Collection<VirtualMachineExtensionContext> GetAzureVMExtension(SM.PersistentVM vm, string extensionName = null, string publisher = null, string version = null, string referenceName = null)
@@ -1973,7 +1987,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnAll<VirtualMachineExtensionContext>(new GetAzureVMExtensionCmdletInfo(vm, extensionName, publisher, version, referenceName));
         }
 
-        //ListAllVersionsParamSetName -> ExtensionName,Publisher,AllVersions
+        // ListAllVersionsParamSetName -> ExtensionName,Publisher,AllVersions
         public Collection<VirtualMachineExtensionImageContext> GetAzureVMAvailableExtension(string extensionName, string publisher, bool allVersions)
         {
             return RunPSCmdletAndReturnAll<VirtualMachineExtensionImageContext>(new GetAzureVMAvailableExtensionCmdletInfo(extensionName, publisher, allVersions));
@@ -1999,9 +2013,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnAll<VirtualMachineAccessExtensionContext>(new GetAzureVMAccessExtensionCmdletInfo(vm, userName, password, version, referenceName));
         }
 
-        public SM.PersistentVM SetAzureVMAccessExtension(SM.IPersistentVM vm, string userName= null, string password=null, string version = null, string referenceName =null,bool disable = false)
+        public SM.PersistentVM SetAzureVMAccessExtension(
+            SM.IPersistentVM vm,
+            string userName= null,
+            string password=null,
+            string version = null,
+            string referenceName =null,
+            bool disable = false,
+            bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMAccessExtensionCmdletInfo( vm,  userName,  password,  version,  referenceName, disable));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMAccessExtensionCmdletInfo(
+                vm,  userName,  password,  version,  referenceName, disable, forceUpdate));
         }
 
         public SM.PersistentVM RemoveAzureVMAccessExtension(SM.IPersistentVM vm)
@@ -2012,24 +2034,50 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         #endregion AzureVMAccessExtension cmdlets
 
         #region AzureVMCustomScriptExtensionCmdlets
-        //SetCustomScriptExtensionByUrisParamSetName
-        internal SM.PersistentVM SetAzureVMCustomScriptExtension(SM.PersistentVM vm, string[] fileUri, bool sseSaSKeys, string run = null, string referenceName = null, string version = null, string argument = null)
+        // SetCustomScriptExtensionByUrisParamSetName
+        internal SM.PersistentVM SetAzureVMCustomScriptExtension(
+            SM.PersistentVM vm,
+            string[] fileUri,
+            bool sseSaSKeys,
+            string run = null,
+            string referenceName = null,
+            string version = null,
+            string argument = null,
+            bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(vm, referenceName, version,fileUri,run, argument ));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(
+                vm, referenceName, version, fileUri, run, argument, forceUpdate));
         }
 
-        //DisableCustomScriptExtensionParamSetName
-        internal SM.PersistentVM SetAzureVMCustomScriptExtension(SM.PersistentVM vm, bool disable, string referenceName = null, string version = null)
+        // DisableCustomScriptExtensionParamSetName
+        internal SM.PersistentVM SetAzureVMCustomScriptExtension(
+            SM.PersistentVM vm,
+            bool disable,
+            string referenceName = null,
+            string version = null,
+            bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(vm,referenceName,version,disable));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(
+                vm, referenceName, version, disable, forceUpdate));
         }
 
-        //SetCustomScriptExtensionByContainerBlobsParamSetName
-        internal SM.PersistentVM SetAzureVMCustomScriptExtension(SM.PersistentVM vm, string[] fileName, string run = null, string storageAccountName = null, string StorageEndpointSuffix = null, string containerName = null,
-              string StorageAccountKey = null, string referenceName = null, string version = null,string argument = null)
+        // SetCustomScriptExtensionByContainerBlobsParamSetName
+        internal SM.PersistentVM SetAzureVMCustomScriptExtension(
+            SM.PersistentVM vm,
+            string[] fileName,
+            string run = null,
+            string storageAccountName = null,
+            string StorageEndpointSuffix = null,
+            string containerName = null,
+            string StorageAccountKey = null,
+            string referenceName = null,
+            string version = null,
+            string argument = null,
+            bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(vm, fileName, storageAccountName, StorageEndpointSuffix, containerName,
-                    StorageAccountKey, run, argument,referenceName, version));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(
+                vm, fileName, storageAccountName, StorageEndpointSuffix, containerName,
+                    StorageAccountKey, run, argument, referenceName, version, forceUpdate));
         }
 
         internal VirtualMachineCustomScriptExtensionContext GetAzureVMCustomScriptExtension(SM.IPersistentVM vm)

@@ -439,6 +439,8 @@
     <None Include="Resources\packageADDomain.csv" />
     <None Include="Resources\packageScenario.csv" />
     <None Include="Resources\patch_VHD.csv" />
+    <None Include="Resources\PrivateConfig.json" />
+    <None Include="Resources\PublicConfig.json" />
     <None Include="Resources\rdpcert.pfx" />
     <None Include="Resources\resume_VHD.csv" />
     <None Include="Resources\SampleAppV1.cscfg" />

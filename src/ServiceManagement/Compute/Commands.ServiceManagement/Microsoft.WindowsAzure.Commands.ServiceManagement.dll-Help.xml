@@ -27141,6 +27141,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -27174,6 +27180,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -27207,6 +27219,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -27303,6 +27321,18 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+      <maml:name>ForceUpdate</maml:name>
+      <maml:description>
+        <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>PipelineVariable</maml:name>
 			<maml:description>
@@ -27678,6 +27708,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="9">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -27711,6 +27747,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="9">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -27744,6 +27786,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="9">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -27791,6 +27839,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="9">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -27959,6 +28013,18 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="9">
+      <maml:name>ForceUpdate</maml:name>
+      <maml:description>
+        <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>PipelineVariable</maml:name>
 			<maml:description>
@@ -28752,6 +28818,12 @@ OperationStatus             : OK</dev:code>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="11">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -28820,6 +28892,12 @@ OperationStatus             : OK</dev:code>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="11">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -28867,6 +28945,12 @@ OperationStatus             : OK</dev:code>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="11">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -28914,6 +28998,12 @@ OperationStatus             : OK</dev:code>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="11">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -29058,6 +29148,18 @@ OperationStatus             : OK</dev:code>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="11">
+      <maml:name>ForceUpdate</maml:name>
+      <maml:description>
+        <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>PipelineVariable</maml:name>
 			<maml:description>
