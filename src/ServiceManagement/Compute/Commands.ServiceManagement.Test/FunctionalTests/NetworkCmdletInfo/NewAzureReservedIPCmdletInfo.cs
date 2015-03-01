@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
+using Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo
 {
@@ -31,12 +32,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        public NewAzureReservedIPCmdletInfo(string name, string location, string serviceName, string deploymentName, string label): this(name, location, label)
+        public NewAzureReservedIPCmdletInfo(string name, string location, string serviceName, string slot, string label): this(name, location, label)
         {
             this.cmdletName = Utilities.NewAzureReservedIPCmdletName;
 
             this.cmdletParams.Add(new CmdletParam("ServiceName", serviceName));
-            this.cmdletParams.Add(new CmdletParam("DeploymentName", deploymentName));
+            this.cmdletParams.Add(new CmdletParam("Slot", slot));
         }
     }
 }

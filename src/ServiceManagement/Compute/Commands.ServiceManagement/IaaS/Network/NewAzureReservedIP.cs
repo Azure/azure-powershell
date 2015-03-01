@@ -17,6 +17,9 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Network.Models;
 using Microsoft.WindowsAzure.Management.Network;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management.Compute.Models;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -49,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveNewIPParamSet, HelpMessage = "Location Name.")]
         [Parameter(Mandatory = true, Position = 4, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveInUseIPUsingSlotParamSet, HelpMessage = "Location Name.")]
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveInUseIPParamSet, HelpMessage = "Location Name.")]
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveInUseIPParamSet, HelpMessage = "Location Name.")]
         [ValidateNotNullOrEmpty]
         public string Location
         {
@@ -57,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveInUseIPParamSet, HelpMessage = "Service Name.")]
+        [Parameter(Mandatory = true, Position = 3, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveInUseIPParamSet, HelpMessage = "Service Name.")]
         [ValidateNotNullOrEmpty]
         public string ServiceName
         {
@@ -65,9 +68,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveInUseIPParamSet, HelpMessage = "Deployment Name.")]
-        [ValidateNotNullOrEmpty]
-        public string DeploymentName
+        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment slot [Staging | Production].")]
+        [ValidateSet(Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType.Staging, Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType.Production, IgnoreCase = true)]
+        public string Slot
         {
             get;
             set;
@@ -76,6 +79,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         protected override void OnProcessRecord()
         {
             ServiceManagementProfile.Initialize();
+            string deploymentName = string.Empty;
+
+            if (!string.IsNullOrEmpty(this.ServiceName))
+            {
+                var slotType = string.IsNullOrEmpty(this.Slot) ?
+                            DeploymentSlot.Production :
+                            (DeploymentSlot)Enum.Parse(typeof(DeploymentSlot), this.Slot, true);
+
+
+                deploymentName = this.ComputeClient.Deployments.GetBySlot(
+                            this.ServiceName,
+                            slotType).Name;
+            }
 
             ExecuteClientActionNewSM(
                 null,
@@ -88,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         Label          = this.Label,
                         Location       = this.Location,
                         ServiceName    = this.ServiceName,
-                        DeploymentName = this.DeploymentName
+                        DeploymentName = deploymentName
                     };
 
                     return this.NetworkClient.ReservedIPs.Create(parameters);

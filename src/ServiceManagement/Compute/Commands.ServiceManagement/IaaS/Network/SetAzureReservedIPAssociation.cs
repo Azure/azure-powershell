@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Network.Models;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Management.Network;
-using System.Net;
-using System.Net.Security;
+using Microsoft.WindowsAzure.Management.Network.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -42,9 +42,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment Name.")]
-        [ValidateNotNullOrEmpty]
-        public string DeploymentName
+        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment slot [Staging | Production].")]
+        [ValidateSet(Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType.Staging, Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType.Production, IgnoreCase = true)]
+        public string Slot
         {
             get;
             set;
@@ -52,13 +52,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
         protected override void OnProcessRecord()
         {
-
-            ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(
-            delegate
-            {
-                return true;
-            });
             ServiceManagementProfile.Initialize();
+
+            var slotType = string.IsNullOrEmpty(this.Slot) ?
+                            DeploymentSlot.Production :
+                            (DeploymentSlot)Enum.Parse(typeof(DeploymentSlot), this.Slot, true);
+
+
+            string deploymentName = this.ComputeClient.Deployments.GetBySlot(
+                        this.ServiceName,
+                        slotType).Name;
 
             ExecuteClientActionNewSM(
                 null,
@@ -68,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     var parameters = new NetworkReservedIPMobilityParameters
                     {
                         ServiceName = this.ServiceName,
-                        DeploymentName = this.DeploymentName
+                        DeploymentName = deploymentName
                     };
 
                     return this.NetworkClient.ReservedIPs.Associate(this.ReservedIPName, parameters);

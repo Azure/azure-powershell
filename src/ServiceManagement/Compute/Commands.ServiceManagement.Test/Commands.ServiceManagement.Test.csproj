@@ -424,6 +424,12 @@
     <None Include="AzureRTComplete_Full_Diff.playlist" />
     <None Include="AzureRTExtensions.playlist" />
     <None Include="AzureRTFull.playlist" />
+    <None Include="Resources\HelloWorld_SDK20.cspkg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceConfiguration.cscfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="Resources\affinityGroupData.csv" />

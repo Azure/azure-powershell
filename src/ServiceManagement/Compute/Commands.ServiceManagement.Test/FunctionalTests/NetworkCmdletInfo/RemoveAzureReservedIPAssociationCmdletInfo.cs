@@ -12,19 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo
 {
     class RemoveAzureReservedIPAssociationCmdletInfo : CmdletsInfo
     {
-        public RemoveAzureReservedIPAssociationCmdletInfo(string reservedIpName, string serviceName, string deploymentName)
+        public RemoveAzureReservedIPAssociationCmdletInfo(string reservedIpName, string serviceName, string slot, bool force)
         {
             this.cmdletName = Utilities.RemoveAzureReservedIPAssociationCmdletName;
 
             this.cmdletParams.Add(new CmdletParam("ReservedIPName", reservedIpName));
             this.cmdletParams.Add(new CmdletParam("ServiceName", serviceName));
-            this.cmdletParams.Add(new CmdletParam("DeploymentName", deploymentName));
+            this.cmdletParams.Add(new CmdletParam("Slot", slot));
+            if (force)
+            {
+                this.cmdletParams.Add(new CmdletParam("Force"));
+            }
+        }
+        public RemoveAzureReservedIPAssociationCmdletInfo(string reservedIpName, string serviceName)
+            : this(reservedIpName, serviceName, DeploymentSlotType.Production, true)
+        {
         }
     }
 }

@@ -856,19 +856,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureReservedIPCmdletInfo(name, location, label));
         }
 
-        internal ManagementOperationContext NewAzureReservedIP(string name, string location, string serviceName, string deploymentName, string label = null)
+        internal ManagementOperationContext NewAzureReservedIP(string name, string location, string serviceName, string label = null, string slot = SM.DeploymentSlotType.Production)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureReservedIPCmdletInfo(name, location, serviceName, deploymentName, label));
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureReservedIPCmdletInfo(name, location, serviceName, slot, label));
         }
 
-        internal ManagementOperationContext SetAzureReservedIPAssociation(string reservedIpName, string serviceName, string deploymentName)
+        internal ManagementOperationContext SetAzureReservedIPAssociation(string reservedIpName, string serviceName, string slot = SM.DeploymentSlotType.Production)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureReservedIPAssociationCmdletInfo(reservedIpName, serviceName, deploymentName));
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureReservedIPAssociationCmdletInfo(reservedIpName, serviceName, slot));
         }
 
-        internal ManagementOperationContext RemoveAzureReservedIPAssociation(string reservedIpName, string serviceName, string deploymentName)
+        internal ManagementOperationContext RemoveAzureReservedIPAssociation(string reservedIpName, string serviceName, bool force, string slot = SM.DeploymentSlotType.Production)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureReservedIPAssociationCmdletInfo(reservedIpName, serviceName, deploymentName));
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureReservedIPAssociationCmdletInfo(reservedIpName, serviceName, slot, force));
         }
 
         internal Collection<SM.ReservedIPContext> GetAzureReservedIP(string name = null)
