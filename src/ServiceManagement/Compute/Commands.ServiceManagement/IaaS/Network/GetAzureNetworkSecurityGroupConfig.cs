@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network;
 using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
             else
             {
-                var networkClient = new NetworkClient(AzureSession.CurrentContext.Subscription, CommandRuntime);
+                var networkClient = new NetworkClient(Profile, Profile.Context.Subscription, CommandRuntime);
                 INetworkSecurityGroup networkSecurityGroup = networkClient.GetNetworkSecurityGroup(networkSecurityGroupName, Detailed);
 
                 WriteObject(networkSecurityGroup, true);
