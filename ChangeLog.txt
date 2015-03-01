@@ -1,3 +1,56 @@
+2015.02.12 version 0.8.14
+* StorSimple: New StorSimple commands in AzureServiceManagement mode:
+  * GetAzureStorSimpleAccessControlRecord
+  * GetAzureStorSimpleStorageAccountCredential
+  * RemoveAzureStorSimpleAccessControlRecord
+  * RemoveAzureStorSimpleStorageAccountCredential
+  * SetAzureStorSimpleAccessControlRecord
+  * GetAzureStorSimpleDeviceVolume 
+  * RemoveAzureStorSimpleDeviceVolume 
+  * GetAzureStorSimpleDeviceVolumeContainer
+  * RemoveAzureStorSimpleDeviceVolumeContainer
+  * GetAzureStorSimpleDevice
+  * GetAzureStorSimpleDeviceConnectedInitiator
+  * GetAzureStorSimpleResource
+  * GetAzureStorSimpleResourceContext
+  * SetAzureStorSimpleDeviceBackupPolicy
+  * NewAzureStorSimpleDeviceBackupPolicy
+  * GetAzureStorSimpleDeviceBackup
+  * RemoveAzureStorSimpleDeviceBackup
+  * StartAzureStorSimpleDeviceBackupJob
+  * StartAzureStorSimpleDeviceBackupRestoreJob
+  * RemoveAzureStorSimpleDeviceBackupPolicy
+  * NewAzureStorSimpleDeviceVolume
+  * SetAzureStorSimpleDeviceVolume
+  * NewAzureStorSimpleDeviceVolumeContainer
+  * SelectAzureStorSimpleResource
+  * GetAzureStorSimpleDeviceBackupPolicy
+  * NewAzureStorSimpleStorageAccountCredential
+  * GetAzureStorSimpleTask
+  * SetAzureStorSimpleStorageAccountCredential
+  * NewAzureStorSimpleInlineStorageAccountCredential
+  * NewAzureStorSimpleAccessControlRecord
+
+* HDInsight:
+  * HeadNodeVMSize (update): the parameter is now a string that can now accept various sizes (specifications here: https://msdn.microsoft.com/en-us/library/azure/dn197896.aspx -> Sizes for Web and Worker Role Instances)
+  * DataNodeVMSize (new)  :  use to specify size of data nodes (where applicable)
+  * ZookeeperNodeVMSize (new): use to specify Zookeeper node sizes (where applicable)
+  * ClusterType (update): New value (Spark) can be specified as cluster type
+  * Add-AzureHDInsightConfigValues cmdlet:
+    * Spark (new): collection of configuration properties can be passed in to customize the Spark service
+    
+ * Azure Insights cmdlets in AzureResourceManager Mode:
+   * Get-AzureCrrelationLogId
+   * Get-AzureResourceGroupLog
+   * Get-AzureResourceLog
+   * Get-AzureResourceProviderLog
+   * Get-AzureSubscriptionIdLog
+   
+* Azure VM cmdlets
+  * Get-AzureVMDscExtentionStatus: Get the DSC Extension status for a cloud service or VM
+  
+ * Updates and bug fixes for AzureAutomation and AzureDataFactory cmdlets
+ 
 2015.01.08 version 0.8.13
 * Key Vault Service - new cmdlets in AzureResourceManager mode:
   * Keys:
