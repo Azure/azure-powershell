@@ -196,6 +196,7 @@
     <Compile Include="Services\Common\SqlDatabaseExceptionHandler.cs" />
     <Compile Include="Services\Common\ManagementServiceExceptionInfo.cs" />
     <Compile Include="Services\Constants.cs" />
+    <Compile Include="Services\Server\ISqlServerConnectionInformation.cs" />
     <Compile Include="Services\Server\RecoverableDatabaseExtensions.cs" />
     <Compile Include="Services\Server\DatabaseCopyExtensions.cs" />
     <Compile Include="Services\ImportExport\ImportExportRequest.cs" />
