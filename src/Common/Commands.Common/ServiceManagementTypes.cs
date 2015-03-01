@@ -1959,6 +1959,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 base.SetValue("State", value);
             }
         }
+
+        [DataMember(Name = "ForceUpdate", EmitDefaultValue = false, Order = 7)]
+        public bool? ForceUpdate
+        {
+            get
+            {
+                return base.GetValue<bool?>("ForceUpdate");
+            }
+            set
+            {
+                base.SetValue("ForceUpdate", value);
+            }
+        }
     }
 
     [CollectionDataContract(Name = "ResourceExtensionReferences", Namespace = Constants.ServiceManagementNS)]
