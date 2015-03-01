@@ -171,21 +171,21 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             return job;
         }
 
-        public virtual HttpStatusCode StartPSJob(string resourceGroupName, string jobName, JobStartParameters parameter)
+        public virtual HttpStatusCode StartPSJob(string resourceGroupName, string jobName)
         {
-            AzureOperationResponse response = StreamAnalyticsManagementClient.StreamingJobs.Start(resourceGroupName, jobName, parameter);
+            AzureOperationResponse response = StreamAnalyticsManagementClient.StreamingJobs.Start(resourceGroupName, jobName);
 
             return response.StatusCode;
         }
 
-        public virtual HttpStatusCode StartPSJob(StartPSJobParameter parameter)
+        public virtual HttpStatusCode StartPSJob(JobParametersBase parameter)
         {
             if (parameter == null)
             {
                 throw new ArgumentNullException("parameter");
             }
 
-            return StartPSJob(parameter.ResourceGroupName, parameter.JobName, parameter.StartParameters);
+            return StartPSJob(parameter.ResourceGroupName, parameter.JobName);
         }
 
         public virtual HttpStatusCode StopPSJob(string resourceGroupName, string jobName)
