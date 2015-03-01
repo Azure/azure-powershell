@@ -13,24 +13,27 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Commands.Sql.Services;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
 {
     /// <summary>
-    /// Returns the auditing policy of a specific database server.
+    /// Disables direct access to an Azure Sql database
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseServerAuditingPolicy"), OutputType(typeof(AuditingPolicy))]
-    public class GetAzureSqlDatabaseServerAuditingPolicy : SqlDatabaseSecurityCmdletBase
+    [Cmdlet(VerbsLifecycle.Enable, "AzureSqlDatabaseDirectAccess"), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
+    public class EnableAzureSqlDatabaseDirectAccess : SqlDatabaseSecureConnectionCmdletBase
     {
-        /// <summary>
-        /// Provides the auditing policy that this cmdlet operates on
-        /// </summary>
-        /// <returns>An auditingPolicy object</returns>
-        protected override AuditingPolicy GetPolicy()
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        protected override bool writeResult() { return PassThru; }
+
+        protected override DatabaseSecureConnectionPolicyModel UpdateModel(DatabaseSecureConnectionPolicyModel model) 
         {
-            return this.PolicyHandler.GetServerAuditingPolicy(this.ResourceGroupName, this.ServerName, this.clientRequestId);
+            model.SecureConnectionState = SecureConnectionStateType.Optional;
+            return model;
         }
+
     }
 }

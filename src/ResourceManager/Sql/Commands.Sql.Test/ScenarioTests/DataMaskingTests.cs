@@ -1,0 +1,80 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+
+namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
+{
+    public class DataMaskingTests : SqlTestsBase
+    {
+
+        [Fact]//(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseDataMaskingPolicyEnablementToggling()
+        {
+            RunPowerShellTest("Test-DatabaseDataMaskingPolicyEnablementToggling");
+        }
+
+        [Fact]//(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseDataMaskingLevelChanges()
+        {
+            RunPowerShellTest("Test-DatabaseDataMaskingLevelChanges");
+        }
+
+        [Fact]//(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseDataMaskingPrivilegedLoginsChanges()
+        {
+            RunPowerShellTest("Test-DatabaseDataMaskingPrivilegedLoginsChanges");
+        }
+
+        [Fact]//(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseDataMaskingBasicRuleLifecycle()
+        {
+            RunPowerShellTest("Test-DatabaseDataMaskingBasicRuleLifecycle");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseDataMaskingNumberRuleLifecycle()
+        {
+            RunPowerShellTest("Test-DatabaseDataMaskingNumberRuleLifecycle");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseDataMaskingTextRuleLifecycle()
+        {
+            RunPowerShellTest("Test-DatabaseDataMaskingTextRuleLifecycle");
+        }
+        
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseDataMaskingRuleCreationFailures()
+        {
+            RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationFailures");
+        }
+    }
+}

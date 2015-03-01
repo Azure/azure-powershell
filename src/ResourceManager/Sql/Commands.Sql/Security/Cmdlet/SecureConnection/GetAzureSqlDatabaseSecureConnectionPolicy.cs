@@ -17,30 +17,16 @@ using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.Models;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
 {
     /// <summary>
-    /// Returns the auditing policy of a specific database.
+    /// Returns the secure connection policy of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseAuditingPolicy"), OutputType(typeof(AuditingPolicy))]
-    public class GetAzureSqlDatabaseAuditingPolicy : SqlDatabaseSecurityCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseSecureConnectionPolicy"), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
+    public class GetAzureSqlDatabaseSecureConnectionPolicy : SqlDatabaseSecureConnectionCmdletBase
     {
-         
-        /// <summary>
-        /// Gets or sets the name of the database to use.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory=true, HelpMessage = "SQL Database name.")]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
-
-       /// <summary>
-       /// Provides the auditing policy that this cmdlet operates on
-       /// </summary>
-       /// <returns>An auditingPolicy object</returns>
-        protected override AuditingPolicy GetPolicy()
-        {
-            return this.PolicyHandler.GetDatabaseAuditingPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.clientRequestId);
+        protected override void SendModel(DatabaseSecureConnectionPolicyModel model) 
+        { 
         }
-
     }
 }

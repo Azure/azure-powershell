@@ -13,31 +13,34 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.Security.Services;
+using Microsoft.Azure.Common.Extensions.Models;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
 {
     /// <summary>
-    /// Sets the auditing policy properties for a specific database server.
+    /// The base class for all au Management Cmdlets
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseServerAuditingPolicy"), OutputType(typeof(AuditingPolicy))]
-    public class SetAzureSqlDatabaseServerAuditingPolicy : SetAuditingPolicyBase
+    public abstract class SqlDatabaseServerAuditingCmdletBase : SqlCmdletBase<ServerAuditingPolicyModel, SqlAuditAdapter>
     {
 
         /// <summary>
-        /// Provides the auditing policy that this cmdlet operates on
+        /// Provides the model element that this cmdlet operates on
         /// </summary>
-        /// <returns>An auditingPolicy object</returns>
-        protected override AuditingPolicy GetPolicy()
+        /// <returns>A model object</returns>
+        protected override ServerAuditingPolicyModel GetModel()
         {
-            return this.PolicyHandler.GetServerAuditingPolicy(this.ResourceGroupName, this.ServerName, this.clientRequestId);
+            return ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, this.clientRequestId);
         }
 
-        protected override void SendPolicy(AuditingPolicy policy)
+        protected override SqlAuditAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            this.PolicyHandler.SetServerAuditingPolicy(policy, clientRequestId);
+            return new SqlAuditAdapter(subscription);
+        }
+
+        protected override void SendModel(ServerAuditingPolicyModel model)
+        {
+            ModelAdapter.SetServerAuditingPolicy(model, clientRequestId);
         }
     }
 }
