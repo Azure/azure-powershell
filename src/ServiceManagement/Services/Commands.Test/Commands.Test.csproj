@@ -228,6 +228,7 @@
     <Compile Include="MediaServices\NewAzureMediaServicesKeyTest.cs" />
     <Compile Include="MediaServices\NewMediaServicesAccountTests.cs" />
     <Compile Include="MediaServices\RemoveMediaServicesAccountTests.cs" />
+    <Compile Include="Profile\SelectAzureProfileTests.cs" />
     <Compile Include="Profile\NewAzureProfileTests.cs" />
     <Compile Include="Profile\ProfileClientHelper.cs" />
     <Compile Include="Profile\ProfileCmdltsTests.cs" />
@@ -353,7 +354,16 @@
     </Content>
     <None Include="packages.config" />
     <None Include="Performance\Microsoft.ServiceBus.MessagingPerformanceCounters.man" />
+    <None Include="Profile\SelectAzureProfileTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Profile\NewAzureProfileTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Test.Profile.SelectAzureProfileTests\TestMakeArmCallWithCreatedProfile.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Test.Profile.SelectAzureProfileTests\TestMakeRdfeCallWithCreatedProfile.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Test.Profile.NewAzureProfileTests\TestCreatesNewAzureProfileWithAccessToken.json">
