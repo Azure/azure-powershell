@@ -17,8 +17,16 @@ $testCertData = [Convert]::FromBase64String("MIIKJAIBAzCCCeQGCSqGSIb3DQEHAaCCCdU
 $testCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2
 $testCert.Import($testCertData)
 
-$secPasswd = ConvertTo-SecureString "TestPassw0rd" -AsPlainText -Force
-$testCreds = New-Object System.Management.Automation.PSCredential ("test@mail.com", $secPasswd)
+# The subscription ID to use for live tests
+$testValidSubscription = "c9cbd920-c00c-427c-852b-8aaf38badaeb";
+$testCreds = $(createTestCredential "test@mail.com" "TestPassw0rd")
+
+function Create-Profile
+{
+    param([string] $token, [string] $user, [string] $sub)   
+    New-AzureProfile -SubscriptionId $sub -AccessToken $token -AccountId $user
+}
+
 
 <#
 .SYNOPSIS
@@ -65,4 +73,34 @@ function Test-CreatesNewAzureProfileWithAccessToken
 	Assert-AreEqual "AzureCloud" $actual.Context.Environment.Name
 	Assert-AreEqual "myAccount" $actual.Context.Account.Id
 	Assert-AreEqual "AccessToken" $actual.Context.Account.Type
+}
+
+<#
+.SYNOPSIS
+Tests using a profile to run an RDFE cmdlet
+#>
+function Test-NewAzureProfileInRDFEMode
+{
+    param([string] $token, [string] $user, [string] $sub)
+    $profile = $(Create-Profile $token $user $sub)
+    Assert-AreEqual "AzureCloud" $profile.Context.Environment.Name
+    Clear-AzureProfile -Force
+    $locations = Get-AzureLocation -Profile $profile
+    Assert-NotNull $locations
+    Assert-True {$locations.Count -gt 1}
+}
+
+<#
+.SYNOPSIS
+Tests using a profile to run an ARM cmdlet
+#>
+function Test-NewAzureProfileInARMMode
+{
+    param([string] $token, [string] $user, [string] $sub)
+    $profile = $(Create-Profile $token $user $sub)
+	Assert-AreEqual "AzureCloud" $($profile.Context.Environment.Name) "Expecting the azure cloud environment"
+	Clear-AzureProfile -Force
+	$locations = Get-AzureLocation -Profile $profile
+	Assert-NotNull $locations
+	Assert-True {$locations.Count -gt 1}
 }

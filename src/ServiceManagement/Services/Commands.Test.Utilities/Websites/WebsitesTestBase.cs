@@ -61,6 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Websites
         {
 
             currentProfile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            AzurePSCmdlet.CurrentProfile = currentProfile;
             var subscription = new AzureSubscription { Id = new Guid(subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
