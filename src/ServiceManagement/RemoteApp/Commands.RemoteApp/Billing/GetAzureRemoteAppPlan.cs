@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppPlan"), OutputType(typeof(BillingPlan))]
     public class GetAzureRemoteAppPlan : RdsCmdlet
     {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             }
             else
             {
-                WriteVerboseWithTimestamp("No plans found.");
+                WriteVerboseWithTimestamp(Commands_RemoteApp.NoPlansFoundMessage);
             }
         }
     }

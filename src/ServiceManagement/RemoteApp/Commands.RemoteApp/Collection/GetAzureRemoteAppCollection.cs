@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
 using System;
@@ -21,7 +22,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppCollection"), OutputType(typeof(LocalModels.Collection))]
     public class GetAzureRemoteAppCollection : RdsCmdlet
     {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             if (!found)
             {
-                WriteVerboseWithTimestamp(String.Format("RemoteApp collection name: {0} not found", CollectionName));
+                WriteVerboseWithTimestamp(String.Format(Commands_RemoteApp.CollectionNotFoundByNameFormat, CollectionName));
             }
         }
     }

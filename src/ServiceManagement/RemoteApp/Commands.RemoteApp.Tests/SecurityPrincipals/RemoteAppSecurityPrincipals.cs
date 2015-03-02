@@ -25,9 +25,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
     [TestClass]
     public class AzureRemoteAppServiceUser : RemoteAppClientTest
     {
-
         private string userName = "user1";
-
 
         [TestMethod]
         public void GetAllUsers()
@@ -71,7 +69,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
             Log("The test for Get-AzureRemoteAppUser with {0} users completed successfully.", countOfExpectedUsers);
         }
-
 
         [TestMethod]
         public void GetUsersByName()
@@ -118,7 +115,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             Log("The test for Get-AzureRemoteAppUser with {0} users completed successfully.", countOfExpectedUsers);
         }
 
-
         [TestMethod]
         public void AddMSAUserThatDoesntExist()
         {
@@ -161,7 +157,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
             Log("The test for Add-AzureRemoteAppMSAUser successfully added {0} users the new count is {1}.", countOfNewUsers, countOfExistingUsers + countOfNewUsers);
         }
-
 
         [TestMethod]
         public void AddOrgIDUserThatDoesntExist()
@@ -206,7 +201,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
             Log("The test for Add-AzureRemoteAppOrgIDUser successfully added {0} users the new count is {1}.", countOfNewUsers, countOfExistingUsers + countOfNewUsers);
         }
-
 
         [TestMethod]
         public void RemoveMSAUserThatExists()

@@ -152,7 +152,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             Log("The test for New-AzureRemoteAppTemplate completed successfully");
         }
 
-
         [TestMethod]
         public void RenameTemplate()
         {

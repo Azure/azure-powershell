@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
         {
             return MockObject.ConvertList<string>(list).ToArray();
         }
-
     }
 
     public partial class MockObject
@@ -71,7 +70,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
         internal static IList<Workspace> mockWorkspace { get; set; }
 
         internal static string mockTemplateScript { get; set; }
-
 
         internal delegate bool Comparer<T>(List<T> list, T o);
 
@@ -122,7 +120,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
             {
                 expectedResults = ConvertList<T>(mockVpnList);
             }
-
             else if (typeof(T) == typeof(LocalModels.ConsentStatusModel))
             {
                 expectedResults = ConvertList<T>(mockUsersConsents);
@@ -155,7 +152,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
             return expectedResults;
         }
 
-
         internal static bool HasExpectedResults<T>(List<T> actualResults, Comparer<T> contains)
         {
             bool fRet = true;
@@ -169,9 +165,9 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
                     break;
                 }
             }
+
             return fRet;
         }
-
 
         public static bool ContainsExpectedTrackingId(List<TrackingResult> expectedResult, TrackingResult actual)
         {

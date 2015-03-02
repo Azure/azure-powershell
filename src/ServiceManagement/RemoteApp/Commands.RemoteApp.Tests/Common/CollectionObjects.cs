@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
 
     public partial class MockObject
     {
-
         public static int SetUpDefaultRemoteAppCollection(Mock<IRemoteAppManagementClient> clientMock, string collectionName)
         {
             CollectionListResult response = new CollectionListResult();
@@ -126,7 +125,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
                 RequestId = "111-2222-4444"
             };
 
-
             mockTrackingId = new List<TrackingResult>()
             {
                 new TrackingResult(response)
@@ -139,7 +137,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
 
             return mockCollectionList.Count;
         }
-
 
         public static int SetUpDefaultRemoteAppCollectionSet(Mock<IRemoteAppManagementClient> clientMock,string collectionName, string subscriptionId, string billingPlan, string imageName, PSCredential credential, string domainName, string trackingId)
         {
@@ -278,6 +275,5 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
 
             return isIdentical;
         }
-
     }
 }

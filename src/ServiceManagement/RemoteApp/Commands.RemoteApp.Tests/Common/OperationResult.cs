@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
 
     public partial class MockObject
     {
-
         public static int SetUpDefaultRemoteAppOperationResult(Mock<IRemoteAppManagementClient> clientMock, string trackingId)
         {
             ISetup<IRemoteAppManagementClient, Task<RemoteAppOperationStatusResult>> setup = null;
@@ -76,6 +75,5 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
 
             return isIdentical;
         }
-
     }
 }

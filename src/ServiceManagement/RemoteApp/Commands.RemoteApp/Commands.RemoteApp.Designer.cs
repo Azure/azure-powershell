@@ -61,11 +61,83 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AdInfo cannot be added to a ClouldOnly Collection.
+        /// </summary>
+        internal static string AadInfoCanNotBeAddedToCloudOnlyCollectionMessage {
+            get {
+                return ResourceManager.GetString("AadInfoCanNotBeAddedToCloudOnlyCollectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RemoteApp collection name: {0} not found.
+        /// </summary>
+        internal static string CollectionNotFoundByNameFormat {
+            get {
+                return ResourceManager.GetString("CollectionNotFoundByNameFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to generate the detailed usage informaton. Please try again and if it still does not succeed, then call Microsoft support..
+        /// </summary>
+        internal static string DetailedUsageFailureMessage {
+            get {
+                return ResourceManager.GetString("DetailedUsageFailureMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure?.
         /// </summary>
         internal static string GenericAreYouSureQuestion {
             get {
                 return ResourceManager.GetString("GenericAreYouSureQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Argument SubnetName: {0} not found.
+        /// </summary>
+        internal static string InvalidArgumentSubNetNameNotFoundMessageFormat {
+            get {
+                return ResourceManager.GetString("InvalidArgumentSubNetNameNotFoundMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Argument VNetName: {0} not found.
+        /// </summary>
+        internal static string InvalidArgumentVNetNameNotFoundMessageFormat {
+            get {
+                return ResourceManager.GetString("InvalidArgumentVNetNameNotFoundMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Link Azure VNet&quot; Feature not enabled.
+        /// </summary>
+        internal static string LinkAzureVNetFeatureNotEnabledMessage {
+            get {
+                return ResourceManager.GetString("LinkAzureVNetFeatureNotEnabledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No plans found..
+        /// </summary>
+        internal static string NoPlansFoundMessage {
+            get {
+                return ResourceManager.GetString("NoPlansFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request timed out.
+        /// </summary>
+        internal static string RequestTimedOut {
+            get {
+                return ResourceManager.GetString("RequestTimedOut", resourceCulture);
             }
         }
         

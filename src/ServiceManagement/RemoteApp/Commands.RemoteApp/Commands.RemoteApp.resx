@@ -117,8 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AadInfoCanNotBeAddedToCloudOnlyCollectionMessage" xml:space="preserve">
+    <value>AdInfo cannot be added to a ClouldOnly Collection</value>
+  </data>
+  <data name="CollectionNotFoundByNameFormat" xml:space="preserve">
+    <value>RemoteApp collection name: {0} not found</value>
+  </data>
+  <data name="DetailedUsageFailureMessage" xml:space="preserve">
+    <value>Failed to generate the detailed usage informaton. Please try again and if it still does not succeed, then call Microsoft support.</value>
+  </data>
   <data name="GenericAreYouSureQuestion" xml:space="preserve">
     <value>Are you sure?</value>
+  </data>
+  <data name="InvalidArgumentSubNetNameNotFoundMessageFormat" xml:space="preserve">
+    <value>Invalid Argument SubnetName: {0} not found</value>
+  </data>
+  <data name="InvalidArgumentVNetNameNotFoundMessageFormat" xml:space="preserve">
+    <value>Invalid Argument VNetName: {0} not found</value>
+  </data>
+  <data name="LinkAzureVNetFeatureNotEnabledMessage" xml:space="preserve">
+    <value>"Link Azure VNet" Feature not enabled</value>
+  </data>
+  <data name="NoPlansFoundMessage" xml:space="preserve">
+    <value>No plans found.</value>
+  </data>
+  <data name="RequestTimedOut" xml:space="preserve">
+    <value>Request timed out</value>
   </data>
   <data name="SessionLogOffCaptionMessage" xml:space="preserve">
     <value>Logging off user session...</value>

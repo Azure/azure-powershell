@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
 
     public partial class MockObject
     {
-
         public static int SetUpDefaultRemoteAppApplications(Mock<IRemoteAppManagementClient> clientMock, string collectionName)
         {
             ISetup<IRemoteAppManagementClient, Task<GetPublishedApplicationListResult>> setup = null;

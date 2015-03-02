@@ -67,7 +67,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             Log("The test for Get-AzureRemoteAppCollection with {0} collections completed successfully", countOfExpectedCollections);
         }
 
-
         [TestMethod]
         public void GetCollectionsByName()
         {
@@ -110,7 +109,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
            Log("The test for Get-AzureRemoteAppCollection with {0} collections completed successfully", countOfExpectedCollections);
         }
-
 
         [TestMethod]
         [Ignore]

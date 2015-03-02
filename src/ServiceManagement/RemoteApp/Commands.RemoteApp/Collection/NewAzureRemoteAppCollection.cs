@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
+    using Microsoft.Azure.Commands.RemoteApp;
     using Microsoft.Azure.Management.RemoteApp;
     using Microsoft.Azure.Management.RemoteApp.Models;
     using Microsoft.WindowsAzure.Management.Network;
@@ -25,13 +26,10 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     using System.Threading.Tasks;
 
     [Cmdlet(VerbsCommon.New, "AzureRemoteAppCollection", DefaultParameterSetName = NoDomain), OutputType(typeof(TrackingResult))]
-
     public class NewAzureRemoteAppCollection : RdsCmdlet
     {
         private const string DomainJoined = "DomainJoined";
         private const string NoDomain = "NoDomain";
-
-
 
         [Parameter (Mandatory = true,
                     Position = 0,
@@ -124,8 +122,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string CustomRdpProperty { get; set; }
 
-
-
         public override void ExecuteCmdlet()
         {
             // register the subscription for this service if it has not been before
@@ -157,7 +153,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                         if (!IsFeatureEnabled(EnabledFeatures.azureVNet))
                         {
                             ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                     string.Format("\"Link Azure VNet\" Feature not enabled"),
+                                     string.Format(Commands_RemoteApp.LinkAzureVNetFeatureNotEnabledMessage),
                                      String.Empty,
                                      Client.Account,
                                      ErrorCategory.InvalidOperation
@@ -184,6 +180,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                     break;
                 }
                 case NoDomain:
+                default:
                 {
                     details.Region = Location;
                     break;
@@ -197,7 +194,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 TrackingResult trackingId = new TrackingResult(response);
                 WriteObject(trackingId);
             }
-
         }
 
         private bool ValidateCustomerVNetParams(string name, string subnet, IEnumerable<string> dns)
@@ -208,7 +204,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             if (azureVNet == null)
             {
                 ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                        String.Format("Invalid Argument VNetName: {0} not found", name),
+                                        String.Format(Commands_RemoteApp.InvalidArgumentVNetNameNotFoundMessageFormat, name),
                                         String.Empty,
                                         Client.Collections,
                                         ErrorCategory.InvalidArgument
@@ -231,7 +227,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             if (!isValidSubnetName)
             {
                 ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                        String.Format("Invalid Argument SubnetName: {0} not found", subnet),
+                                        String.Format(Commands_RemoteApp.InvalidArgumentSubNetNameNotFoundMessageFormat, subnet),
                                         String.Empty,
                                         Client.Collections,
                                         ErrorCategory.InvalidArgument

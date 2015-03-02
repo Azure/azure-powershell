@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
 using System;
@@ -31,7 +32,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             HelpMessage = "RemoteApp collection name")]
         [ValidatePattern(NameValidatorString)]
         public string CollectionName { get; set; }
-
 
         [Parameter(Mandatory = false,
                    Position = 1,
@@ -82,17 +82,17 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 TemplateImageName = collection.TemplateImageName
             };
 
-
             switch (ParameterSetName)
             {
                 case DomainJoined:
                     {
                         if (collection.AdInfo == null)
                         {
-                            ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString("AdInfo cannot be added to a ClouldOnly Collection",
-                                                                                                       String.Empty,
-                                                                                                       Client.Collections,
-                                                                                                       ErrorCategory.InvalidArgument);
+                            ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                Commands_RemoteApp.AadInfoCanNotBeAddedToCloudOnlyCollectionMessage,
+                                String.Empty,
+                                Client.Collections,
+                                ErrorCategory.InvalidArgument);
                             ThrowTerminatingError(er);
                         }
 

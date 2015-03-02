@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
                 StatusCode = System.Net.HttpStatusCode.Accepted,
             };
 
-
             response.RemoteAppTemplateImageList = new List<TemplateImage>()
             {
                 new TemplateImage()
@@ -86,7 +85,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
                 }
             };
 
-
             mockTemplates = new List<TemplateImage>();
             foreach (TemplateImage image in response.RemoteAppTemplateImageList)
             {
@@ -107,7 +105,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
 
             return mockTemplates.Count;
         }
-
 
         public static int SetUpDefaultRemoteAppTemplatesByName(Mock<IRemoteAppManagementClient> clientMock, string imageName)
         {

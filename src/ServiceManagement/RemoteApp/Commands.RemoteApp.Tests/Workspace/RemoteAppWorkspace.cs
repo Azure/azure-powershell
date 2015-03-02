@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         string EndUserFeedName = "MockFeed";
         string ClientUrl = "https://remoteapp.contoso.com/feed";
 
-
         [TestMethod]
         public void GetWorkspace()
         {
@@ -96,6 +95,5 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
             Log("The test for Set-AzureRemoteAppWorkspace completed successfully");
         }
-
     }
 }

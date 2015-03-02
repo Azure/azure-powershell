@@ -23,11 +23,9 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
     using VisualStudio.TestTools.UnitTesting;
 
     // Publish-AzureRemoteAppProgram, Unpublish-AzureRemoteAppProgram
-
     [TestClass]
     public class RemoteAppProgramTest : RemoteAppClientTest
     {
-
         [TestMethod]
         [Ignore]
         public void GetAllRemoteApps()

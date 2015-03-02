@@ -235,6 +235,5 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
 
             return isIdentical;
         }
-
     }
 }
