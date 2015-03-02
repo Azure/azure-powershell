@@ -1615,6 +1615,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 this.SetValue("IOType", value);
             }
         }
+
+        [DataMember(Name = "ResizedSizeInGB", EmitDefaultValue = false, Order = 6)]
+        public int? ResizedSizeInGB
+        {
+            get
+            {
+                return this.GetValue<int?>("ResizedSizeInGB");
+            }
+            set
+            {
+                this.SetValue("ResizedSizeInGB", value);
+            }
+        }
     }
     #endregion
 
