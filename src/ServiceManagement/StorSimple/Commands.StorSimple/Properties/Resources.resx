@@ -504,4 +504,7 @@
   <data name="DeviceFailoverSourceAndTargetDeviceSameError" xml:space="preserve">
     <value>Source and Target device in a failover operation can not be the same.</value>
   </data>
+  <data name="JobNotRunningOrCancellable" xml:space="preserve">
+    <value>Cannot stop job with id {0}. It is not a running cancellable job.</value>
+  </data>
 </root>

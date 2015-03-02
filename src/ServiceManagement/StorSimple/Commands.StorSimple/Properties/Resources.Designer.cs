@@ -484,6 +484,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot stop job with id {0}. It is not a running cancellable job..
+        /// </summary>
+        internal static string JobNotRunningOrCancellable {
+            get {
+                return ResourceManager.GetString("JobNotRunningOrCancellable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone and Primary DNS Server information is mandatory when configuring the device for the first time.
         /// </summary>
         internal static string MandatoryParamsMissingForInitialDeviceConfiguration {

@@ -62,6 +62,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                           return;
                       }
 
+                      // Make sure the job is running and cancellable, else fail.
+                      if (!(deviceJobDetails.IsJobCancellable && deviceJobDetails.Status == "Running"))
+                      {
+                          WriteVerbose(string.Format(Resources.JobNotRunningOrCancellable, InstanceId));
+                          WriteObject(null);
+                          return;
+                      }
+
                       // issue call to cancel the job.
                       WriteVerbose(string.Format(Resources.StoppingDeviceJob,InstanceId));
                       var taskStatusInfo = StorSimpleClient.StopDeviceJob(deviceJobDetails.Device.InstanceId, InstanceId);
