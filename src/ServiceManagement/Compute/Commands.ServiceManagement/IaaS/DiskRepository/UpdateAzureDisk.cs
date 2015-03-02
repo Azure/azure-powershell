@@ -37,7 +37,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         [ValidateNotNullOrEmpty]
         public string Label { get; set; }
 
-        [Parameter(Position = 2, ParameterSetName = ResizeParameterSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Label of the disk.")]
+        [Parameter(Position = 2,
+            ParameterSetName = ResizeParameterSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resizes the underlying blob to the indicated size in GB.")]
         [ValidateNotNullOrEmpty]
         public int ResizedSizeInGB { get; set; }
 

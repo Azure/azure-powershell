@@ -23,9 +23,25 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
     [Cmdlet(VerbsCommon.Set, "AzureOSDisk"), OutputType(typeof(IPersistentVM))]
     public class SetAzureOSDiskCommand : VirtualMachineConfigurationCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Controls the platform caching behavior of data disk blob for read / write efficiency.")]
+        private const string ResizeParameterSet = "Resize";
+        private const string NoResizeParameteSet = "NoResize";
+
+        [Parameter(Position = 0, ParameterSetName = NoResizeParameteSet, Mandatory = true, HelpMessage = "Controls the platform caching behavior of data disk blob for read / write efficiency.")]
+        [Parameter(Position = 0, ParameterSetName = ResizeParameterSet, Mandatory = false, HelpMessage = "Controls the platform caching behavior of data disk blob for read / write efficiency.")]
         [ValidateSet("ReadOnly", "ReadWrite", IgnoreCase = true)]
         public string HostCaching
+        {
+            get;
+            set;
+        }
+
+        [Parameter(Position = 1,
+            ParameterSetName = ResizeParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Resize the new OS Disk to a larger size.")]
+        [ValidateNotNullOrEmpty]
+        public int ResizedSizeInGB
         {
             get;
             set;
@@ -47,6 +63,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
             OSVirtualHardDisk disk = role.OSVirtualHardDisk;
             disk.HostCaching = HostCaching;
+            if (this.ParameterSetName.Equals(ResizeParameterSet))
+            {
+                disk.ResizedSizeInGB = this.ResizedSizeInGB;
+            }
+
             WriteObject(VM, true);
         }
 

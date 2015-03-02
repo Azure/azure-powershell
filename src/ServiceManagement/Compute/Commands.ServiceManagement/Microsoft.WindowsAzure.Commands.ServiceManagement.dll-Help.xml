@@ -24225,6 +24225,13 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>ResizedSizeInGB</maml:name>
+				<maml:description>
+					<maml:para>Resize the new OSVirtualHardDisk to a larger size. ResizedSizeInGB must be larger than the underlying OS Image's LogicalSizeInGB. </maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -24248,6 +24255,18 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 			<command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
 			<dev:type>
 				<maml:name>IPersistentVM</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>ResizedSizeInGB</maml:name>
+			<maml:description>
+				<maml:para>Resize the new OSVirtualHardDisk to a larger size. ResizedSizeInGB must be larger than the underlying OS Image's LogicalSizeInGB. </maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -31812,6 +31831,13 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>ResizedSizeInGB</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -31835,6 +31861,18 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>ResizedSizeInGB</maml:name>
+			<maml:description>
+				<maml:para>Resizes the underlying blob to the indicated size in GB.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
