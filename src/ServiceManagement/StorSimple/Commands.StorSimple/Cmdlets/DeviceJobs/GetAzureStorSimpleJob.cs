@@ -38,6 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByDeviceName,
             HelpMessage=StorSimpleCmdletHelpMessage.DeviceName)]
+        [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
 
@@ -46,7 +47,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// </summary>
         [Parameter(Mandatory=true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById,
             HelpMessage = StorSimpleCmdletHelpMessage.DeviceJobId)]
-        public string JobId { get; set; }
+        [ValidateNotNullOrEmpty]
+        public string InstanceId { get; set; }
 
         /// <summary>
         /// Filter jobs by their status.
@@ -107,13 +109,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
 
                 // Make call to get device jobs.
-                var response = StorSimpleClient.GetDeviceJobs(deviceId, Type, Status, JobId, fromDateTimeIsoString, toDateTimeIsoString, (int)Skip, (int)First);
+                var response = StorSimpleClient.GetDeviceJobs(deviceId, Type, Status, InstanceId, fromDateTimeIsoString, toDateTimeIsoString, (int)Skip, (int)First);
 
                 if (ParameterSetName == StorSimpleCmdletParameterSet.IdentifyById)
                 {
                     if (response == null || response.DeviceJobList.Count < 1)
                     {
-                        WriteVerbose(string.Format(Resources.NoDeviceJobFoundWithGivenIdMessage, JobId));
+                        WriteVerbose(string.Format(Resources.NoDeviceJobFoundWithGivenIdMessage, InstanceId));
                         WriteObject(null);
                         return;
                     }
@@ -122,7 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
                 else
                 {
-                    WriteObject(response.DeviceJobList);
+                    WriteObject(response.DeviceJobList, true);
                     WriteVerbose(string.Format(Resources.DeviceJobsReturnedCount, response.DeviceJobList.Count, 
                         response.DeviceJobList.Count > 1 ? "s" : string.Empty));
                     if (response.NextPageUri != null

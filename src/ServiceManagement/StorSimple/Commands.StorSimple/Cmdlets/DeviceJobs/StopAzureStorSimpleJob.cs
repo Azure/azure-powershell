@@ -32,9 +32,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// <summary>
         /// Device job id of the job to stop.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.DeviceJobId)]
-        [ValidateNotNullOrEmptyAttribute]
-        public string JobId { get; set; }
+        [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.DeviceJobId, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string InstanceId { get; set; }
 
         /// <summary>
         /// Wheter to prompt for permission or not.
@@ -48,23 +48,31 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 ConfirmAction(
                    Force.IsPresent,
-                   string.Format(Resources.StopAzureStorSimpleJobWarningMessage, JobId),
-                   string.Format(Resources.StopAzureStorSimpleJobMessage, JobId),
-                  JobId,
+                   string.Format(Resources.StopAzureStorSimpleJobWarningMessage, InstanceId),
+                   string.Format(Resources.StopAzureStorSimpleJobMessage, InstanceId),
+                  InstanceId,
                   () =>
                   {
                       // Get details of the job being cancelled.
-                      var deviceJobDetails = StorSimpleClient.GetDeviceJobById(JobId);
+                      var deviceJobDetails = StorSimpleClient.GetDeviceJobById(InstanceId);
                       if (deviceJobDetails == null)
                       {
-                          WriteVerbose(string.Format(Resources.NoDeviceJobFoundWithGivenIdMessage, JobId));
+                          WriteVerbose(string.Format(Resources.NoDeviceJobFoundWithGivenIdMessage, InstanceId));
+                          WriteObject(null);
+                          return;
+                      }
+
+                      // Make sure the job is running and cancellable, else fail.
+                      if (!(deviceJobDetails.IsJobCancellable && deviceJobDetails.Status == "Running"))
+                      {
+                          WriteVerbose(string.Format(Resources.JobNotRunningOrCancellable, InstanceId));
                           WriteObject(null);
                           return;
                       }
 
                       // issue call to cancel the job.
-                      WriteVerbose(string.Format(Resources.StoppingDeviceJob,JobId));
-                      var taskStatusInfo = StorSimpleClient.StopDeviceJob(deviceJobDetails.Device.InstanceId, JobId);
+                      WriteVerbose(string.Format(Resources.StoppingDeviceJob,InstanceId));
+                      var taskStatusInfo = StorSimpleClient.StopDeviceJob(deviceJobDetails.Device.InstanceId, InstanceId);
                       HandleSyncTaskResponse(taskStatusInfo, "stop");
                       if (taskStatusInfo.AsyncTaskAggregatedResult == AsyncTaskAggregatedResult.Succeeded)
                       {

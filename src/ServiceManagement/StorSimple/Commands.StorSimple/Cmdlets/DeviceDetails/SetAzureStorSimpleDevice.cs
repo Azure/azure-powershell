@@ -71,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// <summary>
         /// A collection of network configs for interfaces on the device.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.StorSimpleNetworkConfig)]
+        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.StorSimpleNetworkConfig, ValueFromPipeline=true)]
         [ValidateNotNullOrEmpty]
         public NetworkConfig[] StorSimpleNetworkConfig { get; set; }
 

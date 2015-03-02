@@ -214,7 +214,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More jobs are available for your query. To access the next page of your result use \&quot;-First {0} -Skip {1}\&quot; in your commandlet.
+        ///   Looks up a localized string similar to More jobs are available for your query. To access the next page of your result use -First {0} -Skip {1} in your commandlet.
         /// </summary>
         internal static string DeviceJobsNextPageFormatMessage {
             get {
@@ -223,7 +223,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More jobs are available in the subsequent pages for your query. To access the next page use \&quot;-Skip {0}\&quot;  in your commandlet.
+        ///   Looks up a localized string similar to More jobs are available in the subsequent pages for your query. To access the next page use -Skip {0}  in your commandlet.
         /// </summary>
         internal static string DeviceJobsNextPagewithNoFirstMessage {
             get {
@@ -480,6 +480,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string IscsiConnectionGet_StatusMessage {
             get {
                 return ResourceManager.GetString("IscsiConnectionGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot stop job with id {0}. It is not a running cancellable job..
+        /// </summary>
+        internal static string JobNotRunningOrCancellable {
+            get {
+                return ResourceManager.GetString("JobNotRunningOrCancellable", resourceCulture);
             }
         }
         
@@ -1177,7 +1186,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -JobId {1} for tracking the job&apos;s status.
+        ///   Looks up a localized string similar to The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job&apos;s status.
         /// </summary>
         internal static string SuccessMessageSubmitDeviceJob {
             get {
