@@ -901,292 +901,295 @@
 
   <!--Get-AzureSiteRecoveryJob-->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
-	<command:details>
-		<command:name>
-                   Get-AzureSiteRecoveryJob
-		</command:name>
-		<maml:description>
-			<maml:para>The Get-AzureSiteRecoveryJob cmdlet gets Microsoft Azure Site Recovery jobs. You can use this cmdlet to view the information of the operation for current Azure Site Recovery vault.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para></maml:para>
-		</maml:copyright>
-		<command:verb>Get</command:verb>
-		<command:noun>AzureSiteRecoveryJob</command:noun>
-		<dev:version></dev:version>
-	</command:details>
-	<maml:description>
-		<maml:para>Get the information of the operation for current Azure Site Recovery Vault.</maml:para>
-	</maml:description>
-	<!-- Cmdlet syntax section-->
-	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>Get-AzureSiteRecoveryJob</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Id</maml:name>
-				<maml:description>
-					<maml:para>Specifies the ID of a job to get.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Get-AzureSiteRecoveryJob</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>Job</maml:name>
-				<maml:description>
-					<maml:para>Specifies an Azure Site Recovery job object to get. </maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ASRJob</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Get-AzureSiteRecoveryJob</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>EndTime</maml:name>
-				<maml:description>
-					<maml:para>Specifies a end time as a DateTime object. This cmdlet gets jobs that ends after the time that this parameter specifies. To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. </maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>StartTime</maml:name>
-				<maml:description>
-					<maml:para>Specifies a start time as a DateTime object. This cmdlet gets jobs that begin after the time that this parameter specifies. To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. </maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>State</maml:name>
-				<maml:description>
-					<maml:para>Specifies an input state for an Azure Site Recovery job. This cmdlet gets jobs that match the state that this parameter specifies.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>TargetObjectId</maml:name>
-				<maml:description>
-					<maml:para>ID of the object on which Job was targeted to.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-	</command:syntax>
-	<!-- Cmdlet parameter section  -->
-	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>EndTime</maml:name>
-			<maml:description>
-				<maml:para>Specifies a end time as a DateTime object. This cmdlet gets jobs that ends after the time that this parameter specifies. To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. </maml:para>
-								
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-			<dev:type>
-				<maml:name>DateTime</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Id</maml:name>
-			<maml:description>
-				<maml:para>Specifies the ID of a job to get.</maml:para>
-								
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-			<maml:name>Job</maml:name>
-			<maml:description>
-				<maml:para>Specifies an Azure Site Recovery job object to get. </maml:para>
-								
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ASRJob</command:parameterValue>
-			<dev:type>
-				<maml:name>ASRJob</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>StartTime</maml:name>
-			<maml:description>
-				<maml:para>Specifies a start time as a DateTime object. This cmdlet gets jobs that begin after the time that this parameter specifies. To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. </maml:para>
-								
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-			<dev:type>
-				<maml:name>DateTime</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>State</maml:name>
-			<maml:description>
-				<maml:para>Specifies an input state for an Azure Site Recovery job. This cmdlet gets jobs that match the state that this parameter specifies.</maml:para>
-								
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>TargetObjectId</maml:name>
-			<maml:description>
-				<maml:para>ID of the object on which Job was targeted to.</maml:para>
-								
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<!-- Input - Output section-->
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri/>
-				<maml:description />
-			</dev:type>
-			<maml:description>
-				<maml:para>
-					<!-- description  -->
-					
-				</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri />
-				<maml:description />
-			</dev:type>   
-			<maml:description>
-				<maml:para>
-					<!-- description  -->
-					
-				</maml:para>
-			</maml:description> 
-		</command:returnValue>
-	</command:returnValues>
-	<!-- Error section-->
-	<command:terminatingErrors />
-	<command:nonTerminatingErrors />
-		<!-- Notes section  -->
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>
-                          
-                        </maml:para>
-		</maml:alert>
-		<maml:alert>
-			<maml:para></maml:para>
-		</maml:alert>
-	</maml:alertSet>
-	<!-- Example section  --> 
-	<command:examples>
+    <command:details>
+      <command:name>
+        Get-AzureSiteRecoveryJob
+      </command:name>
+      <maml:description>
+        <maml:para>The Get-AzureSiteRecoveryJob cmdlet gets Microsoft Azure Site Recovery jobs. You can use this cmdlet to view the information of the operation for current Azure Site Recovery vault.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureSiteRecoveryJob</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Get the information of the operation for current Azure Site Recovery Vault.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureSiteRecoveryJob</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Id</maml:name>
+          <maml:description>
+            <maml:para>Specifies the ID of a job to get.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureSiteRecoveryJob</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>Job</maml:name>
+          <maml:description>
+            <maml:para>Specifies an Azure Site Recovery job object to get. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ASRJob</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureSiteRecoveryJob</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>EndTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies a end time as a DateTime object. This cmdlet gets jobs that starts before the time that this parameter specifies. To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>StartTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies a start time as a DateTime object. This cmdlet gets jobs that begin after the time that this parameter specifies. To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>State</maml:name>
+          <maml:description>
+            <maml:para>Specifies an input state for an Azure Site Recovery job. This cmdlet gets jobs that match the state that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>TargetObjectId</maml:name>
+          <maml:description>
+            <maml:para>ID of the object on which Job was targeted to.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>EndTime</maml:name>
+        <maml:description>
+          <maml:para>Specifies a end time as a DateTime object. This cmdlet gets jobs that starts before the time that this parameter specifies. To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. </maml:para>
 
-		<command:example>
-			<maml:title>
-				-------------------------- EXAMPLE 1 --------------------------
-			</maml:title> 
-			<maml:introduction>
-				<maml:para>C:\PS&gt;</maml:para>
-			</maml:introduction> 
-  			<dev:code>
-Get-AzureSiteRecoveryJob -Id d0b56c01-1fd7-411a-94e9-be717ac6601e
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        <dev:type>
+          <maml:name>DateTime</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>Specifies the ID of a job to get.</maml:para>
 
-ID               : d0b56c01-1fd7-411a-94e9-be717ac6601e
-ClientRequestId  : 0d259706-7882-4614-81bf-7d155f3600cb-2014-10-06 09:40:26Z
-State            : Succeeded
-StateDescription : Completed
-StartTime        : 10/6/2014 9:40:28 AM
-EndTime          : 10/6/2014 9:40:30 AM
-AllowedActions   : {Cancel, Restart}
-Name             : Remove classification configuration
-Tasks            : {Prerequisites check for unpairing classifications, Unpairing classifications}
-Errors           : {}                        </dev:code>
-       			<dev:remarks>
-                                <maml:para>Description</maml:para>
-                                <maml:para>-----------</maml:para>
-  			        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-  			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText></command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>Job</maml:name>
+        <maml:description>
+          <maml:para>Specifies an Azure Site Recovery job object to get. </maml:para>
 
-		<command:example>
-			<maml:title>
-				-------------------------- EXAMPLE 2 --------------------------
-			</maml:title> 
-			<maml:introduction>
-				<maml:para>C:\PS&gt;</maml:para>
-			</maml:introduction> 
-  			<dev:code>
-$StartTime = Get-Date &quot;2015-02-20 06:10:03Z&quot;
-$EndTime = Get-Date &quot;2015-02-20 06:20:03Z&quot;
-Get-AzureSiteRecoveryJob -StartTime $StartTime -EndTime $EndTime
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ASRJob</command:parameterValue>
+        <dev:type>
+          <maml:name>ASRJob</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>StartTime</maml:name>
+        <maml:description>
+          <maml:para>Specifies a start time as a DateTime object. This cmdlet gets jobs that begin after the time that this parameter specifies. To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. </maml:para>
 
-Name             : SaveRecoveryPlan
-ID               : 5d6389f7-3f08-48d6-9d2c-e4a4aed36a0b
-ClientRequestId  : bc4b291d-4722-419e-a7a3-7a58674c35a3-2015-02-20 06:14:03Z
-State            : Succeeded
-StateDescription : Completed
-StartTime        : 2/20/2015 6:14:04 AM
-EndTime          : 2/20/2015 6:14:05 AM
-TargetObjectId   : 2d11e8be-29b8-4152-a8b9-2a6a9304537a
-TargetObjectType : RecoveryPlan
-TargetObjectName : TestRP
-AllowedActions   :
-Tasks            : {Save a recovery plan task}
-Errors           : {}                        </dev:code>
-       			<dev:remarks>
-                                <maml:para>Description</maml:para>
-                                <maml:para>-----------</maml:para>
-  			        <maml:para>Provide the DateTime object in UTC as input to StartTime and EndTime parameter.</maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-  			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText></command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<!-- Link section  -->
-	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText></maml:linkText>
-			<maml:uri/>
-		</maml:navigationLink>
-	</maml:relatedLinks>
-</command:command>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        <dev:type>
+          <maml:name>DateTime</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>State</maml:name>
+        <maml:description>
+          <maml:para>Specifies an input state for an Azure Site Recovery job. This cmdlet gets jobs that match the state that this parameter specifies.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TargetObjectId</maml:name>
+        <maml:description>
+          <maml:para>ID of the object on which Job was targeted to.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureSiteRecoveryJob -Id d0b56c01-1fd7-411a-94e9-be717ac6601e
+
+          Name             : DeleteRecoveryPlan
+          ID               : 1bb9fcbe-3bd6-4b3f-b77c-e4fb193f545a
+          ClientRequestId  : 9a867466-f10e-4d62-9cca-a15fa7116035-2015-03-02 16:27:31Z
+          State            : Succeeded
+          StateDescription : Completed
+          StartTime        : 02-03-2015 16:27:33 +05:30
+          EndTime          : 02-03-2015 16:27:33 +05:30
+          TargetObjectId   : cfb445b7-fd14-4b5d-b9ac-5154e1415ef2
+          TargetObjectType : RecoveryPlan
+          TargetObjectName : RPE2E
+          AllowedActions   : {Cancel}
+          Tasks            : {Delete a recovery plan task}
+          Errors           : {}
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureSiteRecoveryJob -StartTime &quot;02-03-2015 21:50:00&quot; -EndTime &quot;02-03-2015 22:00:00&quot;
+
+          Name             : DeleteRecoveryPlan
+          ID               : 1bb9fcbe-3bd6-4b3f-b77c-e4fb193f545a
+          ClientRequestId  : 9a867466-f10e-4d62-9cca-a15fa7116035-2015-03-02 16:27:31Z
+          State            : Succeeded
+          StateDescription : Completed
+          StartTime        : 02-03-2015 16:27:33 +05:30
+          EndTime          : 02-03-2015 16:27:33 +05:30
+          TargetObjectId   : cfb445b7-fd14-4b5d-b9ac-5154e1415ef2
+          TargetObjectType : RecoveryPlan
+          TargetObjectName : RPE2E
+          AllowedActions   : {Cancel}
+          Tasks            : {Delete a recovery plan task}
+          Errors           : {}
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
 
   <!--Get-AzureSiteRecoveryRecoveryPlan-->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
@@ -1351,7 +1354,6 @@ Errors           : {}                        </dev:code>
   </command:command>
 
   <!--Get-AzureSiteRecoveryProtectionEntity-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -2493,7 +2495,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
   </command:command>
 
   <!--Set-AzureSiteRecoveryProtectionEntity-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -2822,7 +2823,6 @@ Errors           : {}
 </command:command>
 
   <!--Start-AzureSiteRecoveryTestFailoverJob-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -3706,7 +3706,6 @@ Errors           : {}
   </command:command>
 
   <!--Start-AzureSiteRecoveryUnplannedFailoverJob-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -4055,7 +4054,6 @@ Errors           : {}                        </dev:code>
 </command:command>
 
   <!--Start-AzureSiteRecoveryCommitFailoverJob-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -4325,8 +4323,6 @@ Errors           : {}                        </dev:code>
   </command:command>
 
   <!--Start-AzureSiteRecoveryPlannedFailoverJob-->
-  <!-- v 1.3.0.36 -->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -4863,7 +4859,6 @@ Errors           : {}                        </dev:code>
   </command:command>
 
   <!--Update-AzureSiteRecoveryRecoveryPlan-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -5015,7 +5010,6 @@ Errors           : {}                        </dev:code>
   </command:command>
 
   <!--Update-AzureSiteRecoveryProtectionDirection-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -5326,7 +5320,6 @@ Errors           : {}                        </dev:code>
   </command:command>
 
   <!--Update-AzureSiteRecoveryProtectionEntity-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -5974,7 +5967,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
 </command:command>
 
   <!-- Start-AzureSiteRecoveryProtectionProfileAssociationJob -->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -6529,7 +6521,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
   </command:command>
 
   <!-- Start-AzureSiteRecoveryProtectionProfileDissociationJob -->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -6731,7 +6722,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
   </command:command>
 
   <!--Get-AzureSiteRecoveryStorage-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -6880,7 +6870,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
   </command:command>
 
   <!--Get-AzureSiteRecoveryStorageMapping-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -8401,7 +8390,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
   </command:command>
 
   <!--Get-AzureSiteRecoveryVault-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -8781,51 +8769,50 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
   </command:command>
 
   <!--New-AzureSiteRecoverySite-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        New-AzureSiteRecoveryVault
+        New-AzureSiteRecoverySite
       </command:name>
       <maml:description>
-        <maml:para>Creates a new Azure Site Recovery Vault</maml:para>
+        <maml:para>Creates an Azure Site Recovery Site</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para></maml:para>
       </maml:copyright>
       <command:verb>New</command:verb>
-      <command:noun>AzureSiteRecoveryVault</command:noun>
+      <command:noun>AzureSiteRecoverySite</command:noun>
       <dev:version></dev:version>
     </command:details>
     <maml:description>
-      <maml:para>Creates a new Azure Site Recovery Vault</maml:para>
+      <maml:para>Creates Azure Site Recovery Site</maml:para>
     </maml:description>
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureSiteRecoveryVault</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Location</maml:name>
-          <maml:description>
-            <maml:para>Geo Location Name</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
+        <maml:name>New-AzureSiteRecoverySite</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Name</maml:name>
           <maml:description>
-            <maml:para>Vault Name for which the cred file to be generated</maml:para>
+            <maml:para>Name of the site to be created</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Vault</maml:name>
+          <maml:description>
+            <maml:para>Vault Object for which the site has to be created</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ASRVault</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
     <command:parameters>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Location</maml:name>
+        <maml:name>Name</maml:name>
         <maml:description>
-          <maml:para>Geo Location Name</maml:para>
+          <maml:para>Name of the site to be created</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
@@ -8835,15 +8822,15 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Name</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Vault</maml:name>
         <maml:description>
-          <maml:para>Vault Name for which the cred file to be generated</maml:para>
+          <maml:para>Vault Object for which the site has to be created</maml:para>
 
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">ASRVault</command:parameterValue>
         <dev:type>
-          <maml:name>string</maml:name>
+          <maml:name>ASRVault</maml:name>
           <maml:uri/>
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
@@ -8906,11 +8893,22 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          New-AzureSiteRecoveryVault -Name testVault -Location &quot;West US&quot;
+          New-AzureSiteRecoverySite -Name testSite
 
-          Response
-          --------
-          Vault has been created
+          ActivityId       : 8d5b9957-3a1d-4881-bbee-eaaa704564a7-2015-02-02 04:34:11Z-P
+          AllowedActions   : {}
+          DisplayName      :
+          EndTime          :
+          Errors           : {}
+          StartTime        :
+          State            : NotStarted
+          StateDescription : NotStarted
+          TargetObjectId   :
+          TargetObjectName :
+          TargetObjectType : ProtectionEntity
+          Tasks            : {}
+          Name             :
+          ID               : 127f77e6-b7d4-421d-8679-a98319622b99
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -8938,7 +8936,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
   </command:command>
 
   <!--Get-AzureSiteRecoverySite-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
@@ -9075,7 +9072,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
   </command:command>
 
   <!--Set-AzureSiteRecoveryVM-->
-  <!-- v 1.3.0.36 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
