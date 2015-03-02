@@ -70,35 +70,30 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// Gets or sets the prefix size when using the text masking function
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The prefix size when using the text masking function.")]
-        [ValidateNotNullOrEmpty]
         public uint? PrefixSize { get; set; }
 
         /// <summary>
         /// Gets or sets the replacement string when using the text masking function
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The replacement string when using the text masking function.")]
-        [ValidateNotNullOrEmpty]
         public string ReplacementString { get; set; }
 
         /// <summary>
         /// Gets or sets the suffix size when using the text masking function
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The suffix size string when using the text masking function.")]
-        [ValidateNotNullOrEmpty]
         public uint? SuffixSize { get; set; }
 
         /// <summary>
         /// Gets or sets the NumberFrom property, which is the lower bound of the random interval when using the number masking function
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The lower bound of the random interval when using the number masking function.")]
-        [ValidateNotNullOrEmpty]
         public double? NumberFrom { get; set; }
 
         /// <summary>
         /// Gets or sets the NumberTo property, which is the upper bound of the random interval when using the number masking function
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The upper bound of the random interval when using the number masking function.")]
-        [ValidateNotNullOrEmpty]
         public double? NumberTo { get; set; }
 
         [Parameter(Mandatory = false)]
