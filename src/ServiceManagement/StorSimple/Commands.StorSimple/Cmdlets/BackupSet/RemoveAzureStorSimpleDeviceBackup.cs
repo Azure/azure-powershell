@@ -59,8 +59,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (!ProcessParameters()) return;
                 ConfirmAction(
                    Force.IsPresent,
-                   string.Format(Resources.RemoveASSDBackupWarningMessage, finalBackupId),
-                   string.Format(Resources.RemoveASSDBackupMessage, finalBackupId),
+                   string.Format(Resources.RemoveAzureStorSimpleDeviceBackupWarningMessage, finalBackupId),
+                   string.Format(Resources.RemoveAzureStorSimpleDeviceBackupMessage, finalBackupId),
                   BackupId,
                   () =>
                   {

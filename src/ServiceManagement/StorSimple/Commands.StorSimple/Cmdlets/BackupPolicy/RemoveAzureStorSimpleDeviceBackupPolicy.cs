@@ -54,8 +54,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     return;
                 ConfirmAction(
                    Force.IsPresent,
-                   string.Format(Resources.RemoveASSDBackupPolicyWarningMessage, backupPolicyIdFinal),
-                   string.Format(Resources.RemoveASSDBackupPolicyMessage, backupPolicyIdFinal),
+                   string.Format(Resources.RemoveAzureStorSimpleDeviceBackupPolicyWarningMessage, backupPolicyIdFinal),
+                   string.Format(Resources.RemoveAzureStorSimpleDeviceBackupPolicyMessage, backupPolicyIdFinal),
                   backupPolicyIdFinal,
                   () =>
                   {
