@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Security.Services;
 using System;
@@ -126,14 +127,14 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
             {
                 if(rules.Any(r => r.AliasName == AliasName && r.RuleId != RuleId))
                 {
-                    return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingAliasAlreadyUsedError, AliasName);
+                    return string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingAliasAlreadyUsedError, AliasName);
                 }
             }
             else
             {
                 if (rules.Any(r => r.TableName == TableName && r.ColumnName == ColumnName && r.RuleId != RuleId))
                 {
-                    return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingTableAndColumnUsedError, TableName, ColumnName);
+                    return string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingTableAndColumnUsedError, TableName, ColumnName);
                 }
             }
             return null;
@@ -216,7 +217,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 
                 if(rule.NumberFrom > rule.NumberTo)
                 {
-                    throw new Exception(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingNumberRuleIntervalDefinitionError));
+                    throw new Exception(string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingNumberRuleIntervalDefinitionError));
                 }
             }
             return rule;
@@ -245,6 +246,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
             ModelAdapter.SetDatabaseDataMaskingRule(rules.First(r => r.RuleId == RuleId), clientRequestId);
         }
 
-        protected override bool writeResult() { return PassThru; }
+        protected override bool WriteResult() { return PassThru; }
     }
 }

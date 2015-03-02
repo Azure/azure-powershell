@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using System.Collections.Generic;
-using System.Management.Automation;
-using System.Linq;
 using System.Globalization;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {
@@ -37,15 +38,15 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         protected override void SendModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             if (!Force.IsPresent && !ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveDatabaseDataMaskingRuleDescription, RuleId, DatabaseName),
-                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveDatabaseDataMaskingRuleWarning, RuleId, DatabaseName),
-                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+                string.Format(CultureInfo.InvariantCulture, Resources.RemoveDatabaseDataMaskingRuleDescription, RuleId, DatabaseName),
+                string.Format(CultureInfo.InvariantCulture, Resources.RemoveDatabaseDataMaskingRuleWarning, RuleId, DatabaseName),
+                Resources.ShouldProcessCaption))
             {
                 return ;
             }
             ModelAdapter.RemoveDatabaseDataMaskingRule(rules.First(), clientRequestId);
         }
 
-        protected override bool writeResult() { return PassThru; }
+        protected override bool WriteResult() { return PassThru; }
     }
 }

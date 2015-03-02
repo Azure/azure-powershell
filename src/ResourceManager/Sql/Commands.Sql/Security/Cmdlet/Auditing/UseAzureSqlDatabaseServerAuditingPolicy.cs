@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using System;
 using System.Management.Automation;
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        protected override bool writeResult() { return PassThru; }
+        protected override bool WriteResult() { return PassThru; }
 
         protected override DatabaseAuditingPolicyModel UpdateModel(DatabaseAuditingPolicyModel model)
         {
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             string storageAccountName = this.ModelAdapter.GetServerStorageAccount(this.ResourceGroupName, this.ServerName, this.clientRequestId);
             if (string.IsNullOrEmpty(storageAccountName))
             {
-                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.UseServerWithoutStorageAccount));
+                throw new Exception(string.Format(Resources.UseServerWithoutStorageAccount));
             }
             return storageAccountName;
         }

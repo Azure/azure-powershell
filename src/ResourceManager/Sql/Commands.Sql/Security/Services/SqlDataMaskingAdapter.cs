@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql.Models;
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
                 select ModelizeDatabaseDataMaskingRule(r, resourceGroup, serverName, databaseName)).ToList();
             if(ruleId != null && rules.Count == 0)
             {
-                throw new Exception(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingRuleDoesNotExist, ruleId));
+                throw new Exception(string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingRuleDoesNotExist, ruleId));
             }
             return rules;
         }

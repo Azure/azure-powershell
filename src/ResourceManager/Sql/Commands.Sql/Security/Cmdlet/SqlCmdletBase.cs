@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
         /// Returns true if the model object that was constructed by this cmdlet should be written out
         /// </summary>
         /// <returns>True if the model object should be written out, False otherwise</returns>
-        protected virtual bool writeResult() { return true; }
+        protected virtual bool WriteResult() { return true; }
 
         protected abstract A InitModelAdapter (AzureSubscription subscription);
 
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
             M model = this.GetModel();
             M updatedModel = this.UpdateModel(model);
             this.SendModel(updatedModel);
-            if (writeResult()) this.WriteObject(updatedModel);
+            if (WriteResult()) this.WriteObject(updatedModel);
         }
     }
 }

@@ -68,16 +68,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return response.AuditingPolicy;
         }
 
-        ///// <summary>
-        ///// Gets the database server security policy of the given database server in the given resource group
-        ///// </summary>
-        //public DatabaseSecurityPolicy GetServerSecurityPolicy(string resourceGroupName, string serverName, string clientRequestId)
-        //{
-        //    ISecurityOperations operations = GetCurrentSqlClient(clientRequestId).DatabaseSecurity;
-        //    DatabaseSecurityPolicyGetResponse response = operations.Get(resourceGroupName, serverName, Constants.ServerPolicyId);
-        //    return response.DatabaseSecurityPolicy;
-        //}
-
         /// <summary>
         /// Calls the set audit APIs for the database auditing policy for the given database in the given database server in the given resource group
         /// </summary>

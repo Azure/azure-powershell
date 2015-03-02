@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        protected override bool writeResult() { return PassThru; }
+        protected override bool WriteResult() { return PassThru; }
 
         protected override DatabaseSecureConnectionPolicyModel UpdateModel(DatabaseSecureConnectionPolicyModel model) 
         {

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             }
             catch
             {
-                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
+                throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
             }
         }
 
@@ -128,7 +129,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
                 }     
                 else
                 {
-                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
+                    throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
                 }
             }
             return null;
@@ -146,7 +147,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             }
             catch
             {
-                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
+                throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
             }
         }
 

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Security.Services;
 using System.Collections.Generic;
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         {
             if(rules.Any(r=> r.RuleId == RuleId))
             {
-                return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.NewDataMaskingRuleIdAlreadyExistError, RuleId);
+                return string.Format(CultureInfo.InvariantCulture, Resources.NewDataMaskingRuleIdAlreadyExistError, RuleId);
             }
             return null;
         }

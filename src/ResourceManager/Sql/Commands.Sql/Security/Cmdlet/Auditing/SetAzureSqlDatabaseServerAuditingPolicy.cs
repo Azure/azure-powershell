@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Security.Services;
 using System;
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         [ValidateNotNullOrEmpty]
         public string StorageKeyType { get; set; }
 
-        protected override bool writeResult() { return PassThru; }
+        protected override bool WriteResult() { return PassThru; }
 
         protected override ServerAuditingPolicyModel UpdateModel(ServerAuditingPolicyModel model)
         {
@@ -104,11 +105,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             {
                 if (EventType.Contains(Constants.All))
                 {
-                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidEventTypeSet, Constants.All));
+                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, Constants.All));
                 }
                 if (EventType.Contains(Constants.None))
                 {
-                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidEventTypeSet, Constants.None));
+                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, Constants.None));
                 }
             }
         }

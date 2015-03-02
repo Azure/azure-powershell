@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
     
     public abstract class BaseSecureConnectionPolicyModel
     {
-        
         public string ResourceGroupName { get; set; }
 
         public string ServerName { get; set; }

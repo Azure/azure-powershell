@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         [ValidateNotNullOrEmpty]
         public string MaskingLevel { get; set; }
 
-        protected override bool writeResult() { return PassThru; }
+        protected override bool WriteResult() { return PassThru; }
 
         protected override DatabaseDataMaskingPolicyModel UpdateModel(DatabaseDataMaskingPolicyModel model)
         {
