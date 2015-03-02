@@ -144,16 +144,16 @@
   <data name="NotFoundMessageStorageAccountCredential" xml:space="preserve">
     <value>Storage account with the specified name does not exist.</value>
   </data>
-  <data name="RemoveASSDBackupMessage" xml:space="preserve">
+  <data name="RemoveAzureStorSimpleDeviceBackupMessage" xml:space="preserve">
     <value>Removing backup with backupId {0}...</value>
   </data>
-  <data name="RemoveASSDBackupPolicyMessage" xml:space="preserve">
+  <data name="RemoveAzureStorSimpleDeviceBackupPolicyMessage" xml:space="preserve">
     <value>Removing backuppolicy with backuppolicyId {0}...</value>
   </data>
-  <data name="RemoveASSDBackupPolicyWarningMessage" xml:space="preserve">
+  <data name="RemoveAzureStorSimpleDeviceBackupPolicyWarningMessage" xml:space="preserve">
     <value>Are you sure you want to remove the backuppolicy with backuppolicyId{0}?</value>
   </data>
-  <data name="RemoveASSDBackupWarningMessage" xml:space="preserve">
+  <data name="RemoveAzureStorSimpleDeviceBackupWarningMessage" xml:space="preserve">
     <value>Are you sure you want to remove the backup with backupId{0}?</value>
   </data>
   <data name="NotFoundMessageVirtualDisk" xml:space="preserve">
@@ -183,10 +183,10 @@
   <data name="RemoveWarningVolume" xml:space="preserve">
     <value>Are you sure you want to remove the volume?</value>
   </data>
-  <data name="StartASSDBackupRestoreJobMessage" xml:space="preserve">
+  <data name="StartAzureStorSimpleDeviceBackupRestoreJobMessage" xml:space="preserve">
     <value>Restoring backup with backupId {0}...</value>
   </data>
-  <data name="StartASSDBackupRestoreJobWarningMessage" xml:space="preserve">
+  <data name="StartAzureStorSimpleDeviceBackupRestoreJobWarningMessage" xml:space="preserve">
     <value>Are you sure you want to restore the backup with backupId{0}?</value>
   </data>
   <data name="SuccessMessageSetResourceContext" xml:space="preserve">
@@ -492,10 +492,10 @@
   <data name="SuccessMessageSubmitDeviceJob" xml:space="preserve">
     <value>The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -JobId {1} for tracking the job's status</value>
   </data>
-  <data name="StartASSBackupCloneJobMessage" xml:space="preserve">
+  <data name="StartAzureStorSimpleBackupCloneJobMessage" xml:space="preserve">
     <value>Cloning backup with backupId {0}...</value>
   </data>
-  <data name="StartASSBackupCloneJobWarningMessage" xml:space="preserve">
+  <data name="StartAzureStorSimpleBackupCloneJobWarningMessage" xml:space="preserve">
     <value>Are you sure you want to clone the backup with backupId {0}?</value>
   </data>
   <data name="InvalidInterfaceId" xml:space="preserve">

@@ -69,8 +69,8 @@ namespace Microsoft.AzureStorSimpleDeviceCmdlets.Commands
 
                 this.ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Resources.StartASSBackupCloneJobWarningMessage, BackupId),
-                    string.Format(Resources.StartASSBackupCloneJobMessage, BackupId),
+                    string.Format(Resources.StartAzureStorSimpleBackupCloneJobWarningMessage, BackupId),
+                    string.Format(Resources.StartAzureStorSimpleBackupCloneJobMessage, BackupId),
                     BackupId,
                     () =>
                     {

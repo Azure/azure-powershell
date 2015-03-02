@@ -53,8 +53,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 ProcessParameters();
                 ConfirmAction(
                    Force.IsPresent,
-                   string.Format(Resources.StartASSDBackupRestoreJobWarningMessage, BackupId),
-                   string.Format(Resources.StartASSDBackupRestoreJobMessage, BackupId),
+                   string.Format(Resources.StartAzureStorSimpleDeviceBackupRestoreJobWarningMessage, BackupId),
+                   string.Format(Resources.StartAzureStorSimpleDeviceBackupRestoreJobMessage, BackupId),
                   BackupId,
                   () =>
                   {
