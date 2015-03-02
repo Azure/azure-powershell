@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [Parameter(Mandatory = false,
                    Position = 1,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Billing Plan to use for this collection. Use Get-AzureRemoteAppBillingPlans to see the plans available.")]
+                   HelpMessage = "Plan to use for this collection. Use Get-AzureRemoteAppPlan to see the plans available.")]
         [ValidateNotNullOrEmpty]
-        public string BillingPlan { get; set; }
+        public string Plan { get; set; }
 
         [Parameter(Mandatory = false,
                    Position = 2,
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             details = new CollectionCreationDetails()
             {
                 Name = CollectionName,
-                BillingPlanName = String.IsNullOrWhiteSpace(BillingPlan) ? collection.BillingPlanName : BillingPlan,
+                BillingPlanName = String.IsNullOrWhiteSpace(Plan) ? collection.BillingPlanName : Plan,
                 Description = String.IsNullOrWhiteSpace(Description) ? collection.Description : Description,
                 CustomRdpProperty = String.IsNullOrWhiteSpace(CustomRdpProperty) ? collection.CustomRdpProperty : CustomRdpProperty,
                 TemplateImageName = collection.TemplateImageName

@@ -122,14 +122,14 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
             // Required parameters for this test
             mockCmdlet.CollectionName = collectionName;
-            mockCmdlet.Region = region;
-            mockCmdlet.BillingPlan = billingPlan;
+            mockCmdlet.Location = region;
+            mockCmdlet.Plan = billingPlan;
             mockCmdlet.ImageName = templateName;
             mockCmdlet.Description = description;
             mockCmdlet.CustomRdpProperty = customRDPString;
 
             // Setup the environment for testing this cmdlet
-            countOfExpectedCollections = MockObject.SetUpDefaultRemoteAppCollectionCreate(remoteAppManagementClientMock, mockCmdlet.CollectionName, mockCmdlet.Region, mockCmdlet.BillingPlan, mockCmdlet.ImageName, mockCmdlet.Description, mockCmdlet.CustomRdpProperty, trackingId);
+            countOfExpectedCollections = MockObject.SetUpDefaultRemoteAppCollectionCreate(remoteAppManagementClientMock, mockCmdlet.CollectionName, mockCmdlet.Location, mockCmdlet.Plan, mockCmdlet.ImageName, mockCmdlet.Description, mockCmdlet.CustomRdpProperty, trackingId);
             mockCmdlet.ResetPipelines();
 
             mockCmdlet.ExecuteCmdlet();
@@ -214,12 +214,12 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
             // Required parameters for this test
             mockCmdlet.CollectionName = collectionName;
-            mockCmdlet.BillingPlan = billingPlan;
+            mockCmdlet.Plan = billingPlan;
             mockCmdlet.Credential = new PSCredential(@"MyDomain\Administrator", password);
 
             // Setup the environment for testing this cmdlet
             MockObject.SetUpDefaultRemoteAppCollectionByName(remoteAppManagementClientMock, mockCmdlet.CollectionName);
-            countOfExpectedCollections = MockObject.SetUpDefaultRemoteAppCollectionSet(remoteAppManagementClientMock, mockCmdlet.CollectionName, subscriptionId, mockCmdlet.BillingPlan, String.Empty, mockCmdlet.Credential, domainName, trackingId);
+            countOfExpectedCollections = MockObject.SetUpDefaultRemoteAppCollectionSet(remoteAppManagementClientMock, mockCmdlet.CollectionName, subscriptionId, mockCmdlet.Plan, String.Empty, mockCmdlet.Credential, domainName, trackingId);
             mockCmdlet.ResetPipelines();
 
             mockCmdlet.ExecuteCmdlet();

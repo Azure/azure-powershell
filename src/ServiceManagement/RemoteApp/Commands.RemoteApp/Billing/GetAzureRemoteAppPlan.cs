@@ -19,8 +19,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
 
-    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppBillingPlan"), OutputType(typeof(BillingPlan))]
-    public class GetAzureRemoteAppBillingPlan : RdsCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppPlan"), OutputType(typeof(BillingPlan))]
+    public class GetAzureRemoteAppPlan : RdsCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             }
             else
             {
-                WriteVerboseWithTimestamp("No billing plans found.");
+                WriteVerboseWithTimestamp("No plans found.");
             }
         }
     }

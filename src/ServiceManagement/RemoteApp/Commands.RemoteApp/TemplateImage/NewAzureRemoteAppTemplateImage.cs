@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [Parameter(Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Region in which the template image will be stored")]
-        public string Region { get; set; }
+            HelpMessage = "Location in which the template image will be stored")]
+        public string Location { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 2,
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             TemplateImageDetails details = null;
             TemplateImage templateImage = null;
 
-            EnsureStorageInRegion(Region);
+            EnsureStorageInRegion(Location);
 
             if (Resume)
             {
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 details = new TemplateImageDetails()
                 {
                     Name = ImageName,
-                    Region = Region
+                    Region = Location
                 };
 
                 response = CallClient_ThrowOnError(() => Client.TemplateImages.Set(details));
@@ -219,13 +219,13 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             TemplateImageResult response = null;
             TemplateImageDetails details = null;
 
-            EnsureStorageInRegion(Region);
+            EnsureStorageInRegion(Location);
             FilterTemplateImage(ImageName, Operation.Create);
 
             details = new TemplateImageDetails()
             {
                 Name = ImageName,
-                Region = Region,
+                Region = Location,
                 SourceImageSasUri = GetAzureVmSasUri(AzureVmImageName)
             };
 

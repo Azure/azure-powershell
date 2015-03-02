@@ -49,17 +49,17 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [Parameter(Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Billing Plan to use for this collection. Use Get-AzureRemoteAppBillingPlans to see the plans available."
+            HelpMessage = "Plan to use for this collection. Use Get-AzureRemoteAppPlan to see the plans available."
         )]
-        public string BillingPlan { get; set; }
+        public string Plan { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = NoDomain,
-            HelpMessage = "Region in which this collection will be created. Use Get-AzureRemoteAppRegionList to see the regions available."
+            HelpMessage = "Location in which this collection will be created. Use Get-AzureRemoteAppLocation to see the locations available."
         )]
-        public string Region { get; set; }
+        public string Location { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 3,
@@ -137,8 +137,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             {
                 Name = CollectionName,
                 TemplateImageName = ImageName,
-                Region = Region,
-                BillingPlanName = BillingPlan,
+                Region = Location,
+                BillingPlanName = Plan,
                 Description = Description,
                 CustomRdpProperty = CustomRdpProperty,
                 Mode = CollectionMode.Apps
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
                         ValidateCustomerVNetParams(details.VnetName, details.SubnetName, details.DnsServers);
 
-                        details.Region = Region;
+                        details.Region = Location;
                     }
 
                     details.AdInfo = new ActiveDirectoryConfig()
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 }
                 case NoDomain:
                 {
-                    details.Region = Region;
+                    details.Region = Location;
                     break;
                 }
             }
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 {
                     isValidSubnetName = true;
 
-                    Region = azureVNet.Location;
+                    Location = azureVNet.Location;
                     break;
                 }
             }

@@ -118,11 +118,11 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
             // Required parameters for this test
             mockCmdlet.ImageName = templateName;
-            mockCmdlet.Region = region;
+            mockCmdlet.Location = region;
             mockCmdlet.Path = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;  // Need to specify a valid file otherwise the validation for this parameter will fail
 
             // Setup the environment for testing this cmdlet
-            countOfExpectedTemplates = MockObject.SetUpDefaultRemoteAppTemplateCreate(remoteAppManagementClientMock, mockCmdlet.ImageName, templateId, mockCmdlet.Region, mockCmdlet.Path);
+            countOfExpectedTemplates = MockObject.SetUpDefaultRemoteAppTemplateCreate(remoteAppManagementClientMock, mockCmdlet.ImageName, templateId, mockCmdlet.Location, mockCmdlet.Path);
             mockCmdlet.ResetPipelines();
 
             mockCmdlet.ExecuteCmdlet();

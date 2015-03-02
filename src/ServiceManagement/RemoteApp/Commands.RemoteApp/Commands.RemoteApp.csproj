@@ -162,7 +162,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Billing\GetAzureRemoteAppBillingPlan.cs" />
+    <Compile Include="Billing\GetAzureRemoteAppPlan.cs" />
     <Compile Include="Collection\GetAzureRemoteAppCollectionUsageDetails.cs" />
     <Compile Include="Collection\GetAzureRemoteAppCollectionUsageSummary.cs" />
     <Compile Include="Collection\GetAzureRemoteAppCollection.cs" />
