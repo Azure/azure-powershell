@@ -38,6 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByDeviceName,
             HelpMessage=StorSimpleCmdletHelpMessage.DeviceName)]
+        [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
 
@@ -46,6 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// </summary>
         [Parameter(Mandatory=true, Position = 0, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById,
             HelpMessage = StorSimpleCmdletHelpMessage.DeviceJobId)]
+        [ValidateNotNullOrEmpty]
         public string InstanceId { get; set; }
 
         /// <summary>
