@@ -19,10 +19,10 @@ using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -166,7 +166,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
         protected void ValidateParameters()
         {
-            var currentSubscription = AzureSession.CurrentContext.Subscription;
+            var currentSubscription = Profile.Context.Subscription;
             if ((currentSubscription == null || currentSubscription.GetProperty(AzureSubscription.Property.StorageAccount) == null) && this.MediaLocation == null && string.Compare(this.ParameterSetName, "CreateNew", StringComparison.OrdinalIgnoreCase) == 0)
             {
                 throw new ArgumentException(Resources.MediaLocationOrDefaultStorageAccountMustBeSpecified);
