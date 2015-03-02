@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeRdfeCallWithCreatedProfile()
         {
-            ProfileTestController.NewARMInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureProfileInARMMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
+            ProfileTestController.NewRdfeInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureProfileInARMMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
         }
     }
 }
