@@ -47,14 +47,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 
             AzureSession.ClientFactory.UserAgents.Add(AzurePowerShell.UserAgentValue);
-            InitializeTokenCaches();
-            DefaultProfile = InitializeDefaultProfile();
-            CurrentProfile = DefaultProfile;
-            UpdateSessionStateForProfile(CurrentProfile);
-            AzureSession.DataStore = new DiskDataStore();
+            if (!TestMockSupport.RunningMocked)
+            {
+                InitializeTokenCaches();
+                DefaultProfile = InitializeDefaultProfile();
+                CurrentProfile = DefaultProfile;
+                UpdateSessionStateForProfile(CurrentProfile);
+                AzureSession.DataStore = new DiskDataStore();
+            }
         }
 
-                /// <summary>
+        /// <summary>
         /// Create the default profile, based on the default profile path
         /// </summary>
         /// <returns>The default prpofile, serialized from the default location on disk</returns>
@@ -68,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 }
                 catch
                 {
-                   // swallow exceptions in creating the profile from disk
+                    // swallow exceptions in creating the profile from disk
                 }
             }
 
@@ -138,9 +141,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (Profile == null)
             {
-               Profile = AzurePSCmdlet.CurrentProfile;
+                Profile = AzurePSCmdlet.CurrentProfile;
             }
-            
+
             UpdateSessionStateForProfile(Profile);
         }
 

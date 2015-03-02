@@ -83,12 +83,11 @@ function Test-NewAzureProfileInRDFEMode
 {
     param([string] $token, [string] $user, [string] $sub)
     $profile = $(Create-Profile $token $user $sub)
-	Assert-AreEqual "AzureCloud" $profile.Context.Environment.Name
-	Clear-AzureProfile -Force
-	$locations = Get-AzureLocation -Profile $profile
-	Assert-NotNull $locations
-	Assert-True {$locations.Count -gt 1}
-
+    Assert-AreEqual "AzureCloud" $profile.Context.Environment.Name
+    Clear-AzureProfile -Force
+    $locations = Get-AzureLocation -Profile $profile
+    Assert-NotNull $locations
+    Assert-True {$locations.Count -gt 1}
 }
 
 <#

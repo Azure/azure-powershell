@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
         public string SubscriptionId { get; set; }
 
         public string StorageAccount { get; set; }
-        
+
         public X509Certificate2 Certificate { get; set; }
 
         public PSCredential Credential { get; set; }
@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
             return new AzureProfileSettings
             {
                 Environment = command.Environment,
-                SubscriptionId =  command.SubscriptionId,
+                SubscriptionId = command.SubscriptionId,
                 StorageAccount = command.StorageAccount,
                 Certificate = command.Certificate,
                 Credential = command.Credential,
@@ -53,6 +53,5 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
                 AccountId = command.AccountId
             };
         }
-
     }
 }

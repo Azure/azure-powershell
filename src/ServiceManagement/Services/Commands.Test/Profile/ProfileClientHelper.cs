@@ -43,7 +43,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
         private MockRdfeSubscriptionOperations()
         {
-
         }
 
         /// <summary>
@@ -74,7 +73,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             };
         }
 
-
         public Task<Azure.Subscriptions.Rdfe.Models.SubscriptionListOperationResponse> ListAsync(System.Threading.CancellationToken cancellationToken)
         {
             var response = new Azure.Subscriptions.Rdfe.Models.SubscriptionListOperationResponse
@@ -100,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
     public class MockCsmSubscriptionClient : Microsoft.Azure.Subscriptions.Csm.SubscriptionClient
     {
         private IList<string> _subscriptions = new List<string>();
-        private IList<string> _tenants = new List<string>(); 
+        private IList<string> _tenants = new List<string>();
         public IList<String> ReturnedSubscriptions
         {
             get { return this._subscriptions; }
@@ -134,8 +132,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
     public class MockCsmTenantOperations : Microsoft.Azure.Subscriptions.Csm.ITenantOperations
     {
-        private IList<string> _tenants = new List<string> (); 
- 
+        private IList<string> _tenants = new List<string>();
+
         /// <summary>
         /// Create a tenant mock using the given set of tenants
         /// </summary>
@@ -152,16 +150,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             return operations;
         }
 
-       public Task<Azure.Subscriptions.Csm.Models.TenantListResult> ListAsync(System.Threading.CancellationToken cancellationToken)
-       {
-           var result = new Azure.Subscriptions.Csm.Models.TenantListResult
-           {
-               StatusCode = HttpStatusCode.OK,
-               TenantIds = CreateTenantList()
-           };
+        public Task<Azure.Subscriptions.Csm.Models.TenantListResult> ListAsync(System.Threading.CancellationToken cancellationToken)
+        {
+            var result = new Azure.Subscriptions.Csm.Models.TenantListResult
+            {
+                StatusCode = HttpStatusCode.OK,
+                TenantIds = CreateTenantList()
+            };
 
-           return Task.FromResult(result);
-       }
+            return Task.FromResult(result);
+        }
 
         private static Azure.Subscriptions.Csm.Models.TenantIdDescription CreateTenant(string tenantId)
         {
@@ -171,7 +169,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
                 Id = tenantId
             };
         }
-
 
         private IList<Azure.Subscriptions.Csm.Models.TenantIdDescription> CreateTenantList()
         {
@@ -183,12 +180,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
             return result;
         }
-
-     }
+    }
 
     public class MockCsmSubscriptionOperations : Microsoft.Azure.Subscriptions.Csm.ISubscriptionOperations
     {
-        private IList<string> _subscriptions = new List<string> (); 
+        private IList<string> _subscriptions = new List<string>();
 
         /// <summary>
         /// Create a subscription mock using the given set of subscriptions
@@ -236,6 +232,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
             return Task.FromResult(result);
         }
+
         private static Azure.Subscriptions.Csm.Models.Subscription CreateSubscription(string subscriptionId)
         {
             return new Azure.Subscriptions.Csm.Models.Subscription
@@ -246,7 +243,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
                 DisplayName = string.Format("Test Mock Subscription {0}", subscriptionId)
             };
         }
-
 
         private IList<Azure.Subscriptions.Csm.Models.Subscription> CreateSubscriptionList()
         {
@@ -259,6 +255,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             return result;
         }
     }
+
     public static class ProfileClientHelper
     {
         public static Microsoft.Azure.Subscriptions.Rdfe.SubscriptionClient CreateRdfeSubscriptionClient(
