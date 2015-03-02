@@ -130,6 +130,7 @@
     <Compile Include="Models\AzureProfileSettings.cs" />
     <Compile Include="Models\PSAzureSubscription.cs" />
     <Compile Include="Models\PSAzureSubscriptionExtended.cs" />
+    <Compile Include="Profile\SelectAzureProfile.cs" />
     <Compile Include="Profile\NewAzureProfile.cs" />
     <Compile Include="Profile\ClearAzureProfile.cs" />
     <Compile Include="SwitchAzureMode.cs" />
