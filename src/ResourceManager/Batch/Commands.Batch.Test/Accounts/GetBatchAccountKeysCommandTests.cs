@@ -18,6 +18,7 @@ using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
+using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
