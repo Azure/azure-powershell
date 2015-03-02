@@ -535,7 +535,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         // Update-AzureDisk
         public SM.DiskContext UpdateAzureDisk(string diskName, string label)
         {
-            return RunPSCmdletAndReturnFirst<SM.DiskContext>(new UpdateAzureDiskCmdletInfo(diskName, label));
+            return RunPSCmdletAndReturnFirst<SM.DiskContext>(new UpdateAzureDiskCmdletInfo(diskName, label, null));
+        }
+
+        public ManagementOperationContext UpdateAzureDisk(string diskName, string label, int? resizedSize)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new UpdateAzureDiskCmdletInfo(diskName, label, resizedSize));
         }
 
         #endregion
