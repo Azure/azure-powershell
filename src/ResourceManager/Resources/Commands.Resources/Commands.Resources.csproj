@@ -232,6 +232,10 @@
       <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
       <Name>Commands.Profile</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceManagement\RemoteApp\Commands.RemoteApp\Commands.RemoteApp.csproj">
+      <Project>{492d2af2-950b-4f2e-8079-8794305313fd}</Project>
+      <Name>Commands.RemoteApp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\ServiceManagement\StorSimple\Commands.StorSimple\Commands.StorSimple.csproj">
       <Project>{11524d98-6c40-4091-a8e1-86463fee607c}</Project>
       <Name>Commands.StorSimple</Name>
