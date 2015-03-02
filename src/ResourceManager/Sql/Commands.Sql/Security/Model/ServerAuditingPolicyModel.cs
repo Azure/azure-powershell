@@ -14,6 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 { 
+    /// <summary>
+    /// A class representing A server's auditing policy
+    /// </summary>
     public class ServerAuditingPolicyModel : BaseAuditingPolicyModel
     {  
     }

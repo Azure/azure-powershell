@@ -32,11 +32,21 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
             return ModelAdapter.GetDatabaseSecureConnectionPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
         }
 
+        /// <summary>
+        /// Creation and initialization of the ModelAdapter object
+        /// </summary>
+        /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
+        /// <returns>An initialized and ready to use ModelAdapter object</returns>
         protected override SqlSecureConnectionAdapter InitModelAdapter(AzureSubscription subscription)
         {
             return new SqlSecureConnectionAdapter(Profile, subscription);
         }
 
+        /// <summary>
+        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
+        /// object to the REST endpoint
+        /// </summary>
+        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override void SendModel(DatabaseSecureConnectionPolicyModel model)
         {
             ModelAdapter.SetDatabaseSecureConnectionPolicy(model, clientRequestId);

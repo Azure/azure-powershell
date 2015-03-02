@@ -26,10 +26,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
     /// <summary>
     /// Base for creation and update of data masking rule.
     /// </summary>
-    
     public abstract class BuildAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
     {
-
         /// <summary>
         /// The name of the parameter set for data masking rule that specifies table and column names
         /// </summary>
@@ -96,9 +94,16 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The upper bound of the random interval when using the number masking function.")]
         public double? NumberTo { get; set; }
 
+        /// <summary>
+        ///  Defines whether the cmdlets will output the model object at the end of its execution
+        /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
-       
+
+        /// <summary>
+        /// Updates the given model element with the cmdlet specific operation 
+        /// </summary>
+        /// <param name="model">A model object</param>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> UpdateModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             string errorMessage = ValidateRuleTarget(rules);
@@ -116,6 +121,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
             return UpdateRuleList(rules, rule);
         }
 
+        /// <summary>
+        /// Validation that the rule's target is set properly to be either a table and column for which there's no other rule, or an alias for which there's no other rule.
+        /// </summary>
+        /// <param name="rules">The data masking rules of the current database</param>
+        /// <returns>A string containing error message or null in case all is fine</returns>
         protected string ValidateRuleTarget(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             if (AliasName != null) // using the alias parameter set
@@ -135,6 +145,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
             return null;
         }
 
+        /// <summary>
+        /// Update the rule this cmdlet is operating on based on the values provided by the user
+        /// </summary>
+        /// <param name="rule">The rule this cmdlet operates on</param>
+        /// <returns>An updated rule model</returns>
         protected DatabaseDataMaskingRuleModel UpdateRule(DatabaseDataMaskingRuleModel rule)
         {
             if(!string.IsNullOrEmpty(AliasName))
@@ -218,6 +233,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
             return rule;
         }
 
+        /// <summary>
+        /// Transforms the user given data masking function to its model representation
+        /// </summary>
+        /// <returns>The model representation of the user provided masking function</returns>
         private MaskingFunction ModelizeMaskingFunction()
         {
             if (MaskingFunction == Constants.CCN) return Model.MaskingFunction.CreditCardNumber;
@@ -229,18 +248,42 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
             return Model.MaskingFunction.Default;
         }
 
+        /// <summary>
+        /// An additional validation hook for inheriting classes to provide specific validation.
+        /// </summary>
+        /// <param name="rules">The rule the cmdlet operates on</param>
+        /// <returns>An error message or null if all is fine</returns>
         protected abstract string ValidateOperation(IEnumerable<DatabaseDataMaskingRuleModel> rules);
 
+        /// <summary>
+        /// Returns the rule that this cmdlet operates on
+        /// </summary>
+        /// <param name="rules">All the data masking rules of the database</param>
+        /// <returns>The rule that this cmdlet operates on</returns>
         protected abstract DatabaseDataMaskingRuleModel GetRule(IEnumerable<DatabaseDataMaskingRuleModel> rules);
 
+        /// <summary>
+        /// Update the rule that this cmdlet operates on based on the user provided values
+        /// </summary>
+        /// <param name="rules">The data masking rules of the database</param>
+        /// <param name="rule">The rule that this cmdlet operates on</param>
+        /// <returns>The update list of the database's data masking rules</returns>
         protected abstract IEnumerable<DatabaseDataMaskingRuleModel> UpdateRuleList(IEnumerable<DatabaseDataMaskingRuleModel> rules, DatabaseDataMaskingRuleModel rule);
-        
 
+        /// <summary>
+        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
+        /// object to the REST endpoint
+        /// </summary>
+        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override void SendModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             ModelAdapter.SetDatabaseDataMaskingRule(rules.First(r => r.RuleId == RuleId), clientRequestId);
         }
 
+        /// <summary>
+        /// Returns true if the model object that was constructed by this cmdlet should be written out
+        /// </summary>
+        /// <returns>True if the model object should be written out, False otherwise</returns>
         protected override bool WriteResult() { return PassThru; }
     }
 }

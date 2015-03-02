@@ -23,17 +23,23 @@ using System;
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
     /// <summary>
-    /// This class is responsible for all the REST communication with the management libraries
+    /// This class is responsible for all the REST communication with the audit REST endpoints
     /// </summary>
     public class AuditingEndpointsCommunicator
     {
+        /// <summary>
+        /// The Sql client to be used by this end points communicator
+        /// </summary>
         private static SqlManagementClient SqlClient { get; set; }
         
-        private static StorageManagementClient StorageClient { get; set; }
-        
+        /// <summary>
+        /// Gets or set the Azure subscription
+        /// </summary>
         private static AzureSubscription Subscription {get ; set; }
 
-        private static ResourceManagementClient ResourcesClient { get; set; }
+        /// <summary>
+        /// Gets or sets the Azure profile
+        /// </summary>
         public AzureProfile Profile { get; set; }
 
         public AuditingEndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
@@ -43,8 +49,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             {
                 Subscription = subscription;
                 SqlClient = null;
-                StorageClient = null;
-                ResourcesClient = null;
             }
         }
 

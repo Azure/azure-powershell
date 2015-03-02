@@ -18,6 +18,9 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
+    /// <summary>
+    /// A class represnting the secure connection strings
+    /// </summary>
     public class ConnectionStrings
     {      
         public ConnectionStrings(string proxyDnsName, string port, string serverName, string dbName)
@@ -28,14 +31,29 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
             JdbcConnectionString = ConstructJdbcConnectionString(proxyDnsName, port, serverName, dbName);
         }
         
+        /// <summary>
+        /// Gets the Ado.Net connection string
+        /// </summary>
         public string AdoNetConnectionString { get; internal set; }
 
+        /// <summary>
+        /// Gets the ODBC connection string
+        /// </summary>
         public string OdbcConnectionString { get; internal set; }
 
+        /// <summary>
+        /// Gets the PhP connection string
+        /// </summary>
         public string PhpConnectionString { get; internal set; }
 
+        /// <summary>
+        /// Gets the JDBC connection string
+        /// </summary>
         public string JdbcConnectionString { get; internal set; }
 
+        /// <summary>
+        /// Constructs the PhP connection string
+        /// </summary>
         private string ConstructPhpConnectionString(string proxyDnsName, string port, string serverName, string databaseName)
         {
             string enterUser = Resources.EnterUserId;
@@ -65,6 +83,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Constructs the ODBC connection string
+        /// </summary>
         private string ConstructOdbcConnectionString(string proxyDnsName, string port, string serverName, string databaseName)
         {
             string enterUser = Resources.EnterUserId;
@@ -79,6 +100,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Constructs the JDBC connection string
+        /// </summary>
         private string ConstructJdbcConnectionString(string proxyDnsName, string port, string serverName, string databaseName)
         {
             string enterUser = Resources.EnterUserId;
@@ -87,6 +111,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
                 proxyDnsName, port, databaseName, enterUser, serverName, enterPassword);
         }
 
+        /// <summary>
+        /// Constructs the ADO.NET connection string
+        /// </summary>
         private string ConstructAdoNetConnectionString(string proxyDnsName, string port, string serverName, string databaseName)
         {
             string enterUser = Resources.EnterUserId;

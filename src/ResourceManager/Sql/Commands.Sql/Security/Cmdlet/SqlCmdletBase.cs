@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
         public string ServerName { get; set; }
    
        /// <summary>
-        /// The PolicyHandler object mapped to this cmdlet
+        /// The ModelAdapter object used by this cmdlet
         /// </summary>
         public A ModelAdapter { get;  internal set; }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
         /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
         /// object to the REST endpoint
         /// </summary>
-        /// <param name="policy">The model object with the data to be sent to the REST endpoints</param>
+        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected virtual void SendModel(M model) { }
          
         /// <summary>
@@ -79,9 +79,13 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
         /// <returns>True if the model object should be written out, False otherwise</returns>
         protected virtual bool WriteResult() { return true; }
 
+        /// <summary>
+        /// Creation and initialization of the ModelAdapter object
+        /// </summary>
+        /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
+        /// <returns>An initialized and ready to use ModelAdapter object</returns>
         protected abstract A InitModelAdapter (AzureSubscription subscription);
 
-        
         /// <summary>
         /// Executes the cmdlet
         /// </summary>

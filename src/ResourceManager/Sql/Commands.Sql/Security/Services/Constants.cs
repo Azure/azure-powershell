@@ -14,6 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
+    /// <summary>
+    /// All the constants used by sql cmdlets
+    /// </summary>
     public class Constants
     {        
         // Event types
@@ -95,6 +98,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             public const string Email = "Email";
         }
 
+        /// <summary>
+        /// The values that are sent and received by the secure connection policy endpoint
+        /// </summary>
         public class SecureConnectionEndpoint
         {
             public const string Required = "Required";

@@ -19,11 +19,10 @@ using Microsoft.Azure.Common.Authentication.Models;
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
 {
     /// <summary>
-    /// The base class for all au Management Cmdlets
+    /// The base class for all SQL server auditing Management Cmdlets
     /// </summary>
     public abstract class SqlDatabaseServerAuditingCmdletBase : SqlCmdletBase<ServerAuditingPolicyModel, SqlAuditAdapter>
     {
-
         /// <summary>
         /// Provides the model element that this cmdlet operates on
         /// </summary>
@@ -33,11 +32,21 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             return ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, this.clientRequestId);
         }
 
+        /// <summary>
+        /// Creation and initialization of the ModelAdapter object
+        /// </summary>
+        /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
+        /// <returns>An initialized and ready to use ModelAdapter object</returns>
         protected override SqlAuditAdapter InitModelAdapter(AzureSubscription subscription)
         {
             return new SqlAuditAdapter(Profile, subscription);
         }
 
+        /// <summary>
+        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
+        /// object to the REST endpoint
+        /// </summary>
+        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override void SendModel(ServerAuditingPolicyModel model)
         {
             ModelAdapter.SetServerAuditingPolicy(model, clientRequestId);

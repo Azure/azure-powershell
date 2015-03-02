@@ -24,7 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
     [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseDataMaskingPolicy"), OutputType(typeof(DatabaseDataMaskingPolicyModel))]
     public class SetAzureSqlDatabaseDataMaskingPolicy : SqlDatabaseDataMaskingPolicyCmdletBase
     {
-
+        /// <summary>
+        ///  Defines whether the cmdlets will output the model object at the end of its execution
+        /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -50,8 +52,16 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         [ValidateNotNullOrEmpty]
         public string MaskingLevel { get; set; }
 
+        /// <summary>
+        /// Returns true if the model object that was constructed by this cmdlet should be written out
+        /// </summary>
+        /// <returns>True if the model object should be written out, False otherwise</returns>
         protected override bool WriteResult() { return PassThru; }
 
+        /// <summary>
+        /// Updates the given model element with the cmdlet specific operation 
+        /// </summary>
+        /// <param name="model">A model object</param>
         protected override DatabaseDataMaskingPolicyModel UpdateModel(DatabaseDataMaskingPolicyModel model)
         {
             base.UpdateModel(model);

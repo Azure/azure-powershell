@@ -14,18 +14,39 @@
 
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
+    /// <summary>
+    /// The possible states of a scure connection policy
+    /// </summary>
     public enum SecureConnectionStateType { Required, Optional };
     
+    /// <summary>
+    /// The base class that defines the core properties of a secure connection policy
+    /// </summary>
     public abstract class BaseSecureConnectionPolicyModel
     {
+       /// <summary>
+       /// Gets or sets the resource group
+       /// </summary>
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the server name
+        /// </summary>
         public string ServerName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Proxy Dns name
+        /// </summary>
         public string ProxyDnsName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the proxy port
+        /// </summary>
         public string ProxyPort { get; set; }
         
+        /// <summary>
+        /// Gets or sets the state of the secure connection policy
+        /// </summary>
         public SecureConnectionStateType SecureConnectionState { get; set; }
     }
 }

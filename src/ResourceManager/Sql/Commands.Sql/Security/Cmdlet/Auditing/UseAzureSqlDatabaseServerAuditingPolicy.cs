@@ -25,12 +25,22 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         [Cmdlet(VerbsOther.Use, "AzureSqlDatabaseServerAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
     public class UseAzureSqlDatabaseServerAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
-
+        /// <summary>
+        ///  Defines whether the cmdlets will output the model object at the end of its execution
+        /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
+        /// <summary>
+        /// Returns true if the model object that was constructed by this cmdlet should be written out
+        /// </summary>
+        /// <returns>True if the model object should be written out, False otherwise</returns>
         protected override bool WriteResult() { return PassThru; }
 
+        /// <summary>
+        /// Updates the given model element with the cmdlet specific operation 
+        /// </summary>
+        /// <param name="model">A model object</param>
         protected override DatabaseAuditingPolicyModel UpdateModel(DatabaseAuditingPolicyModel model)
         {
             base.UpdateModel(model);
@@ -39,6 +49,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             return model;
         }
 
+        /// <summary>
+        /// Returns the storage account name that is used at the policy of the database's server.
+        /// </summary>
+        /// <returns>A storage account name</returns>
         protected string GetStorageAccountName()
         {
             string storageAccountName = this.ModelAdapter.GetServerStorageAccount(this.ResourceGroupName, this.ServerName, this.clientRequestId);

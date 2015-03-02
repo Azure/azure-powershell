@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
     /// </summary>
     public abstract class SqlDatabaseDataMaskingPolicyCmdletBase : SqlDatabaseCmdletBase<DatabaseDataMaskingPolicyModel, SqlDataMaskingAdapter>
     {
-
         /// <summary>
         /// Provides the model element that this cmdlet operates on
         /// </summary>
@@ -33,11 +32,21 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
             return ModelAdapter.GetDatabaseDataMaskingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
         }
 
+        /// <summary>
+        /// Creation and initialization of the ModelAdapter object
+        /// </summary>
+        /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
+        /// <returns>An initialized and ready to use ModelAdapter object</returns>
         protected override SqlDataMaskingAdapter InitModelAdapter(AzureSubscription subscription)
         {
             return new SqlDataMaskingAdapter(Profile, subscription);
         }
 
+        /// <summary>
+        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
+        /// object to the REST endpoint
+        /// </summary>
+        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override void SendModel(DatabaseDataMaskingPolicyModel model)
         {
             ModelAdapter.SetDatabaseDataMaskingPolicy(model, clientRequestId);

@@ -14,33 +14,74 @@
 
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
+    /// <summary>
+    /// Defines the set of supported masking function
+    /// </summary>
     public enum MaskingFunction { Number, Text, CreditCardNumber, SocialSecurityNumber, Email, Default, NoMasking };
 
+    /// <summary>
+    /// The base class that defines the core properties of a data masking rule
+    /// </summary>
     public class BaseDataMaskingRuleModel
     {
-        
+       /// <summary>
+       /// Gets or sets the resource group
+       /// </summary>
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the server name
+        /// </summary>
         public string ServerName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the rule id
+        /// </summary>
         public string RuleId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the table that contains the column on which the rule operates on
+        /// </summary>
         public string TableName { get; set; }
        
+        /// <summary>
+        /// Gets or sets the name of the column that this rule operates on
+        /// </summary>
         public string ColumnName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the alias name on which the current rule operates on
+        /// </summary>
         public string AliasName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the masking function of the current rule
+        /// </summary>
         public MaskingFunction MaskingFunction { get; set; }
 
+        /// <summary>
+        /// Gets or sets the prefix size to be used in case this rule's masking function is Text
+        /// </summary>
         public uint? PrefixSize { get; set; }
 
+        /// <summary>
+        /// Gets or sets the suffix size to be used in case this rule's masking function is Text
+        /// </summary>
         public uint? SuffixSize { get; set; }
 
+        /// <summary>
+        /// Gets or sets the replacement string to be used in case this rule's masking function is Text
+        /// </summary>
         public string ReplacementString { get; set; }
 
+        /// <summary>
+        /// Gets or sets the lower bound of the interval from which a random number is selected in case this rule's masking function is Number
+        /// </summary>
         public double? NumberFrom { get; set; }
 
+        /// <summary>
+        /// Gets or sets the upper bound of the interval from which a random number is selected in case this rule's masking function is Number
+        /// </summary>
         public double? NumberTo { get; set; }
     }
 }

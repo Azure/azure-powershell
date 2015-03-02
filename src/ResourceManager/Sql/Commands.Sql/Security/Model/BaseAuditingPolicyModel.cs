@@ -14,27 +14,54 @@
 
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
-    // types of storage keys
-
+    /// <summary>
+    /// types of storage keys
+    /// </summary>
     public enum StorageKeyKind { Primary, Secondary };
 
+    /// <summary>
+    /// The possible audit event types
+    /// </summary>
     public enum AuditEventType {DataAccess, DataChanges, RevokePermissions, SchemaChanges, SecurityExceptions};
 
+    /// <summary>
+    /// The possible states in which an auditing policy may be in
+    /// </summary>
     public enum AuditStateType { Enabled, Disabled, New };
     
+    /// <summary>
+    /// The base class that defines the core properties of an auditing policy
+    /// </summary>
     public abstract class BaseAuditingPolicyModel
     {
-        
+        /// <summary>
+        /// Gets or sets the resource group
+        /// </summary>
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the server name
+        /// </summary>
         public string ServerName { get; set; }
         
+        /// <summary>
+        /// Gets or sets the storage account name
+        /// </summary>
         public string StorageAccountName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the storage key type
+        /// </summary>
         public StorageKeyKind StorageKeyType { get; set; }
 
+        /// <summary>
+        /// Gets or sets the audit event types
+        /// </summary>
         public AuditEventType[] EventType { get; set; }
 
+        /// <summary>
+        /// Gets or sets the audit state
+        /// </summary>
         public AuditStateType AuditState { get; set; }
     }
 }

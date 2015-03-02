@@ -26,8 +26,19 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
     /// </summary>
     public class DataMaskingEndpointsCommunicator
     {
+        /// <summary>
+        /// The sql management client used by this communicator
+        /// </summary>
         private static SqlManagementClient SqlClient { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure subscription
+        /// </summary>
         private static AzureSubscription Subscription {get ; set; }
+        
+        /// <summary>
+        /// Gets or sets the Azure profile
+        /// </summary>
         public AzureProfile Profile { get; set; }
 
         public DataMaskingEndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
@@ -59,6 +70,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             operations.CreateOrUpdatePolicy(resourceGroupName, serverName, databaseName, parameters);
         }
 
+        /// <summary>
+        /// Calls to list all the data masking rules for a specific database
+        /// </summary>
         public IList<DataMaskingRule> ListDataMaskingRules(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
             IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
@@ -66,12 +80,18 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return response.DataMaskingRules;
         }
 
+        /// <summary>
+        /// Sets the data masking rules for a specific database
+        /// </summary>
         public void SetDatabaseDataMaskingRule(string resourceGroupName, string serverName, string databaseName, string ruleId, string clientRequestId, DataMaskingRuleCreateOrUpdateParameters parameters)
         {
             IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
             operations.CreateOrUpdateRule(resourceGroupName, serverName, databaseName, ruleId, parameters);
         }
 
+        /// <summary>
+        /// Deletes a data masking rule from the list of rules of a specific database
+        /// </summary>
         public void DeleteDataMaskingRule(string resourceGroupName, string serverName, string databaseName, string ruleId, string clientRequestId)
         {
             IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;

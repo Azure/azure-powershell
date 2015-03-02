@@ -25,6 +25,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
     [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseSecureConnectionPolicy"), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
     public class GetAzureSqlDatabaseSecureConnectionPolicy : SqlDatabaseSecureConnectionCmdletBase
     {
+        /// <summary>
+        /// No sending is needed as this is a Get cmdlet
+        /// </summary>
+        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override void SendModel(DatabaseSecureConnectionPolicyModel model) 
         { 
         }

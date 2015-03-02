@@ -34,15 +34,29 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
     /// </summary>
     public class AzureEndpointsCommunicator
     {
-
+        /// <summary>
+        /// The Sql management client used by this communicator
+        /// </summary>
         private static SqlManagementClient SqlClient { get; set; }
        
+        /// <summary>
+        ///  The storage management client used by this communicator
+        /// </summary>
         private static StorageManagementClient StorageClient { get; set; }
         
+        /// <summary>
+        /// Gets or sets the Azure subscription
+        /// </summary>
         private static AzureSubscription Subscription {get ; set; }
 
+        /// <summary>
+        /// The resources management client used by this communcator
+        /// </summary>
         private static ResourceManagementClient ResourcesClient { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Azure profile
+        /// </summary>
         public AzureProfile Profile { get; set; }
 
         public AzureEndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
@@ -56,6 +70,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             }
         }
 
+        /// <summary>
+        /// Provides the storage keys for the storage account within the given resource group
+        /// </summary>
+        /// <returns>A dictionary with two entries, one for each possible key type with the appropriate key</returns>
         public async Task<Dictionary<StorageKeyKind, string>> GetStorageKeysAsync(string resourceGroupName, string storageAccountName)
         {
             SqlManagementClient client = GetCurrentSqlClient("none");
@@ -104,6 +122,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             }
         }
 
+        /// <summary>
+        /// Returns the resource group of the provided storage account
+        /// </summary>
         public string GetStorageResourceGroup(string storageAccountName)
         {
             ResourceManagementClient resourcesClient = GetCurrentResourcesClient(Profile);
@@ -151,6 +172,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             }
         }
 
+        /// <summary>
+        /// Lazy creation of a single instance of a storage client
+        /// </summary>
         private StorageManagementClient GetCurrentStorageClient(AzureProfile profile)
         {
             if(StorageClient == null)
@@ -158,6 +182,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return StorageClient;
         }
 
+        /// <summary>
+        /// Lazy creation of a single instance of a resoures client
+        /// </summary>
         private ResourceManagementClient GetCurrentResourcesClient(AzureProfile profile)
         {
             if (ResourcesClient == null)

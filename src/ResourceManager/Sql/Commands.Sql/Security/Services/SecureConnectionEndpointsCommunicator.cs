@@ -21,10 +21,11 @@ using System;
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
     /// <summary>
-    /// This class is responsible for all the REST communication with the management libraries
+    /// This class is responsible for all the REST communication with the secure connection endpoints
     /// </summary>
     public class SecureConnectionEndpointsCommunicator
     {
+
         private static SqlManagementClient SqlClient { get; set; }             
         private static AzureSubscription Subscription {get ; set; }
         public AzureProfile Profile { get; set; }

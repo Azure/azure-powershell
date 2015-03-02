@@ -28,19 +28,49 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
     /// </summary>
     public class SqlAuditAdapter
     {
+        /// <summary>
+        /// Gets or sets the Azure subscription
+        /// </summary>
         private AzureSubscription Subscription { get; set; }
+
+        /// <summary>
+        /// The auditing endpoints communicator used by this adapter
+        /// </summary>
         private AuditingEndpointsCommunicator Communicator { get; set; }
+       
+        /// <summary>
+        /// The Azure endpoints communicator used by this adapter
+        /// </summary>
         private AzureEndpointsCommunicator AzureCommunicator { get; set; }
 
-        // cacheing the fetched properties to prevent constly network interaction in cases it is not needed
+        /// <summary>
+        /// Cacheing the fetched storage account name to prevent costly network interaction in cases it is not needed
+        /// </summary>
         private string FetchedStorageAccountName { get; set; }
+
+        /// <summary>
+        /// Cacheing the fetched storage account resource group to prevent costly network interaction in cases it is not needed
+        /// </summary>
         private string FetchedStorageAccountResourceGroup { get; set; }
+
+        /// <summary>
+        /// Cacheing the fetched storage account subscription to prevent costly network interaction in cases it is not needed
+        /// </summary>
         private string FetchedStorageAccountSubscription { get; set; }
+
+        /// <summary>
+        /// Cacheing the fetched storage account table name to prevent costly network interaction in cases it is not needed
+        /// </summary>
         private string FetchedStorageAccountTableEndpoint { get; set; }
 
-        // In cases when storage is not needed and not provided, theres's no need to perform storage related network interaction that may fail
+        /// <summary>
+        /// In cases when storage is not needed and not provided, theres's no need to perform storage related network interaction that may fail
+        /// </summary>
         public bool IgnoreStorage { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Azure profile
+        /// </summary>
         public AzureProfile Profile { get; set; }
 
         public SqlAuditAdapter(AzureProfile profile, AzureSubscription subscription)
@@ -64,6 +94,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return Communicator.GetServerAuditingPolicy(resourceGroupName, serverName, requestId).Properties.StorageAccountName;
         }
         
+        /// <summary>
+        /// Provides a database audit policy model for the given database
+        /// </summary>
         public DatabaseAuditingPolicyModel GetDatabaseAuditingPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
         {
             DatabaseAuditingPolicy policy = Communicator.GetDatabaseAuditingPolicy(resourceGroup, serverName, databaseName, requestId);
@@ -80,6 +113,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return dbPolicyModel;
         }
 
+        /// <summary>
+        /// Provides a database server audit policy model for the given database
+        /// </summary>
         public ServerAuditingPolicyModel GetServerAuditingPolicy(string resourceGroup, string serverName, string requestId)
         {
             ServerAuditingPolicy policy = Communicator.GetServerAuditingPolicy(resourceGroup, serverName, requestId);
@@ -94,6 +130,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
 
             return serverPolicyModel;
         }
+
+        /// <summary>
+        /// Transforms the given database policy object to its cmdlet model representation
+        /// </summary>
         private DatabaseAuditingPolicyModel ModelizeDatabaseAuditPolicy(DatabaseAuditingPolicy policy)
         {
             DatabaseAuditingPolicyModel dbPolicyModel = new DatabaseAuditingPolicyModel();
@@ -105,6 +145,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return dbPolicyModel;
         }
 
+        /// <summary>
+        /// Transforms the given server policy object to its cmdlet model representation
+        /// </summary>
         private ServerAuditingPolicyModel ModelizeServerAuditPolicy(ServerAuditingPolicy policy)
         {
             ServerAuditingPolicyModel serverPolicyModel = new ServerAuditingPolicyModel();
@@ -115,6 +158,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return serverPolicyModel;
         }
 
+        /// <summary>
+        /// Transforms the given policy state in a string form to its cmdlet model representation
+        /// </summary>
         private AuditStateType ModelizeAuditState(string auditState)
         {
             if (auditState == Constants.AuditingEndpoint.New) return AuditStateType.New;
@@ -122,6 +168,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return AuditStateType.Disabled;
         }
 
+        /// <summary>
+        /// Updates the content of the model object with all the storage related information
+        /// </summary>
         private void ModelizeStorageInfo(BaseAuditingPolicyModel model, string accountName, string primary, string secondary)
         {
             model.StorageAccountName = accountName;
@@ -133,9 +182,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             {
                 model.StorageKeyType = StorageKeyKind.Primary;
             }
-                
         }
 
+        /// <summary>
+        /// Transforms the given policy state into a string representation
+        /// </summary>
         private string PolicizeAuditState(AuditStateType AuditState)
         {
             switch(AuditState)
@@ -150,6 +201,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             }
         }
 
+        /// <summary>
+        /// Updates the given model with all the event types information
+        /// </summary>
         public void ModelizeEventTypesInfo(BaseAuditingPolicyModel model, string eventTypesToAudit)
         { 
             HashSet<AuditEventType> events = new HashSet<AuditEventType>();
@@ -161,12 +215,18 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             model.EventType = events.ToArray();
         }
 
+        /// <summary>
+        /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
+        /// </summary>
         public void SetServerAuditingPolicy(ServerAuditingPolicyModel model, String clientId)
         {
             ServerAuditingPolicyCreateOrUpdateParameters parameters = PolicizeServerAuditingModel(model);
             Communicator.SetServerAuditingPolicy(model.ResourceGroupName, model.ServerName, clientId, parameters);
         }
 
+        /// <summary>
+        /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
+        /// </summary>
         public void SetDatabaseAuditingPolicy(DatabaseAuditingPolicyModel model, String clientId)
         {
             DatabaseAuditingPolicyCreateOrUpdateParameters parameters = PolicizeDatabaseAuditingModel(model);
@@ -216,6 +276,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return updateParameters;
         }
 
+        /// <summary>
+        /// Extracts the storage account name from the given model
+        /// </summary>
         private string ExtractStorageAccountName(BaseAuditingPolicyModel model)
         {
             string storageAccountName = null;
@@ -239,6 +302,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return storageAccountName;
         }
 
+        /// <summary>
+        /// Extracts the event types from the given model
+        /// </summary>
         private string ExtractEventTypes(BaseAuditingPolicyModel model)
         {
             if (model.EventType == null)
@@ -274,6 +340,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return events.ToString();
         }
 
+        /// <summary>
+        /// Checks whether the given event type was used
+        /// </summary>
         private bool IsEventTypeOn(AuditEventType lookedForType, AuditEventType[] userSelectedTypes)
         {
             if (userSelectedTypes.Contains(lookedForType))
@@ -283,6 +352,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return false;    
         }
 
+        /// <summary>
+        /// Extracts the storage account endpoint
+        /// </summary>
         private string ExtractStorageAccountTableEndpoint(string storageName)
         {
             if (IgnoreStorage)
@@ -296,6 +368,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return AzureCommunicator.GetStorageTableEndpoint(Profile, storageName);
         }
 
+        /// <summary>
+        /// Extracts the storage account sunscription id
+        /// </summary>
         private string ExtractStorageAccountSubscriptionId(string storageName)
         {
              if (IgnoreStorage)
@@ -309,6 +384,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return Subscription.Id.ToString();
         }
 
+        /// <summary>
+        /// Extracts the storage account resource group
+        /// </summary>
         private string ExtractStorageAccountResourceGroup(string storageName)
         {
             if (IgnoreStorage)
@@ -322,6 +400,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return AzureCommunicator.GetStorageResourceGroup(storageName);
         }
 
+        /// <summary>
+        /// Extracts the storage account requested key
+        /// </summary>
         private string ExtractStorageAccountKey(string storageName, BaseAuditingPolicyModel model, string storageAccountResourceGroup, StorageKeyKind keyType)
         {
             if (IgnoreStorage)

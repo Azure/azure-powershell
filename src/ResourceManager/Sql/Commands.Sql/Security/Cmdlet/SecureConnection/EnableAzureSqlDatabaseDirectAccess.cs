@@ -23,17 +23,26 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
     [Cmdlet(VerbsLifecycle.Enable, "AzureSqlDatabaseDirectAccess"), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
     public class EnableAzureSqlDatabaseDirectAccess : SqlDatabaseSecureConnectionCmdletBase
     {
-
+        /// <summary>
+        ///  Defines whether the cmdlets will output the model object at the end of its execution
+        /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
+        /// <summary>
+        /// Returns true if the model object that was constructed by this cmdlet should be written out
+        /// </summary>
+        /// <returns>True if the model object should be written out, False otherwise</returns>
         protected override bool WriteResult() { return PassThru; }
 
+        /// <summary>
+        /// Updates the given model element with the cmdlet specific operation 
+        /// </summary>
+        /// <param name="model">A model object</param>
         protected override DatabaseSecureConnectionPolicyModel UpdateModel(DatabaseSecureConnectionPolicyModel model) 
         {
             model.SecureConnectionState = SecureConnectionStateType.Optional;
             return model;
         }
-
     }
 }

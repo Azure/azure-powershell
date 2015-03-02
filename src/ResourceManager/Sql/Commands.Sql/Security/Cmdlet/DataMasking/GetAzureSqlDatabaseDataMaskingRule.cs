@@ -24,13 +24,16 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
     [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseDataMaskingRule"), OutputType(typeof(IEnumerable<DatabaseDataMaskingRuleModel>))]
     public class GetAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
     {
-
         /// <summary>
         /// Gets or sets the id of the rule use, if not provided then the list of rules for this DB is returned
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Data Masking rule Id.")]
         public override string RuleId { get; set; } // intentionally overiding to make this property non mandatory (thus allow a LIST call)
 
+        /// <summary>
+        /// No sending is needed as this is a Get cmdlet
+        /// </summary>
+        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override void SendModel(IEnumerable<DatabaseDataMaskingRuleModel> model) 
         { 
         }

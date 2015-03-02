@@ -28,13 +28,22 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
     {
-
+        /// <summary>
+        ///  Defines whether the cmdlets will output the model object at the end of its execution
+        /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(HelpMessage = "Do not confirm on the creation of the firewall rule")]
+        /// <summary>
+        /// Defines whether it is ok to skip the requesting of rule removal confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Confirmation when a data masking rule is removed")]
         public SwitchParameter Force { get; set; }
         
+        /// <summary>
+        /// Calls the data masking removal API with the rule that this cmdlet operated on
+        /// </summary>
+        /// <param name="rules">A list consisting of a single rule - the rule that this cmdlet operated on</param>
         protected override void SendModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             if (!Force.IsPresent && !ShouldProcess(
@@ -47,6 +56,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
             ModelAdapter.RemoveDatabaseDataMaskingRule(rules.First(), clientRequestId);
         }
 
+        /// <summary>
+        /// Returns true if the model object that was constructed by this cmdlet should be written out
+        /// </summary>
+        /// <returns>True if the model object should be written out, False otherwise</returns>
         protected override bool WriteResult() { return PassThru; }
     }
 }

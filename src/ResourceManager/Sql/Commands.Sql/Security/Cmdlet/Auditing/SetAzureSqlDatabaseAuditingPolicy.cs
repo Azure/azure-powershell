@@ -28,7 +28,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
     [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
     public class SetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
-
+        /// <summary>
+        ///  Defines whether the cmdlets will output the model object at the end of its execution
+        /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -54,8 +56,16 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         [ValidateNotNullOrEmpty]
         public string StorageKeyType { get; set; }
 
+        /// <summary>
+        /// Returns true if the model object that was constructed by this cmdlet should be written out
+        /// </summary>
+        /// <returns>True if the model object should be written out, False otherwise</returns>
         protected override bool WriteResult() { return PassThru; }
 
+        /// <summary>
+        /// Updates the given model element with the cmdlet specific operation 
+        /// </summary>
+        /// <param name="model">A model object</param>
         protected override DatabaseAuditingPolicyModel UpdateModel(DatabaseAuditingPolicyModel model)
         {
             base.UpdateModel(model);
@@ -86,6 +96,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             return model;
         }
 
+        /// <summary>
+        /// In cases where the user decided to use one of the shortcuts (ALL or NONE), this method sets the value of the EventType property to reflect the correct values
+        /// </summary>
         private void ProcessShortcuts()
         {
             if(EventType == null || EventType.Length == 0)
@@ -117,6 +130,4 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             }
         }
     }
-
-
 }

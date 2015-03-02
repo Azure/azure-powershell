@@ -24,8 +24,19 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
     /// </summary>
     public class SqlSecureConnectionAdapter
     {
+        /// <summary>
+        /// Gets or sets the Azure subscription
+        /// </summary>
         private AzureSubscription Subscription { get; set; }
+        
+        /// <summary>
+        /// The end points communicator used by this adapter
+        /// </summary>
         private SecureConnectionEndpointsCommunicator Communicator { get; set; }
+       
+        /// <summary>
+        /// The Azure profile used by this adapter
+        /// </summary>
         public AzureProfile Profile { get; set; }
 
         public SqlSecureConnectionAdapter(AzureProfile profile , AzureSubscription subscription)
@@ -35,6 +46,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             Communicator = new SecureConnectionEndpointsCommunicator(profile, subscription);
         }
 
+        /// <summary>
+        /// Provides the cmdlet model representation of a specific database secure connection policy
+        /// </summary>
         public DatabaseSecureConnectionPolicyModel GetDatabaseSecureConnectionPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
         {
             SecureConnectionPolicy policy = Communicator.GetDatabaseSecureConnectionPolicy(resourceGroup, serverName, databaseName, requestId);
@@ -45,6 +59,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return dbPolicyModel;
         }
 
+        /// <summary>
+        /// Transforms a secure connection policy object to its cmdlet model representation
+        /// </summary>
         private DatabaseSecureConnectionPolicyModel ModelizeDatabaseSecureConnectionPolicy(SecureConnectionPolicy policy)
         {
             DatabaseSecureConnectionPolicyModel dbPolicyModel = new DatabaseSecureConnectionPolicyModel();
@@ -55,6 +72,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return dbPolicyModel;
         }
 
+        /// <summary>
+        /// Sets the secure connection policy of a specific database based on the information provided by the model object
+        /// </summary>
         public void SetDatabaseSecureConnectionPolicy(DatabaseSecureConnectionPolicyModel model, String clientId)
         {
             SecureConnectionPolicyCreateOrUpdateParameters parameters = PolicizeDatabaseSecureConnectionModel(model);

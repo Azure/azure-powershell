@@ -14,11 +14,24 @@
 
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
+    /// <summary>
+    /// A class representing a database's secure connection policy
+    /// </summary>
     public class DatabaseSecureConnectionPolicyModel : BaseSecureConnectionPolicyModel
     {
+        /// <summary>
+        /// The internal ConnectionString field
+        /// </summary>
         private ConnectionStrings m_ConnectionStrings;  
+       
+        /// <summary>
+        /// Gets or sets the database name
+        /// </summary>
         public string DatabaseName { get; set; }
 
+        /// <summary>
+        /// Lazy set of the connection string object
+        /// </summary>
         public ConnectionStrings ConnectionStrings 
         { 
             get

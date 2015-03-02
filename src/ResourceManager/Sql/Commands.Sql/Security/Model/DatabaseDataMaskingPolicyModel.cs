@@ -14,8 +14,14 @@
 
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
+    /// <summary>
+    /// A class representing a database data masking policy
+    /// </summary>
     public class DatabaseDataMaskingPolicyModel : BaseDataMaskingPolicyModel
     {
+        /// <summary>
+        /// Gets or sets the database name
+        /// </summary>
         public string DatabaseName { get; set; }
     }
 }
