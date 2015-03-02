@@ -22,9 +22,8 @@ function Test-SelectDefaultProfile
     $profile = $(New-AzureProfile -SubscriptionId $sub -AccessToken $token -AccountId $user)
     Assert-AreEqual "AzureCloud" $profile.Context.Environment.Name
     Select-AzureProfile $profile
-	Select-AzureProfile -Default     
-	$current = [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::CurrentProfile
-	Assert-NotNull $($current.ProfilePath)
+	$profile2 = Select-AzureProfile -Default     
+	Assert-NotNull $($profile2.ProfilePath)
 }
 
 <#
