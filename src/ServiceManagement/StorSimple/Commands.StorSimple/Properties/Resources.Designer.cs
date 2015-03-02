@@ -214,7 +214,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More jobs are available for your query. To access the next page of your result use \&quot;-First {0} -Skip {1}\&quot; in your commandlet.
+        ///   Looks up a localized string similar to More jobs are available for your query. To access the next page of your result use -First {0} -Skip {1} in your commandlet.
         /// </summary>
         internal static string DeviceJobsNextPageFormatMessage {
             get {

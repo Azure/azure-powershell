@@ -430,7 +430,7 @@
     <value>Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone and Primary DNS Server information is mandatory when configuring the device for the first time</value>
   </data>
   <data name="DeviceJobsNextPageFormatMessage" xml:space="preserve">
-    <value>More jobs are available for your query. To access the next page of your result use \"-First {0} -Skip {1}\" in your commandlet</value>
+    <value>More jobs are available for your query. To access the next page of your result use -First {0} -Skip {1} in your commandlet</value>
   </data>
   <data name="DeviceJobsNextPagewithNoFirstMessage" xml:space="preserve">
     <value>More jobs are available in the subsequent pages for your query. To access the next page use \"-Skip {0}\"  in your commandlet</value>
