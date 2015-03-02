@@ -13,16 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Factories;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using System;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Test.Profile
 {
     public sealed class ProfileTestController
     {
-        private CSMTestEnvironmentFactory csmTestFactory;
+        private TestEnvironmentFactory testFactory;
         private EnvironmentSetupHelper helper;
 
         public static ProfileTestController NewInstance 
@@ -33,10 +38,40 @@ namespace Microsoft.Azure.Commands.Test.Profile
             }
         }
 
+        public static ProfileTestController NewRdfeInstance 
+        { 
+            get
+            {
+                return new ProfileTestController(AzureModule.AzureServiceManagement);
+            }
+        }
+
+        public static ProfileTestController NewARMInstance
+        {
+            get
+            {
+                return new ProfileTestController(AzureModule.AzureResourceManager);
+            }
+        }
+
+        public AzureModule Module
+        {
+            get; 
+            private set; 
+        }
         public ProfileTestController()
         {
+            Module = AzureModule.AzureResourceManager;
             helper = new EnvironmentSetupHelper();
         }
+
+        public ProfileTestController(AzureModule module)
+        {
+            Module = module;
+            helper = new EnvironmentSetupHelper();
+        }
+
+
 
         public void RunPsTest(params string[] scripts)
         {
@@ -53,9 +88,66 @@ namespace Microsoft.Azure.Commands.Test.Profile
                 mockName);
         }
 
+        public void RunPSTestWithToken(Func<AzureContext, string, string> testBuilder , params string[] scripts)
+        {
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
+            IAuthenticationFactory savedAuthFactory = AzureSession.AuthenticationFactory;
+            try
+            {
+                RunPsTestWorkflow(
+                    () =>
+                    {
+                        savedAuthFactory = AzureSession.AuthenticationFactory;
+                        var profile = AzurePSCmdlet.CurrentProfile;
+                        var context = profile.Context;
+                        var account = context.Account;
+                        var tenant = account.IsPropertySet(AzureAccount.Property.Tenants)
+                            ? account.GetPropertyAsArray(AzureAccount.Property.Tenants).First()
+                            : "Common";
+                        var subscription = context.Subscription;
+                        string token = null;
+                        if (account.IsPropertySet(AzureAccount.Property.AccessToken))
+                        {
+                            token = account.GetProperty(AzureAccount.Property.AccessToken);
+                        }
+                        else
+                        {
+                            var accessToken = AzureSession.AuthenticationFactory.Authenticate(account,
+                                context.Environment,
+                                tenant, null, ShowDialog.Never);
+                            Assert.IsNotNull(accessToken);
+                            Assert.IsNotNull(accessToken.AccessToken);
+                            token = accessToken.AccessToken;
+                        }
+
+                        AzureSession.AuthenticationFactory = new AuthenticationFactory();
+                        var testString = testBuilder(context, token);
+                        var returnedScripts = scripts.Concat(new String[] {testString});
+                        return returnedScripts.ToArray();
+                    },
+                    // no custom initializer
+                    null,
+                    // no custom cleanup 
+                    null,
+                    callingClassType,
+                    mockName);
+            }
+            finally
+            {
+               AzureSession.AuthenticationFactory = savedAuthFactory;
+            }
+        }
+
+        public TestEnvironmentFactory GetFactory()
+        {
+            return (this.Module == AzureModule.AzureResourceManager) ? 
+                new CSMTestEnvironmentFactory() as TestEnvironmentFactory : new RDFETestEnvironmentFactory() as TestEnvironmentFactory;
+        }
+
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder, 
-            Action<CSMTestEnvironmentFactory> initialize, 
+            Action<TestEnvironmentFactory> initialize, 
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -64,22 +156,22 @@ namespace Microsoft.Azure.Commands.Test.Profile
             {
                 context.Start(callingClassType, mockName);
 
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
+                this.testFactory = GetFactory();
 
                 if(initialize != null)
                 {
-                    initialize(this.csmTestFactory);
+                    initialize(this.testFactory);
                 }
 
                 SetupManagementClients();
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                helper.SetupEnvironment(this.Module);
                 
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(
-                    AzureModule.AzureResourceManager, 
+                    this.Module, 
                     "Profile\\" + callingClassName + ".ps1");
 
                 try
@@ -106,7 +198,14 @@ namespace Microsoft.Azure.Commands.Test.Profile
 
         private void SetupManagementClients()
         {
-            helper.SetupSomeOfManagementClients();
+            if (this.Module == AzureModule.AzureResourceManager)
+            {
+                helper.SetupSomeOfManagementClients();
+            }
+            else
+            {
+                helper.SetupSomeOfManagementClients();
+            }
         }
 
     }
