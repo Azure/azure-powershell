@@ -1615,6 +1615,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 this.SetValue("IOType", value);
             }
         }
+
+        [DataMember(Name = "ResizedSizeInGB", EmitDefaultValue = false, Order = 6)]
+        public int? ResizedSizeInGB
+        {
+            get
+            {
+                return this.GetValue<int?>("ResizedSizeInGB");
+            }
+            set
+            {
+                this.SetValue("ResizedSizeInGB", value);
+            }
+        }
     }
     #endregion
 
@@ -1957,6 +1970,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set
             {
                 base.SetValue("State", value);
+            }
+        }
+
+        [DataMember(Name = "ForceUpdate", EmitDefaultValue = false, Order = 7)]
+        public bool? ForceUpdate
+        {
+            get
+            {
+                return base.GetValue<bool?>("ForceUpdate");
+            }
+            set
+            {
+                base.SetValue("ForceUpdate", value);
             }
         }
     }

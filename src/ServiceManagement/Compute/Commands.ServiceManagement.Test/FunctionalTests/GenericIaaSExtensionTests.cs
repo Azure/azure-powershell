@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -84,24 +84,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             try
             {
-                //Get the available VM Extension
+                // Get the available VM Extension
                 var availableExtensions =  vmPowershellCmdlets.GetAzureVMAvailableExtension();
                 vmAccessExtension = availableExtensions.First(extension => extension.ExtensionName.Equals(VmAccessAgentExtensionName));
                 if (availableExtensions.Count > 0)
                 {
-                    //Deploy a new IaaS VM with Extension using Add-AzureVMExtension
+                    // Deploy a new IaaS VM with Extension using Add-AzureVMExtension
                     Console.WriteLine("Create a new VM with VM access extension.");
                     var vm = CreateIaaSVMObject(vmName);
-                    vm = vmPowershellCmdlets.SetAzureVMExtension(vm, vmAccessExtension.ExtensionName, vmAccessExtension.Publisher, version, referenceName, publicConfigPath: publicConfigPath, privateConfigPath:privateConfigPath, disable: false);
+                    vm = vmPowershellCmdlets.SetAzureVMExtension(vm,
+                        vmAccessExtension.ExtensionName,
+                        vmAccessExtension.Publisher,
+                        version,
+                        referenceName,
+                        publicConfigPath: publicConfigPath,
+                        privateConfigPath:privateConfigPath,
+                        disable: false,
+                        forceUpdate: true);
                     
                     vmPowershellCmdlets.NewAzureVM(serviceName, new[] {vm}, locationName);
                     Console.WriteLine("Created a new VM {0} with VM access extension. Service Name : {1}",vmName,serviceName);
 
                     ValidateVMAccessExtension(vmName, serviceName, true);
-                    //Verify that the extension actually work
+                    // Verify that the extension actually work
                     VerifyRDPExtension(vmName, serviceName);
 
-                    //Disbale extesnion
+                    // Disbale extesnion
                     DisableExtension(vmName, serviceName);
 
                     ValidateVMAccessExtension(vmName, serviceName, false);
@@ -125,13 +133,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             try
             {
-                var availableExtensions =  vmPowershellCmdlets.GetAzureVMAvailableExtension();
+                var availableExtensions = vmPowershellCmdlets.GetAzureVMAvailableExtension();
+
                 if (availableExtensions.Count > 0)
                 {
-
                     vmAccessExtension = availableExtensions.First(extension => extension.ExtensionName.Equals(VmAccessAgentExtensionName));
 
-                    //Deploy a new IaaS VM with Extension using Add-AzureVMExtension
+                    // Deploy a new IaaS VM with Extension using Add-AzureVMExtension
                     var vm = CreateIaaSVMObject(vmName);
                     vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, locationName);
 
@@ -140,19 +148,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     vm = vmPowershellCmdlets.SetAzureVMExtension(vm,
                         vmAccessExtension.ExtensionName,
                         vmAccessExtension.Publisher,
-                        vmAccessExtension.Version,
+                        version,
                         referenceName,
                         publicConfiguration,
                         privateConfiguration,
                         "pubkey1",
-                        "prikey1");
+                        "prikey1",
+                        forceUpdate: true);
                     vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
 
                     var updatedVM = vmPowershellCmdlets.GetAzureVM(vmName, serviceName);
                     var updatedExt = updatedVM.VM.ResourceExtensionReferences.First(
                         e => e.Name == vmAccessExtension.ExtensionName &&
                              e.Publisher == vmAccessExtension.Publisher &&
-                             e.Version == vmAccessExtension.Version);
+                             e.Version == version);
                     Assert.IsTrue(updatedExt.ResourceExtensionParameterValues.Any(r => r.Type == "Public" && r.Key == "pubkey1"));
 
                     ValidateVMAccessExtension(vmName, serviceName, true);
@@ -182,16 +191,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 var availableExtensions = vmPowershellCmdlets.GetAzureVMAvailableExtension();
                 vmAccessExtension = availableExtensions.First(extension => extension.ExtensionName.Equals(VmAccessAgentExtensionName));
+
                 //Create an deployment
-                
                 var vm1 = CreateIaaSVMObject(vmName);
                 vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm1 }, locationName);
-                //Add a role with extension enabled.
 
+                //Add a role with extension enabled.
                 string referenceName = Utilities.GetUniqueShortName(referenceNamePrefix);
                 string vmName2 = Utilities.GetUniqueShortName(vmNamePrefix);
                 var vm2 = CreateIaaSVMObject(vmName2);
-                vm2 = vmPowershellCmdlets.SetAzureVMExtension(vm2, vmAccessExtension.ExtensionName, vmAccessExtension.Publisher, version, referenceName, publicConfiguration, privateConfiguration, disable: false);
+                vm2 = vmPowershellCmdlets.SetAzureVMExtension(vm2,
+                    vmAccessExtension.ExtensionName,
+                    vmAccessExtension.Publisher,
+                    version, referenceName,
+                    publicConfiguration,
+                    privateConfiguration,
+                    disable: false,
+                    forceUpdate: true);
                 vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm2 });
 
                 ValidateVMAccessExtension(vmName2, serviceName, true);
@@ -221,7 +237,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm1, vm2 }, locationName);
                 
                 vm2 = GetAzureVM(vmName2, serviceName);
-                vm2 = vmPowershellCmdlets.SetAzureVMExtension(vm2, vmAccessExtension.ExtensionName, vmAccessExtension.Publisher, vmAccessExtension.Version, referenceName, publicConfiguration, privateConfiguration, disable: false);
+                vm2 = vmPowershellCmdlets.SetAzureVMExtension(vm2,
+                    vmAccessExtension.ExtensionName,
+                    vmAccessExtension.Publisher,
+                    version,
+                    referenceName,
+                    publicConfiguration,
+                    privateConfiguration,
+                    disable: false,
+                    forceUpdate: true);
                 vmPowershellCmdlets.UpdateAzureVM(vmName2, serviceName, vm2);
 
                 ValidateVMAccessExtension(vmName2, serviceName, true);
@@ -261,20 +285,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Assert.IsFalse(string.IsNullOrEmpty(extension.Publisher));
             Assert.IsFalse(string.IsNullOrEmpty(extension.Version));
 
-            // Intentionally commented as the cmdlet prod cmdlet doesnt have these properties and dogfood returns errors
-            // now
-            //Assert.IsTrue(extension.ReplicationCompleted);
-            //Assert.IsTrue(Utilities.validateHttpUri(extension.PrivacyUri.ToString()));
-            //Assert.IsTrue(Utilities.validateHttpUri(extension.PrivacyUri.ToString()));
-            //Assert.IsTrue(Utilities.validateHttpUri(extension.Eula.ToString()));
-
             switch (extension.ExtensionName)
             {
-                //case "BGInfo":
-                //    {
-                //        Assert.IsTrue(extension.ReplicationCompleted);
-                //        break;
-                //    }
                 case "DiagnosticsAgent":
                     {
                         Assert.IsFalse(string.IsNullOrEmpty(extension.PublicConfigurationSchema));
@@ -284,7 +296,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     {
                         Assert.IsFalse(string.IsNullOrEmpty(extension.PublicConfigurationSchema));
                         Assert.IsFalse(string.IsNullOrEmpty(extension.PrivateConfigurationSchema));
-                        //Assert.IsFalse(string.IsNullOrEmpty(extension.SampleConfig));
                         break;
                     }
             }
@@ -349,7 +360,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             var vm = GetAzureVM(vmName, serviceName);
             Console.WriteLine("Disabling the VM Access extesnion for the vm {0}", vmName);
-            vm = vmPowershellCmdlets.SetAzureVMExtension(vm, vmAccessExtension.ExtensionName, vmAccessExtension.Publisher, version, referenceName, disable: true);
+            vm = vmPowershellCmdlets.SetAzureVMExtension(vm,
+                vmAccessExtension.ExtensionName,
+                vmAccessExtension.Publisher,
+                version,
+                referenceName,
+                disable: true,
+                forceUpdate: true);
             vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
             Console.WriteLine("Disabled VM Access extesnion for the vm {0}", vmName);
         }

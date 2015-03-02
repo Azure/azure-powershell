@@ -23,9 +23,9 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
 {
@@ -298,7 +298,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
                 "clientCertificate",
                 certificate);
 
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.Profile.Environments[UnitTestEnvironmentName] = new AzureEnvironment
                 {
                     Name = UnitTestEnvironmentName,
@@ -325,7 +325,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
 
             client.AddOrSetAccount(account);
             client.AddOrSetSubscription(subscription);
-            client.SetSubscriptionAsCurrent(UnitTestSubscriptionName, account.Id);
+            client.SetSubscriptionAsDefault(UnitTestSubscriptionName, account.Id);
             client.Profile.Save();
 
             return subscription;

@@ -63,6 +63,96 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("hylee"), Description("Test the cmdlets (New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\packageReservedIP.csv", "package#csv", DataAccessMethod.Sequential)]
+        public void CreateReservedIPThenPaaSVM()
+        {
+            try
+            {
+                string reservedIpName1 = "ResrvdIP1";
+                string reservedIpName2 = "ResrvdIP2";
+                string reservedIpLabel1 = Utilities.GetUniqueShortName("ResrvdIPLbl", 5);
+                string reservedIpLabel2 = Utilities.GetUniqueShortName("ResrvdIPLbl", 5);
+                string dnsName = Utilities.GetUniqueShortName("Dns");
+                //string vmName = Utilities.GetUniqueShortName(vmNamePrefix);
+                string deploymentName = Utilities.GetUniqueShortName("Depl");
+                var input1 = new ReservedIPContext()
+                {
+                    //Address = string.Empty,
+                    DeploymentName = string.Empty,
+                    Label = reservedIpLabel1,
+                    InUse = false,
+                    Location = locationName,
+                    ReservedIPName = reservedIpName1,
+                    State = "Created"
+                };
+
+                var input2 = new ReservedIPContext()
+                {
+                    //Address = string.Empty,
+                    DeploymentName = string.Empty,
+                    Label = reservedIpLabel2,
+                    InUse = false,
+                    Location = locationName,
+                    ReservedIPName = reservedIpName2,
+                    State = "Created"
+                };
+
+                // Reserve a new IP
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureReservedIP(reservedIpName1, locationName, reservedIpLabel1), "Reserve a new IP");
+                //Get the reserved ip and verify the reserved Ip properties.
+                VerifyReservedIpNotInUse(input1);
+
+                // Reserve a new IP
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureReservedIP(reservedIpName2, locationName, reservedIpLabel2), "Reserve a new IP");
+                //Get the reserved ip and verify the reserved Ip properties.
+                VerifyReservedIpNotInUse(input2);
+
+                vmPowershellCmdlets.NewAzureService(serviceName, locationName);
+
+
+                var _packageName = Convert.ToString(TestContext.DataRow["packageName"]);
+                var _configName1 = Convert.ToString(TestContext.DataRow["configName1"]);
+                var _configName2 = Convert.ToString(TestContext.DataRow["configName2"]);
+                var _configName1update = Convert.ToString(TestContext.DataRow["updateConfig1"]);
+                var _configName2update = Convert.ToString(TestContext.DataRow["updateConfig2"]);
+
+                var _packagePath = new FileInfo(Directory.GetCurrentDirectory() + "\\" + _packageName);
+                var _configPath1 = new FileInfo(Directory.GetCurrentDirectory() + "\\" + _configName1);
+                var _configPath2 = new FileInfo(Directory.GetCurrentDirectory() + "\\" + _configName2);
+                var _configPath1update = new FileInfo(Directory.GetCurrentDirectory() + "\\" + _configName1update);
+                var _configPath2update = new FileInfo(Directory.GetCurrentDirectory() + "\\" + _configName2update);
+
+
+                vmPowershellCmdlets.NewAzureDeployment(serviceName, _packagePath.FullName, _configPath1.FullName,
+                    DeploymentSlotType.Production, "label", deploymentName, false, false);
+
+                vmPowershellCmdlets.NewAzureDeployment(serviceName, _packagePath.FullName, _configPath2.FullName,
+                    DeploymentSlotType.Staging, "label", deploymentName, false, false);
+
+
+
+
+                vmPowershellCmdlets.MoveAzureDeployment(serviceName);
+
+                vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
+                vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
+
+                vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Production, _configPath1update.FullName);
+                vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Staging, _configPath2update.FullName);
+
+
+
+                pass = true;
+            }
+            catch (Exception ex)
+            {
+                pass = false;
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+        }
+
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("hylee"), Description("Test the cmdlets (New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
         public void CreateReservedIPThenWindowsVM()
         {
             try

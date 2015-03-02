@@ -22,7 +22,7 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
@@ -535,7 +535,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         // Update-AzureDisk
         public SM.DiskContext UpdateAzureDisk(string diskName, string label)
         {
-            return RunPSCmdletAndReturnFirst<SM.DiskContext>(new UpdateAzureDiskCmdletInfo(diskName, label));
+            return RunPSCmdletAndReturnFirst<SM.DiskContext>(new UpdateAzureDiskCmdletInfo(diskName, label, null));
+        }
+
+        public ManagementOperationContext UpdateAzureDisk(string diskName, string label, int? resizedSize)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new UpdateAzureDiskCmdletInfo(diskName, label, resizedSize));
         }
 
         #endregion
@@ -665,9 +670,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #region AzureOSDisk
 
-        public SM.PersistentVM SetAzureOSDisk(HostCaching hc, SM.PersistentVM vm)
+        public SM.PersistentVM SetAzureOSDisk(HostCaching? hc, SM.PersistentVM vm, int? resizedSize = null)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureOSDiskCmdletInfo(hc, vm));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureOSDiskCmdletInfo(hc, vm, resizedSize));
         }
 
         public SM.OSVirtualHardDisk GetAzureOSDisk(SM.PersistentVM vm)
@@ -1473,17 +1478,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return vmImages;
         }
 
-        public string GetAzureVMImageName(string[] keywords, bool exactMatch = true)
+        public string GetAzureVMImageName(string[] keywords, bool exactMatch = true, int? diskSize = null)
         {
             Collection<SM.OSImageContext> vmImages = GetAzureVMImage();
             foreach (SM.OSImageContext image in vmImages)
             {
-                if (Utilities.MatchKeywords(image.ImageName, keywords, exactMatch) >= 0)
+                if (Utilities.MatchKeywords(image.ImageName, keywords, exactMatch) >= 0 &&
+                    ((diskSize == null) || (image.LogicalSizeInGB <= diskSize)))
                     return image.ImageName;
             }
             foreach (SM.OSImageContext image in vmImages)
             {
-                if (Utilities.MatchKeywords(image.OS, keywords, exactMatch) >= 0)
+                if (Utilities.MatchKeywords(image.OS, keywords, exactMatch) >= 0 &&
+                    ((diskSize == null) || (image.LogicalSizeInGB <= diskSize)))
                     return image.ImageName;
             }
             return null;
@@ -1971,16 +1978,30 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         #endregion AzureVM BGInfo Extension
 
         #region Generic VM Extension cmdlets
-        public SM.PersistentVM SetAzureVMExtension(SM.IPersistentVM vm, string extensionName, string publisher, string version, string referenceName = null,
-            string publicConfiguration = null, string privateConfiguration = null, string publicConfigKey = null, string privateConfigKey = null, string publicConfigPath = null, string privateConfigPath = null, bool disable = false)
+        public SM.PersistentVM SetAzureVMExtension(SM.IPersistentVM vm,
+            string extensionName, string publisher,
+            string version, string referenceName = null,
+            string publicConfiguration = null, string privateConfiguration = null,
+            string publicConfigKey = null, string privateConfigKey = null,
+            string publicConfigPath = null, string privateConfigPath = null,
+            bool disable = false, bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMExtensionCmdletInfo(vm, extensionName, publisher, version, referenceName,
-             publicConfiguration, privateConfiguration, publicConfigKey, privateConfigKey, publicConfigPath, privateConfigPath, disable));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMExtensionCmdletInfo(vm,
+                extensionName, publisher,
+                version, referenceName,
+                publicConfiguration, privateConfiguration,
+                publicConfigKey, privateConfigKey,
+                publicConfigPath, privateConfigPath,
+                disable, forceUpdate));
         }
 
-        public SM.PersistentVM RemoveAzureVMExtension(SM.PersistentVM vm, string extensionName, string publisher, string referenceName=null, bool removeAll=false)
+        public SM.PersistentVM RemoveAzureVMExtension(SM.PersistentVM vm,
+            string extensionName, string publisher,
+            string referenceName = null, bool removeAll = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new RemoveAzureVMExtensionCmdletInfo(vm, extensionName, publisher, referenceName, removeAll));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new RemoveAzureVMExtensionCmdletInfo(vm,
+                extensionName, publisher,
+                referenceName, removeAll));
         }
 
         public Collection<VirtualMachineExtensionContext> GetAzureVMExtension(SM.PersistentVM vm, string extensionName = null, string publisher = null, string version = null, string referenceName = null)
@@ -1988,7 +2009,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnAll<VirtualMachineExtensionContext>(new GetAzureVMExtensionCmdletInfo(vm, extensionName, publisher, version, referenceName));
         }
 
-        //ListAllVersionsParamSetName -> ExtensionName,Publisher,AllVersions
+        // ListAllVersionsParamSetName -> ExtensionName,Publisher,AllVersions
         public Collection<VirtualMachineExtensionImageContext> GetAzureVMAvailableExtension(string extensionName, string publisher, bool allVersions)
         {
             return RunPSCmdletAndReturnAll<VirtualMachineExtensionImageContext>(new GetAzureVMAvailableExtensionCmdletInfo(extensionName, publisher, allVersions));
@@ -2014,9 +2035,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnAll<VirtualMachineAccessExtensionContext>(new GetAzureVMAccessExtensionCmdletInfo(vm, userName, password, version, referenceName));
         }
 
-        public SM.PersistentVM SetAzureVMAccessExtension(SM.IPersistentVM vm, string userName= null, string password=null, string version = null, string referenceName =null,bool disable = false)
+        public SM.PersistentVM SetAzureVMAccessExtension(
+            SM.IPersistentVM vm,
+            string userName= null,
+            string password=null,
+            string version = null,
+            string referenceName =null,
+            bool disable = false,
+            bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMAccessExtensionCmdletInfo( vm,  userName,  password,  version,  referenceName, disable));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMAccessExtensionCmdletInfo(
+                vm,  userName,  password,  version,  referenceName, disable, forceUpdate));
         }
 
         public SM.PersistentVM RemoveAzureVMAccessExtension(SM.IPersistentVM vm)
@@ -2027,24 +2056,50 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         #endregion AzureVMAccessExtension cmdlets
 
         #region AzureVMCustomScriptExtensionCmdlets
-        //SetCustomScriptExtensionByUrisParamSetName
-        internal SM.PersistentVM SetAzureVMCustomScriptExtension(SM.PersistentVM vm, string[] fileUri, bool sseSaSKeys, string run = null, string referenceName = null, string version = null, string argument = null)
+        // SetCustomScriptExtensionByUrisParamSetName
+        internal SM.PersistentVM SetAzureVMCustomScriptExtension(
+            SM.PersistentVM vm,
+            string[] fileUri,
+            bool sseSaSKeys,
+            string run = null,
+            string referenceName = null,
+            string version = null,
+            string argument = null,
+            bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(vm, referenceName, version,fileUri,run, argument ));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(
+                vm, referenceName, version, fileUri, run, argument, forceUpdate));
         }
 
-        //DisableCustomScriptExtensionParamSetName
-        internal SM.PersistentVM SetAzureVMCustomScriptExtension(SM.PersistentVM vm, bool disable, string referenceName = null, string version = null)
+        // DisableCustomScriptExtensionParamSetName
+        internal SM.PersistentVM SetAzureVMCustomScriptExtension(
+            SM.PersistentVM vm,
+            bool disable,
+            string referenceName = null,
+            string version = null,
+            bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(vm,referenceName,version,disable));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(
+                vm, referenceName, version, disable, forceUpdate));
         }
 
-        //SetCustomScriptExtensionByContainerBlobsParamSetName
-        internal SM.PersistentVM SetAzureVMCustomScriptExtension(SM.PersistentVM vm, string[] fileName, string run = null, string storageAccountName = null, string StorageEndpointSuffix = null, string containerName = null,
-              string StorageAccountKey = null, string referenceName = null, string version = null,string argument = null)
+        // SetCustomScriptExtensionByContainerBlobsParamSetName
+        internal SM.PersistentVM SetAzureVMCustomScriptExtension(
+            SM.PersistentVM vm,
+            string[] fileName,
+            string run = null,
+            string storageAccountName = null,
+            string StorageEndpointSuffix = null,
+            string containerName = null,
+            string StorageAccountKey = null,
+            string referenceName = null,
+            string version = null,
+            string argument = null,
+            bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(vm, fileName, storageAccountName, StorageEndpointSuffix, containerName,
-                    StorageAccountKey, run, argument,referenceName, version));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(
+                vm, fileName, storageAccountName, StorageEndpointSuffix, containerName,
+                    StorageAccountKey, run, argument, referenceName, version, forceUpdate));
         }
 
         internal VirtualMachineCustomScriptExtensionContext GetAzureVMCustomScriptExtension(SM.IPersistentVM vm)
