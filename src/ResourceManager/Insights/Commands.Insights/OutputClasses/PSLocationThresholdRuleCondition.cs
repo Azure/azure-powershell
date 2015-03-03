@@ -15,6 +15,7 @@
 using System;
 using System.Globalization;
 using System.Text;
+using Microsoft.Azure.Commands.Insights.Properties;
 using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             }
             else
             {
-                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, "Rule data source type {0} not supported", ruleCondition.DataSource.GetType().Name));
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, ResourcesForAlertCmdlets.RuleDataSourceTypeNotSupported, ruleCondition.DataSource.GetType().Name));
             }
 
             this.FailedLocationCount = ruleCondition.FailedLocationCount;

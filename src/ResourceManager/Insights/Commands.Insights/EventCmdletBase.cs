@@ -19,6 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Commands.Insights.Properties;
 using Microsoft.Azure.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights
@@ -112,20 +113,20 @@ namespace Microsoft.Azure.Commands.Insights
             // Check the value of StartTime
             if (startTime > DateTime.Now)
             {
-                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "StartDate {0:o} is invalid. It is later than Now: {1:o}", startTime, DateTime.Now));
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, ResourcesForEventCmdlets.StartDateLaterThanNow, startTime, DateTime.Now));
             }
 
             // Check that the dateTime range makes sense
             if (endTime < startTime)
             {
-                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "EndDate {0:o} is earlier than StartDate {1:o}", endTime, startTime));
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, ResourcesForEventCmdlets.EndDateEarlierThanStartDate, endTime, startTime));
             }
 
             // Validate start and end dates difference is reasonable (<= MaximumDateDifferenceAllowedInDays)
             var dateDifference = endTime.Subtract(startTime);
             if (dateDifference > MaximumDateDifferenceAllowedInDays)
             {
-                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Start and end dates are too far appart. Separation {0} days. Maximum allowed {1} days", dateDifference.TotalDays, MaximumDateDifferenceAllowedInDays.TotalDays));
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, ResourcesForEventCmdlets.StartAndEndDatesTooFarAppart, MaximumDateDifferenceAllowedInDays.TotalDays, dateDifference.TotalDays));
             }
 
             return string.Format("eventTimestamp ge '{0:o}' and eventTimestamp le '{1:o}'", startTime.ToUniversalTime(), endTime.ToUniversalTime());

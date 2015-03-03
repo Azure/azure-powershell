@@ -15,6 +15,7 @@
 using System;
 using System.Globalization;
 using System.Text;
+using Microsoft.Azure.Commands.Insights.Properties;
 using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                     }
                     else
                     {
-                        throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, "Rule condition type {0} not supported", properties.Condition.GetType().Name));
+                        throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, ResourcesForAlertCmdlets.RuleConditionTypeNotSupported, properties.Condition.GetType().Name));
                     }
                 }
             }

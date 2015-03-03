@@ -18,6 +18,7 @@ using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
+using Microsoft.Azure.Commands.Insights.Properties;
 using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
@@ -176,7 +177,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             // This comparison is more or less superflous because the parameter sets enforce consistency. But the user will be informed if the input is not consistent with the intention
             if (type != this.RuleType)
             {
-                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "The given rule type {0} is not consistent with the set of parameters", this.RuleType));
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, ResourcesForAlertCmdlets.RuleTypeNotConsistentWithParamGroup, this.RuleType));
             }
         }
 
@@ -222,7 +223,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     };
                     break;
                 default:
-                    throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, "Rule type {0} is not supported", this.RuleType));
+                    throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, ResourcesForAlertCmdlets.RuleTypeNotSupported, this.RuleType));
             }
 
             return condition;
