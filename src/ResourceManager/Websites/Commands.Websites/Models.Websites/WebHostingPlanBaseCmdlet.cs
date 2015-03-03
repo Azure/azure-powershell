@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Websites
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web hosting plan.")]
         [ValidateNotNullOrEmptyAttribute]
-        public string WHPName { get; set; }
+        public string WebHostingPlanName { get; set; }
 
     }
 }

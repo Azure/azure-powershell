@@ -20,9 +20,11 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Websites.Cmdlets;
 using Microsoft.Azure.Commands.Websites;
-using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.Azure.Commands.Websites.Models;
 using Moq;
 using Xunit;
+
+
 
 namespace Microsoft.Azure.Commands.Websites.Test
 {
@@ -62,34 +64,5 @@ namespace Microsoft.Azure.Commands.Websites.Test
             };
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CreatesNewPSResourceGroupWithUserTemplate()
-        {
-            WebsiteBaseCmdlet expectedParameters = new WebsiteBaseCmdlet()
-            {
-
-                ResourceGroupName = resourceGroupName,
-                WebsiteName = websiteName
-            };
-            WebsiteBaseCmdlet actualParameters = new WebsiteBaseCmdlet();
-            WebSite expected = new WebSite()
-            {
-                Name = expectedParameters.WebsiteName,
-                Location = location
-            };
-            websitesClientMock.Setup(f => f.CreateWebsite(It.IsAny<WebsiteBaseCmdlet>().ResourceGroupName,websiteName,slotName,location,webHostingPlan))
-                .Returns(expected)
-                .Callback((WebsiteBaseCmdlet p) => { actualParameters = p; });
-
-            cmdlet.WebsiteName = expectedParameters.WebsiteName;
-            cmdlet.ResourceGroupName = expectedParameters.ResourceGroupName;
-            cmdlet.ExecuteCmdlet();
-
-            Assert.Equal(expectedParameters.WebsiteName, actualParameters.WebsiteName);
-            Assert.Equal(expectedParameters.ResourceGroupName, actualParameters.ResourceGroupName);
-
-            commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
-        }
     }
 }

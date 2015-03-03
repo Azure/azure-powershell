@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Websites.Utilities
         }
 
 
-        public WebHostingPlanCreateOrUpdateResponse CreateWHP(string resourceGroupName, string whpName, string location, string adminSiteName, int numberOfWorkers, SkuOptions sku, WorkerSizeOptions workerSize)
+        public WebHostingPlanCreateOrUpdateResponse CreateWebHostingPlan(string resourceGroupName, string whpName, string location, string adminSiteName, int numberOfWorkers, SkuOptions sku, WorkerSizeOptions workerSize)
         {
 
 
