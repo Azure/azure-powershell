@@ -75,8 +75,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         [TestInitialize]
         public void Initialize()
         {
-            //vhdName = Utilities.GetUniqueShortName(vhdNamePrefix);
-            //CopyCommonVhd(vhdContainerName, vhdNamePrefix, vhdName);
             pass = false;
             testStartTime = DateTime.Now;
         }
@@ -85,8 +83,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public void AzureDiskTest()
         {
             StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
-            vhdName = "os0.vhd";
-            string mediaLocation = String.Format("{0}{1}/{2}", blobUrlRoot, vhdContainerName, vhdName);
+            string blobName = "os0.vhd";
+            vhdName =  Utilities.GetUniqueShortName("os0vhd");
+            string mediaLocation = String.Format("{0}{1}/{2}", blobUrlRoot, vhdContainerName, blobName);
 
             try
             {
@@ -115,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Console.WriteLine("Disk Label is successfully updated");
 
                 // Update only size
-                int newSize = 100;
+                int newSize = 250;
                 vmPowershellCmdlets.UpdateAzureDisk(vhdName, null, newSize);
 
                 virtualDisk = vmPowershellCmdlets.GetAzureDisk(vhdName)[0];
@@ -127,7 +126,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 // Update both label and size
                 newLabel = "NewLabel2";
-                newSize = 200;
+                newSize = 300;
                 vmPowershellCmdlets.UpdateAzureDisk(vhdName, newLabel, newSize);
 
                 virtualDisk = vmPowershellCmdlets.GetAzureDisk(vhdName)[0];
