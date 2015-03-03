@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
@@ -30,6 +31,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
         public AzureProfile Profile { get; set; }
 
+        public static AzureProfile CurrentProfile { get; set; }
+
+        protected static TokenCache DefaultDiskTokenCache { get; set; }
+
+        protected static TokenCache DefaultMemoryTokenCache { get; set; }
+
+        protected static AzureProfile DefaultProfile { get; set; }
+
         static AzurePSCmdlet()
         {
             if (!TestMockSupport.RunningMocked)
@@ -38,6 +47,66 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 
             AzureSession.ClientFactory.UserAgents.Add(AzurePowerShell.UserAgentValue);
+            if (!TestMockSupport.RunningMocked)
+            {
+                InitializeTokenCaches();
+                DefaultProfile = InitializeDefaultProfile();
+                CurrentProfile = DefaultProfile;
+                UpdateSessionStateForProfile(CurrentProfile);
+                AzureSession.DataStore = new DiskDataStore();
+            }
+        }
+
+        /// <summary>
+        /// Create the default profile, based on the default profile path
+        /// </summary>
+        /// <returns>The default prpofile, serialized from the default location on disk</returns>
+        protected static AzureProfile InitializeDefaultProfile()
+        {
+            if (!string.IsNullOrEmpty(AzureSession.ProfileDirectory) && !string.IsNullOrEmpty(AzureSession.ProfileFile))
+            {
+                try
+                {
+                    return new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                }
+                catch
+                {
+                    // swallow exceptions in creating the profile from disk
+                }
+            }
+
+            return new AzureProfile();
+        }
+
+        protected static void InitializeTokenCaches()
+        {
+            DefaultMemoryTokenCache = new TokenCache();
+            if (!string.IsNullOrWhiteSpace(AzureSession.ProfileDirectory) &&
+                !string.IsNullOrWhiteSpace(AzureSession.TokenCacheFile))
+            {
+                DefaultDiskTokenCache = new ProtectedFileTokenCache(Path.Combine(AzureSession.ProfileDirectory, AzureSession.TokenCacheFile));
+            }
+            else
+            {
+                DefaultDiskTokenCache = DefaultMemoryTokenCache;
+            }
+        }
+
+        /// <summary>
+        /// Update the token cache when setting the profile
+        /// </summary>
+        /// <param name="profile"></param>
+        protected static void UpdateSessionStateForProfile(AzureProfile profile)
+        {
+            var defaultProfilePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
+            if (string.Equals(profile.ProfilePath, defaultProfilePath, StringComparison.OrdinalIgnoreCase))
+            {
+                AzureSession.TokenCache = DefaultDiskTokenCache;
+            }
+            else
+            {
+                AzureSession.TokenCache = DefaultMemoryTokenCache;
+            }
         }
 
         /// <summary>
@@ -46,7 +115,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected override void BeginProcessing()
         {
             InitializeProfile();
-
             if (string.IsNullOrEmpty(ParameterSetName))
             {
                 WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithoutParameterSetLog, this.GetType().Name));
@@ -66,15 +134,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             base.BeginProcessing();
         }
 
+        /// <summary>
+        /// Ensure that there is a profile for the command
+        /// </summary>
         private void InitializeProfile()
         {
-            // Load profile from disk 
-            var profileFromDisk = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            if (Profile == null ||
-                Profile.ProfilePath == profileFromDisk.ProfilePath)
+            if (Profile == null)
             {
-                Profile = profileFromDisk;
+                Profile = AzurePSCmdlet.CurrentProfile;
             }
+
+            UpdateSessionStateForProfile(Profile);
         }
 
         /// <summary>

@@ -1355,4 +1355,19 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="InvalidDefaultSubscription" xml:space="preserve">
     <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
   </data>
+  <data name="InvalidNewProfilePath" xml:space="preserve">
+    <value>Path must specify a valid path to an Azure profile.</value>
+  </data>
+  <data name="InvalidProfileProperties" xml:space="preserve">
+    <value>Property bag Hashtable must contain one of the following sets of properties: {SubscriptionId, Certificate}, {SubscriptionId, Username, Password}, {SubscriptionId, ServicePrincipal, Password, Tenant},  {SubscriptionId, AccountId, Token}</value>
+  </data>
+  <data name="MissingCertificateInProfileProperties" xml:space="preserve">
+    <value>Property bag Hashtable must contain a 'Certificate' of type 'X509Certificate2'.</value>
+  </data>
+  <data name="MissingPasswordInProfileProperties" xml:space="preserve">
+    <value>Property bag Hashtable must contain a 'Password' with an associated 'Username' or 'ServicePrincipal'.</value>
+  </data>
+  <data name="MissingSubscriptionInProfileProperties" xml:space="preserve">
+    <value>Property bag Hashtable must contain a 'SubscriptionId'.</value>
+  </data>
 </root>
