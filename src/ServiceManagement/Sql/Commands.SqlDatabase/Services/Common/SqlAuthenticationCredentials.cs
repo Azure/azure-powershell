@@ -26,7 +26,33 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common
     {
         private string userName;
         private SecureString password;
-        
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SqlAuthenticationCredentials"/> class.
+        /// </summary>
+        /// <param name="userName">The user name.</param>
+        /// <param name="password">The password</param>
+        public SqlAuthenticationCredentials(string userName, string password)
+        {
+            if (string.IsNullOrEmpty(userName))
+            {
+                throw new ArgumentException("userName");
+            }
+
+            if (string.IsNullOrEmpty(userName))
+            {
+                throw new ArgumentNullException("password");
+            }
+
+            SecureString encryptedPassword = new SecureString();
+            foreach (char letter in password)
+            {
+                encryptedPassword.AppendChar(letter);
+            }
+
+            Initialize(userName, encryptedPassword);
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SqlAuthenticationCredentials" /> class.
         /// </summary>
@@ -44,6 +70,12 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common
                 throw new ArgumentNullException("password");
             }
 
+            Initialize(userName, password);
+        }
+
+
+        private void Initialize(string userName, SecureString password)
+        {
             this.userName = userName;
             this.password = password.Copy();
             this.password.MakeReadOnly();

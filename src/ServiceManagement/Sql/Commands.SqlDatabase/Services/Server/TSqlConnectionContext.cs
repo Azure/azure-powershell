@@ -19,10 +19,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
 {
-    public class TSqlConnectionContext : IServerDataServiceContext
+    public class TSqlConnectionContext : ISqlCredentialsDataServiceContext
     {
         /// <summary>
         /// Timeout duration for commands
@@ -123,6 +124,17 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         }
 
         /// <summary>
+        /// Gets the sql credentials used to connect to the sever
+        /// </summary>
+        public SqlAuthenticationCredentials SqlCredentials
+        {
+            get
+            {
+                return this.sqlCredentials;
+            }
+        }
+
+        /// <summary>
         /// Contains the connection string necessary to connect to the server
         /// </summary>
         private SqlConnectionStringBuilder builder;
@@ -141,6 +153,11 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// Server name for the context
         /// </summary>
         private string serverName;
+
+        /// <summary>
+        /// SQL Credentials for the context
+        /// </summary>
+        private SqlAuthenticationCredentials sqlCredentials;
 
         /// <summary>
         /// Helper function to generate the SqlConnectionStringBuilder
@@ -184,13 +201,24 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// Creates an instance of a SQLAuth to TSql class
         /// </summary>
         /// <param name="fullyQualifiedServerName"></param>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        public TSqlConnectionContext(Guid sessionActivityId, string fullyQualifiedServerName, string username, string password)
+        /// <param name="sqlCredentials">The sql credentials to use.</param>
+        public TSqlConnectionContext(Guid sessionActivityId, string fullyQualifiedServerName, SqlAuthenticationCredentials sqlCredentials)
         {
             this.sessionActivityId = sessionActivityId;
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
-            builder = GenerateSqlConnectionBuilder(fullyQualifiedServerName, username, password);
+            this.sqlCredentials = sqlCredentials;
+            builder = GenerateSqlConnectionBuilder(fullyQualifiedServerName, sqlCredentials.UserName, sqlCredentials.Password);
+        }
+
+        /// <summary>
+        /// Creates an instance of a SQLAuth to TSql class
+        /// </summary>
+        /// <param name="fullyQualifiedServerName"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        public TSqlConnectionContext(Guid sessionActivityId, string fullyQualifiedServerName, string username, string password)
+            : this(sessionActivityId, fullyQualifiedServerName, new SqlAuthenticationCredentials(username, password))
+        {
         }
 
         /// <summary>
