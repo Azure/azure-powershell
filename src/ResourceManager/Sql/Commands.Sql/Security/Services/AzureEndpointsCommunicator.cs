@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.WindowsAzure.Management.Storage.Models;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -36,70 +32,49 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
     /// <summary>
     /// This class is responsible for all the REST communication with the management libraries
     /// </summary>
-    public class EndpointsCommunicator
+    public class AzureEndpointsCommunicator
     {
+        /// <summary>
+        /// The Sql management client used by this communicator
+        /// </summary>
         private static SqlManagementClient SqlClient { get; set; }
-        
+       
+        /// <summary>
+        ///  The storage management client used by this communicator
+        /// </summary>
         private static StorageManagementClient StorageClient { get; set; }
         
+        /// <summary>
+        /// Gets or sets the Azure subscription
+        /// </summary>
         private static AzureSubscription Subscription {get ; set; }
 
+        /// <summary>
+        /// The resources management client used by this communcator
+        /// </summary>
         private static ResourceManagementClient ResourcesClient { get; set; }
 
-        private AzureProfile Profile { get; set; }
- 
-        public EndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
+        /// <summary>
+        /// Gets or sets the Azure profile
+        /// </summary>
+        public AzureProfile Profile { get; set; }
+
+        public AzureEndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)
             {
                 Subscription = subscription;
-                SqlClient = null;
                 StorageClient = null;
                 ResourcesClient = null;
             }
         }
 
         /// <summary>
-        /// Gets the database security policy for the given database in the given database server in the given resource group
+        /// Provides the storage keys for the storage account within the given resource group
         /// </summary>
-        public DatabaseSecurityPolicy GetDatabaseSecurityPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
-        {
-            ISecurityOperations operations = GetCurrentSqlClient(clientRequestId).DatabaseSecurity;
-            DatabaseSecurityPolicyGetResponse response = operations.Get(resourceGroupName, serverName, databaseName);
-            return response.DatabaseSecurityPolicy;
-        }
-
-        /// <summary>
-        /// Gets the database server security policy of the given database server in the given resource group
-        /// </summary>
-        public DatabaseSecurityPolicy GetServerSecurityPolicy(string resourceGroupName, string serverName, string clientRequestId)
-        {
-            ISecurityOperations operations = GetCurrentSqlClient(clientRequestId).DatabaseSecurity;
-            DatabaseSecurityPolicyGetResponse response = operations.Get(resourceGroupName, serverName, Constants.ServerPolicyId);
-            return response.DatabaseSecurityPolicy;
-        }
-
-        /// <summary>
-        /// Sets the database security policy for the given database in the given database server in the given resource group
-        /// </summary>
-        public void SetDatabaseSecurityPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseSecurityPolicyUpdateParameters parameters)
-        {
-            ISecurityOperations operations = GetCurrentSqlClient(clientRequestId).DatabaseSecurity;
-            operations.Update(resourceGroupName, serverName, databaseName, parameters);
-        }
-
-        /// <summary>
-        /// Sets the database server security policy of the given database server in the given resource group
-        /// </summary>
-        public void SetServerSecurityPolicy(string resourceGroupName, string serverName,  string clientRequestId, DatabaseSecurityPolicyUpdateParameters parameters)
-        {
-            ISecurityOperations operations = GetCurrentSqlClient(clientRequestId).DatabaseSecurity;
-            operations.Update(resourceGroupName, serverName, Constants.ServerPolicyId, parameters);
-        }
-
-
-        public async Task<Dictionary<Constants.StorageKeyTypes, string>> GetStorageKeysAsync(string resourceGroupName, string storageAccountName)
+        /// <returns>A dictionary with two entries, one for each possible key type with the appropriate key</returns>
+        public async Task<Dictionary<StorageKeyKind, string>> GetStorageKeysAsync(string resourceGroupName, string storageAccountName)
         {
             SqlManagementClient client = GetCurrentSqlClient("none");
 
@@ -108,8 +83,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             url = url + "/resourceGroups/" + resourceGroupName;
             url = url + "/providers/Microsoft.ClassicStorage/storageAccounts/" + storageAccountName;
             url = url + "/listKeys?api-version=2014-06-01";
-
-
 
             HttpRequestMessage httpRequest = new HttpRequestMessage();
             httpRequest.Method = HttpMethod.Post;
@@ -120,36 +93,38 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
             JToken responseDoc = JToken.Parse(responseContent);
 
-            Dictionary<Constants.StorageKeyTypes, String> result = new Dictionary<Constants.StorageKeyTypes, String>();
+            Dictionary<StorageKeyKind, String> result = new Dictionary<StorageKeyKind, String>();
             string primaryKey = (string)responseDoc["primaryKey"];
             string secondaryKey = (string)responseDoc["secondaryKey"];
             if(string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
                 throw new Exception(); // this is caught by the synced wrapper 
-            result.Add(Constants.StorageKeyTypes.Primary, primaryKey);
-            result.Add(Constants.StorageKeyTypes.Secondary, secondaryKey);
+            result.Add(StorageKeyKind.Primary, primaryKey);
+            result.Add(StorageKeyKind.Secondary, secondaryKey);
             return result;
         }
-
         
         /// <summary>
         /// Gets the storage keys for the given storage account. 
         /// </summary>
-        public Dictionary<Constants.StorageKeyTypes, string> GetStorageKeys(string resourceGroupName, string storageAccountName)
+        public Dictionary<StorageKeyKind, string> GetStorageKeys(string resourceGroupName, string storageAccountName)
         {
             try
             {
                 return Task.Factory.StartNew((object epc) =>
                 {
-                    return ((EndpointsCommunicator)epc).GetStorageKeysAsync(resourceGroupName, storageAccountName);
+                    return ((AzureEndpointsCommunicator)epc).GetStorageKeysAsync(resourceGroupName, storageAccountName);
                 }
                 , this, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
             catch
             {
-                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
+                throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
             }
         }
 
+        /// <summary>
+        /// Returns the resource group of the provided storage account
+        /// </summary>
         public string GetStorageResourceGroup(string storageAccountName)
         {
             ResourceManagementClient resourcesClient = GetCurrentResourcesClient(Profile);
@@ -175,7 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
                 }     
                 else
                 {
-                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
+                    throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
                 }
             }
             return null;
@@ -193,10 +168,13 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             }
             catch
             {
-                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
+                throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
             }
         }
 
+        /// <summary>
+        /// Lazy creation of a single instance of a storage client
+        /// </summary>
         private StorageManagementClient GetCurrentStorageClient(AzureProfile profile)
         {
             if(StorageClient == null)
@@ -204,6 +182,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             return StorageClient;
         }
 
+        /// <summary>
+        /// Lazy creation of a single instance of a resoures client
+        /// </summary>
         private ResourceManagementClient GetCurrentResourcesClient(AzureProfile profile)
         {
             if (ResourcesClient == null)
@@ -222,7 +203,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
-                SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientSessionIdHeaderName, Util.GenerateTracingId());
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

@@ -13,24 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Commands.Sql.Services;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
 {
     /// <summary>
-    /// Returns the auditing policy of a specific database server.
+    /// Returns the auditing policy of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseServerAuditingPolicy"), OutputType(typeof(AuditingPolicy))]
-    public class GetAzureSqlDatabaseServerAuditingPolicy : SqlDatabaseSecurityCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
+    public class GetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
-        /// Provides the auditing policy that this cmdlet operates on
+        /// No sending is needed as this is a Get cmdlet
         /// </summary>
-        /// <returns>An auditingPolicy object</returns>
-        protected override AuditingPolicy GetPolicy()
-        {
-            return this.PolicyHandler.GetServerAuditingPolicy(this.ResourceGroupName, this.ServerName, this.clientRequestId);
+        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
+        protected override void SendModel(DatabaseAuditingPolicyModel model) 
+        { 
         }
     }
 }
