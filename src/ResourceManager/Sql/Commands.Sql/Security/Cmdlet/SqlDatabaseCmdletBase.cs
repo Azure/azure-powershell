@@ -13,45 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Commands.Sql.Security.Model;
-using System;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
 {
     /// <summary>
-    /// Sets the auditing policy properties for a specific database.
+    /// The base class for all Azure Sql database cmdlets
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseAuditingPolicy"), OutputType(typeof(AuditingPolicy))]
-    public class SetAzureSqlDatabaseAuditingPolicy : SetAuditingPolicyBase
+    public abstract class SqlDatabaseCmdletBase<M, A> : SqlCmdletBase<M, A>
     {
-
         /// <summary>
         /// Gets or sets the name of the database to use.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "SQL Database name.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Provides the auditing policy that this cmdlet operates on
-        /// </summary>
-        /// <returns>An auditingPolicy object</returns>
-        protected override AuditingPolicy GetPolicy()
-        {
-            return this.PolicyHandler.GetDatabaseAuditingPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.clientRequestId);
-        }
-
-        protected override void UpdatePolicy(AuditingPolicy policy)
-        {
-            base.UpdatePolicy(policy);
-            policy.UseServerDefault = false;
-        }
-
-        protected override void SendPolicy(AuditingPolicy policy)
-        {
-            this.PolicyHandler.SetDatabaseAuditingPolicy(policy, clientRequestId);
-        }
     }
 }

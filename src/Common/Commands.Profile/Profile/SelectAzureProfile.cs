@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// Creates new Microsoft Azure profile.
     /// </summary>
     [Cmdlet(VerbsCommon.Select, "AzureProfile"), OutputType(typeof(AzureProfile))]
-    public class SelectAzureProfileCommand : SubscriptionCmdletBase
+    public class SelectAzureProfileCommand : AzurePSCmdlet
     {
         internal const string NewProfileParameterSet = "NewProfile";
         internal const string DefaultProfilePrameterSet = "DefaultProfile";
@@ -44,8 +44,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [Parameter(ParameterSetName=DefaultProfilePrameterSet, Mandatory=true)]
         public SwitchParameter Default { get; set; }
 
-        public SelectAzureProfileCommand() : base(true)
+        protected override void InitializeProfile()
         {
+            // do not initialize the profile for this cmdlet
         }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -53,16 +54,15 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         {
             if (ParameterSetName == DefaultProfilePrameterSet)
             {
-                Profile = AzurePSCmdlet.DefaultProfile;
+                Profile = AzurePSCmdlet.InitializeDefaultProfile();
             }
 
             if (Profile == null)
             {
-                throw new ArgumentException("Selected profile must not be null.");
+                throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
             }
 
             AzurePSCmdlet.CurrentProfile = Profile;
-            AzurePSCmdlet.UpdateSessionStateForProfile(AzurePSCmdlet.CurrentProfile);
             WriteObject(Profile);
         }
     }

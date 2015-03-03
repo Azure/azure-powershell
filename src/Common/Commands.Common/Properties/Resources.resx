@@ -1370,4 +1370,7 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="MissingSubscriptionInProfileProperties" xml:space="preserve">
     <value>Property bag Hashtable must contain a 'SubscriptionId'.</value>
   </data>
+  <data name="AzureProfileMustNotBeNull" xml:space="preserve">
+    <value>Selected profile must not be null.</value>
+  </data>
 </root>
