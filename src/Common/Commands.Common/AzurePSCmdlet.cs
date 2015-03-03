@@ -33,16 +33,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public AzureProfile Profile { get; set; }
 
         /// <summary>
-        /// Determines the current profile - the profile used when no Profile is explicitly passed in.  Should only be used by
-        /// Profile cmdlets and tests that needc to set up a particular profile
+        /// Sets the current profile - the profile used when no Profile is explicitly passed in.  Should be used only by
+        /// Profile cmdlets and tests that need to set up a particular profile
         /// </summary>
-        public static AzureProfile CurrentProfile {
+        public static AzureProfile CurrentProfile 
+        {
             private get
             {
                 if (_currentProfile == null)
                 {
                     _currentProfile = InitializeDefaultProfile();
-                    UpdateSessionStateForProfile(_currentProfile);
+                    SetTokenCacheForProfile(_currentProfile);
                 }
 
                 return _currentProfile;
@@ -50,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             set
             {
-                UpdateSessionStateForProfile(value);
+                SetTokenCacheForProfile(value);
                 _currentProfile = value;
             }
         }
@@ -70,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             if (!TestMockSupport.RunningMocked)
             {
                 InitializeTokenCaches();
-                UpdateSessionStateForProfile(CurrentProfile);
+                SetTokenCacheForProfile(CurrentProfile);
                 AzureSession.DataStore = new DiskDataStore();
             }
         }
@@ -114,7 +115,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// Update the token cache when setting the profile
         /// </summary>
         /// <param name="profile"></param>
-        protected static void UpdateSessionStateForProfile(AzureProfile profile)
+        protected static void SetTokenCacheForProfile(AzureProfile profile)
         {
             var defaultProfilePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
             if (string.Equals(profile.ProfilePath, defaultProfilePath, StringComparison.OrdinalIgnoreCase))
@@ -162,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 Profile = AzurePSCmdlet.CurrentProfile;
             }
 
-            UpdateSessionStateForProfile(Profile);
+            SetTokenCacheForProfile(Profile);
         }
 
         /// <summary>
