@@ -16,18 +16,18 @@ using System;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Insights.Events;
+using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Insights.Test.Events
+namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
-    public class GetAzureCorrelationIdLogCommandTests
+    public class GetAlertHistoryCommandTests
     {
-        private readonly GetAzureCorrelationIdLogCommand cmdlet;
+        private readonly GetAlertHistoryCommand cmdlet;
         private readonly Mock<InsightsClient> insightsClientMock;
         private readonly Mock<IEventOperations> insightsEventOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
@@ -35,18 +35,18 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
         private string filter;
         private string selected;
 
-        public GetAzureCorrelationIdLogCommandTests()
+        public GetAlertHistoryCommandTests()
         {
             insightsEventOperationsMock = new Mock<IEventOperations>();
             insightsClientMock = new Mock<InsightsClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetAzureCorrelationIdLogCommand()
+            cmdlet = new GetAlertHistoryCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 InsightsClient = insightsClientMock.Object
             };
 
-            response = Utilities.InitializeResponse();
+            response = Test.Utilities.InitializeResponse();
 
             insightsEventOperationsMock.Setup(f => f.ListEventsAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<EventDataListResponse>(response))
@@ -61,18 +61,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureCorrelationIdLogCommandParametersProcessing()
+        public void GetAlertHistoryCommandParametersProcessing()
         {
             var startDate = DateTime.Now.AddSeconds(-1);
 
-            // Setting required parameter
-            cmdlet.CorrelationId = Utilities.Correlation;
-
-            Utilities.ExecuteVerifications(
-                cmdlet: cmdlet, 
+            Test.Utilities.ExecuteVerifications(
+                cmdlet: cmdlet,
                 insinsightsEventOperationsMockightsClientMock: this.insightsEventOperationsMock,
-                requiredFieldName: "correlationId",
-                requiredFieldValue: Utilities.Correlation,
+                requiredFieldName: "eventSource",
+                requiredFieldValue: GetAlertHistoryCommand.AlertsEventSourceName,
                 filter: ref this.filter,
                 selected: ref this.selected,
                 startDate: startDate,

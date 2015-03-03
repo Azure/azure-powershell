@@ -16,20 +16,20 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 
-namespace Microsoft.Azure.Commands.Insights
+namespace Microsoft.Azure.Commands.Insights.Events
 {
     /// <summary>
-    /// Get the list of events for at a ResourceProvider level.
+    /// Get the list of events for at a CorrelationId level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureResourceProviderLog"), OutputType(typeof(List<IPSEventData>))]
-    public class GetAzureResourceProviderLogCommand : EventCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureCorrelationIdLog"), OutputType(typeof(List<IPSEventData>))]
+    public class GetAzureCorrelationIdLogCommand : EventCmdletBase
     {
         /// <summary>
-        /// Gets or sets the resourceprovider parameter of the cmdlet
+        /// Gets or sets the correlationId of the cmdlet
         /// </summary>
-        [Parameter(Position = 0, ParameterSetName = ResourceProviderName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ResourceProvider name")]
+        [Parameter(Position = 0, ParameterSetName = CorrelationIdName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "CorrelationId")]
         [ValidateNotNullOrEmpty]
-        public string ResourceProvider { get; set; }
+        public string CorrelationId { get; set; }
 
         /// <summary>
         /// Process the parameters defined by this class  (a.k.a. particular parameters)
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <returns>The query filter with the conditions for particular parameters added</returns>
         protected override string ProcessParticularParameters(string currentQueryFilter)
         {
-            return this.AddConditionIfPResent(currentQueryFilter, "resourceProvider", this.ResourceProvider);
+            return this.AddConditionIfPResent(currentQueryFilter, "correlationId", this.CorrelationId);
         }
     }
 }
