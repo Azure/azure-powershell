@@ -118,7 +118,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.6.1.1\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.6.1.2\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -248,11 +248,13 @@
     <Compile Include="IaaS\Network\RemoveAzureNetworkSecurityGroupConfig.cs" />
     <Compile Include="IaaS\Network\RemoveAzurePublicIP.cs" />
     <Compile Include="IaaS\Network\GetAzurePublicIP.cs" />
+    <Compile Include="IaaS\Network\RemoveAzureReservedIPAssociation.cs" />
     <Compile Include="IaaS\Network\SetAzureDns.cs" />
     <Compile Include="IaaS\Network\SetAzureInternalLoadBalancer.cs" />
     <Compile Include="IaaS\Network\SetAzureNetworkSecurityGroupConfig.cs" />
     <Compile Include="IaaS\Network\SetAzureNetworkInterfaceConfig.cs" />
     <Compile Include="IaaS\Network\SetAzurePublicIP.cs" />
+    <Compile Include="IaaS\Network\SetAzureReservedIPAssociation.cs" />
     <Compile Include="Model\DeploymentRebootEventContext.cs" />
     <Compile Include="Model\InternalLoadBalancerSetting.cs" />
     <Compile Include="Model\InternalLoadBalancerContext.cs" />

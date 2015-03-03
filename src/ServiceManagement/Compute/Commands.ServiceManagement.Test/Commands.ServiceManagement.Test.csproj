@@ -108,8 +108,9 @@
     <Reference Include="Microsoft.WindowsAzure.Management.Compute">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.9.2.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Network">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.6.1.1\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.6.1.2\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.0.0\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
@@ -288,7 +289,9 @@
     <Compile Include="FunctionalTests\IaasCmdletInfo\AddAzureNetworkInterfaceConfigCmdletInfo.cs" />
     <Compile Include="FunctionalTests\NetworkCmdletInfo\GetAzureReservedIPCmdletInfo.cs" />
     <Compile Include="FunctionalTests\NetworkCmdletInfo\NewAzureReservedIPCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\NetworkCmdletInfo\RemoveAzureReservedIPAssociationCmdletInfo.cs" />
     <Compile Include="FunctionalTests\NetworkCmdletInfo\RemoveAzureReservedIPCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\NetworkCmdletInfo\SetAzureReservedIPAssociationCmdletInfo.cs" />
     <Compile Include="FunctionalTests\PaasCmdletInfo\GetAzureDeploymentEventBySlotCmdletInfo.cs" />
     <Compile Include="FunctionalTests\PaasCmdletInfo\GetAzureDeploymentEventCmdletInfo.cs" />
     <Compile Include="FunctionalTests\SubscriptionCmdletInfo\RemoveAzureSubscriptionCmdletInfo.cs" />
@@ -419,6 +422,12 @@
     <None Include="AzureRTComplete_Full_Diff.playlist" />
     <None Include="AzureRTExtensions.playlist" />
     <None Include="AzureRTFull.playlist" />
+    <None Include="Resources\HelloWorld_SDK20.cspkg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceConfiguration.cscfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="Resources\affinityGroupData.csv" />
