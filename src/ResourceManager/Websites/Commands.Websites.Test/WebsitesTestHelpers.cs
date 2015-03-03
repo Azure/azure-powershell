@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Websites.Models;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Websites.Models.Websites;
+using System.Collections;
+using System.Collections.Generic;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.Websites
+namespace Microsoft.Azure.Commands.Websites.Test
 {
-    public class WebsiteBaseCmdlet : WebsitesBaseClient
+    public static class WebsitesTestHelpers
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the website.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string WebsiteName { get; set; }
+        public static void CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null)
+        {
+            string tenantUrlEnding = "batch-test.windows-int.net";
+            string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
+            string subscription = "00000000-0000-0000-0000-000000000000";
+            string resourceGroup = resourceGroupName;
+        }
     }
 }
-
