@@ -12,32 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
-using Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo
 {
-    public class NewAzureReservedIPCmdletInfo : CmdletsInfo
+    class RemoveAzureReservedIPAssociationCmdletInfo : CmdletsInfo
     {
-        public NewAzureReservedIPCmdletInfo(string name, string location, string label)
+        public RemoveAzureReservedIPAssociationCmdletInfo(string reservedIpName, string serviceName, string slot, bool force)
         {
-            this.cmdletName = Utilities.NewAzureReservedIPCmdletName;
+            this.cmdletName = Utilities.RemoveAzureReservedIPAssociationCmdletName;
 
-            this.cmdletParams.Add(new CmdletParam("ReservedIPName", name));
-            this.cmdletParams.Add(new CmdletParam("Location", location));
-
-            if (!string.IsNullOrEmpty(label))
-            {
-                this.cmdletParams.Add(new CmdletParam("Label", label));
-            }
-        }
-
-        public NewAzureReservedIPCmdletInfo(string name, string location, string serviceName, string slot, string label): this(name, location, label)
-        {
-            this.cmdletName = Utilities.NewAzureReservedIPCmdletName;
-
+            this.cmdletParams.Add(new CmdletParam("ReservedIPName", reservedIpName));
             this.cmdletParams.Add(new CmdletParam("ServiceName", serviceName));
             this.cmdletParams.Add(new CmdletParam("Slot", slot));
+            if (force)
+            {
+                this.cmdletParams.Add(new CmdletParam("Force"));
+            }
+        }
+        public RemoveAzureReservedIPAssociationCmdletInfo(string reservedIpName, string serviceName)
+            : this(reservedIpName, serviceName, DeploymentSlotType.Production, true)
+        {
         }
     }
 }
