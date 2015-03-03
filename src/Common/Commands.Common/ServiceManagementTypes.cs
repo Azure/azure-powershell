@@ -1631,6 +1631,38 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
     }
     #endregion
 
+    #region VMImageInput
+    [DataContract(Namespace = Constants.ServiceManagementNS)]
+    public class VMImageInput : Mergable<VMImageInput>
+    {
+        [DataMember(Name = "OSDiskConfiguration", EmitDefaultValue = false, Order = 1)]
+        public OSDiskConfiguration OSDiskConfiguration
+        {
+            get
+            {
+                return this.GetValue<OSDiskConfiguration>("OSDiskConfiguration");
+            }
+            set
+            {
+                this.SetValue("OSDiskConfiguration", value);
+            }
+        }
+
+        [DataMember(Name = "DataDiskConfigurations", EmitDefaultValue = false, Order = 2)]
+        public DataDiskConfigurationList DataDiskConfigurations
+        {
+            get
+            {
+                return this.GetValue<DataDiskConfigurationList>("DataDiskConfigurations");
+            }
+            set
+            {
+                this.SetValue("DataDiskConfigurations", value);
+            }
+        }
+    }
+    #endregion
+
     #region RoleOperation
     [DataContract(Namespace = Constants.ServiceManagementNS)]
     public class RoleOperation : IExtensibleDataObject
@@ -2636,6 +2668,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set;
         }
 
+        [DataMember(EmitDefaultValue = false, Order = 7)]
+        public int ResizedSizeInGB
+        {
+            get;
+            set;
+        }
+
         public ExtensionDataObject ExtensionData { get; set; }
     }
 
@@ -2679,6 +2718,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 
         [DataMember(EmitDefaultValue = false, Order = 5)]
         public string IOType
+        {
+            get;
+            set;
+        }
+
+        [DataMember(EmitDefaultValue = false, Order = 6)]
+        public int ResizedSizeInGB
         {
             get;
             set;

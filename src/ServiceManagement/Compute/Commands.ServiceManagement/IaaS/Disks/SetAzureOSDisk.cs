@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
         internal void ExecuteCommand()
         {
-            var role = VM.GetInstance(); 
+            var role = VM.GetInstance();
 
             if (role.OSVirtualHardDisk == null)
             {
@@ -61,11 +61,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                             null));
             }
 
-            OSVirtualHardDisk disk = role.OSVirtualHardDisk;
-            disk.HostCaching = HostCaching;
+            role.OSVirtualHardDisk.HostCaching = HostCaching;
             if (this.ParameterSetName.Equals(ResizeParameterSet))
             {
-                disk.ResizedSizeInGB = this.ResizedSizeInGB;
+                role.OSVirtualHardDisk.ResizedSizeInGB = this.ResizedSizeInGB;
+
+                if (role.VMImageInput == null)
+                {
+                    role.VMImageInput = new VMImageInput();
+                }
+
+                if (role.VMImageInput.OSDiskConfiguration == null)
+                {
+                    role.VMImageInput.OSDiskConfiguration = new OSDiskConfiguration();
+                };
+
+                role.VMImageInput.OSDiskConfiguration.ResizedSizeInGB = this.ResizedSizeInGB;
             }
 
             WriteObject(VM, true);
