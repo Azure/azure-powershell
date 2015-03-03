@@ -190,12 +190,13 @@
     <Compile Include="Services\Common\DataServiceExtensions.cs" />
     <Compile Include="Services\Common\DataConnectionUtility.cs" />
     <Compile Include="Services\Common\DataServiceAccess.cs" />
-    <Compile Include="Services\Common\DataServiceBasicCredentials.cs" />
+    <Compile Include="Services\Common\SqlAuthenticationCredentials.cs" />
     <Compile Include="Services\Common\DataServiceConnectionType.cs" />
     <Compile Include="Services\Common\DataServiceConstants.cs" />
     <Compile Include="Services\Common\SqlDatabaseExceptionHandler.cs" />
     <Compile Include="Services\Common\ManagementServiceExceptionInfo.cs" />
     <Compile Include="Services\Constants.cs" />
+    <Compile Include="Services\Server\ISqlCredentialsDataServiceContext.cs" />
     <Compile Include="Services\Server\RecoverableDatabaseExtensions.cs" />
     <Compile Include="Services\Server\DatabaseCopyExtensions.cs" />
     <Compile Include="Services\ImportExport\ImportExportRequest.cs" />

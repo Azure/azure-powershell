@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         [Parameter(Mandatory = true, Position = 0,
             HelpMessage = "The context for connecting to the server")]
         [ValidateNotNullOrEmpty]
-        public ServerDataServiceSqlAuth SqlConnectionContext { get; set; }
+        public ISqlCredentialsDataServiceContext SqlConnectionContext { get; set; }
 
         /// <summary>
         /// Gets or sets the destination storage container for the blob
