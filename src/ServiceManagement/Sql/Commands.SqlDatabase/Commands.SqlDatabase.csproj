@@ -190,7 +190,7 @@
     <Compile Include="Services\Common\DataServiceExtensions.cs" />
     <Compile Include="Services\Common\DataConnectionUtility.cs" />
     <Compile Include="Services\Common\DataServiceAccess.cs" />
-    <Compile Include="Services\Common\DataServiceBasicCredentials.cs" />
+    <Compile Include="Services\Common\SqlAuthenticationCredentials.cs" />
     <Compile Include="Services\Common\DataServiceConnectionType.cs" />
     <Compile Include="Services\Common\DataServiceConstants.cs" />
     <Compile Include="Services\Common\SqlDatabaseExceptionHandler.cs" />
