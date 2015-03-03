@@ -52,7 +52,6 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         internal const string EnvironmentKey = "Environment";
         internal const string StorageAccountKey = "StorageAccount";
 
-
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = CertificateParameterSet)]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ServicePrincipalParameterSet)]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = AccessTokenParameterSet)]
@@ -97,6 +96,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = PropertyBagParameterSet)]
         public Hashtable Properties { get; set; }
 
+        // do not use the Profile parameter for this cmdlet
+        private new AzureProfile Profile { get; set; }
+
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
@@ -125,6 +127,11 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
 
             WriteObject(azureProfile);
+        }
+
+        protected override void InitializeProfile()
+        {
+            // do not initialize the current profile for this cmdlet
         }
 
         private void InitializeAzureProfile(AzureProfile profile, string parameterSet, AzureProfileSettings settings)
