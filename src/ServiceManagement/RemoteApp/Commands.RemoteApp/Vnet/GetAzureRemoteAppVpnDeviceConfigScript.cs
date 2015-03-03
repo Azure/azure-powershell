@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             Position = 2,
             ValueFromPipeline = true,
             HelpMessage = "Device model.")]
-        public string VpnDevice { get; set; }
+        public string Platform { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 3,
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            VNetConfigScriptResult response = CallClient(() => Client.VNet.GetVpnDeviceConfigScript(VNetName, Vendor, VpnDevice, OSFamily), Client.VNet);
+            VNetConfigScriptResult response = CallClient(() => Client.VNet.GetVpnDeviceConfigScript(VNetName, Vendor, Platform, OSFamily), Client.VNet);
             if (response != null)
             {
                 WriteObject(response.ConfigScript);
