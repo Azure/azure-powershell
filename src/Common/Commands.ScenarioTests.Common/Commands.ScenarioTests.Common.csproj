@@ -120,6 +120,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Assert.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -129,6 +130,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ResourceManager\Websites\Commands.Websites\Commands.Websites.csproj">
+      <Project>{80a92297-7c92-456b-8ee7-9fb6ce30149d}</Project>
+      <Name>Commands.Websites</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\ServiceManagement\Services\Commands.Test.Utilities\Commands.Test.Utilities.csproj">
       <Project>{bc420543-c04e-4bf3-96e1-cd81b823bdd7}</Project>
       <Name>Commands.Test.Utilities</Name>

@@ -18,15 +18,15 @@ using Microsoft.Azure.Commands.Websites.Models.Websites;
 
 namespace Microsoft.Azure.Commands.Websites
 {
-    public class WebsiteBaseCmdlet : WebsitesBaseClient
+    public abstract class WebHostingPlanBaseCmdlet : WebsitesBaseClient
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmptyAttribute]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the website.")]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web hosting plan.")]
         [ValidateNotNullOrEmptyAttribute]
-        public string WebsiteName { get; set; }
+        public string WHPName { get; set; }
+
     }
 }
-
