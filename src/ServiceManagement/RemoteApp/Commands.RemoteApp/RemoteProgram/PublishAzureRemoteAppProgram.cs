@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [Parameter(Mandatory = false,
             HelpMessage = "Command-line argument for the program to be published.")]
         [ValidateNotNullOrEmpty()]
-        public string CommandLineArgument { get; set; }
+        public string CommandLine { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Display name of the program to be published.")]
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             appDetails.DetailsList[0].Alias = "";
 
-            appDetails.DetailsList[0].CommandLineArguments = CommandLineArgument;
+            appDetails.DetailsList[0].CommandLineArguments = CommandLine;
 
             appDetails.DetailsList[0].AvailableToUsers = true; 
 

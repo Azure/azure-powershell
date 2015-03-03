@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             details = new TemplateImageDetails()
             {
                 Id = matchingTemplate.Id,
-                Region = matchingTemplate.RegionList[0], // this may be a bug? Should not we ask the user for the Region?
+                Region = matchingTemplate.RegionList[0],
                 Name = NewName
             };
 

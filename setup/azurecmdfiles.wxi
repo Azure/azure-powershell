@@ -2405,17 +2405,11 @@
                         <Component Id="cmp545D8CBEAE57C9BE9C9B852D32CB58B3" Guid="*">
                             <File Id="fil27EBA2AC9E474ACC5A87F07B809B6DA4" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.Azure.Common.dll" />
                         </Component>
-                        <Component Id="cmp69875D05F0EA7F1A5C7A94E8D6666234" Guid="*">
-                            <File Id="fil403C43E0DD114B9A2425C8ABE1FCB558" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.Azure.Common.Extensions.dll" />
-                        </Component>
                         <Component Id="cmp5543C526734BEBD6DBA8D3F4CCAC4906" Guid="*">
                             <File Id="fil83B7914462FDE1E5AF770AB859D8B842" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.Azure.Common.NetFramework.dll" />
                         </Component>
                         <Component Id="cmpD4EA1A1B4CB82D7218992CA903665EF5" Guid="*">
                             <File Id="fil583A385C77721311A91E9BC1ACB56102" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.Azure.Management.RemoteApp.dll" />
-                        </Component>
-                        <Component Id="cmp20193DF5170BBA9B0BE967155AF5F05C" Guid="*">
-                            <File Id="filC19FDC44F712388F8C9CE585B3823B3F" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.Azure.ResourceManager.dll" />
                         </Component>
                         <Component Id="cmpB67E98F8DD3717DE55704662D73EB3DC" Guid="*">
                             <File Id="fil6DAFF57FDE88ADA1BECDE46CCD1B61A1" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.Data.Edm.dll" />
@@ -2429,8 +2423,8 @@
                         <Component Id="cmp77D952CC555ECC8D893704C409770064" Guid="*">
                             <File Id="fil740874B2C7BABACB68258773DEF81026" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
                         </Component>
-                        <Component Id="cmp714CC56332FC6F6B5393D2ED33C309DC" Guid="*">
-                            <File Id="filAEF5F40BA52F6AD4326E5D690448BA60" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
+                        <Component Id="cmp36C4A4A2FC1D0869C13C8C1B787310CC" Guid="*">
+                            <File Id="fil8A7F8D2E49DE26EB3A6A45D325845EC5" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
                         </Component>
                         <Component Id="cmpF6A31E71E73261E256FB53289879CAC6" Guid="*">
                             <File Id="filB43C04EDB705D1968040C62BE7385426" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.Threading.Tasks.dll" />
@@ -4159,15 +4153,13 @@
             <ComponentRef Id="cmp26DF79CFA25FFCFADB0FB5DC14B25DD5" />
             <ComponentRef Id="cmp913600C952F3D3D27C7E14B7E72AA774" />
             <ComponentRef Id="cmp545D8CBEAE57C9BE9C9B852D32CB58B3" />
-            <ComponentRef Id="cmp69875D05F0EA7F1A5C7A94E8D6666234" />
             <ComponentRef Id="cmp5543C526734BEBD6DBA8D3F4CCAC4906" />
             <ComponentRef Id="cmpD4EA1A1B4CB82D7218992CA903665EF5" />
-            <ComponentRef Id="cmp20193DF5170BBA9B0BE967155AF5F05C" />
             <ComponentRef Id="cmpB67E98F8DD3717DE55704662D73EB3DC" />
             <ComponentRef Id="cmp645D8B7138F96F1053AB259E37D61D3D" />
             <ComponentRef Id="cmpF304B1EDB19805B49E0015BE90824B00" />
             <ComponentRef Id="cmp77D952CC555ECC8D893704C409770064" />
-            <ComponentRef Id="cmp714CC56332FC6F6B5393D2ED33C309DC" />
+            <ComponentRef Id="cmp36C4A4A2FC1D0869C13C8C1B787310CC" />
             <ComponentRef Id="cmpF6A31E71E73261E256FB53289879CAC6" />
             <ComponentRef Id="cmp24E45E80EDFF6AFB35BDC3BDF5B8CDD8" />
             <ComponentRef Id="cmpC6E9F874597250F8F9018EE96BD563C1" />
