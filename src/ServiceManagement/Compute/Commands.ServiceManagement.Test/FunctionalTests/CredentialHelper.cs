@@ -42,6 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private static string currentTestEnvironment = null;
         private static CloudBlobContainer blobContainer;
         private const string VhdFilesContainerName = "vhdfiles";
+        private const string toolsContainerName = "tools";
 
         private static Dictionary<string, string> environment = new Dictionary<string, string>();
         public static Dictionary<string, string> PowerShellVariables { get; private set; }
@@ -111,6 +112,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 ICloudBlob blob = blobClient.GetBlobReferenceFromServer(blobItem.Uri);
                 Console.WriteLine("Downloading file {0} from blob Uri {1}", blob.Name, blob.Uri);
                 FileStream blobStream = new FileStream(Path.Combine(downloadDirectoryPath, blob.Name), FileMode.Create);
+                blob.DownloadToStream(blobStream);
+                blobStream.Flush();
+                blobStream.Close();
+            }
+
+            blobContainer = blobClient.GetContainerReference(toolsContainerName);
+            foreach (IListBlobItem blobItem in blobContainer.ListBlobs())
+            {
+                ICloudBlob blob = blobClient.GetBlobReferenceFromServer(blobItem.Uri);
+                Console.WriteLine("Downloading file {0} from blob Uri {1}", blob.Name, blob.Uri);
+                FileStream blobStream = new FileStream(Path.Combine(downloadDirectoryPath, @"..\..\", blob.Name), FileMode.Create);
                 blob.DownloadToStream(blobStream);
                 blobStream.Flush();
                 blobStream.Close();

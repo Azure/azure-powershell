@@ -171,10 +171,12 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
         public static void SetupCertificates()
         {
             TestingTracingInterceptor.AddToContext();
+            var newGuid = Guid.NewGuid();
+            var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            AzurePSCmdlet.CurrentProfile = profile;
             AzureSession.DataStore = new MockDataStore();
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
-            var newGuid = Guid.NewGuid();
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient client = new ProfileClient(profile);
             client.Profile.Subscriptions[newGuid] = new AzureSubscription
             {
                 Id = newGuid,

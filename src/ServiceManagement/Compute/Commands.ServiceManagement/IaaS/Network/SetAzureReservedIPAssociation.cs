@@ -1,0 +1,81 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Management.Network;
+using Microsoft.WindowsAzure.Management.Network.Models;
+using System;
+using System.Management.Automation;
+
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
+{
+    [Cmdlet(VerbsCommon.Set, ReservedIPConstants.AssociationCmdletNoun), OutputType(typeof(ManagementOperationContext))]
+    public class SetAzureReservedIPAssociationCmdlet : ServiceManagementBaseCmdlet
+    {
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, HelpMessage = "Reserved IP Name.")]
+        [ValidateNotNullOrEmpty]
+        public string ReservedIPName
+        {
+            get;
+            set;
+        }
+
+        [Parameter(Mandatory = false, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "Hosted Service Name.")]
+        [ValidateNotNullOrEmpty]
+        public string ServiceName
+        {
+            get;
+            set;
+        }
+
+        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment slot [Staging | Production].")]
+        [ValidateSet(Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType.Staging, Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType.Production, IgnoreCase = true)]
+        public string Slot
+        {
+            get;
+            set;
+        }
+
+        protected override void OnProcessRecord()
+        {
+            ServiceManagementProfile.Initialize();
+
+            var slotType = string.IsNullOrEmpty(this.Slot) ?
+                            DeploymentSlot.Production :
+                            (DeploymentSlot)Enum.Parse(typeof(DeploymentSlot), this.Slot, true);
+
+
+            string deploymentName = this.ComputeClient.Deployments.GetBySlot(
+                        this.ServiceName,
+                        slotType).Name;
+
+            ExecuteClientActionNewSM(
+                null,
+                CommandRuntime.ToString(),
+                () =>
+                {
+                    var parameters = new NetworkReservedIPMobilityParameters
+                    {
+                        ServiceName = this.ServiceName,
+                        DeploymentName = deploymentName
+                    };
+
+                    return this.NetworkClient.ReservedIPs.Associate(this.ReservedIPName, parameters);
+                });
+        }
+    }
+}
