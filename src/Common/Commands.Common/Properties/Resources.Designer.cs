@@ -268,6 +268,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selected profile must not be null..
+        /// </summary>
+        public static string AzureProfileMustNotBeNull {
+            get {
+                return ResourceManager.GetString("AzureProfileMustNotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Azure SDK\{0}\.
         /// </summary>
         public static string AzureSdkDirectory {

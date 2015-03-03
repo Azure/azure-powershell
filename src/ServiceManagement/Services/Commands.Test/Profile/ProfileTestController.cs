@@ -17,6 +17,7 @@ using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using System;
@@ -99,7 +100,10 @@ namespace Microsoft.Azure.Commands.Test.Profile
                     () =>
                     {
                         savedAuthFactory = AzureSession.AuthenticationFactory;
-                        var profile = AzurePSCmdlet.CurrentProfile;
+                        var command = new GetAzureSubscriptionCommand();
+                        command.CommandRuntime = new MockCommandRuntime();
+                        command.InvokeBeginProcessing();
+                        var profile = command.Profile;
                         var context = profile.Context;
                         var account = context.Account;
                         var tenant = account.IsPropertySet(AzureAccount.Property.Tenants)
