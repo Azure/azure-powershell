@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [Parameter(Mandatory = true,
             Position = 2,
             ValueFromPipeline = true,
-            HelpMessage = "Device model.")]
+            HelpMessage = "Device platform.")]
         public string Platform { get; set; }
 
         [Parameter(Mandatory = true,
