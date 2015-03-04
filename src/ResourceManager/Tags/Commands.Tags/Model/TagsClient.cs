@@ -19,8 +19,9 @@ using Microsoft.Azure.Commands.Tags.Properties;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Tags.Model
 {
@@ -38,8 +39,8 @@ namespace Microsoft.Azure.Commands.Tags.Model
         /// Creates new TagsClient
         /// </summary>
         /// <param name="subscription">Subscription containing resources to manipulate</param>
-        public TagsClient(AzureSubscription subscription)
-            : this(AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(subscription, AzureEnvironment.Endpoint.ResourceManager))
+        public TagsClient(AzureProfile profile, AzureSubscription subscription)
+            : this(AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }

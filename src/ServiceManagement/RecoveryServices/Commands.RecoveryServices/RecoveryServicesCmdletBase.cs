@@ -17,8 +17,12 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Xml;
-using Microsoft.WindowsAzure;
+using Hyak.Common;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.RecoveryServices;
+using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
+using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -47,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 if (this.recoveryServicesClient == null)
                 {
-                    this.recoveryServicesClient = new PSRecoveryServicesClient(CurrentContext.Subscription);
+                    this.recoveryServicesClient = new PSRecoveryServicesClient(Profile, Profile.Context.Subscription);
                 }
 
                 return this.recoveryServicesClient;
@@ -74,13 +78,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     using (Stream stream = new MemoryStream())
                     {
-                        if (cloudException.ErrorMessage != null)
+                        if (cloudException.Message != null)
                         {
-                            byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.ErrorMessage);
+                            byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.Message);
                             stream.Write(data, 0, data.Length);
                             stream.Position = 0;
 
-                            var deserializer = new DataContractSerializer(typeof(Error));
+                            var deserializer = new DataContractSerializer(typeof(ErrorInException));
                             error = (Error)deserializer.ReadObject(stream);
 
                             throw new InvalidOperationException(
@@ -106,7 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     throw new XmlException(
                         string.Format(
                         Properties.Resources.InvalidCloudExceptionErrorMessage,
-                        cloudException.ErrorMessage),
+                        cloudException.Message),
                         cloudException);
                 }
                 catch (SerializationException)
@@ -114,7 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     throw new SerializationException(
                         string.Format(
                         Properties.Resources.InvalidCloudExceptionErrorMessage,
-                        clientRequestIdMsg + cloudException.ErrorMessage),
+                        clientRequestIdMsg + cloudException.Message),
                         cloudException);
                 }
             }
@@ -160,6 +164,51 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // Ctrl + C and etc
             base.StopProcessing();
             this.StopProcessingFlag = true;
+        }
+
+        /// <summary>
+        /// Validates if the usage by ID is allowed or not.
+        /// </summary>
+        /// <param name="replicationProvider">Replication provider.</param>
+        /// <param name="paramName">Parameter name.</param>
+        protected void ValidateUsageById(string replicationProvider, string paramName)
+        {
+            if (replicationProvider != Constants.HyperVReplica)
+            {
+                throw new Exception(
+                    string.Format(
+                    "Call using ID based parameter {0} is not supported for this provider. Please use its corresponding full object parameter instead",
+                    paramName));
+            }
+            else
+            {
+                this.WriteWarningWithTimestamp(
+                    string.Format(
+                    Properties.Resources.IDBasedParamUsageNotSupportedFromNextRelease,
+                    paramName));
+            }
+        }
+
+        /// <summary>
+        /// Gets the current vault location.
+        /// </summary>
+        /// <returns>The current vault location.</returns>
+        protected string GetCurrentValutLocation()
+        {
+            string location = string.Empty;
+
+            CloudServiceListResponse response =  
+                this.RecoveryServicesClient.GetRecoveryServicesClient.CloudServices.List();
+            foreach (var cloudService in response.CloudServices)
+            {
+                if (cloudService.Name == PSRecoveryServicesClient.asrVaultCreds.CloudServiceName)
+                {
+                    location = cloudService.GeoRegion;
+                    break;
+                }
+            }
+
+            return location;
         }
     }
 }

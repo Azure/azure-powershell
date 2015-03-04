@@ -19,12 +19,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public string vmName;
         public string imageName;
         public string vmSize;
+        public string mediaLocation;
 
-        public AzureVMConfigInfo(string vmName, string vmSize, string imageName)
+        public AzureVMConfigInfo(string vmName, string vmSize, string imageName, string mediaLocation = null)
         {
             this.vmName = vmName;
             this.vmSize = vmSize;
             this.imageName = imageName;
+            this.mediaLocation = mediaLocation;
         }
     }
 }

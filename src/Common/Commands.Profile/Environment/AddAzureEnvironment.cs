@@ -14,7 +14,7 @@
 
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using System.Collections.Generic;
 using System;
@@ -61,12 +61,28 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             HelpMessage = "The AD Graph Endpoint.")]
         public string GraphEndpoint { get; set; }
 
+        [Parameter(Position = 10, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Dns suffix of Azure Key Vault service. Example is vault-int.azure-int.net")]
+        public string AzureKeyVaultDnsSuffix { get; set; }
+
+        [Parameter(Position = 11, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Resource identifier of Azure Key Vault data service that is the recipient of the requested token.")]
+        public string AzureKeyVaultServiceEndpointResourceId { get; set; }
+
+        [Parameter(Position = 12, Mandatory = false, ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Enable ADFS authentication by disabling the authority validation")]
+        public SwitchParameter EnableADFSAuthentication { get; set; }
+
         public AddAzureEnvironmentCommand() : base(true) { }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var newEnvironment = new AzureEnvironment {Name = Name};
+            var newEnvironment = new AzureEnvironment
+            {
+                Name = Name,
+                OnPremise = EnableADFSAuthentication
+            };
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl] = PublishSettingsFileUrl;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = ServiceEndpoint;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = ResourceManagerEndpoint;
@@ -76,7 +92,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId] = ActiveDirectoryServiceEndpointResourceId;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.Gallery] = GalleryEndpoint;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.Graph] = GraphEndpoint;
-
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix] = AzureKeyVaultDnsSuffix;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] = AzureKeyVaultServiceEndpointResourceId;
+            
             ProfileClient.AddOrSetEnvironment(newEnvironment);
             List<object> args = new List<object> { "Name", newEnvironment.Name };
             foreach (AzureEnvironment.Endpoint property in Enum.GetValues(typeof(AzureEnvironment.Endpoint)))

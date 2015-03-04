@@ -26,6 +26,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
@@ -38,10 +39,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         private AddAzureNodeWebRoleCommand addNodeWebCmdlet;
 
         private AddAzureNodeWorkerRoleCommand addNodeWorkerCmdlet;
-
-        private AddAzureCacheWorkerRoleCommand addCacheRoleCmdlet;
-
-        private EnableAzureMemcacheRoleCommand enableCacheCmdlet;
 
         /// <summary>
         /// This method handles most possible cases that user can do to create role
@@ -194,12 +191,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             AzureTool.IgnoreMissingSDKError = true;
             AzurePowerShell.ProfileDirectory = Test.Utilities.Common.Data.AzureSdkAppDir;
             mockCommandRuntime = new MockCommandRuntime();
-
-            enableCacheCmdlet = new EnableAzureMemcacheRoleCommand();
-            addCacheRoleCmdlet = new AddAzureCacheWorkerRoleCommand();
-
-            addCacheRoleCmdlet.CommandRuntime = mockCommandRuntime;
-            enableCacheCmdlet.CommandRuntime = mockCommandRuntime;
         }
 
         [Fact]
@@ -564,9 +555,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
                 addNodeWorkerCmdlet = new AddAzureNodeWorkerRoleCommand() { RootPath = rootPath, CommandRuntime = mockCommandRuntime, Name = overrideWorkerRoleName, Instances = 2 };
                 addNodeWorkerCmdlet.ExecuteCmdlet();
 
-                string cacheWebRoleName = "cacheWebRole";
-                string cacheRuntimeVersion = "1.7.0";
-                AddAzureNodeWebRoleCommand addAzureWebRole = new AddAzureNodeWebRoleCommand() { RootPath = rootPath, CommandRuntime = mockCommandRuntime, Name = cacheWebRoleName };
+                string webRole2Name = "WebRole2";
+                AddAzureNodeWebRoleCommand addAzureWebRole = new AddAzureNodeWebRoleCommand() { RootPath = rootPath, CommandRuntime = mockCommandRuntime, Name = webRole2Name };
                 addAzureWebRole.ExecuteCmdlet();
 
                 CloudServiceProject testService = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath("Services"));
@@ -574,7 +564,18 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
                 RuntimePackageHelper.SetRoleRuntime(testService.Components.Definition, matchWorkerRoleName, testService.Paths, version: "0.8.2");
                 RuntimePackageHelper.SetRoleRuntime(testService.Components.Definition, overrideWebRoleName, testService.Paths, overrideUrl: "http://OVERRIDE");
                 RuntimePackageHelper.SetRoleRuntime(testService.Components.Definition, overrideWorkerRoleName, testService.Paths, overrideUrl: "http://OVERRIDE");
-                testService.AddRoleRuntime(testService.Paths, cacheWebRoleName, Resources.CacheRuntimeValue, cacheRuntimeVersion, RuntimePackageHelper.GetTestManifest(files));
+
+                bool exceptionWasThrownOnSettingCacheRole = false;
+                try
+                {
+                    string cacheRuntimeVersion = "1.7.0";
+                    testService.AddRoleRuntime(testService.Paths, webRole2Name, Resources.CacheRuntimeValue, cacheRuntimeVersion, RuntimePackageHelper.GetTestManifest(files));
+                }
+                catch (NotSupportedException)
+                {
+                    exceptionWasThrownOnSettingCacheRole = true;
+                }
+                Assert.True(exceptionWasThrownOnSettingCacheRole);
                 testService.Components.Save(testService.Paths);
 
                 // Get the publishing process started by creating the package
@@ -588,7 +589,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
                 RuntimePackageHelper.ValidateRoleRuntime(updatedService.Components.Definition, matchWebRoleName, "http://cdn/node/foo.exe;http://cdn/iisnode/default.exe", null);
                 RuntimePackageHelper.ValidateRoleRuntime(updatedService.Components.Definition, overrideWebRoleName, null, "http://OVERRIDE");
                 RuntimePackageHelper.ValidateRoleRuntime(updatedService.Components.Definition, overrideWorkerRoleName, null, "http://OVERRIDE");
-                RuntimePackageHelper.ValidateRoleRuntimeVariable(updatedService.Components.GetRoleStartup(cacheWebRoleName), Resources.CacheRuntimeVersionKey, cacheRuntimeVersion);
             }
         }
     }

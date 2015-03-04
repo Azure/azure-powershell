@@ -21,7 +21,7 @@ using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.PowerShellTestAbstraction.Concretes;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.PowerShellTestAbstraction.Interfaces;
@@ -35,6 +35,8 @@ using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCluste
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.ServiceLocation;
 using Microsoft.WindowsAzure.Management.HDInsight.Framework.Core;
 using Microsoft.WindowsAzure.Management.HDInsight.Logging;
+using Microsoft.Azure.Common.Authentication;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
 {
@@ -66,22 +68,27 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
         public static AzureSubscription GetCurrentSubscription()
         {
             string certificateThumbprint1 = "jb245f1d1257fw27dfc402e9ecde37e400g0176r";
-            ProfileClient profileClient = new ProfileClient();
+            var newSubscription = new AzureSubscription()
+            {
+                Id = IntegrationTestBase.TestCredentials.SubscriptionId,
+                // Use fake certificate thumbprint
+                Account = certificateThumbprint1,
+                Environment = "AzureCloud"
+            };
+            newSubscription.Properties[AzureSubscription.Property.Default] = "True";
+
+            ProfileClient profileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             profileClient.Profile.Accounts[certificateThumbprint1] = 
                 new AzureAccount()
                 {
                     Id = certificateThumbprint1,
                     Type = AzureAccount.AccountType.Certificate
                 };
-
+            profileClient.Profile.Subscriptions[newSubscription.Id] = newSubscription;
+            
             profileClient.Profile.Save();
-
-            return new AzureSubscription()
-            {
-                Id = IntegrationTestBase.TestCredentials.SubscriptionId,
-                // Use fake certificate thumbprint
-                Account = certificateThumbprint1
-            };
+            
+            return profileClient.Profile.Subscriptions[newSubscription.Id];
         }
 
         public static AzureTestCredentials GetCredentialsForEnvironmentType(EnvironmentType type)
@@ -183,7 +190,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
             var cmdletManager = ServiceLocator.Instance.Locate<IServiceLocationSimulationManager>();
             cmdletManager.MockingLevel = ServiceLocationMockingLevel.ApplyFullMocking;
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
-            ProfileClient.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MockDataStore();
         }
 
         public void ApplyIndividualTestMockingOnly()

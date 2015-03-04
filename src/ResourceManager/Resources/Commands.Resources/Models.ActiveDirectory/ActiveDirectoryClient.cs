@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 {
@@ -342,6 +342,64 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             }
 
             return principalId;
+        }
+
+        public PSADApplication CreateApplication(CreatePSApplicationParameters createParameters)
+        {
+            IList<PasswordCredential> passwordCredentials = createParameters.PasswordCredentials != null
+                ? createParameters.PasswordCredentials.Select(psCredential => psCredential.ToGraphPasswordCredential()).ToList()
+                : null;
+
+            IList<KeyCredential> keyCredentials = createParameters.KeyCredentials != null
+                ? createParameters.KeyCredentials.Select(psCredential => psCredential.ToGraphKeyCredential()).ToList()
+                : null;
+
+            ApplicationCreateParameters graphParameters = new ApplicationCreateParameters
+            {
+                DisplayName = createParameters.DisplayName,
+                Homepage = createParameters.HomePage,
+                IdentifierUris = createParameters.IdentifierUris,
+                PasswordCredentials = passwordCredentials,
+                KeyCredentials = keyCredentials
+            };
+
+            return GraphClient.Application.Create(graphParameters).Application.ToPSADApplication();
+        }
+
+        public void RemoveApplication(string applicationObjectId)
+        {
+            GraphClient.Application.Delete(applicationObjectId.ToString());
+        }
+
+        public PSADServicePrincipal CreateServicePrincipal(CreatePSServicePrincipalParameters createParameters)
+        {
+            ServicePrincipalCreateParameters graphParameters = new ServicePrincipalCreateParameters
+            {
+                AppId = createParameters.ApplicationId.ToString(),
+                AccountEnabled = createParameters.AccountEnabled
+            };
+
+            return GraphClient.ServicePrincipal.Create(graphParameters).ServicePrincipal.ToPSADServicePrincipal();
+        }
+
+        public PSADServicePrincipal RemoveServicePrincipal(string objectId)
+        {
+            ADObjectFilterOptions options = new ADObjectFilterOptions
+            {
+                Id = objectId.ToString()
+            };
+
+            PSADServicePrincipal servicePrincipal = FilterServicePrincipals(options).FirstOrDefault();
+            if (servicePrincipal != null)
+            {
+                GraphClient.ServicePrincipal.Delete(objectId);
+            }
+            else
+            {
+                throw new KeyNotFoundException(string.Format(ProjectResources.ServicePrincipalDoesntExist, objectId));
+            }
+
+            return servicePrincipal;
         }
     }
 }

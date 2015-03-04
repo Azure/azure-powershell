@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -83,22 +84,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             try
             {
-                
-                //Get the available VM Extension 
-
+                //Get the available VM Extension
                 var availableExtensions =  vmPowershellCmdlets.GetAzureVMAvailableExtension();
                 vmAccessExtension = availableExtensions.First(extension => extension.ExtensionName.Equals(VmAccessAgentExtensionName));
                 if (availableExtensions.Count > 0)
                 {
-                    
-                    //var VMExtensionConfigTemplate = vmPowershellCmdlets.GetAzureVMExtensionConfigTemplate(vmAccessExtension.ExtensionName, vmAccessExtension.Publisher, localPath, version);
-
                     //Deploy a new IaaS VM with Extension using Add-AzureVMExtension
                     Console.WriteLine("Create a new VM with VM access extension.");
                     var vm = CreateIaaSVMObject(vmName);
                     vm = vmPowershellCmdlets.SetAzureVMExtension(vm, vmAccessExtension.ExtensionName, vmAccessExtension.Publisher, version, referenceName, publicConfigPath: publicConfigPath, privateConfigPath:privateConfigPath, disable: false);
                     
-                    vmPowershellCmdlets.NewAzureVM(serviceName,new[] {vm},locationName,true);
+                    vmPowershellCmdlets.NewAzureVM(serviceName, new[] {vm}, locationName);
                     Console.WriteLine("Created a new VM {0} with VM access extension. Service Name : {1}",vmName,serviceName);
 
                     ValidateVMAccessExtension(vmName, serviceName, true);
@@ -293,7 +289,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     }
             }
         }
-        
 
         private PersistentVM CreateIaaSVMObject(string vmName)
         {
@@ -302,27 +297,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             var azureProvisioningConfig = new AzureProvisioningConfigInfo(OS.Windows, username, password);
             var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
             return vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
-        }
-
-        private void CreateNewAzureVM()
-        {
-            var azureVMConfigInfo = new AzureVMConfigInfo(vmName, InstanceSize.Small.ToString(), imageName);
-            var azureProvisioningConfig = new AzureProvisioningConfigInfo(OS.Windows, username, password);
-            var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
-            PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
-            vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, locationName);
-        }
-
-        private void VerifyRDPExtension()
-        {
-            vmPowershellCmdlets.GetAzureRemoteDesktopFile(vmName, serviceName, rdpPath, false);
-            using (StreamReader stream = new StreamReader(rdpPath))
-            {
-                string firstLine = stream.ReadLine();
-                dns = Utilities.FindSubstring(firstLine, ':', 2);
-            }
-
-            Assert.IsTrue((Utilities.RDPtestIaaS(dns, 0, vmAccessUserName, vmAccessPassword, true)), "Cannot RDP to the instance!!");
         }
 
         private void GetVmAccessConfiguration()
@@ -364,28 +338,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return vmRoleContext.VM;
         }
 
-        private void ValidateLogin(string dns, int port, string vmAccessUserName, string vmAccessPassword)
-        {
-            Assert.IsTrue((Utilities.RDPtestIaaS(dns, port, vmAccessUserName, vmAccessPassword, true)), "Cannot RDP to the instance!!");
-        }
-
         private void VerifyRDPExtension(string vmName, string serviceName)
         {
             Console.WriteLine("Fetching Azure VM RDP file");
             vmPowershellCmdlets.GetAzureRemoteDesktopFile(vmName, serviceName, rdpPath, false);
-            using (StreamReader stream = new StreamReader(rdpPath))
-            {
-                string firstLine = stream.ReadLine();
-                var dnsAndport = Utilities.FindSubstring(firstLine, ':', 2).Split(new char[] { ':' });
-                dns = dnsAndport[0];
-                port = int.Parse(dnsAndport[1]);
-            }
             Console.WriteLine("Azure VM RDP file downloaded.");
-
-            Console.WriteLine("Waiting for a minute vefore trying to connect to VM");
-            Thread.Sleep(TimeSpan.FromMinutes(4));
-            Utilities.RetryActionUntilSuccess(() => ValidateLogin(dns, port, vmAccessUserName, vmAccessPassword), "Cannot RDP to the instance!!", 5, 10000);
-
         }
 
         private void DisableExtension(string vmName, string serviceName)
@@ -396,9 +353,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
             Console.WriteLine("Disabled VM Access extesnion for the vm {0}", vmName);
         }
-
-
-
 
         private void ValidateVMAccessExtension(string vmName, string serviceName, bool enabled)
         {

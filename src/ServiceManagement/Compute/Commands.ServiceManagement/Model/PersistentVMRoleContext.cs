@@ -40,6 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public string PublicIPAddress { get; set; }
         public string PublicIPName { get; set; }
         public NetworkInterfaceList NetworkInterfaces { get; set; }
+        public string VirtualNetworkName { get; set; }
 
         public PersistentVM GetInstance()
         {

@@ -24,11 +24,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     /// <summary>
     /// Helper cmdlet to construct instance of AutoPatching settings class
     /// </summary>
-   [Cmdlet(
-        VerbsCommon.New,
-        AzureVMSqlServerAutoPatchingConfigNoun),
-    OutputType(
-        typeof(AutoPatchingSettings))]
+    [Cmdlet(
+         VerbsCommon.New,
+         AzureVMSqlServerAutoPatchingConfigNoun),
+     OutputType(
+         typeof(AutoPatchingSettings))]
     public class NewAzureVMSqlServerAutoPatchingConfigCommand : PSCmdlet
     {
         protected const string AzureVMSqlServerAutoPatchingConfigNoun = "AzureVMSqlServerAutoPatchingConfig";
@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public int MaintenanceWindowDuration { get; set; }
 
         [Parameter]
-        [ValidateSetAttribute(new string[] { "Important", "Optional" })]
+        [ValidateSetAttribute(new string[] { "Important" })]
         public string PatchCategory { get; set; }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             autoPatchingSettings.DayOfWeek = DayOfWeek;
             autoPatchingSettings.MaintenanceWindowStartingHour = MaintenanceWindowStartingHour;
             autoPatchingSettings.MaintenanceWindowDuration = MaintenanceWindowDuration;
-            autoPatchingSettings.UpdatePatchingCategory(PatchCategory);
+            autoPatchingSettings.PatchCategory = PatchCategory;
 
             WriteObject(autoPatchingSettings);
         }

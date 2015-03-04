@@ -18,11 +18,13 @@ using System.Linq;
 using System.Management.Automation;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Authentication;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -89,10 +91,10 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// <summary>
         /// Gets or sets the management site data connection fully qualified server name.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 0, 
+        [Parameter(Mandatory = true, Position = 0,
             ParameterSetName = FullyQualifiedServerNameWithSqlAuthParamSet,
             HelpMessage = "The fully qualified server name")]
-        [Parameter(Mandatory = true, Position = 0, 
+        [Parameter(Mandatory = true, Position = 0,
             ParameterSetName = FullyQualifiedServerNameWithCertAuthParamSet,
             HelpMessage = "The fully qualified server name")]
         [ValidateNotNull]
@@ -109,13 +111,13 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// <summary>
         /// Gets or sets the server credentials
         /// </summary>
-        [Parameter(Mandatory = true, Position = 1, 
+        [Parameter(Mandatory = true, Position = 1,
             ParameterSetName = ServerNameWithSqlAuthParamSet,
             HelpMessage = "The credentials for the server")]
-        [Parameter(Mandatory = true, Position = 1, 
+        [Parameter(Mandatory = true, Position = 1,
             ParameterSetName = FullyQualifiedServerNameWithSqlAuthParamSet,
             HelpMessage = "The credentials for the server")]
-        [Parameter(Mandatory = true, Position = 1, 
+        [Parameter(Mandatory = true, Position = 1,
             ParameterSetName = ManageUrlWithSqlAuthParamSet,
             HelpMessage = "The credentials for the server")]
         [ValidateNotNull]
@@ -124,10 +126,10 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// <summary>
         /// Gets or sets whether or not the current subscription should be used for authentication
         /// </summary>
-        [Parameter(Mandatory = true, Position = 1, 
+        [Parameter(Mandatory = true, Position = 1,
             ParameterSetName = ServerNameWithCertAuthParamSet,
             HelpMessage = "Use certificate authentication")]
-        [Parameter(Mandatory = true, Position = 1, 
+        [Parameter(Mandatory = true, Position = 1,
             ParameterSetName = FullyQualifiedServerNameWithCertAuthParamSet,
             HelpMessage = "Use certificate authentication")]
         public SwitchParameter UseSubscription { get; set; }
@@ -150,10 +152,10 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             {
                 if (string.IsNullOrEmpty(SubscriptionName))
                 {
-                    return AzureSession.CurrentContext.Subscription;
+                    return Profile.Context.Subscription;
                 }
 
-                ProfileClient client = new ProfileClient();
+                ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
                 return client.Profile.Subscriptions.Values.First(
                         s => SubscriptionName == s.Name);
@@ -161,7 +163,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         }
 
         #endregion
-
 
         /// <summary>
         /// Connect to a Azure SQL Server with the given ManagementService Uri using
@@ -172,32 +173,18 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// <param name="credentials">The SQL Authentication credentials for the server.</param>
         /// <returns>A new <see cref="ServerDataServiceSqlAuth"/> context,
         /// or <c>null</c> if an error occurred.</returns>
-        internal ServerDataServiceSqlAuth GetServerDataServiceBySqlAuth(
+        internal IServerDataServiceContext GetServerDataServiceBySqlAuth(
             string serverName,
             Uri managementServiceUri,
-            SqlAuthenticationCredentials credentials)
+            SqlAuthenticationCredentials credentials,
+            Uri manageUrl)
         {
-            ServerDataServiceSqlAuth context = null;
-
+            IServerDataServiceContext context = null;
             Guid sessionActivityId = Guid.NewGuid();
+
             try
             {
-                context = ServerDataServiceSqlAuth.Create(
-                    managementServiceUri,
-                    sessionActivityId,
-                    credentials,
-                    serverName);
-
-                // Retrieve $metadata to verify model version compatibility
-                XDocument metadata = context.RetrieveMetadata();
-                XDocument filteredMetadata = DataConnectionUtility.FilterMetadataDocument(metadata);
-                string metadataHash = DataConnectionUtility.GetDocumentHash(filteredMetadata);
-                if (!context.metadataHashes.Any(knownHash => metadataHash == knownHash))
-                {
-                    this.WriteWarning(Resources.WarningModelOutOfDate);
-                }
-
-                context.MergeOption = MergeOption.PreserveChanges;
+                context = SqlAuthContextFactory.GetContext(this, serverName, manageUrl, credentials, sessionActivityId, managementServiceUri);
             }
             catch (Exception ex)
             {
@@ -230,7 +217,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 
             try
             {
-                context = ServerDataServiceCertAuth.Create(serverName, subscription);
+                context = ServerDataServiceCertAuth.Create(serverName, Profile, subscription);
             }
             catch (ArgumentException e)
             {
@@ -250,7 +237,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// <returns>A new operation context for the server.</returns>
         internal IServerDataServiceContext CreateServerDataServiceContext(
             string serverName,
-            Uri managementServiceUri)
+            Uri managementServiceUri,
+            Uri manageUrl)
         {
             switch (this.ParameterSetName)
             {
@@ -262,7 +250,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     return this.GetServerDataServiceBySqlAuth(
                         serverName,
                         managementServiceUri,
-                        credentials);
+                        credentials,
+                        manageUrl);
 
                 case FullyQualifiedServerNameWithCertAuthParamSet:
                 case ServerNameWithCertAuthParamSet:
@@ -293,7 +282,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 
                 // Creates a new Server Data Service Context for the service
                 IServerDataServiceContext operationContext =
-                    this.CreateServerDataServiceContext(serverName, managementServiceUri);
+                    this.CreateServerDataServiceContext(serverName, managementServiceUri, manageUrl);
 
                 if (operationContext != null)
                 {
@@ -323,7 +312,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     // and append the azure database DNS suffix.
                     return new Uri(
                         Uri.UriSchemeHttps + Uri.SchemeDelimiter +
-                        this.ServerName + AzureSession.CurrentContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix));
+                        this.ServerName + Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix));
                 case FullyQualifiedServerNameWithSqlAuthParamSet:
                 case FullyQualifiedServerNameWithCertAuthParamSet:
                     // The fully qualified server name was specified, 

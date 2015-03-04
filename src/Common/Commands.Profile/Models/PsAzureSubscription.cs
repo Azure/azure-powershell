@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Profile.Models
 {
@@ -27,5 +27,6 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
         public bool IsDefault { get; set; }
         public bool IsCurrent { get; set; }
         public string CurrentStorageAccountName { get; set; }
+        public string TenantId { get; set; }
     }
 }
