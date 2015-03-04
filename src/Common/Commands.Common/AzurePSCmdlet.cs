@@ -97,6 +97,20 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return new AzureProfile();
         }
 
+        /// <summary>
+        /// Get the context for the current profile before BeginProcessing is called
+        /// </summary>
+        /// <returns>The context for the current profile</returns>
+        protected AzureContext GetCurrentContext()
+        {
+            if (Profile != null)
+            {
+                return Profile.Context;
+            }
+
+            return CurrentProfile.Context;
+        }
+
         protected static void InitializeTokenCaches()
         {
             DefaultMemoryTokenCache = new TokenCache();
