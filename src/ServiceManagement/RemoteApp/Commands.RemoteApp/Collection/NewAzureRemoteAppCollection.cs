@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     {
         private const string DomainJoined = "DomainJoined";
         private const string NoDomain = "NoDomain";
-
+        private const string AzureVNet = "AzureVNet";
         [Parameter (Mandatory = true,
                     Position = 0,
                     HelpMessage = "RemoteApp collection name")]
@@ -59,52 +59,54 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         )]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = true,
-            Position = 3,
+        [Parameter(
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = DomainJoined,
             HelpMessage = "The name of the RemoteApp or Azure VNet to create the collection in."
         )]
+        [Parameter(Mandatory = true, Position = 3, ParameterSetName = DomainJoined)]
+        [Parameter(Mandatory = true, Position = 3, ParameterSetName = AzureVNet)]
         public string VNetName { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = DomainJoined,
+            ParameterSetName = AzureVNet,
             HelpMessage = "For Azure VNets only, a comma-separated list of DNS servers for the VNet."
         )]
         [ValidateNotNullOrEmpty]
         public string DnsServers { get; set; }
 
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
+            Position = 6,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = DomainJoined,
+            ParameterSetName = AzureVNet,
             HelpMessage = "For Azure VNets only, the name of the subnet."
         )]
         [ValidateNotNullOrEmpty]
         public string SubnetName { get; set; }
 
-        [Parameter(Mandatory = true,
-            Position = 4,
+        [Parameter(
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = DomainJoined,
             HelpMessage = "The name of the on-premise domain to join the RD Session Host servers to."
         )]
+        [Parameter(Mandatory = true, Position = 4, ParameterSetName = DomainJoined)]
+        [Parameter(Mandatory = true, Position = 4, ParameterSetName = AzureVNet)]
         [ValidatePattern(DomainNameValidatorString)]
         public string Domain { get; set; }
 
-        [Parameter(Mandatory = true,
-            Position = 5,
+        [Parameter(
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = DomainJoined,
             HelpMessage = "The users credentials that has permission to add computers to the domain."
         )]
+        [Parameter(Mandatory = true, Position = 5, ParameterSetName = DomainJoined)]
+        [Parameter(Mandatory = true, Position = 5, ParameterSetName = AzureVNet)]
         public PSCredential Credential { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = DomainJoined,
             HelpMessage = "The name of your organizational unit to join the RD Session Host servers, e.g. OU=MyOu,DC=MyDomain,DC=ParentDomain,DC=com. Attributes such as OU, DC, etc. must be in uppercase."
         )]
+        [Parameter(ParameterSetName = DomainJoined)]
+        [Parameter(ParameterSetName = AzureVNet)]
         [ValidatePattern(OrgIDValidatorString)]
         public string OrganizationalUnit { get; set; }
 
@@ -144,11 +146,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             switch (ParameterSetName)
             {
                 case DomainJoined:
+                case AzureVNet:
                 {
                     creds = Credential.GetNetworkCredential();
                     details.VnetName = VNetName;
 
-                    if (SubnetName != null && DnsServers != null)
+                    if (SubnetName != null)
                     {
                         if (!IsFeatureEnabled(EnabledFeatures.azureVNet))
                         {
@@ -163,9 +166,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                         }
 
                         details.SubnetName = SubnetName;
-                        details.DnsServers = DnsServers.Split(new char[] { ',' });
+                        ValidateCustomerVNetParams(details.VnetName, details.SubnetName);
 
-                        ValidateCustomerVNetParams(details.VnetName, details.SubnetName, details.DnsServers);
+                        if (DnsServers != null)
+                        {
+                            details.DnsServers = DnsServers.Split(new char[] { ',' });
+                        }
 
                         details.Region = Location;
                     }
@@ -196,7 +202,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             }
         }
 
-        private bool ValidateCustomerVNetParams(string name, string subnet, IEnumerable<string> dns)
+        private bool ValidateCustomerVNetParams(string name, string subnet)
         {
             NetworkListResponse.VirtualNetworkSite azureVNet = GetAzureVNet(name);
             bool isValidSubnetName = false;
