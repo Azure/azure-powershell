@@ -137,6 +137,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string NewAzureReservedIPCmdletName = "New-AzureReservedIP";
         public const string GetAzureReservedIPCmdletName = "Get-AzureReservedIP";
         public const string RemoveAzureReservedIPCmdletName = "Remove-AzureReservedIP";
+        public const string SetAzureReservedIPAssociationCmdletName = "Set-AzureReservedIPAssociation";
+        public const string RemoveAzureReservedIPAssociationCmdletName = "Remove-AzureReservedIPAssociation";
 
         // AzureRole & AzureRoleInstnace
         public const string GetAzureRoleCmdletName = "Get-AzureRole";
