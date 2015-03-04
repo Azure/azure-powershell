@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         protected const string VNetNameValidatorString = @"^[A-Za-z][-A-Za-z0-9]{3,49}(?<!-)$";
 
-        protected const string DomainNameValidatorString = @"^[a-zA-Z\u007F-\uFFFF]+[\w\-\.]+$";
+        protected const string DomainNameValidatorString = @"[^,~:@#$%\^&'.(){}_\s]+([.][^,~:@#$%\^&'.(){}_\s]+)+";
 
         protected const string UserNameValidatorString = @"[^@\""/\[\]:;|=,+*?<>\s]+";
 
@@ -140,5 +140,9 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
          *  )*$
          * 
          */
+
+        protected const string FullYearPattern = @"^(19|20)\d\d$";
+
+        protected const string TwoDigitMonthPattern = @"^(0[1-9]|1[0-2])$";
     }
 }
