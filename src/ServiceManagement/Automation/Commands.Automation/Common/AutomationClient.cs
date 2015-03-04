@@ -192,7 +192,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 Description = description,
                 RunbookType = RunbookTypeEnum.Script,
-                Draft = new RunbookDraft()
+                Draft = new RunbookDraft(),
+                ServiceManagementTags = (tags != null) ? string.Join(Constants.RunbookTagsSeparatorString, tags) : null
             };
 
             var rdcparam = new RunbookCreateDraftParameters() { Name = runbookName, Properties = rdcprop, Tags = null };
@@ -259,10 +260,14 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var runbookUpdateParameters = new RunbookUpdateParameters();
             runbookUpdateParameters.Name = runbookName;
             runbookUpdateParameters.Tags = null;
+
             runbookUpdateParameters.Properties =  new RunbookUpdateProperties();
             runbookUpdateParameters.Properties.Description = description ?? runbookModel.Properties.Description;
             runbookUpdateParameters.Properties.LogProgress = (logProgress.HasValue) ?  logProgress.Value : runbookModel.Properties.LogProgress;
             runbookUpdateParameters.Properties.LogVerbose = (logVerbose.HasValue) ? logVerbose.Value : runbookModel.Properties.LogVerbose;
+            runbookUpdateParameters.Properties.ServiceManagementTags = (tags != null)
+                ? string.Join(Constants.RunbookTagsSeparatorString, tags)
+                : runbookModel.Properties.ServiceManagementTags;
 
             var runbook = this.automationManagementClient.Runbooks.Update(automationAccountName, runbookUpdateParameters).Runbook;
 
