@@ -16,20 +16,20 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 
-namespace Microsoft.Azure.Commands.Insights
+namespace Microsoft.Azure.Commands.Insights.Events
 {
     /// <summary>
-    /// Get the list of events for at a ResourceGroup level.
+    /// Get the list of events for at a Resource level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureResourceGroupLog"), OutputType(typeof(List<IPSEventData>))]
-    public class GetAzureResourceGroupLogCommand : EventCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureResourceLog"), OutputType(typeof(List<IPSEventData>))]
+    public class GetAzureResourceLogCommand : EventCmdletBase
     {
         /// <summary>
-        /// Gets or sets the resourcegroup parameters of this cmdlet
+        /// Gets or sets the resourceId parameter of the cmdlet
         /// </summary>
-        [Parameter(Position = 0, ParameterSetName = ResourceGroupName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ResourceGroup name")]
+        [Parameter(Position = 0, ParameterSetName = ResourceUriName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ResourceId")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Process the parameters defined by this class  (a.k.a. particular parameters)
@@ -38,7 +38,9 @@ namespace Microsoft.Azure.Commands.Insights
         /// <returns>The query filter with the conditions for particular parameters added</returns>
         protected override string ProcessParticularParameters(string currentQueryFilter)
         {
-            return this.AddConditionIfPResent(currentQueryFilter, "resourceGroupName", this.ResourceGroup);
+            // Notice the different name in the condition (resourceUri) and the parameter (resourceId)
+            // The difference is intentional as the new directive is to use ResourceId everywhere, but the SDK still uses resourceUri
+            return this.AddConditionIfPResent(currentQueryFilter, "resourceUri", this.ResourceId);
         }
     }
 }
