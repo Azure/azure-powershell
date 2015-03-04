@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Websites.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove webhosting plan &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to remove web hosting plan &apos;{0}&apos;.
         /// </summary>
         internal static string RemovingWebHostPlan {
             get {

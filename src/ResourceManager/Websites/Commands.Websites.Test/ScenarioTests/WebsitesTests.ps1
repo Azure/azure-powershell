@@ -25,8 +25,6 @@ function Test-CreatesNewSimpleWebsite
 	$webHostingPlan = "NGoliStandard"
 	$apiversion = "2014-04-01"
 	$resourceType = "Microsoft.Web/sites"
-
-
 	try
 	{
 			# Test
@@ -55,9 +53,6 @@ function Test-CreatesNewWebHostingPlan
 	$rgname = "Default-Web-WestUS"
 	$whpName = "ngoliPSWHP"
 	$location = "West US"
-
-
-
 	try
 	{
 			# Test
