@@ -98,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
-        /// Get the context the context for the current profile before BeginProcessing is called
+        /// Get the context for the current profile before BeginProcessing is called
         /// </summary>
         /// <returns>The context for the current profile</returns>
         protected AzureContext GetCurrentContext()
