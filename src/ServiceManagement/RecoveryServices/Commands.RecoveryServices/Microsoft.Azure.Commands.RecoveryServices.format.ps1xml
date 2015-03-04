@@ -15,13 +15,13 @@
               <PropertyName>Name</PropertyName>
             </ListItem>
             <ListItem>
-              <PropertyName>ID</PropertyName>
-            </ListItem>
-            <ListItem>
               <PropertyName>ReplicationProvider</PropertyName>
             </ListItem>
             <ListItem>
               <PropertyName>HyperVReplicaProviderSettingsObject</PropertyName>
+            </ListItem>
+            <ListItem>
+              <PropertyName>HyperVReplicaAzureProviderSettingsObject</PropertyName>
             </ListItem>
           </ListItems>
         </ListEntry>

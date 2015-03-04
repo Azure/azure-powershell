@@ -226,7 +226,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Microsoft.Azure.Commands.RecoveryServices.format.ps1xml" />
+    <None Include="Microsoft.Azure.Commands.RecoveryServices.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>
