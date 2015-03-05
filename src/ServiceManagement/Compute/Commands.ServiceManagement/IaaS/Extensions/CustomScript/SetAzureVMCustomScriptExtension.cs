@@ -158,6 +158,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         [ValidateNotNullOrEmpty]
         public override string Argument { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            Position = 9,
+            HelpMessage = "Re-apply a configuration to an extension when the configuration has not been updated.")]
+        public override SwitchParameter ForceUpdate { get; set; }
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
