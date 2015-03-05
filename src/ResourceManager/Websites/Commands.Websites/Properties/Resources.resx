@@ -120,6 +120,12 @@
   <data name="RemovingWebHostPlan" xml:space="preserve">
     <value>Are you sure you want to remove web hosting plan '{0}'</value>
   </data>
+  <data name="RemoveWebsiteMessage" xml:space="preserve">
+    <value>Removing website</value>
+  </data>
+  <data name="RemoveWebsiteWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the website "{0}"</value>
+  </data>
   <data name="RemovingWebsite" xml:space="preserve">
     <value>Are you sure you want to remove website '{0}'</value>
   </data>

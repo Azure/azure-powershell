@@ -66,6 +66,23 @@ namespace Microsoft.Azure.Commands.Websites.Properties {
         internal static string RemovingWebHostPlan {
             get {
                 return ResourceManager.GetString("RemovingWebHostPlan", resourceCulture);
+             }
+        }
+
+        ///   Looks up a localized string similar to Removing website.
+        /// </summary>
+        internal static string RemoveWebsiteMessage {
+            get {
+                return ResourceManager.GetString("RemoveWebsiteMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the website &quot;{0}&quot;.
+        /// </summary>
+        internal static string RemoveWebsiteWarning {
+            get {
+                return ResourceManager.GetString("RemoveWebsiteWarning", resourceCulture);
             }
         }
         
