@@ -117,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Server.Cmdlet
                     Location = location,
                     AdministratorUserName = adminLogin,
                     AdministratorPassword = adminLoginPassword,
-                    Version = version.HasValue ? version.Value.ToString("F1") : null
+                    Version = version.HasValue ? version.Value.ToString("F1", CultureInfo.InvariantCulture) : null
                 });
 
             var newServer = sqlManagementClient.Servers.List().Servers.Where(s => s.Name == response.ServerName).FirstOrDefault();

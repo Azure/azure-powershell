@@ -33,8 +33,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
-            //SetTestSettings();
-
             if (defaultAzureSubscription.Equals(null))
             {
                 Assert.Inconclusive("No Subscription is selected!");
@@ -77,8 +75,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         [TestInitialize]
         public void Initialize()
         {
-            //vhdName = Utilities.GetUniqueShortName(vhdNamePrefix);
-            //CopyCommonVhd(vhdContainerName, vhdNamePrefix, vhdName);
             pass = false;
             testStartTime = DateTime.Now;
         }
@@ -87,8 +83,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public void AzureDiskTest()
         {
             StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
-            vhdName = "os0.vhd";
-            string mediaLocation = String.Format("{0}{1}/{2}", blobUrlRoot, vhdContainerName, vhdName);
+            string blobName = "os0.vhd";
+            vhdName =  Utilities.GetUniqueShortName("os0vhd");
+            string mediaLocation = String.Format("{0}{1}/{2}", blobUrlRoot, vhdContainerName, blobName);
 
             try
             {
@@ -103,18 +100,41 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                         found = true;
                         Console.WriteLine("{0} is found", disk.DiskName);
                     }
-
                 }
                 Assert.IsTrue(found, "Error: Disk is not added");
 
+                // Update only label
                 string newLabel = "NewLabel";
                 vmPowershellCmdlets.UpdateAzureDisk(vhdName, newLabel);
 
-                DiskContext disk2 = vmPowershellCmdlets.GetAzureDisk(vhdName)[0];
+                DiskContext virtualDisk = vmPowershellCmdlets.GetAzureDisk(vhdName)[0];
 
-                Console.WriteLine("Disk: Name - {0}, Label - {1}, Size - {2},", disk2.DiskName, disk2.Label, disk2.DiskSizeInGB);
-                Assert.AreEqual(newLabel, disk2.Label);
+                Console.WriteLine("Disk: Name - {0}, Label - {1}, Size - {2},", virtualDisk.DiskName, virtualDisk.Label, virtualDisk.DiskSizeInGB);
+                Assert.AreEqual(newLabel, virtualDisk.Label);
                 Console.WriteLine("Disk Label is successfully updated");
+
+                // Update only size
+                int newSize = 250;
+                vmPowershellCmdlets.UpdateAzureDisk(vhdName, null, newSize);
+
+                virtualDisk = vmPowershellCmdlets.GetAzureDisk(vhdName)[0];
+
+                Console.WriteLine("Disk: Name - {0}, Label - {1}, Size - {2},", virtualDisk.DiskName, virtualDisk.Label, virtualDisk.DiskSizeInGB);
+                Assert.AreEqual(newLabel, virtualDisk.Label);
+                Assert.AreEqual(newSize, virtualDisk.DiskSizeInGB);
+                Console.WriteLine("Disk size is successfully updated");
+
+                // Update both label and size
+                newLabel = "NewLabel2";
+                newSize = 300;
+                vmPowershellCmdlets.UpdateAzureDisk(vhdName, newLabel, newSize);
+
+                virtualDisk = vmPowershellCmdlets.GetAzureDisk(vhdName)[0];
+
+                Console.WriteLine("Disk: Name - {0}, Label - {1}, Size - {2},", virtualDisk.DiskName, virtualDisk.Label, virtualDisk.DiskSizeInGB);
+                Assert.AreEqual(newLabel, virtualDisk.Label);
+                Assert.AreEqual(newSize, virtualDisk.DiskSizeInGB);
+                Console.WriteLine("Both disk label and size are successfully updated");
 
                 vmPowershellCmdlets.RemoveAzureDisk(vhdName, false);
                 Assert.IsTrue(Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDisk, vhdName), "The disk was not removed");
@@ -127,6 +147,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 if (e.ToString().Contains("ResourceNotFound"))
                 {
                     Console.WriteLine("Please upload {0} file to \\vhdtest\\ blob directory before running this test", vhdName);
+                }
+
+                try
+                {
+                    vmPowershellCmdlets.RemoveAzureDisk(vhdName, false);
+                }
+                catch (Exception cleanupError)
+                {
+                    Console.WriteLine("Error during cleaning up the disk.. Continue..:{0}", cleanupError);
                 }
 
                 Assert.Fail("Exception occurs: {0}", e.ToString());

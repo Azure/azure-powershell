@@ -1554,6 +1554,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Reserved IP Association.
+        /// </summary>
+        public static string RemoveReservedIPAssociation {
+            get {
+                return ResourceManager.GetString("RemoveReservedIPAssociation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Reserved IP from your subscription?.
         /// </summary>
         public static string RemoveReservedIPWarning {
@@ -1568,6 +1577,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string RemoveReservedIPWhatIfMessage {
             get {
                 return ResourceManager.GetString("RemoveReservedIPWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the reserved ip association from the specified service. Do you want to continue?.
+        /// </summary>
+        public static string ReservedIPAssociationWillBeRemoved {
+            get {
+                return ResourceManager.GetString("ReservedIPAssociationWillBeRemoved", resourceCulture);
             }
         }
         

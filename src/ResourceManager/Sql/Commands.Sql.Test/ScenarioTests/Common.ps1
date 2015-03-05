@@ -27,6 +27,18 @@ function Get-SqlAuditingTestEnvironmentParameters ($testSuffix)
 
 <#
 .SYNOPSIS
+Gets the values of the parameters used at the data masking tests
+#>
+function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
+{
+	return @{ rgname = "sql-dm-cmdlet-test-rg" +$testSuffix;
+			  serverName = "sql-dm-cmdlet-server" +$testSuffix;
+			  databaseName = "sql-dm-cmdlet-db" + $testSuffix
+			  }
+}
+
+<#
+.SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
 function Create-TestEnvironment ($testSuffix)
@@ -38,10 +50,27 @@ function Create-TestEnvironment ($testSuffix)
 
 <#
 .SYNOPSIS
+Creates the test environment needed to perform the Sql data masking tests
+#>
+function Create-DataMaskingTestEnvironment ($testSuffix)
+{
+	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
+	New-AzureResourceGroup -Name $params.rgname -Location "West US" -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
+	return $params
+}
+
+<#
+.SYNOPSIS
 Removes the test environment that was needed to perform the Sql auditing tests
 #>
 function Remove-TestEnvironment ($testSuffix)
 {
+	try
+	{
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 	Remove-AzureStorageAccount -StorageAccountName $params.storageAccount
+	}
+	catch
+	{
+	}
 }
