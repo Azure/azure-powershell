@@ -79,6 +79,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private RecoveryServicesManagementClient recoveryServicesClient;
 
+        private string currentSubscriptionId;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
         /// required current subscription.
@@ -87,6 +89,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public PSRecoveryServicesClient(AzureProfile azureProfile, AzureSubscription azureSubscription)
         {
             this.Profile = azureProfile;
+            this.currentSubscriptionId = azureSubscription.Id.ToString();
             this.recoveryServicesClient =
                 AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
@@ -154,6 +157,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             return true;
         }
 
+        public bool ValidateVaultContext(
+            string subscriptionId)
+        {
+            if (0 == string.CompareOrdinal(this.currentSubscriptionId, subscriptionId))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Site Recovery requests that go to on-premise components (like the Provider installed
         /// in VMM) require an authentication token that is signed with the vault key to indicate
@@ -213,10 +227,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private SiteRecoveryManagementClient GetSiteRecoveryClient()
         {
             CloudServiceListResponse services = this.recoveryServicesClient.CloudServices.List();
-            this.ValidateVaultSettings(
-                asrVaultCreds.ResourceName,
-                asrVaultCreds.CloudServiceName,
-                services);
+            if (!this.ValidateVaultContext(asrVaultCreds.SubscriptionId))
+            {
+                throw new ArgumentException(Properties.Resources.InvalidVaultContext);
+            }
 
             CloudService selectedCloudService = null;
             Vault selectedResource = null;
