@@ -11782,7 +11782,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>BlobType</maml:name>
 				<maml:description>
-					<maml:para>Destination Blob Type (Block/Page).</maml:para>
+					<maml:para>Destination Blob Type (Block/Page/Append).</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -11862,7 +11862,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>BlobType</maml:name>
 				<maml:description>
-					<maml:para>Destination Blob Type (Block/Page).</maml:para>
+					<maml:para>Destination Blob Type (Block/Page/Append).</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -11935,7 +11935,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>BlobType</maml:name>
 				<maml:description>
-					<maml:para>Destination Blob Type (Block/Page).</maml:para>
+					<maml:para>Destination Blob Type (Block/Page/Append).</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -12030,7 +12030,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>BlobType</maml:name>
 			<maml:description>
-				<maml:para>Destination Blob Type (Block/Page).</maml:para>
+				<maml:para>Destination Blob Type (Block/Page/Append).</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
