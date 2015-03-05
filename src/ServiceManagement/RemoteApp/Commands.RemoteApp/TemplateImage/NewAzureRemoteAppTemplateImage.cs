@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     using System.Management.Automation;
     using System.Management.Automation.Runspaces;
     using System.Threading;
+    using Microsoft.Azure.Commands.RemoteApp;
 
     [Cmdlet(VerbsCommon.New, "AzureRemoteAppTemplateImage", DefaultParameterSetName = UploadLocalVhd), OutputType(typeof(TemplateImageResult))]
 
@@ -93,7 +94,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 }
                 catch (Exception ex)
                 {
-                    task.SetState(JobState.Failed, new Exception(string.Format("Failed to write file {0}. Error {1}", uploadFilePath, ex.Message)));
+                    task.SetState(JobState.Failed, new Exception(string.Format(Commands_RemoteApp.FailedToWriteToFileErrorFormat, uploadFilePath, ex.Message)));
                     return;
                 }
 
@@ -119,12 +120,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                                 task.Error.Add(error);
                             }
 
-                            task.SetState(JobState.Failed, new Exception("Upload script failed"));
+                            task.SetState(JobState.Failed, new Exception(Commands_RemoteApp.UploadScriptFailedError));
                         }
                     }
                     else
                     {
-                        task.SetState(JobState.Failed, new Exception("Image upload script failed."));
+                        task.SetState(JobState.Failed, new Exception(Commands_RemoteApp.UploadScriptFailedError));
                     }
                 }
 
@@ -144,7 +145,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             if (responseWithTrackingId.TrackingId != null)
             {
-                task.SetStatus("Waiting for Storage verification to complete");
+                task.SetStatus(Commands_RemoteApp.WaitingForStorageVerificationToCompleteMessage);
+
                 do
                 {
                     Thread.Sleep(waitPeriodMilliseconds);
@@ -157,7 +159,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
                 if (counter >= maxIterations || operationalResponse.RemoteAppOperationResult.Status != RemoteAppOperationStatus.Success)
                 {
-                    throw new RemoteAppServiceException("Failed to create storage for collection", ErrorCategory.OperationTimeout);
+                    throw new RemoteAppServiceException(Commands_RemoteApp.StorageCreationFailedError, ErrorCategory.OperationTimeout);
                 }
             }
         }
@@ -207,7 +209,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 templateImage = response.TemplateImage;
                 if (templateImage == null)
                 {
-                    throw new RemoteAppServiceException("Unable to find template by this name in that region", ErrorCategory.ObjectNotFound);
+                    throw new RemoteAppServiceException(String.Format(
+                        System.Globalization.CultureInfo.InvariantCulture,
+                        Commands_RemoteApp.TemplateImageCreationFailedErrorFormat,
+                        ImageName,
+                        Location)
+                        , ErrorCategory.InvalidResult);
                 }
             }
 
@@ -259,7 +266,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             if (getKeysResponse.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                        String.Format("Couldn't get storage account keys. Error {0}", getKeysResponse.StatusCode.ToString()),
+                                        String.Format(Commands_RemoteApp.GettingStorageAccountKeyErrorFormat, getKeysResponse.StatusCode.ToString()),
                                         String.Empty,
                                         Client.TemplateImages,
                                         ErrorCategory.ConnectionError
@@ -281,7 +288,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             if (sas == null)
             {
                 er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                    "Couldn't get Sas for template image uri.",
+                                    Commands_RemoteApp.FailedToGetSasUriError,
                                     String.Empty,
                                     Client.TemplateImages,
                                     ErrorCategory.ConnectionError
@@ -298,7 +305,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             if (string.Compare(osType, "Windows", true) != 0)
             {
                 ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                            String.Format("Invalid Argument: OS Image type is {0}. It must be Windows.", osType),
+                                            String.Format(Commands_RemoteApp.InvalidOsTypeErrorFormat, osType),
                                             String.Empty,
                                             Client.TemplateImages,
                                             ErrorCategory.InvalidArgument
@@ -313,7 +320,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             if (mediaLink == null || string.IsNullOrEmpty(mediaLink.AbsoluteUri))
             {
                 ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                        "Invalid Argument: Cannot use image because it is an Azure Gallery image. Only images created in this subscription can be used.",
+                                        Commands_RemoteApp.InvalidVmImageNameSpecifiedError,
                                         String.Empty,
                                         Client.TemplateImages,
                                         ErrorCategory.InvalidArgument
@@ -411,7 +418,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                     else
                     {
                         er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                string.Format("No OSDiskConfiguration found for image {0}.", imageName),
+                                string.Format(Commands_RemoteApp.NoOsDiskFoundErrorFormat, imageName),
                                 String.Empty,
                                 Client.TemplateImages,
                                 ErrorCategory.InvalidArgument
@@ -425,7 +432,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             if (imageUri == null)
             {
                 er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                    string.Format("No VM image found with name {0}.", imageName),
+                                    string.Format(Commands_RemoteApp.NoVmImageFoundErrorFormat, imageName),
                                     String.Empty,
                                     Client.TemplateImages,
                                     ErrorCategory.InvalidArgument
@@ -468,18 +475,18 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
                         if (pathValid[0] == false)
                         {
-                            throw new RemoteAppServiceException("Could not validate path to VHD", ErrorCategory.ObjectNotFound);
+                            throw new RemoteAppServiceException(Commands_RemoteApp.FailedToValidateVhdPathError, ErrorCategory.ObjectNotFound);
                         }
 
                         image = VerifyPreconditions();
                         image = StartTemplateUpload(image);
 
-                        task = new LongRunningTask<NewAzureRemoteAppTemplateImage>(this, "RemoteAppTemplateImageUpload", "Upload RemoteApp Template Image");
+                        task = new LongRunningTask<NewAzureRemoteAppTemplateImage>(this, "RemoteAppTemplateImageUpload", Commands_RemoteApp.UploadTemplateImageJobDescriptionMessage);
 
                         task.ProcessJob(() =>
                         {
                             UploadVhd(image);
-                            task.SetStatus("ProcessJob completed");
+                            task.SetStatus(Commands_RemoteApp.JobCompletionStatusMessage);
                         });
 
                         WriteObject(task);
@@ -495,7 +502,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                         else
                         {
                             ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                     string.Format("\"Import Image\" Feature not enabled"),
+                                     string.Format(Commands_RemoteApp.ImportImageFeatureNotEnabledError),
                                      String.Empty,
                                      Client.Account,
                                      ErrorCategory.InvalidOperation

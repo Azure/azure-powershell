@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><helpItems xmlns="http://msh" schema="maml">
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -195,7 +194,7 @@ Add-AzureRemoteAppUser -CollectionName Contoso -UserType OrgId -UserUpn user@con
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -346,7 +345,7 @@ Disconnect-AzureRemoteAppSession -CollectionName ContosoApps -UserUpn user@conto
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -527,7 +526,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -673,7 +672,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -819,7 +818,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -902,7 +901,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -1008,7 +1007,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -1091,7 +1090,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -1281,7 +1280,7 @@ VirtualPath          : %SYSTEMDRIVE%\Program Files (x86)\Contoso Finance\Finance
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -1432,7 +1431,7 @@ Get-AzureRemoteAppSession -CollectionName ContosoApps                        </d
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -1583,7 +1582,7 @@ Get-AzureRemoteAppStartMenuProgram -CollectionName ContosoApps                  
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -1739,7 +1738,7 @@ Get-AzureRemoteAppTemplateImage -ImageName ContosoApps                        </
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -1890,7 +1889,7 @@ Get-AzureRemoteAppUser -CollectionName Contoso                        </dev:code
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -2040,7 +2039,7 @@ Get-AzureRemoteAppVNet -VNetName ContosoVNet                        </dev:code>
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -2177,7 +2176,7 @@ Microsoft Corporation  {RRAS}                        </dev:code>
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -2368,7 +2367,7 @@ Get-AzureRemoteAppVpnDeviceConfigScript -VNetName ContosoVNet -Vendor &quot;Micr
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -2480,7 +2479,7 @@ https://www.remoteapp.windowsazure.com/ Contoso Work Applications               
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -2667,7 +2666,7 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -2746,12 +2745,12 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>DnsServers</maml:name>
 				<maml:description>
 					<maml:para>A string containing a comma-separated list of IPv4 addresses of the DNS servers.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>OrganizationalUnit</maml:name>
@@ -2805,12 +2804,12 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>DnsServers</maml:name>
 				<maml:description>
 					<maml:para>A string containing a comma-separated list of IPv4 addresses of the DNS servers.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -2868,15 +2867,15 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 			<maml:name>DnsServers</maml:name>
 			<maml:description>
 				<maml:para>A string containing a comma-separated list of IPv4 addresses of the DNS servers.</maml:para>
 								
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>string[]</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3018,7 +3017,7 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -3208,7 +3207,7 @@ New-AzureRemoteAppTemplateImage -ImageName ContosoApps -Location &quot;West Euro
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -3463,7 +3462,7 @@ b0ca9d1b-d1b9-4f24-9a08-5e021926587f                        </dev:code>
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -3723,7 +3722,7 @@ Publish-AzureRemoteAppProgram -CollectionName ContosoApps -StartMenuAppId a37323
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -3865,7 +3864,7 @@ Publish-AzureRemoteAppProgram -CollectionName ContosoApps -StartMenuAppId a37323
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -4032,7 +4031,7 @@ Remove-AzureRemoteAppTemplateImage -ImageName ContosoApps                       
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -4203,7 +4202,7 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -4334,7 +4333,7 @@ Remove-AzureRemoteAppVnet -VNetName ContosoVNet                        </dev:cod
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -4485,7 +4484,7 @@ Rename-AzureRemoteAppTemplateImage -ImageName ContosoApps -NewName ContosoFinanc
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -4652,7 +4651,7 @@ Reset-AzureRemoteAppVpnSharedKey -VNetName ContosoVNet                        </
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -4823,7 +4822,7 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -5009,7 +5008,7 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -5220,7 +5219,7 @@ Set-AzureRemoteAppVnet -VNetName ContosoVNet -DnsServerIpAddress 131.253.33.200 
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -5355,7 +5354,7 @@ TrackingId
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -5517,7 +5516,7 @@ TrackingId
 	</maml:relatedLinks>
 </command:command>
 
-
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -5698,4 +5697,3 @@ TrackingId
 	</maml:relatedLinks>
 </command:command>
 
-</helpItems>

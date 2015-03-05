@@ -126,8 +126,23 @@
   <data name="DetailedUsageFailureMessage" xml:space="preserve">
     <value>Failed to generate the detailed usage informaton. Please try again and if it still does not succeed, then call Microsoft support.</value>
   </data>
+  <data name="FailedToGetSasUriError" xml:space="preserve">
+    <value>Couldn't get Sas for template image uri.</value>
+  </data>
+  <data name="FailedToValidateVhdPathError" xml:space="preserve">
+    <value>Could not validate path to VHD</value>
+  </data>
+  <data name="FailedToWriteToFileErrorFormat" xml:space="preserve">
+    <value>Failed to write file {0}. Error {1}</value>
+  </data>
   <data name="GenericAreYouSureQuestion" xml:space="preserve">
     <value>Are you sure?</value>
+  </data>
+  <data name="GettingStorageAccountKeyErrorFormat" xml:space="preserve">
+    <value>Couldn't get storage account keys. Error {0}</value>
+  </data>
+  <data name="ImportImageFeatureNotEnabledError" xml:space="preserve">
+    <value>"Import Image" Feature not enabled</value>
   </data>
   <data name="InvalidArgumentSubNetNameNotFoundMessageFormat" xml:space="preserve">
     <value>Invalid Argument SubnetName: {0} not found</value>
@@ -135,11 +150,26 @@
   <data name="InvalidArgumentVNetNameNotFoundMessageFormat" xml:space="preserve">
     <value>Invalid Argument VNetName: {0} not found</value>
   </data>
+  <data name="InvalidOsTypeErrorFormat" xml:space="preserve">
+    <value>Invalid Argument: OS Image type is {0}. It must be Windows.</value>
+  </data>
+  <data name="InvalidVmImageNameSpecifiedError" xml:space="preserve">
+    <value>Invalid Argument: Cannot use image because it is an Azure Gallery image. Only images created in this subscription can be used.</value>
+  </data>
+  <data name="JobCompletionStatusMessage" xml:space="preserve">
+    <value>ProcessJob completed</value>
+  </data>
   <data name="LinkAzureVNetFeatureNotEnabledMessage" xml:space="preserve">
     <value>"Link Azure VNet" Feature not enabled</value>
   </data>
+  <data name="NoOsDiskFoundErrorFormat" xml:space="preserve">
+    <value>No OSDiskConfiguration found for image {0}.</value>
+  </data>
   <data name="NoPlansFoundMessage" xml:space="preserve">
     <value>No plans found.</value>
+  </data>
+  <data name="NoVmImageFoundErrorFormat" xml:space="preserve">
+    <value>No VM image found with name {0}.</value>
   </data>
   <data name="RequestTimedOut" xml:space="preserve">
     <value>Request timed out</value>
@@ -150,16 +180,31 @@
   <data name="SessionLogOffWarningQuestionFormat" xml:space="preserve">
     <value>This operation will log off {0}. Are you sure?</value>
   </data>
+  <data name="StorageCreationFailedError" xml:space="preserve">
+    <value>Failed to create storage for collection</value>
+  </data>
+  <data name="TemplateImageCreationFailedErrorFormat" xml:space="preserve">
+    <value>Unable to create template image {0} in location {1}</value>
+  </data>
   <data name="UnpublishProgramCaptionMessage" xml:space="preserve">
     <value>This operation will unpublish all applications for this collection.</value>
   </data>
   <data name="UnpublishProgramConfirmationDescription" xml:space="preserve">
     <value>Unpublishing all applications</value>
   </data>
+  <data name="UploadScriptFailedError" xml:space="preserve">
+    <value>Template image upload script failed</value>
+  </data>
+  <data name="UploadTemplateImageJobDescriptionMessage" xml:space="preserve">
+    <value>Upload RemoteApp Template Image</value>
+  </data>
   <data name="VnetSharedKeyResetCaptionMessage" xml:space="preserve">
     <value>This operation will reset the shared key for the VNet's VPN device. This will interrupt connectivity to the on-premises network until you configure the VPN device to use the new shared key.</value>
   </data>
   <data name="VnetSharedKeyResetConfirmationDescription" xml:space="preserve">
     <value>Resetting the VPN shared key</value>
+  </data>
+  <data name="WaitingForStorageVerificationToCompleteMessage" xml:space="preserve">
+    <value>Waiting for Storage verification to complete</value>
   </data>
 </root>

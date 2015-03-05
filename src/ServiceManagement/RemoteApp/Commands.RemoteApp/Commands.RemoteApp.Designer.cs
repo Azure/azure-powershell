@@ -88,11 +88,56 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t get Sas for template image uri..
+        /// </summary>
+        internal static string FailedToGetSasUriError {
+            get {
+                return ResourceManager.GetString("FailedToGetSasUriError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not validate path to VHD.
+        /// </summary>
+        internal static string FailedToValidateVhdPathError {
+            get {
+                return ResourceManager.GetString("FailedToValidateVhdPathError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to write file {0}. Error {1}.
+        /// </summary>
+        internal static string FailedToWriteToFileErrorFormat {
+            get {
+                return ResourceManager.GetString("FailedToWriteToFileErrorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure?.
         /// </summary>
         internal static string GenericAreYouSureQuestion {
             get {
                 return ResourceManager.GetString("GenericAreYouSureQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t get storage account keys. Error {0}.
+        /// </summary>
+        internal static string GettingStorageAccountKeyErrorFormat {
+            get {
+                return ResourceManager.GetString("GettingStorageAccountKeyErrorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Import Image&quot; Feature not enabled.
+        /// </summary>
+        internal static string ImportImageFeatureNotEnabledError {
+            get {
+                return ResourceManager.GetString("ImportImageFeatureNotEnabledError", resourceCulture);
             }
         }
         
@@ -115,6 +160,33 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Argument: OS Image type is {0}. It must be Windows..
+        /// </summary>
+        internal static string InvalidOsTypeErrorFormat {
+            get {
+                return ResourceManager.GetString("InvalidOsTypeErrorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Argument: Cannot use image because it is an Azure Gallery image. Only images created in this subscription can be used..
+        /// </summary>
+        internal static string InvalidVmImageNameSpecifiedError {
+            get {
+                return ResourceManager.GetString("InvalidVmImageNameSpecifiedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ProcessJob completed.
+        /// </summary>
+        internal static string JobCompletionStatusMessage {
+            get {
+                return ResourceManager.GetString("JobCompletionStatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;Link Azure VNet&quot; Feature not enabled.
         /// </summary>
         internal static string LinkAzureVNetFeatureNotEnabledMessage {
@@ -124,11 +196,29 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No OSDiskConfiguration found for image {0}..
+        /// </summary>
+        internal static string NoOsDiskFoundErrorFormat {
+            get {
+                return ResourceManager.GetString("NoOsDiskFoundErrorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No plans found..
         /// </summary>
         internal static string NoPlansFoundMessage {
             get {
                 return ResourceManager.GetString("NoPlansFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No VM image found with name {0}..
+        /// </summary>
+        internal static string NoVmImageFoundErrorFormat {
+            get {
+                return ResourceManager.GetString("NoVmImageFoundErrorFormat", resourceCulture);
             }
         }
         
@@ -160,6 +250,24 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to create storage for collection.
+        /// </summary>
+        internal static string StorageCreationFailedError {
+            get {
+                return ResourceManager.GetString("StorageCreationFailedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to create template image {0} in location {1}.
+        /// </summary>
+        internal static string TemplateImageCreationFailedErrorFormat {
+            get {
+                return ResourceManager.GetString("TemplateImageCreationFailedErrorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This operation will unpublish all applications for this collection..
         /// </summary>
         internal static string UnpublishProgramCaptionMessage {
@@ -178,6 +286,24 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Template image upload script failed.
+        /// </summary>
+        internal static string UploadScriptFailedError {
+            get {
+                return ResourceManager.GetString("UploadScriptFailedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload RemoteApp Template Image.
+        /// </summary>
+        internal static string UploadTemplateImageJobDescriptionMessage {
+            get {
+                return ResourceManager.GetString("UploadTemplateImageJobDescriptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This operation will reset the shared key for the VNet&apos;s VPN device. This will interrupt connectivity to the on-premises network until you configure the VPN device to use the new shared key..
         /// </summary>
         internal static string VnetSharedKeyResetCaptionMessage {
@@ -192,6 +318,15 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         internal static string VnetSharedKeyResetConfirmationDescription {
             get {
                 return ResourceManager.GetString("VnetSharedKeyResetConfirmationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waiting for Storage verification to complete.
+        /// </summary>
+        internal static string WaitingForStorageVerificationToCompleteMessage {
+            get {
+                return ResourceManager.GetString("WaitingForStorageVerificationToCompleteMessage", resourceCulture);
             }
         }
     }
