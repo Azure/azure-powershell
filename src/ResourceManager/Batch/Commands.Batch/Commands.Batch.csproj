@@ -142,6 +142,7 @@
     <Compile Include="Accounts\NewBatchAccountCommand.cs" />
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
+    <Compile Include="Jobs\RemoveBatchJobCommand.cs" />
     <Compile Include="Models\BatchClient.Accounts.cs" />
     <Compile Include="Models\BatchClient.cs" />
     <Compile Include="BatchCmdletBase.cs" />
@@ -156,7 +157,9 @@
     <Compile Include="Models\ListPoolOptions.cs" />
     <Compile Include="Models\ListTaskOptions.cs" />
     <Compile Include="Models\ListWorkItemOptions.cs" />
-    <Compile Include="Models\PSAffinitiyInformation.cs" />
+    <Compile Include="Models\NewTaskParameters.cs" />
+    <Compile Include="Models\NewWorkItemParameters.cs" />
+    <Compile Include="Models\PSAffinityInformation.cs" />
     <Compile Include="Models\PSAsyncEnumerable.cs" />
     <Compile Include="Models\PSAutoPoolSpecification.cs" />
     <Compile Include="Models\PSAutoScaleRun.cs" />
@@ -201,6 +204,8 @@
     <Compile Include="Models\PSWorkItemExecutionInformation.cs" />
     <Compile Include="Models\PSWorkItemSchedule.cs" />
     <Compile Include="Models\PSWorkItemStatistics.cs" />
+    <Compile Include="Models\RemoveJobParameters.cs" />
+    <Compile Include="Models\RemoveTaskParameters.cs" />
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -209,8 +214,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Tasks\GetBatchTaskCommand.cs" />
+    <Compile Include="Tasks\NewBatchTaskCommand.cs" />
+    <Compile Include="Tasks\RemoveBatchTaskCommand.cs" />
     <Compile Include="Utils\Constants.cs" />
+    <Compile Include="Utils\Utils.cs" />
     <Compile Include="WorkItems\GetBatchWorkItemCommand.cs" />
+    <Compile Include="WorkItems\NewBatchWorkItemCommand.cs" />
+    <Compile Include="WorkItems\RemoveBatchWorkItemCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.Azure.Commands.Batch.format.ps1xml">
@@ -224,6 +234,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

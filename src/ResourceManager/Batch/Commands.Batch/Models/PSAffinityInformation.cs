@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSAffinitiyInformation
+    public class PSAffinityInformation
     {
         
         internal Microsoft.Azure.Batch.AffinityInformation omObject;
         
-        public PSAffinitiyInformation()
+        public PSAffinityInformation()
         {
             this.omObject = new Microsoft.Azure.Batch.AffinityInformation();
         }
         
-        internal PSAffinitiyInformation(Microsoft.Azure.Batch.AffinityInformation omObject)
+        internal PSAffinityInformation(Microsoft.Azure.Batch.AffinityInformation omObject)
         {
             if ((omObject == null))
             {

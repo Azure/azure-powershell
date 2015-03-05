@@ -78,5 +78,33 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }             
             }
         }
+
+        /// <summary>
+        /// Deletes the specified Job
+        /// </summary>
+        /// <param name="parameters">The parameters indicating which Job to delete</param>
+        public void DeleteJob(RemoveJobParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+            if ((string.IsNullOrEmpty(parameters.WorkItemName) || string.IsNullOrEmpty(parameters.JobName)) && parameters.Job == null)
+            {
+                throw new ArgumentException(Resources.RBJ_NoJobSpecified);
+            }
+
+            if (parameters.Job != null)
+            {
+                parameters.Job.omObject.Delete(parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                using (IWorkItemManager wiManager = parameters.Context.BatchOMClient.OpenWorkItemManager())
+                {
+                    wiManager.DeleteJob(parameters.WorkItemName, parameters.JobName, parameters.AdditionalBehaviors);
+                }
+            }
+        }
     }
 }
