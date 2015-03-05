@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-
     public abstract partial class RdsCmdlet
     {
         protected const string NameValidatorStringWithWildCards = @"^[?*A-Za-z0-9\u007F-\uFFFF]{1,13}$";

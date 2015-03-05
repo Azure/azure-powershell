@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         private const string DomainJoined = "DomainJoined";
         private const string NoDomain = "NoDomain";
         private const string AzureVNet = "AzureVNet";
+
         [Parameter (Mandatory = true,
                     Position = 0,
                     HelpMessage = "RemoteApp collection name")]
@@ -242,7 +243,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 ThrowTerminatingError(er);
             }
 
-            return isValidSubnetName;            
+            return isValidSubnetName;
         }
 
         private NetworkListResponse.VirtualNetworkSite GetAzureVNet(string name)
