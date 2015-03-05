@@ -34,6 +34,13 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         public LongRunningTask(T command, string JobName, string Description)
         {
+            Error = new PSDataCollection<ErrorRecord>();
+            Debug = new PSDataCollection<DebugRecord>();
+            Output = new PSDataCollection<PSObject>();
+            Progress = new PSDataCollection<ProgressRecord>();
+            Verbose = new PSDataCollection<VerboseRecord>();
+            Warning = new PSDataCollection<WarningRecord>();
+
             statusMessage = null;
             joblocation = null;
             jobstate = null;

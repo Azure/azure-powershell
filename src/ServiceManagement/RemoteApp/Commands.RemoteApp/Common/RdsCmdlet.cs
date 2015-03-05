@@ -119,7 +119,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             if (ps.HadErrors)
             {
-                throw ps.Streams.Error[0].Exception;
+                string message = String.Format("Message: {0} Stack: {1}", ps.Streams.Error[0].Exception.Message, ps.Streams.Error[0].ScriptStackTrace);
+                throw new Exception(message);
             }
 
             return pipeLineObjects;
@@ -137,7 +138,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             if (ps.HadErrors)
             {
-                throw ps.Streams.Error[0].Exception;
+                string message = String.Format("Message: {0} Stack: {1}", ps.Streams.Error[0].Exception.Message, ps.Streams.Error[0].ScriptStackTrace);
+                throw new Exception(message);
             }
 
             foreach (PSObject obj in pipeLineObjects)
