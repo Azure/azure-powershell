@@ -31,11 +31,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageMigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
 
-        [Parameter(Mandatory = false, Position = 2, HelpMessage = "Force")]
-        public bool force { get; set; }
+        [Parameter(HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageImportDCWithSkipACRs)]
+        public SwitchParameter SkipACRs
+        {
+            get { return skipACRs; }
+            set { skipACRs = value; }
+        }
 
-        [Parameter(Mandatory = false, Position = 3, HelpMessage = "SkipACRs")]
-        public bool SkipACRs { get; set; }
+        private bool skipACRs;
+
+        [Parameter(HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageImportDCByForce)]
+        public SwitchParameter Force
+        {
+            get { return force; }
+            set { force = value; }
+        }
+
+        private bool force;
+
         public override void ExecuteCmdlet()
         {
             try
@@ -43,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 MigrationImportDataContainerRequest request = new MigrationImportDataContainerRequest();
                 request.DataContainerNames = LegacyContainerNames;
                 request.ForceOnOtherDevice = force;
-                request.SkipACRs = SkipACRs;
+                request.SkipACRs = skipACRs;
 
                 MigrationJobStatus migrationJobStatus = StorSimpleClient.MigrationImportDataContainer(LegacyConfigId, request);
                 WriteObject(this.GetResultMessage(migrationJobStatus));

@@ -85,5 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string HelpMessageMigrationLegacyDataContainers = "Names of data containers to be migrated seperated by ','";
         public const string HelpMessageMigrationConfigId = "Legacy config id";
         public const string HelpMessageMigrationOperation = "Commit or Rollback";
+        public const string HelpMessageImportDCByForce = "Force import data container on a different device even if data container has been imported on a different device";
+        public const string HelpMessageImportDCWithSkipACRs = "Skip ACRs from migration";
     }
 }
