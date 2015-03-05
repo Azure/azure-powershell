@@ -12098,7 +12098,7 @@ The default value is Production.</maml:para>
           <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
         <maml:name>ServiceName</maml:name>
         <maml:description>
-          <maml:para>Name of the Service which has the deployment whose Virtual IP needs to be reserved</maml:para>
+          <maml:para>Name of the service which has the deployment whose Virtual IP needs to be reserved</maml:para>
 
         </maml:description>
         <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
@@ -12112,7 +12112,7 @@ The default value is Production.</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
         <maml:name>Slot</maml:name>
         <maml:description>
-          <maml:para>Slot of the PaaS Deployment whose Virtual IP needs to be reserved</maml:para>
+          <maml:para>Slot of the PaaS deployment whose Virtual IP needs to be reserved</maml:para>
 
         </maml:description>
         <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
@@ -12267,72 +12267,32 @@ The default value is Production.</maml:para>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
           <maml:name>ReservedIPName</maml:name>
           <maml:description>
-            <maml:para></maml:para>
+            <maml:para>Reserved IP Name</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
           <maml:name>ServiceName</maml:name>
           <maml:description>
-            <maml:para></maml:para>
+            <maml:para>Name of the service which has the deployment with which we want to associate the Reserved IP</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
           <maml:name>Slot</maml:name>
           <maml:description>
-            <maml:para></maml:para>
+            <maml:para>Slot of the PaaS deployment with which we need to associate the given Reserved IP</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PipelineVariable</maml:name>
-          <maml:description>
-            <maml:para>Not Specified</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
     <command:parameters>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>PipelineVariable</maml:name>
-        <maml:description>
-          <maml:para>Not Specified</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>AzureProfile</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
         <maml:name>ReservedIPName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Reserved IP Name</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
@@ -12345,7 +12305,7 @@ The default value is Production.</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
         <maml:name>ServiceName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Name of the service which has the deployment with which we want to associate the Reserved IP</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
@@ -12358,7 +12318,7 @@ The default value is Production.</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
         <maml:name>Slot</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Slot of the PaaS deployment with which we need to associate the given Reserved IP</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
@@ -12481,52 +12441,38 @@ The default value is Production.</maml:para>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
           <maml:name>ReservedIPName</maml:name>
           <maml:description>
-            <maml:para></maml:para>
+            <maml:para>Reserved IP Name</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
           <maml:name>ServiceName</maml:name>
           <maml:description>
-            <maml:para></maml:para>
+            <maml:para>Name of the service which has the deployment with Reserved IP which we want to dis-associate</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
           <maml:name>Slot</maml:name>
           <maml:description>
-            <maml:para></maml:para>
+            <maml:para>Slot of the PaaS deployment whose Reserved IP we need to dis-associate</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
           <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para></maml:para>
+            <maml:para>Disables the confirmation prompt when a Reserved IP assocation is removed</maml:para>
           </maml:description>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PipelineVariable</maml:name>
-          <maml:description>
-            <maml:para>Not Specified</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
+       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
     <command:parameters>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
         <maml:name>Force</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Disables the confirmation prompt to remove Reserved IP assocation</maml:para>
 
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -12536,36 +12482,11 @@ The default value is Production.</maml:para>
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>PipelineVariable</maml:name>
-        <maml:description>
-          <maml:para>Not Specified</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>AzureProfile</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+      
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
         <maml:name>ReservedIPName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Reserved IP Name</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
@@ -12578,7 +12499,7 @@ The default value is Production.</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
         <maml:name>ServiceName</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Name of the service which has the deployment with Reserved IP which we want to dis-associate</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
@@ -12591,7 +12512,7 @@ The default value is Production.</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
         <maml:name>Slot</maml:name>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Slot of the PaaS deployment whose Reserved IP we need to dis-associate</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
