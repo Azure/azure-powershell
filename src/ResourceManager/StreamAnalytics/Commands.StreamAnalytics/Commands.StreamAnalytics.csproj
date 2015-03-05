@@ -180,7 +180,6 @@
     <Content Include="Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>

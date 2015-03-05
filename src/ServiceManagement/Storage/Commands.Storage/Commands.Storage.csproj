@@ -255,7 +255,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Microsoft.WindowsAzure.Commands.Storage.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
