@@ -16,21 +16,14 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 
-namespace Microsoft.Azure.Commands.Insights
+namespace Microsoft.Azure.Commands.Insights.Events
 {
     /// <summary>
-    /// Get the list of events for at a Resource level.
+    /// Get the list of events for at a subscription level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureResourceLog"), OutputType(typeof(List<IPSEventData>))]
-    public class GetAzureResourceLogCommand : EventCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureSubscriptionIdLog"), OutputType(typeof(List<IPSEventData>))]
+    public class GetAzureSubscriptionIdLogCommand : EventCmdletBase
     {
-        /// <summary>
-        /// Gets or sets the resourceId parameter of the cmdlet
-        /// </summary>
-        [Parameter(Position = 0, ParameterSetName = ResourceUriName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ResourceId")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
         /// <summary>
         /// Process the parameters defined by this class  (a.k.a. particular parameters)
         /// </summary>
@@ -38,9 +31,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <returns>The query filter with the conditions for particular parameters added</returns>
         protected override string ProcessParticularParameters(string currentQueryFilter)
         {
-            // Notice the different name in the condition (resourceUri) and the parameter (resourceId)
-            // The difference is intentional as the new directive is to use ResourceId everywhere, but the SDK still uses resourceUri
-            return this.AddConditionIfPResent(currentQueryFilter, "resourceUri", this.ResourceId);
+            return currentQueryFilter;
         }
-    }
+     }
 }

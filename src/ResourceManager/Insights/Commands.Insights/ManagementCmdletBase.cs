@@ -15,36 +15,38 @@
 using System;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Insights;
+using Microsoft.Azure.Management.Insights;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights
 {
     /// <summary>
-    /// Base class for the Azure Insights SDK Cmdlets
+    /// Base for the Management-oriented Insights Cmdlets
     /// </summary>
-    abstract public class InsightsCmdletBase : AzurePSCmdlet, IDisposable
+    public abstract class ManagementCmdletBase : AzurePSCmdlet, IDisposable
     {
-        private IInsightsClient insightsClient;
+        #region General declarations
+
+        private IInsightsManagementClient insightsManagementClient;
 
         private bool disposed;
 
         /// <summary>
-        /// Gets the InsightsClient to use in the Cmdlet
+        /// Gets the insightsManagementClient to use in the Cmdlet
         /// </summary>
-        public IInsightsClient InsightsClient
+        public IInsightsManagementClient InsightsManagementClient
         {
             get
             {
-                if (this.insightsClient == null)
+                if (this.insightsManagementClient == null)
                 {
                     // The premise is that a command to establish a context (like Add-AzureAccount) has been called before this command in order to have a correct CurrentContext
-                    this.insightsClient = AzureSession.ClientFactory.CreateClient<InsightsClient>(Profile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    this.insightsManagementClient = AzureSession.ClientFactory.CreateClient<InsightsManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
-                return this.insightsClient;
+                return this.insightsManagementClient;
             }
-            set { this.insightsClient = value; }
+            set { this.insightsManagementClient = value; }
         }
 
         /// <summary>
@@ -67,14 +69,16 @@ namespace Microsoft.Azure.Commands.Insights
         {
             if (!this.disposed)
             {
-                if (this.insightsClient != null)
+                if (this.insightsManagementClient != null)
                 {
-                    this.insightsClient.Dispose();
-                    this.insightsClient = null;
+                    this.insightsManagementClient.Dispose();
+                    this.insightsManagementClient = null;
                 }
 
                 this.disposed = true;
             }
         }
+
+        #endregion
     }
 }

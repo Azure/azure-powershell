@@ -12,26 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Insights.OutputClasses;
-
-namespace Microsoft.Azure.Commands.Insights
+namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Get the list of events for at a subscription level.
+    /// Wrapps around the RuleResource or RuleGetResponse
+    /// <para>Allows for different types of outputs for the cmdlets, i.e. all the specific output types will implement this interface and the base cmdlet always returns lists of this type.</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSubscriptionIdLog"), OutputType(typeof(List<IPSEventData>))]
-    public class GetAzureSubscriptionIdLogCommand : EventCmdletBase
+    public abstract class PSManagementItemDescriptor
     {
         /// <summary>
-        /// Process the parameters defined by this class  (a.k.a. particular parameters)
+        /// Gets or sets the Id of the rule
         /// </summary>
-        /// <param name="currentQueryFilter">The current query filter</param>
-        /// <returns>The query filter with the conditions for particular parameters added</returns>
-        protected override string ProcessParticularParameters(string currentQueryFilter)
-        {
-            return currentQueryFilter;
-        }
-     }
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Location of the rule
+        /// </summary>
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Name of the rule
+        /// </summary>
+        public string Name { get; set; }
+    }
 }
