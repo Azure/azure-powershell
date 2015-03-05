@@ -26,7 +26,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             this.cmdletParams.Add(new CmdletParam("HostCaching", discCfg.hostCaching));
             this.cmdletParams.Add(new CmdletParam("LUN", discCfg.lun));
             this.cmdletParams.Add(new CmdletParam("VM", discCfg.Vm));
+        }
 
+        public SetAzureDataDiskCmdletInfo(SetAzureDataDiskResizeConfig discCfg)
+        {
+            cmdletName = Utilities.SetAzureDataDiskCmdletName;
+
+            this.cmdletParams.Add(new CmdletParam("DiskName", discCfg.DiskName));
+            this.cmdletParams.Add(new CmdletParam("ResizedSizeInGB", discCfg.ResizedSizeInGB));
+            this.cmdletParams.Add(new CmdletParam("VM", discCfg.Vm));
         }
     }
 }
