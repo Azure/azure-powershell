@@ -12,40 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureNetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
-    public class RemoveAzureNetworkSecurityRuleConfigCmdlet : NetworkBaseClient
+    [Cmdlet(VerbsCommon.New, "AzureNetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
+    public class NewAzureNetworkSecurityRuleConfigCmdlet : CommonAzureNetworkSecurityRuleConfigCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The name of the rule")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-             Mandatory = true,
-             ValueFromPipeline = true,
-             HelpMessage = "The NetworkSecurityGroup")]
-        public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
+        public override string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            // Verify if the rule exists in the NetworkSecurityGroup
-            var rule = this.NetworkSecurityGroup.Properties.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var rule = new PSSecurityRule();
 
-            if (rule != null)
-            {
-                this.NetworkSecurityGroup.Properties.SecurityRules.Remove(rule);
-            }
+            rule.Name = this.Name;
+            rule.Properties = new PSSecurityRuleProperties();
+            rule.Properties.Description = this.Description;
+            rule.Properties.Protocol = this.Protocol;
+            rule.Properties.SourcePortRange = this.SourcePortRange;
+            rule.Properties.DestinationPortRange = this.DestinationPortRange;
+            rule.Properties.SourceAddressPrefix = this.SourceAddressPrefix;
+            rule.Properties.DestinationAddressPrefix = this.DestinationAddressPrefix;
+            rule.Properties.Access = this.Access;
+            rule.Properties.Priority = this.Priority;
+            rule.Properties.Direction = this.Direction;
 
-            WriteObject(this.NetworkSecurityGroup);
+            WriteObject(rule);
         }
     }
 }

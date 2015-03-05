@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             Mandatory = false,
             HelpMessage = "Rule protocol")]
         [ValidateSet(
-            MNM.NetworkSecurityRuleProtocol.Tcp,
-            MNM.NetworkSecurityRuleProtocol.Udp,
-            MNM.NetworkSecurityRuleProtocol.All, 
+            MNM.SecurityRuleProtocol.Tcp,
+            MNM.SecurityRuleProtocol.Udp,
+            MNM.SecurityRuleProtocol.All, 
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }
@@ -71,8 +71,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             HelpMessage = "The description of the rule")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            MNM.NetworkSecurityRuleAccess.Allow,
-            MNM.NetworkSecurityRuleAccess.Deny,
+            MNM.SecurityRuleAccess.Allow,
+            MNM.SecurityRuleAccess.Deny,
             IgnoreCase = true)]
         public string Access { get; set; }
 
@@ -87,8 +87,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             HelpMessage = "The direction of the rule")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            MNM.NetworkSecurityRuleDirection.Inbound,
-            MNM.NetworkSecurityRuleDirection.Outbound,
+            MNM.SecurityRuleDirection.Inbound,
+            MNM.SecurityRuleDirection.Outbound,
             IgnoreCase = true)]
         public string Direction { get; set; }
     }

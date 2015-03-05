@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureNetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityRule))]
+    [Cmdlet(VerbsCommon.Get, "AzureNetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
     public class GetAzureNetworkSecurityRuleConfigCmdlet : NetworkBaseClient
     {
         [Parameter(
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             base.ExecuteCmdlet();
 
             var rules = this.DefaultRules
-                            ? this.NetworkSecurityGroup.Properties.DefaultRules
-                            : this.NetworkSecurityGroup.Properties.Rules;
+                            ? this.NetworkSecurityGroup.Properties.DefaultSecurityRules
+                            : this.NetworkSecurityGroup.Properties.SecurityRules;
             
             if (!string.IsNullOrEmpty(this.Name))
             {

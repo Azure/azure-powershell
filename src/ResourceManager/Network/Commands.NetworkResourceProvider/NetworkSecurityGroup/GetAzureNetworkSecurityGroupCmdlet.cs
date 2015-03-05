@@ -44,15 +44,15 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             base.ExecuteCmdlet();
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var vnet = this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name);
+                var nsg = this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name);
 
-                WriteObject(vnet);
+                WriteObject(nsg);
             }
             else
             {
                 var nsgGetResponse = this.NetworkSecurityGroupClient.List(this.ResourceGroupName);
 
-                var networkResourceGroups = Mapper.Map<List<PSVirtualNetwork>>(nsgGetResponse.NetworkSecurityGroups);
+                var networkResourceGroups = Mapper.Map<List<PSNetworkSecurityGroup>>(nsgGetResponse.NetworkSecurityGroups);
 
                 // populate the virtualNetworks with the ResourceGroupName
                 foreach (var nsg in networkResourceGroups)

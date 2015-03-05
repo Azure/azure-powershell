@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualNetworkSubnetConfig"), OutputType(typeof(PSSubnet))]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSubnet))]
     public class NewAzureVirtualNetworkSubnetConfigCmdlet : CommonAzureVirtualNetworkSubnetConfigCmdlet
     {
         [Parameter(

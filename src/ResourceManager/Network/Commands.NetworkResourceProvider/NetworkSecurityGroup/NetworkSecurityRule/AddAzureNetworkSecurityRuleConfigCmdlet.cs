@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Add, "AzureNetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityRule))]
+    [Cmdlet(VerbsCommon.Add, "AzureNetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class AddAzureNetworkSecurityRuleConfigCmdlet : CommonAzureNetworkSecurityRuleConfigCmdlet
     {
         [Parameter(
@@ -39,17 +39,17 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             base.ExecuteCmdlet();
 
             // Verify if the subnet exists in the NetworkSecurityGroup
-            var rule = this.NetworkSecurityGroup.Properties.Rules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var rule = this.NetworkSecurityGroup.Properties.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (rule != null)
             {
                 throw new ArgumentException("Rule with the specified name already exists");
             }
             
-            rule = new PSNetworkSecurityRule();
+            rule = new PSSecurityRule();
 
             rule.Name = this.Name;
-            rule.Properties = new PSNetworkSecurityRuleProperties();
+            rule.Properties = new PSSecurityRuleProperties();
             rule.Properties.Description = this.Description;
             rule.Properties.Protocol = this.Protocol;
             rule.Properties.SourcePortRange = this.SourcePortRange;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             rule.Properties.Direction = this.Direction;
 
 
-            this.NetworkSecurityGroup.Properties.Rules.Add(rule);
+            this.NetworkSecurityGroup.Properties.SecurityRules.Add(rule);
 
             WriteObject(this.NetworkSecurityGroup);
         }

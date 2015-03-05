@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of NetworkSecurityRules")]
-        public List<PSNetworkSecurityRule> Rule { get; set; }
+        public List<PSSecurityRule> SecurityRules { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             nsg.Name = this.Name;
             nsg.ResourceGroupName = this.ResourceGroupName;
             nsg.Location = this.Location;
-            nsg.Properties = new PSNetworkSecurityGroupProperties { Rules = this.Rule };
+            nsg.Properties = new PSNetworkSecurityGroupProperties { SecurityRules = this.SecurityRules };
 
             // Map to the sdk object
             var nsgModel = Mapper.Map<MNM.NetworkSecurityGroupCreateOrUpdateParameters>(nsg);

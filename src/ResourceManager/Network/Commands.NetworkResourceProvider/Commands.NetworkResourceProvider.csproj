@@ -193,9 +193,9 @@
     <Compile Include="Models\PSNetworkSecurityGroup.cs" />
     <Compile Include="Models\PSNetworkSecurityGroupCreateOrUpdateParameters.cs" />
     <Compile Include="Models\PSNetworkSecurityGroupProperties.cs" />
-    <Compile Include="Models\PSNetworkSecurityRule.cs" />
-    <Compile Include="Models\PSNetworkSecurityRuleCreateOrUpdateParameters.cs" />
-    <Compile Include="Models\PSNetworkSecurityRuleProperties.cs" />
+    <Compile Include="Models\PSSecurityRule.cs" />
+    <Compile Include="Models\PsSecurityRuleCreateOrUpdateParameters.cs" />
+    <Compile Include="Models\PSSecurityRuleProperties.cs" />
     <Compile Include="Models\PSBackendAddressPool.cs" />
     <Compile Include="Models\PSBackendAddressPoolProperties.cs" />
     <Compile Include="Models\PSFrontendIpConfiguration.cs" />
@@ -237,6 +237,7 @@
     <Compile Include="NetworkInterface\SetAzureNetworkInterfaceCmdlet.cs" />
     <Compile Include="NetworkSecurityGroup\GetAzureNetworkSecurityGroupCmdlet.cs" />
     <Compile Include="NetworkSecurityGroup\NetworkSecurityGroupBaseClient.cs" />
+    <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\NewAzureNetworkSecurityRuleConfigCmdlet.cs" />
     <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\GetAzureNetworkSecurityRuleConfigCmdlet.cs" />
     <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\RemoveAzureNetworkSecurityRuleConfigCmdlet.cs" />
     <Compile Include="NetworkSecurityGroup\NetworkSecurityRule\SetAzureNetworkSecurityRuleConfigCmdlet.cs" />

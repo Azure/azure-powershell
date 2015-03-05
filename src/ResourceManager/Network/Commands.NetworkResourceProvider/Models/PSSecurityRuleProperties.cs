@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSNetworkSecurityRuleProperties : PSResourceProperties
+    public class PSSecurityRuleProperties : PSResourceProperties
     {
         public string Description { get; set; }
 

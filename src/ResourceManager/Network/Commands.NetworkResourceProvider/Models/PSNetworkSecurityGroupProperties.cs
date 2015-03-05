@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 
     public class PSNetworkSecurityGroupProperties : PSResourceProperties
     {
-        public List<PSNetworkSecurityRule> Rules { get; set; }
+        public List<PSSecurityRule> SecurityRules { get; set; }
 
-        public List<PSNetworkSecurityRule> DefaultRules { get; set; }
+        public List<PSSecurityRule> DefaultSecurityRules { get; set; }
 
         public List<PSResourceId> NetworkInterfaces { get; set; }
 
