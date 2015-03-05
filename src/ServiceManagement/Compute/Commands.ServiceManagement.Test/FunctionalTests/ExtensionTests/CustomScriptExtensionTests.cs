@@ -41,7 +41,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private string runFileName = "test2.ps2";
         private string[] fileNames = {"test1.ps1","test2.ps1"};
         private string endpointSuffix = "";
-        //private VirtualMachineCustomScriptExtensionContext inputParameters;
 
         [TestInitialize]
         public void TestIntialization()
@@ -169,7 +168,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 vmName = Utilities.GetUniqueShortName(vmNamePrefix);
                 var vm = Utilities.CreateIaaSVMObject(vmName, InstanceSize.Small, imageName, true, username, password);
-                vm = vmPowershellCmdlets.SetAzureVMExtension(vm, customScriptExtension.ExtensionName, customScriptExtension.Publisher, customScriptExtension.Version);
+                vm = vmPowershellCmdlets.SetAzureVMExtension(vm,
+                    customScriptExtension.ExtensionName, customScriptExtension.Publisher, customScriptExtension.Version,
+                    forceUpdate: true);
                 vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, locationName);
 
                 var vmExtension = vmPowershellCmdlets.GetAzureVMCustomScriptExtension(Utilities.GetAzureVM(vmName, serviceName));
@@ -222,22 +223,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 case SetAzureVMCustomScriptExtensionCmdletParmaterSetType.SetCustomScriptExtensionByUrisParamSetName:
                     Console.WriteLine("Calling Set-AzureVMCustomScriptExtension cmdlet using SetCustomScriptExtensionByUrisParamSetName parameter set including all parameters.");
-                    return vmPowershellCmdlets.SetAzureVMCustomScriptExtension(vm, fileURI, true, runFileName, referenceName, customScriptExtension.Version);
+                    return vmPowershellCmdlets.SetAzureVMCustomScriptExtension(
+                        vm, fileURI, true, runFileName, referenceName, customScriptExtension.Version, null, true);
+
                 case SetAzureVMCustomScriptExtensionCmdletParmaterSetType.SetCustomScriptExtensionByUrisParamSetNameWithOutDefaultParameters:
                     Console.WriteLine("Calling Set-AzureVMCustomScriptExtension cmdlet using SetCustomScriptExtensionByUrisParamSetName parameter set without optional parameters");
-                    return vmPowershellCmdlets.SetAzureVMCustomScriptExtension(vm, fileURI,true,runFileName);
+                    return vmPowershellCmdlets.SetAzureVMCustomScriptExtension(
+                        vm, fileURI, true, runFileName, null, null, null, true);
+
                 case SetAzureVMCustomScriptExtensionCmdletParmaterSetType.DisableCustomScriptExtensionParamSetName:
                     Console.WriteLine("Calling Set-AzureVMCustomScriptExtension cmdlet using DisableCustomScriptExtensionParamSetName parameter set including all parameters.");
-                    return vmPowershellCmdlets.SetAzureVMCustomScriptExtension(vm, true, referenceName, customScriptExtension.Version);
+                    return vmPowershellCmdlets.SetAzureVMCustomScriptExtension(
+                        vm, true, referenceName, customScriptExtension.Version, true);
+
                 case SetAzureVMCustomScriptExtensionCmdletParmaterSetType.DisableCustomScriptExtensionParamSetNameWithOutDefaultParameters:
                     Console.WriteLine("Calling Set-AzureVMCustomScriptExtension cmdlet using DisableCustomScriptExtensionParamSetName parameter set without optional parameters");
-                    return vmPowershellCmdlets.SetAzureVMCustomScriptExtension(vm,true);
+                    return vmPowershellCmdlets.SetAzureVMCustomScriptExtension(vm, true, null, null, true);
+
                 case SetAzureVMCustomScriptExtensionCmdletParmaterSetType.SetCustomScriptExtensionByContainerBlobsParamSetName:
                     Console.WriteLine("Calling Set-AzureVMCustomScriptExtension cmdlet using SetCustomScriptExtensionByContainerBlobsParamSetName parameter set including all parameters.");
-                    return vmPowershellCmdlets.SetAzureVMCustomScriptExtension(vm,fileNames, runFileName, storageAccountKey.StorageAccountName, endpointSuffix, containerName, storageAccountKey.Primary, referenceName, customScriptExtension.Version);
+                    return vmPowershellCmdlets.SetAzureVMCustomScriptExtension(
+                        vm, fileNames, runFileName, storageAccountKey.StorageAccountName, endpointSuffix,
+                        containerName, storageAccountKey.Primary, referenceName, customScriptExtension.Version, null, true);
+
                 case SetAzureVMCustomScriptExtensionCmdletParmaterSetType.SetCustomScriptExtensionByContainerBlobsParamSetNameWithOutDefaultParameters:
                     Console.WriteLine("Calling Set-AzureVMCustomScriptExtension cmdlet using SetCustomScriptExtensionByContainerBlobsParamSetName parameter set without optional parameters");
-                    return vmPowershellCmdlets.SetAzureVMCustomScriptExtension(vm,fileNames, runFileName,containerName: containerName);
+                    return vmPowershellCmdlets.SetAzureVMCustomScriptExtension(vm, fileNames, runFileName, containerName: containerName);
+
                 default:
                     break;
             }

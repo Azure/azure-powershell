@@ -13,7 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -31,7 +34,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (resourcesClient == null)
                 {
-                    resourcesClient = new ResourcesClient(CurrentContext)
+                    resourcesClient = new ResourcesClient(Profile.Context)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
@@ -50,7 +53,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (galleryTemplatesClient == null)
                 {
-                    galleryTemplatesClient = new GalleryTemplatesClient(CurrentContext);
+                    // since this accessor can be called before BeginProcessing, use GetCurrentContext if no 
+                    // profile is passed in
+                    galleryTemplatesClient = new GalleryTemplatesClient(GetCurrentContext());
                 }
                 return galleryTemplatesClient;
             }
@@ -64,7 +69,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (policiesClient == null)
                 {
-                    policiesClient = new AuthorizationClient(CurrentContext);
+                    policiesClient = new AuthorizationClient(Profile.Context);
                 }
                 return policiesClient;
             }

@@ -163,6 +163,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Insights", "Resour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Insights.Test", "ResourceManager\Insights\Commands.Insights.Test\Commands.Insights.Test.csproj", "{469F20E0-9D40-41AD-94C3-B47AD15A4C00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Websites", "ResourceManager\Websites\Commands.Websites\Commands.Websites.csproj", "{80A92297-7C92-456B-8EE7-9FB6CE30149D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RemoteApp", "ServiceManagement\RemoteApp\Commands.RemoteApp\Commands.RemoteApp.csproj", "{492D2AF2-950B-4F2E-8079-8794305313FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -397,6 +401,14 @@ Global
 		{469F20E0-9D40-41AD-94C3-B47AD15A4C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{469F20E0-9D40-41AD-94C3-B47AD15A4C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{469F20E0-9D40-41AD-94C3-B47AD15A4C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80A92297-7C92-456B-8EE7-9FB6CE30149D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80A92297-7C92-456B-8EE7-9FB6CE30149D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80A92297-7C92-456B-8EE7-9FB6CE30149D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80A92297-7C92-456B-8EE7-9FB6CE30149D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{492D2AF2-950B-4F2E-8079-8794305313FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{492D2AF2-950B-4F2E-8079-8794305313FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{492D2AF2-950B-4F2E-8079-8794305313FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{492D2AF2-950B-4F2E-8079-8794305313FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
