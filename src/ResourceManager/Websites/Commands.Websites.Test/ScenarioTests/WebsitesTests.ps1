@@ -25,8 +25,6 @@ function Test-CreatesNewSimpleWebsite
 	$webHostingPlan = "NGoliStandard"
 	$apiversion = "2014-04-01"
 	$resourceType = "Microsoft.Web/sites"
-
-
 	try
 	{
 			# Test
@@ -55,14 +53,11 @@ function Test-CreatesNewWebHostingPlan
 	$rgname = "Default-Web-WestUS"
 	$whpName = "ngoliPSWHP"
 	$location = "West US"
-
-
-
 	try
 	{
 			# Test
-			$actual = New-AzureWebHostingPlan -ResourceGroupName $rgname -WHPName $whpName -location  $location 
-			$result = Get-AzureWebHostingPlan -ResourceGroupName $rgname -WHPName $whpName
+			$actual = New-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -location  $location 
+			$result = Get-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName
 			# Assert 
 			Assert-AreEqual $whpName $result.WebHostingPlan.Name
 			Assert-AreEqual 1 $result.WebHostingPlan.Properties.NumberOfWorkers
@@ -72,6 +67,6 @@ function Test-CreatesNewWebHostingPlan
     finally
     {
 			# Cleanup
-			Remove-AzureWebHostingPlan -ResourceGroupName $rgname -WHPName $whpName -Force
+			Remove-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -Force
     }
 }

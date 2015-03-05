@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
     {
         public override void ExecuteCmdlet()
         {
-            WriteObject(WebsitesClient.GetWebHostingPlan(ResourceGroupName, WHPName));
+            WriteObject(WebsitesClient.GetWebHostingPlan(ResourceGroupName, WebHostingPlanName));
 
         }
 

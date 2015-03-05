@@ -32,11 +32,11 @@ function Get-Location
 	if ($location -eq $null) 
 	{
 		return "West US"
-    } 
+	} 
 	else 
 	{
         $location.Locations[0]
-    }
+	}
 }
 
 <#

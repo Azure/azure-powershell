@@ -16,10 +16,10 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cad6adbd-8afd-413d-965c-97eaeeacdf31/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/ngoliPSWebsite\",\r\n  \"name\": \"ngoliPSWebsite\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": null,\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"name\": \"ngoliPSWebsite\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"ngolipswebsite.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"westuswebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-001.api.azurewebsites.windows.net:454/subscriptions/cad6adbd-8afd-413d-965c-97eaeeacdf31/webspaces/westuswebspace/sites/ngoliPSWebsite\",\r\n    \"repositorySiteName\": \"ngoliPSWebsite\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"ngolipswebsite.azurewebsites.net\",\r\n      \"ngolipswebsite.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"ngolipswebsite.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"ngolipswebsite.scm.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": \"NGoliStandard\",\r\n    \"webHostingPlan\": \"NGoliStandard\",\r\n    \"lastModifiedTimeUtc\": \"2015-02-27T02:19:26.8\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"ngoliPSWebsite\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Standard\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"microService\": \"WebSites\",\r\n    \"kind\": null,\r\n    \"cloningInfo\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cad6adbd-8afd-413d-965c-97eaeeacdf31/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/ngoliPSWebsite\",\r\n  \"name\": \"ngoliPSWebsite\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": null,\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"name\": \"ngoliPSWebsite\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"ngolipswebsite.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"westuswebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-001.api.azurewebsites.windows.net:454/subscriptions/cad6adbd-8afd-413d-965c-97eaeeacdf31/webspaces/westuswebspace/sites/ngoliPSWebsite\",\r\n    \"repositorySiteName\": \"ngoliPSWebsite\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"ngolipswebsite.azurewebsites.net\",\r\n      \"ngolipswebsite.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"ngolipswebsite.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"ngolipswebsite.scm.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": \"NGoliStandard\",\r\n    \"webHostingPlan\": \"NGoliStandard\",\r\n    \"lastModifiedTimeUtc\": \"2015-03-05T00:20:42.723\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"ngoliPSWebsite\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Standard\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"microService\": \"WebSites\",\r\n    \"kind\": null,\r\n    \"cloningInfo\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1777"
+          "1779"
         ],
         "Content-Type": [
           "application/json"
@@ -34,22 +34,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d5f8407b-38a9-4efa-a560-b7de0516e231"
+          "f9f3ff2d-48cd-486a-a685-2fdac5ce6a81"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "fbe016cb-7b55-4a3b-9195-0f8d975d4d63"
+          "1609a335-43ed-4b6c-aec8-f511b50a67ec"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150227T021945Z:fbe016cb-7b55-4a3b-9195-0f8d975d4d63"
+          "WESTUS:20150305T002044Z:1609a335-43ed-4b6c-aec8-f511b50a67ec"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 27 Feb 2015 02:19:45 GMT"
+          "Thu, 05 Mar 2015 00:20:43 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -73,7 +73,7 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cad6adbd-8afd-413d-965c-97eaeeacdf31/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/ngoliPSWebsite\",\r\n  \"name\": \"ngoliPSWebsite\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": null,\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"name\": \"ngoliPSWebsite\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"ngolipswebsite.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"westuswebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-001.api.azurewebsites.windows.net:454/subscriptions/cad6adbd-8afd-413d-965c-97eaeeacdf31/webspaces/westuswebspace/sites/ngoliPSWebsite\",\r\n    \"repositorySiteName\": \"ngoliPSWebsite\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"ngolipswebsite.azurewebsites.net\",\r\n      \"ngolipswebsite.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"ngolipswebsite.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"ngolipswebsite.scm.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": \"NGoliStandard\",\r\n    \"webHostingPlan\": \"NGoliStandard\",\r\n    \"lastModifiedTimeUtc\": \"2015-02-27T02:19:26.893\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"ngoliPSWebsite\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Standard\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"microService\": \"WebSites\",\r\n    \"kind\": null,\r\n    \"cloningInfo\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cad6adbd-8afd-413d-965c-97eaeeacdf31/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/ngoliPSWebsite\",\r\n  \"name\": \"ngoliPSWebsite\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": null,\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"name\": \"ngoliPSWebsite\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"ngolipswebsite.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"westuswebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-001.api.azurewebsites.windows.net:454/subscriptions/cad6adbd-8afd-413d-965c-97eaeeacdf31/webspaces/westuswebspace/sites/ngoliPSWebsite\",\r\n    \"repositorySiteName\": \"ngoliPSWebsite\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"ngolipswebsite.azurewebsites.net\",\r\n      \"ngolipswebsite.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"ngolipswebsite.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"ngolipswebsite.scm.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": \"NGoliStandard\",\r\n    \"webHostingPlan\": \"NGoliStandard\",\r\n    \"lastModifiedTimeUtc\": \"2015-03-05T00:20:42.813\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"ngoliPSWebsite\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Standard\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"microService\": \"WebSites\",\r\n    \"kind\": null,\r\n    \"cloningInfo\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1779"
@@ -91,25 +91,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7264350f-584a-4b09-ac2a-3316f2561be8"
+          "27f7c4f2-0b7e-4890-a388-f9c378a7d9e6"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31999"
+          "31998"
         ],
         "x-ms-correlation-request-id": [
-          "bf06fc12-d028-4930-b76d-1d061cf4364a"
+          "08fd0442-dc29-4d0d-a6f2-304179391185"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150227T021945Z:bf06fc12-d028-4930-b76d-1d061cf4364a"
+          "WESTUS:20150305T002044Z:08fd0442-dc29-4d0d-a6f2-304179391185"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 27 Feb 2015 02:19:45 GMT"
+          "Thu, 05 Mar 2015 00:20:44 GMT"
         ],
         "ETag": [
-          "\"1D05233CF53CDD0\""
+          "\"1D056DA3785F6D0\""
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -148,25 +148,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d38f9199-0677-4d4c-8210-663339e145a2"
+          "6334ebf2-442d-40ea-86a5-415e1f030571"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "b162426b-d00e-4964-8258-cac61c14d45b"
+          "d050cb95-8b89-404f-959b-ed9aaadc2140"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150227T021947Z:b162426b-d00e-4964-8258-cac61c14d45b"
+          "WESTUS:20150305T002046Z:d050cb95-8b89-404f-959b-ed9aaadc2140"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 27 Feb 2015 02:19:47 GMT"
+          "Thu, 05 Mar 2015 00:20:45 GMT"
         ],
         "ETag": [
-          "\"1D05233CF53CDD0\""
+          "\"1D056DA3785F6D0\""
         ],
         "Server": [
           "Microsoft-IIS/8.0"

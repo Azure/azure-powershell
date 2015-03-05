@@ -16,7 +16,7 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cad6adbd-8afd-413d-965c-97eaeeacdf31/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/serverfarms/ngoliPSWHP\",\r\n  \"name\": \"ngoliPSWHP\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": null,\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"name\": \"ngoliPSWHP\",\r\n    \"sku\": \"Standard\",\r\n    \"workerSize\": 0,\r\n    \"workerSizeId\": 0,\r\n    \"numberOfWorkers\": 1,\r\n    \"currentWorkerSize\": 0,\r\n    \"currentWorkerSizeId\": 0,\r\n    \"currentNumberOfWorkers\": 1,\r\n    \"status\": 0,\r\n    \"webSpace\": \"WestUSwebspace\",\r\n    \"subscription\": \"cad6adbd-8afd-413d-965c-97eaeeacdf31\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cad6adbd-8afd-413d-965c-97eaeeacdf31/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/serverfarms/ngoliPSWHP\",\r\n  \"name\": \"ngoliPSWHP\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": null,\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"name\": \"ngoliPSWHP\",\r\n    \"sku\": \"Standard\",\r\n    \"workerSize\": 0,\r\n    \"workerSizeId\": 0,\r\n    \"numberOfWorkers\": 1,\r\n    \"currentWorkerSize\": 0,\r\n    \"currentWorkerSizeId\": 0,\r\n    \"currentNumberOfWorkers\": 1,\r\n    \"status\": 0,\r\n    \"webSpace\": \"westuswebspace\",\r\n    \"subscription\": \"cad6adbd-8afd-413d-965c-97eaeeacdf31\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "556"
@@ -34,22 +34,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "6dee1e83-6c40-42c7-a408-fb055ce9fb42"
+          "be159669-528e-4761-ba99-65514b0de2c1"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "bc6e3ffc-297b-43d9-8326-f46de0853399"
+          "612a5e03-1820-4b31-a640-4e6c38c6582a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150227T022514Z:bc6e3ffc-297b-43d9-8326-f46de0853399"
+          "WESTUS:20150305T002643Z:612a5e03-1820-4b31-a640-4e6c38c6582a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 27 Feb 2015 02:25:13 GMT"
+          "Thu, 05 Mar 2015 00:26:43 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -91,22 +91,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d8a38dbc-f4e4-4759-9a0e-b7c06090f96c"
+          "65dcaf67-9b90-4191-852d-b515c655fd5e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "31999"
         ],
         "x-ms-correlation-request-id": [
-          "24f5177f-eff8-4c2c-a632-f0592d0d5f5d"
+          "e4487f5e-06ab-4403-a5f6-308ab69517b0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150227T022514Z:24f5177f-eff8-4c2c-a632-f0592d0d5f5d"
+          "WESTUS:20150305T002645Z:e4487f5e-06ab-4403-a5f6-308ab69517b0"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 27 Feb 2015 02:25:13 GMT"
+          "Thu, 05 Mar 2015 00:26:45 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -145,22 +145,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "28acc737-9b62-41e8-975e-f70b6d7356c0"
+          "0a4c5cac-728e-4b5c-819c-35b384b76144"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "11a33473-20d2-4613-9ecd-1e0f4d2dcc6b"
+          "92d1b1fa-6463-4c5f-9406-932e12ef2aa6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150227T022516Z:11a33473-20d2-4613-9ecd-1e0f4d2dcc6b"
+          "WESTUS:20150305T002649Z:92d1b1fa-6463-4c5f-9406-932e12ef2aa6"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 27 Feb 2015 02:25:16 GMT"
+          "Thu, 05 Mar 2015 00:26:49 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"

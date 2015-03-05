@@ -77,15 +77,15 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
 
             if (WorkerSize != null)
             {
-                switch (WorkerSize.ToLower())
+                switch (WorkerSize.ToUpper())
                 {
-                    case "small":
+                    case "SMALL":
                         workerSizeInput = WorkerSizeOptions.Small;
                         break;
-                    case "medium":
+                    case "MEDIUM":
                         workerSizeInput = WorkerSizeOptions.Medium;
                         break;
-                    case "large":
+                    case "LARGE":
                         workerSizeInput = WorkerSizeOptions.Large;
                         break;
                     default:
@@ -96,15 +96,15 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
 
             if (Sku != null)
             {
-                switch (Sku.ToLower())
+                switch (Sku.ToUpper())
                 {
-                    case "free":
+                    case "FREE":
                         skuInput = SkuOptions.Free;
                         break;
-                    case "shared":
+                    case "SHARED":
                         skuInput = SkuOptions.Shared;
                         break;
-                    case "basic":
+                    case "BASIC":
                         skuInput = SkuOptions.Basic;
                         break;
                     default:
@@ -112,8 +112,8 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
                         break;
                 }
             }
-            
-            WriteObject(WebsitesClient.CreateWHP(ResourceGroupName, WHPName, location, adminSiteName, NumberofWorkers, skuInput, workerSizeInput));
+
+            WriteObject(WebsitesClient.CreateWebHostingPlan(ResourceGroupName, WebHostingPlanName, location, adminSiteName, NumberofWorkers, skuInput, workerSizeInput));
 
         }
 
