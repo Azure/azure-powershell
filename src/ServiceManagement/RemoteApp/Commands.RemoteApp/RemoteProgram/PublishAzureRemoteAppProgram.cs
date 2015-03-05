@@ -20,13 +20,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-
     [Cmdlet(VerbsData.Publish, "AzureRemoteAppProgram", DefaultParameterSetName = AppId), OutputType(typeof(PublishingOperationResult))]
     public class PublishAzureRemoteAppProgram : RdsCmdlet
     {
         private const string AppPath = "App Path";
         private const string AppId = "App Id";
-
 
         [Parameter (Mandatory = true,
                     Position = 0,
@@ -50,7 +48,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [Parameter(Mandatory = false,
             HelpMessage = "Command-line argument for the program to be published.")]
         [ValidateNotNullOrEmpty()]
-        public string CommandLineArgument { get; set; }
+        public string CommandLine { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Display name of the program to be published.")]
@@ -109,7 +107,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             appDetails.DetailsList[0].Alias = "";
 
-            appDetails.DetailsList[0].CommandLineArguments = CommandLineArgument;
+            appDetails.DetailsList[0].CommandLineArguments = CommandLine;
 
             appDetails.DetailsList[0].AvailableToUsers = true; 
 

@@ -53,12 +53,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (galleryTemplatesClient == null)
                 {
-                    if(Profile == null)
-                    {
-                        Profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-                    }
-
-                    galleryTemplatesClient = new GalleryTemplatesClient(Profile.Context);
+                    // since this accessor can be called before BeginProcessing, use GetCurrentContext if no 
+                    // profile is passed in
+                    galleryTemplatesClient = new GalleryTemplatesClient(GetCurrentContext());
                 }
                 return galleryTemplatesClient;
             }

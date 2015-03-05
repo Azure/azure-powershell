@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [Parameter(Mandatory = false,
             Position = 1,
             HelpMessage = "Number of the month (MM) to report usage")]
-        [ValidatePattern("^(0[1-9]|1[0-2])$")]
+        [ValidatePattern(TwoDigitMonthPattern)]
         public string UsageMonth { get; set; }
 
         [Parameter(Mandatory = false,
             Position = 2,
             HelpMessage = "Year (YYYY) to report usage")]
-        [ValidatePattern(@"^(19|20)\d\d$")]
+        [ValidatePattern(FullYearPattern)]
         public string UsageYear { get; set; }
 
         public override void ExecuteCmdlet()
