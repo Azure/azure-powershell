@@ -31,8 +31,8 @@ function Test-DatabaseUpdatePolicyWithStorage
 	
 		# Assert
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
-		Assert-True { $policy.IsEnabled } 
-		Assert-False { $policy.UseServerDefault }
+		Assert-AreEqual $policy.AuditState "Enabled"  
+		Assert-AreEqual $policy.UseServerDefault "Disabled"
 	}
 	finally
 	{
@@ -60,7 +60,7 @@ function Test-ServerUpdatePolicyWithStorage
 	
 		# Assert
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
-		Assert-True { $policy.IsEnabled } 
+		Assert-AreEqual $policy.AuditState "Enabled" 
 	}
 	finally
 	{
@@ -161,9 +161,9 @@ function Test-DatabaseUpdatePolicyWithEventTypes
 	
 		# Assert
 		Assert-AreEqual $policy.EventType.Length 3
-		Assert-True {$policy.EventType.Contains("DataAccess")}
-		Assert-True {$policy.EventType.Contains("DataChanges")}
-		Assert-True {$policy.EventType.Contains("RevokePermissions")}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::DataAccess)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::DataChanges)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::RevokePermissions)}
 
 		# Test
 		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "None"
@@ -205,9 +205,10 @@ function Test-ServerUpdatePolicyWithEventTypes
 	
 		# Assert
 		Assert-AreEqual $policy.EventType.Length 3
-		Assert-True {$policy.EventType.Contains("DataAccess")}
-		Assert-True {$policy.EventType.Contains("DataChanges")}
-		Assert-True {$policy.EventType.Contains("RevokePermissions")}
+
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::DataAccess)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::DataChanges)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::RevokePermissions)}
 
 		# Test
 		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "None"
@@ -244,7 +245,7 @@ function Test-DatabaseUpdatePolicyWithEventTypeShortcuts
 		Assert-AreEqual $policy.EventType.Length 5
 
 		# Test
-		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "All", "All"
+		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "All"
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
@@ -259,7 +260,7 @@ function Test-DatabaseUpdatePolicyWithEventTypeShortcuts
 		Assert-AreEqual $policy.EventType.Length 0 
 
 		# Test
-		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "None", "None"
+		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "None"
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
@@ -352,7 +353,7 @@ function Test-DisableDatabaseAuditing
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-False { $policy.IsEnabled }
+		Assert-AreEqual $policy.AuditState "Disabled"
 	}
 	finally
 	{
@@ -380,7 +381,7 @@ function Test-DisableServerAuditing
 		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
-		Assert-False { $policy.IsEnabled }
+		Assert-AreEqual $policy.AuditState "Disabled"
 	}
 	finally
 	{
@@ -410,10 +411,10 @@ function Test-DatabaseDisableEnableKeepProperties
 	
 		# Assert
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
-		Assert-True { $policy.IsEnabled } 
-		Assert-False { $policy.UseServerDefault }
+		Assert-AreEqual $policy.AuditState "Enabled"
+		Assert-AreEqual $policy.UseServerDefault "Disabled"
 		Assert-AreEqual $policy.EventType.Length 1
-		Assert-True {$policy.EventType.Contains("SecurityExceptions")}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::SecurityExceptions)}
 	}
 	finally
 	{
@@ -443,10 +444,9 @@ function Test-ServerDisableEnableKeepProperties
 	
 		# Assert
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
-		Assert-True { $policy.IsEnabled } 
-		Assert-False { $policy.UseServerDefault }
+		Assert-AreEqual $policy.AuditState "Enabled"
 		Assert-AreEqual $policy.EventType.Length 1
-		Assert-True {$policy.EventType.Contains("RevokePermissions")}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::RevokePermissions)}
 	}
 	finally
 	{
@@ -474,7 +474,7 @@ function Test-UseServerDefault
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 
 		# Assert
-		Assert-True {$policy.UseServerDefault}
+		Assert-AreEqual $policy.UseServerDefault "Enabled"
 	}
 	finally
 	{
@@ -618,68 +618,26 @@ function Test-DatabaseDirectAccess
 	try
 	{
 		# Test
-		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount 
 		Enable-AzureSqlDatabaseDirectAccess -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzureSqlDatabaseSecureConnectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-True { $policy.DirectAccessEnabled }
+		Assert-AreEqual $policy.SecureConnectionState "Optional"
 
 		# Test
 		Disable-AzureSqlDatabaseDirectAccess -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzureSqlDatabaseSecureConnectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-False { $policy.DirectAccessEnabled }
+		Assert-AreEqual $policy.SecureConnectionState "Required"
 
 		# Test
 		Enable-AzureSqlDatabaseDirectAccess -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzureSqlDatabaseSecureConnectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-True { $policy.DirectAccessEnabled }
-	}
-	finally
-	{
-		# Cleanup
-		Remove-TestEnvironment $testSuffix
-	}
-}
+		Assert-AreEqual $policy.SecureConnectionState "Optional"
 
-<#
-.SYNOPSIS
-Tests that the direct access property is getting updated correctly for a sql database server
-#>
-function Test-ServerDirectAccess
-{
-	# Setup
-	$testSuffix = 650
-	Create-TestEnvironment $testSuffix
-	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-
-	try
-	{
-		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
-		Enable-AzureSqlDatabaseServerDirectAccess -ResourceGroupName $params.rgname -ServerName $params.serverName 
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
-	
-		# Assert
-		Assert-True { $policy.DirectAccessEnabled }
-
-		# Test
-		Disable-AzureSqlDatabaseServerDirectAccess -ResourceGroupName $params.rgname -ServerName $params.serverName 
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
-	
-		# Assert
-		Assert-False { $policy.DirectAccessEnabled }
-
-		# Test
-		Enable-AzureSqlDatabaseServerDirectAccess -ResourceGroupName $params.rgname -ServerName $params.serverName 
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
-	
-		# Assert
-		Assert-True { $policy.DirectAccessEnabled }
 	}
 	finally
 	{
