@@ -193,7 +193,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 }
                 else if (exType == typeof(ArgumentNullException))
                 {
-                    var argEx = ex as ArgumentNullException;
+                    var argNullEx = ex as ArgumentNullException;
+                    if (argNullEx == null)
+                        break;
+                    WriteVerbose(string.Format(Resources.InvalidInputMessage, ex.Message));
+                    errorRecord = new ErrorRecord(argNullEx, string.Empty, ErrorCategory.InvalidData, null);
+                    break;
+                }
+                else if (exType == typeof(ArgumentException))
+                {
+                    var argEx = ex as ArgumentException;
                     if (argEx == null)
                         break;
                     WriteVerbose(string.Format(Resources.InvalidInputMessage, ex.Message));
@@ -477,6 +486,22 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             {
                 return false;
             }
+            return true;
+        }
+
+        /// <summary>
+        /// Validate that the target device is eligible for failover
+        /// </summary>
+        /// <param name="sourceDeviceName">The source device identifier</param>
+        /// <param name="targetDeviceName">The target device identifier</param>
+        /// <returns></returns>
+        internal bool ValidTargetDeviceForFailover(string sourceDeviceId, string targetDeviceId)
+        {
+            if (sourceDeviceId.Equals(targetDeviceId, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new ArgumentException(Resources.DeviceFailoverSourceAndTargetDeviceSameError);
+            }
+            
             return true;
         }
     }

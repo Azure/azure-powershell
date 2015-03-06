@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeContainerGroups)]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeContainerGroups)]
         [ValidateNotNull]
         public List<DataContainerGroup> VolumecontainerGroups { get; set; }
 
@@ -93,9 +93,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             return;
                         }
 
-                        if(deviceId.Equals(targetDeviceId, StringComparison.InvariantCultureIgnoreCase))
+                        if (!ValidTargetDeviceForFailover(deviceId, targetDeviceId))
                         {
-                            WriteVerbose(Resources.DeviceFailoverSourceAndTargetDeviceSameError);
                             WriteObject(null);
                             return;
                         }
