@@ -277,7 +277,7 @@
 				<maml:name>AzureStorageBlob</maml:name>
 				<maml:uri/>
 				<maml:description>
-					<maml:para>ICloudBlob object and Azure storage context and etc.</maml:para>
+					<maml:para>CloudBlob object and Azure storage context and etc.</maml:para>
 				</maml:description>
 			</dev:type>
 			<maml:description></maml:description>
@@ -469,11 +469,11 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 		<command:syntaxItem>
 			<maml:name>Get-AzureStorageBlobContent</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:description>
-					<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+					<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Destination</maml:name>
@@ -702,13 +702,13 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 			<dev:defaultValue>ProcessorCount * 8</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ICloudBlob</maml:name>
+			<maml:name>CloudBlob</maml:name>
 			<maml:description>
-				<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+				<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			<dev:type>
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -906,11 +906,11 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 		<command:syntaxItem>
 			<maml:name>Get-AzureStorageBlobCopyState</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:description>
-					<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+					<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WaitForComplete</maml:name>
@@ -1087,13 +1087,13 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ICloudBlob</maml:name>
+			<maml:name>CloudBlob</maml:name>
 			<maml:description>
-				<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+				<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			<dev:type>
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4292,11 +4292,11 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:syntaxItem>
 			<maml:name>New-AzureStorageBlobSASToken</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:description>
-					<maml:para>ICloudBlob object</maml:para>
+					<maml:para>CloudBlob object</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Permission</maml:name>
@@ -4337,11 +4337,11 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:syntaxItem>
 			<maml:name>New-AzureStorageBlobSASToken</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:description>
-					<maml:para>ICloudBlob object</maml:para>
+					<maml:para>CloudBlob object</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Policy</maml:name>
@@ -4518,13 +4518,13 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ICloudBlob</maml:name>
+			<maml:name>CloudBlob</maml:name>
 			<maml:description>
-				<maml:para>ICloudBlob object</maml:para>
+				<maml:para>CloudBlob object</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			<dev:type>
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -8114,11 +8114,11 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 		<command:syntaxItem>
 			<maml:name>Remove-AzureStorageBlob</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:description>
-					<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+					<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>DeleteSnapshot</maml:name>
@@ -8399,13 +8399,13 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ICloudBlob</maml:name>
+			<maml:name>CloudBlob</maml:name>
 			<maml:description>
-				<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+				<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			<dev:type>
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -11926,11 +11926,11 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:description>
-					<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+					<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>BlobType</maml:name>
@@ -12136,13 +12136,13 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ICloudBlob</maml:name>
+			<maml:name>CloudBlob</maml:name>
 			<maml:description>
-				<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+				<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			<dev:type>
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -14244,18 +14244,18 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 		<command:syntaxItem>
 			<maml:name>Start-AzureStorageBlobCopy</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:description>
-					<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+					<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestICloudBlob</maml:name>
+				<maml:name>DestCloudBlob</maml:name>
 				<maml:description>
-					<maml:para>Destination ICloudBlob object</maml:para>
+					<maml:para>Destination CloudBlob object</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
@@ -14303,11 +14303,11 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 		<command:syntaxItem>
 			<maml:name>Start-AzureStorageBlobCopy</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:description>
-					<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+					<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>DestContainer</maml:name>
@@ -14628,25 +14628,25 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ICloudBlob</maml:name>
+			<maml:name>CloudBlob</maml:name>
 			<maml:description>
-				<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+				<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			<dev:type>
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>DestICloudBlob</maml:name>
+			<maml:name>DestCloudBlob</maml:name>
 			<maml:description>
-				<maml:para>Destination ICloudBlob object</maml:para>
+				<maml:para>Destination CloudBlob object</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			<dev:type>
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -14767,14 +14767,14 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  start copy operation to ICloudBlob object  --------------------------</maml:title>
+			<maml:title>--------------------------  start copy operation to CloudBlob object  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:para></maml:para>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; $srcBlob = Get-AzureStorageBlob -Container container1 -Blob srcBlob
 $destBlob = Get-AzureStorageBlob -Container container2 -Blob destBlob
 
-Start-AzureStorageBlobCopy -ICloudBlob $srcBlob.ICloudBlob -DestICloudBlob $destBlob.ICloudBlob</dev:code>
+Start-AzureStorageBlobCopy -CloudBlob $srcBlob.ICloudBlob -DestCloudBlob $destBlob.ICloudBlob</dev:code>
 			<dev:remarks>
 				<maml:para></maml:para>
 			</dev:remarks>
@@ -14894,11 +14894,11 @@ Start-AzureStorageBlobCopy -SrcUri http://www.somesite.com/somefile -DestContain
 		<command:syntaxItem>
 			<maml:name>Stop-AzureStorageBlobCopy</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:description>
-					<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+					<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -15101,13 +15101,13 @@ Start-AzureStorageBlobCopy -SrcUri http://www.somesite.com/somefile -DestContain
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ICloudBlob</maml:name>
+			<maml:name>CloudBlob</maml:name>
 			<maml:description>
-				<maml:para>ICloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
+				<maml:para>CloudBlob object from Azure Storage Client library. You can create it or use Get-AzureStorageBlob cmdlet.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ICloudBlob</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">CloudBlob</command:parameterValue>
 			<dev:type>
-				<maml:name>ICloudBlob</maml:name>
+				<maml:name>CloudBlob</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
