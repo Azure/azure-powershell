@@ -589,7 +589,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 // New-AzureVMConfig
                 var vmName = Utilities.GetUniqueShortName(vmNamePrefix);
-                var vmSize = vmPowershellCmdlets.GetAzureRoleSize().Where(t => t.MaxDataDiskCount != null && t.MaxDataDiskCount >= vmImage.DataDiskConfigurations.Count()).Select(t => t.InstanceSize).First();
+                var vmSize = InstanceSize.ExtraLarge.ToString();
                 var currentStorage = vmPowershellCmdlets.GetAzureStorageAccount(defaultAzureSubscription.CurrentStorageAccountName).First();
                 var mediaLocationStr = ("mloc" + vmName).ToLower();
                 var vmMediaLocation = currentStorage.Endpoints.Where(p => p.Contains("blob")).First() + mediaLocationStr;
