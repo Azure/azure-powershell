@@ -12,21 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
-
-namespace Microsoft.Azure.Commands.Resources
+namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
 {
     /// <summary>
-    /// Get the available locations for certain resource types.
+    /// Represents a feature
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureLocation"), OutputType(typeof(List<PSResourceProviderLocationInfo>))]
-    public class GetAzureLocationCommand : ResourcesBaseCmdlet
+    public class PSProviderFeature
     {
-        public override void ExecuteCmdlet()
-        {
-            WriteObject(ResourcesClient.GetLocations(), true);
-        }
+        /// <summary>
+        /// Gets the name of the feature
+        /// </summary>
+        public string FeatureName { get; internal set; }
+
+        /// <summary>
+        /// Gets the name of the feature
+        /// </summary>
+        public string ProviderName { get; internal set; }
+
+        /// <summary>
+        /// Gets the registration state of the feature
+        /// </summary>
+        public string RegistrationState { get; internal set; }
     }
 }

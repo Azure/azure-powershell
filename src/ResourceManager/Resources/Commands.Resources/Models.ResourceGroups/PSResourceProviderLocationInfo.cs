@@ -13,20 +13,27 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
 
-namespace Microsoft.Azure.Commands.Resources
+namespace Microsoft.Azure.Commands.Resources.Models
 {
     /// <summary>
-    /// Get the available locations for certain resource types.
+    /// Represents the location info for a resource provider
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureLocation"), OutputType(typeof(List<PSResourceProviderLocationInfo>))]
-    public class GetAzureLocationCommand : ResourcesBaseCmdlet
+    public class PSResourceProviderLocationInfo
     {
-        public override void ExecuteCmdlet()
-        {
-            WriteObject(ResourcesClient.GetLocations(), true);
-        }
+        /// <summary>
+        /// Gets or sets the name of the resource provider
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the locations that the resource provider exists in
+        /// </summary>
+        public List<string> Locations { get; set; }
+
+        /// <summary>
+        /// Gets or sets the locations that the resource provider exists in, as a single string
+        /// </summary>
+        public string LocationsString { get; set; }
     }
 }

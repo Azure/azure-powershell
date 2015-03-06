@@ -12,21 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
-
-namespace Microsoft.Azure.Commands.Resources
+namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    /// <summary>
-    /// Get the available locations for certain resource types.
-    /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureLocation"), OutputType(typeof(List<PSResourceProviderLocationInfo>))]
-    public class GetAzureLocationCommand : ResourcesBaseCmdlet
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Xunit;
+
+    public class MoveResourceTest
     {
-        public override void ExecuteCmdlet()
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMoveAzureResource()
         {
-            WriteObject(ResourcesClient.GetLocations(), true);
+            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
         }
     }
 }
