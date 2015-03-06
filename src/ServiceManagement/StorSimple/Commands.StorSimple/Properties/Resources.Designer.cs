@@ -169,6 +169,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Registration Key, Please enter the valid registration key copied from the Portal..
+        /// </summary>
+        internal static string CIKInvalidWhileDecrypting {
+            get {
+                return ResourceManager.GetString("CIKInvalidWhileDecrypting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid value for Registration Key. CIK provided couldnt be used to decrypt the secrets! The exact exception while decrypting is &quot;{0}&quot;!.
+        /// </summary>
+        internal static string CIKInvalidWithException {
+            get {
+                return ResourceManager.GetString("CIKInvalidWithException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find the persisted secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again..
         /// </summary>
         internal static string CIKNotPersisted {

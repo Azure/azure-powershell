@@ -507,4 +507,10 @@
   <data name="JobNotRunningOrCancellable" xml:space="preserve">
     <value>Cannot stop job with id {0}. It is not a running cancellable job.</value>
   </data>
+  <data name="CIKInvalidWhileDecrypting" xml:space="preserve">
+    <value>Invalid Registration Key, Please enter the valid registration key copied from the Portal.</value>
+  </data>
+  <data name="CIKInvalidWithException" xml:space="preserve">
+    <value>Invalid value for Registration Key. CIK provided couldnt be used to decrypt the secrets! The exact exception while decrypting is "{0}"!</value>
+  </data>
 </root>

@@ -4,7 +4,7 @@ using System.Management.Automation;
 #endregion
 
 
-namespace Microsoft.AzureStorSimpleDeviceCmdlets.Commands
+namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
     using System.Collections.Generic;
 
