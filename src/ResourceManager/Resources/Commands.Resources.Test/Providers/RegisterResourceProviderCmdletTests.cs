@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAzureProviderCmdletTests"/> class.
+        /// Initializes a new instance of the <see cref="RegisterAzureProviderCmdletTests"/> class.
         /// </summary>
         public RegisterAzureProviderCmdletTests()
         {
@@ -60,6 +60,11 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 .Returns(() => this.providerOperationsMock.Object);
 
             this.commandRuntimeMock = new Mock<ICommandRuntime>();
+
+            this.commandRuntimeMock
+              .Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
+              .Returns(() => true);
+
             this.cmdlet = new RegisterAzureProviderCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,

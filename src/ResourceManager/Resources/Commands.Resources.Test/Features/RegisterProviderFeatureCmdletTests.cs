@@ -60,6 +60,11 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 .Returns(() => this.featureOperationsMock.Object);
 
             this.commandRuntimeMock = new Mock<ICommandRuntime>();
+
+            this.commandRuntimeMock
+              .Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
+              .Returns(() => true);
+
             this.cmdlet = new RegisterAzureProviderFeatureCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
