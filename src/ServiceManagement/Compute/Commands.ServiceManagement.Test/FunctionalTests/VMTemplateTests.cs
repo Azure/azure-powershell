@@ -602,7 +602,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vm = vmPowershellCmdlets.AddAzureProvisioningConfig(azureProvisioningConfig);
 
                 // New-AzureVM
-                vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, null, null, null, null, null, null);
+                vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, null, null, null, null, null, null, null, null, null, null, true);
                 pass = true;
 
                 // Get-AzureVM
