@@ -32,7 +32,7 @@ using System.Net;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Websites.Utilities;
-using Microsoft.WindowsAzure.Commands.Utilities.Properties;
+using Microsoft.Azure.Commands.Websites.Properties;
 
 
 namespace Microsoft.Azure.Commands.Websites.Cmdlets

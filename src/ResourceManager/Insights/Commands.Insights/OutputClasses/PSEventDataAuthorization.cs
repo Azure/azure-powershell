@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             StringBuilder output = new StringBuilder();
             output.AppendLine();
-            output.AppendLine("Scope           : " + Scope);
-            output.AppendLine("Action          : " + Action);
-            output.AppendLine("Role            : " + Role);
-            output.Append("Condition       : " + Condition);
+            output.AppendLine("Scope     : " + Scope);
+            output.AppendLine("Action    : " + Action);
+            output.AppendLine("Role      : " + Role);
+            output.Append("Condition : " + Condition);
             return output.ToString();
         }
     }
