@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Commands.Batch
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RBWI_RemoveConfirm, Name),
+                string.Format(Resources.RBWI_RemoveConfirm, this.Name),
                 Resources.RBWI_RemoveWorkItem,
-                Name,
-                () => BatchClient.DeleteWorkItem(BatchContext, Name, AdditionalBehaviors));
+                this.Name,
+                () => BatchClient.DeleteWorkItem(this.BatchContext, this.Name, this.AdditionalBehaviors));
         }
     }
 }

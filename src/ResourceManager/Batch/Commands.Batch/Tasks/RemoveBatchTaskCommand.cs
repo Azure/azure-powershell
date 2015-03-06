@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            string taskName = InputObject == null ? Name : InputObject.Name;
+            string taskName = InputObject == null ? this.Name : InputObject.Name;
             RemoveTaskParameters parameters = new RemoveTaskParameters()
             {
                 Context = this.BatchContext,
