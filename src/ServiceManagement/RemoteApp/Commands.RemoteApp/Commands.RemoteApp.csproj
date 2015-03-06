@@ -47,7 +47,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <None Include="Microsoft.Azure.Commands.RemoteApp.dll-help.psd1" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

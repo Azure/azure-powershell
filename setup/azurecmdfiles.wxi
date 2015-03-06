@@ -228,6 +228,9 @@
                         <Component Id="cmp209CCEE0DCF9E72717C6DEDE4C8984E1" Guid="*">
                             <File Id="filB3488A11432720CCC778EEDE53A35520" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Insights\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
+                        <Component Id="cmp7BECB13532E43A81AFC0959E29FF1F56" Guid="*">
+                            <File Id="fil4562ECD0CE4E517A3B3EE8FB5DD93915" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Insights\Microsoft.WindowsAzure.Configuration.dll" />
+                        </Component>
                         <Component Id="cmp5CEBB63124C5833CCFA24A6D28E11CC9" Guid="*">
                             <File Id="filDB364E77519F6ACAA5B9CE685AB1AFB4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Insights\Microsoft.WindowsAzure.Storage.dll" />
                         </Component>
@@ -2815,6 +2818,7 @@
             <ComponentRef Id="cmpE4D93F3591A5E0258D9F3BC7B60DAB6A" />
             <ComponentRef Id="cmp969D3C7FCFB07B7318A8A57FCD133108" />
             <ComponentRef Id="cmp209CCEE0DCF9E72717C6DEDE4C8984E1" />
+            <ComponentRef Id="cmp7BECB13532E43A81AFC0959E29FF1F56" />
             <ComponentRef Id="cmp5CEBB63124C5833CCFA24A6D28E11CC9" />
             <ComponentRef Id="cmpF5AF8CEC5E3C01F32D02BF852FD840AC" />
             <ComponentRef Id="cmp5D4BF2AFED5DA226237313E9C2F8099B" />
