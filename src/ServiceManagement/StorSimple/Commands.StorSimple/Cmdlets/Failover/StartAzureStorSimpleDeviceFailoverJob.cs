@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
     [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleDeviceFailoverJob", DefaultParameterSetName = StorSimpleCmdletParameterSet.Empty),
-        OutputType(typeof(TaskResponse), typeof(TaskStatusInfo))]
+        OutputType(typeof(string))]
     public class StartAzureStorSimpleDeviceFailoverJob : StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.DeviceId)]
