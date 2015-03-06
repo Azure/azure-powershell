@@ -262,10 +262,10 @@
     <value>Are you sure you want to move resource(s) into the resource goup named '{0}' in the subscription named '{1}' and id '{2}' - the resource(s): '{3}'</value>
   </data>
   <data name="SubscriptionWithTheSpecifiedNameNotFount" xml:space="preserve">
-    <value>A subscription with the name '{0}' was not found. If this is a newly created subscription you will need to re-download your subscriptoins.</value>
+    <value>A subscription with the name '{0}' was not found. If this is a newly created subscription you will need to re-download your subscriptions.</value>
   </data>
   <data name="SubscriptionWithTheSpecifiedIdNotFount" xml:space="preserve">
-    <value>A subscription with the Id '{0}' was not found. If this is a newly created subscription you will need to re-download your subscriptoins.</value>
+    <value>A subscription with the Id '{0}' was not found. If this is a newly created subscription you will need to re-download your subscriptions.</value>
   </data>
   <data name="MovingResourcesFromNonDefaultSubscriptionNotAllowed" xml:space="preserve">
     <value>Moving resources that are not in the default subscription is not allowed. Please select the subscription you want to move resources from and try again.</value>
