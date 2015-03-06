@@ -19,7 +19,26 @@ Gets a website name for testing.
 function Get-WebsiteName
 {
 # need to remove hardcoding
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets a website name for testing.
+#>
+function Get-WebHostPlanName
+{
+# need to remove hardcoding
     return getAssetName 
+}
+
+<#
+.SYNOPSIS
+Gets a resource group name for testing.
+#>
+function Get-ResourceGroupName
+{
+    return getAssetName
 }
 
 <#

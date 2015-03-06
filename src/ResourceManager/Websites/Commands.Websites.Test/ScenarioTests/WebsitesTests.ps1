@@ -19,27 +19,32 @@ Tests creating a new website.
 function Test-CreatesNewSimpleWebsite
 {
 	# Setup
-	$rgname = "Default-Web-WestUS"
-	$wname = "ngoliPSWebsite"
-	$location = "West US"
-	$webHostingPlan = "NGoliStandard"
+	$rgname = Get-ResourceGroupName
+	$wname = Get-WebsiteName
+	$location = Get-Location
+	$whpName = Get-WebHostPlanName
 	$apiversion = "2014-04-01"
 	$resourceType = "Microsoft.Web/sites"
 	try
 	{
-			# Test
-			$actual = New-AzureWebsite -ResourceGroupName $rgname -WebsiteName $wname -Location $location -WebHostingPlan $webHostingPlan 
-			$result = Get-AzureWebsite -ResourceGroupName $rgname -WebsiteName $wname 
+		#Setup
+		New-AzureResourceGroup -Name $rgname -Location $location
+		New-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -location  $location
 
-			# Assert 
-			Assert-AreEqual $wname $result.Properties.RepositorySiteName
-			Assert-AreEqual $webHostingPlan $result.Properties.ServerFarm
+		# Test
+		$actual = New-AzureWebsite -ResourceGroupName $rgname -WebsiteName $wname -Location $location -WebHostingPlan $whpName 
+		$result = Get-AzureWebsite -ResourceGroupName $rgname -WebsiteName $wname
+
+		# Assert
+		Assert-AreEqual $wname $result.Name
+		Assert-AreEqual $whpName $result.Properties.ServerFarm
 	}
     finally
-    {
-			# Cleanup
-			#Clean-Website($rgname,$wname)
-			Remove-AzureWebsite -ResourceGroupName $rgname -WebsiteName $wname -Force
+	{
+		# Cleanup
+		Remove-AzureWebsite -ResourceGroupName $rgname -WebsiteName $wname -Force
+		Remove-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -Force
+		Remove-AzureResourceGroup -Name $rgname -Force
     }
 }
 
@@ -50,23 +55,27 @@ Tests creating a new Web Hosting Plan.
 function Test-CreatesNewWebHostingPlan
 {
 	# Setup
-	$rgname = "Default-Web-WestUS"
-	$whpName = "ngoliPSWHP"
-	$location = "West US"
+	$rgname = Get-ResourceGroupName
+	$whpName = Get-WebHostPlanName
+	$location = Get-Location
+
 	try
 	{
-			# Test
-			$actual = New-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -location  $location 
-			$result = Get-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName
-			# Assert 
-			Assert-AreEqual $whpName $result.WebHostingPlan.Name
-			Assert-AreEqual 1 $result.WebHostingPlan.Properties.NumberOfWorkers
-			Assert-AreEqual "Standard" $result.WebHostingPlan.Properties.Sku
-			Assert-AreEqual "Small" $result.WebHostingPlan.Properties.WorkerSize
+		#Setup
+		New-AzureResourceGroup -Name $rgname -Location $location
+		# Test
+		$actual = New-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -location  $location 
+		$result = Get-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName
+		# Assert
+		Assert-AreEqual $whpName $result.WebHostingPlan.Name
+		Assert-AreEqual 1 $result.WebHostingPlan.Properties.NumberOfWorkers
+		Assert-AreEqual "Standard" $result.WebHostingPlan.Properties.Sku
+		Assert-AreEqual "Small" $result.WebHostingPlan.Properties.WorkerSize
 	}
     finally
     {
-			# Cleanup
-			Remove-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -Force
+		# Cleanup
+		Remove-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -Force
+		Remove-AzureResourceGroup -Name $rgname -Force
     }
 }
