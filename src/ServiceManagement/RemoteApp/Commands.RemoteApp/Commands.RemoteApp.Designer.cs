@@ -241,11 +241,11 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Request timed out.
+        ///   Looks up a localized string similar to Request timed out. To continue querying for the usage details operation status, please use Get-AzureRemoteAppOperationResult with tracking id: {0}.
         /// </summary>
-        internal static string RequestTimedOut {
+        internal static string RequestTimedOutFormat {
             get {
-                return ResourceManager.GetString("RequestTimedOut", resourceCulture);
+                return ResourceManager.GetString("RequestTimedOutFormat", resourceCulture);
             }
         }
         
