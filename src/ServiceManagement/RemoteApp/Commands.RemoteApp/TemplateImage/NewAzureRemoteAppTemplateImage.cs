@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             Collection<PSObject> scriptResult = null;
             string command = null;
 
-            task.SetStatus("Uploading Template");
+            task.SetStatus(Commands_RemoteApp.TemplateImageUploadingStatusMessage);
             response = CallClient_ThrowOnError(() => Client.TemplateImages.GetUploadScript());
 
             if (response != null && response.Script != null)
@@ -91,13 +91,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 }
                 catch (Exception ex)
                 {
-                    task.SetState(JobState.Failed, new Exception(string.Format("Failed to write file {0}. Error {1}", uploadFilePath, ex.Message)));
+                    task.SetState(JobState.Failed, new Exception(string.Format(Commands_RemoteApp.FailedToWriteToFileErrorFormat, uploadFilePath, ex.Message)));
                     return;
                 }
 
-                string uri = "\"" + image.Uri + "\"";
-                string sas = "\"" + image.Sas + "\"";
-                command = String.Concat(uploadFilePath, " -uri ", uri, " -sas ", sas, " -vhdPath ", Path);
+                command = String.Format("{0} -Uri \"{1}\" -Sas \"{2}\" -VhdPath \"{3}\"", uploadFilePath, image.Uri, image.Sas, Path);
+
                 scriptResult = CallPowershell(command);
             }
         }
@@ -446,14 +445,14 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                             throw new RemoteAppServiceException(Commands_RemoteApp.FailedToValidateVhdPathError, ErrorCategory.ObjectNotFound);
                         }
 
-                        task = new LongRunningTask<NewAzureRemoteAppTemplateImage>(this, "RemoteAppTemplateImageUpload", "Upload RemoteApp Template Image");
+                        task = new LongRunningTask<NewAzureRemoteAppTemplateImage>(this, "RemoteAppTemplateImageUpload", Commands_RemoteApp.UploadTemplateImageJobDescriptionMessage);
 
                         task.ProcessJob(() =>
                         {
                             image = VerifyPreconditions();
                             image = StartTemplateUpload(image);
                             UploadVhd(image);
-                            task.SetStatus("ProcessJob completed");
+                            task.SetStatus(Commands_RemoteApp.JobCompletionStatusMessage);
                         });
 
                         WriteObject(task);

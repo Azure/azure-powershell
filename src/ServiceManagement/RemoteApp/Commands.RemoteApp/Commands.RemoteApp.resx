@@ -123,6 +123,9 @@
   <data name="CollectionNotFoundByNameFormat" xml:space="preserve">
     <value>RemoteApp collection name: {0} not found</value>
   </data>
+  <data name="CreateJobFailedError" xml:space="preserve">
+    <value>Failed to create job</value>
+  </data>
   <data name="DetailedUsageFailureMessage" xml:space="preserve">
     <value>Failed to generate the detailed usage informaton. Please try again and if it still does not succeed, then call Microsoft support.</value>
   </data>
@@ -162,6 +165,9 @@
   <data name="LinkAzureVNetFeatureNotEnabledMessage" xml:space="preserve">
     <value>"Link Azure VNet" Feature not enabled</value>
   </data>
+  <data name="MessageFromPowerShellScriptRunErrorFormat" xml:space="preserve">
+    <value>Message: {0} Stack: {1}</value>
+  </data>
   <data name="NoOsDiskFoundErrorFormat" xml:space="preserve">
     <value>No OSDiskConfiguration found for image {0}.</value>
   </data>
@@ -186,6 +192,15 @@
   <data name="TemplateImageCreationFailedErrorFormat" xml:space="preserve">
     <value>Unable to create template image {0} in location {1}</value>
   </data>
+  <data name="TemplateImageUploadFailedMessage" xml:space="preserve">
+    <value>Upload template image failed.</value>
+  </data>
+  <data name="TemplateImageUploadingStatusMessage" xml:space="preserve">
+    <value>Uploading Template Image</value>
+  </data>
+  <data name="TemplateImageUploadSuccessMessage" xml:space="preserve">
+    <value>Upload template image completed successfully.</value>
+  </data>
   <data name="UnpublishProgramCaptionMessage" xml:space="preserve">
     <value>This operation will unpublish all applications for this collection.</value>
   </data>
@@ -206,5 +221,8 @@
   </data>
   <data name="WaitingForStorageVerificationToCompleteMessage" xml:space="preserve">
     <value>Waiting for Storage verification to complete</value>
+  </data>
+  <data name="TemplateImageUploadPendingMessage" xml:space="preserve">
+    <value>Pending upload template image</value>
   </data>
 </root>

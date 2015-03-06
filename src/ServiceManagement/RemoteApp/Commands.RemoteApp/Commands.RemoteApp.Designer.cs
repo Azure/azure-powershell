@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to create job.
+        /// </summary>
+        internal static string CreateJobFailedError {
+            get {
+                return ResourceManager.GetString("CreateJobFailedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to generate the detailed usage informaton. Please try again and if it still does not succeed, then call Microsoft support..
         /// </summary>
         internal static string DetailedUsageFailureMessage {
@@ -196,6 +205,15 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Message: {0} Stack: {1}.
+        /// </summary>
+        internal static string MessageFromPowerShellScriptRunErrorFormat {
+            get {
+                return ResourceManager.GetString("MessageFromPowerShellScriptRunErrorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No OSDiskConfiguration found for image {0}..
         /// </summary>
         internal static string NoOsDiskFoundErrorFormat {
@@ -264,6 +282,42 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         internal static string TemplateImageCreationFailedErrorFormat {
             get {
                 return ResourceManager.GetString("TemplateImageCreationFailedErrorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload template image failed..
+        /// </summary>
+        internal static string TemplateImageUploadFailedMessage {
+            get {
+                return ResourceManager.GetString("TemplateImageUploadFailedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uploading Template Image.
+        /// </summary>
+        internal static string TemplateImageUploadingStatusMessage {
+            get {
+                return ResourceManager.GetString("TemplateImageUploadingStatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pending upload template image.
+        /// </summary>
+        internal static string TemplateImageUploadPendingMessage {
+            get {
+                return ResourceManager.GetString("TemplateImageUploadPendingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload template image completed successfully..
+        /// </summary>
+        internal static string TemplateImageUploadSuccessMessage {
+            get {
+                return ResourceManager.GetString("TemplateImageUploadSuccessMessage", resourceCulture);
             }
         }
         

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.RemoteApp;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.RemoteApp.Models;
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             if (ps.HadErrors)
             {
-                string message = String.Format("Message: {0} Stack: {1}", ps.Streams.Error[0].Exception.Message, ps.Streams.Error[0].ScriptStackTrace);
+                string message = String.Format(Commands_RemoteApp.MessageFromPowerShellScriptRunErrorFormat, ps.Streams.Error[0].Exception.Message, ps.Streams.Error[0].ScriptStackTrace);
                 throw new Exception(message);
             }
 
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             if (ps.HadErrors)
             {
-                string message = String.Format("Message: {0} Stack: {1}", ps.Streams.Error[0].Exception.Message, ps.Streams.Error[0].ScriptStackTrace);
+                string message = String.Format(Commands_RemoteApp.MessageFromPowerShellScriptRunErrorFormat, ps.Streams.Error[0].Exception.Message, ps.Streams.Error[0].ScriptStackTrace);
                 throw new Exception(message);
             }
 

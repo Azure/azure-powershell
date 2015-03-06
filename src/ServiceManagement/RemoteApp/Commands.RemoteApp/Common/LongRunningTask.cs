@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RemoteApp;
 using System;
 using System.Management.Automation;
 using System.Threading;
@@ -47,6 +48,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             Name = JobName;
             description = Description;
             SetState(JobState.NotStarted, null);
+            SetStatus(Commands_RemoteApp.TemplateImageUploadPendingMessage);
             SetLocation("localhost");
             cmdlet = command;
         }
@@ -110,7 +112,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
             if (ThreadPool.QueueUserWorkItem(t => DoProcessLogic((Action)t), task) == false)
             {
-                throw new RemoteAppServiceException("Failed to create job", ErrorCategory.InvalidOperation);
+                throw new RemoteAppServiceException(Commands_RemoteApp.CreateJobFailedError, ErrorCategory.InvalidOperation);
             }
         }
 
@@ -125,7 +127,15 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             try
             {
                 task.Invoke();
+                
                 state = Error.Count > 0 ? JobState.Failed : JobState.Completed;
+
+                if (state == JobState.Completed)
+                {
+                    SetStatus(Commands_RemoteApp.TemplateImageUploadSuccessMessage);
+                    cmdlet.WriteVerbose(Commands_RemoteApp.TemplateImageUploadSuccessMessage);
+                }
+
                 SetState(state, null);
             }
             catch (Exception e)
@@ -133,14 +143,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 SetState(JobState.Failed, e);
                 ErrorRecord er = new ErrorRecord(e, Name, ErrorCategory.InvalidOperation, null);
                 cmdlet.WriteError(er);
+
+                SetStatus(Commands_RemoteApp.TemplateImageUploadFailedMessage);
             }
 
-            
-            if (state == JobState.Completed)
-            {
-                SetStatus("");
-            }
             cmdlet.Host.UI.RawUI.WindowTitle = title;
+
             RdsCmdlet.theJob = null;
         }
     } 
