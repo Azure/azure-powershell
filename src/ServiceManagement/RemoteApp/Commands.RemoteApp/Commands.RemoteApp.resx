@@ -177,8 +177,8 @@
   <data name="NoVmImageFoundErrorFormat" xml:space="preserve">
     <value>No VM image found with name {0}.</value>
   </data>
-  <data name="RequestTimedOut" xml:space="preserve">
-    <value>Request timed out</value>
+  <data name="RequestTimedOutFormat" xml:space="preserve">
+    <value>Request timed out. To continue querying for the usage details operation status, please use Get-AzureRemoteAppOperationResult with tracking id: {0}</value>
   </data>
   <data name="SessionLogOffCaptionMessage" xml:space="preserve">
     <value>Logging off user session...</value>
