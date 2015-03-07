@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             CollectionUsageDetailsResult detailsUsage = null;
             string locale = String.Empty;
             RemoteAppOperationStatusResult operationResult = null;
-            int maxRetryCount = 600;
+            int maxRetryCount = 60;
 
             if (String.IsNullOrWhiteSpace(UsageMonth))
             {
@@ -77,12 +77,13 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             // The request is async and we have to wait for the usage details to be produced here
             do
             {
+
                 System.Threading.Thread.Sleep(5000);
 
                 operationResult = CallClient(() => Client.OperationResults.Get(detailsUsage.UsageDetails.OperationTrackingId), Client.OperationResults);
             }
-            while(operationResult.RemoteAppOperationResult.Status != RemoteAppOperationStatus.Success ||
-                operationResult.RemoteAppOperationResult.Status != RemoteAppOperationStatus.Failed ||
+            while(operationResult.RemoteAppOperationResult.Status != RemoteAppOperationStatus.Success &&
+                operationResult.RemoteAppOperationResult.Status != RemoteAppOperationStatus.Failed &&
                 --maxRetryCount > 0);
 
             if (operationResult.RemoteAppOperationResult.Status == RemoteAppOperationStatus.Success)
@@ -104,7 +105,9 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 else if (maxRetryCount <= 0)
                 {
                     ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                        Commands_RemoteApp.RequestTimedOut,
+                        String.Format(System.Globalization.CultureInfo.InvariantCulture, 
+                            Commands_RemoteApp.RequestTimedOutFormat,
+                            detailsUsage.UsageDetails.OperationTrackingId),
                         String.Empty,
                         Client.Collections,
                         ErrorCategory.OperationTimeout);
