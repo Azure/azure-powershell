@@ -14,7 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
@@ -23,10 +23,11 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Net;
     using Utilities.Common;
-    using Microsoft.Azure.Common.Extensions.Models;
-    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
     
    
@@ -34,17 +35,17 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     {
         public ExpressRouteManagementClient Client { get; internal set; }
 
-        private static ClientType CreateClient<ClientType>(AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
+        private static ClientType CreateClient<ClientType>(AzureProfile profile, AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
         {
-            return AzureSession.ClientFactory.CreateClient<ClientType>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>
         /// Creates new ExpressRouteClient
         /// </summary>
         /// <param name="subscription">Subscription containing websites to manipulate</param>
-        public ExpressRouteClient(AzureSubscription subscription)
-            : this(CreateClient<ExpressRouteManagementClient>(subscription))
+        public ExpressRouteClient(AzureProfile profile, AzureSubscription subscription)
+            : this(CreateClient<ExpressRouteManagementClient>(profile, subscription))
         {   
         }
 
@@ -61,14 +62,23 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         public AzureBgpPeering NewAzureBGPPeering(string serviceKey, UInt32 peerAsn, string primaryPeerSubnet,
             string secondaryPeerSubnet, UInt32 vlanId, BgpPeeringAccessType accessType, string sharedKey = null)
         {
-            return Client.BorderGatewayProtocolPeerings.New(serviceKey, accessType, new BorderGatewayProtocolPeeringNewParameters()
+             var result = Client.BorderGatewayProtocolPeerings.New(serviceKey, accessType, new BorderGatewayProtocolPeeringNewParameters()
             {
                 PeerAutonomousSystemNumber = peerAsn,
                 PrimaryPeerSubnet = primaryPeerSubnet,
                 SecondaryPeerSubnet = secondaryPeerSubnet,
                 SharedKey = sharedKey,
                 VirtualLanId = vlanId
-            }).BgpPeering;
+            });
+
+            if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
+            {
+                return GetAzureBGPPeering(serviceKey, accessType);
+            }
+            else
+            {
+                throw new Exception(result.Error.ToString());
+            }
         }
 
         public bool RemoveAzureBGPPeering(string serviceKey, BgpPeeringAccessType accessType)
@@ -81,15 +91,22 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             BgpPeeringAccessType accessType, UInt32 peerAsn, string primaryPeerSubnet,
             string secondaryPeerSubnet, UInt32 vlanId, string sharedKey)
         {
-            return
-               (Client.BorderGatewayProtocolPeerings.Update(serviceKey, accessType, new BorderGatewayProtocolPeeringUpdateParameters()
+            var result = Client.BorderGatewayProtocolPeerings.Update(serviceKey, accessType, new BorderGatewayProtocolPeeringUpdateParameters()
                 {
                     PeerAutonomousSystemNumber = peerAsn,
                     PrimaryPeerSubnet = primaryPeerSubnet,
                     SecondaryPeerSubnet = secondaryPeerSubnet,
                     SharedKey = sharedKey,
                     VirtualLanId = vlanId,
-                })).BgpPeering;
+                });
+            if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
+            {
+                return GetAzureBGPPeering(serviceKey, accessType);
+            }
+            else
+            {
+                throw new Exception(result.Error.ToString());
+            }
         }
         
         public AzureDedicatedCircuit GetAzureDedicatedCircuit(string serviceKey)
@@ -100,18 +117,44 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         public AzureDedicatedCircuit NewAzureDedicatedCircuit(string circuitName, 
             UInt32 bandwidth, string location, string serviceProviderName)
         {
-            return (Client.DedicatedCircuits.New(new DedicatedCircuitNewParameters()
+            var result = Client.DedicatedCircuits.New(new DedicatedCircuitNewParameters()
             {
                 Bandwidth = bandwidth,
                 CircuitName = circuitName,
                 Location = location,
                 ServiceProviderName = serviceProviderName
-            })).DedicatedCircuit;
+            });
+
+            if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
+            {
+                return GetAzureDedicatedCircuit(result.Data);
+            }
+            else
+            {
+                throw new Exception(result.Error.ToString());
+            }
         }
 
         public IEnumerable<AzureDedicatedCircuit> ListAzureDedicatedCircuit()
         {
             return (Client.DedicatedCircuits.List().DedicatedCircuits);
+        }
+
+        public AzureDedicatedCircuit SetAzureDedicatedCircuitBandwidth(string serviceKey, UInt32 bandwidth)
+        {
+            var result = Client.DedicatedCircuits.Update(serviceKey, (new DedicatedCircuitUpdateParameters()
+            {
+                Bandwidth = bandwidth
+            }));
+
+            if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
+            {
+                return GetAzureDedicatedCircuit(serviceKey);
+            }
+            else
+            {
+                throw new Exception(result.Error.ToString());
+            }
         }
 
         public bool RemoveAzureDedicatedCircuit(string serviceKey)
@@ -127,7 +170,15 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 
         public AzureDedicatedCircuitLink NewAzureDedicatedCircuitLink(string serviceKey, string vNetName)
         {
-            return (Client.DedicatedCircuitLinks.New(serviceKey, vNetName)).DedicatedCircuitLink;
+            var result = Client.DedicatedCircuitLinks.New(serviceKey, vNetName);
+            if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
+            {
+                return GetAzureDedicatedCircuitLink(serviceKey, vNetName);
+            }
+            else
+            {
+                throw new Exception(result.Error.ToString());
+            }
         }
 
         public IEnumerable<AzureDedicatedCircuitLink> ListAzureDedicatedCircuitLink(string serviceKey)
@@ -153,13 +204,31 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 
         public AzureCrossConnection NewAzureCrossConnection(string serviceKey)
         {
-            return (Client.CrossConnections.New(serviceKey)).CrossConnection;
+            var result = Client.CrossConnections.New(serviceKey);
+
+            if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
+            {
+                return GetAzureCrossConnection(serviceKey);
+            }
+            else
+            {
+                throw new Exception(result.Error.ToString());
+            }
         }
 
         public AzureCrossConnection SetAzureCrossConnection(string serviceKey,
                                                             CrossConnectionUpdateParameters parameters)
         {
-            return (Client.CrossConnections.Update(serviceKey, parameters)).CrossConnection;
+            var result = Client.CrossConnections.Update(serviceKey, parameters);
+
+            if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
+            {
+                return GetAzureCrossConnection(serviceKey);
+            }
+            else
+            {
+                throw new Exception(result.Error.ToString());
+            }
         }
 
         public IEnumerable<AzureCrossConnection> ListAzureCrossConnections()

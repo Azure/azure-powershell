@@ -61,6 +61,42 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A data masking rule for alias &apos;{0}&apos; is already exists.
+        /// </summary>
+        internal static string DataMaskingAliasAlreadyUsedError {
+            get {
+                return ResourceManager.GetString("DataMaskingAliasAlreadyUsedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot set a lower bound which is larger than the higher bound.
+        /// </summary>
+        internal static string DataMaskingNumberRuleIntervalDefinitionError {
+            get {
+                return ResourceManager.GetString("DataMaskingNumberRuleIntervalDefinitionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The rule {0} does not exist.
+        /// </summary>
+        internal static string DataMaskingRuleDoesNotExist {
+            get {
+                return ResourceManager.GetString("DataMaskingRuleDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A data masking rule for the table &apos;{0}&apos; and column &apos;{1}&apos; already exists.
+        /// </summary>
+        internal static string DataMaskingTableAndColumnUsedError {
+            get {
+                return ResourceManager.GetString("DataMaskingTableAndColumnUsedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {your_password_here}.
         /// </summary>
         internal static string EnterPassword {
@@ -88,6 +124,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A data masking rule with the id &apos;{0}&apos; already exist.
+        /// </summary>
+        internal static string NewDataMaskingRuleIdAlreadyExistError {
+            get {
+                return ResourceManager.GetString("NewDataMaskingRuleIdAlreadyExistError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot set auditing policy without a storage account name..
         /// </summary>
         internal static string NoStorageAccountWhenConfiguringAuditingPolicy {
@@ -111,6 +156,42 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string PhpConnectionError {
             get {
                 return ResourceManager.GetString("PhpConnectionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing firewall rule &quot;{0}&quot; for Microsoft Azure Sql Database &quot;{1}&quot;..
+        /// </summary>
+        internal static string RemoveDatabaseDataMaskingRuleDescription {
+            get {
+                return ResourceManager.GetString("RemoveDatabaseDataMaskingRuleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the data masking rule &quot;{0}&quot; for Microsoft Azure Sql Database &quot;{1}&quot;?.
+        /// </summary>
+        internal static string RemoveDatabaseDataMaskingRuleWarning {
+            get {
+                return ResourceManager.GetString("RemoveDatabaseDataMaskingRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A data masking rule with the id &apos;{0}&apos; does not exist.
+        /// </summary>
+        internal static string SetDataMaskingRuleIdDoesNotExistError {
+            get {
+                return ResourceManager.GetString("SetDataMaskingRuleIdDoesNotExistError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string ShouldProcessCaption {
+            get {
+                return ResourceManager.GetString("ShouldProcessCaption", resourceCulture);
             }
         }
         

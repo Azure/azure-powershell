@@ -21,16 +21,16 @@ namespace Microsoft.Azure.Commands.Sql.Services
     {
         /// <summary>
         /// Generates a client side tracing Id of the format:
-        /// [Guid]-[Time in UTC]
+        /// [Guid]
         /// </summary>
         /// <returns>A string representation of the client side tracing Id.</returns>
         public static string GenerateTracingId()
         {
             return string.Format(
                 CultureInfo.InvariantCulture,
-                "{0}-{1}",
-                Guid.NewGuid().ToString(),
-                DateTime.UtcNow.ToString("u"));
+                "{0}",
+                Guid.NewGuid().ToString()
+            );
         }
     }
 }

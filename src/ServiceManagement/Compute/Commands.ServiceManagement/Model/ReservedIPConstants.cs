@@ -18,5 +18,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
     public static class ReservedIPConstants
     {
         public const string CmdletNoun = "AzureReservedIP";
+        public const string AssociationCmdletNoun = "AzureReservedIPAssociation";
     }
 }
