@@ -1,3 +1,122 @@
+2015.03.09 version 0.8.15
+* Azure RemoteApp: New RemoteApp cmdlets:
+  * Add-AzureRemoteAppUser
+  * Disconnect-AzureRemoteAppSession
+  * Get-AzureRemoteAppCollection
+  * Get-AzureRemoteAppCollectionUsageDetails
+  * Get-AzureRemoteAppCollectionUsageSummary
+  * Get-AzureRemoteAppLocation
+  * Get-AzureRemoteAppOperationResult
+  * Get-AzureRemoteAppPlan
+  * Get-AzureRemoteAppProgram
+  * Get-AzureRemoteAppSession
+  * Get-AzureRemoteAppStartMenuProgram
+  * Get-AzureRemoteAppTemplateImage
+  * Get-AzureRemoteAppUser
+  * Get-AzureRemoteAppVNet
+  * Get-AzureRemoteAppVpnDevice
+  * Get-AzureRemoteAppVpnDeviceConfigScript
+  * Get-AzureRemoteAppWorkspace
+  * Invoke-AzureRemoteAppSessionLogoff
+  * New-AzureRemoteAppCollection
+  * New-AzureRemoteAppTemplateImage
+  * New-AzureRemoteAppVNet
+  * Publish-AzureRemoteAppProgram
+  * Remove-AzureRemoteAppCollection
+  * Remove-AzureRemoteAppTemplateImage
+  * Remove-AzureRemoteAppUser
+  * Remove-AzureRemoteAppVNet
+  * Rename-AzureRemoteAppTemplateImage
+  * Reset-AzureRemoteAppVpnSharedKey
+  * Send-AzureRemoteAppSessionMessage
+  * Set-AzureRemoteAppCollection
+  * Set-AzureRemoteAppVNet
+  * Set-AzureRemoteAppWorkspace
+  * Unpublish-AzureRemoteAppProgram
+  * Update-AzureRemoteAppCollection
+  
+* Storage: new cmdlets
+  * Get-AzureStorageContainerStoredAccessPolicy 
+  * Get-AzureStorageQueueStoredAccessPolicy
+  * Get-AzureStorageTableStoredAccessPolicy
+  * New-AzureStorageContainerStoredAccessPolicy
+  * New-AzureStorageQueueStoredAccessPolicy
+  * New-AzureStorageTableStoredAccessPolicy
+  * Remove-AzureStorageContainerStoredAccessPolicy
+  * Remove-AzureStorageQueueStoredAccessPolicy
+  * Remove-AzureStorageTableStoredAccessPolicy
+  * Set-AzureStorageContainerStoredAccessPolicy
+  * Set-AzureStorageQueueStoredAccessPolicy
+  * Set-AzureStorageTableStoredAccessPolicy
+
+* Azure Recovery Services
+  * New cmdlets:
+    * Create and enumerate Vaults & Sites, download Vault Settings file
+      * New- AzureSiteRecoveryVault
+      * Get-AzureSiteRecoveryVault
+      * New- AzureSiteRecoverySite
+      * Get- AzureSiteRecoverySite
+      * Get-AzureSiteRecoveryVaultSettingsFile
+    * Enumerate Networks and manage Network Mappings
+      * Get- AzureSiteRecoveryNetwork
+      * New- AzureSiteRecoveryNetworkMapping
+      * Get- AzureSiteRecoveryNetworkMapping
+      * Remove- AzureSiteRecoveryNetworkMapping
+    * Enumerate Storages and manage Storage Mappings
+      * Get-AzureSiteRecoveryStorage
+      * New- AzureSiteRecoveryStorageMapping
+      * Get-AzureSiteRecoveryStorageMapping
+      * Remove- AzureSiteRecoveryStorageMapping
+    * Create, associated, and dissociate protection profile object
+      * New- AzureSiteRecoveryProtectionProfileObject
+      * Start-AzureSiteRecoveryProtectionProfileAssociationJob
+      * Start-AzureSiteRecoveryProtectionProfileDissociationJob
+    * Update VM properties and sync owner information
+      * Set-AzureSiteRecoveryVM
+      * Update-AzureSiteRecoveryProtectionEntity
+  * Changed cmdlets:
+    * Get-AzureSiteRecoveryJob
+    * Set-AzureSiteRecoveryProtectionEntity – protection profile is introduced
+    * Start-AzureSiteRecoveryCommitFailoverJob
+    * Start-AzureSiteRecoveryPlannedFailoverJob
+    * Start-AzureSiteRecoveryTestFailoverJob
+    
+* Azure ExpressRoute cmdlet updates
+  * Fixed bugs in:
+    * New-AzureDedicatedCircuit
+    * New-AzureDedicatedCircuitLink
+    * New-AzureBGPPeering
+    * Remove-AzureDedicatedCircuit
+    * Remove-AzureDedicatedCircuitLink
+    * Remove-AzureBGPPeering
+  * Added new cmdlet:
+    * Update-AzureDedicatedCircuitBandwidth
+
+* Azure SQL Database: new cmdlets for managing database dynamic data masking policies:
+  * Get-AzureSqlDatabaseDataMaskingPolicy 
+  * Set-AzureSqlDatabaseDataMaskingPolicy 
+  * New-AzureSqlDatabaseDataMaskingRule 
+  * Get-AzureSqlDatabaseDataMaskingRule 
+  * Set-AzureSqlDatabaseDataMaskingRule 
+  * Remove-AzureSqlDatabaseDataMaskingRule 
+
+* Azure Batch: new cmdlets:
+  * Get-AzureBatchPool
+  * Get-AzureBatchWorkItem
+  * Get-AzureBatchJob
+  * Get-AzureBatchTask
+
+* Azure Compute: new features
+  * Added ForceUpdate parameter for the following cmdlets:
+    * Set-AzureVMExtension
+    * Set-AzureVMCustomScriptExtension
+    * Set-AzureVMAccessExtension
+  * Show 'Regions' property for Get-AzureVMAvailableExtensions cmdlet
+  * Add 'ResizedSizeInGB' pramater for the following cmdlets
+    * Update-AzureDisk
+    * Set-AzureOSDisk
+    * Set-AzureDataDisk (DiskName parameter is also added along with ResizedSizeInGB)
+
 2015.02.12 version 0.8.14
 * StorSimple: New StorSimple commands in AzureServiceManagement mode:
   * GetAzureStorSimpleAccessControlRecord
