@@ -116,7 +116,13 @@
     * Update-AzureDisk
     * Set-AzureOSDisk
     * Set-AzureDataDisk (DiskName parameter is also added along with ResizedSizeInGB)
-
+    
+* AzureProfile: 
+  * New cmdlets to manage in-memory profiles
+    * New-AzureProfile: Create a new in-memory Profile
+    * Select-AzureProfile: Select the profile to be used in the current session
+  * Added -Profile parameter to every cmdlet - the cmdlet will use the passed-in profile to authenticate with Azure
+  
 2015.02.12 version 0.8.14
 * StorSimple: New StorSimple commands in AzureServiceManagement mode:
   * GetAzureStorSimpleAccessControlRecord
