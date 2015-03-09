@@ -204,6 +204,9 @@
   <data name="NBA_NameAvailability" xml:space="preserve">
     <value>Performing name availability check for account {0}</value>
   </data>
+  <data name="NBP_CreatingPool" xml:space="preserve">
+    <value>Creating new Pool {0}</value>
+  </data>
   <data name="NBT_CreatingTask" xml:space="preserve">
     <value>Creating new Task {0}</value>
   </data>
@@ -227,6 +230,12 @@
   </data>
   <data name="RBJ_RemoveJob" xml:space="preserve">
     <value>Removing Job ...</value>
+  </data>
+  <data name="RBP_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove Pool {0}?</value>
+  </data>
+  <data name="RBP_RemovePool" xml:space="preserve">
+    <value>Removing Pool ...</value>
   </data>
   <data name="RBT_NoTaskSpecified" xml:space="preserve">
     <value>No Task specified for deletion. Supply a Task object or a WorkItem name, Job name, and Task name.</value>

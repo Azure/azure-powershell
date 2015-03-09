@@ -71,33 +71,36 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         /// <summary>
         /// Creates a test Pool for use in Scenario tests.
-        /// TODO: Replace with new Pool client method when it exists.
         /// </summary>
-        public static void CreateTestPool(BatchAccountContext context, string poolName)
+        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolName)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            NewPoolParameters parameters = new NewPoolParameters()
             {
-                using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
-                {
-                    ICloudPool pool = poolManager.CreatePool(poolName, "4", "small", 3);
-                    pool.Commit();
-                }
-            }
+                Context = context,
+                PoolName = poolName,
+                OSFamily = "4",
+                TargetOSVersion = "*",
+                TargetDedicated = 1,
+                AdditionalBehaviors = behaviors
+            };
+
+            client.CreatePool(parameters);
         }
 
         /// <summary>
         /// Deletes a Pool used in a Scenario test.
-        /// TODO: Replace with remove Pool client method when it exists.
         /// </summary>
-        public static void DeletePool(BatchAccountContext context, string poolName)
+        public static void DeletePool(BatchController controller, BatchAccountContext context, string poolName)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
-                {
-                    poolManager.DeletePool(poolName);
-                }
-            }
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            client.DeletePool(context, poolName, behaviors);
         }
 
         /// <summary>

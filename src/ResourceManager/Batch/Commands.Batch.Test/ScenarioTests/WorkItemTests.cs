@@ -226,7 +226,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
-
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests

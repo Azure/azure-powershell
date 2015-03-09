@@ -322,6 +322,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating new Pool {0}.
+        /// </summary>
+        internal static string NBP_CreatingPool {
+            get {
+                return ResourceManager.GetString("NBP_CreatingPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating new Task {0}.
         /// </summary>
         internal static string NBT_CreatingTask {
@@ -390,6 +399,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string RBJ_RemoveJob {
             get {
                 return ResourceManager.GetString("RBJ_RemoveJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Pool {0}?.
+        /// </summary>
+        internal static string RBP_RemoveConfirm {
+            get {
+                return ResourceManager.GetString("RBP_RemoveConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Pool ....
+        /// </summary>
+        internal static string RBP_RemovePool {
+            get {
+                return ResourceManager.GetString("RBP_RemovePool", resourceCulture);
             }
         }
         
