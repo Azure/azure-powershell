@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        public Site Site { get; set; }
+        public ASRSite Site { get; set; }
 
         /// <summary>
         /// Gets or sets the path where the credential file is to be generated
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         };
                         if (!string.IsNullOrEmpty(this.SiteId) && !string.IsNullOrEmpty(this.SiteName))
                         {
-                            this.Site = new Site()
+                            this.Site = new ASRSite()
                             {
                                 ID = this.SiteId,
                                 Name = this.SiteName
@@ -144,16 +144,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // Generate certificate
             X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(VaultCertificateExpiryInHoursForHRM, subscription.Id.ToString(), this.Vault.Name);
 
-            if (this.Site == null)
+            var site = new Site();
+
+            if (this.Site != null)
             {
-                this.Site = new Site();
+                site.ID = this.Site.ID;
+                site.Name = this.Site.Name;
+                site.Type = this.Site.Type;
             }
 
             // Generate file.
             ASRVaultCreds vaultCreds = RecoveryServicesClient.GenerateVaultCredential(
                                             cert,
                                             this.Vault,
-                                            this.Site);
+                                            site);
 
             string filePath = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
             string fileName = this.GenerateFileName();
@@ -176,7 +180,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             string fileName;
             string format = "yyyy-MM-ddTHH-mm-ss";
-            if (string.IsNullOrEmpty(this.Site.Name))
+            if (null == this.Site || string.IsNullOrEmpty(this.Site.Name))
             {
                 fileName = string.Format("{0}_{1}.VaultCredentials", this.Vault.Name, DateTime.UtcNow.ToString(format));
             }
