@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
-namespace Microsoft.Azure.Commands.Batch.Test.WorkItems
+namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 {
     public class RemoveBatchJobCommandTests
     {
