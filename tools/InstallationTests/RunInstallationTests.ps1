@@ -24,6 +24,8 @@ $global:passedTests = @()
 $global:failedTests = @()
 $global:times = @{}
 $VerbosePreference = "SilentlyContinue"
+
+
 function Run-TestProtected
 {
    param([ScriptBlock]$script, [string] $testName)
@@ -100,6 +102,9 @@ Get-AzureSubscription | Remove-AzureSubscription -Force
 Add-AzureAccount -Credential $credential
 $ErrorActionPreference = "Stop"
 Switch-AzureMode AzureServiceManagement
+$subscription = $(Get-AzureSubscription -Current).SubscriptionName
+$profile = $(New-AzureProfile -SubscriptionId $subscription -Credential $credential)
+Select-AzureProfile $profile
 $global:startTime = Get-Date
 Run-TestProtected { Test-SetAzureStorageBlobContent } "Test-SetAzureStorageBlobContent"
 Run-TestProtected { Test-GetModuleVersion $expectedVersion} "Test-GetModuleVersion"
@@ -107,7 +112,9 @@ Run-TestProtected { Test-UpdateStorageAccount } "Test-UpdateStorageAccount"
 $serviceCommands | % { Run-TestProtected $_  $_.ToString() }
 Write-Host -ForegroundColor Green "STARTING RESOURCE MANAGER TESTS"
 Switch-AzureMode AzureResourceManager > $null
-Run-TestProtected { Test-GetBatchAccountWithSubscriptionDataFile $credential} "Test-GetBatchAccountWithSubscriptionDataFile"
+$subscription = $(Get-AzureSubscription -Current).SubscriptionName
+$profile = $(New-AzureProfile -SubscriptionId $subscription -Credential $credential)
+Select-AzureProfile $profile
 $resourceCommands | % { Run-TestProtected $_  $_.ToString() }
 Write-Host
 Write-Host -ForegroundColor Green "$global:passedCount / $global:totalCount Installation Tests Pass"
@@ -134,5 +141,21 @@ Write-Host
 Write-Host -ForegroundColor Green "Start Time: $global:startTime"
 Write-Host -ForegroundColor Green "End Time: $global:endTime"
 Write-Host -ForegroundColor Green "Elapsed: "($global:endTime - $global:startTime).ToString()
+Write-Host "============================================================================================="
+Write-Host
+Write-Host "===================="
+Write-Host "Help Check: ARM Mode"
+Write-Host "===================="
+Switch-AzureMode AzureResourceManager
+Get-IncompleteHelp
+Write-Host
+Write-Host "===================="
+Write-Host "Help Check: ASM Mode"
+Write-Host "===================="
+Switch-AzureMode AzureServiceManagement
+Get-IncompleteHelp
+Write-Host
+Write-Host "============================================================================================="
+Write-Host
 
 $ErrorActionPreference = "Continue"
