@@ -31,7 +31,7 @@ function Test-NewPool
 		$osFamily = "4"
 		$targetDedicated = 1
 		$resizeTimeout = ([TimeSpan]::FromMinutes(10))
-		New-AzureBatchPool_ST -Name $poolName1 -OSFamily $osFamily -TargetDedicated $targetDedicated -ResizeTimeout $resizeTimeout -BatchContext $context
+		New-AzureBatchPool_ST $poolName1 -OSFamily $osFamily -TargetDedicated $targetDedicated -ResizeTimeout $resizeTimeout -BatchContext $context
 		$pool1 = Get-AzureBatchPool_ST -Name $poolName1 -BatchContext $context
 
 		# Verify created Pool matches expectations
