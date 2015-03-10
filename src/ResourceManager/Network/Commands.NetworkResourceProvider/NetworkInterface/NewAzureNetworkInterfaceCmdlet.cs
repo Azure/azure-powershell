@@ -91,6 +91,20 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "NetworkSecurityGroupId")]
+        public string NetworkSecurityGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "NetworkSecurityGroup")]
+        public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The IpConfiguration name." +
                           "default value: ipconfig1")]
         [ValidateNotNullOrEmpty]
@@ -133,9 +147,14 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             {
                 this.SubnetId = this.Subnet.Id;
 
-                if (PublicIpAddress != null)
+                if (this.PublicIpAddress != null)
                 {
                     this.PublicIpAddressId = this.PublicIpAddress.Id;
+                }
+
+                if (this.NetworkSecurityGroup != null)
+                {
+                    this.NetworkSecurityGroupId = this.NetworkSecurityGroup.Id;
                 }
             }
 
@@ -164,6 +183,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 nicIpConfiguration.Properties.PublicIpAddress = new PSResourceId();
                 nicIpConfiguration.Properties.PublicIpAddress.Id = this.PublicIpAddressId;
             }
+
+            if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
+            {
+                networkInterface.Properties.NetworkSecurityGroup = new PSResourceId();
+                networkInterface.Properties.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+            }
+
             networkInterface.Properties.IpConfigurations.Add(nicIpConfiguration);
 
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterfaceCreateOrUpdateParameters>(networkInterface);

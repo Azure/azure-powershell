@@ -23,5 +23,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
         public PSDhcpOptions DhcpOptions { get; set; }
     
         public List<PSResourceId> IpConfigurations { get; set; }
+
+        public PSResourceId NetworkSecurityGroup { get; set; }
     }
 }
