@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public int? TargetDedicated { get; set; }
 
-        [Parameter(ParameterSetName = AutoScaleParameterSet, HelpMessage = "The AutoScale formula to use with the Pool.")]
+        [Parameter(ParameterSetName = AutoScaleParameterSet, HelpMessage = "The formula for automatically scaling the Pool.")]
         [ValidateNotNullOrEmpty]
         public string AutoScaleFormula { get; set; }
 
-        [Parameter(HelpMessage = "The maximum number of Tasks that can run on a VM.")]
+        [Parameter(HelpMessage = "The maximum number of Tasks that can run on a single VM.")]
         [ValidateNotNullOrEmpty]
         public int? MaxTasksPerVM { get; set; }
 
@@ -67,14 +67,14 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public IDictionary Metadata { get; set; }
 
-        [Parameter(HelpMessage = "The VMs in the Pool need to communicate with each other.")]
+        [Parameter(HelpMessage = "Set up the Pool for direct communication between dedicated VMs.")]
         public SwitchParameter Communication { get; set; }
 
-        [Parameter(HelpMessage = "The Task that will run on all VMs that belong to the pool. The Start Task runs when the VM is added to the pool or when it is restarted.")]
+        [Parameter(HelpMessage = "The start task specification for the Pool. The start task is run when a VM joins a Pool, or when the VM is rebooted or reimaged.")]
         [ValidateNotNullOrEmpty]
         public PSStartTask StartTask { get; set; }
 
-        [Parameter(HelpMessage = "Certificate References associated with the Pool. The referenced certificates will be installed on each VM in the Pool")]
+        [Parameter(HelpMessage = "Certificates associated with the Pool.")]
         [ValidateNotNullOrEmpty]
         public PSCertificateReference[] CertificateReferences { get; set; }
 

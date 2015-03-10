@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "The command the Task will execute.")]
+        [Parameter(HelpMessage = "The commandline for the Task.")]
         [ValidateNotNullOrEmpty]
         public string CommandLine { get; set; }
 
-        [Parameter(HelpMessage = "Resource Files to add to the new Task. For each key/value pair, set the key to the Resource File path, and the value to the Resource File blob source.")]
+        [Parameter(HelpMessage = "Resource Files required by the Task. For each key/value pair, set the key to the Resource File path, and the value to the Resource File blob source.")]
         [ValidateNotNullOrEmpty]
         public IDictionary ResourceFiles { get; set; }
 
@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(HelpMessage = "Run the Task in elevated mode.")]
         public SwitchParameter RunElevated { get; set; }
 
-        [Parameter(HelpMessage = "The Affinity Information for the Task.")]
+        [Parameter(HelpMessage = "The locality hints for the Task.")]
         [ValidateNotNullOrEmpty]
         public PSAffinityInformation AffinityInformation { get; set; }
 
-        [Parameter(HelpMessage = "The Task Constraints.")]
+        [Parameter(HelpMessage = "The execution constraints for the Task.")]
         [ValidateNotNullOrEmpty]
         public PSTaskConstraints TaskConstraints { get; set; }
 
