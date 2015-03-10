@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            if ((string.IsNullOrEmpty(options.WorkItemName) || string.IsNullOrEmpty(options.JobName)) && options.Job == null)
+            if ((string.IsNullOrWhiteSpace(options.WorkItemName) || string.IsNullOrWhiteSpace(options.JobName)) && options.Job == null)
             {
                 throw new ArgumentNullException(Resources.GBT_NoJob);
             }
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 throw new ArgumentNullException("parameters");
             }
-            if ((string.IsNullOrEmpty(parameters.WorkItemName) || string.IsNullOrEmpty(parameters.JobName)) && parameters.Job == null)
+            if ((string.IsNullOrWhiteSpace(parameters.WorkItemName) || string.IsNullOrWhiteSpace(parameters.JobName)) && parameters.Job == null)
             {
                 throw new ArgumentException(Resources.NBT_NoJobSpecified);
             }
-            if (string.IsNullOrEmpty(parameters.TaskName))
+            if (string.IsNullOrWhiteSpace(parameters.TaskName))
             {
                 throw new ArgumentNullException("TaskName");
             }
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 throw new ArgumentNullException("parameters");
             }
-            if ((string.IsNullOrEmpty(parameters.WorkItemName) || string.IsNullOrEmpty(parameters.JobName) || string.IsNullOrEmpty(parameters.TaskName)) && parameters.Task == null)
+            if ((string.IsNullOrWhiteSpace(parameters.WorkItemName) || string.IsNullOrWhiteSpace(parameters.JobName) || string.IsNullOrWhiteSpace(parameters.TaskName)) && parameters.Task == null)
             {
                 throw new ArgumentException(Resources.RBT_NoTaskSpecified);
             }

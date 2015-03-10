@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            if (string.IsNullOrEmpty(options.WorkItemName) && options.WorkItem == null)
+            if (string.IsNullOrWhiteSpace(options.WorkItemName) && options.WorkItem == null)
             {
                 throw new ArgumentNullException(Resources.GBJ_NoWorkItem);    
             }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 throw new ArgumentNullException("parameters");
             }
-            if ((string.IsNullOrEmpty(parameters.WorkItemName) || string.IsNullOrEmpty(parameters.JobName)) && parameters.Job == null)
+            if ((string.IsNullOrWhiteSpace(parameters.WorkItemName) || string.IsNullOrWhiteSpace(parameters.JobName)) && parameters.Job == null)
             {
                 throw new ArgumentException(Resources.RBJ_NoJobSpecified);
             }

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             // Get the single Pool matching the specified name
-            if (!string.IsNullOrEmpty(options.PoolName))
+            if (!string.IsNullOrWhiteSpace(options.PoolName))
             {
                 WriteVerbose(string.Format(Resources.GBP_GetByName, options.PoolName));
                 using (IPoolManager poolManager = options.Context.BatchOMClient.OpenPoolManager())
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 throw new ArgumentNullException("parameters");
             }
-            if (string.IsNullOrEmpty(parameters.PoolName))
+            if (string.IsNullOrWhiteSpace(parameters.PoolName))
             {
                 throw new ArgumentNullException("PoolName");
             }
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="additionBehaviors">Additional client behaviors to perform</param>
         public void DeletePool(BatchAccountContext context, string poolName, IEnumerable<BatchClientBehavior> additionBehaviors = null)
         {
-            if (string.IsNullOrEmpty(poolName))
+            if (string.IsNullOrWhiteSpace(poolName))
             {
                 throw new ArgumentNullException("poolName");
             }

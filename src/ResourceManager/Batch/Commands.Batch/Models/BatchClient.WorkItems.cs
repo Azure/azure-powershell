@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             // Get the single WorkItem matching the specified name
-            if (!string.IsNullOrEmpty(options.WorkItemName))
+            if (!string.IsNullOrWhiteSpace(options.WorkItemName))
             {
                 WriteVerbose(string.Format(Resources.GBWI_GetByName, options.WorkItemName));
                 using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 throw new ArgumentNullException("parameters");
             }
-            if (string.IsNullOrEmpty(parameters.WorkItemName))
+            if (string.IsNullOrWhiteSpace(parameters.WorkItemName))
             {
                 throw new ArgumentNullException("WorkItemName");
             }
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="additionBehaviors">Additional client behaviors to perform</param>
         public void DeleteWorkItem(BatchAccountContext context, string workItemName, IEnumerable<BatchClientBehavior> additionBehaviors = null)
         {
-            if (string.IsNullOrEmpty(workItemName))
+            if (string.IsNullOrWhiteSpace(workItemName))
             {
                 throw new ArgumentNullException("workItemName");
             }
