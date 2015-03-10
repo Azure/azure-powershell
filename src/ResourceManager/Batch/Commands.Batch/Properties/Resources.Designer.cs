@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating new Pool {0}.
+        ///   Looks up a localized string similar to Creating Pool {0}.
         /// </summary>
         internal static string NBP_CreatingPool {
             get {
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating new Task {0}.
+        ///   Looks up a localized string similar to Creating Task {0}.
         /// </summary>
         internal static string NBT_CreatingTask {
             get {
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating new WorkItem {0}.
+        ///   Looks up a localized string similar to Creating WorkItem {0}.
         /// </summary>
         internal static string NBWI_CreatingWorkItem {
             get {

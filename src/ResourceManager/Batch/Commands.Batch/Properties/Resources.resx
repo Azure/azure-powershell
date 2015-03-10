@@ -205,16 +205,16 @@
     <value>Performing name availability check for account {0}</value>
   </data>
   <data name="NBP_CreatingPool" xml:space="preserve">
-    <value>Creating new Pool {0}</value>
+    <value>Creating Pool {0}</value>
   </data>
   <data name="NBT_CreatingTask" xml:space="preserve">
-    <value>Creating new Task {0}</value>
+    <value>Creating Task {0}</value>
   </data>
   <data name="NBT_NoJobSpecified" xml:space="preserve">
     <value>No Job specified to create the new Task under.  Supply a Job object or a WorkItem name and Job name.</value>
   </data>
   <data name="NBWI_CreatingWorkItem" xml:space="preserve">
-    <value>Creating new WorkItem {0}</value>
+    <value>Creating WorkItem {0}</value>
   </data>
   <data name="RBA_RemoveConfirm" xml:space="preserve">
     <value>Are you sure you want to remove batch account {0}?</value>

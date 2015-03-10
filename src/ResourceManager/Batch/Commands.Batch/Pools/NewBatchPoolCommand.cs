@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string VMSize { get; set; }
 
-        [Parameter(HelpMessage = "The OS family of the VMs in the Pool.")]
+        [Parameter(HelpMessage = "The OS family of the VMs in the Pool. You can learn more about OS families and versions at http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/")]
         [ValidateNotNullOrEmpty]
         public string OSFamily { get; set; }
 
-        [Parameter(HelpMessage = "The target OS version of the VMs in the Pool.")]
+        [Parameter(HelpMessage = "The target OS version of the VMs in the Pool. Use \"*\" for the latest OS version for the specified family. You can learn more about OS families and versions at http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/")]
         [ValidateNotNullOrEmpty]
         public string TargetOSVersion { get; set; }
 
@@ -70,11 +70,11 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(HelpMessage = "The VMs in the Pool need to communicate with each other.")]
         public SwitchParameter Communication { get; set; }
 
-        [Parameter(HelpMessage = "The Start Task the VMs in the Pool will run.")]
+        [Parameter(HelpMessage = "The Task that will run on all VMs that belong to the pool. The Start Task runs when the VM is added to the pool or when it is restarted.")]
         [ValidateNotNullOrEmpty]
         public PSStartTask StartTask { get; set; }
 
-        [Parameter(HelpMessage = "Certificate References for the Pool.")]
+        [Parameter(HelpMessage = "Certificate References associated with the Pool. The referenced certificates will be installed on each VM in the Pool")]
         [ValidateNotNullOrEmpty]
         public PSCertificateReference[] CertificateReferences { get; set; }
 
