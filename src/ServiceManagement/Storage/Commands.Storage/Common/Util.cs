@@ -97,14 +97,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
         public static CloudBlob GetCorrespondingTypeBlobReference(CloudBlob blob)
         {
+            CloudBlob targetBlob;
             switch(blob.Properties.BlobType)
             {
                 case BlobType.BlockBlob:
-                    return new CloudBlockBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                    targetBlob = new CloudBlockBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                    break;
                 case BlobType.PageBlob:
-                    return new CloudPageBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                    targetBlob = new CloudPageBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                    break;
                 case BlobType.AppendBlob:
-                    return new CloudAppendBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                    targetBlob = new CloudAppendBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                    break;
                 default:
                     throw new InvalidOperationException(string.Format(
                         CultureInfo.CurrentCulture,
@@ -112,6 +116,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         blob.Properties.BlobType,
                         blob.Name));
             }
+
+            targetBlob.FetchAttributes();
+            return targetBlob;
         }
 
         public static CloudBlob GetBlobReference(CloudBlobContainer container, string blobName, BlobType blobType)
