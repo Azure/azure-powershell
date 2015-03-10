@@ -131,6 +131,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         private const int DefaultScheduleRecurrenceCount = 1;
         private const string MinManagementVersion = "2.1.1.485";
         private const string MaxTimeSpan = "23:59:59";
+        private const int MaxBandwidthRateSupportedBps = 125 * 1000 * 1000;
 
         /// <summary>
         /// Gets the parser message
@@ -796,7 +797,27 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                                 }
                                             case "RateInBytes":
                                                 {
-                                                    schedule.Rate = int.Parse(scheduleElement.Value);
+                                                    schedule.Rate = 0;
+
+                                                    int rate = 0;
+                                                    if (int.TryParse(scheduleElement.Value, out rate))
+                                                    {
+                                                        if (rate > MaxBandwidthRateSupportedBps)
+                                                        {
+                                                            rate = MaxBandwidthRateSupportedBps;
+                                                        }
+                                                        else
+                                                        {
+                                                            if (0 != rate)
+                                                            {
+                                                                // In firenze appliance you can set bandwidth rate from 0 - 1000 Mbps
+                                                                rate = (rate * 8) / (1000 * 1000);
+                                                            }
+                                                        }
+
+                                                        schedule.Rate = rate;
+                                                    }
+                                                  
                                                     break;
                                                 }
                                             case "Start":
