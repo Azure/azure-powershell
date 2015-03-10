@@ -22489,8 +22489,44 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 				<command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
+    <command:syntaxItem>
+			<maml:name>Set-AzureDataDisk</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>DiskName</maml:name>
+				<maml:description>
+					<maml:para>The Name of the DataDiskConfiguration being referenced to.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>ResizedSizeInGB</maml:name>
+				<maml:description>
+					<maml:para>Resize the new data disk to a larger size.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
+				<maml:name>VM</maml:name>
+				<maml:description>
+					<maml:para>The virtual machine where the data disk is mounted.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>DiskName</maml:name>
+			<maml:description>
+				<maml:para>The Name of the DataDiskConfiguration being referenced to.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>HostCaching</maml:name>
 			<maml:description>
@@ -22511,6 +22547,18 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			<dev:type>
 				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>ResizedSizeInGB</maml:name>
+			<maml:description>
+				<maml:para>Resize the new data disk to a larger size.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -24225,6 +24273,13 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>ResizedSizeInGB</maml:name>
+				<maml:description>
+					<maml:para>Resize the new OSVirtualHardDisk to a larger size. ResizedSizeInGB must be larger than the underlying OS Image's LogicalSizeInGB. </maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -24248,6 +24303,18 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 			<command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
 			<dev:type>
 				<maml:name>IPersistentVM</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>ResizedSizeInGB</maml:name>
+			<maml:description>
+				<maml:para>Resize the new OSVirtualHardDisk to a larger size. ResizedSizeInGB must be larger than the underlying OS Image's LogicalSizeInGB. </maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -27400,6 +27467,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -27433,6 +27506,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -27466,6 +27545,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -27562,6 +27647,18 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+      <maml:name>ForceUpdate</maml:name>
+      <maml:description>
+        <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>PipelineVariable</maml:name>
 			<maml:description>
@@ -27937,6 +28034,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="9">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -27970,6 +28073,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="9">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -28003,6 +28112,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="9">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -28050,6 +28165,12 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="9">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -28218,6 +28339,18 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="9">
+      <maml:name>ForceUpdate</maml:name>
+      <maml:description>
+        <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>PipelineVariable</maml:name>
 			<maml:description>
@@ -29011,6 +29144,12 @@ OperationStatus             : OK</dev:code>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="11">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -29079,6 +29218,12 @@ OperationStatus             : OK</dev:code>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="11">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -29126,6 +29271,12 @@ OperationStatus             : OK</dev:code>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="11">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -29173,6 +29324,12 @@ OperationStatus             : OK</dev:code>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="11">
+        <maml:name>ForceUpdate</maml:name>
+        <maml:description>
+          <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+        </maml:description>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
@@ -29317,6 +29474,18 @@ OperationStatus             : OK</dev:code>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="11">
+      <maml:name>ForceUpdate</maml:name>
+      <maml:description>
+        <maml:para>Re-apply a configuration to an extension when the configuration has not been updated.</maml:para>
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>PipelineVariable</maml:name>
 			<maml:description>
@@ -31710,6 +31879,13 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>ResizedSizeInGB</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -31733,6 +31909,18 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>ResizedSizeInGB</maml:name>
+			<maml:description>
+				<maml:para>Resizes the underlying blob to the indicated size in GB.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
