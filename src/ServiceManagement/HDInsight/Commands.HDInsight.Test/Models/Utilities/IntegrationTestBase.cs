@@ -158,7 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
             cmdletRunManager.RegisterType<IAzureHDInsightClusterManagementClientFactory, AzureHDInsightClusterManagementClientSimulatorFactory>();
             cmdletRunManager.RegisterType<IAzureHDInsightJobSubmissionClientFactory, AzureHDInsightJobSubmissionClientSimulatorFactory>();
             var testManager = new IntegrationTestManager();
-
+            AzureSession.DataStore = new DiskDataStore();
             TestCredentials = testManager.GetCredentials("default");
             if (TestCredentials == null)
             {
