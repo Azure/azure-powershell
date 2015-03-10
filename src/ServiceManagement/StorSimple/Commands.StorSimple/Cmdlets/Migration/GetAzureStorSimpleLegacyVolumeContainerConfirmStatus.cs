@@ -41,15 +41,21 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (confirmStatus.ContainerConfirmStatus.Count > 0)
                 {
                     List<ContainerConfirmStatus> filteredContainerConfirmStatus = new List<ContainerConfirmStatus>();
-                    List<string> legacyContainerNameList = new List<string>(LegacyContainerNames);
-                    foreach (ContainerConfirmStatus singleContainerConfirmStatus in confirmStatus.ContainerConfirmStatus)
+                    if (LegacyContainerNames == null)
                     {
-                        if (legacyContainerNameList.Contains(singleContainerConfirmStatus.ContainerName))
-                        {
-                            filteredContainerConfirmStatus.Add(singleContainerConfirmStatus);
-                        }
+                        filteredContainerConfirmStatus = new List<ContainerConfirmStatus>(confirmStatus.ContainerConfirmStatus);
                     }
-
+                    else
+                    {
+                        List<string> legacyContainerNameList = new List<string>(LegacyContainerNames);
+                        foreach (ContainerConfirmStatus singleContainerConfirmStatus in confirmStatus.ContainerConfirmStatus)
+                        {
+                            if (legacyContainerNameList.Contains(singleContainerConfirmStatus.ContainerName))
+                            {
+                                filteredContainerConfirmStatus.Add(singleContainerConfirmStatus);
+                            }
+                        }    
+                    }
                     confirmStatus.ContainerConfirmStatus = filteredContainerConfirmStatus;
                 }
 

@@ -70,20 +70,26 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         WriteVerbose(Resources.VolumeContainerList);
 
                         MigrationPlan migrationPlan = migrationPlanList.MigrationPlans[0];
-                        List<MigrationPlanInfo> filteredMigrationPlanInfos = new List<MigrationPlanInfo>();
-
-                        List<string> legacyContainerNamesList = new List<string>(LegacyContainerNames);
-
-                        foreach (MigrationPlanInfo migrationPlanInfo in migrationPlan.MigrationPlanInfo)
+                        var filteredMigrationPlanInfos = new List<MigrationPlanInfo>();
+                        
+                        if (LegacyContainerNames == null)
                         {
-                            if (legacyContainerNamesList.Contains(migrationPlanInfo.DataContainerName))
+                            filteredMigrationPlanInfos = new List<MigrationPlanInfo>(migrationPlan.MigrationPlanInfo);
+                        }
+                        else
+                        {
+                            var legacyContainerNamesList = new List<string>(LegacyContainerNames);
+                            foreach (var migrationPlanInfo in migrationPlan.MigrationPlanInfo)
                             {
-                                filteredMigrationPlanInfos.Add(migrationPlanInfo);
+                                if (legacyContainerNamesList.Contains(migrationPlanInfo.DataContainerName))
+                                {
+                                    filteredMigrationPlanInfos.Add(migrationPlanInfo);
+                                }
                             }
                         }
 
                         migrationPlanList.MigrationPlans[0].MigrationPlanInfo = filteredMigrationPlanInfos;
-                        MigrationPlanMsg migrationPlanMsg = new MigrationPlanMsg(migrationPlanList.MigrationPlans[0]);
+                        var migrationPlanMsg = new MigrationPlanMsg(migrationPlanList.MigrationPlans[0]);
                         WriteObject(migrationPlanMsg);
                     }
                 }

@@ -323,7 +323,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         /// <summary>
         /// Gets or sets the list of migration state, where MigrationState is InProgress
         /// </summary>
-        public LegacyDataContainerMigrationStatus MigrationInprogresss { get; set; }
+        public LegacyDataContainerMigrationStatus MigrationInprogress { get; set; }
 
         /// <summary>
         /// Gets or sets the list of migration state, where MigrationState is NotStarted
@@ -344,7 +344,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         {
             this.ConfigId = configId;
             this.MigrationNotStarted = new LegacyDataContainerMigrationStatus(overallStatusList, MigrationStatus.NotStarted);
-            this.MigrationInprogresss = new LegacyDataContainerMigrationStatus(overallStatusList, MigrationStatus.InProgress);
+            this.MigrationInprogress = new LegacyDataContainerMigrationStatus(overallStatusList, MigrationStatus.InProgress);
             this.MigrationFailed = new LegacyDataContainerMigrationStatus(overallStatusList, MigrationStatus.Failed);
             this.MigrationCompleted = new LegacyDataContainerMigrationStatus(overallStatusList, MigrationStatus.Completed);
         }
@@ -620,6 +620,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         }
     }
 
+    [Serializable]
     public class MigrationPlanMsg
     {
         public string ConfigId { get; set; }
@@ -629,10 +630,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         public MigrationPlanInfoMsgList MigrationPlanInfoCompletedMsgList { get; set; }
         public MigrationPlanInfoMsgList MigrationPlanInfoFailedMsgList { get; set; }
 
+        [Serializable]
         public class MigrationPlanInfoMsgList
         {
             public List<MigrationPlanInfoMsg> migrationPlanInfoMsgList { get; set; }
             public string MigrationPlanStatus { get; set; }
+
+            public MigrationPlanInfoMsgList()
+            {   
+            }
 
             public MigrationPlanInfoMsgList(string status)
             {
@@ -650,7 +656,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
                 return consoleOp.ToString();
             }   
         }
-    
+
+        public MigrationPlanMsg()
+        {   
+        }
+
         public MigrationPlanMsg(MigrationPlan migrationPlan)
         {
             ConfigId = migrationPlan.ConfigId;
@@ -667,6 +677,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             foreach (MigrationPlanInfo migrationPlanInfo in migrationPlan.MigrationPlanInfo)
             {
                 MigrationPlanInfoMsg migrationPlanInfoMsg = new MigrationPlanInfoMsg(migrationPlanInfo);
+                
                 if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.InProgress)
                 {
                     MigrationPlanInfoInProgressMsgList.migrationPlanInfoMsgList.Add(migrationPlanInfoMsg);
@@ -743,13 +754,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         */
     }
 
+    [Serializable]
     public class MigrationPlanInfoMsg
     {
-        private int assumedBandwidthInMbps;
-        private string dataContainerName;
-        private int estimatedTimeInMinutes;
-        private int estimatedTimeInMinutesForLatestBackup;
-        private string planMessageInfoListMsg;
+        public int assumedBandwidthInMbps;
+        public string dataContainerName;
+        public int estimatedTimeInMinutes;
+        public int estimatedTimeInMinutesForLatestBackup;
+        public string planMessageInfoListMsg;
+
+        public MigrationPlanInfoMsg()
+        {
+            
+        }
 
         public MigrationPlanInfoMsg(MigrationPlanInfo migrationPlanInfo)
         {
