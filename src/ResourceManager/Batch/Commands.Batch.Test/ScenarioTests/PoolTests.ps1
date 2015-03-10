@@ -65,7 +65,7 @@ function Test-NewPool
 
 		$metadata = @{"meta1"="value1";"meta2"="value2"}
 
-		New-AzureBatchPool_ST -Name $poolName2 -VMSize $vmSize -OSFamily $osFamily -TargetOSVersion $targetOSVersion -MaxTasksPerVM $maxTasksPerVM -AutoScaleFormula $autoScaleFormula -StartTask $startTask -SchedulingPolicy $schedulingPolicy -Communication -Metadata $metadata -BatchContext $context
+		New-AzureBatchPool_ST -Name $poolName2 -VMSize $vmSize -OSFamily $osFamily -TargetOSVersion $targetOSVersion -MaxTasksPerVM $maxTasksPerVM -AutoScaleFormula $autoScaleFormula -StartTask $startTask -SchedulingPolicy $schedulingPolicy -CommunicationEnabled -Metadata $metadata -BatchContext $context
 		
 		$pool2 = Get-AzureBatchPool_ST -Name $poolName2 -BatchContext $context
 		

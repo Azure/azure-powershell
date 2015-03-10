@@ -68,9 +68,9 @@ namespace Microsoft.Azure.Commands.Batch
         public IDictionary Metadata { get; set; }
 
         [Parameter(HelpMessage = "Set up the Pool for direct communication between dedicated VMs.")]
-        public SwitchParameter Communication { get; set; }
+        public SwitchParameter CommunicationEnabled { get; set; }
 
-        [Parameter(HelpMessage = "The start task specification for the Pool. The start task is run when a VM joins a Pool, or when the VM is rebooted or reimaged.")]
+        [Parameter(HelpMessage = "The start task specification for the Pool. The start task is run when a VM joins the Pool, or when the VM is rebooted or reimaged.")]
         [ValidateNotNullOrEmpty]
         public PSStartTask StartTask { get; set; }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Batch
                 MaxTasksPerVM = this.MaxTasksPerVM,
                 SchedulingPolicy = this.SchedulingPolicy,
                 Metadata = this.Metadata,
-                Communication = this.Communication.IsPresent,
+                Communication = this.CommunicationEnabled.IsPresent,
                 StartTask = this.StartTask,
                 CertificateReferences = this.CertificateReferences,
                 AdditionalBehaviors = this.AdditionalBehaviors
