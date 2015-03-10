@@ -64,14 +64,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <summary>
         /// Creates new ResourceManagementClient
         /// </summary>
-        /// <param name="context">Subscription containing resources to manipulate</param>
-        public ResourcesClient(AzureContext context)
+        /// <param name="profile">Profile containing resources to manipulate</param>
+        public ResourcesClient(AzureProfile profile)
             : this(
-                AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-                new GalleryTemplatesClient(context),
+                AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(profile, AzureEnvironment.Endpoint.ResourceManager),
+                new GalleryTemplatesClient(profile.Context),
                 // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
                 //AzureSession.ClientFactory.CreateClient<EventsClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(profile.Context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }

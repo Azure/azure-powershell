@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (this.resourcesClient == null)
                 {
-                    this.resourcesClient = new ResourcesClient(this.Profile.Context)
+                    this.resourcesClient = new ResourcesClient(this.Profile)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
