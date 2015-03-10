@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         public string[] LegacyContainerNames { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageMigrationOperation)]
-        public string MigrationOperation { get; set; }
+        public MigrationOperation MigrationOperation { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -46,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
 
                 MigrationConfirmStatusRequest request = new MigrationConfirmStatusRequest();
-                request.Operation = (MigrationOperation)Enum.Parse(typeof(MigrationOperation), MigrationOperation, ignoreCase: true);
+                request.Operation = MigrationOperation;
                 request.DataContainerNameList = (null != LegacyContainerNames) ? LegacyContainerNames.ToList() : new List<string>();
                 MigrationJobStatus status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, request);
 
