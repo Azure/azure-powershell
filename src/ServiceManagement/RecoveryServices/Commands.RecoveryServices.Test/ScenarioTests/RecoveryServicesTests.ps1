@@ -247,7 +247,7 @@ function Test-StorageMapping
 
 	# Enumerate Servers
 	$servers = Get-AzureSiteRecoveryServer
-	Assert-True { $servers.Count -gt 0 }
+	Assert-True { $servers.Count -gt 1 }
 	Assert-NotNull($servers)
 	foreach($server in $servers)
 	{
@@ -256,25 +256,34 @@ function Test-StorageMapping
 	}
 
 	# Enumerate Storages
-	$storages = Get-AzureSiteRecoveryStorage -Server $servers[0]
-	Assert-NotNull($storages)
-	Assert-True { $storages.Count -gt 0 }
-	foreach($storage in $storages)
+	$storagesOnPrimary = Get-AzureSiteRecoveryStorage -Server $servers[0]
+	Assert-NotNull($storagesOnPrimary)
+	Assert-True { $storagesOnPrimary.Count -gt 0 }
+	foreach($storage in $storagesOnPrimary)
+	{
+		Assert-NotNull($storage.Name)
+		Assert-NotNull($storage.ID)
+	}
+
+	$storagesOnRecovery = Get-AzureSiteRecoveryStorage -Server $servers[1]
+	Assert-NotNull($storagesOnRecovery)
+	Assert-True { $storagesOnRecovery.Count -gt 0 }
+	foreach($storage in $storagesOnRecovery)
 	{
 		Assert-NotNull($storage.Name)
 		Assert-NotNull($storage.ID)
 	}
 
 	# Enumerate StorageMappings
-	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-True { $storageMappings.Count -eq 0 }
 
 	# Create StorageMapping
-	$job = New-AzureSiteRecoveryStorageMapping -PrimaryStorage $storages[0] -RecoveryStorage $storages[1]
+	$job = New-AzureSiteRecoveryStorageMapping -PrimaryStorage $storagesOnPrimary[0] -RecoveryStorage $storagesOnRecovery[0]
 	WaitForJobCompletion -JobId $job.ID
 
 	# Enumerate StorageMappings
-	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-NotNull($storageMappings)
 	Assert-True { $storageMappings.Count -eq 1 }
 	Assert-NotNull($storageMappings[0].PrimaryServerId)
@@ -296,7 +305,7 @@ function Test-StorageUnMapping
 
 	# Enumerate Servers
 	$servers = Get-AzureSiteRecoveryServer
-	Assert-True { $servers.Count -gt 0 }
+	Assert-True { $servers.Count -gt 1 }
 	Assert-NotNull($servers)
 	foreach($server in $servers)
 	{
@@ -305,7 +314,7 @@ function Test-StorageUnMapping
 	}
 
 	# Enumerate StorageMappings
-	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-NotNull($storageMappings)
 	Assert-True { $storageMappings.Count -eq 1 }
 	Assert-NotNull($storageMappings[0].PrimaryServerId)
@@ -318,7 +327,7 @@ function Test-StorageUnMapping
 	WaitForJobCompletion -JobId $job.ID
 
 	# Enumerate StorageMappings
-	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-True { $storageMappings.Count -eq 0 }
 }
 
@@ -335,7 +344,7 @@ function Test-NetworkMapping
 
 	# Enumerate Servers
 	$servers = Get-AzureSiteRecoveryServer
-	Assert-True { $servers.Count -gt 0 }
+	Assert-True { $servers.Count -gt 1 }
 	Assert-NotNull($servers)
 	foreach($server in $servers)
 	{
@@ -344,25 +353,34 @@ function Test-NetworkMapping
 	}
 
 	# Enumerate Networks
-	$networks = Get-AzureSiteRecoveryNetwork -Server $servers[0]
-	Assert-NotNull($networks)
-	Assert-True { $networks.Count -gt 0 }
-	foreach($network in $networks)
+	$networksOnPrimary = Get-AzureSiteRecoveryNetwork -Server $servers[0]
+	Assert-NotNull($networksOnPrimary)
+	Assert-True { $networksOnPrimary.Count -gt 0 }
+	foreach($network in $networksOnPrimary)
+	{
+		Assert-NotNull($network.Name)
+		Assert-NotNull($network.ID)
+	}
+
+	$networksOnRecovery = Get-AzureSiteRecoveryNetwork -Server $servers[1]
+	Assert-NotNull($networksOnRecovery)
+	Assert-True { $networksOnRecovery.Count -gt 0 }
+	foreach($network in $networksOnRecovery)
 	{
 		Assert-NotNull($network.Name)
 		Assert-NotNull($network.ID)
 	}
 
 	# Enumerate NetworkMappings
-	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-True { $networkMappings.Count -eq 0 }
 
 	# Create NetworkMapping
-	$job = New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networks[0] -RecoveryNetwork $networks[1]
+	$job = New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networksOnPrimary[0] -RecoveryNetwork $networksOnRecovery[0]
 	WaitForJobCompletion -JobId $job.ID
 
 	# Enumerate NetworkMappings
-	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-NotNull($networkMappings)
 	Assert-True { $networkMappings.Count -eq 1 }
 	Assert-NotNull($networkMappings[0].PrimaryServerId)
@@ -450,7 +468,7 @@ function Test-NetworkUnMapping
 
 	# Enumerate Servers
 	$servers = Get-AzureSiteRecoveryServer
-	Assert-True { $servers.Count -gt 0 }
+	Assert-True { $servers.Count -gt 1 }
 	Assert-NotNull($servers)
 	foreach($server in $servers)
 	{
@@ -459,7 +477,7 @@ function Test-NetworkUnMapping
 	}
 
 	# Enumerate NetworkMappings
-	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-NotNull($networkMappings)
 	Assert-True { $networkMappings.Count -eq 1 }
 	Assert-NotNull($networkMappings[0].PrimaryServerId)
@@ -474,7 +492,7 @@ function Test-NetworkUnMapping
 	WaitForJobCompletion -JobId $job.ID
 
 	# Enumerate NetworkMappings
-	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-True { $networkMappings.Count -eq 0 }
 }
 
