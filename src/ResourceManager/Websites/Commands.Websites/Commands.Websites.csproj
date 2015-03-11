@@ -156,7 +156,11 @@
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Websites.dll-Help.xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Microsoft.WindowsAzure.Commands.WebSites.format.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />

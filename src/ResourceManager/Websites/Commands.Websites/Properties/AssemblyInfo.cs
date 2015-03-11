@@ -24,7 +24,7 @@ using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: Guid("e386b843-f3f0-4db3-8664-37d16b860dde")]
+[assembly: Guid("76158def-441b-472a-9b1a-a75726a813f4")]
 [assembly: AssemblyVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyVersion)]
 [assembly: AssemblyFileVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyFileVersion)]
 #if SIGN
