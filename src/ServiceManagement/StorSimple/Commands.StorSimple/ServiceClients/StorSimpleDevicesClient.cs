@@ -189,8 +189,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 }
             }
 
-            // There are a bunch of details that this cmdlet never edits and the service considers null
-            // values there to mean that there have been no changes.
+            // There are a bunch of details that this cmdlet never edits and the service 
+            // considers null values for them to mean that there have been no changes.
             deviceDetails.AlertNotification = null;
             deviceDetails.Chap = null;
             deviceDetails.RemoteMgmtSettingsInfo = null;
@@ -215,6 +215,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             var encryptedSecretKey = this.EncryptWithDevicePublicKey(details.DeviceProperties.DeviceId, sek);
 
             details.VirtualApplianceProperties.EncodedServiceEncryptionKey = encryptedSecretKey;
+
+            // mark everything that we dont intend to modify as null - indicating
+            // to the service that there has been no change
+            details.AlertNotification = null;
+            details.Chap = null;
+            details.DnsServer = null;
+            details.NetInterfaceList = null;
+            details.RemoteMgmtSettingsInfo = null;
+            details.RemoteMinishellSecretInfo = null;
+            details.SecretEncryptionCertThumbprint = null;
+            details.Snapshot = null;
+            details.WebProxy = null;
         }
     }
 }
