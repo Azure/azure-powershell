@@ -27,8 +27,8 @@
                   "accountKey": "$EncryptedStringForTesting"
                 }
               ],
-              "container": "samples",
-			  "pathPattern": ""
+                "container": "samples",
+                "pathPattern": ""
             }
           }
         }
