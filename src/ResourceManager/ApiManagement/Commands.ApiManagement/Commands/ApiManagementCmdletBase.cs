@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             {
                 if (_client == null)
                 {
-                    _client = new ApiManagementClient(CurrentContext);
+                    _client = new ApiManagementClient(Profile.Context);
                 }
                 return _client;
             }

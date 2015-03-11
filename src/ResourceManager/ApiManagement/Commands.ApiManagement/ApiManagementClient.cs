@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Commands.ApiManagement
     using System.IO;
     using System.Linq;
     using Microsoft.Azure.Commands.ApiManagement.Models;
-    using Microsoft.Azure.Common.Extensions;
-    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.ApiManagement.Models;
 

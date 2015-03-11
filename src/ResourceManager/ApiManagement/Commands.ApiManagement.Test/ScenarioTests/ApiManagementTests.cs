@@ -1,18 +1,28 @@
-﻿using Microsoft.Azure.Common.Extensions;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+﻿//  
+// Copyright (c) Microsoft.  All rights reserved.
+// 
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//    http://www.apache.org/licenses/LICENSE-2.0
+// 
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 
-
-namespace Commands.ApiManagement.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
     using System;
-    using Microsoft.Azure.Commands.ApiManagement.Commands;
-    using Microsoft.Azure.Management.ApiManagement;
+    using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Test;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Xunit;
 
     public class ApiManagementTests
     {
-        private EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper helper;
 
         public ApiManagementTests()
         {
@@ -26,9 +36,9 @@ namespace Commands.ApiManagement.Test.ScenarioTests
             helper.SetupManagementClients(apiManagementManagementClient);
         }
 
-        private ApiManagementClient GetApiManagementManagementClient()
+        private Management.ApiManagement.ApiManagementClient GetApiManagementManagementClient()
         {
-            return TestBase.GetServiceClient<ApiManagementClient>(new CSMTestEnvironmentFactory());
+            return TestBase.GetServiceClient<Management.ApiManagement.ApiManagementClient>(new CSMTestEnvironmentFactory());
         }
 
 
