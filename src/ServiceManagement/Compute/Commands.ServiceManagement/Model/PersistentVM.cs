@@ -127,6 +127,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set;
         }
 
+        public VMImageInput VMImageInput
+        {
+            get;
+            set;
+        }
+
         public PersistentVM GetInstance()
         {
             return this;
