@@ -19,15 +19,14 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
     using Microsoft.Azure.Management.RemoteApp.Models;
     using System;
     using System.Collections.Generic;
-    using VisualStudio.TestTools.UnitTesting;
+    using Xunit;
 
-    [TestClass]
     public class RemoteAppWorkspace : RemoteAppClientTest
     {
         string EndUserFeedName = "MockFeed";
         string ClientUrl = "https://remoteapp.contoso.com/feed";
 
-        [TestMethod]
+        [Fact]
         public void GetWorkspace()
         {
             List<Workspace> workspace = null;
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.Fail(
+                Assert.True(false,
                     String.Format("Get-AzureRemoteAppWorkspace returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -50,16 +49,16 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             }
 
             workspace = MockObject.ConvertList<Workspace>(mockCmdlet.runTime().OutputPipeline);
-            Assert.IsNotNull(workspace);
+            Assert.NotNull(workspace);
 
-            Assert.IsTrue(MockObject.HasExpectedResults<Workspace>(workspace, MockObject.ContainsExpectedWorkspace),
+            Assert.True(MockObject.HasExpectedResults<Workspace>(workspace, MockObject.ContainsExpectedWorkspace),
                 "The actual result does not match the expected."
             );
 
             Log("The test for Get-AzureRemoteAppWorkspace completed successfully");
         }
 
-        [TestMethod]
+        [Fact]
         public void SetWorkspace()
         {
             List<TrackingResult> trackingIds = null;
@@ -79,7 +78,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.Fail(
+                Assert.True(false,
                     String.Format("Set-AzureRemoteAppWorkspace returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -87,9 +86,9 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             }
 
             trackingIds = MockObject.ConvertList<TrackingResult>(mockCmdlet.runTime().OutputPipeline);
-            Assert.IsNotNull(trackingId);
+            Assert.NotNull(trackingId);
 
-            Assert.IsTrue(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
+            Assert.True(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
                "The actual result does not match the expected."
             );
 

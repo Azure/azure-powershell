@@ -21,14 +21,13 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using VisualStudio.TestTools.UnitTesting;
+    using Xunit;
 
     // Get-AzureRemoteAppCollectionUsageDetails, Get-AzureRemoteAppCollectionUsageSummary, 
-    [TestClass]
     public class RemoteAppCollectionTest : RemoteAppClientTest
     {
 
-        [TestMethod]
+        [Fact]
         public void GetAllCollections()
         {
             int countOfExpectedCollections = 0;
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.Fail(
+                Assert.True(false,
                     String.Format("Get-AzureRemoteAppCollection returned the following error {0}.",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -51,23 +50,23 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             }
 
             List<Collection> collections = MockObject.ConvertList<Collection>(mockCmdlet.runTime().OutputPipeline);
-            Assert.IsNotNull(collections);
+            Assert.NotNull(collections);
 
-            Assert.IsTrue(collections.Count == countOfExpectedCollections,
+            Assert.True(collections.Count == countOfExpectedCollections,
                 String.Format("The expected number of collections returned {0} does not match the actual {1}.",
                     countOfExpectedCollections,
                     collections.Count
                 )
             );
 
-            Assert.IsTrue(MockObject.HasExpectedResults<Collection>(collections, MockObject.ContainsExpectedCollection),
+            Assert.True(MockObject.HasExpectedResults<Collection>(collections, MockObject.ContainsExpectedCollection),
                 "The actual result does not match the expected."
             );
 
             Log("The test for Get-AzureRemoteAppCollection with {0} collections completed successfully", countOfExpectedCollections);
         }
 
-        [TestMethod]
+        [Fact]
         public void GetCollectionsByName()
         {
             int countOfExpectedCollections = 1;
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.Fail(
+                Assert.True(false,
                     String.Format("Get-AzureRemoteAppUser returned the following error {0}.",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -94,24 +93,23 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             }
 
             List<Collection> collections = MockObject.ConvertList<Collection>(mockCmdlet.runTime().OutputPipeline);
-            Assert.IsNotNull(collections);
+            Assert.NotNull(collections);
 
-            Assert.IsTrue(collections.Count == countOfExpectedCollections,
+            Assert.True(collections.Count == countOfExpectedCollections,
                String.Format("The expected number of collections returned {0} does not match the actual {1}.",
                    countOfExpectedCollections,
                    collections.Count
                )
            );
 
-            Assert.IsTrue(MockObject.HasExpectedResults<Collection>(collections, MockObject.ContainsExpectedCollection),
+            Assert.True(MockObject.HasExpectedResults<Collection>(collections, MockObject.ContainsExpectedCollection),
                "The actual result does not match the expected."
            );
 
            Log("The test for Get-AzureRemoteAppCollection with {0} collections completed successfully", countOfExpectedCollections);
         }
 
-        [TestMethod]
-        [Ignore]
+        [Fact]
         public void AddCollection()
         {
             List<TrackingResult> trackingIds = null;
@@ -133,7 +131,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.Fail(
+                Assert.True(false,
                     String.Format("New-AzureRemoteAppCollection returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -141,23 +139,23 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             }
 
             trackingIds = MockObject.ConvertList<TrackingResult>(mockCmdlet.runTime().OutputPipeline);
-            Assert.IsNotNull(trackingIds);
+            Assert.NotNull(trackingIds);
 
-            Assert.IsTrue(trackingIds.Count == countOfExpectedCollections,
+            Assert.True(trackingIds.Count == countOfExpectedCollections,
                 String.Format("The expected number of collections returned {0} does not match the actual {1}",
                     countOfExpectedCollections,
                     trackingIds.Count
                  )
             );
 
-            Assert.IsTrue(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
+            Assert.True(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
                "The actual result does not match the expected."
             );
 
             Log("The test for New-AzureRemoteAppCollection completed successfully");
         }
 
-        [TestMethod]
+        [Fact]
         public void UpdateCollection()
         {
             List<TrackingResult> trackingIds = null;
@@ -176,7 +174,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.Fail(
+                Assert.True(false,
                     String.Format("New-AzureRemoteAppCollection returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -184,23 +182,23 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             }
 
             trackingIds = MockObject.ConvertList<TrackingResult>(mockCmdlet.runTime().OutputPipeline);
-            Assert.IsNotNull(trackingIds);
+            Assert.NotNull(trackingIds);
 
-            Assert.IsTrue(trackingIds.Count == countOfExpectedCollections,
+            Assert.True(trackingIds.Count == countOfExpectedCollections,
                 String.Format("The expected number of collections returned {0} does not match the actual {1}",
                     countOfExpectedCollections,
                     trackingIds.Count
                  )
             );
 
-            Assert.IsTrue(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
+            Assert.True(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
                "The actual result does not match the expected."
             );
 
             Log("The test for Update-AzureRemoteAppCollection completed successfully");
         }
 
-        [TestMethod]
+        [Fact]
         public void SetCollection()
         {
             List<TrackingResult> trackingIds = null;
@@ -223,7 +221,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.Fail(
+                Assert.True(false,
                     String.Format("New-AzureRemoteAppCollection returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -231,23 +229,23 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             }
 
             trackingIds = MockObject.ConvertList<TrackingResult>(mockCmdlet.runTime().OutputPipeline);
-            Assert.IsNotNull(trackingIds);
+            Assert.NotNull(trackingIds);
 
-            Assert.IsTrue(trackingIds.Count == countOfExpectedCollections,
+            Assert.True(trackingIds.Count == countOfExpectedCollections,
                 String.Format("The expected number of collections returned {0} does not match the actual {1}",
                     countOfExpectedCollections,
                     trackingIds.Count
                  )
             );
 
-            Assert.IsTrue(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
+            Assert.True(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
                "The actual result does not match the expected."
             );
 
             Log("The test for New-AzureRemoteAppCollection completed successfully");
         }
 
-        [TestMethod]
+        [Fact]
         public void RemoveCollection()
         {
             List<TrackingResult> trackingIds = null;
@@ -266,7 +264,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.Fail(
+                Assert.True(false,
                     String.Format("Remove-AzureRemoteAppCollection returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -274,17 +272,16 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             }
 
             trackingIds = MockObject.ConvertList<TrackingResult>(mockCmdlet.runTime().OutputPipeline);
-            Assert.IsNotNull(trackingIds);
+            Assert.NotNull(trackingIds);
 
-            Assert.IsTrue(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
+            Assert.True(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
                "The actual result does not match the expected."
             );
 
             Log("The test for Remove-AzureRemoteAppCollection completed successfully");
         }
 
-        [TestMethod]
-        [Ignore]
+        [Fact]
         public void GetRegionList()
         {
             List<Region> regionList = null;
@@ -300,17 +297,17 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.Fail(
+                Assert.True(false,
                     String.Format("Get-AzureRemoteAppRegionList returned the following error {0}.",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
                 );
             }
 
-            Assert.IsNotNull(regionList);
             regionList = MockObject.ConvertList<Region>(mockCmdlet.runTime().OutputPipeline);
+            Assert.NotNull(regionList);
 
-            Assert.IsTrue(MockObject.HasExpectedResults<string>(regions, MockObject.ContainsExpectedRegion), // This is expecting a List<string> instead of LocalModels.RegionList
+            Assert.True(MockObject.HasExpectedResults<string>(regions, MockObject.ContainsExpectedRegion), // This is expecting a List<string> instead of LocalModels.RegionList
                 "The actual result does not match the expected."
             );
 

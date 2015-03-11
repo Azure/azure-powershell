@@ -20,13 +20,13 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using VisualStudio.TestTools.UnitTesting;
+    using Xunit;
 
-    [TestClass]
+
     public class RemoteAppOperationResult : RemoteAppClientTest
     {
 
-        [TestMethod]
+        [Fact]
         public void GetResult()
         {
             List<OperationResult> operationResult = null;
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             mockCmdlet.ExecuteCmdlet();
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
-                Assert.Fail(
+                Assert.True(false,
                     String.Format("Get-AzureRemoteAppCollection returned the following error {0}.",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
@@ -54,16 +54,16 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             }
 
             operationResult = MockObject.ConvertList<OperationResult>(mockCmdlet.runTime().OutputPipeline);
-            Assert.IsNotNull(operationResult);
+            Assert.NotNull(operationResult);
 
-            Assert.IsTrue(operationResult.Count == countOfExpectedResults,
+            Assert.True(operationResult.Count == countOfExpectedResults,
                 String.Format("The expected number of templates returned {0} does not match the actual {1}",
                     countOfExpectedResults,
                     operationResult.Count
                 )
             );
 
-            Assert.IsTrue(MockObject.HasExpectedResults<OperationResult>(operationResult, MockObject.ContainsExpectedOperationResult),
+            Assert.True(MockObject.HasExpectedResults<OperationResult>(operationResult, MockObject.ContainsExpectedOperationResult),
                "The actual result does not match the expected."
            );
 
