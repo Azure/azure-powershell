@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         public void RemoveProfileProcess()
         {
-            ProfileClient.ClearAll();
+             ProfileClient.ClearAll();
         }
     }
 }

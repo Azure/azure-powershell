@@ -79,7 +79,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "Katal",
-                PublishSettingsFileUrl = "http://microsoft.com"
+                PublishSettingsFileUrl = "http://microsoft.com",
+                EnableADFSAuthentication = true
             };
 
             cmdlet.InvokeBeginProcessing();
@@ -90,6 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             AzureEnvironment env = client.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
+            Assert.True(env.OnPremise);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
         }
 

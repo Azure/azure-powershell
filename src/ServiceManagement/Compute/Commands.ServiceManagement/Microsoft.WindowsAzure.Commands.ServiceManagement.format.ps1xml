@@ -129,9 +129,29 @@
                 <Label>PublishedDate</Label>
                 <PropertyName>PublishedDate</PropertyName>
               </ListItem>
-                <ListItem>
+              <ListItem>
                 <Label>CompanyName</Label>
                 <PropertyName>CompanyName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Regions</Label>
+                <ScriptBlock>
+                  if ($_.Regions -ne $null)
+                  {
+                     if ($_.Regions.Length -gt 0)
+                     {
+                         $_.Regions;
+                     }
+                     else
+                     {
+                         'All regions';
+                     }
+                  }
+                  else
+                  {
+                     $_.Regions;
+                  }
+                </ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>

@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data;
+using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.Extensions;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
 {
@@ -158,5 +160,50 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         ///     Gets a collection of configuration properties to customize the HBase service.
         /// </summary>
         public HBaseConfiguration HBaseConfiguration { get; private set; }
+
+
+        /// <summary>
+        ///     Copies all parameters from the provided AzureHDInsightConfig object into this object, replacing
+        ///     single-value attributes, and merging collection attributes.
+        /// </summary>
+        public virtual void CopyFrom(AzureHDInsightConfig value)
+        {
+            if (value==null)
+            {
+                throw new ArgumentNullException("value", "The value for the configuration cannot be null.");
+            }
+
+            this.ClusterSizeInNodes = value.ClusterSizeInNodes;
+            this.DefaultStorageAccount = new AzureHDInsightDefaultStorageAccount(value.DefaultStorageAccount);
+            this.AdditionalStorageAccounts.AddRange(value.AdditionalStorageAccounts);
+            this.ConfigActions.AddRange(value.ConfigActions);
+            this.HiveMetastore = value.HiveMetastore ?? this.HiveMetastore;
+            this.OozieMetastore = value.OozieMetastore ?? this.OozieMetastore;
+            this.CoreConfiguration.AddRange(value.CoreConfiguration);
+            this.YarnConfiguration.AddRange(value.YarnConfiguration);
+            this.HdfsConfiguration.AddRange(value.HdfsConfiguration);
+            this.MapReduceConfiguration.ConfigurationCollection.AddRange(value.MapReduceConfiguration.ConfigurationCollection);
+            this.MapReduceConfiguration.CapacitySchedulerConfigurationCollection.AddRange(
+                value.MapReduceConfiguration.CapacitySchedulerConfigurationCollection);
+            this.HiveConfiguration.ConfigurationCollection.AddRange(value.HiveConfiguration.ConfigurationCollection);
+            this.HiveConfiguration.AdditionalLibraries = 
+                 value.HiveConfiguration.AdditionalLibraries ?? this.HiveConfiguration.AdditionalLibraries;
+            this.OozieConfiguration.ConfigurationCollection.AddRange(value.OozieConfiguration.ConfigurationCollection);
+            this.OozieConfiguration.AdditionalActionExecutorLibraries =
+                value.OozieConfiguration.AdditionalActionExecutorLibraries ?? this.OozieConfiguration.AdditionalActionExecutorLibraries;
+            this.OozieConfiguration.AdditionalSharedLibraries =
+                value.OozieConfiguration.AdditionalSharedLibraries ?? this.OozieConfiguration.AdditionalSharedLibraries;
+            this.HeadNodeVMSize = value.HeadNodeVMSize;
+            this.DataNodeVMSize = value.DataNodeVMSize;
+            this.ZookeeperNodeVMSize = value.ZookeeperNodeVMSize;
+            this.ClusterType = value.ClusterType;
+            this.VirtualNetworkId = value.VirtualNetworkId;
+            this.SubnetName = value.SubnetName;
+            this.StormConfiguration.AddRange(value.StormConfiguration);
+            this.HBaseConfiguration.ConfigurationCollection.AddRange(value.HBaseConfiguration.ConfigurationCollection);
+            this.HBaseConfiguration.AdditionalLibraries = 
+                value.HBaseConfiguration.AdditionalLibraries ?? this.HBaseConfiguration.AdditionalLibraries;
+            this.SparkConfiguration.AddRange(value.SparkConfiguration);
+        }
     }
 }
