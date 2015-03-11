@@ -1,3 +1,6 @@
+2015.03.11 version 0.8.15.1
+* Fixes for clean install and subscription registration issues
+
 2015.03.09 version 0.8.15
 * Azure RemoteApp: New RemoteApp cmdlets:
   * Add-AzureRemoteAppUser
