@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// <summary>
         /// TimeZone for the device.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone)]
+        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone, ValueFromPipeline=true)]
         [ValidateNotNullOrEmpty] 
         public TimeZoneInfo TimeZone { get; set; }
 
