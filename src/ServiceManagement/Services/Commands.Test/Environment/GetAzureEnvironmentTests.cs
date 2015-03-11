@@ -49,6 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
                 CommandRuntime = commandRuntimeMock.Object
             };
 
+            AzurePSCmdlet.CurrentProfile = new AzureProfile();
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -70,6 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
                 Name = EnvironmentName.AzureChinaCloud
             };
 
+            AzurePSCmdlet.CurrentProfile = new AzureProfile();
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();

@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.8.14'
+ModuleVersion = '0.8.15'
 
 # ID used to uniquely identify this module
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'
@@ -79,7 +79,8 @@ NestedModules = @(
     '.\Batch\Microsoft.Azure.Commands.Batch.dll',
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.dll',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',
-    '.\Insights\Microsoft.Azure.Commands.Insights.dll'
+    '.\Insights\Microsoft.Azure.Commands.Insights.dll',
+    '.\Websites\Microsoft.Azure.Commands.Websites.dll'
 )
 
 # Functions to export from this module
