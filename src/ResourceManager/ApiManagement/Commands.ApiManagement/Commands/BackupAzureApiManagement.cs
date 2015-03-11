@@ -1,12 +1,11 @@
-﻿using System.Management.Automation;
-using Microsoft.Azure.Commands.ApiManagement.Models;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
-namespace Microsoft.Azure.Commands.ApiManagement
+﻿namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.Storage;
+
     [Cmdlet("Backup", "AzureApiManagement"), OutputType(typeof(ApiManagementAttributes))]
-    public class BackupAzureApiManagement : AzurePSCmdlet
+    public class BackupAzureApiManagement : ApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
@@ -46,14 +45,33 @@ namespace Microsoft.Azure.Commands.ApiManagement
         [ValidateNotNullOrEmpty]
         public string Blob { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(new 
+            ExecuteCmdLetWrap(() =>
             {
-                StorageContext.StorageAccountName,
-                Container,
-                Blob,
-                Name
+                ApiManagementLongRunningOperation longRunningOperation =
+                    this.Client.BeginBackupApiManagement(
+                        this.ResourceGroupName,
+                        this.Name,
+                        this.StorageContext.StorageAccount.Credentials.AccountName,
+                        this.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
+                        this.Container,
+                        this.Blob);
+
+                longRunningOperation = WaitForOperationToComplete(longRunningOperation);
+                bool success = string.IsNullOrWhiteSpace(longRunningOperation.Error);
+                if (!success)
+                {
+                    WriteErrorWithTimestamp(longRunningOperation.Error);
+                }
+
+                if (this.PassThru.IsPresent)
+                {
+                    WriteObject(success);
+                }
             });
         }
     }

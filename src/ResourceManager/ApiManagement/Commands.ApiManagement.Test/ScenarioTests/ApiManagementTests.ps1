@@ -6,9 +6,9 @@ function Test-NewApiManagement
 {
     # Setup
     # resource group should exists
-    $resourceGroupName = "MyResourceGroup"
+    $resourceGroupName = "Api-Default-North-East"
     $apiManagementName = "apimpowershelltest"
-    $location = "North Central US"
+    $location = "North East"
     $organization = "apimpowershellorg"
     $adminEmail = "apim@powershell.org"
     $sku = "Standard"
@@ -26,8 +26,3 @@ function Test-NewApiManagement
 
     # List 
 }
-
-    $azureStorageContext = New-AzureStorageContext -StorageAccountKey IvlL0RhwGDEY+EvGGIzXVYEdkoP2mexZsZbhsjjkg4InZDEVtmYAFVyUWP/fNjlWKyhRQBKje1eob4zWzV3Ezw== -Protocol https
-	
-    # Backuping APi Management
-    $result = Backup-AzureApiManagement -Name $apiManagementName -StorageContext $azureStorageContext -Container backupContainer -Blob backup.apimbackup

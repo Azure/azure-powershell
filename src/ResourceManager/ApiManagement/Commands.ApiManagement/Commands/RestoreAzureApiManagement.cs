@@ -1,17 +1,31 @@
-﻿using System.Management.Automation;
-using Microsoft.Azure.Commands.ApiManagement.Models;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+﻿//  
+// Copyright (c) Microsoft.  All rights reserved.
+// 
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//    http://www.apache.org/licenses/LICENSE-2.0
+// 
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 
-namespace Microsoft.Azure.Commands.ApiManagement
+
+namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    [Cmdlet("Restore", "AzureApiManagement"), OutputType(typeof(ApiManagementAttributes))]
-    public class RestoreAzureApiManagement : AzurePSCmdlet
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.Storage;
+
+    [Cmdlet("Restore", "AzureApiManagement"), OutputType(typeof (ApiManagementAttributes))]
+    public class RestoreAzureApiManagement : ApiManagementCmdletBase
     {
         [Parameter(
-           ValueFromPipelineByPropertyName = true,
-           Mandatory = true,
-           HelpMessage = "Name of resource group under which API Management exists.")]
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Name of resource group under which API Management exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -45,5 +59,31 @@ namespace Microsoft.Azure.Commands.ApiManagement
             HelpMessage = "Name of Azure Storage blob.")]
         [ValidateNotNullOrEmpty]
         public string Blob { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            ExecuteCmdLetWrap(() =>
+            {
+                ApiManagementLongRunningOperation longRunningOperation =
+                    this.Client.BeginRestoreApiManagement(
+                        this.ResourceGroupName,
+                        this.Name,
+                        this.StorageContext.StorageAccount.Credentials.AccountName,
+                        this.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
+                        this.Container,
+                        this.Blob);
+
+                longRunningOperation = WaitForOperationToComplete(longRunningOperation);
+                bool success = string.IsNullOrWhiteSpace(longRunningOperation.Error);
+                if (!success)
+                {
+                    WriteErrorWithTimestamp(longRunningOperation.Error);
+                }
+                else
+                {
+                    WriteObject(longRunningOperation.ApiManagementAttributes);
+                }
+            });
+        }
     }
 }

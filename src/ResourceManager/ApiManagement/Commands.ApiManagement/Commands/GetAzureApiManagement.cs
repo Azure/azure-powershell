@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ApiManagement.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
-namespace Microsoft.Azure.Commands.ApiManagement
+﻿namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.Models;
+
     [Cmdlet(VerbsCommon.Get, "AzureApiManagement", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(List<ApiManagementAttributes>))]
-    public class GetAzureApiManagement : AzurePSCmdlet
+    public class GetAzureApiManagement : ApiManagementCmdletBase
     {
         internal const string BaseParameterSetName = "All In Subscription";
         internal const string ResourceGroupParameterSetName = "All In Resource Group";
@@ -33,18 +33,17 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
         public override void ExecuteCmdlet()
         {
-            //TODO: implement
-
             if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
             {
                 // Get for single API Management service
-                WriteObject(new ApiManagementAttributes());
+                ApiManagementAttributes attributes = Client.GetApiManagement(ResourceGroupName, Name);
+                WriteObject(attributes);
             }
             else
             {
                 // List all services in given resource group if avaliable otherwise all services in given subscription
-                List<ApiManagementAttributes> list = new List<ApiManagementAttributes>();
-                WriteObject(list, true);
+                IEnumerable<ApiManagementAttributes> enumeration = Client.ListApiManagements(ResourceGroupName);
+                WriteObject(enumeration.ToList(), true);
             }
         }
     }
