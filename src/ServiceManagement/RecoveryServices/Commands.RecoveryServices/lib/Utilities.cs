@@ -112,8 +112,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     asrVaultCreds.CloudServiceName;
                 PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey =
                     asrVaultCreds.ChannelIntegrityKey;
-                PSRecoveryServicesClient.asrVaultCreds.SubscriptionId =
-                    asrVaultCreds.SubscriptionId;
             }
         }
 

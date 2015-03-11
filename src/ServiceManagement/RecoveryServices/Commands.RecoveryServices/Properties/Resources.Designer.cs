@@ -183,15 +183,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Imported Vault is not associated with the Current Subscription..
-        /// </summary>
-        internal static string InvalidVaultContext {
-            get {
-                return ResourceManager.GetString("InvalidVaultContext", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to XML is malformed or file is empty, exception details: {0}.
         /// </summary>
         internal static string InvalidXml {
