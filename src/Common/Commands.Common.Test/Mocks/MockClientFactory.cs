@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public TClient CreateClient<TClient>(AzureProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
         {
-            throw new NotImplementedException();
+            return CreateClient<TClient>(profile, profile.Context.Subscription, endpoint);
         }
 
         public TClient CreateClient<TClient>(AzureProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
