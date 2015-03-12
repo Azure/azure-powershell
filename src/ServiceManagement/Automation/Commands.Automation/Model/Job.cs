@@ -47,12 +47,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Id = job.Properties.JobId;
             this.CreationTime = job.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = job.Properties.LastModifiedTime.ToLocalTime();
-            this.StartTime = job.Properties.StartTime;
+            this.StartTime = job.Properties.StartTime.HasValue ? job.Properties.StartTime : null;
             this.Status = job.Properties.Status;
             this.StatusDetails = job.Properties.StatusDetails;
             this.RunbookName = job.Properties.Runbook.Name;
             this.Exception = job.Properties.Exception;
-            this.EndTime = job.Properties.EndTime;
+            this.EndTime = job.Properties.EndTime.HasValue ? job.Properties.StartTime : null;
             this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
             this.JobParameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in job.Properties.Parameters.Where(kvp => 0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture,
@@ -97,12 +97,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the start time of the job.
         /// </summary>
-        public DateTimeOffset StartTime { get; set; }
+        public DateTimeOffset? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the end time of the job.
         /// </summary>
-        public DateTimeOffset EndTime { get; set; }
+        public DateTimeOffset? EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets the exception of the job.
