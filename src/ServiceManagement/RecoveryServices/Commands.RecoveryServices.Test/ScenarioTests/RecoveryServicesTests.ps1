@@ -256,33 +256,25 @@ function Test-StorageMapping
 	}
 
 	# Enumerate Storages
-	$storagesPri = Get-AzureSiteRecoveryStorage -Server $servers[0]
-	$storagesSec = Get-AzureSiteRecoveryStorage -Server $servers[1]
-	Assert-NotNull($storagesPri)
-	Assert-NotNull($storagesSec)
-	Assert-True { $storagesPri.Count -gt 0 }
-	Assert-True { $storagesSec.Count -gt 0 }
-	foreach($storage in $storagesPri)
-	{
-		Assert-NotNull($storage.Name)
-		Assert-NotNull($storage.ID)
-	}
-	foreach($storage in $storagesSec)
+	$storages = Get-AzureSiteRecoveryStorage -Server $servers[0]
+	Assert-NotNull($storages)
+	Assert-True { $storages.Count -gt 0 }
+	foreach($storage in $storages)
 	{
 		Assert-NotNull($storage.Name)
 		Assert-NotNull($storage.ID)
 	}
 
 	# Enumerate StorageMappings
-	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
 	Assert-True { $storageMappings.Count -eq 0 }
 
 	# Create StorageMapping
-	$job = New-AzureSiteRecoveryStorageMapping -PrimaryStorage $storagesPri[0] -RecoveryStorage $storagesSec[0]
+	$job = New-AzureSiteRecoveryStorageMapping -PrimaryStorage $storages[0] -RecoveryStorage $storages[1]
 	WaitForJobCompletion -JobId $job.ID
 
 	# Enumerate StorageMappings
-	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
 	Assert-NotNull($storageMappings)
 	Assert-True { $storageMappings.Count -eq 1 }
 	Assert-NotNull($storageMappings[0].PrimaryServerId)
@@ -313,7 +305,7 @@ function Test-StorageUnMapping
 	}
 
 	# Enumerate StorageMappings
-	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
 	Assert-NotNull($storageMappings)
 	Assert-True { $storageMappings.Count -eq 1 }
 	Assert-NotNull($storageMappings[0].PrimaryServerId)
@@ -326,7 +318,7 @@ function Test-StorageUnMapping
 	WaitForJobCompletion -JobId $job.ID
 
 	# Enumerate StorageMappings
-	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
 	Assert-True { $storageMappings.Count -eq 0 }
 }
 
