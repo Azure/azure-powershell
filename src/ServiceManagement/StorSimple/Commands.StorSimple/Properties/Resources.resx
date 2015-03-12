@@ -487,7 +487,7 @@
     <value>Are you sure you want to failover the selected volume containers from device {0} to device {1}?</value>
   </data>
   <data name="VolumeContainerGroupNotEligibleForFailoverError" xml:space="preserve">
-    <value>Volume Container Group \"{0}\" is not eligible for failover due to the reason: {1}</value>
+    <value>Volume Container Group "{0}" is not eligible for failover due to the reason: {1}</value>
   </data>
   <data name="SuccessMessageSubmitDeviceJob" xml:space="preserve">
     <value>The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job's status</value>

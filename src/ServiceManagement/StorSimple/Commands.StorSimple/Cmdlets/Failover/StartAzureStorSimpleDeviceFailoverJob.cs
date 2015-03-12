@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
     [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleDeviceFailoverJob", DefaultParameterSetName = StorSimpleCmdletParameterSet.Empty),
-        OutputType(typeof(TaskResponse), typeof(TaskStatusInfo))]
+        OutputType(typeof(string))]
     public class StartAzureStorSimpleDeviceFailoverJob : StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.DeviceId)]
@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeContainerGroups)]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeContainerGroups)]
         [ValidateNotNull]
         public List<DataContainerGroup> VolumecontainerGroups { get; set; }
 
@@ -93,9 +93,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             return;
                         }
 
-                        if(deviceId.Equals(targetDeviceId, StringComparison.InvariantCultureIgnoreCase))
+                        if (!ValidTargetDeviceForFailover(deviceId, targetDeviceId))
                         {
-                            WriteVerbose(Resources.DeviceFailoverSourceAndTargetDeviceSameError);
                             WriteObject(null);
                             return;
                         }
