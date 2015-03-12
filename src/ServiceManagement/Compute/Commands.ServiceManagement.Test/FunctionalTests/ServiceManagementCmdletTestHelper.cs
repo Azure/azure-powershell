@@ -373,6 +373,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureDataDiskCmdletInfo(discCfg));
         }
 
+        public SM.PersistentVM SetAzureDataDisk(SetAzureDataDiskResizeConfig discCfg)
+        {
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureDataDiskCmdletInfo(discCfg));
+        }
+
         public void SetDataDisk(string vmName, string serviceName, HostCaching hc, int lun)
         {
             SetAzureDataDiskConfig config = new SetAzureDataDiskConfig(hc, lun);
