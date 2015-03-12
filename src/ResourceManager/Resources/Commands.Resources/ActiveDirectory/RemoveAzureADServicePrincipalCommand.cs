@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
                   HelpMessage = "The service principal object id.")]
+        [Alias("PrincipalId")]
         public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = false)]
