@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
         protected void RunPowerShellTest(params string[] scripts)
         {
+            HttpMockServer.Matcher = new PermissiveRecordMatcher();
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));

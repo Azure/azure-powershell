@@ -117,6 +117,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="EnvironmentSetupHelper.cs" />
+    <Compile Include="PermissiveRecordMatcher.cs" />
     <Compile Include="PowerShellExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
