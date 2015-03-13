@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services;
 using Microsoft.WindowsAzure.Management.MediaServices;
@@ -30,7 +30,7 @@ using Microsoft.WindowsAzure.Management.MediaServices.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 using Newtonsoft.Json;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.MediaServices
@@ -64,8 +64,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.MediaServices
         /// </summary>
         /// <param name="subscription">The Microsoft Azure subscription data object</param>
         /// <param name="logger">The logger action</param>
-        public MediaServicesClient(AzureSubscription subscription, Action<string> logger)
-            : this(logger, AzureSession.ClientFactory.CreateClient<MediaServicesManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement), AzureSession.ClientFactory.CreateClient<StorageManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement))
+        public MediaServicesClient(AzureProfile profile, AzureSubscription subscription, Action<string> logger)
+            : this(
+            logger,
+            AzureSession.ClientFactory.CreateClient<MediaServicesManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement),
+            AzureSession.ClientFactory.CreateClient<StorageManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
         {
         }
 

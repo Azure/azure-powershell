@@ -8,34 +8,11 @@ Write-Host "**Node.js for Windows (32-bits) at http://nodejs.org/download/ and A
 Write-Host "**Azure PHP for Windows at http://azure.microsoft.com/en-us/downloads/." -ForegroundColor "Yellow"
 Write-Host "**It is recommended to reboot the machine after the setup, or at least relaunch the powershell." -ForegroundColor "Red"
 
-Write-Host "Testing Caching role with MemCacheShim package, Node Web Role, and run under emulators" -ForegroundColor "Green"
-#detect nodejs for x86 is installed, if not install it
-
 # create testing folder
 $testFolder = "$env:AzurePSRoot\src\Package\" + [System.IO.Path]::GetRandomFileName()
 md $testFolder
 cd $testFolder 
 
-New-AzureServiceProject Cache
-# the 'ClientRole' is coupled with the client script, do not change it unless you update the script as well 
-Add-AzureNodeWebRole ClientRole
-Add-AzureCacheWorkerRole CacheRole
-Enable-AzureMemcacheRole ClientRole CacheRole
-
-md "temp"
-Copy-Item "$env:AzurePSRoot\src\Common\Commands.ScenarioTest\Resources\CloudService\Cache\*.js" ".\ClientRole\"  -Force -Recurse
-cd "$testFolder\Cache\ClientRole"
-Start-Process "npm" "install $env:AzurePSRoot\src\Common\Commands.ScenarioTest\Resources\CloudService\Cache\mc.tgz $env:AzurePSRoot\src\Common\Commands.ScenarioTest\Resources\CloudService\Cache\connman.tgz" -Wait
-
-cd "$testFolder\Cache"
-Start-AzureEmulator -v
-
-Write-Host "You can do some testing by loading role url in the browser and adding some key/value to mem cache emulators" -ForegroundColor "Yellow"
-Write-Host "Press any key to continue to the next testing"
-$keyPressed = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-Write-Host "Testing PHP web & worker roles with emulator" -ForegroundColor "Green" 
-cd $testFolder
 New-AzureServiceProject PHPTest
 Add-AzurePHPWebRole
 Add-AzurePHPWorkerRole

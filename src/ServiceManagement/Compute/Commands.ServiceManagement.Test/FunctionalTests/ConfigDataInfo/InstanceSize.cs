@@ -21,10 +21,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         Medium,
         Large,
         ExtraLarge,
+    }
+
+    public enum HiMemInstanceSize
+    {
         A5,
         A6,
         A7,
-        A8,
-        A9
     }
 }

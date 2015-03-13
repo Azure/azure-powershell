@@ -21,8 +21,8 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Commands.NetworkResourceProvider.Test
 {

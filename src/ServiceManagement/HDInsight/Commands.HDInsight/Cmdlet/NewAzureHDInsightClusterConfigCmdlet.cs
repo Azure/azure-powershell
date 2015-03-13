@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// <inheritdoc />
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "The size of the head node VMs.",
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetConfigClusterSizeInNodesOnly)]
-        public NodeVMSize HeadNodeVMSize
+        public string HeadNodeVMSize
         {
             get { return command.HeadNodeVMSize; }
             set { command.HeadNodeVMSize = value; }
@@ -85,6 +85,23 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             set { command.SubnetName = value; }
         }
 
+        /// <inheritdoc />
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The size of the data node VMs.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetConfigClusterSizeInNodesOnly)]
+        public string DataNodeVMSize
+        {
+            get { return command.DataNodeVMSize; }
+            set { command.DataNodeVMSize = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = "The size of the zookeper node VMs.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetConfigClusterSizeInNodesOnly)]
+        public string ZookeeperNodeVMSize
+        {
+            get { return command.ZookeeperNodeVMSize; }
+            set { command.ZookeeperNodeVMSize = value; }
+        }
         /// <summary>
         ///     Finishes the execution of the cmdlet by listing the clusters.
         /// </summary>
