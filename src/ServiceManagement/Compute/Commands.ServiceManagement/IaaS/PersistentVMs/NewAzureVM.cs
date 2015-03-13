@@ -434,8 +434,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 ResourceExtensionReferences = persistentVM.ProvisionGuestAgent != null && persistentVM.ProvisionGuestAgent.Value ? Mapper.Map<List<ResourceExtensionReference>>(persistentVM.ResourceExtensionReferences) : null,
                 VMImageName = isVMImage ? persistentVM.OSVirtualHardDisk.SourceImageName : null,
                 MediaLocation = isVMImage ? persistentVM.OSVirtualHardDisk.MediaLink : null,
-                VMImageInput = isVMImage ? PersistentVMHelper.MapVMImageInput(persistentVM.VMImageInput) : null
             };
+
+            if (persistentVM.VMImageInput != null)
+            {
+                result.VMImageInput = isVMImage ? PersistentVMHelper.MapVMImageInput(persistentVM.VMImageInput) : null;
+            }
 
             if (result.OSVirtualHardDisk != null)
             {
