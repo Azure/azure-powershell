@@ -26,6 +26,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewPool()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string resourceGroupName = "test-new-pool";
+            string accountName = "testnewpool";
+            string location = "eastus";
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-NewPool '{0}'", accountName) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPoolByName()
         {
             BatchController controller = BatchController.NewInstance;
@@ -39,11 +62,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
-                    ScenarioTestHelpers.CreateTestPool(context, poolName);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeletePool(context, poolName);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolName);
                     ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
                 },
                 TestUtilities.GetCallingClass(),
@@ -69,15 +92,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
-                    ScenarioTestHelpers.CreateTestPool(context, poolName1);
-                    ScenarioTestHelpers.CreateTestPool(context, poolName2);
-                    ScenarioTestHelpers.CreateTestPool(context, poolName3);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName1);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName2);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName3);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeletePool(context, poolName1);
-                    ScenarioTestHelpers.DeletePool(context, poolName2);
-                    ScenarioTestHelpers.DeletePool(context, poolName3);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolName1);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolName2);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolName3);
                     ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
                 },
                 TestUtilities.GetCallingClass(),
@@ -102,15 +125,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
-                    ScenarioTestHelpers.CreateTestPool(context, poolName1);
-                    ScenarioTestHelpers.CreateTestPool(context, poolName2);
-                    ScenarioTestHelpers.CreateTestPool(context, poolName3);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName1);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName2);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName3);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeletePool(context, poolName1);
-                    ScenarioTestHelpers.DeletePool(context, poolName2);
-                    ScenarioTestHelpers.DeletePool(context, poolName3);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolName1);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolName2);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolName3);
                     ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
                 },
                 TestUtilities.GetCallingClass(),
@@ -135,26 +158,97 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
-                    ScenarioTestHelpers.CreateTestPool(context, poolName1);
-                    ScenarioTestHelpers.CreateTestPool(context, poolName2);
-                    ScenarioTestHelpers.CreateTestPool(context, poolName3);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName1);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName2);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName3);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeletePool(context, poolName1);
-                    ScenarioTestHelpers.DeletePool(context, poolName2);
-                    ScenarioTestHelpers.DeletePool(context, poolName3);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolName1);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolName2);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolName3);
                     ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
                 },
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDeletePool()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string resourceGroupName = "test-delete-pool";
+            string accountName = "testdeletepool";
+            string location = "eastus";
+            string poolName = "testPool";
+
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-DeletePool '{0}' '{1}' '0'", accountName, poolName) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDeletePoolPipeline()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string resourceGroupName = "test-delete-pool";
+            string accountName = "testdeletepool";
+            string location = "eastus";
+            string poolName = "testPool";
+
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-DeletePool '{0}' '{1}' '1'", accountName, poolName) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
     [Cmdlet(VerbsCommon.Get, "AzureBatchPool_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
     public class GetBatchPoolScenarioTestCommand : GetBatchPoolCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.New, "AzureBatchPool_ST", DefaultParameterSetName = TargetDedicatedParameterSet)]
+    public class NewBatchPoolScenarioTestCommand : NewBatchPoolCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Remove, "AzureBatchPool_ST")]
+    public class RemoveBatchPoolScenarioTestCommand : RemoveBatchPoolCommand
     {
         public override void ExecuteCmdlet()
         {

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            if (string.IsNullOrEmpty(options.WorkItemName) && options.WorkItem == null)
+            if (string.IsNullOrWhiteSpace(options.WorkItemName) && options.WorkItem == null)
             {
                 throw new ArgumentNullException(Resources.GBJ_NoWorkItem);    
             }
@@ -80,6 +80,34 @@ namespace Microsoft.Azure.Commands.Batch.Models
                         return new PSAsyncEnumerable<PSCloudJob, ICloudJob>(jobs, mappingFunction).Take(options.MaxCount);              
                     }
                 }             
+            }
+        }
+
+        /// <summary>
+        /// Deletes the specified Job
+        /// </summary>
+        /// <param name="parameters">The parameters indicating which Job to delete</param>
+        public void DeleteJob(RemoveJobParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+            if ((string.IsNullOrWhiteSpace(parameters.WorkItemName) || string.IsNullOrWhiteSpace(parameters.JobName)) && parameters.Job == null)
+            {
+                throw new ArgumentException(Resources.RBJ_NoJobSpecified);
+            }
+
+            if (parameters.Job != null)
+            {
+                parameters.Job.omObject.Delete(parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                using (IWorkItemManager wiManager = parameters.Context.BatchOMClient.OpenWorkItemManager())
+                {
+                    wiManager.DeleteJob(parameters.WorkItemName, parameters.JobName, parameters.AdditionalBehaviors);
+                }
             }
         }
     }
