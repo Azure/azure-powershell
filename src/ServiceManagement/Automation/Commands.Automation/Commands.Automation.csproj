@@ -195,6 +195,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RequestSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Automation.dll-help.xml">
