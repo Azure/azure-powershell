@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
         {
             var storSimpleManagementClient = GetStorSimpleClient();
             var cloudServiceClient = GetCloudServiceClient();
-            helper.SetupManagementClients(storSimpleManagementClient, cloudServiceClient);
+            helper.SetupSomeOfManagementClients(storSimpleManagementClient, cloudServiceClient);
 
             //helper.SetupSomeOfManagementClients();
         }
