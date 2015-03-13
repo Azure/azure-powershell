@@ -24,69 +24,70 @@ namespace Microsoft.Azure.Commands.Batch.Models
     public partial class BatchClient
     {
         /// <summary>
-        /// Lists the Tasks matching the specified filter options
+        /// Lists the Task files matching the specified filter options
         /// </summary>
-        /// <param name="options">The options to use when querying for Tasks</param>
-        /// <returns>The Tasks matching the specified filter options</returns>
-        public IEnumerable<PSCloudTask> ListTasks(ListTaskOptions options)
+        /// <param name="options">The options to use when querying for Task files</param>
+        /// <returns>The Task files matching the specified filter options</returns>
+        public IEnumerable<PSTaskFile> ListTaskFiles(ListTaskFileOptions options)
         {
             if (options == null)
             {
                 throw new ArgumentNullException("options");
             }
 
-            if ((string.IsNullOrEmpty(options.WorkItemName) || string.IsNullOrEmpty(options.JobName)) && options.Job == null)
+            if ((string.IsNullOrWhiteSpace(options.WorkItemName) || string.IsNullOrWhiteSpace(options.JobName) || string.IsNullOrWhiteSpace(options.TaskName)) 
+                && options.Task == null)
             {
-                throw new ArgumentNullException(Resources.GBT_NoJob);
+                throw new ArgumentNullException(Resources.GBTF_NoTaskSpecified);
             }
 
-            // Get the single Task matching the specified name
-            if (!string.IsNullOrEmpty(options.TaskName))
+            // Get the single Task file matching the specified name
+            if (!string.IsNullOrEmpty(options.TaskFileName))
             {
-                WriteVerbose(string.Format(Resources.GBT_GetByName, options.TaskName, options.JobName, options.WorkItemName));
+                WriteVerbose(string.Format(Resources.GBTF_GetByName, options.TaskFileName, options.TaskName));
                 using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
                 {
-                    ICloudTask task = wiManager.GetTask(options.WorkItemName, options.JobName, options.TaskName, additionalBehaviors: options.AdditionalBehaviors);
-                    PSCloudTask psTask = new PSCloudTask(task);
-                    return new PSCloudTask[] { psTask };
+                    ITaskFile taskFile = wiManager.GetTaskFile(options.WorkItemName, options.JobName, options.TaskName, options.TaskFileName, options.AdditionalBehaviors);
+                    PSTaskFile psTaskFile = new PSTaskFile(taskFile);
+                    return new PSTaskFile[] { psTaskFile };
                 }
             }
-            // List Tasks using the specified filter
+            // List Task files using the specified filter
             else
             {
-                string jName = options.Job == null ? options.JobName : options.Job.Name;
+                string tName = options.Task == null ? options.TaskName : options.Task.Name;
                 ODATADetailLevel odata = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBT_GetByOData, jName));
+                    WriteVerbose(string.Format(Resources.GBTF_GetByOData, tName));
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBT_GetNoFilter, jName));
+                    WriteVerbose(string.Format(Resources.GBTF_NoFilter, tName));
                 }
 
-                IEnumerableAsyncExtended<ICloudTask> tasks = null;
-                if (options.Job != null)
+                IEnumerableAsyncExtended<ITaskFile> taskFiles = null;
+                if (options.Task != null)
                 {
-                    tasks = options.Job.omObject.ListTasks(odata, options.AdditionalBehaviors);
+                    taskFiles = options.Task.omObject.ListTaskFiles(options.Recursive, odata, options.AdditionalBehaviors);
                 }
                 else
                 {
                     using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
                     {
-                        tasks = wiManager.ListTasks(options.WorkItemName, options.JobName, odata, options.AdditionalBehaviors);
+                        taskFiles = wiManager.ListTaskFiles(options.WorkItemName, options.JobName, options.TaskName, options.Recursive, odata, options.AdditionalBehaviors);
                     }
                 }
-                Func<ICloudTask, PSCloudTask> mappingFunction = t => { return new PSCloudTask(t); };
+                Func<ITaskFile, PSTaskFile> mappingFunction = f => { return new PSTaskFile(f); };
                 if (options.MaxCount <= 0)
                 {
-                    return new PSAsyncEnumerable<PSCloudTask, ICloudTask>(tasks, mappingFunction);
+                    return new PSAsyncEnumerable<PSTaskFile, ITaskFile>(taskFiles, mappingFunction);
                 }
                 else
                 {
                     WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount));
-                    return new PSAsyncEnumerable<PSCloudTask, ICloudTask>(tasks, mappingFunction).Take(options.MaxCount);
+                    return new PSAsyncEnumerable<PSTaskFile, ITaskFile>(taskFiles, mappingFunction).Take(options.MaxCount);   
                 }
             }
         }

@@ -154,12 +154,14 @@
     <Compile Include="Accounts\RemoveBatchAccountCommandTests.cs" />
     <Compile Include="Accounts\SetBatchAccountCommandTests.cs" />
     <Compile Include="BatchTestHelpers.cs" />
+    <Compile Include="Files\GetBatchTaskFileCommandTests.cs" />
     <Compile Include="Jobs\GetBatchJobCommandTests.cs" />
     <Compile Include="Models\BatchAccountContextTest.cs" />
     <Compile Include="Pools\GetBatchPoolCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\BatchAccountTests.cs" />
     <Compile Include="ScenarioTests\BatchController.cs" />
+    <Compile Include="ScenarioTests\FileTests.cs" />
     <Compile Include="ScenarioTests\JobTests.cs" />
     <Compile Include="ScenarioTests\PoolTests.cs" />
     <Compile Include="ScenarioTests\ScenarioTestHelpers.cs" />
@@ -177,6 +179,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\FileTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\JobTests.ps1">

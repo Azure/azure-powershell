@@ -49,25 +49,29 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // List Pools using the specified filter
             else
             {
-                if (options.MaxCount <= 0)
-                {
-                    options.MaxCount = Int32.MaxValue;
-                }
                 ODATADetailLevel odata = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBP_GetByOData, options.MaxCount));
+                    WriteVerbose(Resources.GBP_GetByOData);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBP_NoFilter, options.MaxCount));
+                    WriteVerbose(Resources.GBP_NoFilter);
                 }
                 using (IPoolManager poolManager = options.Context.BatchOMClient.OpenPoolManager())
                 {
                     IEnumerableAsyncExtended<ICloudPool> pools = poolManager.ListPools(odata, options.AdditionalBehaviors);
                     Func<ICloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
-                    return new PSAsyncEnumerable<PSCloudPool, ICloudPool>(pools, mappingFunction).Take(options.MaxCount);
+                    if (options.MaxCount <= 0)
+                    {
+                        return new PSAsyncEnumerable<PSCloudPool, ICloudPool>(pools, mappingFunction);
+                    }
+                    else
+                    {
+                        WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount));
+                        return new PSAsyncEnumerable<PSCloudPool, ICloudPool>(pools, mappingFunction).Take(options.MaxCount);   
+                    }                  
                 }
             }
         }

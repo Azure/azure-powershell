@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting Jobs matching the specified OData filter from WorkItem &quot;{0}&quot;. A max count of {1} will be returned..
+        ///   Looks up a localized string similar to Getting Jobs matching the specified OData filter from WorkItem &quot;{0}&quot;. .
         /// </summary>
         internal static string GBJ_GetByOData {
             get {
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting all Jobs from WorkItem &quot;{0}&quot;. A max count of {1} will be returned..
+        ///   Looks up a localized string similar to Getting all Jobs from WorkItem &quot;{0}&quot;. .
         /// </summary>
         internal static string GBJ_GetNoFilter {
             get {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting Pools matching the specified OData filter. A max count of {0} will be returned..
+        ///   Looks up a localized string similar to Getting Pools matching the specified OData filter. .
         /// </summary>
         internal static string GBP_GetByOData {
             get {
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting all Pools associated with the Batch account. A max count of {0} will be returned..
+        ///   Looks up a localized string similar to Getting all Pools associated with the Batch account. .
         /// </summary>
         internal static string GBP_NoFilter {
             get {
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting Tasks matching the specified OData filter from Job &quot;{0}&quot;. A max count of {1} will be returned..
+        ///   Looks up a localized string similar to Getting Tasks matching the specified OData filter from Job &quot;{0}&quot;..
         /// </summary>
         internal static string GBT_GetByOData {
             get {
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting all Tasks from Job &quot;{0}&quot;. A max count of {1} will be returned..
+        ///   Looks up a localized string similar to Getting all Tasks from Job &quot;{0}&quot;..
         /// </summary>
         internal static string GBT_GetNoFilter {
             get {
@@ -205,11 +205,47 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Job was specified. Supply a Job object or a WorkItem namd and Job name to query for Tasks..
+        ///   Looks up a localized string similar to No Job was specified. Supply a Job object or a WorkItem name and Job name to query for Tasks..
         /// </summary>
         internal static string GBT_NoJob {
             get {
                 return ResourceManager.GetString("GBT_NoJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting Task file &quot;{0}&quot; from Task &quot;{1}&quot;.
+        /// </summary>
+        internal static string GBTF_GetByName {
+            get {
+                return ResourceManager.GetString("GBTF_GetByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting Task files matching the specified OData filter from Task &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBTF_GetByOData {
+            get {
+                return ResourceManager.GetString("GBTF_GetByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all Task files under Task &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBTF_NoFilter {
+            get {
+                return ResourceManager.GetString("GBTF_NoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Task was specified. Supply a Task object or a WorkItem name, Job name, and Task name..
+        /// </summary>
+        internal static string GBTF_NoTaskSpecified {
+            get {
+                return ResourceManager.GetString("GBTF_NoTaskSpecified", resourceCulture);
             }
         }
         
@@ -223,7 +259,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting WorkItems matching the specified OData filter. A max count of {0} will be returned..
+        ///   Looks up a localized string similar to Getting WorkItems matching the specified OData filter. .
         /// </summary>
         internal static string GBWI_GetByOData {
             get {
@@ -232,7 +268,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting all WorkItems associated with the Batch account. A max count of {0} will be returned..
+        ///   Looks up a localized string similar to Getting all WorkItems associated with the Batch account. .
         /// </summary>
         internal static string GBWI_NoFilter {
             get {
@@ -282,6 +318,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string KeyNotPresent {
             get {
                 return ResourceManager.GetString("KeyNotPresent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A max count of {0} will be returned..
+        /// </summary>
+        internal static string MaxCount {
+            get {
+                return ResourceManager.GetString("MaxCount", resourceCulture);
             }
         }
         
