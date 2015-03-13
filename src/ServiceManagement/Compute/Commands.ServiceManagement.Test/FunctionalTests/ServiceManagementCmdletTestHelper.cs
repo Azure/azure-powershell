@@ -1330,9 +1330,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return result;
         }
 
-        public Collection<SM.PersistentVMRoleListContext> GetAzureVM(string vmName = null)
+        public Collection<SM.PersistentVMRoleListContext> GetAzureVM(string serviceName = null)
         {
-            return RunPSCmdletAndReturnAll<SM.PersistentVMRoleListContext>(new GetAzureVMCmdletInfo(vmName, null));
+            return RunPSCmdletAndReturnAll<SM.PersistentVMRoleListContext>(new GetAzureVMCmdletInfo(null, serviceName));
         }
 
         public SM.PersistentVMRoleContext GetAzureVM(string vmName, string serviceName)
