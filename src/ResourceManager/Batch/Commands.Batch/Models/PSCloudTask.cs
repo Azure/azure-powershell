@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.ICloudTask omObject;
         
-        private PSAffinitiyInformation affinityInformation;
+        private PSAffinityInformation affinityInformation;
         
         private IList<PSEnvironmentSetting> environmentSettings;
         
@@ -62,14 +62,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public PSAffinitiyInformation AffinityInformation
+        public PSAffinityInformation AffinityInformation
         {
             get
             {
                 if (((this.affinityInformation == null) 
                             && (this.omObject.AffinityInformation != null)))
                 {
-                    this.affinityInformation = new PSAffinitiyInformation(this.omObject.AffinityInformation);
+                    this.affinityInformation = new PSAffinityInformation(this.omObject.AffinityInformation);
                 }
                 return this.affinityInformation;
             }

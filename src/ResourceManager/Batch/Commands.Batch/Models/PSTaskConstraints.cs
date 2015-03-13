@@ -34,6 +34,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.TaskConstraints omObject;
         
+        public PSTaskConstraints(System.Nullable<System.TimeSpan> maxWallClockTime, System.Nullable<System.TimeSpan> retentionTime, System.Nullable<int> maxTaskRetryCount)
+        {
+            this.omObject = new Microsoft.Azure.Batch.TaskConstraints(maxWallClockTime, retentionTime, maxTaskRetryCount);
+        }
+        
         internal PSTaskConstraints(Microsoft.Azure.Batch.TaskConstraints omObject)
         {
             if ((omObject == null))
