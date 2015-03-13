@@ -19,9 +19,27 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
     using Microsoft.Azure.Management.RemoteApp.Models;
     using System;
     using System.Collections.Generic;
+    using System.Management.Automation;
     using Xunit;
 
     // Get-AzureRemoteAppResetVpnSharedKey, Get-AzureRemoteAppVpnDeviceConfigScript, Reset-AzureRemoteAppVpnSharedKey
+
+    public class NewAzureRemoteAppTemplateImageTest : NewAzureRemoteAppTemplateImage
+    {
+        /// <summary>
+        /// Sets the parameter set name to return
+        /// </summary>
+        public string ParameterSetOverride { get; set; }
+
+        /// <summary>
+        /// Determines the parameter set name based on the <see cref="ParameterSetOverride"/> property
+        /// </summary>
+        public override string DetermineParameterSetName()
+        {
+            return this.ParameterSetOverride;
+        }
+    }
+
     public class RemoteAppTemplateTest : RemoteAppClientTest
     {
         private string templateId = "1111";
@@ -104,49 +122,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             );
 
             Log("The test for Get-AzureRemoteAppTemplateImage with {0} templates completed successfully", countOfExpectedTemplates);
-        }
-
-        [Fact]
-        public void AddTemplate()
-        {
-            int countOfExpectedTemplates = 0;
-            NewAzureRemoteAppTemplateImage mockCmdlet = SetUpTestCommon<NewAzureRemoteAppTemplateImage>();
-
-
-            // Required parameters for this test
-            mockCmdlet.ImageName = templateName;
-            mockCmdlet.Location = region;
-            mockCmdlet.Path = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;  // Need to specify a valid file otherwise the validation for this parameter will fail
-
-            // Setup the environment for testing this cmdlet
-            countOfExpectedTemplates = MockObject.SetUpDefaultRemoteAppTemplateCreate(remoteAppManagementClientMock, mockCmdlet.ImageName, templateId, mockCmdlet.Location, mockCmdlet.Path);
-            mockCmdlet.ResetPipelines();
-
-            mockCmdlet.ExecuteCmdlet();
-            if (mockCmdlet.runTime().ErrorStream.Count != 0)
-            {
-                Assert.True(false,
-                    String.Format("New-AzureRemoteAppTemplate returned the following error {0}",
-                        mockCmdlet.runTime().ErrorStream[0].Exception.Message
-                    )
-                );
-            }
-
-            List<TemplateImageResult> imageResults = MockObject.ConvertList<TemplateImageResult>(mockCmdlet.runTime().OutputPipeline);
-            Assert.NotNull(imageResults);
-
-            Assert.True(imageResults.Count == countOfExpectedTemplates,
-                String.Format("The expected number of templates returned {0} does not match the actual {1}",
-                    countOfExpectedTemplates,
-                    imageResults.Count
-                 )
-            );
-
-            Assert.True(MockObject.HasExpectedResults<TemplateImageResult>(imageResults, MockObject.ContainsExpectedResult),
-                 "The actual result does not match the expected"
-            );
-
-            Log("The test for New-AzureRemoteAppTemplate completed successfully");
         }
 
         [Fact]

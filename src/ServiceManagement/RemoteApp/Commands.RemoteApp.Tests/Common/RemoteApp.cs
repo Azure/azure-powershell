@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
                 StartMenuApplication mockApp = new StartMenuApplication()
                 {
                     Name = app.Name,
-                    StartMenuAppId = null, // Yadav has a fix for this it should be the friendly name AppAlias
+                    StartMenuAppId = app.StartMenuAppId,
                     VirtualPath = app.VirtualPath,
                     CommandLineArguments = app.CommandLineArguments,
                     IconUri = app.IconUri
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
             return mockStartMenuList.Count;
         }
 
-        public static int SetUpDefaultRemoteAppStartMenuByName(Mock<IRemoteAppManagementClient> clientMock, string collectionName, string alias)
+        public static int SetUpDefaultRemoteAppStartMenuByName(Mock<IRemoteAppManagementClient> clientMock, string collectionName, string programName)
         {
             ISetup<IRemoteAppManagementClient, Task<GetStartMenuApplicationResult>> setup = null;
 
@@ -175,11 +175,11 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
 
             response.Result = new StartMenuApplication()
             {
-                    Name = "Mohoro RemoteApp1",
-                    StartMenuAppId = null, // Yadav has a fix for this it should be the friendly name AppAlias
-                    VirtualPath = @"C:\Application\RemoteApp3.exe",
+                    Name = programName,
+                    StartMenuAppId = "123456",
+                    VirtualPath = @"C:\Application\" + programName,
                     CommandLineArguments = "Arg1, Arg2, Arg3",
-                    IconUri =  @"C:\Application\RemoteApp3.exe",
+                    IconUri =  @"C:\Application\" + programName,
             };
 
             mockStartMenuList = new List<StartMenuApplication>()
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
                 }
             };
 
-            setup = clientMock.Setup(c => c.Publishing.StartMenuApplicationAsync(collectionName, alias, It.IsAny<CancellationToken>()));
+            setup = clientMock.Setup(c => c.Publishing.StartMenuApplicationAsync(collectionName, programName, It.IsAny<CancellationToken>()));
             setup.Returns(Task.Factory.StartNew(() => response));
 
             return mockStartMenuList.Count;

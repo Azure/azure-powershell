@@ -285,7 +285,6 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
         public void GetRegionList()
         {
             List<Region> regionList = null;
-            List<string> regions = null;
             GetAzureRemoteAppLocation mockCmdlet = SetUpTestCommon<GetAzureRemoteAppLocation>();
 
             // Setup the environment for testing this cmdlet
@@ -307,7 +306,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
             regionList = MockObject.ConvertList<Region>(mockCmdlet.runTime().OutputPipeline);
             Assert.NotNull(regionList);
 
-            Assert.True(MockObject.HasExpectedResults<string>(regions, MockObject.ContainsExpectedRegion), // This is expecting a List<string> instead of LocalModels.RegionList
+            Assert.True(MockObject.HasExpectedResults<Region>(regionList, MockObject.ContainsExpectedRegion),
                 "The actual result does not match the expected."
             );
 

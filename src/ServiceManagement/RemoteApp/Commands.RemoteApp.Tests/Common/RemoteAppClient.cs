@@ -17,10 +17,14 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
     using Microsoft.Azure.Management.RemoteApp;
     using Microsoft.Azure.Management.RemoteApp.Cmdlets;
     using Microsoft.WindowsAzure;
-    using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+    using Microsoft.Azure.Commands.Test.RemoteApp.Common;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using Moq;
+    using Moq.Language.Flow;
     using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+
 
     public class RemoteAppClientCredentials : SubscriptionCloudCredentials
     {
@@ -59,23 +63,38 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 
         public MockCommandRuntime mockCommandRuntime { get; private set; }
 
-        protected Mock<IRemoteAppManagementClient> remoteAppManagementClientMock { get; private set; }
+        protected Mock<IRemoteAppManagementClient> remoteAppManagementClientMock { get; set; }
+
+        protected Mock<Microsoft.WindowsAzure.Management.ManagementClient> mgmtClient {get; set; }
 
         protected RemoteAppClientTest()
         {
             mockCommandRuntime = new MockCommandRuntime();
             remoteAppManagementClientMock = new Mock<IRemoteAppManagementClient>();
+            remoteAppManagementClientMock.SetupProperty(c => c.RdfeNamespace, "remoteapp");
         }
 
         protected T SetUpTestCommon<T>() where T : RdsCmdlet, new()
         {
             T RemoteAppCmdlet = null;
+            ISetup<Microsoft.WindowsAzure.Management.ManagementClient, Task<AzureOperationResponse>> setup = null;
+
+            AzureOperationResponse response = new AzureOperationResponse()
+            {
+                RequestId = "1",
+                StatusCode = System.Net.HttpStatusCode.OK
+            };
+            mgmtClient = new Mock<WindowsAzure.Management.ManagementClient>();
+            setup = mgmtClient.Setup(c => c.Subscriptions.RegisterResourceAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()));
+            setup.Returns(Task.Factory.StartNew(() => response));
 
             RemoteAppCmdlet = new T()
             {
                 CommandRuntime = mockCommandRuntime,
-                Client = remoteAppManagementClientMock.Object
+                Client = remoteAppManagementClientMock.Object,
+                MgmtClient = mgmtClient.Object
             };
+
             return RemoteAppCmdlet;
         }
     }
