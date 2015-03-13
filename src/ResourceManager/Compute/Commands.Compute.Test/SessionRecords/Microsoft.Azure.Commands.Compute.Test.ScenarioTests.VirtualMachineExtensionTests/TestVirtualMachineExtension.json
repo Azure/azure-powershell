@@ -148,8 +148,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/84fffc2f-5d77-449a-bc7f-58c363f2a6b9/resourceGroups/pstestrg231/resources?&api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODRmZmZjMmYtNWQ3Ny00NDlhLWJjN2YtNThjMzYzZjJhNmI5L3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjMxL3Jlc291cmNlcz8mYXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/84fffc2f-5d77-449a-bc7f-58c363f2a6b9/resourceGroups/pstestrg231/resources?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODRmZmZjMmYtNWQ3Ny00NDlhLWJjN2YtNThjMzYzZjJhNmI5L3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjMxL3Jlc291cmNlcz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
