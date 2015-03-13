@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 using System.Net;
 using System.Net.Sockets;
+using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
@@ -201,7 +202,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             deviceDetails.WebProxy = null;
         }
 
-        public void UpdateVirtualDeviceDetails(DeviceDetails details, string newName, TimeZoneInfo timeZone, string sek)
+        public void UpdateVirtualDeviceDetails(DeviceDetails details, string newName, TimeZoneInfo timeZone, string sek, string cik)
         {
             if (newName != null)
             {
@@ -215,6 +216,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             var encryptedSecretKey = this.EncryptWithDevicePublicKey(details.DeviceProperties.DeviceId, sek);
 
             details.VirtualApplianceProperties.EncodedServiceEncryptionKey = encryptedSecretKey;
+
+            // Also set the CIK before making the request - service needs it.
+            var encryptedCik = this.EncryptWithDevicePublicKey(details.DeviceProperties.DeviceId, cik);
+
+            details.VirtualApplianceProperties.EncodedChannelIntegrityKey = encryptedCik;
+
+            details.VirtualApplianceProperties.IsServiceEncryptionKeySet = true;
 
             // mark everything that we dont intend to modify as null - indicating
             // to the service that there has been no change

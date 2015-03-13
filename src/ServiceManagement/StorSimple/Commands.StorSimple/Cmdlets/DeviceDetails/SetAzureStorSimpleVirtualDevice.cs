@@ -76,8 +76,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 // Get the current device details. ( If we found id from the name, this call is bound to succeed)
                 var deviceDetails = StorSimpleClient.GetDeviceDetails(deviceId);
 
+                // The cik also needs to be sent to the service.
+                string cik = EncryptionCmdLetHelper.RetrieveCIK(this, StorSimpleContext.ResourceId);
+
                 // Update device details.
-                StorSimpleClient.UpdateVirtualDeviceDetails(deviceDetails, NewName, TimeZone, SecretKey);
+                StorSimpleClient.UpdateVirtualDeviceDetails(deviceDetails, NewName, TimeZone, SecretKey, cik);
                 
                 // Make request with updated data
                 WriteVerbose(string.Format(Resources.BeginningDeviceConfiguration, deviceDetails.DeviceProperties.FriendlyName));
