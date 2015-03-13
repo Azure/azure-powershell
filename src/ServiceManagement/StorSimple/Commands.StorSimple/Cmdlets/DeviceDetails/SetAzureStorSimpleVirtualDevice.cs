@@ -38,25 +38,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
         [ValidateNotNullOrEmpty] 
         public string DeviceName { get; set; }
-
-        /// <summary>
-        /// New friendly name for the device.
-        /// </summary>
-        [Parameter(Mandatory=false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.NewDeviceName)]
-        [ValidateNotNullOrEmpty]
-        public string NewName { get; set; }
         
         /// <summary>
         /// TimeZone for the device.
         /// </summary>
-        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone, ValueFromPipeline=true)]
+        [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone, ValueFromPipeline=true)]
         [ValidateNotNullOrEmpty] 
         public TimeZoneInfo TimeZone { get; set; }
 
         /// <summary>
         /// Service Encryption Key for the resource.
         /// </summary>
-        [Parameter(Mandatory=true, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.SEK)]
+        [Parameter(Mandatory=true, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.SEK)]
         [ValidateNotNullOrEmpty]
         public string SecretKey { get; set; }
 
@@ -80,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 string cik = EncryptionCmdLetHelper.RetrieveCIK(this, StorSimpleContext.ResourceId);
 
                 // Update device details.
-                StorSimpleClient.UpdateVirtualDeviceDetails(deviceDetails, NewName, TimeZone, SecretKey, cik);
+                StorSimpleClient.UpdateVirtualDeviceDetails(deviceDetails, TimeZone, SecretKey, cik);
                 
                 // Make request with updated data
                 WriteVerbose(string.Format(Resources.BeginningDeviceConfiguration, deviceDetails.DeviceProperties.FriendlyName));

@@ -202,12 +202,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             deviceDetails.WebProxy = null;
         }
 
-        public void UpdateVirtualDeviceDetails(DeviceDetails details, string newName, TimeZoneInfo timeZone, string sek, string cik)
+        public void UpdateVirtualDeviceDetails(DeviceDetails details, TimeZoneInfo timeZone, string sek, string cik)
         {
-            if (newName != null)
-            {
-                details.DeviceProperties.FriendlyName = newName;
-            }
             if (timeZone != null)
             {
                 details.TimeServer.TimeZone = timeZone.StandardName;
@@ -226,6 +222,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
             // mark everything that we dont intend to modify as null - indicating
             // to the service that there has been no change
+            details.DeviceProperties = null;
             details.AlertNotification = null;
             details.Chap = null;
             details.DnsServer = null;
