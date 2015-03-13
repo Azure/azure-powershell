@@ -52,18 +52,16 @@
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.2\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.13-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Common.Authentication">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.15-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.2\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Gallery, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Gallery.2.6.0-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Gallery">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Gallery.2.6.2-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Graph.RBAC">
       <SpecificVersion>False</SpecificVersion>
@@ -74,8 +72,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.13.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.14.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <SpecificVersion>False</SpecificVersion>
@@ -135,6 +132,8 @@
     <Compile Include="ActiveDirectory\NewAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ProviderFeatures\AzureProviderFeatureCmdletsBase.cs" />
+    <Compile Include="ProviderFeatures\GetAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryBaseCmdlet.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryClientExtensions.cs" />
     <Compile Include="Models.ActiveDirectory\ADObjectFilterOptions.cs" />
@@ -157,6 +156,11 @@
     <Compile Include="Models.Authorization\PSRoleAssignment.cs" />
     <Compile Include="Models.Authorization\PSRoleDefinition.cs" />
     <Compile Include="Models.Authorization\PSPermission.cs" />
+    <Compile Include="Models.ProviderFeatures\ProviderFeatureClient.cs" />
+    <Compile Include="Models.ProviderFeatures\FeatureResponseExtentions.cs" />
+    <Compile Include="Models.ProviderFeatures\PSProviderFeature.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceProvider.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceProviderResourceType.cs" />
     <Compile Include="Models.ResourceGroups\TemplateValidationInfo.cs" />
     <Compile Include="Models.ResourceGroups\PSGalleryItem.cs" />
     <Compile Include="Models.ResourceGroups\PSResourceManagerError.cs" />
@@ -173,16 +177,21 @@
     <Compile Include="Models.ResourceGroups\PSDeploymentEventData.cs" />
     <Compile Include="Models.ResourceGroups\ResourceClient.Events.cs" />
     <Compile Include="Models.ResourceGroups\FilterResourceGroupDeploymentOptions.cs" />
-    <Compile Include="Models.ResourceGroups\PSResourceProviderType.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceProviderLocationInfo.cs" />
     <Compile Include="Models.ResourceGroups\BasePSResourceParameters.cs" />
     <Compile Include="Models.ResourceGroups\UpdatePSResourceGroupParameters.cs" />
     <Compile Include="Models.ResourceGroups\UpdatePSResourceParameters.cs" />
     <Compile Include="Models.ResourceGroups\TemplateFileResource.cs" />
     <Compile Include="Models.ResourceGroups\ValidatePSResourceGroupDeploymentParameters.cs" />
     <Compile Include="Models.Authorization\AuthorizationClient.cs" />
+    <Compile Include="ProviderFeatures\RegisterAzureProviderFeatureCmdlet.cs" />
+    <Compile Include="Providers\GetAzureProviderCmdlet.cs" />
+    <Compile Include="Providers\RegisterAzureProviderCmdlet.cs" />
+    <Compile Include="Providers\UnregisterAzureProviderCmdlet.cs" />
     <Compile Include="ResourceGroups\GetAzureResourceGroupLogCommand.cs" />
     <Compile Include="ResourceGroups\GetAzureLocationCommand.cs" />
     <Compile Include="ResourceGroups\SetAzureResourceGroupCommand.cs" />
+    <Compile Include="Resources\MoveAzureResourceCommand.cs" />
     <Compile Include="Resources\RemoveAzureResourceCommand.cs" />
     <Compile Include="RoleAssignments\RemoveAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />
@@ -231,6 +240,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Profile\Commands.Profile.csproj">
       <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
       <Name>Commands.Profile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceManagement\RemoteApp\Commands.RemoteApp\Commands.RemoteApp.csproj">
+      <Project>{492d2af2-950b-4f2e-8079-8794305313fd}</Project>
+      <Name>Commands.RemoteApp</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\ServiceManagement\StorSimple\Commands.StorSimple\Commands.StorSimple.csproj">
       <Project>{11524d98-6c40-4091-a8e1-86463fee607c}</Project>

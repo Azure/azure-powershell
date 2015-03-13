@@ -12,72 +12,100 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using System.IO;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.IO;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
+    using Microsoft.Azure.Commands.Resources.Models.Authorization;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+    /// <summary> 
+    /// Base class for all resources cmdlets
+    /// </summary>
     public abstract class ResourcesBaseCmdlet : AzurePSCmdlet
     {
+        /// <summary>
+        /// Field that holds the resource client instance
+        /// </summary>
         private ResourcesClient resourcesClient;
 
+        /// <summary>
+        /// Field that holds the gallery templates client instance
+        /// </summary>
         private GalleryTemplatesClient galleryTemplatesClient;
 
+        /// <summary>
+        /// Field that holds the policies client instance
+        /// </summary>
         private AuthorizationClient policiesClient;
 
+        /// <summary>
+        /// Gets or sets the resources client
+        /// </summary>
         public ResourcesClient ResourcesClient
         {
             get
             {
-                if (resourcesClient == null)
+                if (this.resourcesClient == null)
                 {
-                    resourcesClient = new ResourcesClient(Profile.Context)
+                    this.resourcesClient = new ResourcesClient(this.Profile)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
                         WarningLogger = WriteWarningWithTimestamp
                     };
                 }
-                return resourcesClient;
+                return this.resourcesClient;
             }
 
-            set { resourcesClient = value; }
+            set { this.resourcesClient = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the gallery templates client
+        /// </summary>
         public GalleryTemplatesClient GalleryTemplatesClient
         {
             get
             {
-                if (galleryTemplatesClient == null)
+                if (this.galleryTemplatesClient == null)
                 {
-                    if(Profile == null)
-                    {
-                        Profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-                    }
-
-                    galleryTemplatesClient = new GalleryTemplatesClient(Profile.Context);
+                    // since this accessor can be called before BeginProcessing, use GetCurrentContext if no 
+                    // profile is passed in
+                    this.galleryTemplatesClient = new GalleryTemplatesClient(this.GetCurrentContext());
                 }
-                return galleryTemplatesClient;
+
+                return this.galleryTemplatesClient;
             }
 
-            set { galleryTemplatesClient = value; }
+            set { this.galleryTemplatesClient = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the policies client
+        /// </summary>
         public AuthorizationClient PoliciesClient
         {
             get
             {
-                if (policiesClient == null)
+                if (this.policiesClient == null)
                 {
-                    policiesClient = new AuthorizationClient(Profile.Context);
+                    this.policiesClient = new AuthorizationClient(this.Profile.Context);
                 }
-                return policiesClient;
+                return this.policiesClient;
             }
 
-            set { policiesClient = value; }
+            set { this.policiesClient = value; }
+        }
+
+        /// <summary>
+        /// Determines the parameter set name.
+        /// </summary>
+        public virtual string DetermineParameterSetName()
+        {
+            return this.ParameterSetName;
         }
     }
 }

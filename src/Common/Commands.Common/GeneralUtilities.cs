@@ -419,5 +419,16 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             while (amount-- != 0) result.Append(separator);
             return result.ToString();
         }
+
+        /// <summary>
+        /// Ensure the default profile directory exists
+        /// </summary>
+        public static void EnsureDefaultProfileDirectoryExists()
+        {
+            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            {
+                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+            }
+        }
     }
 }

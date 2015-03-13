@@ -41,9 +41,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public EnvironmentSetupHelper()
         {
-            AzureSession.DataStore = new MockDataStore();
-            AzurePSCmdlet.CurrentProfile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            ProfileClient = new ProfileClient(AzurePSCmdlet.CurrentProfile);
+            var datastore = new MockDataStore();
+            AzureSession.DataStore = datastore;
+            var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            AzurePSCmdlet.CurrentProfile = profile;
+            AzureSession.DataStore = datastore;
+            ProfileClient = new ProfileClient(profile);
 
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
@@ -104,12 +107,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             if (csmEnvironment != null)
             {
-                environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = csmEnvironment.BaseUri.AbsoluteUri;                
+                environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = csmEnvironment.BaseUri.AbsoluteUri;
             }
 
             if (rdfeEnvironment != null)
             {
-                environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = rdfeEnvironment.BaseUri.AbsoluteUri;                
+                environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = rdfeEnvironment.BaseUri.AbsoluteUri;
             }
 
             if (!ProfileClient.Profile.Environments.ContainsKey(testEnvironmentName))
