@@ -261,12 +261,13 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
             return isIdentical;
         }
 
-        public static bool ContainsExpectedRegion(List<string> expectedResult, string actual)
+        public static bool ContainsExpectedRegion(List<Region> expectedResult, Region actual)
         {
             bool isIdentical = false;
-            foreach (string expected in expectedResult)
+            foreach (Region expected in expectedResult)
             {
-                isIdentical = expected == actual;
+                isIdentical = expected.DisplayName == actual.DisplayName;
+                isIdentical &= expected.Name == actual.Name;
                 if (isIdentical)
                 {
                     break;
