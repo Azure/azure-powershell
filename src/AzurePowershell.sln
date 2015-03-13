@@ -175,6 +175,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Websites.Test", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RemoteApp", "ServiceManagement\RemoteApp\Commands.RemoteApp\Commands.RemoteApp.csproj", "{492D2AF2-950B-4F2E-8079-8794305313FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RemoteApp", "ServiceManagement\RemoteApp\Commands.RemoteApp\Commands.RemoteApp.csproj", "{492D2AF2-950B-4F2E-8079-8794305313FD}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.NetworkResourceProvider", "ResourceManager\Network\Commands.NetworkResourceProvider\Commands.NetworkResourceProvider.csproj", "{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.NetworkResourceProvider.Test", "ResourceManager\Network\Commands.NetworkResourceProvider.Test\Commands.NetworkResourceProvider.Test.csproj", "{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}"
