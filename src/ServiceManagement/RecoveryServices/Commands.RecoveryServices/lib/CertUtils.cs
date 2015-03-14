@@ -141,6 +141,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
+        /// Method to get the Certificate's base 64 encoded string
+        /// </summary>
+        /// <param name="certFileName">Certificate File Name</param>
+        /// <returns>Base 64 encoded string of the certificate</returns>
+        public static string GetCertInBase64EncodedForm(string certFileName)
+        {
+            FileStream f = new FileStream(certFileName, FileMode.Open, FileAccess.Read);
+            
+            // If the file size is more than 1MB, fail the call - this is just to avoid Dos Attacks
+            int size = (int)f.Length;
+            if (size > 1048576)
+            {
+                throw new Exception(string.Format("The file {0} size exceeds 1MB. Please provide a file whose size is utmost 1 MB", certFileName));
+            }
+
+            byte[] data = new byte[size];
+            size = f.Read(data, 0, size);
+            f.Close();
+
+            string certInBase64EncodedForm = Convert.ToBase64String(data);
+            return certInBase64EncodedForm;
+        }
+
+        /// <summary>
         /// Generates friendly name
         /// </summary>
         /// <param name="subscriptionId">subscription id</param>

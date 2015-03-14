@@ -155,6 +155,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(Mandatory = false)]
         public SwitchParameter Force { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating - should the VM's data in azure storage be encrypted?
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+        [DefaultValue(false)]
+        public SwitchParameter EncryptStoredData { get; set; }
         #endregion Parameters
 
         /// <summary>
@@ -261,7 +267,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                     RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
                     //// Currently Data Encryption is not supported.
-                    EncryptStoredData = false,
+                    EncryptStoredData = this.EncryptStoredData,
                     ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
                     RecoveryPoints = this.RecoveryPoints,
                     ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
