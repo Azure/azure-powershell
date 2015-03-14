@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
             CollectionCreationDetails collectionDetails = new CollectionCreationDetails()
             {
                 Name = collectionName,
-                BillingPlanName = billingPlan,
+                PlanName = billingPlan,
                 TemplateImageName = imageName,
                 Mode = CollectionMode.Apps,
                 Region = region,
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
                 {
                     Name = collectionDetails.Name,
                     Region = collectionDetails.Region,
-                    BillingPlanName = collectionDetails.BillingPlanName,
+                    PlanName = collectionDetails.PlanName,
                     TemplateImageName = collectionDetails.TemplateImageName,
                     Mode = collectionDetails.Mode,
                     Description = collectionDetails.Description,
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
             CollectionCreationDetails collectionDetails = new CollectionCreationDetails()
             {
                 Name = collectionName,
-                BillingPlanName = billingPlan,
+                PlanName = billingPlan,
                 TemplateImageName = imageName,
                 Mode = CollectionMode.Apps,
                 Description = "unit test"
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp.Common
                 new Collection()
                 {
                     Name = collectionDetails.Name,
-                    BillingPlanName = collectionDetails.BillingPlanName,
+                    PlanName = collectionDetails.PlanName,
                     TemplateImageName = collectionDetails.TemplateImageName,
                     Mode = collectionDetails.Mode,
                     Description = collectionDetails.Description,
