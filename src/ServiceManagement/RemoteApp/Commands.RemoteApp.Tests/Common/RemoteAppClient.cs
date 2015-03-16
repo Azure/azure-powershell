@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Commands.Test.RemoteApp
 {
     using Microsoft.Azure.Management.RemoteApp;
     using Microsoft.Azure.Management.RemoteApp.Cmdlets;
-    using Microsoft.WindowsAzure;
-    using Microsoft.Azure.Commands.Test.RemoteApp.Common;
+    using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using Moq;
     using Moq.Language.Flow;
