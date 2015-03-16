@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
+        public FeatureClient FeatureClient { get; private set; }
+
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
@@ -136,12 +138,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphClient = GetGraphClient();
+            this.FeatureClient = this.GetFeatureClient();
 
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 GalleryClient,
                 AuthorizationManagementClient,
-                GraphClient);
+                GraphClient,
+                this.FeatureClient);
         }
 
         private GraphRbacManagementClient GetGraphClient()
@@ -175,6 +179,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
             return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
+        }
+
+        private FeatureClient GetFeatureClient()
+        {
+            return TestBase.GetServiceClient<FeatureClient>(this.csmTestFactory);
         }
 
         private ResourceManagementClient GetResourceManagementClient()

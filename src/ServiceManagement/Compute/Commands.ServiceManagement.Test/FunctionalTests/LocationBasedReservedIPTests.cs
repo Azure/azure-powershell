@@ -68,16 +68,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             try
             {
-                string reservedIpName1 = "ResrvdIP1";
-                string reservedIpName2 = "ResrvdIP2";
+                string reservedIpName1 = Utilities.GetUniqueShortName("ResrvdIP1"); ;
+                string reservedIpName2 = Utilities.GetUniqueShortName("ResrvdIP2"); ;
                 string reservedIpLabel1 = Utilities.GetUniqueShortName("ResrvdIPLbl", 5);
                 string reservedIpLabel2 = Utilities.GetUniqueShortName("ResrvdIPLbl", 5);
                 string dnsName = Utilities.GetUniqueShortName("Dns");
-                //string vmName = Utilities.GetUniqueShortName(vmNamePrefix);
                 string deploymentName = Utilities.GetUniqueShortName("Depl");
                 var input1 = new ReservedIPContext()
                 {
-                    //Address = string.Empty,
                     DeploymentName = string.Empty,
                     Label = reservedIpLabel1,
                     InUse = false,
@@ -88,7 +86,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 var input2 = new ReservedIPContext()
                 {
-                    //Address = string.Empty,
                     DeploymentName = string.Empty,
                     Label = reservedIpLabel2,
                     InUse = false,
@@ -164,7 +161,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 string deploymentName = Utilities.GetUniqueShortName("Depl");
                 var input = new ReservedIPContext()
                 {
-                    //Address = string.Empty,
                     DeploymentName = string.Empty,
                     Label = reservedIpLabel,
                     InUse = false,
@@ -212,7 +208,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 var input = new ReservedIPContext()
                 {
-                    //Address = string.Empty,
                     DeploymentName = string.Empty,
                     Label = reservedIpLabel,
                     InUse = false,
@@ -279,7 +274,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 string vmName = Utilities.GetUniqueShortName(vmNamePrefix);
                 var input = new ReservedIPContext()
                 {
-                    //Address = string.Empty,
                     DeploymentName = string.Empty,
                     Label = reservedIpLabel,
                     InUse = false,
@@ -330,7 +324,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 string vmName = Utilities.GetUniqueShortName(vmNamePrefix);
                 var input = new ReservedIPContext()
                 {
-                    //Address = string.Empty,
                     DeploymentName = string.Empty,
                     Label = reservedIpLabel,
                     InUse = false,
@@ -375,7 +368,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 string vmName = Utilities.GetUniqueShortName(vmNamePrefix);
                 var input = new ReservedIPContext()
                 {
-                    //Address = string.Empty,
                     DeploymentName = string.Empty,
                     Label = reservedIpLabel,
                     InUse = false,
@@ -427,7 +419,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 string deploymentName = Utilities.GetUniqueShortName("Depl");
                 var input = new ReservedIPContext()
                 {
-                    //Address = string.Empty,
                     DeploymentName = string.Empty,
                     Label = reservedIpLabel,
                     InUse = false,
@@ -479,7 +470,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 string affinityGroup = Utilities.GetUniqueShortName("AffGrp");
                 var input = new ReservedIPContext()
                 {
-                    //Address = string.Empty,
                     DeploymentName = string.Empty,
                     Label = reservedIpLabel,
                     InUse = false,
@@ -534,7 +524,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 string affinityGroup = Utilities.GetUniqueShortName("AffGrp");
                 var input = new ReservedIPContext()
                 {
-                    //Address = string.Empty,
                     DeploymentName = string.Empty,
                     Label = reservedIpLabel,
                     InUse = false,
@@ -581,7 +570,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 string affinityGroup = Utilities.GetUniqueShortName("AffGrp");
                 var input = new ReservedIPContext()
                 {
-                    //Address = string.Empty,
                     DeploymentName = string.Empty,
                     Label = reservedIpLabel,
                     InUse = false,

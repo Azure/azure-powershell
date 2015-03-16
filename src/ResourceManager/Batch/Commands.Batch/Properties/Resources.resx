@@ -166,7 +166,7 @@
     <value>Getting all Tasks from Job "{0}". A max count of {1} will be returned.</value>
   </data>
   <data name="GBT_NoJob" xml:space="preserve">
-    <value>No Job was specified. Supply a Job object or a WorkItem namd and Job name to query for Tasks.</value>
+    <value>No Job was specified. Supply a Job object or a WorkItem name and Job name to query for Tasks.</value>
   </data>
   <data name="GBWI_GetByName" xml:space="preserve">
     <value>Getting WorkItem "{0}"</value>
@@ -204,11 +204,53 @@
   <data name="NBA_NameAvailability" xml:space="preserve">
     <value>Performing name availability check for account {0}</value>
   </data>
+  <data name="NBP_CreatingPool" xml:space="preserve">
+    <value>Creating Pool {0}</value>
+  </data>
+  <data name="NBT_CreatingTask" xml:space="preserve">
+    <value>Creating Task {0}</value>
+  </data>
+  <data name="NBT_NoJobSpecified" xml:space="preserve">
+    <value>No Job specified to create the new Task under.  Supply a Job object or a WorkItem name and Job name.</value>
+  </data>
+  <data name="NBWI_CreatingWorkItem" xml:space="preserve">
+    <value>Creating WorkItem {0}</value>
+  </data>
   <data name="RBA_RemoveConfirm" xml:space="preserve">
-    <value>Are you sure you want to remove batch account {0}</value>
+    <value>Are you sure you want to remove batch account {0}?</value>
   </data>
   <data name="RBA_RemoveResource" xml:space="preserve">
     <value>Removing batch account ...</value>
+  </data>
+  <data name="RBJ_NoJobSpecified" xml:space="preserve">
+    <value>No Job specified for deletion. Supply a Job object or a WorkItem name and Job name.</value>
+  </data>
+  <data name="RBJ_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove Job {0}?</value>
+  </data>
+  <data name="RBJ_RemoveJob" xml:space="preserve">
+    <value>Removing Job ...</value>
+  </data>
+  <data name="RBP_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove Pool {0}?</value>
+  </data>
+  <data name="RBP_RemovePool" xml:space="preserve">
+    <value>Removing Pool ...</value>
+  </data>
+  <data name="RBT_NoTaskSpecified" xml:space="preserve">
+    <value>No Task specified for deletion. Supply a Task object or a WorkItem name, Job name, and Task name.</value>
+  </data>
+  <data name="RBT_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove Task {0}?</value>
+  </data>
+  <data name="RBT_RemoveTask" xml:space="preserve">
+    <value>Removing Task ...</value>
+  </data>
+  <data name="RBWI_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove WorkItem {0}?</value>
+  </data>
+  <data name="RBWI_RemoveWorkItem" xml:space="preserve">
+    <value>Removing WorkItem ...</value>
   </data>
   <data name="ResGroupLookup" xml:space="preserve">
     <value>Looking up resource group for account {0}</value>
