@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.RemoteApp;
+using Microsoft.Azure.Commands.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 		           Position = 0,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,
@@ -67,7 +69,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 }
                 else
                 {
-                    WriteVerboseWithTimestamp("No usage found for the requested period.");
+                    WriteVerboseWithTimestamp(Commands_RemoteApp.UseageNotFound);
                 }
             }
         }

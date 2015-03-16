@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.RemoteApp;
+using Microsoft.Azure.Commands.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
 using System.Management.Automation;
 
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the RemoteApp template image."
         )]
+        [ValidatePattern(TemplateNameValidatorString)]
         public string ImageName { get; set; }
 
         public override void ExecuteCmdlet()
@@ -53,7 +55,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                     PlanName = collection.PlanName
                 };
 
-                if (ShouldProcess(CollectionName, "Update collection"))
+                if (ShouldProcess(CollectionName, Commands_RemoteApp.UpdateCollection))
                 {
                     response = CallClient(() => Client.Collections.Set(CollectionName, false, false, details), Client.Collections);
                 }

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
+using Microsoft.Azure.Commands.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
 using System;
 using System.IO;
@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsData.Publish, "AzureRemoteAppProgram", DefaultParameterSetName = AppId), OutputType(typeof(PublishingOperationResult))]
+    [Cmdlet(VerbsData.Publish, "AzureRemoteAppProgram", DefaultParameterSetName = AppId), OutputType(typeof(PublishingOperationResult), typeof(Job))]
     public class PublishAzureRemoteAppProgram : RdsCmdlet
     {
         private const string AppPath = "App Path";
@@ -125,13 +125,16 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         {
             if (AsJob.IsPresent)
             {
-                task = new LongRunningTask<PublishAzureRemoteAppProgram>(this, "RemoteAppBackgroundTask", "Publish RemoteApp");
+                task = new LongRunningTask<PublishAzureRemoteAppProgram>(this, "RemoteAppBackgroundTask", Commands_RemoteApp.Publish);
 
                 task.ProcessJob(() =>
                 {
+                    task.SetStatus(Commands_RemoteApp.Publishing);
                     PublishAction();
-                    task.SetStatus("ProcessJob completed");
+                    task.SetStatus(Commands_RemoteApp.JobComplete);
                 });
+
+                WriteObject(task);
             }
             else
             {
