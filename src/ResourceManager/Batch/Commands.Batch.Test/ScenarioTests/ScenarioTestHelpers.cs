@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -33,6 +35,7 @@ using System.Reflection;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Test.HttpRecorder;
+using Moq;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -46,6 +49,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         // Content-Type header used by the Batch REST APIs
         private const string ContentTypeString = "application/json;odata=minimalmetadata";
 
+        private const string DefaultPoolName = "testPool";
+
         /// <summary>
         /// Creates an account and resource group for use with the Scenario tests
         /// </summary>
@@ -57,6 +62,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchAccountListKeyResponse response = controller.BatchManagementClient.Accounts.ListKeys(resourceGroupName, accountName);
             context.PrimaryAccountKey = response.PrimaryKey;
             context.SecondaryAccountKey = response.SecondaryKey;
+            return context;
+        }
+
+        /// <summary>
+        /// Get Batch Context with keys
+        /// </summary>
+        public static BatchAccountContext GetBatchAccountContextWithKeys(BatchController controller, string accountName)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchAccountContext context = client.ListKeys(null, accountName);
+
             return context;
         }
 
@@ -113,7 +129,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             PSJobExecutionEnvironment jobExecutionEnvironment = new PSJobExecutionEnvironment();
-            jobExecutionEnvironment.PoolName = "testPool";
+            jobExecutionEnvironment.PoolName = DefaultPoolName;
             PSWorkItemSchedule schedule = null;
             if (recurrenceInterval != null)
             {
@@ -177,7 +193,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test Task for use in Scenario tests.
         /// </summary>
-        public static void CreateTestTask(BatchController controller, BatchAccountContext context, string workItemName, string jobName, string taskName)
+        public static void CreateTestTask(BatchController controller, BatchAccountContext context, string workItemName, string jobName, string taskName, string cmdLine = "cmd /c dir /s")
         {
             YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
@@ -189,11 +205,35 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 WorkItemName = workItemName,
                 JobName = jobName,
                 TaskName = taskName,
-                CommandLine = "cmd /c dir /s",
+                CommandLine = cmdLine,
+                RunElevated = true,
                 AdditionalBehaviors = behaviors
             };
             
             client.CreateTask(parameters);
+        }
+
+        /// <summary>
+        /// Waits for the specified task to complete
+        /// </summary>
+        public static void WaitForTaskCompletion(BatchController controller, BatchAccountContext context, string workItemName, string jobName, string taskName)
+        {
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListTaskOptions options = new ListTaskOptions()
+            {
+                Context = context,
+                WorkItemName = workItemName,
+                JobName = jobName,
+                TaskName = taskName,
+                AdditionalBehaviors = behaviors
+            };
+            IEnumerable<PSCloudTask> tasks = client.ListTasks(options);
+
+            ITaskStateMonitor monitor = context.BatchOMClient.OpenToolbox().CreateTaskStateMonitor();
+            monitor.WaitAll(tasks.Select(t => t.omObject), TaskState.Completed, TimeSpan.FromMinutes(2), null, behaviors);
         }
 
         /// <summary>
@@ -238,6 +278,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     object batchResponse = null;
 
+                    Delegate postProcessDelegate = null;
                     HttpRequestMessage request = GenerateHttpRequest((BatchRequest)batchRequest);
 
                     // Setup HTTP recorder and send the request
@@ -379,18 +420,23 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private static object GenerateBatchResponse(BatchRequest batchRequest, HttpWebResponse webResponse, Stream responseBody)
         {
             object batchResponse = null;
-            Type requestBaseType = batchRequest.GetType().BaseType;
-            if (requestBaseType != null)
+            MethodInfo createCommandMethod = batchRequest.GetType().GetMethod("CreateRestCommand", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (createCommandMethod != null)
             {
-                Type batchResponseType = requestBaseType.GetGenericArguments()[0];
-                MethodInfo processMethod = batchResponseType.GetMethod("ProcessResponse", BindingFlags.NonPublic | BindingFlags.Instance);
-                ConstructorInfo constructor = batchResponseType.GetConstructor(new Type[] { });
-                if (constructor != null)
+                object command = createCommandMethod.Invoke(batchRequest, null);
+
+                FieldInfo postProcessField = command.GetType().GetField("PostProcessResponse", BindingFlags.Public | BindingFlags.Instance);
+                if (postProcessField != null)
                 {
-                    batchResponse = constructor.Invoke(null);
-                    if (processMethod != null)
+                    Delegate postProcessDelegate = postProcessField.GetValue(command) as Delegate;
+                    if (postProcessDelegate != null)
                     {
-                        processMethod.Invoke(batchResponse, new object[] { webResponse, responseBody, null });
+                        FieldInfo responseStreamField = command.GetType().GetField("ResponseStream", BindingFlags.Public | BindingFlags.Instance);
+                        if (responseStreamField != null)
+                        {
+                            responseStreamField.SetValue(command, responseBody);
+                        }
+                        batchResponse = postProcessDelegate.DynamicInvoke(command, webResponse, null, null);
                     }
                 }
             }

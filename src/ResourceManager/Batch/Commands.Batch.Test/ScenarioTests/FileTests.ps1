@@ -14,108 +14,132 @@
 
 <#
 .SYNOPSIS
-Tests querying for a Batch Task by name
+Tests querying for a Batch Task file by name
 #>
-function Test-GetTaskByName
+function Test-GetTaskFileByName
 {
-	param([string]$accountName, [string]$wiName, [string]$jobName, [string]$taskName)
+	param([string]$accountName, [string]$wiName, [string]$jobName, [string]$taskName, [string]$taskFileName)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$task = Get-AzureBatchTask_ST -WorkItemName $wiName -JobName $jobName -Name $taskName -BatchContext $context
+	$taskFile = Get-AzureBatchTaskFile_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context
 
-	Assert-AreEqual $taskName $task.Name
+	Assert-AreEqual $taskFileName $taskFile.Name
 
 	# Verify positional parameters also work
-	$task = Get-AzureBatchTask_ST $wiName $jobName $taskName -BatchContext $context
+	$task = Get-AzureBatchTaskFile_ST $wiName $jobName $taskName $taskFileName -BatchContext $context
 
-	Assert-AreEqual $taskName $task.Name
+	Assert-AreEqual $taskFileName $taskFile.Name
 }
 
 <#
 .SYNOPSIS
-Tests querying for Batch Tasks using a filter
+Tests querying for Batch Task Files using a filter
 #>
-function Test-ListTasksByFilter
+function Test-ListTaskFilesByFilter
 {
-	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskPrefix, [string]$matches)
+	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskName, [string]$taskFilePrefix, [string]$matches)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$filter = "startswith(name,'" + "$taskPrefix" + "')"
+	$filter = "startswith(name,'" + "$taskFilePrefix" + "')"
 
-	$tasks = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Filter $filter -BatchContext $context
+	$taskFiles = Get-AzureBatchTaskFile_ST -WorkItemName $workItemName -JobName $jobName -TaskName $taskName -Filter $filter -BatchContext $context
 
-	Assert-AreEqual $matches $tasks.Length
-	foreach($task in $tasks)
+	Assert-AreEqual $matches $taskFiles.Length
+	foreach($taskFile in $taskFiles)
 	{
-		Assert-True { $task.Name.StartsWith("$taskPrefix") }
+		Assert-True { $taskFile.Name.StartsWith("$taskFilePrefix") }
 	}
 
 	# Verify parent object parameter set also works
-	$job = Get-AzureBatchJob_ST $workItemName $jobName -BatchContext $context
-	$tasks = Get-AzureBatchTask_ST -Job $job -Filter $filter -BatchContext $context
+	$task = Get-AzureBatchTask_ST $workItemName $jobName $taskName -BatchContext $context
+	$taskFiles = Get-AzureBatchTaskFile_ST -Task $task -Filter $filter -BatchContext $context
 
-	Assert-AreEqual $matches $tasks.Length
-	foreach($task in $tasks)
+	Assert-AreEqual $matches $taskFiles.Length
+	foreach($taskFile in $taskFiles)
 	{
-		Assert-True { $task.Name.StartsWith("$taskPrefix") }
+		Assert-True { $taskFile.Name.StartsWith("$taskFilePrefix") }
 	}
 }
 
 <#
 .SYNOPSIS
-Tests querying for Batch Tasks and supplying a max count
+Tests querying for Batch Task Files and supplying a max count
 #>
-function Test-ListTasksWithMaxCount
+function Test-ListTaskFilesWithMaxCount
 {
-	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$maxCount)
+	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskName, [string]$maxCount)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$tasks = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -MaxCount $maxCount -BatchContext $context
+	$taskFiles = Get-AzureBatchTaskFile_ST -WorkItemName $workItemName -JobName $jobName -TaskName $taskName -MaxCount $maxCount -BatchContext $context
 
-	Assert-AreEqual $maxCount $tasks.Length
+	Assert-AreEqual $maxCount $taskFiles.Length
 
 	# Verify parent object parameter set also works
-	$job = Get-AzureBatchJob_ST $workItemName $jobName -BatchContext $context
-	$tasks = Get-AzureBatchTask_ST -Job $job -MaxCount $maxCount -BatchContext $context
+	$task = Get-AzureBatchTask_ST $workItemName $jobName $taskName -BatchContext $context
+	$taskFiles = Get-AzureBatchTaskFile_ST -Task $task -MaxCount $maxCount -BatchContext $context
 
-	Assert-AreEqual $maxCount $tasks.Length
+	Assert-AreEqual $maxCount $taskFiles.Length
 }
 
 <#
 .SYNOPSIS
-Tests querying for all Tasks under a WorkItem
+Tests querying for Batch Task Files with the Recursive switch
 #>
-function Test-ListAllTasks
+function Test-ListTaskFilesRecursive
 {
-	param([string]$accountName, [string]$workItemName, [string] $jobName, [string]$count)
+	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskName, [string]$newfile)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$tasks = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -BatchContext $context
+	$filter = "startswith(name,'wd')"
+	$taskFiles = Get-AzureBatchTaskFile_ST -WorkItemName $workItemName -JobName $jobName -TaskName $taskName -Filter $filter -BatchContext $context
 
-	Assert-AreEqual $count $tasks.Length
+	# Only the directory itself is returned
+	Assert-AreEqual 1 $taskFiles.Length
+	Assert-True { $taskFiles[0].IsDirectory }
+
+	# Verify the new file is returned when using the Recursive switch
+	$taskFiles = Get-AzureBatchTaskFile_ST -WorkItemName $workItemName -JobName $jobName -TaskName $taskName -Filter $filter -Recursive -BatchContext $context
+
+	Assert-AreEqual 2 $taskFiles.Length
+	$file = $taskFiles | Where-Object { $_.IsDirectory -eq $false }
+	Assert-AreEqual "wd\$newFile" $file.Name
+}
+
+<#
+.SYNOPSIS
+Tests querying for all Task Files under a Task
+#>
+function Test-ListAllTaskFiles
+{
+	param([string]$accountName, [string]$workItemName, [string] $jobName, [string]$taskName, [string]$count)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$taskFiles = Get-AzureBatchTaskFile_ST -WorkItemName $workItemName -JobName $jobName -TaskName $taskName -BatchContext $context
+
+	Assert-AreEqual $count $taskFiles.Length
 
 	# Verify parent object parameter set also works
-	$job = Get-AzureBatchJob_ST $workItemName $jobName -BatchContext $context
-	$tasks = Get-AzureBatchTask_ST -Job $job -BatchContext $context
+	$task = Get-AzureBatchTask_ST $workItemName $jobName $taskName -BatchContext $context
+	$taskFiles = Get-AzureBatchTaskFile_ST -Task $task -BatchContext $context
 
-	Assert-AreEqual $count $tasks.Length
+	Assert-AreEqual $count $taskFiles.Length
 }
 
 <#
 .SYNOPSIS
 Tests pipelining scenarios
 #>
-function Test-ListTaskPipeline
+function Test-ListTaskFilePipeline
 {
-	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskName)
+	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskName, [string]$count)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 
-	# Get Job into Get Task
-	$task = Get-AzureBatchJob_ST -WorkItemName $workItemName -Name $jobName -BatchContext $context | Get-AzureBatchTask_ST -BatchContext $context
-	Assert-AreEqual $taskName $task.Name
+	# Get Task into Get Task File
+	$taskFiles = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Name $taskName -BatchContext $context | Get-AzureBatchTaskFile_ST -BatchContext $context
+	Assert-AreEqual $count $taskFiles.Length
 
-	# Get WorkItem into Get Job into Get Task
-	$task = Get-AzureBatchWorkItem_ST -Name $workItemName -BatchContext $context | Get-AzureBatchJob_ST -BatchContext $context | Get-AzureBatchTask_ST -BatchContext $context
-	Assert-AreEqual $taskName $task.Name
+	# Get WorkItem into Get Job into Get Task into Get Task file
+	$taskFiles = Get-AzureBatchWorkItem_ST -Name $workItemName -BatchContext $context | Get-AzureBatchJob_ST -BatchContext $context | Get-AzureBatchTask_ST -BatchContext $context | Get-AzureBatchTaskFile_ST -BatchContext $context
+	Assert-AreEqual $count $taskFiles.Length
 }
