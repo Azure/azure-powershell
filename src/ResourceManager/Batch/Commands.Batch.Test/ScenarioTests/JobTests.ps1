@@ -126,3 +126,31 @@ function Test-ListJobPipeline
 
 	Assert-AreEqual $jobName $job.Name
 }
+
+<#
+.SYNOPSIS
+Tests deleting a Job
+#>
+function Test-DeleteJob
+{
+	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$usePipeline)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Verify the job exists
+	$jobs = Get-AzureBatchJob_ST -WorkItemName $workItemName -BatchContext $context
+	Assert-AreEqual 1 $jobs.Count
+
+	if ($usePipeline -eq '1')
+	{
+		Get-AzureBatchJob_ST -WorkItemName $workItemName -Name $jobName -BatchContext $context | Remove-AzureBatchJob_ST -Force -BatchContext $context
+	}
+	else
+	{
+		Remove-AzureBatchJob_ST -WorkItemName $workItemName -Name $jobName -Force -BatchContext $context
+	}
+
+	# Verify the job was deleted
+	$jobs = Get-AzureBatchJob_ST -WorkItemName $workItemName -BatchContext $context
+	Assert-True { $jobs -eq $null -or $jobs[0].State.ToString().ToLower() -eq 'deleting' }
+}
