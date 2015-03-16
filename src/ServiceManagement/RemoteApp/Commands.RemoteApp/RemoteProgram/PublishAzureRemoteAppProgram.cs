@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsData.Publish, "AzureRemoteAppProgram", DefaultParameterSetName = AppId), OutputType(typeof(PublishingOperationResult))]
+    [Cmdlet(VerbsData.Publish, "AzureRemoteAppProgram", DefaultParameterSetName = AppId), OutputType(typeof(PublishingOperationResult), typeof(Job))]
     public class PublishAzureRemoteAppProgram : RdsCmdlet
     {
         private const string AppPath = "App Path";
@@ -129,9 +129,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
                 task.ProcessJob(() =>
                 {
+                    task.SetStatus("Publishing Application");
                     PublishAction();
                     task.SetStatus("ProcessJob completed");
                 });
+
+                WriteObject(task);
             }
             else
             {

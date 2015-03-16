@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 		           Position = 0,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,

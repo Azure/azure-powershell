@@ -216,8 +216,8 @@
   <data name="VnetSharedKeyResetCaptionMessage" xml:space="preserve">
     <value>This operation will reset the shared key for the VNet's VPN device. This will interrupt connectivity to the on-premises network until you configure the VPN device to use the new shared key.</value>
   </data>
-  <data name="VnetSharedKeyResetConfirmationDescription" xml:space="preserve">
-    <value>Resetting the VPN shared key</value>
+  <data name="VnetSharedKeyResetConfirmationDescriptionFormat" xml:space="preserve">
+    <value>Resetting the VPN shared key on {0}</value>
   </data>
   <data name="WaitingForStorageVerificationToCompleteMessage" xml:space="preserve">
     <value>Waiting for Storage verification to complete</value>
