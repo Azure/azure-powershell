@@ -144,6 +144,7 @@ AliasesToExport = @(
 'New-AzureHDInsightPigJobDefinition',
 'New-AzureHDInsightSqoopJobDefinition',
 'New-AzureHDInsightStreamingMapReduceJobDefinition',
+'Grant-AzureHdinsightRdpAccess',
 'Remove-AzureHDInsightCluster',
 'Revoke-AzureHDInsightHttpServicesAccess',
 'Set-AzureHDInsightDefaultStorage',

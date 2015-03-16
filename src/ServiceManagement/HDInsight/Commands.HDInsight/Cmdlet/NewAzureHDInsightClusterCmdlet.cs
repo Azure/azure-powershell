@@ -314,6 +314,26 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             set { this.command.ZookeeperNodeSize = value; }
         }
 
+        [Parameter(Position = 19, Mandatory = false, HelpMessage = "The credentials for RDP access to the HDInsight cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 10, Mandatory = false, HelpMessage = "The credentials for RDP access to the HDInsight cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        public PSCredential RdpCredential
+        {
+            get { return this.command.RdpCredential; }
+            set { this.command.RdpCredential = value; }
+        }
+
+        [Parameter(Position = 20, Mandatory = false, HelpMessage = "The expiry for RDP access to the HDInsight cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 11, Mandatory = false, HelpMessage = "The expiry for RDP access to the HDInsight cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        public DateTime RdpAccessExpiry
+        {
+            get { return this.command.RdpAccessExpiry; }
+            set { this.command.RdpAccessExpiry = value; }
+        }
+
         /// <inheritdoc />
         protected override void BeginProcessing()
         {

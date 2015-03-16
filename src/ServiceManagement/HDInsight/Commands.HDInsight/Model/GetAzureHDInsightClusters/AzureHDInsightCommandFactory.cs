@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.HDInsight.Model.Commands.CommandInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImplementations;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.Extensions;
@@ -78,6 +79,11 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
         public IManageAzureHDInsightHttpAccessCommand CreateManageHttpAccess()
         {
             return Help.SafeCreate<ManageAzureHDInsightHttpAccessCommand>();
+        }
+
+        public IManageAzureHDInsightRdpAccessCommand CreateManageRdpAccess()
+        {
+            return Help.SafeCreate<ManageAzureHDInsightRdpAccessCommand>();
         }
 
         public INewAzureHDInsightClusterConfigCommand CreateNewConfig()

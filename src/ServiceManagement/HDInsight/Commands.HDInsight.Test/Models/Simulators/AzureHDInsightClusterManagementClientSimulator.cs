@@ -157,6 +157,14 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
         {
         }
 
+        public async Task DisableRdpAsync(string dnsName, string location)
+        {
+            ClusterDetails cluster = await this.GetClusterAsync(dnsName);
+            Clusters.Remove(GetClusterInternal(dnsName));
+            cluster.RdpUserName = string.Empty;
+            Clusters.Add(new SimulatorClusterContainer { Cluster = cluster });
+        }
+
         public event EventHandler<ClusterProvisioningStatusEventArgs> ClusterProvisioning;
         public CancellationToken CancellationToken { get; private set; }
         public IHDInsightSubscriptionCredentials Credentials { get; private set; }
@@ -270,12 +278,30 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             this.DisableHttpAsync(dnsName, location).Wait();
         }
 
+        public void EnableRdp(string dnsName, string location, string rdpUserName, string rdpPassword, DateTime expiry)
+        {
+            this.EnableRdpAsync(dnsName, location, rdpUserName, rdpPassword, expiry).Wait();
+        }
+
+        public void DisableRdp(string dnsName, string location)
+        {
+            this.DisableRdpAsync(dnsName, location);
+        }
+
         public async Task DisableHttpAsync(string dnsName, string location)
         {
             ClusterDetails cluster = await this.GetClusterAsync(dnsName);
             Clusters.Remove(GetClusterInternal(dnsName));
             cluster.HttpUserName = string.Empty;
             cluster.HttpPassword = string.Empty;
+            Clusters.Add(new SimulatorClusterContainer { Cluster = cluster });
+        }
+
+        public async Task EnableRdpAsync(string dnsName, string location, string rdpUserName, string rdpPassword, DateTime expiry)
+        {
+            ClusterDetails cluster = await this.GetClusterAsync(dnsName);
+            Clusters.Remove(GetClusterInternal(dnsName));
+            cluster.RdpUserName = rdpUserName;
             Clusters.Add(new SimulatorClusterContainer { Cluster = cluster });
         }
 
@@ -345,9 +371,19 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             return listTask.Result;
         }
 
+        public Collection<string> ListAvailableLocations(OSType osType)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Collection<string>> ListAvailableLocationsAsync()
         {
             return TaskEx2.FromResult(new Collection<string> { "East US", "East US 2", "West US", "North Europe" });
+        }
+
+        public Task<Collection<string>> ListAvailableLocationsAsync(OSType osType)
+        {
+            throw new NotImplementedException();
         }
 
         public Collection<HDInsightVersion> ListAvailableVersions()

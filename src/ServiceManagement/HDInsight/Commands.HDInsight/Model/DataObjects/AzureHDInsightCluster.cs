@@ -121,6 +121,14 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         }
 
         /// <summary>
+        /// Gets the RDP username for the cluster.
+        /// </summary>
+        public string RdpUserName
+        {
+            get { return this.cluster.RdpUserName; }
+        }
+
+        /// <summary>
         ///     Gets the Azure location where the Azure HD Insight Cluster is located.
         /// </summary>
         public string Location
