@@ -18,13 +18,13 @@ using Microsoft.Azure.Commands.Websites.Models.Websites;
 
 namespace Microsoft.Azure.Commands.Websites
 {
-    public class WebsiteBaseCmdlet : WebsitesBaseClient
+    public class WebsiteBaseNotMandatoryCmdlet : WebsitesBaseClient
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmptyAttribute]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the website.")]
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the website.")]
         [ValidateNotNullOrEmptyAttribute]
         public string Name { get; set; }
     }

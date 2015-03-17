@@ -37,24 +37,19 @@ using Microsoft.Azure.Commands.Websites.Utilities;
 namespace Microsoft.Azure.Commands.Websites.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you restart an Azure Website
+    /// this commandlet will get the publishing creds of the given Azure Websites using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Restart, "AzureWebsite")]
-    public class RestartAzureWebsiteCmdlet : WebsiteBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureWebsitePublishingProfile")]
+    public class GetAzureWebsitePublishingProfileCmdlet : WebsiteBaseSlotCmdlet
     {
-
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the website slot.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string SlotName { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            WriteObject(WebsitesClient.RestartWebsite(ResourceGroupName, Name, SlotName));
+            WriteObject(WebsitesClient.GetWebsitePublishingProfile(ResourceGroupName, Name, SlotName));
+
         }
 
     }
 }
-
 
 
 
