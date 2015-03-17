@@ -626,6 +626,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     Assert.IsTrue(ce.Message.Contains("The date specified in parameter EndTime is not within the correct range."));
                 }
 
+                // Negative test for Get-AzureVM
+                var vmRoleList1 = vmPowershellCmdlets.GetAzureVM();
+                Assert.IsFalse(vmRoleList1.Any(r => r.DeploymentName == deploymentName));
+                var vmRoleList2 = vmPowershellCmdlets.GetAzureVM(serviceName);
+                Assert.IsFalse(vmRoleList2.Any(r => r.DeploymentName == deploymentName));
+
                 vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
 
                 pass &= Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDeployment, serviceName, DeploymentSlotType.Production);
