@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Retrieving UsageDetails.
+        /// </summary>
+        internal static string DownloadingUsageDetails {
+            get {
+                return ResourceManager.GetString("DownloadingUsageDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Couldn&apos;t get Sas for template image uri..
         /// </summary>
         internal static string FailedToGetSasUriError {
@@ -390,6 +399,15 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         internal static string UploadTemplateImageJobDescriptionMessage {
             get {
                 return ResourceManager.GetString("UploadTemplateImageJobDescriptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get UsageDetails.
+        /// </summary>
+        internal static string UsageDetails {
+            get {
+                return ResourceManager.GetString("UsageDetails", resourceCulture);
             }
         }
         

@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
 using Microsoft.Azure.Commands.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
 using System.Management.Automation;
@@ -38,6 +37,10 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [ValidatePattern(TemplateNameValidatorString)]
         public string ImageName { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Immediately log off users after update has successfully completed")]
+        public SwitchParameter ForceLogoffWhenUpdateComplete { get; set; }
+
         public override void ExecuteCmdlet()
         {
             CollectionCreationDetails details = null;
@@ -52,7 +55,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 {
                     Name = CollectionName,
                     TemplateImageName = ImageName,
-                    PlanName = collection.PlanName
+                    PlanName = collection.PlanName,
+                    WaitBeforeShutdownInMinutes = ForceLogoffWhenUpdateComplete ? -1 : 0
                 };
 
                 if (ShouldProcess(CollectionName, Commands_RemoteApp.UpdateCollection))

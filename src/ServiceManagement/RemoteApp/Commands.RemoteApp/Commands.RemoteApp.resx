@@ -240,4 +240,10 @@
   <data name="UseageNotFound" xml:space="preserve">
     <value>No usage found for the requested period.</value>
   </data>
+  <data name="DownloadingUsageDetails" xml:space="preserve">
+    <value>Retrieving UsageDetails</value>
+  </data>
+  <data name="UsageDetails" xml:space="preserve">
+    <value>Get UsageDetails</value>
+  </data>
 </root>
