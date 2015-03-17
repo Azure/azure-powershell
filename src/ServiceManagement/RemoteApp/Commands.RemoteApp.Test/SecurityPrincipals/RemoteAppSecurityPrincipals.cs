@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Test.RemoteApp
+namespace Microsoft.Azure.Commands.RemoteApp.Test
 {
     using LocalModels;
     using Common;

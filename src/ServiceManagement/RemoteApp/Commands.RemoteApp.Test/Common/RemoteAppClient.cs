@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Test.RemoteApp
+namespace Microsoft.Azure.Commands.RemoteApp.Test
 {
     using Microsoft.Azure.Management.RemoteApp;
     using Microsoft.Azure.Management.RemoteApp.Cmdlets;

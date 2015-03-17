@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
-namespace Microsoft.Azure.Commands.Test.RemoteApp
+namespace Microsoft.Azure.Commands.RemoteApp.Test
 {
     using Common;
     using Microsoft.Azure.Management.RemoteApp.Cmdlets;

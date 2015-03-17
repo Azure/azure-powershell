@@ -7,8 +7,8 @@
     <ProjectGuid>{CA82D500-1940-4068-A076-D7A8AD459FB0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commands.RemoteApp.Tests</RootNamespace>
-    <AssemblyName>Commands.RemoteApp.Tests</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.RemoteApp.Tests</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.RemoteApp.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
