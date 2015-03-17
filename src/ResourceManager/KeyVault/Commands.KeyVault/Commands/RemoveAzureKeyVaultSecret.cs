@@ -64,30 +64,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            try
+            Secret secret = null;
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.RemoveSecretWarning,
+                    Name),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.RemoveSecretWhatIfMessage,
+                    Name),
+                Name,
+               () => { secret = DataServiceClient.DeleteSecret(VaultName, Name); });
+
+            if (PassThru.IsPresent)
             {
-                Secret secret = null;
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.RemoveSecretWarning,
-                        Name),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.RemoveSecretWhatIfMessage,
-                        Name),
-                    Name,
-                   () => { secret = DataServiceClient.DeleteSecret(VaultName, Name); });
-                                
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(secret);
-                }
-            }
-            catch (Exception ex)
-            {
-                this.WriteErrorDetails(ex);
+                WriteObject(secret);
             }
         }
     }

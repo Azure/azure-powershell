@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    using AutomationManagement = Management.Automation;
+    using AutomationManagement = Microsoft.WindowsAzure.Management.Automation;
 
     /// <summary>
     /// The automation account.
@@ -32,17 +32,13 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="resource">
         /// The resource.
         /// </param>
-        public AutomationAccount(
-            AutomationManagement.Models.CloudService cloudService,
-            AutomationManagement.Models.AutomationResource resource)
+        public AutomationAccount(AutomationManagement.Models.CloudService cloudService, AutomationManagement.Models.AutomationResource resource)
         {
             Requires.Argument("cloudService", cloudService).NotNull();
             Requires.Argument("resource", resource).NotNull();
 
             this.AutomationAccountName = resource.Name;
             this.Location = cloudService.GeoRegion;
-            this.Plan = resource.Plan;
-
             switch (resource.State)
             {
                 case AutomationManagement.Models.AutomationResourceState.Started:
@@ -55,6 +51,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
                     this.State = resource.State;
                     break;
             }
+
+            if (resource.IntrinsicSettings != null) this.Plan = resource.IntrinsicSettings.SubscriptionPlan;
         }
 
         /// <summary>
@@ -65,9 +63,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         }
 
         /// <summary>
-        /// Gets or sets the plan.
+        /// Gets or sets the automation account name.
         /// </summary>
-        public string Plan { get; set; }
+        public string AutomationAccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the location.
@@ -80,8 +78,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string State { get; set; }
 
         /// <summary>
-        /// Gets or sets the automation account name.
+        /// Gets or sets the plan.
         /// </summary>
-        public string AutomationAccountName { get; set; }
+        public string Plan { get; set; }
     }
 }

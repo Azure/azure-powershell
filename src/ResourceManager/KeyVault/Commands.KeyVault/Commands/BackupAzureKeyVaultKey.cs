@@ -64,23 +64,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            try
+            if (string.IsNullOrEmpty(OutputFile))
             {
-                if (string.IsNullOrEmpty(OutputFile))
-                {
-                    OutputFile = GetDefaultFile();
-                }
-
-                var filePath = ResolvePath(OutputFile, Resources.BackupKeyFileNotFound);
-
-                var backupBlobPath = this.DataServiceClient.BackupKey(VaultName, Name, filePath);
-
-                this.WriteObject(backupBlobPath);
+                OutputFile = GetDefaultFile();
             }
-            catch (Exception ex)
-            {
-                this.WriteErrorDetails(ex);
-            }
+
+            var filePath = ResolvePath(OutputFile, Resources.BackupKeyFileNotFound);
+
+            var backupBlobPath = this.DataServiceClient.BackupKey(VaultName, Name, filePath);
+
+            this.WriteObject(backupBlobPath);
         }
 
         private string GetDefaultFile()

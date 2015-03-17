@@ -130,6 +130,14 @@ namespace Microsoft.Azure.Commands.DataFactories
                         ResourceGroupName = parameters.ResourceGroupName,
                         DataFactoryName = parameters.DataFactoryName
                     };
+
+                if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(table.ProvisioningState))
+                {
+                    string errorMessage = table.Properties == null
+                        ? string.Empty
+                        : table.Properties.ErrorMessage;
+                    throw new ProvisioningFailedException(errorMessage);
+                }
             };
 
             if (parameters.Force)
@@ -156,14 +164,6 @@ namespace Microsoft.Azure.Commands.DataFactories
                         parameters.DataFactoryName),
                     parameters.Name,
                     createTable);
-            }
-
-            if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(table.ProvisioningState))
-            {
-                string errorMessage = table.Properties == null
-                    ? string.Empty
-                    : table.Properties.ErrorMessage;
-                throw new ProvisioningFailedException(errorMessage);
             }
 
             return table;

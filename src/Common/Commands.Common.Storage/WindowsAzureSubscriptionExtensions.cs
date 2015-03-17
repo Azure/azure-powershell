@@ -15,11 +15,11 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -27,14 +27,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     {
         private static Dictionary<Guid, CloudStorageAccount> storageAccountCache = new Dictionary<Guid,CloudStorageAccount>();
 
-        public static CloudStorageAccount GetCloudStorageAccount(this AzureSubscription subscription)
+        public static CloudStorageAccount GetCloudStorageAccount(this AzureSubscription subscription, AzureProfile profile)
         {
             if (subscription == null)
             {
                 return null;
             }
 
-            using (var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement))
+            using (var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
             {
                 return StorageUtilities.GenerateCloudStorageAccount(
                     storageClient, subscription.GetProperty(AzureSubscription.Property.StorageAccount));

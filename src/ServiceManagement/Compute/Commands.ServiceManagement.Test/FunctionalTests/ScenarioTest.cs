@@ -22,12 +22,13 @@ using System.Management.Automation;
 using System.Net;
 using System.Net.Cache;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
@@ -64,12 +65,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 if (string.IsNullOrEmpty(imageName))
                     imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
+                
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    var svcExists = vmPowershellCmdlets.TestAzureServiceName(serviceName);
+                    if (svcExists)
+                    {
+                        // Try to delete the hosted service artifact in this subscription
+                        vmPowershellCmdlets.RemoveAzureService(serviceName, true);
+                    }
 
-                vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName1, serviceName, imageName, username, password, locationName);
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName1, serviceName, imageName, username, password, locationName);
+                }, "The server encountered an internal error. Please retry the request.", 10, 30);
+
                 // Verify
                 Assert.AreEqual(newAzureQuickVMName1, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName).Name, true);
 
-                vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password);
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password);
+                }, "The server encountered an internal error. Please retry the request.", 10, 30);
+
                 // Verify
                 Assert.AreEqual(newAzureQuickVMName2, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
 
@@ -225,16 +241,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             try
             {
-                Utilities.RetryActionUntilSuccess(() =>
-                {
-                    if (vmPowershellCmdlets.TestAzureServiceName(serviceName))
-                    {
-                        var op = vmPowershellCmdlets.RemoveAzureService(serviceName);
-                    }
-
-                    vmPowershellCmdlets.NewAzureQuickVM(OS.Linux, newAzureLinuxVMName, serviceName, linuxImageName, "user", password, locationName);
-                }, "Windows Azure is currently performing an operation on this hosted service that requires exclusive access.", 10, 30);
-
+                vmPowershellCmdlets.NewAzureQuickVM(OS.Linux, newAzureLinuxVMName, serviceName, linuxImageName, "user", password, locationName);
                 // Verify
                 PersistentVMRoleContext vmRoleCtxt = vmPowershellCmdlets.GetAzureVM(newAzureLinuxVMName, serviceName);
                 Assert.AreEqual(newAzureLinuxVMName, vmRoleCtxt.Name, true);
@@ -536,6 +543,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmRoleCtxt = vmPowershellCmdlets.GetAzureVM(persistentVM.RoleName, serviceName);
                 if (vmRoleCtxt.InstanceStatus == "StoppedVM")
                 {
+                    Console.WriteLine("The status of the VM {0} : {1}", persistentVM.RoleName, vmRoleCtxt.InstanceStatus);
                     break;
                 }
                 Console.WriteLine("The status of the VM {0} : {1}", persistentVM.RoleName, vmRoleCtxt.InstanceStatus);
@@ -753,7 +761,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         /// AzureVNetGatewayTest()
         /// </summary>
         /// Note: Create a VNet, a LocalNet from the portal without creating a gateway.
-        [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"),
+        [TestMethod(), TestCategory(Category.Sequential), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"),
         Description("Test the cmdlet ((Set,Remove)-AzureVNetConfig, Get-AzureVNetSite, (New,Get,Set,Remove)-AzureVNetGateway, Get-AzureVNetConnection)")]
         public void VNetTest()
         {
@@ -1032,7 +1040,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 DiagnosticExtensionContext resultContext = vmPowershellCmdlets.GetAzureServiceDiagnosticsExtension(serviceName)[0];
 
-                Assert.IsTrue(VerifyDiagExtContext(resultContext, "AllRoles", defaultExtensionId, storage, daConfig));
+                VerifyDiagExtContext(resultContext, "AllRoles", defaultExtensionId, storage, daConfig);
 
                 vmPowershellCmdlets.RemoveAzureServiceDiagnosticsExtension(serviceName, true);
 
@@ -1051,6 +1059,98 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #endregion
 
+
+
+        [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "PAAS"), Priority(1), Owner("huangpf"), Description("Test the ADDomain cmdlets.")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\package.csv", "package#csv", DataAccessMethod.Sequential)]
+        public void AzureServiceADDomainExtensionTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+
+            // Choose the package and config files from local machine
+            string packageName = Convert.ToString(TestContext.DataRow["upgradePackage"]);
+            string configName = Convert.ToString(TestContext.DataRow["upgradeConfig"]);
+            var packagePath1 = new FileInfo(Directory.GetCurrentDirectory() + "\\" + packageName);
+            var configPath1 = new FileInfo(Directory.GetCurrentDirectory() + "\\" + configName);
+
+            Assert.IsTrue(File.Exists(packagePath1.FullName), "VHD file not exist={0}", packagePath1);
+            Assert.IsTrue(File.Exists(configPath1.FullName), "VHD file not exist={0}", configPath1);
+
+            string deploymentName = "deployment1";
+            string deploymentLabel = "label1";
+            DeploymentInfoContext result;
+
+            PSCredential cred = new PSCredential(username, Utilities.convertToSecureString(password));
+
+            try
+            {
+                serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
+                vmPowershellCmdlets.NewAzureService(serviceName, serviceName, locationName);
+                Console.WriteLine("service, {0}, is created.", serviceName);
+
+                // Workgroup Config
+                var workGroupName = "test";
+                ExtensionConfigurationInput config = vmPowershellCmdlets.NewAzureServiceDomainJoinExtensionConfig(
+                    workGroupName, null, null, false, null, null, null);
+
+                vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Production, deploymentLabel, deploymentName, false, false, config);
+
+                result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
+                pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 2);
+                Console.WriteLine("successfully deployed the package");
+
+                var resultContext = vmPowershellCmdlets.GetAzureServiceDomainJoinExtension(serviceName);
+                Assert.IsTrue(string.IsNullOrEmpty(resultContext.User));
+                Assert.IsTrue(resultContext.Name == workGroupName);
+                Assert.IsTrue(resultContext.Restart == false);
+
+                vmPowershellCmdlets.RemoveAzureServiceDomainJoinExtension(serviceName, DeploymentSlotType.Production);
+
+                // Join a Workgroup
+                vmPowershellCmdlets.SetAzureServiceDomainJoinExtension(
+                    workGroupName, serviceName, DeploymentSlotType.Production, null, null, false, null, null, "1.*");
+                resultContext = vmPowershellCmdlets.GetAzureServiceDomainJoinExtension(serviceName);
+                Assert.IsTrue(string.IsNullOrEmpty(resultContext.User));
+                Assert.IsTrue(resultContext.Name == workGroupName);
+                Assert.IsTrue(resultContext.Restart == false);
+                Assert.IsTrue(resultContext.Version == "1.*");
+
+                vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
+
+                // Domain Config
+                var domainName = "test.bing.com";
+                config = vmPowershellCmdlets.NewAzureServiceDomainJoinExtensionConfig(
+                    domainName, null, null, null, null, null, 35, true, cred, "1.*");
+                Assert.IsTrue(config.Roles.Any(r => r.Default));
+                Assert.IsTrue(config.PublicConfiguration.Contains(cred.UserName));
+                Assert.IsTrue(config.PublicConfiguration.Contains(domainName));
+                Assert.IsTrue(config.PublicConfiguration.Contains("35"));
+
+                vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Production, deploymentLabel, deploymentName, false, false, config);
+
+                vmPowershellCmdlets.RemoveAzureServiceDomainJoinExtension(serviceName, DeploymentSlotType.Production);
+
+                // Join a Domain
+                vmPowershellCmdlets.SetAzureServiceDomainJoinExtension(
+                    domainName, cred, 35, false, serviceName, DeploymentSlotType.Production, null, (X509Certificate2)null, null, (PSCredential)null, null, "1.*");
+
+                resultContext = vmPowershellCmdlets.GetAzureServiceDomainJoinExtension(serviceName);
+                Assert.IsTrue(resultContext.User == cred.UserName);
+                Assert.IsTrue(resultContext.Name == domainName);
+                Assert.IsTrue(resultContext.JoinOption == 35);
+                Assert.IsTrue(resultContext.Restart == false);
+                Assert.IsTrue(resultContext.Version == "1.*");
+
+                vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
+
+                pass &= Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDeployment, serviceName, DeploymentSlotType.Production);
+            }
+            catch (Exception e)
+            {
+                pass = false;
+                Assert.Fail("Exception occurred: {0}", e.ToString());
+            }
+        }
 
         #region AzureServiceRemoteDesktopExtension Tests
 
@@ -1585,51 +1685,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return vnetState.Equals(expectedState);
         }
 
-        private bool VerifyDiagExtContext(DiagnosticExtensionContext resultContext, string role, string extID, string storage, string config)
+        private void VerifyDiagExtContext(DiagnosticExtensionContext resultContext, string role, string extID, string storage, string config)
         {
             Utilities.PrintContext(resultContext);
 
-            try
-            {
-                Assert.AreEqual(role, resultContext.Role.RoleType.ToString(), "role is not same");
-                Assert.AreEqual(Utilities.PaaSDiagnosticsExtensionName, resultContext.Extension, "extension is not Diagnostics");
-                Assert.AreEqual(extID, resultContext.Id, "extension id is not same");
-                //Assert.AreEqual(storage, resultContext.StorageAccountName, "storage account name is not same");
+            Assert.AreEqual(role, resultContext.Role.RoleType.ToString(), "role is not same");
+            Assert.AreEqual(Utilities.PaaSDiagnosticsExtensionName, resultContext.Extension, "extension is not Diagnostics");
+            Assert.AreEqual(extID, resultContext.Id, "extension id is not same");
+            //Assert.AreEqual(storage, resultContext.StorageAccountName, "storage account name is not same");
 
-                XmlDocument doc = new XmlDocument();
-                doc.Load("@./da.xml");
-                string inner = Utilities.GetInnerXml(resultContext.WadCfg, "WadCfg");
-                Assert.IsTrue(Utilities.CompareWadCfg(inner, doc), "xml is not same");
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error happens: {0}", e.ToString());
-                return false;
-            }
+            XmlDocument doc = new XmlDocument();
+            doc.Load("@./da.xml");
+            string inner = Utilities.GetInnerXml(resultContext.WadCfg, "WadCfg");
+            Assert.IsTrue(Utilities.CompareWadCfg(inner, doc), "xml is not same");
         }
 
         private void VerifyRDPExtContext(RemoteDesktopExtensionContext resultContext, string role, string extID, string userName, DateTime exp, string version = null)
         {
             Utilities.PrintContextAndItsBase(resultContext);
 
-            try
+            Assert.AreEqual(role, resultContext.Role.RoleType.ToString(), "role is not same");
+            Assert.AreEqual("RDP", resultContext.Extension, "extension is not RDP");
+            Assert.AreEqual(extID, resultContext.Id, "extension id is not same");
+            Assert.AreEqual(userName, resultContext.UserName, "storage account name is not same");
+            Assert.IsTrue(Utilities.CompareDateTime(exp, resultContext.Expiration), "expiration is not same");
+            if (!string.IsNullOrEmpty(version))
             {
-                Assert.AreEqual(role, resultContext.Role.RoleType.ToString(), "role is not same");
-                Assert.AreEqual("RDP", resultContext.Extension, "extension is not RDP");
-                Assert.AreEqual(extID, resultContext.Id, "extension id is not same");
-                Assert.AreEqual(userName, resultContext.UserName, "storage account name is not same");
-                Assert.IsTrue(Utilities.CompareDateTime(exp, resultContext.Expiration), "expiration is not same");
-                if (!string.IsNullOrEmpty(version))
-                {
-                    Assert.AreEqual(version, resultContext.Version, "version numbers are not same");
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error happens: {0}", e.ToString());
-                throw;
+                Assert.AreEqual(version, resultContext.Version, "version numbers are not same");
             }
         }
     }

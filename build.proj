@@ -17,6 +17,7 @@
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
     <DebugBuildConfig>Configuration=Debug;Platform=Any CPU</DebugBuildConfig>
     <ReleaseBuildConfig>Configuration=Release;Platform=Any CPU</ReleaseBuildConfig>
+    <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
   </PropertyGroup>
   <ItemGroup>
     <AzurePowerShellSln Include=".\src\AzurePowerShell.sln" />
@@ -90,23 +91,11 @@
     <!-- Delete NuGet cache-->
     <Delete Files="@(NuGetCache)" />
 
-    <Delete Files="$(NuGetRestoreConfigFile)" />
-    <WriteLinesToFile File="$(NuGetRestoreConfigFile)" Lines="&lt;configuration&gt;&lt;/configuration&gt;" Overwrite="true" Encoding="UTF-8" />
-    <!-- Create config for user name and password for private feed access -->
-    <Exec Command="$(NuGetCommand) sources add -Name AzureSdkInternal -Source &quot;https://www.myget.org/F/azure-sdk-internal/&quot; $(NuGetRestoreConfigSwitch)" />
-    <CallTarget Targets="ForceRestorePackagesFromPrivateFeed"/>
     <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\AzurePowerShell.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
-    <!-- delete config file, don't want to leave passwords hanging around on the build server file system -->
-    <Delete Files="$(NuGetRestoreConfigFile)" />
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\AzurePowerShell.sln" ContinueOnError="false" />
+    
     <!--Restore the xunit runner needed to run unit tests-->
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
-  </Target>
-  
-  <Target Name="ForceRestorePackagesFromPrivateFeed" Condition="'$(PRIVATE_FEED_PASSWORD)' != ''">
-    <Exec Command="$(NuGetCommand) sources add -Name Hydra -Source &quot;$(PRIVATE_FEED_URL)&quot; $(NuGetRestoreConfigSwitch)" />
-    <Exec Command="$(NuGetCommand) sources Update -Name Hydra -UserName $(PRIVATE_FEED_USER_NAME) -Password &quot;$(PRIVATE_FEED_PASSWORD)&quot; $(NuGetRestoreConfigSwitch)"
-          EchoOff="true" />
   </Target>
 
   <!-- Build all flavors of the Cmdlets -->
@@ -116,11 +105,13 @@
       Projects="@(AzurePowerShellSln)"
       Targets="Build"
       Properties="$(DebugBuildConfig)"
+      BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
     <MSBuild
       Projects="@(AzurePowerShellSln)"
       Targets="Build"
       Properties="$(ReleaseBuildConfig)"
+      BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
   </Target>
 
@@ -172,6 +163,7 @@
       Projects="@(AzurePowerShellSln)"
       Targets="Build"
       Properties="$(ReleaseBuildConfig)"
+      BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
   </Target>
 
@@ -182,6 +174,7 @@
       Projects="@(AzurePowerShellSln)"
       Targets="Build"
       Properties="$(DebugBuildConfig)"
+      BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
   </Target>
 
@@ -195,7 +188,7 @@
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BuildDebug;BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
-    <CallTarget Targets="KeyVaultTests; SqlTests; CommonTests; TestManagement; TestHDInsight; TestManagedCache; TestServiceManagement; TestServiceManagementExtensions; TestSqlDatabase; TestStorage; TestResourceManager; MockedScenarioTests; TestDSCExtension_x64; TestBatch; TestDataFactoryManager; TestRecoveryServices; TestStreamAnalyticsManager"/>
+    <CallTarget Targets="InvokeXUnit; TestHDInsight; TestServiceManagement; TestServiceManagementExtensions; TestSqlDatabase; TestStorage;  TestDSCExtension_x64"/>
   </Target>
   
   <!-- Run Full switch with scenario tests -->

@@ -24,16 +24,14 @@ using System.Text;
 using System.Web.Script.Serialization;
 using System.Xml;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -46,6 +44,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// client request id.
         /// </summary>
         public string ClientRequestId { get; set; }
+
+        /// <summary>
+        /// Gets the value of recovery services management client.
+        /// </summary>
+        public RecoveryServicesManagementClient GetRecoveryServicesClient
+        {
+            get
+            {
+                return this.recoveryServicesClient;
+            }
+        }
+
+        /// Azure profile
+        /// </summary>
+        public AzureProfile Profile { get; set; }
 
         /// <summary>
         /// Amount of time to sleep before fetching job details again.
@@ -67,21 +80,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private RecoveryServicesManagementClient recoveryServicesClient;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class.
-        /// </summary>
-        public PSRecoveryServicesClient()
-        {
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(AzureSubscription azureSubscription)
+        public PSRecoveryServicesClient(AzureProfile azureProfile, AzureSubscription azureSubscription)
         {
+            this.Profile = azureProfile;
             this.recoveryServicesClient =
-                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>
@@ -184,8 +191,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets request headers.
         /// </summary>
+        /// <param name="shouldSignRequest">specifies whether to sign the request or not</param>
         /// <returns>Custom request headers</returns>
-        public CustomRequestHeaders GetRequestHeaders()
+        public CustomRequestHeaders GetRequestHeaders(bool shouldSignRequest = true)
         {
             this.ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-P";
 
@@ -194,7 +202,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 // ClientRequestId is a unique ID for every request to Azure Site Recovery.
                 // It is useful when diagnosing failures in API calls.
                 ClientRequestId = this.ClientRequestId,
-                AgentAuthenticationHeader = this.GenerateAgentAuthenticationHeader(this.ClientRequestId)
+                AgentAuthenticationHeader = shouldSignRequest ? this.GenerateAgentAuthenticationHeader(this.ClientRequestId) : ""
             };
         }
 
@@ -240,7 +248,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             SiteRecoveryManagementClient siteRecoveryClient =
-                AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, asrVaultCreds.ResourceName, recoveryServicesClient.Credentials, AzureSession.CurrentContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
+                AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, 
+                asrVaultCreds.ResourceName, recoveryServicesClient.Credentials, 
+                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
 
             if (null == siteRecoveryClient)
             {
@@ -248,6 +258,103 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             return siteRecoveryClient;
+        }
+    }
+
+    /// <summary>
+    /// Helper around serialization/deserialization of objects. This one is a thin wrapper around
+    /// DataContractUtils template class which is the one doing the heavy lifting.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    public static class DataContractUtils
+    {
+        /// <summary>
+        /// Serializes the supplied object to the string.
+        /// </summary>
+        /// <typeparam name="T">The object type.</typeparam>
+        /// <param name="obj">Object to serialize</param>
+        /// <returns>Serialized string.</returns>
+        public static string Serialize<T>(T obj)
+        {
+            return DataContractUtils<T>.Serialize(obj);
+        }
+
+        /// <summary>
+        /// Deserialize the string to the expected object type.
+        /// </summary>
+        /// <typeparam name="T">The object type</typeparam>
+        /// <param name="xmlString">Serialized string</param>
+        /// <param name="result">Deserialized object</param>
+        public static void Deserialize<T>(string xmlString, out T result)
+        {
+            result = DataContractUtils<T>.Deserialize(xmlString);
+        }
+    }
+
+    /// <summary>
+    /// Template class for DataContractUtils.
+    /// </summary>
+    /// <typeparam name="T">The object type</typeparam>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    public static class DataContractUtils<T>
+    {
+        /// <summary>
+        /// Serializes the propertyBagContainer to the string. 
+        /// </summary>
+        /// <param name="propertyBagContainer">Property bag</param>
+        /// <returns>Serialized string </returns>
+        public static string Serialize(T propertyBagContainer)
+        {
+            var serializer = new DataContractSerializer(typeof(T));
+            string xmlString;
+            StringWriter sw = null;
+            try
+            {
+                sw = new StringWriter();
+                using (var writer = new XmlTextWriter(sw))
+                {
+                    // Indent the XML so it's human readable.
+                    writer.Formatting = Formatting.Indented;
+                    serializer.WriteObject(writer, propertyBagContainer);
+                    writer.Flush();
+                    xmlString = sw.ToString();
+                }
+            }
+            finally
+            {
+                if (sw != null)
+                {
+                    sw.Close();
+                }
+            }
+
+            return xmlString;
+        }
+
+        /// <summary>
+        /// Deserialize the string to the propertyBagContainer.
+        /// </summary>
+        /// <param name="xmlString">Serialized string</param>
+        /// <returns>Deserialized object</returns>
+        public static T Deserialize(string xmlString)
+        {
+            T propertyBagContainer;
+            using (Stream stream = new MemoryStream())
+            {
+                byte[] data = System.Text.Encoding.UTF8.GetBytes(xmlString);
+                stream.Write(data, 0, data.Length);
+                stream.Position = 0;
+                DataContractSerializer deserializer = new DataContractSerializer(typeof(T));
+                propertyBagContainer = (T)deserializer.ReadObject(stream);
+            }
+
+            return propertyBagContainer;
         }
     }
 }
