@@ -14,7 +14,7 @@
 
 using System;
 
-namespace Microsoft.Azure.Commands.Automation.Common
+namespace Microsoft.Azure.Commands.ResrouceManager.Automation.Common
 {
     /// <summary>
     /// Argument checking utility
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// <typeparam name="T">Type of argument</typeparam>
         /// <param name="name">Name of argument</param>
         /// <param name="value">Value of argument</param>
-        /// <returns>The <see cref="ArgumentRequirements"/> for this argument</returns>
+        /// <returns>The <see cref="ArgumentRequirements{T}"/> for this argument</returns>
         public static ArgumentRequirements<T> Argument<T>(string name, T value)
         {
             return new ArgumentRequirements<T>(name, value);

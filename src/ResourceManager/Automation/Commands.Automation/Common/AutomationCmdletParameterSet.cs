@@ -18,7 +18,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Automation.Common
+namespace Microsoft.Azure.Commands.ResrouceManager.Automation.Common
 {
     internal static class AutomationCmdletParameterSets
     {

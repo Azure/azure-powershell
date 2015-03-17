@@ -21,18 +21,18 @@ using System.IO;
 using System.Net;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Automation.Properties;
+using Microsoft.Azure.Commands.ResrouceManager.Automation.Model;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Newtonsoft.Json;
 
-using AutomationAccount = Microsoft.Azure.Commands.Automation.Model.AutomationAccount;
+using AutomationAccount = Microsoft.Azure.Commands.ResrouceManager.Automation.Model.AutomationAccount;
 
 
-namespace Microsoft.Azure.Commands.Automation.Common
+namespace Microsoft.Azure.Commands.ResrouceManager.Automation.Common
 {
     using AutomationManagement = Azure.Management.Automation;
     using Microsoft.Azure.Common.Authentication;
@@ -63,11 +63,18 @@ namespace Microsoft.Azure.Commands.Automation.Common
             this.automationManagementClient = automationManagementClient;
         }
 
+        void SetClientIdHeader(string clientRequestId)
+        {
+            var client = ((AutomationManagementClient) this.automationManagementClient);
+            client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+            client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);   
+        }
+
         public AzureSubscription Subscription { get; private set; }
 
         #region Account Operations
 
-        public IEnumerable<AutomationAccount> ListAutomationAccounts(string resourceGroupName)
+        public IEnumerable<Model.AutomationAccount> ListAutomationAccounts(string resourceGroupName)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
 
@@ -80,20 +87,20 @@ namespace Microsoft.Azure.Commands.Automation.Common
                             resourceGroupName);
                         return new ResponseWithSkipToken<AutomationManagement.Models.AutomationAccount>(
                             response, response.AutomationAccount);
-                    }).Select(c => new AutomationAccount(resourceGroupName, c));
+                    }).Select(c => new Model.AutomationAccount(resourceGroupName, c));
         }
 
-        public AutomationAccount GetAutomationAccount(string resourceGroupName, string automationAccountName)
+        public Model.AutomationAccount GetAutomationAccount(string resourceGroupName, string automationAccountName)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
 
             var account = this.automationManagementClient.AutomationAccounts.Get(resourceGroupName, automationAccountName).AutomationAccount;
 
-            return new AutomationAccount(resourceGroupName, account);
+            return new Model.AutomationAccount(resourceGroupName, account);
         }
 
-        public AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName, string location)
+        public Model.AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName, string location)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("Location", location).NotNull();
@@ -118,7 +125,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     accountCreateParameters).AutomationAccount;
 
 
-            return new AutomationAccount(resourceGroupName, account);
+            return new Model.AutomationAccount(resourceGroupName, account);
         }
 
         public void DeleteAutomationAccount(string resourceGroupName, string automationAccountName)

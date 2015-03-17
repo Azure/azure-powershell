@@ -12,16 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Automation.Properties;
+using Microsoft.Azure.Commands.ResrouceManager.Automation.Common;
+using Microsoft.Azure.Commands.ResrouceManager.Automation.Model;
 
-namespace Microsoft.Azure.Commands.Automation.Cmdlet
+namespace Microsoft.Azure.Commands.ResrouceManager.Automation.Cmdlet
 {
     /// <summary>
     /// Removes azure automation accounts, filterd by automation account name and location.

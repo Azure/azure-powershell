@@ -124,9 +124,9 @@
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Automation\Commands.Automation.csproj">
+    <ProjectReference Include="..\Commands.Automation\Commands.Automation2.csproj">
       <Project>{47cd7e95-5330-4384-abce-2c267c57085c}</Project>
-      <Name>Commands.Automation</Name>
+      <Name>Commands.Automation2</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

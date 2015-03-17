@@ -14,7 +14,7 @@
 
 using System.Runtime.Serialization;
 
-namespace Microsoft.Azure.Commands.Automation.DataContract
+namespace Microsoft.Azure.Commands.ResrouceManager.Automation.DataContract
 {
     /// <summary>
     /// The error response.
