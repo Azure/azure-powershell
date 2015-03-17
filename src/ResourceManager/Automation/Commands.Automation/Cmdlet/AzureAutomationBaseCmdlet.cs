@@ -21,13 +21,13 @@ using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Xml.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Automation.Properties;
-using Microsoft.Azure.Commands.ResrouceManager.Automation.Common;
-using Microsoft.Azure.Commands.ResrouceManager.Automation.DataContract;
+using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.DataContract;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Hyak.Common;
 
-namespace Microsoft.Azure.Commands.ResrouceManager.Automation.Cmdlet
+namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// The azure automation base cmdlet.

@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
-namespace Microsoft.Azure.Commands.ResrouceManager.Automation.Common
+namespace Microsoft.Azure.Commands.Automation.Common
 {
     /// <summary>
     /// StreamType enum represents the 6 types of Powershell Streams supported.

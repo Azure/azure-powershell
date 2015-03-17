@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Automation.Properties;
+using Microsoft.Azure.Commands.Automation.Properties;
 using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Microsoft.Azure.Commands.ResrouceManager.Automation.Common
+namespace Microsoft.Azure.Commands.Automation.Common
 {
     internal static class RequiresExtensions
     {

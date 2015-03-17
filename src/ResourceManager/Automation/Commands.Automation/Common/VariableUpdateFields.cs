@@ -14,7 +14,7 @@
 
 using System;
 
-namespace Microsoft.Azure.Commands.ResrouceManager.Automation.Common
+namespace Microsoft.Azure.Commands.Automation.Common
 {
     public enum VariableUpdateFields
     {

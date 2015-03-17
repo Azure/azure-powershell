@@ -2,7 +2,7 @@
 <ServiceConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" serviceName="HelloWorld" osFamily="2" osVersion="*" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
 	<Role name="HelloWorld_WebRole">
 		<ConfigurationSettings>
-			<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=samplesa;AccountKey=1VtQsFrdpGyY8bKCC2WF74B1lV9fBpPtxZbBj6apwFNLCm/sYTlsrCmps9TgBMykw5NiGGGwngYUzhvpECUXUQ==" />
+			<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=test;AccountKey=test" />
 		</ConfigurationSettings>
 		<Instances count="1" />
 	</Role>

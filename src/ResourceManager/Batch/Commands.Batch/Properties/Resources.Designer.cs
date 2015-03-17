@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Job was specified. Supply a Job object or a WorkItem namd and Job name to query for Tasks..
+        ///   Looks up a localized string similar to No Job was specified. Supply a Job object or a WorkItem name and Job name to query for Tasks..
         /// </summary>
         internal static string GBT_NoJob {
             get {
@@ -322,7 +322,43 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove batch account {0}.
+        ///   Looks up a localized string similar to Creating Pool {0}.
+        /// </summary>
+        internal static string NBP_CreatingPool {
+            get {
+                return ResourceManager.GetString("NBP_CreatingPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Task {0}.
+        /// </summary>
+        internal static string NBT_CreatingTask {
+            get {
+                return ResourceManager.GetString("NBT_CreatingTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Job specified to create the new Task under.  Supply a Job object or a WorkItem name and Job name..
+        /// </summary>
+        internal static string NBT_NoJobSpecified {
+            get {
+                return ResourceManager.GetString("NBT_NoJobSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating WorkItem {0}.
+        /// </summary>
+        internal static string NBWI_CreatingWorkItem {
+            get {
+                return ResourceManager.GetString("NBWI_CreatingWorkItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove batch account {0}?.
         /// </summary>
         internal static string RBA_RemoveConfirm {
             get {
@@ -336,6 +372,96 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string RBA_RemoveResource {
             get {
                 return ResourceManager.GetString("RBA_RemoveResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Job specified for deletion. Supply a Job object or a WorkItem name and Job name..
+        /// </summary>
+        internal static string RBJ_NoJobSpecified {
+            get {
+                return ResourceManager.GetString("RBJ_NoJobSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Job {0}?.
+        /// </summary>
+        internal static string RBJ_RemoveConfirm {
+            get {
+                return ResourceManager.GetString("RBJ_RemoveConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Job ....
+        /// </summary>
+        internal static string RBJ_RemoveJob {
+            get {
+                return ResourceManager.GetString("RBJ_RemoveJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Pool {0}?.
+        /// </summary>
+        internal static string RBP_RemoveConfirm {
+            get {
+                return ResourceManager.GetString("RBP_RemoveConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Pool ....
+        /// </summary>
+        internal static string RBP_RemovePool {
+            get {
+                return ResourceManager.GetString("RBP_RemovePool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Task specified for deletion. Supply a Task object or a WorkItem name, Job name, and Task name..
+        /// </summary>
+        internal static string RBT_NoTaskSpecified {
+            get {
+                return ResourceManager.GetString("RBT_NoTaskSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Task {0}?.
+        /// </summary>
+        internal static string RBT_RemoveConfirm {
+            get {
+                return ResourceManager.GetString("RBT_RemoveConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Task ....
+        /// </summary>
+        internal static string RBT_RemoveTask {
+            get {
+                return ResourceManager.GetString("RBT_RemoveTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove WorkItem {0}?.
+        /// </summary>
+        internal static string RBWI_RemoveConfirm {
+            get {
+                return ResourceManager.GetString("RBWI_RemoveConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing WorkItem ....
+        /// </summary>
+        internal static string RBWI_RemoveWorkItem {
+            get {
+                return ResourceManager.GetString("RBWI_RemoveWorkItem", resourceCulture);
             }
         }
         

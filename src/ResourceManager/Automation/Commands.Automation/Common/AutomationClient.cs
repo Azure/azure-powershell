@@ -21,18 +21,18 @@ using System.IO;
 using System.Net;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.ResourceManager.Automation.Properties;
-using Microsoft.Azure.Commands.ResrouceManager.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Newtonsoft.Json;
 
-using AutomationAccount = Microsoft.Azure.Commands.ResrouceManager.Automation.Model.AutomationAccount;
+using AutomationAccount = Microsoft.Azure.Commands.Automation.Model.AutomationAccount;
 
 
-namespace Microsoft.Azure.Commands.ResrouceManager.Automation.Common
+namespace Microsoft.Azure.Commands.Automation.Common
 {
     using AutomationManagement = Azure.Management.Automation;
     using Microsoft.Azure.Common.Authentication;

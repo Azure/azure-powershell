@@ -7,7 +7,7 @@
     <ProjectGuid>{90DEF35A-F7FF-40D0-B008-F489A4C092DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.ResourceManager.Automation</RootNamespace>
+    <RootNamespace>Microsoft.Azure.Commands.Automation</RootNamespace>
     <AssemblyName>Microsoft.Azure.Commands.ResourceManager.Automation</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

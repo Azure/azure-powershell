@@ -15,11 +15,11 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.ResrouceManager.Automation.Common;
-using Microsoft.Azure.Commands.ResrouceManager.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-namespace Microsoft.Azure.Commands.ResrouceManager.Automation.Cmdlet
+namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Creates azure automation accounts based on automation account name and location.
