@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 Name = CollectionName,
                 TemplateImageName = ImageName,
                 Region = Location,
-                BillingPlanName = Plan,
+                PlanName = Plan,
                 Description = Description,
                 CustomRdpProperty = CustomRdpProperty,
                 Mode = CollectionMode.Apps
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 case AzureVNet:
                 {
                     creds = Credential.GetNetworkCredential();
-                    details.VnetName = VNetName;
+                    details.VNetName = VNetName;
 
                     if (SubnetName != null)
                     {
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                         }
 
                         details.SubnetName = SubnetName;
-                        ValidateCustomerVNetParams(details.VnetName, details.SubnetName);
+                        ValidateCustomerVNetParams(details.VNetName, details.SubnetName);
 
                         if (DnsServers != null)
                         {

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 {
                     Name = CollectionName,
                     TemplateImageName = ImageName,
-                    BillingPlanName = collection.BillingPlanName
+                    PlanName = collection.PlanName
                 };
 
                 if (ShouldProcess(CollectionName, "Update collection"))

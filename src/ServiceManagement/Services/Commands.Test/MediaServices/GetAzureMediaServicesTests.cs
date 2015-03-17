@@ -77,9 +77,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
             currentProfile.Subscriptions[new Guid(SubscriptionId)] = subscription;
 
             getAzureMediaServiceCommand.ExecuteCmdlet();
-            Assert.Equal(1, ((MockCommandRuntime)getAzureMediaServiceCommand.CommandRuntime).OutputPipeline.Count);
-            IEnumerable<MediaServiceAccount> accounts = (IEnumerable<MediaServiceAccount>)((MockCommandRuntime)getAzureMediaServiceCommand.CommandRuntime).OutputPipeline.FirstOrDefault();
+
+            IEnumerable<MediaServiceAccount> accounts = System.Management.Automation.LanguagePrimitives.GetEnumerable(((MockCommandRuntime)getAzureMediaServiceCommand.CommandRuntime).OutputPipeline).Cast<MediaServiceAccount>();
+
             Assert.NotNull(accounts);
+            Assert.Equal(2, accounts.Count());
             Assert.True(accounts.Any(mediaservice => (mediaservice).AccountId == id1));
             Assert.True(accounts.Any(mediaservice => (mediaservice).AccountId == id2));
             Assert.True(accounts.Any(mediaservice => (mediaservice).Name.Equals("WAMS Account 1")));
