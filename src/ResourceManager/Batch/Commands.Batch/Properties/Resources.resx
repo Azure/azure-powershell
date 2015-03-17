@@ -156,6 +156,15 @@
   <data name="GBP_NoFilter" xml:space="preserve">
     <value>Getting all Pools associated with the Batch account. </value>
   </data>
+  <data name="GBTFC_Downloading" xml:space="preserve">
+    <value>Downloading Task file "{0}" to local path: {1}</value>
+  </data>
+  <data name="GBTFC_NoDestinationPath" xml:space="preserve">
+    <value>No destination path was specified. Supply a path where the Task file should be downloaded.</value>
+  </data>
+  <data name="GBTFC_NoTaskFileSpecified" xml:space="preserve">
+    <value>No Task file was specified to download. Supply a Task file object or a WorkItem name, Job name, Task name, and Task file name.</value>
+  </data>
   <data name="GBTF_GetByName" xml:space="preserve">
     <value>Getting Task file "{0}" from Task "{1}"</value>
   </data>

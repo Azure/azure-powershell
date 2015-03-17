@@ -155,6 +155,7 @@
     <Compile Include="Accounts\SetBatchAccountCommandTests.cs" />
     <Compile Include="BatchTestHelpers.cs" />
     <Compile Include="Files\GetBatchTaskFileCommandTests.cs" />
+    <Compile Include="Files\GetBatchTaskFileContentCommandTests.cs" />
     <Compile Include="Jobs\GetBatchJobCommandTests.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommandTests.cs" />
     <Compile Include="Models\BatchAccountContextTest.cs" />
@@ -225,6 +226,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.FileTests\TestGetTaskFileByName.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.FileTests\TestGetTaskFileContentByName.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.FileTests\TestGetTaskFileContentPipeline.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.FileTests\TestListAllTaskFiles.json">

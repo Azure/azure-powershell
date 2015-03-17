@@ -143,3 +143,92 @@ function Test-ListTaskFilePipeline
 	$taskFiles = Get-AzureBatchWorkItem_ST -Name $workItemName -BatchContext $context | Get-AzureBatchJob_ST -BatchContext $context | Get-AzureBatchTask_ST -BatchContext $context | Get-AzureBatchTaskFile_ST -BatchContext $context
 	Assert-AreEqual $count $taskFiles.Length
 }
+
+<#
+.SYNOPSIS
+Tests downloading Task file contents by name
+#>
+function Test-GetTaskFileContentByName
+{
+	param([string]$accountName, [string]$wiName, [string]$jobName, [string]$taskName, [string]$taskFileName, [string]$fileContent)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$path = "localFile.txt"
+	$stream = New-Object System.IO.MemoryStream 
+
+	try
+	{
+		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -DestinationPath $path -BatchContext $context -MemStream $stream
+		
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Don't do strict equality check since extra newline characters get added to the end of the file
+		Assert-True { $downloadedContents.Contains($fileContent) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+
+	# Verify positional parameters also work
+	$stream = New-Object System.IO.MemoryStream 
+	try
+	{
+		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -DestinationPath $path -BatchContext $context -MemStream $stream
+
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Don't do strict equality check since extra newline characters get added to the end of the file
+		Assert-True { $downloadedContents.Contains($fileContent) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+}
+
+<#
+.SYNOPSIS
+Tests downloading Task file contents using the pipeline
+#>
+function Test-GetTaskFileContentPipeline
+{
+	param([string]$accountName, [string]$wiName, [string]$jobName, [string]$taskName, [string]$taskFileName, [string]$fileContent)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$path = "localFile.txt"
+	$stream = New-Object System.IO.MemoryStream 
+
+	try
+	{
+		$taskFile = Get-AzureBatchTaskFile_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context
+		$taskFile | Get-AzureBatchTaskFileContent_ST -DestinationPath $path -BatchContext $context -MemStream $stream
+		
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Don't do strict equality check since extra newline characters get added to the end of the file
+		Assert-True { $downloadedContents.Contains($fileContent) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+}

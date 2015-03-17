@@ -436,6 +436,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                         {
                             responseStreamField.SetValue(command, responseBody);
                         }
+                        FieldInfo destinationStreamField = command.GetType().GetField("DestinationStream", BindingFlags.Public | BindingFlags.Instance);
+                        if (destinationStreamField != null)
+                        {
+                            Stream destinationStream = destinationStreamField.GetValue(command) as Stream;
+                            if (destinationStream != null)
+                            {
+                                responseBody.CopyTo(destinationStream);
+                            }
+                        }
                         batchResponse = postProcessDelegate.DynamicInvoke(command, webResponse, null, null);
                     }
                 }

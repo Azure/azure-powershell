@@ -250,6 +250,33 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downloading Task file &quot;{0}&quot; to local path: {1}.
+        /// </summary>
+        internal static string GBTFC_Downloading {
+            get {
+                return ResourceManager.GetString("GBTFC_Downloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No destination path was specified. Supply a path where the Task file should be downloaded..
+        /// </summary>
+        internal static string GBTFC_NoDestinationPath {
+            get {
+                return ResourceManager.GetString("GBTFC_NoDestinationPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Task file was specified to download. Supply a Task file object or a WorkItem name, Job name, Task name, and Task file name..
+        /// </summary>
+        internal static string GBTFC_NoTaskFileSpecified {
+            get {
+                return ResourceManager.GetString("GBTFC_NoTaskFileSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting WorkItem &quot;{0}&quot;.
         /// </summary>
         internal static string GBWI_GetByName {

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -89,6 +90,57 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount));
                     return new PSAsyncEnumerable<PSTaskFile, ITaskFile>(taskFiles, mappingFunction).Take(options.MaxCount);   
                 }
+            }
+        }
+
+        /// <summary>
+        /// Downloads a Task file to the local machine
+        /// </summary>
+        /// <param name="options">The download options</param>
+        public void DownloadTaskFile(DownloadTaskFileOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException("options");
+            }
+
+            if ((string.IsNullOrWhiteSpace(options.WorkItemName) || string.IsNullOrWhiteSpace(options.JobName) || string.IsNullOrWhiteSpace(options.TaskName) 
+                || string.IsNullOrWhiteSpace(options.TaskFileName)) && options.TaskFile == null)
+            {
+                throw new ArgumentNullException(Resources.GBTFC_NoTaskFileSpecified);
+            }
+
+            if (string.IsNullOrWhiteSpace(options.DestinationPath))
+            {
+                throw new ArgumentNullException(Resources.GBTFC_NoDestinationPath);
+            }
+
+            ITaskFile taskFile = null;
+            if (options.TaskFile == null)
+            {
+                using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
+                {
+                    taskFile = wiManager.GetTaskFile(options.WorkItemName, options.JobName, options.TaskName, options.TaskFileName, options.AdditionalBehaviors);
+                }
+            }
+            else
+            {
+                taskFile = options.TaskFile.omObject;
+            }
+
+            WriteVerbose(string.Format(Resources.GBTFC_Downloading, taskFile.Name, options.DestinationPath));
+            if (options.Stream != null)
+            {
+                // Used for testing.
+                // Don't dispose supplied Stream
+                taskFile.CopyToStream(options.Stream, options.AdditionalBehaviors);
+            }
+            else
+            {
+                using (FileStream fs = new FileStream(options.DestinationPath, FileMode.Create))
+                {
+                    taskFile.CopyToStream(fs, options.AdditionalBehaviors);
+                }   
             }
         }
     }

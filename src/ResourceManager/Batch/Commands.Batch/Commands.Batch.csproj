@@ -143,6 +143,7 @@
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
     <Compile Include="Files\GetBatchTaskFileCommand.cs" />
+    <Compile Include="Files\GetBatchTaskFileContentCommand.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommand.cs" />
     <Compile Include="Models\BatchClient.Accounts.cs" />
     <Compile Include="Models\BatchClient.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Models\BatchClient.Pools.cs" />
     <Compile Include="Models\BatchClient.Tasks.cs" />
     <Compile Include="Models\BatchClient.WorkItems.cs" />
+    <Compile Include="Models\DownloadTaskFileOptions.cs" />
     <Compile Include="Models\ListJobOptions.cs" />
     <Compile Include="Models\ListPoolOptions.cs" />
     <Compile Include="Models\ListTaskFileOptions.cs" />

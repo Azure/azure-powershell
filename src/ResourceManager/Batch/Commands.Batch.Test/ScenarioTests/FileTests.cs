@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol.Entities;
 using Microsoft.Azure.Commands.Batch.Models;
@@ -202,6 +203,65 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetTaskFileContentByName()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string workItemName = "testGetTaskFileContentWI";
+            string jobName = null;
+            string taskName = "testTask";
+            string fileName = "testFile.txt";
+            string taskFileName = string.Format("wd\\{0}", fileName);
+            string fileContents = "test file contents";
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-GetTaskFileContentByName '{0}' '{1}' '{2}' '{3}' '{4}' '{5}'", accountName, workItemName, jobName, taskName, taskFileName, fileContents) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    ScenarioTestHelpers.CreateTestWorkItem(controller, context, workItemName);
+                    jobName = ScenarioTestHelpers.WaitForRecentJob(controller, context, workItemName);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName, string.Format("cmd /c echo {0} > {1}", fileContents, fileName));
+                    ScenarioTestHelpers.WaitForTaskCompletion(controller, context, workItemName, jobName, taskName);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteWorkItem(controller, context, workItemName);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetTaskFileContentPipeline()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string workItemName = "testGetTFContentPipeWI";
+            string jobName = null;
+            string taskName = "testTask";
+            string fileName = "testFile.txt";
+            string taskFileName = string.Format("wd\\{0}", fileName);
+            string fileContents = "test file contents";
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-GetTaskFileContentPipeline '{0}' '{1}' '{2}' '{3}' '{4}' '{5}'", accountName, workItemName, jobName, taskName, taskFileName, fileContents) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    ScenarioTestHelpers.CreateTestWorkItem(controller, context, workItemName);
+                    jobName = ScenarioTestHelpers.WaitForRecentJob(controller, context, workItemName);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName, string.Format("cmd /c echo {0} > {1}", fileContents, fileName));
+                    ScenarioTestHelpers.WaitForTaskCompletion(controller, context, workItemName, jobName, taskName);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteWorkItem(controller, context, workItemName);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
@@ -210,6 +270,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     {
         public override void ExecuteCmdlet()
         {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Get, "AzureBatchTaskFileContent_ST")]
+    public class GetBatchTaskFileContentScenarioTestCommand : GetBatchTaskFileContentCommand
+    {
+        [Parameter]
+        public MemoryStream MemStream { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            this.Stream = MemStream;
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
             base.ExecuteCmdlet();
         }
