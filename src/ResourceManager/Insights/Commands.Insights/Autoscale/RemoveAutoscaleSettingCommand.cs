@@ -17,29 +17,29 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Insights;
 
-namespace Microsoft.Azure.Commands.Insights.Alerts
+namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
     /// <summary>
     /// Remove an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AlertRule"), OutputType(typeof(List<AzureOperationResponse>))]
-    public class RemoveAlertRuleCommand : ManagementCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AutoscaleSetting"), OutputType(typeof(AzureOperationResponse))]
+    public class RemoveAutoscaleSettingCommand : ManagementCmdletBase
     {
-        internal const string RemoveAlertParamGroup = "Parameters for RemoveAlert cmdlet";
+        internal const string RemoveAutoscaleSettingParamGroup = "Parameters for RemoveAutoscaleSetting cmdlet";
 
         #region Parameter declaration
 
         /// <summary>
         /// Gets or sets the ResourceGroupName parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = RemoveAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = RemoveAutoscaleSettingParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 
         /// <summary>
-        /// Gets or sets the rule name parameter of the cmdlet
+        /// Gets or sets the autoscale setting name parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = RemoveAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert rule name")]
+        [Parameter(ParameterSetName = RemoveAutoscaleSettingParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The autoscale setting name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         {
             try
             {
-                AzureOperationResponse result = this.InsightsManagementClient.AlertOperations.DeleteRuleAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
+                AzureOperationResponse result = this.InsightsManagementClient.AutoscaleOperations.DeleteSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
                 WriteObject(result);
             }
             catch (AggregateException ex)

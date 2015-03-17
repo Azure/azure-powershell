@@ -117,28 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AlertTagHiddenLinkKey" xml:space="preserve">
-    <value>hidden-link:</value>
+  <data name="IncorrectNumberOfItemsInSchedule" xml:space="preserve">
+    <value>Number of items in the schedule days, hours, and minutes parameters must be equal.</value>
   </data>
-  <data name="AlertTagHiddenLinkValue" xml:space="preserve">
-    <value>Resource</value>
+  <data name="InvalidDaySpec" xml:space="preserve">
+    <value>Invalid day specification '{0}'.</value>
   </data>
-  <data name="AlertTagTypeKey" xml:space="preserve">
-    <value>$type</value>
+  <data name="InvalidHourSpec" xml:space="preserve">
+    <value>Invalid hour specification '{0}'.</value>
   </data>
-  <data name="AlertTagTypeValue" xml:space="preserve">
-    <value>Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary,Microsoft.WindowsAzure.Management.Common.Storage</value>
+  <data name="InvalidMinuteSpec" xml:space="preserve">
+    <value>Invalid minute specification '{0}'.</value>
   </data>
-  <data name="RuleConditionTypeNotSupported" xml:space="preserve">
-    <value>Rule condition type '{0}' not supported.</value>
+  <data name="MinimumTimeGrain1min" xml:space="preserve">
+    <value>Minimum value for trigger TimeGrain is 1 minute.</value>
   </data>
-  <data name="RuleDataSourceTypeNotSupported" xml:space="preserve">
-    <value>Rule data source type '{0}' not supported.</value>
+  <data name="MinimumTimeWindow5min" xml:space="preserve">
+    <value>Minimum value for trigger TimeWindow is 5 minutes.</value>
   </data>
-  <data name="RuleTypeNotConsistentWithParamGroup" xml:space="preserve">
-    <value>The given rule type '{0}' is not consistent with the set of parameters.</value>
-  </data>
-  <data name="RuleTypeNotSupported" xml:space="preserve">
-    <value>Rule type '{0}' is not supported.</value>
+  <data name="PropertiresCannotBeNull" xml:space="preserve">
+    <value>Properties member cannot be null.</value>
   </data>
 </root>

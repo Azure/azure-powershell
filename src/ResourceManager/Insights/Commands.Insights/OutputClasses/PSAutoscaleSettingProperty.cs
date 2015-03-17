@@ -18,40 +18,37 @@ using Microsoft.Azure.Management.Insights.Models;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the ManagementEventRuleCondition class
+    /// An AutoscaleSetting with the ToString modified to allow for details to be displayed
     /// </summary>
-    public class PSEventRuleCondition : IPSRuleCondition
+    public class PSAutoscaleSettingProperty : AutoscaleSetting
     {
         /// <summary>
-        /// Gets or sets the DataSource of the rule condition
+        /// Initializes an instance of the PSAutoscaleSettingProperty class.
         /// </summary>
-        public RuleManagementEventDataSource DataSource { get; set; }
-
-        /// <summary>
-        /// Gets or sets the AggregationCondition of the rule condition
-        /// </summary>
-        public ManagementEventAggregationCondition AggregationCondition { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the PSEventRuleCondition class
-        /// </summary>
-        /// <param name="ruleCondition">The rule condition</param>
-        public PSEventRuleCondition(ManagementEventRuleCondition ruleCondition)
+        /// <param name="autoscaleSetting">The autoscale setting to use as base</param>
+        public PSAutoscaleSettingProperty(AutoscaleSetting autoscaleSetting)
         {
-            this.DataSource = ruleCondition.DataSource as RuleManagementEventDataSource;
-            this.AggregationCondition = ruleCondition.Aggregation;
+            if (autoscaleSetting != null)
+            {
+                this.Enabled = autoscaleSetting.Enabled;
+                this.Name = autoscaleSetting.Name;
+                this.Profiles = autoscaleSetting.Profiles;
+                this.TargetResourceUri = autoscaleSetting.TargetResourceUri;
+            }
         }
 
         /// <summary>
-        /// A string representation of the object
+        /// A string representation of the PSAutoscaleSettingProperty
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A string representation of the PSAutoscaleSettingProperty</returns>
         public override string ToString()
         {
             StringBuilder output = new StringBuilder();
             output.AppendLine();
-            output.AppendLine("    DataSource : " + this.DataSource.ToString(indentationTabs: 2));
-            output.Append("    Condition  : " + this.AggregationCondition.ToString(indentationTabs: 2));
+            output.AppendLine("Name             : " + this.Name);
+            output.AppendLine("TargetResourceId : " + this.TargetResourceUri);
+            output.AppendLine("Enabled          : " + this.Enabled);
+            output.Append("Profiles         : " + this.Profiles.ToString(indentationTabs: 2));
             return output.ToString();
         }
     }

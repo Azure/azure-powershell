@@ -17,31 +17,30 @@ using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Insights.Alerts;
+using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Insights.Test.Alerts
+namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 {
-    public class AddAlertRuleCommandTests
+    public class RemoveAutoscaleSettingCommandTests
     {
-        private readonly AddAlertRuleCommand cmdlet;
+        private readonly RemoveAutoscaleSettingCommand cmdlet;
         private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
-        private readonly Mock<IAlertOperations> insightsAlertRuleOperationsMock;
+        private readonly Mock<IAutoscaleOperations> insightsAutoscaleOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private AzureOperationResponse response;
         private string resourceGroup;
-        private RuleCreateOrUpdateParameters createOrUpdatePrms;
+        private string settingName;
 
-        public AddAlertRuleCommandTests()
+        public RemoveAutoscaleSettingCommandTests()
         {
-            insightsAlertRuleOperationsMock = new Mock<IAlertOperations>();
+            insightsAutoscaleOperationsMock = new Mock<IAutoscaleOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new AddAlertRuleCommand()
+            cmdlet = new RemoveAutoscaleSettingCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 InsightsManagementClient = insightsManagementClientMock.Object
@@ -53,36 +52,27 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 StatusCode = HttpStatusCode.OK,
             };
 
-            insightsAlertRuleOperationsMock.Setup(f => f.CreateOrUpdateRuleAsync(It.IsAny<string>(), It.IsAny<RuleCreateOrUpdateParameters>(), It.IsAny<CancellationToken>()))
+            insightsAutoscaleOperationsMock.Setup(f => f.DeleteSettingAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<AzureOperationResponse>(response))
-                .Callback((string resourceGrp, RuleCreateOrUpdateParameters createOrUpdateParams, CancellationToken t) =>
+                .Callback((string resourceGrp, string settingNm, CancellationToken t) =>
                 {
                     resourceGroup = resourceGrp;
-                    createOrUpdatePrms = createOrUpdateParams;
+                    settingName = settingNm;
                 });
 
-            insightsManagementClientMock.SetupGet(f => f.AlertOperations).Returns(this.insightsAlertRuleOperationsMock.Object);
+            insightsManagementClientMock.SetupGet(f => f.AutoscaleOperations).Returns(this.insightsAutoscaleOperationsMock.Object);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AddAlertRuleCommandParametersProcessing()
+        public void RemoveAutoscaleSettingCommandParametersProcessing()
         {
-            cmdlet.RuleType = AlertRuleTypes.Metric;
-            cmdlet.Name = Utilities.Name;
-            cmdlet.Location = "East US";
             cmdlet.ResourceGroup = Utilities.ResourceGroup;
-            cmdlet.Operator = ConditionOperator.GreaterThan;
-            cmdlet.Threshold = 1;
-            cmdlet.ResourceId = "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo";
-            cmdlet.MetricName = "Requests";
-            cmdlet.TimeAggregationOperator = TimeAggregationOperator.Total;
-            cmdlet.CustomEmails = new string[] {"gu@macrosoft.com,h@dd.com"};
-
+            cmdlet.Name = Utilities.Name;
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
-            Assert.NotNull(this.createOrUpdatePrms);
+            Assert.Equal(Utilities.Name, this.settingName);
         }
     }
 }

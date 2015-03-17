@@ -89,6 +89,12 @@
     <Compile Include="Alerts\GetAlertHistoryCommand.cs" />
     <Compile Include="Alerts\GetAlertRuleCommand.cs" />
     <Compile Include="Alerts\RemoveAlertRuleCommand.cs" />
+    <Compile Include="Autoscale\NewAutoscaleProfileCommand.cs" />
+    <Compile Include="Autoscale\NewAutoscaleRuleCommand.cs" />
+    <Compile Include="Autoscale\AddAutoscaleSettingCommand.cs" />
+    <Compile Include="Autoscale\GetAutoscaleHistoryCommand.cs" />
+    <Compile Include="Autoscale\GetAutoscaleSettingCommand.cs" />
+    <Compile Include="Autoscale\RemoveAutoscaleSettingCommand.cs" />
     <Compile Include="EventCmdletBase.cs" />
     <Compile Include="Events\GetAzureCorrelationIdLogCommand.cs" />
     <Compile Include="Events\GetAzureResourceGroupLogCommand.cs" />
@@ -97,21 +103,24 @@
     <Compile Include="Events\GetAzureSubscriptionIdLogCommand.cs" />
     <Compile Include="InsightsClientCmdletBase.cs" />
     <Compile Include="ManagementCmdletBase.cs" />
-    <Compile Include="OutputClasses\PSLocationThresholdRuleCondition.cs" />
-    <Compile Include="OutputClasses\PSManagementItemDescriptor.cs" />
+    <Compile Include="OutputClasses\ConversionExtensions.cs" />
     <Compile Include="OutputClasses\IPSEventData.cs" />
-    <Compile Include="OutputClasses\PSManagementItemDescriptorWithDetails.cs" />
-    <Compile Include="OutputClasses\PSManagementPropertyDescriptor.cs" />
     <Compile Include="OutputClasses\IPSRuleCondition.cs" />
+    <Compile Include="OutputClasses\PSAutoscaleSetting.cs" />
+    <Compile Include="OutputClasses\PSAutoscaleSettingProperty.cs" />
     <Compile Include="OutputClasses\PSAlertRule.cs" />
     <Compile Include="OutputClasses\PSAlertRuleNoDetails.cs" />
+    <Compile Include="OutputClasses\PSAlertRuleProperty.cs" />
     <Compile Include="OutputClasses\PSDictionaryElement.cs" />
     <Compile Include="OutputClasses\PSEventData.cs" />
     <Compile Include="OutputClasses\PSEventDataAuthorization.cs" />
     <Compile Include="OutputClasses\PSEventDataHttpRequest.cs" />
     <Compile Include="OutputClasses\PSEventDataNoDetails.cs" />
-    <Compile Include="OutputClasses\PSAlertRuleProperty.cs" />
     <Compile Include="OutputClasses\PSEventRuleCondition.cs" />
+    <Compile Include="OutputClasses\PSLocationThresholdRuleCondition.cs" />
+    <Compile Include="OutputClasses\PSManagementItemDescriptor.cs" />
+    <Compile Include="OutputClasses\PSManagementItemDescriptorWithDetails.cs" />
+    <Compile Include="OutputClasses\PSManagementPropertyDescriptor.cs" />
     <Compile Include="OutputClasses\PSThresholdRuleCondition.cs" />
     <Compile Include="OutputClasses\PSToStringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +133,11 @@
       <DependentUpon>ResourcesForEventCmdlets.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ResourcesForAutoscaleCmdlets.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourcesForAutoscaleCmdlets.resx</DependentUpon>
     </Compile>
     <Compile Include="Utilities.cs" />
   </ItemGroup>
@@ -152,6 +166,11 @@
     <EmbeddedResource Include="Properties\ResourcesForEventCmdlets.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesForEventCmdlets.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ResourcesForAutoscaleCmdlets.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourcesForAutoscaleCmdlets.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
