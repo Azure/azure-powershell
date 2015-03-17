@@ -34,18 +34,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private JobResponse jobResponse = null;
 
-        /// <summary>
-        /// Existing protection profile.
-        /// </summary>
-        private ProtectionProfile existingProtectionProfile = null;
-
         #region Parameters
 
         /// <summary>
         /// Gets or sets Protection Profile object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionProfile ProtectionProfile { get; set; }
 
@@ -143,15 +138,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                // Retrieve the current protection profile.
-                // If it does not exist, it means that the profile is not associated with any container and an update cannot be performed.
-                // All these validations to be done in service - no retrieving here
-                ProtectionProfileResponse protectionProfileResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryProtectionProfile(this.ProtectionProfile.ID);
-
-                //// protectionProfileResponse.StatusCode;
-                this.existingProtectionProfile = protectionProfileResponse.ProtectionProfile;
-
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.EnterpriseToAzure:
@@ -193,8 +179,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             //// Verify whether the storage account is associated with the account or not.
             //// PSRecoveryServicesClientHelper.ValidateStorageAccountAssociation(this.RecoveryAzureStorageAccount);
-
-            //// Verify if protection profile is associated with atleast one PC!
 
             PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
 
@@ -242,24 +226,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             HyperVReplicaProtectionProfileInput hyperVReplicaProtectionProfileInput
-                = DataContractUtils<HyperVReplicaProtectionProfileInput>.Deserialize(this.existingProtectionProfile.ReplicationProviderSetting);
+                    = new HyperVReplicaProtectionProfileInput()
+                    {
+                        OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationStartTime,
+                        CompressionEnabled = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.CompressionEnabled,
+                        OnlineReplicationMethod = (string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 1) ? true : false,
+                        RecoveryPoints = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.RecoveryPoints,
+                        ReplicationPort = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationPort,
+                        AllowReplicaDeletion = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.AllowReplicaDeletion,
+                        AllowedAuthenticationType = (ushort)((string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.Authentication, Constants.AuthenticationTypeKerberos, StringComparison.OrdinalIgnoreCase) == 0) ? 1 : 2),
+                    };
 
             if (this.ApplicationConsistentSnapshotFrequencyInHours.HasValue)
             {
                 hyperVReplicaProtectionProfileInput.ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours.Value;
             }
-            hyperVReplicaProtectionProfileInput.ReplicationFrequencyInSeconds = PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
 
-                    ////= new HyperVReplicaProtectionProfileInput()
-                    ////{
-                    ////    OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationStartTime,
-                    ////    CompressionEnabled = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.CompressionEnabled,
-                    ////    OnlineReplicationMethod = (string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 1) ? true : false,
-                    ////    RecoveryPoints = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.RecoveryPoints,
-                    ////    ReplicationPort = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationPort,
-                    ////    AllowReplicaDeletion = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.AllowReplicaDeletion,
-                    ////    AllowedAuthenticationType = (ushort)((string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.Authentication, Constants.AuthenticationTypeKerberos, StringComparison.OrdinalIgnoreCase) == 0) ? 1 : 2),
-                    ////};
+            hyperVReplicaProtectionProfileInput.ReplicationFrequencyInSeconds = PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
 
             UpdateProtectionProfileInput updateProtectionProfileInput =
                 new UpdateProtectionProfileInput(
