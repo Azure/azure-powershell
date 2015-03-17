@@ -41,9 +41,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public EnvironmentSetupHelper()
         {
-            AzureSession.DataStore = new MockDataStore();
+            var datastore = new MockDataStore();
+            AzureSession.DataStore = datastore;
             var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             AzurePSCmdlet.CurrentProfile = profile;
+            AzureSession.DataStore = datastore;
             ProfileClient = new ProfileClient(profile);
 
             // Ignore SSL errors

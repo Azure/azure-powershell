@@ -16,10 +16,14 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Auth;
 using Microsoft.Azure.Batch.Common;
+using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Entities;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Management.Batch;
@@ -39,6 +43,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     /// </summary>
     public static class ScenarioTestHelpers
     {
+        // Content-Type header used by the Batch REST APIs
+        private const string ContentTypeString = "application/json;odata=minimalmetadata";
+
         /// <summary>
         /// Creates an account and resource group for use with the Scenario tests
         /// </summary>
@@ -64,64 +71,74 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         /// <summary>
         /// Creates a test Pool for use in Scenario tests.
-        /// TODO: Replace with new Pool client method when it exists.
         /// </summary>
-        public static void CreateTestPool(BatchAccountContext context, string poolName)
+        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolName)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            NewPoolParameters parameters = new NewPoolParameters()
             {
-                using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
-                {
-                    ICloudPool pool = poolManager.CreatePool(poolName, "4", "small", 3);
-                    pool.Commit();
-                }
-            }
+                Context = context,
+                PoolName = poolName,
+                OSFamily = "4",
+                TargetOSVersion = "*",
+                TargetDedicated = 1,
+                AdditionalBehaviors = behaviors
+            };
+
+            client.CreatePool(parameters);
         }
 
         /// <summary>
         /// Deletes a Pool used in a Scenario test.
-        /// TODO: Replace with remove Pool client method when it exists.
         /// </summary>
-        public static void DeletePool(BatchAccountContext context, string poolName)
+        public static void DeletePool(BatchController controller, BatchAccountContext context, string poolName)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
-                {
-                    poolManager.DeletePool(poolName);
-                }
-            }
-        }
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-        /// <summary>
-        /// Creates a test WorkItem for use in Scenario tests.
-        /// TODO: Replace with new WorkItem client method when it exists.
-        /// </summary>
-        public static void CreateTestWorkItem(BatchAccountContext context, string workItemName, TimeSpan? recurrenceInterval)
-        {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
-                {
-                    ICloudWorkItem workItem = wiManager.CreateWorkItem(workItemName);
-                    workItem.JobExecutionEnvironment = new Azure.Batch.JobExecutionEnvironment();
-                    workItem.JobExecutionEnvironment.PoolName = "testPool";
-                    if (recurrenceInterval != null)
-                    {
-                        workItem.Schedule = new Azure.Batch.WorkItemSchedule();
-                        workItem.Schedule.RecurrenceInterval = recurrenceInterval;
-                    }
-                    workItem.Commit();
-                }
-            }
+            client.DeletePool(context, poolName, behaviors);
         }
 
         /// <summary>
         /// Creates a test WorkItem for use in Scenario tests.
         /// </summary>
-        public static void CreateTestWorkItem(BatchAccountContext context, string workItemName)
+        public static void CreateTestWorkItem(BatchController controller, BatchAccountContext context, string workItemName, TimeSpan? recurrenceInterval)
         {
-            CreateTestWorkItem(context, workItemName, null);
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            PSJobExecutionEnvironment jobExecutionEnvironment = new PSJobExecutionEnvironment();
+            jobExecutionEnvironment.PoolName = "testPool";
+            PSWorkItemSchedule schedule = null;
+            if (recurrenceInterval != null)
+            {
+                schedule = new PSWorkItemSchedule();
+                schedule.RecurrenceInterval = recurrenceInterval;
+            }
+
+            NewWorkItemParameters parameters = new NewWorkItemParameters()
+            {
+                Context = context,
+                WorkItemName = workItemName,
+                JobExecutionEnvironment = jobExecutionEnvironment,
+                Schedule = schedule,
+                AdditionalBehaviors = behaviors
+            };
+
+            client.CreateWorkItem(parameters);
+        }
+
+        /// <summary>
+        /// Creates a test WorkItem for use in Scenario tests.
+        /// </summary>
+        public static void CreateTestWorkItem(BatchController controller, BatchAccountContext context, string workItemName)
+        {
+            CreateTestWorkItem(controller, context, workItemName, null);
         }
 
         /// <summary>
@@ -159,33 +176,36 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         /// <summary>
         /// Creates a test Task for use in Scenario tests.
-        /// TODO: Replace with new Task client method when it exists.
         /// </summary>
-        public static void CreateTestTask(BatchAccountContext context, string workItemName, string jobName, string taskName)
+        public static void CreateTestTask(BatchController controller, BatchAccountContext context, string workItemName, string jobName, string taskName)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            NewTaskParameters parameters = new NewTaskParameters()
             {
-                using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
-                {
-                    ICloudTask task = new CloudTask(taskName, "cmd /c dir /s");
-                    wiManager.AddTask(workItemName, jobName, task);
-                }
-            }
+                Context = context,
+                WorkItemName = workItemName,
+                JobName = jobName,
+                TaskName = taskName,
+                CommandLine = "cmd /c dir /s",
+                AdditionalBehaviors = behaviors
+            };
+            
+            client.CreateTask(parameters);
         }
 
         /// <summary>
         /// Deletes a WorkItem used in a Scenario test.
-        /// TODO: Replace with remove WorkItem client method when it exists.
         /// </summary>
-        public static void DeleteWorkItem(BatchAccountContext context, string workItemName)
+        public static void DeleteWorkItem(BatchController controller, BatchAccountContext context, string workItemName)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
-                {
-                    wiManager.DeleteWorkItem(workItemName);
-                }
-            }
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            client.DeleteWorkItem(context, workItemName, behaviors);
         }
 
         /// <summary>
@@ -257,21 +277,70 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             {
                 uri = getResourceMethod.Invoke(batchRequest, null) as Uri;
             }
-            MethodInfo createWebRequestMethod = batchRequest.GetType().GetMethod("CreateWebRequest", BindingFlags.NonPublic | BindingFlags.Instance);
-            if (createWebRequestMethod != null && uri != null)
+            
+            // Get the generated HttpWebRequest from the BatchRequest
+            MethodInfo createCommandMethod = batchRequest.GetType().GetMethod("CreateRestCommand", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (createCommandMethod != null)
             {
-                HttpWebRequest webRequest = createWebRequestMethod.Invoke(batchRequest, new object[] { uri, null, null }) as HttpWebRequest;
-                if (webRequest != null)
+                object command = createCommandMethod.Invoke(batchRequest, null);
+                FieldInfo buildRequestField = command.GetType().GetField("BuildRequestDelegate", BindingFlags.Public | BindingFlags.Instance);
+                if (buildRequestField != null)
                 {
-                    batchRequest.AuthenticationHandler.SignRequest(webRequest, null);
-
-                    // Convert the signed HttpWebRequest into an HttpRequestMessage for use with the HTTP Recorder
-                    requestMessage = new HttpRequestMessage(new HttpMethod(webRequest.Method), webRequest.RequestUri);
-                    foreach (var header in webRequest.Headers)
+                    PropertyInfo currentResultProperty = command.GetType().GetProperty("CurrentResult", BindingFlags.NonPublic | BindingFlags.Instance);
+                    if (currentResultProperty != null)
                     {
-                        string key = header.ToString();
-                        string value = webRequest.Headers[key];
-                        requestMessage.Headers.Add(key, value);
+                        currentResultProperty.SetValue(command, new RequestResult());
+                    }
+                    Delegate buildRequest = buildRequestField.GetValue(command) as Delegate;
+                    if (buildRequest != null)
+                    {
+                        HttpWebRequest webRequest = buildRequest.DynamicInvoke(uri, null, false, null, null) as HttpWebRequest;
+                        if (webRequest != null)
+                        {
+                            // Delete requests set a Content-Length of 0 with the HttpRequestMessage class for some reason.
+                            // Add in this header before signing the request.
+                            if (webRequest.Method == "DELETE")
+                            {
+                                webRequest.ContentLength = 0;
+                            }
+
+                            // Sign the request to add the Authorization header
+                            batchRequest.AuthenticationHandler.SignRequest(webRequest, null);
+
+                            // Convert the signed HttpWebRequest into an HttpRequestMessage for use with the HTTP Recorder
+                            requestMessage = new HttpRequestMessage(new HttpMethod(webRequest.Method), webRequest.RequestUri);
+                            foreach (var header in webRequest.Headers)
+                            {
+                                string key = header.ToString();
+                                string value = webRequest.Headers[key];
+                                if (string.Equals(key, "Content-Type"))
+                                {
+                                    // Copy the Content to the HttpRequestMessage
+                                    FieldInfo streamField = command.GetType().GetField("SendStream", BindingFlags.Public | BindingFlags.Instance);
+                                    if (streamField != null)
+                                    {
+                                        Stream contentStream = streamField.GetValue(command) as Stream;
+                                        if (contentStream != null)
+                                        {
+                                            MemoryStream memStream = new MemoryStream();
+
+                                            contentStream.CopyTo(memStream);
+                                            memStream.Seek(0, SeekOrigin.Begin);
+                                            requestMessage.Content = new StreamContent(memStream);
+
+                                            // Add Content-Type header to the HttpRequestMessage
+                                            // Use a custom class to force the proper formatting of the Content-Type header.
+                                            requestMessage.Content.Headers.ContentType = new JsonOdataMinimalHeader();
+                                            requestMessage.Content.Headers.ContentLength = webRequest.ContentLength;
+                                        }
+                                    }
+                                }
+                                else
+                                { 
+                                    requestMessage.Headers.Add(key, value);
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -297,7 +366,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     {
                         webResponse.Headers.Add(header.Key, header.Value.FirstOrDefault());
                     }
-                    webResponse.Headers.Add("Content-Type", "application/json;odata=minimalmetadata");
+                    webResponse.Headers.Add("Content-Type", ContentTypeString);
                     BatchTestHelpers.SetField(webResponse, "m_StatusCode", responseMessage.StatusCode);
                 }
             }
@@ -336,6 +405,24 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
                 Thread.Sleep(milliseconds);
+            }
+        }
+
+        /// <summary>
+        /// Custom override to the HttpRequestMessage Content header.
+        /// By default, calling MediaTypeHeaderValue.Parse("application/json;odata=minimalmetadata") will
+        /// add an extra space character to the Content-Type header that the Batch service will reject as 
+        /// incorrectly formatted. This extension class overrides the ToString() method to return the 
+        /// Content-Type header string without any extra spaces.
+        /// </summary>
+        private class JsonOdataMinimalHeader : MediaTypeHeaderValue
+        {
+            public JsonOdataMinimalHeader() : base("application/json")
+            { }
+
+            public override string ToString()
+            {
+                return ContentTypeString;
             }
         }
     }

@@ -30,4 +30,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         public PersistentVM Vm { get; set; }
     }
+
+    public class SetAzureDataDiskResizeConfig
+    {
+        public string DiskName;
+
+        public int ResizedSizeInGB;
+        public PersistentVM Vm { get; set; }
+
+        public SetAzureDataDiskResizeConfig(string diskName, int resize, PersistentVM vm)
+        {
+            this.DiskName = diskName;
+            this.ResizedSizeInGB = resize;
+            this.Vm = vm;
+        }
+
+    }
 }
