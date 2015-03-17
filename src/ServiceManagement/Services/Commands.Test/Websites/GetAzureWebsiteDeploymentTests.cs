@@ -81,8 +81,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
 
 
             getAzureWebsiteDeploymentCommand.ExecuteCmdlet();
-            Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline.Count);
-            var deployments = (IEnumerable<DeployResult>)((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline.FirstOrDefault();
+
+            var deployments = System.Management.Automation.LanguagePrimitives.GetEnumerable(((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline).Cast<DeployResult>();
+
             Assert.NotNull(deployments);
             Assert.Equal(2, deployments.Count());
         }
@@ -138,8 +139,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             getAzureWebsiteDeploymentCommand.ExecuteCmdlet();
-            Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline.Count);
-            var deployments = (IEnumerable<DeployResult>)((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline.FirstOrDefault();
+
+            var deployments = System.Management.Automation.LanguagePrimitives.GetEnumerable(((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline).Cast<DeployResult>();
+
             Assert.NotNull(deployments);
             Assert.Equal(2, deployments.Count());
             Assert.NotNull(deployments.First(d => d.Id.Equals("commit1")).Logs);
@@ -195,8 +197,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             getAzureWebsiteDeploymentCommand.ExecuteCmdlet();
-            Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline.Count);
-            var deployments = (IEnumerable<DeployResult>)((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline.FirstOrDefault();
+
+            var deployments = System.Management.Automation.LanguagePrimitives.GetEnumerable(((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline).Cast<DeployResult>();
             Assert.NotNull(deployments);
             Assert.Equal(2, deployments.Count());
         }
