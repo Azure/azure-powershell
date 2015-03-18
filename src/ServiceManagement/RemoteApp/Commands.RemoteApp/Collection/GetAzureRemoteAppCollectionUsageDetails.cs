@@ -96,11 +96,19 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             try
             {
                 response = (HttpWebResponse)request.GetResponse();
+                if (response == null)
+                {
+                    ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                "Unable to retrieve Usage data", String.Empty, null, ErrorCategory.InvalidResult);
+                    WriteError(error);
+                    return;
+                }
             }
             catch (Exception e)
             {
                 ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromException(e, String.Empty, Client.Collections, ErrorCategory.InvalidResult);
                 WriteError(error);
+                return;
             }
 
             using (Stream dataStream = response.GetResponseStream())
