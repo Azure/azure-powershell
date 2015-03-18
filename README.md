@@ -56,6 +56,7 @@ This repository contains a set of PowerShell cmdlets for developers and administ
   * Issue requests to restore a live or dropped database to a point in time.
   * Issue requests to recover a database from an unavailable database server.
   * Manage database and database server auditing policy.
+  * Manage database dynamic data masking rules.
 * Service Bus
   * Manage service bus namespaces.
 * VM
