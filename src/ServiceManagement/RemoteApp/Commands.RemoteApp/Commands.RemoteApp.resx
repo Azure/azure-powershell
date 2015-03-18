@@ -241,7 +241,7 @@
     <value>No usage found for the requested period.</value>
   </data>
   <data name="DownloadingUsageDetails" xml:space="preserve">
-    <value>Retrieving usage details</value>
+    <value>Retrieving usagedetails</value>
   </data>
   <data name="RequestFailed" xml:space="preserve">
     <value>The request failed.</value>
