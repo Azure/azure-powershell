@@ -17,11 +17,10 @@ using Microsoft.Azure.Management.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
 using System;
 using System.Collections.ObjectModel;
-using System.Management.Automation;
 using System.IO;
-using System.Linq;
 using System.Management.Automation;
 using System.Net;
+
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
@@ -29,12 +28,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppCollectionUsageDetails"), OutputType(typeof(string))]
     public class GetAzureRemoteAppCollectionUsageDetails : RdsCmdlet
     {
-        [Parameter(
-                   Position = 0,
-                   Mandatory = true,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "RemoteApp collection name")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "RemoteApp collection name")]
         [ValidatePattern(NameValidatorString)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             // The request is async and we have to wait for the usage details to be produced here
             do
             {
-
                 System.Threading.Thread.Sleep(5000);
 
                 operationResult = CallClient(() => Client.OperationResults.Get(detailsUsage.UsageDetails.OperationTrackingId), Client.OperationResults);
