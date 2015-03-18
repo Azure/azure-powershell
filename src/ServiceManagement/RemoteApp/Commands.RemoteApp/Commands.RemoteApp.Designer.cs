@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Publishing Application use Get-Job to view status.
+        ///   Looks up a localized string similar to Publishing application; use Get-Job to view status.
         /// </summary>
         internal static string Publishing {
             get {
