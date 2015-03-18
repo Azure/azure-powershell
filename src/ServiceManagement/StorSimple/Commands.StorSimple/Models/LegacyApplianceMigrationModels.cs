@@ -21,6 +21,16 @@ using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
 {
+    /// <summary>
+    /// Migration operation
+    /// </summary>
+    public enum ConfirmMigrationOperation
+    {
+        //Is not exposed to user Invalid = 0,
+        Commit = MigrationOperation.Commit,
+        Rollback = MigrationOperation.Rollback
+    }
+
     public class LegacyApplianceConfiguration
     {
         public string ConfigId { get; set; }

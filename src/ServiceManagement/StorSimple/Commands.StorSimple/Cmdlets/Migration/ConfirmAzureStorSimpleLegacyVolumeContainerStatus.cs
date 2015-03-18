@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System;
@@ -32,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         public string[] LegacyContainerNames { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageMigrationOperation)]
-        public MigrationOperation MigrationOperation { get; set; }
+        public ConfirmMigrationOperation MigrationOperation { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -46,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
 
                 MigrationConfirmStatusRequest request = new MigrationConfirmStatusRequest();
-                request.Operation = MigrationOperation;
+                request.Operation = (MigrationOperation)MigrationOperation;
                 request.DataContainerNameList = (null != LegacyContainerNames) ? LegacyContainerNames.ToList() : new List<string>();
                 MigrationJobStatus status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, request);
 

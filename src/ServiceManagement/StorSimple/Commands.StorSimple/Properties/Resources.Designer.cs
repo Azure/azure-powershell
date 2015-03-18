@@ -529,7 +529,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expected Volume details not found, Volume Name {0}.
+        ///   Looks up a localized string similar to Expected Volume details not found, Volume {0}.
         /// </summary>
         internal static string MigrationExpectedVolumeNotFound {
             get {

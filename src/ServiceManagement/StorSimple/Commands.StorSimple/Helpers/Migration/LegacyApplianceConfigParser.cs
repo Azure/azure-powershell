@@ -1142,9 +1142,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                     {
                                         foreach (XElement volumeInfoItem in volumeInfo.Elements())
                                         {
-                                            if ("Name" == volumeInfoItem.Name.LocalName)
+                                            if ("Id" == volumeInfoItem.Name.LocalName)
                                             {
-                                                VirtualDisk disk = this.volumeList.Find(volume => volumeInfoItem.Value == volume.Name);
+                                                VirtualDisk disk = this.volumeList.Find(volume => volumeInfoItem.Value == volume.VSN);
                                                 if (null != disk)
                                                 {
                                                     virtualDiskGroup.VirtualDiskList.Add(disk.InstanceId);

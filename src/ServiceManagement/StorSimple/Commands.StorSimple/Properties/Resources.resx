@@ -457,7 +457,7 @@
     <value>Expected VolumeContainer details not found, Volume Container Id {0}</value>
   </data>
   <data name="MigrationExpectedVolumeNotFound" xml:space="preserve">
-    <value>Expected Volume details not found, Volume Name {0}</value>
+    <value>Expected Volume details not found, Volume {0}</value>
   </data>
   <data name="MigrationAssociatedBandwidthSettingIncomplete" xml:space="preserve">
     <value>Bandwidth Settings for below volume container needs attention. Please fix the same after migration completes.</value>
