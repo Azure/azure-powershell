@@ -427,7 +427,7 @@
     <value>IP Address information (IPv4Address and IPv4Netmask or IPv6Prefix)  must be provided for {0} network interface, since it is being enabled</value>
   </data>
   <data name="MandatoryParamsMissingForInitialDeviceConfiguration" xml:space="preserve">
-    <value>Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone and Primary DNS Server information is mandatory when configuring the device for the first time</value>
+    <value>Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone, Secondary DNS Server information and atleast 1 IscsiEnabled network interface is mandatory when configuring the device for the first time.</value>
   </data>
   <data name="DeviceJobsNextPageFormatMessage" xml:space="preserve">
     <value>More jobs are available for your query. To access the next page of your result use -First {0} -Skip {1} in your commandlet</value>

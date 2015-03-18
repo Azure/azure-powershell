@@ -511,7 +511,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone and Primary DNS Server information is mandatory when configuring the device for the first time.
+        ///   Looks up a localized string similar to Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone, Secondary DNS Server information and atleast 1 IscsiEnabled network interface is mandatory when configuring the device for the first time..
         /// </summary>
         internal static string MandatoryParamsMissingForInitialDeviceConfiguration {
             get {

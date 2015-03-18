@@ -486,6 +486,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             {
                 return false;
             }
+
+            // There must be atleast one iscsi enabled net interface in the first config
+            var iscsiEnabledInterfacePresent = netConfigs.Any(x => x.IsIscsiEnabled == true);
+            if (!iscsiEnabledInterfacePresent)
+            {
+                return false;
+            }
+
             return true;
         }
 
