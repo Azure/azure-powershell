@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "Template image name")]
+        [ValidatePattern(TemplateImageNameValidatorString)]
         public string ImageName { get; set; }
 
         [Parameter(Mandatory = true,

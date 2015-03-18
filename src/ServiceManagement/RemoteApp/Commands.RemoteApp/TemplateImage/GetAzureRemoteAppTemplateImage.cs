@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "Template image name. Wildcards are permitted.")]
-        [ValidateNotNullOrEmpty()]
+        [ValidatePattern(ListTemplateImageNameValidatorString)]
         public string ImageName { get; set; }
 
         private bool showAllImages = false;
