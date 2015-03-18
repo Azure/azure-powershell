@@ -127,6 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set;
         }
 
+        [XmlIgnore]
         public VMImageInput VMImageInput
         {
             get;
