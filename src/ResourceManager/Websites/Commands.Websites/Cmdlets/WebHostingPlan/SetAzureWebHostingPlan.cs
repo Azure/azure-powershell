@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,10 +42,10 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
 
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the web hosting plan.")]
         [ValidateNotNullOrEmptyAttribute]
-        public string location { get; set; }
+        public string Location { get; set; }
         
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Sku of the Webhosting plan eg: free, shared, basic, standard.")]
-        [ValidateSet("Free", "Shared", "Basic", "Standard", IgnoreCase = true)]
+        [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", IgnoreCase = true)]
         [ValidateNotNullOrEmptyAttribute]
         public string Sku { get; set; }
 
@@ -107,13 +106,16 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
                     case "BASIC":
                         skuInput = SkuOptions.Basic;
                         break;
+                    case "PREMIUM":
+                        skuInput = SkuOptions.Premium;
+                        break;
                     default:
                         skuInput = SkuOptions.Standard;
                         break;
                 }
             }
 
-            WriteObject(WebsitesClient.CreateWebHostingPlan(ResourceGroupName, WebHostingPlanName, location, adminSiteName, NumberofWorkers, skuInput, workerSizeInput));
+            WriteObject(WebsitesClient.CreateWebHostingPlan(ResourceGroupName, Name, Location, adminSiteName, NumberofWorkers, skuInput, workerSizeInput));
 
         }
 

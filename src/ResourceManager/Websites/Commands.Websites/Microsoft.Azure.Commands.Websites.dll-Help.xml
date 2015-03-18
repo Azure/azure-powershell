@@ -260,13 +260,6 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureWebsite</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-				<maml:name>SlotName</maml:name>
-				<maml:description>
-					<maml:para>Slot name of the website.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -275,9 +268,16 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-				<maml:name>WebsiteName</maml:name>
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Name of the website.</maml:para>
+					<maml:para>Name of the website</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>SlotName</maml:name>
+				<maml:description>
+					<maml:para>Slot name of the website.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -291,18 +291,6 @@
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-			<maml:name>SlotName</maml:name>
-			<maml:description>
-				<maml:para>Slot name of the website.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
@@ -316,9 +304,192 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of the website</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>SlotName</maml:name>
+			<maml:description>
+				<maml:para>Slot name of the website.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>WebsiteName</maml:name>
 			<maml:description>
 				<maml:para>Name of the website.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Get-AzureWebsite -ResourceGroupName Default-Web-WestUS -Name ngolistandard -SlotName dev</dev:code>
+			<dev:remarks>
+				<maml:para>Gets the website slot dev for ngolistandard  from resource group Default-Web-WestUS</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Get-AzureWebsitePublishingProfile</command:name>
+		<maml:description>
+			<maml:para>Get the website publishing profile.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>AzureWebsitePublishingProfile</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Get the website publishing profile.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-AzureWebsitePublishingProfile</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of the resource group</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of the website</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>SlotName</maml:name>
+				<maml:description>
+					<maml:para>Slot name</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Name of the resource group</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of the website</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>SlotName</maml:name>
+			<maml:description>
+				<maml:para>Slot name</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -375,26 +546,6 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
-		<command:example>
-			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>Get-AzureWebsite -ResourceGroupName Default-Web-WestUS -WebsiteName ngolistandard -SlotName dev</dev:code>
-			<dev:remarks>
-				<maml:para>Gets the website slot dev for ngolistandard  from resource group Default-Web-WestUS</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -664,9 +815,9 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-				<maml:name>WebsiteName</maml:name>
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Web site name</maml:para>
+					<maml:para>Name of the website</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -729,9 +880,9 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-			<maml:name>WebsiteName</maml:name>
+			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>Web site name</maml:para>
+				<maml:para>Name of the website</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -748,6 +899,18 @@
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>WebsiteName</maml:name>
+			<maml:description>
+				<maml:para>Web site name</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -793,7 +956,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>New-AzureWebsite -ResourceGroupName Default-Web-WestUS -WebsiteName MyFirstSite -Location &quot;West US&quot; -WebHostingPlan MyWebHostingPlan</dev:code>
+			<dev:code>New-AzureWebsite -ResourceGroupName Default-Web-WestUS -Name MyFirstSite -Location &quot;West US&quot; -WebHostingPlan MyWebHostingPlan</dev:code>
 			<dev:remarks>
 				<maml:para>Creates a new Azure Website named MyFirstSite in the existing resourcegroup named Default-Web-WestUS in data center &quot;West US&quot;  using existing web hosting plan MyWebHostingPlan</maml:para>
 				<maml:para />
@@ -998,17 +1161,17 @@
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para>Name of the resource group associated with website.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-				<maml:name>WebsiteName</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Name of the website to be deleted.</maml:para>
+					<maml:para>Name of the website</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1034,7 +1197,7 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
 				<maml:para>Name of the resource group associated with website.</maml:para>
@@ -1046,10 +1209,10 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-			<maml:name>WebsiteName</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>Name of the website to be deleted.</maml:para>
+				<maml:para>Name of the website</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1066,6 +1229,18 @@
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>WebsiteName</maml:name>
+			<maml:description>
+				<maml:para>Name of the website to be deleted.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1111,7 +1286,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Remove-AzureWebsite -ResourceGroupName Default-Web-WestUS -WebsiteName MyFirstSite</dev:code>
+			<dev:code>Remove-AzureWebsite -ResourceGroupName Default-Web-WestUS -Name MyFirstSite</dev:code>
 			<dev:remarks>
 				<maml:para>Deletes the Azure Website named MyFirstSite in the resourcegroup named Default-Web-WestUS</maml:para>
 				<maml:para />
@@ -1165,9 +1340,9 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-				<maml:name>WebsiteName</maml:name>
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Name of the website.</maml:para>
+					<maml:para>Name of the website</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1206,9 +1381,9 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-			<maml:name>WebsiteName</maml:name>
+			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>Name of the website.</maml:para>
+				<maml:para>Name of the website</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1225,6 +1400,18 @@
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>WebsiteName</maml:name>
+			<maml:description>
+				<maml:para>Name of the website.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1270,7 +1457,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Restart-AzureWebsite -ResourceGroupName Default-Web-WestUS -WebsiteName MyFirstSite</dev:code>
+			<dev:code>Restart-AzureWebsite -ResourceGroupName Default-Web-WestUS -Name MyFirstSite</dev:code>
 			<dev:remarks>
 				<maml:para>Stops the site MyFirstSite and then starts it.</maml:para>
 				<maml:para />
@@ -1540,9 +1727,9 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-				<maml:name>WebsiteName</maml:name>
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Name of the website to start</maml:para>
+					<maml:para>Name of the website</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1581,9 +1768,9 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-			<maml:name>WebsiteName</maml:name>
+			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>Name of the website to start</maml:para>
+				<maml:para>Name of the website</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1600,6 +1787,18 @@
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>WebsiteName</maml:name>
+			<maml:description>
+				<maml:para>Name of the website to start</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1645,7 +1844,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Start-AzureWebsite -ResourceGroupName Default-Web-WestUS -WebsiteName MyWebSite</dev:code>
+			<dev:code>Start-AzureWebsite -ResourceGroupName Default-Web-WestUS -Name MyWebSite</dev:code>
 			<dev:remarks>
 				<maml:para>Starts the website named MyWebSite in resource group Default-Web-WestUS</maml:para>
 				<maml:para />
@@ -1699,9 +1898,9 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-				<maml:name>WebsiteName</maml:name>
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Name of the website to be stopped</maml:para>
+					<maml:para>Name of the website</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1740,9 +1939,9 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-			<maml:name>WebsiteName</maml:name>
+			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>Name of the website to be stopped</maml:para>
+				<maml:para>Name of the website</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1759,6 +1958,18 @@
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>WebsiteName</maml:name>
+			<maml:description>
+				<maml:para>Name of the website to be stopped</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1804,7 +2015,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Stop-AzureWebsite -ResourceGroupName Default-Web-WestUS -WebsiteName ngolistandard</dev:code>
+			<dev:code>Stop-AzureWebsite -ResourceGroupName Default-Web-WestUS -Name ngolistandard</dev:code>
 			<dev:remarks>
 				<maml:para>Stops the website named MyWebSite in resource group Default-Web-WestUS</maml:para>
 				<maml:para />

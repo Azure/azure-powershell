@@ -62,7 +62,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.17.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.WebSites">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.0.16.1-prerelease\lib\net40\Microsoft.Azure.Management.WebSites.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.0.16.4-prerelease\lib\net40\Microsoft.Azure.Management.WebSites.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <SpecificVersion>False</SpecificVersion>

@@ -29,7 +29,7 @@ function Test-CreatesNewSimpleWebsite
 	{
 		#Setup
 		New-AzureResourceGroup -Name $rgname -Location $location
-		New-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -location  $location
+		New-AzureWebHostingPlan -ResourceGroupName $rgname -Name  $whpName -Location  $location
 
 		# Test
 		$actual = New-AzureWebsite -ResourceGroupName $rgname -Name $wname -Location $location -WebHostingPlan $whpName 
@@ -43,7 +43,7 @@ function Test-CreatesNewSimpleWebsite
 	{
 		# Cleanup
 		Remove-AzureWebsite -ResourceGroupName $rgname -Name $wname -Force
-		Remove-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -Force
+		Remove-AzureWebHostingPlan -ResourceGroupName $rgname -Name  $whpName -Force
 		Remove-AzureResourceGroup -Name $rgname -Force
     }
 }
@@ -64,8 +64,8 @@ function Test-CreatesNewWebHostingPlan
 		#Setup
 		New-AzureResourceGroup -Name $rgname -Location $location
 		# Test
-		$actual = New-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -location  $location 
-		$result = Get-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName
+		$actual = New-AzureWebHostingPlan -ResourceGroupName $rgname -Name  $whpName -Location  $location 
+		$result = Get-AzureWebHostingPlan -ResourceGroupName $rgname -Name  $whpName
 		# Assert
 		Assert-AreEqual $whpName $result.WebHostingPlan.Name
 		Assert-AreEqual 1 $result.WebHostingPlan.Properties.NumberOfWorkers
@@ -75,7 +75,7 @@ function Test-CreatesNewWebHostingPlan
     finally
     {
 		# Cleanup
-		Remove-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -Force
+		Remove-AzureWebHostingPlan -ResourceGroupName $rgname -Name  $whpName -Force
 		Remove-AzureResourceGroup -Name $rgname -Force
     }
 }

@@ -75,7 +75,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.WebSites, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.0.16.1-prerelease\lib\net40\Microsoft.Azure.Management.WebSites.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.0.16.4-prerelease\lib\net40\Microsoft.Azure.Management.WebSites.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -132,11 +132,12 @@
     <Compile Include="Cmdlets\RestartAzureWebsite.cs" />
     <Compile Include="Cmdlets\StartAzureWebsite.cs" />
     <Compile Include="Cmdlets\StopAzureWebsite.cs" />
-    <Compile Include="Cmdlets\WebHostingPlan\ListAzureWebHostingPlan.cs" />
     <Compile Include="Cmdlets\WebHostingPlan\GetAzureWebHostingPlan.cs" />
+    <Compile Include="Cmdlets\WebHostingPlan\GetAzureWebHostingPlanMetrics.cs" />
     <Compile Include="Cmdlets\WebHostingPlan\SetAzureWebHostingPlan.cs" />
     <Compile Include="Cmdlets\WebHostingPlan\NewAzureWebHostingPlan.cs" />
     <Compile Include="Cmdlets\WebHostingPlan\RemoveWebHostingPlan.cs" />
+    <Compile Include="Models.Websites\WebHostingPlanBaseNotMandatoryCmdlet.cs" />
     <Compile Include="Models.Websites\WebHostingPlanBaseCmdlet.cs" />
     <Compile Include="Models.Websites\WebsiteBaseNotMandatoryCmdlet.cs" />
     <Compile Include="Models.Websites\WebsiteBaseSlotCmdlet.cs" />
@@ -166,7 +167,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

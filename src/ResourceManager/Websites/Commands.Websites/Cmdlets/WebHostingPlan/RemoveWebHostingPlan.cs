@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
         {
             ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Websites.Properties.Resources.RemovingWebHostPlan, WebHostingPlanName),
+                    string.Format(Microsoft.Azure.Commands.Websites.Properties.Resources.RemovingWebHostPlan, Name),
                     Microsoft.Azure.Commands.Websites.Properties.Resources.RemovingWebHostPlan,
-                    WebHostingPlanName,
-                    () => WebsitesClient.RemoveWebHostingPlan(ResourceGroupName, WebHostingPlanName));
+                    Name,
+                    () => WebsitesClient.RemoveWebHostingPlan(ResourceGroupName, Name));
         }
     }
 }

@@ -36,17 +36,33 @@ using Microsoft.Azure.Commands.Websites.Utilities;
 namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
 {
     /// <summary>
-    /// this commandlet will let you delete an Azure Web Hosting Plan using ARM APIs
+    /// this commandlet will let you Get an Azure Web Hosting Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureWebHostingPlan"), OutputType(typeof(WebHostingPlanGetResponse))]
-    public class GetWebHostingPlanCmdlet : WebHostingPlanBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureWebHostingPlan"), OutputType(typeof(WebHostingPlanGetResponse), typeof(WebHostingPlanListResponse))]
+    public class GetWebHostingPlanCmdlet : WebHostingPlanBaseNotMandatoryCmdlet
     {
         public override void ExecuteCmdlet()
         {
-            WriteObject(WebsitesClient.GetWebHostingPlan(ResourceGroupName, WebHostingPlanName));
+            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
+            {
+                GetByWebHostingPlan();
+            }
+            else if (!string.IsNullOrEmpty(ResourceGroupName))
+            {
+                GetByResourceGroup();
+            }
 
         }
 
+        private void GetByWebHostingPlan()
+        {
+            WriteObject(WebsitesClient.GetWebHostingPlan(ResourceGroupName, Name));
+        }
+
+        private void GetByResourceGroup()
+        {
+            WriteObject(WebsitesClient.ListWebHostingPlan(ResourceGroupName));
+        }
     }
 }
 
