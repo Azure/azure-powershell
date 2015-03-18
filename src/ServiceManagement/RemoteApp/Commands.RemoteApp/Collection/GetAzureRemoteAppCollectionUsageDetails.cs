@@ -62,7 +62,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             // The request is async and we have to wait for the usage details to be produced here
             do
             {
-
                 System.Threading.Thread.Sleep(5000);
 
                 operationResult = CallClient(() => Client.OperationResults.Get(detailsUsage.UsageDetails.OperationTrackingId), Client.OperationResults);
@@ -98,11 +97,19 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             try
             {
                 response = (HttpWebResponse)request.GetResponse();
+                if (response == null)
+                {
+                    ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                "Unable to retrieve Usage data", String.Empty, null, ErrorCategory.InvalidResult);
+                    WriteError(error);
+                    return;
+                }
             }
             catch (Exception e)
             {
                 ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromException(e, String.Empty, Client.Collections, ErrorCategory.InvalidResult);
                 WriteError(error);
+                return;
             }
 
             using (Stream dataStream = response.GetResponseStream())
