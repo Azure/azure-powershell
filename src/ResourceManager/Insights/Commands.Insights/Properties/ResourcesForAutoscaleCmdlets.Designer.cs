@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Commands.Insights.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ResourcesForAlertCmdlets {
+    internal class ResourcesForAutoscaleCmdlets {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourcesForAlertCmdlets() {
+        internal ResourcesForAutoscaleCmdlets() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Insights.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Insights.Properties.ResourcesForAlertCmdlets", typeof(ResourcesForAlertCmdlets).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Insights.Properties.ResourcesForAutoscaleCmdlets", typeof(ResourcesForAutoscaleCmdlets).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,74 +61,65 @@ namespace Microsoft.Azure.Commands.Insights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to hidden-link:.
+        ///   Looks up a localized string similar to Number of items in the schedule days, hours, and minutes parameters must be equal..
         /// </summary>
-        internal static string AlertTagHiddenLinkKey {
+        internal static string IncorrectNumberOfItemsInSchedule {
             get {
-                return ResourceManager.GetString("AlertTagHiddenLinkKey", resourceCulture);
+                return ResourceManager.GetString("IncorrectNumberOfItemsInSchedule", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resource.
+        ///   Looks up a localized string similar to Invalid day specification &apos;{0}&apos;..
         /// </summary>
-        internal static string AlertTagHiddenLinkValue {
+        internal static string InvalidDaySpec {
             get {
-                return ResourceManager.GetString("AlertTagHiddenLinkValue", resourceCulture);
+                return ResourceManager.GetString("InvalidDaySpec", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $type.
+        ///   Looks up a localized string similar to Invalid hour specification &apos;{0}&apos;..
         /// </summary>
-        internal static string AlertTagTypeKey {
+        internal static string InvalidHourSpec {
             get {
-                return ResourceManager.GetString("AlertTagTypeKey", resourceCulture);
+                return ResourceManager.GetString("InvalidHourSpec", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary,Microsoft.WindowsAzure.Management.Common.Storage.
+        ///   Looks up a localized string similar to Invalid minute specification &apos;{0}&apos;..
         /// </summary>
-        internal static string AlertTagTypeValue {
+        internal static string InvalidMinuteSpec {
             get {
-                return ResourceManager.GetString("AlertTagTypeValue", resourceCulture);
+                return ResourceManager.GetString("InvalidMinuteSpec", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rule condition type &apos;{0}&apos; not supported..
+        ///   Looks up a localized string similar to Minimum value for trigger TimeGrain is 1 minute..
         /// </summary>
-        internal static string RuleConditionTypeNotSupported {
+        internal static string MinimumTimeGrain1min {
             get {
-                return ResourceManager.GetString("RuleConditionTypeNotSupported", resourceCulture);
+                return ResourceManager.GetString("MinimumTimeGrain1min", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rule data source type &apos;{0}&apos; not supported..
+        ///   Looks up a localized string similar to Minimum value for trigger TimeWindow is 5 minutes..
         /// </summary>
-        internal static string RuleDataSourceTypeNotSupported {
+        internal static string MinimumTimeWindow5min {
             get {
-                return ResourceManager.GetString("RuleDataSourceTypeNotSupported", resourceCulture);
+                return ResourceManager.GetString("MinimumTimeWindow5min", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The given rule type &apos;{0}&apos; is not consistent with the set of parameters..
+        ///   Looks up a localized string similar to Properties member cannot be null..
         /// </summary>
-        internal static string RuleTypeNotConsistentWithParamGroup {
+        internal static string PropertiresCannotBeNull {
             get {
-                return ResourceManager.GetString("RuleTypeNotConsistentWithParamGroup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rule type &apos;{0}&apos; is not supported..
-        /// </summary>
-        internal static string RuleTypeNotSupported {
-            get {
-                return ResourceManager.GetString("RuleTypeNotSupported", resourceCulture);
+                return ResourceManager.GetString("PropertiresCannotBeNull", resourceCulture);
             }
         }
     }
