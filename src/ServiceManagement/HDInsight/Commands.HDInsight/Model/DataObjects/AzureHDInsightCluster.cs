@@ -190,7 +190,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         }
 
         /// <summary>
-        ///     Gets the type of Operating System installed on cluster nodes.
+        /// Gets the type of Operating System installed on cluster nodes.
         /// </summary>
         public OSType OSType
         {

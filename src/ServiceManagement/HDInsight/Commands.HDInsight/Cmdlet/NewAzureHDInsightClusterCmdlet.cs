@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
          *      Position 03: Certificate
          *      Position 04: Location
          *      Position 05: Credential
-         *      Position 06: ???
+         *      Position 06: ??? (Missed. To be fixed.)
          *      Position 07: Endpoint
          *      Position 08: HostedService
          *      Position 09: Version
@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
          *      Position 05: DefaultStorageAccountKey
          *      Position 06: DefaultStorageContainerName
          *      Position 07: Credential
-         *      Position 08: ???
+         *      Position 08: ??? (Missed. To be fixed.)
          *      Position 09: ClusterSizeInNodes
          *      Position 10: Endpoint
          *      Position 11: HostedService
