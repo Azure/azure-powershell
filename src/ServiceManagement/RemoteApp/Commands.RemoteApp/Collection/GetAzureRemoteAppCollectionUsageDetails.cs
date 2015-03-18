@@ -13,11 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RemoteApp;
+using Microsoft.Azure.Management.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
-using Microsoft.PowerShell.Commands;
 using System;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+using System.Net;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
@@ -46,7 +50,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         public string UsageYear { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Allows to run the cmdlet in the background as a PS job.")]
+            HelpMessage = "Allows running the cmdlet in the background as a PS job.")]
         public SwitchParameter AsJob { get; set; }
 
         private LongRunningTask<GetAzureRemoteAppCollectionUsageDetails> task = null;
@@ -54,10 +58,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         private void GetPublishedUsageDetails(CollectionUsageDetailsResult detailsUsage)
         {
             RemoteAppOperationStatusResult operationResult = null;
-            int maxRetryCount = 60;
-            Collection<WebResponseObject> htmlWebResponse = null;
-            string scriptBlock = "Invoke-WebRequest -Uri " + "\"" + detailsUsage.UsageDetails.SasUri + "\"";
-            
+
             // The request is async and we have to wait for the usage details to be produced here
             do
             {
@@ -67,38 +68,49 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 operationResult = CallClient(() => Client.OperationResults.Get(detailsUsage.UsageDetails.OperationTrackingId), Client.OperationResults);
             }
             while (operationResult.RemoteAppOperationResult.Status != RemoteAppOperationStatus.Success &&
-                operationResult.RemoteAppOperationResult.Status != RemoteAppOperationStatus.Failed &&
-                --maxRetryCount > 0);
+                operationResult.RemoteAppOperationResult.Status != RemoteAppOperationStatus.Failed);
 
             if (operationResult.RemoteAppOperationResult.Status == RemoteAppOperationStatus.Success)
             {
-                htmlWebResponse = CallPowershellWithReturnType<WebResponseObject>(scriptBlock);
-                string usage = new string(System.Text.Encoding.UTF8.GetChars(htmlWebResponse[0].Content));
-                WriteObject(usage);
+                WriteUsageDetails(detailsUsage);
             }
             else
             {
-                if (operationResult.RemoteAppOperationResult.Status == RemoteAppOperationStatus.Failed)
-                {
-                    ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                        Commands_RemoteApp.DetailedUsageFailureMessage,
-                        String.Empty,
-                        Client.Collections,
-                        ErrorCategory.ResourceUnavailable);
+                ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                    Commands_RemoteApp.DetailedUsageFailureMessage,
+                    String.Empty,
+                    Client.Collections,
+                    ErrorCategory.ResourceUnavailable);
 
-                    WriteError(error);
-                }
-                else if (maxRetryCount <= 0)
-                {
-                    ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                        String.Format(System.Globalization.CultureInfo.InvariantCulture,
-                            Commands_RemoteApp.RequestTimedOutFormat,
-                            detailsUsage.UsageDetails.OperationTrackingId),
-                        String.Empty,
-                        Client.Collections,
-                        ErrorCategory.OperationTimeout);
+                WriteError(error);
+            }
+        }
 
-                    WriteError(error);
+        private void WriteUsageDetails(CollectionUsageDetailsResult detailsUsage)
+        {
+            // 
+            // Display the content pointed to by the returned URI
+            //
+            WebResponse response = null;
+
+            WebRequest request = WebRequest.Create(detailsUsage.UsageDetails.SasUri);
+
+            try
+            {
+                response = (HttpWebResponse)request.GetResponse();
+            }
+            catch (Exception e)
+            {
+                ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromException(e, String.Empty, Client.Collections, ErrorCategory.InvalidResult);
+                WriteError(error);
+            }
+
+            using (Stream dataStream = response.GetResponseStream())
+            {
+                using (StreamReader reader = new StreamReader(dataStream))
+                {
+                    String csvContent = reader.ReadToEnd();
+                    WriteObject(csvContent);
                 }
             }
         }

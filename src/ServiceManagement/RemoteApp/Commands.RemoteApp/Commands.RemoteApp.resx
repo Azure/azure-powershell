@@ -241,9 +241,18 @@
     <value>No usage found for the requested period.</value>
   </data>
   <data name="DownloadingUsageDetails" xml:space="preserve">
-    <value>Retrieving UsageDetails</value>
+    <value>Retrieving usage details</value>
+  </data>
+  <data name="RequestFailed" xml:space="preserve">
+    <value>The request failed.</value>
+  </data>
+  <data name="RequestSuccessful" xml:space="preserve">
+    <value>The request completed successfully.</value>
+  </data>
+  <data name="VNetTimeout" xml:space="preserve">
+    <value>The request took too long to complete.</value>
   </data>
   <data name="UsageDetails" xml:space="preserve">
-    <value>Get UsageDetails</value>
+    <value>Get usage details</value>
   </data>
 </root>

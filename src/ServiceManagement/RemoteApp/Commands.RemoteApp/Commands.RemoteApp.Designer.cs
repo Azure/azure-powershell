@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retrieving UsageDetails.
+        ///   Looks up a localized string similar to Retrieving usage details.
         /// </summary>
         internal static string DownloadingUsageDetails {
             get {
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get UsageDetails.
+        ///   Looks up a localized string similar to Get usage details.
         /// </summary>
         internal static string UsageDetails {
             get {
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The request took a long time to complete..
+        ///   Looks up a localized string similar to The request took too long to complete..
         /// </summary>
         internal static string VNetTimeout {
             get {
