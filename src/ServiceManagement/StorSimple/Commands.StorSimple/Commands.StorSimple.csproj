@@ -142,6 +142,7 @@
     <Compile Include="Cmdlets\Migration\GetAzureStorSimpleLegacyVolumeContainerConfirmStatus.cs" />
     <Compile Include="Cmdlets\Migration\GetAzureStorSimpleLegacyVolumeContainerStatus.cs" />
     <Compile Include="Cmdlets\Migration\ImportAzureStorSimpleLegacyVolumeContainer.cs" />
+    <Compile Include="Helpers\Migration\ConfigSplitHelper.cs" />
     <Compile Include="Helpers\Migration\MigrationServiceSecretsEncryptor.cs" />
     <Compile Include="Helpers\Migration\LegacyApplianceConfigDecryptor.cs" />
     <Compile Include="Cmdlets\Migration\GetAzureStorSimpleLegacyVolumeContainerMigrationPlan.cs" />

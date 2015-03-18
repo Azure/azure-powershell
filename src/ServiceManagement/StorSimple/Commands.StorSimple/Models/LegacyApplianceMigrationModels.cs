@@ -696,71 +696,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
                 }
             }
         }
-        /*
-        public override string ToString()
-        {
-
-            if (MigrationPlanInfoInProgressMsgList.Count == 0 && MigrationPlanInfoNotStartedMsgList.Count == 0 && MigrationPlanInfoCompletedMsgList.Count == 0 && MigrationPlanInfoFailedMsgList.Count == 0)
-            {
-                consoleOp.AppendLine("No data containers found with migration plan with this config Id.");
-            }
-
-            if (MigrationPlanInfoInProgressMsgList.Count != 0)
-            {
-                consoleOp.AppendLine("Data containers with migration plan in progress : ");
-                consoleOp.AppendLine();
-                foreach (MigrationPlanInfoMsg migrationPlanInfoMsg in MigrationPlanInfoInProgressMsgList)
-                {
-                    consoleOp.AppendLine(migrationPlanInfoMsg.ToString());
-                    consoleOp.AppendLine();
-                }
-            }
-
-            if (MigrationPlanInfoNotStartedMsgList.Count != 0)
-            {
-                consoleOp.AppendLine("Data containers with migration plan not started : ");
-                consoleOp.AppendLine();
-                foreach (MigrationPlanInfoMsg migrationPlanInfoMsg in MigrationPlanInfoNotStartedMsgList)
-                {
-                    consoleOp.AppendLine(migrationPlanInfoMsg.ToString());
-                    consoleOp.AppendLine();
-                }
-            }
-
-            if (MigrationPlanInfoCompletedMsgList.Count != 0)
-            {
-                consoleOp.AppendLine("Data containers with migration plan completed : ");
-                consoleOp.AppendLine();
-                foreach (MigrationPlanInfoMsg migrationPlanInfoMsg in MigrationPlanInfoCompletedMsgList)
-                {
-                    consoleOp.AppendLine(migrationPlanInfoMsg.ToString());
-                    consoleOp.AppendLine();
-                }
-            }
-
-            if (MigrationPlanInfoFailedMsgList.Count != 0)
-            {
-                consoleOp.AppendLine("Data containers with migration plan failed : ");
-                consoleOp.AppendLine();
-                foreach (MigrationPlanInfoMsg migrationPlanInfoMsg in MigrationPlanInfoFailedMsgList)
-                {
-                    consoleOp.AppendLine(migrationPlanInfoMsg.ToString());
-                    consoleOp.AppendLine();
-                }
-            }
-
-            return consoleOp.ToString();
-        }
-        */
     }
 
     [Serializable]
     public class MigrationPlanInfoMsg
     {
-        public int assumedBandwidthInMbps;
-        public string dataContainerName;
-        public int estimatedTimeInMinutes;
-        public int estimatedTimeInMinutesForLatestBackup;
+        public int AssumedBandwidthInMbps;
+        public string DataContainerName;
+        public int EstimatedTimeInMinutes;
+        public int EstimatedTimeInMinutesForLatestBackup;
         public string planMessageInfoListMsg;
 
         public MigrationPlanInfoMsg()
@@ -770,10 +714,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
 
         public MigrationPlanInfoMsg(MigrationPlanInfo migrationPlanInfo)
         {
-            assumedBandwidthInMbps = migrationPlanInfo.AssumedBandwidthInMbps;
-            dataContainerName = migrationPlanInfo.DataContainerName;
-            estimatedTimeInMinutes = migrationPlanInfo.EstimatedTimeInMinutes;
-            estimatedTimeInMinutesForLatestBackup = migrationPlanInfo.EstimatedTimeInMinutesForLatestBackup;
+            AssumedBandwidthInMbps = migrationPlanInfo.AssumedBandwidthInMbps;
+            DataContainerName = migrationPlanInfo.DataContainerName;
+            EstimatedTimeInMinutes = migrationPlanInfo.EstimatedTimeInMinutes;
+            EstimatedTimeInMinutesForLatestBackup = migrationPlanInfo.EstimatedTimeInMinutesForLatestBackup;
             planMessageInfoListMsg = GetPlanMessageInfo(new List<HcsMessageInfo>(migrationPlanInfo.PlanMessageInfoList));
         }
 
@@ -790,10 +734,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         public override string ToString()
         {
             StringBuilder consoleOp = new StringBuilder();
-            consoleOp.AppendLine("AssumedBandwidthInMbps : " + assumedBandwidthInMbps);
-            consoleOp.AppendLine("DataContainerName : " + dataContainerName);
-            consoleOp.AppendLine("estimatedTimeInMinutes : " + estimatedTimeInMinutes);
-            consoleOp.AppendLine("estimatedTimeInMinutesForLatestBackup : " + estimatedTimeInMinutesForLatestBackup);
+            consoleOp.AppendLine("AssumedBandwidthInMbps : " + AssumedBandwidthInMbps);
+            consoleOp.AppendLine("DataContainerName : " + DataContainerName);
+            consoleOp.AppendLine("estimatedTimeInMinutes : " + EstimatedTimeInMinutes);
+            consoleOp.AppendLine("estimatedTimeInMinutesForLatestBackup : " + EstimatedTimeInMinutesForLatestBackup);
             consoleOp.AppendLine("PlanMessageInfo : " + planMessageInfoListMsg);
             return consoleOp.ToString();
         }
