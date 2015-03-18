@@ -62,19 +62,17 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 {
                     VNetResult vnet = CallClient(() => Client.VNet.Get(VNetName, true), Client.VNet);
                     WriteObject(vnet.VNet);
-
-                    WriteVerboseWithTimestamp("The request completed successfully." +
-                        " Call Get-AzureRemoteAppVpnDeviceConfigScript to download the script and pass in the SharedKey returned by this cmdlet");
+                    WriteVerboseWithTimestamp(Commands_RemoteApp.RequestSuccessful);
                 }
                 else
                 {
                     if (maxRetries > 0)
                     {
-                        WriteErrorWithTimestamp("The request failed.");
+                        WriteErrorWithTimestamp(Commands_RemoteApp.RequestFailed);
                     }
                     else
                     {
-                        WriteErrorWithTimestamp("The request took a long time to complete.");
+                        WriteErrorWithTimestamp(Commands_RemoteApp.VNetTimeout);
                     }
                 }
             }
