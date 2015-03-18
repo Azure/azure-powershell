@@ -104,7 +104,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 resultBuilder.AppendLine(string.Format("[{0}] : {1}", msg.Type.ToString(), msg.Reason));
                 foreach (string customMsg in msg.CustomMessageList)
                 {
-                    resultBuilder.AppendLine("\t" + customMsg);
+                    if (!string.IsNullOrEmpty(customMsg))
+                    {
+                        resultBuilder.AppendLine("\t" + customMsg);
+                    }
                 }
             }
 
@@ -119,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// <returns>result of comparison</returns>
         private int CompareMsgBasedOnType(LegacyParserMessage lMsg, LegacyParserMessage rMsg)
         {
-            return lMsg.Type.CompareTo(rMsg);
+            return lMsg.Type.CompareTo(rMsg.Type);
         }
 
         /// <summary>
