@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets
        
         public override void ExecuteCmdlet()
         {
-            WriteObject(WebsitesClient.CreateWebsite(ResourceGroupName, WebsiteName, SlotName, Location, WebHostingPlan));
+            WriteObject(WebsitesClient.CreateWebsite(ResourceGroupName, Name, SlotName, Location, WebHostingPlan));
             
         }
         

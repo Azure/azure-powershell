@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(WebsitesClient.StopWebsite(ResourceGroupName, WebsiteName, SlotName));
+            WriteObject(WebsitesClient.StopWebsite(ResourceGroupName, Name, SlotName));
         }
 
     }

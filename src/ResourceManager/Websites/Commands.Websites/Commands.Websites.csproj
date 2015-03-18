@@ -124,6 +124,7 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\GetAzureWebsitePublishingProfile .cs" />
     <Compile Include="Cmdlets\GetAzureWebsite.cs" />
     <Compile Include="Cmdlets\RemoveAzureWebsite.cs" />
     <Compile Include="Cmdlets\NewAzureWebsites.cs" />
@@ -136,6 +137,8 @@
     <Compile Include="Cmdlets\WebHostingPlan\NewAzureWebHostingPlan.cs" />
     <Compile Include="Cmdlets\WebHostingPlan\RemoveWebHostingPlan.cs" />
     <Compile Include="Models.Websites\WebHostingPlanBaseCmdlet.cs" />
+    <Compile Include="Models.Websites\WebsiteBaseNotMandatoryCmdlet.cs" />
+    <Compile Include="Models.Websites\WebsiteBaseSlotCmdlet.cs" />
     <Compile Include="Models.Websites\WebsiteBaseCmdlet.cs" />
     <Compile Include="Models.Websites\WebsitesBaseClient.cs" />
     <Compile Include="Utilities\WebsitesClient.cs" />

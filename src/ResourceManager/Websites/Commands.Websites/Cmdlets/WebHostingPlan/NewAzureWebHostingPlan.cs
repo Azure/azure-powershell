@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
         [ValidateNotNullOrEmptyAttribute]
         public int NumberofWorkers { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The size of he workers: eg Small, Medium, Large")]
+        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The size of the workers: eg Small, Medium, Large")]
         [ValidateNotNullOrEmptyAttribute]
         [ValidateSet("Small", "Medium", "Large", IgnoreCase = true)]
         public string WorkerSize { get; set; }
