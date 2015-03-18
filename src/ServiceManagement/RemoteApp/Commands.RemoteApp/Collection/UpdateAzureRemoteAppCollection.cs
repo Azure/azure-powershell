@@ -34,12 +34,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the RemoteApp template image."
         )]
-        [ValidatePattern(TemplateImageNameValidatorString)]
         public string ImageName { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Immediately log off users after update has successfully completed")]
-        public SwitchParameter ForceLogoffWhenUpdateComplete { get; set; }
 
         public override void ExecuteCmdlet()
         {

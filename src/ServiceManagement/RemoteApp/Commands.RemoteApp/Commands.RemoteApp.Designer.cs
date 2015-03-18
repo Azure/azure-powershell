@@ -295,6 +295,24 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The request failed..
+        /// </summary>
+        internal static string RequestFailed {
+            get {
+                return ResourceManager.GetString("RequestFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The request completed successfully..
+        /// </summary>
+        internal static string RequestSuccessful {
+            get {
+                return ResourceManager.GetString("RequestSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request timed out. To continue querying for the usage details operation status, please use Get-AzureRemoteAppOperationResult with tracking id: {0}.
         /// </summary>
         internal static string RequestTimedOutFormat {
