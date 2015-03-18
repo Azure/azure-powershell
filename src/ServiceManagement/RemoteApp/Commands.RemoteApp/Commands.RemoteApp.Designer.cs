@@ -268,11 +268,29 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Publishing Application use Get-Job to view status.
+        ///   Looks up a localized string similar to Publishing application; use Get-Job to view status.
         /// </summary>
         internal static string Publishing {
             get {
                 return ResourceManager.GetString("Publishing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The request failed..
+        /// </summary>
+        internal static string RequestFailed {
+            get {
+                return ResourceManager.GetString("RequestFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The request completed successfully..
+        /// </summary>
+        internal static string RequestSuccessful {
+            get {
+                return ResourceManager.GetString("RequestSuccessful", resourceCulture);
             }
         }
         
