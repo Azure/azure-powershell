@@ -178,11 +178,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 return false;
             }
 
-            // Only EnableCloud, Controller0 and controller1 IP Addresses can be set on Data0
+            // Only EnableIscsi, Controller0 and controller1 IP Addresses can be set on Data0
             if (InterfaceAlias == NetInterfaceId.Data0.ToString())
             {
                 if(IPv4Address != null || IPv4Gateway != null || IPv4Netmask != null
-                    && IPv6Gateway != null || IPv6Prefix != null || EnableIscsi != null)
+                    && IPv6Gateway != null || IPv6Prefix != null || EnableCloud != null)
                 {
                     WriteVerbose(Resources.NetworkConfigData0AllowedSettings);
                     return false;
