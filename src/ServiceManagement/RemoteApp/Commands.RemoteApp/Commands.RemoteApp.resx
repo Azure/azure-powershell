@@ -240,4 +240,13 @@
   <data name="UseageNotFound" xml:space="preserve">
     <value>No usage found for the requested period.</value>
   </data>
+  <data name="RequestFailed" xml:space="preserve">
+    <value>The request failed.</value>
+  </data>
+  <data name="RequestSuccessful" xml:space="preserve">
+    <value>The request completed successfully.</value>
+  </data>
+  <data name="VNetTimeout" xml:space="preserve">
+    <value>The request took a long time to complete.</value>
+  </data>
 </root>
