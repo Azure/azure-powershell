@@ -12,33 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization.Formatters;
 using System.Threading;
+using Hyak.Common;
+using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using System.Diagnostics;
-using Microsoft.Azure.Common.Authentication;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
     public partial class ResourcesClient
     {
+        /// <summary>
+        /// A string that indicates the value of the registering state enum for a provider
+        /// </summary>
+        public const string RegisteredStateName = "Registered";
+
         /// <summary>
         /// Used when provisioning the deployment status.
         /// </summary>
@@ -62,14 +64,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <summary>
         /// Creates new ResourceManagementClient
         /// </summary>
-        /// <param name="subscription">Subscription containing resources to manipulate</param>
-        public ResourcesClient(AzureContext context)
+        /// <param name="profile">Profile containing resources to manipulate</param>
+        public ResourcesClient(AzureProfile profile)
             : this(
-                AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-                new GalleryTemplatesClient(context),
+                AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(profile, AzureEnvironment.Endpoint.ResourceManager),
+                new GalleryTemplatesClient(profile.Context),
                 // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
                 //AzureSession.ClientFactory.CreateClient<EventsClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(profile.Context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         /// <param name="resourceManagementClient">The IResourceManagementClient instance</param>
         /// <param name="galleryTemplatesClient">The IGalleryClient instance</param>
-        /// <param name="eventsClient">The IEventsClient instance</param>
+        /// <param name="authorizationManagementClient">The management client instance</param>
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
             GalleryTemplatesClient galleryTemplatesClient,
@@ -87,12 +89,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
             //IEventsClient eventsClient,
             IAuthorizationManagementClient authorizationManagementClient)
         {
-            ResourceManagementClient = resourceManagementClient;
             GalleryTemplatesClient = galleryTemplatesClient;
-
             // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
             //EventsClient = eventsClient;
             AuthorizationManagementClient = authorizationManagementClient;
+            this.ResourceManagementClient = resourceManagementClient;
         }
 
         /// <summary>
@@ -115,19 +116,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
         }
 
-        private List<Provider> ListResourceProviders()
-        {
-            ProviderListResult result = ResourceManagementClient.Providers.List(null);
-            List<Provider> providers = new List<Provider>(result.Providers);
-
-            while (!string.IsNullOrEmpty(result.NextLink))
-            {
-                result = ResourceManagementClient.Providers.ListNext(result.NextLink);
-                providers.AddRange(result.Providers);
-            }
-            return providers;
-        }
-
         public string SerializeHashtable(Hashtable templateParameterObject, bool addValueLayer)
         {
             if (templateParameterObject == null)
@@ -136,16 +124,23 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             Dictionary<string, object> parametersDictionary = templateParameterObject.ToDictionary(addValueLayer);
             return JsonConvert.SerializeObject(parametersDictionary, new JsonSerializerSettings
-                {
-                    TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple,
-                    TypeNameHandling = TypeNameHandling.None,
-                    Formatting = Formatting.Indented
-                });
+            {
+                TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple,
+                TypeNameHandling = TypeNameHandling.None,
+                Formatting = Formatting.Indented
+            });
         }
 
-        public virtual void UnregisterProvider(string RPName)
+        public virtual PSResourceProvider UnregisterProvider(string providerName)
         {
-            ResourceManagementClient.Providers.Unregister(RPName);
+            var response = this.ResourceManagementClient.Providers.Unregister(providerName);
+
+            if (response.Provider == null)
+            {
+                throw new KeyNotFoundException(string.Format(ProjectResources.ResourceProviderUnregistrationFailed, providerName));
+            }
+
+            return response.Provider.ToPSResourceProvider();
         }
 
         private string GetTemplate(string templateFile, string galleryTemplateName)
@@ -368,6 +363,96 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
 
             return null;
+        }
+
+        public virtual PSResourceProvider[] ListPSResourceProviders(string providerName = null)
+        {
+            return this.ListResourceProviders(providerName: providerName, listAvailable: false)
+                .Select(provider => provider.ToPSResourceProvider())
+                .ToArray();
+        }
+
+        public virtual PSResourceProvider[] ListPSResourceProviders(bool listAvailable)
+        {
+            return this.ListResourceProviders(providerName: null, listAvailable: listAvailable)
+                .Select(provider => provider.ToPSResourceProvider())
+                .ToArray();
+        }
+
+        public virtual List<Provider> ListResourceProviders(string providerName = null, bool listAvailable = true)
+        {
+            if (!string.IsNullOrEmpty(providerName))
+            {
+                var provider = this.ResourceManagementClient.Providers.Get(providerName).Provider;
+
+                if (provider == null)
+                {
+                    throw new KeyNotFoundException(string.Format(ProjectResources.ResourceProviderNotFound, providerName));
+                }
+
+                return new List<Provider> {provider};
+            }
+            else
+            {
+                var returnList = new List<Provider>();
+                var tempResult = this.ResourceManagementClient.Providers.List(null);
+                returnList.AddRange(tempResult.Providers);
+
+                while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
+                {
+                    tempResult = this.ResourceManagementClient.Providers.ListNext(tempResult.NextLink);
+                    returnList.AddRange(tempResult.Providers);
+                }
+
+                return listAvailable
+                    ? returnList
+                    : returnList.Where(this.IsProviderRegistered).ToList();
+            }
+        }
+
+        private bool IsProviderRegistered(Provider provider)
+        {
+            return string.Equals(
+                ResourcesClient.RegisteredStateName,
+                provider.RegistrationState,
+                StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        public PSResourceProvider RegisterProvider(string providerName)
+        {
+            var response = this.ResourceManagementClient.Providers.Register(providerName);
+
+            if (response.Provider == null)
+            {
+                throw new KeyNotFoundException(string.Format(ProjectResources.ResourceProviderRegistrationFailed, providerName));
+            }
+
+            return response.Provider.ToPSResourceProvider();
+        }
+
+        /// <summary>
+        /// Parses an array of resource ids to extract the resource group name
+        /// </summary>
+        /// <param name="resourceIds">An array of resource ids</param>
+        public ResourceIdentifier[] ParseResourceIds(string[] resourceIds)
+        {
+            var splitResourceIds = resourceIds
+               .Select(resourceId => resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries))
+               .ToArray();
+
+            if (splitResourceIds.Any(splitResourceId => splitResourceId.Length % 2 != 0 ||
+                splitResourceId.Length < 8 ||
+                !string.Equals("subscriptions", splitResourceId[0], StringComparison.InvariantCultureIgnoreCase) ||
+                !string.Equals("resourceGroups", splitResourceId[2], StringComparison.InvariantCultureIgnoreCase) ||
+                !string.Equals("providers", splitResourceId[4], StringComparison.InvariantCultureIgnoreCase)))
+            {
+                throw new System.Management.Automation.PSArgumentException(ProjectResources.InvalidFormatOfResourceId);
+            }
+
+            return resourceIds
+                .Distinct(StringComparer.InvariantCultureIgnoreCase)
+                .Select(resourceId => new ResourceIdentifier(resourceId))
+                .ToArray();
         }
     }
 }

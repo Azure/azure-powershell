@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Websites.Utilities
 {
     public class WebsitesClient
     {
+        public Action<string> VerboseLogger { get; set; }
+
         public WebsitesClient(AzureContext context)
         {
             this.WrappedWebsitesClient = AzureSession.ClientFactory.CreateClient<WebSiteManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
@@ -58,6 +60,7 @@ namespace Microsoft.Azure.Commands.Websites.Utilities
                                 Properties = new WebSiteBaseProperties(webHostingPlan)
                             }
                         });
+           // VerboseLogger(string.Format("Created website '{0}' in resource group '{1}' at location '{2}'", webSiteName, resourceGroupName, location));
 
             return createdWebSite.WebSite;
         }
@@ -86,5 +89,84 @@ namespace Microsoft.Azure.Commands.Websites.Utilities
             return removedWebsite.StatusCode;
         }
 
+        public WebSite GetWebsite(string resourceGroupName, string webSiteName, string slotName)
+        {
+            WebSiteGetParameters webSiteGetParams = new WebSiteGetParameters();
+            var getWebsite = WrappedWebsitesClient.WebSites.Get(resourceGroupName, webSiteName, slotName, webSiteGetParams);
+            try
+            {
+                var getAppSettings = WrappedWebsitesClient.WebSites.GetAppSettings(resourceGroupName, webSiteName, slotName);
+                //Add websiteApp Settings to the Website object as the Get call will not return them.
+                foreach (var appSettingVal in getAppSettings.Resource.Properties.ToList())
+                {
+                    if (!getWebsite.WebSite.Properties.Properties.AppSettings.Keys.Contains(appSettingVal.Name))
+                        getWebsite.WebSite.Properties.Properties.AppSettings.Add(appSettingVal.Name, appSettingVal.Value);
+                }
+            }
+            catch
+            {
+                //ignore if this call fails as it will for reader RBAC
+            }
+            //Add ConnectionStrings Settings to the Website object as the Get call will not return them.
+            
+            try
+            {
+                var getConnectionStringsSettings = WrappedWebsitesClient.WebSites.GetConnectionStrings(resourceGroupName, webSiteName, slotName);
+                //TODO: Add ConnectionStrings Settings to the Website object as the Get call will not return them.
+
+
+            }
+            catch
+            {
+                //ignore if this call fails as it will for reader RBAC
+            }         
+            
+            return getWebsite.WebSite;
+        }
+
+        public WebSiteGetPublishProfileResponse GetWebsitePublishingProfile(string resourceGroupName, string webSiteName, string slotName)
+        {
+            var pubCreds = WrappedWebsitesClient.WebSites.GetPublishProfile(resourceGroupName, webSiteName, slotName);
+            return pubCreds;
+        }
+
+        public WebHostingPlanCreateOrUpdateResponse CreateWebHostingPlan(string resourceGroupName, string whpName, string location, string adminSiteName, int numberOfWorkers, SkuOptions sku, WorkerSizeOptions workerSize)
+        {
+            WebHostingPlanProperties webHostingPlanProperties = new WebHostingPlanProperties();
+            webHostingPlanProperties.Sku = sku;
+            webHostingPlanProperties.AdminSiteName = adminSiteName;
+            webHostingPlanProperties.NumberOfWorkers = numberOfWorkers;
+            webHostingPlanProperties.WorkerSize = workerSize;
+            WebHostingPlan webHostingPlan = new WebHostingPlan();        
+            WebHostingPlanCreateOrUpdateParameters webHostingPlanCreateOrUpdateParameters = new WebHostingPlanCreateOrUpdateParameters(webHostingPlan);
+            webHostingPlanCreateOrUpdateParameters.WebHostingPlan.Location = location;
+            webHostingPlanCreateOrUpdateParameters.WebHostingPlan.Name = whpName;
+            webHostingPlanCreateOrUpdateParameters.WebHostingPlan.Properties = webHostingPlanProperties;
+
+            var createdWHP = WrappedWebsitesClient.WebHostingPlans.CreateOrUpdate(resourceGroupName, webHostingPlanCreateOrUpdateParameters);
+            //proper return type need to be discussed
+            return createdWHP;
+        }
+
+        public AzureOperationResponse RemoveWebHostingPlan(string resourceGroupName, string whpName)
+        {
+            var response = WrappedWebsitesClient.WebHostingPlans.Delete(resourceGroupName, whpName);
+            //proper return type need to be discussed
+            return response;
+        }
+
+        public WebHostingPlanGetResponse GetWebHostingPlan(string resourceGroupName, string whpName)
+        {
+            var response = WrappedWebsitesClient.WebHostingPlans.Get(resourceGroupName, whpName);
+            //proper return type need to be discussed
+            return response;
+        }
+
+        public WebHostingPlanListResponse ListWebHostingPlan(string resourceGroupName)
+        {       
+            var response = WrappedWebsitesClient.WebHostingPlans.List(resourceGroupName);
+            //proper return type need to be discussed
+            return response;
+        }
     }
 }

@@ -34,6 +34,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.SchedulingPolicy omObject;
         
+        public PSSchedulingPolicy(Microsoft.Azure.Batch.Common.TVMFillType fillType)
+        {
+            this.omObject = new Microsoft.Azure.Batch.SchedulingPolicy(fillType);
+        }
+        
         internal PSSchedulingPolicy(Microsoft.Azure.Batch.SchedulingPolicy omObject)
         {
             if ((omObject == null))

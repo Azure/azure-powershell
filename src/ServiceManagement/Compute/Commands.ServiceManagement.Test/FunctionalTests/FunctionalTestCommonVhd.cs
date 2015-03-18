@@ -83,9 +83,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public void AzureDiskTest()
         {
             StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
-            string blobName = "os0.vhd";
+
             vhdName =  Utilities.GetUniqueShortName("os0vhd");
-            string mediaLocation = String.Format("{0}{1}/{2}", blobUrlRoot, vhdContainerName, blobName);
+            CopyCommonVhd(vhdContainerName, "os0.vhd", vhdName);
+
+            string mediaLocation = String.Format("{0}{1}/{2}", blobUrlRoot, vhdContainerName, vhdName);
 
             try
             {
@@ -114,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Console.WriteLine("Disk Label is successfully updated");
 
                 // Update only size
-                int newSize = 250;
+                int newSize = 50;
                 vmPowershellCmdlets.UpdateAzureDisk(vhdName, null, newSize);
 
                 virtualDisk = vmPowershellCmdlets.GetAzureDisk(vhdName)[0];
@@ -126,7 +128,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 // Update both label and size
                 newLabel = "NewLabel2";
-                newSize = 300;
+                newSize = 100;
                 vmPowershellCmdlets.UpdateAzureDisk(vhdName, newLabel, newSize);
 
                 virtualDisk = vmPowershellCmdlets.GetAzureDisk(vhdName)[0];
@@ -136,7 +138,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Assert.AreEqual(newSize, virtualDisk.DiskSizeInGB);
                 Console.WriteLine("Both disk label and size are successfully updated");
 
-                vmPowershellCmdlets.RemoveAzureDisk(vhdName, false);
+                vmPowershellCmdlets.RemoveAzureDisk(vhdName, true);
                 Assert.IsTrue(Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDisk, vhdName), "The disk was not removed");
                 pass = true;
             }
@@ -151,7 +153,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 try
                 {
-                    vmPowershellCmdlets.RemoveAzureDisk(vhdName, false);
+                    vmPowershellCmdlets.RemoveAzureDisk(vhdName, true);
                 }
                 catch (Exception cleanupError)
                 {
