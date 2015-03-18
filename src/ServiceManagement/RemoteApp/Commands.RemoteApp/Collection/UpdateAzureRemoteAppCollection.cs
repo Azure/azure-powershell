@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the RemoteApp template image."
         )]
-        [ValidatePattern(TemplateNameValidatorString)]
+        [ValidatePattern(TemplateImageNameValidatorString)]
         public string ImageName { get; set; }
 
         public override void ExecuteCmdlet()
