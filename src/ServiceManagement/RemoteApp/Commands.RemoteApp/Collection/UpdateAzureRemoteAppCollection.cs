@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
                 if (ShouldProcess(CollectionName, "Update collection"))
                 {
-                    response = CallClient(() => Client.Collections.Set(CollectionName, false, false, details), Client.Collections);
+                    response = CallClient(() => Client.Collections.Set(CollectionName, true, false, details), Client.Collections);
                 }
 
                 if (response != null)
