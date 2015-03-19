@@ -23,7 +23,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.Websites;
+using Microsoft.Azure.Commands.Webpp;
 using Microsoft.Azure.Management.WebSites;
 using System.Net.Http;
 using System.Threading;
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets
     /// <summary>
     /// this commandlet will get the publishing creds of the given Azure Websites using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureWebsitePublishingProfile")]
-    public class GetAzureWebsitePublishingProfileCmdlet : WebsiteBaseSlotCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureWebAppPublishingProfile")]
+    public class GetAzureWebAppPublishingProfileCmdlet : WebAppBaseSlotCmdlet
     {
         public override void ExecuteCmdlet()
         {
