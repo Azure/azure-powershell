@@ -26,5 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string IdentifyByDeviceName = "IdentifyByDeviceName";
         public const string IdentifyByType = "IdentifyByType";
         public const string IdentifyByStatus = "IdentifyByStatus";
+        public const string UseExistingStorageAccount = "UseExistingStorageAccount";
+        public const string CreateNewStorageAccount = "CreateNewStorageAccount";
     }
 }
