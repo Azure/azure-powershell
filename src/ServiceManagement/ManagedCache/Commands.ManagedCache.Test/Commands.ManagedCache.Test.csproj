@@ -146,7 +146,6 @@
     <Compile Include="ScenarioTests\ManagedCacheTestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="ScenarioTests\ManagedCacheTests.ps1">

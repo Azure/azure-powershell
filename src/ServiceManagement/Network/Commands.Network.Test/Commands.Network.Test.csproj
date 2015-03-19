@@ -146,7 +146,6 @@
     <Compile Include="ScenarioTests\NetworkTestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="ScenarioTests\NetworkSecurityGroup\Common.ps1">
