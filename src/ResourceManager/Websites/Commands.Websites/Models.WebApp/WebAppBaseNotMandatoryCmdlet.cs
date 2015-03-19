@@ -12,26 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Websites.Models;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.WebApp
 {
-    public class WebsitesTests 
+    public class WebAppBaseNotMandatoryCmdlet : WebAppBaseClient
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewSimpleWebsite()
-        {
-            WebsitesController.NewInstance.RunPsTest("Test-CreatesNewSimpleWebsite");
-        }
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
+        [ValidateNotNullOrEmptyAttribute]
+        public string ResourceGroupName { get; set; }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewWebHostingPlan()
-        {
-            WebsitesController.NewInstance.RunPsTest("Test-CreatesNewWebHostingPlan");
-        }
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the website.")]
+        [ValidateNotNullOrEmptyAttribute]
+        public string Name { get; set; }
     }
 }
+

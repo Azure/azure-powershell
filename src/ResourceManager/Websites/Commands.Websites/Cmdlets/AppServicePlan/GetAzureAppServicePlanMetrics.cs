@@ -32,13 +32,13 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Websites.Utilities;
 
-namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
+namespace Microsoft.Azure.Commands.Websites.Cmdlets.AppServicePlan
 {
     /// <summary>
     /// this commandlet will let you create a new Azure Web Hosting Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureWebHostingPlanMetrics"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
-    public class GetAzureWebHostingPlanMetricsCmdlet : WebHostingPlanBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureAppServicePlanMetrics"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
+    public class GetAzureAppServicePlanMetricsCmdlet : AppServicePlanBaseCmdlet
     {              
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "List of metrics names to retrieve.")]
         [ValidateNotNullOrEmpty]

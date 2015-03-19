@@ -23,7 +23,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.Websites;
+using Microsoft.Azure.Commands.Webpp;
 using Microsoft.Azure.Management.WebSites;
 using System.Net.Http;
 using System.Threading;
@@ -37,24 +37,24 @@ using Microsoft.Azure.Commands.Websites.Utilities;
 namespace Microsoft.Azure.Commands.Websites.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you Start an Azure Website
+    /// this commandlet will let you restart an Azure Website
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureWebsite")]
-    public class StartAzureWebsiteCmdlet : WebsiteBaseCmdlet
+    [Cmdlet(VerbsLifecycle.Restart, "AzureWebApp")]
+    public class RestartAzureWebsiteCmdlet : WebAppBaseCmdlet
     {
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the website slot.")]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
         [ValidateNotNullOrEmptyAttribute]
         public string SlotName { get; set; }
-     
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(WebsitesClient.StartWebsite(ResourceGroupName, Name, SlotName));
-            
+            WriteObject(WebsitesClient.RestartWebsite(ResourceGroupName, Name, SlotName));
         }
-        
+
     }
 }
+
 
 
 

@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +23,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.Websites;
+using Microsoft.Azure.Commands.Webpp;
 using Microsoft.Azure.Management.WebSites;
 using System.Net.Http;
 using System.Threading;
@@ -33,26 +34,23 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Websites.Utilities;
 
 
-namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
+
+namespace Microsoft.Azure.Commands.Websites.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you delete an Azure Web Hosting Plan using ARM APIs
+    /// this commandlet will let you create a new Azure Websites using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureWebHostingPlan"), OutputType(typeof(AzureOperationResponse))]
-    public class RemoveWebHostingPlanCmdlet : WebHostingPlanBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureWebApp")]
+    public class GetAzureWebAppCmdlet : WebAppBaseSlotCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Websites.Properties.Resources.RemovingWebHostPlan, Name),
-                    Microsoft.Azure.Commands.Websites.Properties.Resources.RemovingWebHostPlan,
-                    Name,
-                    () => WebsitesClient.RemoveWebHostingPlan(ResourceGroupName, Name));
+            WriteObject(WebsitesClient.GetWebsite(ResourceGroupName, Name, SlotName));
+            
         }
+        
     }
 }
+
+
 

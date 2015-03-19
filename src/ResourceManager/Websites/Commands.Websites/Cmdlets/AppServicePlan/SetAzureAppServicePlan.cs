@@ -31,20 +31,20 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Websites.Utilities;
 
-namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
+namespace Microsoft.Azure.Commands.Websites.Cmdlets.AppServicePlan
 {
     /// <summary>
     /// this commandlet will let you create a new Azure Web Hosting Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureWebHostingPlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
-    public class SetAzureWebHostingPlanCmdlet : WebHostingPlanBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureAppServicePlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
+    public class SetAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the web hosting plan.")]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the app service plan.")]
         [ValidateNotNullOrEmptyAttribute]
         public string Location { get; set; }
         
-        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Sku of the Webhosting plan eg: free, shared, basic, standard.")]
+        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Sku of the app service plan eg: free, shared, basic, standard.")]
         [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", IgnoreCase = true)]
         [ValidateNotNullOrEmptyAttribute]
         public string Sku { get; set; }

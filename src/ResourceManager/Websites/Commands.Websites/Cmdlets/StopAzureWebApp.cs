@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +23,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.Websites;
+using Microsoft.Azure.Commands.Webpp;
 using Microsoft.Azure.Management.WebSites;
 using System.Net.Http;
 using System.Threading;
@@ -36,28 +37,21 @@ using Microsoft.Azure.Commands.Websites.Utilities;
 namespace Microsoft.Azure.Commands.Websites.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you create a new Azure Websites using ARM APIs
+    /// this commandlet will let you stop an Azure Website
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureWebsite")]
-    public class NewAzureWebsiteCmdlet : WebsiteBaseCmdlet
+    [Cmdlet(VerbsLifecycle.Stop, "AzureWebsite")]
+    public class StopAzureWebsiteCmdlet : WebAppBaseCmdlet
     {
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the website slot.")]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
         [ValidateNotNullOrEmptyAttribute]
         public string SlotName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The Location of the Website eg: West US.")]
-        public string Location { get; set; }
-
-        [Parameter(Position = 4, Mandatory = true, HelpMessage = "The name of the web hosting plan eg: Default1.")]
-        public string WebHostingPlan { get; set; }
-       
         public override void ExecuteCmdlet()
         {
-            WriteObject(WebsitesClient.CreateWebsite(ResourceGroupName, Name, SlotName, Location, WebHostingPlan));
-            
+            WriteObject(WebsitesClient.StopWebsite(ResourceGroupName, Name, SlotName));
         }
-        
+
     }
 }
 

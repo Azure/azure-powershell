@@ -110,7 +110,7 @@
   <ItemGroup>
     <Compile Include="NewAzureWebsitesCommandTests.cs" />
     <Compile Include="ScenarioTests\WebsitesController.cs" />
-    <Compile Include="ScenarioTests\WebsitesTests.cs" />
+    <Compile Include="ScenarioTests\WebAppTests.cs" />
     <Compile Include="WebsitesTestHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -122,7 +122,7 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\WebsitesTests.ps1">
+    <None Include="ScenarioTests\WebAppTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebsitesTests\TestCreatesNewSimpleWebsite.json">

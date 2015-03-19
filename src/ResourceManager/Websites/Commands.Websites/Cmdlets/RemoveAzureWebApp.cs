@@ -23,7 +23,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.Websites;
+using Microsoft.Azure.Commands.Webpp;
 using Microsoft.Azure.Management.WebSites;
 using System.Net.Http;
 using System.Threading;
@@ -32,24 +32,40 @@ using System.Net;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Websites.Utilities;
+using Microsoft.Azure.Commands.Websites.Properties;
 
-
-namespace Microsoft.Azure.Commands.Websites.Cmdlets
+namespace Microsoft.Azure.Commands.WebApp.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you stop an Azure Website
+    /// this commandlet will let you delete an Azure website
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureWebsite")]
-    public class StopAzureWebsiteCmdlet : WebsiteBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureWebApp")]
+    public class RemoveAzureWebsiteCmdlet : WebAppBaseNotMandatoryCmdlet
     {
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the website slot.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string SlotName { get; set; }
+       //always delete the slots, 
+        private bool deleteSlotsByDefault = true;
 
+        // leave behind the empty webhosting plan 
+        private bool deleteEmptyServerFarmByDefault = false;
+
+        //always delete the metrics
+        private bool deleteMetricsByDefault = true;
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+            
         public override void ExecuteCmdlet()
         {
-            WriteObject(WebsitesClient.StopWebsite(ResourceGroupName, Name, SlotName));
+            // Currently we delete all slots.
+            string slotName = null;
+
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemoveWebsiteWarning, Name),
+                Resources.RemoveWebsiteMessage,
+                Name,
+                () => WebsitesClient.RemoveWebsite(ResourceGroupName, Name, slotName, deleteEmptyServerFarmByDefault, deleteMetricsByDefault, deleteSlotsByDefault));
         }
 
     }

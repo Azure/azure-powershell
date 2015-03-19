@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +23,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.Websites;
+using Microsoft.Azure.Commands.Webpp;
 using Microsoft.Azure.Management.WebSites;
 using System.Net.Http;
 using System.Threading;
@@ -33,36 +34,27 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Websites.Utilities;
 
 
-namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
+namespace Microsoft.Azure.Commands.Websites.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you Get an Azure Web Hosting Plan using ARM APIs
+    /// this commandlet will let you Start an Azure Website
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureWebHostingPlan"), OutputType(typeof(WebHostingPlanGetResponse), typeof(WebHostingPlanListResponse))]
-    public class GetWebHostingPlanCmdlet : WebHostingPlanBaseNotMandatoryCmdlet
+    [Cmdlet(VerbsLifecycle.Start, "AzureWebApp")]
+    public class StartAzureWebsiteCmdlet : WebAppBaseCmdlet
     {
+
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
+        [ValidateNotNullOrEmptyAttribute]
+        public string SlotName { get; set; }
+     
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
-            {
-                GetByWebHostingPlan();
-            }
-            else if (!string.IsNullOrEmpty(ResourceGroupName))
-            {
-                GetByResourceGroup();
-            }
-
+            WriteObject(WebsitesClient.StartWebsite(ResourceGroupName, Name, SlotName));
+            
         }
-
-        private void GetByWebHostingPlan()
-        {
-            WriteObject(WebsitesClient.GetWebHostingPlan(ResourceGroupName, Name));
-        }
-
-        private void GetByResourceGroup()
-        {
-            WriteObject(WebsitesClient.ListWebHostingPlan(ResourceGroupName));
-        }
+        
     }
 }
+
+
 

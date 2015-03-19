@@ -1,5 +1,4 @@
-﻿
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +22,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.Websites;
+using Microsoft.Azure.Commands.Webpp;
 using Microsoft.Azure.Management.WebSites;
 using System.Net.Http;
 using System.Threading;
@@ -32,43 +31,33 @@ using System.Net;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Websites.Utilities;
-using Microsoft.Azure.Commands.Websites.Properties;
 
 
 namespace Microsoft.Azure.Commands.Websites.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you delete an Azure website
+    /// this commandlet will let you create a new Azure Websites using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureWebsite")]
-    public class RemoveAzureWebsiteCmdlet : WebsiteBaseNotMandatoryCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureWebApp")]
+    public class NewAzureWebsiteCmdlet : WebAppBaseCmdlet
     {
 
-       //always delete the slots, 
-        private bool deleteSlotsByDefault = true;
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
+        [ValidateNotNullOrEmptyAttribute]
+        public string SlotName { get; set; }
 
-        // leave behind the empty webhosting plan 
-        private bool deleteEmptyServerFarmByDefault = false;
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The Location of the web app eg: West US.")]
+        public string Location { get; set; }
 
-        //always delete the metrics
-        private bool deleteMetricsByDefault = true;
-
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-            
+        [Parameter(Position = 4, Mandatory = true, HelpMessage = "The name of the app service plan eg: Default1.")]
+        public string AppServicePlan { get; set; }
+       
         public override void ExecuteCmdlet()
         {
-            // Currently we delete all slots.
-            string slotName = null;
-
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemoveWebsiteWarning, Name),
-                Resources.RemoveWebsiteMessage,
-                Name,
-                () => WebsitesClient.RemoveWebsite(ResourceGroupName, Name, slotName, deleteEmptyServerFarmByDefault, deleteMetricsByDefault, deleteSlotsByDefault));
+            WriteObject(WebsitesClient.CreateWebsite(ResourceGroupName, Name, SlotName, Location, AppServicePlan));
+            
         }
-
+        
     }
 }
 

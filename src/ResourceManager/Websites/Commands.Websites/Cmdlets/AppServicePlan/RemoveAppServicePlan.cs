@@ -1,5 +1,4 @@
-﻿
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,22 +33,26 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Websites.Utilities;
 
 
-namespace Microsoft.Azure.Commands.Websites.Cmdlets
+namespace Microsoft.Azure.Commands.Websites.Cmdlets.AppServicePlan
 {
     /// <summary>
-    /// this commandlet will let you create a new Azure Websites using ARM APIs
+    /// this commandlet will let you delete an Azure Web Hosting Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureWebsite")]
-    public class GetAzureWebsiteCmdlet : WebsiteBaseSlotCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureAppServicePlan"), OutputType(typeof(AzureOperationResponse))]
+    public class RemoveAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(WebsitesClient.GetWebsite(ResourceGroupName, Name, SlotName));
-            
+            ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Microsoft.Azure.Commands.Websites.Properties.Resources.RemovingWebHostPlan, Name),
+                    Microsoft.Azure.Commands.Websites.Properties.Resources.RemovingWebHostPlan,
+                    Name,
+                    () => WebsitesClient.RemoveWebHostingPlan(ResourceGroupName, Name));
         }
-        
     }
 }
-
-
 
