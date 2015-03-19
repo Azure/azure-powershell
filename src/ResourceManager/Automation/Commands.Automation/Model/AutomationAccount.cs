@@ -26,18 +26,18 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AutomationAccount"/> class.
         /// </summary>
-        /// <param name="resrouceGroupName">
+        /// <param name="resourceGroupName">
         /// The resource group name.
         /// </param>
         /// <param name="automationAccount">
         /// The automation account.
         /// </param>
-        public AutomationAccount(string resrouceGroupName, AutomationManagement.Models.AutomationAccount automationAccount)
+        public AutomationAccount(string resourceGroupName, AutomationManagement.Models.AutomationAccount automationAccount)
         {
-            Requires.Argument("ResrouceGroupName", resrouceGroupName).NotNull();
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccount", automationAccount).NotNull();
 
-            this.RerourceGroupName = resrouceGroupName;
+            this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccount.Name;
             this.Location = automationAccount.Location;
             this.Plan = automationAccount.Properties.Sku.Family;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the resource group name.
         /// </summary>
-        public string RerourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the automation account name.
