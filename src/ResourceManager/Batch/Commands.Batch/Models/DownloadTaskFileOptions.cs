@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSTaskFile TaskFile { get; set; }
 
         /// <summary>
-        /// The destination path where the Task file will be downloaded
+        /// The path to the directory where the Task file will be downloaded
         /// </summary>
         public string DestinationPath { get; set; }
 

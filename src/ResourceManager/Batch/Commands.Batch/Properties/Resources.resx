@@ -157,7 +157,7 @@
     <value>Getting all Pools associated with the Batch account. </value>
   </data>
   <data name="GBTFC_Downloading" xml:space="preserve">
-    <value>Downloading Task file "{0}" to local path: {1}</value>
+    <value>Downloading Task file "{0}" to: {1}</value>
   </data>
   <data name="GBTFC_NoDestinationPath" xml:space="preserve">
     <value>No destination path was specified. Supply a path where the Task file should be downloaded.</value>

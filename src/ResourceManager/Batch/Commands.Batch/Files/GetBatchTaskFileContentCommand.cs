@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSTaskFile InputObject { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The destination path where the Task file will be downloaded.")]
+        [Parameter(HelpMessage = "The path to the directory where the Task file will be downloaded.")]
         [ValidateNotNullOrEmpty]
         public string DestinationPath { get; set; }
 

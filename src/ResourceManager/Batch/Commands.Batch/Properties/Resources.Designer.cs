@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Downloading Task file &quot;{0}&quot; to local path: {1}.
+        ///   Looks up a localized string similar to Downloading Task file &quot;{0}&quot; to: {1}.
         /// </summary>
         internal static string GBTFC_Downloading {
             get {

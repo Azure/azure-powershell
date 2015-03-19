@@ -153,12 +153,11 @@ function Test-GetTaskFileContentByName
 	param([string]$accountName, [string]$wiName, [string]$jobName, [string]$taskName, [string]$taskFileName, [string]$fileContent)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$path = "localFile.txt"
 	$stream = New-Object System.IO.MemoryStream 
 
 	try
 	{
-		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -DestinationPath $path -BatchContext $context -MemStream $stream
+		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context -MemStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -180,7 +179,7 @@ function Test-GetTaskFileContentByName
 	$stream = New-Object System.IO.MemoryStream 
 	try
 	{
-		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -DestinationPath $path -BatchContext $context -MemStream $stream
+		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context -MemStream $stream
 
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -208,13 +207,12 @@ function Test-GetTaskFileContentPipeline
 	param([string]$accountName, [string]$wiName, [string]$jobName, [string]$taskName, [string]$taskFileName, [string]$fileContent)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$path = "localFile.txt"
 	$stream = New-Object System.IO.MemoryStream 
 
 	try
 	{
 		$taskFile = Get-AzureBatchTaskFile_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context
-		$taskFile | Get-AzureBatchTaskFileContent_ST -DestinationPath $path -BatchContext $context -MemStream $stream
+		$taskFile | Get-AzureBatchTaskFileContent_ST -BatchContext $context -MemStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream

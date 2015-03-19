@@ -25,26 +25,26 @@ namespace Microsoft.Azure.Commands.Batch
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the WorkItem.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the workitem which contains the specified target task.")]
         [Parameter(Position = 0, ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string WorkItemName { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Job.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the job containing the specified target task.")]
         [Parameter(Position = 1, ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string JobName { get; set; }
 
-        [Parameter(Position = 2, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Task.")]
+        [Parameter(Position = 2, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the task.")]
         [Parameter(Position = 2, ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string TaskName { get; set; }
 
-        [Parameter(Position = 3, ParameterSetName = Constants.NameParameterSet, HelpMessage = "The name of the Task file.")]
+        [Parameter(Position = 3, ParameterSetName = Constants.NameParameterSet, HelpMessage = "The name of the task file to retrieve.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Task to query for files.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Task object to use as the basis for the file query.")]
         [ValidateNotNullOrEmpty]
         public PSCloudTask Task { get; set; }
 

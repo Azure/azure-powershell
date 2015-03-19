@@ -93,11 +93,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.TaskName = "task";
             cmdlet.Name = fileName;
 
-            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
-
-            // File in required local path
-            cmdlet.DestinationPath = "localFile.txt";
-
             try
             {
                 // Verify no exceptions occur

@@ -14,6 +14,7 @@
 
 using System.Linq;
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Protocol.Entities;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Downloads a Task file to the local machine
+        /// Downloads a Task file using the specified options.
         /// </summary>
         /// <param name="options">The download options</param>
         public void DownloadTaskFile(DownloadTaskFileOptions options)
@@ -110,11 +111,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException(Resources.GBTFC_NoTaskFileSpecified);
             }
 
-            if (string.IsNullOrWhiteSpace(options.DestinationPath))
-            {
-                throw new ArgumentNullException(Resources.GBTFC_NoDestinationPath);
-            }
-
             ITaskFile taskFile = null;
             if (options.TaskFile == null)
             {
@@ -128,7 +124,20 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 taskFile = options.TaskFile.omObject;
             }
 
-            WriteVerbose(string.Format(Resources.GBTFC_Downloading, taskFile.Name, options.DestinationPath));
+            string path = null;
+            // The task file object's name is a relative path that includes directories.
+            string fileName = Path.GetFileName(taskFile.Name);
+            if (string.IsNullOrWhiteSpace(options.DestinationPath))
+            {
+                // If no destination is specified, just save the file to the local directory 
+                path = fileName;
+            }
+            else
+            {
+                path = Path.Combine(options.DestinationPath, fileName);
+            }
+
+            WriteVerbose(string.Format(Resources.GBTFC_Downloading, taskFile.Name, path));
             if (options.Stream != null)
             {
                 // Used for testing.
@@ -137,7 +146,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             else
             {
-                using (FileStream fs = new FileStream(options.DestinationPath, FileMode.Create))
+                using (FileStream fs = new FileStream(path, FileMode.Create))
                 {
                     taskFile.CopyToStream(fs, options.AdditionalBehaviors);
                 }   
