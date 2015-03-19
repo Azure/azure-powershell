@@ -196,7 +196,6 @@
     <Compile Include="CloudService\Development\EnableAzureRemoteDesktop.cs" />
     <Compile Include="CloudService\Development\GetAzureServiceProjectRoleRuntime.cs" />
     <Compile Include="CloudService\Development\SaveAzureServiceProjectPackage.cs" />
-    <Compile Include="CloudService\Development\Scaffolding\AddAzureDjangoWebRole.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzureNodeWebRole.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzureNodeWorkerRole.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzurePHPWebRole.cs" />
