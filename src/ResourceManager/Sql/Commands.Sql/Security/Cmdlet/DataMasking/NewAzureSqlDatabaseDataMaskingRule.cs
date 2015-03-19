@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
     /// <summary>
     /// Returns a new data masking rule for a specific database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseDataMaskingRule")]
+    [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseDataMaskingRule", DefaultParameterSetName = ByTableAndColumn)]
     public class NewAzureSqlDatabaseDataMaskingRule : BuildAzureSqlDatabaseDataMaskingRule
     {
         /// <summary>

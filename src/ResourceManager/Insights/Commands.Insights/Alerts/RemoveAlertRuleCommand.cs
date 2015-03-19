@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the ResourceGroupName parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = RemoveAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceGroup name")]
+        [Parameter(ParameterSetName = RemoveAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 

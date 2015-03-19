@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets
     /// this commandlet will let you delete an Azure website
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureWebsite")]
-    public class RemoveAzureWebsiteCmdlet : WebsiteBaseCmdlet
+    public class RemoveAzureWebsiteCmdlet : WebsiteBaseNotMandatoryCmdlet
     {
 
        //always delete the slots, 
@@ -58,14 +58,15 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets
             
         public override void ExecuteCmdlet()
         {
+            // Currently we delete all slots.
             string slotName = null;
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemoveWebsiteWarning, WebsiteName),
+                string.Format(Resources.RemoveWebsiteWarning, Name),
                 Resources.RemoveWebsiteMessage,
-                WebsiteName,
-                () => WebsitesClient.RemoveWebsite(ResourceGroupName, WebsiteName, slotName, deleteEmptyServerFarmByDefault, deleteMetricsByDefault, deleteSlotsByDefault));
+                Name,
+                () => WebsitesClient.RemoveWebsite(ResourceGroupName, Name, slotName, deleteEmptyServerFarmByDefault, deleteMetricsByDefault, deleteSlotsByDefault));
         }
 
     }
