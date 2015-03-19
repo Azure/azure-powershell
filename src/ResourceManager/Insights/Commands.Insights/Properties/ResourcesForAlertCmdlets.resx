@@ -117,18 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AlertTagHiddenLinkKey" xml:space="preserve">
-    <value>hidden-link:</value>
-  </data>
-  <data name="AlertTagHiddenLinkValue" xml:space="preserve">
-    <value>Resource</value>
-  </data>
-  <data name="AlertTagTypeKey" xml:space="preserve">
-    <value>$type</value>
-  </data>
-  <data name="AlertTagTypeValue" xml:space="preserve">
-    <value>Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary,Microsoft.WindowsAzure.Management.Common.Storage</value>
-  </data>
   <data name="RuleConditionTypeNotSupported" xml:space="preserve">
     <value>Rule condition type '{0}' not supported.</value>
   </data>

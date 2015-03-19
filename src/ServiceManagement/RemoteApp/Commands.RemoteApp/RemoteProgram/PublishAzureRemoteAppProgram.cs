@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RemoteApp;
+using Microsoft.Azure.Management.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
 using System;
 using System.IO;
@@ -20,18 +20,16 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsData.Publish, "AzureRemoteAppProgram", DefaultParameterSetName = AppId), OutputType(typeof(PublishingOperationResult), typeof(Job))]
+    [Cmdlet(VerbsData.Publish, "AzureRemoteAppProgram", DefaultParameterSetName = AppId), OutputType(typeof(PublishingOperationResult))]
     public class PublishAzureRemoteAppProgram : RdsCmdlet
     {
         private const string AppPath = "App Path";
         private const string AppId = "App Id";
 
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "RemoteApp collection name")]
-        [ValidatePattern(NameValidatorString)]
-        [Alias("Name")]
+        [Parameter (Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern (NameValidatorString)]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = true,
@@ -127,16 +125,13 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         {
             if (AsJob.IsPresent)
             {
-                task = new LongRunningTask<PublishAzureRemoteAppProgram>(this, "RemoteAppBackgroundTask", Commands_RemoteApp.Publish);
+                task = new LongRunningTask<PublishAzureRemoteAppProgram>(this, "RemoteAppBackgroundTask", "Publish RemoteApp");
 
                 task.ProcessJob(() =>
                 {
-                    task.SetStatus(Commands_RemoteApp.Publishing);
                     PublishAction();
-                    task.SetStatus(Commands_RemoteApp.JobComplete);
+                    task.SetStatus("ProcessJob completed");
                 });
-
-                WriteObject(task);
             }
             else
             {

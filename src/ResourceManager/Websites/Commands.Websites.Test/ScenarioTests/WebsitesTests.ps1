@@ -32,8 +32,8 @@ function Test-CreatesNewSimpleWebsite
 		New-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -location  $location
 
 		# Test
-		$actual = New-AzureWebsite -ResourceGroupName $rgname -Name $wname -Location $location -WebHostingPlan $whpName 
-		$result = Get-AzureWebsite -ResourceGroupName $rgname -Name $wname
+		$actual = New-AzureWebsite -ResourceGroupName $rgname -WebsiteName $wname -Location $location -WebHostingPlan $whpName 
+		$result = Get-AzureWebsite -ResourceGroupName $rgname -WebsiteName $wname
 
 		# Assert
 		Assert-AreEqual $wname $result.Name
@@ -42,7 +42,7 @@ function Test-CreatesNewSimpleWebsite
     finally
 	{
 		# Cleanup
-		Remove-AzureWebsite -ResourceGroupName $rgname -Name $wname -Force
+		Remove-AzureWebsite -ResourceGroupName $rgname -WebsiteName $wname -Force
 		Remove-AzureWebHostingPlan -ResourceGroupName $rgname -WebHostingPlanName  $whpName -Force
 		Remove-AzureResourceGroup -Name $rgname -Force
     }

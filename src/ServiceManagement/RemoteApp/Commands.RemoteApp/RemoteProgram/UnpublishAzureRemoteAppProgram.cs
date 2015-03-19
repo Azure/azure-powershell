@@ -23,17 +23,14 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     [Cmdlet(VerbsData.Unpublish, "AzureRemoteAppProgram", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(PublishingOperationResult))]
     public class UnpublishAzureRemoteAppProgram : RdsCmdlet
     {
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "RemoteApp collection name")]
-        [ValidatePattern(NameValidatorString)]
-        [Alias("Name")]
+        [Parameter (Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern (NameValidatorString)]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,
-                   Position = 1,
-                   ValueFromPipelineByPropertyName = true,
+            Position = 1,
                    HelpMessage = "Aliases of the programs to unpublish")]
         [ValidateNotNullOrEmpty()]
         public string[] Alias { get; set; }

@@ -40,11 +40,16 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets
     /// this commandlet will let you create a new Azure Websites using ARM APIs
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureWebsite")]
-    public class GetAzureWebsiteCmdlet : WebsiteBaseSlotCmdlet
+    public class GetAzureWebsiteCmdlet : WebsiteBaseCmdlet
     {
+
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the website slot.")]
+        [ValidateNotNullOrEmptyAttribute]
+        public string SlotName { get; set; }
+      
         public override void ExecuteCmdlet()
         {
-            WriteObject(WebsitesClient.GetWebsite(ResourceGroupName, Name, SlotName));
+            WriteObject(WebsitesClient.GetWebsite(ResourceGroupName, WebsiteName, SlotName));
             
         }
         

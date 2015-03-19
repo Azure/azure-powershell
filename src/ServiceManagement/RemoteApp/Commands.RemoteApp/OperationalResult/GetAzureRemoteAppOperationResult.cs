@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     {
         [Parameter(Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Operation Identifier")]
+
         public string TrackingId { get; set; }
 
         public override void ExecuteCmdlet()

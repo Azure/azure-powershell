@@ -2095,7 +2095,7 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="">
           <maml:name>Value</maml:name>
           <maml:description>
-            <maml:para>Specifies the value to encrypt. For an on-premises SQL Server linked service and an on-premises Oracle linked service, use a connection string. For on premises file system linked service, if the file system is local to the gateway machine, use Local or localhost, and if the file system is on a server different from the gateway machine, use \\servername.</maml:para>
+            <maml:para>Specifies the value to encrypt. For on premises SQL linked service, use a connection string. For on premises file system linked service, if the file system is local to the gateway machine, use Local or localhost, and if the file system is on a server different from the gateway machine, use \\servername.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
         </command:parameter>
@@ -2116,7 +2116,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
           <maml:name>Type</maml:name>
           <maml:description>
-            <maml:para>Specifies the linked service type. This cmdlet encrypts data for the linked service type that this parameter specifies. Allowed values: OnPremisesSqlLinkedService, OnPremisesFileSystemLinkedService and OnPremisesOracleLinkedService.</maml:para>
+            <maml:para>Specifies the linked service type. This cmdlet encrypts data for the linked service type that this parameter specifies. Allowed values: OnPremisesSqlLinkedService and OnPremisesFileSystemLinkedService.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -2133,7 +2133,7 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="">
           <maml:name>Value</maml:name>
           <maml:description>
-            <maml:para>Specifies the value to encrypt. For an on-premises SQL linked service and an on-premises Oracle linked service, use a connection string. For on premises file system linked service, if the file system is local to the gateway machine, use Local or localhost, and if the file system is on a server different from the gateway machine, use \\servername.</maml:para>
+            <maml:para>Specifies the value to encrypt. For on premises SQL linked service, use a connection string. For on premises file system linked service, if the file system is local to the gateway machine, use Local or localhost, and if the file system is on a server different from the gateway machine, use \\servername.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
         </command:parameter>
@@ -2154,7 +2154,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6" aliases="">
           <maml:name>Type</maml:name>
           <maml:description>
-            <maml:para>Specifies the linked service type. This cmdlet encrypts data for the linked service type that this parameter specifies. Allowed values: OnPremisesSqlLinkedService, OnPremisesFileSystemLinkedService and OnPremisesOracleLinkedService.</maml:para>
+            <maml:para>Specifies the linked service type. This cmdlet encrypts data for the linked service type that this parameter specifies. Allowed values: OnPremisesSqlLinkedService and OnPremisesFileSystemLinkedService.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -2212,7 +2212,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="">
         <maml:name>Value</maml:name>
         <maml:description>
-          <maml:para>Specifies the value to encrypt. For an on-premises SQL Server linked service and an on-premises Oracle linked service, use a connection string. For on-premises file system linked service, if the file system is local to the gateway machine, use Local or localhost, and if the file system is on a server different from the gateway machine, use \\servername.</maml:para>
+          <maml:para>Specifies the value to encrypt. For on premises SQL linked service, use a connection string. For on premises file system linked service, if the file system is local to the gateway machine, use Local or localhost, and if the file system is on a server different from the gateway machine, use \\servername.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
         <dev:type>
@@ -2282,12 +2282,15 @@
           PS C:\&gt; $Value = ConvertTo-SecureString 'Data Source=ContosoServer;Initial Catalog=catelog;user id =user123;password=password123' -AsPlainText -ForcePS
         </dev:code>
         <dev:code>
-          PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Type OnPremisesSqlLinkedService
-          data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
+          PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value
+          data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/
+          H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfv
+          BzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9B
+          hGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
         </dev:code>
         <dev:remarks>
-          <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified connection string to a SecureString object, and then stores that object in the $Value variable. For more information, type Get-Help ConvertTo-SecureString. Allowed values: SQL Server or Oracle connection string.</maml:para>
-          <maml:para>The second command creates an encrypted value for the object stored in $Value for the specified data factory, gateway, resource group, and linked service type.</maml:para>
+          <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified connection string to a SecureString object, and then stores that object in the $Value variable. For more information, type Get-Help ConvertTo-SecureString.</maml:para>
+          <maml:para>The second command creates an encrypted value for the object stored in $Value for the specified data factory, gateway, and resource group.</maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -2305,7 +2308,10 @@
         </dev:code>
         <dev:code>
           PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -ResourceGroupName "ADF" -Value $Value
-          $Encrypted$String$KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpxdmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
+          $Encrypted$String$KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJm
+          O0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpxdmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y
+          0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe
+          /XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
         </dev:code>
         <dev:remarks>
           <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified string to a SecureString object, and then stores that object in the $Value variable.</maml:para>
@@ -2330,10 +2336,13 @@
         </dev:code>
         <dev:code>
           PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesSqlLinkedService
-          data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
+          data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3Jyd
+          Tkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj
+          1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZi
+          Sw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
         </dev:code>
         <dev:remarks>
-          <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified connection string to a SecureString object, and then stores that object in the $Value variable. For more information, type Get-Help ConvertTo-SecureString. Allowed value: SQL Server connection string.</maml:para>
+          <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified connection string to a SecureString object, and then stores that object in the $Value variable. For more information, type Get-Help ConvertTo-SecureString.</maml:para>
           <maml:para>The second command uses the Get-Credential cmdlet to collect the windows authentication (user name and password), and then stores that PSCredential object in the $Credential variable. For more information, type Get-Help Get-Credential.</maml:para>
           <maml:para>The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, resource group, and linked service type.</maml:para>
         </dev:remarks>

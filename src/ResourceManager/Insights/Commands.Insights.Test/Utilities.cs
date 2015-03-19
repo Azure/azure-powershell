@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             // Calling with detailed output
             cmdlet.DetailedOutput = true;
             cmdlet.Name = null;
-            cmdlet.TargetResourceId = ResourceUri;
+            cmdlet.TargetResourceUri = ResourceUri;
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(expectedResourceGroup, resourceGroup);
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
                 // Calling with ResourceUri
                 typedCmdlet.Name = null;
-                typedCmdlet.TargetResourceId = ResourceUri;
+                typedCmdlet.TargetResourceUri = ResourceUri;
                 typedCmdlet.ExecuteCmdlet();
 
                 Assert.Equal(expectedResourceGroup, resourceGroup);

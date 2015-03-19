@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             StringBuilder output = new StringBuilder();
             output.AppendLine();
-            output.AppendLine("    DataSource : " + this.DataSource.ToString(indentationTabs: 2));
-            output.Append("    Condition  : " + this.AggregationCondition.ToString(indentationTabs: 2));
+            output.AppendLine("    DataSource : " + this.DataSource.ToString(2));
+            output.Append("    Condition  : " + this.AggregationCondition.ToString(2));
             return output.ToString();
         }
     }

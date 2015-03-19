@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             StringBuilder output = new StringBuilder();
             output.AppendLine();
-            output.AppendLine("    DataSource          : " + this.DataSource.ToString(indentationTabs: 2));
+            output.AppendLine("    DataSource          : " + this.DataSource.ToString(2));
             output.AppendLine("    FailedLocationCount : " + this.FailedLocationCount);
             output.Append("    WindowSize          : " + this.WindowSize);
             return output.ToString();

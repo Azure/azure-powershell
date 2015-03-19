@@ -26,12 +26,10 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppUser"), OutputType(typeof(ConsentStatusModel))]
     public class GetAzureRemoteAppUser : RdsCmdlet
     {
-        [Parameter(Mandatory = true,
-                   Position = 0,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "RemoteApp collection name")]
-        [ValidatePattern(NameValidatorString)]
-        [Alias("Name")]
+        [Parameter (Mandatory = true,
+                    Position = 0,
+                    HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern (NameValidatorString)]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,

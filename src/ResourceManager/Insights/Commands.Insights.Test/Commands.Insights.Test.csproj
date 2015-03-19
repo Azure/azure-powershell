@@ -72,6 +72,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5513.27084-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
@@ -114,12 +122,6 @@
     <Compile Include="Alerts\GetAlertHistoryCommandTests.cs" />
     <Compile Include="Alerts\GetAlertRuleCommandTests.cs" />
     <Compile Include="Alerts\RemoveAlertRuleCommandTests.cs" />
-    <Compile Include="Autoscale\AddAutoscaleSettingCommandTests.cs" />
-    <Compile Include="Autoscale\GetAutoscaleHistoryCommandTests.cs" />
-    <Compile Include="Autoscale\GetAutoscaleSettingCommandTests.cs" />
-    <Compile Include="Autoscale\NewAutoscaleProfileCommandTests.cs" />
-    <Compile Include="Autoscale\NewAutoscaleRuleCommandTests.cs" />
-    <Compile Include="Autoscale\RemoveAutoscaleSettingCommandTests.cs" />
     <Compile Include="Events\GetAzureCorrelationIdLogCommandTests.cs" />
     <Compile Include="Events\GetAzureResourceLogCommandTests.cs" />
     <Compile Include="Events\GetAzureResourceProviderLogCommandTests.cs" />
@@ -127,7 +129,6 @@
     <Compile Include="Events\GetAzureResourceGroupLogCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\AlertsTests.cs" />
-    <Compile Include="ScenarioTests\AutoscaleTests.cs" />
     <Compile Include="ScenarioTests\EventsTests.cs" />
     <Compile Include="ScenarioTests\TestsController.cs" />
     <Compile Include="Utilities.cs" />
@@ -152,9 +153,6 @@
     <None Include="ScenarioTests\AlertsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\AutoscaleTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -171,18 +169,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestRemoveAlertRule.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestAddAutoscaleSetting.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestGetAutoscaleHistory.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestGetAutoscaleSetting.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AutoscaleTests\TestRemoveAutoscaleSetting.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.EventsTests\TestGetAzureCorrelationIdLog.json">

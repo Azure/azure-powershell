@@ -22,10 +22,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// </summary>
     public class PSDictionaryElement
     {
-        /// <summary>
-        /// Gets the Content of the object
-        /// </summary>
-        public IDictionary<string, string> Content { get; private set; }
+        private IDictionary<string, string> Content { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the PSDictionaryElement class.

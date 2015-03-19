@@ -26,11 +26,9 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     public class GetAzureRemoteAppCollection : RdsCmdlet
     {
         [Parameter(Mandatory = false,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
+            Position = 1,
             HelpMessage = "RemoteApp collection name. Wildcards are permitted.")]
         [ValidatePattern(NameValidatorStringWithWildCards)]
-        [Alias("Name")]
         public string CollectionName { get; set; }
 
         private bool showAllCollections = false;

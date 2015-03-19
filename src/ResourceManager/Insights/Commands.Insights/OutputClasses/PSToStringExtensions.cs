@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Azure.Management.Insights.Models;
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 output.AddSpacesInFront(indentationTabs).AppendLine("OperationName         : " + ruleEventDataSource.OperationName);
                 output.AddSpacesInFront(indentationTabs).AppendLine("ResourceGroupName     : " + ruleEventDataSource.ResourceGroupName);
                 output.AddSpacesInFront(indentationTabs).AppendLine("ResourceProviderName  : " + ruleEventDataSource.ResourceProviderName);
-                output.AddSpacesInFront(indentationTabs).AppendLine("ResourceId            : " + ruleEventDataSource.ResourceUri);
+                output.AddSpacesInFront(indentationTabs).AppendLine("ResourceUri           : " + ruleEventDataSource.ResourceUri);
                 output.AddSpacesInFront(indentationTabs).AppendLine("Status                : " + ruleEventDataSource.Status);
                 output.AddSpacesInFront(indentationTabs).AppendLine("SubStatus             : " + ruleEventDataSource.SubStatus);
                 output.AddSpacesInFront(indentationTabs).Append("Claims                : " + ruleEventDataSource.Claims);
@@ -104,8 +105,8 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             if (ruleMetricDataSource != null)
             {
                 output.AppendLine();
-                output.AddSpacesInFront(indentationTabs).AppendLine("MetricName : " + ruleMetricDataSource.MetricName);
-                output.AddSpacesInFront(indentationTabs).Append("ResourceId : " + ruleMetricDataSource.ResourceUri);
+                output.AddSpacesInFront(indentationTabs).AppendLine("MetricName  : " + ruleMetricDataSource.MetricName);
+                output.AddSpacesInFront(indentationTabs).Append("ResourceUri : " + ruleMetricDataSource.ResourceUri);
             }
 
             return output.ToString();
@@ -168,14 +169,14 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             if (metricTrigger != null)
             {
                 output.AppendLine();
-                output.AddSpacesInFront(indentationTabs).AppendLine("MetricName       : " + metricTrigger.MetricName);
-                output.AddSpacesInFront(indentationTabs).AppendLine("MetricResourceId : " + metricTrigger.MetricResourceUri);
-                output.AddSpacesInFront(indentationTabs).AppendLine("Operator         : " + metricTrigger.Operator);
-                output.AddSpacesInFront(indentationTabs).AppendLine("Statistic        : " + metricTrigger.Statistic);
-                output.AddSpacesInFront(indentationTabs).AppendLine("Threshold        : " + metricTrigger.Threshold);
-                output.AddSpacesInFront(indentationTabs).AppendLine("TimeAggregation  : " + metricTrigger.TimeAggregation);
-                output.AddSpacesInFront(indentationTabs).AppendLine("TimeGrain        : " + metricTrigger.TimeGrain);
-                output.AddSpacesInFront(indentationTabs).Append("TimeWindow       : " + metricTrigger.TimeWindow);
+                output.AddSpacesInFront(indentationTabs).AppendLine("MetricName        : " + metricTrigger.MetricName);
+                output.AddSpacesInFront(indentationTabs).AppendLine("MetricResourceUri : " + metricTrigger.MetricResourceUri);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Operator          : " + metricTrigger.Operator);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Statistic         : " + metricTrigger.Statistic);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Threshold         : " + metricTrigger.Threshold);
+                output.AddSpacesInFront(indentationTabs).AppendLine("TimeAggregation   : " + metricTrigger.TimeAggregation);
+                output.AddSpacesInFront(indentationTabs).AppendLine("TimeGrain         : " + metricTrigger.TimeGrain);
+                output.AddSpacesInFront(indentationTabs).Append("TimeWindow        : " + metricTrigger.TimeWindow);
             }
 
             return output.ToString();
