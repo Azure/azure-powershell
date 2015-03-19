@@ -49,8 +49,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         WriteVerbose(Resources.MigrationPlanConfigList);
                         foreach (MigrationPlan migrationPlan in migrationPlanList.MigrationPlans)
                         {
-                           // WriteVerbose(migrationPlan.ConfigId);
-                            WriteObject(migrationPlan);
+                            var migrationPlanConfig = new MigrationPlanConfig(migrationPlan);
+                            WriteObject(migrationPlanConfig);
                         }
                     }
                 }
