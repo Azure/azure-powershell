@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Websites
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the website.")]
         [ValidateNotNullOrEmptyAttribute]
-        public string WebsiteName { get; set; }
+        public string Name { get; set; }
     }
 }
 

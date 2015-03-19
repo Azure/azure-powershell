@@ -71,9 +71,9 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the ResourceGroupName parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = AddMetricAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceGroup name")]
-        [Parameter(ParameterSetName = AddEventAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceGroup name")]
-        [Parameter(ParameterSetName = AddWebtestAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceGroup name")]
+        [Parameter(ParameterSetName = AddMetricAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = AddEventAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = AddWebtestAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 
