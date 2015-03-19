@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System;
@@ -705,6 +706,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
                     MigrationPlanInfoFailedMsgList.migrationPlanInfoMsgList.Add(migrationPlanInfoMsg);
                 }
             }
+        }
+    }
+
+    public class MigrationPlanConfig
+    {
+        public string ConfigId { get; set; }
+        public string DeviceName { get; set; }
+
+        public MigrationPlanConfig(MigrationPlan migrationPlan)
+        {
+            ConfigId = migrationPlan.ConfigId;
+            DeviceName = migrationPlan.DeviceName;
         }
     }
 
