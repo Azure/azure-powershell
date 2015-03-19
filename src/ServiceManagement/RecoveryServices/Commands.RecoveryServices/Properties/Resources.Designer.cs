@@ -410,6 +410,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vault has been deleted.
+        /// </summary>
+        internal static string VaultDeletionSuccessMessage {
+            get {
+                return ResourceManager.GetString("VaultDeletionSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vault {0} is not associated with the given subscription..
         /// </summary>
         internal static string VaultNotFound {
