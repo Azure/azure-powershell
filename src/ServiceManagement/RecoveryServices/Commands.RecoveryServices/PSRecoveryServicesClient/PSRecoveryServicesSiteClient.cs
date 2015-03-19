@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             if (string.IsNullOrEmpty(siteID))
             {
+                // TODO
                 throw new Exception();
             }
 
