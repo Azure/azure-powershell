@@ -43,7 +43,7 @@ function Test-CreatesNewSimpleWebApp
 	{
 		# Cleanup
 		Remove-AzureWebApp -ResourceGroupName $rgname -Name $wname -Force
-		Remove-AzureWebHostingPlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
 		Remove-AzureResourceGroup -Name $rgname -Force
     }
 }
