@@ -85,6 +85,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
+            HttpMockServer.Matcher = new PermissiveRecordMatcher();
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(callingClassType, mockName);

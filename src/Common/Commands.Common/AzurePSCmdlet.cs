@@ -71,8 +71,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             if (!TestMockSupport.RunningMocked)
             {
                 InitializeTokenCaches();
-                SetTokenCacheForProfile(CurrentProfile);
                 AzureSession.DataStore = new DiskDataStore();
+                SetTokenCacheForProfile(CurrentProfile);
             }
         }
 
@@ -86,7 +86,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 try
                 {
-                    return new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                   GeneralUtilities.EnsureDefaultProfileDirectoryExists();
+                   return new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
                 }
                 catch
                 {
@@ -98,7 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
-        /// Get the context the context for the current profile before BeginProcessing is called
+        /// Get the context for the current profile before BeginProcessing is called
         /// </summary>
         /// <returns>The context for the current profile</returns>
         protected AzureContext GetCurrentContext()
@@ -117,6 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             if (!string.IsNullOrWhiteSpace(AzureSession.ProfileDirectory) &&
                 !string.IsNullOrWhiteSpace(AzureSession.TokenCacheFile))
             {
+                GeneralUtilities.EnsureDefaultProfileDirectoryExists();
                 DefaultDiskTokenCache = new ProtectedFileTokenCache(Path.Combine(AzureSession.ProfileDirectory, AzureSession.TokenCacheFile));
             }
             else
