@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewSimpleWebsite()
+        public void TestCreatesNewSimpleWebApp()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CreatesNewSimpleWebApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewWebHostingPlan()
+        public void TestCreatesNewAppServicePlan()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CreatesNewAppServicePlan");
         }
