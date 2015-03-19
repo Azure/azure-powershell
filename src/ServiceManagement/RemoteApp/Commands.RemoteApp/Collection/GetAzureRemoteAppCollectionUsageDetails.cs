@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         private LongRunningTask<GetAzureRemoteAppCollectionUsageDetails> task = null;
 
-        private void GetPublishedUsageDetails(CollectionUsageDetailsResult detailsUsage)
+        private void GetUsageDetails(CollectionUsageDetailsResult detailsUsage)
         {
             RemoteAppOperationStatusResult operationResult = null;
 
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 task.ProcessJob(() =>
                 {
                     task.SetStatus(Commands_RemoteApp.DownloadingUsageDetails);
-                    GetPublishedUsageDetails(detailsUsage);
+                    GetUsageDetails(detailsUsage);
                     task.SetStatus(Commands_RemoteApp.JobComplete);
                 });
 
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             }
             else
             {
-                GetPublishedUsageDetails(detailsUsage);
+                GetUsageDetails(detailsUsage);
             }
         }
     }
