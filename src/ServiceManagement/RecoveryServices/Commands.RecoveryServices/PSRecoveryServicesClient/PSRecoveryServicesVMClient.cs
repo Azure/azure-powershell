@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
@@ -46,6 +45,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string virtualMachineId)
         {
             return this.GetSiteRecoveryClient().Vm.Get(protectionContainerId, virtualMachineId, this.GetRequestHeaders());
+        }
+
+        /// <summary>
+        /// Updates Virtual Machine properties.
+        /// </summary>
+        /// <param name="protectionContainerId">Protection Container ID</param>
+        /// <param name="virtualMachineId">Virtual Machine ID</param>
+        /// <param name="updateVmPropertiesInput">Update VM properties input</param>
+        /// <returns>Job response</returns>
+        public JobResponse UpdateVmProperties(
+            string protectionContainerId,
+            string virtualMachineId,
+            UpdateVmPropertiesInput updateVmPropertiesInput)
+        {
+            return this.GetSiteRecoveryClient().Vm.UpdateVmProperties(
+                protectionContainerId,
+                virtualMachineId,
+                updateVmPropertiesInput,
+                this.GetRequestHeaders());
         }
     }
 }
