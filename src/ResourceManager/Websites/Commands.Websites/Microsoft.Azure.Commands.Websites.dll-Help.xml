@@ -1189,7 +1189,7 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Name of the web app</maml:para>
+					<maml:para>Name of the web app.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
