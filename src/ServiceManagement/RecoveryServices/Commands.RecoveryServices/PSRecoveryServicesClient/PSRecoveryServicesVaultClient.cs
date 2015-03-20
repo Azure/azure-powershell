@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Method to create Azure Site Recovery Vault
+        /// Method to delete Azure Site Recovery Vault
         /// </summary>
         /// <param name="cloudServiceName">name of the cloud service</param>
         /// <param name="vaultName">name of the vault</param>

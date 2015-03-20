@@ -318,6 +318,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Site {0}.
+        /// </summary>
+        internal static string RemoveSiteWarning {
+            get {
+                return ResourceManager.GetString("RemoveSiteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removes Site.
+        /// </summary>
+        internal static string RemoveSiteWhatIfMessage {
+            get {
+                return ResourceManager.GetString("RemoveSiteWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Vault {0}.
+        /// </summary>
+        internal static string RemoveVaultWarning {
+            get {
+                return ResourceManager.GetString("RemoveVaultWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removes Vault.
+        /// </summary>
+        internal static string RemoveVaultWhatIfMessage {
+            get {
+                return ResourceManager.GetString("RemoveVaultWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Start Time span value cannot be greater then 24 hours..
         /// </summary>
         internal static string ReplicationStartTimeInvalid {

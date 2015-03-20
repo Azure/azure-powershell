@@ -43,6 +43,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [ValidateNotNullOrEmpty]
         public ASRVault Vault { get; set; }
 
+        /// <summary>
+        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force { get; set; }
+
         #endregion
 
         /// <summary>
@@ -52,11 +58,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                JobResponse response = 
-                    RecoveryServicesClient.DeleteAzureSiteRecoverySite(
-                    this.Name);
+                //// Check if site has registered things in it
 
-                this.WriteObject(response.Job, true);
+                this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(Properties.Resources.RemoveSiteWarning, this.Name),
+                string.Format(Properties.Resources.RemoveSiteWhatIfMessage),
+                this.Name,
+                () =>
+                    {
+                        JobResponse response =
+                            RecoveryServicesClient.DeleteAzureSiteRecoverySite(
+                            this.Name);
+
+                        this.WriteObject(response.Job, true);
+                    });
             }
             catch (Exception exception)
             {

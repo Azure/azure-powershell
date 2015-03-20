@@ -28,6 +28,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [OutputType(typeof(VaultOperationOutput))]
     public class RemoveAzureSiteRecoveryVault : RecoveryServicesCmdletBase
     {
+        /// <summary>
+        /// Holds the Name of the vault.
+        /// </summary>
+        private string targetName = string.Empty;
+
         #region Parameters
 
         /// <summary>
@@ -36,6 +41,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ASRParameterSets.ByParam, Mandatory = true, HelpMessage = "Vault to be deleted")]
         [ValidateNotNullOrEmpty]
         public ASRVault Vault { get; set; }
+
+        /// <summary>
+        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force { get; set; }
 
         #endregion
 
@@ -46,14 +57,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                AzureOperationResponse response = RecoveryServicesClient.DeleteVault(this.Vault.CloudServiceName, this.Vault.Name);
-
-                VaultOperationOutput output = new VaultOperationOutput()
+                this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(Properties.Resources.RemoveVaultWarning, this.Vault.Name),
+                string.Format(Properties.Resources.RemoveVaultWhatIfMessage),
+                this.Vault.Name,
+                () =>
                 {
-                    Response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.StatusCode.ToString()
-                };
+                    AzureOperationResponse response = RecoveryServicesClient.DeleteVault(this.Vault.CloudServiceName, this.Vault.Name);
 
-                this.WriteObject(output, true);
+                    VaultOperationOutput output = new VaultOperationOutput()
+                    {
+                        Response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.StatusCode.ToString()
+                    };
+
+                    this.WriteObject(output, true);
+                });
             }
             catch (Exception exception)
             {

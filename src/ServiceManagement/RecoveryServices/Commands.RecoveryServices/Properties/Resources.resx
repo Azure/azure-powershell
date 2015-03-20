@@ -256,6 +256,18 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="StorageAccountValidationUnsuccessful" xml:space="preserve">
     <value>The Subscription or Storage account couldn’t be validated. For failovers to be successful, the Subscription should belong to your account, the Storage account to the Subscription and Storage account location must be the same as location of your Vault.</value>
   </data>
+  <data name="RemoveSiteWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Site {0}</value>
+  </data>
+  <data name="RemoveSiteWhatIfMessage" xml:space="preserve">
+    <value>Removes Site</value>
+  </data>
+  <data name="RemoveVaultWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Vault {0}</value>
+  </data>
+  <data name="RemoveVaultWhatIfMessage" xml:space="preserve">
+    <value>Removes Vault</value>
+  </data>
   <data name="VaultDeletionSuccessMessage" xml:space="preserve">
     <value>Vault has been deleted</value>
   </data>
