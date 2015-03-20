@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Websites.Models;
+using Microsoft.Azure.Commands.WebApp.Models;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Websites.Models.Websites;
 
-namespace Microsoft.Azure.Commands.Websites
+namespace Microsoft.Azure.Commands.WebApp
 {
-    public abstract class WebHostingPlanBaseCmdlet : WebsitesBaseClient
+    public class WebAppBaseNotMandatoryCmdlet : WebAppBaseClientCmdLet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmptyAttribute]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web hosting plan.")]
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the website.")]
         [ValidateNotNullOrEmptyAttribute]
         public string Name { get; set; }
-
     }
 }
+

@@ -1,5 +1,4 @@
-﻿
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +22,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.Websites;
+using Microsoft.Azure.Commands.WebApp;
 using Microsoft.Azure.Management.WebSites;
 using System.Net.Http;
 using System.Threading;
@@ -31,30 +30,39 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Net;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Websites.Utilities;
+using Microsoft.Azure.Commands.WebApp.Utilities;
 
 
-namespace Microsoft.Azure.Commands.Websites.Cmdlets
+namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
 {
     /// <summary>
-    /// this commandlet will let you restart an Azure Website
+    /// this commandlet will let you Get an Azure App Service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Restart, "AzureWebsite")]
-    public class RestartAzureWebsiteCmdlet : WebsiteBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureAppServicePlan"), OutputType(typeof(WebHostingPlanGetResponse), typeof(WebHostingPlanListResponse))]
+    public class GetAppServicePlanCmdlet : WebHostingPlanBaseNotMandatoryCmdlet
     {
-
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the website slot.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string SlotName { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            WriteObject(WebsitesClient.RestartWebsite(ResourceGroupName, Name, SlotName));
+            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
+            {
+                GetByWebHostingPlan();
+            }
+            else if (!string.IsNullOrEmpty(ResourceGroupName))
+            {
+                GetByResourceGroup();
+            }
+
         }
 
+        private void GetByWebHostingPlan()
+        {
+            WriteObject(WebsitesClient.GetWebHostingPlan(ResourceGroupName, Name));
+        }
+
+        private void GetByResourceGroup()
+        {
+            WriteObject(WebsitesClient.ListWebHostingPlan(ResourceGroupName));
+        }
     }
 }
-
-
-
 

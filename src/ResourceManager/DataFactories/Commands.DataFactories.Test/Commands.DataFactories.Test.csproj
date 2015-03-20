@@ -147,7 +147,6 @@
     <Compile Include="ScenarioTests\NamingValidationTests.cs" />
     <Compile Include="ScenarioTests\HubTests.cs" />
     <Compile Include="UnitTests\GetHubTests.cs" />
-    <Compile Include="UnitTests\NewDataFactoryEncryptValueTests.cs" />
     <Compile Include="ScenarioTests\DataFactoryGatewayTests.cs" />
     <Compile Include="ScenarioTests\LinkedServiceTests.cs" />
     <Compile Include="UnitTests\DataFactoryUnitTestBase.cs" />
