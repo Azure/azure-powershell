@@ -62,9 +62,6 @@ function Test-InvalidResourceGroupName
 
     Assert-ThrowsContains { Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName $rgName -DataFactoryName $rgName -PipelineName "pipeline" -StartDateTime "2015-01-01" -Force } $invalidNameError
 
-    $password = ConvertTo-SecureString "password" -AsPlainText -Force
-    Assert-ThrowsContains { New-AzureDataFactoryEncryptValue -ResourceGroupName $rgName -DataFactoryName $dfName -Value $password } $invalidNameError
-
     Assert-ThrowsContains { Save-AzureDataFactoryLog -ResourceGroupName $rgName -DataFactoryName $dfName -Id "id" } $invalidNameError
 }
 
@@ -79,9 +76,6 @@ function Test-InvalidDataFactoryName
     Assert-ThrowsContains { Remove-AzureDataFactory -ResourceGroupName "adf" -Name "datafactorynameistolongdatafactorynameistolongdatafactorynameistolongdatafactorynameistolong" -Force } $invalidNameError
 
     Assert-ThrowsContains { New-AzureDataFactory -ResourceGroupName "adf" -Name "adf+invalidname" -Location "westus" -Force } $invalidNameError    
-
-    $password = ConvertTo-SecureString "password" -AsPlainText -Force
-    Assert-ThrowsContains { New-AzureDataFactoryEncryptValue -ResourceGroupName "adf" -DataFactoryName "adf+invalidname" -Value $password } $invalidNameError
 
     Assert-ThrowsContains { Save-AzureDataFactoryLog -ResourceGroupName "adf" -DataFactoryName "adf+invalidname" -Id "id" } $invalidNameError
 }
