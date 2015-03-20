@@ -47,13 +47,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 string deviceid = StorSimpleClient.GetDeviceId(TargetDeviceName);
                 if (!File.Exists(ConfigFilePath))
                 {
-                    WriteVerbose(String.Format(Resources.MigrationConfigFileNotFound, StorSimpleContext.ResourceName, ConfigFilePath));
-                    WriteObject(null);
+                    throw new System.IO.FileNotFoundException(String.Format(Resources.MigrationConfigFileNotFound, StorSimpleContext.ResourceName, ConfigFilePath));
                 }
                 else if (string.IsNullOrEmpty(deviceid))
                 {
-                    WriteVerbose(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, TargetDeviceName));
-                    WriteObject(null);
+                    throw new Exception(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, TargetDeviceName));
                 }                
                 else
                 {
@@ -136,6 +134,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 WriteVerbose(exception.Message);
                 WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.ParserError, null));
+            }
+            else if (typeof(System.Security.Cryptography.CryptographicException) == exception.GetType())
+            {
+                WriteVerbose(exception.Message);
+                WriteError(new ErrorRecord(new System.Security.Cryptography.CryptographicException(Resources.MigrationConfigDecryptionFailed), string.Empty, ErrorCategory.AuthenticationError, null));
             }
             else
             {

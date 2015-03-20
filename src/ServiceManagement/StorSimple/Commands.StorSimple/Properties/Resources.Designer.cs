@@ -439,6 +439,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to decrypt the config file..
+        /// </summary>
+        internal static string MigrationConfigDecryptionFailed {
+            get {
+                return ResourceManager.GetString("MigrationConfigDecryptionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Key Null or Empty.
         /// </summary>
         internal static string MigrationConfigDecryptionKeyNotFound {

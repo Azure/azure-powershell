@@ -537,4 +537,7 @@
   <data name="MigrationDCWithGivenMigrationPlanStatus" xml:space="preserve">
     <value>Volume containers with migration plan status {0} :</value>
   </data>
+  <data name="MigrationConfigDecryptionFailed" xml:space="preserve">
+    <value>Unable to decrypt the config file.</value>
+  </data>
 </root>
