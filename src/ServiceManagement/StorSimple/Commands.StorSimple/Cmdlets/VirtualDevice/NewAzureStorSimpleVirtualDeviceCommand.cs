@@ -30,15 +30,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.VirtualDevice
         [Alias("VNetName")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
-        
+
         [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.SubNetName)]
         [ValidateNotNullOrEmpty]
         public string SubNetName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.StorageAccountNameForVirtualDevice)]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.StorageAccountNameForVirtualDevice, ParameterSetName = StorSimpleCmdletParameterSet.CreateNewStorageAccount)]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.StorageAccountNameForVirtualDevice, ParameterSetName = StorSimpleCmdletParameterSet.UseExistingStorageAccount)]
         public string StorageAccountName { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.CreateNewStorageAccount)]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.CreateNewStorageAccount, ParameterSetName = StorSimpleCmdletParameterSet.CreateNewStorageAccount)]
         public SwitchParameter CreateNewStorageAccount { get; set; }
         
         public override void ExecuteCmdlet()
