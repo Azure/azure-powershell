@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Batch;
 
@@ -57,6 +58,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public IAsyncEnumerator<T1> GetAsyncEnumerator()
         {
             return new PSAsyncEnumerator<T1, T2>(omAsyncEnumerable.GetAsyncEnumerator(), this.mappingFunction);
+        }
+
+        internal static IEnumerable<T1> CreateWithMaxCount(
+            IEnumerableAsyncExtended<T2> omAsyncEnumerable, Func<T2, T1> mappingFunction, int maxCount, Action logMaxCount = null)
+        {
+            PSAsyncEnumerable<T1, T2> asyncEnumerable = new PSAsyncEnumerable<T1, T2>(omAsyncEnumerable, mappingFunction);
+
+            if (maxCount <= 0)
+            {
+                return asyncEnumerable;
+            }
+            else
+            {
+                if (logMaxCount != null)
+                {
+                    logMaxCount();
+                }
+                return asyncEnumerable.Take(maxCount);
+            }
         }
     }
 

@@ -80,15 +80,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     }
                 }
                 Func<ICloudTask, PSCloudTask> mappingFunction = t => { return new PSCloudTask(t); };
-                if (options.MaxCount <= 0)
-                {
-                    return new PSAsyncEnumerable<PSCloudTask, ICloudTask>(tasks, mappingFunction);
-                }
-                else
-                {
-                    WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount));
-                    return new PSAsyncEnumerable<PSCloudTask, ICloudTask>(tasks, mappingFunction).Take(options.MaxCount);
-                }
+                return PSAsyncEnumerable<PSCloudTask, ICloudTask>.CreateWithMaxCount(
+                    tasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
             }
         }
 

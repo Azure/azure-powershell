@@ -64,15 +64,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 {
                     IEnumerableAsyncExtended<ICloudPool> pools = poolManager.ListPools(odata, options.AdditionalBehaviors);
                     Func<ICloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
-                    if (options.MaxCount <= 0)
-                    {
-                        return new PSAsyncEnumerable<PSCloudPool, ICloudPool>(pools, mappingFunction);
-                    }
-                    else
-                    {
-                        WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount));
-                        return new PSAsyncEnumerable<PSCloudPool, ICloudPool>(pools, mappingFunction).Take(options.MaxCount);   
-                    }                  
+                    return PSAsyncEnumerable<PSCloudPool, ICloudPool>.CreateWithMaxCount(
+                        pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));            
                 }
             }
         }

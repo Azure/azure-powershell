@@ -70,15 +70,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 {
                     IEnumerableAsyncExtended<ICloudJob> jobs = wiManager.ListJobs(wiName, odata, options.AdditionalBehaviors);
                     Func<ICloudJob, PSCloudJob> mappingFunction = j => { return new PSCloudJob(j); };
-                    if (options.MaxCount <= 0)
-                    {
-                        return new PSAsyncEnumerable<PSCloudJob, ICloudJob>(jobs, mappingFunction);           
-                    }
-                    else
-                    {
-                        WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount));
-                        return new PSAsyncEnumerable<PSCloudJob, ICloudJob>(jobs, mappingFunction).Take(options.MaxCount);              
-                    }
+                    return PSAsyncEnumerable<PSCloudJob, ICloudJob>.CreateWithMaxCount(
+                        jobs, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
                 }             
             }
         }

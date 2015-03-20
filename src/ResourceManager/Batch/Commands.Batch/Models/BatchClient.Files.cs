@@ -82,15 +82,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     }
                 }
                 Func<ITaskFile, PSTaskFile> mappingFunction = f => { return new PSTaskFile(f); };
-                if (options.MaxCount <= 0)
-                {
-                    return new PSAsyncEnumerable<PSTaskFile, ITaskFile>(taskFiles, mappingFunction);
-                }
-                else
-                {
-                    WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount));
-                    return new PSAsyncEnumerable<PSTaskFile, ITaskFile>(taskFiles, mappingFunction).Take(options.MaxCount);   
-                }
+                return PSAsyncEnumerable<PSTaskFile, ITaskFile>.CreateWithMaxCount(
+                    taskFiles, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
             }
         }
 
