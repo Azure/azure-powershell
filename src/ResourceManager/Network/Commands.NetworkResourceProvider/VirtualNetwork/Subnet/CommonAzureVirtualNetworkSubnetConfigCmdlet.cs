@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The address prefix of the subnet")]
         [ValidateNotNullOrEmpty]
         public string AddressPrefix { get; set; }
