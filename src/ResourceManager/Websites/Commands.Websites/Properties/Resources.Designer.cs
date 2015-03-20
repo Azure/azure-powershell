@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Websites.Properties {
+namespace Microsoft.Azure.Commands.WebApp.Properties {
     using System;
     
     

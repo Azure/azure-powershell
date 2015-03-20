@@ -22,7 +22,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.Websites;
+using Microsoft.Azure.Commands.WebApp;
 using Microsoft.Azure.Management.WebSites;
 using System.Net.Http;
 using System.Threading;
@@ -30,31 +30,31 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Net;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Websites.Utilities;
+using Microsoft.Azure.Commands.WebApp.Utilities;
 
-namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
+namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
 {
     /// <summary>
-    /// this commandlet will let you create a new Azure Web Hosting Plan using ARM APIs
+    /// this commandlet will let you create a new Azure App service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureWebHostingPlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
-    public class NewAzureWebHostingPlanCmdlet : WebHostingPlanBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureAppServicePlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
+    public class NewAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the web hosting plan.")]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the app service plan.")]
         [ValidateNotNullOrEmptyAttribute]
-        public string location { get; set; }
+        public string Location { get; set; }
         
-        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Sku of the Webhosting plan eg: free, shared, basic, standard.")]
-        [ValidateSet("Free", "Shared", "Basic", "Standard", IgnoreCase = true)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The Sku of the Webhosting plan eg: free, shared, basic, standard.")]
+        [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", IgnoreCase = true)]
         [ValidateNotNullOrEmptyAttribute]
         public string Sku { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Number of Workers to be allocated.")]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
         [ValidateNotNullOrEmptyAttribute]
         public int NumberofWorkers { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The size of the workers: eg Small, Medium, Large")]
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The size of the workers: eg Small, Medium, Large")]
         [ValidateNotNullOrEmptyAttribute]
         [ValidateSet("Small", "Medium", "Large", IgnoreCase = true)]
         public string WorkerSize { get; set; }
@@ -107,13 +107,16 @@ namespace Microsoft.Azure.Commands.Websites.Cmdlets.WebHostingPlan
                     case "BASIC":
                         skuInput = SkuOptions.Basic;
                         break;
+                    case "PREMIUM":
+                        skuInput = SkuOptions.Premium;
+                        break;
                     default:
                         skuInput = SkuOptions.Standard;
                         break;
                 }
             }
 
-            WriteObject(WebsitesClient.CreateWebHostingPlan(ResourceGroupName, WebHostingPlanName, location, adminSiteName, NumberofWorkers, skuInput, workerSizeInput));
+            WriteObject(WebsitesClient.CreateWebHostingPlan(ResourceGroupName, Name, Location, adminSiteName, NumberofWorkers, skuInput, workerSizeInput));
 
         }
 

@@ -18,13 +18,13 @@ using Microsoft.Azure.Commands.Websites.Models.Websites;
 
 namespace Microsoft.Azure.Commands.Websites
 {
-    public abstract class WebHostingPlanBaseCmdlet : WebsitesBaseClient
+    public abstract class WebHostingPlanBaseNotMandatoryCmdlet : WebsitesBaseClient
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmptyAttribute]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web hosting plan.")]
+        [Parameter(Position = 1, Mandatory = false, HelpMessage = "The name of the web hosting plan.")]
         [ValidateNotNullOrEmptyAttribute]
         public string Name { get; set; }
 

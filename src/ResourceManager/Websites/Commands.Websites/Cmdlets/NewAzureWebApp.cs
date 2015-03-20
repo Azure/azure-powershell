@@ -1,5 +1,4 @@
-﻿
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +22,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.Websites;
+using Microsoft.Azure.Commands.WebApp;
 using Microsoft.Azure.Management.WebSites;
 using System.Net.Http;
 using System.Threading;
@@ -31,25 +30,31 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Net;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Websites.Utilities;
+using Microsoft.Azure.Commands.WebApp.Utilities;
 
 
-namespace Microsoft.Azure.Commands.Websites.Cmdlets
+namespace Microsoft.Azure.Commands.WebApp.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you Start an Azure Website
+    /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureWebsite")]
-    public class StartAzureWebsiteCmdlet : WebsiteBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureWebApp")]
+    public class NewAzureWebAppCmdlet : WebAppBaseCmdlet
     {
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the website slot.")]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
         [ValidateNotNullOrEmptyAttribute]
         public string SlotName { get; set; }
-     
+
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The Location of the web app eg: West US.")]
+        public string Location { get; set; }
+
+        [Parameter(Position = 4, Mandatory = true, HelpMessage = "The name of the app service plan eg: Default1.")]
+        public string AppServicePlan { get; set; }
+       
         public override void ExecuteCmdlet()
         {
-            WriteObject(WebsitesClient.StartWebsite(ResourceGroupName, Name, SlotName));
+            WriteObject(WebsitesClient.CreateWebsite(ResourceGroupName, Name, SlotName, Location, AppServicePlan));
             
         }
         

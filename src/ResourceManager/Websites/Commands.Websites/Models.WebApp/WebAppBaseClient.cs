@@ -13,25 +13,30 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.WebApp.Utilities;
 
-namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.WebApp.Models
 {
-    public class WebsitesTests 
+    public abstract class WebAppBaseClientCmdLet : AzurePSCmdlet
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewSimpleWebsite()
+        private WebsitesClient _websitesClient;
+        public WebsitesClient WebsitesClient
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreatesNewSimpleWebsite");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewWebHostingPlan()
-        {
-            WebsitesController.NewInstance.RunPsTest("Test-CreatesNewWebHostingPlan");
+            get
+            {
+                if (_websitesClient == null)
+                {
+                    _websitesClient = new WebsitesClient(this.Profile.Context);
+                }
+                return _websitesClient;
+            }
+            set { _websitesClient = value; }
         }
     }
 }
