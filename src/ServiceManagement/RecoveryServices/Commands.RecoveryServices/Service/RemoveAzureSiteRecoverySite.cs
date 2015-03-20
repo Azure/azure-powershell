@@ -69,7 +69,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     {
                         JobResponse response =
                             RecoveryServicesClient.DeleteAzureSiteRecoverySite(
-                            this.Name);
+                            this.Name,
+                            this.Vault);
 
                         this.WriteObject(response.Job, true);
                     });

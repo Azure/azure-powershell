@@ -381,6 +381,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Site name {0} is not valid. Please try again with the correct site details..
+        /// </summary>
+        internal static string SiteDetailsNotValid {
+            get {
+                return ResourceManager.GetString("SiteDetailsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter the storage account name details in the protection profile..
         /// </summary>
         internal static string StorageAccountNameIsNotValid {

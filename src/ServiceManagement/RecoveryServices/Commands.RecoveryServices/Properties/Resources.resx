@@ -268,6 +268,9 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="RemoveVaultWhatIfMessage" xml:space="preserve">
     <value>Removes Vault</value>
   </data>
+  <data name="SiteDetailsNotValid" xml:space="preserve">
+    <value>Site name {0} is not valid. Please try again with the correct site details.</value>
+  </data>
   <data name="VaultDeletionSuccessMessage" xml:space="preserve">
     <value>Vault has been deleted</value>
   </data>

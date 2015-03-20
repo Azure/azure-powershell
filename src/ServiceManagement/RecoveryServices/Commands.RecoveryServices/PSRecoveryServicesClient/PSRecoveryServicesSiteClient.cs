@@ -106,8 +106,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             if (string.IsNullOrEmpty(siteID))
             {
-                // TODO
-                throw new Exception();
+                // Site does not exist
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.SiteDetailsNotValid,
+                    siteName));
             }
 
             return this.GetSiteRecoveryClient().Sites.Delete(siteID, this.GetRequestHeaders(false));
