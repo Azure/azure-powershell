@@ -18,16 +18,8 @@ using Microsoft.Azure.Commands.Websites.Models.Websites;
 
 namespace Microsoft.Azure.Commands.Websites
 {
-    public class WebsiteBaseSlotCmdlet : WebsitesBaseClient
+    public class WebsiteBaseSlotCmdlet : WebsiteBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the website.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string Name { get; set; }
-
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the website slot.")]
         [ValidateNotNullOrEmptyAttribute]
         public string SlotName { get; set; }

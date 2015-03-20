@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         public const string GatewayKey = "AzureDataFactoryGatewayKey";
 
-        public const string EncryptString = "AzureDataFactoryEncryptValue";
-
         public const string Table = "AzureDataFactoryTable";
 
         public const string Pipeline = "AzureDataFactoryPipeline";

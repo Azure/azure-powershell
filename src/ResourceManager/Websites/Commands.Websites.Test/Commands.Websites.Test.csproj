@@ -59,7 +59,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.17.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.WebSites">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.0.16.1-prerelease\lib\net40\Microsoft.Azure.Management.WebSites.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.0.16.4-prerelease\lib\net40\Microsoft.Azure.Management.WebSites.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.14.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -110,7 +110,7 @@
   <ItemGroup>
     <Compile Include="NewAzureWebsitesCommandTests.cs" />
     <Compile Include="ScenarioTests\WebsitesController.cs" />
-    <Compile Include="ScenarioTests\WebsitesTests.cs" />
+    <Compile Include="ScenarioTests\WebAppTests.cs" />
     <Compile Include="WebsitesTestHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -122,13 +122,13 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\WebsitesTests.ps1">
+    <None Include="ScenarioTests\WebAppTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebsitesTests\TestCreatesNewSimpleWebsite.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.WebApp.Test.ScenarioTests.WebAppTests\TestCreatesNewAppServicePlan.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebsitesTests\TestCreatesNewWebHostingPlan.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.WebApp.Test.ScenarioTests.WebAppTests\TestCreatesNewSimpleWebApp.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

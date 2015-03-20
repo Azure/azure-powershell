@@ -25,10 +25,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppStartMenuProgram"), OutputType(typeof(StartMenuApplication))]
     public class GetStartMenuProgram : RdsCmdlet
     {
-        [Parameter (Mandatory = true,
-                    Position = 0,
-                    HelpMessage = "RemoteApp collection name")]
-        [ValidatePattern (NameValidatorString)]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,
