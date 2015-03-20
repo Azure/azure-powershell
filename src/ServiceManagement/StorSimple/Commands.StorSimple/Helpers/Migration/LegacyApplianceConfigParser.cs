@@ -482,14 +482,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// Create default backup policy object
         /// </summary>
         /// <param name="virtualDiskGroupId">virtual disk group id associated with policy</param>
+        /// <param name="policyName">Name of the policy to be created</param>
         /// <returns>Migration backup policy object</returns>
-        private MigrationBackupPolicy CreateDefaultBackupPolicy(string virtualDiskGroupId, string policyNameSuffix)
+        private MigrationBackupPolicy CreateDefaultBackupPolicy(string virtualDiskGroupId, string policyName)
         {
             MigrationBackupPolicy backupPolicy = new MigrationBackupPolicy();
             backupPolicy.InstanceId = Guid.NewGuid().ToString();
             backupPolicy.LastRunTime = null;
             backupPolicy.MaxRetentionCount = MaxRetentionCount;
-            backupPolicy.Name = "Default_" + policyNameSuffix;
+            backupPolicy.Name = policyName;
             backupPolicy.Type = BackupType.CloudSnapshot;
             backupPolicy.VirtualDiskGroupId = virtualDiskGroupId;
             backupPolicy.OperationInProgress = OperationInProgress.None;
