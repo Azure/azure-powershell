@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
+using Microsoft.WindowsAzure.Management.Scheduler.Models;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System;
 using System.Collections.Generic;
@@ -74,18 +75,22 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         private string GetResultMessage(MigrationJobStatus status)
         {
             StringBuilder builder = new StringBuilder();
+            bool errorMessage = false;
             if (null != status.MessageInfoList)
-            {
+            {   
                 foreach (HcsMessageInfo msgInfo in status.MessageInfoList)
                 {
-                    if (string.IsNullOrEmpty(msgInfo.Message))
+                    if (!string.IsNullOrEmpty(msgInfo.Message))
                     {
                         builder.AppendLine(msgInfo.Message);
+                        errorMessage = true;
                     }
                 }
             }
-
-            builder.AppendLine(Resources.MigrationImportDataContainerSuccessMessage);
+            if (!errorMessage)
+            {
+                builder.AppendLine(Resources.MigrationImportDataContainerSuccessMessage);
+            }
             return builder.ToString();
         }
     }
