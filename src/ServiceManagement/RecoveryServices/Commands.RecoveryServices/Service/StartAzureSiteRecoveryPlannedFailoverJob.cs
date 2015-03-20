@@ -235,6 +235,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     var blob = new AzureFailoverInput();
                     blob.VaultLocation = this.GetCurrentValutLocation();
+
+                    if (!string.IsNullOrEmpty(this.EncryptionKeyFile))
+                    {
+                        blob.PrimaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.EncryptionKeyFile);
+                    }
+
+                    if (!string.IsNullOrEmpty(this.SecondaryEncryptionKeyFile))
+                    {
+                        blob.SecondaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.SecondaryEncryptionKeyFile);
+                    }
+
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
                 }
                 else
