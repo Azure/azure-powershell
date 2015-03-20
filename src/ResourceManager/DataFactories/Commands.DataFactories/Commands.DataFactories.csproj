@@ -140,6 +140,7 @@
     <Compile Include="DataSlices\GetAzureDataFactorySliceCommand.cs" />
     <Compile Include="DataSlices\SaveAzureDataFactoryLog.cs" />
     <Compile Include="DataSlices\SetAzureDataFactorySliceStatusCommand.cs" />
+    <Compile Include="Encrypt\NewAzureDataFactoryEncryptValueCommand.cs" />
     <Compile Include="Gateway\GetAzureDataFactoryGatewayCommand.cs" />
     <Compile Include="Gateway\NewAzureDataFactoryGatewayCommand.cs" />
     <Compile Include="Gateway\NewAzureDataFactoryGatewayKeyCommand.cs" />
