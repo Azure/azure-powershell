@@ -54,6 +54,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Position = 6, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
 
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.VolumeNewName)]
+        [ValidateNotNullOrEmpty]
+        public string NewName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -89,6 +93,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (AccessControlRecords != null)
                 {
                     diskDetails.AcrList = AccessControlRecords;
+                }
+                if (NewName != null)
+                {
+                    diskDetails.Name = VolumeName = NewName;
                 }
 
                 if (WaitForComplete.IsPresent)

@@ -41,6 +41,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
 
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.ACRNewName)]
+        [ValidateNotNullOrEmpty]
+        public string NewName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -67,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                 GlobalId = existingAcr.GlobalId,
                                 InitiatorName = IQNInitiatorName,
                                 InstanceId = existingAcr.InstanceId,
-                                Name = existingAcr.Name,
+                                Name = (NewName != null ? NewName : existingAcr.Name),
                                 VolumeCount = existingAcr.VolumeCount
                             },
                         }

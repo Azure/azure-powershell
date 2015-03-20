@@ -18,6 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
     internal static class StorSimpleCmdletHelpMessage
     {
         public const string ACRName = "The access control record name.";
+        public const string ACRNewName = "The new name desired for the access control record";
         public const string ACRObject = "The access control record object.";
         public const string DataContainerBandwidth = "The data container bandwidth rate.";
         public const string DataContainerEncryptionEnabled = "Flag to encrypt the data container.";
@@ -46,6 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string VolumeName = "The volume name.";
         public const string VolumeOnline = "Is the volume online";
         public const string VolumeSize = "The size of volume in bytes.";
+        public const string VolumeNewName = "The new name desired for the volume";
         public const string WaitTillComplete = "Wait till the async operation completes.";
         public const string BackupPolicyName = "Name of the Backup policy that you wish to retrieve. Skip this parameter to get all policies";
         public const string BackupIdToDelete = "InstanceId of the Backup that needs to be deleted";
@@ -78,6 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string BackupScheduleBaseObjsToAdd = "List of BackupScheduleBase objects to be added to the policy";
         public const string BackupScheduleBaseObjsToUpdate = "List of BackupScheduleUpdateRequest objects to be updated";
         public const string BackupScheduleBaseObjsToDelete = "List of Instance Id of BackupSchedule objects to be deleted";
+        public const string BackupPolicyNewName = "The new name desired for the backup policy";
         public const string VolumeObjsToUpdate = "List of VolumeIds to be updated";
         public const string ResourceName = "Name of the resource which needs to be retrieved";
         public const string SourceDeviceId = "The device identifier of the source device";
