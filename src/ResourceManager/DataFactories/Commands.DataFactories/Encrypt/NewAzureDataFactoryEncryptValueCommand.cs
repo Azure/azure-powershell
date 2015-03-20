@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             if (String.IsNullOrWhiteSpace(GatewayName))
             {
                 // Cloud encryption without Gateway
-                encryptedValue = DataFactoryClient.CloudEncryptString(Value, ResourceGroupName, DataFactoryName);
+                WriteWarning("Cloud encryption has already been deprecated. Please run get-help new-azuredatafactoryencryptvalue to see other option of this command");
             }
             else
             {
