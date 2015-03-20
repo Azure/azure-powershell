@@ -122,7 +122,7 @@
 			</maml:introduction>
 			<dev:code>Get-AzureAppServicePlan -ResourceGroupName &quot;Default-Web-WestUS&quot; -Name myWHP</dev:code>
 			<dev:remarks>
-				<maml:para>Gets the app service plan myWHP in resource group &quot;Default-Web-WestUS&quot;</maml:para>
+				<maml:para>Gets the app service plan myWHP in resource group &quot;Default-Web-WestUS&quot;.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
