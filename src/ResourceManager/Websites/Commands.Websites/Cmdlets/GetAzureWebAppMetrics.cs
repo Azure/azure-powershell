@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,13 +31,13 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.WebApp.Utilities;
 
-namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
+namespace Microsoft.Azure.Commands.WebApp.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you get metrics of an app service plan using ARM APIs
+    /// this commandlet will let you get Azure Web App metrics using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAppServicePlanMetrics"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
-    public class GetAzureAppServicePlanMetricsCmdlet : AppServicePlanBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureWebAppMetrics"), OutputType(typeof(WebSiteGetUsageMetricsResponse))]
+    public class GetAzureWebAppMetricsCmdlet : WebAppBaseSlotCmdlet
     {              
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "List of metrics names to retrieve.")]
         [ValidateNotNullOrEmpty]
@@ -66,12 +65,11 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
 
         public override void ExecuteCmdlet()
         {
-            WebHostingPlanGetHistoricalUsageMetricsResponse response = WebsitesClient.GetAppServicePlanHistoricalUsageMetrics(ResourceGroupName, Name, Metrics, StartDate, EndDate, TimeGrain, InstanceDetails);
+            WebSiteGetHistoricalUsageMetricsResponse response = WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, SlotName, Metrics, StartDate, EndDate, TimeGrain, InstanceDetails);
             foreach (var metricResponse in response.UsageMetrics)
             {
                 WriteObject(metricResponse, true);
             }
         }
-
     }
 }

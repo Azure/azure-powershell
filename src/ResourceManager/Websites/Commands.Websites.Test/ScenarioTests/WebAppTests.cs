@@ -16,7 +16,7 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
 {
     public class WebAppTests 
     {

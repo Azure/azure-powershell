@@ -22,7 +22,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.Webpp;
+using Microsoft.Azure.Commands.WebApp;
 using Microsoft.Azure.Management.WebSites;
 using System.Net.Http;
 using System.Threading;
@@ -30,16 +30,16 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Net;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Websites.Utilities;
+using Microsoft.Azure.Commands.WebApp.Utilities;
 
 
-namespace Microsoft.Azure.Commands.Websites.Cmdlets
+namespace Microsoft.Azure.Commands.WebApp.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you create a new Azure Websites using ARM APIs
+    /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureWebApp")]
-    public class NewAzureWebsiteCmdlet : WebAppBaseCmdlet
+    public class NewAzureWebAppCmdlet : WebAppBaseCmdlet
     {
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]

@@ -28,7 +28,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.Websites.Utilities
+namespace Microsoft.Azure.Commands.WebApp.Utilities
 {
     public class WebsitesClient
     {
@@ -112,6 +112,19 @@ namespace Microsoft.Azure.Commands.Websites.Utilities
             return pubCreds;
         }
 
+        public WebSiteGetHistoricalUsageMetricsResponse GetWebAppUsageMetrics(string resourceGroupName, string webSiteName, string slotName,  IList<string> metricNames,
+    DateTime? startTime, DateTime? endTime, string timeGrain, bool instanceDetails)
+        {
+            WebSiteGetHistoricalUsageMetricsParameters parameters = new WebSiteGetHistoricalUsageMetricsParameters();
+            parameters.MetricNames = metricNames;
+            parameters.IncludeInstanceBreakdown = instanceDetails;
+            parameters.EndTime = endTime;
+            parameters.StartTime = startTime;
+            parameters.TimeGrain = timeGrain;
+            var usageMetrics = WrappedWebsitesClient.WebSites.GetHistoricalUsageMetrics(resourceGroupName, webSiteName, slotName,parameters);
+            return usageMetrics;
+        }
+
         public WebHostingPlanCreateOrUpdateResponse CreateWebHostingPlan(string resourceGroupName, string whpName, string location, string adminSiteName, int numberOfWorkers, SkuOptions sku, WorkerSizeOptions workerSize)
         {
             WebHostingPlanProperties webHostingPlanProperties = new WebHostingPlanProperties();
@@ -151,7 +164,7 @@ namespace Microsoft.Azure.Commands.Websites.Utilities
             return response;
         }
 
-        public WebHostingPlanGetHistoricalUsageMetricsResponse GetWebHostingPlanHistoricalUsageMetrics(string resourceGroupName, string webHostingPlanName, IList<string> metricNames,
+        public WebHostingPlanGetHistoricalUsageMetricsResponse GetAppServicePlanHistoricalUsageMetrics(string resourceGroupName, string appServicePlanName, IList<string> metricNames,
     DateTime? startTime, DateTime? endTime, string timeGrain, bool instanceDetails)
         {
             WebHostingPlanGetHistoricalUsageMetricsParameters parameters = new WebHostingPlanGetHistoricalUsageMetricsParameters();
@@ -160,7 +173,7 @@ namespace Microsoft.Azure.Commands.Websites.Utilities
             parameters.EndTime = endTime;
             parameters.StartTime = startTime;
             parameters.TimeGrain = timeGrain;
-            var response = WrappedWebsitesClient.WebHostingPlans.GetHistoricalUsageMetrics(resourceGroupName, webHostingPlanName, parameters);
+            var response = WrappedWebsitesClient.WebHostingPlans.GetHistoricalUsageMetrics(resourceGroupName, appServicePlanName, parameters);
             return response;
         }
         

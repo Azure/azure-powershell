@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Websites.Models;
+using Microsoft.Azure.Commands.WebApp.Models;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Websites.Models.WebApp;
 
-namespace Microsoft.Azure.Commands.Webpp
+namespace Microsoft.Azure.Commands.WebApp
 {
     public class WebAppBaseSlotCmdlet : WebAppBaseCmdlet
     {

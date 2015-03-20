@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Websites.Models;
+using Microsoft.Azure.Commands.WebApp.Models;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Websites.Models.WebApp;
 
-namespace Microsoft.Azure.Commands.Websites
+namespace Microsoft.Azure.Commands.WebApp
 {
-    public abstract class AppServicePlanBaseCmdlet : WebAppBaseClient
+    public abstract class AppServicePlanBaseCmdlet : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmptyAttribute]

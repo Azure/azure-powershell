@@ -19,11 +19,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Websites.Utilities;
+using Microsoft.Azure.Commands.WebApp.Utilities;
 
-namespace Microsoft.Azure.Commands.Websites.Models.WebApp
+namespace Microsoft.Azure.Commands.WebApp.Models
 {
-    public abstract class WebAppBaseClient : AzurePSCmdlet
+    public abstract class WebAppBaseClientCmdLet : AzurePSCmdlet
     {
         private WebsitesClient _websitesClient;
         public WebsitesClient WebsitesClient
