@@ -73,8 +73,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.17.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.WebSites">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.0.16.1-prerelease\lib\net40\Microsoft.Azure.Management.WebSites.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.WebSites, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.0.16.4-prerelease\lib\net40\Microsoft.Azure.Management.WebSites.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -124,20 +125,25 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cmdlets\GetAzureWebsite.cs" />
-    <Compile Include="Cmdlets\RemoveAzureWebsite.cs" />
-    <Compile Include="Cmdlets\NewAzureWebsites.cs" />
-    <Compile Include="Cmdlets\RestartAzureWebsite.cs" />
-    <Compile Include="Cmdlets\StartAzureWebsite.cs" />
-    <Compile Include="Cmdlets\StopAzureWebsite.cs" />
-    <Compile Include="Cmdlets\WebHostingPlan\ListAzureWebHostingPlan.cs" />
-    <Compile Include="Cmdlets\WebHostingPlan\GetAzureWebHostingPlan.cs" />
-    <Compile Include="Cmdlets\WebHostingPlan\SetAzureWebHostingPlan.cs" />
-    <Compile Include="Cmdlets\WebHostingPlan\NewAzureWebHostingPlan.cs" />
-    <Compile Include="Cmdlets\WebHostingPlan\RemoveWebHostingPlan.cs" />
-    <Compile Include="Models.Websites\WebHostingPlanBaseCmdlet.cs" />
-    <Compile Include="Models.Websites\WebsiteBaseCmdlet.cs" />
-    <Compile Include="Models.Websites\WebsitesBaseClient.cs" />
+    <Compile Include="Cmdlets\GetAzureWebAppMetrics.cs" />
+    <Compile Include="Cmdlets\GetAzureWebAppPublishingProfile.cs" />
+    <Compile Include="Cmdlets\GetAzureWebApp.cs" />
+    <Compile Include="Cmdlets\RemoveAzureWebApp.cs" />
+    <Compile Include="Cmdlets\NewAzureWebApp.cs" />
+    <Compile Include="Cmdlets\RestartAzureWebApp.cs" />
+    <Compile Include="Cmdlets\StartAzureWebApp.cs" />
+    <Compile Include="Cmdlets\StopAzureWebApp.cs" />
+    <Compile Include="Cmdlets\AppServicePlan\GetAzureAppServicePlan.cs" />
+    <Compile Include="Cmdlets\AppServicePlan\GetAzureAppServicePlanMetrics.cs" />
+    <Compile Include="Cmdlets\AppServicePlan\SetAzureAppServicePlan.cs" />
+    <Compile Include="Cmdlets\AppServicePlan\NewAzureAppServicePlan.cs" />
+    <Compile Include="Cmdlets\AppServicePlan\RemoveAppServicePlan.cs" />
+    <Compile Include="Models.WebApp\AppServicePlanBaseNotMandatoryCmdlet.cs" />
+    <Compile Include="Models.WebApp\AppServicePlanBaseCmdlet.cs" />
+    <Compile Include="Models.WebApp\WebAppBaseNotMandatoryCmdlet.cs" />
+    <Compile Include="Models.WebApp\WebAppBaseSlotCmdlet.cs" />
+    <Compile Include="Models.WebApp\WebAppBaseCmdlet.cs" />
+    <Compile Include="Models.WebApp\WebAppBaseClient.cs" />
     <Compile Include="Utilities\WebsitesClient.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -162,7 +168,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

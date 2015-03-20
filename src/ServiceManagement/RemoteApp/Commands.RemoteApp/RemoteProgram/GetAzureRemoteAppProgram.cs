@@ -29,9 +29,11 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         private const string FilterByAlias = "FilterByAlias";
 
         [Parameter(Mandatory = true,
-                    Position = 0,
-                    HelpMessage = "RemoteApp collection name")]
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "RemoteApp collection name")]
         [ValidatePattern(NameValidatorString)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,

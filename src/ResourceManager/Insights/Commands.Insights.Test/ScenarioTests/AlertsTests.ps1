@@ -21,7 +21,7 @@ function Test-AddAlertRule
     try 
     {
         # Test
-        $actual = Add-AlertRule -ruletype metric -Name chiricutin -Location "East US" -ResourceGroup Default-Web-EastUS -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -ResourceUri /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo -MetricName Requests -Description "Pura Vida" -TimeAggre Total
+        $actual = Add-AlertRule -ruletype metric -Name chiricutin -Location "East US" -ResourceGroup Default-Web-EastUS -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -ResourceId /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo -MetricName Requests -Description "Pura Vida" -TimeAggre Total
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.RequestId '47af504c-88a1-49c5-9766-e397d54e490b'

@@ -15,12 +15,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Websites.Utilities;
+using Microsoft.Azure.Commands.WebApp.Utilities;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Commands.Websites.Cmdlets;
-using Microsoft.Azure.Commands.Websites;
-using Microsoft.Azure.Commands.Websites.Models;
+using Microsoft.Azure.Commands.WebApp.Cmdlets;
+using Microsoft.Azure.Commands.WebApp;
+using Microsoft.Azure.Commands.WebApp.Models;
 using Moq;
 using Xunit;
 
@@ -28,9 +28,9 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Websites.Test
 {
-    public class NewAzureWebsiteCommandTests
+    public class NewAzureWebAppCommandTests
     {
-        private NewAzureWebsiteCmdlet cmdlet;
+        private NewAzureWebAppCmdlet cmdlet;
 
         private Mock<WebsitesClient> websitesClientMock;
 
@@ -53,11 +53,11 @@ namespace Microsoft.Azure.Commands.Websites.Test
 
         private Hashtable[] tags;
 
-        public NewAzureWebsiteCommandTests()
+        public NewAzureWebAppCommandTests()
         {
             websitesClientMock = new Mock<WebsitesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new NewAzureWebsiteCmdlet()
+            cmdlet = new NewAzureWebAppCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 WebsitesClient = websitesClientMock.Object

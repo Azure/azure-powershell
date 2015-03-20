@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Insights
         internal const string SubscriptionLevelName = "Query at subscription level";
         internal const string ResourceProviderName = "Query on ResourceProvider";
         internal const string ResourceGroupName = "Query on ResourceGroupProvider";
-        internal const string ResourceUriName = "Query on ResourceUriName";
+        internal const string ResourceIdName = "Query on ResourceIdName";
         internal const string CorrelationIdName = "Query on CorrelationId";
 
         #region Parameters declarations
