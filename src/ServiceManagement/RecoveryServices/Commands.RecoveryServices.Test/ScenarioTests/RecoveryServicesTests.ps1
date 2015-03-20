@@ -1160,7 +1160,7 @@ function Test-EnableProtection
                     # Validate_EnableProtection_WaitForCanFailover
                     if ($Validate_EnableProtection_WaitForCanFailover -eq $true)
                     {
-                        WaitForCanFailover $protectionEntity.ProtectionContainerId $protectionEntity.ID 
+                        WaitForCanFailover $protectionEntity.ProtectionContainerId $protectionEntity.ID 600
                     }
 
                     return;
@@ -1226,21 +1226,24 @@ function Test-DisableProtection
 
 <#
 .SYNOPSIS
-Recovery Services Enable Protection Tests
+Wait for CanFailover state
+Usage:
+	WaitForCanFailover pcId peId
+	WaitForCanFailover pcId peId secondsToWait
 #>
 function WaitForCanFailover
 {
-    param([string] $pcId, [string] $peId)
-    $count = 20
+    param([string] $pcId, [string] $peId, [Int] $NumOfSecondsToWait = 120)
+
+	$timeElapse = 0;
+	$interval = 5;
 	do
 	{
-		Start-Sleep 5
+		Start-Sleep $interval
+		$timeElapse = $timeElapse + $interval
 		$pes = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainerId $pcId;
 
-        $count = $count -1;
-
-    	Assert-True { $count -gt 0 } "Job did not reached desired state within 5*$count seconds."
-
+		Assert-True { $timeElapse -lt $NumOfSecondsToWait } "Job did not reached desired state within $NumOfSecondsToWait seconds."
 	} while(-not ($pes[0].CanFailover -eq $true))
 }
 
