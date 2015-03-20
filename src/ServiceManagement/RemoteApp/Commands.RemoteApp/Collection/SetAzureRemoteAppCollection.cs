@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             details = new CollectionCreationDetails()
             {
                 Name = CollectionName,
-                BillingPlanName = String.IsNullOrWhiteSpace(Plan) ? collection.BillingPlanName : Plan,
+                PlanName = String.IsNullOrWhiteSpace(Plan) ? collection.PlanName : Plan,
                 Description = String.IsNullOrWhiteSpace(Description) ? collection.Description : Description,
                 CustomRdpProperty = String.IsNullOrWhiteSpace(CustomRdpProperty) ? collection.CustomRdpProperty : CustomRdpProperty,
                 TemplateImageName = collection.TemplateImageName
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                         }
 
                         details.AdInfo = new ActiveDirectoryConfig();
-                        details.VnetName = collection.VnetName;
+                        details.VNetName = collection.VNetName;
                         details.AdInfo.DomainName = collection.AdInfo.DomainName;
                         details.AdInfo.OrganizationalUnit = collection.AdInfo.OrganizationalUnit;
 

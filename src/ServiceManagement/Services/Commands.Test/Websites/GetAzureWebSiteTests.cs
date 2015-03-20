@@ -60,9 +60,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             };
 
             getAzureWebsiteCommand.ExecuteWithProcessing();
-            Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline.Count);
-            var sites = (IEnumerable<Site>)((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline.FirstOrDefault();
+
+            var sites = System.Management.Automation.LanguagePrimitives.GetEnumerable(((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline).Cast<Site>();
+
             Assert.NotNull(sites);
+            Assert.NotEmpty(sites);
             Assert.True(sites.Any(website => (website).Name.Equals("website1") && (website).WebSpace.Equals("webspace1")));
             Assert.True(sites.Any(website => (website).Name.Equals("website2") && (website).WebSpace.Equals("webspace2")));
         }
@@ -259,8 +261,12 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             };
 
             getAzureWebsiteCommand.ExecuteWithProcessing();
-            IEnumerable<Site> sites = ((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline[0] as IEnumerable<Site>;
 
+            IEnumerable<Site> sites = System.Management.Automation.LanguagePrimitives.GetEnumerable(((MockCommandRuntime)getAzureWebsiteCommand.CommandRuntime).OutputPipeline).Cast<Site>();
+
+            Assert.NotNull(sites);
+            Assert.NotEmpty(sites);
+            Assert.Equal(2, sites.Count());
             var website1 = sites.ElementAt(0);
             var website2 = sites.ElementAt(1);
             Assert.NotNull(website1);

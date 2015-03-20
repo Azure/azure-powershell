@@ -51,16 +51,18 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
+            var avSetParams = new AvailabilitySetCreateOrUpdateParameters
+            {
+                AvailabilitySet = new AvailabilitySet
+                {
+                    Name = this.Name,
+                    Location = this.Location
+                }
+            };
+
             var op = this.AvailabilitySetClient.CreateOrUpdate(
                 this.ResourceGroupName,
-                new AvailabilitySetCreateOrUpdateParameters
-                {
-                    AvailabilitySet = new AvailabilitySet
-                    {
-                        Name = this.Name,
-                        Location = this.Location
-                    }
-                });
+                avSetParams);
 
             WriteObject(op);
         }

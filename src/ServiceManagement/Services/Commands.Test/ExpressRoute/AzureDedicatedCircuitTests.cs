@@ -27,6 +27,7 @@ using Microsoft.WindowsAzure.Management.ExpressRoute;
 using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
 using Moq;
 using Microsoft.Azure;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 {
@@ -251,9 +252,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             cmdlet.ExecuteCmdlet();
 
             // Assert
-            IEnumerable<AzureDedicatedCircuit> actual =
-                mockCommandRuntime.OutputPipeline[0] as IEnumerable<AzureDedicatedCircuit>;
-            Assert.Equal(actual.ToArray().Count(), 2);
+            IEnumerable<AzureDedicatedCircuit> actual = LanguagePrimitives.GetEnumerable(mockCommandRuntime.OutputPipeline).Cast<AzureDedicatedCircuit>();
+
+            Assert.Equal(actual.Count(), 2);
         }
     }
 }
