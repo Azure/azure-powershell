@@ -65,8 +65,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                     legacyApplianceMetaData.Details = parser.ParseLegacyApplianceConfig(filePath: ConfigFilePath, decryptionKey: ConfigDecryptionKey);
                     LegacyApplianceConfig config = legacyApplianceMetaData.Details;
-                    legacyApplianceMetaData.ConfigId = Guid.NewGuid().ToString();
-                    config.InstanceId = config.Name = legacyApplianceMetaData.ConfigId;
+                    legacyApplianceMetaData.LegacyConfigId = Guid.NewGuid().ToString();
+                    config.InstanceId = config.Name = legacyApplianceMetaData.LegacyConfigId;
                     legacyApplianceMetaData.ConfigFile = ConfigFilePath;
                     legacyApplianceMetaData.ImportedOn = DateTime.UtcNow;
                     legacyApplianceMetaData.TargetApplianceName = TargetDeviceName;
@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     List<LegacyApplianceConfig> configList = ConfigSplitHelper.Split(legacyApplianceMetaData.Details);
                     foreach (var singleConfig in configList)
                     {
-                        StorSimpleClient.ImportLegacyApplianceConfig(legacyApplianceMetaData.ConfigId, singleConfig);
+                        StorSimpleClient.ImportLegacyApplianceConfig(legacyApplianceMetaData.LegacyConfigId, singleConfig);
                     }
 
                     WriteObject(legacyApplianceMetaData);
