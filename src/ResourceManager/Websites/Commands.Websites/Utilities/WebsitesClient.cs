@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +28,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.Websites.Utilities
+namespace Microsoft.Azure.Commands.WebApp.Utilities
 {
     public class WebsitesClient
     {
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Commands.Websites.Utilities
             private set;
         }
 
-
         public WebSite CreateWebsite(string resourceGroupName, string webSiteName, string slotName, string location, string webHostingPlan)
         {
             var createdWebSite = WrappedWebsitesClient.WebSites.CreateOrUpdate(
@@ -60,8 +58,13 @@ namespace Microsoft.Azure.Commands.Websites.Utilities
                                 Properties = new WebSiteBaseProperties(webHostingPlan)
                             }
                         });
-           // VerboseLogger(string.Format("Created website '{0}' in resource group '{1}' at location '{2}'", webSiteName, resourceGroupName, location));
-
+            createdWebSite.WebSite.Properties.SiteConfig = new WebSiteConfiguration()
+            {
+                AppSettings = new Dictionary<string, string>(),
+                ConnectionStrings = new List<ConnectionStringInfo>(),
+                Metadata = new Dictionary<string, string>()
+            };
+            createdWebSite.WebSite.Properties.SiteConfig = GetWebSiteConfiguration(resourceGroupName, webSiteName, slotName);
             return createdWebSite.WebSite;
         }
 
@@ -93,34 +96,13 @@ namespace Microsoft.Azure.Commands.Websites.Utilities
         {
             WebSiteGetParameters webSiteGetParams = new WebSiteGetParameters();
             var getWebsite = WrappedWebsitesClient.WebSites.Get(resourceGroupName, webSiteName, slotName, webSiteGetParams);
-            try
+            getWebsite.WebSite.Properties.SiteConfig = new WebSiteConfiguration()
             {
-                var getAppSettings = WrappedWebsitesClient.WebSites.GetAppSettings(resourceGroupName, webSiteName, slotName);
-                //Add websiteApp Settings to the Website object as the Get call will not return them.
-                foreach (var appSettingVal in getAppSettings.Resource.Properties.ToList())
-                {
-                    if (!getWebsite.WebSite.Properties.Properties.AppSettings.Keys.Contains(appSettingVal.Name))
-                        getWebsite.WebSite.Properties.Properties.AppSettings.Add(appSettingVal.Name, appSettingVal.Value);
-                }
-            }
-            catch
-            {
-                //ignore if this call fails as it will for reader RBAC
-            }
-            //Add ConnectionStrings Settings to the Website object as the Get call will not return them.
-            
-            try
-            {
-                var getConnectionStringsSettings = WrappedWebsitesClient.WebSites.GetConnectionStrings(resourceGroupName, webSiteName, slotName);
-                //TODO: Add ConnectionStrings Settings to the Website object as the Get call will not return them.
-
-
-            }
-            catch
-            {
-                //ignore if this call fails as it will for reader RBAC
-            }         
-            
+                AppSettings = new Dictionary<string, string>(),
+                ConnectionStrings = new List<ConnectionStringInfo>(),
+                Metadata = new Dictionary<string, string>()
+            };
+            getWebsite.WebSite.Properties.SiteConfig = GetWebSiteConfiguration(resourceGroupName, webSiteName, slotName);                   
             return getWebsite.WebSite;
         }
 
@@ -128,6 +110,19 @@ namespace Microsoft.Azure.Commands.Websites.Utilities
         {
             var pubCreds = WrappedWebsitesClient.WebSites.GetPublishProfile(resourceGroupName, webSiteName, slotName);
             return pubCreds;
+        }
+
+        public WebSiteGetHistoricalUsageMetricsResponse GetWebAppUsageMetrics(string resourceGroupName, string webSiteName, string slotName,  IList<string> metricNames,
+    DateTime? startTime, DateTime? endTime, string timeGrain, bool instanceDetails)
+        {
+            WebSiteGetHistoricalUsageMetricsParameters parameters = new WebSiteGetHistoricalUsageMetricsParameters();
+            parameters.MetricNames = metricNames;
+            parameters.IncludeInstanceBreakdown = instanceDetails;
+            parameters.EndTime = endTime;
+            parameters.StartTime = startTime;
+            parameters.TimeGrain = timeGrain;
+            var usageMetrics = WrappedWebsitesClient.WebSites.GetHistoricalUsageMetrics(resourceGroupName, webSiteName, slotName,parameters);
+            return usageMetrics;
         }
 
         public WebHostingPlanCreateOrUpdateResponse CreateWebHostingPlan(string resourceGroupName, string whpName, string location, string adminSiteName, int numberOfWorkers, SkuOptions sku, WorkerSizeOptions workerSize)
@@ -167,6 +162,52 @@ namespace Microsoft.Azure.Commands.Websites.Utilities
             var response = WrappedWebsitesClient.WebHostingPlans.List(resourceGroupName);
             //proper return type need to be discussed
             return response;
+        }
+
+        public WebHostingPlanGetHistoricalUsageMetricsResponse GetAppServicePlanHistoricalUsageMetrics(string resourceGroupName, string appServicePlanName, IList<string> metricNames,
+    DateTime? startTime, DateTime? endTime, string timeGrain, bool instanceDetails)
+        {
+            WebHostingPlanGetHistoricalUsageMetricsParameters parameters = new WebHostingPlanGetHistoricalUsageMetricsParameters();
+            parameters.MetricNames = metricNames;
+            parameters.IncludeInstanceBreakdown = instanceDetails;
+            parameters.EndTime = endTime;
+            parameters.StartTime = startTime;
+            parameters.TimeGrain = timeGrain;
+            var response = WrappedWebsitesClient.WebHostingPlans.GetHistoricalUsageMetrics(resourceGroupName, appServicePlanName, parameters);
+            return response;
+        }
+        
+        private WebSiteConfiguration GetWebSiteConfiguration(string resourceGroupName, string webSiteName, string slotName)
+        {
+            WebSiteConfiguration siteConfinguration = new WebSiteConfiguration();
+            try
+            {
+                var getAppSettings = WrappedWebsitesClient.WebSites.GetAppSettings(resourceGroupName, webSiteName, slotName);
+                //Add websiteApp Settings to the Website object as the Create call will not return them.
+                foreach (var appSettingVal in getAppSettings.Resource.Properties.ToList())
+                {
+                    if (!siteConfinguration.AppSettings.Keys.Contains(appSettingVal.Name))
+                        siteConfinguration.AppSettings.Add(appSettingVal.Name, appSettingVal.Value);
+                }
+                var getConnStrings = WrappedWebsitesClient.WebSites.GetConnectionStrings(resourceGroupName, webSiteName, slotName);
+                //Add websiteApp Settings to the Website object as the Create call will not return them.
+                foreach (var connSettingVal in getConnStrings.Resource.Properties.ToList())
+                {
+                    siteConfinguration.ConnectionStrings.Add(connSettingVal);
+                }
+                var getMetaDataSettings = WrappedWebsitesClient.WebSites.GetAppSettings(resourceGroupName, webSiteName, slotName);
+                //Add websiteApp Settings to the Website object as the Create call will not return them.
+                foreach (var metadataVal in getMetaDataSettings.Resource.Properties.ToList())
+                {
+                    if (!siteConfinguration.Metadata.Keys.Contains(metadataVal.Name))
+                        siteConfinguration.Metadata.Add(metadataVal.Name, metadataVal.Value);
+                }                
+            }
+            catch
+            {
+                //ignore if this call fails as it will for reader RBAC
+            }
+            return siteConfinguration;
         }
     }
 }
