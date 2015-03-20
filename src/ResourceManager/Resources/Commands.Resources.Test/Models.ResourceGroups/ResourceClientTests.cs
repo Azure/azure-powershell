@@ -2306,7 +2306,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         }
                     }
                 }));
-            List<PSResourceProviderType> resourceTypes = resourcesClient.GetLocations(
+            List<PSResourceProviderLocationInfo> resourceTypes = resourcesClient.GetLocations(
                 ResourcesClient.ResourceGroupTypeName,
                 "Microsoft.HDInsight");
 
@@ -2363,7 +2363,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         }
                     }
                 }));
-            List<PSResourceProviderType> resourceTypes = resourcesClient.GetLocations(
+            List<PSResourceProviderLocationInfo> resourceTypes = resourcesClient.GetLocations(
                 ResourcesClient.ResourceGroupTypeName,
                 "Microsoft.Web");
 

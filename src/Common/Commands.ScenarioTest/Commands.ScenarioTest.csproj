@@ -42,17 +42,18 @@
       <HintPath>..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
-      <HintPath>..\..\packages\Microsoft.Azure.Common.2.0.3\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Azure.Common.Authentication.1.0.14-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Azure.Common.Authentication.1.0.16-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
-      <HintPath>..\..\packages\Microsoft.Azure.Common.2.0.3\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager">
-      <HintPath>..\..\packages\Microsoft.Azure.Management.Resources.2.12.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Azure.Management.Resources.2.14.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
       <HintPath>..\..\packages\Microsoft.Azure.Test.Framework.1.0.5513.27084-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
@@ -108,7 +109,7 @@
       <HintPath>..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.0.0\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.WebSites">
-      <HintPath>..\..\packages\Microsoft.WindowsAzure.Management.WebSites.4.4.0-prerelease\lib\net40\Microsoft.WindowsAzure.Management.WebSites.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.WindowsAzure.Management.WebSites.4.4.2-prerelease\lib\net40\Microsoft.WindowsAzure.Management.WebSites.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

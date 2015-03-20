@@ -193,6 +193,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
         {
             var result = new MCM.VMImageInput();
 
+            if (vmImageInput == null)
+            {
+                return null;
+            }
+
             if (vmImageInput.OSDiskConfiguration != null)
             {
                 result.OSDiskConfiguration = new MCM.OSDiskConfiguration()
