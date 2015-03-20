@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using System;
 using System.Security;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
@@ -51,16 +51,31 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 LoginType = LoginType.OrgId,
                 AccessToken = accessToken
             };
+
+            TokenProvider = ((account, environment, tenant) => Token);
         }
 
-        public IAccessToken Authenticate(AzureAccount account, AzureEnvironment environment, string tenant, SecureString password, ShowDialog promptBehavior)
+        public IAccessToken Authenticate(AzureAccount account, AzureEnvironment environment, string tenant, SecureString password, ShowDialog promptBehavior,
+            AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             if (account.Id == null)
             {
                 account.Id = "test";
             }
 
-            return TokenProvider(account, environment, tenant);
+            if (TokenProvider == null)
+            {
+                return new MockAccessToken()
+                {
+                    AccessToken = account.Id,
+                    LoginType = LoginType.OrgId,
+                    UserId = account.Id
+                };
+            }
+            else
+            {
+                return TokenProvider(account, environment, tenant);
+            }
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)

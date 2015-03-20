@@ -24,8 +24,10 @@ using Microsoft.Azure.Management.ManagedCache;
 using Microsoft.Azure.Management.ManagedCache.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Authentication;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.ManagedCache
 {
@@ -36,9 +38,9 @@ namespace Microsoft.Azure.Commands.ManagedCache
         private const int MaxNamedCacheCount = 10;
 
         private ManagedCacheClient client;
-        public PSCacheClient(AzureSubscription currentSubscription)
+        public PSCacheClient(AzureProfile profile, AzureSubscription currentSubscription)
         {
-            client = AzureSession.ClientFactory.CreateClient<ManagedCacheClient>(currentSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+            client = AzureSession.ClientFactory.CreateClient<ManagedCacheClient>(profile, currentSubscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
         public PSCacheClient() { }
 
@@ -427,7 +429,7 @@ namespace Microsoft.Azure.Commands.ManagedCache
                 parameters.GeoRegion = location;
                 parameters.Description = cloudServiceName;
                 parameters.Label = cloudServiceName;
-                OperationResponse response = client.CloudServices.Create(cloudServiceName, parameters);
+                AzureOperationResponse response = client.CloudServices.Create(cloudServiceName, parameters);
             }
             return cloudServiceName;
         }

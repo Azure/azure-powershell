@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Get the list of events for a deployment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureResourceGroupLog", DefaultParameterSetName = LastDeploymentSetName), OutputType(typeof(List<PSDeploymentEventData>))]
+    // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+    //[Cmdlet(VerbsCommon.Get, "AzureResourceGroupLog", DefaultParameterSetName = LastDeploymentSetName), OutputType(typeof(List<PSDeploymentEventData>))]
     public class GetAzureResourceGroupLogCommand : ResourcesBaseCmdlet
     {
         internal const string AllSetName = "All";
@@ -50,7 +51,9 @@ namespace Microsoft.Azure.Commands.Resources
                     DeploymentName = DeploymentName,
                     All = All.IsPresent
                 };
-            WriteObject(ResourcesClient.GetResourceGroupLogs(parameters), true);
+
+            // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+            //WriteObject(ResourcesClient.GetResourceGroupLogs(parameters), true);
         }
     }
 }

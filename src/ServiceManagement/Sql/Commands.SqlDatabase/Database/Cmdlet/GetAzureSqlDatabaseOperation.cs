@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -110,7 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     break;
 
                 case ByServerName:
-                    context = ServerDataServiceCertAuth.Create(this.ServerName, AzureSession.CurrentContext.Subscription);
+                    context = ServerDataServiceCertAuth.Create(this.ServerName, Profile, Profile.Context.Subscription);
                     break;
             }
             ProcessWithContext(context);
@@ -127,6 +128,30 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                 this.WriteError(new ErrorRecord(
                     new PSArgumentException(
                         String.Format(Resources.InvalidParameterCombination, "Database", "DatabaseName")),
+                    string.Empty,
+                    ErrorCategory.InvalidArgument,
+                    null));
+            }
+
+            // The API doesn't allow supplying a database name and and operation GUID. 
+            if (this.MyInvocation.BoundParameters.ContainsKey("DatabaseName") &&
+                this.MyInvocation.BoundParameters.ContainsKey("OperationGuid"))
+            {
+                this.WriteError(new ErrorRecord(
+                    new PSArgumentException(
+                        String.Format(Resources.InvalidParameterCombination, "DatabaseName", "OperationGuid")),
+                    string.Empty,
+                    ErrorCategory.InvalidArgument,
+                    null));
+            }
+
+            // The API doesn't allow supplying a database name and and operation GUID. 
+            if (this.MyInvocation.BoundParameters.ContainsKey("Database") &&
+                this.MyInvocation.BoundParameters.ContainsKey("OperationGuid"))
+            {
+                this.WriteError(new ErrorRecord(
+                    new PSArgumentException(
+                        String.Format(Resources.InvalidParameterCombination, "Database", "OperationGuid")),
                     string.Empty,
                     ErrorCategory.InvalidArgument,
                     null));

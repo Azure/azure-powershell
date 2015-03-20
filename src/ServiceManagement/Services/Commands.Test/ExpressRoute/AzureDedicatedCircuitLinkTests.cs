@@ -26,6 +26,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Management.ExpressRoute;
 using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
 using Moq;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 {
@@ -65,10 +66,18 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
                     RequestId = "",               
                     StatusCode = new HttpStatusCode()
                 };
-            var t = new Task<DedicatedCircuitLinkGetResponse>(() => expected);
-            t.Start();
+            var tGet = new Task<DedicatedCircuitLinkGetResponse>(() => expected);
+            tGet.Start();
 
-            dclMock.Setup(f => f.NewAsync(It.Is<string>(x => x == serviceKey), It.Is<string>(y => y == vNetName), It.IsAny<CancellationToken>())).Returns((string sKey, string vNet, CancellationToken cancellation) => t);
+            ExpressRouteOperationStatusResponse expectedStatus = new ExpressRouteOperationStatusResponse()
+            {
+                HttpStatusCode = HttpStatusCode.OK
+            };
+
+            var tNew = new Task<ExpressRouteOperationStatusResponse>(() => expectedStatus);
+            tNew.Start();
+            dclMock.Setup(f => f.NewAsync(It.Is<string>(x => x == serviceKey), It.Is<string>(y => y == vNetName), It.IsAny<CancellationToken>())).Returns((string sKey, string vNet, CancellationToken cancellation) => tNew);
+            dclMock.Setup(f => f.GetAsync(It.Is<string>(skey => skey == serviceKey), It.Is<string>(vnet => vnet == vNetName), It.IsAny<CancellationToken>())).Returns((string skey, string vnet, CancellationToken cancellation) => tGet);
             client.SetupGet(f => f.DedicatedCircuitLinks).Returns(dclMock.Object);
 
             NewAzureDedicatedCircuitLinkCommand cmdlet = new NewAzureDedicatedCircuitLinkCommand()
@@ -134,7 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
         }
 
         [Fact]
-        public void RemoveAzureDedicatedCircuitSuccessful()
+        public void RemoveAzureDedicatedCircuitLinkSuccessful()
         {
             string serviceKey = "aa28cd19-b10a-41ff-981b-53c6bbf15ead";
             string vNetName = "DedicatedCircuitNetwork";

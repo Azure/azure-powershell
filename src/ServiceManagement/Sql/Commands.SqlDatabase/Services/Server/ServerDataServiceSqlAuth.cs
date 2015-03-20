@@ -26,11 +26,12 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
 {
     using DatabaseCopyModel = Model.DatabaseCopy;
+    using Microsoft.WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Implementation of the <see cref="IServerDataServiceContext"/> with Sql Authentication.
     /// </summary>
-    public partial class ServerDataServiceSqlAuth : ServerDataServiceContext, IServerDataServiceContext
+    public partial class ServerDataServiceSqlAuth : ServerDataServiceContext, IServerDataServiceContext, ISqlServerConnectionInformation
     {
         #region Constants
 

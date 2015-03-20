@@ -63,6 +63,11 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.BaseComman
         Hashtable Storm { get; set; }
 
         /// <summary>
+        ///     Gets or sets a collection of configuration properties to customize the Spark service.
+        /// </summary>
+        Hashtable Spark { get; set; }
+
+        /// <summary>
         ///     Gets or sets a collection of configuration properties to customize the HBase service.
         /// </summary>
         AzureHDInsightHBaseConfiguration HBase { get; set; }

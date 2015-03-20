@@ -21,7 +21,10 @@ using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema;
-using Microsoft.WindowsAzure.Common.Internals;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.XmlSchema;
+using Hyak.Common;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
 {
@@ -73,17 +76,17 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             string defaultPublishSettingsFile = Path.Combine(Environment.CurrentDirectory, DefaultPublishsettingsFilename);
             if (File.Exists(defaultPublishSettingsFile))
             {
-                Tracing.Information("Getting credentials from local publishsettings file: {0}", defaultPublishSettingsFile);
+                TracingAdapter.Information("Getting credentials from local publishsettings file: {0}", defaultPublishSettingsFile);
                 environment = GetTestEnvironmentFromPublishSettingsFile(defaultPublishSettingsFile);
             }
             else if (!string.IsNullOrEmpty(testPublishSettingsString))
             {
-                Tracing.Information("Getting credentials from publishsettings file in environment variable: {0}={1}", TestPublishSettingsFileKey, testPublishSettingsString);
+                TracingAdapter.Information("Getting credentials from publishsettings file in environment variable: {0}={1}", TestPublishSettingsFileKey, testPublishSettingsString);
                 environment = GetTestEnvironmentFromPublishSettingsFile(testPublishSettingsString);
             }
             else if (!string.IsNullOrEmpty(testConnectionString))
             {
-                Tracing.Information("Getting credentials from connection string in environment variable: {0}={1}", TestCertificateConnectionStringKey, testConnectionString);
+                TracingAdapter.Information("Getting credentials from connection string in environment variable: {0}={1}", TestCertificateConnectionStringKey, testConnectionString);
                 environment = GetCertificateTestEnvironmentFromConnectionString(testConnectionString);
             }
 

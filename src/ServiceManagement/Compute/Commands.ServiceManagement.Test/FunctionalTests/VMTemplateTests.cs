@@ -558,7 +558,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 UpdateAzureVMImageDetails(vmImageName);
 
                 string disk1Name,disk2Name;
-                UpdateVMImageOsAndDataDiskAnderifyChanges(  diskConfig,out disk1Name,out disk2Name);
+                UpdateVMImageOsAndDataDiskAnderifyChanges(diskConfig, out disk1Name, out disk2Name);
 
                 //Update VMImage using DiskConfig set prepared manually.
                 UpdateVmImageUsingDiskConfigSetAndVerifyChanges(diskConfig, disk1Name, disk2Name);
@@ -570,6 +570,59 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 throw ex;
             }
 
+        }
+
+        [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "IaaS"), Priority(0), Owner("hylee"), Description("Test the cmdlets (Get-AzureVMImage, New-AzureVMConfig, New-AzureVM, Get-AzureVM, Remove-AzureVM, etc.)")]
+        public void CreateVirtualMachineUsingVMImageWithDataDisks()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, DateTime.Now);
+            
+            try
+            {
+                // Try to get VM image with data disks
+                var vmImages = vmPowershellCmdlets.GetAzureVMImageReturningVMImages();
+                var vmImage = vmImages.Where(t => t.OS == "Windows" && t.Category == "Public" && t.DataDiskConfigurations != null && t.DataDiskConfigurations.Any()).FirstOrDefault();
+
+                // New-AzureService and verify with Get-AzureService
+                vmPowershellCmdlets.NewAzureService(serviceName, serviceName, locationName);
+                Assert.IsTrue(Verify.AzureService(serviceName, serviceName, locationName));
+
+                // New-AzureVMConfig
+                var vmName = Utilities.GetUniqueShortName(vmNamePrefix);
+                var vmSize = vmPowershellCmdlets.GetAzureRoleSize().Where(t => t.MaxDataDiskCount != null && t.MaxDataDiskCount >= vmImage.DataDiskConfigurations.Count()).Select(t => t.InstanceSize).First();
+                var currentStorage = vmPowershellCmdlets.GetAzureStorageAccount(defaultAzureSubscription.CurrentStorageAccountName).First();
+                var mediaLocationStr = ("mloc" + vmName).ToLower();
+                var vmMediaLocation = currentStorage.Endpoints.Where(p => p.Contains("blob")).First() + mediaLocationStr;
+                var azureVMConfigInfo = new AzureVMConfigInfo(vmName, vmSize, vmImage.ImageName, vmMediaLocation);
+                PersistentVM vm = vmPowershellCmdlets.NewAzureVMConfig(azureVMConfigInfo);
+
+                // Add-AzureProvisioningConfig
+                AzureProvisioningConfigInfo azureProvisioningConfig = new AzureProvisioningConfigInfo(OS.Windows, username, password, true);
+                azureProvisioningConfig.Vm = vm;
+                vm = vmPowershellCmdlets.AddAzureProvisioningConfig(azureProvisioningConfig);
+
+                // New-AzureVM
+                vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, null, null, null, null, null, null);
+                pass = true;
+
+                // Get-AzureVM
+                var returnedVM = vmPowershellCmdlets.GetAzureVM(vmName, serviceName);
+                Assert.IsTrue(returnedVM.VM.DataVirtualHardDisks != null && returnedVM.VM.DataVirtualHardDisks.Count() == vmImage.DataDiskConfigurations.Count());
+                Assert.IsTrue(returnedVM.VM.DataVirtualHardDisks.All(t => t.MediaLink.ToString().StartsWith(vmMediaLocation)));
+
+                // Remove-AzureVM
+                vmPowershellCmdlets.RemoveAzureVM(vmName, serviceName);
+
+                // Remove-AzureService
+                vmPowershellCmdlets.RemoveAzureService(serviceName, true);
+
+                pass = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                throw;
+            }
         }
 
         private void UpdateVmImageUsingDiskConfigSetAndVerifyChanges(DataDiskConfigurationList diskConfig, string disk1Name, string disk2Name)
@@ -642,7 +695,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Eula = "End user licensce agreement value",
                 ImageFamily = OS.Windows.ToString(),
                 Description = "Description",
-                IconUri = new Uri(@"http://www.bing.com"),
+                IconUri = "IconName",
                 ImageName = imageName,
                 Label = imageName,
                 Language = "English",
@@ -650,13 +703,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 PublishedDate = DateTime.Now,
                 RecommendedVMSize = InstanceSize.Medium.ToString(),
                 ShowInGui = false,
-                SmallIconUri = new Uri(@"http://www.bing.com"),
+                SmallIconUri = "SmallIconName",
             };
 
             Utilities.ExecuteAndLog(() =>
                 {
                     vmPowershellCmdlets.UpdateAzureVMImage(imageName, imageName, imageContext.ImageFamily, imageContext.ShowInGui.Value, imageContext.RecommendedVMSize, imageContext.Description, imageContext.Eula,
-                         imageContext.PrivacyUri, imageContext.PublishedDate, imageContext.Language, imageContext.IconUri, imageContext.SmallIconUri);
+                         imageContext.PrivacyUri, imageContext.PublishedDate, imageContext.Language, imageContext.IconName, imageContext.SmallIconName);
                 }, "Update Azure VM Image details");
 
             VerifyVMImageProperties(imageContext);
@@ -675,6 +728,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.Eula, vmImageContext.Eula), "Eula");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.Description, vmImageContext.Description), "Description");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.IconUri, vmImageContext.IconUri), "IconUri");
+                    Utilities.LogAssert(() => Assert.AreEqual(imageContext.IconName, vmImageContext.IconName), "IconName");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.ImageFamily, vmImageContext.ImageFamily), "ImageFamily");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.ImageName, vmImageContext.ImageName), "ImageName");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.Label, vmImageContext.Label), "Label");
@@ -684,6 +738,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.RecommendedVMSize, vmImageContext.RecommendedVMSize), "RecommendedVMSize");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.ShowInGui, vmImageContext.ShowInGui), "ShowInGui");
                     Utilities.LogAssert(() => Assert.AreEqual(imageContext.SmallIconUri, vmImageContext.SmallIconUri), "SmallIconUri");
+                    Utilities.LogAssert(() => Assert.AreEqual(imageContext.SmallIconName, vmImageContext.SmallIconName), "SmallIconName");
                 }, "Verify VM image details");
         }
 
@@ -701,6 +756,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public static void ClassCleanup()
         {
         }
+
         #region Helper Methods
         public void VerifyVMImage(string vmImageName, OS ImageFamily, string imageLabel, string osState, HostCaching hostCaching, DataDiskConfigurationList diskConfigs)
         {

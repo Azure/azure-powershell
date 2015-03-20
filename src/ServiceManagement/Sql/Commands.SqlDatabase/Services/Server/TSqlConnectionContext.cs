@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -22,7 +23,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
 {
-    public class TSqlConnectionContext : IServerDataServiceContext
+    public class TSqlConnectionContext : IServerDataServiceContext, ISqlServerConnectionInformation
     {
         /// <summary>
         /// Timeout duration for commands
@@ -123,6 +124,17 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         }
 
         /// <summary>
+        /// Gets the SQL credentials for connecting to the server.
+        /// </summary>
+        public SqlAuthenticationCredentials SqlCredentials
+        {
+            get
+            {
+                return credentials;
+            }
+        }
+
+        /// <summary>
         /// Contains the connection string necessary to connect to the server
         /// </summary>
         private SqlConnectionStringBuilder builder;
@@ -143,6 +155,11 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         private string serverName;
 
         /// <summary>
+        /// The sql connection credetials
+        /// </summary>
+        private SqlAuthenticationCredentials credentials;
+
+        /// <summary>
         /// Helper function to generate the SqlConnectionStringBuilder
         /// </summary>
         /// <param name="fullyQualifiedServerName">The fully qualified server name (eg: server1.database.windows.net)</param>
@@ -151,7 +168,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// <returns>A connection string builder</returns>
         private SqlConnectionStringBuilder GenerateSqlConnectionBuilder(string fullyQualifiedServerName, string username, string password)
         {
-            this.serverName = fullyQualifiedServerName.Split('.').First();
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder["Server"] = fullyQualifiedServerName;
             builder.UserID = username + "@" + serverName;
@@ -183,14 +199,15 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// <summary>
         /// Creates an instance of a SQLAuth to TSql class
         /// </summary>
-        /// <param name="fullyQualifiedServerName"></param>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        public TSqlConnectionContext(Guid sessionActivityId, string fullyQualifiedServerName, string username, string password)
+        /// <param name="fullyQualifiedServerName">The full server name</param>
+        /// <param name="credentials">The login credentials for the server</param>
+        public TSqlConnectionContext(Guid sessionActivityId, string fullyQualifiedServerName, SqlAuthenticationCredentials credentials, string serverName)
         {
+            this.serverName = serverName;
             this.sessionActivityId = sessionActivityId;
             this.clientRequestId = SqlDatabaseCmdletBase.GenerateClientTracingId();
-            builder = GenerateSqlConnectionBuilder(fullyQualifiedServerName, username, password);
+            this.credentials = credentials;
+            builder = GenerateSqlConnectionBuilder(fullyQualifiedServerName, credentials.UserName, credentials.Password);
         }
 
         /// <summary>
@@ -382,7 +399,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             }
 
             SqlCollationCheck(databaseCollation);
-            
+
             commandText = string.Format(
                 commandText,
                 SqlEscape(databaseName),
@@ -413,21 +430,21 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// <param name="databaseCollation">The string to verify</param>
         private void SqlCollationCheck(string databaseCollation)
         {
-            if(string.IsNullOrEmpty (databaseCollation))
+            if (string.IsNullOrEmpty(databaseCollation))
             {
                 return;
             }
 
-            bool isValid = databaseCollation.All( (c) =>
+            bool isValid = databaseCollation.All((c) =>
                 {
-                    if(!char.IsLetterOrDigit(c) && c != '_')
+                    if (!char.IsLetterOrDigit(c) && c != '_')
                     {
                         return false;
                     }
                     return true;
                 });
 
-            if(!isValid)
+            if (!isValid)
             {
                 throw new ArgumentException("Invalid Collation", "Collation");
             }
@@ -555,8 +572,26 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                 {
                     Context = this,
                     Enabled = true,
-                    Id = new Guid("dd6d99bb-f193-4ec1-86f2-43d3bccbc49c "),
-                    IsDefault = true,
+                    Id = new Guid("26E021DB-F1F9-4C98-84C6-92AF8EF433D7"),
+                    IsDefault = false,
+                    IsSystem = true,
+                    Name = "System"
+                }, 
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("620323BF-2879-4807-B30D-C2E6D7B3B3AA"),
+                    IsDefault = false,
+                    IsSystem = true,
+                    Name = "System2"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("dd6d99bb-f193-4ec1-86f2-43d3bccbc49c"),
+                    IsDefault = false,
                     IsSystem = false,
                     Name = "Basic"
                 }, 
@@ -564,22 +599,22 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                 {
                     Context = this,
                     Enabled = true,
-                    Id = new Guid("f1173c43-91bd-4aaa-973c-54e79e15235b "),
-                    IsDefault = false,
+                    Id = new Guid("f1173c43-91bd-4aaa-973c-54e79e15235b"),
+                    IsDefault = true,
                     IsSystem = false,
                     Name = "S0"
                 },
-                 new ServiceObjective()
-                 {
+                new ServiceObjective()
+                {
                     Context = this,
                     Enabled = true,
-                    Id = new Guid("1b1ebd4d-d903-4baa-97f9-4ea675f5e928 "),
+                    Id = new Guid("1b1ebd4d-d903-4baa-97f9-4ea675f5e928"),
                     IsDefault = false,
                     IsSystem = false,
                     Name = "S1"
                 },
-                 new ServiceObjective()
-                 {
+                new ServiceObjective()
+                {
                     Context = this,
                     Enabled = true,
                     Id = new Guid("455330e1-00cd-488b-b5fa-177c226f28b7"),
@@ -587,26 +622,35 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                     IsSystem = false,
                     Name = "S2"
                 },
-                 new ServiceObjective()
-                 {
+                new ServiceObjective()
+                {
                     Context = this,
                     Enabled = true,
-                    Id = new Guid("7203483a-c4fb-4304-9e9f-17c71c904f5d "),
+                    Id = new Guid("789681B8-CA10-4EB0-BDF2-E0B050601B40"),
+                    IsDefault = false,
+                    IsSystem = false,
+                    Name = "S3"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("7203483a-c4fb-4304-9e9f-17c71c904f5d"),
                     IsDefault = false,
                     IsSystem = false,
                     Name = "P1"
                 },
-                 new ServiceObjective()
-                 {
+                new ServiceObjective()
+                {
                     Context = this,
                     Enabled = true,
-                    Id = new Guid("a7d1b92d-c987-4375-b54d-2b1d0e0f5bb0 "),
+                    Id = new Guid("a7d1b92d-c987-4375-b54d-2b1d0e0f5bb0"),
                     IsDefault = false,
                     IsSystem = false,
                     Name = "P2"
                 },
-                 new ServiceObjective()
-                 {
+                new ServiceObjective()
+                {
                     Context = this,
                     Enabled = true,
                     Id = new Guid("a7c4c615-cfb1-464b-b252-925be0a19446"),
@@ -756,8 +800,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                 string commandText =
                     "SELECT " +
                     "DatabasePropertyEx(@name, 'Edition') as edition,  " +
+                    "DatabasePropertyEx(@name, 'ServiceObjective') as serviceObjective,  " +
                     "DatabasePropertyEx(@name, 'MaxSizeInBytes') as maxSizeBytes";
-                //TODO: need to get current SLO here.
 
                 builder["Database"] = db.Name;
                 using (var connection = CreateConnection())
@@ -776,8 +820,9 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                         {
                             while (reader.Read())
                             {
-                                db.MaxSizeBytes = (long)reader["maxSizeBytes"];
-                                db.Edition = (string)reader["edition"];
+                                db.MaxSizeBytes = ConvertFromDbValue<long>(reader["maxSizeBytes"]);
+                                db.Edition = ConvertFromDbValue<string>(reader["edition"]);
+                                db.ServiceObjectiveName = ConvertFromDbValue<string>(reader["serviceObjective"]);
                             }
                         }
                     }
@@ -786,6 +831,11 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
             if (db.MaxSizeBytes.HasValue)
             {
                 db.MaxSizeGB = (int)(db.MaxSizeBytes / (1024 * 1024 * 1024));
+            }
+            if (!string.IsNullOrEmpty(db.ServiceObjectiveName))
+            {
+                db.ServiceObjective = GetServiceObjective(db.ServiceObjectiveName);
+                db.ServiceObjectiveId = db.ServiceObjective.Id;
             }
 
             builder["Database"] = null;

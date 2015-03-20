@@ -14,10 +14,10 @@
 
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Websites
 {
@@ -57,11 +57,11 @@ namespace Microsoft.WindowsAzure.Commands.Websites
             AzureEnvironment environment;
             if (string.IsNullOrEmpty(Environment))
             {
-                environment = AzureSession.CurrentContext.Environment;
+                environment = Profile.Context.Environment;
             }
             else
             {
-                environment = DefaultProfileClient.Profile.Environments[Environment];
+                environment = Profile.Environments[Environment];
             }
 
             string managementPortalUrl = environment.GetManagementPortalUrlWithRealm(Realm);
