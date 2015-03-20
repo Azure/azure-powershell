@@ -149,27 +149,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             FileStream fileStream = null;
             byte[] data = null;
+            string certInBase64EncodedForm = null;
 
             try
             {
                 fileStream = new FileStream(certFileName, FileMode.Open, FileAccess.Read);
 
                 // If the file size is more than 1MB, fail the call - this is just to avoid Dos Attacks
-                int size = (int)fileStream.Length;
-                if (size > 1048576)
+                if (fileStream.Length > 1048576)
                 {
-                    throw new Exception(string.Format("The file {0} size exceeds 1MB. Please provide a file whose size is utmost 1 MB", certFileName));
+                    throw new Exception("The Certficate size exceeds 1MB. Please provide a file whose size is utmost 1 MB");
                 }
 
+                int size = (int)fileStream.Length;
                 data = new byte[size];
                 size = fileStream.Read(data, 0, size);
+
+                // Check if the file is a valid certificate before sending it to service
+                X509Certificate2 x509 = new X509Certificate2();
+                x509.Import(data);
+                if (string.IsNullOrEmpty(x509.Thumbprint))
+                {
+                    throw new Exception("The thumbprint of Certificate is null or empty");
+                }
+
+                certInBase64EncodedForm = Convert.ToBase64String(data);
+            }
+            catch (Exception e)
+            {
+                certInBase64EncodedForm = null;
+                throw new ArgumentException(e.Message, certFileName);
             }
             finally
             {
-                fileStream.Close();
+                if (null != fileStream)
+                {
+                    fileStream.Close();
+                }
             }
 
-            string certInBase64EncodedForm = Convert.ToBase64String(data);
             return certInBase64EncodedForm;
         }
 
