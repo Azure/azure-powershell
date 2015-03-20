@@ -21,20 +21,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.VirtualDevice
     [Cmdlet(VerbsCommon.New, "AzureStorSimpleVirtualDevice"), OutputType(typeof(string))]
     public class NewAzureStorSimpleVirtualDeviceCommand : StorSimpleCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualDeviceName, ParameterSetName = StorSimpleCmdletParameterSet.CreateNewStorageAccount)]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualDeviceName, ParameterSetName = StorSimpleCmdletParameterSet.UseExistingStorageAccount)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualDeviceName)]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string VirtualDeviceName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualNetworkName, ParameterSetName = StorSimpleCmdletParameterSet.CreateNewStorageAccount)]
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualNetworkName, ParameterSetName = StorSimpleCmdletParameterSet.UseExistingStorageAccount)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VirtualNetworkName)]
         [Alias("VNetName")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.SubNetName, ParameterSetName = StorSimpleCmdletParameterSet.CreateNewStorageAccount)]
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.SubNetName, ParameterSetName = StorSimpleCmdletParameterSet.UseExistingStorageAccount)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.SubNetName)]
         [ValidateNotNullOrEmpty]
         public string SubNetName { get; set; }
 
