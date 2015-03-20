@@ -23,7 +23,7 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Add-AzureRemoteAppUser</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -35,7 +35,10 @@
 				<maml:description>
 					<maml:para>Select a user type from OrgId or MicrosoftAccount.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">PrincipalProviderType</command:parameterValue>
+				<command:parameterValueGroup>
+				<command:parameterValue required="false"  variableLength="false" >OrgId</command:parameterValue>
+				<command:parameterValue required="false"  variableLength="false" >MicrosoftAccount</command:parameterValue>
+				</command:parameterValueGroup>
 			</command:parameter>
 			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="3">
 				<maml:name>UserUpn</maml:name>
@@ -48,7 +51,7 @@
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>CollectionName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -65,7 +68,7 @@
 			<maml:name>Type</maml:name>
 			<maml:description>
 				<maml:para>Select a user type from OrgId or MicrosoftAccount.</maml:para>
-								
+				<maml:para>The following values are permitted for this object type.</maml:para>				
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">PrincipalProviderType</command:parameterValue>
 			<dev:type>
@@ -73,6 +76,20 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
+			<dev:possibleValues>
+				<dev:possibleValue>
+					<dev:value>OrgId</dev:value>
+					<maml:description>
+					    <maml:para></maml:para>
+					</maml:description>
+				</dev:possibleValue>
+				<dev:possibleValue>
+					<dev:value>MicrosoftAccount</dev:value>
+					<maml:description>
+					    <maml:para></maml:para>
+					</maml:description>
+				</dev:possibleValue>
+			</dev:possibleValues>
 		</command:parameter>
 		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="3">
 			<maml:name>UserUpn</maml:name>
@@ -370,7 +387,7 @@ Disconnect-AzureRemoteAppSession -CollectionName ContosoApps -UserUpn user@conto
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRemoteAppCollection</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="true" pipelineInput="false" position="2">
+			<command:parameter required="false" variableLength="false" globbing="true" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection. </maml:para>
@@ -381,7 +398,7 @@ Disconnect-AzureRemoteAppSession -CollectionName ContosoApps -UserUpn user@conto
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="true" pipelineInput="false" position="2">
+		<command:parameter required="false" variableLength="false" globbing="true" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>CollectionName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Microsoft Azure RemoteApp collection. </maml:para>
@@ -926,7 +943,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRemoteAppOperationResult</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>TrackingId</maml:name>
 				<maml:description>
 					<maml:para>Tracking identifier of an operation.</maml:para>
@@ -937,7 +954,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>TrackingId</maml:name>
 			<maml:description>
 				<maml:para>Tracking identifier of an operation.</maml:para>
@@ -1115,7 +1132,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRemoteAppProgram</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection. </maml:para>
@@ -1132,7 +1149,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRemoteAppProgram</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection. </maml:para>
@@ -1163,7 +1180,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>CollectionName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Microsoft Azure RemoteApp collection. </maml:para>
@@ -1456,7 +1473,7 @@ Get-AzureRemoteAppSession -CollectionName ContosoApps                        </d
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRemoteAppStartMenuProgram</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -1474,7 +1491,7 @@ Get-AzureRemoteAppSession -CollectionName ContosoApps                        </d
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>CollectionName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -1763,7 +1780,7 @@ Get-AzureRemoteAppTemplateImage -ImageName ContosoApps                        </
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRemoteAppUser</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -1781,7 +1798,7 @@ Get-AzureRemoteAppTemplateImage -ImageName ContosoApps                        </
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>CollectionName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -2691,7 +2708,7 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>New-AzureRemoteAppCollection</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection. </maml:para>
@@ -2764,7 +2781,7 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>New-AzureRemoteAppCollection</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection. </maml:para>
@@ -2817,7 +2834,7 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>CollectionName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Microsoft Azure RemoteApp collection. </maml:para>
@@ -3244,7 +3261,10 @@ New-AzureRemoteAppTemplateImage -ImageName ContosoApps -Location &quot;West Euro
 				<maml:description>
 					<maml:para>Type of gateway routing to be used. (e.g. StaticRouting or DynamicRouting).</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">GatewayType</command:parameterValue>
+				<command:parameterValueGroup>
+				<command:parameterValue required="false"  variableLength="false" >StaticRouting</command:parameterValue>
+				<command:parameterValue required="false"  variableLength="false" >DynamicRouting</command:parameterValue>
+				</command:parameterValueGroup>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>VNetName</maml:name>
@@ -3302,7 +3322,7 @@ New-AzureRemoteAppTemplateImage -ImageName ContosoApps -Location &quot;West Euro
 			<maml:name>GatewayType</maml:name>
 			<maml:description>
 				<maml:para>Type of gateway routing to be used. (e.g. StaticRouting or DynamicRouting).</maml:para>
-								
+				<maml:para>The following values are permitted for this object type.</maml:para>				
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">GatewayType</command:parameterValue>
 			<dev:type>
@@ -3310,6 +3330,20 @@ New-AzureRemoteAppTemplateImage -ImageName ContosoApps -Location &quot;West Euro
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
+			<dev:possibleValues>
+				<dev:possibleValue>
+					<dev:value>StaticRouting</dev:value>
+					<maml:description>
+					    <maml:para></maml:para>
+					</maml:description>
+				</dev:possibleValue>
+				<dev:possibleValue>
+					<dev:value>DynamicRouting</dev:value>
+					<maml:description>
+					    <maml:para></maml:para>
+					</maml:description>
+				</dev:possibleValue>
+			</dev:possibleValues>
 		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue)" position="named">
 			<maml:name>LocalNetworkAddressSpace</maml:name>
@@ -3487,7 +3521,7 @@ b0ca9d1b-d1b9-4f24-9a08-5e021926587f                        </dev:code>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Publish-AzureRemoteAppProgram</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection. </maml:para>
@@ -3524,7 +3558,7 @@ b0ca9d1b-d1b9-4f24-9a08-5e021926587f                        </dev:code>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Publish-AzureRemoteAppProgram</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection. </maml:para>
@@ -3575,7 +3609,7 @@ b0ca9d1b-d1b9-4f24-9a08-5e021926587f                        </dev:code>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>CollectionName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Microsoft Azure RemoteApp collection. </maml:para>
@@ -4056,7 +4090,7 @@ Remove-AzureRemoteAppTemplateImage -ImageName ContosoApps                       
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Remove-AzureRemoteAppUser</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -4068,7 +4102,10 @@ Remove-AzureRemoteAppTemplateImage -ImageName ContosoApps                       
 				<maml:description>
 					<maml:para>Select a user type from OrgId or MicrosoftAccount.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">PrincipalProviderType</command:parameterValue>
+				<command:parameterValueGroup>
+				<command:parameterValue required="false"  variableLength="false" >OrgId</command:parameterValue>
+				<command:parameterValue required="false"  variableLength="false" >MicrosoftAccount</command:parameterValue>
+				</command:parameterValueGroup>
 			</command:parameter>
 			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="3">
 				<maml:name>UserUpn</maml:name>
@@ -4081,7 +4118,7 @@ Remove-AzureRemoteAppTemplateImage -ImageName ContosoApps                       
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>CollectionName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -4098,7 +4135,7 @@ Remove-AzureRemoteAppTemplateImage -ImageName ContosoApps                       
 			<maml:name>Type</maml:name>
 			<maml:description>
 				<maml:para>Select a user type from OrgId or MicrosoftAccount.</maml:para>
-								
+				<maml:para>The following values are permitted for this object type.</maml:para>				
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">PrincipalProviderType</command:parameterValue>
 			<dev:type>
@@ -4106,6 +4143,20 @@ Remove-AzureRemoteAppTemplateImage -ImageName ContosoApps                       
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
+			<dev:possibleValues>
+				<dev:possibleValue>
+					<dev:value>OrgId</dev:value>
+					<maml:description>
+					    <maml:para></maml:para>
+					</maml:description>
+				</dev:possibleValue>
+				<dev:possibleValue>
+					<dev:value>MicrosoftAccount</dev:value>
+					<maml:description>
+					    <maml:para></maml:para>
+					</maml:description>
+				</dev:possibleValue>
+			</dev:possibleValues>
 		</command:parameter>
 		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="3">
 			<maml:name>UserUpn</maml:name>
@@ -4847,7 +4898,7 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Set-AzureRemoteAppCollection</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -4886,7 +4937,7 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>CollectionName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -5379,7 +5430,7 @@ TrackingId
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Unpublish-AzureRemoteAppProgram</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -5422,7 +5473,7 @@ TrackingId
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>CollectionName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -5541,7 +5592,7 @@ TrackingId
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Update-AzureRemoteAppCollection</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>CollectionName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
@@ -5577,7 +5628,7 @@ TrackingId
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>CollectionName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
