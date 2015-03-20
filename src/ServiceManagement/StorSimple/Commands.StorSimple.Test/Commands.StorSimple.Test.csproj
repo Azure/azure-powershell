@@ -134,7 +134,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
+    <None Include="App.config" />    <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="ScenarioTests\BackupPolicyTests.ps1">
