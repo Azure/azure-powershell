@@ -2060,6 +2060,321 @@
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>New-AzureDataFactoryEncryptValue</command:name>
+      <maml:description>
+        <maml:para>Encrypts sensitive data.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>New</command:verb>
+      <command:noun>AzureDataFactoryEncryptValue</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The New-AzureDataFactoryEncryptValue cmdlet encrypts sensitive data, such as a password or a MicrosoftSQL Server connection string, and returns an encrypted value.</maml:para>
+      <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-AzureDataFactoryEncryptValue</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of an Azure resource group. This cmdlet encrypts data for the group that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+          <maml:name>DataFactoryName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a data factory. This cmdlet encrypts data for the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="">
+          <maml:name>Value</maml:name>
+          <maml:description>
+            <maml:para>Specifies the value to encrypt. For an on-premises SQL Server linked service and an on-premises Oracle linked service, use a connection string. For on premises file system linked service, if the file system is local to the gateway machine, use Local or localhost, and if the file system is on a server different from the gateway machine, use \\servername.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
+          <maml:name>GatewayName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the gateway. This cmdlet encrypts data for the gateway that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
+          <maml:name>Credential</maml:name>
+          <maml:description>
+            <maml:para>Specifies the Windows authentication credentials (user name and password) to be used. This cmdlet encrypts the credential data you specify here.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
+          <maml:name>Type</maml:name>
+          <maml:description>
+            <maml:para>Specifies the linked service type. This cmdlet encrypts data for the linked service type that this parameter specifies. Allowed values: OnPremisesSqlLinkedService, OnPremisesFileSystemLinkedService and OnPremisesOracleLinkedService.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureDataFactoryEncryptValue</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>DataFactory</maml:name>
+          <maml:description>
+            <maml:para>Specifies a PSDataFactory object. This cmdlet encrypts data for the data factory that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="">
+          <maml:name>Value</maml:name>
+          <maml:description>
+            <maml:para>Specifies the value to encrypt. For an on-premises SQL linked service and an on-premises Oracle linked service, use a connection string. For on premises file system linked service, if the file system is local to the gateway machine, use Local or localhost, and if the file system is on a server different from the gateway machine, use \\servername.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="">
+          <maml:name>GatewayName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the gateway. This cmdlet encrypts data for the gateway that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
+          <maml:name>Credential</maml:name>
+          <maml:description>
+            <maml:para>Specifies the Windows authentication credentials (user name and password) to be used. This cmdlet encrypts the credential data you specify here.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6" aliases="">
+          <maml:name>Type</maml:name>
+          <maml:description>
+            <maml:para>Specifies the linked service type. This cmdlet encrypts data for the linked service type that this parameter specifies. Allowed values: OnPremisesSqlLinkedService, OnPremisesFileSystemLinkedService and OnPremisesOracleLinkedService.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+        <maml:name>DataFactory</maml:name>
+        <maml:description>
+          <maml:para>Specifies a PSDataFactory object. This cmdlet encrypts data for the data factory that this parameter specifies.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
+        <dev:type>
+          <maml:name>PSDataFactory</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
+        <maml:name>DataFactoryName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of a data factory. This cmdlet encrypts data for the data factory that this parameter specifies.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
+        <maml:name>GatewayName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the gateway. This cmdlet encrypts data for the gateway that this parameter specifies.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of an Azure resource group. This cmdlet encrypts data for the group that this parameter specifies.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="">
+        <maml:name>Value</maml:name>
+        <maml:description>
+          <maml:para>Specifies the value to encrypt. For an on-premises SQL Server linked service and an on-premises Oracle linked service, use a connection string. For on-premises file system linked service, if the file system is local to the gateway machine, use Local or localhost, and if the file system is on a server different from the gateway machine, use \\servername.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">SecureString</command:parameterValue>
+        <dev:type>
+          <maml:name>SecureString</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5" aliases="">
+        <maml:name>Credential</maml:name>
+        <maml:description>
+          <maml:para>Specifies the Windows authentication credentials (user name and password) to be used. This cmdlet encrypts the credential data you specify here.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        <dev:type>
+          <maml:name>PSCredential</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="6" aliases="">
+        <maml:name>Type</maml:name>
+        <maml:description>
+          <maml:para>Specifies the linked service type. This cmdlet encrypts data for the linked service type that this parameter specifies. Allowed values: OnPremisesSqlLinkedService and OnPremisesFileSystemLinkedService.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri></maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description></maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.String </maml:name>
+          <maml:uri></maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description></maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Encrypt a connection string</maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt; $Value = ConvertTo-SecureString 'Data Source=ContosoServer;Initial Catalog=catelog;user id =user123;password=password123' -AsPlainText -ForcePS
+        </dev:code>
+        <dev:code>
+          PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Type OnPremisesSqlLinkedService
+          data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
+        </dev:code>
+        <dev:remarks>
+          <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified connection string to a SecureString object, and then stores that object in the $Value variable. For more information, type Get-Help ConvertTo-SecureString. Allowed values: SQL Server or Oracle connection string.</maml:para>
+          <maml:para>The second command creates an encrypted value for the object stored in $Value for the specified data factory, gateway, resource group, and linked service type.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Encrypt a string</maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt; $Value = ConvertTo-SecureString 'Test123' -AsPlainText -ForcePS
+        </dev:code>
+        <dev:code>
+          PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -ResourceGroupName "ADF" -Value $Value
+          $Encrypted$String$KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpxdmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
+        </dev:code>
+        <dev:remarks>
+          <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified string to a SecureString object, and then stores that object in the $Value variable.</maml:para>
+          <maml:para>The second command creates an encrypted value for the object stored in $Value for the specified data factory and resource group. </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 3: Encrypt a windows authentication connection string</maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt; $Value = ConvertTo-SecureString 'Data Source=ContosoServer;Initial Catalog=catelog;Integrated Security=True' -AsPlainText -Force
+        </dev:code>
+        <dev:code>
+          PS C:\&gt;$Credential = Get-Credential
+        </dev:code>
+        <dev:code>
+          PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesSqlLinkedService
+          data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
+        </dev:code>
+        <dev:remarks>
+          <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified connection string to a SecureString object, and then stores that object in the $Value variable. For more information, type Get-Help ConvertTo-SecureString. Allowed value: SQL Server connection string.</maml:para>
+          <maml:para>The second command uses the Get-Credential cmdlet to collect the windows authentication (user name and password), and then stores that PSCredential object in the $Credential variable. For more information, type Get-Help Get-Credential.</maml:para>
+          <maml:para>The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, resource group, and linked service type.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 4: Encrypt the server name and credentials for File system linked service</maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt; $Value = ConvertTo-SecureString '\\servername' -AsPlainText -Force
+          PS C:\&gt; $Credential = Get-Credential
+          PS C:\&gt; New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesFileSystemLinkedService
+          KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
+        </dev:code>
+        <dev:remarks>
+          <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified string to a SecureString object, and then stores that object in the $Value variable.</maml:para>
+          <maml:para>The second command uses the Get-Credential cmdlet to collect the windows authentication (user name and password), and then stores that PSCredential object in the $Credential variable. For more information, type Get-Help Get-Credential.</maml:para>
+          <maml:para>The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, resource group, and linked service type. </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>New-AzureDataFactoryGateway</command:name>
       <maml:description>
         <maml:para>Creates a gateway for Data Factory.</maml:para>
