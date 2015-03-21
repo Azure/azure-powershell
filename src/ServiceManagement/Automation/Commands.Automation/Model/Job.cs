@@ -47,12 +47,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Id = job.Properties.JobId;
             this.CreationTime = job.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = job.Properties.LastModifiedTime.ToLocalTime();
-            this.StartTime = job.Properties.StartTime.HasValue ? job.Properties.StartTime : null;
+            this.StartTime = job.Properties.StartTime.HasValue ? job.Properties.StartTime.Value.ToLocalTime() : (DateTimeOffset?)null;
             this.Status = job.Properties.Status;
             this.StatusDetails = job.Properties.StatusDetails;
             this.RunbookName = job.Properties.Runbook.Name;
             this.Exception = job.Properties.Exception;
-            this.EndTime = job.Properties.EndTime.HasValue ? job.Properties.StartTime : null;
+            this.EndTime = job.Properties.EndTime.HasValue ? job.Properties.EndTime.Value.ToLocalTime() : (DateTimeOffset?) null;
             this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
             this.JobParameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in job.Properties.Parameters.Where(kvp => 0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture,
