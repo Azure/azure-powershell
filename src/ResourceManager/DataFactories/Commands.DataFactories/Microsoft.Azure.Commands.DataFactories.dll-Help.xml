@@ -2296,29 +2296,7 @@
         </command:commandLines>
       </command:example>
       <command:example>
-        <maml:title>Example 2: Encrypt a string</maml:title>
-        <maml:introduction>
-          <maml:para></maml:para>
-        </maml:introduction>
-        <dev:code>
-          PS C:\&gt; $Value = ConvertTo-SecureString 'Test123' -AsPlainText -ForcePS
-        </dev:code>
-        <dev:code>
-          PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -ResourceGroupName "ADF" -Value $Value
-          $Encrypted$String$KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpxdmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
-        </dev:code>
-        <dev:remarks>
-          <maml:para>The first command uses the ConvertTo-SecureString cmdlet to convert the specified string to a SecureString object, and then stores that object in the $Value variable.</maml:para>
-          <maml:para>The second command creates an encrypted value for the object stored in $Value for the specified data factory and resource group. </maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>Example 3: Encrypt a windows authentication connection string</maml:title>
+        <maml:title>Example 2: Encrypt a windows authentication connection string</maml:title>
         <maml:introduction>
           <maml:para></maml:para>
         </maml:introduction>
@@ -2344,7 +2322,7 @@
         </command:commandLines>
       </command:example>
       <command:example>
-        <maml:title>Example 4: Encrypt the server name and credentials for File system linked service</maml:title>
+        <maml:title>Example 3: Encrypt the server name and credentials for File system linked service</maml:title>
         <maml:introduction>
           <maml:para></maml:para>
         </maml:introduction>
