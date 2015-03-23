@@ -22,17 +22,6 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     public partial class DataFactoryClient
     {
-        public virtual string CloudEncryptString(SecureString value, string resourceGroupName, string dataFactoryName)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException("value");
-            }
-            
-            return Extensions.Encrypt((DataPipelineManagementClient) DataPipelineManagementClient, value,
-                resourceGroupName, dataFactoryName);
-        }
-
         public virtual string OnPremisesEncryptString(SecureString value, string resourceGroupName, string dataFactoryName, string gatewayName, PSCredential credential, string type)
         {
             if (value == null)

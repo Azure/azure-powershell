@@ -14,6 +14,65 @@
 
 <#
 .SYNOPSIS
+Tests creating a Task
+#>
+function Test-CreateTask
+{
+	param([string]$accountName, [string]$workItemName, [string]$jobName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	$taskName1 = "simple"
+	$taskName2= "complex"
+	$cmd = "cmd /c dir /s"
+
+	# Create a simple Task and verify pipeline
+	Get-AzureBatchJob_ST -WorkItemName $workItemName -Name $jobName -BatchContext $context | New-AzureBatchTask_ST -Name $taskName1 -CommandLine $cmd -BatchContext $context
+	$task1 = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Name $taskName1 -BatchContext $context
+
+	# Verify created Task matches expectations
+	Assert-AreEqual $taskName1 $task1.Name
+	Assert-AreEqual $cmd $task1.CommandLine
+
+	# Create a complicated Task
+	$affinityInfo = New-Object Microsoft.Azure.Commands.Batch.Models.PSAffinityInformation
+	$affinityInfo.AffinityId = $affinityId = "affinityId"
+
+	$taskConstraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @([TimeSpan]::FromDays(1),[TimeSpan]::FromDays(2),5)
+	$maxWallClockTime = $taskConstraints.MaxWallClockTime
+	$retentionTime = $taskConstraints.RetentionTime
+	$maxRetryCount = $taskConstraints.MaxRetryCount
+
+	$resourceFiles = @{"file1"="https://testacct.blob.core.windows.net/"}
+
+	$envSettings = @{"env1"="value1";"env2"="value2"}
+
+	New-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Name $taskName2 -CommandLine $cmd -RunElevated -EnvironmentSettings $envSettings -ResourceFiles $resourceFiles -AffinityInformation $affinityInfo -TaskConstraints $taskConstraints -BatchContext $context
+		
+	$task2 = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Name $taskName2 -BatchContext $context
+		
+	# Verify created Task matches expectations
+	Assert-AreEqual $taskName2 $task2.Name
+	Assert-AreEqual $cmd $task2.CommandLine
+	Assert-AreEqual $true $task2.RunElevated
+	Assert-AreEqual $affinityId $task2.AffinityInformation.AffinityId
+	Assert-AreEqual $maxWallClockTime $task2.TaskConstraints.MaxWallClockTime
+	Assert-AreEqual $retentionTime $task2.TaskConstraints.RetentionTime
+	Assert-AreEqual $maxRetryCount $task2.TaskConstraints.MaxRetryCount
+	Assert-AreEqual $resourceFiles.Count $task2.ResourceFiles.Count
+	foreach($r in $task2.ResourceFiles)
+	{
+		Assert-AreEqual $resourceFiles[$r.FilePath] $r.BlobSource
+	}
+	Assert-AreEqual $envSettings.Count $task2.EnvironmentSettings.Count
+	foreach($e in $task2.EnvironmentSettings)
+	{
+		Assert-AreEqual $envSettings[$e.Name] $e.Value
+	}
+}
+
+<#
+.SYNOPSIS
 Tests that calling Get-AzureBatchTask without required parameters throws error
 #>
 function Test-GetTaskRequiredParameters
@@ -132,4 +191,32 @@ function Test-ListTaskPipeline
 	# Get WorkItem into Get Job into Get Task
 	$task = Get-AzureBatchWorkItem_ST -Name $workItemName -BatchContext $context | Get-AzureBatchJob_ST -BatchContext $context | Get-AzureBatchTask_ST -BatchContext $context
 	Assert-AreEqual $taskName $task.Name
+}
+
+<#
+.SYNOPSIS
+Tests deleting a Task
+#>
+function Test-DeleteTask
+{
+	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskName, [string]$usePipeline)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Verify the task exists
+	$tasks = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -BatchContext $context
+	Assert-AreEqual 1 $tasks.Count
+
+	if ($usePipeline -eq '1')
+	{
+		Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Name $taskName -BatchContext $context | Remove-AzureBatchTask_ST -Force -BatchContext $context
+	}
+	else
+	{
+		Remove-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Name $taskName -Force -BatchContext $context
+	}
+
+	# Verify the job was deleted
+	$tasks = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -BatchContext $context
+	Assert-Null $tasks
 }
