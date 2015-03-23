@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                // Check if vault has servers registered to it - prevent the operation.
                 this.ConfirmAction(
                 this.Force.IsPresent,
                 string.Format(Properties.Resources.RemoveVaultWarning, this.Vault.Name),

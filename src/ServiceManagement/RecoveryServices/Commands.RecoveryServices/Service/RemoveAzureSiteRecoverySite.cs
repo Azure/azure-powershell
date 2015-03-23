@@ -58,8 +58,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                //// Check if site has registered things in it
-
+                // Check if site has registered servers and prevent the operation
+                // But the rest api is exposed and can be called directly
+                // - best to add this validation in service then before deleting a site
                 this.ConfirmAction(
                 this.Force.IsPresent,
                 string.Format(Properties.Resources.RemoveSiteWarning, this.Name),
