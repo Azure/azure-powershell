@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             catch (Exception e)
             {
                 certInBase64EncodedForm = null;
-                throw new ArgumentException(e.Message, certFileName);
+                throw new ArgumentException(e.Message, certFileName, e);
             }
             finally
             {

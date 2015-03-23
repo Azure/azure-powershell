@@ -266,7 +266,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                     RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
-                    //// Currently Data Encryption is not supported.
                     EncryptStoredData = this.EncryptStoredData,
                     ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
                     RecoveryPoints = this.RecoveryPoints,
