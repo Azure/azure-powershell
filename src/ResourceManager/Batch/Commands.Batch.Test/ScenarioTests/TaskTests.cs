@@ -28,6 +28,34 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateTask()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string resourceGroupName = "test-new-task";
+            string accountName = "testnewtask";
+            string location = "eastus";
+            string workItemName = "testName";
+            string jobName = null;
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-CreateTask '{0}' '{1}' '{2}'", accountName, workItemName, jobName) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
+                    ScenarioTestHelpers.CreateTestWorkItem(controller, context, workItemName);
+                    jobName = ScenarioTestHelpers.WaitForRecentJob(controller, context, workItemName);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteWorkItem(controller, context, workItemName);
+                    ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetTaskRequiredParameters()
         {
             BatchController controller = BatchController.NewInstance;
@@ -66,13 +94,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
-                    ScenarioTestHelpers.CreateTestWorkItem(context, workItemName);
+                    ScenarioTestHelpers.CreateTestWorkItem(controller, context, workItemName);
                     jobName = ScenarioTestHelpers.WaitForRecentJob(controller, context, workItemName);
-                    ScenarioTestHelpers.CreateTestTask(context, workItemName, jobName, taskName);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteWorkItem(context, workItemName);
+                    ScenarioTestHelpers.DeleteWorkItem(controller, context, workItemName);
                     ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
                 },
                 TestUtilities.GetCallingClass(),
@@ -100,15 +128,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
-                    ScenarioTestHelpers.CreateTestWorkItem(context, workItemName);
+                    ScenarioTestHelpers.CreateTestWorkItem(controller, context, workItemName);
                     jobName = ScenarioTestHelpers.WaitForRecentJob(controller, context, workItemName);
-                    ScenarioTestHelpers.CreateTestTask(context, workItemName, jobName, taskName1);
-                    ScenarioTestHelpers.CreateTestTask(context, workItemName, jobName, taskName2);
-                    ScenarioTestHelpers.CreateTestTask(context, workItemName, jobName, taskName3);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName1);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName2);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName3);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteWorkItem(context, workItemName);
+                    ScenarioTestHelpers.DeleteWorkItem(controller, context, workItemName);
                     ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
                 },
                 TestUtilities.GetCallingClass(),
@@ -135,15 +163,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
-                    ScenarioTestHelpers.CreateTestWorkItem(context, workItemName);
+                    ScenarioTestHelpers.CreateTestWorkItem(controller, context, workItemName);
                     jobName = ScenarioTestHelpers.WaitForRecentJob(controller, context, workItemName);
-                    ScenarioTestHelpers.CreateTestTask(context, workItemName, jobName, taskName1);
-                    ScenarioTestHelpers.CreateTestTask(context, workItemName, jobName, taskName2);
-                    ScenarioTestHelpers.CreateTestTask(context, workItemName, jobName, taskName3);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName1);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName2);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName3);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteWorkItem(context, workItemName);
+                    ScenarioTestHelpers.DeleteWorkItem(controller, context, workItemName);
                     ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
                 },
                 TestUtilities.GetCallingClass(),
@@ -170,15 +198,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
-                    ScenarioTestHelpers.CreateTestWorkItem(context, workItemName);
+                    ScenarioTestHelpers.CreateTestWorkItem(controller, context, workItemName);
                     jobName = ScenarioTestHelpers.WaitForRecentJob(controller, context, workItemName);
-                    ScenarioTestHelpers.CreateTestTask(context, workItemName, jobName, taskName1);
-                    ScenarioTestHelpers.CreateTestTask(context, workItemName, jobName, taskName2);
-                    ScenarioTestHelpers.CreateTestTask(context, workItemName, jobName, taskName3);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName1);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName2);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName3);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteWorkItem(context, workItemName);
+                    ScenarioTestHelpers.DeleteWorkItem(controller, context, workItemName);
                     ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
                 },
                 TestUtilities.GetCallingClass(),
@@ -202,24 +230,105 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
-                    ScenarioTestHelpers.CreateTestWorkItem(context, workItemName);
+                    ScenarioTestHelpers.CreateTestWorkItem(controller, context, workItemName);
                     jobName = ScenarioTestHelpers.WaitForRecentJob(controller, context, workItemName);
-                    ScenarioTestHelpers.CreateTestTask(context, workItemName, jobName, taskName);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteWorkItem(context, workItemName);
+                    ScenarioTestHelpers.DeleteWorkItem(controller, context, workItemName);
                     ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
                 },
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDeleteTask()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string resourceGroupName = "test-delete-task";
+            string accountName = "testdeletetask";
+            string location = "eastus";
+            string workItemName = "testWorkItem";
+            string jobName = null;
+            string taskName = "testTask";
+
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-DeleteTask '{0}' '{1}' '{2}' '{3}' '0'", accountName, workItemName, jobName, taskName) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
+                    ScenarioTestHelpers.CreateTestWorkItem(controller, context, workItemName);
+                    jobName = ScenarioTestHelpers.WaitForRecentJob(controller, context, workItemName);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteWorkItem(controller, context, workItemName);
+                    ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDeleteTaskPipeline()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string resourceGroupName = "test-delete-task-pipe";
+            string accountName = "testdeletetaskpipe";
+            string location = "eastus";
+            string workItemName = "testWorkItem";
+            string jobName = null;
+            string taskName = "testTask";
+
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-DeleteTask '{0}' '{1}' '{2}' '{3}' '1'", accountName, workItemName, jobName, taskName) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.CreateTestAccountAndResourceGroup(controller, resourceGroupName, accountName, location);
+                    ScenarioTestHelpers.CreateTestWorkItem(controller, context, workItemName);
+                    jobName = ScenarioTestHelpers.WaitForRecentJob(controller, context, workItemName);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, workItemName, jobName, taskName);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteWorkItem(controller, context, workItemName);
+                    ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
     [Cmdlet(VerbsCommon.Get, "AzureBatchTask_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
     public class GetBatchTaskScenarioTestCommand : GetBatchTaskCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.New, "AzureBatchTask_ST")]
+    public class NewBatchTaskScenarioTestCommand : NewBatchTaskCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Remove, "AzureBatchTask_ST")]
+    public class RemoveBatchTaskScenarioTestCommand : RemoveBatchTaskCommand
     {
         public override void ExecuteCmdlet()
         {

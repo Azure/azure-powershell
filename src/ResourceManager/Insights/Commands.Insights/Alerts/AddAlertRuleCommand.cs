@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         public double Threshold { get; set; }
 
         /// <summary>
-        /// Gets or sets the ResourceUri parameter
+        /// Gets or sets the ResourceId parameter
         /// </summary>
-        [Parameter(ParameterSetName = AddMetricAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource uri for rule")]
-        [Parameter(ParameterSetName = AddEventAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource uri for rule")]
+        [Parameter(ParameterSetName = AddMetricAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id for rule")]
+        [Parameter(ParameterSetName = AddEventAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id for rule")]
         [ValidateNotNullOrEmpty]
-        public string ResourceUri { get; set; }
+        public string ResourceId { get; set; }
 
         #endregion
 
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     OperationName = this.OperationName,
                     ResourceGroupName = this.ResourceGroup,
                     ResourceProviderName = this.ResourceProvider,
-                    ResourceUri = this.ResourceUri,
+                    ResourceUri = this.ResourceId,
                     Status = this.Status,
                     SubStatus = this.SubStatus,
                     Claims = new RuleManagementEventClaimsDataSource()
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 DataSource = new RuleMetricDataSource()
                 {
                     MetricName = this.MetricName,
-                    ResourceUri = this.ResourceUri,
+                    ResourceUri = this.ResourceId,
                 },
                 Operator = this.Operator,
                 Threshold = this.Threshold,
@@ -251,12 +251,11 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     },
                 },
 
-                // NOTE: Do not change this since the portal uses these tags and their contents.
-                // Example: if the value associated with $type changes the portal will not show the alert rule event if it is working
+                // DO NOT REMOVE OR CHANGE the following. The two elements in the Tags are required by other services.
                 Tags = new LazyDictionary<string, string>()
                 {
                     {"$type" , "Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary,Microsoft.WindowsAzure.Management.Common.Storage"},
-                    {"hidden-link:" + this.ResourceUri, "Resource" },
+                    {"hidden-link:" + this.ResourceId, "Resource" },
                 },
             };
         }

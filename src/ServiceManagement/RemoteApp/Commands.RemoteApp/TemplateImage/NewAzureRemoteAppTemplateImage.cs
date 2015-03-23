@@ -71,6 +71,11 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             HelpMessage = "Resumes disrupted upload of an in-progress image")]
         public SwitchParameter Resume { get; set; }
 
+        public virtual string DetermineParameterSetName()
+        {
+            return this.ParameterSetName;
+        }
+
         private LongRunningTask<NewAzureRemoteAppTemplateImage> task = null;
 
         private void UploadVhd(TemplateImage image)
@@ -432,7 +437,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             // sebsequent call to register is redundent
             RegisterSubscriptionWithRdfeForRemoteApp();
 
-            switch (ParameterSetName)
+            switch (DetermineParameterSetName())
             {
                 case UploadLocalVhd:
                     {

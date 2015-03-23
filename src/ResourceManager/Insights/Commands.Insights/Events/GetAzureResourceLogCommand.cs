@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <summary>
         /// Gets or sets the resourceId parameter of the cmdlet
         /// </summary>
-        [Parameter(Position = 0, ParameterSetName = ResourceUriName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ResourceId")]
+        [Parameter(Position = 0, ParameterSetName = ResourceIdName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ResourceId")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

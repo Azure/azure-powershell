@@ -1,0 +1,58 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/microsoft.insights/autoscalesettings?api-version=2014-04-01",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.15" ]
+            },
+            "ResponseBody": "{\"value\":[{\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS\",\"name\":\"DefaultServerFarm-Default-Web-EastUS\",\"type\":\"Microsoft.Insights/autoscaleSettings\",\"location\":\"East US\",\"tags\":{\"$type\":\"Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage\",\"hidden-link:/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\":\"Resource\"},\"properties\":{\"profiles\":[{\"name\":\"No scheduled times\",\"capacity\":{\"minimum\":\"1\",\"maximum\":\"3\",\"default\":\"1\"},\"rules\":[{\"metricTrigger\":{\"metricName\":\"CpuPercentage\",\"metricNamespace\":\"\",\"metricResourceUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\",\"timeGrain\":\"PT1M\",\"statistic\":\"Average\",\"timeWindow\":\"PT45M\",\"timeAggregation\":\"Average\",\"operator\":\"GreaterThanOrEqual\",\"threshold\":14.0},\"scaleAction\":{\"direction\":\"Increase\",\"type\":\"ChangeCount\",\"value\":\"1\",\"cooldown\":\"PT5M\"}},{\"metricTrigger\":{\"metricName\":\"CpuPercentage\",\"metricNamespace\":\"\",\"metricResourceUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\",\"timeGrain\":\"PT1M\",\"statistic\":\"Average\",\"timeWindow\":\"PT45M\",\"timeAggregation\":\"Average\",\"operator\":\"LessThanOrEqual\",\"threshold\":4.0},\"scaleAction\":{\"direction\":\"Decrease\",\"type\":\"ChangeCount\",\"value\":\"1\",\"cooldown\":\"PT2H\"}},{\"metricTrigger\":{\"metricName\":\"BytesReceived\",\"metricNamespace\":\"\",\"metricResourceUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\",\"timeGrain\":\"PT1M\",\"statistic\":\"Average\",\"timeWindow\":\"PT10M\",\"timeAggregation\":\"Average\",\"operator\":\"LessThanOrEqual\",\"threshold\":50.0},\"scaleAction\":{\"direction\":\"Decrease\",\"type\":\"ChangeCount\",\"value\":\"1\",\"cooldown\":\"PT10M\"}},{\"metricTrigger\":{\"metricName\":\"BytesReceived\",\"metricNamespace\":\"\",\"metricResourceUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\",\"timeGrain\":\"PT1M\",\"statistic\":\"Average\",\"timeWindow\":\"PT5M\",\"timeAggregation\":\"Average\",\"operator\":\"GreaterThanOrEqual\",\"threshold\":100.0},\"scaleAction\":{\"direction\":\"Increase\",\"type\":\"ChangeCount\",\"value\":\"1\",\"cooldown\":\"PT10M\"}}]}],\"enabled\":true,\"name\":\"DefaultServerFarm-Default-Web-EastUS\",\"targetResourceUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\"}}]}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Web, 11 Mar 2015 18:14:01 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Content-Length": [
+                    "2795"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "31999"
+                ],
+                "x-ms-request-id": [
+                    "0b2f8a0e-a963-46e9-9605-0494003ce86b"
+                ],
+                "x-ms-correlation-request-id": [
+                    "53b0e177-fa9b-4896-b391-20006bb949e3"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150311T181401Z:53b0e177-fa9b-4896-b391-20006bb949e3"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        }
+    ],
+  "Names": {
+    "Test-GetAutoscaleSetting": [
+      ""
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}
