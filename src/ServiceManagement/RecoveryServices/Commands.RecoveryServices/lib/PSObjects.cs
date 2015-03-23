@@ -564,6 +564,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     = details.RecoveryPointHistoryDuration;
 
                 this.HyperVReplicaAzureProviderSettingsObject.CanDissociate = profile.CanDissociate;
+                this.HyperVReplicaAzureProviderSettingsObject.EncryptStoredData = details.EncryptionEnabled;
             }
             else if (profile.ReplicationProvider == Constants.HyperVReplica)
             {
