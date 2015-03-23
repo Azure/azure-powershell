@@ -55,20 +55,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // List Tasks using the specified filter
             else
             {
-                if (options.MaxCount <= 0)
-                {
-                    options.MaxCount = Int32.MaxValue;
-                }
                 string jName = options.Job == null ? options.JobName : options.Job.Name;
                 ODATADetailLevel odata = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBT_GetByOData, jName, options.MaxCount));
+                    WriteVerbose(string.Format(Resources.GBT_GetByOData, jName));
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBT_GetNoFilter, jName, options.MaxCount));
+                    WriteVerbose(string.Format(Resources.GBT_GetNoFilter, jName));
                 }
 
                 IEnumerableAsyncExtended<ICloudTask> tasks = null;
@@ -84,7 +80,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     }
                 }
                 Func<ICloudTask, PSCloudTask> mappingFunction = t => { return new PSCloudTask(t); };
-                return new PSAsyncEnumerable<PSCloudTask, ICloudTask>(tasks, mappingFunction).Take(options.MaxCount);
+                return PSAsyncEnumerable<PSCloudTask, ICloudTask>.CreateWithMaxCount(
+                    tasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
             }
         }
 
