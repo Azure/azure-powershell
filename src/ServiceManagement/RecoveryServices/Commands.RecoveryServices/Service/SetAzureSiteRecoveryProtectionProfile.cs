@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Updates Azure Site Recovery Protection Profile.
     /// Protection profile must be associated with the protection container.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSiteRecoveryProtectionProfile", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+    [Cmdlet(VerbsCommon.Set, "AzureSiteRecoveryProtectionProfile", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
     [OutputType(typeof(ASRJob))]
     public class SetAzureSiteRecoveryProtectionProfile : RecoveryServicesCmdletBase
     {
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [ValidateNotNullOrEmpty]
-        public int? ReplicationPort { get; set; }
+        public ushort? ReplicationPort { get; set; }
 
         /// <summary>
         /// Gets or sets the Replication Port of the Protection Profile.
@@ -182,21 +182,49 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
 
-            ushort replicationFrequencyInSeconds = PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
-
+            // The user should always retrieve the protection profile object before passing it on to the update cmdlet.
+            // Otherwise old data might get updated as new
+            // How do we prevent the user from modifying the object itself?
             HyperVReplicaAzureProtectionProfileInput hyperVReplicaAzureProtectionProfileInput
                     = new HyperVReplicaAzureProtectionProfileInput()
                     {
-                        ApplicationConsistentSnapshotFrequencyInHours = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
-                        ReplicationInterval = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds,
-                        OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime,
-                        RecoveryPointHistoryDuration = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryPoints,
-                        EncryptionEnabled = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.EncryptStoredData
+                        ApplicationConsistentSnapshotFrequencyInHours =
+                        this.ApplicationConsistentSnapshotFrequencyInHours.HasValue
+                          ? this.ApplicationConsistentSnapshotFrequencyInHours.GetValueOrDefault()
+                          : this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
+                        OnlineReplicationStartTime = 
+                        this.ReplicationStartTime.HasValue
+                          ? this.ReplicationStartTime.GetValueOrDefault()
+                          : this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime,
+                        RecoveryPointHistoryDuration =
+                        this.RecoveryPoints.HasValue
+                          ? this.RecoveryPoints.GetValueOrDefault()
+                          : this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryPoints,
                     };
 
+            ushort replicationFrequencyInSeconds =
+                PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+            if (string.IsNullOrEmpty(this.ReplicationFrequencyInSeconds))
+            {
+                hyperVReplicaAzureProtectionProfileInput.ReplicationInterval
+                    = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds;
+            }
+            else
+            {
+                hyperVReplicaAzureProtectionProfileInput.ReplicationInterval = replicationFrequencyInSeconds;
+            }
+
             var storageAccount = new CustomerStorageAccount();
-            storageAccount.StorageAccountName = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureStorageAccountName;
             storageAccount.SubscriptionId = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureSubscription;
+            if (string.IsNullOrEmpty(this.RecoveryAzureStorageAccount))
+            {
+                storageAccount.StorageAccountName
+                    = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryAzureStorageAccountName;
+            }
+            else
+            {
+                storageAccount.StorageAccountName = this.RecoveryAzureStorageAccount;
+            }
 
             hyperVReplicaAzureProtectionProfileInput.StorageAccounts = new System.Collections.Generic.List<CustomerStorageAccount>();
             hyperVReplicaAzureProtectionProfileInput.StorageAccounts.Add(storageAccount);
@@ -225,24 +253,71 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ProtectionProfile.ReplicationProvider));
             }
 
+            string replicationMethod = null;
+            if (string.IsNullOrEmpty(this.ReplicationMethod))
+            {
+                replicationMethod
+                    = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationMethod;
+            }
+            else
+            {
+                replicationMethod = this.ReplicationMethod;
+            }
+
+            string authentication = null;
+            if (string.IsNullOrEmpty(this.Authentication))
+            {
+                authentication
+                    = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.Authentication;
+            }
+            else
+            {
+                authentication = this.Authentication;
+            }
+
             HyperVReplicaProtectionProfileInput hyperVReplicaProtectionProfileInput
                     = new HyperVReplicaProtectionProfileInput()
                     {
-                        OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationStartTime,
-                        CompressionEnabled = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.CompressionEnabled,
-                        OnlineReplicationMethod = (string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 1) ? true : false,
-                        RecoveryPoints = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.RecoveryPoints,
-                        ReplicationPort = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationPort,
-                        AllowReplicaDeletion = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.AllowReplicaDeletion,
-                        AllowedAuthenticationType = (ushort)((string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.Authentication, Constants.AuthenticationTypeKerberos, StringComparison.OrdinalIgnoreCase) == 0) ? 1 : 2),
+                        ApplicationConsistentSnapshotFrequencyInHours =
+                        this.ApplicationConsistentSnapshotFrequencyInHours.HasValue
+                          ? this.ApplicationConsistentSnapshotFrequencyInHours.GetValueOrDefault()
+                          : this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
+                        OnlineReplicationStartTime =
+                        this.ReplicationStartTime.HasValue
+                          ? this.ReplicationStartTime.GetValueOrDefault()
+                          : this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime,
+                        RecoveryPoints =
+                        this.RecoveryPoints.HasValue
+                          ? this.RecoveryPoints.GetValueOrDefault()
+                          : this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryPoints,
+                        CompressionEnabled =
+                        this.CompressionEnabled.HasValue
+                          ? (bool)this.CompressionEnabled.GetValueOrDefault()
+                          : this.ProtectionProfile.HyperVReplicaProviderSettingsObject.CompressionEnabled,
+                        OnlineReplicationMethod = 
+                        (string.Compare(replicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 0) ? true : false,
+                        ReplicationPort =
+                        this.ReplicationPort.HasValue
+                          ? this.ReplicationPort.GetValueOrDefault()
+                          : this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationPort,
+                        AllowReplicaDeletion =
+                        this.AllowReplicaDeletion.HasValue
+                          ? (bool)this.AllowReplicaDeletion.GetValueOrDefault()
+                          : this.ProtectionProfile.HyperVReplicaProviderSettingsObject.AllowReplicaDeletion,
+                        AllowedAuthenticationType = (ushort)((string.Compare(authentication, Constants.AuthenticationTypeKerberos, StringComparison.OrdinalIgnoreCase) == 0) ? 1 : 2),
                     };
 
-            if (this.ApplicationConsistentSnapshotFrequencyInHours.HasValue)
+            ushort replicationFrequencyInSeconds =
+                PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+            if (string.IsNullOrEmpty(this.ReplicationFrequencyInSeconds))
             {
-                hyperVReplicaProtectionProfileInput.ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours.Value;
+                hyperVReplicaProtectionProfileInput.ReplicationFrequencyInSeconds
+                    = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds;
             }
-
-            hyperVReplicaProtectionProfileInput.ReplicationFrequencyInSeconds = PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
+            else
+            {
+                hyperVReplicaProtectionProfileInput.ReplicationFrequencyInSeconds = replicationFrequencyInSeconds;
+            }
 
             UpdateProtectionProfileInput updateProtectionProfileInput =
                 new UpdateProtectionProfileInput(
