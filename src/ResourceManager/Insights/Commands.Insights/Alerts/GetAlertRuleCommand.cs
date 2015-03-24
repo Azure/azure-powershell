@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -70,28 +69,22 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletInternal()
         {
-            try
+            if (string.IsNullOrWhiteSpace(this.Name))
             {
-                if (string.IsNullOrWhiteSpace(this.Name))
-                {
-                    // Retrieve all the AlertRules for a ResourceGroup
-                    RuleListResponse result = this.InsightsManagementClient.AlertOperations.ListRulesAsync(resourceGroupName: this.ResourceGroup, targetResourceUri: this.TargetResourceId).Result;
+                // Retrieve all the AlertRules for a ResourceGroup
+                RuleListResponse result = this.InsightsManagementClient.AlertOperations.ListRulesAsync(resourceGroupName: this.ResourceGroup, targetResourceUri: this.TargetResourceId).Result;
 
-                    var records = result.RuleResourceCollection.Value.Select(e => this.DetailedOutput.IsPresent ? (PSManagementItemDescriptor)new PSAlertRule(e) : new PSAlertRuleNoDetails(e));
-                    WriteObject(sendToPipeline: records, enumerateCollection: true);
-                }
-                else
-                {
-                    // Retrieve a single AlertRule determined by the ResourceGroup and the rule name
-                    RuleGetResponse result = this.InsightsManagementClient.AlertOperations.GetRuleAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
-                    WriteObject(sendToPipeline: this.DetailedOutput.IsPresent ? (PSManagementItemDescriptor)new PSAlertRule(result) : new PSAlertRuleNoDetails(result));
-                }
+                var records = result.RuleResourceCollection.Value.Select(e => this.DetailedOutput.IsPresent ? (PSManagementItemDescriptor)new PSAlertRule(e) : new PSAlertRuleNoDetails(e));
+                WriteObject(sendToPipeline: records.ToList());
             }
-            catch (AggregateException ex)
+            else
             {
-                throw ex.Flatten().InnerException;
+                // Retrieve a single AlertRule determined by the ResourceGroup and the rule name
+                RuleGetResponse result = this.InsightsManagementClient.AlertOperations.GetRuleAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
+                var finalResult = new List<PSManagementItemDescriptor> { this.DetailedOutput.IsPresent ? (PSManagementItemDescriptor)new PSAlertRule(result) : new PSAlertRuleNoDetails(result) };
+                WriteObject(sendToPipeline: finalResult);
             }
         }
     }
