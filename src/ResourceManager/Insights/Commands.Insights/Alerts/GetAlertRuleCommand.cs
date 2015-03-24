@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the ResourceGroupName parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = GetAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceGroup name")]
-        [Parameter(ParameterSetName = GetAlertWithNameParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceGroup name")]
-        [Parameter(ParameterSetName = GetAlertWithUriParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceGroup name")]
+        [Parameter(ParameterSetName = GetAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = GetAlertWithNameParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = GetAlertWithUriParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 
@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the TargetResourceUri parameter of the cmdlet
+        /// Gets or sets the TargetResourceId parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = GetAlertWithUriParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert rule target resource uri")]
+        [Parameter(ParameterSetName = GetAlertWithUriParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert rule target resource id")]
         [ValidateNotNullOrEmpty]
-        public string TargetResourceUri { get; set; }
+        public string TargetResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the detailedoutput parameter of the cmdlet
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 if (string.IsNullOrWhiteSpace(this.Name))
                 {
                     // Retrieve all the AlertRules for a ResourceGroup
-                    RuleListResponse result = this.InsightsManagementClient.AlertOperations.ListRulesAsync(resourceGroupName: this.ResourceGroup, targetResourceUri: this.TargetResourceUri).Result;
+                    RuleListResponse result = this.InsightsManagementClient.AlertOperations.ListRulesAsync(resourceGroupName: this.ResourceGroup, targetResourceUri: this.TargetResourceId).Result;
 
                     var records = result.RuleResourceCollection.Value.Select(e => this.DetailedOutput.IsPresent ? (PSManagementItemDescriptor)new PSAlertRule(e) : new PSAlertRuleNoDetails(e));
                     WriteObject(sendToPipeline: records, enumerateCollection: true);

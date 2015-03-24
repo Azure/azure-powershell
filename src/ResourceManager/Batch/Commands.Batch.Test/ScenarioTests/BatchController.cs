@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Linq;
@@ -72,10 +73,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
+            HttpMockServer.Matcher = new PermissiveRecordMatcher();
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(callingClassType, mockName);
-
                 this.csmTestFactory = SetupCSMTestEnvironmentFactory();
                 SetupManagementClients();
 

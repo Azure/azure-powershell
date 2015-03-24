@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Websites.Models.Websites;
 
 namespace Microsoft.Azure.Commands.Websites
 {
-    public abstract class WebsiteBaseCmdlet : WebsitesBaseClient
+    public class WebsiteBaseCmdlet : WebsitesBaseClient
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmptyAttribute]
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Websites
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the website.")]
         [ValidateNotNullOrEmptyAttribute]
-        public string WebsiteName { get; set; }
+        public string Name { get; set; }
     }
 }
 
