@@ -51,25 +51,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // List WorkItems using the specified filter
             else
             {
-                if (options.MaxCount <= 0)
-                {
-                    options.MaxCount = Int32.MaxValue;
-                }
                 ODATADetailLevel odata = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBWI_GetByOData, options.MaxCount));
+                    WriteVerbose(Resources.GBWI_GetByOData);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBWI_NoFilter, options.MaxCount));
+                    WriteVerbose(Resources.GBWI_NoFilter);
                 }
                 using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
                 {
                     IEnumerableAsyncExtended<ICloudWorkItem> workItems = wiManager.ListWorkItems(odata, options.AdditionalBehaviors);
                     Func<ICloudWorkItem, PSCloudWorkItem> mappingFunction = w => { return new PSCloudWorkItem(w); };
-                    return new PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>(workItems, mappingFunction).Take(options.MaxCount);
+                    return PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>.CreateWithMaxCount(
+                        workItems, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
                 }
             }
         }
