@@ -70,6 +70,7 @@ FormatsToProcess = @(
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
+    '.\Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll',
     '.\Resources\Microsoft.Azure.Commands.Resources.dll',
     '.\Resources\Microsoft.WindowsAzure.Commands.Profile.dll',
     '.\Tags\Microsoft.Azure.Commands.Tags.dll',

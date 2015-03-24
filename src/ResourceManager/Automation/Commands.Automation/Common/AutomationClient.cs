@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         var response = this.automationManagementClient.AutomationAccounts.List(
                             resourceGroupName);
                         return new ResponseWithSkipToken<AutomationManagement.Models.AutomationAccount>(
-                            response, response.AutomationAccount);
+                            response, response.AutomationAccounts);
                     }).Select(c => new Model.AutomationAccount(resourceGroupName, c));
         }
 
