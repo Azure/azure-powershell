@@ -446,6 +446,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vault {0} cannot be deleted as it contains registered servers. Unregister them and then retry the operation..
+        /// </summary>
+        internal static string VaultCannotBeDeleted {
+            get {
+                return ResourceManager.GetString("VaultCannotBeDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vault has been created.
         /// </summary>
         internal static string VaultCreationSuccessMessage {

@@ -18,6 +18,7 @@ using System.Net;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
+using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -58,6 +59,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             try
             {
                 // Check if vault has servers registered to it - prevent the operation.
+                // Invocation of the api directly will result in a call similar to purge
+                // But here we can't modify at service level.
+                // Impact of this check on user is that the vault settings file has to be imported for this to work
+                ServerListResponse serverListResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryServer();
+
+                if (serverListResponse.Servers.Count != 0)
+                {
+                    throw new InvalidOperationException(
+                        string.Format(
+                        Properties.Resources.VaultCannotBeDeleted,
+                        this.Vault.Name));
+                }
+
                 this.ConfirmAction(
                 this.Force.IsPresent,
                 string.Format(Properties.Resources.RemoveVaultWarning, this.Vault.Name),

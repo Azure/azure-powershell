@@ -274,4 +274,7 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="VaultDeletionSuccessMessage" xml:space="preserve">
     <value>Vault has been deleted</value>
   </data>
+  <data name="VaultCannotBeDeleted" xml:space="preserve">
+    <value>Vault {0} cannot be deleted as it contains registered servers. Unregister them and then retry the operation.</value>
+  </data>
 </root>
