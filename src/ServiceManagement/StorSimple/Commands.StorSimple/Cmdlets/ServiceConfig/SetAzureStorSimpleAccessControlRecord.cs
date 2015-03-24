@@ -71,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                 GlobalId = existingAcr.GlobalId,
                                 InitiatorName = IQNInitiatorName,
                                 InstanceId = existingAcr.InstanceId,
-                                Name = (NewName != null ? NewName : existingAcr.Name),
+                                Name = (!string.IsNullOrWhiteSpace(NewName) ? NewName : existingAcr.Name),
                                 VolumeCount = existingAcr.VolumeCount
                             },
                         }
