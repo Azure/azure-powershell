@@ -2253,52 +2253,6 @@
                                         </Component>
                                     </Directory>
                                 </Directory>
-                                <Directory Id="dirE5EA14CE73A6C72D22D108D9497DF74C" Name="Python">
-                                    <Directory Id="dirCDAC5B8A642AC456869167EAE2A10C93" Name="WebRole">
-                                        <Component Id="cmp1A43AEA8E47DF46A363C5FA3B6EE14DE" Guid="*">
-                                            <File Id="filE6C0D9B69028476CEF9107E1347CA861" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\AzureSetup.cfg" />
-                                        </Component>
-                                        <Component Id="cmp5D8936EABB5A2DB970A0AB381C73830D" Guid="*">
-                                            <File Id="filE2A6F752B86D2DFA0959B90BD41DA77C" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.PythonTools.AzureSetup.exe.config" />
-                                        </Component>
-                                        <Component Id="cmp1F5C71A2DDA57D948B24B19D145ADE56" Guid="*">
-                                            <File Id="fil22FCD09649F038F981DDB84F67167316" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.PythonTools.AzureSetup.exe.content" />
-                                        </Component>
-                                        <Component Id="cmp021B29446C062B1149132B85E2459720" Guid="*">
-                                            <File Id="filF3D8A3E762DD13F9FFD7B2B0BB339070" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.PythonTools.WebRole.dll.content" />
-                                        </Component>
-                                        <Component Id="cmpA69B6C11506C243CDE56D867B794AC9F" Guid="*">
-                                            <File Id="fil848958AA95168855F8FE3E93358C2B76" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.Web.Deployment.dll.content" />
-                                        </Component>
-                                        <Component Id="cmp8B904F97CEDA97F7D1A68BDBC2259AB4" Guid="*">
-                                            <File Id="filD732F0BF33579E271040FE1DE0AB979E" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.Web.PlatformInstaller.dll.content" />
-                                        </Component>
-                                        <Component Id="cmp0F225B9A1229479E467639080599E9D1" Guid="*">
-                                            <File Id="fil92F43807E9714346A87AFB7D901AE389" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Microsoft.Web.PlatformInstaller.UI.dll.content" />
-                                        </Component>
-                                        <Component Id="cmpB20DE8E10E242EDCAFEBEAEECD60CDD3" Guid="*">
-                                            <File Id="fil7615C0F35ED9D985DD0C6EADB7E910CE" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\RoleSettings.xml" />
-                                        </Component>
-                                        <Component Id="cmpC252A869692E36346E5A3771DD27D205" Guid="*">
-                                            <File Id="fil7846CF7AD904A172B671C85CDF5CC0E6" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Scaffold.xml" />
-                                        </Component>
-                                        <Component Id="cmp9F463ADD333B57253F89EE9E82167637" Guid="*">
-                                            <File Id="filB84BA051D600909C743652ECF66D8B51" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\web.cloud.config" />
-                                        </Component>
-                                        <Component Id="cmp43BD3F229DAE64FEDBC8155FEF158956" Guid="*">
-                                            <File Id="fil30EB96553E136D5AAA0C61DD1A9776F7" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\Web.config" />
-                                        </Component>
-                                        <Component Id="cmpA02D6608F19F40B64C14E402AD8E622B" Guid="*">
-                                            <File Id="filF4535711345CAACEFE8F95EB9C91C691" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\WebPICmdLine.exe.content" />
-                                        </Component>
-                                        <Component Id="cmp878544C3BBE474849E893E400314D586" Guid="*">
-                                            <File Id="fil56D79CA1DCB21C2716FF96E6BB48B5CE" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\WebRole.xml" />
-                                        </Component>
-                                        <Component Id="cmp70473B6477B7086BBB4B792180BF8925" Guid="*">
-                                            <File Id="fil3CB79929DB0097DEE79F047B38A9C19A" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Resources\Scaffolding\Python\WebRole\wfastcgi.py" />
-                                        </Component>
-                                    </Directory>
-                                </Directory>
                             </Directory>
                         </Directory>
                     </Directory>
@@ -3486,20 +3440,6 @@
             <ComponentRef Id="cmp080181B4207E414501C622783B794CA8" />
             <ComponentRef Id="cmpE4F565792794EACEBFA721815AE3957C" />
             <ComponentRef Id="cmpAC5F70011A33DAC18EE39F5D5BB9840B" />
-            <ComponentRef Id="cmp1A43AEA8E47DF46A363C5FA3B6EE14DE" />
-            <ComponentRef Id="cmp5D8936EABB5A2DB970A0AB381C73830D" />
-            <ComponentRef Id="cmp1F5C71A2DDA57D948B24B19D145ADE56" />
-            <ComponentRef Id="cmp021B29446C062B1149132B85E2459720" />
-            <ComponentRef Id="cmpA69B6C11506C243CDE56D867B794AC9F" />
-            <ComponentRef Id="cmp8B904F97CEDA97F7D1A68BDBC2259AB4" />
-            <ComponentRef Id="cmp0F225B9A1229479E467639080599E9D1" />
-            <ComponentRef Id="cmpB20DE8E10E242EDCAFEBEAEECD60CDD3" />
-            <ComponentRef Id="cmpC252A869692E36346E5A3771DD27D205" />
-            <ComponentRef Id="cmp9F463ADD333B57253F89EE9E82167637" />
-            <ComponentRef Id="cmp43BD3F229DAE64FEDBC8155FEF158956" />
-            <ComponentRef Id="cmpA02D6608F19F40B64C14E402AD8E622B" />
-            <ComponentRef Id="cmp878544C3BBE474849E893E400314D586" />
-            <ComponentRef Id="cmp70473B6477B7086BBB4B792180BF8925" />
             <ComponentRef Id="cmp5C3F4FE4E92F090F22B371444CEFA7FB" />
             <ComponentRef Id="cmp65991ADC169007028A31A4F049E069EF" />
             <ComponentRef Id="cmp221C334CE6510BD95538F285D482251F" />
