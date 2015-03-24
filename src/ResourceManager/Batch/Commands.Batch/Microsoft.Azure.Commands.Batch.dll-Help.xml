@@ -754,7 +754,7 @@
       New-AzureBatchWorkItem
     </command:name>
     <maml:description>
-      <maml:para>Creates a new workitem in the Azure Batch service under the account specified by the BatchAccountContext parameter.</maml:para>
+      <maml:para>Creates a new workitem in the Azure Batch service under the specified account.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -764,7 +764,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Creates a new workitem in the Azure Batch service under the account specified by the BatchAccountContext parameter.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -943,6 +943,32 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        $jee = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobExecutionEnvironment;$jee.PoolName = &quot;myPool&quot;;New-AzureBatchWorkItem -Name &quot;myWorkItem&quot; -JobExecutionEnvironment $jee -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Creates a PSJobExecutionEnvironment object that specifies to use the pool named &quot;myPool&quot;. Next, creates a new workitem named &quot;myWorkItem&quot; that uses this job execution environment.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -958,7 +984,7 @@
       Get-AzureBatchWorkItem
     </command:name>
     <maml:description>
-      <maml:para>Gets the Azure Batch workitems under the Batch account specified with the BatchContext parameter. You can use the Name parameter to get a single workitem, or you can use the Filter parameter to get the workitems that match an OData filter. </maml:para>
+      <maml:para>Gets Azure Batch workitems under the specified Batch account.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -968,7 +994,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Gets the Azure Batch workitems under the Batch account specified with the BatchContext parameter. You can use the Name parameter to get a single workitem, or you can use the Filter parameter to get the workitems that match an OData filter. </maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -1117,6 +1143,103 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchWorkItem -Name &quot;myWorkItem&quot; -BatchContext $context
+
+        CreationTime                : 3/24/2015 10:08:17 PM
+        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSWorkItemExecutionInformation
+        JobExecutionEnvironment     : Microsoft.Azure.Commands.Batch.Models.PSJobExecutionEnvironment
+        JobSpecification            :
+        LastModified                : 3/24/2015 10:08:17 PM
+        Metadata                    :
+        Name                        : myWorkItem
+        PreviousState               : Invalid
+        PreviousStateTransitionTime :
+        Schedule                    :
+        State                       : Active
+        StateTransitionTime         : 3/24/2015 10:08:17 PM
+        Statistics                  :
+        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets the workitem named &quot;myWorkItem&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchWorkItem -Filter &quot;startswith(name,'my')&quot; -BatchContext $context
+
+        CreationTime                : 3/24/2015 10:08:17 PM
+        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSWorkItemExecutionInformation
+        JobExecutionEnvironment     : Microsoft.Azure.Commands.Batch.Models.PSJobExecutionEnvironment
+        JobSpecification            :
+        LastModified                : 3/24/2015 10:08:17 PM
+        Metadata                    :
+        Name                        : myWorkItem
+        PreviousState               : Invalid
+        PreviousStateTransitionTime :
+        Schedule                    :
+        State                       : Active
+        StateTransitionTime         : 3/24/2015 10:08:17 PM
+        Statistics                  :
+        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem
+
+        CreationTime                : 3/24/2015 10:12:23 PM
+        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSWorkItemExecutionInformation
+        JobExecutionEnvironment     : Microsoft.Azure.Commands.Batch.Models.PSJobExecutionEnvironment
+        JobSpecification            :
+        LastModified                : 3/24/2015 10:12:23 PM
+        Metadata                    :
+        Name                        : myWorkItem2
+        PreviousState               : Invalid
+        PreviousStateTransitionTime :
+        Schedule                    :
+        State                       : Active
+        StateTransitionTime         : 3/24/2015 10:12:23 PM
+        Statistics                  :
+        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem2
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets the workitems whose names start with &quot;my&quot; by using the Filter parameter.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -1142,7 +1265,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Deletes the specified Azure Batch workitem. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -1260,6 +1383,58 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Remove-AzureBatchWorkItem &quot;myWorkItem&quot; -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Deletes the workitem named &quot;myWorkItem&quot;. The user is prompted for confirmation before the delete operation takes place.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchWorkItem -Name &quot;myWorkItem2&quot; -BatchContext $context | Remove-AzureBatchWorkItem -Force -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Deletes the workitem named &quot;myWorkItem2&quot;. Since the Force parameter is present, the confirmation prompt is suppressed.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -1275,7 +1450,7 @@
       Get-AzureBatchJob
     </command:name>
     <maml:description>
-      <maml:para>Gets the Azure Batch jobs under the workitem specified by either the WorkItemName or WorkItem parameters. You can use the Name parameter to get a single job, or you can use the Filter parameter to get the jobs that match an OData filter. </maml:para>
+      <maml:para>Gets Azure Batch jobs under the specified workitem.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -1285,7 +1460,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Gets the Azure Batch jobs under the workitem specified by either the WorkItemName or WorkItem parameters. You can use the Name parameter to get a single job, or you can use the Filter parameter to get the jobs that match an OData filter. </maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -1505,6 +1680,135 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchJob -WorkItemName &quot;myWorkItem&quot; -Name &quot;job-0000000001&quot; -BatchContext $context
+
+        CreationTime                : 3/24/2015 10:08:18 PM
+        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSJobExecutionInformation
+        JobConstraints              :
+        JobManager                  :
+        KeepAlive                   :
+        LastModified                : 3/24/2015 10:08:18 PM
+        Name                        : job-0000000001
+        PoolLifeTimeOption          : Invalid
+        PoolName                    : myPool
+        PreviousState               : Invalid
+        PreviousStateTransitionTime :
+        Priority                    :
+        State                       : Active
+        StateTransitionTime         : 3/24/2015 10:08:18 PM
+        Statistics                  :
+        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem/jobs/job-0000000001
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets the job named &quot;job-0000000001&quot; under the workitem named &quot;myWorkItem&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchJob -WorkItemName &quot;myWorkItem&quot; -Filter &quot;state eq 'active'&quot; -BatchContext $context
+
+        CreationTime                : 3/24/2015 10:08:18 PM
+        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSJobExecutionInformation
+        JobConstraints              :
+        JobManager                  :
+        KeepAlive                   :
+        LastModified                : 3/24/2015 10:08:18 PM
+        Name                        : job-0000000001
+        PoolLifeTimeOption          : Invalid
+        PoolName                    : myPool
+        PreviousState               : Invalid
+        PreviousStateTransitionTime :
+        Priority                    :
+        State                       : Active
+        StateTransitionTime         : 3/24/2015 10:08:18 PM
+        Statistics                  :
+        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem/jobs/job-0000000001
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets the active jobs under the workitem named &quot;myWorkItem&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 3 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchWorkItem -Name &quot;myWorkItem&quot; -BatchContext $context | Get-AzureBatchJob -BatchContext $context
+
+        CreationTime                : 3/24/2015 10:08:18 PM
+        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSJobExecutionInformation
+        JobConstraints              :
+        JobManager                  :
+        KeepAlive                   :
+        LastModified                : 3/24/2015 10:08:18 PM
+        Name                        : job-0000000001
+        PoolLifeTimeOption          : Invalid
+        PoolName                    : myPool
+        PreviousState               : Invalid
+        PreviousStateTransitionTime :
+        Priority                    :
+        State                       : Active
+        StateTransitionTime         : 3/24/2015 10:08:18 PM
+        Statistics                  :
+        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem/jobs/job-0000000001
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets all jobs under the workitem named &quot;myWorkItem&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -1520,7 +1824,7 @@
       Remove-AzureBatchJob
     </command:name>
     <maml:description>
-      <maml:para>Deletes the specified Azure Batch job. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
+      <maml:para>Deletes the specified Azure Batch job.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -1530,7 +1834,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Deletes the specified Azure Batch job. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -1704,6 +2008,58 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Remove-AzureBatchJob -WorkItemName &quot;myWorkItem&quot; -Name &quot;job-0000000001&quot; -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Deletes the job named &quot;job-0000000001&quot; under the workitem named &quot;myWorkItem&quot;. The user is prompted for confirmation before the delete operation takes place.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchJob -WorkItemName &quot;myWorkItem&quot; -Name &quot;job-0000000001&quot; -BatchContext $context | Remove-AzureBatchJob -Force -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Deletes the job named &quot;job-0000000001&quot; under the workitem amed &quot;myWorkItem&quot;. Since the Force parameter is present, the confirmation prompt is suppressed.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -1719,7 +2075,7 @@
       New-AzureBatchTask
     </command:name>
     <maml:description>
-      <maml:para>Creates a new Azure Batch task under the job specified by the WorkItemName and JobName parameters or the Job parameter.</maml:para>
+      <maml:para>Creates a new Azure Batch task under the specified job.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -1729,7 +2085,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Creates a new Azure Batch task under the job specified by the WorkItemName and JobName parameters or the Job parameter.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -2065,6 +2421,58 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        New-AzureBatchTask -WorkItemName &quot;myWorkItem&quot; -JobName &quot;job-0000000001&quot; -Name &quot;myTask&quot; -CommandLine &quot;cmd /c dir /s&quot; -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Creates a new task named &quot;myTask&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;. The task will run the commandline &quot;cmd /c dir /s&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchJob -WorkItemName &quot;myWorkItem&quot; -Name &quot;job-0000000001&quot; -BatchContext $context | New-AzureBatchTask -Name &quot;myTask2&quot; -CommandLine &quot;cmd /c echo hello &gt; newFile.txt&quot; -RunElevated -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Creates a new task named &quot;myTask2&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;. The task will run the commandline &quot;cmd /c echo hello &gt; newFile.txt&quot; with elevated permissions.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -2080,7 +2488,7 @@
       Get-AzureBatchTask
     </command:name>
     <maml:description>
-      <maml:para>Gets the Azure Batch tasks under the job specified by either the WorkItemName and JobName parameters or  the Job parameter. You can use the Name parameter to get a single task, or you can use the Filter parameter to get the tasks that match an OData filter. </maml:para>
+      <maml:para>Gets the Azure Batch tasks under the specified job.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -2090,7 +2498,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Gets the Azure Batch tasks under the job specified by either the WorkItemName and JobName parameters or  the Job parameter. You can use the Name parameter to get a single task, or you can use the Filter parameter to get the tasks that match an OData filter. </maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -2337,6 +2745,194 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchTask -WorkItemName &quot;myWorkItem&quot; -JobName &quot;job-0000000001&quot; -Name &quot;myTask&quot; -BatchContext $context
+
+        AffinityInformation         :
+        CommandLine                 : cmd /c dir /s
+        CreationTime                : 3/24/2015 10:21:51 PM
+        EnvironmentSettings         :
+        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSTaskExecutionInformation
+        LastModified                : 3/24/2015 10:21:51 PM
+        Name                        : myTask
+        PreviousState               : Running
+        PreviousStateTransitionTime : 3/24/2015 10:22:00 PM
+        RunElevated                 : False
+        State                       : Completed
+        StateTransitionTime         : 3/24/2015 10:22:00 PM
+        Statistics                  :
+        TaskConstraints             : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
+        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem/jobs/job-0000000001/tasks/myTask
+        VMInformation               : Microsoft.Azure.Commands.Batch.Models.PSVMInformation
+        ResourceFiles               :
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets the task named &quot;myTask&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchTask -WorkItemName &quot;myWorkItem&quot; -JobName &quot;job-0000000001&quot; -Filter &quot;state eq 'completed'&quot; -BatchContext $context
+
+        AffinityInformation         :
+        CommandLine                 : cmd /c dir /s
+        CreationTime                : 3/24/2015 10:21:51 PM
+        EnvironmentSettings         :
+        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSTaskExecutionInformation
+        LastModified                : 3/24/2015 10:21:51 PM
+        Name                        : myTask
+        PreviousState               : Running
+        PreviousStateTransitionTime : 3/24/2015 10:22:00 PM
+        RunElevated                 : False
+        State                       : Completed
+        StateTransitionTime         : 3/24/2015 10:22:00 PM
+        Statistics                  :
+        TaskConstraints             : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
+        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem/jobs/job-0000000001/tasks/myTask
+        VMInformation               : Microsoft.Azure.Commands.Batch.Models.PSVMInformation
+        ResourceFiles               :
+
+        AffinityInformation         :
+        CommandLine                 : cmd /c echo hello &gt; newFile.txt
+        CreationTime                : 3/24/2015 10:23:35 PM
+        EnvironmentSettings         :
+        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSTaskExecutionInformation
+        LastModified                : 3/24/2015 10:23:35 PM
+        Name                        : myTask2
+        PreviousState               : Running
+        PreviousStateTransitionTime : 3/24/2015 10:23:37 PM
+        RunElevated                 : True
+        State                       : Completed
+        StateTransitionTime         : 3/24/2015 10:23:37 PM
+        Statistics                  :
+        TaskConstraints             : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
+        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem/jobs/job-0000000001/tasks/myTask2
+        VMInformation               : Microsoft.Azure.Commands.Batch.Models.PSVMInformation
+        ResourceFiles               :
+
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets the completed tasks under the job named &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 3 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        AffinityInformation         :
+        CommandLine                 : cmd /c dir /s
+        CreationTime                : 3/24/2015 10:21:51 PM
+        EnvironmentSettings         :
+        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSTaskExecutionInformation
+        LastModified                : 3/24/2015 10:21:51 PM
+        Name                        : myTask
+        PreviousState               : Running
+        PreviousStateTransitionTime : 3/24/2015 10:22:00 PM
+        RunElevated                 : False
+        State                       : Completed
+        StateTransitionTime         : 3/24/2015 10:22:00 PM
+        Statistics                  :
+        TaskConstraints             : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
+        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem/jobs/job-0000000001/tasks/myTask
+        VMInformation               : Microsoft.Azure.Commands.Batch.Models.PSVMInformation
+        ResourceFiles               :
+
+        AffinityInformation         :
+        CommandLine
+
+        AffinityInformation         :
+        CommandLine                 : cmd /c dir /s
+        CreationTime                : 3/24/2015 10:21:51 PM
+        EnvironmentSettings         :
+        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSTaskExecutionInformation
+        LastModified                : 3/24/2015 10:21:51 PM
+        Name                        : myTask
+        PreviousState               : Running
+        PreviousStateTransitionTime : 3/24/2015 10:22:00 PM
+        RunElevated                 : False
+        State                       : Completed
+        StateTransitionTime         : 3/24/2015 10:22:00 PM
+        Statistics                  :
+        TaskConstraints             : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
+        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem/jobs/job-0000000001/tasks/myTask
+        VMInformation               : Microsoft.Azure.Commands.Batch.Models.PSVMInformation
+        ResourceFiles               :
+
+        AffinityInformation         :
+        CommandLine                 : cmd /c echo hello &gt; newFile.txt
+        CreationTime                : 3/24/2015 10:23:35 PM
+        EnvironmentSettings         :
+        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSTaskExecutionInformation
+        LastModified                : 3/24/2015 10:23:35 PM
+        Name                        : myTask2
+        PreviousState               : Running
+        PreviousStateTransitionTime : 3/24/2015 10:23:37 PM
+        RunElevated                 : True
+        State                       : Completed
+        StateTransitionTime         : 3/24/2015 10:23:37 PM
+        Statistics                  :
+        TaskConstraints             : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
+        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem/jobs/job-0000000001/tasks/myTask2
+        VMInformation               : Microsoft.Azure.Commands.Batch.Models.PSVMInformation
+        ResourceFiles               :
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets all tasks under the job named &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -2352,7 +2948,7 @@
       Remove-AzureBatchTask
     </command:name>
     <maml:description>
-      <maml:para>Deletes the specified Azure Batch task. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
+      <maml:para>Deletes the specified Azure Batch task.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -2362,7 +2958,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Deletes the specified Azure Batch task. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -2556,6 +3152,58 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Remove-AzureBatchTask -WorkItemName &quot;myWorkItem&quot; -JobName &quot;job-0000000001&quot; -Name &quot;myTask&quot; -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Deletes the task named &quot;myTask&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;. The user is prompted for confirmation before the delete operation takes place.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchTask &quot;myWorkItem&quot; &quot;job-0000000001&quot; &quot;myTask2&quot; -BatchContext $context | Remove-AzureBatchTask -Force -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Deletes the task named &quot;myTask2&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;. Since the Force parameter is present, the confirmation prompt is suppressed.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -2571,7 +3219,7 @@
       Get-AzureBatchTaskFile
     </command:name>
     <maml:description>
-      <maml:para>Gets the properties of the files associated with the Azure Batch task specified by either the WorkItemName, JobName, and TaskName parameters or the Task parameter. You can use the Name parameter to get a single task file, or you can use the Filter parameter to get the task files that match an OData filter. You can use the Recursive parameter to perform a recursive list of all files of the task.</maml:para>
+      <maml:para>Gets the properties of the files associated with the specified Azure Batch task.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -2581,7 +3229,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Gets the properties of the files associated with the Azure Batch task specified by either the WorkItemName, JobName, and TaskName parameters or the Task parameter. You can use the Name parameter to get a single task file, or you can use the Filter parameter to get the task files that match an OData filter. You can use the Recursive parameter to perform a recursive list of all files of the task.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -2880,6 +3528,101 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchTaskFile -WorkItemName &quot;myWorkItem&quot; -JobName &quot;job-0000000001&quot; -TaskName &quot;myTask&quot; -Name &quot;stdout.txt&quot; -BatchContext $context
+
+        IsDirectory Name     Properties                                      Url
+        ----------- ----     ----------                                      ---
+        False stdout.txt     Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.batch-test.windows-in...
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets the properties of the &quot;stdout.txt&quot; task file associated with the task named &quot;myTask&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchTaskFile -WorkItemName &quot;myWorkItem&quot; -JobName &quot;job-0000000001&quot; -TaskName &quot;myTask&quot; -Filter &quot;startswith(name,'st')&quot; -BatchContext $context
+
+        IsDirectory Name        Properties                                      Url
+        ----------- ----        ----------                                      ---
+        False stderr.txt  Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.batch-test.windows-in...
+        False stdout.txt  Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.batch-test.windows-in...
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets the properties of the task files whose names start with &quot;st&quot; and are associated with task &quot;myTask&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 3 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchTask &quot;myWorkItem&quot; &quot;job-0000000001&quot; &quot;myTask2&quot; -BatchContext $context | Get-AzureBatchTaskFile -Recursive -BatchContext $context
+
+        IsDirectory Name             Properties                                      Url
+        ----------- ----             ----------                                      ---
+        False ProcessEnv.cmd   Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.batch-test.windows-in...
+        False stderr.txt       Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.batch-test.windows-in...
+        False stdout.txt       Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.batch-test.windows-in...
+        True wd                                                               https://cmdletexample.batch-test.windows-in...
+        False wd\newFile.txt   Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.batch-test.windows-in...
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets the properties of all files associated with the task named &quot;myTask2&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;. Since the Recursive parameter is present, a recursive file search is performed, and the &quot;wd\newFile.txt&quot; task file is returned.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -2895,7 +3638,7 @@
       Get-AzureBatchTaskFileContent
     </command:name>
     <maml:description>
-      <maml:para>Downloads the specified task file to the specified location. If no destination directory is specified, then the task file will be downloaded to the local directory.</maml:para>
+      <maml:para>Downloads the specified task file.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -2905,7 +3648,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Downloads the specified task file to the specified location. If no destination directory is specified, then the task file will be downloaded to the local directory.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -3135,6 +3878,58 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchTaskFileContent -WorkItemName &quot;myWorkItem&quot; -JobName &quot;job-0000000001&quot; -TaskName &quot;myTask&quot; -Name &quot;stdout.txt&quot; -DestinationPath &quot;E:\PowerShell&quot; -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Downloads the task file named &quot;stdout.txt&quot; to the &quot;E:\PowerShell&quot; directory. The &quot;stdout.txt&quot; task file is associated with task &quot;myTask&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchTaskFile &quot;myWorkItem&quot; &quot;job-0000000001&quot; &quot;myTask&quot; &quot;stderr.txt&quot; -BatchContext $context | Get-AzureBatchTaskFileContent -DestinationPath &quot;E:\PowerShell&quot; -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Downloads the task file named &quot;stderr.txt&quot; to the &quot;E:\PowerShell&quot; directory. The &quot;stdout.txt&quot; task file is associated with task &quot;myTask&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -3150,7 +3945,7 @@
       New-AzureBatchPool
     </command:name>
     <maml:description>
-      <maml:para>Creates a new pool in the Azure Batch service under the account specified by the BatchContext parameter.</maml:para>
+      <maml:para>Creates a new pool in the Azure Batch service under the specified account.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -3160,7 +3955,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Creates a new pool in the Azure Batch service under the account specified by the BatchContext parameter.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -3577,6 +4372,58 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        New-AzureBatchPool -Name &quot;myPool&quot; -VMSize &quot;small&quot; -OSFamily &quot;4&quot; -TargetOSVersion &quot;*&quot; -TargetDedicated 3 -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Creates a new pool named &quot;myPool&quot; using the TargetDedicated parameter set. The target allocation is 3 small VMs with the latest OS version of family 4.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        New-AzureBatchPool -Name &quot;autoScalePool&quot; -VMSize &quot;small&quot; -OSFamily &quot;4&quot; -TargetOSVersion &quot;*&quot; -AutoScaleFormula '$TargetDedicated=2;' -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Creates a new pool named &quot;autoScalePool&quot; using the AutoScale parameter set. The pool will use small VMs with the latest OS version of family 4, and the target number of VMs will be determined by the autoscale formula.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -3592,7 +4439,7 @@
       Get-AzureBatchPool
     </command:name>
     <maml:description>
-      <maml:para>Gets the Azure Batch pools under the Batch account specified with the BatchContext parameter. You can use the Name parameter to get a single pool, or you can use the Filter parameter to get the pools that match an OData filter. </maml:para>
+      <maml:para>Gets Azure Batch pools under the specified Batch account.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -3602,7 +4449,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Gets the Azure Batch pools under the Batch account specified with the BatchContext parameter. You can use the Name parameter to get a single pool, or you can use the Filter parameter to get the pools that match an OData filter. </maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -3751,6 +4598,139 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchPool -Name &quot;myPool&quot; -BatchContext $context
+
+        AllocationState               : Resizing
+        AllocationStateTransitionTime : 3/24/2015 10:02:46 PM
+        AutoScaleFormula              :
+        AutoScaleRun                  :
+        CertificateReferences         :
+        Communication                 : False
+        CreationTime                  : 3/24/2015 10:02:46 PM
+        CurrentDedicated              : 0
+        CurrentOSVersion              : *
+        AutoScaleEnabled              : False
+        LastModified                  : 3/24/2015 10:02:46 PM
+        MaxTasksPerVM                 : 1
+        Metadata                      :
+        Name                          : myPool
+        OSFamily                      : 4
+        ResizeError                   :
+        ResizeTimeout                 : 00:05:00
+        SchedulingPolicy              : Microsoft.Azure.Commands.Batch.Models.PSSchedulingPolicy
+        StartTask                     :
+        State                         : Active
+        StateTransitionTime           : 3/24/2015 10:02:46 PM
+        Statistics                    :
+        TargetDedicated               : 3
+        TargetOSVersion               : *
+        VMSize                        : small
+        Url                           : https://cmdletexample.batch-test.windows-int.net/pools/myPool
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets the pool named &quot;myPool&quot;.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchPool -Filter &quot;startswith(name,'my')&quot; -BatchContext $context
+
+        AllocationState               : Steady
+        AllocationStateTransitionTime : 3/24/2015 10:04:55 PM
+        AutoScaleFormula              :
+        AutoScaleRun                  :
+        CertificateReferences         :
+        Communication                 : False
+        CreationTime                  : 3/24/2015 10:02:46 PM
+        CurrentDedicated              : 3
+        CurrentOSVersion              : *
+        AutoScaleEnabled              : False
+        LastModified                  : 3/24/2015 10:02:46 PM
+        MaxTasksPerVM                 : 1
+        Metadata                      :
+        Name                          : myPool
+        OSFamily                      : 4
+        ResizeError                   :
+        ResizeTimeout                 : 00:05:00
+        SchedulingPolicy              : Microsoft.Azure.Commands.Batch.Models.PSSchedulingPolicy
+        StartTask                     :
+        State                         : Active
+        StateTransitionTime           : 3/24/2015 10:02:46 PM
+        Statistics                    :
+        TargetDedicated               : 3
+        TargetOSVersion               : *
+        VMSize                        : small
+        Url                           : https://cmdletexample.batch-test.windows-int.net/pools/myPool
+
+        AllocationState               : Resizing
+        AllocationStateTransitionTime : 3/24/2015 10:04:55 PM
+        AutoScaleFormula              :
+        AutoScaleRun                  :
+        CertificateReferences         :
+        Communication                 : False
+        CreationTime                  : 3/24/2015 10:04:55 PM
+        CurrentDedicated              : 0
+        CurrentOSVersion              : *
+        AutoScaleEnabled              : False
+        LastModified                  : 3/24/2015 10:04:55 PM
+        MaxTasksPerVM                 : 1
+        Metadata                      :
+        Name                          : myPool2
+        OSFamily                      : 4
+        ResizeError                   :
+        ResizeTimeout                 : 00:05:00
+        SchedulingPolicy              : Microsoft.Azure.Commands.Batch.Models.PSSchedulingPolicy
+        StartTask                     :
+        State                         : Active
+        StateTransitionTime           : 3/24/2015 10:04:55 PM
+        Statistics                    :
+        TargetDedicated               : 3
+        TargetOSVersion               : *
+        VMSize                        : small
+        Url                           : https://cmdletexample.batch-test.windows-int.net/pools/myPool2
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Gets the pools whose names start with &quot;my&quot; by using the Filter parameter.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
@@ -3766,7 +4746,7 @@
       Remove-AzureBatchPool
     </command:name>
     <maml:description>
-      <maml:para>Deletes the specified Azure Batch pool. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
+      <maml:para>Deletes the specified Azure Batch pool.</maml:para>
     </maml:description>
     <maml:copyright>
       <maml:para></maml:para>
@@ -3776,7 +4756,7 @@
     <dev:version></dev:version>
   </command:details>
   <maml:description>
-    <maml:para></maml:para>
+    <maml:para>Deletes the specified Azure Batch pool. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
   </maml:description>
   <!-- Cmdlet syntax section-->
   <command:syntax>
@@ -3894,6 +4874,58 @@
   </maml:alertSet>
   <!-- Example section  -->
   <command:examples>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 1 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Remove-AzureBatchPool -Name &quot;myPool&quot; -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Deletes the pool named &quot;myPool&quot;. The user is prompted for confirmation before the delete operation takes place.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Get-AzureBatchPool -BatchContext $context | Remove-AzureBatchPool -Force -BatchContext $context
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>Deletes all pools. Since the Force parameter is present, the confirmation prompt is suppressed.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
   </command:examples>
   <!-- Link section  -->
   <maml:relatedLinks>
