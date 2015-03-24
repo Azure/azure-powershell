@@ -12,13 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Insights.OutputClasses
+using System;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+namespace Microsoft.Azure.Commands.Insights
 {
     /// <summary>
-    /// Wrapps around the RuleCondition and exposes all the localized strings as invariant/localized properties
-    /// <para>It is an empty interface to allow for different types of outputs for the cmdlets, i.e. all the specific output types will implement this interface and the base cmdlet always returns lists of this type.</para>
+    /// Base class for the Azure Insights SDK Cmdlets
     /// </summary>
-    public interface IPSRuleCondition
+    public abstract class InsightsCmdletBase : AzurePSCmdlet
     {
+        /// <summary>
+        /// Executes the Cmdlet. This is a callback function to simplify the execption handling
+        /// </summary>
+        protected abstract void ExecuteCmdletInternal();
+
+        /// <summary>
+        /// Execute the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            try
+            {
+                this.ExecuteCmdletInternal();
+            }
+            catch (AggregateException ex)
+            {
+                throw ex.Flatten().InnerException;
+            }
+        }
     }
 }
