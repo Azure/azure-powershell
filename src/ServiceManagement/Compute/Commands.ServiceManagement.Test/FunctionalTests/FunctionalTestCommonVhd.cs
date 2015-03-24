@@ -33,8 +33,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
-            //SetTestSettings();
-
             if (defaultAzureSubscription.Equals(null))
             {
                 Assert.Inconclusive("No Subscription is selected!");
@@ -77,8 +75,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         [TestInitialize]
         public void Initialize()
         {
-            //vhdName = Utilities.GetUniqueShortName(vhdNamePrefix);
-            //CopyCommonVhd(vhdContainerName, vhdNamePrefix, vhdName);
             pass = false;
             testStartTime = DateTime.Now;
         }
@@ -87,8 +83,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public void AzureDiskTest()
         {
             StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
-            vhdName = "os0.vhd";
-            string mediaLocation = String.Format("{0}{1}/{2}", blobUrlRoot, vhdContainerName, vhdName);
+            string blobName = "os0.vhd";
+            vhdName =  Utilities.GetUniqueShortName("os0vhd");
+            string mediaLocation = String.Format("{0}{1}/{2}", blobUrlRoot, vhdContainerName, blobName);
 
             try
             {
@@ -103,18 +100,41 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                         found = true;
                         Console.WriteLine("{0} is found", disk.DiskName);
                     }
-
                 }
                 Assert.IsTrue(found, "Error: Disk is not added");
 
+                // Update only label
                 string newLabel = "NewLabel";
                 vmPowershellCmdlets.UpdateAzureDisk(vhdName, newLabel);
 
-                DiskContext disk2 = vmPowershellCmdlets.GetAzureDisk(vhdName)[0];
+                DiskContext virtualDisk = vmPowershellCmdlets.GetAzureDisk(vhdName)[0];
 
-                Console.WriteLine("Disk: Name - {0}, Label - {1}, Size - {2},", disk2.DiskName, disk2.Label, disk2.DiskSizeInGB);
-                Assert.AreEqual(newLabel, disk2.Label);
+                Console.WriteLine("Disk: Name - {0}, Label - {1}, Size - {2},", virtualDisk.DiskName, virtualDisk.Label, virtualDisk.DiskSizeInGB);
+                Assert.AreEqual(newLabel, virtualDisk.Label);
                 Console.WriteLine("Disk Label is successfully updated");
+
+                // Update only size
+                int newSize = 250;
+                vmPowershellCmdlets.UpdateAzureDisk(vhdName, null, newSize);
+
+                virtualDisk = vmPowershellCmdlets.GetAzureDisk(vhdName)[0];
+
+                Console.WriteLine("Disk: Name - {0}, Label - {1}, Size - {2},", virtualDisk.DiskName, virtualDisk.Label, virtualDisk.DiskSizeInGB);
+                Assert.AreEqual(newLabel, virtualDisk.Label);
+                Assert.AreEqual(newSize, virtualDisk.DiskSizeInGB);
+                Console.WriteLine("Disk size is successfully updated");
+
+                // Update both label and size
+                newLabel = "NewLabel2";
+                newSize = 300;
+                vmPowershellCmdlets.UpdateAzureDisk(vhdName, newLabel, newSize);
+
+                virtualDisk = vmPowershellCmdlets.GetAzureDisk(vhdName)[0];
+
+                Console.WriteLine("Disk: Name - {0}, Label - {1}, Size - {2},", virtualDisk.DiskName, virtualDisk.Label, virtualDisk.DiskSizeInGB);
+                Assert.AreEqual(newLabel, virtualDisk.Label);
+                Assert.AreEqual(newSize, virtualDisk.DiskSizeInGB);
+                Console.WriteLine("Both disk label and size are successfully updated");
 
                 vmPowershellCmdlets.RemoveAzureDisk(vhdName, false);
                 Assert.IsTrue(Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDisk, vhdName), "The disk was not removed");
@@ -127,6 +147,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 if (e.ToString().Contains("ResourceNotFound"))
                 {
                     Console.WriteLine("Please upload {0} file to \\vhdtest\\ blob directory before running this test", vhdName);
+                }
+
+                try
+                {
+                    vmPowershellCmdlets.RemoveAzureDisk(vhdName, false);
+                }
+                catch (Exception cleanupError)
+                {
+                    Console.WriteLine("Error during cleaning up the disk.. Continue..:{0}", cleanupError);
                 }
 
                 Assert.Fail("Exception occurs: {0}", e.ToString());
@@ -155,6 +184,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             try
             {
+                // BVT Tests for OS Images
                 OSImageContext result = vmPowershellCmdlets.AddAzureVMImage(newImageName, mediaLocation, OS.Windows, oldLabel, vmSize, iconUri, smallIconUri, showInGui);
 
                 OSImageContext resultReturned = vmPowershellCmdlets.GetAzureVMImage(newImageName)[0];
@@ -173,6 +203,97 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 vmPowershellCmdlets.RemoveAzureVMImage(newImageName, false);
                 Assert.IsTrue(Utilities.CheckRemove(vmPowershellCmdlets.GetAzureVMImage, newImageName));
+
+                // BVT Tests for VM Images
+                // Unique Container Prefix
+                var containerPrefix = Utilities.GetUniqueShortName("vmimg");
+
+                // Disk Blobs
+                var srcVhdName = "os1.vhd";
+                var srcVhdContainer = vhdContainerName;
+                var dstOSVhdContainer = containerPrefix.ToLower() + "os" + vhdContainerName;
+                CredentialHelper.CopyTestData(srcVhdContainer, srcVhdName, dstOSVhdContainer);
+                string osVhdLink = string.Format("{0}{1}/{2}", blobUrlRoot, dstOSVhdContainer, srcVhdName);
+
+                var dstDataVhdContainer = containerPrefix.ToLower() + "data" + vhdContainerName;
+                CredentialHelper.CopyTestData(srcVhdContainer, srcVhdName, dstDataVhdContainer);
+                string dataVhdLink = string.Format("{0}{1}/{2}", blobUrlRoot, dstDataVhdContainer, srcVhdName);
+
+                // VM Image OS/Data Disk Configuration
+                var addVMImageName = containerPrefix + "Image";
+                var diskConfig = new VirtualMachineImageDiskConfigSet
+                {
+                    OSDiskConfiguration = new OSDiskConfiguration
+                    {
+                        HostCaching = HostCaching.ReadWrite.ToString(),
+                        OS = OSType.Windows.ToString(),
+                        OSState = "Generalized",
+                        MediaLink = new Uri(osVhdLink)
+                    },
+                    DataDiskConfigurations = new DataDiskConfigurationList
+                    {
+                        new DataDiskConfiguration
+                        {
+                            HostCaching = HostCaching.ReadOnly.ToString(),
+                            Lun = 0,
+                            MediaLink = new Uri(dataVhdLink)
+                        }
+                    }
+                };
+
+                // Add-AzureVMImage
+                string label = addVMImageName;
+                string description = "test";
+                string eula = "http://www.bing.com/";
+                string imageFamily = "Windows";
+                DateTime? publishedDate = new DateTime(2015, 1, 1);
+                string privacyUri = "http://www.bing.com/";
+                string recommendedVMSize = vmSize;
+                string iconName = "iconName";
+                string smallIconName = "smallIconName";
+
+                vmPowershellCmdlets.AddAzureVMImage(
+                    addVMImageName,
+                    label,
+                    diskConfig,
+                    description,
+                    eula,
+                    imageFamily,
+                    publishedDate,
+                    privacyUri,
+                    recommendedVMSize,
+                    iconName,
+                    smallIconName,
+                    showInGui);
+
+                // Get-AzureVMImage
+                var vmImage = vmPowershellCmdlets.GetAzureVMImageReturningVMImages(addVMImageName).First();
+
+                Assert.IsTrue(vmImage.ImageName == addVMImageName);
+                Assert.IsTrue(vmImage.Label == label);
+                Assert.IsTrue(vmImage.Description == description);
+                Assert.IsTrue(vmImage.Eula == eula);
+                Assert.IsTrue(vmImage.ImageFamily == imageFamily);
+                Assert.IsTrue(vmImage.PublishedDate.Value.Year == publishedDate.Value.Year);
+                Assert.IsTrue(vmImage.PublishedDate.Value.Month == publishedDate.Value.Month);
+                Assert.IsTrue(vmImage.PublishedDate.Value.Day == publishedDate.Value.Day);
+                Assert.IsTrue(vmImage.PrivacyUri.AbsoluteUri.ToString() == privacyUri);
+                Assert.IsTrue(vmImage.RecommendedVMSize == recommendedVMSize);
+                Assert.IsTrue(vmImage.IconName == iconName);
+                Assert.IsTrue(vmImage.IconUri == iconName);
+                Assert.IsTrue(vmImage.SmallIconName == smallIconName);
+                Assert.IsTrue(vmImage.SmallIconUri == smallIconName);
+                Assert.IsTrue(vmImage.ShowInGui == showInGui);
+                Assert.IsTrue(vmImage.OSDiskConfiguration.HostCaching == diskConfig.OSDiskConfiguration.HostCaching);
+                Assert.IsTrue(vmImage.OSDiskConfiguration.OS == diskConfig.OSDiskConfiguration.OS);
+                Assert.IsTrue(vmImage.OSDiskConfiguration.OSState == diskConfig.OSDiskConfiguration.OSState);
+                Assert.IsTrue(vmImage.OSDiskConfiguration.MediaLink == diskConfig.OSDiskConfiguration.MediaLink);
+                Assert.IsTrue(vmImage.DataDiskConfigurations.First().HostCaching == diskConfig.DataDiskConfigurations.First().HostCaching);
+                Assert.IsTrue(vmImage.DataDiskConfigurations.First().Lun == diskConfig.DataDiskConfigurations.First().Lun);
+                Assert.IsTrue(vmImage.DataDiskConfigurations.First().MediaLink == diskConfig.DataDiskConfigurations.First().MediaLink);
+
+                // Remove-AzureVMImage
+                vmPowershellCmdlets.RemoveAzureVMImage(addVMImageName);
 
                 pass = true;
             }
@@ -344,8 +465,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     RoleSizeContext returnedSize;
 
                     var size = instanceSize.InstanceSize;
-                    if (!size.Equals(InstanceSize.A5.ToString()) && !size.Equals(InstanceSize.A6.ToString()) && !size.Equals(InstanceSize.A7.ToString())
-                        && !size.Equals(InstanceSize.A8.ToString()) && !size.Equals(InstanceSize.A9.ToString()) && !size.Contains("Standard_D"))
+                    if (!size.Equals(InstanceSize.A5.ToString()) &&
+                        !size.Equals(InstanceSize.A6.ToString()) &&
+                        !size.Equals(InstanceSize.A7.ToString()) &&
+                        !size.Equals(InstanceSize.A8.ToString()) &&
+                        !size.Equals(InstanceSize.A9.ToString()) &&
+                        !size.Contains("Standard_"))
                     {
                         // Set-AzureVMSize test for regular VM size
                         vmPowershellCmdlets.SetVMSize(vmName, serviceName, new SetAzureVMSizeConfig(size));

@@ -49,38 +49,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         public AzureHDInsightConfig Config
         {
             get { return this.command.Config; }
-            set
-            {
-                if (value.IsNull())
-                {
-                    throw new ArgumentNullException("value", "The value for the configuration can not be null.");
-                }
-
-                if (value.CoreConfiguration != null)
-                {
-                    this.command.Config.CoreConfiguration.AddRange(value.CoreConfiguration);
-                }
-
-                if (value.YarnConfiguration != null)
-                {
-                    this.command.Config.YarnConfiguration.AddRange(value.YarnConfiguration);
-                }
-                this.command.Config.ClusterSizeInNodes = value.ClusterSizeInNodes;
-                this.command.Config.AdditionalStorageAccounts.AddRange(value.AdditionalStorageAccounts);
-                this.command.Config.ConfigActions.AddRange(value.ConfigActions);
-                this.command.Config.HiveMetastore = value.HiveMetastore ?? this.command.Config.HiveMetastore;
-                this.command.Config.OozieMetastore = value.OozieMetastore ?? this.command.Config.OozieMetastore;
-                this.command.Config.HeadNodeVMSize = value.HeadNodeVMSize;
-                this.command.Config.ClusterType = value.ClusterType;
-                if (!string.IsNullOrEmpty(value.VirtualNetworkId))
-                {
-                    this.command.Config.VirtualNetworkId = value.VirtualNetworkId;
-                }
-                if (!string.IsNullOrEmpty(value.SubnetName))
-                {
-                    this.command.Config.SubnetName = value.SubnetName;
-                }
-            }
+            set { this.command.Config.CopyFrom(value); }
         }
 
         /// <summary>

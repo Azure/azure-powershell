@@ -197,6 +197,14 @@ namespace Microsoft.Azure.Commands.DataFactories
                         ResourceGroupName = parameters.ResourceGroupName,
                         DataFactoryName = parameters.DataFactoryName
                     };
+
+                if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(pipeline.ProvisioningState))
+                {
+                    string errorMessage = pipeline.Properties == null
+                        ? string.Empty
+                        : pipeline.Properties.ErrorMessage;
+                    throw new ProvisioningFailedException(errorMessage);
+                }
             };
 
             if (parameters.Force)
@@ -223,14 +231,6 @@ namespace Microsoft.Azure.Commands.DataFactories
                             parameters.DataFactoryName),
                         parameters.Name,
                         createPipeline);
-            }
-
-            if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(pipeline.ProvisioningState))
-            {
-                string errorMessage = pipeline.Properties == null
-                    ? string.Empty
-                    : pipeline.Properties.ErrorMessage;
-                throw new ProvisioningFailedException(errorMessage);
             }
 
             return pipeline;

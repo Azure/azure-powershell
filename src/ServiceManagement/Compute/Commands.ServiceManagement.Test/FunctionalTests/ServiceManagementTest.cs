@@ -20,7 +20,7 @@ using System.Linq;
 using System.Threading;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.Properties;
@@ -143,7 +143,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 XDocument psf = XDocument.Load(publishSettingsFile);
                 XElement pubData = psf.Descendants().FirstOrDefault();
                 XElement pubProfile = pubData.Elements().ToList()[0];
-                return pubProfile.Attribute("Url").Value;
+                XAttribute urlattr = pubProfile.Attribute("Url");
+                string url = string.Empty;
+                if (urlattr != null)
+                {
+                    url = urlattr.Value;
+                }
+                else
+                {
+                    var subscriptions = pubProfile.Elements("Subscription").ToList();
+                    if (subscriptions.Any())
+                    {
+                        url = subscriptions[0].Attribute("ServiceManagementUrl").Value;
+                    }
+                }
+                return url;
             }
             catch
             {
