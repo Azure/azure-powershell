@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             if (string.IsNullOrEmpty(this.ReplicationFrequencyInSeconds))
             {
                 hyperVReplicaProtectionProfileInput.ReplicationFrequencyInSeconds
-                    = this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationFrequencyInSeconds;
+                    = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationFrequencyInSeconds;
             }
             else
             {
