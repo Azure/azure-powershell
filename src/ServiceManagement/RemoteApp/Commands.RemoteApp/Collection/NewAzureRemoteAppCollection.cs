@@ -32,10 +32,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         private const string NoDomain = "NoDomain";
         private const string AzureVNet = "AzureVNet";
 
-        [Parameter (Mandatory = true,
-                    Position = 0,
-                    HelpMessage = "RemoteApp collection name")]
-        [ValidatePattern (NameValidatorString)]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = true,
@@ -137,7 +139,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 Name = CollectionName,
                 TemplateImageName = ImageName,
                 Region = Location,
-                BillingPlanName = Plan,
+                PlanName = Plan,
                 Description = Description,
                 CustomRdpProperty = CustomRdpProperty,
                 Mode = CollectionMode.Apps
@@ -150,7 +152,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 case AzureVNet:
                 {
                     creds = Credential.GetNetworkCredential();
-                    details.VnetName = VNetName;
+                    details.VNetName = VNetName;
 
                     if (SubnetName != null)
                     {
@@ -167,7 +169,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                         }
 
                         details.SubnetName = SubnetName;
-                        ValidateCustomerVNetParams(details.VnetName, details.SubnetName);
+                        ValidateCustomerVNetParams(details.VNetName, details.SubnetName);
 
                         if (DnsServers != null)
                         {

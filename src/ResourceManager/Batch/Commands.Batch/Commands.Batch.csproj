@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -53,7 +53,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.15-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.17-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -142,6 +142,8 @@
     <Compile Include="Accounts\NewBatchAccountCommand.cs" />
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
+    <Compile Include="Files\GetBatchTaskFileCommand.cs" />
+    <Compile Include="Files\GetBatchTaskFileContentCommand.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommand.cs" />
     <Compile Include="Models\BatchClient.Accounts.cs" />
     <Compile Include="Models\BatchClient.cs" />
@@ -149,12 +151,15 @@
     <Compile Include="BatchObjectModelCmdletBase.cs" />
     <Compile Include="Jobs\GetBatchJobCommand.cs" />
     <Compile Include="Models\BatchAccountContext.cs" />
+    <Compile Include="Models\BatchClient.Files.cs" />
     <Compile Include="Models\BatchClient.Jobs.cs" />
     <Compile Include="Models\BatchClient.Pools.cs" />
     <Compile Include="Models\BatchClient.Tasks.cs" />
     <Compile Include="Models\BatchClient.WorkItems.cs" />
+    <Compile Include="Models\DownloadTaskFileOptions.cs" />
     <Compile Include="Models\ListJobOptions.cs" />
     <Compile Include="Models\ListPoolOptions.cs" />
+    <Compile Include="Models\ListTaskFileOptions.cs" />
     <Compile Include="Models\ListTaskOptions.cs" />
     <Compile Include="Models\ListWorkItemOptions.cs" />
     <Compile Include="Models\NewPoolParameters.cs" />

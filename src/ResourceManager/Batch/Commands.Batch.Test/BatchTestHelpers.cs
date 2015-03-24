@@ -276,6 +276,43 @@ namespace Microsoft.Azure.Commands.Batch.Test
             return response;
         }
 
+        /// <summary>
+        /// Builds a GetTaskFilePropertiesResponse object
+        /// </summary>
+        public static GetTaskFilePropertiesResponse CreateGetTaskFilePropertiesResponse(string fileName)
+        {
+            GetTaskFilePropertiesResponse response = new GetTaskFilePropertiesResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            Azure.Batch.Protocol.Entities.File file = new Azure.Batch.Protocol.Entities.File();
+            SetProperty(file, "Name", fileName);
+
+            SetProperty(response, "File", file);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a ListTaskFilesResponse object
+        /// </summary>
+        public static ListTaskFilesResponse CreateListTaskFilesResponse(IEnumerable<string> fileNames)
+        {
+            ListTaskFilesResponse response = new ListTaskFilesResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            List<Azure.Batch.Protocol.Entities.File> files = new List<Azure.Batch.Protocol.Entities.File>();
+
+            foreach (string name in fileNames)
+            {
+                Azure.Batch.Protocol.Entities.File file = new Azure.Batch.Protocol.Entities.File();
+                SetProperty(file, "Name", name);
+                files.Add(file);
+            }
+
+            SetProperty(response, "Files", files);
+
+            return response;
+        }
 
         /// <summary>
         /// Uses Reflection to set a property value on an object. Can be used to bypass restricted set accessors.
