@@ -55,10 +55,13 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.EndTime = job.Properties.EndTime;
             this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
             this.JobParameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
-            foreach (var kvp in job.Properties.Parameters.Where(kvp => 0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture,
-                CompareOptions.IgnoreCase)))
+            foreach (var kvp in job.Properties.Parameters) 
             {
-                this.JobParameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+                if (0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && 
+                    0 != String.Compare(kvp.Key, Constants.JobRunOnParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
+                {
+                    this.JobParameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+                }
             }
         }
 
