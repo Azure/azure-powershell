@@ -54,6 +54,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Position = 6, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
 
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.VolumeNewName)]
+        [ValidateNotNullOrEmpty]
+        public string NewName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -91,11 +95,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     diskDetails.AcrList = AccessControlRecords;
                 }
 
+                if (!string.IsNullOrWhiteSpace(NewName))
+                {
+                    diskDetails.Name = NewName;
+                }
+
                 if (WaitForComplete.IsPresent)
                 {
                     var taskstatus = StorSimpleClient.UpdateVolume(deviceId, diskDetails.InstanceId, diskDetails);
                     HandleSyncTaskResponse(taskstatus, "update");
-                    var updatedVolume = StorSimpleClient.GetVolumeByName(deviceId, VolumeName);
+                    var updatedVolume = StorSimpleClient.GetVolumeByName(deviceId, diskDetails.Name);
                     WriteObject(updatedVolume.VirtualDiskInfo);
                 }
                 else
