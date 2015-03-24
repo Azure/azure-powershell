@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// </summary>
         internal IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Batch account information.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The BatchAccountContext object with the account information to use when interacting with the Batch service.")]
         [ValidateNotNullOrEmpty]
         public BatchAccountContext BatchContext { get; set; }
 

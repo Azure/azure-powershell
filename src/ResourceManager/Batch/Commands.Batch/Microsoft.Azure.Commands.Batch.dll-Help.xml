@@ -748,4 +748,3159 @@
 	<maml:relatedLinks>
 	</maml:relatedLinks>
 </command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      New-AzureBatchWorkItem
+    </command:name>
+    <maml:description>
+      <maml:para>Creates a new workitem in the Azure Batch service under the account specified by the BatchAccountContext parameter.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>New</command:verb>
+    <command:noun>AzureBatchWorkItem</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>New-AzureBatchWorkItem</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem to create.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>JobExecutionEnvironment</maml:name>
+        <maml:description>
+          <maml:para>The job execution environment to use when creating the workitem.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSJobExecutionEnvironment</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>JobSpecification</maml:name>
+        <maml:description>
+          <maml:para>The job specification to use when creating the workitem.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSJobSpecification</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Metadata</maml:name>
+        <maml:description>
+          <maml:para>Metadata to add to the new workitem. For each key/value pair, set the key to the metadata name, and the value to the metadata value.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Schedule</maml:name>
+        <maml:description>
+          <maml:para>The schedule specification to use when creating the workitem.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSWorkItemSchedule</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>JobExecutionEnvironment</maml:name>
+      <maml:description>
+        <maml:para>The job execution environment to use when creating the workitem.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSJobExecutionEnvironment</command:parameterValue>
+      <dev:type>
+        <maml:name>PSJobExecutionEnvironment</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>JobSpecification</maml:name>
+      <maml:description>
+        <maml:para>The job specification to use when creating the workitem.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSJobSpecification</command:parameterValue>
+      <dev:type>
+        <maml:name>PSJobSpecification</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Metadata</maml:name>
+      <maml:description>
+        <maml:para>Metadata to add to the new workitem. For each key/value pair, set the key to the metadata name, and the value to the metadata value.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+      <dev:type>
+        <maml:name>IDictionary</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the workitem to create.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Schedule</maml:name>
+      <maml:description>
+        <maml:para>The schedule specification to use when creating the workitem.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSWorkItemSchedule</command:parameterValue>
+      <dev:type>
+        <maml:name>PSWorkItemSchedule</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Get-AzureBatchWorkItem
+    </command:name>
+    <maml:description>
+      <maml:para>Gets the Azure Batch workitems under the Batch account specified with the BatchContext parameter. You can use the Name parameter to get a single workitem, or you can use the Filter parameter to get the workitems that match an OData filter. </maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Get</command:verb>
+    <command:noun>AzureBatchWorkItem</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchWorkItem</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>The OData filter clause to use when querying for workitems. If no filter is specified, then all workitems under the Batch account specified with the BatchContext parameter will be returned.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxCount</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of workitems to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchWorkItem</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem to retrieve. Wildcards are not permitted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Filter</maml:name>
+      <maml:description>
+        <maml:para>The OData filter clause to use when querying for workitems. If no filter is specified, then all workitems under the Batch account specified with the BatchContext parameter will be returned.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>MaxCount</maml:name>
+      <maml:description>
+        <maml:para>The maximum number of workitems to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      <dev:type>
+        <maml:name>int</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the workitem to retrieve. Wildcards are not permitted.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name>PSCloudWorkItem</maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Remove-AzureBatchWorkItem
+    </command:name>
+    <maml:description>
+      <maml:para>Deletes the specified Azure Batch workitem.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Remove</command:verb>
+    <command:noun>AzureBatchWorkItem</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Remove-AzureBatchWorkItem</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem to delete. Wildcards are not permitted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>If this parameter is not present, then you will be prompted for confirmation before the workitem is deleted. Use this parameter to delete the workitem without being asked for confirmation.</maml:para>
+        </maml:description>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Force</maml:name>
+      <maml:description>
+        <maml:para>If this parameter is not present, then you will be prompted for confirmation before the workitem is deleted. Use this parameter to delete the workitem without being asked for confirmation.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the workitem to delete. Wildcards are not permitted.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Get-AzureBatchJob
+    </command:name>
+    <maml:description>
+      <maml:para>Gets the Azure Batch jobs under the workitem specified by either the WorkItemName or WorkItem parameters. You can use the Name parameter to get a single job, or you can use the Filter parameter to get the jobs that match an OData filter. </maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Get</command:verb>
+    <command:noun>AzureBatchJob</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchJob</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>WorkItemName</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem which contains the jobs.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>The OData filter clause to use when querying for jobs. If no filter is specified, then all jobs under the workitem specified with either the WorkItemName or WorkItem parameters will be returned.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxCount</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of jobs to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchJob</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>WorkItemName</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem which contains the jobs.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the job to retrieve. Wildcards are not permitted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchJob</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+        <maml:name>WorkItem</maml:name>
+        <maml:description>
+          <maml:para>The PSCloudWorkItem object representing the workitem which contains the jobs. Use the Get-AzureBatchWorkItem cmdlet to get a PSCloudWorkItem object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCloudWorkItem</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>The OData filter clause to use when querying for jobs. If no filter is specified, then all jobs under the workitem specified with either the WorkItemName or WorkItem parameters will be returned.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxCount</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of jobs to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Filter</maml:name>
+      <maml:description>
+        <maml:para>The OData filter clause to use when querying for jobs. If no filter is specified, then all jobs under the workitem specified with either the WorkItemName or WorkItem parameters will be returned.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>MaxCount</maml:name>
+      <maml:description>
+        <maml:para>The maximum number of jobs to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      <dev:type>
+        <maml:name>int</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the job to retrieve. Wildcards are not permitted.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+      <maml:name>WorkItem</maml:name>
+      <maml:description>
+        <maml:para>The PSCloudWorkItem object representing the workitem which contains the jobs. Use the Get-AzureBatchWorkItem cmdlet to get a PSCloudWorkItem object.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSCloudWorkItem</command:parameterValue>
+      <dev:type>
+        <maml:name>PSCloudWorkItem</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+      <maml:name>WorkItemName</maml:name>
+      <maml:description>
+        <maml:para>The name of the workitem which contains the jobs.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name>PSCloudJob</maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Remove-AzureBatchJob
+    </command:name>
+    <maml:description>
+      <maml:para>Deletes the specified Azure Batch job. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Remove</command:verb>
+    <command:noun>AzureBatchJob</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Remove-AzureBatchJob</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+        <maml:name>InputObject</maml:name>
+        <maml:description>
+          <maml:para>The PSCloudJob object representing the job to delete. Use the Get-AzureBatchJob cmdlet to get a PSCloudJob object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>If this parameter is not present, then you will be prompted for confirmation before the job is deleted. Use this parameter to delete the job without being asked for confirmation.</maml:para>
+        </maml:description>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>Remove-AzureBatchJob</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>WorkItemName</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem containing the job to delete.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the job to delete. Wildcards are not permitted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>If this parameter is not present, then you will be prompted for confirmation before the job is deleted. Use this parameter to delete the job without being asked for confirmation.</maml:para>
+        </maml:description>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Force</maml:name>
+      <maml:description>
+        <maml:para>If this parameter is not present, then you will be prompted for confirmation before the job is deleted. Use this parameter to delete the job without being asked for confirmation.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+      <maml:name>InputObject</maml:name>
+      <maml:description>
+        <maml:para>The PSCloudJob object representing the job to delete. Use the Get-AzureBatchJob cmdlet to get a PSCloudJob object.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
+      <dev:type>
+        <maml:name>PSCloudJob</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the job to delete. Wildcards are not permitted.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+      <maml:name>WorkItemName</maml:name>
+      <maml:description>
+        <maml:para>The name of the workitem containing the job to delete.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      New-AzureBatchTask
+    </command:name>
+    <maml:description>
+      <maml:para>Creates a new Azure Batch task under the job specified by the WorkItemName and JobName parameters or the Job parameter.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>New</command:verb>
+    <command:noun>AzureBatchTask</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>New-AzureBatchTask</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>JobName</maml:name>
+        <maml:description>
+          <maml:para>The name of the job to create the task under.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the task to create.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>WorkItemName</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem to create the task under.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AffinityInformation</maml:name>
+        <maml:description>
+          <maml:para>The locality hints for the task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>CommandLine</maml:name>
+        <maml:description>
+          <maml:para>The commandline for the task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>EnvironmentSettings</maml:name>
+        <maml:description>
+          <maml:para>Environment settings to add to the new task. For each key/value pair, set the key to the environment setting name, and the value to the environment setting value.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceFiles</maml:name>
+        <maml:description>
+          <maml:para>Resource files required by the task. For each key/value pair, set the key to the resource rile path, and the value to the resource file blob source.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>RunElevated</maml:name>
+        <maml:description>
+          <maml:para>If present, the task process will run under elevation as Administrator. Otherwise, the process will run without elevation.</maml:para>
+        </maml:description>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TaskConstraints</maml:name>
+        <maml:description>
+          <maml:para>The execution constraints for the task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSTaskConstraints</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>New-AzureBatchTask</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the task to create.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AffinityInformation</maml:name>
+        <maml:description>
+          <maml:para>The locality hints for the task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>CommandLine</maml:name>
+        <maml:description>
+          <maml:para>The commandline for the task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>EnvironmentSettings</maml:name>
+        <maml:description>
+          <maml:para>Environment settings to add to the new task. For each key/value pair, set the key to the environment setting name, and the value to the environment setting value.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>Job</maml:name>
+        <maml:description>
+          <maml:para>The PSCloudJob object representing the job to create the task under. Use the Get-AzureBatchJob cmdlet to get a PSCloudJob object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResourceFiles</maml:name>
+        <maml:description>
+          <maml:para>Resource files required by the task. For each key/value pair, set the key to the resource rile path, and the value to the resource file blob source.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>RunElevated</maml:name>
+        <maml:description>
+          <maml:para>If present, the task process will run under elevation as Administrator. Otherwise, the process will run without elevation.</maml:para>
+        </maml:description>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TaskConstraints</maml:name>
+        <maml:description>
+          <maml:para>The execution constraints for the task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSTaskConstraints</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AffinityInformation</maml:name>
+      <maml:description>
+        <maml:para>The locality hints for the task.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
+      <dev:type>
+        <maml:name>PSAffinityInformation</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>CommandLine</maml:name>
+      <maml:description>
+        <maml:para>The commandline for the task.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>EnvironmentSettings</maml:name>
+      <maml:description>
+        <maml:para>Environment settings to add to the new task. For each key/value pair, set the key to the environment setting name, and the value to the environment setting value.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+      <dev:type>
+        <maml:name>IDictionary</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>Job</maml:name>
+      <maml:description>
+        <maml:para>The PSCloudJob object representing the job to create the task under. Use the Get-AzureBatchJob cmdlet to get a PSCloudJob object.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
+      <dev:type>
+        <maml:name>PSCloudJob</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>JobName</maml:name>
+      <maml:description>
+        <maml:para>The name of the job to create the task under.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the task to create.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResourceFiles</maml:name>
+      <maml:description>
+        <maml:para>Resource files required by the task. For each key/value pair, set the key to the resource rile path, and the value to the resource file blob source.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+      <dev:type>
+        <maml:name>IDictionary</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>RunElevated</maml:name>
+      <maml:description>
+        <maml:para>If present, the task process will run under elevation as Administrator. Otherwise, the process will run without elevation.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>TaskConstraints</maml:name>
+      <maml:description>
+        <maml:para>The execution constraints for the task.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSTaskConstraints</command:parameterValue>
+      <dev:type>
+        <maml:name>PSTaskConstraints</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>WorkItemName</maml:name>
+      <maml:description>
+        <maml:para>The name of the workitem to create the task under.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Get-AzureBatchTask
+    </command:name>
+    <maml:description>
+      <maml:para>Gets the Azure Batch tasks under the job specified by either the WorkItemName and JobName parameters or  the Job parameter. You can use the Name parameter to get a single task, or you can use the Filter parameter to get the tasks that match an OData filter. </maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Get</command:verb>
+    <command:noun>AzureBatchTask</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchTask</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>WorkItemName</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem which contains the tasks.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>JobName</maml:name>
+        <maml:description>
+          <maml:para>The name of the job which contains the tasks.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>The OData filter clause to use when querying for tasks. If no filter is specified, then all tasks under the job specified with either the WorkItemName and JobName parameters or the Job parameter will be returned.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxCount</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of tasks to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchTask</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>WorkItemName</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem which contains the tasks.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+        <maml:name>JobName</maml:name>
+        <maml:description>
+          <maml:para>The name of the job which contains the tasks.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the task to retrieve. Wildcards are not permitted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchTask</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+        <maml:name>Job</maml:name>
+        <maml:description>
+          <maml:para>The PSCloudJob object representing the job which contains the tasks. Use the Get-AzureBatchJob cmdlet to get a PSCloudJob object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>The OData filter clause to use when querying for tasks. If no filter is specified, then all tasks under the job specified with either the WorkItemName and JobName parameters or the Job parameter will be returned.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxCount</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of tasks to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Filter</maml:name>
+      <maml:description>
+        <maml:para>The OData filter clause to use when querying for tasks. If no filter is specified, then all tasks under the job specified with either the WorkItemName and JobName parameters or the Job parameter will be returned.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+      <maml:name>Job</maml:name>
+      <maml:description>
+        <maml:para>The PSCloudJob object representing the job which contains the tasks. Use the Get-AzureBatchJob cmdlet to get a PSCloudJob object.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
+      <dev:type>
+        <maml:name>PSCloudJob</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+      <maml:name>JobName</maml:name>
+      <maml:description>
+        <maml:para>The name of the job which contains the tasks.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>MaxCount</maml:name>
+      <maml:description>
+        <maml:para>The maximum number of tasks to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      <dev:type>
+        <maml:name>int</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the task to retrieve. Wildcards are not permitted.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+      <maml:name>WorkItemName</maml:name>
+      <maml:description>
+        <maml:para>The name of the workitem which contains the tasks.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name>PSCloudTask</maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Remove-AzureBatchTask
+    </command:name>
+    <maml:description>
+      <maml:para>Deletes the specified Azure Batch task. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Remove</command:verb>
+    <command:noun>AzureBatchTask</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Remove-AzureBatchTask</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+        <maml:name>InputObject</maml:name>
+        <maml:description>
+          <maml:para>The PSCloudTask object representing the task to delete. Use the Get-AzureBatchTask cmdlet to get a PSCloudTask object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>If this parameter is not present, then you will be prompted for confirmation before the task is deleted. Use this parameter to delete the task without being asked for confirmation.</maml:para>
+        </maml:description>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>Remove-AzureBatchTask</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>WorkItemName</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem containing the task to delete.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>JobName</maml:name>
+        <maml:description>
+          <maml:para>The name of the job containing the task to delete.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the task to delete. Wildcards are not permitted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>If this parameter is not present, then you will be prompted for confirmation before the task is deleted. Use this parameter to delete the task without being asked for confirmation.</maml:para>
+        </maml:description>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Force</maml:name>
+      <maml:description>
+        <maml:para>If this parameter is not present, then you will be prompted for confirmation before the task is deleted. Use this parameter to delete the task without being asked for confirmation.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+      <maml:name>InputObject</maml:name>
+      <maml:description>
+        <maml:para>The PSCloudTask object representing the task to delete. Use the Get-AzureBatchTask cmdlet to get a PSCloudTask object.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
+      <dev:type>
+        <maml:name>PSCloudJob</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+      <maml:name>JobName</maml:name>
+      <maml:description>
+        <maml:para>The name of the job containing the task to delete.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the task to delete. Wildcards are not permitted.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+      <maml:name>WorkItemName</maml:name>
+      <maml:description>
+        <maml:para>The name of the workitem containing the task to delete.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Get-AzureBatchTaskFile
+    </command:name>
+    <maml:description>
+      <maml:para>Gets the properties of the files associated with the Azure Batch task specified by either the WorkItemName, JobName, and TaskName parameters or the Task parameter. You can use the Name parameter to get a single task file, or you can use the Filter parameter to get the task files that match an OData filter. You can use the Recursive parameter to perform a recursive list of all files of the task.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Get</command:verb>
+    <command:noun>AzureBatchTaskFile</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchTaskFile</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>WorkItemName</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem which contains the specified target task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>JobName</maml:name>
+        <maml:description>
+          <maml:para>The name of the job containing the specified target task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+        <maml:name>TaskName</maml:name>
+        <maml:description>
+          <maml:para>The name of the task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>The OData filter clause to use when querying for task files. If no filter is specified, then all task files associated with the task specified with either the WorkItemName, JobName, and TaskName parameters or the Task parameter will be returned.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxCount</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of task files to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Recursive</maml:name>
+        <maml:description>
+          <maml:para>If present, performs a recursive list of files of the task. Otherwise, returns only the files at the task directory root.</maml:para>
+        </maml:description>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchTaskFile</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>WorkItemName</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem which contains the specified target task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+        <maml:name>JobName</maml:name>
+        <maml:description>
+          <maml:para>The name of the job containing the specified target task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+        <maml:name>TaskName</maml:name>
+        <maml:description>
+          <maml:para>The name of the task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the task file to retrieve. Wildcards are not permitted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchTaskFile</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+        <maml:name>Task</maml:name>
+        <maml:description>
+          <maml:para>The PSCloudTask object representing the task that the task files are associated with. Use the Get-AzureBatchTask cmdlet to get a PSCloudTask object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCloudTask</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>The OData filter clause to use when querying for task files. If no filter is specified, then all task files associated with the task specified with either the WorkItemName, JobName, and TaskName parameters or the Task parameter will be returned.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxCount</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of task files to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Recursive</maml:name>
+        <maml:description>
+          <maml:para>If present, performs a recursive list of files of the task. Otherwise, returns only the files at the task directory root.</maml:para>
+        </maml:description>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Filter</maml:name>
+      <maml:description>
+        <maml:para>The OData filter clause to use when querying for task files. If no filter is specified, then all task files associated with the task specified with either the WorkItemName, JobName, and TaskName parameters or the Task parameter will be returned.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+      <maml:name>JobName</maml:name>
+      <maml:description>
+        <maml:para>The name of the job containing the specified target task.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>MaxCount</maml:name>
+      <maml:description>
+        <maml:para>The maximum number of task files to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      <dev:type>
+        <maml:name>int</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the task file to retrieve. Wildcards are not permitted.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Recursive</maml:name>
+      <maml:description>
+        <maml:para>If present, performs a recursive list of files of the task. Otherwise, returns only the files at the task directory root.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+      <maml:name>Task</maml:name>
+      <maml:description>
+        <maml:para>The PSCloudTask object representing the task that the task files are associated with. Use the Get-AzureBatchTask cmdlet to get a PSCloudTask object.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSCloudTask</command:parameterValue>
+      <dev:type>
+        <maml:name>PSCloudTask</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+      <maml:name>TaskName</maml:name>
+      <maml:description>
+        <maml:para>The name of the task.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+      <maml:name>WorkItemName</maml:name>
+      <maml:description>
+        <maml:para>The name of the workitem which contains the specified target task.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name>PSTaskFile</maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Get-AzureBatchTaskFileContent
+    </command:name>
+    <maml:description>
+      <maml:para>Downloads the specified task file to the specified location. If no destination directory is specified, then the task file will be downloaded to the local directory.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Get</command:verb>
+    <command:noun>AzureBatchTaskFileContent</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchTaskFileContent</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+        <maml:name>InputObject</maml:name>
+        <maml:description>
+          <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>InputObject</maml:name>
+        <maml:description>
+          <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DestinationPath</maml:name>
+        <maml:description>
+          <maml:para>The path to the directory where the Task file will be downloaded. If no destination directory is specified, then the task file will be downloaded to the local directory.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchTaskFileContent</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>WorkItemName</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem which contains the specified target task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+        <maml:name>InputObject</maml:name>
+        <maml:description>
+          <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+        <maml:name>JobName</maml:name>
+        <maml:description>
+          <maml:para>The name of the job containing the specified target task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+        <maml:name>TaskName</maml:name>
+        <maml:description>
+          <maml:para>The name of the task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the task file to download. Wildcards are not permitted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DestinationPath</maml:name>
+        <maml:description>
+          <maml:para>The path to the directory where the Task file will be downloaded. If no destination directory is specified, then the task file will be downloaded to the local directory.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>DestinationPath</maml:name>
+      <maml:description>
+        <maml:para>The path to the directory where the Task file will be downloaded. If no destination directory is specified, then the task file will be downloaded to the local directory.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+      <maml:name>InputObject</maml:name>
+      <maml:description>
+        <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
+      <dev:type>
+        <maml:name>PSTaskFile</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+      <maml:name>JobName</maml:name>
+      <maml:description>
+        <maml:para>The name of the job containing the specified target task.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the task file to download. Wildcards are not permitted.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+      <maml:name>TaskName</maml:name>
+      <maml:description>
+        <maml:para>The name of the task.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+      <maml:name>WorkItemName</maml:name>
+      <maml:description>
+        <maml:para>The name of the workitem which contains the specified target task.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      New-AzureBatchPool
+    </command:name>
+    <maml:description>
+      <maml:para>Creates a new pool in the Azure Batch service under the account specified by the BatchContext parameter.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>New</command:verb>
+    <command:noun>AzureBatchPool</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>New-AzureBatchPool</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the pool to create.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>CertificateReferences</maml:name>
+        <maml:description>
+          <maml:para>Certificates associated with the pool. The Batch service installs the referenced certificates on each VM of the pool.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">PSCertificateReference[]</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>CommunicationEnabled</maml:name>
+        <maml:description>
+          <maml:para>Set up the pool for direct communication between dedicated VMs.</maml:para>
+        </maml:description>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxTasksPerVM</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of tasks that can run on a single VM.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Metadata</maml:name>
+        <maml:description>
+          <maml:para>Metadata to add to the new pool. For each key/value pair, set the key to the metadata name, and the value to the metadata value.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>OSFamily</maml:name>
+        <maml:description>
+          <maml:para>The OS family of the VMs in the pool. You can learn more about OS families and versions at http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ResizeTimeout</maml:name>
+        <maml:description>
+          <maml:para>The timeout for allocating VMs to the pool.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>SchedulingPolicy</maml:name>
+        <maml:description>
+          <maml:para>The scheduling policy (such as the TVMFillType).</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSSchedulingPolicy</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>StartTask</maml:name>
+        <maml:description>
+          <maml:para>The start task specification for the pool. The start task is run when a VM joins the pool, or when the VM is rebooted or reimaged.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSStartTask</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TargetDedicated</maml:name>
+        <maml:description>
+          <maml:para>The target number of VMs to allocate to the pool.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TargetOSVersion</maml:name>
+        <maml:description>
+          <maml:para>The target OS version of the VMs in the pool. Use &quot;*&quot; for the latest OS version for the specified family. You can learn more about OS families and versions at http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>VMSize</maml:name>
+        <maml:description>
+          <maml:para>The size of the VMs in the pool. For more information on VM sizes, see https://msdn.microsoft.com/en-us/library/dn197896.aspx</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>New-AzureBatchPool</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the pool to create.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AutoScaleFormula</maml:name>
+        <maml:description>
+          <maml:para>The formula for automatically scaling the pool. For more information on autoscale formulas, see https://msdn.microsoft.com/en-us/library/azure/dn820182.aspx</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>CertificateReferences</maml:name>
+        <maml:description>
+          <maml:para>Certificates associated with the pool. The Batch service installs the referenced certificates on each VM of the pool.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">PSCertificateReference[]</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>CommunicationEnabled</maml:name>
+        <maml:description>
+          <maml:para>Set up the pool for direct communication between dedicated VMs.</maml:para>
+        </maml:description>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxTasksPerVM</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of tasks that can run on a single VM.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Metadata</maml:name>
+        <maml:description>
+          <maml:para>Metadata to add to the new pool. For each key/value pair, set the key to the metadata name, and the value to the metadata value.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>OSFamily</maml:name>
+        <maml:description>
+          <maml:para>The OS family of the VMs in the pool. You can learn more about OS families and versions at http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>SchedulingPolicy</maml:name>
+        <maml:description>
+          <maml:para>The scheduling policy (such as the TVMFillType).</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSSchedulingPolicy</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>StartTask</maml:name>
+        <maml:description>
+          <maml:para>The start task specification for the pool. The start task is run when a VM joins the pool, or when the VM is rebooted or reimaged.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSStartTask</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TargetOSVersion</maml:name>
+        <maml:description>
+          <maml:para>The target OS version of the VMs in the pool. Use &quot;*&quot; for the latest OS version for the specified family. You can learn more about OS families and versions at http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>VMSize</maml:name>
+        <maml:description>
+          <maml:para>The size of the VMs in the pool. For more information on VM sizes, see https://msdn.microsoft.com/en-us/library/dn197896.aspx</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>AutoScaleFormula</maml:name>
+      <maml:description>
+        <maml:para>The formula for automatically scaling the pool. For more information on autoscale formulas, see https://msdn.microsoft.com/en-us/library/azure/dn820182.aspx</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+      <maml:name>CertificateReferences</maml:name>
+      <maml:description>
+        <maml:para>Certificates associated with the pool. The Batch service installs the referenced certificates on each VM of the pool.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="true">PSCertificateReference[]</command:parameterValue>
+      <dev:type>
+        <maml:name>PSCertificateReference[]</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>CommunicationEnabled</maml:name>
+      <maml:description>
+        <maml:para>Set up the pool for direct communication between dedicated VMs.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>MaxTasksPerVM</maml:name>
+      <maml:description>
+        <maml:para>The maximum number of tasks that can run on a single VM.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      <dev:type>
+        <maml:name>int</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Metadata</maml:name>
+      <maml:description>
+        <maml:para>Metadata to add to the new pool. For each key/value pair, set the key to the metadata name, and the value to the metadata value.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+      <dev:type>
+        <maml:name>IDictionary</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the pool to create.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>OSFamily</maml:name>
+      <maml:description>
+        <maml:para>The OS family of the VMs in the pool. You can learn more about OS families and versions at http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>ResizeTimeout</maml:name>
+      <maml:description>
+        <maml:para>The timeout for allocating VMs to the pool.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+      <dev:type>
+        <maml:name>TimeSpan</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>SchedulingPolicy</maml:name>
+      <maml:description>
+        <maml:para>The scheduling policy (such as the TVMFillType).</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSSchedulingPolicy</command:parameterValue>
+      <dev:type>
+        <maml:name>PSSchedulingPolicy</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>StartTask</maml:name>
+      <maml:description>
+        <maml:para>The start task specification for the pool. The start task is run when a VM joins the pool, or when the VM is rebooted or reimaged.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">PSStartTask</command:parameterValue>
+      <dev:type>
+        <maml:name>PSStartTask</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>TargetDedicated</maml:name>
+      <maml:description>
+        <maml:para>The target number of VMs to allocate to the pool.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      <dev:type>
+        <maml:name>int</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>TargetOSVersion</maml:name>
+      <maml:description>
+        <maml:para>The target OS version of the VMs in the pool. Use &quot;*&quot; for the latest OS version for the specified family. You can learn more about OS families and versions at http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>VMSize</maml:name>
+      <maml:description>
+        <maml:para>The size of the VMs in the pool. For more information on VM sizes, see https://msdn.microsoft.com/en-us/library/dn197896.aspx</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Get-AzureBatchPool
+    </command:name>
+    <maml:description>
+      <maml:para>Gets the Azure Batch pools under the Batch account specified with the BatchContext parameter. You can use the Name parameter to get a single pool, or you can use the Filter parameter to get the pools that match an OData filter. </maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Get</command:verb>
+    <command:noun>AzureBatchPool</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchPool</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>The OData filter clause to use when querying for pools. If no filter is specified, then all pools under the Batch account specified with the BatchContext parameter will be returned.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxCount</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of pools to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>Get-AzureBatchPool</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the pool to retrieve. Wildcards are not permitted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Filter</maml:name>
+      <maml:description>
+        <maml:para>The OData filter clause to use when querying for pools. If no filter is specified, then all pools under the Batch account specified with the BatchContext parameter will be returned.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>MaxCount</maml:name>
+      <maml:description>
+        <maml:para>The maximum number of pools to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+      <dev:type>
+        <maml:name>int</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the pool to retrieve. Wildcards are not permitted.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name>PSCloudPool</maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:details>
+    <command:name>
+      Remove-AzureBatchPool
+    </command:name>
+    <maml:description>
+      <maml:para>Deletes the specified Azure Batch pool. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
+    </maml:description>
+    <maml:copyright>
+      <maml:para></maml:para>
+    </maml:copyright>
+    <command:verb>Remove</command:verb>
+    <command:noun>AzureBatchPool</command:noun>
+    <dev:version></dev:version>
+  </command:details>
+  <maml:description>
+    <maml:para></maml:para>
+  </maml:description>
+  <!-- Cmdlet syntax section-->
+  <command:syntax>
+    <command:syntaxItem>
+      <maml:name>Remove-AzureBatchPool</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the pool to delete. Wildcards are not permitted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>If this parameter is not present, then you will be prompted for confirmation before the pool is deleted. Use this parameter to delete the pool without being asked for confirmation.</maml:para>
+        </maml:description>
+      </command:parameter>
+    </command:syntaxItem>
+  </command:syntax>
+  <!-- Cmdlet parameter section  -->
+  <command:parameters>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+      <maml:name>BatchContext</maml:name>
+      <maml:description>
+        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+      <dev:type>
+        <maml:name>BatchAccountContext</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>Force</maml:name>
+      <maml:description>
+        <maml:para>If this parameter is not present, then you will be prompted for confirmation before the pool is deleted. Use this parameter to delete the pool without being asked for confirmation.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      <dev:type>
+        <maml:name>SwitchParameter</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>The name of the pool to delete. Wildcards are not permitted.</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+  </command:parameters>
+  <!-- Input - Output section-->
+  <command:inputTypes>
+    <command:inputType>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri/>
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:inputType>
+  </command:inputTypes>
+  <command:returnValues>
+    <command:returnValue>
+      <dev:type>
+        <maml:name></maml:name>
+        <maml:uri />
+        <maml:description />
+      </dev:type>
+      <maml:description>
+        <maml:para>
+          <!-- description  -->
+
+        </maml:para>
+      </maml:description>
+    </command:returnValue>
+  </command:returnValues>
+  <!-- Error section-->
+  <command:terminatingErrors />
+  <command:nonTerminatingErrors />
+  <!-- Notes section  -->
+  <maml:alertSet>
+    <maml:title></maml:title>
+    <maml:alert>
+      <maml:para>
+
+      </maml:para>
+    </maml:alert>
+    <maml:alert>
+      <maml:para></maml:para>
+    </maml:alert>
+  </maml:alertSet>
+  <!-- Example section  -->
+  <command:examples>
+  </command:examples>
+  <!-- Link section  -->
+  <maml:relatedLinks>
+    <maml:navigationLink>
+      <maml:linkText></maml:linkText>
+      <maml:uri/>
+    </maml:navigationLink>
+  </maml:relatedLinks>
+</command:command>
 </helpItems>
