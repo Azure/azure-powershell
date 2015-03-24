@@ -42,15 +42,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.SnapshotToClone)]
         [ValidateNotNull]
         public Snapshot Snapshot { get; set; }
-
-        [Parameter(Mandatory = false, Position = 4, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeAcrList)]
-        [ValidateNotNull]
-        public List<AccessControlRecord> TargetAccessControlRecords { get; set; }
-            
-        [Parameter(Mandatory = false, Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.CloneVolumeName)]
+        
+        [Parameter(Mandatory = true, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.CloneVolumeName)]
         [ValidateNotNullOrEmpty]
         public string CloneVolumeName { get; set; }
 
+        [Parameter(Mandatory = false, Position = 5, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeAcrList)]
+        [ValidateNotNull]
+        public List<AccessControlRecord> TargetAccessControlRecords { get; set; }
+            
         [Parameter(Mandatory = false, Position = 6, HelpMessage = StorSimpleCmdletHelpMessage.Force)]
         public SwitchParameter Force { get; set; }
 
