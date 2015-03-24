@@ -281,15 +281,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         ApplicationConsistentSnapshotFrequencyInHours =
                         this.ApplicationConsistentSnapshotFrequencyInHours.HasValue
                           ? this.ApplicationConsistentSnapshotFrequencyInHours.GetValueOrDefault()
-                          : this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
+                          : this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
                         OnlineReplicationStartTime =
                         this.ReplicationStartTime.HasValue
                           ? this.ReplicationStartTime.GetValueOrDefault()
-                          : this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.ReplicationStartTime,
+                          : this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationStartTime,
                         RecoveryPoints =
                         this.RecoveryPoints.HasValue
                           ? this.RecoveryPoints.GetValueOrDefault()
-                          : this.ProtectionProfile.HyperVReplicaAzureProviderSettingsObject.RecoveryPoints,
+                          : this.ProtectionProfile.HyperVReplicaProviderSettingsObject.RecoveryPoints,
                         CompressionEnabled =
                         this.CompressionEnabled.HasValue
                           ? (bool)this.CompressionEnabled.GetValueOrDefault()
