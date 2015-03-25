@@ -113,13 +113,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            if (!ProcessParameters())
-            {
-                WriteObject(null);
-                return;
-            }
             try
             {
+                ProcessParameters();
                 var netConfig = new NetworkConfig
                 {
                     IsIscsiEnabled = EnableIscsi,
@@ -144,12 +140,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
         }
 
-        private bool ProcessParameters(){
+        private void ProcessParameters(){
             // parse interfaceAlias
             if (!Enum.TryParse<NetInterfaceId>(InterfaceAlias, out interfaceAlias))
             {
-                WriteVerbose(string.Format(Resources.InvalidInterfaceId, InterfaceAlias));
-                return false;
+                throw new ArgumentException(string.Format(Resources.InvalidInterfaceId, InterfaceAlias));
             }
 
             // Try and set all the IP address
@@ -166,8 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if(IPv4Address != null || IPv4Gateway != null || IPv4Netmask != null
                     && IPv6Gateway != null || IPv6Prefix != null || EnableCloud != null)
                 {
-                    WriteVerbose(Resources.NetworkConfigData0AllowedSettings);
-                    return false;
+                    throw new ArgumentException(Resources.NetworkConfigData0AllowedSettings);
                 }
             }
             // On other interfaces (non-Data0), Controller0 and Controller1 IP Addresses cannot be set
@@ -175,14 +169,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 if (Controller0IPv4Address != null || Controller1IPv4Address != null)
                 {
-                    WriteVerbose(Resources.NetworkConfigControllerIPsNotAllowedOnOthers);
-                    return false;
+                    throw new ArgumentException(Resources.NetworkConfigControllerIPsNotAllowedOnOthers);
                 }
             }
-
-            return true;
         }
-
     }
 }
 

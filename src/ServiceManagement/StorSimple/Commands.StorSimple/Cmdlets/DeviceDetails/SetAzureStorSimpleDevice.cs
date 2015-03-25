@@ -82,35 +82,25 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             try
             {
                 // Make sure params were supplied appropriately.
-                if (!ProcessParameters())
-                {
-                    return;
-                }
+                ProcessParameters();
 
                 // Get the current device details.
                 var deviceDetails = StorSimpleClient.GetDeviceDetails(DeviceId);
 
                 if (deviceDetails == null)
                 {
-                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenIdInResourceMessage, StorSimpleContext.ResourceName, DeviceId));
-                    WriteObject(null);
-                    return;
+                    throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenIdInResourceMessage, StorSimpleContext.ResourceName, DeviceId));
                 }
 
                 // If the device is being configured for the first time, validate that mandatory params 
                 // for first setup have been provided
                 if (!deviceDetails.DeviceProperties.IsConfigUpdated && !ValidParamsForFirstDeviceConfiguration(StorSimpleNetworkConfig, TimeZone, SecondaryDnsServer))
                 {
-                    WriteVerbose(Resources.MandatoryParamsMissingForInitialDeviceConfiguration);
-                    WriteObject(null);
-                    return;
+                    throw new ArgumentException(Resources.MandatoryParamsMissingForInitialDeviceConfiguration);
                 }
 
-                if (!this.ValidateNetworkConfigs(deviceDetails, StorSimpleNetworkConfig))
-                {
-                    return;
-                }
-
+                // Validate Network configs - this method throws an exception if any validation fails
+                ValidateNetworkConfigs(deviceDetails, StorSimpleNetworkConfig);
                 
                 WriteVerbose(string.Format(Resources.BeginningDeviceConfiguration, deviceDetails.DeviceProperties.FriendlyName));
 
@@ -133,7 +123,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
         }
 
-        private bool ProcessParameters()
+        private void ProcessParameters()
         {
             // Make sure that the DeviceId property has the appropriate value irrespective of the parameter set
             if (ParameterSetName == StorSimpleCmdletParameterSet.IdentifyByName)
@@ -141,14 +131,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var deviceId = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceId == null)
                 {
-                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
-                    WriteObject(null);
-                    return false;
+                    throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 }
                 DeviceId = deviceId;
             }
             TrySetIPAddress(SecondaryDnsServer, out secondaryDnsServer, "SecondaryDnsServer");
-            return true;
         }
     }
 }
