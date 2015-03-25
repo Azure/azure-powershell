@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                       var deviceJobDetails = StorSimpleClient.GetDeviceJobById(InstanceId);
                       if (deviceJobDetails == null)
                       {
-                          throw new ArgumentException(string.Format(Resources.NoDeviceJobFoundWithGivenIdMessage, InstanceId))
+                          throw new ArgumentException(string.Format(Resources.NoDeviceJobFoundWithGivenIdMessage, InstanceId));
                       }
 
                       // Make sure the job is running and cancellable, else fail.

@@ -150,7 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
         }
 
-        private bool ProcessParameters()
+        private void ProcessParameters()
         {
             // Default values for first and skip are 0
             First = First ?? 0;
