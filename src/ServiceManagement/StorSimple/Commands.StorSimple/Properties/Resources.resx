@@ -513,7 +513,7 @@
   <data name="CIKInvalidWithException" xml:space="preserve">
     <value>Invalid value for Registration Key. CIK provided couldnt be used to decrypt the secrets! The exact exception while decrypting is "{0}"!</value>
   </data>
-  <data name="SetASSDeviceNoSettingsProvided" xml:space="preserve">
+  <data name="SetAzureStorSimpleDeviceNoSettingsProvided" xml:space="preserve">
     <value>No settings were provided for updating device details.</value>
   </data>
 </root>
