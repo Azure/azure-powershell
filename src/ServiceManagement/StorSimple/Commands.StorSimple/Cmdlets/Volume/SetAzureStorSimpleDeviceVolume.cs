@@ -28,9 +28,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         public string DeviceName { get; set; }
 
         [Alias("Name")]
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeName)]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.VolumeName)]
         [ValidateNotNullOrEmpty]
         public string VolumeName { get; set; }
+
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByObject, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeObject)]
+        [ValidateNotNullOrEmpty]
+        public VirtualDisk Volume { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.VolumeOnline)]
         [ValidateNotNullOrEmpty]
@@ -70,7 +74,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     return;
                 }
 
-                VirtualDisk diskDetails = StorSimpleClient.GetVolumeByName(deviceId, VolumeName).VirtualDiskInfo;
+                VirtualDisk diskDetails = null;
+
+                switch (ParameterSetName)
+                {
+                    case StorSimpleCmdletParameterSet.IdentifyByObject:
+                        diskDetails = Volume;
+                        break;
+                    case StorSimpleCmdletParameterSet.IdentifyByName:
+                        diskDetails = StorSimpleClient.GetVolumeByName(deviceId, VolumeName).VirtualDiskInfo;
+                        break;
+                    default:
+                        break;
+                }
+
                 if (diskDetails == null)
                 {
                     WriteVerbose(Resources.NotFoundMessageVirtualDisk);

@@ -22,8 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
 
 
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleFailoverVolumeContainers", DefaultParameterSetName = StorSimpleCmdletParameterSet.Empty), 
-        OutputType(typeof(IList<DataContainerGroup>))]
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleFailoverVolumeContainers"), OutputType(typeof(IList<DataContainerGroup>))]
     public class GetAzureStorSimpleFailoverVolumeContainers : StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.DeviceId)]
@@ -43,7 +42,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 switch(ParameterSetName)
                 {
                     case StorSimpleCmdletParameterSet.IdentifyById:
-                        deviceid = DeviceId;
+                        if (StorSimpleClient.IsValidDeviceId(DeviceId))
+                        {
+                            deviceid = DeviceId;
+                        }
+                        else
+                        {
+                            WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenIdInResourceMessage, StorSimpleContext.ResourceName, DeviceId));
+                        }
                         break;
                     case StorSimpleCmdletParameterSet.IdentifyByName:
                         deviceid = StorSimpleClient.GetDeviceId(DeviceName);
