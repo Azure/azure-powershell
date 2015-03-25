@@ -142,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 string.IsNullOrEmpty(SecondaryDnsServer) &&
                 (StorSimpleNetworkConfig == null || StorSimpleNetworkConfig.Count() < 1))
             {
-                throw new ArgumentException(Resources.SetASSDeviceNoSettingsProvided);
+                throw new ArgumentException(Resources.SetAzureStorSimpleDeviceNoSettingsProvided);
             }
 
             // Make sure that the DeviceId property has the appropriate value irrespective of the parameter set
