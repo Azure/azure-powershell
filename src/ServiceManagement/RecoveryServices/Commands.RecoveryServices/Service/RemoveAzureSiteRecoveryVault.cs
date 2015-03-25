@@ -17,6 +17,7 @@ using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
@@ -58,12 +59,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                // Update vault settings with the working vault
+                Utilities.UpdateVaultSettings(new ASRVaultCreds()
+                {
+                    CloudServiceName = this.Vault.CloudServiceName,
+                    ResourceName = this.Vault.Name
+                });
+                
                 // Check if vault has servers registered to it - prevent the operation.
-                // Invocation of the api directly will result in a call similar to purge
-                // But here we can't modify at service level.
-                // Impact of this check on user is that the vault settings file has to be imported for this to work
                 ServerListResponse serverListResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryServer();
+                    RecoveryServicesClient.GetAzureSiteRecoveryServer(false);
 
                 if (serverListResponse.Servers.Count != 0)
                 {
