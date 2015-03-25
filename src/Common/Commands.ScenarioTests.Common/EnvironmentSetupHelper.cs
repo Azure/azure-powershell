@@ -229,6 +229,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.modules.AddRange(modules);
         }
 
+        public void SetupModules(params string[] modules)
+        {
+            this.modules = new List<string>();
+            this.modules.Add("Assert.ps1");
+            this.modules.Add("Common.ps1");
+            this.modules.AddRange(modules);
+        }
+
         public virtual Collection<PSObject> RunPowerShellTest(params string[] scripts)
         {
             using (var powershell = System.Management.Automation.PowerShell.Create())
