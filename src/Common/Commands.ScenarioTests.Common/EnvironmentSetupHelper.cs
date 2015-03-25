@@ -33,10 +33,17 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
     public class EnvironmentSetupHelper
     {
         private static string testEnvironmentName = "__test-environment";
+        
         private static string testSubscriptionName = "__test-subscriptions";
+        
         private AzureSubscription testSubscription;
+        
         private AzureAccount testAccount;
+
+        private const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
+
         protected List<string> modules;
+        
         protected ProfileClient ProfileClient { get; set; }
 
         public EnvironmentSetupHelper()
@@ -201,16 +208,16 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.modules = new List<string>();
             if (mode == AzureModule.AzureProfile)
             {
-                this.modules.Add(@"ServiceManagement\Azure\Azure.psd1");
-                this.modules.Add(@"ResourceManager\AzureResourceManager\AzureResourceManager.psd1");
+                this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
-                this.modules.Add(@"ServiceManagement\Azure\Azure.psd1");
+                this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
             }
             else if (mode == AzureModule.AzureResourceManager)
             {
-                this.modules.Add(@"ResourceManager\AzureResourceManager\AzureResourceManager.psd1");
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
             }
             else
             {
