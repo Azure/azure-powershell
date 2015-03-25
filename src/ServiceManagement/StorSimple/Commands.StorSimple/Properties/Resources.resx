@@ -514,7 +514,7 @@
     <value>Invalid value for Registration Key. CIK provided couldnt be used to decrypt the secrets! The exact exception while decrypting is "{0}"!</value>
   </data>
   <data name="PasswordCharacterCriteriaError" xml:space="preserve">
-    <value>The password must contain 3 of the following:
+    <value>{0} is not complex enough. It must contain 3 of the following:
 a lowercase character
 an uppercase character
 a number

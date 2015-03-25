@@ -718,7 +718,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The password must contain 3 of the following:
+        ///   Looks up a localized string similar to {0} is not complex enough. It must contain 3 of the following:
         ///a lowercase character
         ///an uppercase character
         ///a number

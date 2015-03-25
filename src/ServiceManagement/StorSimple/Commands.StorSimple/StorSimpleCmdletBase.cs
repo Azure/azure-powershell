@@ -547,17 +547,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// conditions when the validation fails.
         /// </summary>
         /// <param name="data"></param>
-        internal void ValidatePasswordComplexity(string data)
+        internal void ValidatePasswordComplexity(string data, string passwordName)
         {
-            string errorMessage = Resources.PasswordCharacterCriteriaError;
+            string errorMessage = string.Format(Resources.PasswordCharacterCriteriaError, passwordName);
             var criteriaFulfilled = 0;
             // Regular expressions for lowercase letter, uppercase letter, digit and special char
             // respectively
             string[] criteriaRegexs = { ".*[a-z]", ".*[A-Z]", ".*\\d", ".*\\W" };
 
             foreach(var regexStr in criteriaRegexs){
-                var regex = new Regex(regexStr);
-                if(regex.IsMatch(data)){
+                // The static IsMatch method is supposed to use an Application-wide cache of compiled regexes
+                // and hence should save computation time (though not very significant because we are not doing tens of 
+                // thousands of such tests)
+                if(Regex.IsMatch(data, regexStr)){
                     criteriaFulfilled += 1;
                 }
             }

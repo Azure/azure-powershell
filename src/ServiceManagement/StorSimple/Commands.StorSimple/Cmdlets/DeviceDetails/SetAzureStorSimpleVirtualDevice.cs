@@ -117,8 +117,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         private void ValidateParams() {
             ValidateLength(AdministratorPassword, 8, 15, Resources.AdminPasswordLengthError);
             ValidateLength(SnapshotManagerPassword, 14, 15, Resources.SnapshotPasswordLengthError);
-            ValidatePasswordComplexity(AdministratorPassword);
-            ValidatePasswordComplexity(SnapshotManagerPassword);
+            ValidatePasswordComplexity(AdministratorPassword, "AdministratorPassword");
+            ValidatePasswordComplexity(SnapshotManagerPassword, "SnapshotManagerPassword");
         }
     }
 }
