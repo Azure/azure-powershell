@@ -32,75 +32,76 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         #region Parameters
 
         /// <summary>
+        /// Interface alias of interface for which settings are being supplied. A value 
+        /// from Data0 to Data5
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.InterfaceAlias)]
+        [ValidateSetAttribute(new string[] { "Data0", "Data1", "Data2", "Data3", "Data4", "Data5" })]
+        public string InterfaceAlias { get; set; }
+
+        /// <summary>
         /// Whether the net interface is iscsi enabled/disabled
         /// </summary>
-        [Parameter(Mandatory=false, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.IsIscsiEnabled)]
+        [Parameter(Mandatory=false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.IsIscsiEnabled)]
         [ValidateNotNullOrEmpty]
         public bool? EnableIscsi { get; set; }
 
         /// <summary>
         /// Whether the net interface is cloud enabled/disabled
         /// </summary>
-        [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.IsCloudEnabled)]
+        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.IsCloudEnabled)]
         [ValidateNotNullOrEmpty]
         public bool? EnableCloud { get; set; }
         
         /// <summary>
         /// IPv4Address for controller 0, should be used only with Data0 interface
         /// </summary>
-        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.Controller0IPv4Address)]
+        [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.Controller0IPv4Address)]
         [ValidateNotNullOrEmpty]
         public string Controller0IPv4Address { get; set; }
         
         /// <summary>
         /// IPv4Address for controller 1, should be used only with Data0 interface
         /// </summary>
-        [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.Controller1IPv4Address)]
+        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.Controller1IPv4Address)]
         [ValidateNotNullOrEmpty]
         public string Controller1IPv4Address { get; set; }
 
         /// <summary>
         /// IPv4 net mask for interface
         /// </summary>
-        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.IPv6Gateway)]
+        [Parameter(Mandatory = false, Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.IPv6Gateway)]
         [ValidateNotNullOrEmpty]
         public string IPv6Gateway { get; set; }
 
         /// <summary>
         /// IPv4 Address of gateway
         /// </summary>
-        [Parameter(Mandatory = false, Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Gateway)]
+        [Parameter(Mandatory = false, Position = 6, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Gateway)]
         [ValidateNotNullOrEmpty]
         public string IPv4Gateway { get; set; }
 
         /// <summary>
         /// IPv4 Address for the net interface
         /// </summary>
-        [Parameter(Mandatory = false, Position = 6, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Address)]
+        [Parameter(Mandatory = false, Position = 7, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Address)]
         [ValidateNotNullOrEmpty]
         public string IPv4Address { get; set; }
 
         /// <summary>
         /// IPv6 Prefix for the net interface
         /// </summary>
-        [Parameter(Mandatory = false, Position = 7, HelpMessage = StorSimpleCmdletHelpMessage.IPv6Prefix)]
+        [Parameter(Mandatory = false, Position = 8, HelpMessage = StorSimpleCmdletHelpMessage.IPv6Prefix)]
         [ValidateNotNullOrEmpty]
         public string IPv6Prefix { get; set; }
                 
         /// <summary>
         /// IPv4 netmask for this interface
         /// </summary>
-        [Parameter(Mandatory = false, Position = 8, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Netmask)]
+        [Parameter(Mandatory = false, Position = 9, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Netmask)]
         [ValidateNotNullOrEmpty]
         public string IPv4Netmask { get; set; }
 
-        /// <summary>
-        /// Interface alias of interface for which settings are being supplied. A value 
-        /// from Data0 to Data5
-        /// </summary>
-        [Parameter(Mandatory = true, Position = 9, HelpMessage = StorSimpleCmdletHelpMessage.InterfaceAlias)]
-        [ValidateSetAttribute(new string[] { "Data0", "Data1", "Data2", "Data3", "Data4", "Data5" })]
-        public string InterfaceAlias { get; set; }
         #endregion
 
         private IPAddress controller0Address;
