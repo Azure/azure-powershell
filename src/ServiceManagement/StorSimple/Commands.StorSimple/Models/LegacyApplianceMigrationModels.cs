@@ -728,15 +728,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         public int AssumedBandwidthInMbps { get; set; }
         public string VolumeContainerName { get; set; }
         public int EstimatedTimeInMinutes { get; set; }
-        public int EstimatedTimeInMinutesForLatestBackup { get; set; }
+        public int EstimatedTimeInMinutesForLargestBackup { get; set; }
         public string PlanMessageInfo { get; set; }
+        public string RecoveryBucketsMergeStatus { get; set; }
 
         public MigrationPlanInfoMsg(MigrationPlanInfo migrationPlanInfo)
         {
             AssumedBandwidthInMbps = migrationPlanInfo.AssumedBandwidthInMbps;
             VolumeContainerName = migrationPlanInfo.DataContainerName;
             EstimatedTimeInMinutes = migrationPlanInfo.EstimatedTimeInMinutes;
-            EstimatedTimeInMinutesForLatestBackup = migrationPlanInfo.EstimatedTimeInMinutesForLatestBackup;
+            EstimatedTimeInMinutesForLargestBackup = migrationPlanInfo.EstimatedTimeInMinutesForLargestBackup;
+            RecoveryBucketsMergeStatus = GetRecoveryBucketsMergedMsg(migrationPlanInfo.RecoveryBucketsMerged);
             PlanMessageInfo = GetPlanMessageInfo(new List<HcsMessageInfo>(migrationPlanInfo.PlanMessageInfoList));
         }
 
@@ -751,13 +753,26 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             return consoleOp.ToString();
         }
 
+        public string GetRecoveryBucketsMergedMsg(bool RecoveryBucketsMerged)
+        {
+            if (RecoveryBucketsMerged)
+            {
+                return Resources.MigrationRecoveryBucketsMerged;
+            }
+            else
+            {
+                return Resources.MigrationRecoveryBucketsNotMerged;
+            }
+        }
+
         public override string ToString()
         {
             StringBuilder consoleOp = new StringBuilder();
             consoleOp.AppendLine("AssumedBandwidthInMbps : " + AssumedBandwidthInMbps);
             consoleOp.AppendLine("VolumeContainerName : " + VolumeContainerName);
             consoleOp.AppendLine("EstimatedTimeInMinutes : " + EstimatedTimeInMinutes);
-            consoleOp.AppendLine("EstimatedTimeInMinutesForLatestBackup : " + EstimatedTimeInMinutesForLatestBackup);
+            consoleOp.AppendLine("EstimatedTimeInMinutesForLargestBackup : " + EstimatedTimeInMinutesForLargestBackup);
+            consoleOp.AppendLine("RecoveryBucketsMergeStatus : " + RecoveryBucketsMergeStatus);
             consoleOp.AppendLine("PlanMessageInfo : " + PlanMessageInfo);
             return consoleOp.ToString();
         }
