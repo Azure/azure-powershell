@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Net;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.StorSimple.Models;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
@@ -511,6 +512,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             }
             
             return true;
+        }
+
+        internal bool IsValidAsciiString(string s)
+        {
+            return Regex.IsMatch(s, "[ -~]+");
         }
     }
 }

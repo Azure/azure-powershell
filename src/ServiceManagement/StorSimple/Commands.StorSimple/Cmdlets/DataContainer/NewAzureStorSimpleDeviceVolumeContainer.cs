@@ -65,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     return;
                 }
 
-                if(EncryptionEnabled == true && string.IsNullOrEmpty(EncryptionKey))
+                if(EncryptionEnabled == true && (string.IsNullOrEmpty(EncryptionKey) || !IsValidAsciiString(EncryptionKey)))
                 {
                     throw new ArgumentNullException("EncryptionKey");
                 }
