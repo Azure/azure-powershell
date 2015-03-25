@@ -61,7 +61,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Protection Entity Object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AEnable, Mandatory = true, ValueFromPipeline = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnableReplicationGroup, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.DisableReplicationGroup, Mandatory = true)]
         [ValidateNotNullOrEmpty]

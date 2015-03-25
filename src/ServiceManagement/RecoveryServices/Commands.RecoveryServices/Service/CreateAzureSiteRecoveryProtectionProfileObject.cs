@@ -264,6 +264,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 this.WriteWarning(string.Format(Properties.Resources.StorageIsNotInTheSameLocationAsVault));
             }
+
             if (!validationSuccessful || !locationValid)
             {
                 this.ConfirmAction(
