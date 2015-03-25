@@ -38,13 +38,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
         [ValidateNotNullOrEmpty] 
         public string DeviceName { get; set; }
-        
-        /// <summary>
-        /// TimeZone for the device.
-        /// </summary>
-        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone, ValueFromPipeline=true)]
-        [ValidateNotNullOrEmpty] 
-        public TimeZoneInfo TimeZone { get; set; }
 
         /// <summary>
         /// Service Encryption Key for the resource.
@@ -66,6 +59,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Mandatory=true, Position=3, HelpMessage=StorSimpleCmdletHelpMessage.SnapshotManagerPasswd)]
         [ValidateNotNullOrEmpty]
         public string SnapshotManagerPassword { get; set; }
+
+        /// <summary>
+        /// TimeZone for the device.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public TimeZoneInfo TimeZone { get; set; }
 
         public override void ExecuteCmdlet()
         {
