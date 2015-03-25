@@ -2772,7 +2772,7 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="7">
 				<maml:name>SubnetName</maml:name>
 				<maml:description>
-					<maml:para>Name of the Subnet in the Virtual Network which should be used by the Virtual Device.</maml:para>
+					<maml:para>Name of the Subnet in the Virtual Network which should be used to create the Microsoft Azure RemoteApp collection.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
@@ -3045,7 +3045,7 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="7">
 			<maml:name>SubnetName</maml:name>
 			<maml:description>
-				<maml:para>Name of the Subnet in the Virtual Network which should be used by the Virtual Device.</maml:para>
+				<maml:para>Name of the Subnet in the Virtual Network which should be used to create the Microsoft Azure RemoteApp collection.</maml:para>
 								
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
