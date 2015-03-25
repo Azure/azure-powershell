@@ -21,9 +21,9 @@ $global:passedCount = 0;
 $global:passedTests = @()
 $global:failedTests = @()
 $global:times = @{}
-Add-Type -Path "..\\Microsoft.Azure.Utilities.HttpRecorder.dll"
-Add-Type -Path "..\\Microsoft.WindowsAzure.Testing.dll"
-[Microsoft.Azure.Utilities.HttpRecorder.HttpMockServer]::Initialize("foo", "bar")
+Add-Type -Path "..\\Microsoft.Azure.Test.HttpRecorder.dll"
+Add-Type -Path "..\\Microsoft.Azure.Test.Framework.dll"
+[Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Initialize("foo", "bar")
 function Run-TestProtected
 {
    param([ScriptBlock]$script, [string] $testName)

@@ -15,11 +15,12 @@
 using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Hyak.Common;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.HybridServicesCore;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 using rpError = Microsoft.Azure.Commands.RecoveryServices.RestApiInfra;
 
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="extendedInfoArgs">extended info to be created</param>
         /// <returns>Vault Extended Information</returns>
-        public OperationResponse CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
+        public AzureOperationResponse CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
         {
             return this.GetSiteRecoveryClient().VaultExtendedInfo.CreateExtendedInfo(extendedInfoArgs, this.GetRequestHeaders(false));
         }
@@ -70,6 +71,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>credential object</returns>
         public ASRVaultCreds GenerateVaultCredential(X509Certificate2 managementCert, ASRVault vault, Site site)
         {
+            string currentResourceName = PSRecoveryServicesClient.asrVaultCreds.ResourceName;
+            string currentCloudServiceName = PSRecoveryServicesClient.asrVaultCreds.CloudServiceName;
+
+            // Update vault settings with the working vault to generate file
             Utilities.UpdateVaultSettings(new ASRVaultCreds()
             {
                 CloudServiceName = vault.CloudServiceName,
@@ -98,6 +103,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                                 channelIntegrityKey,
                                                 vault,
                                                 site);
+
+            // Update back the original vault settings
+            Utilities.UpdateVaultSettings(new ASRVaultCreds()
+            {
+                CloudServiceName = currentCloudServiceName,
+                ResourceName = currentResourceName
+            });
 
             return asrVaultCreds;
         }

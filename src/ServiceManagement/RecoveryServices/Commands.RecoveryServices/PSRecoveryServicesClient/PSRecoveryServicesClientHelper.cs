@@ -14,76 +14,19 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.WindowsAzure.Management.SiteRecovery;
+using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
     /// Recovery Services Client Helper Methods class
     /// </summary>
-    public class PSRecoveryServicesClientHelper
+    public partial class PSRecoveryServicesClient
     {
-        /// <summary>
-        /// Validates whether the subscription belongs to the currently logged account or not.
-        /// </summary>
-        /// <param name="azureSubscriptionId">Azure Subscription ID</param>
-        public static void ValidateSubscriptionAccountAssociation(string azureSubscriptionId)
-        {
-            if (string.IsNullOrEmpty(azureSubscriptionId))
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.SubscriptionIdIsNotValid));
-            }
-
-            bool associatedSubscription = false;
-            ProfileClient pc = new ProfileClient();
-            List<AzureSubscription> subscriptions =
-                pc.RefreshSubscriptions(AzureSession.CurrentContext.Environment);
-
-            foreach (AzureSubscription sub in subscriptions)
-            {
-                if (azureSubscriptionId.Equals(sub.Id.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    associatedSubscription = true;
-                    break;
-                }
-            }
-
-            if (!associatedSubscription)
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.SubscriptionIsNotAssociatedWithTheAccount,
-                    azureSubscriptionId));
-            }
-        }
-
-        /// <summary>
-        /// Validates whether the storage belongs to the currently logged account or not.
-        /// </summary>
-        /// <param name="azureStorageAccount">Storage Account details</param>
-        public static void ValidateStorageAccountAssociation(string azureStorageAccount)
-        {
-            if (string.IsNullOrEmpty(azureStorageAccount))
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.StorageAccountNameIsNotValid));
-            }
-
-            bool associatedAccount = false;
-
-            if (!associatedAccount)
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.StorageIsNotAssociatedWithTheAccount,
-                    azureStorageAccount));
-            }
-        }
-
         /// <summary>
         /// Converts the Parameter set string of Replication Frequency in seconds to UShort.
         /// </summary>
@@ -125,6 +68,128 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 throw new InvalidOperationException(
                     string.Format(Properties.Resources.ReplicationStartTimeInvalid));
             }
+        }
+
+        /// <summary>
+        /// Validates whether the subscription belongs to the currently logged account or not.
+        /// </summary>
+        /// <param name="azureSubscriptionId">Azure Subscription ID</param>
+        public void ValidateSubscriptionAccountAssociation(string azureSubscriptionId)
+        {
+            if (string.IsNullOrEmpty(azureSubscriptionId))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.SubscriptionIdIsNotValid));
+            }
+
+            bool associatedSubscription = false;
+            List<AzureSubscription> subscriptions =
+                new List<AzureSubscription>(this.Profile.Subscriptions.Values);
+
+            foreach (AzureSubscription sub in subscriptions)
+            {
+                if (azureSubscriptionId.Equals(sub.Id.ToString(), StringComparison.OrdinalIgnoreCase))
+                {
+                    associatedSubscription = true;
+                    break;
+                }
+            }
+
+            if (!associatedSubscription)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.SubscriptionIsNotAssociatedWithTheAccount,
+                    azureSubscriptionId));
+            }
+        }
+
+        /// <summary>
+        /// Validates whether the storage belongs to the currently logged account or not.
+        /// </summary>
+        /// <param name="azureSubscription">Subscription ID</param>
+        /// <param name="azureStorageAccount">Storage Account details</param>
+        /// <param name="vaultLocation">Current Vault Location</param>
+        /// <param name="validationSuccessful">Out variable to indicate if validation was successful</param>
+        /// <param name="locationValid">Out variable to indicate if location of storage account is valid</param>
+        public void ValidateStorageAccountAssociation(
+            string azureSubscription,
+            string azureStorageAccount,
+            string vaultLocation,
+            out bool validationSuccessful,
+            out bool locationValid)
+        {
+            if (string.IsNullOrEmpty(azureSubscription))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.SubscriptionIdIsNotValid));
+            }
+
+            if (string.IsNullOrEmpty(azureStorageAccount))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.StorageAccountNameIsNotValid));
+            }
+
+            bool associatedAccount = false;
+            StorageAccountListResponse azureStorageListResponse = null;
+            StorageAccountListResponse.StorageAccount currentStorageAccount = null;
+
+            try
+            {
+                azureStorageListResponse =
+                    this.GetSiteRecoveryClient().Storages.ListAzureStorages(azureSubscription);
+            }
+            catch (Exception)
+            {
+                validationSuccessful = false;
+                locationValid = false;
+                return;
+            }
+
+            foreach (var storage in azureStorageListResponse.StorageAccounts)
+            {
+                if (string.Compare(
+                    azureStorageAccount,
+                    storage.Name,
+                    StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    associatedAccount = true;
+                    currentStorageAccount = storage;
+                    break;
+                }
+            }
+
+            if (!associatedAccount)
+            {
+                validationSuccessful = false;
+                locationValid = false;
+                return;
+            }
+
+            // Validate that the Geo Location of the storage account is the same as that of the vault.
+            if (string.IsNullOrEmpty(currentStorageAccount.Properties.Location))
+            {
+                validationSuccessful = false;
+                locationValid = false;
+                return;
+            }
+
+            if (0 != string.Compare(
+                currentStorageAccount.Properties.Location,
+                vaultLocation,
+                StringComparison.OrdinalIgnoreCase))
+            {
+                validationSuccessful = true;
+                locationValid = false;
+                return;
+            }
+
+            validationSuccessful = true;
+            locationValid = true;
         }
     }
 }

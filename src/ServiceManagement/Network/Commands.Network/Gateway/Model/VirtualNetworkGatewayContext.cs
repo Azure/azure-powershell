@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Commands.Network
 {
     using System;
     using WindowsAzure.Commands.Utilities.Common;
-    using WindowsAzure.Management.Network.Models;
 
     public class VirtualNetworkGatewayContext : ManagementOperationContext
     {
@@ -34,6 +33,6 @@ namespace Microsoft.Azure.Commands.Network
 
         public string DefaultSite { get; set; }
 
-        public GatewaySKU GatewaySKU { get; set; }
+        public string GatewaySKU { get; set; }
     }
 }

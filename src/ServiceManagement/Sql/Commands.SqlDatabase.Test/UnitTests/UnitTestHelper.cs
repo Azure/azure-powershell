@@ -23,8 +23,9 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
 {
@@ -270,6 +271,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
         /// <param name="powershell">An instance of the <see cref="PowerShell"/> object.</param>
         public static void CreateTestCredential(System.Management.Automation.PowerShell powershell, string username, string password)
         {
+            password = password.Replace("$", "`$");
+
             // Create the test credential
             powershell.InvokeBatchScript(
                 string.Format(@"$user = ""{0}""", username),
@@ -287,12 +290,15 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
         {
             UnitTestHelper.ImportAzureModule(powershell);
 
+            X509Certificate2 certificate = UnitTestHelper.GetUnitTestClientCertificate();
+            Guid subscriptionId = new Guid(UnitTestSubscriptionId);
+
             // Set the client certificate used in the subscription
             powershell.Runspace.SessionStateProxy.SetVariable(
                 "clientCertificate",
-                UnitTestHelper.GetUnitTestClientCertificate());
+                certificate);
 
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.Profile.Environments[UnitTestEnvironmentName] = new AzureEnvironment
                 {
                     Name = UnitTestEnvironmentName,
@@ -305,13 +311,13 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
             
             var account = new AzureAccount
             {
-                Id = UnitTestHelper.GetUnitTestClientCertificate().Thumbprint,
+                Id = certificate.Thumbprint,
                 Type = AzureAccount.AccountType.Certificate
             };
 
             var subscription = new AzureSubscription
             {
-                Id = new Guid(UnitTestSubscriptionId),
+                Id = subscriptionId,
                 Name = UnitTestSubscriptionName,
                 Environment = UnitTestEnvironmentName,
                 Account = account.Id
@@ -319,9 +325,9 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
 
             client.AddOrSetAccount(account);
             client.AddOrSetSubscription(subscription);
-            client.SetSubscriptionAsCurrent(UnitTestSubscriptionName, account.Id);
+            client.SetSubscriptionAsDefault(UnitTestSubscriptionName, account.Id);
             client.Profile.Save();
-            
+
             return subscription;
         }
 

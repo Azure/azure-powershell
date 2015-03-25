@@ -16,67 +16,32 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Gets azure automation runbook definitions for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationRunbookDefinition", DefaultParameterSetName = ByRunbookName)]
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationRunbookDefinition", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(RunbookDefinition))]
     public class GetAzureAutomationRunbookDefinition : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// The get runbook defintion by runbook id parameter set.
-        /// </summary>
-        private const string ByRunbookId = "ByRunbookId";
-
-        /// <summary>
-        /// The get runbook defintion by runbook name parameter set.
-        /// </summary>
-        private const string ByRunbookName = "ByRunbookName";
-
-        /// <summary>
-        /// The get runbook defintion by runbook version id parameter set.
-        /// </summary>
-        private const string ByVersionId = "ByVersionId";
-
-        /// <summary>
-        /// The published slot.
-        /// </summary>
-        private const string Published = "Published";
-
-        /// <summary>
-        /// The draft slot.
-        /// </summary>
-        private const string Draft = "Draft";
-
-        /// <summary>
-        /// Gets or sets the runbook id
-        /// </summary>
-        [Parameter(ParameterSetName = ByRunbookId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook id.")]
-        [Alias("RunbookId")]
-        public Guid? Id { get; set; }
-
-        /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [Alias("RunbookName")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the runbook version id
-        /// </summary>
-        [Parameter(ParameterSetName = ByVersionId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook version id.")]
-        public Guid? VersionId { get; set; }
 
         /// <summary>
         /// Gets or sets the runbook version type
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Returns the draft or the published runbook version only. If not set, return both.")]
-        [ValidateSet(Published, Draft)]
+        [ValidateSet(Constants.Published, Constants.Draft)]
         public string Slot { get; set; }
 
         /// <summary>
@@ -87,27 +52,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             bool? isDraft = this.IsDraft();
 
-            IEnumerable<RunbookDefinition> runbookDefinitions = null;
-            if (this.Id.HasValue)
-            {
-                // ByRunbookId
-                runbookDefinitions = this.AutomationClient.ListRunbookDefinitionsByRunbookId(
-                    this.AutomationAccountName, this.Id.Value, isDraft);
-            }
-            else if (this.Name != null)
-            {
-                // ByRunbookName
-                runbookDefinitions =
-                    this.AutomationClient.ListRunbookDefinitionsByRunbookName(
-                        this.AutomationAccountName, this.Name, isDraft);
-            }
-            else if (this.VersionId.HasValue)
-            {
-                // ByVersionId
-                runbookDefinitions =
-                    this.AutomationClient.ListRunbookDefinitionsByRunbookVersionId(
-                        this.AutomationAccountName, this.VersionId.Value, isDraft);
-            }
+            // ByRunbookName
+            var runbookDefinitions = this.AutomationClient.ListRunbookDefinitionsByRunbookName(this.AutomationAccountName, this.Name, isDraft);
 
             this.WriteObject(runbookDefinitions, true);
         }
@@ -124,7 +70,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 
             if (this.Slot != null)
             {
-                isDraft = this.Slot == Draft;
+                isDraft = (0 == String.Compare(this.Slot, Constants.Draft, CultureInfo.InvariantCulture,
+                              CompareOptions.OrdinalIgnoreCase));
             }
 
             return isDraft;

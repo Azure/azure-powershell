@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;Calls using ID based parameter &apos;{0}&apos; will not be supported from next release. Please use its corresponding full object parameter instead.&quot;.
+        ///   Looks up a localized string similar to Calls using ID based parameter {0} will not be supported from next release. Please use its corresponding full object parameter instead..
         /// </summary>
         internal static string IDBasedParamUsageNotSupportedFromNextRelease {
             get {
@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string IncorrectReplicationProvider {
             get {
                 return ResourceManager.GetString("IncorrectReplicationProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vault information (Name: {0}, Location: {1}) is not correct.
+        /// </summary>
+        internal static string InCorrectVaultInformation {
+            get {
+                return ResourceManager.GetString("InCorrectVaultInformation", resourceCulture);
             }
         }
         
@@ -183,7 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;&apos;{0}&apos; will be a mandatory paramter from next release.&quot;.
+        ///   Looks up a localized string similar to {0} will be a mandatory paramter from next release..
         /// </summary>
         internal static string MandatoryParamFromNextRelease {
             get {
@@ -215,6 +224,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string NetworkArgumentsMissingForUpdateVmProperties {
             get {
                 return ResourceManager.GetString("NetworkArgumentsMissingForUpdateVmProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creates a new in-memory protection profile association object..
+        /// </summary>
+        internal static string NewProtectionProfileObjectWhatIfMessage {
+            get {
+                return ResourceManager.GetString("NewProtectionProfileObjectWhatIfMessage", resourceCulture);
             }
         }
         
@@ -336,11 +354,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account {0} is not associated with the account.
+        ///   Looks up a localized string similar to The Subscription or Storage account couldn’t be validated. For failovers to be successful, the Subscription should belong to your account, the Storage account to the Subscription and Storage account location must be the same as location of your Vault..
         /// </summary>
-        internal static string StorageIsNotAssociatedWithTheAccount {
+        internal static string StorageAccountValidationUnsuccessful {
             get {
-                return ResourceManager.GetString("StorageIsNotAssociatedWithTheAccount", resourceCulture);
+                return ResourceManager.GetString("StorageAccountValidationUnsuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account given is in a different location as compared to the current vault.
+        ///Please provide a storage account with the same location as that of the vault..
+        /// </summary>
+        internal static string StorageIsNotInTheSameLocationAsVault {
+            get {
+                return ResourceManager.GetString("StorageIsNotInTheSameLocationAsVault", resourceCulture);
             }
         }
         
@@ -359,6 +387,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string SubscriptionIsNotAssociatedWithTheAccount {
             get {
                 return ResourceManager.GetString("SubscriptionIsNotAssociatedWithTheAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not validate the storage account and subscription given.
+        ///Are you sure you want to continue {0}?.
+        /// </summary>
+        internal static string ValidationUnsuccessfulWarning {
+            get {
+                return ResourceManager.GetString("ValidationUnsuccessfulWarning", resourceCulture);
             }
         }
         

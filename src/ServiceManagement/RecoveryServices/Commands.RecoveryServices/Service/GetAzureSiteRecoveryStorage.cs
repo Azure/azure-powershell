@@ -17,7 +17,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Write Storages.
         /// </summary>
         /// <param name="storages">List of Storages</param>
-        private void WriteStorages(IList<Storage> storages)
+        private void WriteStorages(IList<AsrStorage> storages)
         {
             this.WriteObject(storages.Select(s => new ASRStorage(s)), true);
         }

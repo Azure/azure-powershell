@@ -12,13 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.Batch.Properties;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -241,7 +243,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <param name="resourceGroupName">The name of the resource group the account is under. If unspecified, it will be looked up.</param>
         /// <param name="accountName">The account name</param>
         /// <returns>The status of delete account operation</returns>
-        public virtual OperationResponse DeleteAccount(string resourceGroupName, string accountName)
+        public virtual AzureOperationResponse DeleteAccount(string resourceGroupName, string accountName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {

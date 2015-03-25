@@ -16,6 +16,7 @@ using System.Management.Automation;
 using System.Net;
 using Microsoft.WindowsAzure.Commands.Utilities.MediaServices;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.MediaServices
 {
@@ -42,9 +43,9 @@ namespace Microsoft.WindowsAzure.Commands.MediaServices
                           string.Empty,
                           () =>
                           {
-                              MediaServicesClient = MediaServicesClient ?? new MediaServicesClient(CurrentContext.Subscription, WriteDebug);
+                              MediaServicesClient = MediaServicesClient ?? new MediaServicesClient(Profile, Profile.Context.Subscription, WriteDebug);
 
-                              OperationResponse result = null;
+                              AzureOperationResponse result = null;
 
                               CatchAggregatedExceptionFlattenAndRethrow(() => { result = MediaServicesClient.DeleteAzureMediaServiceAccountAsync(Name).Result; });
 

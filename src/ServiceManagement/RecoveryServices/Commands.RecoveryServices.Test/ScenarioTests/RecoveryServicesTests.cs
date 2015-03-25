@@ -21,182 +21,182 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesEnumerationTests()
+        public void EnumerationTests()
         {
             this.RunPowerShellTest("Test-RecoveryServicesEnumerationTests -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesProtectionTests()
+        public void ProtectionTests()
         {
             this.RunPowerShellTest("Test-RecoveryServicesProtectionTests -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesStorageMappingTest()
+        public void StorageMappingTest()
         {
             this.RunPowerShellTest("Test-StorageMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesStorageUnMappingTest()
+        public void StorageUnMappingTest()
         {
             this.RunPowerShellTest("Test-StorageUnMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesNetworkMappingTest()
+        public void NetworkMappingTest()
         {
             this.RunPowerShellTest("Test-NetworkMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesNetworkUnMappingTest()
+        public void NetworkUnMappingTest()
         {
             this.RunPowerShellTest("Test-NetworkUnMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesAzureNetworkMappingTest()
+        public void AzureNetworkMappingTest()
         {
             this.RunPowerShellTest("Test-AzureNetworkMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesAzureNetworkUnMappingTest()
+        public void AzureNetworkUnMappingTest()
         {
             this.RunPowerShellTest("Test-AzureNetworkUnMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesFailbackTest()
+        public void FailbackTest()
         {
             this.RunPowerShellTest("Test-Failback -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesRRAfterFailoverTest()
+        public void RRAfterFailoverTest()
         {
             this.RunPowerShellTest("Test-RRAfterFailover -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesRRAfterFailbackTest()
+        public void RRAfterFailbackTest()
         {
             this.RunPowerShellTest("Test-RRAfterFailback -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesCommitPFOTest()
+        public void CommitPFOTest()
         {
             this.RunPowerShellTest("Test-CommitPFO -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesCommitAfterFailbackTest()
+        public void CommitAfterFailbackTest()
         {
             this.RunPowerShellTest("Test-CommitAfterFailback -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesPFOTest()
+        public void PFOTest()
         {
             this.RunPowerShellTest("Test-PFO -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesUFOTest()
+        public void UFOTest()
         {
             this.RunPowerShellTest("Test-UFO -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesTFOTest()
+        public void TFOTest()
         {
             this.RunPowerShellTest("Test-TFO -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesEnableProtectionTest()
+        public void EnableProtectionTest()
         {
             this.RunPowerShellTest("Test-EnableProtection -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesDisableProtectionTest()
+        public void DisableProtectionTest()
         {
             this.RunPowerShellTest("Test-DisableProtection -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesE2E_DeleteAndDissociateTest()
+        public void E2E_DeleteAndDissociateTest()
         {
             this.RunPowerShellTest("Test-E2E_DeleteAndDissociate -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesE2E_CreateAndAssociateTest()
+        public void E2E_CreateAndAssociateTest()
         {
             this.RunPowerShellTest("Test-E2E_CreateAndAssociate -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesPFORPTest()
+        public void PFORPTest()
         {
             this.RunPowerShellTest("Test-PFORP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesTFORPTest()
+        public void TFORPTest()
         {
             this.RunPowerShellTest("Test-TFORP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesUFORPTest()
+        public void UFORPTest()
         {
             this.RunPowerShellTest("Test-UFORP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesFailbackRPTest()
+        public void FailbackRPTest()
         {
             this.RunPowerShellTest("Test-FailbackRP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesRRRPTest()
+        public void RRRPTest()
         {
             this.RunPowerShellTest("Test-RRRP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RecoveryServicesCommitRPTest()
+        public void CommitRPTest()
         {
             this.RunPowerShellTest("Test-CommitRP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }

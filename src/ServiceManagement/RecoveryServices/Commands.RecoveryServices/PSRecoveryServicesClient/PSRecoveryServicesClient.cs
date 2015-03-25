@@ -24,16 +24,15 @@ using System.Text;
 using System.Web.Script.Serialization;
 using System.Xml;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Factories;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
+using System.Net.Security;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -58,6 +57,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
+        /// Azure profile
+        /// </summary>
+        public AzureProfile Profile { get; set; }
+
         /// <summary>
         /// Amount of time to sleep before fetching job details again.
         /// </summary>
@@ -78,27 +81,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private RecoveryServicesManagementClient recoveryServicesClient;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class.
-        /// </summary>
-        public PSRecoveryServicesClient()
-        {
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(AzureSubscription azureSubscription)
+        public PSRecoveryServicesClient(AzureProfile azureProfile, AzureSubscription azureSubscription)
         {
             if (ServicePointManager.ServerCertificateValidationCallback == null)
             {
                 ServicePointManager.ServerCertificateValidationCallback =
-                    delegate { return true; };
+                    IgnoreCertificateErrorHandler;
+
             }
 
+            this.Profile = azureProfile;
             this.recoveryServicesClient =
-                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+        }
+
+        private static bool IgnoreCertificateErrorHandler
+           (object sender,
+           System.Security.Cryptography.X509Certificates.X509Certificate certificate,
+           System.Security.Cryptography.X509Certificates.X509Chain chain,
+           SslPolicyErrors sslPolicyErrors)
+        {
+            return true;
+
         }
 
         /// <summary>
@@ -179,7 +187,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             DateTime currentDateTime = DateTime.Now;
             currentDateTime = currentDateTime.AddHours(-1);
             cikTokenDetails.NotBeforeTimestamp = TimeZoneInfo.ConvertTimeToUtc(currentDateTime);
-            cikTokenDetails.NotAfterTimestamp = cikTokenDetails.NotBeforeTimestamp.AddHours(6);
+            cikTokenDetails.NotAfterTimestamp = cikTokenDetails.NotBeforeTimestamp.AddDays(7);
             cikTokenDetails.ClientRequestId = clientRequestId;
             cikTokenDetails.Version = new Version(1, 2);
             cikTokenDetails.PropertyBag = new Dictionary<string, object>();
@@ -258,7 +266,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             SiteRecoveryManagementClient siteRecoveryClient =
-                AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, asrVaultCreds.ResourceName, recoveryServicesClient.Credentials, AzureSession.CurrentContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
+                AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, 
+                asrVaultCreds.ResourceName, recoveryServicesClient.Credentials, 
+                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
 
             if (null == siteRecoveryClient)
             {

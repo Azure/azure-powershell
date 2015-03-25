@@ -17,7 +17,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -110,7 +109,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private void EnterpriseToAzureNetworkMapping()
         {
             // Verify whether the subscription is associated with the account or not.
-            PSRecoveryServicesClientHelper.ValidateSubscriptionAccountAssociation(this.AzureSubscriptionId);
+            RecoveryServicesClient.ValidateSubscriptionAccountAssociation(this.AzureSubscriptionId);
 
             // Check if the Azure VM Network is associated with the Subscription or not.
             string azureVMNetworkName;

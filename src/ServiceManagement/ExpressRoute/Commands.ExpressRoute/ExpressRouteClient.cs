@@ -14,8 +14,8 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Common;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
@@ -25,23 +25,26 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     using System.Collections.Generic;
     using System.Net;
     using Utilities.Common;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Common.Authentication;
+    using Hyak.Common;
     
    
     public class ExpressRouteClient
     {
         public ExpressRouteManagementClient Client { get; internal set; }
 
-        private static ClientType CreateClient<ClientType>(AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
+        private static ClientType CreateClient<ClientType>(AzureProfile profile, AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
         {
-            return AzureSession.ClientFactory.CreateClient<ClientType>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>
         /// Creates new ExpressRouteClient
         /// </summary>
         /// <param name="subscription">Subscription containing websites to manipulate</param>
-        public ExpressRouteClient(AzureSubscription subscription)
-            : this(CreateClient<ExpressRouteManagementClient>(subscription))
+        public ExpressRouteClient(AzureProfile profile, AzureSubscription subscription)
+            : this(CreateClient<ExpressRouteManagementClient>(profile, subscription))
         {   
         }
 
@@ -94,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             return (Client.DedicatedCircuits.Get(serviceKey)).DedicatedCircuit;
         }
 
-		public AzureDedicatedCircuit NewAzureDedicatedCircuit(string circuitName, 
+        public AzureDedicatedCircuit NewAzureDedicatedCircuit(string circuitName, 
             UInt32 bandwidth, string location, string serviceProviderName)
         {
             return (Client.DedicatedCircuits.New(new DedicatedCircuitNewParameters()

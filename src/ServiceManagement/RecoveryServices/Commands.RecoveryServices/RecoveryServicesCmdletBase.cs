@@ -17,10 +17,12 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Xml;
+using Hyak.Common;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
+using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 if (this.recoveryServicesClient == null)
                 {
-                    this.recoveryServicesClient = new PSRecoveryServicesClient(CurrentContext.Subscription);
+                    this.recoveryServicesClient = new PSRecoveryServicesClient(Profile, Profile.Context.Subscription);
                 }
 
                 return this.recoveryServicesClient;
@@ -76,9 +78,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     using (Stream stream = new MemoryStream())
                     {
-                        if (cloudException.ErrorMessage != null)
+                        if (cloudException.Message != null)
                         {
-                            byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.ErrorMessage);
+                            byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.Message);
                             stream.Write(data, 0, data.Length);
                             stream.Position = 0;
 
@@ -108,7 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     throw new XmlException(
                         string.Format(
                         Properties.Resources.InvalidCloudExceptionErrorMessage,
-                        cloudException.ErrorMessage),
+                        cloudException.Message),
                         cloudException);
                 }
                 catch (SerializationException)
@@ -116,7 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     throw new SerializationException(
                         string.Format(
                         Properties.Resources.InvalidCloudExceptionErrorMessage,
-                        clientRequestIdMsg + cloudException.ErrorMessage),
+                        clientRequestIdMsg + cloudException.Message),
                         cloudException);
                 }
             }
@@ -175,7 +177,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 throw new Exception(
                     string.Format(
-                    Properties.Resources.IDBasedParamUsageNotSupportedFromNextRelease,
+                    "Call using ID based parameter {0} is not supported for this provider. Please use its corresponding full object parameter instead",
                     paramName));
             }
             else

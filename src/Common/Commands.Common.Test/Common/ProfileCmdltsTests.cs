@@ -12,22 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.Profile;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Language;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.Profile;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
-using Moq;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
@@ -45,10 +42,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public ProfileCmdltsTests() : base()
         {
             dataStore = new MockDataStore();
-            ProfileClient.DataStore = dataStore;
+            AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             SetMockData();
-            AzureSession.SetCurrentContext(null, null, null);
         }
 
         [Fact]
@@ -56,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         {
             ClearAzureProfileCommand cmdlt = new ClearAzureProfileCommand();
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
@@ -71,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             Assert.Equal(0, client.Profile.Subscriptions.Count);
             Assert.Equal(0, client.Profile.Accounts.Count);
             Assert.Equal(2, client.Profile.Environments.Count); //only default environments
@@ -84,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             ClearAzureProfileCommand cmdlt = new ClearAzureProfileCommand();
             // Setup
-            ProfileClient client = new ProfileClient(subscriptionDataFile);
+            ProfileClient client = new ProfileClient(new AzureProfile(subscriptionDataFile));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
@@ -92,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Force = new SwitchParameter(true);
-            cmdlt.SubscriptionDataFile = subscriptionDataFile;
+            cmdlt.Profile = new AzureProfile(subscriptionDataFile);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -100,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient(subscriptionDataFile);
+            client = new ProfileClient(new AzureProfile(subscriptionDataFile));
             Assert.Equal(0, client.Profile.Subscriptions.Count);
             Assert.Equal(0, client.Profile.Accounts.Count);
             Assert.Equal(2, client.Profile.Environments.Count); //only default environments
@@ -150,6 +146,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        public void DeleteCorruptedTokenCache()
+        {
+            //setup
+            string testFileName = @"c:\foobar\TokenCache.dat";
+            AzureSession.DataStore.WriteFile(testFileName, new byte[] { 0, 1 });
+            
+            //Act
+            ProtectedFileTokenCache tokenCache = new ProtectedFileTokenCache(testFileName);
+
+            //Assert
+            Assert.False(AzureSession.DataStore.FileExists(testFileName));
+        }
+
+        [Fact]
         public void SetAzureSubscriptionAddsSubscriptionWithCertificate()
         {
             SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
@@ -166,7 +176,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             var newAccount = client.Profile.Accounts[SampleCertificate.Thumbprint];
             Assert.Equal(cmdlt.SubscriptionName, newSubscription.Name);
@@ -182,11 +192,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void SetAzureSubscriptionDerivesEnvironmentFromEnvironmentParameterOnAdd()
         {
-            SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetEnvironment(azureEnvironment);
             client.Profile.Save();
+            SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
 
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = Guid.NewGuid().ToString();
@@ -201,7 +211,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             Assert.Equal(cmdlt.SubscriptionName, newSubscription.Name);
             Assert.Equal(cmdlt.Environment, newSubscription.Environment);
@@ -213,7 +223,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         {
             SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetEnvironment(azureEnvironment);
             client.Profile.Save();
 
@@ -231,13 +241,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void SetAzureSubscriptionDerivesEnvironmentFromEnvironmentParameterOnSet()
         {
-            SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
             client.Profile.Save();
+            SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
 
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = azureSubscription1.Id.ToString();
@@ -250,7 +260,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             Assert.Equal(cmdlt.Environment, newSubscription.Environment);
             Assert.Equal(cmdlt.CurrentStorageAccountName, newSubscription.GetProperty(AzureSubscription.Property.StorageAccount));
@@ -259,13 +269,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void SetAzureSubscriptionDerivesEnvironmentFromServiceEndpointParameterOnSet()
         {
-            SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
             client.Profile.Save();
+            SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
 
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = azureSubscription1.Id.ToString();
@@ -278,7 +288,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             Assert.Equal(cmdlt.Environment, newSubscription.Environment);
             Assert.Equal(cmdlt.CurrentStorageAccountName,
@@ -288,13 +298,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void SetAzureSubscriptionDerivesEnvironmentFromResourcesEndpointParameterOnSet()
         {
-            SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
             client.Profile.Save();
+            SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
 
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = azureSubscription1.Id.ToString();
@@ -307,7 +317,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             Assert.Equal(cmdlt.Environment, newSubscription.Environment);
             Assert.Equal(cmdlt.CurrentStorageAccountName, newSubscription.GetProperty(AzureSubscription.Property.StorageAccount));
@@ -316,13 +326,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void SetAzureSubscriptionDerivesEnvironmentFromBothEndpointParameters()
         {
-            SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
             client.Profile.Save();
+
+            SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
 
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = azureSubscription1.Id.ToString();
@@ -336,7 +347,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             Assert.Equal(cmdlt.Environment, newSubscription.Environment);
             Assert.Equal(cmdlt.CurrentStorageAccountName, newSubscription.GetProperty(AzureSubscription.Property.StorageAccount));
@@ -345,14 +356,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void SetAzureSubscriptionUpdatesSubscriptionWithCertificate()
         {
-            SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
-            
             // Setup
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetSubscription(azureSubscription1);
             client.Profile.Save();
+
+            SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
 
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = azureSubscription1.Id.ToString();
@@ -365,7 +376,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var newSubscription = client.Profile.Subscriptions[new Guid(cmdlt.SubscriptionId)];
             var newAccount = client.Profile.Accounts[SampleCertificate.Thumbprint];
             var existingAccount = client.Profile.Accounts[azureAccount.Id];
@@ -388,16 +399,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             ImportAzurePublishSettingsCommand cmdlt = new ImportAzurePublishSettingsCommand();
 
             // Setup
-            ProfileClient.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
+            AzureSession.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
                 Properties.Resources.ValidProfileChina);
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var oldDataStore = FileUtilities.DataStore;
-            FileUtilities.DataStore = ProfileClient.DataStore;
+            FileUtilities.DataStore = AzureSession.DataStore;
             var expectedEnv = "AzureChinaCloud";
             var expected = client.ImportPublishSettings("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings", null);
 
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.ProfileClient = new ProfileClient();
+            cmdlt.ProfileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             cmdlt.PublishSettingsFile = "ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings";
 
             try
@@ -427,16 +438,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             ImportAzurePublishSettingsCommand cmdlt = new ImportAzurePublishSettingsCommand();
 
             // Setup
-            ProfileClient.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
+            AzureSession.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
                 Properties.Resources.ValidProfileChina);
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var oldDataStore = FileUtilities.DataStore;
-            FileUtilities.DataStore = ProfileClient.DataStore;
+            FileUtilities.DataStore = AzureSession.DataStore;
             var expectedEnv = "AzureCloud";
             var expected = client.ImportPublishSettings("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings", expectedEnv);
 
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.ProfileClient = new ProfileClient();
+            cmdlt.ProfileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             cmdlt.PublishSettingsFile = "ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings";
             cmdlt.Environment = expectedEnv;
 
@@ -464,8 +475,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void SelectDefaultAzureSubscriptionByNameUpdatesProfile()
         {
-            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
             var client = SetupDefaultProfile();
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
 
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -480,7 +491,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             Assert.NotNull(client.Profile.DefaultSubscription);
             Assert.Equal(azureSubscription2.Id, client.Profile.DefaultSubscription.Id);
         }
@@ -488,14 +499,34 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void SelectAzureSubscriptionByNameUpdatesProfile()
         {
-            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
             SetupDefaultProfile();
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
 
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SetParameterSet("SelectSubscriptionByNameParameterSet");
             cmdlt.SubscriptionName = azureSubscription2.Name;
-            Assert.Null(AzureSession.CurrentContext.Subscription);
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+            
+            // Verify
+            Assert.NotNull(cmdlt.Profile.Context.Subscription);
+            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.Context.Subscription.Id);
+        }
+
+        [Fact]
+        public void SelectAzureSubscriptionByNameWithoutAccountPreservesTheAccount()
+        {
+            SetupDefaultProfile();
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.SetParameterSet("SelectSubscriptionByNameParameterSet");
+            cmdlt.SubscriptionName = azureSubscription2.Name;
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -503,21 +534,43 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.NotNull(AzureSession.CurrentContext.Subscription);
-            Assert.Equal(azureSubscription2.Id, AzureSession.CurrentContext.Subscription.Id);
+            Assert.NotNull(cmdlt.Profile.Context.Subscription);
+            Assert.Equal(azureSubscription2.Account, cmdlt.Profile.Context.Subscription.Account);
+            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.Context.Subscription.Id);
+        }
+
+        [Fact]
+        public void SelectAzureSubscriptionByIdWithoutAccountPreservesTheAccount()
+        {
+            SetupDefaultProfile();
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
+            cmdlt.SubscriptionId = azureSubscription2.Id.ToString();
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            // Verify
+            Assert.NotNull(cmdlt.Profile.Context.Subscription);
+            Assert.Equal(azureSubscription2.Account, cmdlt.Profile.Context.Subscription.Account);
+            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.Context.Subscription.Id);
         }
 
         [Fact]
         public void SelectAzureSubscriptionWithoutPassthroughDoesNotPrint()
         {
-            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
             SetupDefaultProfile();
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
 
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SetParameterSet("SelectSubscriptionByNameParameterSet");
             cmdlt.SubscriptionName = azureSubscription2.Name;
-            Assert.Null(AzureSession.CurrentContext.Subscription);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -531,15 +584,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void SelectAzureSubscriptionWithPassthroughPrintsSubscription()
         {
-            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
             SetupDefaultProfile();
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
 
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SetParameterSet("SelectSubscriptionByNameParameterSet");
             cmdlt.SubscriptionName = azureSubscription2.Name;
             cmdlt.PassThru = new SwitchParameter(true);
-            Assert.Null(AzureSession.CurrentContext.Subscription);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -554,8 +606,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         [Fact]
         public void SelectDefaultAzureSubscriptionByIdAndNoDefaultUpdatesProfile()
         {
-            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
             var client = SetupDefaultProfile();
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
 
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -570,7 +622,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             Assert.NotNull(client.Profile.DefaultSubscription);
             Assert.Equal(azureSubscription2.Id, client.Profile.DefaultSubscription.Id);
 
@@ -587,59 +639,21 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             Assert.Null(client.Profile.DefaultSubscription);
-        }
-
-        [Fact]
-        public void SelectAzureSubscriptionByIdAndNoCurrentUpdatesProfile()
-        {
-            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
-            SetupDefaultProfile();
-
-            // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
-            cmdlt.SubscriptionId = azureSubscription2.Id.ToString();
-            Assert.Null(AzureSession.CurrentContext.Subscription);
-
-            // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
-
-            // Verify
-            Assert.NotNull(AzureSession.CurrentContext.Subscription);
-            Assert.Equal(azureSubscription2.Id, AzureSession.CurrentContext.Subscription.Id);
-
-            cmdlt = new SelectAzureSubscriptionCommand();
-
-            // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SetParameterSet("NoCurrentSubscriptionParameterSet");
-            cmdlt.NoCurrent = new SwitchParameter(true);
-
-            // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
-
-            // Verify
-            Assert.Null(AzureSession.CurrentContext.Subscription);
         }
 
         [Fact]
         public void SelectAzureSubscriptionByInvalidIdThrowsException()
         {
-            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
             SetupDefaultProfile();
+            SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
 
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
             string invalidGuid = Guid.NewGuid().ToString();
             cmdlt.SubscriptionId = invalidGuid;
-            Assert.Null(AzureSession.CurrentContext.Subscription);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -650,7 +664,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             }
             catch (ArgumentException ex)
             {
-                Assert.Contains(string.Format(Microsoft.WindowsAzure.Commands.Common.Properties.Resources.InvalidSubscriptionId, invalidGuid), ex.Message);
+                Assert.Contains(string.Format("The subscription id {0} doesn't exist.\r\nParameter name: id", invalidGuid), ex.Message);
             }
         }
 
@@ -665,7 +679,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             cmdlt.SetParameterSet("SelectSubscriptionByIdParameterSet");
             string invalidGuid = "foo";
             cmdlt.SubscriptionId = invalidGuid;
-            Assert.Null(AzureSession.CurrentContext.Subscription);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -682,7 +695,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
         private ProfileClient SetupDefaultProfile()
         {
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetEnvironment(azureEnvironment);
             client.AddOrSetAccount(azureAccount);
             client.AddOrSetSubscription(azureSubscription1);
@@ -721,7 +734,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                     { AzureEnvironment.Endpoint.AdTenant, "https://login.windows-ppe.net/" },
                     { AzureEnvironment.Endpoint.ActiveDirectory, "https://login.windows-ppe.net/" },
                     { AzureEnvironment.Endpoint.Gallery, "https://current.gallery.azure-test.net" },
-                    { AzureEnvironment.Endpoint.ResourceManager, "https://api-current.resources.windows-int.net/" },
+                    { AzureEnvironment.Endpoint.ResourceManager, "https://api-current.resources.windows-int.net/" },                    
+                    { AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, "vault-int.azure-int.net" },
+                    { AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, "https://vault-int.azure-int.net/" },
                 }
             };
             azureAccount = new AzureAccount

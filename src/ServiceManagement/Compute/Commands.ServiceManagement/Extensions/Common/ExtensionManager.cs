@@ -19,6 +19,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
@@ -39,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 
         public ExtensionManager(ServiceManagementBaseCmdlet cmdlet, string serviceName)
         {
-            if (cmdlet == null || cmdlet.CurrentContext.Subscription == null)
+            if (cmdlet == null || cmdlet.Profile.Context.Subscription == null)
             {
                 throw new ArgumentNullException("cmdlet");
             }
@@ -50,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             }
 
             Cmdlet = cmdlet;
-            SubscriptionId = cmdlet.CurrentContext.Subscription.Id.ToString();
+            SubscriptionId = cmdlet.Profile.Context.Subscription.Id.ToString();
             ServiceName = serviceName;
         }
 

@@ -183,9 +183,6 @@
   <data name="AzureEmulatorNotRunningElevetaed" xml:space="preserve">
     <value>You must run PowerShell from an elevated PowerShell window to use the Azure Emulator. Please restart your PowerShell window as an administrator.</value>
   </data>
-  <data name="AzureEmulatorPathPortion" xml:space="preserve">
-    <value>Azure Emulator\emulator</value>
-  </data>
   <data name="AzureEmulatorRegistryKey" xml:space="preserve">
     <value>SOFTWARE\Microsoft\Windows Azure Emulator</value>
   </data>
@@ -208,11 +205,7 @@
     <value>SOFTWARE\Microsoft\Microsoft SDKs\ServiceHosting</value>
   </data>
   <data name="AzureSdkVersionNotSupported" xml:space="preserve">
-    <value>The installed Azure SDK version is not supported. Make sure you version is between {0} and {1} inclusive</value>
-  </data>
-  <data name="AzureException_WrapExistingError_DetailedErrorFormat" xml:space="preserve">
-    <value>Azure service management error
-{0}</value>
+    <value>The installed Azure SDK version is not supported. Make sure you version is {0}</value>
   </data>
   <data name="AzureToolsNotInstalledMessage" xml:space="preserve">
     <value>Azure Authoring Tools are not installed and are required</value>
@@ -236,30 +229,11 @@
   <data name="BlobEndpointUriEnv" xml:space="preserve">
     <value>AZURE_BLOBSTORAGE_TEMPLATE</value>
   </data>
-  <data name="CacheAlreadyEnabledMessage" xml:space="preserve">
-    <value>Memcache is already enabled for role '{0}'.</value>
-  </data>
-  <data name="CacheAutoDiscoveryConfig" xml:space="preserve">
-    <value>&lt;configuration&gt;
-  &lt;configSections&gt;
-    &lt;section name="dataCacheClients" type="Microsoft.ApplicationServer.Caching.DataCacheClientsSection, Microsoft.ApplicationServer.Caching.Core" allowLocation="true" 	allowDefinition="Everywhere" /&gt;
-  &lt;/configSections&gt;
-  &lt;dataCacheClients&gt;
-    &lt;tracing sinkType="DiagnosticSink" traceLevel="Error" /&gt;
-    &lt;dataCacheClient name="DefaultShimConfig" useLegacyProtocol="false"&gt;
-      &lt;autoDiscover isEnabled="true" identifier="$RoleName$" /&gt;
-    &lt;/dataCacheClient&gt;
-  &lt;/dataCacheClients&gt;
-&lt;/configuration&gt;</value>
-  </data>
-  <data name="CacheClientDiagnosticLevelAssemblyName" xml:space="preserve">
-    <value>Microsoft.WindowsAzure.Plugins.Caching.ClientDiagnosticLevel</value>
-  </data>
-  <data name="CacheDiagnosticStoreName" xml:space="preserve">
-    <value>DiagnosticStore</value>
-  </data>
   <data name="CacheMismatchMessage" xml:space="preserve">
-    <value>Please upgrade the cache runtime of role '{0}' to '{1}' using Set-AzureServiceProjectRole -RoleName {0} -Runtime Cache -Version {1}</value>
+    <value>Your ServiceDefinition.csdef uses the cache runtime of role '{0}' which might not work correctly with '{1}' </value>
+  </data>
+  <data name="CacheScaffoldingIsNotSupport" xml:space="preserve">
+    <value>Scaffolding for Cache Role is not supported any more.</value>
   </data>
   <data name="CacheRuntimeUrl" xml:space="preserve">
     <value>CACHERUNTIMEURL</value>
@@ -270,26 +244,11 @@
   <data name="CacheRuntimeVersionKey" xml:space="preserve">
     <value>CacheRuntimeVersion</value>
   </data>
-  <data name="CacheScaffolding" xml:space="preserve">
-    <value>Resources\Scaffolding\Cache</value>
-  </data>
-  <data name="CacheStartupCommand" xml:space="preserve">
-    <value>setup_cache.cmd &gt; cache_log.txt</value>
-  </data>
   <data name="CacheVersionWarningText" xml:space="preserve">
     <value>Installing caching version {0} for Role '{1}' (the caching version locally installed is: {2})</value>
   </data>
-  <data name="CachingCacheSizePercentageSettingName" xml:space="preserve">
-    <value>Microsoft.WindowsAzure.Plugins.Caching.CacheSizePercentage</value>
-  </data>
   <data name="CachingConfigStoreConnectionStringSettingName" xml:space="preserve">
     <value>Microsoft.WindowsAzure.Plugins.Caching.ConfigStoreConnectionString</value>
-  </data>
-  <data name="CachingConfigStoreConnectionStringSettingValue" xml:space="preserve">
-    <value>DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}</value>
-  </data>
-  <data name="CachingModuleName" xml:space="preserve">
-    <value>Caching</value>
   </data>
   <data name="CannotFind" xml:space="preserve">
     <value>Cannot find {0} with name {1}.</value>
@@ -791,18 +750,6 @@ Please follow these steps in the portal:
   </data>
   <data name="MarketplaceEndpoint" xml:space="preserve">
     <value>http://api.datamarket.azure.com/CatalogService.svc</value>
-  </data>
-  <data name="MaxSupportAzureSdkVersion" xml:space="preserve">
-    <value>v2.5</value>
-  </data>
-  <data name="MemcacheEndpointName" xml:space="preserve">
-    <value>memcache_default</value>
-  </data>
-  <data name="MemcacheEndpointPort" xml:space="preserve">
-    <value>11211</value>
-  </data>
-  <data name="MinSupportAzureSdkVersion" xml:space="preserve">
-    <value>v2.5</value>
   </data>
   <data name="MissingPythonPreReq" xml:space="preserve">
     <value>Python 2.7 is not installed.  Please install it as well as Django 1.4.</value>
@@ -1602,6 +1549,12 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
     <value>A valid value for ClientCertificatePfx and ClientCertificatePassword parameters are required for Http scheduler jobs with ClientCertificate authentication type.</value>
   </data>
   <data name="SchedulerInvalidNoneAuthRequest" xml:space="preserve">
-    <value>For None authentication type, both ClientCertificatePfx and ClientCertificatePassword parameters should be null</value>
+    <value>For None authentication type, all authentication related parameters should be null</value>
+  </data>
+  <data name="SchedulerInvalidAADOAuthRequest" xml:space="preserve">
+    <value>A valid value for Tenant, Secret, Audience and Clientid parameters are required for Http scheduler jobs with ActiveDirectoryOAuth authentication type.</value>
+  </data>
+  <data name="SchedulerInvalidBasicAuthRequest" xml:space="preserve">
+    <value>A valid value for Username and Password parameters are required for Http scheduler jobs with Basic authentication type.</value>
   </data>
 </root>

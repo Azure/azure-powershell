@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// parameters.
         /// </summary>
         /// <param name="storage">Storage object</param>
-        public ASRStorage(Storage storage)
+        public ASRStorage(AsrStorage storage)
         {
             this.ID = storage.ID;
             this.Name = storage.Name;
@@ -49,32 +48,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.FabricObjectID = storage.FabricObjectID;
             this.FabricType = storage.FabricType;
             this.ServerId = storage.ServerID;
-
-            if (this.Type == StorageType.Pool.ToString())
-            {
-                this.StoragePools = storage.StoragePools;
-            }
-        }
-
-        /// <summary>
-        /// Storage Type.
-        /// </summary>
-        public enum StorageType
-        {
-            /// <summary>
-            /// Unknown type.
-            /// </summary>
-            Other = 0,
-
-            /// <summary>
-            /// Classification type.
-            /// </summary>
-            Classification,
-
-            /// <summary>
-            /// Pool type.
-            /// </summary>
-            Pool,
         }
 
         #region Properties
@@ -107,11 +80,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Fabric type.
         /// </summary>
         public string FabricType { get; set; }
-
-        /// <summary>
-        /// Gets or sets storage pools for storage arrays.
-        /// </summary>
-        public IList<StoragePool> StoragePools { get; set; }
 
         #endregion
     }
@@ -177,70 +145,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Recovery storage name.
         /// </summary>
         public string RecoveryStorageName { get; set; }
-        #endregion
-    }
-
-    /// <summary>
-    /// Azure Site Recovery Storage Pool Mapping.
-    /// </summary>
-    [SuppressMessage(
-        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
-        "SA1402:FileMayOnlyContainASingleClass",
-        Justification = "Keeping all related objects together.")]
-    public class ASRStoragePoolMapping
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRStoragePoolMapping" /> class.
-        /// </summary>
-        public ASRStoragePoolMapping()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRStoragePoolMapping" /> class with required
-        /// parameters.
-        /// </summary>
-        /// <param name="storagePoolMapping">Storage mapping object</param>
-        public ASRStoragePoolMapping(StoragePoolMapping storagePoolMapping)
-        {
-            this.PrimaryServerId = storagePoolMapping.PrimaryServerId;
-            this.PrimaryStoragePoolId = storagePoolMapping.PrimaryStoragePoolId;
-            this.PrimaryStoragePoolName = storagePoolMapping.PrimaryStoragePoolName;
-            this.RecoveryServerId = storagePoolMapping.RecoveryServerId;
-            this.RecoveryStoragePoolId = storagePoolMapping.RecoveryStoragePoolId;
-            this.RecoveryStoragePoolName = storagePoolMapping.RecoveryStoragePoolName;
-        }
-
-        #region Properties
-        /// <summary>
-        /// Gets or sets Primary server Id.
-        /// </summary>
-        public string PrimaryServerId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Primary storage pool Id.
-        /// </summary>
-        public string PrimaryStoragePoolId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Primary storage pool name.
-        /// </summary>
-        public string PrimaryStoragePoolName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery server Id.
-        /// </summary>
-        public string RecoveryServerId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery storage pool Id.
-        /// </summary>
-        public string RecoveryStoragePoolId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery storage pool name.
-        /// </summary>
-        public string RecoveryStoragePoolName { get; set; }
         #endregion
     }
 }

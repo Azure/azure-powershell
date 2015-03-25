@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Common.Internals;
 using Newtonsoft.Json.Linq;
 using System;
 
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 if (batchClient == null)
                 {
-                    batchClient = new BatchClient(CurrentContext);
+                    batchClient = new BatchClient(Profile.Context);
                 }
                 return batchClient;
             }
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Commands.Batch
         {
             string message = null;
 
-            if (ParserHelper.IsJson(content))
+            if (CloudException.IsJson(content))
             {
                 var response = JObject.Parse(content);
 

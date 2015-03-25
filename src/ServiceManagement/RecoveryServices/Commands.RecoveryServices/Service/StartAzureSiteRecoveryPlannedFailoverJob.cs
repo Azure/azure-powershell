@@ -69,6 +69,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public ASRProtectionEntity ProtectionEntity { get; set; }
 
         /// <summary>
+        /// Gets or sets Encryption Key File
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string EncryptionKeyFile { get; set; }
+
+        /// <summary>
+        /// Gets or sets Secondary Encryption Key File
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string SecondaryEncryptionKeyFile { get; set; }
+
+        /// <summary>
         /// Gets or sets Failover direction for the recovery plan.
         /// </summary>
         [Parameter(Mandatory = true)]
@@ -113,7 +127,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         this.StartRpPlannedFailover();
                         break;
                     case ASRParameterSets.ByPEObject:
-                       this.ProtectionEntityId = this.ProtectionEntity.ID;
+                        this.ProtectionEntityId = this.ProtectionEntity.ID;
                         this.ProtectionContainerId = this.ProtectionEntity.ProtectionContainerId;
                         this.StartPEPlannedFailover();
                         break;
@@ -154,12 +168,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     var blob = new AzureFailoverInput();
                     blob.VaultLocation = this.GetCurrentValutLocation();
+
+                    if (!string.IsNullOrEmpty(this.EncryptionKeyFile))
+                    {
+                        blob.PrimaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.EncryptionKeyFile);
+                    }
+
+                    if (!string.IsNullOrEmpty(this.SecondaryEncryptionKeyFile))
+                    {
+                        blob.SecondaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.SecondaryEncryptionKeyFile);
+                    }
+
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
                 }
                 else
                 {
                     var blob = new AzureFailbackInput();
-                    blob.CreateRecoveryVmIfDoesntExist = true;
+                    blob.CreateRecoveryVmIfDoesntExist = false;
                     blob.SkipDataSync = this.Optimize == Constants.ForDowntime ? true : false;
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailbackInput>(blob);
                 }
@@ -209,13 +234,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     var blob = new AzureFailoverInput();
                     blob.VaultLocation = this.GetCurrentValutLocation();
+
+                    if (!string.IsNullOrEmpty(this.EncryptionKeyFile))
+                    {
+                        blob.PrimaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.EncryptionKeyFile);
+                    }
+
+                    if (!string.IsNullOrEmpty(this.SecondaryEncryptionKeyFile))
+                    {
+                        blob.SecondaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.SecondaryEncryptionKeyFile);
+                    }
+
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
                 }
                 else
                 {
                     var blob = new AzureFailbackInput();
                     blob.CreateRecoveryVmIfDoesntExist = false;
-                    blob.SkipDataSync = true;
+                    blob.SkipDataSync = this.Optimize == Constants.ForDowntime ? true : false;
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailbackInput>(blob);
                 }
             }
@@ -224,7 +260,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             request.FailoverDirection = this.Direction;
 
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(
-                this.RPId, 
+                this.RPId,
                 request);
 
             this.WriteJob(this.jobResponse.Job);

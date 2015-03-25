@@ -15,14 +15,16 @@
 using System;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Microsoft.WindowsAzure.Management.WebSites.Models;
 using Moq;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
@@ -62,6 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                     createdWebspaceName = space;
                 });
 
+            SetupProfile(null);
             // Test
             MockCommandRuntime mockRuntime = new MockCommandRuntime();
             NewAzureWebsiteCommand newAzureWebsiteCommand = new NewAzureWebsiteCommand
@@ -72,9 +75,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Location = webspaceName,
                 WebsitesClient = clientMock.Object
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(base.subscriptionId) }, null, null);
 
-            newAzureWebsiteCommand.ExecuteCmdlet();
+            newAzureWebsiteCommand.ExecuteWithProcessing();
             Assert.Equal(websiteName, createdSiteName);
             Assert.Equal(webspaceName, createdWebspaceName);
             Assert.Equal<string>(websiteName, (mockRuntime.OutputPipeline[0] as SiteWithConfig).Name);
@@ -109,6 +111,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                     created = true;
                 });
 
+            SetupProfile(null);
+
             // Test
             MockCommandRuntime mockRuntime = new MockCommandRuntime();
             NewAzureWebsiteCommand newAzureWebsiteCommand = new NewAzureWebsiteCommand()
@@ -118,9 +122,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Name = websiteName,
                 WebsitesClient = clientMock.Object
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(base.subscriptionId) }, null, null);
 
-            newAzureWebsiteCommand.ExecuteCmdlet();
+            newAzureWebsiteCommand.ExecuteWithProcessing();
             Assert.True(created);
             Assert.Equal<string>(websiteName, (mockRuntime.OutputPipeline[0] as SiteWithConfig).Name);
             clientMock.Verify(f => f.GetDefaultLocation(), Times.Once());
@@ -151,6 +154,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             clientMock.Setup(f => f.WebsiteExists(websiteName)).Returns(true);
             clientMock.Setup(f => f.GetWebsite(websiteName)).Returns(new Site() { Name = websiteName, Sku = SkuOptions.Standard, WebSpace = webspaceName });
 
+            SetupProfile(null);
             // Test
             MockCommandRuntime mockRuntime = new MockCommandRuntime();
             NewAzureWebsiteCommand newAzureWebsiteCommand = new NewAzureWebsiteCommand
@@ -162,9 +166,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = clientMock.Object,
                 Slot = slot
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(base.subscriptionId) }, null, null);
 
-            newAzureWebsiteCommand.ExecuteCmdlet();
+            newAzureWebsiteCommand.ExecuteWithProcessing();
             clientMock.Verify(c => c.CreateWebsite(webspaceName, It.IsAny<SiteWithWebSpace>(), slot), Times.Once());
         }
     }

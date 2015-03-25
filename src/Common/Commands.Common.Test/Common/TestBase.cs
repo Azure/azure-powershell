@@ -16,9 +16,10 @@ using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -27,6 +28,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
     /// </summary>
     public abstract class TestBase
     {
+        protected AzureProfile currentProfile;
+
         public TestBase()
         {
             BaseSetup();
@@ -38,17 +41,17 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         [TestInitialize]
         public void BaseSetup()
         {
-            if (ProfileClient.DataStore != null && !(ProfileClient.DataStore is MockDataStore))
+            if (AzureSession.DataStore != null && !(AzureSession.DataStore is MockDataStore))
             {
-                ProfileClient.DataStore = new MockDataStore();
+                AzureSession.DataStore = new MockDataStore();
             }
-            if (AzureSession.CurrentContext.Subscription == null)
+            currentProfile = new AzureProfile();
+
+            if (currentProfile.Context.Subscription == null)
             {
                 var newGuid = Guid.NewGuid();
-                AzureSession.SetCurrentContext(
-                    new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" },
-                    null,
-                    new AzureAccount
+                currentProfile.Subscriptions[newGuid] = new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" };
+                currentProfile.Accounts["test"] = new AzureAccount
                     {
                         Id = "test",
                         Type = AzureAccount.AccountType.User,
@@ -56,7 +59,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
                         {
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                         }
-                    });
+                    };
+                currentProfile.DefaultSubscription = currentProfile.Subscriptions[newGuid];
             }
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }

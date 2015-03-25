@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
     using DatabaseCopyModel = Model.DatabaseCopy;
+    using Microsoft.Azure.Common.Authentication;
 
     /// <summary>
     /// Stop an ongoing copy operation for a Microsoft Azure SQL Database in the given server context.
@@ -131,7 +132,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             // Use the provided ServerDataServiceContext or create one from the
             // provided ServerName and the active subscription.
             IServerDataServiceContext context = ServerDataServiceCertAuth.Create(this.ServerName,
-                AzureSession.CurrentContext.Subscription);
+                Profile,
+                Profile.Context.Subscription);
 
             DatabaseCopyModel databaseCopy;
             if (this.MyInvocation.BoundParameters.ContainsKey("DatabaseCopy"))

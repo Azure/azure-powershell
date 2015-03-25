@@ -13,16 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.WindowsAzure.Commands.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
     /// <summary>
-    /// The SqlClient class is resposible for the mapping of data between two models: 
+    /// The SqlClient class is responsible for the mapping of data between two models: 
     /// The communication model as defined by the endpoint APIs and the cmdlet model that is defined by the
     /// AuditingPolicy class. This class knows how to wrap a policy in its communication model and return 
     /// a policy in its cmdlet model and vice versa (i.e., unwrapping).
@@ -31,28 +32,31 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
     {
         private AzureSubscription Subscription { get; set; }
 
+        private AzureProfile Profile { get; set; }
+
         private EndpointsCommunicator Communicator { get; set; }
 
-        // cacheing the fetched properties to prevent constly network interaction in cases it is not needed
+        // Caching the fetched properties to prevent costly network interaction in cases it is not needed
         private DatabaseSecurityPolicyProperties FetchedProperties;
 
         // In cases when storage is not needed and not provided, theres's no need to perform storage related network interaction that may fail
         public bool IgnoreStorage { get; set; }
 
-        public SqlClient(AzureSubscription subscription)
+        public SqlClient(AzureProfile profile, AzureSubscription subscription)
         {
+            Profile = profile;
             Subscription = subscription;
-            Communicator = new EndpointsCommunicator(subscription);
+            Communicator = new EndpointsCommunicator(profile, subscription);
             IgnoreStorage = false;
         }
 
         /// <summary>
         /// Returns the storage account name of the given database server
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resouce group to which the server belongs</param>
+        /// <param name="resourceGroupName">The name of the resource group to which the server belongs</param>
         /// <param name="serverName">The server's name</param>
         /// <param name="requestId">The Id to use in the request</param>
-        /// <returns>The name of the storage accunt, null if it doesn't exist</returns>
+        /// <returns>The name of the storage account, null if it doesn't exist</returns>
         public string GetServerStorageAccount(string resourceGroupName, string serverName, string requestId)
         {
             return Communicator.GetServerSecurityPolicy(resourceGroupName, serverName, requestId).Properties.StorageAccountName;
@@ -65,6 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             wrapper.ResourceGroupName = resourceGroup;
             wrapper.ServerName = serverName;
             wrapper.DatabaseName = databaseName;
+            AddConnectionStringsToWrapperFromPolicy(wrapper, policy.Properties);
             return wrapper;
         }
 
@@ -86,7 +91,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             wrapper.DirectAccessEnabled = !properties.IsBlockDirectAccessEnabled;
             addStorageInfoToWrapperFromPolicy(wrapper, properties);
             AddEventTypesToWrapperFromPolicy(wrapper, properties);
-            AddConnectionStringsToWrapperFromPolicy(wrapper, properties);
             this.FetchedProperties = properties;           
             return wrapper;
         }
@@ -102,10 +106,69 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
 
         private void AddConnectionStringsToWrapperFromPolicy(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
         {
-            wrapper.ConnectionStrings.AdoNetConnectionString = properties.AdoNetConnectionString;
-            wrapper.ConnectionStrings.OdbcConnectionString = properties.OdbcConnectionString;
-            wrapper.ConnectionStrings.JdbcConnectionString = properties.JdbcConnectionString;
-            wrapper.ConnectionStrings.PhpConnectionString = properties.PhpConnectionString;
+            wrapper.ConnectionStrings.AdoNetConnectionString = ConstructAdoNetConnectionString(wrapper, properties);
+            wrapper.ConnectionStrings.OdbcConnectionString = ConstructOdbcConnectionString(wrapper, properties);
+            wrapper.ConnectionStrings.JdbcConnectionString = ConstructJdbcConnectionString(wrapper, properties);
+            wrapper.ConnectionStrings.PhpConnectionString = ConstructPhpConnectionString(wrapper, properties);
+        }
+
+        private string ConstructPhpConnectionString(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
+        {
+            string enterUser = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterUserId;
+            string enterPassword = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterPassword;
+            string pdoTitle = Microsoft.Azure.Commands.Sql.Properties.Resources.PdoTitle;
+            string sqlServerSampleTitle = Microsoft.Azure.Commands.Sql.Properties.Resources.sqlSampleTitle;
+            string connectionError = Microsoft.Azure.Commands.Sql.Properties.Resources.PhpConnectionError;
+            StringBuilder sb = new StringBuilder();
+            sb.Append(string.Format("Server: {0}, {1}", properties.ProxyDnsName, properties.ProxyPort)).Append(Environment.NewLine);
+            sb.Append(string.Format("SQL Database: {0}",  wrapper.DatabaseName)).Append(Environment.NewLine);
+            sb.Append(string.Format("User Name: {0}", enterUser)).Append(Environment.NewLine).Append(Environment.NewLine);
+            sb.Append(pdoTitle).Append(Environment.NewLine);
+            sb.Append("try{").Append(Environment.NewLine);
+            sb.Append(string.Format("$conn = new PDO ( \"sqlsrv:server = tcp:{0},{1}; Database = \"{2}\", \"{3}\", \"{4}\");", 
+                                                properties.ProxyDnsName, properties.ProxyPort, wrapper.DatabaseName, enterUser, enterPassword)).Append(Environment.NewLine);
+            sb.Append("$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );").Append(Environment.NewLine);
+            sb.Append("}").Append(Environment.NewLine);
+            sb.Append("catch ( PDOException $e ) {").Append(Environment.NewLine);
+            sb.Append(string.Format("print( \"{0}\" );", connectionError)).Append(Environment.NewLine);
+            sb.Append("die(print_r($e));").Append(Environment.NewLine);
+            sb.Append("}").Append(Environment.NewLine);
+            sb.Append(sqlServerSampleTitle).Append(Environment.NewLine).Append(Environment.NewLine);
+            sb.Append(string.Format("connectionInfo = array(\"UID\" => \"{0}@{1}\", \"pwd\" => \"{2}\", \"Database\" => \"{3}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1);", 
+                                                enterUser, wrapper.ServerName, enterPassword, wrapper.DatabaseName)).Append(Environment.NewLine);
+            sb.Append(string.Format("$serverName = \"tcp:{0},{1}\";", properties.ProxyDnsName, properties.ProxyPort)).Append(Environment.NewLine);
+            sb.Append("$conn = sqlsrv_connect($serverName, $connectionInfo);");
+            return sb.ToString();
+        }
+
+        private string ConstructOdbcConnectionString(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
+        {
+            string enterUser = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterUserId;
+            string enterPassword = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterPassword;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Driver={SQL Server Native Client 11.0};");
+            sb.Append(string.Format("Server=tcp:{0},{1};", properties.ProxyDnsName, properties.ProxyPort));
+            sb.Append(string.Format("Database={0};", wrapper.DatabaseName));
+            sb.Append(string.Format("Uid={0}@{1};", enterUser, wrapper.ServerName));
+            sb.Append(string.Format("Pwd={0};", enterPassword));
+            sb.Append("Encrypt=yes;Connection Timeout=30;");
+            return sb.ToString();
+        }
+
+        private string ConstructJdbcConnectionString(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
+        {
+            string enterUser = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterUserId;
+            string enterPassword = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterPassword;
+            return string.Format("jdbc:sqlserver://{0}:{1};database={2};user={3}@{4};password={5};encrypt=true;hostNameInCertificate=*.database.secure.windows.net;loginTimeout=30;",
+                properties.ProxyDnsName, properties.ProxyPort, wrapper.DatabaseName, enterUser, wrapper.ServerName, enterPassword);
+        }
+
+        private string ConstructAdoNetConnectionString(AuditingPolicy wrapper,DatabaseSecurityPolicyProperties properties)
+        {
+            string enterUser = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterUserId;
+            string enterPassword = Microsoft.Azure.Commands.Sql.Properties.Resources.EnterPassword;
+            return string.Format("Server=tcp:{0},{1};Database={2};User ID={3}@{4};Password={5};Trusted_Connection=False;Encrypt=True;Connection Timeout=30", 
+                properties.ProxyDnsName, properties.ProxyPort, wrapper.DatabaseName, enterUser, wrapper.ServerName, enterPassword);
         }
 
         private void AddEventTypesToWrapperFromPolicy(AuditingPolicy wrapper, DatabaseSecurityPolicyProperties properties)
@@ -198,7 +261,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
                 throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.NoStorageAccountWhenConfiguringAuditingPolicy));
             }
 
-            // no need to do time consuming http inteaction to fetch these properties if the storage account was not changed
+            // no need to do time consuming http interaction to fetch these properties if the storage account was not changed
             if (properties.StorageAccountName == this.FetchedProperties.StorageAccountName)
             {
                 properties.StorageAccountResourceGroupName = this.FetchedProperties.StorageAccountResourceGroupName;
@@ -209,7 +272,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             {
                 properties.StorageAccountSubscriptionId = Subscription.Id.ToString();
                 properties.StorageAccountResourceGroupName = Communicator.GetStorageResourceGroup(properties.StorageAccountName);
-                properties.StorageTableEndpoint = Communicator.GetStorageTableEndpoint(properties.StorageAccountName);
+                properties.StorageTableEndpoint = Communicator.GetStorageTableEndpoint(Profile, properties.StorageAccountName);
             }
 
             if (!IgnoreStorage)

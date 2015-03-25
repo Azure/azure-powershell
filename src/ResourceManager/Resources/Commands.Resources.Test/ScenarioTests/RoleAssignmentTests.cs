@@ -19,12 +19,13 @@ using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.Azure.Utilities.HttpRecorder;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Testing;
-using Microsoft.WindowsAzure.Testing.TestCategories;
+using Microsoft.Azure.Test;
 using System;
 using System.Linq;
+using System.Threading;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             User newUser = null;
             ResourceGroup resourceGroup = null;
-            string roleAssignmentId = "6A26D717-ABA9-44E3-B971-C53694E413B2";
+            string roleAssignmentId = "9B8D3FBE-4A95-406C-AAE6-50528FA2AEFB";
             string userName = null;
             string userPass = null;
             string userPermission = "*/read";
@@ -116,6 +117,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                                         .List(new ResourceGroupListParameters())
                                         .ResourceGroups
                                         .First();
+
+                    // Wait to allow newly created object changes to propagate
+                    TestMockSupport.Delay(20000);
 
                     return new[] 
                     { 

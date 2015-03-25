@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Utilities;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
+using Hyak.Common;
 
 
 namespace Microsoft.WindowsAzure.Commands.Test.Gateway
@@ -54,7 +55,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
             var expectedOutput = new PSDataFactoryGateway
             {
                 Name = GatewayName,
-                Location = Location,
                 Status = GatewayStatus.Online,
                 Description = "New gateway description for test"
             };

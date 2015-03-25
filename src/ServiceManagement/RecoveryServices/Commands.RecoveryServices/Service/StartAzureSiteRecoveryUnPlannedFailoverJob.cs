@@ -18,7 +18,6 @@ using System.Management.Automation;
 using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -30,11 +29,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryUnplannedFailoverJob : RecoveryServicesCmdletBase
     {
-        #region Parameters
+        /// <summary>
+        /// Primary actions.
+        /// </summary>
+        private bool? primaryAction;       
+        
+        /// <summary>
+        /// Perform Source SiteOperations.
+        /// </summary>
+        private bool? performSourceSiteOperations;
+
         /// <summary>
         /// Job response.
         /// </summary>
-        private JobResponse jobResponse = null;
+        private JobResponse jobResponse = null;    
+        
+        #region Parameters
 
         /// <summary>
         /// Gets or sets ID of the Recovery Plan.
@@ -86,16 +96,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets a value indicating whether primary site actions are required or not.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = true)]
-        public bool PrimaryAction { get; set; }
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPId, Mandatory = false)]
+        public bool PrimaryAction 
+        { 
+            get
+            {
+                return this.primaryAction.HasValue ? this.primaryAction.Value : false;
+            } 
+
+            set
+            {
+                this.primaryAction = value;
+                this.PerformSourceSideActions = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether can do source site operations.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEId, Mandatory = false)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = false)]
-        public bool PerformSourceSiteOperations { get; set; }
+        public bool PerformSourceSiteOperations
+        {
+            get
+            {
+                return this.performSourceSiteOperations.HasValue ?
+                    this.performSourceSiteOperations.Value : 
+                    false;
+            } 
+
+            set
+            {
+                this.performSourceSiteOperations = value;
+                this.PerformSourceSideActions = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets Encryption Key File
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string EncryptionKeyFile { get; set; }
+
+        /// <summary>
+        /// Gets or sets Secondary Encryption Key File
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string SecondaryEncryptionKeyFile { get; set; }
+
+        /// <summary>
+        /// Gets or sets switch parameter. This is required to PerformSourceSideActions.
+        /// </summary>
+        [Parameter]
+        public SwitchParameter PerformSourceSideActions { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. This is required to wait for job completion.
@@ -111,6 +167,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                if (this.primaryAction.HasValue)
+                {
+                    this.WriteWarningWithTimestamp(
+                          "PrimaryAction parameter will not be supported from next release. " +
+                          "Please use PerformSourceSideActions parameter instead.");
+                }
+
+                if (this.performSourceSiteOperations.HasValue)
+                {
+                    this.WriteWarningWithTimestamp(
+                          "PerformSourceSiteOperations parameter will not be supported from next release. " +
+                          "Please use PerformSourceSideActions parameter instead.");
+                }
+
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ByRPObject:
@@ -163,13 +233,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     var blob = new AzureFailoverInput();
                     blob.VaultLocation = this.GetCurrentValutLocation();
+                    
+                    if (!string.IsNullOrEmpty(this.EncryptionKeyFile))
+                    {
+                        blob.PrimaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.EncryptionKeyFile);
+                    }
+
+                    if (!string.IsNullOrEmpty(this.SecondaryEncryptionKeyFile))
+                    {
+                        blob.SecondaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.SecondaryEncryptionKeyFile);
+                    }
+
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
                 }
             }
 
             request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
             request.FailoverDirection = this.Direction;
-            request.SourceSiteOperations = this.PerformSourceSiteOperations;
+            request.SourceSiteOperations = this.PerformSourceSideActions;
             this.jobResponse =
                 RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
                 this.ProtectionContainerId,
@@ -210,13 +291,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     var blob = new AzureFailoverInput();
                     blob.VaultLocation = this.GetCurrentValutLocation();
+
+                    if (!string.IsNullOrEmpty(this.EncryptionKeyFile))
+                    {
+                        blob.PrimaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.EncryptionKeyFile);
+                    }
+
+                    if (!string.IsNullOrEmpty(this.SecondaryEncryptionKeyFile))
+                    {
+                        blob.SecondaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.SecondaryEncryptionKeyFile);
+                    }
+
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
                 }
             }
 
             request.ReplicationProvider = this.RecoveryPlan.ReplicationProvider;
             request.FailoverDirection = this.Direction;
-            request.PrimaryAction = this.PrimaryAction;
+            request.PrimaryAction = this.PerformSourceSideActions;
 
             this.jobResponse = RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
                 this.RPId,

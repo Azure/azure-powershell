@@ -19,6 +19,9 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Profile
 {
@@ -29,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         public void GetsPublishSettingsFileUrl()
         {
             // Setup
-            ProfileClient.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MockDataStore();
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             GetAzurePublishSettingsFileCommand cmdlet = new GetAzurePublishSettingsFileCommand()
             {
@@ -38,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
                 Environment = EnvironmentName.AzureCloud,
                 Realm = "microsoft.com"
             };
-            cmdlet.ProfileClient = new ProfileClient();
+            cmdlet.ProfileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
             // Test
             cmdlet.ExecuteCmdlet();

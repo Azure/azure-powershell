@@ -16,11 +16,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
-using Microsoft.WindowsAzure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -589,6 +588,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     = details.RecoveryPointHistoryDuration;
 
                 this.HyperVReplicaAzureProviderSettingsObject.CanDissociate = profile.CanDissociate;
+                this.HyperVReplicaAzureProviderSettingsObject.EncryptStoredData = details.EncryptionEnabled;
             }
             else if (profile.ReplicationProvider == Constants.HyperVReplica)
             {
@@ -908,6 +908,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.ReplicationHealth = pe.ReplicationHealth;
             this.TestFailoverStateDescription = pe.TestFailoverStateDescription;
 
+            if (!string.IsNullOrWhiteSpace(pe.ReplicationProviderSettings))
+            {
+                AzureVmDiskDetails diskDetails;
+                DataContractUtils.Deserialize<AzureVmDiskDetails>(
+                    pe.ReplicationProviderSettings, out diskDetails);
+
+                this.Disks = diskDetails.Disks;
+                this.OSDiskId = diskDetails.VHDId;
+                this.OSDiskName = diskDetails.OsDisk;
+                this.OS = diskDetails.OsType;
+            }
+
             if (pe.ProtectionProfile != null &&
                 !string.IsNullOrWhiteSpace(pe.ProtectionProfile.ID))
             {
@@ -1157,10 +1169,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.StateDescription = job.StateDescription;
             this.EndTime = job.EndTime;
             this.StartTime = job.StartTime;
-            this.AllowedActions = job.AllowedActions as List<string>;
             this.Name = job.Name;
             this.TargetObjectId = job.TargetObjectId;
             this.TargetObjectName = job.TargetObjectName;
+            if (job.AllowedActions != null && job.AllowedActions.Count > 0)
+            {
+                this.AllowedActions = new List<string>();
+                foreach (var action in job.AllowedActions)
+                {
+                    this.AllowedActions.Add(action);
+                }
+            }
 
             if (!string.IsNullOrEmpty(job.TargetObjectId))
             {
@@ -1214,12 +1233,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         /// Gets or sets Start timestamp.
         /// </summary>
-        public string StartTime { get; set; }
+        public DateTimeOffset? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets End timestamp.
         /// </summary>
-        public string EndTime { get; set; }
+        public DateTimeOffset? EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets TargetObjectId.
@@ -1254,6 +1273,56 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
+    /// Azure Site Recovery Site object.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class ASRSite
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRSite" /> class.
+        /// </summary>
+        public ASRSite()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRSite" /> class.
+        /// </summary>
+        /// <param name="site">Hydra site object.</param>
+        public ASRSite(Site site)
+        {
+            this.Name = site.Name;
+            this.ID = site.ID;
+            this.Type = site.Type;
+        }
+
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Gets or sets display name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        /// Gets or sets site type.
+        /// </summary>
+        public string Type { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
     /// Azure Site Recovery Vault.
     /// </summary>
     [SuppressMessage(
@@ -1276,12 +1345,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="cloudService">cloud service object</param>
         /// <param name="vault">vault object</param>
-        public ASRVault(CloudService cloudService, Vault vault)
+        /// <param name="subscription">Current subscription</param>
+        public ASRVault(CloudService cloudService, Vault vault, string subscription)
         {
             this.CloudServiceName = cloudService.Name;
             this.Location = cloudService.GeoRegion;
             this.Name = vault.Name;
-            this.SubscriptionId = AzureSession.CurrentContext.Subscription.Id.ToString();
+            this.SubscriptionId = subscription;
             this.Status = this.ParseStatus(vault.OperationStatus);
             this.ID = this.ParseVaultId(vault.OutputItems);
             if (vault.OperationStatus.Error != null)

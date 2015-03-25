@@ -1,10 +1,105 @@
+2015.02.12 version 0.8.14
+* StorSimple: New StorSimple commands in AzureServiceManagement mode:
+  * GetAzureStorSimpleAccessControlRecord
+  * GetAzureStorSimpleStorageAccountCredential
+  * RemoveAzureStorSimpleAccessControlRecord
+  * RemoveAzureStorSimpleStorageAccountCredential
+  * SetAzureStorSimpleAccessControlRecord
+  * GetAzureStorSimpleDeviceVolume 
+  * RemoveAzureStorSimpleDeviceVolume 
+  * GetAzureStorSimpleDeviceVolumeContainer
+  * RemoveAzureStorSimpleDeviceVolumeContainer
+  * GetAzureStorSimpleDevice
+  * GetAzureStorSimpleDeviceConnectedInitiator
+  * GetAzureStorSimpleResource
+  * GetAzureStorSimpleResourceContext
+  * SetAzureStorSimpleDeviceBackupPolicy
+  * NewAzureStorSimpleDeviceBackupPolicy
+  * GetAzureStorSimpleDeviceBackup
+  * RemoveAzureStorSimpleDeviceBackup
+  * StartAzureStorSimpleDeviceBackupJob
+  * StartAzureStorSimpleDeviceBackupRestoreJob
+  * RemoveAzureStorSimpleDeviceBackupPolicy
+  * NewAzureStorSimpleDeviceVolume
+  * SetAzureStorSimpleDeviceVolume
+  * NewAzureStorSimpleDeviceVolumeContainer
+  * SelectAzureStorSimpleResource
+  * GetAzureStorSimpleDeviceBackupPolicy
+  * NewAzureStorSimpleStorageAccountCredential
+  * GetAzureStorSimpleTask
+  * SetAzureStorSimpleStorageAccountCredential
+  * NewAzureStorSimpleInlineStorageAccountCredential
+  * NewAzureStorSimpleAccessControlRecord
+
+* HDInsight:
+  * HeadNodeVMSize (update): the parameter is now a string that can now accept various sizes (specifications here: https://msdn.microsoft.com/en-us/library/azure/dn197896.aspx -> Sizes for Web and Worker Role Instances)
+  * DataNodeVMSize (new)  :  use to specify size of data nodes (where applicable)
+  * ZookeeperNodeVMSize (new): use to specify Zookeeper node sizes (where applicable)
+  * ClusterType (update): New value (Spark) can be specified as cluster type
+  * Add-AzureHDInsightConfigValues cmdlet:
+    * Spark (new): collection of configuration properties can be passed in to customize the Spark service
+    
+ * Azure Insights cmdlets in AzureResourceManager Mode:
+   * Get-AzureCrrelationLogId
+   * Get-AzureResourceGroupLog
+   * Get-AzureResourceLog
+   * Get-AzureResourceProviderLog
+   * Get-AzureSubscriptionIdLog
+   
+* Azure VM cmdlets
+  * Get-AzureVMDscExtentionStatus: Get the DSC Extension status for a cloud service or VM
+  
+ * Updates and bug fixes for AzureAutomation and AzureDataFactory cmdlets
+ 
+2015.01.08 version 0.8.13
+* Key Vault Service - new cmdlets in AzureResourceManager mode:
+  * Keys:
+    * Add-AzureKeyVaultKey
+    * Get-AzureKeyVaultKey
+    * Set-AzureKeyVaultKey
+    * Backup-AzureKeyVaultKey
+    * Restore-AzureKeyVaultKey
+    * Remove-AzureKeyVaultKey
+  * Secrets:
+    * Get-AzureKeyVaultSecret
+    * Set-AzureKeyVaultSecret
+    * Remove-AzureKeyVaultSecret
+
+2014.12.12 version 0.8.12
+* StreamAnalytics
+  * New cmdlets in AzureResourceManager mode
+    * New-AzureStreamAnalyticsJob
+    * New-AzureStreamAnalyticsInput
+    * New-AzureStreamAnalyticsOutput
+    * New-AzureStreamAnalyticsTransformation
+    * Get-AzureStreamAnalyticsJob
+    * Get-AzureStreamAnalyticsInput
+    * Get-AzureStreamAnalyticsOutput
+    * Get-AzureStreamAnalyticsTransformation
+    * Get-AzureStreamAnalyticsQuota
+    * Remove-AzureStreamAnalyticsJob
+    * Remove-AzureStreamAnalyticsInput
+    * Remove-AzureStreamAnalyticsOutput
+    * Test-AzureStreamAnalyticsInput
+    * Test-AzureStreamAnalyticsOutput
+    * Start-AzureStreamAnalyticsJob
+    * Stop-AzureStreamAnalyticsJob
+* Batch
+  * Fixed issue with Delete-AzureBatchAccount
+* Profile
+  * Fixed issues with Select-AzureSubscription to allow selecting subscriptions by Id
+  * Deprecated SubscriptionDataFile parameter
+* Compute
+  * Set-AzureVMImage cmdlets - added IconUri, SmallIconUri, and ShowInGui parameters
+* Sql
+  *  Added Sql Servver v12 support to SQL authentication context for SqlAzure cmdlets
+
 2014.11.14 Version 0.8.11
 * Profile
   * Clear-AzureProfile: remove all subscription and credential data from the user store
   * Select-AzureSubscription: fixed output types in default and PassThru mode
 * Compute
   * Get-AzureVMSqlServerExtension
-  * New-AzureVMSqlServerExtension
   * Set-AzureVMSqlServerExtension
   * Remove-AzureVMSqlServerExtension
 * HDInsight
