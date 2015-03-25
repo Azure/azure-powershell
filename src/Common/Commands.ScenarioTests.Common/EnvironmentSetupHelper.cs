@@ -48,15 +48,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public EnvironmentSetupHelper()
         {
-            var datastore = new MockDataStore();
-            AzureSession.DataStore = datastore;
-            var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzurePSCmdlet.CurrentProfile = profile;
-            AzureSession.DataStore = datastore;
-            ProfileClient = new ProfileClient(profile);
-
-            // Ignore SSL errors
-            System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
             // Set RunningMocked
             if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback)
             {
@@ -66,6 +57,16 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 TestMockSupport.RunningMocked = false;
             }
+
+            var datastore = new MockDataStore();
+            AzureSession.DataStore = datastore;
+            var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            AzurePSCmdlet.CurrentProfile = profile;
+            AzureSession.DataStore = datastore;
+            ProfileClient = new ProfileClient(profile);
+
+            // Ignore SSL errors
+            System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
         }
 
         /// <summary>
