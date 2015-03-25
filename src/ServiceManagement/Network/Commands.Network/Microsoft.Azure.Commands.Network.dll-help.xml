@@ -4274,7 +4274,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
         <maml:name>GatewaySize</maml:name>
         <maml:description>
-          <maml:para>Size of application gateway Small/Medium/Large/ExtraLarge/A8</maml:para>
+          <maml:para>Size of application gateway Small/Medium/Large</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       </command:parameter>
@@ -4339,7 +4339,7 @@ PfsGroup:       (PFS1, None)</maml:para>
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
       <maml:name>GatewaySize</maml:name>
       <maml:description>
-        <maml:para>Size of application gateway Small/Medium/Large/ExtraLarge/A8</maml:para>
+        <maml:para>Size of application gateway Small/Medium/Large</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       <dev:type>
@@ -5052,7 +5052,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
         <maml:name>GatewaySize</maml:name>
         <maml:description>
-          <maml:para>Size of application gateway Small/Medium/Large/ExtraLarge/A8</maml:para>
+          <maml:para>Size of application gateway Small/Medium/Large</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       </command:parameter>
@@ -5117,7 +5117,7 @@ PfsGroup:       (PFS1, None)</maml:para>
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
       <maml:name>GatewaySize</maml:name>
       <maml:description>
-        <maml:para>Size of application gateway Small/Medium/Large/ExtraLarge/A8</maml:para>
+        <maml:para>Size of application gateway Small/Medium/Large</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       <dev:type>
