@@ -29,6 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
     public class NewAzureVmTests:ServiceManagementTest
     {
         private string _serviceName;
+        private string _vmName;
         private string _linuxImageName;
         const string CerFileName = "testcert.cer";
         X509Certificate2 _installedCert;
@@ -44,18 +45,96 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             _linuxImageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Linux" }, false);
             InstallCertificate();
             keyPath = Directory.GetCurrentDirectory() + Utilities.GetUniqueShortName() + ".txt";
+            _serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
+            _vmName = Utilities.GetUniqueShortName("vm");
         }
+
+
+        [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "Iaas"), Priority(1), Owner("hylee"), Description("Test the cmdlets (New-AzureVMConfig,Add-AzureProvisioningConfig,New-AzureVM)")]
+        public void NewAzureVMWithResizeDiskTest()
+        {
+            imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false, 50);
+            string newVMImageName = Utilities.GetUniqueShortName("vmimage");
+            const int newDiskSize = 100;
+
+            try
+            {
+                vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, _vmName, _serviceName, imageName, username, password, locationName);
+                Console.WriteLine("Service Name: {0} is created.  VM: {1} is created.", _serviceName, _vmName);
+
+                string diskLabel1 = "disk1";
+                int diskSize1 = 30;
+                int lunSlot1 = 0;
+
+                string diskLabel2 = "disk2";
+                int diskSize2 = 50;
+                int lunSlot2 = 2;
+
+                AddAzureDataDiskConfig dataDiskInfo1 = new AddAzureDataDiskConfig(DiskCreateOption.CreateNew, diskSize1, diskLabel1, lunSlot1);
+                AddAzureDataDiskConfig dataDiskInfo2 = new AddAzureDataDiskConfig(DiskCreateOption.CreateNew, diskSize2, diskLabel2, lunSlot2);
+
+                vmPowershellCmdlets.AddDataDisk(_vmName, _serviceName, new[] { dataDiskInfo1, dataDiskInfo2 });
+
+                vmPowershellCmdlets.SaveAzureVMImage(_serviceName, _vmName, newVMImageName, "Specialized");
+
+                var newImage = vmPowershellCmdlets.GetAzureVMImageReturningVMImages(newVMImageName).FirstOrDefault();
+
+                foreach (var disk in newImage.DataDiskConfigurations)
+                {
+                    Utilities.PrintContextAndItsBase(disk);
+                }
+
+                string disk1 = newImage.DataDiskConfigurations[0].Name;
+                string disk2 = newImage.DataDiskConfigurations[1].Name;
+
+                vmPowershellCmdlets.RemoveAzureService(_serviceName);
+
+                // Add-AzureProvisioningConfig with NoSSHEndpoint
+                var vm = vmPowershellCmdlets.NewAzureVMConfig(new AzureVMConfigInfo(_vmName, InstanceSize.Small.ToString(), newVMImageName));
+                vm = vmPowershellCmdlets.SetAzureDataDisk(new SetAzureDataDiskResizeConfig(disk1, newDiskSize, vm));
+                vm = vmPowershellCmdlets.SetAzureDataDisk(new SetAzureDataDiskResizeConfig(disk2, newDiskSize, vm));
+                vm = vmPowershellCmdlets.SetAzureOSDisk(null, vm, newDiskSize);
+
+                // New-AzureVM
+                vmPowershellCmdlets.NewAzureVM(_serviceName, new[] { vm }, locationName);
+                Console.WriteLine("New Azure service with name:{0} created successfully.", _serviceName);
+
+                // Validate disk sizes
+                var returnedVM = vmPowershellCmdlets.GetAzureVM(_vmName, _serviceName);
+                foreach (var disk in returnedVM.VM.DataVirtualHardDisks)
+                {
+                    Utilities.PrintContextAndItsBase(disk);
+                }
+                Assert.AreEqual(newDiskSize, returnedVM.VM.DataVirtualHardDisks[0].LogicalDiskSizeInGB);
+                Assert.AreEqual(newDiskSize, returnedVM.VM.DataVirtualHardDisks[1].LogicalDiskSizeInGB);
+
+                pass = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine(ex.InnerException);
+                }
+                throw;
+            }
+            finally
+            {
+                vmPowershellCmdlets.RemoveAzureService(_serviceName);
+                vmPowershellCmdlets.RemoveAzureVMImage(newVMImageName,true);
+            }
+        }
+
+
 
         [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "Iaas"), Priority(1), Owner("hylee"), Description("Test the cmdlets (New-AzureVMConfig,Add-AzureProvisioningConfig,New-AzureVM)")]
         public void NewAzureVMWithLinuxAndNoSSHEnpoint()
         {
             try
             {
-                _serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
-                string newAzureLinuxVMName = Utilities.GetUniqueShortName("PSLinuxVM");
-
                 // Add-AzureProvisioningConfig with NoSSHEndpoint
-                var azureVMConfigInfo = new AzureVMConfigInfo(newAzureLinuxVMName, InstanceSize.Small.ToString(), _linuxImageName);
+                var azureVMConfigInfo = new AzureVMConfigInfo(_vmName, InstanceSize.Small.ToString(), _linuxImageName);
                 var azureProvisioningConfig = new AzureProvisioningConfigInfo(username, password, true);
                 var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
                 PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
@@ -63,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // New-AzureVM
                 vmPowershellCmdlets.NewAzureVM(_serviceName, new[] { vm }, locationName);
                 Console.WriteLine("New Azure service with name:{0} created successfully.", _serviceName);
-                Collection<InputEndpointContext> endpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(newAzureLinuxVMName, _serviceName));
+                Collection<InputEndpointContext> endpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(_vmName, _serviceName));
 
                 Console.WriteLine("The number of endpoints: {0}", endpoints.Count);
                 foreach (var ep in endpoints)
@@ -86,11 +165,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         Description("Test the cmdlets (New-AzureVMConfig,Add-AzureProvisioningConfig,New-AzureVM) and verifies a that a linux vm can be created with out password")]
         public void NewAzureLinuxVMWithoutPasswordAndNoSSHEnpoint()
         {
-
             try
             {
-                _serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
-
                 //Create service
                 vmPowershellCmdlets.NewAzureService(_serviceName, locationName);
 
@@ -99,14 +175,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     String.Format("Get-Item cert:\\{0}\\{1}\\{2}", certStoreLocation.ToString(), certStoreName.ToString(), _installedCert.Thumbprint))[0];
                 vmPowershellCmdlets.AddAzureCertificate(_serviceName, certToUpload);
 
-                string newAzureLinuxVMName = Utilities.GetUniqueShortName("PSLinuxVM");
-
                 var key = vmPowershellCmdlets.NewAzureSSHKey(NewAzureSshKeyType.PublicKey, _installedCert.Thumbprint, keyPath);
                 var sshKeysList = new Model.LinuxProvisioningConfigurationSet.SSHPublicKeyList();
                 sshKeysList.Add(key);
 
                 // Add-AzureProvisioningConfig without password and NoSSHEndpoint
-                var azureVMConfigInfo = new AzureVMConfigInfo(newAzureLinuxVMName, InstanceSize.Small.ToString(), _linuxImageName);
+                var azureVMConfigInfo = new AzureVMConfigInfo(_vmName, InstanceSize.Small.ToString(), _linuxImageName);
                 var azureProvisioningConfig = new AzureProvisioningConfigInfo(username, noSshEndpoint: true, sSHPublicKeyList: sshKeysList);
                 var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
                 PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
@@ -114,7 +188,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // New-AzureVM
                 vmPowershellCmdlets.NewAzureVM(_serviceName, new[] { vm });
                 Console.WriteLine("New Azure service with name:{0} created successfully.", _serviceName);
-                Collection<InputEndpointContext> endpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(newAzureLinuxVMName, _serviceName));
+                Collection<InputEndpointContext> endpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(_vmName, _serviceName));
 
                 Console.WriteLine("The number of endpoints: {0}", endpoints.Count);
                 foreach (var ep in endpoints)
@@ -136,12 +210,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             try
             {
-                _serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
-                string newAzureLinuxVMName = Utilities.GetUniqueShortName("PSLinuxVM");
-                string linuxImageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Linux" }, false);
-
                 // Add-AzureProvisioningConfig with DisableSSH option
-                var azureVMConfigInfo = new AzureVMConfigInfo(newAzureLinuxVMName, InstanceSize.Small.ToString(), linuxImageName);
+                var azureVMConfigInfo = new AzureVMConfigInfo(_vmName, InstanceSize.Small.ToString(), _linuxImageName);
                 var azureProvisioningConfig = new AzureProvisioningConfigInfo(username, password, false, true);
                 var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
                 PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
@@ -149,7 +219,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // New-AzureVM
                 vmPowershellCmdlets.NewAzureVM(_serviceName, new[] { vm }, locationName);
                 Console.WriteLine("New Azure service with name:{0} created successfully.", _serviceName);
-                Collection<InputEndpointContext> endpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(newAzureLinuxVMName, _serviceName));
+                Collection<InputEndpointContext> endpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(_vmName, _serviceName));
 
                 Console.WriteLine("The number of endpoints: {0}", endpoints.Count);
                 foreach (var ep in endpoints)
@@ -171,14 +241,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             try
             {
-                _serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
-                string newAzureVMName = Utilities.GetUniqueShortName("PSWinVM");
-
                 var customDataFile = @".\CustomData.bin";
                 var customDataContent = File.ReadAllText(customDataFile);
 
                 // Add-AzureProvisioningConfig with X509Certificate
-                var azureVMConfigInfo = new AzureVMConfigInfo(newAzureVMName, InstanceSize.Small.ToString(), imageName);
+                var azureVMConfigInfo = new AzureVMConfigInfo(_vmName, InstanceSize.Small.ToString(), imageName);
                 var azureProvisioningConfig = new AzureProvisioningConfigInfo(username, password, customDataFile);
                 var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
                 PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
@@ -188,7 +255,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Console.WriteLine("New Azure service with name:{0} created successfully.", _serviceName);
 
                 // Get-AzureVM
-                var vmContext = vmPowershellCmdlets.GetAzureVM(newAzureVMName, _serviceName);
+                var vmContext = vmPowershellCmdlets.GetAzureVM(_vmName, _serviceName);
 
                 // Get-AzureCertificate
                 var winRmCert = vmPowershellCmdlets.GetAzureCertificate(_serviceName, vmContext.VM.DefaultWinRmCertificateThumbprint, "sha1").First();
@@ -196,7 +263,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // Install the WinRM cert to the local machine's root location.
                 InstallCertificate(winRmCert, StoreLocation.LocalMachine, StoreName.Root);
 
-                var connUri = vmPowershellCmdlets.GetAzureWinRMUri(_serviceName, newAzureVMName);
+                var connUri = vmPowershellCmdlets.GetAzureWinRMUri(_serviceName, _vmName);
                 var cred = new PSCredential(username, Utilities.convertToSecureString(password));
 
                 Utilities.RetryActionUntilSuccess(() =>
@@ -223,13 +290,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             try
             {
-                _serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
- 
-                string newAzureLinuxVMName = Utilities.GetUniqueShortName("PSLinuxVM");
-                string linuxImageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Linux" }, false);
- 
                 // Add-AzureProvisioningConfig without NoSSHEndpoint or DisableSSH option
-                var azureVMConfigInfo = new AzureVMConfigInfo(newAzureLinuxVMName, InstanceSize.Small.ToString(), linuxImageName);
+                var azureVMConfigInfo = new AzureVMConfigInfo(_vmName, InstanceSize.Small.ToString(), _linuxImageName);
                 var azureProvisioningConfig = new AzureProvisioningConfigInfo(username, password, false, false, null, null, false, @".\cloudinittest.sh");
                 var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
                 PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
@@ -237,7 +299,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // New-AzureVM
                 vmPowershellCmdlets.NewAzureVM(_serviceName, new[] { vm }, locationName);
                 Console.WriteLine("New Azure service with name:{0} created successfully.", _serviceName);
-                Collection<InputEndpointContext> endpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(newAzureLinuxVMName, _serviceName));
+                Collection<InputEndpointContext> endpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(_vmName, _serviceName));
  
                 Console.WriteLine("The number of endpoints: {0}", endpoints.Count);
                 foreach (var ep in endpoints)
@@ -259,13 +321,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             try
             {
-                _serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
-
-                string newAzureLinuxVMName = Utilities.GetUniqueShortName("PSLinuxVM");
-                string linuxImageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Linux" }, false);
-
                 // Add-AzureProvisioningConfig without NoSSHEndpoint or DisableSSH option
-                var azureVMConfigInfo = new AzureVMConfigInfo(newAzureLinuxVMName, InstanceSize.Small.ToString(), linuxImageName);
+                var azureVMConfigInfo = new AzureVMConfigInfo(_vmName, InstanceSize.Small.ToString(), _linuxImageName);
                 var azureProvisioningConfig = new AzureProvisioningConfigInfo(username, password);
                 var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
                 PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
@@ -273,7 +330,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // New-AzureVM
                 vmPowershellCmdlets.NewAzureVM(_serviceName, new[] { vm }, locationName);
                 Console.WriteLine("New Azure service with name:{0} created successfully.", _serviceName);
-                Collection<InputEndpointContext> endpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(newAzureLinuxVMName, _serviceName));
+                Collection<InputEndpointContext> endpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(_vmName, _serviceName));
 
                 Console.WriteLine("The number of endpoints: {0}", endpoints.Count);
                 foreach (var ep in endpoints)
@@ -295,14 +352,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             try
             {
-                _serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
-
-                // New-AzureVMConfig
-                string newAzureLinuxVMName = Utilities.GetUniqueShortName("PSLinuxVM");
-                string linuxImageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Linux" }, false);
-
-                // Add-AzureProvisioningConfig
-                var azureVMConfigInfo = new AzureVMConfigInfo(newAzureLinuxVMName, InstanceSize.Small.ToString(), linuxImageName);
+                var azureVMConfigInfo = new AzureVMConfigInfo(_vmName, InstanceSize.Small.ToString(), _linuxImageName);
                 var azureProvisioningConfig = new AzureProvisioningConfigInfo(username, password, true, true);
                 var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
                 PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
@@ -310,7 +360,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // New-AzureVM
                 vmPowershellCmdlets.NewAzureVM(_serviceName, new[] { vm }, locationName);
                 Console.WriteLine("New Azure service with name:{0} created successfully.", _serviceName);
-                Collection<InputEndpointContext> endpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(newAzureLinuxVMName, _serviceName));
+                Collection<InputEndpointContext> endpoints = vmPowershellCmdlets.GetAzureEndPoint(vmPowershellCmdlets.GetAzureVM(_vmName, _serviceName));
 
                 Console.WriteLine("The number of endpoints: {0}", endpoints.Count);
                 foreach (var ep in endpoints)
@@ -330,7 +380,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "Iaas"), Priority(1), Owner("hylee"), Description("Test the cmdlets (New-AzureVMConfig,Add-AzureProvisioningConfig,New-AzureVM)")]
         public void NewAzureVMWithLocation()
         {
-            _serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
             string _altLocation = GetAlternateLocation(locationName);
 
             try
@@ -338,12 +387,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // New-AzureService
                 vmPowershellCmdlets.NewAzureService(_serviceName, locationName);
 
-                // New-AzureVMConfig
-                string newAzureVMName = Utilities.GetUniqueShortName("PSVM");
-                string imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
-
-                // Add-AzureProvisioningConfig
-                var azureVMConfigInfo = new AzureVMConfigInfo(newAzureVMName, InstanceSize.Small.ToString(), imageName);
+                var azureVMConfigInfo = new AzureVMConfigInfo(_vmName, InstanceSize.Small.ToString(), imageName);
                 var azureProvisioningConfig = new AzureProvisioningConfigInfo(OS.Windows, username, password);
                 var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
                 PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
@@ -368,7 +412,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 vmPowershellCmdlets.NewAzureVM(_serviceName, new[] { vm }, locationName);
                 Console.WriteLine("New Azure service with name:{0} created successfully.", _serviceName);
-                var vmReturned = vmPowershellCmdlets.GetAzureVM(newAzureVMName, _serviceName);
+                var vmReturned = vmPowershellCmdlets.GetAzureVM(_vmName, _serviceName);
 
                 Utilities.PrintContext(vmReturned);
                 Assert.AreEqual(_serviceName, vmReturned.ServiceName);
@@ -384,7 +428,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "Iaas"), Priority(1), Owner("hylee"), Description("Test the cmdlets (New-AzureVMConfig,Add-AzureProvisioningConfig,New-AzureVM)")]
         public void NewAzureVMWithAffinityGroup()
         {
-            _serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
             string _affiniyGroupName1 = Utilities.GetUniqueShortName("aff");
             string _affiniyGroupName2 = Utilities.GetUniqueShortName("aff");
 
@@ -395,12 +438,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmPowershellCmdlets.NewAzureAffinityGroup(_affiniyGroupName2, locationName, "location2", "location2");
                 vmPowershellCmdlets.NewAzureService(_serviceName, "service1", null, _affiniyGroupName1);
 
-                // New-AzureVMConfig
-                string newAzureVMName = Utilities.GetUniqueShortName("PSVM");
-                string imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
-
                 // Add-AzureProvisioningConfig
-                var azureVMConfigInfo = new AzureVMConfigInfo(newAzureVMName, InstanceSize.Small.ToString(), imageName);
+                var azureVMConfigInfo = new AzureVMConfigInfo(_vmName, InstanceSize.Small.ToString(), imageName);
                 var azureProvisioningConfig = new AzureProvisioningConfigInfo(OS.Windows, username, password);
                 var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
                 PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
@@ -425,7 +464,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 vmPowershellCmdlets.NewAzureVMWithAG(_serviceName, new[] { vm }, _affiniyGroupName1);
                 Console.WriteLine("New Azure service with name:{0} created successfully.", _serviceName);
-                var vmReturned = vmPowershellCmdlets.GetAzureVM(newAzureVMName, _serviceName);
+                var vmReturned = vmPowershellCmdlets.GetAzureVM(_vmName, _serviceName);
 
                 Utilities.PrintContext(vmReturned);
                 Assert.AreEqual(_serviceName, vmReturned.ServiceName);
@@ -444,11 +483,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             try
             {
-                _serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
-                string newAzureVMName = Utilities.GetUniqueShortName("PSWinVM");
-
                 // Add-AzureProvisioningConfig with X509Certificate
-                var azureVMConfigInfo = new AzureVMConfigInfo(newAzureVMName, InstanceSize.Small.ToString(), imageName);
+                var azureVMConfigInfo = new AzureVMConfigInfo(_vmName, InstanceSize.Small.ToString(), imageName);
                 var azureProvisioningConfig = new AzureProvisioningConfigInfo(username, password, _installedCert);
                 var persistentVMConfigInfo = new PersistentVMConfigInfo(azureVMConfigInfo, azureProvisioningConfig, null, null);
                 PersistentVM vm = vmPowershellCmdlets.GetPersistentVM(persistentVMConfigInfo);
@@ -456,7 +492,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // New-AzureVM
                 vmPowershellCmdlets.NewAzureVM(_serviceName, new[] { vm }, null);
                 Console.WriteLine("New Azure service with name:{0} created successfully.", _serviceName);
-                var result = vmPowershellCmdlets.GetAzureVM(newAzureVMName, _serviceName);
+                var result = vmPowershellCmdlets.GetAzureVM(_vmName, _serviceName);
                 Assert.AreEqual(_installedCert.Thumbprint, result.VM.WinRMCertificate.Thumbprint);
                 pass = true;
             }

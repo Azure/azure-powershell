@@ -1,0 +1,53 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS?api-version=2014-04-01",
+            "RequestMethod": "DELETE",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.15" ],
+                "Content-Length": [ "0" ]
+            },
+            "ResponseBody": "",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Thu, 12 Mar 2015 18:27:41 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1199"
+                ],
+                "x-ms-request-id": [
+                    "db74e798-b011-4311-bba4-08cf31cb6a3b"
+                ],
+                "x-ms-correlation-request-id": [
+                    "db74e798-b011-4311-bba4-08cf31cb6a3b"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150312T182742Z:db74e798-b011-4311-bba4-08cf31cb6a3b"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        }
+    ],
+  "Names": {
+    "Test-RemoveAutoscaleSetting": [
+      ""
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}

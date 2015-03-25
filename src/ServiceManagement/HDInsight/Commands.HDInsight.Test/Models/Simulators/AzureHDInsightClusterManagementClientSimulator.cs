@@ -279,6 +279,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             Clusters.Add(new SimulatorClusterContainer { Cluster = cluster });
         }
 
+        public void DisableRdp(string dnsName, string location)
+        {
+            this.DisableRdpAsync(dnsName, location).Wait();
+        }
+
+        public async Task DisableRdpAsync(string dnsName, string location)
+        {
+            throw new NotImplementedException();
+        }
+
         public void EnableHttp(string dnsName, string location, string httpUserName, string httpPassword)
         {
             this.EnableHttpAsync(dnsName, location, httpUserName, httpPassword).Wait();
@@ -291,6 +301,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             cluster.HttpUserName = httpUserName;
             cluster.HttpPassword = httpPassword;
             Clusters.Add(new SimulatorClusterContainer { Cluster = cluster });
+        }
+
+        public void EnableRdp(string dnsName, string location, string rdpUserName, string rdpPassword, DateTime expiryDate)
+        {
+            this.EnableRdpAsync(dnsName, location, rdpUserName, rdpPassword, expiryDate).Wait();
+        }
+
+        public async Task EnableRdpAsync(string dnsName, string location, string rdpUserName, string rdpPassword, DateTime expiryDate)
+        {
+            throw new NotImplementedException();
         }
 
         public ClusterDetails GetCluster(string dnsName)
@@ -340,12 +360,22 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
 
         public Collection<string> ListAvailableLocations()
         {
-            Task<Collection<string>> listTask = this.ListAvailableLocationsAsync();
+            return ListAvailableLocations(OSType.Windows);
+        }
+
+        public Task<Collection<string>> ListAvailableLocationsAsync()
+        {
+            return ListAvailableLocationsAsync(OSType.Windows);
+        }
+
+        public Collection<string> ListAvailableLocations(OSType osType)
+        {
+            Task<Collection<string>> listTask = this.ListAvailableLocationsAsync(osType);
             listTask.Wait();
             return listTask.Result;
         }
 
-        public Task<Collection<string>> ListAvailableLocationsAsync()
+        public Task<Collection<string>> ListAvailableLocationsAsync(OSType osType)
         {
             return TaskEx2.FromResult(new Collection<string> { "East US", "East US 2", "West US", "North Europe" });
         }

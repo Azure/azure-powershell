@@ -15,9 +15,7 @@
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,9 +42,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         }
 
         /// <summary>
-        /// Creates PoliciesClient using WindowsAzureSubscription instance.
+        /// Creates PoliciesClient using AzureContext instance.
         /// </summary>
-        /// <param name="subscription">The WindowsAzureSubscription instance</param>
+        /// <param name="context">The AzureContext instance</param>
         public AuthorizationClient(AzureContext context)
         {
             ActiveDirectoryClient = new ActiveDirectoryClient(context);

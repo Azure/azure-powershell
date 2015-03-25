@@ -285,19 +285,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Assert.IsFalse(string.IsNullOrEmpty(extension.Publisher));
             Assert.IsFalse(string.IsNullOrEmpty(extension.Version));
 
-            switch (extension.ExtensionName)
+            if (! extension.IsJsonExtension)
             {
-                case "DiagnosticsAgent":
-                    {
-                        Assert.IsFalse(string.IsNullOrEmpty(extension.PublicConfigurationSchema));
-                        break;
-                    }
-                case "VMAccessAgent":
-                    {
-                        Assert.IsFalse(string.IsNullOrEmpty(extension.PublicConfigurationSchema));
-                        Assert.IsFalse(string.IsNullOrEmpty(extension.PrivateConfigurationSchema));
-                        break;
-                    }
+                switch (extension.ExtensionName)
+                {
+                    case "DiagnosticsAgent":
+                        {
+                            Assert.IsFalse(string.IsNullOrEmpty(extension.PublicConfigurationSchema));
+                            break;
+                        }
+                    case "VMAccessAgent":
+                        {
+                            Assert.IsFalse(string.IsNullOrEmpty(extension.PublicConfigurationSchema));
+                            Assert.IsFalse(string.IsNullOrEmpty(extension.PrivateConfigurationSchema));
+                            break;
+                        }
+                }
             }
         }
 
