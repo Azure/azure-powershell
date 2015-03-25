@@ -169,7 +169,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ClientRequestId: {0}.
+        ///   Looks up a localized string similar to {1} ClientRequestId: {0}.
         /// </summary>
         internal static string ClientRequestIdMessage {
             get {

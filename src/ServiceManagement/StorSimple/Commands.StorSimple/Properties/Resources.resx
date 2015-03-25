@@ -268,7 +268,7 @@
     <value>{0} volume{1} found for your volume container!</value>
   </data>
   <data name="ClientRequestIdMessage" xml:space="preserve">
-    <value>ClientRequestId: {0}</value>
+    <value>{1} ClientRequestId: {0}</value>
   </data>
   <data name="DeviceWithNameNotFoundInResourceMessage" xml:space="preserve">
     <value>Device with device name {0} not found under resource {1}</value>
