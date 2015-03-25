@@ -213,18 +213,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
                     WriteError(er);
                 }
-                else if (!String.Equals(response.Collection.Status, "Active", StringComparison.OrdinalIgnoreCase))
-                {
-                    ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                        String.Format("Collection {0} is not in the Active state",
-                            response.Collection.Name),
-                        String.Empty,
-                        Client.Collections,
-                        ErrorCategory.InvalidOperation
-                    );
-
-                    WriteError(er);
-                }
             }
 
             return response.Collection;
