@@ -780,7 +780,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -819,7 +819,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -1003,7 +1003,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -1034,7 +1034,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -1045,7 +1045,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -1281,7 +1281,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -1298,7 +1298,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -1476,7 +1476,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -1514,7 +1514,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -1531,7 +1531,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -1556,7 +1556,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -1850,7 +1850,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -1880,7 +1880,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -1897,7 +1897,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -2094,7 +2094,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -2166,7 +2166,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -2245,7 +2245,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -2521,7 +2521,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -2566,7 +2566,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -2583,7 +2583,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -2608,7 +2608,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -2974,7 +2974,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -3011,7 +3011,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -3028,7 +3028,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -3259,7 +3259,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -3317,7 +3317,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -3334,7 +3334,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -3365,7 +3365,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -3671,7 +3671,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -3723,7 +3723,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -3741,7 +3741,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -3971,7 +3971,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -4064,7 +4064,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -4157,7 +4157,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -4458,7 +4458,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -4489,7 +4489,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -4500,7 +4500,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -4772,7 +4772,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
       </command:parameter>
@@ -4789,7 +4789,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
       <maml:name>BatchContext</maml:name>
       <maml:description>
-        <maml:para>The BatchAccountContext object with the account information to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. By default, the primary account key will be used. You can specify which key to use by setting the BatchAccountContext's KeyInUse property.</maml:para>
+        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
       </maml:description>
       <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
