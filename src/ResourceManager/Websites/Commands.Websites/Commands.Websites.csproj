@@ -125,7 +125,6 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cmdlets\GetAzureWebAppMetrics.cs" />
     <Compile Include="Cmdlets\GetAzureWebAppPublishingProfile.cs" />
     <Compile Include="Cmdlets\GetAzureWebApp.cs" />
     <Compile Include="Cmdlets\RemoveAzureWebApp.cs" />
@@ -134,7 +133,6 @@
     <Compile Include="Cmdlets\StartAzureWebApp.cs" />
     <Compile Include="Cmdlets\StopAzureWebApp.cs" />
     <Compile Include="Cmdlets\AppServicePlan\GetAzureAppServicePlan.cs" />
-    <Compile Include="Cmdlets\AppServicePlan\GetAzureAppServicePlanMetrics.cs" />
     <Compile Include="Cmdlets\AppServicePlan\SetAzureAppServicePlan.cs" />
     <Compile Include="Cmdlets\AppServicePlan\NewAzureAppServicePlan.cs" />
     <Compile Include="Cmdlets\AppServicePlan\RemoveAppServicePlan.cs" />
