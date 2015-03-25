@@ -135,6 +135,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
         private bool ProcessParameters()
         {
+            // Make sure that atleast one of the settings has been provided.
+            // Its no use making a request when the user didnt specify any of
+            // the settings.
+            if (string.IsNullOrEmpty(NewName) && TimeZone == null &&
+                string.IsNullOrEmpty(SecondaryDnsServer) &&
+                (StorSimpleNetworkConfig == null || StorSimpleNetworkConfig.Count() < 1))
+            {
+                throw new ArgumentException(Resources.SetASSDeviceNoSettingsProvided);
+            }
+
             // Make sure that the DeviceId property has the appropriate value irrespective of the parameter set
             if (ParameterSetName == StorSimpleCmdletParameterSet.IdentifyByName)
             {

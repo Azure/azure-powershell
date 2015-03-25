@@ -1015,6 +1015,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No settings were provided for updating device details..
+        /// </summary>
+        internal static string SetASSDeviceNoSettingsProvided {
+            get {
+                return ResourceManager.GetString("SetASSDeviceNoSettingsProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parameter Skip cannot be &lt;0.
         /// </summary>
         internal static string SkipParameterInvalidMessage {
