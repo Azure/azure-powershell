@@ -205,15 +205,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Role has been created at {0}\{1}. For easy access to Microsoft Azure services from your application code, install the Microsoft Azure client library for Python by running &quot;pip windowsazure&quot;..
-        /// </summary>
-        public static string AddRoleMessageCreatePython {
-            get {
-                return ResourceManager.GetString("AddRoleMessageCreatePython", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Unable to set role permissions. Please give the &apos;Network Service&apos; user &apos;Read &amp; execute&apos; and &apos;Modify&apos; permissions to the role folder, or run PowerShell as an Administrator.
         /// </summary>
         public static string AddRoleMessageInsufficientPermissions {
@@ -1506,15 +1497,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Python 2.7 is not installed.  Please install it as well as Django 1.4..
-        /// </summary>
-        public static string MissingPythonPreReq {
-            get {
-                return ResourceManager.GetString("MissingPythonPreReq", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Property bag Hashtable must contain a &apos;SubscriptionId&apos;..
         /// </summary>
         public static string MissingSubscriptionInProfileProperties {
@@ -2230,15 +2212,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string PublishVerifyingStorageMessage {
             get {
                 return ResourceManager.GetString("PublishVerifyingStorageMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Resources\Scaffolding\Python.
-        /// </summary>
-        public static string PythonScaffolding {
-            get {
-                return ResourceManager.GetString("PythonScaffolding", resourceCulture);
             }
         }
         
@@ -3446,24 +3419,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string SwapWebsiteSlotWarning {
             get {
                 return ResourceManager.GetString("SwapWebsiteSlotWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unable to create Django application: {0}.
-        /// </summary>
-        public static string UnableToCreateDjangoApp {
-            get {
-                return ResourceManager.GetString("UnableToCreateDjangoApp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Make sure you have Python 2.7 installed along with Django installed to site-packages..
-        /// </summary>
-        public static string UnableToCreateDjangoAppFix {
-            get {
-                return ResourceManager.GetString("UnableToCreateDjangoAppFix", resourceCulture);
             }
         }
         

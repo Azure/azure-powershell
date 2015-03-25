@@ -187,7 +187,6 @@
     <Compile Include="CloudService\Development\Scaffolding\AddAzureNodeWorkerRoleTests.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzurePHPWebRoleTests.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzurePHPWorkerRoleTests.cs" />
-    <Compile Include="CloudService\Development\Scaffolding\AddAzurePythonWebRoleTests.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzureWebRoleTests.cs" />
     <Compile Include="CloudService\Development\Scaffolding\AddAzureWorkerRoleTests.cs" />
     <Compile Include="CloudService\Development\Scaffolding\NewAzureRoleTemplateTests.cs" />
