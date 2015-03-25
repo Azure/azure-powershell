@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Protection profile.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AEnable, Mandatory = true)]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public ASRProtectionProfile ProtectionProfile { get; set; }
 
@@ -87,14 +87,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets OS disk name.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AEnable)]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public string OSDiskName { get; set; }
 
         /// <summary>
         /// Gets or sets OS.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectE2AEnable)]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             Constants.OSWindows,
@@ -162,7 +162,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 case ASRParameterSets.EnableReplicationGroup:
                 case ASRParameterSets.DisableReplicationGroup:
                 case ASRParameterSets.ByPEObject:
-                case ASRParameterSets.ByPEObjectE2AEnable:
                     this.Id = this.ProtectionEntity.ID;
                     this.ProtectionContainerId = this.ProtectionEntity.ProtectionContainerId;
                     this.targetNameOrId = this.ProtectionEntity.Name;
@@ -185,8 +184,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 this.Protection.Equals(Constants.EnableProtection, StringComparison.OrdinalIgnoreCase))
             {
                 throw new ArgumentException(
-                    Properties.Resources.ProtectionEntityAlreadyEnabled,
-                    this.targetNameOrId);
+                    string.Format(                   
+                        Properties.Resources.ProtectionEntityAlreadyEnabled,
+                        this.targetNameOrId));
             }
             else if (!this.alreadyEnabled &&
                 this.Protection.Equals(Constants.DisableProtection, StringComparison.OrdinalIgnoreCase))
@@ -253,6 +253,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                             if (this.Protection == Constants.EnableProtection)
                             {
                                 var input = new EnableProtectionInput();
+                                if (this.ProtectionProfile != null)
+                                {
+                                    profileId = this.ProtectionProfile.ID;
+                                    replicationProvider = this.ProtectionProfile.ReplicationProvider;
+                                }
+                                else
+                                {
+                                    string pcId = this.ProtectionContainerId ?? this.ProtectionEntity.ProtectionContainerId;
+                                    var pc = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(
+                                        pcId);
+
+                                    // PC will have all profiles associated with same replciation providers only.
+                                    replicationProvider =
+                                        pc.ProtectionContainer.AvailableProtectionProfiles.Count < 1 ?
+                                        null :
+                                        pc.ProtectionContainer.AvailableProtectionProfiles[0].ReplicationProvider;
+
+                                    if (replicationProvider != Constants.HyperVReplica)
+                                    {
+                                        throw new Exception("Please provide the protection profile object. It can be chosen from available protection profiles of the protection container.");
+                                    }
+                                }
 
                                 if (replicationProvider == Constants.San)
                                 {
