@@ -105,7 +105,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
                     ConfigurationManager.AppSettings["ResourceName"],
                     ConfigurationManager.AppSettings["ResourceId"],
                     ConfigurationManager.AppSettings["ResourceNamespace"],
-                    ConfigurationManager.AppSettings["CisStampId"],
                     testEnvironment.Credentials as SubscriptionCloudCredentials,
                     testEnvironment.BaseUri);
             }
@@ -117,7 +116,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
                     ConfigurationManager.AppSettings["ResourceName"],
                     ConfigurationManager.AppSettings["ResourceId"],
                     ConfigurationManager.AppSettings["ResourceNamespace"],
-                    ConfigurationManager.AppSettings["CisStampId"],
                     testEnvironment.Credentials as SubscriptionCloudCredentials);
             }
 
