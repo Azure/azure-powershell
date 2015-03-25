@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Net;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.StorSimple.Models;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
@@ -511,6 +512,62 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             }
             
             return true;
+        }
+
+        internal bool IsValidAsciiString(string s)
+        {
+            return Regex.IsMatch(s, "[ -~]+");
+        }
+
+        /// <summary>
+        /// Validate that the string provided has length within the specified constraints.
+        /// 
+        /// Throws an ArgumentException with the specified error message if the validation fails.
+        /// </summary>
+        /// <param name="data">string to be validated</param>
+        /// <param name="minLength">minimum allowable length for the string</param>
+        /// <param name="maxLength">maximum allowable length for the string</param>
+        /// <param name="errorMessage">error message for the exception raised in case of invalid data</param>
+        internal void ValidateLength(string data, uint minLength, uint maxLength, string errorMessage)
+        {
+            if (data.Length < minLength || data.Length > maxLength)
+            {
+                throw new ArgumentException(errorMessage);
+            }
+        }
+
+        /// <summary>
+        /// Most of the passwords in the device must contain 3 of the following:
+        /// - a lowercase character
+        /// - an uppercase character
+        /// - a number
+        /// - a special character
+        /// 
+        /// Raises an ArgumentException with appropriate error message notifying the above
+        /// conditions when the validation fails.
+        /// </summary>
+        /// <param name="data"></param>
+        internal void ValidatePasswordComplexity(string data, string passwordName)
+        {
+            string errorMessage = string.Format(Resources.PasswordCharacterCriteriaError, passwordName);
+            var criteriaFulfilled = 0;
+            // Regular expressions for lowercase letter, uppercase letter, digit and special char
+            // respectively
+            string[] criteriaRegexs = { ".*[a-z]", ".*[A-Z]", ".*\\d", ".*\\W" };
+
+            foreach(var regexStr in criteriaRegexs){
+                // The static IsMatch method is supposed to use an Application-wide cache of compiled regexes
+                // and hence should save computation time (though not very significant because we are not doing tens of 
+                // thousands of such tests)
+                if(Regex.IsMatch(data, regexStr)){
+                    criteriaFulfilled += 1;
+                }
+            }
+
+            // If atleast 3 criteria have been fulfilled, then the password is complex enough
+            if(criteriaFulfilled < 3){
+                throw new ArgumentException(errorMessage);
+            }
         }
     }
 }
