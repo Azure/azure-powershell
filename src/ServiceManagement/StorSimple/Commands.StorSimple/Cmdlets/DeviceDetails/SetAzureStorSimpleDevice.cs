@@ -147,10 +147,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
                 DeviceId = deviceId;
             }
-            if (!TrySetIPAddress(SecondaryDnsServer, out secondaryDnsServer, "SecondaryDnsServer"))
-            {
-                return false;
-            }
+            TrySetIPAddress(SecondaryDnsServer, out secondaryDnsServer, "SecondaryDnsServer");
             return true;
         }
     }

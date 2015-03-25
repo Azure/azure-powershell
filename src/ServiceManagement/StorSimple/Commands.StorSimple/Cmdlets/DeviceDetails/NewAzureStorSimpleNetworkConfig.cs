@@ -153,30 +153,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
 
             // Try and set all the IP address
-            if (!TrySetIPAddress(Controller0IPv4Address, out controller0Address, "Controller0IPv4Address"))
-            {
-                return false;
-            }
-            if (!TrySetIPAddress(Controller1IPv4Address, out controller1Address, "Controller1IPv4Address"))
-            {
-                return false;
-            }
-            if (!TrySetIPAddress(IPv4Address, out ipv4Address, "IPv4Address"))
-            {
-                return false;
-            }
-            if (!TrySetIPAddress(IPv4Gateway, out ipv4Gateway, "IPv4Gateway"))
-            {
-                return false;
-            }
-            if (!TrySetIPAddress(IPv4Netmask, out ipv4Netmask, "IPv4Netmask"))
-            {
-                return false;
-            }
-            if(!TrySetIPAddress(IPv6Gateway, out ipv6Gateway, "IPv6Gateway"))
-            {
-                return false;
-            }
+            TrySetIPAddress(Controller0IPv4Address, out controller0Address, "Controller0IPv4Address");
+            TrySetIPAddress(Controller1IPv4Address, out controller1Address, "Controller1IPv4Address");
+            TrySetIPAddress(IPv4Address, out ipv4Address, "IPv4Address");
+            TrySetIPAddress(IPv4Gateway, out ipv4Gateway, "IPv4Gateway");
+            TrySetIPAddress(IPv4Netmask, out ipv4Netmask, "IPv4Netmask");
+            TrySetIPAddress(IPv6Gateway, out ipv6Gateway, "IPv6Gateway");
 
             // Only EnableIscsi, Controller0 and controller1 IP Addresses can be set on Data0
             if (InterfaceAlias == NetInterfaceId.Data0.ToString())

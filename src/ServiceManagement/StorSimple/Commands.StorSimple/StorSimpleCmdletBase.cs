@@ -446,23 +446,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// <param name="data">IP Address string</param>
         /// <param name="ipAddress"></param>
         /// <param name="paramName">Name of the param which is being processed (to be used for errors)</param>
-        internal bool TrySetIPAddress(string data, out IPAddress ipAddress, string paramName)
+        internal void TrySetIPAddress(string data, out IPAddress ipAddress, string paramName)
         {
             if (data == null)
             {
                 ipAddress = null;
-                return true;
             }
             try
             {
                 ipAddress = IPAddress.Parse(data);
-                return true;
             }
             catch (FormatException)
             {
                 ipAddress = null;
-                WriteVerbose(string.Format(Resources.InvalidIPAddressProvidedMessage, paramName));
-                return false;
+                throw new ArgumentException(string.Format(Resources.InvalidIPAddressProvidedMessage, paramName));
             }
         }
 
