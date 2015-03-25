@@ -526,4 +526,8 @@ a special character</value>
   <data name="SnapshotPasswordLengthError" xml:space="preserve">
     <value>The SnapshotManagerPassword must be either 14 or 15 characters long</value>
   </data>
+  <data name="SetAzureStorSimpleDeviceNoSettingsProvided" xml:space="preserve">
+    <value>No settings were provided for updating device details.</value>
+
+  </data>
 </root>
