@@ -152,7 +152,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public SwitchParameter AllowReplicaDeletion { get; set; }
 
         /// <summary>
-<<<<<<< HEAD
         /// Gets or sets the primary cloud id of the Protection Profile.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterpriseSan)]
@@ -181,8 +180,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string RecoveryArrayId { get; set; }
 
         /// <summary>
-=======
->>>>>>> dev
         /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
         /// </summary>
         [Parameter(Mandatory = false)]
@@ -267,8 +264,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 this.WriteWarning(string.Format(Properties.Resources.StorageIsNotInTheSameLocationAsVault));
             }
-<<<<<<< HEAD
-
             if (!validationSuccessful || !locationValid)
             {
                 this.ConfirmAction(
@@ -284,24 +279,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
         }
 
-=======
-
-            if (!validationSuccessful || !locationValid)
-            {
-                this.ConfirmAction(
-                    this.Force.IsPresent,
-                    string.Format(Properties.Resources.ValidationUnsuccessfulWarning, this.targetName),
-                    string.Format(Properties.Resources.NewProtectionProfileObjectWhatIfMessage),
-                    this.targetName,
-                    new Action(this.ProceedToCreateProtectionProfileObject));
-            }
-            else
-            {
-                this.ProceedToCreateProtectionProfileObject();
-            }
-        }
-
->>>>>>> dev
         /// <summary>
         /// Proceeds to Create an E2A Protection Profile Object after all the validations are done.
         /// </summary>

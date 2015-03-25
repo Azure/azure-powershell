@@ -1226,7 +1226,6 @@ function Test-DisableProtection
 
 <#
 .SYNOPSIS
-<<<<<<< HEAD
 Recovery Services San E2E test
 #>
 function Test-SanE2E
@@ -1372,8 +1371,6 @@ function Test-SanE2E
 <#
 .SYNOPSIS
 Recovery Services Enable Protection Tests
-=======
->>>>>>> dev
 Wait for CanFailover state
 Usage:
 	WaitForCanFailover pcId peId
