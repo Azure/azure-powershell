@@ -57,17 +57,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                       var deviceJobDetails = StorSimpleClient.GetDeviceJobById(InstanceId);
                       if (deviceJobDetails == null)
                       {
-                          WriteVerbose(string.Format(Resources.NoDeviceJobFoundWithGivenIdMessage, InstanceId));
-                          WriteObject(null);
-                          return;
+                          throw new ArgumentException(string.Format(Resources.NoDeviceJobFoundWithGivenIdMessage, InstanceId))
                       }
 
                       // Make sure the job is running and cancellable, else fail.
                       if (!(deviceJobDetails.IsJobCancellable && deviceJobDetails.Status == "Running"))
                       {
-                          WriteVerbose(string.Format(Resources.JobNotRunningOrCancellable, InstanceId));
-                          WriteObject(null);
-                          return;
+                          throw new ArgumentException(string.Format(Resources.JobNotRunningOrCancellable, InstanceId));
                       }
 
                       // issue call to cancel the job.
