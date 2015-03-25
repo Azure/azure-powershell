@@ -38,25 +38,41 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
         [ValidateNotNullOrEmpty] 
         public string DeviceName { get; set; }
-        
-        /// <summary>
-        /// TimeZone for the device.
-        /// </summary>
-        [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone, ValueFromPipeline=true)]
-        [ValidateNotNullOrEmpty] 
-        public TimeZoneInfo TimeZone { get; set; }
 
         /// <summary>
         /// Service Encryption Key for the resource.
         /// </summary>
-        [Parameter(Mandatory=true, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.SEK)]
+        [Parameter(Mandatory=true, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.SEK)]
         [ValidateNotNullOrEmpty]
         public string SecretKey { get; set; }
+
+        /// <summary>
+        /// Device administrator password
+        /// </summary>
+        [Parameter(Mandatory=true, Position=2, HelpMessage = StorSimpleCmdletHelpMessage.AdministratorPasswd)]
+        [ValidateNotNullOrEmpty]
+        public string AdministratorPassword { get; set; }
+
+        /// <summary>
+        /// Snapshot manager password
+        /// </summary>
+        [Parameter(Mandatory=true, Position=3, HelpMessage=StorSimpleCmdletHelpMessage.SnapshotManagerPasswd)]
+        [ValidateNotNullOrEmpty]
+        public string SnapshotManagerPassword { get; set; }
+
+        /// <summary>
+        /// TimeZone for the device.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.TimeZone, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public TimeZoneInfo TimeZone { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
+                ValidateParams();
+                
                 // Make sure we have a device for supplied name and get its device id.
                 var deviceId = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceId == null)
@@ -73,7 +89,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 string cik = EncryptionCmdLetHelper.RetrieveCIK(this, StorSimpleContext.ResourceId);
 
                 // Update device details.
-                StorSimpleClient.UpdateVirtualDeviceDetails(deviceDetails, TimeZone, SecretKey, cik);
+                var cryptoManager = new StorSimpleCryptoManager(StorSimpleClient);
+                StorSimpleClient.UpdateVirtualDeviceDetails(deviceDetails, TimeZone, SecretKey, AdministratorPassword, SnapshotManagerPassword, cik, cryptoManager);
                 
                 // Make request with updated data
                 WriteVerbose(string.Format(Resources.BeginningDeviceConfiguration, deviceDetails.DeviceProperties.FriendlyName));
@@ -92,7 +109,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 this.HandleException(exception);
             }
         }
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private void ValidateParams() {
+            ValidateLength(AdministratorPassword, 8, 15, Resources.AdminPasswordLengthError);
+            ValidateLength(SnapshotManagerPassword, 14, 15, Resources.SnapshotPasswordLengthError);
+            ValidatePasswordComplexity(AdministratorPassword, "AdministratorPassword");
+            ValidatePasswordComplexity(SnapshotManagerPassword, "SnapshotManagerPassword");
+        }
     }
 }
 
