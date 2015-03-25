@@ -518,5 +518,54 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         {
             return Regex.IsMatch(s, "[ -~]+");
         }
+
+        /// <summary>
+        /// Validate that the string provided has length within the specified constraints.
+        /// 
+        /// Throws an ArgumentException with the specified error message if the validation fails.
+        /// </summary>
+        /// <param name="data">string to be validated</param>
+        /// <param name="minLength">minimum allowable length for the string</param>
+        /// <param name="maxLength">maximum allowable length for the string</param>
+        /// <param name="errorMessage">error message for the exception raised in case of invalid data</param>
+        internal void ValidateLength(string data, uint minLength, uint maxLength, string errorMessage)
+        {
+            if (data.Length < minLength || data.Length > maxLength)
+            {
+                throw new ArgumentException(errorMessage);
+            }
+        }
+
+        /// <summary>
+        /// Most of the passwords in the device must contain 3 of the following:
+        /// - a lowercase character
+        /// - an uppercase character
+        /// - a number
+        /// - a special character
+        /// 
+        /// Raises an ArgumentException with appropriate error message notifying the above
+        /// conditions when the validation fails.
+        /// </summary>
+        /// <param name="data"></param>
+        internal void ValidatePasswordComplexity(string data)
+        {
+            string errorMessage = Resources.PasswordCharacterCriteriaError;
+            var criteriaFulfilled = 0;
+            // Regular expressions for lowercase letter, uppercase letter, digit and special char
+            // respectively
+            string[] criteriaRegexs = { ".*[a-z]", ".*[A-Z]", ".*\\d", ".*\\W" };
+
+            foreach(var regexStr in criteriaRegexs){
+                var regex = new Regex(regexStr);
+                if(regex.IsMatch(data)){
+                    criteriaFulfilled += 1;
+                }
+            }
+
+            // If atleast 3 criteria have been fulfilled, then the password is complex enough
+            if(criteriaFulfilled < 3){
+                throw new ArgumentException(errorMessage);
+            }
+        }
     }
 }

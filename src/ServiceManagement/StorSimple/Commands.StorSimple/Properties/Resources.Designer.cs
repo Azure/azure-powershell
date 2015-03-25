@@ -70,6 +70,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The AdministratorPassword must be between 8 to 15 characters..
+        /// </summary>
+        internal static string AdminPasswordLengthError {
+            get {
+                return ResourceManager.GetString("AdminPasswordLengthError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More backups are available for your query. To access the next page of your result use \&quot;-First {0} -Skip {1}\&quot; in your commandlet.
         /// </summary>
         internal static string BackupNextPageFormatMessage {
@@ -709,6 +718,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The password must contain 3 of the following:
+        ///a lowercase character
+        ///an uppercase character
+        ///a number
+        ///a special character.
+        /// </summary>
+        internal static string PasswordCharacterCriteriaError {
+            get {
+                return ResourceManager.GetString("PasswordCharacterCriteriaError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Secret was persisted earlier, but seems to have been corrupted. Please use Select-AzureStorSimpleResource and provide the Registration key once again..
         /// </summary>
         internal static string PersistedCIKCorrupted {
@@ -1020,6 +1042,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string SkipParameterInvalidMessage {
             get {
                 return ResourceManager.GetString("SkipParameterInvalidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The SnapshotManagerPassword must be either 14 or 15 characters long.
+        /// </summary>
+        internal static string SnapshotPasswordLengthError {
+            get {
+                return ResourceManager.GetString("SnapshotPasswordLengthError", resourceCulture);
             }
         }
         
