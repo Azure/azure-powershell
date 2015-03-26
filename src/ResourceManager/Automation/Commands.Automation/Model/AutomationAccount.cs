@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -40,7 +41,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccount.Name;
             this.Location = automationAccount.Location;
-            this.Plan = automationAccount.Properties.Sku.Family;
+            
+            if (automationAccount.Properties == null) return;
+
+            this.Plan = automationAccount.Properties.Sku != null ? automationAccount.Properties.Sku.Name : null;
+            this.CreationTime = automationAccount.Properties.CreationTime.ToLocalTime();
+            this.LastModifiedTime = automationAccount.Properties.LastModifiedTime.ToLocalTime();
         }
 
         /// <summary>
@@ -74,5 +80,15 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the plan.
         /// </summary>
         public string Plan { get; set; }
+
+        /// <summary>
+        /// Gets or sets the CreationTime.
+        /// </summary>
+        public DateTimeOffset CreationTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the LastPublishTime.
+        /// </summary>
+        public DateTimeOffset LastModifiedTime { get; set; }
     }
 }

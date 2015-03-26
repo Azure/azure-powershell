@@ -115,7 +115,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                    Sku = new Sku()
                    {
                        // todo take input
-                        Family   = "Free"
+                        Name  = "Free",
+                        Capacity = 1,
                    }
                 }
             };

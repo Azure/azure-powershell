@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation accounts, filterd by automation account name and location.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationAccount")]
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(AutomationAccount))]
     public class GetAzureAutomationAccount : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the automation account name.
         /// </summary>
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAutomationAccountName, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
         [Alias("AutomationAccountName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
