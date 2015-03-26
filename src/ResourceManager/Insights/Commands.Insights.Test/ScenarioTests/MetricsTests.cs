@@ -12,13 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Insights.OutputClasses
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
+namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    /// <summary>
-    /// Wrapps around the RuleCondition and exposes all the localized strings as invariant/localized properties
-    /// <para>It is an empty interface to allow for different types of outputs for the cmdlets, i.e. all the specific output types will implement this interface and the base cmdlet always returns lists of this type.</para>
-    /// </summary>
-    public interface IPSRuleCondition
+    public class MetricsTests
     {
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetMetrics()
+        {
+            TestsController.NewInstance.RunPsTest("Test-GetMetrics");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetMetricDefinitions()
+        {
+            TestsController.NewInstance.RunPsTest("Test-GetMetricDefinitions");
+        }
     }
 }
