@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "RemoteApp virtual network name.")]
-        [ValidatePattern(VNetNameValidatorStringWithWildCards)]
+        [ValidatePattern(VNetNameValidatorString)]
         public string VNetName { get; set; }
 
         [Parameter(Mandatory = true,

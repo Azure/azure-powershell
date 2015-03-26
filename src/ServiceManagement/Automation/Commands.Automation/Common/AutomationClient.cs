@@ -181,26 +181,35 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description,
             string[] tags)
         {
-            var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
-            if (runbookModel != null)
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                throw new ResourceCommonException(typeof(Runbook),
-                    string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyExists, runbookName));
-            }
+                var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
+                if (runbookModel != null)
+                {
+                    throw new ResourceCommonException(typeof (Runbook),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyExists, runbookName));
+                }
 
-            var rdcprop = new RunbookCreateDraftProperties()
-            {
-                Description = description,
-                RunbookType = RunbookTypeEnum.Script,
-                Draft = new RunbookDraft(),
-                ServiceManagementTags = (tags != null) ? string.Join(Constants.RunbookTagsSeparatorString, tags) : null
-            };
+                var rdcprop = new RunbookCreateDraftProperties()
+                {
+                    Description = description,
+                    RunbookType = RunbookTypeEnum.Script,
+                    Draft = new RunbookDraft(),
+                    ServiceManagementTags =
+                        (tags != null) ? string.Join(Constants.RunbookTagsSeparatorString, tags) : null
+                };
 
-            var rdcparam = new RunbookCreateDraftParameters() { Name = runbookName, Properties = rdcprop, Tags = null };
+                var rdcparam = new RunbookCreateDraftParameters()
+                {
+                    Name = runbookName,
+                    Properties = rdcprop,
+                    Tags = null
+                };
 
-            this.automationManagementClient.Runbooks.CreateWithDraft(automationAccountName, rdcparam);
+                this.automationManagementClient.Runbooks.CreateWithDraft(automationAccountName, rdcparam);
 
-            return this.GetRunbook(automationAccountName, runbookName);
+                return this.GetRunbook(automationAccountName, runbookName);
+           }
         }
 
         public Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description,
@@ -209,31 +218,37 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             var runbookName = Path.GetFileNameWithoutExtension(runbookPath);
 
-            var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
-            if (runbookModel != null)
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                throw new ResourceCommonException(typeof(Runbook),
-                    string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyExists, runbookName));
+                var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
+                if (runbookModel != null)
+                {
+                    throw new ResourceCommonException(typeof (Runbook),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyExists, runbookName));
+                }
+
+                var runbook = this.CreateRunbookByName(automationAccountName, runbookName, description, tags);
+
+                var rduprop = new RunbookDraftUpdateParameters()
+                {
+                    Name = runbookName,
+                    Stream = File.ReadAllText(runbookPath)
+                };
+
+                this.automationManagementClient.RunbookDraft.Update(automationAccountName, rduprop);
+
+                return runbook;
             }
-
-            var runbook = this.CreateRunbookByName(automationAccountName, runbookName, description, tags);
-
-            var rduprop = new RunbookDraftUpdateParameters()
-            {
-                Name = runbookName,
-                Stream = File.ReadAllText(runbookPath)
-            };
-
-            this.automationManagementClient.RunbookDraft.Update(automationAccountName, rduprop);
-
-            return runbook;
         }
 
         public void DeleteRunbook(string automationAccountName, string runbookName)
         {
             try
             {
-                this.automationManagementClient.Runbooks.Delete(automationAccountName, runbookName);
+                using (var request = new RequestSettings(this.automationManagementClient))
+                {
+                    this.automationManagementClient.Runbooks.Delete(automationAccountName, runbookName);
+                }
             }
             catch (CloudException cloudException)
             {
@@ -250,111 +265,143 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public Runbook UpdateRunbook(string automationAccountName, string runbookName, string description,
             string[] tags, bool? logProgress, bool? logVerbose)
         {
-            var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
-            if (runbookModel == null)
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                throw new ResourceCommonException(typeof(Runbook),
-                    string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
+                var runbookModel = this.TryGetRunbookModel(automationAccountName, runbookName);
+                if (runbookModel == null)
+                {
+                    throw new ResourceCommonException(typeof (Runbook),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
+                }
+
+                var runbookUpdateParameters = new RunbookUpdateParameters();
+                runbookUpdateParameters.Name = runbookName;
+                runbookUpdateParameters.Tags = null;
+
+                runbookUpdateParameters.Properties = new RunbookUpdateProperties();
+                runbookUpdateParameters.Properties.Description = description ?? runbookModel.Properties.Description;
+                runbookUpdateParameters.Properties.LogProgress = (logProgress.HasValue)
+                    ? logProgress.Value
+                    : runbookModel.Properties.LogProgress;
+                runbookUpdateParameters.Properties.LogVerbose = (logVerbose.HasValue)
+                    ? logVerbose.Value
+                    : runbookModel.Properties.LogVerbose;
+                runbookUpdateParameters.Properties.ServiceManagementTags = (tags != null)
+                    ? string.Join(Constants.RunbookTagsSeparatorString, tags)
+                    : runbookModel.Properties.ServiceManagementTags;
+
+                var runbook =
+                    this.automationManagementClient.Runbooks.Update(automationAccountName, runbookUpdateParameters)
+                        .Runbook;
+
+                return new Runbook(automationAccountName, runbook);
             }
-
-            var runbookUpdateParameters = new RunbookUpdateParameters();
-            runbookUpdateParameters.Name = runbookName;
-            runbookUpdateParameters.Tags = null;
-
-            runbookUpdateParameters.Properties =  new RunbookUpdateProperties();
-            runbookUpdateParameters.Properties.Description = description ?? runbookModel.Properties.Description;
-            runbookUpdateParameters.Properties.LogProgress = (logProgress.HasValue) ?  logProgress.Value : runbookModel.Properties.LogProgress;
-            runbookUpdateParameters.Properties.LogVerbose = (logVerbose.HasValue) ? logVerbose.Value : runbookModel.Properties.LogVerbose;
-            runbookUpdateParameters.Properties.ServiceManagementTags = (tags != null)
-                ? string.Join(Constants.RunbookTagsSeparatorString, tags)
-                : runbookModel.Properties.ServiceManagementTags;
-
-            var runbook = this.automationManagementClient.Runbooks.Update(automationAccountName, runbookUpdateParameters).Runbook;
-
-            return new Runbook(automationAccountName, runbook);
         }
 
         public RunbookDefinition UpdateRunbookDefinition(string automationAccountName, string runbookName,
             string runbookPath, bool overwrite)
         {
-            var runbook = this.TryGetRunbookModel(automationAccountName, runbookName);
-            if (runbook == null)
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                throw new ResourceNotFoundException(typeof(Runbook),
-                    string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
+                var runbook = this.TryGetRunbookModel(automationAccountName, runbookName);
+                if (runbook == null)
+                {
+                    throw new ResourceNotFoundException(typeof (Runbook),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
+                }
+
+                if ((0 !=
+                     String.Compare(runbook.Properties.State, RunbookState.Published, CultureInfo.InvariantCulture,
+                         CompareOptions.IgnoreCase) && overwrite == false))
+                {
+                    throw new ResourceCommonException(typeof (Runbook),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyHasDraft, runbookName));
+                }
+
+                this.automationManagementClient.RunbookDraft.Update(automationAccountName,
+                    new RunbookDraftUpdateParameters {Name = runbookName, Stream = File.ReadAllText(runbookPath)});
+
+                var content =
+                    this.automationManagementClient.RunbookDraft.Content(automationAccountName, runbookName).Stream;
+
+                return new RunbookDefinition(automationAccountName, runbook, content, Constants.Draft);
             }
-
-            if ((0 !=
-                 String.Compare(runbook.Properties.State, RunbookState.Published, CultureInfo.InvariantCulture,
-                     CompareOptions.IgnoreCase) && overwrite == false))
-            {
-                throw new ResourceCommonException(typeof(Runbook),
-                    string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyHasDraft, runbookName));
-            }
-
-            this.automationManagementClient.RunbookDraft.Update(automationAccountName,
-                new RunbookDraftUpdateParameters { Name = runbookName, Stream = File.ReadAllText(runbookPath) });
-
-            var content =
-                this.automationManagementClient.RunbookDraft.Content(automationAccountName, runbookName).Stream;
-
-            return new RunbookDefinition(automationAccountName, runbook, content, Constants.Draft);
         }
 
         public IEnumerable<RunbookDefinition> ListRunbookDefinitionsByRunbookName(string automationAccountName,
             string runbookName, bool? isDraft)
         {
             var ret = new List<RunbookDefinition>();
-
-            var runbook = this.TryGetRunbookModel(automationAccountName, runbookName);
-            if (runbook == null)
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                throw new ResourceNotFoundException(typeof(Runbook),
-                    string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
-            }
-
-            var draftContent = String.Empty;
-            var publishedContent = String.Empty;
-
-            if (0 != String.Compare(runbook.Properties.State, RunbookState.Published, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && (!isDraft.HasValue || isDraft.Value))
-            {
-                draftContent = this.automationManagementClient.RunbookDraft.Content(automationAccountName, runbookName).Stream;
-            }
-            if (0 != String.Compare(runbook.Properties.State, RunbookState.New, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && (!isDraft.HasValue || !isDraft.Value))
-            {
-                publishedContent = this.automationManagementClient.Runbooks.Content(automationAccountName, runbookName).Stream;
-            }
-
-            // if no slot specified return both draft and publish content
-            if (false == isDraft.HasValue)
-            {
-                if (false == String.IsNullOrEmpty(draftContent)) ret.Add(new RunbookDefinition(automationAccountName, runbook, draftContent, Constants.Draft));
-                if (false == String.IsNullOrEmpty(publishedContent)) ret.Add(new RunbookDefinition(automationAccountName, runbook, publishedContent, Constants.Published));
-            }
-            else 
-            {
-                if (true == isDraft.Value)
+                var runbook = this.TryGetRunbookModel(automationAccountName, runbookName);
+                if (runbook == null)
                 {
+                    throw new ResourceNotFoundException(typeof (Runbook),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
+                }
 
-                    if (String.IsNullOrEmpty(draftContent)) throw new ResourceCommonException(typeof(Runbook),
-                            string.Format(CultureInfo.CurrentCulture, Resources.RunbookHasNoDraftVersion, runbookName));
-                    if (false == String.IsNullOrEmpty(draftContent)) ret.Add(new RunbookDefinition(automationAccountName, runbook, draftContent, Constants.Draft));
+                var draftContent = String.Empty;
+                var publishedContent = String.Empty;
+
+                if (0 !=
+                    String.Compare(runbook.Properties.State, RunbookState.Published, CultureInfo.InvariantCulture,
+                        CompareOptions.IgnoreCase) && (!isDraft.HasValue || isDraft.Value))
+                {
+                    draftContent =
+                        this.automationManagementClient.RunbookDraft.Content(automationAccountName, runbookName).Stream;
+                }
+                if (0 !=
+                    String.Compare(runbook.Properties.State, RunbookState.New, CultureInfo.InvariantCulture,
+                        CompareOptions.IgnoreCase) && (!isDraft.HasValue || !isDraft.Value))
+                {
+                    publishedContent =
+                        this.automationManagementClient.Runbooks.Content(automationAccountName, runbookName).Stream;
+                }
+
+                // if no slot specified return both draft and publish content
+                if (false == isDraft.HasValue)
+                {
+                    if (false == String.IsNullOrEmpty(draftContent))
+                        ret.Add(new RunbookDefinition(automationAccountName, runbook, draftContent, Constants.Draft));
+                    if (false == String.IsNullOrEmpty(publishedContent))
+                        ret.Add(new RunbookDefinition(automationAccountName, runbook, publishedContent,
+                            Constants.Published));
                 }
                 else
                 {
-                    if (String.IsNullOrEmpty(publishedContent)) throw new ResourceCommonException(typeof(Runbook),
-                            string.Format(CultureInfo.CurrentCulture, Resources.RunbookHasNoPublishedVersion, runbookName));
+                    if (true == isDraft.Value)
+                    {
 
-                    if (false == String.IsNullOrEmpty(publishedContent)) ret.Add(new RunbookDefinition(automationAccountName, runbook, publishedContent, Constants.Published));
+                        if (String.IsNullOrEmpty(draftContent))
+                            throw new ResourceCommonException(typeof (Runbook),
+                                string.Format(CultureInfo.CurrentCulture, Resources.RunbookHasNoDraftVersion,
+                                    runbookName));
+                        if (false == String.IsNullOrEmpty(draftContent))
+                            ret.Add(new RunbookDefinition(automationAccountName, runbook, draftContent, Constants.Draft));
+                    }
+                    else
+                    {
+                        if (String.IsNullOrEmpty(publishedContent))
+                            throw new ResourceCommonException(typeof (Runbook),
+                                string.Format(CultureInfo.CurrentCulture, Resources.RunbookHasNoPublishedVersion,
+                                    runbookName));
+
+                        if (false == String.IsNullOrEmpty(publishedContent))
+                            ret.Add(new RunbookDefinition(automationAccountName, runbook, publishedContent,
+                                Constants.Published));
+                    }
                 }
-            }
 
-            return ret;
+                return ret;
+            }
         }
 
         public Runbook PublishRunbook(string automationAccountName, string runbookName)
         {
-            this.automationManagementClient.RunbookDraft.Publish(
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                this.automationManagementClient.RunbookDraft.Publish(
                 automationAccountName,
                 new RunbookDraftPublishParameters
                 {
@@ -362,7 +409,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     PublishedBy = Constants.ClientIdentity
                 });
 
-            return this.GetRunbook(automationAccountName, runbookName);
+                return this.GetRunbook(automationAccountName, runbookName);
+            }
+
         }
 
         public Job StartRunbook(string automationAccountName, string runbookName, IDictionary parameters)
