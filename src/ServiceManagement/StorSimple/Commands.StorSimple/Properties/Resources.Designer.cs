@@ -673,24 +673,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recovery buckets have been merged with primary bucket.
-        /// </summary>
-        internal static string MigrationRecoveryBucketsMerged {
-            get {
-                return ResourceManager.GetString("MigrationRecoveryBucketsMerged", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Recovery buckets have not been merged with primary bucket.
-        /// </summary>
-        internal static string MigrationRecoveryBucketsNotMerged {
-            get {
-                return ResourceManager.GetString("MigrationRecoveryBucketsNotMerged", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Error parsing Xml Schema. Schema Input : {0}. .
         /// </summary>
         internal static string MigrationSchemaParsingError {

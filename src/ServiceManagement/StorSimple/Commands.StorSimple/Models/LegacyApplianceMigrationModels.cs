@@ -730,7 +730,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         public int EstimatedTimeInMinutes { get; set; }
         public int EstimatedTimeInMinutesForLargestBackup { get; set; }
         public string PlanMessageInfo { get; set; }
-        public string RecoveryBucketsMergeStatus { get; set; }
 
         public MigrationPlanInfoMsg(MigrationPlanInfo migrationPlanInfo)
         {
@@ -738,7 +737,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             VolumeContainerName = migrationPlanInfo.DataContainerName;
             EstimatedTimeInMinutes = migrationPlanInfo.EstimatedTimeInMinutes;
             EstimatedTimeInMinutesForLargestBackup = migrationPlanInfo.EstimatedTimeInMinutesForLargestBackup;
-            RecoveryBucketsMergeStatus = GetRecoveryBucketsMergedMsg(migrationPlanInfo.RecoveryBucketsMerged);
             PlanMessageInfo = GetPlanMessageInfo(new List<HcsMessageInfo>(migrationPlanInfo.PlanMessageInfoList));
         }
 
@@ -753,18 +751,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             return consoleOp.ToString();
         }
 
-        public string GetRecoveryBucketsMergedMsg(bool RecoveryBucketsMerged)
-        {
-            if (RecoveryBucketsMerged)
-            {
-                return Resources.MigrationRecoveryBucketsMerged;
-            }
-            else
-            {
-                return Resources.MigrationRecoveryBucketsNotMerged;
-            }
-        }
-
         public override string ToString()
         {
             StringBuilder consoleOp = new StringBuilder();
@@ -772,7 +758,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             consoleOp.AppendLine("VolumeContainerName : " + VolumeContainerName);
             consoleOp.AppendLine("EstimatedTimeInMinutes : " + EstimatedTimeInMinutes);
             consoleOp.AppendLine("EstimatedTimeInMinutesForLargestBackup : " + EstimatedTimeInMinutesForLargestBackup);
-            consoleOp.AppendLine("RecoveryBucketsMergeStatus : " + RecoveryBucketsMergeStatus);
             consoleOp.AppendLine("PlanMessageInfo : " + PlanMessageInfo);
             return consoleOp.ToString();
         }

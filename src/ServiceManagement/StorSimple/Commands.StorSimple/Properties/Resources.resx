@@ -540,10 +540,4 @@
   <data name="MigrationConfigDecryptionFailed" xml:space="preserve">
     <value>Unable to decrypt the config file.</value>
   </data>
-  <data name="MigrationRecoveryBucketsMerged" xml:space="preserve">
-    <value>Recovery buckets have been merged with primary bucket</value>
-  </data>
-  <data name="MigrationRecoveryBucketsNotMerged" xml:space="preserve">
-    <value>Recovery buckets have not been merged with primary bucket</value>
-  </data>
 </root>
