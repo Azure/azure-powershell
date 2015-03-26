@@ -114,13 +114,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            if (!ProcessParameters())
-            {
-                WriteObject(null);
-                return;
-            }
             try
             {
+                ProcessParameters();
                 var netConfig = new NetworkConfig
                 {
                     IsIscsiEnabled = EnableIscsi,
@@ -145,39 +141,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
         }
 
-        private bool ProcessParameters(){
+        private void ProcessParameters(){
             // parse interfaceAlias
             if (!Enum.TryParse<NetInterfaceId>(InterfaceAlias, out interfaceAlias))
             {
-                WriteVerbose(string.Format(Resources.InvalidInterfaceId, InterfaceAlias));
-                return false;
+                throw new ArgumentException(string.Format(Resources.InvalidInterfaceId, InterfaceAlias));
             }
 
             // Try and set all the IP address
-            if (!TrySetIPAddress(Controller0IPv4Address, out controller0Address, "Controller0IPv4Address"))
-            {
-                return false;
-            }
-            if (!TrySetIPAddress(Controller1IPv4Address, out controller1Address, "Controller1IPv4Address"))
-            {
-                return false;
-            }
-            if (!TrySetIPAddress(IPv4Address, out ipv4Address, "IPv4Address"))
-            {
-                return false;
-            }
-            if (!TrySetIPAddress(IPv4Gateway, out ipv4Gateway, "IPv4Gateway"))
-            {
-                return false;
-            }
-            if (!TrySetIPAddress(IPv4Netmask, out ipv4Netmask, "IPv4Netmask"))
-            {
-                return false;
-            }
-            if(!TrySetIPAddress(IPv6Gateway, out ipv6Gateway, "IPv6Gateway"))
-            {
-                return false;
-            }
+            TrySetIPAddress(Controller0IPv4Address, out controller0Address, "Controller0IPv4Address");
+            TrySetIPAddress(Controller1IPv4Address, out controller1Address, "Controller1IPv4Address");
+            TrySetIPAddress(IPv4Address, out ipv4Address, "IPv4Address");
+            TrySetIPAddress(IPv4Gateway, out ipv4Gateway, "IPv4Gateway");
+            TrySetIPAddress(IPv4Netmask, out ipv4Netmask, "IPv4Netmask");
+            TrySetIPAddress(IPv6Gateway, out ipv6Gateway, "IPv6Gateway");
 
             // Only EnableIscsi, Controller0 and controller1 IP Addresses can be set on Data0
             if (InterfaceAlias == NetInterfaceId.Data0.ToString())
@@ -185,8 +162,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if(IPv4Address != null || IPv4Gateway != null || IPv4Netmask != null
                     && IPv6Gateway != null || IPv6Prefix != null || EnableCloud != null)
                 {
-                    WriteVerbose(Resources.NetworkConfigData0AllowedSettings);
-                    return false;
+                    throw new ArgumentException(Resources.NetworkConfigData0AllowedSettings);
                 }
             }
             // On other interfaces (non-Data0), Controller0 and Controller1 IP Addresses cannot be set
@@ -194,14 +170,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 if (Controller0IPv4Address != null || Controller1IPv4Address != null)
                 {
-                    WriteVerbose(Resources.NetworkConfigControllerIPsNotAllowedOnOthers);
-                    return false;
+                    throw new ArgumentException(Resources.NetworkConfigControllerIPsNotAllowedOnOthers);
                 }
             }
-
-            return true;
         }
-
     }
 }
 

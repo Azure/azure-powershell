@@ -414,12 +414,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// Its mandatory to provide either (IPv4 Address and netmask) or IPv6 orefix for an interface that
         /// is being enabled. ( Was previously disabled and is now being configured)
         /// </summary>
-        /// <returns></returns>
-        internal bool ValidateNetworkConfigs(DeviceDetails details, NetworkConfig[] StorSimpleNetworkConfig)
+        internal void ValidateNetworkConfigs(DeviceDetails details, NetworkConfig[] StorSimpleNetworkConfig)
         {
             if (StorSimpleNetworkConfig == null)
             {
-                return true;
+                return;
             }
             foreach (var netConfig in StorSimpleNetworkConfig)
             {
@@ -431,13 +430,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     // If its not an enabled interface either IPv6(prefix) or IPv4(address and mask) must be provided.
                     if ((netConfig.IPv4Address == null || netConfig.IPv4Netmask == null) && netConfig.IPv6Prefix == null)
                     {
-                        WriteVerbose(string.Format(Resources.IPAddressesNotProvidedForNetInterfaceBeingEnabled, StorSimpleContext.ResourceName, details.DeviceProperties.DeviceId));
-                        WriteObject(null);
-                        return false;
+                        throw new ArgumentException(string.Format(Resources.IPAddressesNotProvidedForNetInterfaceBeingEnabled, StorSimpleContext.ResourceName, details.DeviceProperties.DeviceId));
                     }
                 }
             }
-            return true;
         }
 
         /// <summary>
@@ -446,23 +442,21 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// <param name="data">IP Address string</param>
         /// <param name="ipAddress"></param>
         /// <param name="paramName">Name of the param which is being processed (to be used for errors)</param>
-        internal bool TrySetIPAddress(string data, out IPAddress ipAddress, string paramName)
+        internal void TrySetIPAddress(string data, out IPAddress ipAddress, string paramName)
         {
             if (data == null)
             {
                 ipAddress = null;
-                return true;
+                return;
             }
             try
             {
                 ipAddress = IPAddress.Parse(data);
-                return true;
             }
             catch (FormatException)
             {
                 ipAddress = null;
-                WriteVerbose(string.Format(Resources.InvalidIPAddressProvidedMessage, paramName));
-                return false;
+                throw new ArgumentException(string.Format(Resources.InvalidIPAddressProvidedMessage, paramName));
             }
         }
 
