@@ -245,7 +245,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
         public static void ImportAzureModule(System.Management.Automation.PowerShell powershell)
         {
             // Import the test manifest file
-            powershell.InvokeBatchScript(@"Import-Module ..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
+            powershell.InvokeBatchScript(@"Import-Module ..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
             Assert.IsTrue(powershell.Streams.Error.Count == 0);
         }
 
