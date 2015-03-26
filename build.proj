@@ -188,7 +188,7 @@
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BuildDebug;BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
-    <CallTarget Targets="InvokeXUnit; TestHDInsight; TestServiceManagement; TestServiceManagementExtensions; TestSqlDatabase; TestStorage;  TestDSCExtension_x64"/>
+    <CallTarget Targets="InvokeXUnit"/>
   </Target>
   
   <!-- Run Full switch with scenario tests -->
