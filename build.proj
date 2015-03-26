@@ -180,7 +180,7 @@
 
   <PropertyGroup>
     <RunTestLive Condition="'$(RunTestLive)' == ''">false</RunTestLive>
-    <XUnitExcludedTrait Condition="!$(RunTestLive)">RunType=LiveOnly</XUnitExcludedTrait>
+    <XUnitIncludedTrait Condition="!$(RunTestLive)">AcceptanceType=CheckIn</XUnitIncludedTrait>
   </PropertyGroup>
   <!-- Note: all testing related target should go to 'AzurePowershell.test.targets' file except the one used by CI run -->
   <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.test.targets"/>
