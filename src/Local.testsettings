@@ -3,8 +3,6 @@
   <Description>These are default test settings for a local test run.</Description>
   <Deployment>
     <DeploymentItem filename="ServiceManagement\Sql\Commands.SqlDatabase.Test\Resources\" />
-    <!--<DeploymentItem filename="ServiceManagement\Compute\Commands.ServiceManagement.Test\Resources\" />-->
-    <!--<DeploymentItem filename="ServiceManagement\Compute\Commands.ServiceManagement.Extensions.Test\Resources\" />-->
     <DeploymentItem filename="ResourceManager\Resources\Commands.Resources.Test\Resources\" />
     <DeploymentItem filename="ServiceManagement\Services\Commands.Test\Resources\" />
     <DeploymentItem filename="ServiceManagement\Sql\Commands.SqlDatabase.Test\TestScripts\" />
