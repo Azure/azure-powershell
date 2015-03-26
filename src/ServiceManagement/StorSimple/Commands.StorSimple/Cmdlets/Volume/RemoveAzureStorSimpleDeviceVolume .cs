@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string VolumeName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByObject, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeId)]
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByObject, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeObject)]
         [ValidateNotNullOrEmpty]
         public VirtualDisk Volume { get; set; }
 
@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                           break;
                                       case StorSimpleCmdletParameterSet.IdentifyByName:
                                           var volumeInfo = StorSimpleClient.GetVolumeByName(deviceid, VolumeName);
-                                          if (volumeInfo == null)
+                                          if (volumeInfo == null || volumeInfo.VirtualDiskInfo == null || volumeInfo.VirtualDiskInfo.InstanceId == null)
                                           {
                                               WriteVerbose(Resources.NotFoundMessageVirtualDisk);
                                               return;

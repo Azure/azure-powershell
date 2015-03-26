@@ -74,6 +74,21 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return taskStatusInfo;
         }
 
+        public bool IsValidDeviceId(string deviceId)
+        {
+            if (string.IsNullOrWhiteSpace(deviceId)) throw new ArgumentNullException("deviceId");
+            var deviceInfos = GetAllDevices();
+            foreach (var deviceInfo in deviceInfos)
+            {
+                if (deviceInfo.DeviceId.Equals(deviceId, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public string GetDeviceId(string deviceToUse)
         {
             if (deviceToUse == null) throw new ArgumentNullException("deviceToUse");
