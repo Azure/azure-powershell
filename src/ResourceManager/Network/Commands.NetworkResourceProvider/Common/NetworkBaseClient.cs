@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             {
                 if (_networkClient == null)
                 {
-                    _networkClient = new NetworkClient(CurrentContext)
+                    _networkClient = new NetworkClient(Profile.Context)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,

@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
 using System;
 using System.Management.Automation;
 using System.Net.Http;
 using System.Threading;
-using Microsoft.Azure.Common.Extensions.Authentication;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider

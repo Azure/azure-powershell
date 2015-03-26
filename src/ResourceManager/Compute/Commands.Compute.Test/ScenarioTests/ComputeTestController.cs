@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Extensions;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
@@ -27,6 +26,7 @@ using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test;
 using System;
 using System.Linq;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {

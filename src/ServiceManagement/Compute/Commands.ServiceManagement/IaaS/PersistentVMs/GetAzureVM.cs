@@ -101,14 +101,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         private List<T> GetVMContextList<T>(string serviceName, NSM.DeploymentGetResponse deployment)
             where T : PVM.PersistentVMRoleContext, new()
         {
-            var vmRoles = new List<NSM.Role>(deployment.Roles.Where(
-                r => string.IsNullOrEmpty(Name)
-                  || r.RoleName.Equals(Name, StringComparison.InvariantCultureIgnoreCase)));
+            Func<NSM.Role, bool> typeMatched =
+                r => string.Equals(r.RoleType, PersistentVMRoleStr, StringComparison.OrdinalIgnoreCase);
 
-            return GetVMContextList<T>(serviceName, deployment, vmRoles);
+            Func<NSM.Role, bool> nameMatched =
+                r => string.IsNullOrEmpty(this.Name) || r.RoleName.Equals(this.Name, StringComparison.InvariantCultureIgnoreCase);
+
+            var vmRoles = new List<NSM.Role>(deployment.Roles.Where(r => typeMatched(r) && nameMatched(r)));
+
+            return CreateVMContextList<T>(serviceName, deployment, vmRoles);
         }
 
-        private List<T> GetVMContextList<T>(string serviceName, NSM.DeploymentGetResponse deployment, List<NSM.Role> vmRoles)
+        private List<T> CreateVMContextList<T>(string serviceName, NSM.DeploymentGetResponse deployment, List<NSM.Role> vmRoles)
             where T : PVM.PersistentVMRoleContext, new()
         {
             var roleContexts = new List<T>();
