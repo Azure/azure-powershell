@@ -70,6 +70,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The AdministratorPassword must be between 8 to 15 characters..
+        /// </summary>
+        internal static string AdminPasswordLengthError {
+            get {
+                return ResourceManager.GetString("AdminPasswordLengthError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More backups are available for your query. To access the next page of your result use \&quot;-First {0} -Skip {1}\&quot; in your commandlet.
         /// </summary>
         internal static string BackupNextPageFormatMessage {
@@ -142,6 +151,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About to configure the device : {0} !.
+        /// </summary>
+        internal static string BeginningDeviceConfiguration {
+            get {
+                return ResourceManager.GetString("BeginningDeviceConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not retrieve secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again..
         /// </summary>
         internal static string CIKFetchFailed {
@@ -156,6 +174,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string CIKInvalid {
             get {
                 return ResourceManager.GetString("CIKInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Registration Key, Please enter the valid registration key copied from the Portal..
+        /// </summary>
+        internal static string CIKInvalidWhileDecrypting {
+            get {
+                return ResourceManager.GetString("CIKInvalidWhileDecrypting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid value for Registration Key. CIK provided couldnt be used to decrypt the secrets! The exact exception while decrypting is &quot;{0}&quot;!.
+        /// </summary>
+        internal static string CIKInvalidWithException {
+            get {
+                return ResourceManager.GetString("CIKInvalidWithException", resourceCulture);
             }
         }
         
@@ -187,11 +223,56 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Source and Target device in a failover operation can not be the same..
+        /// </summary>
+        internal static string DeviceFailoverSourceAndTargetDeviceSameError {
+            get {
+                return ResourceManager.GetString("DeviceFailoverSourceAndTargetDeviceSameError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} StorSimple device{1} found!.
         /// </summary>
         internal static string DeviceGet_StatusMessage {
             get {
                 return ResourceManager.GetString("DeviceGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More jobs are available for your query. To access the next page of your result use -First {0} -Skip {1} in your commandlet.
+        /// </summary>
+        internal static string DeviceJobsNextPageFormatMessage {
+            get {
+                return ResourceManager.GetString("DeviceJobsNextPageFormatMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More jobs are available in the subsequent pages for your query. To access the next page use -Skip {0}  in your commandlet.
+        /// </summary>
+        internal static string DeviceJobsNextPagewithNoFirstMessage {
+            get {
+                return ResourceManager.GetString("DeviceJobsNextPagewithNoFirstMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No more jobs are present for your query!.
+        /// </summary>
+        internal static string DeviceJobsNoMorePagesMessage {
+            get {
+                return ResourceManager.GetString("DeviceJobsNoMorePagesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Job{1} found!.
+        /// </summary>
+        internal static string DeviceJobsReturnedCount {
+            get {
+                return ResourceManager.GetString("DeviceJobsReturnedCount", resourceCulture);
             }
         }
         
@@ -232,6 +313,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not retrieve encryption key for device. Please make sure you have specified the correct device..
+        /// </summary>
+        internal static string ErrorRetrievingDevicePublicKey {
+            get {
+                return ResourceManager.GetString("ErrorRetrievingDevicePublicKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} operation failed, please check the task&apos;s status for more details..
         /// </summary>
         internal static string FailureMessageCompleteJob {
@@ -243,9 +333,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The {0} task failed to submit. .
         /// </summary>
-        internal static string FailureMessageSubmitJob {
+        internal static string FailureMessageSubmitTask {
             get {
-                return ResourceManager.GetString("FailureMessageSubmitJob", resourceCulture);
+                return ResourceManager.GetString("FailureMessageSubmitTask", resourceCulture);
             }
         }
         
@@ -367,6 +457,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is not a valid InterfaceAlias!.
+        /// </summary>
+        internal static string InvalidInterfaceId {
+            get {
+                return ResourceManager.GetString("InvalidInterfaceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid IP address provided for {0} ! Please make sure it is in the correct format..
+        /// </summary>
+        internal static string InvalidIPAddressProvidedMessage {
+            get {
+                return ResourceManager.GetString("InvalidIPAddressProvidedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provide valid datetime string for To parameter!.
         /// </summary>
         internal static string InvalidToMessage {
@@ -385,11 +493,65 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IP Address information (IPv4Address and IPv4Netmask or IPv6Prefix)  must be provided for {0} network interface, since it is being enabled.
+        /// </summary>
+        internal static string IPAddressesNotProvidedForNetInterfaceBeingEnabled {
+            get {
+                return ResourceManager.GetString("IPAddressesNotProvidedForNetInterfaceBeingEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} Iscsi Connection{1} found!.
         /// </summary>
         internal static string IscsiConnectionGet_StatusMessage {
             get {
                 return ResourceManager.GetString("IscsiConnectionGet_StatusMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot stop job with id {0}. It is not a running cancellable job..
+        /// </summary>
+        internal static string JobNotRunningOrCancellable {
+            get {
+                return ResourceManager.GetString("JobNotRunningOrCancellable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone, Secondary DNS Server information and atleast 1 IscsiEnabled network interface is mandatory when configuring the device for the first time..
+        /// </summary>
+        internal static string MandatoryParamsMissingForInitialDeviceConfiguration {
+            get {
+                return ResourceManager.GetString("MandatoryParamsMissingForInitialDeviceConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Controller0IPAddress and Controller1IPAddress cannot be configured on interfaces other than Data0.
+        /// </summary>
+        internal static string NetworkConfigControllerIPsNotAllowedOnOthers {
+            get {
+                return ResourceManager.GetString("NetworkConfigControllerIPsNotAllowedOnOthers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Controller0IPAddress, Controller1IPAddress and EnableIscsi are the only configuration settings that can be changed on the Data0 interface!.
+        /// </summary>
+        internal static string NetworkConfigData0AllowedSettings {
+            get {
+                return ResourceManager.GetString("NetworkConfigData0AllowedSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully created a StorSimple Network Configuration for interface {0}.
+        /// </summary>
+        internal static string NewNetworkConfigCreated {
+            get {
+                return ResourceManager.GetString("NewNetworkConfigCreated", resourceCulture);
             }
         }
         
@@ -444,6 +606,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string NoDeviceFoundWithGivenTypeInResourceMessage {
             get {
                 return ResourceManager.GetString("NoDeviceFoundWithGivenTypeInResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Job found with the specified Id : {0}.
+        /// </summary>
+        internal static string NoDeviceJobFoundWithGivenIdMessage {
+            get {
+                return ResourceManager.GetString("NoDeviceJobFoundWithGivenIdMessage", resourceCulture);
             }
         }
         
@@ -547,6 +718,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is not complex enough. It must contain 3 of the following:
+        ///a lowercase character
+        ///an uppercase character
+        ///a number
+        ///a special character.
+        /// </summary>
+        internal static string PasswordCharacterCriteriaError {
+            get {
+                return ResourceManager.GetString("PasswordCharacterCriteriaError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Secret was persisted earlier, but seems to have been corrupted. Please use Select-AzureStorSimpleResource and provide the Registration key once again..
         /// </summary>
         internal static string PersistedCIKCorrupted {
@@ -630,36 +814,36 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing backup with backupId {0}....
         /// </summary>
-        internal static string RemoveASSDBackupMessage {
+        internal static string RemoveAzureStorSimpleDeviceBackupMessage {
             get {
-                return ResourceManager.GetString("RemoveASSDBackupMessage", resourceCulture);
+                return ResourceManager.GetString("RemoveAzureStorSimpleDeviceBackupMessage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Removing backuppolicy with backuppolicyId {0}....
         /// </summary>
-        internal static string RemoveASSDBackupPolicyMessage {
+        internal static string RemoveAzureStorSimpleDeviceBackupPolicyMessage {
             get {
-                return ResourceManager.GetString("RemoveASSDBackupPolicyMessage", resourceCulture);
+                return ResourceManager.GetString("RemoveAzureStorSimpleDeviceBackupPolicyMessage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the backuppolicy with backuppolicyId{0}?.
         /// </summary>
-        internal static string RemoveASSDBackupPolicyWarningMessage {
+        internal static string RemoveAzureStorSimpleDeviceBackupPolicyWarningMessage {
             get {
-                return ResourceManager.GetString("RemoveASSDBackupPolicyWarningMessage", resourceCulture);
+                return ResourceManager.GetString("RemoveAzureStorSimpleDeviceBackupPolicyWarningMessage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the backup with backupId{0}?.
         /// </summary>
-        internal static string RemoveASSDBackupWarningMessage {
+        internal static string RemoveAzureStorSimpleDeviceBackupWarningMessage {
             get {
-                return ResourceManager.GetString("RemoveASSDBackupWarningMessage", resourceCulture);
+                return ResourceManager.GetString("RemoveAzureStorSimpleDeviceBackupWarningMessage", resourceCulture);
             }
         }
         
@@ -790,6 +974,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} volume container group{1} found!.
+        /// </summary>
+        internal static string ReturnedCountDataContainerGroupMessage {
+            get {
+                return ResourceManager.GetString("ReturnedCountDataContainerGroupMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} volume container{1} found!.
         /// </summary>
         internal static string ReturnedCountDataContainerMessage {
@@ -844,6 +1037,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No settings were provided for updating device details..
+        /// </summary>
+        internal static string SetAzureStorSimpleDeviceNoSettingsProvided {
+            get {
+                return ResourceManager.GetString("SetAzureStorSimpleDeviceNoSettingsProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parameter Skip cannot be &lt;0.
         /// </summary>
         internal static string SkipParameterInvalidMessage {
@@ -853,20 +1055,65 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The SnapshotManagerPassword must be either 14 or 15 characters long.
+        /// </summary>
+        internal static string SnapshotPasswordLengthError {
+            get {
+                return ResourceManager.GetString("SnapshotPasswordLengthError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloning backup with backupId {0}....
+        /// </summary>
+        internal static string StartAzureStorSimpleBackupCloneJobMessage {
+            get {
+                return ResourceManager.GetString("StartAzureStorSimpleBackupCloneJobMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to clone the backup with backupId {0}?.
+        /// </summary>
+        internal static string StartAzureStorSimpleBackupCloneJobWarningMessage {
+            get {
+                return ResourceManager.GetString("StartAzureStorSimpleBackupCloneJobWarningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Restoring backup with backupId {0}....
         /// </summary>
-        internal static string StartASSDBackupRestoreJobMessage {
+        internal static string StartAzureStorSimpleDeviceBackupRestoreJobMessage {
             get {
-                return ResourceManager.GetString("StartASSDBackupRestoreJobMessage", resourceCulture);
+                return ResourceManager.GetString("StartAzureStorSimpleDeviceBackupRestoreJobMessage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to restore the backup with backupId{0}?.
         /// </summary>
-        internal static string StartASSDBackupRestoreJobWarningMessage {
+        internal static string StartAzureStorSimpleDeviceBackupRestoreJobWarningMessage {
             get {
-                return ResourceManager.GetString("StartASSDBackupRestoreJobWarningMessage", resourceCulture);
+                return ResourceManager.GetString("StartAzureStorSimpleDeviceBackupRestoreJobWarningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started failing over selected volume containers from device {0} to device {1}....
+        /// </summary>
+        internal static string StartDeviceFailoverJobMessage {
+            get {
+                return ResourceManager.GetString("StartDeviceFailoverJobMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the selected volume containers from device {0} to device {1}?.
+        /// </summary>
+        internal static string StartDeviceFailoverJobWarningMessage {
+            get {
+                return ResourceManager.GetString("StartDeviceFailoverJobWarningMessage", resourceCulture);
             }
         }
         
@@ -876,6 +1123,42 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string StartFromDateForBackupNotValid {
             get {
                 return ResourceManager.GetString("StartFromDateForBackupNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping job with id {0}.
+        /// </summary>
+        internal static string StopAzureStorSimpleJobMessage {
+            get {
+                return ResourceManager.GetString("StopAzureStorSimpleJobMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop the job with id {0}.
+        /// </summary>
+        internal static string StopAzureStorSimpleJobWarningMessage {
+            get {
+                return ResourceManager.GetString("StopAzureStorSimpleJobWarningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully stopped job..
+        /// </summary>
+        internal static string StopDeviceJobSucceeded {
+            get {
+                return ResourceManager.GetString("StopDeviceJobSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About to stop a job! Id : {0} .
+        /// </summary>
+        internal static string StoppingDeviceJob {
+            get {
+                return ResourceManager.GetString("StoppingDeviceJob", resourceCulture);
             }
         }
         
@@ -925,6 +1208,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully updated configuration for device {0} with id {1}.
+        /// </summary>
+        internal static string StorSimpleDeviceUpdatedSuccessfully {
+            get {
+                return ResourceManager.GetString("StorSimpleDeviceUpdatedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your resource has seen selected successfully. To change to another resource please use Select-AzureStorSimpleResource commandlet!.
         /// </summary>
         internal static string SuccessfulResourceSelection {
@@ -952,11 +1244,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job&apos;s status.
+        /// </summary>
+        internal static string SuccessMessageSubmitDeviceJob {
+            get {
+                return ResourceManager.GetString("SuccessMessageSubmitDeviceJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} task is submitted successfully. Please use the command Get-AzureStorSimpleTask -InstanceId {1} for tracking the task&apos;s status.
         /// </summary>
-        internal static string SuccessMessageSubmitJob {
+        internal static string SuccessMessageSubmitTask {
             get {
-                return ResourceManager.GetString("SuccessMessageSubmitJob", resourceCulture);
+                return ResourceManager.GetString("SuccessMessageSubmitTask", resourceCulture);
             }
         }
         
@@ -966,6 +1267,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string ValidationSuccessfulRegistrationKey {
             get {
                 return ResourceManager.GetString("ValidationSuccessfulRegistrationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume Container Group &quot;{0}&quot; is not eligible for failover due to the reason: {1}.
+        /// </summary>
+        internal static string VolumeContainerGroupNotEligibleForFailoverError {
+            get {
+                return ResourceManager.GetString("VolumeContainerGroupNotEligibleForFailoverError", resourceCulture);
             }
         }
         

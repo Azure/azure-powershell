@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
         {
             var storSimpleManagementClient = GetStorSimpleClient();
             var cloudServiceClient = GetCloudServiceClient();
-            helper.SetupManagementClients(storSimpleManagementClient, cloudServiceClient);
+            helper.SetupSomeOfManagementClients(storSimpleManagementClient, cloudServiceClient);
 
             //helper.SetupSomeOfManagementClients();
         }
@@ -105,7 +105,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
                     ConfigurationManager.AppSettings["ResourceName"],
                     ConfigurationManager.AppSettings["ResourceId"],
                     ConfigurationManager.AppSettings["ResourceNamespace"],
-                    ConfigurationManager.AppSettings["CisStampId"],
                     testEnvironment.Credentials as SubscriptionCloudCredentials,
                     testEnvironment.BaseUri);
             }
@@ -117,7 +116,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
                     ConfigurationManager.AppSettings["ResourceName"],
                     ConfigurationManager.AppSettings["ResourceId"],
                     ConfigurationManager.AppSettings["ResourceNamespace"],
-                    ConfigurationManager.AppSettings["CisStampId"],
                     testEnvironment.Credentials as SubscriptionCloudCredentials);
             }
 

@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Net;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.StorSimple.Models;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
@@ -69,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
             if (opResponse.StatusCode != HttpStatusCode.Accepted && opResponse.StatusCode != HttpStatusCode.OK)
             {
-                msg = string.Format(Resources.FailureMessageSubmitJob, operationName);
+                msg = string.Format(Resources.FailureMessageSubmitTask, operationName);
             }
 
             else
@@ -77,18 +78,25 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 if (opResponse.GetType().Equals(typeof(TaskResponse)))
                 {
                     var taskResponse = opResponse as TaskResponse;
-                    msg = string.Format(Resources.SuccessMessageSubmitJob, operationName, taskResponse.TaskId);
+                    msg = string.Format(Resources.SuccessMessageSubmitTask, operationName, taskResponse.TaskId);
                     WriteObject(taskResponse.TaskId);
                 }
 
                 else if (opResponse.GetType().Equals(typeof(GuidTaskResponse)))
                 {
                     var guidTaskResponse = opResponse as GuidTaskResponse;
-                    msg = string.Format(Resources.SuccessMessageSubmitJob, operationName, guidTaskResponse.TaskId);
+                    msg = string.Format(Resources.SuccessMessageSubmitTask, operationName, guidTaskResponse.TaskId);
                     WriteObject(guidTaskResponse.TaskId);
                 }
             }
 
+            WriteVerbose(msg);
+        }
+
+        internal virtual void HandleDeviceJobResponse(JobResponse jobResponse, string operationName)
+        {
+            string msg = string.Format(Resources.SuccessMessageSubmitDeviceJob, operationName, jobResponse.JobId);
+            WriteObject(jobResponse.JobId);
             WriteVerbose(msg);
         }
 
@@ -186,7 +194,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 }
                 else if (exType == typeof(ArgumentNullException))
                 {
-                    var argEx = ex as ArgumentNullException;
+                    var argNullEx = ex as ArgumentNullException;
+                    if (argNullEx == null)
+                        break;
+                    WriteVerbose(string.Format(Resources.InvalidInputMessage, ex.Message));
+                    errorRecord = new ErrorRecord(argNullEx, string.Empty, ErrorCategory.InvalidData, null);
+                    break;
+                }
+                else if (exType == typeof(ArgumentException))
+                {
+                    var argEx = ex as ArgumentException;
                     if (argEx == null)
                         break;
                     WriteVerbose(string.Format(Resources.InvalidInputMessage, ex.Message));
@@ -343,17 +360,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             }
             return true;
         }
-	
+
         /// <summary>
-        /// this method verifies that the devicename parameter specified is completely configured
-        /// no operation should be allowed to perform on a non-configured device
+        /// Helper method to determine if this device has already been configured or not
         /// </summary>
-        public void VerifyDeviceConfigurationCompleteForDevice(string deviceId)
+        /// <returns></returns>
+        public bool IsDeviceConfigurationCompleteForDevice(DeviceDetails details)
         {
-            DeviceDetails details = storSimpleClient.GetDeviceDetails(deviceId);
             bool data0Configured = false;
 
-            if(details.NetInterfaceList!=null)
+            if (details.NetInterfaceList != null)
             {
                 NetInterface data0 = details.NetInterfaceList.Where(x => x.InterfaceId == NetInterfaceId.Data0).ToList<NetInterface>().First<NetInterface>();
                 if (data0 != null
@@ -362,6 +378,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     && !string.IsNullOrEmpty(data0.NicIPv4Settings.Controller0IPv4Address))
                     data0Configured = true;
             }
+            return data0Configured;
+        }
+	
+        /// <summary>
+        /// this method verifies that the devicename parameter specified is completely configured
+        /// most operations are not allowed on a non-configured device
+        /// </summary>
+        public void VerifyDeviceConfigurationCompleteForDevice(string deviceId)
+        {
+            var details = storSimpleClient.GetDeviceDetails(deviceId);
+            var data0Configured = IsDeviceConfigurationCompleteForDevice(details);
             if (!data0Configured)
                 throw GetGenericException(Resources.DeviceNotConfiguredMessage, null);
         }
@@ -379,6 +406,162 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         internal Exception GetGenericException(string exceptionMessage, Exception innerException)
         {
             return new Exception(exceptionMessage, innerException);
+        }
+
+        /// <summary>
+        /// Validate that all network configs are valid.
+        /// 
+        /// Its mandatory to provide either (IPv4 Address and netmask) or IPv6 orefix for an interface that
+        /// is being enabled. ( Was previously disabled and is now being configured)
+        /// </summary>
+        internal void ValidateNetworkConfigs(DeviceDetails details, NetworkConfig[] StorSimpleNetworkConfig)
+        {
+            if (StorSimpleNetworkConfig == null)
+            {
+                return;
+            }
+            foreach (var netConfig in StorSimpleNetworkConfig)
+            {
+                // get corresponding netInterface in device details.
+                var netInterface = details.NetInterfaceList.FirstOrDefault(x => x.InterfaceId == netConfig.InterfaceAlias);
+                // If its being enabled and its not Data0, it must have IP Address info
+                if (netInterface == null || (netInterface.InterfaceId != NetInterfaceId.Data0 && !netInterface.IsEnabled))
+                {
+                    // If its not an enabled interface either IPv6(prefix) or IPv4(address and mask) must be provided.
+                    if ((netConfig.IPv4Address == null || netConfig.IPv4Netmask == null) && netConfig.IPv6Prefix == null)
+                    {
+                        throw new ArgumentException(string.Format(Resources.IPAddressesNotProvidedForNetInterfaceBeingEnabled, StorSimpleContext.ResourceName, details.DeviceProperties.DeviceId));
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Try to parse an IP Address from the provided string
+        /// </summary>
+        /// <param name="data">IP Address string</param>
+        /// <param name="ipAddress"></param>
+        /// <param name="paramName">Name of the param which is being processed (to be used for errors)</param>
+        internal void TrySetIPAddress(string data, out IPAddress ipAddress, string paramName)
+        {
+            if (data == null)
+            {
+                ipAddress = null;
+                return;
+            }
+            try
+            {
+                ipAddress = IPAddress.Parse(data);
+            }
+            catch (FormatException)
+            {
+                ipAddress = null;
+                throw new ArgumentException(string.Format(Resources.InvalidIPAddressProvidedMessage, paramName));
+            }
+        }
+
+        /// <summary>
+        /// Validate that all mandatory data for the first Device Configuration has been provided.
+        /// </summary>
+        /// <returns>bool indicating whether all mandatory data is there or not.</returns>
+        internal bool ValidParamsForFirstDeviceConfiguration(NetworkConfig[] netConfigs, TimeZoneInfo timeZone, string secondaryDnsServer)
+        {
+            if (netConfigs == null)
+            {
+                return false;
+            }
+            // Make sure network config for Data0 has been provided with atleast Controller0 IP Address
+            var data0 = netConfigs.FirstOrDefault(x => x.InterfaceAlias == NetInterfaceId.Data0);
+            if (data0 == null || data0.Controller0IPv4Address == null || data0.Controller1IPv4Address == null)
+            {
+                return false;
+            }
+            // Timezone and Secondary Dns Server are also mandatory
+            if (timeZone == null || string.IsNullOrEmpty(secondaryDnsServer))
+            {
+                return false;
+            }
+
+            // There must be atleast one iscsi enabled net interface in the first config
+            var iscsiEnabledInterfacePresent = netConfigs.Any(x => x.IsIscsiEnabled == true);
+            if (!iscsiEnabledInterfacePresent)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Validate that the target device is eligible for failover
+        /// </summary>
+        /// <param name="sourceDeviceName">The source device identifier</param>
+        /// <param name="targetDeviceName">The target device identifier</param>
+        /// <returns></returns>
+        internal bool ValidTargetDeviceForFailover(string sourceDeviceId, string targetDeviceId)
+        {
+            if (sourceDeviceId.Equals(targetDeviceId, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new ArgumentException(Resources.DeviceFailoverSourceAndTargetDeviceSameError);
+            }
+            
+            return true;
+        }
+
+        internal bool IsValidAsciiString(string s)
+        {
+            return Regex.IsMatch(s, "[ -~]+");
+        }
+
+        /// <summary>
+        /// Validate that the string provided has length within the specified constraints.
+        /// 
+        /// Throws an ArgumentException with the specified error message if the validation fails.
+        /// </summary>
+        /// <param name="data">string to be validated</param>
+        /// <param name="minLength">minimum allowable length for the string</param>
+        /// <param name="maxLength">maximum allowable length for the string</param>
+        /// <param name="errorMessage">error message for the exception raised in case of invalid data</param>
+        internal void ValidateLength(string data, uint minLength, uint maxLength, string errorMessage)
+        {
+            if (data.Length < minLength || data.Length > maxLength)
+            {
+                throw new ArgumentException(errorMessage);
+            }
+        }
+
+        /// <summary>
+        /// Most of the passwords in the device must contain 3 of the following:
+        /// - a lowercase character
+        /// - an uppercase character
+        /// - a number
+        /// - a special character
+        /// 
+        /// Raises an ArgumentException with appropriate error message notifying the above
+        /// conditions when the validation fails.
+        /// </summary>
+        /// <param name="data"></param>
+        internal void ValidatePasswordComplexity(string data, string passwordName)
+        {
+            string errorMessage = string.Format(Resources.PasswordCharacterCriteriaError, passwordName);
+            var criteriaFulfilled = 0;
+            // Regular expressions for lowercase letter, uppercase letter, digit and special char
+            // respectively
+            string[] criteriaRegexs = { ".*[a-z]", ".*[A-Z]", ".*\\d", ".*\\W" };
+
+            foreach(var regexStr in criteriaRegexs){
+                // The static IsMatch method is supposed to use an Application-wide cache of compiled regexes
+                // and hence should save computation time (though not very significant because we are not doing tens of 
+                // thousands of such tests)
+                if(Regex.IsMatch(data, regexStr)){
+                    criteriaFulfilled += 1;
+                }
+            }
+
+            // If atleast 3 criteria have been fulfilled, then the password is complex enough
+            if(criteriaFulfilled < 3){
+                throw new ArgumentException(errorMessage);
+            }
         }
     }
 }
