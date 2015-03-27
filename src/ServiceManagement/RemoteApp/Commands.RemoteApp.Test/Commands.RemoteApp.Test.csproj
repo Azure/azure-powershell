@@ -65,6 +65,10 @@
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
+      <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
+      <Name>Commands.ScenarioTests.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\Commands.Test\Commands.Test.csproj">
       <Project>{b7fd03f6-98bc-4f54-9a14-0455e579fcd4}</Project>
       <Name>Commands.Test</Name>
