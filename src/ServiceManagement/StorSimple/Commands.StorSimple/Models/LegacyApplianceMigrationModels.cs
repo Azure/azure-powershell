@@ -745,7 +745,27 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             StringBuilder consoleOp = new StringBuilder();
             foreach (HcsMessageInfo hcsMessageInfo in planMessageInfoList)
             {
-                consoleOp.AppendLine("ErrorCode : " + hcsMessageInfo.ErrorCode + " Message : " + hcsMessageInfo.Message + " Recommendation : " + hcsMessageInfo.Recommendation + " Severity : " + hcsMessageInfo.Severity);
+                if (!string.IsNullOrEmpty(hcsMessageInfo.Message) ||
+                    !string.IsNullOrEmpty(hcsMessageInfo.Recommendation))
+                {
+                    if (0 != hcsMessageInfo.ErrorCode || 0 != hcsMessageInfo.Severity)
+                    {
+                        consoleOp.AppendLine("ErrorCode : " + hcsMessageInfo.ErrorCode + " Severity : " +
+                                             hcsMessageInfo.Severity).AppendLine();
+                    }
+
+                    if (!string.IsNullOrEmpty(hcsMessageInfo.Message))
+                    {
+                        consoleOp.AppendLine("Message : " + hcsMessageInfo.Message);
+                    }
+
+                    if (!string.IsNullOrEmpty(hcsMessageInfo.Recommendation))
+                    {
+                        consoleOp.AppendLine("Recommendation : " + hcsMessageInfo.Recommendation);
+                    }
+
+                    consoleOp.AppendLine();
+                }
             }
 
             return consoleOp.ToString();
