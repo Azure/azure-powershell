@@ -139,10 +139,10 @@
     <value>Getting Job "{0}" from WorkItem "{1}"</value>
   </data>
   <data name="GBJ_GetByOData" xml:space="preserve">
-    <value>Getting Jobs matching the specified OData filter from WorkItem "{0}". A max count of {1} will be returned.</value>
+    <value>Getting Jobs matching the specified OData filter from WorkItem "{0}". </value>
   </data>
   <data name="GBJ_GetNoFilter" xml:space="preserve">
-    <value>Getting all Jobs from WorkItem "{0}". A max count of {1} will be returned.</value>
+    <value>Getting all Jobs from WorkItem "{0}". </value>
   </data>
   <data name="GBJ_NoWorkItem" xml:space="preserve">
     <value>No WorkItem was specified.  Supply a WorkItem name or WorkItem object to query for Jobs.</value>
@@ -151,19 +151,40 @@
     <value>Getting Pool "{0}"</value>
   </data>
   <data name="GBP_GetByOData" xml:space="preserve">
-    <value>Getting Pools matching the specified OData filter. A max count of {0} will be returned.</value>
+    <value>Getting Pools matching the specified OData filter. </value>
   </data>
   <data name="GBP_NoFilter" xml:space="preserve">
-    <value>Getting all Pools associated with the Batch account. A max count of {0} will be returned.</value>
+    <value>Getting all Pools associated with the Batch account. </value>
+  </data>
+  <data name="GBTFC_Downloading" xml:space="preserve">
+    <value>Downloading Task file "{0}" to: {1}</value>
+  </data>
+  <data name="GBTFC_NoDestinationPath" xml:space="preserve">
+    <value>No destination path was specified. Supply a path where the Task file should be downloaded.</value>
+  </data>
+  <data name="GBTFC_NoTaskFileSpecified" xml:space="preserve">
+    <value>No Task file was specified to download. Supply a Task file object or a WorkItem name, Job name, Task name, and Task file name.</value>
+  </data>
+  <data name="GBTF_GetByName" xml:space="preserve">
+    <value>Getting Task file "{0}" from Task "{1}"</value>
+  </data>
+  <data name="GBTF_GetByOData" xml:space="preserve">
+    <value>Getting Task files matching the specified OData filter from Task "{0}".</value>
+  </data>
+  <data name="GBTF_NoFilter" xml:space="preserve">
+    <value>Getting all Task files under Task "{0}".</value>
+  </data>
+  <data name="GBTF_NoTaskSpecified" xml:space="preserve">
+    <value>No Task was specified. Supply a Task object or a WorkItem name, Job name, and Task name.</value>
   </data>
   <data name="GBT_GetByName" xml:space="preserve">
     <value>Getting Task "{0}" from Job "{1}" under WorkItem "{2}"</value>
   </data>
   <data name="GBT_GetByOData" xml:space="preserve">
-    <value>Getting Tasks matching the specified OData filter from Job "{0}". A max count of {1} will be returned.</value>
+    <value>Getting Tasks matching the specified OData filter from Job "{0}".</value>
   </data>
   <data name="GBT_GetNoFilter" xml:space="preserve">
-    <value>Getting all Tasks from Job "{0}". A max count of {1} will be returned.</value>
+    <value>Getting all Tasks from Job "{0}".</value>
   </data>
   <data name="GBT_NoJob" xml:space="preserve">
     <value>No Job was specified. Supply a Job object or a WorkItem name and Job name to query for Tasks.</value>
@@ -172,10 +193,10 @@
     <value>Getting WorkItem "{0}"</value>
   </data>
   <data name="GBWI_GetByOData" xml:space="preserve">
-    <value>Getting WorkItems matching the specified OData filter. A max count of {0} will be returned.</value>
+    <value>Getting WorkItems matching the specified OData filter. </value>
   </data>
   <data name="GBWI_NoFilter" xml:space="preserve">
-    <value>Getting all WorkItems associated with the Batch account. A max count of {0} will be returned.</value>
+    <value>Getting all WorkItems associated with the Batch account. </value>
   </data>
   <data name="InvalidEndpointType" xml:space="preserve">
     <value>The endpoint is not recognized as valid: {0}</value>
@@ -191,6 +212,9 @@
   </data>
   <data name="KeyNotPresent" xml:space="preserve">
     <value>The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated.</value>
+  </data>
+  <data name="MaxCount" xml:space="preserve">
+    <value>A max count of {0} will be returned.</value>
   </data>
   <data name="MissingResGroupName" xml:space="preserve">
     <value>Cannot find resource group name in ID property: {0}</value>

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
+using Microsoft.Azure.Commands.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
 using System.Management.Automation;
 
@@ -22,12 +22,13 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
     public class UpdateAzureRemoteAppCollection : RdsCmdlet
     {
-        [Parameter (Mandatory = true,
-                    Position = 0,
-                    HelpMessage = "RemoteApp collection name")]
-        [ValidatePattern (NameValidatorString)]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
-
 
         [Parameter(Mandatory = true,
             Position = 1,
@@ -35,6 +36,10 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             HelpMessage = "The name of the RemoteApp template image."
         )]
         public string ImageName { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Immediately log off users after update has successfully completed")]
+        public SwitchParameter ForceLogoffWhenUpdateComplete { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -50,12 +55,13 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 {
                     Name = CollectionName,
                     TemplateImageName = ImageName,
-                    PlanName = collection.PlanName
+                    PlanName = collection.PlanName,
+                    WaitBeforeShutdownInMinutes = ForceLogoffWhenUpdateComplete ? -1 : 0
                 };
 
-                if (ShouldProcess(CollectionName, "Update collection"))
+                if (ShouldProcess(CollectionName, Commands_RemoteApp.UpdateCollection))
                 {
-                    response = CallClient(() => Client.Collections.Set(CollectionName, false, false, details), Client.Collections);
+                    response = CallClient(() => Client.Collections.Set(CollectionName, true, false, details), Client.Collections);
                 }
 
                 if (response != null)

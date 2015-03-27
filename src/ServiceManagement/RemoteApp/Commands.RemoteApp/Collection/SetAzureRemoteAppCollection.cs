@@ -29,8 +29,10 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         [Parameter(Mandatory = true,
             Position = 0,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "RemoteApp collection name")]
         [ValidatePattern(NameValidatorString)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             CollectionCreationDetails details = null;
             OperationResultWithTrackingId response = null;
             Collection collection = null;
+            bool forceRedeploy = false;
 
             collection = FindCollection(CollectionName);
             if (collection == null)
@@ -107,11 +110,19 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                             details.AdInfo.UserName = creds.UserName;
                             details.AdInfo.Password = creds.Password;
                         }
+
+                        if (String.Equals("Inactive", collection.Status, StringComparison.OrdinalIgnoreCase))
+                        {
+                            // the collection may have failed due to bad domain join information before,
+                            // re-trying with the new information
+                            forceRedeploy = true;
+                        }
+
                         break;
                     }
             }
 
-            response = CallClient(() => Client.Collections.Set(CollectionName, false, false, details), Client.Collections);
+            response = CallClient(() => Client.Collections.Set(CollectionName, forceRedeploy, false, details), Client.Collections);
             if (response != null)
             {
                 TrackingResult trackingId = new TrackingResult(response);
