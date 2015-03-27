@@ -15,7 +15,7 @@
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <NuGetPackageImportStamp>0488b428</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>35ef52ba</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\Release\</OutputPath>
@@ -148,7 +148,6 @@
     <Compile Include="ScenarioTests\ManagedCacheTestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="ScenarioTests\ManagedCacheTests.ps1">

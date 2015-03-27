@@ -18,7 +18,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>aaa63ceb</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>657a4649</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -198,7 +198,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FunctionalTests\Readme.txt" />
-    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="TestScripts\CommonFunctions.ps1" />

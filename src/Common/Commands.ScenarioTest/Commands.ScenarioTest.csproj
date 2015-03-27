@@ -16,7 +16,7 @@
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <NuGetPackageImportStamp>98421885</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>49188b82</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -176,7 +176,6 @@
     <Compile Include="Common\TestEnvironment.cs" />
     <Compile Include="Common\TestEnvironmentFactory.cs" />
     <Compile Include="Common\TokenCloudCredentialsHelper.cs" />
-    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Resources\CredentialTests\AddAccountForArmTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
