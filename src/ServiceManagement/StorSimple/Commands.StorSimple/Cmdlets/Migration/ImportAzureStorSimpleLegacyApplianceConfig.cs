@@ -28,15 +28,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     {
 
         [Alias("FilePath")]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageMigrationConfigFilePath)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigFilePath)]
         [ValidateNotNullOrEmpty]
         public string ConfigFilePath { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageMigrationTargetDevice)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.MigrationTargetDevice)]
         [ValidateNotNullOrEmpty]
         public string TargetDeviceName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageMigrationConfigDecryptionKey)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigDecryptionKey)]
         public string ConfigDecryptionKey { get; set; }
 
         public override void ExecuteCmdlet()

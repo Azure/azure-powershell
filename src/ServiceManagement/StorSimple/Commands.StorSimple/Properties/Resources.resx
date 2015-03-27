@@ -126,7 +126,7 @@
   <data name="NoBackupPolicyWithGivenNameFound" xml:space="preserve">
     <value>No backuppolicy with name : {0} found in your device: {1} !</value>
   </data>
-  <data name="FailureMessageSubmitJob" xml:space="preserve">
+  <data name="FailureMessageSubmitTask" xml:space="preserve">
     <value>The {0} task failed to submit. </value>
   </data>
   <data name="NotAllowedErrorDataContainerEncryption" xml:space="preserve">
@@ -144,16 +144,16 @@
   <data name="NotFoundMessageStorageAccountCredential" xml:space="preserve">
     <value>Storage account with the specified name does not exist.</value>
   </data>
-  <data name="RemoveASSDBackupMessage" xml:space="preserve">
+  <data name="RemoveAzureStorSimpleDeviceBackupMessage" xml:space="preserve">
     <value>Removing backup with backupId {0}...</value>
   </data>
-  <data name="RemoveASSDBackupPolicyMessage" xml:space="preserve">
+  <data name="RemoveAzureStorSimpleDeviceBackupPolicyMessage" xml:space="preserve">
     <value>Removing backuppolicy with backuppolicyId {0}...</value>
   </data>
-  <data name="RemoveASSDBackupPolicyWarningMessage" xml:space="preserve">
+  <data name="RemoveAzureStorSimpleDeviceBackupPolicyWarningMessage" xml:space="preserve">
     <value>Are you sure you want to remove the backuppolicy with backuppolicyId{0}?</value>
   </data>
-  <data name="RemoveASSDBackupWarningMessage" xml:space="preserve">
+  <data name="RemoveAzureStorSimpleDeviceBackupWarningMessage" xml:space="preserve">
     <value>Are you sure you want to remove the backup with backupId{0}?</value>
   </data>
   <data name="NotFoundMessageVirtualDisk" xml:space="preserve">
@@ -183,16 +183,16 @@
   <data name="RemoveWarningVolume" xml:space="preserve">
     <value>Are you sure you want to remove the volume?</value>
   </data>
-  <data name="StartASSDBackupRestoreJobMessage" xml:space="preserve">
+  <data name="StartAzureStorSimpleDeviceBackupRestoreJobMessage" xml:space="preserve">
     <value>Restoring backup with backupId {0}...</value>
   </data>
-  <data name="StartASSDBackupRestoreJobWarningMessage" xml:space="preserve">
+  <data name="StartAzureStorSimpleDeviceBackupRestoreJobWarningMessage" xml:space="preserve">
     <value>Are you sure you want to restore the backup with backupId{0}?</value>
   </data>
   <data name="SuccessMessageSetResourceContext" xml:space="preserve">
     <value>Context set successfully for the given resource name.</value>
   </data>
-  <data name="SuccessMessageSubmitJob" xml:space="preserve">
+  <data name="SuccessMessageSubmitTask" xml:space="preserve">
     <value>The {0} task is submitted successfully. Please use the command Get-AzureStorSimpleTask -InstanceId {1} for tracking the task's status</value>
   </data>
   <data name="InvalidBackupIdParameter" xml:space="preserve">
@@ -422,6 +422,112 @@
   </data>
   <data name="ResourceContextNotSetMessage" xml:space="preserve">
     <value>Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context.</value>
+  </data>
+  <data name="IPAddressesNotProvidedForNetInterfaceBeingEnabled" xml:space="preserve">
+    <value>IP Address information (IPv4Address and IPv4Netmask or IPv6Prefix)  must be provided for {0} network interface, since it is being enabled</value>
+  </data>
+  <data name="MandatoryParamsMissingForInitialDeviceConfiguration" xml:space="preserve">
+    <value>Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone, Secondary DNS Server information and atleast 1 IscsiEnabled network interface is mandatory when configuring the device for the first time.</value>
+  </data>
+  <data name="DeviceJobsNextPageFormatMessage" xml:space="preserve">
+    <value>More jobs are available for your query. To access the next page of your result use -First {0} -Skip {1} in your commandlet</value>
+  </data>
+  <data name="DeviceJobsNextPagewithNoFirstMessage" xml:space="preserve">
+    <value>More jobs are available in the subsequent pages for your query. To access the next page use -Skip {0}  in your commandlet</value>
+  </data>
+  <data name="DeviceJobsNoMorePagesMessage" xml:space="preserve">
+    <value>No more jobs are present for your query!</value>
+  </data>
+  <data name="DeviceJobsReturnedCount" xml:space="preserve">
+    <value>{0} Job{1} found!</value>
+  </data>
+  <data name="NewNetworkConfigCreated" xml:space="preserve">
+    <value>Successfully created a StorSimple Network Configuration for interface {0}</value>
+  </data>
+  <data name="NoDeviceJobFoundWithGivenIdMessage" xml:space="preserve">
+    <value>No Job found with the specified Id : {0}</value>
+  </data>
+  <data name="StopAzureStorSimpleJobMessage" xml:space="preserve">
+    <value>Stopping job with id {0}</value>
+  </data>
+  <data name="StopAzureStorSimpleJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to stop the job with id {0}</value>
+  </data>
+  <data name="StopDeviceJobSucceeded" xml:space="preserve">
+    <value>Successfully stopped job.</value>
+  </data>
+  <data name="StoppingDeviceJob" xml:space="preserve">
+    <value>About to stop a job! Id : {0} </value>
+  </data>
+  <data name="StorSimpleDeviceUpdatedSuccessfully" xml:space="preserve">
+    <value>Successfully updated configuration for device {0} with id {1}</value>
+  </data>
+  <data name="BeginningDeviceConfiguration" xml:space="preserve">
+    <value>About to configure the device : {0} !</value>
+  </data>
+  <data name="InvalidIPAddressProvidedMessage" xml:space="preserve">
+    <value>Invalid IP address provided for {0} ! Please make sure it is in the correct format.</value>
+  </data>
+  <data name="NetworkConfigControllerIPsNotAllowedOnOthers" xml:space="preserve">
+    <value>Controller0IPAddress and Controller1IPAddress cannot be configured on interfaces other than Data0</value>
+  </data>
+  <data name="NetworkConfigData0AllowedSettings" xml:space="preserve">
+    <value>Controller0IPAddress, Controller1IPAddress and EnableIscsi are the only configuration settings that can be changed on the Data0 interface!</value>
+  </data>
+  <data name="ErrorRetrievingDevicePublicKey" xml:space="preserve">
+    <value>Could not retrieve encryption key for device. Please make sure you have specified the correct device.</value>
+  </data>
+  <data name="ReturnedCountDataContainerGroupMessage" xml:space="preserve">
+    <value>{0} volume container group{1} found!</value>
+  </data>
+  <data name="StartDeviceFailoverJobMessage" xml:space="preserve">
+    <value>Started failing over selected volume containers from device {0} to device {1}...</value>
+  </data>
+  <data name="StartDeviceFailoverJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to failover the selected volume containers from device {0} to device {1}?</value>
+  </data>
+  <data name="VolumeContainerGroupNotEligibleForFailoverError" xml:space="preserve">
+    <value>Volume Container Group "{0}" is not eligible for failover due to the reason: {1}</value>
+  </data>
+  <data name="SuccessMessageSubmitDeviceJob" xml:space="preserve">
+    <value>The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job's status</value>
+  </data>
+  <data name="StartAzureStorSimpleBackupCloneJobMessage" xml:space="preserve">
+    <value>Cloning backup with backupId {0}...</value>
+  </data>
+  <data name="StartAzureStorSimpleBackupCloneJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to clone the backup with backupId {0}?</value>
+  </data>
+  <data name="InvalidInterfaceId" xml:space="preserve">
+    <value>{0} is not a valid InterfaceAlias!</value>
+  </data>
+  <data name="DeviceFailoverSourceAndTargetDeviceSameError" xml:space="preserve">
+    <value>Source and Target device in a failover operation can not be the same.</value>
+  </data>
+  <data name="JobNotRunningOrCancellable" xml:space="preserve">
+    <value>Cannot stop job with id {0}. It is not a running cancellable job.</value>
+  </data>
+  <data name="CIKInvalidWhileDecrypting" xml:space="preserve">
+    <value>Invalid Registration Key, Please enter the valid registration key copied from the Portal.</value>
+  </data>
+  <data name="CIKInvalidWithException" xml:space="preserve">
+    <value>Invalid value for Registration Key. CIK provided couldnt be used to decrypt the secrets! The exact exception while decrypting is "{0}"!</value>
+  </data>
+  <data name="PasswordCharacterCriteriaError" xml:space="preserve">
+    <value>{0} is not complex enough. It must contain 3 of the following:
+a lowercase character
+an uppercase character
+a number
+a special character</value>
+  </data>
+  <data name="AdminPasswordLengthError" xml:space="preserve">
+    <value>The AdministratorPassword must be between 8 to 15 characters.</value>
+  </data>
+  <data name="SnapshotPasswordLengthError" xml:space="preserve">
+    <value>The SnapshotManagerPassword must be either 14 or 15 characters long</value>
+  </data>
+  <data name="SetAzureStorSimpleDeviceNoSettingsProvided" xml:space="preserve">
+    <value>No settings were provided for updating device details.</value>
   </data>
   <data name="ConfirmMigrationSuccessMessage" xml:space="preserve">
     <value>You can check the commit or rollback status by using Get-AzureStorSimpleLegacyVolumeContainerConfirmStatus cmdlet.</value>

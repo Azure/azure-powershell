@@ -26,13 +26,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsData.Import, "AzureStorSimpleLegacyVolumeContainer")]
     public class ImportAzureStorSimpleLegacyVolumeContainer : StorSimpleCmdletBase
     {
-        [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageMigrationConfigId)]
+        [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigId)]
         public string LegacyConfigId { get; set; }
 
-        [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageMigrationLegacyDataContainers)]
+        [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
 
-        [Parameter(HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageImportDCWithSkipACRs)]
+        [Parameter(HelpMessage = StorSimpleCmdletHelpMessage.MigrationImportDCWithSkipACRs)]
         public SwitchParameter SkipACRs
         {
             get { return skipACRs; }
@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
         private bool skipACRs;
 
-        [Parameter(HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageImportDCByForce)]
+        [Parameter(HelpMessage = StorSimpleCmdletHelpMessage.MigrationImportDCByForce)]
         public SwitchParameter Force
         {
             get { return force; }

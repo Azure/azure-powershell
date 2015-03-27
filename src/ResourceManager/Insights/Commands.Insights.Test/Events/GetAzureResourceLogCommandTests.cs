@@ -13,12 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Commands.Insights.Events;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -30,15 +28,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
     public class GetAzureResourceLogCommandTests
     {
         private readonly GetAzureResourceLogCommand cmdlet;
-
         private readonly Mock<InsightsClient> insightsClientMock;
-
         private readonly Mock<IEventOperations> insightsEventOperationsMock;
-
         private Mock<ICommandRuntime> commandRuntimeMock;
-
         private EventDataListResponse response;
-
         private string filter;
         private string selected;
 
