@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <UsingTask 
-    AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runners.2.0.0-beta4-build2738\tools\xunit.runner.msbuild.dll"
+    AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runner.console.2.0.0\tools\xunit.runner.msbuild.dll"
     TaskName="Xunit.Runner.MSBuild.xunit" />
   
   <!-- Clean the build in all configurations -->
