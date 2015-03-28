@@ -19,7 +19,6 @@ using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Diagnostics;
 using Microsoft.Azure.Common.Authentication;
@@ -27,6 +26,7 @@ using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure;
 using System.IO;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -58,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 TestMockSupport.RunningMocked = false;
             }
 
-            var datastore = new MockDataStore();
+            var datastore = new MemoryDataStore();
             AzureSession.DataStore = datastore;
             var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             AzurePSCmdlet.CurrentProfile = profile;

@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.ServiceBus;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.Azure.Common.Authentication;
+using System.Reflection;
 
 namespace Microsoft.WindowsAzure.Commands.CloudService
 {
@@ -120,7 +121,9 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
         {
             System.Management.Automation.PowerShell invoker = null;
             invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-            invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath("ServiceManagementStartup.ps1")));
+            invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                "ServiceManagementStartup.ps1")));
             invoker.Invoke();
         }
     }
