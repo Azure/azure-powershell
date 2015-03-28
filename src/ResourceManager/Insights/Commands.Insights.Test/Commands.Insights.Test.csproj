@@ -125,10 +125,16 @@
     <Compile Include="Events\GetAzureResourceProviderLogCommandTests.cs" />
     <Compile Include="Events\GetAzureSubscriptionIdLogCommandTests.cs" />
     <Compile Include="Events\GetAzureResourceGroupLogCommandTests.cs" />
+    <Compile Include="Metrics\FormatMetricsAsTableCommandTests.cs" />
+    <Compile Include="Metrics\GetMetricDefinitionsCommandTests.cs" />
+    <Compile Include="Metrics\GetMetricsCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\AlertsTests.cs" />
     <Compile Include="ScenarioTests\AutoscaleTests.cs" />
     <Compile Include="ScenarioTests\EventsTests.cs" />
+    <Compile Include="ScenarioTests\MetricsTests.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="ScenarioTests\TestsController.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
@@ -159,6 +165,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\EventsTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\MetricsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestAddAlertRule.json">
@@ -198,6 +207,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.EventsTests\TestGetAzureSubscriptionIdLog.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.MetricsTests\TestGetMetrics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.MetricsTests\TestGetMetricDefinitions.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
