@@ -33,23 +33,21 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
     public class EnvironmentSetupHelper
     {
         private static string testEnvironmentName = "__test-environment";
+        
         private static string testSubscriptionName = "__test-subscriptions";
+        
         private AzureSubscription testSubscription;
+        
         private AzureAccount testAccount;
+
+        private const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
+
         protected List<string> modules;
+        
         protected ProfileClient ProfileClient { get; set; }
 
         public EnvironmentSetupHelper()
         {
-            var datastore = new MockDataStore();
-            AzureSession.DataStore = datastore;
-            var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzurePSCmdlet.CurrentProfile = profile;
-            AzureSession.DataStore = datastore;
-            ProfileClient = new ProfileClient(profile);
-
-            // Ignore SSL errors
-            System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
             // Set RunningMocked
             if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback)
             {
@@ -59,6 +57,16 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 TestMockSupport.RunningMocked = false;
             }
+
+            var datastore = new MockDataStore();
+            AzureSession.DataStore = datastore;
+            var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            AzurePSCmdlet.CurrentProfile = profile;
+            AzureSession.DataStore = datastore;
+            ProfileClient = new ProfileClient(profile);
+
+            // Ignore SSL errors
+            System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
         }
 
         /// <summary>
@@ -201,21 +209,29 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.modules = new List<string>();
             if (mode == AzureModule.AzureProfile)
             {
-                this.modules.Add(@"ServiceManagement\Azure\Azure.psd1");
-                this.modules.Add(@"ResourceManager\AzureResourceManager\AzureResourceManager.psd1");
+                this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
-                this.modules.Add(@"ServiceManagement\Azure\Azure.psd1");
+                this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
             }
             else if (mode == AzureModule.AzureResourceManager)
             {
-                this.modules.Add(@"ResourceManager\AzureResourceManager\AzureResourceManager.psd1");
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
             }
             else
             {
                 throw new ArgumentException("Unknown command type for testing");
             }
+            this.modules.Add("Assert.ps1");
+            this.modules.Add("Common.ps1");
+            this.modules.AddRange(modules);
+        }
+
+        public void SetupModules(params string[] modules)
+        {
+            this.modules = new List<string>();
             this.modules.Add("Assert.ps1");
             this.modules.Add("Common.ps1");
             this.modules.AddRange(modules);

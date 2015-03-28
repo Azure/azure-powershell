@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -242,45 +242,9 @@
       <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
       <Name>Commands.Profile</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\ServiceManagement\RemoteApp\Commands.RemoteApp\Commands.RemoteApp.csproj">
-      <Project>{492d2af2-950b-4f2e-8079-8794305313fd}</Project>
-      <Name>Commands.RemoteApp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\ServiceManagement\StorSimple\Commands.StorSimple\Commands.StorSimple.csproj">
-      <Project>{11524d98-6c40-4091-a8e1-86463fee607c}</Project>
-      <Name>Commands.StorSimple</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Batch\Commands.Batch\Commands.Batch.csproj">
-      <Project>{d470e50a-9607-48d6-a924-4f9f86502704}</Project>
-      <Name>Commands.Batch</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Insights\Commands.Insights\Commands.Insights.csproj">
-      <Project>{dea446a1-84e2-46cc-b780-eb4afde2460e}</Project>
-      <Name>Commands.Insights</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\KeyVault\Commands.KeyVault\Commands.KeyVault.csproj">
-      <Project>{9ffc40cc-a341-4d0c-a25d-dc6b78ef6c94}</Project>
-      <Name>Commands.KeyVault</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\RedisCache\Commands.RedisCache\Commands.RedisCache.csproj">
-      <Project>{c972e3ef-4461-4758-ba31-93e0947b1253}</Project>
-      <Name>Commands.RedisCache</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Sql\Commands.Sql\Commands.Sql.csproj">
-      <Project>{69ed499e-6f3c-488f-86b8-b74cfda4d47e}</Project>
-      <Name>Commands.Sql</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
       <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
       <Name>Commands.Tags</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\StreamAnalytics\Commands.StreamAnalytics\Commands.StreamAnalytics.csproj">
-      <Project>{F49A314A-A235-47D3-A654-1EC19ACA366C}</Project>
-      <Name>Commands.StreamAnalytics</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Websites\Commands.Websites\Commands.Websites.csproj">
-      <Project>{80a92297-7c92-456b-8ee7-9fb6ce30149d}</Project>
-      <Name>Commands.Websites</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
