@@ -248,6 +248,10 @@
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
+      <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
+      <Name>Commands.ScenarioTests.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\HDInsight\Commands.HDInsight\Commands.HDInsight.csproj">
       <Project>{137d404a-865a-43db-930c-6da67da048df}</Project>
       <Name>Commands.HDInsight</Name>
