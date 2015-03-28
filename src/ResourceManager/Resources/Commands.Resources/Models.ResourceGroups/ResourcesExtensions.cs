@@ -33,38 +33,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
     {
         public static PSResourceGroup ToPSResourceGroup(this ResourceGroup resourceGroup, ResourcesClient client, bool detailed)
         {
-            var result = new PSResourceGroup
-            {
-                ResourceGroupName = resourceGroup.Name,
-                Location = resourceGroup.Location,
-                ProvisioningState = resourceGroup.ProvisioningState,
-                Tags = TagsConversionHelper.CreateTagHashtable(resourceGroup.Tags),
-                ResourceId = resourceGroup.Id
-            };
-
-            if (detailed)
-            {
-                result.Resources = client.FilterResources(new FilterResourcesOptions { ResourceGroup = resourceGroup.Name })
-                    .Select(r => r.ToPSResource(client, true)).ToList();
-                result.Permissions = client.GetResourceGroupPermissions(resourceGroup.Name);
-            }
-
-            return result;
+            return resourceGroup.ToPSResourceGroup(client, detailed);
         }
 
-        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this DeploymentGetResult result, string resourceGroup)
-        {
-            PSResourceGroupDeployment deployment = new PSResourceGroupDeployment();
-
-            if (result != null)
-            {
-                deployment = CreatePSResourceGroupDeployment(result.Deployment.Name, resourceGroup, result.Deployment.Properties);
-            }
-
-            return deployment;
-        }
-
-        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this Deployment result, string resourceGroup)
+        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this DeploymentExtended result, string resourceGroup)
         {
             PSResourceGroupDeployment deployment = new PSResourceGroupDeployment();
 
@@ -76,6 +48,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return deployment;
         }
 
+        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this Deployment result, string resourceGroup)
+        {
+            return result.ToPSResourceGroupDeployment(resourceGroup);
+        }
+
         public static PSResourceManagerError ToPSResourceManagerError(this ResourceManagementError error)
         {
             return new PSResourceManagerError
@@ -85,22 +62,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 };
         }
 
-        public static PSResource ToPSResource(this Resource resource, ResourcesClient client, bool minimal)
+        public static PSResource ToPSResource(this GenericResourceExtended resource, ResourcesClient client, bool minimal)
         {
-            ResourceIdentifier identifier = new ResourceIdentifier(resource.Id);
-            return new PSResource
-            {
-                Name = identifier.ResourceName,
-                Location = resource.Location,
-                ResourceType = identifier.ResourceType,
-                ResourceGroupName = identifier.ResourceGroupName,
-                ParentResource = identifier.ParentResource,
-                Properties = JsonUtilities.DeserializeJson(resource.Properties),
-                PropertiesText = resource.Properties,
-                Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags),
-                Permissions = minimal ? null : client.GetResourcePermissions(identifier),
-                ResourceId = identifier.ToString()
-            };
+            return resource.ToPSResource(client, minimal);
         }
 
         public static PSResourceProvider ToPSResourceProvider(this Provider provider)
@@ -342,7 +306,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         private static PSResourceGroupDeployment CreatePSResourceGroupDeployment(
             string name,
             string gesourceGroup,
-            DeploymentProperties properties)
+            DeploymentPropertiesExtended properties)
         {
             PSResourceGroupDeployment deploymentObject = new PSResourceGroupDeployment();
 
