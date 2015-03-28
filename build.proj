@@ -154,7 +154,7 @@
   <!-- Do everything possible -->
   <Target
     Name="Full"
-    DependsOnTargets="ForceRestorePackages;Clean;BuildDebug;BuildRelease;Test;BuildSetupDebug;BuildSetupRelease" />
+    DependsOnTargets="ForceRestorePackages;Clean;BuildDebug;Test;BuildSetupDebug" />
 
   <!-- Build the Cmdlets in Release configuration -->
   <Target Name="BuildRelease" DependsOnTargets="ForceRestorePackages">
