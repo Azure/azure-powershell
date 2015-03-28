@@ -47,16 +47,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public EnvironmentSetupHelper()
         {
-            // Set RunningMocked
-            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback)
-            {
-                TestMockSupport.RunningMocked = true;
-            }
-            else
-            {
-                TestMockSupport.RunningMocked = false;
-            }
-
             var datastore = new MemoryDataStore();
             AzureSession.DataStore = datastore;
             var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
@@ -66,6 +56,16 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
+
+            // Set RunningMocked
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback)
+            {
+                TestMockSupport.RunningMocked = true;
+            }
+            else
+            {
+                TestMockSupport.RunningMocked = false;
+            }
         }
 
         /// <summary>
