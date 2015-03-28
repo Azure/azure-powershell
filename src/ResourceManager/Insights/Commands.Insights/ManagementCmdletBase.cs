@@ -16,14 +16,13 @@ using System;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Insights;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights
 {
     /// <summary>
-    /// Base for the Management-oriented Insights Cmdlets
+    /// Base class for the Azure Insights SDK Cmdlets based on the InsightsManagementClient
     /// </summary>
-    public abstract class ManagementCmdletBase : AzurePSCmdlet, IDisposable
+    public abstract class ManagementCmdletBase : InsightsCmdletBase, IDisposable
     {
         #region General declarations
 
