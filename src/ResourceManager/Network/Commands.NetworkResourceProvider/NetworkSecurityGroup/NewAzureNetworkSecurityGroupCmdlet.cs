@@ -91,10 +91,10 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             nsg.Name = this.Name;
             nsg.ResourceGroupName = this.ResourceGroupName;
             nsg.Location = this.Location;
-            nsg.Properties = new PSNetworkSecurityGroupProperties { SecurityRules = this.SecurityRules };
+            nsg.SecurityRules = this.SecurityRules;
 
             // Map to the sdk object
-            var nsgModel = Mapper.Map<MNM.NetworkSecurityGroupCreateOrUpdateParameters>(nsg);
+            var nsgModel = Mapper.Map<MNM.NetworkSecurityGroup>(nsg);
             nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

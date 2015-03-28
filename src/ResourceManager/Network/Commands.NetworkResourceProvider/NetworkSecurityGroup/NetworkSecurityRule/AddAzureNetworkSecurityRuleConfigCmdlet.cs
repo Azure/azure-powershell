@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             base.ExecuteCmdlet();
 
             // Verify if the subnet exists in the NetworkSecurityGroup
-            var rule = this.NetworkSecurityGroup.Properties.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var rule = this.NetworkSecurityGroup.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (rule != null)
             {
@@ -49,19 +49,17 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             rule = new PSSecurityRule();
 
             rule.Name = this.Name;
-            rule.Properties = new PSSecurityRuleProperties();
-            rule.Properties.Description = this.Description;
-            rule.Properties.Protocol = this.Protocol;
-            rule.Properties.SourcePortRange = this.SourcePortRange;
-            rule.Properties.DestinationPortRange = this.DestinationPortRange;
-            rule.Properties.SourceAddressPrefix = this.SourceAddressPrefix;
-            rule.Properties.DestinationAddressPrefix = this.DestinationAddressPrefix;
-            rule.Properties.Access = this.Access;
-            rule.Properties.Priority = this.Priority;
-            rule.Properties.Direction = this.Direction;
+            rule.Description = this.Description;
+            rule.Protocol = this.Protocol;
+            rule.SourcePortRange = this.SourcePortRange;
+            rule.DestinationPortRange = this.DestinationPortRange;
+            rule.SourceAddressPrefix = this.SourceAddressPrefix;
+            rule.DestinationAddressPrefix = this.DestinationAddressPrefix;
+            rule.Access = this.Access;
+            rule.Priority = this.Priority;
+            rule.Direction = this.Direction;
 
-
-            this.NetworkSecurityGroup.Properties.SecurityRules.Add(rule);
+            this.NetworkSecurityGroup.SecurityRules.Add(rule);
 
             WriteObject(this.NetworkSecurityGroup);
         }

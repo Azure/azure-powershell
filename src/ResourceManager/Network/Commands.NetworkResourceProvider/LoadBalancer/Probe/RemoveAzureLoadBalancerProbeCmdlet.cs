@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
 
-            var probe = this.LoadBalancer.Properties.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var probe = this.LoadBalancer.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (probe != null)
             {
-                this.LoadBalancer.Properties.Probes.Remove(probe);
+                this.LoadBalancer.Probes.Remove(probe);
             }
 
             WriteObject(this.LoadBalancer);

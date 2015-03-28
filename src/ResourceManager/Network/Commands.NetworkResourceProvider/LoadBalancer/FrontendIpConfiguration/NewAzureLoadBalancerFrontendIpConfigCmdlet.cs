@@ -44,28 +44,27 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var frontendIpConfig = new PSFrontendIpConfiguration();
             frontendIpConfig.Name = this.Name;
-            frontendIpConfig.Properties = new PSFrontendIpConfigurationProperties();
 
             if (!string.IsNullOrEmpty(this.SubnetId))
             {
-                frontendIpConfig.Properties.Subnet = new PSResourceId();
-                frontendIpConfig.Properties.Subnet.Id = this.SubnetId;
+                frontendIpConfig.Subnet = new PSResourceId();
+                frontendIpConfig.Subnet.Id = this.SubnetId;
 
                 if (!string.IsNullOrEmpty(this.PrivateIpAddress))
                 {
-                    frontendIpConfig.Properties.PrivateIpAddress = this.PrivateIpAddress;
-                    frontendIpConfig.Properties.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Static;
+                    frontendIpConfig.PrivateIpAddress = this.PrivateIpAddress;
+                    frontendIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Static;
                 }
                 else
                 {
-                    frontendIpConfig.Properties.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Dynamic;
+                    frontendIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Dynamic;
                 }
             }
 
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
             {
-                frontendIpConfig.Properties.PublicIpAddress = new PSResourceId();
-                frontendIpConfig.Properties.PublicIpAddress.Id = this.PublicIpAddressId;
+                frontendIpConfig.PublicIpAddress = new PSResourceId();
+                frontendIpConfig.PublicIpAddress.Id = this.PublicIpAddressId;
             }
 
             frontendIpConfig.Id =

@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             var publicIpAddress = Mapper.Map<PSPublicIpAddress>(getPublicIpAddressResponse.PublicIpAddress);
             publicIpAddress.ResourceGroupName = resourceGroupName;
 
-            if (publicIpAddress.Properties.DnsSettings == null)
+            if (publicIpAddress.DnsSettings == null)
             {
-                publicIpAddress.Properties.DnsSettings = new PSPublicIpAddressDnsSettings();
+                publicIpAddress.DnsSettings = new PSPublicIpAddressDnsSettings();
             }
 
             publicIpAddress.Tag =

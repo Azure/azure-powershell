@@ -104,17 +104,16 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             vnet.Name = this.Name;
             vnet.ResourceGroupName = this.ResourceGroupName;
             vnet.Location = this.Location;
-            vnet.Properties = new PSVirtualNetworkProperties();
-            vnet.Properties.AddressSpace = new PSAddressSpace();
-            vnet.Properties.AddressSpace.AddressPrefixes = this.AddressPrefix;
-            vnet.Properties.DhcpOptions = new PSDhcpOptions();
-            vnet.Properties.DhcpOptions.DnsServers = this.DnsServer;
+            vnet.AddressSpace = new PSAddressSpace();
+            vnet.AddressSpace.AddressPrefixes = this.AddressPrefix;
+            vnet.DhcpOptions = new PSDhcpOptions();
+            vnet.DhcpOptions.DnsServers = this.DnsServer;
 
-            vnet.Properties.Subnets = new List<PSSubnet>();
-            vnet.Properties.Subnets = this.Subnet;
+            vnet.Subnets = new List<PSSubnet>();
+            vnet.Subnets = this.Subnet;
 
             // Map to the sdk object
-            var vnetModel = Mapper.Map<MNM.VirtualNetworkCreateOrUpdateParameters>(vnet);
+            var vnetModel = Mapper.Map<MNM.VirtualNetwork>(vnet);
             vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

@@ -12,17 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
+    using Newtonsoft.Json;
+
     public class PSPublicIpAddress : PSTopLevelResource
     {
-        public PSPublicIpAddressProperties Properties { get; set; }
+        public string PublicIpAllocationMethod { get; set; }
 
-        public string PropertiesText
+        public PSResourceId IpConfiguration { get; set; }
+
+        public PSPublicIpAddressDnsSettings DnsSettings { get; set; }
+
+        public string IpAddress { get; set; }
+
+        public int? IdleTimeoutInMinutes { get; set; }
+
+        public string ProvisioningState { get; set; }
+        
+        [JsonIgnore]
+        public string IpConfigurationText
         {
-            get { return JsonConvert.SerializeObject(Properties, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(IpConfiguration, Formatting.Indented); }
+        }
+        
+        [JsonIgnore]
+        public string DnsSettingsText
+        {
+            get { return JsonConvert.SerializeObject(DnsSettings, Formatting.Indented); }
         }
     }
 }

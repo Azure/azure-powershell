@@ -17,6 +17,24 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
     public class PSSecurityRule : PSChildResource
     {
-        public PSSecurityRuleProperties Properties { get; set; }
+        public string Description { get; set; }
+
+        public string Protocol { get; set; }
+
+        public string SourcePortRange { get; set; }
+
+        public string DestinationPortRange { get; set; }
+
+        public string SourceAddressPrefix { get; set; }
+
+        public string DestinationAddressPrefix { get; set; }
+
+        public string Access { get; set; }
+
+        public int Priority { get; set; }
+
+        public string Direction { get; set; }
+
+        public string ProvisioningState { get; set; }
     }
 }

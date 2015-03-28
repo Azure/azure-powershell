@@ -41,15 +41,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var subnet = new PSSubnet();
             subnet.Name = this.Name;
-            subnet.Properties = new PSSubnetProperties();
-            subnet.Properties.AddressPrefix = this.AddressPrefix;
-            subnet.Properties.DhcpOptions = new PSDhcpOptions();
-            subnet.Properties.DhcpOptions.DnsServers = this.DnsServer;  
+            subnet.AddressPrefix = this.AddressPrefix;
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
-                subnet.Properties.NetworkSecurityGroup = new PSResourceId();
-                subnet.Properties.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+                subnet.NetworkSecurityGroup = new PSResourceId();
+                subnet.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
             WriteObject(subnet);

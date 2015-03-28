@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             base.ExecuteCmdlet();
 
             // Verify if the subnet exists in the VirtualNetwork
-            var subnet = this.VirtualNetwork.Properties.Subnets.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
+            var subnet = this.VirtualNetwork.Subnets.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
 
             if (subnet == null)
             {
@@ -55,15 +55,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 }
             }
 
-            subnet.Properties = new PSSubnetProperties();
-            subnet.Properties.AddressPrefix = this.AddressPrefix;
-            subnet.Properties.DhcpOptions = new PSDhcpOptions();
-            subnet.Properties.DhcpOptions.DnsServers = this.DnsServer;
-
+            subnet.AddressPrefix = this.AddressPrefix;
+            
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
-                subnet.Properties.NetworkSecurityGroup = new PSResourceId();
-                subnet.Properties.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+                subnet.NetworkSecurityGroup = new PSResourceId();
+                subnet.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
             WriteObject(this.VirtualNetwork);

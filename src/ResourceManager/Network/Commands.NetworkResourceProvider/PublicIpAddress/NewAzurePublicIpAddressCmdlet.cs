@@ -109,21 +109,20 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             var publicIp = new PSPublicIpAddress();
             publicIp.Name = this.Name;
             publicIp.Location = this.Location;
-            publicIp.Properties = new PSPublicIpAddressProperties();
-            publicIp.Properties.PublicIpAllocationMethod = this.AllocationMethod;
+            publicIp.PublicIpAllocationMethod = this.AllocationMethod;
 
             if (this.IdleTimeoutInMinutes > 0)
             {
-                publicIp.Properties.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
+                publicIp.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
 
             if (!string.IsNullOrEmpty(this.DomainNameLabel))
             {
-                publicIp.Properties.DnsSettings = new PSPublicIpAddressDnsSettings();
-                publicIp.Properties.DnsSettings.DomainNameLabel = this.DomainNameLabel;
+                publicIp.DnsSettings = new PSPublicIpAddressDnsSettings();
+                publicIp.DnsSettings.DomainNameLabel = this.DomainNameLabel;
             }
 
-            var publicIpModel = Mapper.Map<MNM.PublicIpAddressCreateOrUpdateParameters>(publicIp);
+            var publicIpModel = Mapper.Map<MNM.PublicIpAddress>(publicIp);
 
             publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 

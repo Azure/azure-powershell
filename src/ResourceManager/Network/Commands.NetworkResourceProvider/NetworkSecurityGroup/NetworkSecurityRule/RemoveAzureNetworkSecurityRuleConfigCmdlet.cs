@@ -38,11 +38,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             base.ExecuteCmdlet();
 
             // Verify if the rule exists in the NetworkSecurityGroup
-            var rule = this.NetworkSecurityGroup.Properties.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var rule = this.NetworkSecurityGroup.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (rule != null)
             {
-                this.NetworkSecurityGroup.Properties.SecurityRules.Remove(rule);
+                this.NetworkSecurityGroup.SecurityRules.Remove(rule);
             }
 
             WriteObject(this.NetworkSecurityGroup);

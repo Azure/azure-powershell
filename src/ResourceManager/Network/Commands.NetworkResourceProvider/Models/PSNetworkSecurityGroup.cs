@@ -13,17 +13,46 @@
 // limitations under the License.
 //
 
-using Newtonsoft.Json;
-
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class PSNetworkSecurityGroup : PSTopLevelResource
      {
-        public PSNetworkSecurityGroupProperties Properties { get; set; }
+         public List<PSSecurityRule> SecurityRules { get; set; }
 
-        public string PropertiesText
-        {
-            get { return JsonConvert.SerializeObject(Properties, Formatting.Indented); }
-        }
+         public List<PSSecurityRule> DefaultSecurityRules { get; set; }
+
+         public List<PSResourceId> NetworkInterfaces { get; set; }
+
+         public List<PSResourceId> Subnets { get; set; }
+
+         public string ProvisioningState { get; set; }
+
+         [JsonIgnore]
+         public string SecurityRulesText
+         {
+             get { return JsonConvert.SerializeObject(SecurityRules, Formatting.Indented); }
+         }
+
+         [JsonIgnore]
+         public string DefaultSecurityRulesText
+         {
+             get { return JsonConvert.SerializeObject(DefaultSecurityRules, Formatting.Indented); }
+         }
+
+         [JsonIgnore]
+         public string NetworkInterfacesText
+         {
+             get { return JsonConvert.SerializeObject(NetworkInterfaces, Formatting.Indented); }
+         }
+
+         [JsonIgnore]
+         public string SubnetsText
+         {
+             get { return JsonConvert.SerializeObject(Subnets, Formatting.Indented); }
+         }
      }
 }

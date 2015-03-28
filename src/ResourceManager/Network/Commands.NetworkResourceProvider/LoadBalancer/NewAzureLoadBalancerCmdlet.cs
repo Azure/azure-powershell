@@ -118,39 +118,38 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             loadBalancer.ResourceGroupName = this.ResourceGroupName;
             loadBalancer.Location = this.Location;
 
-            loadBalancer.Properties = new PSLoadBalancerProperties();
-            loadBalancer.Properties.FrontendIpConfigurations = new List<PSFrontendIpConfiguration>();
-            loadBalancer.Properties.FrontendIpConfigurations = this.FrontendIpConfiguration;
+            loadBalancer.FrontendIpConfigurations = new List<PSFrontendIpConfiguration>();
+            loadBalancer.FrontendIpConfigurations = this.FrontendIpConfiguration;
 
             if (this.BackendAddressPool != null)
             {
-                loadBalancer.Properties.BackendAddressPools = new List<PSBackendAddressPool>();
-                loadBalancer.Properties.BackendAddressPools = this.BackendAddressPool;
+                loadBalancer.BackendAddressPools = new List<PSBackendAddressPool>();
+                loadBalancer.BackendAddressPools = this.BackendAddressPool;
             }
 
             if (this.Probe != null)
             {
-                loadBalancer.Properties.Probes = new List<PSProbe>();
-                loadBalancer.Properties.Probes = this.Probe;
+                loadBalancer.Probes = new List<PSProbe>();
+                loadBalancer.Probes = this.Probe;
             }
 
             if (this.InboundNatRule != null)
             {
-                loadBalancer.Properties.InboundNatRules = new List<PSInboundNatRule>();
-                loadBalancer.Properties.InboundNatRules = this.InboundNatRule;
+                loadBalancer.InboundNatRules = new List<PSInboundNatRule>();
+                loadBalancer.InboundNatRules = this.InboundNatRule;
             }
 
             if (this.LoadBalancingRule != null)
             {
-                loadBalancer.Properties.LoadBalancingRules = new List<PSLoadBalancingRule>();
-                loadBalancer.Properties.LoadBalancingRules = this.LoadBalancingRule;
+                loadBalancer.LoadBalancingRules = new List<PSLoadBalancingRule>();
+                loadBalancer.LoadBalancingRules = this.LoadBalancingRule;
             }
 
             // Normalize the IDs
             ChildResourceHelper.NormalizeChildResourcesId(loadBalancer);
 
             // Map to the sdk object
-            var lbModel = Mapper.Map<MNM.LoadBalancerCreateOrUpdateParameters>(loadBalancer);
+            var lbModel = Mapper.Map<MNM.LoadBalancer>(loadBalancer);
             lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

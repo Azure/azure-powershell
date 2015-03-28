@@ -34,14 +34,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var backendAddressPool = new PSBackendAddressPool();
             backendAddressPool.Name = this.Name;
-            backendAddressPool.Properties = new PSBackendAddressPoolProperties();
-            backendAddressPool.Properties.BackendIpConfigurations = new List<PSResourceId>();
+            backendAddressPool.BackendIpConfigurations = new List<PSResourceId>();
 
             foreach (var backendIpConfigurationId in this.BackendIpConfigurationId)
             {
                 var resourceId = new PSResourceId();
                 resourceId.Id = backendIpConfigurationId;
-                backendAddressPool.Properties.BackendIpConfigurations.Add(resourceId);
+                backendAddressPool.BackendIpConfigurations.Add(resourceId);
             }
 
             backendAddressPool.Id =

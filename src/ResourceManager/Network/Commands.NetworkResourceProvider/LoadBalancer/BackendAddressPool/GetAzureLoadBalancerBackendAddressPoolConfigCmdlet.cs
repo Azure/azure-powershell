@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var backendAddressPool =
-                    this.LoadBalancer.Properties.BackendAddressPools.First(
+                    this.LoadBalancer.BackendAddressPools.First(
                         resource =>
                             string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
             else
             {
-                var backendAddressPools = this.LoadBalancer.Properties.BackendAddressPools;
+                var backendAddressPools = this.LoadBalancer.BackendAddressPools;
                 WriteObject(backendAddressPools, true);
             }
             

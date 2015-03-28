@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var subnet =
-                    this.VirtualNetwork.Properties.Subnets.First(
+                    this.VirtualNetwork.Subnets.First(
                         resource =>
                             string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
             else
             {
-                var subnets = this.VirtualNetwork.Properties.Subnets;
+                var subnets = this.VirtualNetwork.Subnets;
                 WriteObject(subnets, true);
             }
             

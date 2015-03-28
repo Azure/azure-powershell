@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             base.ExecuteCmdlet();
 
             var rules = this.DefaultRules
-                            ? this.NetworkSecurityGroup.Properties.DefaultSecurityRules
-                            : this.NetworkSecurityGroup.Properties.SecurityRules;
+                            ? this.NetworkSecurityGroup.DefaultSecurityRules
+                            : this.NetworkSecurityGroup.SecurityRules;
             
             if (!string.IsNullOrEmpty(this.Name))
             {

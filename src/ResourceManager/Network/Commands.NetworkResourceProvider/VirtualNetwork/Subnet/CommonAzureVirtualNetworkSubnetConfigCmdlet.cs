@@ -35,11 +35,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of Dns Servers")]
-        public List<string> DnsServer { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "NetworkSecurityGroupId")]
