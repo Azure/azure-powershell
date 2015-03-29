@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
     using Common;
     using Microsoft.Azure.Management.RemoteApp.Cmdlets;
     using Microsoft.Azure.Management.RemoteApp.Models;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
     {
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResult()
         {
             List<OperationResult> operationResult = null;

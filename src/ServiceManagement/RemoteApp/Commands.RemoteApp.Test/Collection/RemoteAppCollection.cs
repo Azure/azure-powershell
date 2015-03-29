@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.RemoteApp.Test
 {
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
     {
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAllCollections()
         {
             int countOfExpectedCollections = 0;
@@ -67,6 +69,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetCollectionsByName()
         {
             int countOfExpectedCollections = 1;
@@ -110,6 +113,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddCollection()
         {
             List<TrackingResult> trackingIds = null;
@@ -156,6 +160,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateCollection()
         {
             List<TrackingResult> trackingIds = null;
@@ -199,6 +204,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetCollection()
         {
             List<TrackingResult> trackingIds = null;
@@ -246,6 +252,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveCollection()
         {
             List<TrackingResult> trackingIds = null;
@@ -282,6 +289,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetRegionList()
         {
             List<Region> regionList = null;

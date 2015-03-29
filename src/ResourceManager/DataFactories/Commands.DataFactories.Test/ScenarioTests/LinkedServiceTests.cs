@@ -20,35 +20,30 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
     public class LinkedServiceTests : DataFactoriesScenarioTestsBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedService()
         {
             RunPowerShellTest("Test-LinkedService");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedServiceWithDataFactoryParameter()
         {
             RunPowerShellTest("Test-LinkedServiceWithDataFactoryParameter");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLinkedServiceWithEmptyName()
         {
             RunPowerShellTest("Test-GetLinkedServiceWithEmptyName");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLinkedServiceWithWhiteSpaceName()
         {
             RunPowerShellTest("Test-GetLinkedServiceWithWhiteSpaceName");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedServicePiping()
         {
             RunPowerShellTest("Test-LinkedServicePiping");
