@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS;
@@ -31,6 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
     public class VirtualMachineOperationsTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-Negative")]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
@@ -44,6 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnOneVM()
@@ -57,6 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-Negative")]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
@@ -70,6 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnOneVMGetById()
@@ -85,6 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnMultipleVMsGetByName()
@@ -105,6 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void CreateVMFromVHD()
@@ -154,6 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void CreateVMFromTemplate()
@@ -202,6 +210,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
         
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-Negative")]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
@@ -221,6 +230,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-Negative")]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
@@ -240,6 +250,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-Negative")]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
@@ -256,6 +267,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void DeleteVM()
@@ -283,6 +295,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void StartVM()
@@ -299,6 +312,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void StopVM()
@@ -315,6 +329,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void RestartVM()
@@ -331,6 +346,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShutdownVM()
@@ -347,6 +363,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void SuspendVM()
@@ -363,6 +380,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ResumeVM()
