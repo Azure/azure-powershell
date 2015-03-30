@@ -18,10 +18,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Dns;
 using Microsoft.Azure.Management.Dns.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.Azure.Commands.Resources.Models;
 
@@ -31,8 +32,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
     {
         public const string DnsResourceLocation = "global";
 
-        public DnsClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<DnsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public DnsClient(AzureProfile profile)
+            : this(AzureSession.ClientFactory.CreateClient<DnsManagementClient>(profile, AzureEnvironment.Endpoint.ResourceManager))
         {            
         }
 
@@ -102,7 +103,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
 
         public bool DeleteDnsZone(DnsZone zone, bool ignoreEtag)
         {
-            OperationResponse resp = this.DnsManagementClient.Zones.Delete(
+            AzureOperationResponse resp = this.DnsManagementClient.Zones.Delete(
                 zone.ResourceGroupName,
                 zone.Name,
                 new ZoneDeleteParameters
@@ -209,7 +210,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
 
         public bool DeleteDnsRecordSet(DnsRecordSet recordSet, bool ignoreEtag)
         {
-            OperationResponse response = this.DnsManagementClient.Records.Delete(
+            AzureOperationResponse response = this.DnsManagementClient.Records.Delete(
                 recordSet.ResourceGroupName,
                 recordSet.ZoneName,
                 recordSet.Name,

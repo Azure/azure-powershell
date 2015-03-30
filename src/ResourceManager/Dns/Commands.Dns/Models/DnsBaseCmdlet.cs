@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 if (dnsClient == null)
                 {
-                    dnsClient = new DnsClient(CurrentContext);
+                    dnsClient = new DnsClient(this.Profile);
                 }
                 return dnsClient;
             }
