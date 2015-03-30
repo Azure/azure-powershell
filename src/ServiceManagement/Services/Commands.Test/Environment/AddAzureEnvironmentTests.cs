@@ -30,11 +30,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
     public class AddAzureEnvironmentTests : TestBase, IDisposable
     {
-        private MockDataStore dataStore;
+        private MemoryDataStore dataStore;
 
         public AddAzureEnvironmentTests()
         {
-            dataStore = new MockDataStore();
+            dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
         }
 
