@@ -51,15 +51,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
             else
             {
                 ODATADetailLevel odata = null;
+                string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(Resources.GBP_GetByOData);
+                    verboseLogString = Resources.GBP_GetByOData;
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(Resources.GBP_NoFilter);
+                    verboseLogString = Resources.GBP_NoFilter;
                 }
+                WriteVerbose(verboseLogString);
+
                 using (IPoolManager poolManager = options.Context.BatchOMClient.OpenPoolManager())
                 {
                     IEnumerableAsyncExtended<ICloudPool> pools = poolManager.ListPools(odata, options.AdditionalBehaviors);

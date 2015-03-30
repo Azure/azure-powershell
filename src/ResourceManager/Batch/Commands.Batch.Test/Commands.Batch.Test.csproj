@@ -157,6 +157,7 @@
     <Compile Include="BatchTestHelpers.cs" />
     <Compile Include="Files\GetBatchTaskFileCommandTests.cs" />
     <Compile Include="Files\GetBatchTaskFileContentCommandTests.cs" />
+    <Compile Include="Files\GetBatchVMFileCommandTests.cs" />
     <Compile Include="Jobs\GetBatchJobCommandTests.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommandTests.cs" />
     <Compile Include="Models\BatchAccountContextTest.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Tasks\GetBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\NewBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\RemoveBatchTaskCommandTests.cs" />
+    <Compile Include="VMs\GetBatchVMCommandTests.cs" />
     <Compile Include="WorkItems\GetBatchWorkItemCommandTests.cs" />
     <Compile Include="WorkItems\NewBatchWorkItemCommandTests.cs" />
     <Compile Include="WorkItems\RemoveBatchWorkItemCommandTests.cs" />

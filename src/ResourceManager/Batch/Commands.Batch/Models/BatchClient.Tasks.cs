@@ -57,15 +57,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 string jName = options.Job == null ? options.JobName : options.Job.Name;
                 ODATADetailLevel odata = null;
+                string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBT_GetByOData, jName));
+                    verboseLogString = string.Format(Resources.GBT_GetByOData, jName);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBT_GetNoFilter, jName));
+                    verboseLogString = string.Format(Resources.GBT_GetNoFilter, jName);
                 }
+                WriteVerbose(verboseLogString);
 
                 IEnumerableAsyncExtended<ICloudTask> tasks = null;
                 if (options.Job != null)
