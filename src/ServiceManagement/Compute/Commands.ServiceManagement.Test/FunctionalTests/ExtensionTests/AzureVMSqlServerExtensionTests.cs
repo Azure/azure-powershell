@@ -58,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
 
-        [TestMethod(), TestCategory(Category.Sequential), TestProperty("Feature", "IAAS"), Priority(0), Owner("seths"), Description("Test the cmdlet ((Get,Set,Remove)-AzureVMSqlServerExtension)")]
+        [TestMethod(), TestCategory("Scenario"), TestProperty("Feature", "IAAS"), Priority(0), Owner("seths"), Description("Test the cmdlet ((Get,Set,Remove)-AzureVMSqlServerExtension)")]
         public void GetAzureVMSqlServerExtensionTest()
         {
             try
@@ -97,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        [TestMethod(), TestCategory(Category.Sequential), TestProperty("Feature", "IAAS"), Priority(0), Owner("seths"), Description("Test the cmdlet ((Get,Set)-AzureVMSqlServerExtension)")]
+        [TestMethod(), TestCategory("Scenario"), TestProperty("Feature", "IAAS"), Priority(0), Owner("seths"), Description("Test the cmdlet ((Get,Set)-AzureVMSqlServerExtension)")]
         public void UpdateVMWithSqlServerExtensionTest()
         {
             try
@@ -130,7 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        [TestMethod(), TestCategory(Category.Sequential), TestProperty("Feature", "IAAS"), Priority(0), Owner("seths"), Description("Test the cmdlet ((Get,Set)-AzureVMSqlServerExtension)")]
+        [TestMethod(), TestCategory("Scenario"), TestProperty("Feature", "IAAS"), Priority(0), Owner("seths"), Description("Test the cmdlet ((Get,Set)-AzureVMSqlServerExtension)")]
         public void AddRoleWithSqlServerExtensionTest()
         {
             try
@@ -161,7 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
 
-        [TestMethod(), TestCategory(Category.Sequential), TestProperty("Feature", "IAAS"), Priority(0), Owner("seths"), Description("Test the cmdlet ((Get,Set)-AzureVMSqlServerExtension)")]
+        [TestMethod(), TestCategory("Scenario"), TestProperty("Feature", "IAAS"), Priority(0), Owner("seths"), Description("Test the cmdlet ((Get,Set)-AzureVMSqlServerExtension)")]
         public void UpdateRoleWithSqlServerExtensionTest()
         {
             try

@@ -13,14 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
@@ -330,7 +332,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <summary>
         /// Get storage account and use specific azure environment
         /// </summary>
-        /// <param name="credential">Storage credentail</param>
+        /// <param name="credential">Storage credential</param>
         /// <param name="storageAccountName">Storage account name, it's used for build end point</param>
         /// <param name="useHttps">Use secure Http protocol</param>
         /// <param name="azureEnvironmentName">Environment name</param>
@@ -342,11 +344,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             
             if (string.IsNullOrEmpty(azureEnvironmentName))
             {
-                azureEnvironment = AzureSession.CurrentContext.Environment;
+                azureEnvironment = Profile.Context.Environment;
             }
             else
             {
-                azureEnvironment = DefaultProfileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                try
+                {
+                    var profileClient = new ProfileClient(Profile);
+                    azureEnvironment = profileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                }
+                catch (ArgumentException e)
+                {
+                    throw new ArgumentException(e.Message + " " + string.Format(CultureInfo.CurrentCulture, Resources.ValidEnvironmentName, EnvironmentName.AzureCloud, EnvironmentName.AzureChinaCloud)); 
+                }
             }
 
             Uri blobEndPoint = azureEnvironment.GetStorageBlobEndpoint(storageAccountName, useHttps);

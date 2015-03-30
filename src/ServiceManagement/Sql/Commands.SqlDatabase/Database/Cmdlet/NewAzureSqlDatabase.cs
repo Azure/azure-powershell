@@ -15,11 +15,12 @@
 using System;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -170,14 +171,14 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             try
             {
                 // Get the current subscription data.
-                AzureSubscription subscription = AzureSession.CurrentContext.Subscription;
+                AzureSubscription subscription = Profile.Context.Subscription;
 
                 // Create a temporary context
                 ServerDataServiceCertAuth context =
-                    ServerDataServiceCertAuth.Create(this.ServerName, subscription);
+                    ServerDataServiceCertAuth.Create(this.ServerName, Profile, subscription);
 
                 GetClientRequestId = () => context.ClientRequestId;
-                
+
                 Services.Server.Database response = context.CreateNewDatabase(
                     this.DatabaseName,
                     maxSizeGb,
@@ -185,7 +186,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     this.Collation,
                     this.Edition,
                     this.ServiceObjective);
-
+                
                 response = CmdletCommon.WaitForDatabaseOperation(this, context, response, this.DatabaseName, true);
 
                 // Retrieve the database with the specified name

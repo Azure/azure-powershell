@@ -16,8 +16,10 @@ using System.Linq;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -77,6 +79,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public string OrganizationName { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Flag to opt for auto chef-client update. Chef-client update is false by default.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AutoUpdateChefClient { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = LinuxParameterSetName,
             HelpMessage = "Set extension for Linux.")]
@@ -102,9 +110,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         private string GetLatestChefExtensionVersion()
         {
             var extensionList = this.ComputeClient.VirtualMachineExtensions.List();
-            return extensionList.ResourceExtensions.Where(
+            var version = extensionList.ResourceExtensions.Where(
                 extension => extension.Publisher == ExtensionDefaultPublisher
                 && extension.Name == base.extensionName).Max(extension => extension.Version);
+            string[] separators = {"."};
+            string majorVersion = version.Split(separators, StringSplitOptions.None)[0];
+            return majorVersion + ".*";
         }
 
         private void SetDefault()
@@ -141,6 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             bool IsChefServerUrlEmpty = string.IsNullOrEmpty(this.ChefServerUrl);
             bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
             bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
+            string AutoUpdateChefClient = this.AutoUpdateChefClient.IsPresent ? "true" : "false";
 
             //Cases handled:
             // 1. When clientRb given by user and:
@@ -192,14 +204,16 @@ validation_client_name 	\""{1}\""
 
             if (IsRunListEmpty)
             {
-                this.PublicConfiguration = string.Format("{{{0}}}",
+                this.PublicConfiguration = string.Format("{{{0},{1}}}",
+                    string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
                     string.Format(ClientRbTemplate, ClientConfig));
             }
             else
             {
-                this.PublicConfiguration = string.Format("{{{0},{1}}}",
-                          string.Format(ClientRbTemplate, ClientConfig),
-                          string.Format(RunListTemplate, this.RunList));
+                this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
+                    string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                    string.Format(ClientRbTemplate, ClientConfig),
+                    string.Format(RunListTemplate, this.RunList));
             }
         }
 

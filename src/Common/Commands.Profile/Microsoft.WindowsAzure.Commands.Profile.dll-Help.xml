@@ -39,11 +39,11 @@
 				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to add accounts and subscriptions to.  If not specified, adds accounts and subscriptions to the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -77,11 +77,11 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to add accounts and subscriptions to.  If not specified, adds accounts and subscriptions to the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -111,16 +111,16 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>SubscriptionDataFile</maml:name>
+			<maml:name>Profile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>The Profile to add accounts and subscriptions to.  If not specified, adds accounts and subscriptions to the default (on disk) profile.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>AzureProfile</maml:name>
 				<maml:uri/>
 			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
+			<dev:defaultValue>Default on-disk Profile</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ServicePrincipal</maml:name>
@@ -142,6 +142,18 @@
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SubscriptionDataFile</maml:name>
+			<maml:description>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -228,7 +240,7 @@
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;$credential = Get-Credential
-PS C:\&gt;Add-AzureAccount -Credential $credential</dev:code>
+          PS C:\&gt;Add-AzureAccount -Credential $credential</dev:code>
 			<dev:remarks>
 				<maml:para>This command uses the Credential parameter to provide AAD authentication information on the command line, rather than using the pop-up dialog for AAD authentication.</maml:para>
 				<maml:para />
@@ -249,7 +261,7 @@ PS C:\&gt;Add-AzureAccount -Credential $credential</dev:code>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;$credential = Get-Credential
-PS C:\&gt;Add-AzureAccount -Credential $credential -ServicePrincipal -Tenant &quot;3EB32C56-E1E5-46A6-9410-F4A0572B3998&quot;</dev:code>
+          PS C:\&gt;Add-AzureAccount -Credential $credential -ServicePrincipal -Tenant &quot;3EB32C56-E1E5-46A6-9410-F4A0572B3998&quot;</dev:code>
 			<dev:remarks>
 				<maml:para>This command uses the Credential parameter to provide AAD authentication information of the Service Principal in the tenant 3EB32C56-E1E5-46A6-9410-F4A0572B3998.</maml:para>
 				<maml:para />
@@ -405,12 +417,26 @@ PS C:\&gt;Add-AzureAccount -Credential $credential -ServicePrincipal -Tenant &qu
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="10">
+				<maml:name>AzureKeyVaultDnsSuffix</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The DNS suffix for Azure KeyVaut; servers in this environment</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="11">
+				<maml:name>AzureKeyVaultServiceEndpointResourceId</maml:name>
+				<maml:description>
+					<maml:para>The identity of the KeyVault endpoint, used to acquire a token for authenticating with the KeyValue service.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para>The Profile to add the environment to to.  If not specified, adds the environment to the default (on disk) profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -535,14 +561,50 @@ PS C:\&gt;Add-AzureAccount -Credential $credential -ServicePrincipal -Tenant &qu
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>SubscriptionDataFile</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="10">
+			<maml:name>AzureKeyVaultDnsSuffix</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>The DNS suffix for Azure KeyVaut; servers in this environment</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="11">
+			<maml:name>AzureKeyVaultServiceEndpointResourceId</maml:name>
+			<maml:description>
+				<maml:para>The identity of the KeyVault endpoint, used to acquire a token for authenticating with the KeyValue service.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para>The Profile to add the environment to to.  If not specified, adds the environment to the default (on disk) profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SubscriptionDataFile</maml:name>
+			<maml:description>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -589,29 +651,29 @@ PS C:\&gt;Add-AzureAccount -Credential $credential -ServicePrincipal -Tenant &qu
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;Add-AzureEnvironment -Name ContosoEnv -PublishSettingsFileUrl https://contoso.com/fwlink/?LinkID=101 -ServiceEndpoint https://contoso.com/fwlink/?LinkID=102
-Name                          : ContosoEnv
+          Name                          : ContosoEnv
 
-PublishSettingsFileUrl        : https://contoso.com/fwlink/?LinkID=101
+          PublishSettingsFileUrl        : https://contoso.com/fwlink/?LinkID=101
 
-ServiceEndpoint               : https://contoso.com/fwlink/?LinkID=102
+          ServiceEndpoint               : https://contoso.com/fwlink/?LinkID=102
 
-ResourceManagerEndpoint       : 
+          ResourceManagerEndpoint       :
 
-ManagementPortalUrl           : 
+          ManagementPortalUrl           :
 
-ActiveDirectoryEndpoint       : 
+          ActiveDirectoryEndpoint       :
 
-ActiveDirectoryCommonTenantId : 
+          ActiveDirectoryCommonTenantId :
 
-StorageEndpointSuffix         : 
+          StorageEndpointSuffix         :
 
-StorageBlobEndpointFormat     : 
+          StorageBlobEndpointFormat     :
 
-StorageQueueEndpointFormat    : 
+          StorageQueueEndpointFormat    :
 
-StorageTableEndpointFormat    : 
+          StorageTableEndpointFormat    :
 
-GalleryEndpoint               :</dev:code>
+          GalleryEndpoint               :</dev:code>
 			<dev:remarks>
 				<maml:para>This command creates the ContosoEnv Azure environment.</maml:para>
 				<maml:para />
@@ -694,11 +756,11 @@ GalleryEndpoint               :</dev:code>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to remove all accounts, certificates, and subscriptions from.  If not specified, removes all accounts and subscriptions from the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -716,13 +778,25 @@ GalleryEndpoint               :</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para>The Profile to remove all accounts, certificates, and subscriptions from.  If not specified, removes all accounts and subscriptions from the default (on disk) profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>SubscriptionDataFile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -736,7 +810,8 @@ GalleryEndpoint               :</dev:code>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -748,7 +823,8 @@ GalleryEndpoint               :</dev:code>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -782,7 +858,7 @@ GalleryEndpoint               :</dev:code>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Example 2: Clear non-default profile  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 2: Clear nondefault profile  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -850,11 +926,11 @@ GalleryEndpoint               :</dev:code>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to get accounts from.  If not specified, gets the accounts from the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -872,13 +948,25 @@ GalleryEndpoint               :</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para>The Profile to get accounts from.  If not specified, gets the accounts from the default (on disk) profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>SubscriptionDataFile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -925,10 +1013,10 @@ GalleryEndpoint               :</dev:code>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;Get-AzureAccount
-Name                         ActiveDirectories
-----                         -----------------
-contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd86-e6a...
-contosotest1@outlook.com     {{ ActiveDirectoryTenantId = aaeabcde-386c-4466-bf70-794...</dev:code>
+          Name                         ActiveDirectories
+          ----                         -----------------
+          contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd86-e6a...
+          contosotest1@outlook.com     {{ ActiveDirectoryTenantId = aaeabcde-386c-4466-bf70-794...</dev:code>
 			<dev:remarks>
 				<maml:para>This command gets all accounts associated with the specified user.</maml:para>
 				<maml:para />
@@ -949,9 +1037,9 @@ contosotest1@outlook.com     {{ ActiveDirectoryTenantId = aaeabcde-386c-4466-bf7
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;Get-AzureAccount -Name contosoadmin@outlook.com
-Name                         ActiveDirectories
-----                         -----------------
-contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd86-e6a...</dev:code>
+          Name                         ActiveDirectories
+          ----                         -----------------
+          contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd86-e6a...</dev:code>
 			<dev:remarks>
 				<maml:para>This command gets the ContosoAdmin account.</maml:para>
 				<maml:para />
@@ -1019,11 +1107,11 @@ contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd8
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to get environments from.  If not specified, gets environments from the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -1041,13 +1129,25 @@ contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd8
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para>The Profile to get environments from.  If not specified, gets environments from the default (on disk) profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>SubscriptionDataFile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1094,11 +1194,11 @@ contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd8
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;Get-AzureEnvironment
-EnvironmentName               ServiceEndpoint               ResourceManagerEndpoint       PublishSettingsFileUrl
----------------               ---------------               -----------------------       ----------------------
+          EnvironmentName               ServiceEndpoint               ResourceManagerEndpoint       PublishSettingsFileUrl
+          ---------------               ---------------               -----------------------       ----------------------
 
-AzureCloud                    https://management.core.wi... https://management.azure.com/ http://go.microsoft.com/fw... 
-AzureChinaCloud               https://management.core.ch... https://not-supported-serv... http://go.microsoft.com/fw...</dev:code>
+          AzureCloud                    https://management.core.wi... https://management.azure.com/ http://go.microsoft.com/fw...
+          AzureChinaCloud               https://management.core.ch... https://not-supported-serv... http://go.microsoft.com/fw...</dev:code>
 			<dev:remarks>
 				<maml:para>This command gets all environments that are available to Windows PowerShell.</maml:para>
 				<maml:para />
@@ -1119,29 +1219,29 @@ AzureChinaCloud               https://management.core.ch... https://not-supporte
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;Get-AzureEnvironment -Name AzureCloud
-Name                          : AzureCloud
+          Name                          : AzureCloud
 
-PublishSettingsFileUrl        : http://go.microsoft.com/fwlink/?LinkID=301775
+          PublishSettingsFileUrl        : http://go.microsoft.com/fwlink/?LinkID=301775
 
-ServiceEndpoint               : https://management.core.windows.net/
+          ServiceEndpoint               : https://management.core.windows.net/
 
-ResourceManagerEndpoint       : https://management.azure.com/
+          ResourceManagerEndpoint       : https://management.azure.com/
 
-ManagementPortalUrl           : http://go.microsoft.com/fwlink/?LinkId=254433
+          ManagementPortalUrl           : http://go.microsoft.com/fwlink/?LinkId=254433
 
-ActiveDirectoryEndpoint       : https://login.windows.net/
+          ActiveDirectoryEndpoint       : https://login.windows.net/
 
-ActiveDirectoryCommonTenantId : common
+          ActiveDirectoryCommonTenantId : common
 
-StorageEndpointSuffix         : core.windows.net
+          StorageEndpointSuffix         : core.windows.net
 
-StorageBlobEndpointFormat     : {0}://{1}.blob.core.windows.net/
+          StorageBlobEndpointFormat     : {0}://{1}.blob.core.windows.net/
 
-StorageQueueEndpointFormat    : {0}://{1}.queue.core.windows.net/
+          StorageQueueEndpointFormat    : {0}://{1}.queue.core.windows.net/
 
-StorageTableEndpointFormat    : {0}://{1}.table.core.windows.net/
+          StorageTableEndpointFormat    : {0}://{1}.table.core.windows.net/
 
-GalleryEndpoint               : https://gallery.azure.com/</dev:code>
+          GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 			<dev:remarks>
 				<maml:para>This example gets the AzureCloud environment.</maml:para>
 				<maml:para />
@@ -1251,11 +1351,11 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to retrieve the PublishSettings download endpoint from.  If not specified, gets the PublishSettings download endpoint from the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -1297,13 +1397,25 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para>The Profile to retrieve the PublishSettings download endpoint from.  If not specified, gets the PublishSettings download endpoint from the default (on disk) profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>SubscriptionDataFile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1436,11 +1548,11 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to get subscriptions from.  If not specified, gets subscriptions from the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -1460,11 +1572,11 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to get subscriptions from.  If not specified, gets subscriptions from the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -1484,11 +1596,11 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to get subscriptions from.  If not specified, gets subscriptions from the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -1508,11 +1620,11 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to get subscriptions from.  If not specified, gets subscriptions from the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -1542,13 +1654,13 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>SubscriptionDataFile</maml:name>
+			<maml:name>Profile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>The Profile to get subscriptions from.  If not specified, gets subscriptions from the default (on disk) profile.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>AzureProfile</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1585,6 +1697,18 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SubscriptionDataFile</maml:name>
+			<maml:description>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1789,11 +1913,11 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to add certificates and subscriptions to.  If not specified, adds certificates and subscriptions to the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -1823,13 +1947,25 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para>The Profile to add certificates and subscriptions to.  If not specified, adds certificates and subscriptions to the default (on disk) profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>SubscriptionDataFile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1953,6 +2089,466 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+		<command:name>New-AzureProfile</command:name>
+		<maml:description>
+			<maml:para>Create a new credential profile for Microsoft Azure PowerShell cmdlets in the current PowerShell session.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureProfile</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Create a new credential profile for Microsoft Azure PowerShell cmdlets in the current PowerShell session. A credential Profile is a container for the environments, accounts, and subscriptions used to authenticate Microsoft Azure PowerShell cmdlets with Microsoft Azure endpoints.  A profile created with tis command can be passed as a parameter to any Microsoft Azure PowerShell cmdlet and the cmdlet will use the passed in profile for authentication.  You can also use Select-AzureProfile to select a profile for use by all cmdlets in the current PowerrShell session.  This enables using different credential sets in different PowerShell sessions independently.</maml:para>
+		<maml:para>The cmdlet can initialize the created profile with a default subscription and the associated credentials. You can create a default subscription in the profile using a certificate, Azure ActiveDirectory Organization ID credewntials, Azure active directory Service Principal credentials, or an Azure Access Directory access token you acquire outside of PowerShell.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureProfile</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Environment</maml:name>
+				<maml:description>
+					<maml:para>Sets the AzureEnvironment for the default subscription in the created AzureProfile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureEnvironment</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>SubscriptionId</maml:name>
+				<maml:description>
+					<maml:para>The Id of the default subscription for this profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>StorageAccount</maml:name>
+				<maml:description>
+					<maml:para>The default storage account for the default subscription in the created Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>AccessToken</maml:name>
+				<maml:description>
+					<maml:para>The authorization token used to authenticate the default subscription in this Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>AccountId</maml:name>
+				<maml:description>
+					<maml:para>The Account name associated with the AccessToken for the default subscription in this Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureProfile</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Environment</maml:name>
+				<maml:description>
+					<maml:para>Sets the AzureEnvironment for the default subscription in the created AzureProfile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureEnvironment</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>SubscriptionId</maml:name>
+				<maml:description>
+					<maml:para>The Id of the default subscription for this profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>StorageAccount</maml:name>
+				<maml:description>
+					<maml:para>The default storage account for the default subscription in the created Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>Azure Organization ID credentials for authenticating the default subscription in this Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>Tenant</maml:name>
+				<maml:description>
+					<maml:para>The Tenant Id for the default subscription in this Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ServicePrincipal</maml:name>
+				<maml:description>
+					<maml:para>The ServicePrincipal Credential used to authenticate the default subscription in this Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureProfile</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Environment</maml:name>
+				<maml:description>
+					<maml:para>Sets the AzureEnvironment for the default subscription in the created AzureProfile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureEnvironment</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>SubscriptionId</maml:name>
+				<maml:description>
+					<maml:para>The Id of the default subscription for this profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>StorageAccount</maml:name>
+				<maml:description>
+					<maml:para>The default storage account for the default subscription in the created Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>Azure Organization ID credentials for authenticating the default subscription in this Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>Tenant</maml:name>
+				<maml:description>
+					<maml:para>The Tenant Id for the default subscription in this Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureProfile</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Environment</maml:name>
+				<maml:description>
+					<maml:para>Sets the AzureEnvironment for the default subscription in the created AzureProfile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureEnvironment</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>SubscriptionId</maml:name>
+				<maml:description>
+					<maml:para>The Id of the default subscription for this profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>StorageAccount</maml:name>
+				<maml:description>
+					<maml:para>The default storage account for the default subscription in the created Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Certificate</maml:name>
+				<maml:description>
+					<maml:para>The certificate used to authenticate the default subscription in this Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureProfile</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>Path</maml:name>
+				<maml:description>
+					<maml:para>The fully-qualified path to an AzureProfile saved on disk.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureProfile</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>Properties</maml:name>
+				<maml:description>
+					<maml:para>A hash table containing details about the default subscription for this profile.  The Hash keys and values may include:</maml:para>
+					<maml:para>SubscriptionId
+     [string]: The subscription ID for the default subscription in this Profile.</maml:para>
+					<maml:para>Certificate
+     [X509Certificate2]: The certificate credentials for the default subscription in this Profile.</maml:para>
+					<maml:para>Username
+     [string]: The user name associated with the default subscription for this Profile.  Used to acquire an Azure Active Directory User credential.</maml:para>
+					<maml:para>Password
+     [string]: The password associated with the default subscription for the Profile.  Used to acquire an Azure Active Directory User or Service credential.</maml:para>
+					<maml:para>ServicePrincipal
+     [string]: The SPN associated with the default subscription for this Profile.  Used to acquire an Azure Active Directory Service credential.</maml:para>
+					<maml:para>Tenant
+     [string]: The tenant associated with the default subscription for this Profile. Used to acquire an Azure Active Directory Service credential.</maml:para>
+					<maml:para>AccountId
+     [string]: The user name associated with the default subscription for this Profile.  Used to create a credential when access token is also specified.</maml:para>
+					<maml:para>Token
+     [string]: The access token associated with the default subscription for this Profile.  Used to create a credential when AccountId is also specified.</maml:para>
+					<maml:para>Environment
+     [string]: The name of the environment associated with the default subscription for this Profile.  Defaults to &#39;AzureCloud&#39; if not specified.</maml:para>
+					<maml:para>StorageAccount
+     [string]: The name of the default storage account associated with the default subscription for this Profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Environment</maml:name>
+			<maml:description>
+				<maml:para>Sets the AzureEnvironment for the default subscription in the created AzureProfile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureEnvironment</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureEnvironment</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>AzureCloud</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>SubscriptionId</maml:name>
+			<maml:description>
+				<maml:para>The Id of the default subscription for this profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>StorageAccount</maml:name>
+			<maml:description>
+				<maml:para>The default storage account for the default subscription in the created Profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>AccessToken</maml:name>
+			<maml:description>
+				<maml:para>The authorization token used to authenticate the default subscription in this Profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>AccountId</maml:name>
+			<maml:description>
+				<maml:para>The Account name associated with the AccessToken for the default subscription in this Profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Credential</maml:name>
+			<maml:description>
+				<maml:para>Azure Organization ID credentials for authenticating the default subscription in this Profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			<dev:type>
+				<maml:name>PSCredential</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>Tenant</maml:name>
+			<maml:description>
+				<maml:para>The Tenant Id for the default subscription in this Profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ServicePrincipal</maml:name>
+			<maml:description>
+				<maml:para>The ServicePrincipal Credential used to authenticate the default subscription in this Profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Certificate</maml:name>
+			<maml:description>
+				<maml:para>The certificate used to authenticate the default subscription in this Profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">X509Certificate2</command:parameterValue>
+			<dev:type>
+				<maml:name>X509Certificate2</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>Path</maml:name>
+			<maml:description>
+				<maml:para>The fully-qualified path to an AzureProfile saved on disk.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>Properties</maml:name>
+			<maml:description>
+				<maml:para>A hash table containing details about the default subscription for this profile.  The Hash keys and values may include:</maml:para>
+				<maml:para>SubscriptionId
+     [string]: The subscription ID for the default subscription in this Profile.</maml:para>
+				<maml:para>Certificate
+     [X509Certificate2]: The certificate credentials for the default subscription in this Profile.</maml:para>
+				<maml:para>Username
+     [string]: The user name associated with the default subscription for this Profile.  Used to acquire an Azure Active Directory User credential.</maml:para>
+				<maml:para>Password
+     [string]: The password associated with the default subscription for the Profile.  Used to acquire an Azure Active Directory User or Service credential.</maml:para>
+				<maml:para>ServicePrincipal
+     [string]: The SPN associated with the default subscription for this Profile.  Used to acquire an Azure Active Directory Service credential.</maml:para>
+				<maml:para>Tenant
+     [string]: The tenant associated with the default subscription for this Profile. Used to acquire an Azure Active Directory Service credential.</maml:para>
+				<maml:para>AccountId
+     [string]: The user name associated with the default subscription for this Profile.  Used to create a credential when access token is also specified.</maml:para>
+				<maml:para>Token
+     [string]: The access token associated with the default subscription for this Profile.  Used to create a credential when AccountId is also specified.</maml:para>
+				<maml:para>Environment
+     [string]: The name of the environment associated with the default subscription for this Profile.  Defaults to &#39;AzureCloud&#39; if not specified.</maml:para>
+				<maml:para>StorageAccount
+     [string]: The name of the default storage account associated with the default subscription for this Profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+			<dev:type>
+				<maml:name>Hashtable</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Create a new empty profile for the current session  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>&gt; Select-AzureProfile -Profile $(New-AzureProfile)
+&gt; Add-AzureAccount
+&gt; Get-AzureVM</dev:code>
+			<dev:remarks>
+				<maml:para>This creates a new empty profile and makes this profile active for the current Azure PowerShell session.  Any commands executed in the current PowerShell window will use this in-memory Profile rather than the default profile on disk.</maml:para>
+				<maml:para>In the example above, the Add-AzureAccount cmdlet adds a subscription to the in-memory profile, and the Get-AzureVM command lists the VMs for this subscription. The added subscription is only visible in the current session, another PowerShell window could use a separate in-memory profile at the same time.  When the PowerShell window is closed, the subscription and associated credentials are discarded.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Create and use multiple profiles in a session  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>&gt; $profile1 = New-AzureProfile -SubscriptionId &lt;subscription1&gt; -Credential $(Get-Credential)
+&gt; $profile2 = New-AzureProfile -SubscriptionId &lt;subscription2&gt; -Credential $(Get-Credential)
+&gt; Get-AzureVM -Profile $profile1
+&gt; Get-AzureVM -Profile $profile2</dev:code>
+			<dev:remarks>
+				<maml:para>This example creates 2 profiles containing different default subscriptions.  The VMs for each subscription are listed by passing in the profile on the command line.</maml:para>
+				<maml:para>Using this pattern, management actions can be easily executed using multiple subscriptions and mutliple sets of credentials within the same PowerShell session.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Select-AzureProfile</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Clear-AzureProfile</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
 		<command:name>Remove-AzureAccount</command:name>
 		<maml:description>
 			<maml:para>Deletes an Azure account from Windows PowerShell.</maml:para>
@@ -1994,11 +2590,11 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to remove accounts from.  If not specified, removes accounts from the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -2054,13 +2650,13 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>SubscriptionDataFile</maml:name>
+			<maml:name>Profile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>The Profile to remove accounts from.  If not specified, removes accounts from the default (on disk) profile.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>AzureProfile</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2088,6 +2684,18 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>false</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SubscriptionDataFile</maml:name>
+			<maml:description>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
@@ -2197,11 +2805,11 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to remove environments from.  If not specified, removes environments from the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -2231,13 +2839,25 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para>The Profile to remove environments from.  If not specified, removes environments from the default (on disk) profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>SubscriptionDataFile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2392,11 +3012,11 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to remove subscriptions from.  If not specified, removes subscriptions from the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -2418,7 +3038,7 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>SubscriptionId</maml:name>
 				<maml:description>
-					<maml:para>Specifies the subscription Id. This parameter is required. </maml:para>
+					<maml:para>Specifies the subscription Id. This parameter is required.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2437,11 +3057,11 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to remove subscriptions from.  If not specified, removes subscriptions from the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -2497,13 +3117,13 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>SubscriptionDataFile</maml:name>
+			<maml:name>Profile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>The Profile to remove subscriptions from.  If not specified, removes subscriptions from the default (on disk) profile.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>AzureProfile</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2535,11 +3155,23 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>SubscriptionId</maml:name>
 			<maml:description>
-				<maml:para>Specifies the subscription Id. This parameter is required. </maml:para>
+				<maml:para>Specifies the subscription Id. This parameter is required.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SubscriptionDataFile</maml:name>
+			<maml:description>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2587,9 +3219,9 @@ GalleryEndpoint               : https://gallery.azure.com/</dev:code>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; C:\PS&gt; Remove-AzureSubscription -SubscriptionName Test
 
-Confirm
-Are you sure you want to perform this action?
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;Y&quot;):</dev:code>
+          Confirm
+          Are you sure you want to perform this action?
+          [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;Y&quot;):</dev:code>
 			<dev:remarks>
 				<maml:para>This command deletes the &quot;Test&quot; subscription from the default subscription data file.</maml:para>
 				<maml:para />
@@ -2667,6 +3299,111 @@ Are you sure you want to perform this action?
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+		<command:name>Select-AzureProfile</command:name>
+		<maml:description>
+			<maml:para>Select the active profile for the current PowerShell session.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Select</command:verb>
+		<command:noun>AzureProfile</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Select the active profile for the current PowerShell session. A Profile is a container for subscriptions and associated credentials used to authenticate Microsoft Azure PowerShell cmdlets with Microsoft Azure services.</maml:para>
+		<maml:para>Any cmdlets executed in the current session will use the selected Profile until the window is closed or another Select-AzureProfile cmdlet is executed.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Select-AzureProfile</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para>The profile to select as the active Profile for the session.  All cmdlets subsequently executed in the session will use the subscriptions contained in this Profile for authenticating with Microsoft Azure</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Select-AzureProfile</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Default</maml:name>
+				<maml:description>
+					<maml:para>Select the default on-disk profile as the active profile for the session.  All subsequent cmdlets executed in the session will use the default on-disk Profile</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para>The profile to select as the active Profile for the session.  All cmdlets subsequently executed in the session will use the subscriptions contained in this Profile for authenticating with Microsoft Azure</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Default</maml:name>
+			<maml:description>
+				<maml:para>Select the default on-disk profile as the active profile for the session.  All subsequent cmdlets executed in the session will use the default on-disk Profile</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
 		<command:name>Select-AzureSubscription</command:name>
 		<maml:description>
 			<maml:para>Changes the current and default Azure subscriptions</maml:para>
@@ -2715,11 +3452,11 @@ Are you sure you want to perform this action?
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to select the default subscription in.  The default subscription in a profile is the subscription that is used when that profile is active in the current session. If not specified, selects the default subscription in the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -2753,11 +3490,11 @@ Are you sure you want to perform this action?
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to select the default subscription in.  The default subscription in a profile is the subscription that is used when that profile is active in the current session. If not specified, selects the default subscription in the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -2765,7 +3502,7 @@ Are you sure you want to perform this action?
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>SubscriptionId</maml:name>
 				<maml:description>
-					<maml:para>Specifies the subscription Id to change. Enter the subscription Id. </maml:para>
+					<maml:para>Specifies the subscription Id to change. Enter the subscription Id.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2791,11 +3528,11 @@ Are you sure you want to perform this action?
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to select the default subscription in.  The default subscription in a profile is the subscription that is used when that profile is active in the current session. If not specified, selects the default subscription in the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -2803,7 +3540,7 @@ Are you sure you want to perform this action?
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>SubscriptionId</maml:name>
 				<maml:description>
-					<maml:para>Specifies the subscription Id to change. Enter the subscription Id. </maml:para>
+					<maml:para>Specifies the subscription Id to change. Enter the subscription Id.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2829,11 +3566,11 @@ Are you sure you want to perform this action?
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to select the default subscription in.  The default subscription in a profile is the subscription that is used when that profile is active in the current session. If not specified, selects the default subscription in the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -2860,11 +3597,11 @@ Are you sure you want to perform this action?
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to select the default subscription in.  The default subscription in a profile is the subscription that is used when that profile is active in the current session. If not specified, selects the default subscription in the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -2891,11 +3628,11 @@ Are you sure you want to perform this action?
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to select the default subscription in.  The default subscription in a profile is the subscription that is used when that profile is active in the current session. If not specified, selects the default subscription in the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -2949,13 +3686,13 @@ Are you sure you want to perform this action?
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>SubscriptionDataFile</maml:name>
+			<maml:name>Profile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>The Profile to select the default subscription in.  The default subscription in a profile is the subscription that is used when that profile is active in the current session. If not specified, selects the default subscription in the default (on disk) profile.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>AzureProfile</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2975,7 +3712,7 @@ Are you sure you want to perform this action?
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>SubscriptionId</maml:name>
 			<maml:description>
-				<maml:para>Specifies the subscription Id to change. Enter the subscription Id. </maml:para>
+				<maml:para>Specifies the subscription Id to change. Enter the subscription Id.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3004,6 +3741,18 @@ Are you sure you want to perform this action?
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SubscriptionDataFile</maml:name>
+			<maml:description>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3215,12 +3964,26 @@ Are you sure you want to perform this action?
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="10">
+				<maml:name>AzureKeyVaultDnsSuffix</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The dns suffix used by KeyValut endpoints in the environment.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="11">
+				<maml:name>AzureKeyVaultServiceEndpointResourceId</maml:name>
+				<maml:description>
+					<maml:para>The audience used when acquiring tokens for use with the KeyValut service in this environment.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para>The Profile to set environment details in.  If not specified, sets environment details in the default (on disk) profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -3345,14 +4108,50 @@ Are you sure you want to perform this action?
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>SubscriptionDataFile</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="10">
+			<maml:name>AzureKeyVaultDnsSuffix</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>The dns suffix used by KeyValut endpoints in the environment.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="11">
+			<maml:name>AzureKeyVaultServiceEndpointResourceId</maml:name>
+			<maml:description>
+				<maml:para>The audience used when acquiring tokens for use with the KeyValut service in this environment.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para>The Profile to set environment details in.  If not specified, sets environment details in the default (on disk) profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SubscriptionDataFile</maml:name>
+			<maml:description>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3512,11 +4311,11 @@ Are you sure you want to perform this action?
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to set subscription details in.  If not specified, sets subscription details in the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -3571,11 +4370,11 @@ Are you sure you want to perform this action?
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to set subscription details in.  If not specified, sets subscription details in the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -3630,11 +4429,11 @@ Are you sure you want to perform this action?
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SubscriptionDataFile</maml:name>
+				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+					<maml:para>The Profile to set subscription details in.  If not specified, sets subscription details in the default (on disk) profile.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -3736,13 +4535,25 @@ Are you sure you want to perform this action?
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para>The Profile to set subscription details in.  If not specified, sets subscription details in the default (on disk) profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>SubscriptionDataFile</maml:name>
 			<maml:description>
-				<maml:para>Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
+				<maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user&#39;s profile is used.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
-				<maml:name>String</maml:name>
+				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3789,8 +4600,8 @@ Are you sure you want to perform this action?
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;$thumbprint = &lt;Certificate Thumbprint&gt;
-PS C:\&gt;$myCert = Get-Item cert:\\CurrentUser\My\$thumbprint 
-PS C:\&gt;Set-AzureSubscription -SubscriptionName ContosotTest -Certificate $myCert -SubscriptionID 12345</dev:code>
+          PS C:\&gt;$myCert = Get-Item cert:\\CurrentUser\My\$thumbprint
+          PS C:\&gt;Set-AzureSubscription -SubscriptionName ContosotTest -Certificate $myCert -SubscriptionID 12345</dev:code>
 			<dev:remarks>
 				<maml:para>These commands create the ContosoTest subscription in the default subscription data file. The commands add a management certificate and subscription ID for the new subscription.</maml:para>
 				<maml:para />
@@ -3811,8 +4622,8 @@ PS C:\&gt;Set-AzureSubscription -SubscriptionName ContosotTest -Certificate $myC
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; C:\PS&gt; $thumbprint = &lt;Thumbprint-2&gt;
-C:\PS&gt; $differentCert = Get-Item cert:\\CurrentUser\My\$thumbprint 
-C:\PS&gt; Set-AzureSubscription –SubscriptionName ContosoEngineering -Certificate $differentCert</dev:code>
+          C:\PS&gt; $differentCert = Get-Item cert:\\CurrentUser\My\$thumbprint
+          C:\PS&gt; Set-AzureSubscription –SubscriptionName ContosoEngineering -Certificate $differentCert</dev:code>
 			<dev:remarks>
 				<maml:para>These commands are very similar to the commands in Example 1. However, because the SubscriptionName parameter now identifies an existing subscription, Set-AzureSubscription uses the remaining parameters to change the values of the existing subscription rather than creating a new subscription</maml:para>
 				<maml:para />
@@ -3950,6 +4761,13 @@ C:\PS&gt; Set-AzureSubscription –SubscriptionName ContosoEngineering -Certific
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -3973,6 +4791,18 @@ C:\PS&gt; Set-AzureSubscription –SubscriptionName ContosoEngineering -Certific
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4019,7 +4849,7 @@ C:\PS&gt; Set-AzureSubscription –SubscriptionName ContosoEngineering -Certific
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;Switch-AzureMode -Name AzureResourceManager
-PS C:\&gt;Switch-AzureMode -Name AzureServiceManagement</dev:code>
+          PS C:\&gt;Switch-AzureMode -Name AzureServiceManagement</dev:code>
 			<dev:remarks>
 				<maml:para>This command shows you how to switch between modules. The first command uses the Switch-AzureMode cmdlet to switch to the Azure Resource Manager module. The second command uses the Switch-AzureMode cmdlet to switch back to the Azure module.</maml:para>
 				<maml:para />

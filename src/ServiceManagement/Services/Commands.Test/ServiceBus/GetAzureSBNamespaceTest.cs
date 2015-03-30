@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -22,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.ServiceBus;
 using Moq;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
 {
@@ -77,11 +79,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
             cmdlet.ExecuteCmdlet();
 
             // Assert
-            List<ExtendedServiceBusNamespace> actual = mockCommandRuntime.OutputPipeline[0] as List<ExtendedServiceBusNamespace>;
-            Assert.Equal<int>(expected.Count, actual.Count);
+            IEnumerable<ExtendedServiceBusNamespace> actual = System.Management.Automation.LanguagePrimitives.GetEnumerable(mockCommandRuntime.OutputPipeline).Cast<ExtendedServiceBusNamespace>();
+
+            Assert.NotNull(actual);
+            Assert.Equal<int>(expected.Count, actual.Count());
             for (int i = 0; i < expected.Count; i++)
             {
-                Assert.Equal<string>(expected[i].Name, actual[i].Name);
+                Assert.True(actual.Any((space) => space.Name == expected[i].Name));
             }
         }
 

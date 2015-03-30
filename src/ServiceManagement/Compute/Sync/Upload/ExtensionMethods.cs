@@ -212,7 +212,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
             var message = new StringBuilder();
             message.AppendLine("StorageException details");
-            message.Append("ErrorCode:").AppendLine(storageException.RequestInformation.ExtendedErrorInformation.ErrorCode);
+            message.Append("Error.Code:").AppendLine(storageException.RequestInformation.ExtendedErrorInformation.ErrorCode);
             message.Append("ErrorMessage:").AppendLine(storageException.RequestInformation.ExtendedErrorInformation.ErrorMessage);
             foreach (var key in storageException.RequestInformation.ExtendedErrorInformation.AdditionalDetails.Keys)
             {

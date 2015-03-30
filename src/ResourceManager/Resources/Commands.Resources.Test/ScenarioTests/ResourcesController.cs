@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Utilities.HttpRecorder;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Monitoring.Events;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Test;
 using System;
 using System.Linq;
 
@@ -31,18 +31,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     {
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
-        protected const string TenantIdKey = "TenantId";
-        protected const string DomainKey = "Domain";
+        private const string TenantIdKey = "TenantId";
+        private const string DomainKey = "Domain";
 
         public GraphRbacManagementClient GraphClient { get; private set; }
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
+        public FeatureClient FeatureClient { get; private set; }
+
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
 
-        public EventsClient EventsClient { get; private set; }
+        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+        //public EventsClient EventsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -133,16 +136,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
             GalleryClient = GetGalleryClient();
-            EventsClient = GetEventsClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphClient = GetGraphClient();
+            this.FeatureClient = this.GetFeatureClient();
 
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 GalleryClient,
-                EventsClient,
                 AuthorizationManagementClient,
-                GraphClient);
+                GraphClient,
+                this.FeatureClient);
         }
 
         private GraphRbacManagementClient GetGraphClient()
@@ -178,6 +181,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
+        private FeatureClient GetFeatureClient()
+        {
+            return TestBase.GetServiceClient<FeatureClient>(this.csmTestFactory);
+        }
+
         private ResourceManagementClient GetResourceManagementClient()
         {
             return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
@@ -191,11 +199,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private GalleryClient GetGalleryClient()
         {
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        }
-
-        private EventsClient GetEventsClient()
-        {
-            return TestBase.GetServiceClient<EventsClient>(this.csmTestFactory);
         }
 
     }

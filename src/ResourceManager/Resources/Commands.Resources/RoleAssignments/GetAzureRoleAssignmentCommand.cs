@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
             HelpMessage = "The user or group object id.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Id", "PrincipalId")]
         public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Mail,
@@ -210,7 +211,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : CurrentContext.Subscription.Id.ToString()
+                    Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : Profile.Context.Subscription.Id.ToString()
                 }
             };
 

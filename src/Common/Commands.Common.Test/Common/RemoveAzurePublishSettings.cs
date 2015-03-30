@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
@@ -20,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
     {
         public void RemovePublishSettingsProcess(string azureSdkDirPath)
         {
-            ProfileClient.DataStore.EmptyDirectory(azureSdkDirPath);
+            AzureSession.DataStore.EmptyDirectory(azureSdkDirPath);
         }
     }
 }

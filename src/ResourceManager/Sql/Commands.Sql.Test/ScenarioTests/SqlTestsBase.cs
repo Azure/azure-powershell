@@ -14,10 +14,12 @@
 
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -40,6 +42,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected void RunPowerShellTest(params string[] scripts)
         {
+            HttpMockServer.Matcher = new PermissiveRecordMatcher();
             // Enable undo functionality as well as mock recording
             using (UndoContext context = UndoContext.Current)
             {

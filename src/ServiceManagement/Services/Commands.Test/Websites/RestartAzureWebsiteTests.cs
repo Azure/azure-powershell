@@ -15,12 +15,13 @@
 using System;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Moq;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
@@ -42,7 +43,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Name = websiteName,
                 WebsitesClient = websitesClientMock.Object
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(base.subscriptionId) }, null, null);
+
+            currentProfile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             restartAzureWebsiteCommand.ExecuteCmdlet();
 
@@ -67,7 +72,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = websitesClientMock.Object,
                 Slot = slot
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(base.subscriptionId) }, null, null);
+            currentProfile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             restartAzureWebsiteCommand.ExecuteCmdlet();
 

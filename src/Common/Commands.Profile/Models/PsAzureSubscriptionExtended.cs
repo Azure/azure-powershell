@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Profile.Models
 {

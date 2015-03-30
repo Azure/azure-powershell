@@ -74,5 +74,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model
         public string ClientCertPfx { get; set; }
 
         public string ClientCertPassword { get; set; }
+
+        public string Secret { get; set; }
+
+        public string Tenant { get; set; }
+
+        public string Audience { get; set; }
+
+        public string ClientId { get; set; }
+
+        public string Username { get; set; }
+
+        public string Password { get; set; }
     }
 }

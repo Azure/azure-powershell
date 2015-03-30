@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model;
 using Microsoft.Azure.Commands.Network.Properties;
 using Microsoft.WindowsAzure;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
 {
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
             }
             catch (CloudException ce)
             {
-                if (ce.ErrorCode.Equals("BadRequest") && ce.ErrorMessage.Contains("already mapped to network"))
+                if (ce.Error.Code.Equals("BadRequest") && ce.Error.Message.Contains("already mapped to network"))
                 {
                     // there's already a NSG associated with this subnet, so confirm they want to replace it
                     ConfirmAction(
@@ -71,6 +72,10 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
                                 WriteObject(true);
                             }
                         });
+                }
+                else
+                {
+                    throw;
                 }
             }
         }

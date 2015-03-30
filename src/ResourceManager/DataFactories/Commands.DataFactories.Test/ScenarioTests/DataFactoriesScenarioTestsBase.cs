@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Monitoring.Events;
 using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Test;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
@@ -40,19 +41,18 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             var resourceManagementClient = GetResourceManagementClient();
             var subscriptionsClient = GetSubscriptionClient();
             var galleryClient = GetGalleryClient();
-            var eventsClient = GetEventsClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
 
             helper.SetupManagementClients(dataPipelineManagementClient,
                 resourceManagementClient,
                 subscriptionsClient,
                 galleryClient,
-                eventsClient,
                 authorizationManagementClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
         {
+            HttpMockServer.Matcher = new PermissiveRecordMatcher();
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
@@ -90,11 +90,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         protected GalleryClient GetGalleryClient()
         {
             return TestBase.GetServiceClient<GalleryClient>(new CSMTestEnvironmentFactory());
-        }
-
-        protected EventsClient GetEventsClient()
-        {
-            return TestBase.GetServiceClient<EventsClient>(new CSMTestEnvironmentFactory());
         }
 
         protected AuthorizationManagementClient GetAuthorizationManagementClient()

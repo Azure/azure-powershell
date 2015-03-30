@@ -22,7 +22,7 @@ using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 using Microsoft.ServiceBus.Notifications;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Management.ServiceBus;
 using Microsoft.WindowsAzure.Management.ServiceBus.Models;
@@ -30,6 +30,9 @@ using Microsoft.WindowsAzure.Management.ServiceBus.Models;
 namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
 {
     using ServiceBusNamespaceDescription = Management.ServiceBus.Models.NamespaceDescription;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Common.Authentication;
+    using Hyak.Common;
 
     public class ServiceBusClientExtensions
     {
@@ -287,11 +290,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
         /// Creates new instance from ServiceBusClientExtensions
         /// </summary>
         /// <param name="subscription"></param>
-        public ServiceBusClientExtensions(AzureSubscription subscription)
+        public ServiceBusClientExtensions(AzureProfile profile, AzureSubscription subscription)
         {
             subscriptionId = subscription.Id.ToString();
             Subscription = subscription;
-            ServiceBusClient = AzureSession.ClientFactory.CreateClient<ServiceBusManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            ServiceBusClient = AzureSession.ClientFactory.CreateClient<ServiceBusManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>

@@ -20,12 +20,14 @@ using System.Security.AccessControl;
 using System.Security.Permissions;
 using System.Security.Principal;
 using System.Text;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.Scaffolding;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceDefinitionSchema;
 using Microsoft.WindowsAzure.Commands.Utilities;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 {
@@ -253,28 +255,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
             return role;
         }
 
-        /// <summary>
-        /// Adds the given role to both config files and the service def.
-        /// </summary>
-        /// <param name="role"></param>
-        /// <param name="type"></param>
-        private void AddPythonRoleCore(RoleInfo role, RoleType type)
-        {
-            Dictionary<string, object> parameters = CreateDefaultParameters(role);
-
-            string scaffoldPath = Path.Combine(Path.Combine(scaffoldingFolderPath, Resources.PythonScaffolding), type.ToString());
-            Scaffold.GenerateScaffolding(scaffoldPath, Path.Combine(Paths.RootPath, role.Name), parameters);
-        }
-
-        public RoleInfo AddDjangoWebRole(string name = null, int instanceCount = 1)
-        {
-            name = GetRoleName(name, Resources.WebRole, Components.Definition.WebRole == null ? new string[0] : Components.Definition.WebRole.Select(wr => wr.name.ToLower()));
-            WebRoleInfo role = new WebRoleInfo(name, instanceCount);
-            AddPythonRoleCore(role, RoleType.WebRole);
-
-            return role;
-        }
-
         public void ChangeRolePermissions(RoleInfo role)
         {
             string rolePath = Path.Combine(Paths.RootPath, role.Name);
@@ -304,9 +284,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 
         private void VerifyCloudServiceProjectComponents()
         {
-            const string CacheVersion = "2.5.0";
+            string CacheVersion = AzureTool.SupportAzureSdkVersion;
 
-            // Verify caching version is 2.2
             foreach (string roleName in Components.GetRoles())
             {
                 string value = Components.GetStartupTaskVariable(
@@ -317,7 +296,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 
                 if (!string.IsNullOrEmpty(value) && !string.Equals(value, CacheVersion, StringComparison.OrdinalIgnoreCase))
                 {
-                    throw new Exception(string.Format(Resources.CacheMismatchMessage, roleName, CacheVersion));
+                    throw new Exception(string.Format(Microsoft.WindowsAzure.Commands.Utilities.Properties.Resources.CacheMismatchMessage, roleName, CacheVersion));
                 }
             }
         }

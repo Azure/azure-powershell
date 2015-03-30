@@ -17,12 +17,13 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.Diagnostics;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -53,14 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
 
             AzureSubscription defaultSubscription = ProfileClient.Profile.DefaultSubscription;
-            Debug.Assert(AzureSession.CurrentContext != null);
-            if (defaultSubscription != null && AzureSession.CurrentContext.Subscription == null)
-            {
-                AzureSession.SetCurrentContext(
-                    defaultSubscription,
-                    ProfileClient.Profile.Environments[defaultSubscription.Environment],
-                    ProfileClient.Profile.Accounts[defaultSubscription.Account]);
-            }
+            Debug.Assert(Profile.Context != null);
         }
 
         private bool IsDirectory()

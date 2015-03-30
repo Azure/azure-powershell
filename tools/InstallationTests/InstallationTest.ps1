@@ -42,3 +42,11 @@ function Test-UpdateStorageAccount
   $storageAccountName = $(Get-AzureStorageContainer)[0].Context.StorageAccountName
   Assert-AreEqual $storageAccountName $accounts[1].StorageAccountName
 }
+
+[CmdletBinding]
+function Get-IncompleteHelp
+{
+  Get-Help azure | where {[System.String]::IsNullOrEmpty($_.Synopsis) -or `
+  [System.String]::Equals($_.Synopsis, (Get-Command $_.Name).Definition, `
+  [System.StringComparison]::OrdinalIgnoreCase)} | % {Write-Output $_.Name}
+}

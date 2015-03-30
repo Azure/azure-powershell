@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -78,6 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public virtual string PrivateConfigPath { get; set; }
         public virtual SwitchParameter Disable { get; set; }
         public virtual SwitchParameter Uninstall { get; set; }
+        public virtual SwitchParameter ForceUpdate { get; set; }
 
         static VirtualMachineExtensionCmdletBase()
         {
@@ -240,6 +242,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         Type = IsLegacyExtension() ? null : PrivateTypeStr,
                         SecureValue = SecureStringHelper.GetSecureString(PrivateConfiguration)
                     });
+            }
+
+            if (this.ForceUpdate.IsPresent)
+            {
+                extensionRef.ForceUpdate = true;
             }
 
             return extensionRef;

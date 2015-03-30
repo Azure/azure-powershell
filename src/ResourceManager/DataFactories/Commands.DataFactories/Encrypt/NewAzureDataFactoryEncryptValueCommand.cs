@@ -43,6 +43,15 @@ namespace Microsoft.Azure.Commands.DataFactories
         [Parameter(ParameterSetName = ByFactoryName, Position = 3, Mandatory = false, HelpMessage = "The gateway group name.")]
         public string GatewayName { get; set; }
 
+        [Parameter(ParameterSetName = ByFactoryObject, Position = 3, Mandatory = false, HelpMessage = "The windows authentication credential.")]
+        [Parameter(ParameterSetName = ByFactoryName, Position = 4, Mandatory = false, HelpMessage = "The windows authentication credential.")]
+        public PSCredential Credential { get; set; }
+
+        [Parameter(ParameterSetName = ByFactoryObject, Position = 4, Mandatory = false, HelpMessage = "The linked service type.")]
+        [Parameter(ParameterSetName = ByFactoryName, Position = 5, Mandatory = false, HelpMessage = "The linked service type.")]
+        [ValidateSet("OnPremisesSqlLinkedService", "OnPremisesFileSystemLinkedService", "OnPremisesOracleLinkedService", IgnoreCase = true)]
+        public string Type { get; set; }
+
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -63,12 +72,12 @@ namespace Microsoft.Azure.Commands.DataFactories
             if (String.IsNullOrWhiteSpace(GatewayName))
             {
                 // Cloud encryption without Gateway
-                encryptedValue = DataFactoryClient.CloudEncryptString(Value, ResourceGroupName, DataFactoryName);
+                WriteWarning("Cloud encryption has already been deprecated. Please run get-help new-azuredatafactoryencryptvalue to see other option of this command");
             }
             else
             {
                 // On-premises encryption with Gateway
-                encryptedValue = DataFactoryClient.OnPremisesEncryptString(Value, ResourceGroupName, DataFactoryName, GatewayName);
+                encryptedValue = DataFactoryClient.OnPremisesEncryptString(Value, ResourceGroupName, DataFactoryName, GatewayName, Credential, Type);
             }
             
             WriteObject(encryptedValue);

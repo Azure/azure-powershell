@@ -17,6 +17,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Websites
 {
@@ -47,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                         {
                             Site websiteObject = WebsitesClient.GetWebsite(Name, Slot);
                             WebsitesClient.DeleteWebsite(websiteObject.WebSpace, Name, Slot);
-                            Cache.RemoveSite(CurrentContext.Subscription.Id.ToString(), websiteObject);
+                            Cache.RemoveSite(Profile.Context.Subscription.Id.ToString(), websiteObject);
                         }
                         catch (CloudException)
                         {

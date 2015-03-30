@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
-using Newtonsoft.Json;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using System.Collections.Generic;
 using System.Net;
-using System.Globalization;
+using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     using NSM = Management.Compute.Models;
+    using Hyak.Common;
 
     /// <summary>
     /// Get-AzureVMSqlServerExtension implementation
@@ -37,8 +40,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     public class GetAzureVMSqlServerExtensionCommand : VirtualMachineSqlServerExtensionCmdletBase
     {
         protected const string GetSqlServerExtensionParamSetName = "GetSqlServerExtension";
-        protected const string AutoPatchingStatusMessageName = "Automatic Patching";
-        protected const string AutoBackupStatusMessageName = "Automatic Backup";
+        protected const string AutoPatchingStatusMessageName = "Automated Patching";
+        protected const string AutoBackupStatusMessageName = "Automated Backup";
 
         internal void ExecuteCommand()
         {
@@ -76,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 PrivateConfiguration = SecureStringHelper.GetSecureString(PrivateConfiguration),
                 RoleName = VM.GetInstance().RoleName,
             };
-            
+
             // gather extension status messages
             List<string> statusMessageList = new List<string>();
 
@@ -86,17 +89,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             // Note: valid reference to an extension status list is returned by GetResourceExtensionStatusList()
             foreach (NSM.ResourceExtensionStatus res in extensionStatusList)
             {
-                // Extension handler name  in format publisher.ReferenceName
-                string extensionHandlerName = string.Format(CultureInfo.InvariantCulture,
-                    "{0}.{1}",
-                    r.Publisher,
-                    r.ReferenceName);
-
-                // skip all non-sql extensions
-                if (!res.HandlerName.Equals(extensionHandlerName, System.StringComparison.InvariantCulture))
+                // Expected ReferenceName = "Microsoft.SqlServer.Management.SqlIaaSAgent"
+                if (!res.HandlerName.Equals(r.ReferenceName, System.StringComparison.InvariantCulture))
                 {
+                    // skip all non-sql extensions
                     continue;
                 }
+
+                WriteVerboseWithTimestamp("Found SQL Extension:" + r.ReferenceName);
 
                 if (null != res.ExtensionSettingStatus)
                 {
@@ -155,7 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         NSM.DeploymentSlot.Production);
                 }
                 catch (CloudException e)
-                {
+                {  
                     if (e.Response.StatusCode != HttpStatusCode.NotFound)
                     {
                         throw;
@@ -188,13 +188,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         private AutoPatchingSettings DeSerializeAutoPatchingSettings(string category, string input)
         {
             AutoPatchingSettings aps = new AutoPatchingSettings();
-            
+
             if (!string.IsNullOrEmpty(input))
             {
                 try
                 {
                     aps = JsonConvert.DeserializeObject<AutoPatchingSettings>(input);
-                    aps.UpdatePatchingCategory(this.ResolvePatchCategoryStringforPowerShell(aps.PatchCategory));
+                    aps.PatchCategory = this.ResolvePatchCategoryStringforPowerShell(aps.PatchCategory);
                 }
                 catch (JsonReaderException jre)
                 {
@@ -231,28 +231,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <summary>
         /// Map strings Auto-patching public settings -> Powershell API
         ///      "WindowsMandatoryUpdates" -> "Important"
-        ///       "MicrosoftOptionalUpdates" -> "Optional"
         /// </summary>
         /// <param name="patchCategory"></param>
         /// <returns></returns>
-        private AzureVMSqlServerAutoPatchingPatchCategoryEnum ResolvePatchCategoryStringforPowerShell(string category)
+        private string ResolvePatchCategoryStringforPowerShell(string category)
         {
-            AzureVMSqlServerAutoPatchingPatchCategoryEnum patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Important;
+            string patchCategory = string.Empty;
 
             if (!string.IsNullOrEmpty(category))
             {
                 switch (category.ToLower())
                 {
                     case "windowsmandatoryupdates":
-                        patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Important;
-                        break;
-
-                    case "microsoftoptionalupdates":
-                        patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Optional;
+                        patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Important.ToString("G");
                         break;
 
                     default:
-                        patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Unknown;
                         break;
                 }
             }

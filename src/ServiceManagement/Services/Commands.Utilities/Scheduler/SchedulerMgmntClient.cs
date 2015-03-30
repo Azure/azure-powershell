@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model;
@@ -24,6 +24,8 @@ using Microsoft.WindowsAzure.Management.Scheduler;
 using Microsoft.WindowsAzure.Management.Scheduler.Models;
 using Microsoft.WindowsAzure.Scheduler;
 using Microsoft.WindowsAzure.Scheduler.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
 {
@@ -53,11 +55,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
         /// Creates new Scheduler Management Convenience Client
         /// </summary>
         /// <param name="subscription">Subscription containing websites to manipulate</param>
-        public SchedulerMgmntClient(AzureSubscription subscription)
+        public SchedulerMgmntClient(AzureProfile profile, AzureSubscription subscription)
         {
             currentSubscription = subscription;
-            csmClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            schedulerManagementClient = AzureSession.ClientFactory.CreateClient<SchedulerManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            csmClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            schedulerManagementClient = AzureSession.ClientFactory.CreateClient<SchedulerManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
 
             //Get RP properties
             IDictionary<string, string> dict = schedulerManagementClient.GetResourceProviderProperties().Properties;
@@ -425,11 +427,27 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
                                     jobDetail.Lastrun = j.Status.LastExecutionTime;
                                     jobDetail.Nextrun = j.Status.NextExecutionTime;
                                 }
-                                if (j.Action.Request.Authentication != null && j.Action.Request.Authentication.Type == HttpAuthenticationType.ClientCertificate)
+                                if (j.Action.Request.Authentication != null)
                                 {
-                                    jobDetail.ClientCertThumbprint = ((j.Action.Request.Authentication) as ClientCertAuthentication).CertificateThumbprint;
-                                    jobDetail.ClientCertExpiryDate = ((j.Action.Request.Authentication) as ClientCertAuthentication).CertificateExpiration.ToString();
-                                    jobDetail.ClientCertSubjectName = ((j.Action.Request.Authentication) as ClientCertAuthentication).CertificateSubjectName;
+                                    switch(j.Action.Request.Authentication.Type)
+                                    {
+                                        case HttpAuthenticationType.ClientCertificate:                                           
+                                                PSClientCertAuthenticationJobDetail ClientCertJobDetail = new PSClientCertAuthenticationJobDetail(jobDetail);
+                                                ClientCertJobDetail.ClientCertExpiryDate = ((j.Action.Request.Authentication) as ClientCertAuthentication).CertificateExpiration.ToString();
+                                                ClientCertJobDetail.ClientCertSubjectName = ((j.Action.Request.Authentication) as ClientCertAuthentication).CertificateSubjectName;
+                                                ClientCertJobDetail.ClientCertThumbprint = ((j.Action.Request.Authentication) as ClientCertAuthentication).CertificateThumbprint;
+                                                return ClientCertJobDetail;                                              
+                                        case HttpAuthenticationType.ActiveDirectoryOAuth:                                            
+                                                PSAADOAuthenticationJobDetail AADOAuthJobDetail = new PSAADOAuthenticationJobDetail(jobDetail);
+                                                AADOAuthJobDetail.Audience = ((j.Action.Request.Authentication) as AADOAuthAuthentication).Audience;
+                                                AADOAuthJobDetail.ClientId = ((j.Action.Request.Authentication) as AADOAuthAuthentication).ClientId;
+                                                AADOAuthJobDetail.Tenant = ((j.Action.Request.Authentication) as AADOAuthAuthentication).Tenant;
+                                                return AADOAuthJobDetail;
+                                        case HttpAuthenticationType.Basic:
+                                                PSBasicAuthenticationJobDetail BasicAuthJobDetail = new PSBasicAuthenticationJobDetail(jobDetail);
+                                                BasicAuthJobDetail.Username = ((j.Action.Request.Authentication) as BasicAuthentication).Username;
+                                                return BasicAuthJobDetail;
+                                    }                                    
                                 }
                                 return jobDetail;
                             }
@@ -475,7 +493,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
 
                 SchedulerClient schedClient = AzureSession.ClientFactory.CreateCustomClient<SchedulerClient>(region.ToCloudServiceName(), jobCollection, csmClient.Credentials, schedulerManagementClient.BaseUri);
 
-                OperationResponse response = schedClient.Jobs.Delete(jobName);
+                AzureOperationResponse response = schedClient.Jobs.Delete(jobName);
                 return response.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
             }
             else if (string.IsNullOrEmpty(region))
@@ -496,7 +514,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
                                     {
                                         SchedulerClient schedClient = AzureSession.ClientFactory.CreateCustomClient<SchedulerClient>(cs.Name, jobCollection, csmClient.Credentials, schedulerManagementClient.BaseUri);
 
-                                        OperationResponse response = schedClient.Jobs.Delete(jobName);
+                                        AzureOperationResponse response = schedClient.Jobs.Delete(jobName);
                                         return response.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
                                     }
                                 }

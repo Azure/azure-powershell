@@ -26,6 +26,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             this.cmdletParams.Add(new CmdletParam("Name", vmConfig.vmName));
             this.cmdletParams.Add(new CmdletParam("ImageName", vmConfig.imageName));
             this.cmdletParams.Add(new CmdletParam("InstanceSize", vmConfig.vmSize));
+
+            if (!string.IsNullOrEmpty(vmConfig.mediaLocation))
+            {
+                this.cmdletParams.Add(new CmdletParam("MediaLocation", vmConfig.mediaLocation));
+            }
         }
     }
 }
