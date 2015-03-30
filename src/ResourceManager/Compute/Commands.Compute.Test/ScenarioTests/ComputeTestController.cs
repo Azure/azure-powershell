@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
 
-        public SrpManagementClient StorageClient { get; private set; }
+        public StorageManagementClient StorageClient { get; private set; }
 
         public NetworkResourceProviderClient NetworkResourceProviderClient { get; private set; }
 
@@ -208,11 +208,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
-        private SrpManagementClient GetStorageManagementClient()
+        private StorageManagementClient GetStorageManagementClient()
         {
             return testViaCsm
-                ? TestBase.GetServiceClient<SrpManagementClient>(this.csmTestFactory)
-                : TestBase.GetServiceClient<SrpManagementClient>(new RDFETestEnvironmentFactory());
+                ? TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory)
+                : TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         private GalleryClient GetGalleryClient()
