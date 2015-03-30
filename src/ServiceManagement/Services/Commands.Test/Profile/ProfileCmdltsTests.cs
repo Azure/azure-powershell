@@ -31,6 +31,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Profile
@@ -56,6 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ClearAzureProfileClearsDefaultProfile()
         {
             ClearAzureProfileCommand cmdlt = new ClearAzureProfileCommand();
@@ -84,6 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ClearAzureProfileClearsCustomProfile()
         {
             string subscriptionDataFile = Path.GetTempFileName();
@@ -113,6 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ClearAzureProfileClearsTokenCache()
         {
             var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
@@ -157,6 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DeleteCorruptedTokenCache()
         {
             //setup
@@ -171,6 +176,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureSubscriptionAddsSubscriptionWithCertificate()
         {
             var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
@@ -203,6 +209,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureSubscriptionDerivesEnvironmentFromEnvironmentParameterOnAdd()
         {
             // Setup
@@ -234,6 +241,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureSubscriptionThrowsExceptionWithoutCertificateOnAdd()
         {
             SetAzureSubscriptionCommand cmdlt = new SetAzureSubscriptionCommand();
@@ -256,6 +264,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureSubscriptionDerivesEnvironmentFromEnvironmentParameterOnSet()
         {
             // Setup
@@ -286,6 +295,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureSubscriptionDerivesEnvironmentFromServiceEndpointParameterOnSet()
         {
             // Setup
@@ -317,6 +327,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureSubscriptionDerivesEnvironmentFromResourcesEndpointParameterOnSet()
         {
             // Setup
@@ -347,6 +358,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureSubscriptionDerivesEnvironmentFromBothEndpointParameters()
         {
             // Setup
@@ -379,6 +391,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureSubscriptionUpdatesSubscriptionWithCertificate()
         {
             // Setup
@@ -421,6 +434,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportPublishSettingsFileSelectsCorrectEnvironment()
         {
             ImportAzurePublishSettingsCommand cmdlt = new ImportAzurePublishSettingsCommand();
@@ -463,6 +477,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportPublishSettingsFileOverwritesEnvironment()
         {
             ImportAzurePublishSettingsCommand cmdlt = new ImportAzurePublishSettingsCommand();
@@ -507,6 +522,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportPublishSettingsWorksForCustomProfile()
         {
             ImportAzurePublishSettingsCommand cmdlt = new ImportAzurePublishSettingsCommand();
@@ -556,6 +572,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectDefaultAzureSubscriptionByNameUpdatesProfile()
         {
             var client = SetupDefaultProfile();
@@ -580,6 +597,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureSubscriptionByNameUpdatesProfile()
         {
             SetupDefaultProfile();
@@ -601,6 +619,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureSubscriptionByNameUpdatesCustomProfile()
         {
             var client = SetupDefaultProfile();
@@ -626,6 +645,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureSubscriptionByNameWithoutAccountPreservesTheAccount()
         {
             SetupDefaultProfile();
@@ -648,6 +668,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureSubscriptionByIdWithoutAccountPreservesTheAccount()
         {
             SetupDefaultProfile();
@@ -670,6 +691,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureSubscriptionWithoutPassthroughDoesNotPrint()
         {
             SetupDefaultProfile();
@@ -690,6 +712,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureSubscriptionWithPassthroughPrintsSubscription()
         {
             SetupDefaultProfile();
@@ -712,6 +735,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectDefaultAzureSubscriptionByIdAndNoDefaultUpdatesProfile()
         {
             var client = SetupDefaultProfile();
@@ -752,6 +776,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureSubscriptionByInvalidIdThrowsException()
         {
             SetupDefaultProfile();
@@ -777,6 +802,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureSubscriptionByInvalidGuidThrowsException()
         {
             SelectAzureSubscriptionCommand cmdlt = new SelectAzureSubscriptionCommand();
@@ -802,6 +828,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateProfileCertificateAuth()
         {
             RunCreateProfileTestForParams(
@@ -813,6 +840,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateProfileFromHashCertificateAuth()
         {
             RunCreateProfileTestForHashTable(
@@ -823,6 +851,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateProfileWithADAuth()
         {
             var credential = GenerateCredential();
@@ -835,6 +864,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateProfileFromHashWithADAuth()
         {
             var password = GeneratePassword();
@@ -848,6 +878,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanAddAccountToCustomProfile()
         {
             var cmdlet = new AddAzureAccount();
@@ -888,6 +919,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateProfieWithSPAuth()
         {
             var credential = GenerateCredential();
@@ -900,6 +932,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateProfileFromHashWithSPAuth()
         {
             var password = GeneratePassword();
@@ -914,6 +947,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateProfileWithTokenAuth()
         {
             var credential = GenerateCredential();
@@ -928,6 +962,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateProfileFromHashWithTokenAuth()
         {
             var credential = GenerateCredential();
@@ -941,6 +976,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateAzureProfileWithFile()
         {
            var dataStore = AzureSession.DataStore;

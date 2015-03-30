@@ -69,6 +69,15 @@
     <OnError ExecuteTargets="TimeoutErrorHandler"/>
   </Target>
   
+  <Target Name="InvokeXUnitAll">
+    <Message Importance="high" Text="Running XUnit tests" />
+    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+    <Exec 
+        Command="$(MSBuildProjectDirectory)\packages\xunit.runner.console.2.0.0\tools\xunit.console.x86.exe &quot;%(XUnitTests.Identity)&quot; -html &quot;$(TestOutputDirectory)\%(XUnitTests.Filename).html&quot;"
+        Timeout="$(TestTimeout)" ContinueOnError="false"/>
+    <OnError ExecuteTargets="TimeoutErrorHandler"/>
+  </Target>
+  
   <Target Name="TimeoutErrorHandler">
     <Error Text="XUnit tests in assembly &quot;%(XUnitTests.Filename).dll&quot; failed or timed out. Ensure that all tests in a project pass and collectively take less than 1 minute to run."/>
   </Target>
