@@ -58,6 +58,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Position = 7, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
 
+        [Parameter(Position = 8, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.BackupPolicyNewName)]
+        [ValidateNotNullOrEmpty]
+        public string NewName { get; set; }
+
         private string deviceId = null;
         private List<BackupScheduleBase> schedulesToAdd = null;
         private List<BackupScheduleUpdateRequest> schedulesToUpdate = null;
@@ -74,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     return;
 
                 updateConfig.InstanceId = BackupPolicyId;
-                updateConfig.Name = BackupPolicyName;
+                updateConfig.Name = (NewName != null ? NewName : BackupPolicyName);
                 updateConfig.IsPolicyRenamed = true;
                 updateConfig.BackupSchedulesToBeAdded = schedulesToAdd;
                 updateConfig.BackupSchedulesToBeUpdated = schedulesToUpdate;

@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 using System.Net;
 using System.Net.Sockets;
+using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
@@ -71,6 +72,21 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             MiscUtils.CopyProperties(updatedDetails, request);
             var taskStatusInfo = this.GetStorSimpleClient().DeviceDetails.UpdateDeviceDetails(request, this.GetCustomRequestHeaders());
             return taskStatusInfo;
+        }
+
+        public bool IsValidDeviceId(string deviceId)
+        {
+            if (string.IsNullOrWhiteSpace(deviceId)) throw new ArgumentNullException("deviceId");
+            var deviceInfos = GetAllDevices();
+            foreach (var deviceInfo in deviceInfos)
+            {
+                if (deviceInfo.DeviceId.Equals(deviceId, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public string GetDeviceId(string deviceToUse)
@@ -189,8 +205,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 }
             }
 
-            // There are a bunch of details that this cmdlet never edits and the service considers null
-            // values there to mean that there have been no changes.
+            // There are a bunch of details that this cmdlet never edits and the service 
+            // considers null values for them to mean that there have been no changes.
             deviceDetails.AlertNotification = null;
             deviceDetails.Chap = null;
             deviceDetails.RemoteMgmtSettingsInfo = null;
@@ -201,12 +217,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             deviceDetails.WebProxy = null;
         }
 
-        public void UpdateVirtualDeviceDetails(DeviceDetails details, string newName, TimeZoneInfo timeZone, string sek)
+        public void UpdateVirtualDeviceDetails(DeviceDetails details, TimeZoneInfo timeZone, string sek, string adminPasswd, string snapshotPasswd, string cik, StorSimpleCryptoManager cryptoManager)
         {
-            if (newName != null)
-            {
-                details.DeviceProperties.FriendlyName = newName;
-            }
             if (timeZone != null)
             {
                 details.TimeServer.TimeZone = timeZone.StandardName;
@@ -215,6 +227,32 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             var encryptedSecretKey = this.EncryptWithDevicePublicKey(details.DeviceProperties.DeviceId, sek);
 
             details.VirtualApplianceProperties.EncodedServiceEncryptionKey = encryptedSecretKey;
+
+            // Also set the CIK before making the request - service needs it.
+            var encryptedCik = this.EncryptWithDevicePublicKey(details.DeviceProperties.DeviceId, cik);
+            details.VirtualApplianceProperties.EncodedChannelIntegrityKey = encryptedCik;
+
+            // Set the admin password
+            string encryptedAdminPasswd = null;
+            cryptoManager.EncryptSecretWithRakPub(adminPasswd, out encryptedAdminPasswd);
+            details.RemoteMinishellSecretInfo.MinishellSecret = encryptedAdminPasswd;
+
+            // Set the snapshot manager password
+            string encryptedSnapshotManagerPasswd = null;
+            cryptoManager.EncryptSecretWithRakPub(snapshotPasswd, out encryptedSnapshotManagerPasswd);
+            details.Snapshot.SnapshotSecret = encryptedSnapshotManagerPasswd;
+
+            // Set the cert thumbprint for the key used.
+            details.SecretEncryptionCertThumbprint = cryptoManager.GetSecretsEncryptionThumbprint();
+
+            // mark everything that we dont intend to modify as null - indicating
+            // to the service that there has been no change
+            details.AlertNotification = null;
+            details.Chap = null;
+            details.DnsServer = null;
+            details.NetInterfaceList = null;
+            details.RemoteMgmtSettingsInfo = null;
+            details.WebProxy = null;
         }
     }
 }

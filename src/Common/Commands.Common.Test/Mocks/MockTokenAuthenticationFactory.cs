@@ -51,6 +51,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 LoginType = LoginType.OrgId,
                 AccessToken = accessToken
             };
+
+            TokenProvider = ((account, environment, tenant) => Token);
         }
 
         public IAccessToken Authenticate(AzureAccount account, AzureEnvironment environment, string tenant, SecureString password, ShowDialog promptBehavior,

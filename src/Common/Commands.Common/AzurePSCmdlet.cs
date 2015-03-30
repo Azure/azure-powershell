@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
@@ -26,9 +27,38 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     public abstract class AzurePSCmdlet : PSCmdlet
     {
         private readonly RecordingTracingInterceptor _httpTracingInterceptor = new RecordingTracingInterceptor();
+        protected static AzureProfile _currentProfile = null;
 
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
         public AzureProfile Profile { get; set; }
+
+        /// <summary>
+        /// Sets the current profile - the profile used when no Profile is explicitly passed in.  Should be used only by
+        /// Profile cmdlets and tests that need to set up a particular profile
+        /// </summary>
+        public static AzureProfile CurrentProfile 
+        {
+            private get
+            {
+                if (_currentProfile == null)
+                {
+                    _currentProfile = InitializeDefaultProfile();
+                    SetTokenCacheForProfile(_currentProfile);
+                }
+
+                return _currentProfile;
+            }
+
+            set
+            {
+                SetTokenCacheForProfile(value);
+                _currentProfile = value;
+            }
+        }
+
+        protected static TokenCache DefaultDiskTokenCache { get; set; }
+
+        protected static TokenCache DefaultMemoryTokenCache { get; set; }
 
         static AzurePSCmdlet()
         {
@@ -38,6 +68,80 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 
             AzureSession.ClientFactory.UserAgents.Add(AzurePowerShell.UserAgentValue);
+            if (!TestMockSupport.RunningMocked)
+            {
+                InitializeTokenCaches();
+                AzureSession.DataStore = new DiskDataStore();
+                SetTokenCacheForProfile(CurrentProfile);
+            }
+        }
+
+        /// <summary>
+        /// Create the default profile, based on the default profile path
+        /// </summary>
+        /// <returns>The default prpofile, serialized from the default location on disk</returns>
+        protected static AzureProfile InitializeDefaultProfile()
+        {
+            if (!string.IsNullOrEmpty(AzureSession.ProfileDirectory) && !string.IsNullOrEmpty(AzureSession.ProfileFile))
+            {
+                try
+                {
+                   GeneralUtilities.EnsureDefaultProfileDirectoryExists();
+                   return new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                }
+                catch
+                {
+                    // swallow exceptions in creating the profile from disk
+                }
+            }
+
+            return new AzureProfile();
+        }
+
+        /// <summary>
+        /// Get the context for the current profile before BeginProcessing is called
+        /// </summary>
+        /// <returns>The context for the current profile</returns>
+        protected AzureContext GetCurrentContext()
+        {
+            if (Profile != null)
+            {
+                return Profile.Context;
+            }
+
+            return CurrentProfile.Context;
+        }
+
+        protected static void InitializeTokenCaches()
+        {
+            DefaultMemoryTokenCache = new TokenCache();
+            if (!string.IsNullOrWhiteSpace(AzureSession.ProfileDirectory) &&
+                !string.IsNullOrWhiteSpace(AzureSession.TokenCacheFile))
+            {
+                GeneralUtilities.EnsureDefaultProfileDirectoryExists();
+                DefaultDiskTokenCache = new ProtectedFileTokenCache(Path.Combine(AzureSession.ProfileDirectory, AzureSession.TokenCacheFile));
+            }
+            else
+            {
+                DefaultDiskTokenCache = DefaultMemoryTokenCache;
+            }
+        }
+
+        /// <summary>
+        /// Update the token cache when setting the profile
+        /// </summary>
+        /// <param name="profile"></param>
+        protected static void SetTokenCacheForProfile(AzureProfile profile)
+        {
+            var defaultProfilePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
+            if (string.Equals(profile.ProfilePath, defaultProfilePath, StringComparison.OrdinalIgnoreCase))
+            {
+                AzureSession.TokenCache = DefaultDiskTokenCache;
+            }
+            else
+            {
+                AzureSession.TokenCache = DefaultMemoryTokenCache;
+            }
         }
 
         /// <summary>
@@ -46,7 +150,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected override void BeginProcessing()
         {
             InitializeProfile();
-
             if (string.IsNullOrEmpty(ParameterSetName))
             {
                 WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithoutParameterSetLog, this.GetType().Name));
@@ -56,7 +159,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithParameterSetLog, this.GetType().Name, ParameterSetName));
             }
 
-            if (Profile.Context != null && Profile.Context.Account != null && Profile.Context.Account.Id != null)
+            if (Profile != null && Profile.Context != null && Profile.Context.Account != null && Profile.Context.Account.Id != null)
             {
                 WriteDebugWithTimestamp(string.Format("using account id '{0}'...", Profile.Context.Account.Id));
             }
@@ -66,15 +169,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             base.BeginProcessing();
         }
 
-        private void InitializeProfile()
+        /// <summary>
+        /// Ensure that there is a profile for the command
+        /// </summary>
+        protected  virtual void InitializeProfile()
         {
-            // Load profile from disk 
-            var profileFromDisk = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            if (Profile == null ||
-                Profile.ProfilePath == profileFromDisk.ProfilePath)
+            if (Profile == null)
             {
-                Profile = profileFromDisk;
+                Profile = AzurePSCmdlet.CurrentProfile;
             }
+
+            SetTokenCacheForProfile(Profile);
         }
 
         /// <summary>

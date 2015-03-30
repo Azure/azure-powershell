@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.8.14'
+ModuleVersion = '0.8.15.1'
 
 # ID used to uniquely identify this module
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'
@@ -21,7 +21,7 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '© Microsoft Corporation. All rights reserved.'  
+Copyright = 'Â© Microsoft Corporation. All rights reserved.'  
 
 # Description of the functionality provided by this module
 Description = ''
@@ -79,7 +79,8 @@ NestedModules = @(
     '.\Batch\Microsoft.Azure.Commands.Batch.dll',
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.dll',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',
-    '.\Insights\Microsoft.Azure.Commands.Insights.dll'
+    '.\Insights\Microsoft.Azure.Commands.Insights.dll',
+    '.\Websites\Microsoft.Azure.Commands.Websites.dll'
 )
 
 # Functions to export from this module

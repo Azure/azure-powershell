@@ -51,12 +51,13 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         #region Parameters
 
         /// <summary>
-        /// Gets or sets the context for connecting to the server
+        /// Gets or sets the connection information for connecting to the server
         /// </summary>
         [Parameter(Mandatory = true, Position = 0,
-            HelpMessage = "The context for connecting to the server")]
+            HelpMessage = "The connection information for connecting to a server. " +
+            "This can be an Azure SQL Server connection context that uses username with password.")]
         [ValidateNotNullOrEmpty]
-        public ServerDataServiceSqlAuth SqlConnectionContext { get; set; }
+        public ISqlServerConnectionInformation SqlConnectionContext { get; set; }
 
         /// <summary>
         /// Gets or sets the storage container object containing the blob

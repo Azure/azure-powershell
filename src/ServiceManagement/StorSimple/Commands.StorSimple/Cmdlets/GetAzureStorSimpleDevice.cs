@@ -36,6 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         public string DeviceName { get; set; }
 
         [Parameter(Position = 1, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.DeviceType)]
+        [ValidateSet("Appliance", "VirtualAppliance")]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 

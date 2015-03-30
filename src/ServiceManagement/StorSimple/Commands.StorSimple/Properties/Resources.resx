@@ -427,7 +427,7 @@
     <value>IP Address information (IPv4Address and IPv4Netmask or IPv6Prefix)  must be provided for {0} network interface, since it is being enabled</value>
   </data>
   <data name="MandatoryParamsMissingForInitialDeviceConfiguration" xml:space="preserve">
-    <value>Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone and Primary DNS Server information is mandatory when configuring the device for the first time</value>
+    <value>Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone, Secondary DNS Server information and atleast 1 IscsiEnabled network interface is mandatory when configuring the device for the first time.</value>
   </data>
   <data name="DeviceJobsNextPageFormatMessage" xml:space="preserve">
     <value>More jobs are available for your query. To access the next page of your result use -First {0} -Skip {1} in your commandlet</value>
@@ -487,7 +487,7 @@
     <value>Are you sure you want to failover the selected volume containers from device {0} to device {1}?</value>
   </data>
   <data name="VolumeContainerGroupNotEligibleForFailoverError" xml:space="preserve">
-    <value>Volume Container Group \"{0}\" is not eligible for failover due to the reason: {1}</value>
+    <value>Volume Container Group "{0}" is not eligible for failover due to the reason: {1}</value>
   </data>
   <data name="SuccessMessageSubmitDeviceJob" xml:space="preserve">
     <value>The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job's status</value>
@@ -506,5 +506,28 @@
   </data>
   <data name="JobNotRunningOrCancellable" xml:space="preserve">
     <value>Cannot stop job with id {0}. It is not a running cancellable job.</value>
+  </data>
+  <data name="CIKInvalidWhileDecrypting" xml:space="preserve">
+    <value>Invalid Registration Key, Please enter the valid registration key copied from the Portal.</value>
+  </data>
+  <data name="CIKInvalidWithException" xml:space="preserve">
+    <value>Invalid value for Registration Key. CIK provided couldnt be used to decrypt the secrets! The exact exception while decrypting is "{0}"!</value>
+  </data>
+  <data name="PasswordCharacterCriteriaError" xml:space="preserve">
+    <value>{0} is not complex enough. It must contain 3 of the following:
+a lowercase character
+an uppercase character
+a number
+a special character</value>
+  </data>
+  <data name="AdminPasswordLengthError" xml:space="preserve">
+    <value>The AdministratorPassword must be between 8 to 15 characters.</value>
+  </data>
+  <data name="SnapshotPasswordLengthError" xml:space="preserve">
+    <value>The SnapshotManagerPassword must be either 14 or 15 characters long</value>
+  </data>
+  <data name="SetAzureStorSimpleDeviceNoSettingsProvided" xml:space="preserve">
+    <value>No settings were provided for updating device details.</value>
+
   </data>
 </root>

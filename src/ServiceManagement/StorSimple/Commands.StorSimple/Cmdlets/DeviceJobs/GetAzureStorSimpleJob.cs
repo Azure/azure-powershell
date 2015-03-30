@@ -103,10 +103,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             try
             {
                 // Make sure params were supplied appropriately.
-                if (!ProcessParameters())
-                {
-                    return;
-                }
+                ProcessParameters();
 
                 // Make call to get device jobs.
                 var response = StorSimpleClient.GetDeviceJobs(deviceId, Type, Status, InstanceId, fromDateTimeIsoString, toDateTimeIsoString, (int)Skip, (int)First);
@@ -115,9 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     if (response == null || response.DeviceJobList.Count < 1)
                     {
-                        WriteVerbose(string.Format(Resources.NoDeviceJobFoundWithGivenIdMessage, InstanceId));
-                        WriteObject(null);
-                        return;
+                        throw new ArgumentException(string.Format(Resources.NoDeviceJobFoundWithGivenIdMessage, InstanceId));
                     }
                     WriteObject(response.DeviceJobList.First());
                     return;
@@ -155,7 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
         }
 
-        private bool ProcessParameters()
+        private void ProcessParameters()
         {
             // Default values for first and skip are 0
             First = First ?? 0;
@@ -174,13 +169,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 deviceId = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceId == null)
                 {
-                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage,StorSimpleContext.ResourceName, DeviceName));
-                    WriteObject(null);
-                    return false;
+                    throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage,StorSimpleContext.ResourceName, DeviceName));
                 }
             }
-
-            return true;
         }
     }
 }
