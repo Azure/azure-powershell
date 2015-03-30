@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override IEnumerable<DatabaseDataMaskingRuleModel> GetModel()
+        protected override IEnumerable<DatabaseDataMaskingRuleModel> GetEntity()
         {
             return ModelAdapter.GetDatabaseDataMaskingRule(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
         }

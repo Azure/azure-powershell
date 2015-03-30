@@ -12,8 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Security.Model;
+using Microsoft.Azure.Commands.Sql.Security.Services;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
@@ -21,13 +27,8 @@ using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Storage;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Services
+namespace Microsoft.Azure.Commands.Sql.Common
 {
     /// <summary>
     /// This class is responsible for all the REST communication with the management libraries
@@ -197,7 +198,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        public SqlManagementClient GetCurrentSqlClient(String clientRequestId)
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)

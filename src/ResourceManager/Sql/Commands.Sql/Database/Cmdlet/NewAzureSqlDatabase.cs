@@ -1,0 +1,158 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using Hyak.Common;
+using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.Properties;
+
+namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
+{
+    /// <summary>
+    /// Cmdlet to create a new Azure Sql Database
+    /// </summary>
+    [Cmdlet(VerbsCommon.New, "AzureSqlDatabase",
+        ConfirmImpact = ConfirmImpact.Medium)]
+    public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase
+    {
+        /// <summary>
+        /// Gets or sets the name of the database to create.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the Azure SQL Database to create.")]
+        [ValidateNotNullOrEmpty]
+        public string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the Azure SQL Database collation to use
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the Azure SQL Database collation to use.")]
+        [ValidateNotNullOrEmpty]
+        public string CollationName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the Azure SQL Database catalog collation to use
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the Azure SQL Database catalog collation to use.")]
+        [ValidateNotNullOrEmpty]
+        public string CatalogCollation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximum size of the Azure SQL Database in bytes
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The maximum size of the Azure SQL Database in bytes.")]
+        [ValidateNotNullOrEmpty]
+        public long MaxSizeBytes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the edition to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The edition to assign to the Azure SQL Database.")]
+        [ValidateNotNullOrEmpty]
+        public DatabaseEdition Edition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the service objective to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the service objective to assign to the Azure SQL Database.")]
+        [ValidateNotNullOrEmpty]
+        public string RequestedServiceObjectiveName { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The tags to associate with the Azure Sql Database Server")]
+        public Dictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Defines whether it is ok to skip the requesting of rule removal confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
+        /// Get the entities from the service
+        /// </summary>
+        /// <returns>The list of entities</returns>
+        protected override IEnumerable<AzureSqlDatabaseModel> GetEntity()
+        {
+            // We try to get the database.  Since this is a create, we don't want the database to exist
+            try
+            {
+                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName);
+            }
+            catch (CloudException ex)
+            {
+                if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    // This is what we want.  We looked and there is no database with this name.
+                    return null;
+                }
+
+                // Unexpected exception encountered
+                throw;
+            }
+
+            // The database already exists
+            throw new PSArgumentException(
+                string.Format(Resources.DatabaseNameExists, this.DatabaseName, this.ServerName),
+                "DatabaseName");
+        }
+
+        /// <summary>
+        /// Create the model from user input
+        /// </summary>
+        /// <param name="model">Model retrieved from service</param>
+        /// <returns>The model that was passed in</returns>
+        protected override IEnumerable<AzureSqlDatabaseModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseModel> model)
+        {
+            List<Model.AzureSqlDatabaseModel> newEntity = new List<AzureSqlDatabaseModel>();
+            newEntity.Add(new AzureSqlDatabaseModel()
+                {
+                    CatalogCollation = CatalogCollation,
+                    CollationName = CollationName,
+                    DatabaseName = DatabaseName,
+                    Edition = Edition,
+                    MaxSizeBytes = MaxSizeBytes,
+                    RequestedServiceObjectiveName = RequestedServiceObjectiveName,
+                    Tags = Tags,
+                });
+            return newEntity;
+        }
+
+        /// <summary>
+        /// Create the new database
+        /// </summary>
+        /// <param name="entity">The output of apply user input to model</param>
+        /// <returns>The input entity</returns>
+        protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
+        {
+            return new List<AzureSqlDatabaseModel>() {
+                ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First())
+            };
+        }
+    }
+}

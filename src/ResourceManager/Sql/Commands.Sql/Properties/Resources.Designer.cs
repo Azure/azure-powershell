@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
+        /// </summary>
+        internal static string DatabaseNameExists {
+            get {
+                return ResourceManager.GetString("DatabaseNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A data masking rule for alias &apos;{0}&apos; is already exists.
         /// </summary>
         internal static string DataMaskingAliasAlreadyUsedError {
@@ -160,6 +169,60 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Database Server &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseServerDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseServerDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Firewall Rule &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseServerFirewallRuleDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseServerFirewallRuleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Firewall Rule &apos;{0}&apos; for Azure Sql Database Server  &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseServerFirewallRuleWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseServerFirewallRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Server &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseServerWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseServerWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing firewall rule &quot;{0}&quot; for Microsoft Azure Sql Database &quot;{1}&quot;..
         /// </summary>
         internal static string RemoveDatabaseDataMaskingRuleDescription {
@@ -174,6 +237,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveDatabaseDataMaskingRuleWarning {
             get {
                 return ResourceManager.GetString("RemoveDatabaseDataMaskingRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Firewall Rule with name: &apos;{0}&apos; already exists for server &apos;{1}&apos;..
+        /// </summary>
+        internal static string ServerFirewallRuleNameExists {
+            get {
+                return ResourceManager.GetString("ServerFirewallRuleNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server with name: &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string ServerNameExists {
+            get {
+                return ResourceManager.GetString("ServerNameExists", resourceCulture);
             }
         }
         

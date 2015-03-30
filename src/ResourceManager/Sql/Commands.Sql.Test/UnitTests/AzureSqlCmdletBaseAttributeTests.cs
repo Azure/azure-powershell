@@ -12,24 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.Test.Utilities;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.Sql
+namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 {
-    /// <summary>
-    /// The base class for all Azure Sql Database Management Cmdlets
-    /// </summary>
-    public abstract class SqlDatabaseCmdletBase : AzurePSCmdlet 
+    public class AzureSqlCmdletBaseAttributeTests
     {
-        /// <summary>
-        /// Stores the per request session Id for all request made in this cmdlet call.
-        /// </summary>
-        protected string clientRequestId { get; set; }
-
-        internal SqlDatabaseCmdletBase()
+        [Fact]
+        public void TestAzureSqlCmdletBaseAttributes()
         {
-            this.clientRequestId = Util.GenerateTracingId();
+            UnitTestHelper.CheckCmdletParameterAttributes(typeof(AzureSqlCmdletBase<object, object>), "ResourceGroupName", true, true);
+        }
+
+        [Fact]
+        public void TestAzureSqlDatabaseCmdletBaseAttributes()
+        {
+            UnitTestHelper.CheckCmdletParameterAttributes(typeof(AzureSqlDatabaseCmdletBase<object, object>), "DatabaseName", true, true);
+            UnitTestHelper.CheckCmdletParameterAttributes(typeof(AzureSqlDatabaseCmdletBase<object, object>), "ServerName", true, true);
         }
     }
 }

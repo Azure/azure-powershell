@@ -14,18 +14,29 @@
 
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.Common
 {
     /// <summary>
     /// The base class for all Azure Sql database cmdlets
     /// </summary>
-    public abstract class SqlDatabaseCmdletBase<M, A> : SqlCmdletBase<M, A>
+    public abstract class AzureSqlDatabaseCmdletBase<M, A> : AzureSqlCmdletBase<M, A>
     {
         /// <summary>
         /// Gets or sets the name of the database to use.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "SQL Database name.")]
+        [Parameter(Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "SQL Database name.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the database server to use.
+        /// </summary>
+        [Parameter(Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "SQL Database server name.")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
     }
 }

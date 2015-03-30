@@ -12,25 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.Common
 {
     /// <summary>
     /// The base class for all Azure Sql cmdlets
     /// </summary>
-    public abstract class SqlCmdletBase<M, A> : AzurePSCmdlet 
+    public abstract class AzureSqlCmdletBase<M, A> : AzurePSCmdlet
     {
-       
         /// <summary>
         /// Stores the per request session Id for all request made in this cmdlet call.
         /// </summary>
         protected string clientRequestId { get; set; }
 
-        internal SqlCmdletBase()
+        internal AzureSqlCmdletBase()
         {
             this.clientRequestId = Util.GenerateTracingId();
         }
@@ -38,40 +37,35 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the name of the database server to use.
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "SQL Database server name.")]
-        [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; }
-   
-       /// <summary>
-        /// The ModelAdapter object used by this cmdlet
-        /// </summary>
-        public A ModelAdapter { get;  internal set; }
 
         /// <summary>
-        /// Provides the model element that this cmdlet operates on
+        /// The ModelAdapter object used by this cmdlet
+        /// </summary>
+        public A ModelAdapter { get; internal set; }
+
+        /// <summary>
+        /// Gets an entity from the service
         /// </summary>
         /// <returns>A model object</returns>
-        protected abstract M GetModel();
+        protected abstract M GetEntity();
+
+        /// <summary>
+        /// Updates the given model element with the cmdlet specific operation 
+        /// </summary>
+        /// <param name="model">A model object</param>
+        protected virtual M ApplyUserInputToModel(M model) { return model; }
 
         /// <summary>
         /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
         /// object to the REST endpoint
         /// </summary>
-        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected virtual void SendModel(M model) { }
-         
-        /// <summary>
-        /// Updates the given model element with the cmdlet specific operation 
-        /// </summary>
-        /// <param name="model">A model object</param>
-        protected virtual M UpdateModel(M model) { return model; }
+        /// <param name="entity">The model object with the data to be sent to the REST endpoints</param>
+        protected virtual M PersistChanges(M entity) { return default(M); }
 
         /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
@@ -84,18 +78,26 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected abstract A InitModelAdapter (AzureSubscription subscription);
+        protected abstract A InitModelAdapter(AzureSubscription subscription);
 
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            ModelAdapter = InitModelAdapter(Profile.Context.Subscription); 
-            M model = this.GetModel();
-            M updatedModel = this.UpdateModel(model);
-            this.SendModel(updatedModel);
-            if (WriteResult()) this.WriteObject(updatedModel);
+            ModelAdapter = InitModelAdapter(Profile.Context.Subscription);
+            M model = this.GetEntity();
+            M updatedModel = this.ApplyUserInputToModel(model);
+            M responseModel = this.PersistChanges(updatedModel);
+
+            if(responseModel != null)
+            {
+                if (WriteResult()) this.WriteObject(responseModel);
+            }
+            else
+            {
+                if (WriteResult()) this.WriteObject(updatedModel);
+            }
         }
     }
 }
