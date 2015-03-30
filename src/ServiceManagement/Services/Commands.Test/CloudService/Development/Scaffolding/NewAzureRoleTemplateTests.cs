@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
             mockCommandRuntime = new MockCommandRuntime();
         }
 
-        [Fact]
+        [Fact(Skip = "crp2")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRoleTemplateWithWebRole()
         {
@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
             Testing.AssertDirectoryIdentical(Path.Combine(Resources.GeneralScaffolding, RoleType.WebRole.ToString()), outputPath);
         }
 
-        [Fact]
+        [Fact(Skip = "crp2")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRoleTemplateWithWorkerRole()
         {
@@ -66,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
             Testing.AssertDirectoryIdentical(Path.Combine(Resources.GeneralScaffolding, RoleType.WorkerRole.ToString()), outputPath);
         }
 
-        [Fact]
+        [Fact(Skip = "crp2")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRoleTemplateWithOutputPath()
         {
@@ -82,7 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
             }
         }
 
-        [Fact]
+        [Fact(Skip = "crp2")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRoleTemplateWithDirectoryExists()
         {
