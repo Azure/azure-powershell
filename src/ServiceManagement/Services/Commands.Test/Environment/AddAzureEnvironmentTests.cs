@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Common.Authentication;
 using System.IO;
@@ -44,6 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddsAzureEnvironment()
         {
             var profile = new AzureProfile();
@@ -74,6 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact(Skip = "Failed @ Assert.True(env.OnPremise);")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddsEnvironmentWithMinimumInformation()
         {
             var profile = new AzureProfile();
@@ -100,6 +103,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IgnoresAddingDuplicatedEnvironment()
         {
             var profile = new AzureProfile();
@@ -125,6 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IgnoresAddingPublicEnvironment()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -139,6 +144,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddsEnvironmentWithStorageEndpoint()
         {
             var profile = new AzureProfile();
