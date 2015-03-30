@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
@@ -91,6 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureWebsiteLogTest()
         {
             getAzureWebsiteLogCmdlet.Tail = true;
@@ -108,6 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanGetAzureWebsiteLogWithPath()
         {
             getAzureWebsiteLogCmdlet.Tail = true;
@@ -126,6 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureWebsiteLogListPath()
         {
             List<LogPath> paths = new List<LogPath>() { 

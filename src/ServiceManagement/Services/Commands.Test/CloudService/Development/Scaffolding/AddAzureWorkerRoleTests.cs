@@ -14,6 +14,7 @@
 
 using System.IO;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.CloudService.Development.Scaffolding;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -39,6 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureWorkerRoleProcess()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -62,6 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureWorkerRoleWillRecreateDeploymentSettings()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -119,6 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureWorkerRoleWithMissingScaffoldXmlFail()
         {
             string scaffoldingPath = "TemplateMissingScaffoldXml";

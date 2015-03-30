@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Common;
@@ -31,6 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.Services
     public class GithubClientTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRepositories()
         {
             // Setup
@@ -68,6 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.Services
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateOrUpdateHookAlreadyExists()
         {
             // Setup
@@ -118,6 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.Services
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateOrUpdateHookCreate()
         {
             // Setup
@@ -178,6 +182,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.Services
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateOrUpdateHookUpdate()
         {
             // Setup
