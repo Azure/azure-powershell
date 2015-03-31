@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets the vault
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true, HelpMessage = "Vault Object for which the site has to be deleted")]
+        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = false, HelpMessage = "Vault Object for which the site has to be deleted")]
         [ValidateNotNullOrEmpty]
         public ASRVault Vault { get; set; }
 
