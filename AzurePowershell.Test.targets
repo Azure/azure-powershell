@@ -32,7 +32,7 @@
     <AzureRTAllPreviewFilter>"Functional|AzureRTScenario|Preview"</AzureRTAllPreviewFilter>
     <AzureRTUploadSeqFilter>"AzureRTUpload|Sequential"</AzureRTUploadSeqFilter>
     <AzureRTSeqAllFilter>"AzureRTUpload|Sequential|Network"</AzureRTSeqAllFilter>
-    <TestTimeout Condition=" '$(TestTimeout)' == '' ">1000000</TestTimeout>
+    <TestTimeout Condition=" '$(TestTimeout)' == '' ">100000000</TestTimeout>
   </PropertyGroup>
   
   <ItemGroup>

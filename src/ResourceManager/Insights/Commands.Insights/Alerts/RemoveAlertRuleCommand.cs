@@ -48,17 +48,10 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletInternal()
         {
-            try
-            {
-                AzureOperationResponse result = this.InsightsManagementClient.AlertOperations.DeleteRuleAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
-                WriteObject(result);
-            }
-            catch (AggregateException ex)
-            {
-                throw ex.Flatten().InnerException;
-            }
+            AzureOperationResponse result = this.InsightsManagementClient.AlertOperations.DeleteRuleAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
+            WriteObject(result);
         }
     }
 }

@@ -188,7 +188,14 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test.Common
                 new TrackingResult(response)
             };
 
-            ISetup<IRemoteAppManagementClient, Task<OperationResultWithTrackingId>> setup = clientMock.Setup(c => c.Collections.SetAsync(It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>(), It.IsAny<CollectionCreationDetails>(), It.IsAny<CancellationToken>()));
+            ISetup<IRemoteAppManagementClient, Task<OperationResultWithTrackingId>> setup = 
+                clientMock.Setup(
+                    c => c.Collections.SetAsync(
+                            collectionName, 
+                            It.IsAny<bool>(), 
+                            It.IsAny<bool>(), 
+                            It.IsAny<CollectionUpdateDetails>(), 
+                            It.IsAny<CancellationToken>()));
             setup.Returns(Task.Factory.StartNew(() => response));
 
             mockCollectionList = collectionList;
