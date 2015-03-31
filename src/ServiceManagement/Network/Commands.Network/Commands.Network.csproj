@@ -80,6 +80,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.0.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.9.2.1\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
@@ -193,6 +197,8 @@
     <Compile Include="NetworkSecurityGroup\Subnet\GetAzureNetworkSecurityGroupForSubnet.cs" />
     <Compile Include="NetworkSecurityGroup\Subnet\RemoveAzureNetworkSecurityGroupFromSubnet.cs" />
     <Compile Include="NetworkSecurityGroup\Utilities\NetworkSecurityGroupConfigurationBaseCmdlet.cs" />
+    <Compile Include="..\..\Compute\Commands.ServiceManagement\Model\IPersistentVM.cs" />
+    <Compile Include="..\..\Compute\Commands.ServiceManagement\Model\PersistentVM.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
