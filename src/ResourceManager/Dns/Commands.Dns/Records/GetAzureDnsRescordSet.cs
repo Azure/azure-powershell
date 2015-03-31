@@ -50,6 +50,10 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string RecordType { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The relative name suffix to search.")]
+        [ValidateNotNullOrEmpty]
+        public string EndsWith { get; set; }
+
         public override void ExecuteCmdlet()
         {
             RecordType recordType = default(RecordType);
@@ -72,6 +76,11 @@ namespace Microsoft.Azure.Commands.Dns
                 resourceGroupName = this.Zone.ResourceGroupName;
             }
 
+            if (this.Name != null && this.EndsWith != null)
+            {
+                throw new PSArgumentException(ProjectResources.Error_NameAndEndsWith);
+            }
+
             if (this.Name != null)
             {
                 if (this.RecordType == null)
@@ -87,11 +96,11 @@ namespace Microsoft.Azure.Commands.Dns
                 List<DnsRecordSet> result = null;
                 if (this.RecordType == null)
                 {
-                    result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName);
+                    result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName, this.EndsWith);
                 }
                 else
                 {
-                    result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName, recordType);
+                    result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName, recordType, this.EndsWith);
                 }
 
                 this.WriteObject(result);

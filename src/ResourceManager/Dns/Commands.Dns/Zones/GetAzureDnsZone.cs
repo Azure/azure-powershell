@@ -16,6 +16,8 @@ using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 
+using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+
 namespace Microsoft.Azure.Commands.Dns
 {
     /// <summary>
@@ -32,15 +34,24 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The relative name suffix to search.")]
+        [ValidateNotNullOrEmpty]
+        public string EndsWith { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (this.Name != null && this.EndsWith != null)
+            {
+                throw new PSArgumentException(ProjectResources.Error_NameAndEndsWith);
+            }
+
             if (this.Name != null)
             {
                 WriteObject(this.DnsClient.GetDnsZone(this.Name, this.ResourceGroupName));
             }
             else
             {
-                WriteObject(this.DnsClient.ListDnsZones(this.ResourceGroupName));
+                WriteObject(this.DnsClient.ListDnsZones(this.ResourceGroupName, this.EndsWith));
             }
         }
     }
