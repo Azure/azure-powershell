@@ -878,5 +878,29 @@ namespace Microsoft.Azure.Commands.Network
 
             return deploymentName;
         }
+
+        public GetEffectiveRouteTableResponse GetEffectiveRouteTableForRoleInstance(
+            string serviceName,
+            string deploymentName,
+            string roleInstanceName)
+        {
+            return this.client.Routes.GetEffectiveRouteTableForRoleInstance(
+                serviceName,
+                deploymentName,
+                roleInstanceName);
+        }
+
+        public GetEffectiveRouteTableResponse GetEffectiveRouteTableForNetworkInterface(
+            string serviceName,
+            string deploymentName,
+            string roleInstanceName,
+            string networkInterfaceName)
+        {
+            return this.client.Routes.GetEffectiveRouteTableForNetworkInterface(
+                serviceName,
+                deploymentName,
+                roleInstanceName,
+                networkInterfaceName);
+        }
     }
 }
