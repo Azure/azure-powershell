@@ -443,7 +443,6 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveCollection()
         {
             List<TrackingResult> trackingIds = null;
