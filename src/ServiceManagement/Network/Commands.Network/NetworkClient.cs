@@ -836,5 +836,55 @@ namespace Microsoft.Azure.Commands.Network
 
             client.NetworkSecurityGroups.AddToSubnet(virtualNetworkName, subnetName, parameters);
         }
+
+        public void SetIPForwardingForRole(string serviceName, string deploymentName, string roleName, bool ipForwarding)
+        {
+            var parameters = new IPForwardingSetParameters()
+            {
+                State = ipForwarding ? "Enabled" : "Disabled"
+            };
+
+            client.IPForwarding.SetOnRole(serviceName, deploymentName, roleName, parameters);
+        }
+
+        public void SetIPForwardingForNetworkInterface(string serviceName, string deploymentName, string roleName, string networkInterfaceName, bool ipForwarding)
+        {
+            var parameters = new IPForwardingSetParameters()
+            {
+                State = ipForwarding ? "Enabled" : "Disabled"
+            };
+
+            client.IPForwarding.SetOnNetworkInterface(serviceName, deploymentName, roleName, networkInterfaceName, parameters);
+        }
+
+        public IPForwardingGetResponse GetIPForwardingForRole(string serviceName, string deploymentName, string roleName)
+        {
+            IPForwardingGetResponse ipForwardingGetResponse = client.IPForwarding.GetForRole(serviceName, deploymentName, roleName);
+            return null;
+        }
+        public IPForwardingGetResponse GetIPForwardingForNetworkInterface(string serviceName, string deploymentName, string roleName, string networkInterfaceName)
+        {
+            IPForwardingGetResponse ipForwardingGetResponse = client.IPForwarding.GetForNetworkInterface(serviceName, deploymentName, roleName, networkInterfaceName);
+            return null;
+        }
+
+        public string GetDeploymentBySlot(string serviceName, string slot)
+        {
+            if (string.IsNullOrEmpty(serviceName))
+            {
+                throw new ArgumentNullException(serviceName);
+            }
+
+            if (string.IsNullOrEmpty(slot))
+            {
+                throw new ArgumentNullException(slot);
+            }
+
+            var slotType = (ComputeModels.DeploymentSlot)Enum.Parse(typeof(ComputeModels.DeploymentSlot), slot, true);
+
+            return this.computeClient.Deployments.GetBySlot(
+                        serviceName,
+                        slotType).Name;
+        }
     }
 }

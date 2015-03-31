@@ -169,6 +169,9 @@
     <Compile Include="Gateway\SetAzureVNetGatewayKey.cs" />
     <Compile Include="Gateway\StartAzureVNetGatewayDiagnostics.cs" />
     <Compile Include="Gateway\StopAzureVNetGatewayDiagnostics.cs" />
+    <Compile Include="IPForwarding\GetAzureIPForwarding.cs" />
+    <Compile Include="IPForwarding\Model\IPForwardingState.cs" />
+    <Compile Include="IPForwarding\SetAzureIPForwarding.cs" />
     <Compile Include="NetworkClient.cs" />
     <Compile Include="NetworkCmdletBase.cs" />
     <Compile Include="Routes\GetAzureRouteTable.cs" />
