@@ -362,7 +362,7 @@ function Test-RecordSetSRV
 	$record = $record | Add-AzureDnsRecordConfig -Port 53 -Priority 1 -Target ns1.example.com -Weight 5
 	$record = $record | Add-AzureDnsRecordConfig -Port 53 -Priority 2 -Target ns2.example.com -Weight 10
 	$record = $record | Remove-AzureDnsRecordConfig -Port 53 -Priority 2 -Target ns2.example.com -Weight 10
-	$record = $record | Remove-AzureDnsRecordConfig -Port 42 -Priority 2435435 -Target ns5.example.com -Weight 1600
+	$record = $record | Remove-AzureDnsRecordConfig -Port 42 -Priority 999 -Target ns5.example.com -Weight 1600
 
 	$record | Set-AzureDnsRecordSet
 	$getResult = Get-AzureDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SRV 
@@ -518,7 +518,7 @@ function Test-RecordSetRemoveRecordTypeMismatch
 
 <#
 .SYNOPSIS
-Zone CRUD with piping
+Record Set Etag Mismatch
 #>
 function Test-RecordSetEtagMismatch
 {
@@ -543,7 +543,7 @@ function Test-RecordSetEtagMismatch
 
 <#
 .SYNOPSIS
-Zone CRUD with piping
+Record Set Get
 #>
 function Test-RecordSetGet
 {
@@ -577,6 +577,82 @@ function Test-RecordSetGet
 	$allRecords = Get-AzureDnsRecordSet -Zone $zone
 
 	Assert-AreEqual 5 $allRecords.Count
+	
+	$zone | Remove-AzureDnsRecordSet -Name $recordName1 -RecordType AAAA -Force
+	$zone | Remove-AzureDnsRecordSet -Name $recordName2 -RecordType AAAA -Force
+	$zone | Remove-AzureDnsRecordSet -Name $recordName3 -RecordType MX -Force
+
+	$zone | Remove-AzureDnsZone -Force -IgnoreEtag
+}
+
+<#
+.SYNOPSIS
+Record Set Get using EndsWith parameter
+#>
+function Test-RecordSetGetWithEndsWith
+{
+	$rootRecordName = "@"
+	$recordSuffix = ".com"
+	$anotherSuffix = ".con"
+
+	$zoneName = getAssetname
+
+	$recordName1 = (getAssetname) + $recordSuffix
+	$recordName2 = (getAssetname) + $anotherSuffix
+	$recordName3 = (getAssetname) + $recordSuffix
+
+	$zone = TestSetup-CreateResourceGroup | New-AzureDnsZone -Name $zoneName
+
+	# test for root records
+	$rootRecords = $zone | Get-AzureDnsRecordSet -EndsWith $rootRecordName
+
+	Assert-AreEqual 2 $rootRecords.Count -Message ("Expected 2 root records. Actual: " + $rootRecords.Count)
+	
+    New-AzureDnsRecordSet -Zone $zone -Name $recordName1 -Ttl 100 -RecordType AAAA
+	New-AzureDnsRecordSet -Zone $zone -Name $recordName2 -Ttl 1200 -RecordType AAAA
+	New-AzureDnsRecordSet -Zone $zone -Name $recordName3 -Ttl 1500 -RecordType MX
+
+	# test for records within type
+	$aaaaRecords = $zone | Get-AzureDnsRecordSet -RecordType AAAA -EndsWith $recordSuffix
+	$mxRecords = $zone | Get-AzureDnsRecordSet -RecordType MX -EndsWith $recordSuffix
+
+	Assert-AreEqual 1 $aaaaRecords.Count -Message ("Expected 1 AAAA record. Actual: " + $aaaaRecords.Count)
+	Assert-AreEqual 1 $mxRecords.Count -Message ("Expected 1 MX record. Actual: " + $mxRecords.Count)
+
+	# all records
+	$allRecords = $zone | Get-AzureDnsRecordSet -EndsWith $recordSuffix
+
+	Assert-AreEqual 2 $allRecords.Count -Message ("Expected 2 records across types. Actual: " + $allRecords.Count)
+
+	$zone | Remove-AzureDnsRecordSet -Name $recordName1 -RecordType AAAA -Force
+	$zone | Remove-AzureDnsRecordSet -Name $recordName2 -RecordType AAAA -Force
+	$zone | Remove-AzureDnsRecordSet -Name $recordName3 -RecordType MX -Force
+
+	$zone | Remove-AzureDnsZone -Force -IgnoreEtag
+}
+
+<#
+.SYNOPSIS
+Record Set Get using EndsWith parameter and Name parameter. Should throw exception.
+#>
+function Test-RecordSetGetWithEndsWithAndName
+{
+	$rootRecordName = "@"
+	$recordSuffix = ".com"
+	$zoneName = getAssetname
+	$recordName1 = getAssetname + $recordSuffix
+	$recordName2 = getAssetname
+	$recordName3 = getAssetname + $recordSuffix
+
+	$zone = TestSetup-CreateResourceGroup | New-AzureDnsZone -Name $zoneName
+
+    New-AzureDnsRecordSet -Zone $zone -Name $recordName1 -Ttl 100 -RecordType AAAA
+	New-AzureDnsRecordSet -Zone $zone -Name $recordName2 -Ttl 1200 -RecordType AAAA
+	New-AzureDnsRecordSet -Zone $zone -Name $recordName3 -Ttl 1500 -RecordType MX
+
+	Assert-Throws { $zone | Get-AzureDnsRecordSet -Name $recordName1 -RecordType AAAA -EndsWith $recordSuffix } "Name parameter cannot be used with EndsWith."
+
+	Assert-Throws { $zone | Get-AzureDnsRecordSet -Name $recordName1 -EndsWith $recordSuffix } "Name parameter cannot be used with EndsWith."
 	
 	$zone | Remove-AzureDnsRecordSet -Name $recordName1 -RecordType AAAA -Force
 	$zone | Remove-AzureDnsRecordSet -Name $recordName2 -RecordType AAAA -Force

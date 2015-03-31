@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
         {
             ZoneListParameters zoneListParameters = new ZoneListParameters
             {
-                Filter = string.Format("endswith(Name,'{0}')", endsWith)
+                Filter = endsWith == null ? null : string.Format("endswith(Name,'{0}')", endsWith)
             };
 
             ZoneListResponse getResponse = this.DnsManagementClient.Zones.List(resourceGroupName, zoneListParameters);
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
         {
             RecordListParameters recordListParameters = new RecordListParameters
             {
-                Filter = string.Format("endswith(Name,'{0}')", endsWith)
+                Filter = endsWith == null ? null : string.Format("endswith(Name,'{0}')", endsWith)
             };
 
             RecordListResponse listResponse = this.DnsManagementClient.Records.List(resourceGroupName, zoneName, recordType, recordListParameters);
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
         {
             RecordListParameters recordListParameters = new RecordListParameters
             {
-                Filter = string.Format("endswith(Name,'{0}')", endsWith)
+                Filter = endsWith == null ? null : string.Format("endswith(Name,'{0}')", endsWith)
             };
 
             RecordListResponse listResponse = this.DnsManagementClient.Records.ListAll(resourceGroupName, zoneName, recordListParameters);
