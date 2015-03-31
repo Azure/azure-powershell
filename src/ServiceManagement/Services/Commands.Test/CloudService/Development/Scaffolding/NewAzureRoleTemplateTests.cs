@@ -15,6 +15,7 @@
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.CloudService.Development.Scaffolding;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -40,6 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRoleTemplateWithWebRole()
         {
             string outputPath = Path.Combine(Directory.GetCurrentDirectory(), "WebRoleTemplate");
@@ -52,6 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRoleTemplateWithWorkerRole()
         {
             string outputPath = Path.Combine(Directory.GetCurrentDirectory(), "WorkerRoleTemplate");
@@ -64,6 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRoleTemplateWithOutputPath()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -79,6 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRoleTemplateWithDirectoryExists()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))

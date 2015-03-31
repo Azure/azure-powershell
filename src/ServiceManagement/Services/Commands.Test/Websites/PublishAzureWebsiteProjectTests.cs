@@ -7,6 +7,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Microsoft.WindowsAzure.Management.WebSites.Models;
 using Moq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
@@ -14,6 +15,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
     public class PublishAzureWebsiteProjectTests : WebsitesTestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PublishFromPackage()
         {
             var websiteName = "test-site";
@@ -64,6 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PublishFromProjectFile()
         {
             var websiteName = "test-site";

@@ -1060,7 +1060,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewResourceGroupUsesDeploymentNameForDeploymentName()
         {
             string deploymentName = "abc123";
