@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
-    /// Creates Azure Site Recovery Site.
+    /// Removes Azure Site Recovery Site.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureSiteRecoverySite")]
     [OutputType(typeof(ASRJob))]
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the vault name
+        /// Gets or sets the vault
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = false, HelpMessage = "Vault Object for which the site has to be deleted")]
+        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true, HelpMessage = "Vault Object for which the site has to be deleted")]
         [ValidateNotNullOrEmpty]
         public ASRVault Vault { get; set; }
 

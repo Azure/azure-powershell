@@ -155,16 +155,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Handles interrupts.
-        /// </summary>
-        protected override void StopProcessing()
-        {
-            // Ctrl + C and etc
-            base.StopProcessing();
-            this.StopProcessingFlag = true;
-        }
-
-        /// <summary>
         /// Updates an E2A Protection Profile
         /// </summary>
         private void EnterpriseToAzureUpdate()

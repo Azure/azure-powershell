@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
-    /// Used to initiate a vault create operation.
+    /// Used to initiate a vault remove operation.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureSiteRecoveryVault")]
     [OutputType(typeof(VaultOperationOutput))]
