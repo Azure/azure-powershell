@@ -21,7 +21,7 @@ using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 namespace Microsoft.Azure.Commands.Dns
 {
     /// <summary>
-    /// Creates a new resource.
+    /// Updates an existing record set.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureDnsRecordSet"), OutputType(typeof(DnsRecordSet))]
     public class SetAzureDnsRecordSet : DnsBaseCmdlet

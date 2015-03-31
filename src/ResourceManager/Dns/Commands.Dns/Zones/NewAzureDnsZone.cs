@@ -21,7 +21,7 @@ using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 namespace Microsoft.Azure.Commands.Dns
 {
     /// <summary>
-    /// Creates a new resource.
+    /// Creates a new zone.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureDnsZone"), OutputType(typeof(DnsZone))]
     public class NewAzureDnsZone : DnsBaseCmdlet

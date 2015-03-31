@@ -23,7 +23,7 @@ using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 namespace Microsoft.Azure.Commands.Dns
 {
     /// <summary>
-    /// Creates a new resource.
+    /// Removes a record from a record set object.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureDnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
     public class RemoveAzureDnsRecordConfig : DnsBaseCmdlet

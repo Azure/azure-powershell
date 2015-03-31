@@ -22,7 +22,7 @@ using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 namespace Microsoft.Azure.Commands.Dns
 {
     /// <summary>
-    /// Creates a new resource.
+    /// Deletes an existing zone.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureDnsZone"), OutputType(typeof(bool))]
     public class RemoveAzureDnsZone : DnsBaseCmdlet

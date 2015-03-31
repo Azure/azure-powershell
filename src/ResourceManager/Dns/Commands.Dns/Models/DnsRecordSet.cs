@@ -67,6 +67,9 @@ namespace Microsoft.Azure.Commands.Dns
         public Hashtable[] Tags { get; set; }
     }
 
+    /// <summary>
+    /// Represents a DNS record that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
     public abstract class DnsRecordBase
     {
         internal abstract object ToMamlRecord();
@@ -152,8 +155,14 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 
+    /// <summary>
+    /// Represents a DNS record of type A that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
     public class ARecord :  DnsRecordBase
     {
+        /// <summary>
+        /// Gets or sets the IPv4 address of this A record in string notation
+        /// </summary>
         public string Ipv4Address { get; set; }
 
         public override string ToString()
@@ -170,8 +179,14 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 
+    /// <summary>
+    /// Represents a DNS record of type AAAA that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
     public class AaaaRecord : DnsRecordBase
     {
+        /// <summary>
+        /// Gets or sets the IPv6 address of this AAAA record in string notation.
+        /// </summary>
         public string Ipv6Address { get; set; }
 
         public override string ToString()
@@ -188,8 +203,14 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 
+    /// <summary>
+    /// Represents a DNS record of type CNAME that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
     public class CnameRecord : DnsRecordBase
     {
+        /// <summary>
+        /// Gets or sets the canonical name for this CNAME record without a terminating dot.
+        /// </summary>
         public string Cname { get; set; }
 
         public override string ToString()
@@ -206,8 +227,14 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 
+    /// <summary>
+    /// Represents a DNS record of type NS that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
     public class NsRecord : DnsRecordBase
     {
+        /// <summary>
+        /// Gets or sets the name server name for this NS record, without a terminating dot.
+        /// </summary>
         public string Nsdname { get; set; }
 
         public override string ToString()
@@ -224,8 +251,14 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 
+    /// <summary>
+    /// Represents a DNS record of type TXT that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
     public class TxtRecord : DnsRecordBase
     {
+        /// <summary>
+        /// Gets or sets the text value of this TXT record.
+        /// </summary>
         public string Value { get; set; }
 
         public override string ToString()
@@ -242,10 +275,19 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 
+    /// <summary>
+    /// Represents a DNS record of type MX that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
     public class MxRecord : DnsRecordBase
     {
+        /// <summary>
+        /// Gets or sets the preference metric for this MX record.
+        /// </summary>
         public ushort Preference { get; set; }
 
+        /// <summary>
+        /// Gets or sets the domain name of the mail host, without a terminating dot
+        /// </summary>
         public string Exchange { get; set; }
 
         public override string ToString()
@@ -263,14 +305,29 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 
+    /// <summary>
+    /// Represents a DNS record of type SRV that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
     public class SrvRecord : DnsRecordBase
     {
+        /// <summary>
+        /// Gets or sets the domain name of the target for this SRV record, without a terminating dot.
+        /// </summary>
         public string Target { get; set; }
 
+        /// <summary>
+        /// Gets or sets the weight metric for this SRV record.
+        /// </summary>
         public ushort Weight { get; set; }
 
+        /// <summary>
+        /// Gets or sets the port for this SRV record
+        /// </summary>
         public ushort Port { get; set; }
 
+        /// <summary>
+        /// Gets or sets the priority metric for this SRV record.
+        /// </summary>
         public ushort Priority { get; set; }
 
         public override string ToString()
@@ -290,20 +347,44 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 
+    /// <summary>
+    /// Represents a DNS record of type SOA that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
     public class SoaRecord : DnsRecordBase
     {
+        /// <summary>
+        /// Gets or sets the domain name of the authoritative name server for this SOA record, without a temrinating dot.
+        /// </summary>
         public string Host { get; set; }
 
+        /// <summary>
+        /// Gets or sets the email for this SOA record.
+        /// </summary>
         public string Email { get; set; }
 
+        /// <summary>
+        /// Gets or sets the serial number of this SOA record.
+        /// </summary>
         public uint SerialNumber { get; set; }
 
+        /// <summary>
+        /// Gets or sets the refresh value for this SOA record.
+        /// </summary>
         public uint RefreshTime { get; set; }
 
+        /// <summary>
+        /// Gets or sets the retry time for SOA record.
+        /// </summary>
         public uint RetryTime { get; set; }
 
+        /// <summary>
+        /// Gets or sets the expire time for this SOA record.
+        /// </summary>
         public uint ExpireTime { get; set; }
 
+        /// <summary>
+        /// Gets or sets the minimum TTL for this SOA record.
+        /// </summary>
         public uint MinimumTtl { get; set; }
 
         public override string ToString()

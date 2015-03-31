@@ -24,7 +24,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Dns
 {
     /// <summary>
-    /// Creates a new resource.
+    /// Gets one or more existing record sets.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureDnsRecordSet"), OutputType(typeof(DnsRecordSet))]
     public class GetAzureDnsRecordSet : DnsBaseCmdlet
