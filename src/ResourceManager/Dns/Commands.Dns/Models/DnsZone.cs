@@ -20,14 +20,29 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Dns
 {
+    /// <summary>
+    /// A DNS zone
+    /// </summary>
     public class DnsZone
     {
+        /// <summary>
+        /// Gets or sets the name of the DNS zone.
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the resource group to which this zone belongs.
+        /// </summary>
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Etag of this zone
+        /// </summary>
         public string Etag { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tags of this resource
+        /// </summary>
         public Hashtable[] Tags { get; set; }
     }
 }

@@ -362,7 +362,7 @@ function Test-RecordSetSRV
 	$record = $record | Add-AzureDnsRecordConfig -Port 53 -Priority 1 -Target ns1.example.com -Weight 5
 	$record = $record | Add-AzureDnsRecordConfig -Port 53 -Priority 2 -Target ns2.example.com -Weight 10
 	$record = $record | Remove-AzureDnsRecordConfig -Port 53 -Priority 2 -Target ns2.example.com -Weight 10
-	$record = $record | Remove-AzureDnsRecordConfig -Port 42 -Priority 2435435 -Target ns5.example.com -Weight 1600
+	$record = $record | Remove-AzureDnsRecordConfig -Port 42 -Priority 999 -Target ns5.example.com -Weight 1600
 
 	$record | Set-AzureDnsRecordSet
 	$getResult = Get-AzureDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SRV 

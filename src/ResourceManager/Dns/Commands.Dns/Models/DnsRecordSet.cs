@@ -21,22 +21,49 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Dns
 {
+    /// <summary>
+    /// Represents a set of records with the same name, with the same type and in the same zone.
+    /// </summary>
     public class DnsRecordSet
     {
+        /// <summary>
+        /// Gets or sets the name of this record set, relative to the name of the zone to which it belongs and WITHOUT a terminating '.' (dot) character.
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the zone to which this recordset belongs.
+        /// </summary>
         public string ZoneName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the resource group to which this record set belongs.
+        /// </summary>
         public string ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the TTL of all the records in this record set.
+        /// </summary>
         public uint Ttl { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Etag of this record set.
+        /// </summary>
         public string Etag { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type of DNS records in this record set. Only records of this type may be added to this record set.
+        /// </summary>
         public RecordType RecordType { get; set; }
 
+        /// <summary>
+        /// Gets or sets the list of records in this record set.
+        /// </summary>
         public List<DnsRecordBase> Records { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tags of this record set.
+        /// </summary>
         public Hashtable[] Tags { get; set; }
     }
 
