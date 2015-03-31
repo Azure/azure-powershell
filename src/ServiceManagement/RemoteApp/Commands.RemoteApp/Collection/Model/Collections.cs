@@ -27,7 +27,7 @@ namespace LocalModels
         public Collection(Microsoft.Azure.Management.RemoteApp.Models.Collection col)
         {
             AdInfo = col.AdInfo;
-            BillingPlanName = col.BillingPlanName;
+            PlanName = col.PlanName;
             Type = col.Type;
             CustomRdpProperty = col.CustomRdpProperty;
             Description = col.Description;
@@ -46,7 +46,7 @@ namespace LocalModels
             SubnetName = col.SubnetName;
             TemplateImageName = col.TemplateImageName;
             TrialOnly = col.TrialOnly;
-            VnetName = String.IsNullOrWhiteSpace(col.VnetName) || col.VnetName.StartsWith ("simplevnet-") ? "" : col.VnetName;
+            VNetName = String.IsNullOrWhiteSpace(col.VNetName) || col.VNetName.StartsWith ("simplevnet-") ? "" : col.VNetName;
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            if (string.IsNullOrEmpty(options.WorkItemName) && options.WorkItem == null)
+            if (string.IsNullOrWhiteSpace(options.WorkItemName) && options.WorkItem == null)
             {
                 throw new ArgumentNullException(Resources.GBJ_NoWorkItem);    
             }
@@ -55,27 +55,52 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // List Jobs using the specified filter
             else
             {
-                if (options.MaxCount <= 0)
-                {
-                    options.MaxCount = Int32.MaxValue;
-                }
                 ODATADetailLevel odata = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBJ_GetByOData, wiName, options.MaxCount));
+                    WriteVerbose(string.Format(Resources.GBJ_GetByOData, wiName));
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBJ_GetNoFilter, wiName, options.MaxCount));
+                    WriteVerbose(string.Format(Resources.GBJ_GetNoFilter, wiName));
                 }
 
                 using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
                 {
                     IEnumerableAsyncExtended<ICloudJob> jobs = wiManager.ListJobs(wiName, odata, options.AdditionalBehaviors);
                     Func<ICloudJob, PSCloudJob> mappingFunction = j => { return new PSCloudJob(j); };
-                    return new PSAsyncEnumerable<PSCloudJob, ICloudJob>(jobs, mappingFunction).Take(options.MaxCount);           
+                    return PSAsyncEnumerable<PSCloudJob, ICloudJob>.CreateWithMaxCount(
+                        jobs, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
                 }             
+            }
+        }
+
+        /// <summary>
+        /// Deletes the specified Job
+        /// </summary>
+        /// <param name="parameters">The parameters indicating which Job to delete</param>
+        public void DeleteJob(RemoveJobParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+            if ((string.IsNullOrWhiteSpace(parameters.WorkItemName) || string.IsNullOrWhiteSpace(parameters.JobName)) && parameters.Job == null)
+            {
+                throw new ArgumentException(Resources.RBJ_NoJobSpecified);
+            }
+
+            if (parameters.Job != null)
+            {
+                parameters.Job.omObject.Delete(parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                using (IWorkItemManager wiManager = parameters.Context.BatchOMClient.OpenWorkItemManager())
+                {
+                    wiManager.DeleteJob(parameters.WorkItemName, parameters.JobName, parameters.AdditionalBehaviors);
+                }
             }
         }
     }

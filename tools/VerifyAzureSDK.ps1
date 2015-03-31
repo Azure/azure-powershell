@@ -21,10 +21,3 @@ Start-AzureEmulator -v
 Write-Host "You can do some testing by loading role url in the browser and make sure PHP default pages loads" -ForegroundColor "Yellow"
 Write-Host "Press any key to continue to the next testing"
 $keyPressed = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-Write-Host "Testing Django web roles" -ForegroundColor "Green"
-cd $testFolder
-New-AzureServiceProject DjangoTest
-Add-AzureDjangoWebRole
-Start-AzureEmulator -v 
-Write-Host "You can do some testing by loading role url in the browser and make sure default django page loads fine " -ForegroundColor "Yellow"
