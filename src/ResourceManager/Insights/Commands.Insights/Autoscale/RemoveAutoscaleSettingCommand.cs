@@ -48,17 +48,10 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletInternal()
         {
-            try
-            {
-                AzureOperationResponse result = this.InsightsManagementClient.AutoscaleOperations.DeleteSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
-                WriteObject(result);
-            }
-            catch (AggregateException ex)
-            {
-                throw ex.Flatten().InnerException;
-            }
+            AzureOperationResponse result = this.InsightsManagementClient.AutoscaleOperations.DeleteSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
+            WriteObject(result);
         }
     }
 }
