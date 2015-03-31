@@ -106,6 +106,8 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
             {
                 newEntity.Add(new Model.AzureSqlDatabaseServerFirewallRuleModel()
                 {
+                    ResourceGroupName = this.ResourceGroupName,
+                    ServerName = this.ServerName,
                     FirewallRuleName = this.FirewallRuleName,
                     StartIpAddress = this.StartIpAddress,
                     EndIpAddress = this.EndIpAddress,
@@ -115,6 +117,8 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
             {
                 newEntity.Add(new Model.AzureSqlDatabaseServerFirewallRuleModel()
                 {
+                    ResourceGroupName = this.ResourceGroupName,
+                    ServerName = this.ServerName,
                     FirewallRuleName = AzureRuleName,
                     StartIpAddress = AzureRuleIp,
                     EndIpAddress = AzureRuleIp,
@@ -132,7 +136,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         protected override IEnumerable<Model.AzureSqlDatabaseServerFirewallRuleModel> PersistChanges(IEnumerable<Model.AzureSqlDatabaseServerFirewallRuleModel> entity)
         {
             return new List<Model.AzureSqlDatabaseServerFirewallRuleModel>() { 
-                ModelAdapter.UpsertFirewallRule(this.ResourceGroupName, this.ServerName, entity.First()) 
+                ModelAdapter.UpsertFirewallRule(entity.First()) 
             };
         }
     }

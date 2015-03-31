@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// <summary>
         /// Gets or sets the name of the Azure Sql Database Server Firewall Rule
         /// </summary>
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Azure Sql Database Server Firewall Rule.")]
         [ValidateNotNullOrEmpty]
         public string FirewallRuleName { get; set; }
@@ -38,16 +38,12 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
             HelpMessage = "The new start IP address for the rule.")]
         [ValidateNotNull]
         public string StartIpAddress { get; set; }
-        
+
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The new end IP address for the rule.")]
         [ValidateNotNull]
         public string EndIpAddress { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Creates a special firewall rule that permits all Azure IPs to have access")]
-        public SwitchParameter AllowAllAzureIPs { get; set; }
 
         /// <summary>
         /// Get the Firewall Rule to update
@@ -68,11 +64,13 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
             // Construct a new entity so we only send the relevant data to the server
             List<Model.AzureSqlDatabaseServerFirewallRuleModel> updateData = new List<Model.AzureSqlDatabaseServerFirewallRuleModel>();
             updateData.Add(new Model.AzureSqlDatabaseServerFirewallRuleModel()
-                {
-                    FirewallRuleName = this.FirewallRuleName, 
-                    StartIpAddress = this.StartIpAddress, 
-                    EndIpAddress = this.EndIpAddress,
-                });
+            {
+                ResourceGroupName = this.ResourceGroupName,
+                ServerName = this.ServerName,
+                FirewallRuleName = this.FirewallRuleName,
+                StartIpAddress = this.StartIpAddress,
+                EndIpAddress = this.EndIpAddress,
+            });
             return updateData;
         }
 
@@ -83,7 +81,9 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// <returns>The response object from the service</returns>
         protected override IEnumerable<Model.AzureSqlDatabaseServerFirewallRuleModel> PersistChanges(IEnumerable<Model.AzureSqlDatabaseServerFirewallRuleModel> entity)
         {
-            return new List<Model.AzureSqlDatabaseServerFirewallRuleModel>() { ModelAdapter.UpsertFirewallRule(this.ResourceGroupName, this.ServerName, entity.First()) };
+            return new List<Model.AzureSqlDatabaseServerFirewallRuleModel>() { 
+                ModelAdapter.UpsertFirewallRule(entity.First()) 
+            };
         }
     }
 }

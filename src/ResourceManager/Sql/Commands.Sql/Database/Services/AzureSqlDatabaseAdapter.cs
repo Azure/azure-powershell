@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             }).ToList();
         }
 
-        internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroupName, string serverName, AzureSqlDatabaseModel model)
+        internal AzureSqlDatabaseModel UpsertDatabase(AzureSqlDatabaseModel model)
         {
             SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
 
-            DatabaseCreateOrUpdateResponse response = client.Databases.CreateOrUpdate(resourceGroupName, serverName, model.DatabaseName, new DatabaseCreateOrUpdateParameters()
+            DatabaseCreateOrUpdateResponse response = client.Databases.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.DatabaseName, new DatabaseCreateOrUpdateParameters()
             {
                 Properties = new DatabaseCreateOrUpdateProperties()
                 {

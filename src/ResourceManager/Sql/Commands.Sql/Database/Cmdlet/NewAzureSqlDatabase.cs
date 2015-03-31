@@ -132,6 +132,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             List<Model.AzureSqlDatabaseModel> newEntity = new List<AzureSqlDatabaseModel>();
             newEntity.Add(new AzureSqlDatabaseModel()
                 {
+                    ResourceGroupName = ResourceGroupName,
+                    ServerName = ServerName,
                     CatalogCollation = CatalogCollation,
                     CollationName = CollationName,
                     DatabaseName = DatabaseName,
@@ -151,7 +153,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
         {
             return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First())
+                ModelAdapter.UpsertDatabase(entity.First())
             };
         }
     }

@@ -20,6 +20,16 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Model
     public class AzureSqlDatabaseServerFirewallRuleModel
     {
         /// <summary>
+        /// Gets or sets the name of the resource group
+        /// </summary>
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the server
+        /// </summary>
+        public string ServerName { get; set; }
+
+        /// <summary>
         /// Gets or sets the start IP address of the rule
         /// </summary>
         public string StartIpAddress { get; set; }

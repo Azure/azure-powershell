@@ -86,11 +86,11 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <param name="serverName">The name of ther server</param>
         /// <param name="model">The firewall rule to create</param>
         /// <returns>The updated server model</returns>
-        public AzureSqlDatabaseServerFirewallRuleModel UpsertFirewallRule(string resourceGroupName, string serverName, AzureSqlDatabaseServerFirewallRuleModel model)
+        public AzureSqlDatabaseServerFirewallRuleModel UpsertFirewallRule(AzureSqlDatabaseServerFirewallRuleModel model)
         {
             SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
 
-            FirewallRuleGetResponse response = client.FirewallRules.CreateOrUpdate(resourceGroupName, serverName, model.FirewallRuleName, new FirewallRuleCreateOrUpdateParameters()
+            FirewallRuleGetResponse response = client.FirewallRules.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FirewallRuleName, new FirewallRuleCreateOrUpdateParameters()
                 {
                     Properties = new FirewallRuleCreateOrUpdateProperties()
                     {

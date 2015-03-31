@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The name of the Azure SQL Database.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the maximum size of the Azure SQL Database in bytes
         /// </summary>
@@ -94,13 +94,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             List<Model.AzureSqlDatabaseModel> newEntity = new List<AzureSqlDatabaseModel>();
             newEntity.Add(new AzureSqlDatabaseModel()
-                {
-                    DatabaseName = DatabaseName,
-                    Edition = Edition,
-                    MaxSizeBytes = MaxSizeBytes,
-                    RequestedServiceObjectiveName = RequestedServiceObjectiveName,
-                    Tags = Tags,
-                });
+            {
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName,
+                DatabaseName = DatabaseName,
+                Edition = Edition,
+                MaxSizeBytes = MaxSizeBytes,
+                RequestedServiceObjectiveName = RequestedServiceObjectiveName,
+                Tags = Tags,
+            });
             return newEntity;
         }
 
@@ -112,7 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
         {
             return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First())
+                ModelAdapter.UpsertDatabase(entity.First())
             };
         }
     }
