@@ -25,7 +25,7 @@ using Microsoft.Azure.Insights.Models;
 namespace Microsoft.Azure.Commands.Insights
 {
     /// <summary>
-    /// Base class for the Azure SDK EventService Cmdlets
+    /// Base class for the Azure Insights SDK EventService Cmdlets
     /// </summary>
     public abstract class EventCmdletBase : InsightsClientCmdletBase
     {
@@ -185,36 +185,29 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletInternal()
         {
-            try
+            string queryFilter = this.ProcessParameters();
+
+            // Retrieve the records
+            var fullDetails = this.DetailedOutput.IsPresent;
+
+            // Call the proper API methods to return a list of raw records. In the future this pattern can be extended to include DigestRecords
+            // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
+            EventDataListResponse response = this.InsightsClient.EventOperations.ListEventsAsync(filterString: queryFilter, selectedProperties: fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery, cancellationToken: CancellationToken.None).Result;
+            var records = new List<IPSEventData>(response.EventDataCollection.Value.Where(this.KeepTheRecord).Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
+            string nextLink = response.EventDataCollection.NextLink;
+
+            // Adding a safety check to stop returning records if too many have been read already.
+            while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < MaxNumberOfReturnedRecords)
             {
-                string queryFilter = this.ProcessParameters();
-
-                // Retrieve the records
-                var fullDetails = this.DetailedOutput.IsPresent;
-
-                // Call the proper API methods to return a list of raw records. In the future this pattern can be extended to include DigestRecords
-                // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
-                EventDataListResponse response = this.InsightsClient.EventOperations.ListEventsAsync(filterString: queryFilter, selectedProperties: fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery, cancellationToken: CancellationToken.None).Result;
-                var records = new List<IPSEventData>(response.EventDataCollection.Value.Where(this.KeepTheRecord).Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
-                string nextLink = response.EventDataCollection.NextLink;
-
-                // Adding a safety check to stop returning records if too many have been read already.
-                while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < MaxNumberOfReturnedRecords)
-                {
-                    response = this.InsightsClient.EventOperations.ListEventsNextAsync(nextLink: nextLink, cancellationToken: CancellationToken.None).Result;
-                    records.AddRange(response.EventDataCollection.Value.Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
-                    nextLink = response.EventDataCollection.NextLink;
-                }
-
-                // Returns an object that contains a link to the set of subsequent records or null if not more records are available, called Next, and an array of records, called Value
-                WriteObject(sendToPipeline: records, enumerateCollection: true);
+                response = this.InsightsClient.EventOperations.ListEventsNextAsync(nextLink: nextLink, cancellationToken: CancellationToken.None).Result;
+                records.AddRange(response.EventDataCollection.Value.Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
+                nextLink = response.EventDataCollection.NextLink;
             }
-            catch (AggregateException ex)
-            {
-                throw ex.Flatten().InnerException;
-            }
+
+            // Returns an object that contains a link to the set of subsequent records or null if not more records are available, called Next, and an array of records, called Value
+            WriteObject(sendToPipeline: records, enumerateCollection: true);
         }
     }
 }
