@@ -18,14 +18,11 @@ namespace Microsoft.Azure.Commands.Network
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Gateway.Model;    
+    using Gateway.Model;
     using NetworkSecurityGroup.Model;
     using Routes.Model;
-    using WindowsAzure;
-    using WindowsAzure.Commands.Common;
     using WindowsAzure.Commands.Common.Storage;
     using WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.Azure.Common;
     using WindowsAzure.Management;
     using WindowsAzure.Management.Network;
     using WindowsAzure.Management.Network.Models;
@@ -34,22 +31,28 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
     using System.Security.Cryptography.X509Certificates;
-    using PowerShellAppGwModel = ApplicationGateway.Model;    
+    using PowerShellAppGwModel = ApplicationGateway.Model;
+    using Microsoft.WindowsAzure.Management.Compute;
+    using ComputeModels = Microsoft.WindowsAzure.Management.Compute.Models;
+
     public class NetworkClient
     {
         private readonly NetworkManagementClient client;
+        private readonly ComputeManagementClient computeClient;
         private readonly ManagementClient managementClient;
         private readonly ICommandRuntime commandRuntime;
 
         public NetworkClient(AzureProfile profile, AzureSubscription subscription, ICommandRuntime commandRuntime)
             : this(CreateClient<NetworkManagementClient>(profile, subscription),
+                   CreateClient<ComputeManagementClient>(profile, subscription),
                    CreateClient<ManagementClient>(profile, subscription),
                    commandRuntime)
         {   
         }
-        public NetworkClient(NetworkManagementClient client, ManagementClient managementClient, ICommandRuntime commandRuntime)
+        public NetworkClient(NetworkManagementClient client, ComputeManagementClient computeClient, ManagementClient managementClient, ICommandRuntime commandRuntime)
         {
             this.client = client;
+            this.computeClient = computeClient;
             this.managementClient = managementClient;
             this.commandRuntime = commandRuntime;
         }
