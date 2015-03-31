@@ -26,23 +26,36 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
     [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseServerFirewallRule", ConfirmImpact = ConfirmImpact.Medium)]
     public class NewAzureSqlDatabaseServerFirewallRule : AzureSqlDatabaseServerFirewallRuleCmdletBase
     {
+        private const string AzureIpRuleSet = "AzureIpRuleSet";
+        private const string UserSpecifiedRuleSet = "UserSpecifiedRuleSet";
+        private const string AzureRuleIp = "0.0.0.0";
+        private const string AzureRuleName = "AllowAllAzureIPs";
+
         [Parameter(Mandatory = true, 
             ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "Azure Sql Database Server Firewall Rule Name.")]
+            HelpMessage = "Azure Sql Database Server Firewall Rule Name.",
+            ParameterSetName = UserSpecifiedRuleSet)]
         [ValidateNotNullOrEmpty]
         public string FirewallRuleName { get; set; }
 
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The start IP address for the firewall rule")]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The start IP address for the firewall rule",
+            ParameterSetName = UserSpecifiedRuleSet)]
         [ValidateNotNull]
         public string StartIpAddress { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The end IP address for the firewall rule")]
+            HelpMessage = "The end IP address for the firewall rule",
+            ParameterSetName = UserSpecifiedRuleSet)]
         [ValidateNotNullOrEmpty]
         public string EndIpAddress { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Creates a special firewall rule that permits all Azure IPs to have access",
+            ParameterSetName = AzureIpRuleSet)]
+        public SwitchParameter AllowAllAzureIPs { get; set; }
 
         /// <summary>
         /// Check to see if the FirewallRule already exists for this server
@@ -52,7 +65,15 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         {
             try
             {
-                ModelAdapter.GetFirewallRule(this.ResourceGroupName, this.ServerName, this.FirewallRuleName);
+                if (ParameterSetName == UserSpecifiedRuleSet)
+                {
+
+                    ModelAdapter.GetFirewallRule(this.ResourceGroupName, this.ServerName, this.FirewallRuleName);
+                }
+                else
+                {
+                    ModelAdapter.GetFirewallRule(this.ResourceGroupName, this.ServerName, AzureRuleName);
+                }
             }
             catch(CloudException ex)
             {
@@ -80,12 +101,26 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         protected override IEnumerable<Model.AzureSqlDatabaseServerFirewallRuleModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlDatabaseServerFirewallRuleModel> model)
         {
             List<Model.AzureSqlDatabaseServerFirewallRuleModel> newEntity = new List<Model.AzureSqlDatabaseServerFirewallRuleModel>();
-            newEntity.Add(new Model.AzureSqlDatabaseServerFirewallRuleModel()
+
+            if(ParameterSetName == UserSpecifiedRuleSet)
+            {
+                newEntity.Add(new Model.AzureSqlDatabaseServerFirewallRuleModel()
                 {
                     FirewallRuleName = this.FirewallRuleName,
                     StartIpAddress = this.StartIpAddress,
                     EndIpAddress = this.EndIpAddress,
                 });
+            }
+            else
+            {
+                newEntity.Add(new Model.AzureSqlDatabaseServerFirewallRuleModel()
+                {
+                    FirewallRuleName = AzureRuleName,
+                    StartIpAddress = AzureRuleIp,
+                    EndIpAddress = AzureRuleIp,
+                });
+            }
+
             return newEntity;
         }
 

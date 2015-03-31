@@ -45,6 +45,10 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         [ValidateNotNull]
         public string EndIpAddress { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Creates a special firewall rule that permits all Azure IPs to have access")]
+        public SwitchParameter AllowAllAzureIPs { get; set; }
+
         /// <summary>
         /// Get the Firewall Rule to update
         /// </summary>

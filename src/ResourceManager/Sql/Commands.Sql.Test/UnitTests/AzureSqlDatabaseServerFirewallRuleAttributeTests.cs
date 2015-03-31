@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             UnitTestHelper.CheckCmdletParameterAttributes(type, "FirewallRuleName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "StartIpAddress", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "EndIpAddress", isMandatory: true, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "AllowAllAzureIPs", isMandatory: false, valueFromPipelineByName: false);
         }
 
         [Fact]
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             UnitTestHelper.CheckCmdletParameterAttributes(type, "FirewallRuleName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "StartIpAddress", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "EndIpAddress", isMandatory: true, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "AllowAllAzureIPs", isMandatory: false, valueFromPipelineByName: false);
         }
 
         [Fact]
