@@ -1236,8 +1236,8 @@ function Test-SanE2E
 	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	$servers = Get-AzureSiteRecoveryServer
-	$primaryVmm = $servers[1]
-	$recoveryVmm = $servers[0]
+	$primaryVmm = $servers[0]
+	$recoveryVmm = $servers[1]
 	$storagePri = Get-AzureSiteRecoveryStorage -Server $primaryVmm
 	$storageRec = Get-AzureSiteRecoveryStorage -Server $recoveryVmm
 
@@ -1300,7 +1300,7 @@ function Test-SanE2E
 		}
 			
 		# Find recovery cloud
-		if ($protectionContainer.Name.Contains("SanRecoverySanCloud"))
+		if ($protectionContainer.Name.Contains("SanRecoveryCloud"))
 		{
 			$recoveryContainer = $protectionContainer
 		}

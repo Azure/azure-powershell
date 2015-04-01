@@ -1249,7 +1249,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         ///    - RPO value non-zero -> Should be one of the array's supported RPO values.
         /// </summary>
         [DataMember(Order = 5)]
-        public int Rpo { get; set; }
+        public int RecoveryPointObjective { get; set; }
 
         /// <summary>
         /// Gets or sets the remote array to be used for protection.

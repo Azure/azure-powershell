@@ -238,7 +238,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                     null :
                                     pc.ProtectionContainer.AvailableProtectionProfiles[0].ReplicationProvider;
 
-                                if (replicationProvider != Constants.HyperVReplica && replicationProvider != Constants.San)
+                                if (replicationProvider != Constants.HyperVReplica && 
+                                    replicationProvider != Constants.San)
                                 {
                                     throw new Exception("Please provide the protection profile object. It can be chosen from available protection profiles of the protection container.");
                                 }
@@ -269,7 +270,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                         null :
                                         pc.ProtectionContainer.AvailableProtectionProfiles[0].ReplicationProvider;
 
-                                    if (replicationProvider != Constants.HyperVReplica)
+                                    if (replicationProvider != Constants.HyperVReplica && 
+                                        replicationProvider != Constants.San)
                                     {
                                         throw new Exception("Please provide the protection profile object. It can be chosen from available protection profiles of the protection container.");
                                     }
@@ -284,7 +286,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                     sanInput.CloudId = this.ProtectionContainerId;
                                     sanInput.RemoteArrayId = this.RecoveryArrayId;
                                     sanInput.ReplicationType = this.Replicationtype;
-                                    sanInput.Rpo = this.RPO;
+                                    sanInput.RecoveryPointObjective = this.RPO;
 
                                     input.ReplicationProviderInput = DataContractUtils.Serialize<SanEnableProtectionInput>(sanInput);
                                 }
@@ -338,11 +340,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                             else
                             {
                                 DisableProtectionInput input = null;
-                                string recoveryCloudId = string.Empty;
-                                Utilities.GetCloudIdFromContainerId(this.RecoveryContainerId, out recoveryCloudId);
 
                                 if (replicationProvider == Constants.San)
                                 {
+                                    string recoveryCloudId = string.Empty;
+                                    Utilities.GetCloudIdFromContainerId(this.RecoveryContainerId, out recoveryCloudId);
                                     input = new DisableProtectionInput();
                                     SanDisableProtectionInput sanInput = new SanDisableProtectionInput();
                                     sanInput.DeleteReplicaLuns = this.DeleteReplicaLuns;
