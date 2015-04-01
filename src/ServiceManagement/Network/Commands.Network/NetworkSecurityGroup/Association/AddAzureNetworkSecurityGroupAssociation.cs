@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = AddNetworkSecurityGroupAssociationToPaaSRole)]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
+
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true)]
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
