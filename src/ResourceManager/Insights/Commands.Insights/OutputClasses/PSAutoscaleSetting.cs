@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// Wrapps around the AutoscaleSettingGetResponse and AutoscaleSettingResource
     /// </summary>
-    public class PSAutoscaleSetting : AutoscaleSettingResource
+    public sealed class PSAutoscaleSetting : AutoscaleSettingResource
     {
         /// <summary>
         /// <para>Gets or sets the Propeties of the object.</para>
@@ -39,6 +39,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <param name="autoscaleSettingSpec">The autoscale setting spec</param>
         public PSAutoscaleSetting(AutoscaleSettingGetResponse autoscaleSettingSpec)
         {
+            // Keep the original values (types) in the base class
+            base.Properties = autoscaleSettingSpec.Properties;
+            base.Tags = autoscaleSettingSpec.Tags;
+
             this.Id = autoscaleSettingSpec.Id;
             this.Location = autoscaleSettingSpec.Location;
             this.Name = autoscaleSettingSpec.Name;
@@ -52,6 +56,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <param name="autoscaleSettingSpec">The autoscale setting spec</param>
         public PSAutoscaleSetting(AutoscaleSettingResource autoscaleSettingSpec)
         {
+            // Keep the original values (types) in the base class
+            base.Properties = autoscaleSettingSpec.Properties;
+            base.Tags = autoscaleSettingSpec.Tags;
+
             this.Id = autoscaleSettingSpec.Id;
             this.Location = autoscaleSettingSpec.Location;
             this.Name = autoscaleSettingSpec.Name;
