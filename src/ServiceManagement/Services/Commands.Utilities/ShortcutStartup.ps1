@@ -26,7 +26,6 @@ For a list of all Azure cmdlets type 'help azure'.
 For a list of Windows Azure Pack cmdlets type 'Get-Command *wapack*'.
 For Node.js cmdlets type 'help node-dev'.
 For PHP cmdlets type 'help php-dev'.
-For Python cmdlets type 'help python-dev'.
 "@
 Write-Output $welcomeMessage
 

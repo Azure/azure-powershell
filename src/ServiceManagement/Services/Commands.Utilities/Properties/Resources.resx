@@ -159,9 +159,6 @@
   <data name="AddRoleMessageCreatePHP" xml:space="preserve">
     <value>Role has been created at {0}\{1}. For easy access to Microsoft Azure services from your application code, install the Microsoft Azure client library for PHP by running "pear WindowsAzure/WindowsAzure".</value>
   </data>
-  <data name="AddRoleMessageCreatePython" xml:space="preserve">
-    <value>Role has been created at {0}\{1}. For easy access to Microsoft Azure services from your application code, install the Microsoft Azure client library for Python by running "pip windowsazure".</value>
-  </data>
   <data name="AddRoleMessageInsufficientPermissions" xml:space="preserve">
     <value>Unable to set role permissions. Please give the 'Network Service' user 'Read &amp; execute' and 'Modify' permissions to the role folder, or run PowerShell as an Administrator</value>
   </data>
@@ -751,9 +748,6 @@ Please follow these steps in the portal:
   <data name="MarketplaceEndpoint" xml:space="preserve">
     <value>http://api.datamarket.azure.com/CatalogService.svc</value>
   </data>
-  <data name="MissingPythonPreReq" xml:space="preserve">
-    <value>Python 2.7 is not installed.  Please install it as well as Django 1.4.</value>
-  </data>
   <data name="MultipleAddOnsFoundMessage" xml:space="preserve">
     <value>Multiple Add-Ons found holding name {0}</value>
   </data>
@@ -1013,9 +1007,6 @@ Please follow these steps in the portal:
   </data>
   <data name="PublishVerifyingStorageMessage" xml:space="preserve">
     <value>Verifying storage account '{0}'...</value>
-  </data>
-  <data name="PythonScaffolding" xml:space="preserve">
-    <value>Resources\Scaffolding\Python</value>
   </data>
   <data name="RedeployCommit" xml:space="preserve">
     <value>Replace current deployment with '{0}' Id ?</value>
@@ -1397,12 +1388,6 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   </data>
   <data name="SwapWebsiteSlotWarning" xml:space="preserve">
     <value>Are you sure you want to swap the website '{0}' slot '{1}' with slot '{2}'?</value>
-  </data>
-  <data name="UnableToCreateDjangoApp" xml:space="preserve">
-    <value>Unable to create Django application: {0}</value>
-  </data>
-  <data name="UnableToCreateDjangoAppFix" xml:space="preserve">
-    <value>Make sure you have Python 2.7 installed along with Django installed to site-packages.</value>
   </data>
   <data name="UnableToPatchJson" xml:space="preserve">
     <value>Unable to update mismatching Json structured: {0} {1}.</value>
