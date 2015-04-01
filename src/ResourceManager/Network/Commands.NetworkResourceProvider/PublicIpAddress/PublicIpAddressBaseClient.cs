@@ -25,6 +25,8 @@ using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
+    using Microsoft.Azure.Management.Network.Models;
+
     public abstract class PublicIpAddressBaseClient : NetworkBaseClient
     {
         public IPublicIpAddressOperations PublicIpAddressClient
@@ -59,18 +61,19 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             var getPublicIpAddressResponse = this.PublicIpAddressClient.Get(resourceGroupName, name);
 
-            var publicIpAddress = Mapper.Map<PSPublicIpAddress>(getPublicIpAddressResponse.PublicIpAddress);
-            publicIpAddress.ResourceGroupName = resourceGroupName;
+            var psPublicIpAddress = ToPsPublicIpAddress(getPublicIpAddressResponse.PublicIpAddress);
+            psPublicIpAddress.ResourceGroupName = resourceGroupName;
 
-            if (publicIpAddress.DnsSettings == null)
-            {
-                publicIpAddress.DnsSettings = new PSPublicIpAddressDnsSettings();
-            }
+            return psPublicIpAddress;
+        }
 
-            publicIpAddress.Tag =
-                TagsConversionHelper.CreateTagHashtable(getPublicIpAddressResponse.PublicIpAddress.Tags);
+        public PSPublicIpAddress ToPsPublicIpAddress(PublicIpAddress publicIp)
+        {
+            var psPublicIpAddress = Mapper.Map<PSPublicIpAddress>(publicIp);
             
-            return publicIpAddress;
+            psPublicIpAddress.Tag = TagsConversionHelper.CreateTagHashtable(publicIp.Tags);
+
+            return psPublicIpAddress;
         }
     }
 }

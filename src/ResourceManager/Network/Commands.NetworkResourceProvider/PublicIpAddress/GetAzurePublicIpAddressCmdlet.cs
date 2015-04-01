@@ -14,7 +14,6 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
-using AutoMapper;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
@@ -48,19 +47,37 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 
                 WriteObject(publicIp);
             }
-            else
+            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
                 var getPublicIpResponse = this.PublicIpAddressClient.List(this.ResourceGroupName);
 
-                var publicIps = Mapper.Map<List<PSPublicIpAddress>>(getPublicIpResponse.PublicIpAddresses);
-
+                var psPublicIps = new List<PSPublicIpAddress>();
+                
                 // populate the publicIpAddresses with the ResourceGroupName
-                foreach (var publicIp in publicIps)
+                foreach (var publicIp in getPublicIpResponse.PublicIpAddresses)
                 {
-                    publicIp.ResourceGroupName = this.ResourceGroupName;
+                    var psPublicIp = this.ToPsPublicIpAddress(publicIp);
+                    psPublicIp.ResourceGroupName = this.ResourceGroupName;
+                    psPublicIps.Add(psPublicIp);
                 }
 
-                WriteObject(publicIps, true);
+                WriteObject(psPublicIps, true);
+            }
+            else
+            {
+                var getPublicIpResponse = this.PublicIpAddressClient.ListAll();
+
+                var psPublicIps = new List<PSPublicIpAddress>();
+
+                // populate the publicIpAddresses with the ResourceGroupName
+                foreach (var publicIp in getPublicIpResponse.PublicIpAddresses)
+                {
+                    var psPublicIp = this.ToPsPublicIpAddress(publicIp);
+                    psPublicIp.ResourceGroupName = GetResourceGroup(publicIp.Id);
+                    psPublicIps.Add(psPublicIp);
+                }
+
+                WriteObject(psPublicIps, true);
             }
         }
     }
