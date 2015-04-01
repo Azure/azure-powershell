@@ -26,11 +26,25 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
     [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseServerFirewallRule", ConfirmImpact = ConfirmImpact.Medium)]
     public class NewAzureSqlDatabaseServerFirewallRule : AzureSqlDatabaseServerFirewallRuleCmdletBase
     {
+        #region Private 
+
+        /// <summary> Parameter Set name for using -AllowAllAzureIPs switch </summary>
         private const string AzureIpRuleSet = "AzureIpRuleSet";
+
+        /// <summary> Parameter Set name for specifying rule name and start/end IPs </summary>
         private const string UserSpecifiedRuleSet = "UserSpecifiedRuleSet";
+
+        /// <summary> Allow all Azure IPs special rule IP value </summary>
         private const string AzureRuleIp = "0.0.0.0";
+
+        /// <summary> Name of the special rule for allowing all Azure IPs </summary>
         private const string AzureRuleName = "AllowAllAzureIPs";
 
+        #endregion Private
+
+        /// <summary>
+        /// Azure Sql Database Server Firewall Rule Name.
+        /// </summary>
         [Parameter(Mandatory = true, 
             ValueFromPipelineByPropertyName = true, 
             HelpMessage = "Azure Sql Database Server Firewall Rule Name.",
@@ -38,6 +52,9 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         [ValidateNotNullOrEmpty]
         public string FirewallRuleName { get; set; }
 
+        /// <summary>
+        /// The start IP address for the firewall rule
+        /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The start IP address for the firewall rule",
@@ -45,6 +62,9 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         [ValidateNotNull]
         public string StartIpAddress { get; set; }
 
+        /// <summary>
+        /// The end IP address for the firewall rule
+        /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The end IP address for the firewall rule",
@@ -52,6 +72,9 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         [ValidateNotNullOrEmpty]
         public string EndIpAddress { get; set; }
 
+        /// <summary>
+        /// Creates a special firewall rule that permits all Azure IPs to have access
+        /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Creates a special firewall rule that permits all Azure IPs to have access",
             ParameterSetName = AzureIpRuleSet)]
@@ -136,7 +159,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         protected override IEnumerable<Model.AzureSqlDatabaseServerFirewallRuleModel> PersistChanges(IEnumerable<Model.AzureSqlDatabaseServerFirewallRuleModel> entity)
         {
             return new List<Model.AzureSqlDatabaseServerFirewallRuleModel>() { 
-                ModelAdapter.UpsertFirewallRule(entity.First()) 
+                ModelAdapter.UpsertFirewallRule(this.ResourceGroupName, this.ServerName, entity.First()) 
             };
         }
     }

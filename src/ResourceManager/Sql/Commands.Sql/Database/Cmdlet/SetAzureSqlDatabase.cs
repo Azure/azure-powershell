@@ -62,6 +62,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [ValidateNotNullOrEmpty]
         public string RequestedServiceObjectiveName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tags associated with the Azure Sql Database
+        /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags to associate with the Azure Sql Database")]
@@ -77,13 +80,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName) 
             };
         }
-
-        /// <summary>
-        /// Defines whether it is ok to skip the requesting of rule removal confirmation
-        /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
-
 
         /// <summary>
         /// Create the model from user input
@@ -114,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
         {
             return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.UpsertDatabase(entity.First())
+                ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First())
             };
         }
     }

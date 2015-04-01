@@ -36,11 +36,17 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
+        /// <summary>
+        /// The new SQL administrator password for the server.
+        /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The new SQL administrator password for the server.")]
         [ValidateNotNull]
         public SecureString SqlAdminPassword { get; set; }
         
+        /// <summary>
+        /// The tags to associate with the server.
+        /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags to associate with the server.")]

@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
     /// </summary>
     public class AzureSqlDatabaseServerFirewallRuleAdapter
     {
+        /// <summary>
+        /// Gets or sets the AzureEndpointsCommunicator which has all the needed management clients
+        /// </summary>
         private AzureEndpointsCommunicator AzureCommunicator { get; set; }
 
         /// <summary>
@@ -58,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
             SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
             
             FirewallRuleGetResponse resp = client.FirewallRules.Get(resourceGroupName, serverName, firewallRuleName);
-            return CreateFirewallRuleModelFromResponse(resp.FirewallRule);
+            return CreateFirewallRuleModelFromResponse(resourceGroupName, serverName, resp.FirewallRule);
         }
 
         /// <summary>
@@ -75,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
 
             return resp.FirewallRules.Select((s) =>
             {
-                return CreateFirewallRuleModelFromResponse(s);
+                return CreateFirewallRuleModelFromResponse(resourceGroupName, serverName, s);
             }).ToList();
         }
 
@@ -86,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <param name="serverName">The name of ther server</param>
         /// <param name="model">The firewall rule to create</param>
         /// <returns>The updated server model</returns>
-        public AzureSqlDatabaseServerFirewallRuleModel UpsertFirewallRule(AzureSqlDatabaseServerFirewallRuleModel model)
+        public AzureSqlDatabaseServerFirewallRuleModel UpsertFirewallRule(string resourceGroup, string serverName, AzureSqlDatabaseServerFirewallRuleModel model)
         {
             SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
 
@@ -99,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
                     }
                 });
 
-            return CreateFirewallRuleModelFromResponse(response.FirewallRule);
+            return CreateFirewallRuleModelFromResponse(resourceGroup, serverName, response.FirewallRule);
         }
 
         /// <summary>
@@ -118,16 +121,19 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <summary>
         /// Convert a Management.Sql.Models.FirewallRule to AzureSqlDatabaseServerFirewallRuleModel
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="resourceGroup">The resource group the server is in</param>
+        /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlDatabaseServerFirewallRuleModel CreateFirewallRuleModelFromResponse(Management.Sql.Models.FirewallRule resp)
+        private static AzureSqlDatabaseServerFirewallRuleModel CreateFirewallRuleModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.FirewallRule resp)
         {
             AzureSqlDatabaseServerFirewallRuleModel firewallRule = new AzureSqlDatabaseServerFirewallRuleModel();
 
             firewallRule.StartIpAddress = resp.Properties.StartIpAddress;
             firewallRule.EndIpAddress = resp.Properties.EndIpAddress;
             firewallRule.FirewallRuleName = resp.Name;
+            firewallRule.ResourceGroupName = resourceGroup;
+            firewallRule.ServerName = serverName;
 
             return firewallRule;
         }

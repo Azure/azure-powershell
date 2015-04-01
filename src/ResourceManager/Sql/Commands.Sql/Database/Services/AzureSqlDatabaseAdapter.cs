@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
     /// </summary>
     public class AzureSqlDatabaseAdapter
     {
+        /// <summary>
+        /// Gets or sets the AzureEndpointsCommunicator which has all the needed management clients
+        /// </summary>
         private AzureEndpointsCommunicator AzureCommunicator { get; set; }
 
         /// <summary>
@@ -46,14 +49,27 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             AzureCommunicator = new AzureEndpointsCommunicator(Profile, subscription);
         }
 
+        /// <summary>
+        /// Gets an Azure Sql Database by name.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database</param>
+        /// <returns>The Azure Sql Database object</returns>
         internal AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName)
         {
             SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
 
             DatabaseGetResponse resp = client.Databases.Get(resourceGroupName, serverName, databaseName);
-            return CreateDatabaseModelFromResponse(resp.Database);
+            return CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp.Database);
         }
 
+        /// <summary>
+        /// Gets a list of Azure Sql Databases.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <returns>A list of database objects</returns>
         internal ICollection<AzureSqlDatabaseModel> ListDatabases(string resourceGroupName, string serverName)
         {
             SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
@@ -62,11 +78,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
 
             return resp.Databases.Select((db) =>
             {
-                return CreateDatabaseModelFromResponse(db);
+                return CreateDatabaseModelFromResponse(resourceGroupName, serverName, db);
             }).ToList();
         }
 
-        internal AzureSqlDatabaseModel UpsertDatabase(AzureSqlDatabaseModel model)
+        /// <summary>
+        /// Creates or updates an Azure Sql Database.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="model">The input parameters for the create/update operation</param>
+        /// <returns>The upserted Azure Sql Database</returns>
+        internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroup, string serverName, AzureSqlDatabaseModel model)
         {
             SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
 
@@ -81,14 +104,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 }
             });
 
-            return CreateDatabaseModelFromResponse(response.Database);
+            return CreateDatabaseModelFromResponse(resourceGroup, serverName, response.Database);
         }
 
         /// <summary>
-        /// Deletes a server
+        /// Deletes a database
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
-        /// <param name="serverName">The name of the server to delete</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database to delete</param>
         public void RemoveDatabase(string resourceGroupName, string serverName, string databaseName)
         {
             SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
@@ -99,14 +123,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Converts the response from the service to a powershell database object
         /// </summary>
+        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="database">The service response</param>
         /// <returns>The converted model</returns>
-        private AzureSqlDatabaseModel CreateDatabaseModelFromResponse(Management.Sql.Models.Database database)
+        private AzureSqlDatabaseModel CreateDatabaseModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.Database database)
         {
             AzureSqlDatabaseModel model = new AzureSqlDatabaseModel();
             Guid id = Guid.Empty;
             DatabaseEdition edition = DatabaseEdition.None;
 
+            model.ResourceGroupName = resourceGroup;
+            model.ServerName = serverName;
             model.CollationName = database.Properties.Collation;
             model.CreationDate = database.Properties.CreationDate;
             model.CurrentServiceLevelObjectiveName = database.Properties.ServiceObjective;

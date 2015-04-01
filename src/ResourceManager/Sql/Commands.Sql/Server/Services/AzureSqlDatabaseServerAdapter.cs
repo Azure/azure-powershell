@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
     /// </summary>
     public class AzureSqlDatabaseServerAdapter
     {
+        /// <summary>
+        /// Gets or sets the AzureEndpointsCommunicator which has all the needed management clients
+        /// </summary>
         private AzureEndpointsCommunicator AzureCommunicator { get; set; }
 
         /// <summary>

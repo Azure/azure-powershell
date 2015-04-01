@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         protected string clientRequestId { get; set; }
 
+        /// <summary>
+        /// Default constructor.  Generates a request ID
+        /// </summary>
         internal AzureSqlCmdletBase()
         {
             this.clientRequestId = Util.GenerateTracingId();

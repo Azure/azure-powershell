@@ -60,6 +60,11 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         public AzureProfile Profile { get; set; }
 
+        /// <summary>
+        /// Default Constructor.
+        /// </summary>
+        /// <param name="profile">The current azure profile</param>
+        /// <param name="subscription">The current azure subscription</param>
         public AzureEndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
             Profile = profile;

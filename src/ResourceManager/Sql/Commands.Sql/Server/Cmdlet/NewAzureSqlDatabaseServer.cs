@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// Defines the Get-AzureSqlDatabaseServer cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseServer",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium)]
+        ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlDatabaseServer : AzureSqlDatabaseServerCmdletBase
     {
         /// <summary>
@@ -37,17 +36,26 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
+        /// <summary>
+        /// The SQL administrator credentials for the server
+        /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The SQL administrator credentials for the server")]
         [ValidateNotNull]
         public PSCredential SqlAdminCredentials { get; set; }
 
+        /// <summary>
+        /// The location in which to create the server
+        /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location in which to create the server")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        /// <summary>
+        /// The tags to associate with the Azure Sql Database Server
+        /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags to associate with the Azure Sql Database Server")]
@@ -59,12 +67,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Determines which version of Sql Azure server is created")]
         [ValidateNotNullOrEmpty]
         public string ServerVersion { get; set; }
-
-        /// <summary>
-        /// Defines whether it is ok to skip the requesting of rule removal confirmation
-        /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Check to see if the server already exists in this resource group.

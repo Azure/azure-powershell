@@ -33,12 +33,18 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         [ValidateNotNullOrEmpty]
         public string FirewallRuleName { get; set; }
 
+        /// <summary>
+        /// The new start IP address for the rule.
+        /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The new start IP address for the rule.")]
         [ValidateNotNull]
         public string StartIpAddress { get; set; }
 
+        /// <summary>
+        /// The new end IP address for the rule.
+        /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The new end IP address for the rule.")]
@@ -82,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         protected override IEnumerable<Model.AzureSqlDatabaseServerFirewallRuleModel> PersistChanges(IEnumerable<Model.AzureSqlDatabaseServerFirewallRuleModel> entity)
         {
             return new List<Model.AzureSqlDatabaseServerFirewallRuleModel>() { 
-                ModelAdapter.UpsertFirewallRule(entity.First()) 
+                ModelAdapter.UpsertFirewallRule(this.ResourceGroupName, this.ServerName, entity.First()) 
             };
         }
     }

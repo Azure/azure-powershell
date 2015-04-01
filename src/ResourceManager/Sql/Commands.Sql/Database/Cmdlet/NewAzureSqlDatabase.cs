@@ -82,6 +82,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [ValidateNotNullOrEmpty]
         public string RequestedServiceObjectiveName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tags associated with the Azure Sql Database
+        /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags to associate with the Azure Sql Database Server")]
@@ -153,7 +156,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
         {
             return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.UpsertDatabase(entity.First())
+                ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First())
             };
         }
     }
