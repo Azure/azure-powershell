@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         public void NewAzureSqlDatabaseServerAttributes()
         {
             Type type = typeof(NewAzureSqlDatabaseServer);
-            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Medium);
+            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
+            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Low);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlAdminCredentials", isMandatory: true, valueFromPipelineByName: false);

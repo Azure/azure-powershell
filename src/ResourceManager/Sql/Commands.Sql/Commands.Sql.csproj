@@ -115,6 +115,8 @@
     <Compile Include="Security\Services\SqlDataMaskingAdapter.cs" />
     <Compile Include="Security\Services\SqlSecureConnectionAdapter.cs" />
     <Compile Include="Security\Services\SqlAuditAdapter.cs" />
+    <Compile Include="ServiceObjective\Cmdlet\AzureSqlDatabaseServerServiceObjectiveCmdletBase.cs" />
+    <Compile Include="ServiceObjective\Cmdlet\GetAzureSqlDatabaseServerServiceObjective.cs" />
     <Compile Include="Server\Cmdlet\SetAzureSqlDatabaseServer.cs" />
     <Compile Include="Server\Cmdlet\RemoveAzureSqlDatabaseServer.cs" />
     <Compile Include="Server\Cmdlet\NewAzureSqlDatabaseServer.cs" />
@@ -122,6 +124,8 @@
     <Compile Include="Server\Cmdlet\AzureSqlDatabaseServerCmdletBase.cs" />
     <Compile Include="Server\Model\AzureSqlDatabaseServerModel.cs" />
     <Compile Include="Server\Cmdlet\GetAzureSqlDatabaseServer.cs" />
+    <Compile Include="ServiceObjective\Model\AzureSqlDatabaseServerServiceObjectiveModel.cs" />
+    <Compile Include="ServiceObjective\Service\AzureSqlDatabaseServerServiceObjectiveAdapter.cs" />
     <Compile Include="Services\Util.cs" />
     <None Include="packages.config" />
   </ItemGroup>
