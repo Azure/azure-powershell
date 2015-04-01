@@ -27,27 +27,6 @@ using System.Xml.Schema;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-
-    /// <summary>
-    /// Schema for xsd validation
-    /// </summary>
-    internal class LegacyApplianceConfigXmlSchema
-    {
-        internal const string Configuration = "Configuration.xsd";
-        internal const string Configuration1 = "Configuration1.xsd";
-        internal const string Configuration2 = "Configuration2.xsd";
-        internal const string Configuration3 = "Configuration3.xsd";
-        internal const string Configuration4 = "Configuration4.xsd";
-        internal const string Configuration5 = "Configuration5.xsd";
-        internal const string Configuration6 = "Configuration6.xsd";
-        internal const string Configuration7 = "Configuration7.xsd";
-        internal const string Configuration8 = "Configuration8.xsd";
-        internal const string Configuration9 = "Configuration9.xsd";
-        internal const string Configuration10 = "Configuration10.xsd";
-        internal const string Configuration11 = "Configuration11.xsd";
-        internal const string Configuration12 = "Configuration12.xsd";
-    }
-
     /// <summary>
     /// Parser Message Type
     /// </summary>
@@ -272,8 +251,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             LegacyApplianceConfigDecryptor decryptor = new LegacyApplianceConfigDecryptor();
             StreamReader reader = new StreamReader(decryptor.Decrypt(decryptionKey, configXmlFilePath));
             doc = XDocument.Load(reader);
-            //doc = XDocument.Load(configXmlFilePath);
-            //this.ValidateXmlSchema();
             this.ValidateMinManagementVersion(doc);
         }
 
@@ -315,30 +292,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             StreamReader reader = new StreamReader(memStream, Encoding.UTF8);
             XmlSchema schema = XmlSchema.Read(reader, (o, err) => { throw new Exception(string.Format(Resources.MigrationSchemaParsingError, input)); });
             return schema;
-        }
-
-        /// <summary>
-        /// Verify xml schema
-        /// </summary>
-        private void ValidateXmlSchema()
-        {
-            XmlSchemaSet schemas = new XmlSchemaSet();
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration));
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration1));
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration2));
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration3));
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration4));
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration5));
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration6));
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration7));
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration8));
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration9));
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration10));
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration11));
-            schemas.Add(CreateXmlSchema(LegacyApplianceConfigXmlSchema.Configuration12));
-            schemas.Compile();
-
-            doc.Validate(schemas, (o, err) => { throw new Exception(err.Message); });
         }
 
         /// <summary>
@@ -771,95 +724,97 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                             case "Schedule":
                                 {
-                                    var scheduleElementList = this.GetSubElements(bandWidthSettingElement, "QosScheduleInfo");
-          
-                                    // Assuming ScheduleInfo has only one element
-                                    BandwidthSchedule schedule = new BandwidthSchedule();
-                                    bandWidthSetting.Schedules.Add(schedule);
-                                    TimeSpan duration = TimeSpan.Zero;
-                                    foreach (XElement scheduleElement in scheduleElementList.Elements())
+                                    var scheduleInfoElementList = this.GetSubElements(bandWidthSettingElement, "QosScheduleInfo");
+                                    foreach (XElement scheduleInfo in scheduleInfoElementList)
                                     {
-                                        switch (scheduleElement.Name.LocalName)
+                                        // Assuming ScheduleInfo has only one element                                    
+                                        BandwidthSchedule schedule = new BandwidthSchedule();
+                                        bandWidthSetting.Schedules.Add(schedule);
+                                        TimeSpan duration = TimeSpan.Zero;
+                                        foreach (XElement scheduleElement in scheduleInfo.Elements())
                                         {
-                                            case "Days":
-                                                {
-                                                    schedule.Days = new List<int>();
-                                                    foreach (XElement dayElem in scheduleElement.Elements())
+                                            switch (scheduleElement.Name.LocalName)
+                                            {
+                                                case "Days":
                                                     {
-                                                        schedule.Days.Add((int)Enum.Parse(typeof(DayOfWeek), dayElem.Value, true));
-                                                    }
-
-                                                    break;
-                                                }
-                                            case "Duration":
-                                                {
-                                                    duration = XmlConvert.ToTimeSpan(scheduleElement.Value.TrimEnd('T'));
-                                                    break;
-                                                }
-                                            case "RateInBytes":
-                                                {
-                                                    schedule.Rate = 0;
-
-                                                    int rate = 0;
-                                                    if (int.TryParse(scheduleElement.Value, out rate))
-                                                    {
-                                                        if (rate > MaxBandwidthRateSupportedBps)
+                                                        schedule.Days = new List<int>();
+                                                        foreach (XElement dayElem in scheduleElement.Elements())
                                                         {
-                                                            rate = MaxBandwidthRateSupportedBps;
+                                                            schedule.Days.Add((int)Enum.Parse(typeof(DayOfWeek), dayElem.Value, true));
+                                                        }
+
+                                                        break;
+                                                    }
+                                                case "Duration":
+                                                    {
+                                                        duration = XmlConvert.ToTimeSpan(scheduleElement.Value.TrimEnd('T'));
+                                                        break;
+                                                    }
+                                                case "RateInBytes":
+                                                    {
+                                                        schedule.Rate = 0;
+
+                                                        int rate = 0;
+                                                        if (int.TryParse(scheduleElement.Value, out rate))
+                                                        {
+                                                            if (rate > MaxBandwidthRateSupportedBps)
+                                                            {
+                                                                rate = MaxBandwidthRateSupportedBps;
+                                                            }
+                                                            else
+                                                            {
+                                                                if (0 != rate)
+                                                                {
+                                                                    // In firenze appliance you can set bandwidth rate from 0 - 1000 Mbps
+                                                                    rate = (rate * 8) / (1000 * 1000);
+                                                                }
+                                                            }
+
+                                                            schedule.Rate = rate;
+                                                        }
+
+                                                        break;
+                                                    }
+                                                case "Start":
+                                                    {
+                                                        // Convert Start time to HH:mm:ss format as expected by service
+                                                        if (string.IsNullOrEmpty(scheduleElement.Value))
+                                                        {
+                                                            schedule.Start = TimeSpan.Zero.ToString();
                                                         }
                                                         else
                                                         {
-                                                            if (0 != rate)
-                                                            {
-                                                                // In firenze appliance you can set bandwidth rate from 0 - 1000 Mbps
-                                                                rate = (rate * 8) / (1000 * 1000);
-                                                            }
+                                                            // start time should be in universal time. 
+                                                            schedule.Start = DateTime.Parse(scheduleElement.Value).ToUniversalTime().ToString("HH:mm:ss");
                                                         }
 
-                                                        schedule.Rate = rate;
+                                                        break;
                                                     }
-                                                  
-                                                    break;
-                                                }
-                                            case "Start":
-                                                {
-                                                    // Convert Start time to HH:mm:ss format as expected by service
-                                                    if (string.IsNullOrEmpty(scheduleElement.Value))
+                                                default:
                                                     {
-                                                        schedule.Start = TimeSpan.Zero.ToString();
-                                                    }
-                                                    else
-                                                    {
-                                                        // start time should be in universal time. 
-                                                        schedule.Start = DateTime.Parse(scheduleElement.Value).ToUniversalTime().ToString("HH:mm:ss");
+                                                        break;
                                                     }
 
-                                                    break;
-                                                }
-                                            default:
-                                                {
-                                                    break;
-                                                }
-
+                                            }
                                         }
-                                    }
 
-                                    // Calculating the schedule stop time from start time and duration. [stop time will also be in universal time zone] 
-                                    // The stop time should be in HH:mm:ss format. This is a per day schedule and cannot spill to next day
-                                    if (!string.IsNullOrEmpty(schedule.Start))
-                                    {
-                                        schedule.Stop = DateTime.Parse(schedule.Start).Add(duration).ToString("HH:mm:ss");
-                                    }
-                                    else
-                                    {
-                                        schedule.Stop = DateTime.Parse(TimeSpan.Zero.ToString()).Add(duration).ToString("HH:mm:ss");
-                                    }
+                                        // Calculating the schedule stop time from start time and duration. [stop time will also be in universal time zone] 
+                                        // The stop time should be in HH:mm:ss format. This is a per day schedule and cannot spill to next day
+                                        if (!string.IsNullOrEmpty(schedule.Start))
+                                        {
+                                            schedule.Stop = DateTime.Parse(schedule.Start).Add(duration).ToString("HH:mm:ss");
+                                        }
+                                        else
+                                        {
+                                            schedule.Stop = DateTime.Parse(TimeSpan.Zero.ToString()).Add(duration).ToString("HH:mm:ss");
+                                        }
 
-                                    // For whole day schedule
-                                    if (schedule.Start == schedule.Stop)
-                                    {
-                                        schedule.Start = TimeSpan.Zero.ToString();
-                                        schedule.Stop = MaxTimeSpan;
+                                        // For whole day schedule
+                                        if (schedule.Start == schedule.Stop)
+                                        {
+                                            schedule.Start = TimeSpan.Zero.ToString();
+                                            schedule.Stop = MaxTimeSpan;
+                                        }
                                     }
 
                                     break;

@@ -37,6 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         public string TargetDeviceName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigDecryptionKey)]
+        [ValidateNotNullOrEmpty]
         public string ConfigDecryptionKey { get; set; }
 
         public override void ExecuteCmdlet()

@@ -12,16 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.StorSimple.Models;
-using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Management.Automation;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -29,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     {
         private const int maxRank = 20;
 
+        // ACR, SAC, CHAP, VDG = 1, BW, BP = 3, DC = 4, Vol = 5
         private static Dictionary<Type, int> ranks = new Dictionary<Type, int>()
         {
             {typeof (AccessControlRecord), 1},
@@ -40,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {typeof (MigrationDataContainer), 4},
             {typeof (VirtualDisk), 5}
         };
-        // ACR, SAC, CHAP, VDG = 1, BW, BP = 3, DC = 4, Vol = 5
+        
         public static List<LegacyApplianceConfig> Split(LegacyApplianceConfig inputConfig)
         {
             var splitConfig = new List<LegacyApplianceConfig>();
