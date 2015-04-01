@@ -322,6 +322,42 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully removed Network Security Group with name &quot;{0}&quot; from Network Interface &quot;{1&quot;} in VM &quot;{2}&quot; in Cloud Service &quot;{3}&quot;..
+        /// </summary>
+        internal static string RemoveNetworkSecurityGroupFromNicSucceeded {
+            get {
+                return ResourceManager.GetString("RemoveNetworkSecurityGroupFromNicSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Network Security Group &quot;{0}&quot; from Network Interface &quot;{1&quot;} in VM &quot;{2}&quot; in Cloud Service &quot;{3}&quot;?.
+        /// </summary>
+        internal static string RemoveNetworkSecurityGroupFromNicWarning {
+            get {
+                return ResourceManager.GetString("RemoveNetworkSecurityGroupFromNicWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully removed Network Security Group with name &quot;{0}&quot; from VM &quot;{1}&quot; in Cloud Service &quot;{2}&quot;..
+        /// </summary>
+        internal static string RemoveNetworkSecurityGroupFromRoleSucceeded {
+            get {
+                return ResourceManager.GetString("RemoveNetworkSecurityGroupFromRoleSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Network Security Group &quot;{0}&quot; from VM &quot;{1}&quot; in Cloud Service &quot;{2}&quot;?.
+        /// </summary>
+        internal static string RemoveNetworkSecurityGroupFromRoleWarning {
+            get {
+                return ResourceManager.GetString("RemoveNetworkSecurityGroupFromRoleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully removed Network Security Group with name &quot;{0}&quot; from Subnet &quot;{1}&quot; in Virtual Network &quot;{2}&quot;..
         /// </summary>
         internal static string RemoveNetworkSecurityGroupFromSubnetSucceeded {

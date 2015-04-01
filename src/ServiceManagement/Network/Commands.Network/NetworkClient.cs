@@ -818,7 +818,7 @@ namespace Microsoft.Azure.Commands.Network
             client.NetworkSecurityGroups.DeleteRule(securityGroupName, securityRuleName);
         }
 
-        public NetworkSecurityGroupGetForSubnetResponse GetNetworkSecurityGroupForSubnet(string virtualNetworkName, string subnetName)
+        public NetworkSecurityGroupGetAssociationResponse GetNetworkSecurityGroupForSubnet(string virtualNetworkName, string subnetName)
         {
             return client.NetworkSecurityGroups.GetForSubnet(virtualNetworkName, subnetName);
         }
@@ -830,12 +830,87 @@ namespace Microsoft.Azure.Commands.Network
 
         public void SetNetworkSecurityGroupForSubnet(string networkSecurityGroupName, string subnetName, string virtualNetworkName)
         {
-            var parameters = new NetworkSecurityGroupAddToSubnetParameters()
+            var parameters = new NetworkSecurityGroupAddAssociationParameters()
             {
                 Name = networkSecurityGroupName
             };
 
             client.NetworkSecurityGroups.AddToSubnet(virtualNetworkName, subnetName, parameters);
+        }
+
+        public NetworkSecurityGroupGetAssociationResponse GetNetworkSecurityGroupForRole(
+            string serviceName,
+            string deploymentName,
+            string roleName)
+        {
+            return client.NetworkSecurityGroups.GetForRole(serviceName, deploymentName, roleName);
+        }
+
+        public void RemoveNetworkSecurityGroupFromRole(string networkSecurityGroupName, string serviceName, string deploymentName, string roleName)
+        {
+            client.NetworkSecurityGroups.RemoveFromRole(
+            serviceName,
+            deploymentName,
+            roleName,
+            networkSecurityGroupName);
+        }
+
+        public void SetNetworkSecurityGroupForRole(string networkSecurityGroupName, string serviceName, string deploymentName, string roleName)
+        {
+            var parameters = new NetworkSecurityGroupAddAssociationParameters()
+            {
+                Name = networkSecurityGroupName
+            };
+
+            client.NetworkSecurityGroups.AddToRole(serviceName, deploymentName, roleName, parameters);
+        }
+
+        public NetworkSecurityGroupGetAssociationResponse GetNetworkSecurityGroupForNetworkInterface(
+            string serviceName,
+            string deploymentName,
+            string roleName,
+            string networkInterfaceName)
+        {
+            return client.NetworkSecurityGroups.GetForNetworkInterface(
+                serviceName,
+                deploymentName,
+                roleName,
+                networkInterfaceName);
+        }
+
+        public void RemoveNetworkSecurityGroupFromNetworkInterface(
+            string networkSecurityGroupName,
+            string serviceName,
+            string deploymentName,
+            string roleName,
+            string networkInterfaceName)
+        {
+            client.NetworkSecurityGroups.RemoveFromNetworkInterface(
+            serviceName,
+            deploymentName,
+            roleName,
+            networkInterfaceName,
+            networkSecurityGroupName);
+        }
+
+        public void SetNetworkSecurityGroupForNetworkInterface(
+            string networkSecurityGroupName,
+            string serviceName,
+            string deploymentName,
+            string roleName,
+            string networkInterfaceName)
+        {
+            var parameters = new NetworkSecurityGroupAddAssociationParameters()
+            {
+                Name = networkSecurityGroupName
+            };
+
+            client.NetworkSecurityGroups.AddToNetworkInterface(
+                serviceName,
+                deploymentName,
+                roleName,
+                networkInterfaceName,
+                parameters);
         }
 
         public string GetDeploymentBySlot(string serviceName, string slot)

@@ -171,6 +171,9 @@
     <Compile Include="Gateway\StopAzureVNetGatewayDiagnostics.cs" />
     <Compile Include="NetworkClient.cs" />
     <Compile Include="NetworkCmdletBase.cs" />
+    <Compile Include="NetworkSecurityGroup\Association\AddAzureNetworkSecurityGroupAssociation.cs" />
+    <Compile Include="NetworkSecurityGroup\Association\GetAzureNetworkSecurityGroupAssociation.cs" />
+    <Compile Include="NetworkSecurityGroup\Association\RemoveAzureNetworkSecurityGroupAssociation.cs" />
     <Compile Include="Routes\GetAzureRouteTable.cs" />
     <Compile Include="Routes\GetAzureSubnetRouteTable.cs" />
     <Compile Include="Routes\Model\SubnetRouteTableContext.cs" />
