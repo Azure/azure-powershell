@@ -752,6 +752,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 foreach (XElement qosTemplateElement in qosTemplateElementList)
                 {
                     BandwidthSetting bandWidthSetting = new BandwidthSetting();
+                    bandWidthSetting.Schedules = new List<BandwidthSchedule>();
                     foreach (XElement bandWidthSettingElement in qosTemplateElement.Elements())
                     {
                         switch (bandWidthSettingElement.Name.LocalName)
@@ -773,7 +774,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                     var scheduleElementList = this.GetSubElements(bandWidthSettingElement, "QosScheduleInfo");
           
                                     // Assuming ScheduleInfo has only one element
-                                    bandWidthSetting.Schedules = new List<BandwidthSchedule>();
                                     BandwidthSchedule schedule = new BandwidthSchedule();
                                     bandWidthSetting.Schedules.Add(schedule);
                                     TimeSpan duration = TimeSpan.Zero;
