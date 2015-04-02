@@ -14,26 +14,27 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using Gateway.Model;
+    using Hyak.Common;
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+    using Microsoft.WindowsAzure.Management.Compute;
+    using NetworkSecurityGroup.Model;
+    using Routes.Model;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Gateway.Model;
-    using NetworkSecurityGroup.Model;
-    using Routes.Model;
+    using System.Security.Cryptography.X509Certificates;
     using WindowsAzure.Commands.Common.Storage;
     using WindowsAzure.Commands.Utilities.Common;
     using WindowsAzure.Management;
     using WindowsAzure.Management.Network;
     using WindowsAzure.Management.Network.Models;
     using WindowsAzure.Storage.Auth;
-    using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Common.Authentication;
-    using Hyak.Common;
-    using System.Security.Cryptography.X509Certificates;
-    using PowerShellAppGwModel = ApplicationGateway.Model;
-    using Microsoft.WindowsAzure.Management.Compute;
     using ComputeModels = Microsoft.WindowsAzure.Management.Compute.Models;
+    using PowerShellAppGwModel = ApplicationGateway.Model;
 
     public class NetworkClient
     {
@@ -835,6 +836,47 @@ namespace Microsoft.Azure.Commands.Network
             };
 
             client.NetworkSecurityGroups.AddToSubnet(virtualNetworkName, subnetName, parameters);
+        }
+
+        public string GetDeploymentBySlot(string serviceName, string slot)
+        {
+            if (string.IsNullOrEmpty(serviceName))
+            {
+                throw new ArgumentNullException(serviceName);
+            }
+
+            if (string.IsNullOrEmpty(slot))
+            {
+                throw new ArgumentNullException(slot);
+            }
+
+            var slotType = (ComputeModels.DeploymentSlot)Enum.Parse(typeof(ComputeModels.DeploymentSlot), slot, true);
+
+            return this.computeClient.Deployments.GetBySlot(
+                        serviceName,
+                        slotType).Name;
+        }
+
+        public string GetDeploymentName(IPersistentVM vm, string slot, string serviceName)
+        {
+            string deploymentName = null;
+            var vmRoleContext = vm as PersistentVMRoleContext;
+            if (vmRoleContext != null)
+            {
+                deploymentName = vmRoleContext.DeploymentName;
+            }
+
+            if (string.IsNullOrEmpty(slot) && string.IsNullOrEmpty(deploymentName))
+            {
+                slot = DeploymentSlotType.Production;
+            }
+
+            if (string.IsNullOrEmpty(deploymentName))
+            {
+                deploymentName = this.GetDeploymentBySlot(serviceName, slot);
+            }
+
+            return deploymentName;
         }
 
         public void SetIPForwardingForRole(string serviceName, string deploymentName, string roleName, bool ipForwarding)
