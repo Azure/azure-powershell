@@ -109,7 +109,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
                     Client.RemoveNetworkSecurityGroupFromSubnet(this.Name, this.VirtualNetworkName, this.SubnetName);
                 };
             }
-
             else
             {
                 this.obtainedDeploymentName = Client.GetDeploymentName(this.VM, this.Slot, this.ServiceName);

@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
 {
-    [Cmdlet(VerbsCommon.Get, "AzureNetworkSecurityGroupAssociation"), OutputType(typeof(INetworkSecurityGroup))]
+    [Cmdlet(VerbsCommon.Add, "AzureNetworkSecurityGroupAssociation"), OutputType(typeof(INetworkSecurityGroup))]
     public class AddAzureNetworkSecurityGroupAssociation : NetworkCmdletBase
     {
         protected const string AddNetworkSecurityGroupAssociationToSubnet = "AddNetworkSecurityGroupAssociationToSubnet";
@@ -75,8 +75,8 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = AddNetworkSecurityGroupAssociationToIaaSRole)]
+        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = AddNetworkSecurityGroupAssociationToPaaSRole)]
         [ValidateNotNullOrEmpty]
         public string NetworkInterfaceName { get; set; }
 
@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
             }
 
             this.obtainedDeploymentName = Client.GetDeploymentName(this.VM, this.Slot, this.ServiceName);
+
             if (string.Equals(this.ParameterSetName, AddNetworkSecurityGroupAssociationToIaaSRole))
             {
                 this.RoleName = this.VM.Name;
