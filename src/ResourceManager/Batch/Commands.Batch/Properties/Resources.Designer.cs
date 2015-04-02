@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downloading {0} file &quot;{1}&quot; to: {2}.
+        /// </summary>
+        internal static string Downloading {
+            get {
+                return ResourceManager.GetString("Downloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End {0} call to RP.
         /// </summary>
         internal static string EndMAMLCall {
@@ -250,24 +259,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Downloading task file &quot;{0}&quot; to: {1}.
-        /// </summary>
-        internal static string GBTFC_Downloading {
-            get {
-                return ResourceManager.GetString("GBTFC_Downloading", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No destination path was specified. Supply a path where the task file should be downloaded..
-        /// </summary>
-        internal static string GBTFC_NoDestinationPath {
-            get {
-                return ResourceManager.GetString("GBTFC_NoDestinationPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to No task file was specified to download. Supply a PSTaskFile object or a workitem name, job name, task name, and task file name..
         /// </summary>
         internal static string GBTFC_NoTaskFileSpecified {
@@ -345,6 +336,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string GBVMF_NoVMSpecified {
             get {
                 return ResourceManager.GetString("GBVMF_NoVMSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No vm file was specified to download. Supply a PSVMFile object or a pool name, vm name, and vm file name..
+        /// </summary>
+        internal static string GBVMFC_NoVMFileSpecified {
+            get {
+                return ResourceManager.GetString("GBVMFC_NoVMFileSpecified", resourceCulture);
             }
         }
         

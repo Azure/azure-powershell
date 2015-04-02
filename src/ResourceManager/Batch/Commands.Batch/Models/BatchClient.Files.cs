@@ -119,33 +119,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 taskFile = options.TaskFile.omObject;
             }
 
-            string path = null;
-            // The task file object's name is a relative path that includes directories.
-            string fileName = Path.GetFileName(taskFile.Name);
-            if (string.IsNullOrWhiteSpace(options.DestinationPath))
-            {
-                // If no destination is specified, just save the file to the local directory 
-                path = fileName;
-            }
-            else
-            {
-                path = Path.Combine(options.DestinationPath, fileName);
-            }
-
-            WriteVerbose(string.Format(Resources.GBTFC_Downloading, taskFile.Name, path));
-            if (options.Stream != null)
-            {
-                // Used for testing.
-                // Don't dispose supplied Stream
-                taskFile.CopyToStream(options.Stream, options.AdditionalBehaviors);
-            }
-            else
-            {
-                using (FileStream fs = new FileStream(path, FileMode.Create))
-                {
-                    taskFile.CopyToStream(fs, options.AdditionalBehaviors);
-                }   
-            }
+            DownloadITaskFile(taskFile, options.DestinationPath, "task", options.Stream, options.AdditionalBehaviors);
         }
 
         /// <summary>
@@ -208,6 +182,67 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 Func<ITaskFile, PSVMFile> mappingFunction = f => { return new PSVMFile(f); };
                 return PSAsyncEnumerable<PSVMFile, ITaskFile>.CreateWithMaxCount(
                     vmFiles, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+            }
+        }
+
+        /// <summary>
+        /// Downloads a vm file using the specified options.
+        /// </summary>
+        /// <param name="options">The download options</param>
+        public void DownloadVMFile(DownloadVMFileOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException("options");
+            }
+
+            if ((string.IsNullOrWhiteSpace(options.PoolName) || string.IsNullOrWhiteSpace(options.VMName) || string.IsNullOrWhiteSpace(options.VMFileName)) 
+                && options.VMFile == null)
+            {
+                throw new ArgumentNullException(Resources.GBVMFC_NoVMFileSpecified);
+            }
+
+            ITaskFile vmFile = null;
+            if (options.VMFile == null)
+            {
+                using (IPoolManager poolManager = options.Context.BatchOMClient.OpenPoolManager())
+                {
+                    vmFile = poolManager.GetVMFile(options.PoolName, options.VMName, options.VMFileName, options.AdditionalBehaviors);
+                }
+            }
+            else
+            {
+                vmFile = options.VMFile.omObject;
+            }
+
+            DownloadITaskFile(vmFile, options.DestinationPath, "vm", options.Stream, options.AdditionalBehaviors);
+        }
+
+        private void DownloadITaskFile(ITaskFile file, string destinationPath, string loggingFileType, Stream stream = null, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        {
+            string path = null;
+            // The ITaskFile object's name is a relative path that includes directories.
+            string fileName = Path.GetFileName(file.Name);
+            if (string.IsNullOrWhiteSpace(destinationPath))
+            {
+                // If no destination is specified, just save the file to the current directory 
+                destinationPath = Environment.CurrentDirectory;
+            }
+            path = Path.Combine(destinationPath, fileName);
+
+            WriteVerbose(string.Format(Resources.Downloading, loggingFileType, file.Name, path));
+            if (stream != null)
+            {
+                // Used for testing.
+                // Don't dispose supplied Stream
+                file.CopyToStream(stream, additionalBehaviors);
+            }
+            else
+            {
+                using (FileStream fs = new FileStream(path, FileMode.Create))
+                {
+                    file.CopyToStream(fs, additionalBehaviors);
+                }
             }
         }
     }

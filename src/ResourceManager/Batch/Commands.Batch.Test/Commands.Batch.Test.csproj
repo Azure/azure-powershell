@@ -157,6 +157,7 @@
     <Compile Include="Files\GetBatchTaskFileCommandTests.cs" />
     <Compile Include="Files\GetBatchTaskFileContentCommandTests.cs" />
     <Compile Include="Files\GetBatchVMFileCommandTests.cs" />
+    <Compile Include="Files\GetBatchVMFileContentCommandTests.cs" />
     <Compile Include="Jobs\GetBatchJobCommandTests.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommandTests.cs" />
     <Compile Include="Models\BatchAccountContextTest.cs" />

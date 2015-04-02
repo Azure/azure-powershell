@@ -123,6 +123,9 @@
   <data name="BeginMAMLCall" xml:space="preserve">
     <value>Begin {0} call to RP</value>
   </data>
+  <data name="Downloading" xml:space="preserve">
+    <value>Downloading {0} file "{1}" to: {2}</value>
+  </data>
   <data name="EndMAMLCall" xml:space="preserve">
     <value>End {0} call to RP</value>
   </data>
@@ -156,12 +159,6 @@
   <data name="GBP_NoFilter" xml:space="preserve">
     <value>Getting all pools associated with the Batch account. </value>
   </data>
-  <data name="GBTFC_Downloading" xml:space="preserve">
-    <value>Downloading task file "{0}" to: {1}</value>
-  </data>
-  <data name="GBTFC_NoDestinationPath" xml:space="preserve">
-    <value>No destination path was specified. Supply a path where the task file should be downloaded.</value>
-  </data>
   <data name="GBTFC_NoTaskFileSpecified" xml:space="preserve">
     <value>No task file was specified to download. Supply a PSTaskFile object or a workitem name, job name, task name, and task file name.</value>
   </data>
@@ -188,6 +185,9 @@
   </data>
   <data name="GBT_NoJob" xml:space="preserve">
     <value>No job was specified. Supply a PSCloudJob object or a workitem name and job name to query for tasks.</value>
+  </data>
+  <data name="GBVMFC_NoVMFileSpecified" xml:space="preserve">
+    <value>No vm file was specified to download. Supply a PSVMFile object or a pool name, vm name, and vm file name.</value>
   </data>
   <data name="GBVMF_GetByName" xml:space="preserve">
     <value>Getting vm file "{0}" from vm "{1}"</value>
