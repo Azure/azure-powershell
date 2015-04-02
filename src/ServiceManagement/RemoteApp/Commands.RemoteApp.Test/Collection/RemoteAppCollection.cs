@@ -443,6 +443,74 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        public void SetCollectionAdConfigTest()
+        {
+            SetAzureRemoteAppCollection mockCmdlet = SetUpTestCommon<SetAzureRemoteAppCollection>();
+            string collectionName = "mycol";
+            System.Security.SecureString password = new System.Security.SecureString();
+            string expectedTrackingId = "2432145";
+            CollectionUpdateDetails requestData = null;
+            string userName = @"Administrator@MyDomain";
+            Collection expectedCollection = null;
+
+            // Required parameters for this test
+            mockCmdlet.CollectionName = collectionName;
+            password.AppendChar('p');
+            mockCmdlet.Credential = new PSCredential(userName, password);
+            requestData = new CollectionUpdateDetails()
+            {
+                AdInfo = new ActiveDirectoryConfig()
+                {
+                    UserName = userName,
+                    Password = "p"
+                }
+            };
+
+            expectedCollection = new Collection()
+            {
+                Name = collectionName,
+                Status = "Active",
+                AdInfo = new ActiveDirectoryConfig()
+            };
+
+            PerformCollectionTestWithAdInfoHelper(mockCmdlet, collectionName, expectedCollection, expectedTrackingId, requestData, false);
+        }
+
+        [Fact]
+        public void SetInactiveCollectionAdConfigTest()
+        {
+            SetAzureRemoteAppCollection mockCmdlet = SetUpTestCommon<SetAzureRemoteAppCollection>();
+            string collectionName = "mycol";
+            System.Security.SecureString password = new System.Security.SecureString();
+            string expectedTrackingId = "fasdfsadfsdf";
+            CollectionUpdateDetails requestData = null;
+            string userName = @"MyDomain\Administrator";
+            Collection expectedCollection = null;
+
+            // Required parameters for this test
+            mockCmdlet.CollectionName = collectionName;
+            password.AppendChar('f');
+            mockCmdlet.Credential = new PSCredential(userName, password);
+            requestData = new CollectionUpdateDetails()
+            {
+                AdInfo = new ActiveDirectoryConfig()
+                {
+                    UserName = userName,
+                    Password = "f"
+                }
+            };
+
+            expectedCollection = new Collection()
+            {
+                Name = collectionName,
+                Status = "Inactive",
+                AdInfo = new ActiveDirectoryConfig()
+            };
+
+            PerformCollectionTestWithAdInfoHelper(mockCmdlet, collectionName, expectedCollection, expectedTrackingId, requestData, true);
+        }
+
+        [Fact]
         public void RemoveCollection()
         {
             List<TrackingResult> trackingIds = null;

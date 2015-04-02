@@ -208,7 +208,7 @@
     <Xunit.Runner.MSBuild.xunit Assemblies="$(ComputeTestDebug)" Html="$(TestOutputDirectory)\ComputeTests.xunit.dll.html" Verbose="false"
       ExcludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
-  
+
   <!-- Run the sql tests -->
   <Target Name="SqlTests">
     <Message Importance="high" Text="Running Sql tests" />
