@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Routes
     using System.Management.Automation;
     using WindowsAzure.Management.Network.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureEffectiveRouteTable"), OutputType(typeof(IEnumerable<GetEffectiveRouteTableResponse>))]
+    [Cmdlet(VerbsCommon.Get, "AzureEffectiveRouteTable"), OutputType(typeof(IEnumerable<EffectiveRouteTable>))]
     public class GetAzureEffectiveRouteTable : NetworkCmdletBase
     {
         protected const string IaaSGetEffectiveRouteTableParamSet = "IaaSGetEffectiveRouteTableParamSet";
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network.Routes
                     this.NetworkInterfaceName);
             }
 
-            WriteObject(result);
+            WriteObject(result.EffectiveRouteTable);
         }
     }
 }
