@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             Mock<IWebsitesClient> clientMock = new Mock<IWebsitesClient>();
 
             clientMock.Setup(c => c.GetWebDeployPublishProfile(websiteName, slot)).Returns(publishProfile);
-            clientMock.Setup(c => c.PublishWebProject(websiteName, slot, package, connectionStrings, false, false))
+            clientMock.Setup(c => c.PublishWebProject(websiteName, slot, package, string.Empty, connectionStrings, false, false))
                 .Callback((string n, string s, string p, Hashtable cs, bool skipAppData, bool doNotDelete) =>
                 {
                     Assert.Equal(websiteName, n);
@@ -93,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
 
             clientMock.Setup(c => c.GetWebDeployPublishProfile(websiteName, slot)).Returns(publishProfile);
             clientMock.Setup(c => c.BuildWebProject(projectFile, configuration, logFile)).Returns(package);
-            clientMock.Setup(c => c.PublishWebProject(websiteName, slot, package, connectionStrings, false, false))
+            clientMock.Setup(c => c.PublishWebProject(websiteName, slot, package, string.Empty, connectionStrings, false, false))
                 .Callback((string n, string s, string p, Hashtable cs, bool skipAppData, bool doNotDelete) =>
                 {
                     Assert.Equal(websiteName, n);
