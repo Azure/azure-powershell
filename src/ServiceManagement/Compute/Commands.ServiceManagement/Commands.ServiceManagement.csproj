@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -159,18 +159,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Network\Commands.Network\NetworkSecurityGroup\Model\INetworkSecurityGroup.cs">
-      <Link>Model\INetworkSecurityGroup.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Network\Commands.Network\NetworkSecurityGroup\Model\NetworkSecurityGroupWithRules.cs">
-      <Link>Model\NetworkSecurityGroupWithRules.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Network\Commands.Network\NetworkSecurityGroup\Model\NetworkSecurityRule.cs">
-      <Link>Model\NetworkSecurityRule.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Network\Commands.Network\NetworkSecurityGroup\Model\SimpleNetworkSecurityGroup.cs">
-      <Link>Model\SimpleNetworkSecurityGroup.cs</Link>
-    </Compile>
     <Compile Include="AffinityGroups\GetAzureAffinityGroup.cs" />
     <Compile Include="AffinityGroups\NewAzureAffinityGroup.cs" />
     <Compile Include="AffinityGroups\RemoveAzureAffinityGroup.cs" />
@@ -251,7 +239,6 @@
     <Compile Include="IaaS\Network\AddAzureNetworkInterfaceConfig.cs" />
     <Compile Include="IaaS\Network\GetAzureInternalLoadBalancer.cs" />
     <Compile Include="IaaS\Network\GetAzureNetworkInterfaceConfig.cs" />
-    <Compile Include="IaaS\Network\GetAzureNetworkSecurityGroupConfig.cs" />
     <Compile Include="IaaS\Network\NewAzureInternalLoadBalancerConfig.cs" />
     <Compile Include="IaaS\Network\RemoveAzureDns.cs" />
     <Compile Include="IaaS\Network\RemoveAzureInternalLoadBalancer.cs" />
