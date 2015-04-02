@@ -144,6 +144,7 @@
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
     <Compile Include="Files\GetBatchTaskFileCommand.cs" />
     <Compile Include="Files\GetBatchTaskFileContentCommand.cs" />
+    <Compile Include="Files\GetBatchVMFileCommand.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommand.cs" />
     <Compile Include="Models\BatchClient.Accounts.cs" />
     <Compile Include="Models\BatchClient.cs" />
@@ -155,12 +156,15 @@
     <Compile Include="Models\BatchClient.Jobs.cs" />
     <Compile Include="Models\BatchClient.Pools.cs" />
     <Compile Include="Models\BatchClient.Tasks.cs" />
+    <Compile Include="Models\BatchClient.VMs.cs" />
     <Compile Include="Models\BatchClient.WorkItems.cs" />
     <Compile Include="Models\DownloadTaskFileOptions.cs" />
     <Compile Include="Models\ListJobOptions.cs" />
     <Compile Include="Models\ListPoolOptions.cs" />
     <Compile Include="Models\ListTaskFileOptions.cs" />
     <Compile Include="Models\ListTaskOptions.cs" />
+    <Compile Include="Models\ListVMFileOptions.cs" />
+    <Compile Include="Models\ListVMOptions.cs" />
     <Compile Include="Models\ListWorkItemOptions.cs" />
     <Compile Include="Models\NewPoolParameters.cs" />
     <Compile Include="Models\NewTaskParameters.cs" />
@@ -206,6 +210,7 @@
     <Compile Include="Models\PSUser.cs" />
     <Compile Include="Models\PSVM.cs" />
     <Compile Include="Models\PSVMError.cs" />
+    <Compile Include="Models\PSVMFile.cs" />
     <Compile Include="Models\PSVMInformation.cs" />
     <Compile Include="Models\PSWorkItemExecutionInformation.cs" />
     <Compile Include="Models\PSWorkItemSchedule.cs" />
@@ -226,6 +231,7 @@
     <Compile Include="Tasks\RemoveBatchTaskCommand.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\Utils.cs" />
+    <Compile Include="VMs\GetBatchVMCommand.cs" />
     <Compile Include="WorkItems\GetBatchWorkItemCommand.cs" />
     <Compile Include="WorkItems\NewBatchWorkItemCommand.cs" />
     <Compile Include="WorkItems\RemoveBatchWorkItemCommand.cs" />
