@@ -21,9 +21,9 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.Insights
 {
     /// <summary>
-    /// Base class for the Azure SDK EventService Cmdlets
+    /// Base class for the Azure Insights SDK Cmdlets based on the InsightsClient
     /// </summary>
-    public abstract class InsightsClientCmdletBase : AzurePSCmdlet, IDisposable
+    public abstract class InsightsClientCmdletBase : InsightsCmdletBase, IDisposable
     {
         #region General declarations
 
