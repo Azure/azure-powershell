@@ -145,6 +145,7 @@
     <Compile Include="AzurePowerShell.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ConversionUtilities.cs" />
+    <Compile Include="DebugStreamTraceListener.cs" />
     <Compile Include="GeneralUtilities.cs" />
     <Compile Include="PowerShellUtilities.cs" />
     <Compile Include="RecordingTracingInterceptor.cs" />

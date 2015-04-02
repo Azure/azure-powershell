@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Concurrent;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -26,7 +27,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public abstract class AzurePSCmdlet : PSCmdlet
     {
-        private readonly RecordingTracingInterceptor _httpTracingInterceptor = new RecordingTracingInterceptor();
+        private readonly ConcurrentQueue<string> _debugMessages = new ConcurrentQueue<string>();
+        private RecordingTracingInterceptor _httpTracingInterceptor;
+        private DebugStreamTraceListener _adalListener;
         protected static AzureProfile _currentProfile = null;
 
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
@@ -164,7 +167,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 WriteDebugWithTimestamp(string.Format("using account id '{0}'...", Profile.Context.Account.Id));
             }
 
+            _httpTracingInterceptor = _httpTracingInterceptor?? new RecordingTracingInterceptor(_debugMessages);
+            _adalListener = _adalListener?? new DebugStreamTraceListener(_debugMessages);
             RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
+            DebugStreamTraceListener.AddAdalTracing(_adalListener);
 
             base.BeginProcessing();
         }
@@ -191,15 +197,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             WriteDebugWithTimestamp(message);
 
             RecordingTracingInterceptor.RemoveFromContext(_httpTracingInterceptor);
-            FlushMessagesFromTracingInterceptor();
+            DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
+            FlushDebugMessages();
 
             base.EndProcessing();
         }
-
-        /*public AzureContext Profile.Context
-        {
-            get { return Profile.Context; }
-        }*/
 
         public bool HasCurrentSubscription
         {
@@ -223,49 +225,49 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public new void WriteError(ErrorRecord errorRecord)
         {
-            FlushMessagesFromTracingInterceptor();
+            FlushDebugMessages();
             base.WriteError(errorRecord);
         }
 
         public new void WriteObject(object sendToPipeline)
         {
-            FlushMessagesFromTracingInterceptor();
+            FlushDebugMessages();
             base.WriteObject(sendToPipeline);
         }
 
         public new void WriteObject(object sendToPipeline, bool enumerateCollection)
         {
-            FlushMessagesFromTracingInterceptor();
+            FlushDebugMessages();
             base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         public new void WriteVerbose(string text)
         {
-            FlushMessagesFromTracingInterceptor();
+            FlushDebugMessages();
             base.WriteVerbose(text);
         }
 
         public new void WriteWarning(string text)
         {
-            FlushMessagesFromTracingInterceptor();
+            FlushDebugMessages();
             base.WriteWarning(text);
         }
 
         public new void WriteCommandDetail(string text)
         {
-            FlushMessagesFromTracingInterceptor();
+            FlushDebugMessages();
             base.WriteCommandDetail(text);
         }
 
         public new void WriteProgress(ProgressRecord progressRecord)
         {
-            FlushMessagesFromTracingInterceptor();
+            FlushDebugMessages();
             base.WriteProgress(progressRecord);
         }
 
         public new void WriteDebug(string text)
         {
-            FlushMessagesFromTracingInterceptor();
+            FlushDebugMessages();
             base.WriteDebug(text);
         }
 
@@ -342,10 +344,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        private void FlushMessagesFromTracingInterceptor()
+        private void FlushDebugMessages()
         {
             string message;
-            while (_httpTracingInterceptor.MessageQueue.TryDequeue(out message))
+            while (_debugMessages.TryDequeue(out message))
             {
                 base.WriteDebug(message);
             }

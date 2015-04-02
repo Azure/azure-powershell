@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Common.Authentication.Models
 {
     public class RecordingTracingInterceptor : Hyak.Common.ICloudTracingInterceptor
     {
-        public RecordingTracingInterceptor()
+        public RecordingTracingInterceptor(ConcurrentQueue<string> queue)
         {
-            MessageQueue = new ConcurrentQueue<string>();
+            MessageQueue = queue;
         }
 
         public ConcurrentQueue<string> MessageQueue { get; private set; }
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Common.Authentication.Models
 
         public void Information(string message)
         {
-            // Ignore    
+            MessageQueue.Enqueue(message);
         }
 
         public void Configuration(string source, string name, string value)
