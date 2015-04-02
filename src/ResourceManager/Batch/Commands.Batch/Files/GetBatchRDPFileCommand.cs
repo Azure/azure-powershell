@@ -21,7 +21,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, "AzureBatchRDPFile", DefaultParameterSetName = Constants.NameParameterSet)]
+    [Cmdlet(VerbsCommon.Get, "AzureBatchRDPFile")]
     public class GetBatchRDPFileCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool which contains the vm.")]
