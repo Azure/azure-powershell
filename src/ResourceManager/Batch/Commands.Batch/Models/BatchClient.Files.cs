@@ -218,19 +218,57 @@ namespace Microsoft.Azure.Commands.Batch.Models
             DownloadITaskFile(vmFile, options.DestinationPath, "vm", options.Stream, options.AdditionalBehaviors);
         }
 
-        private void DownloadITaskFile(ITaskFile file, string destinationPath, string loggingFileType, Stream stream = null, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        /// <summary>
+        /// Downloads an RDP file using the specified options.
+        /// </summary>
+        /// <param name="options">The download options</param>
+        public void DownloadRDPFile(DownloadRDPFileOptions options)
         {
-            string path = null;
-            // The ITaskFile object's name is a relative path that includes directories.
-            string fileName = Path.GetFileName(file.Name);
+            if (options == null)
+            {
+                throw new ArgumentNullException("options");
+            }
+
+            if ((string.IsNullOrWhiteSpace(options.PoolName) || string.IsNullOrWhiteSpace(options.VMName)) && options.VM == null)
+            {
+                throw new ArgumentNullException(Resources.GRDP_NoVM);
+            }
+
+            if (options.Stream != null)
+            {
+                // Used for testing.
+                // Don't dispose supplied Stream
+                CopyRDPStream(options.Stream, options.Context.BatchOMClient, options.PoolName, options.VMName, options.VM, options.AdditionalBehaviors);
+            }
+            else
+            {
+                string vmName = options.VM == null ? options.VMName : options.VM.Name;
+                string fileName = string.Format("{0}.rdp", Path.GetFileName(vmName));
+                string path = GetDownloadFilePath(options.DestinationPath, fileName);
+                WriteVerbose(string.Format(Resources.Downloading, "RDP", fileName, path));
+
+                using (FileStream fs = new FileStream(path, FileMode.Create))
+                {
+                    CopyRDPStream(fs, options.Context.BatchOMClient, options.PoolName, options.VMName, options.VM, options.AdditionalBehaviors);
+                }
+            }
+        }
+
+        // Gets the download file path given a directory and file name.
+        private string GetDownloadFilePath(string destinationPath, string fileName)
+        {
             if (string.IsNullOrWhiteSpace(destinationPath))
             {
                 // If no destination is specified, just save the file to the current directory 
                 destinationPath = Environment.CurrentDirectory;
             }
-            path = Path.Combine(destinationPath, fileName);
 
-            WriteVerbose(string.Format(Resources.Downloading, loggingFileType, file.Name, path));
+            return Path.Combine(destinationPath, fileName);
+        }
+
+        // Downloads the file represented by an ITaskFile instance to the specified path
+        private void DownloadITaskFile(ITaskFile file, string destinationPath, string loggingFileType, Stream stream = null, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        {
             if (stream != null)
             {
                 // Used for testing.
@@ -239,10 +277,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             else
             {
+                // The ITaskFile object's name is a relative path that includes directories.
+                string fileName = Path.GetFileName(file.Name);
+                string path = GetDownloadFilePath(destinationPath, fileName);
+
+                WriteVerbose(string.Format(Resources.Downloading, loggingFileType, file.Name, path));
                 using (FileStream fs = new FileStream(path, FileMode.Create))
                 {
                     file.CopyToStream(fs, additionalBehaviors);
                 }
+            }
+        }
+
+        private void CopyRDPStream(Stream destinationStream, IBatchClient client, string poolName, string vmName, 
+            PSVM vm, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        {
+            if (vm == null)
+            {
+                using (IPoolManager poolManager = client.OpenPoolManager())
+                {
+                    poolManager.GetRDPFile(poolName, vmName, destinationStream, additionalBehaviors);
+                }
+            }
+            else
+            {
+                vm.omObject.GetRDPFile(destinationStream, additionalBehaviors);
             }
         }
     }

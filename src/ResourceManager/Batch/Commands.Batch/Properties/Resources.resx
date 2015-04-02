@@ -222,6 +222,9 @@
   <data name="GBWI_NoFilter" xml:space="preserve">
     <value>Getting all workitems associated with the Batch account. </value>
   </data>
+  <data name="GRDP_NoVM" xml:space="preserve">
+    <value>No vm was specified. Supply a PSVM object or a pool name and vm name for the RDP file to point to.</value>
+  </data>
   <data name="InvalidEndpointType" xml:space="preserve">
     <value>The endpoint is not recognized as valid: {0}</value>
   </data>

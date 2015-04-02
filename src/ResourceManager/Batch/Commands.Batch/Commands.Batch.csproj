@@ -142,6 +142,7 @@
     <Compile Include="Accounts\NewBatchAccountCommand.cs" />
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
+    <Compile Include="Files\GetBatchRDPFileCommand.cs" />
     <Compile Include="Files\GetBatchTaskFileCommand.cs" />
     <Compile Include="Files\GetBatchTaskFileContentCommand.cs" />
     <Compile Include="Files\GetBatchVMFileCommand.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Models\BatchClient.Tasks.cs" />
     <Compile Include="Models\BatchClient.VMs.cs" />
     <Compile Include="Models\BatchClient.WorkItems.cs" />
+    <Compile Include="Models\DownloadRDPFileOptions.cs" />
     <Compile Include="Models\DownloadTaskFileOptions.cs" />
     <Compile Include="Models\DownloadVMFileOptions.cs" />
     <Compile Include="Models\ListJobOptions.cs" />

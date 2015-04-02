@@ -376,6 +376,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No vm was specified. Supply a PSVM object or a pool name and vm name for the RDP file to point to..
+        /// </summary>
+        internal static string GRDP_NoVM {
+            get {
+                return ResourceManager.GetString("GRDP_NoVM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The endpoint is not recognized as valid: {0}.
         /// </summary>
         internal static string InvalidEndpointType {

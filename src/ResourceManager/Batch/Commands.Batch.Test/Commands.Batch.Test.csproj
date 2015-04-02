@@ -154,6 +154,7 @@
     <Compile Include="Accounts\RemoveBatchAccountCommandTests.cs" />
     <Compile Include="Accounts\SetBatchAccountCommandTests.cs" />
     <Compile Include="BatchTestHelpers.cs" />
+    <Compile Include="Files\GetBatchRDPFileCommandTests.cs" />
     <Compile Include="Files\GetBatchTaskFileCommandTests.cs" />
     <Compile Include="Files\GetBatchTaskFileContentCommandTests.cs" />
     <Compile Include="Files\GetBatchVMFileCommandTests.cs" />

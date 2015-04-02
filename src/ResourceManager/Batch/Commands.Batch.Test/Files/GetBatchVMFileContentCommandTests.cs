@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBatchVMFileParametersTest()
+        public void GetBatchVMFileContentParametersTest()
         {
             // Setup cmdlet without required parameters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
@@ -61,9 +61,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.DestinationPath = null;
 
             string fileName = "startup\\stdout.txt";
-
-            // Don't hit the file system during unit tests
-            cmdlet.Stream = new MemoryStream();
 
             // Don't go to the service on a GetTVMFile call or GetTVMFileProperties call
             YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
@@ -84,21 +81,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
-            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
-
-            // Fill required Task file details
-            cmdlet.PoolName = "pool";
-            cmdlet.VMName = "vm1";
-            cmdlet.Name = fileName;
-
-            try
+            using (MemoryStream memStream = new MemoryStream())
             {
+                // Don't hit the file system during unit tests
+                cmdlet.Stream = memStream;
+
+                Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
+                // Fill required Task file details
+                cmdlet.PoolName = "pool";
+                cmdlet.VMName = "vm1";
+                cmdlet.Name = fileName;
+
                 // Verify no exceptions occur
                 cmdlet.ExecuteCmdlet();
-            }
-            finally
-            {
-                cmdlet.Stream.Dispose();
             }
         }
     }
