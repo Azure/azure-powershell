@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceConfigurationSchema;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceDefinitionSchema;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Common.Authentication;
 
@@ -123,6 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Perform basic parameter validation.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableRemoteDesktopBasicParameterValidation()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -153,6 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Enable remote desktop for an empty service.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableRemoteDesktopForEmptyService()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -168,6 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Enable remote desktop for a simple web role.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableRemoteDesktopForWebRole()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -190,6 +194,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Enable remote desktop for web and worker roles.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableRemoteDesktopForWebAndWorkerRoles()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -217,6 +222,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Enable remote desktop for multiple web and worker roles.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableRemoteDesktopForMultipleWebAndWorkerRolesTwice()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -256,6 +262,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Enable remote desktop for a simple web role.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableRemoteDesktopUnicode()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -284,6 +291,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Enable remote desktop using short unicode password.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableRemoteDesktopUnicodeAndShortPasswordFails()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
