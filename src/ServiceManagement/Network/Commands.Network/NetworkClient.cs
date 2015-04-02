@@ -899,34 +899,15 @@ namespace Microsoft.Azure.Commands.Network
             client.IPForwarding.SetOnNetworkInterface(serviceName, deploymentName, roleName, networkInterfaceName, parameters);
         }
 
-        public IPForwardingGetResponse GetIPForwardingForRole(string serviceName, string deploymentName, string roleName)
+        public string GetIPForwardingForRole(string serviceName, string deploymentName, string roleName)
         {
             IPForwardingGetResponse ipForwardingGetResponse = client.IPForwarding.GetForRole(serviceName, deploymentName, roleName);
-            return null;
+            return ipForwardingGetResponse.State;
         }
-        public IPForwardingGetResponse GetIPForwardingForNetworkInterface(string serviceName, string deploymentName, string roleName, string networkInterfaceName)
+        public string GetIPForwardingForNetworkInterface(string serviceName, string deploymentName, string roleName, string networkInterfaceName)
         {
             IPForwardingGetResponse ipForwardingGetResponse = client.IPForwarding.GetForNetworkInterface(serviceName, deploymentName, roleName, networkInterfaceName);
-            return null;
-        }
-
-        public string GetDeploymentBySlot(string serviceName, string slot)
-        {
-            if (string.IsNullOrEmpty(serviceName))
-            {
-                throw new ArgumentNullException(serviceName);
-            }
-
-            if (string.IsNullOrEmpty(slot))
-            {
-                throw new ArgumentNullException(slot);
-            }
-
-            var slotType = (ComputeModels.DeploymentSlot)Enum.Parse(typeof(ComputeModels.DeploymentSlot), slot, true);
-
-            return this.computeClient.Deployments.GetBySlot(
-                        serviceName,
-                        slotType).Name;
+            return ipForwardingGetResponse.State;
         }
     }
 }

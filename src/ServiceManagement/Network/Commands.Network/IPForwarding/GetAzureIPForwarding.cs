@@ -15,11 +15,10 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.IPForwarding.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.IPForwarding
 {
-    [Cmdlet(VerbsCommon.Get, "AzureIPForwarding"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Get, "AzureIPForwarding"), OutputType(typeof(string))]
     public class GetAzureIPForwarding : NetworkCmdletBase
     {
         protected const string IaaSIPForwardingParamSet = "IaaSIPForwardingParamSet";
@@ -28,8 +27,9 @@ namespace Microsoft.Azure.Commands.Network.IPForwarding
         private string obtainedDeploymentName { get; set; }
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = IaaSIPForwardingParamSet)]
-        public IPersistentVM VM { get; set; }
+        public PersistentVMRoleContext VM { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = IaaSIPForwardingParamSet)]
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = SlotIPForwardingParamSet)]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
@@ -46,21 +46,21 @@ namespace Microsoft.Azure.Commands.Network.IPForwarding
         [ValidateNotNullOrEmpty]
         public string RoleName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = IaaSIPForwardingParamSet)]
+        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = SlotIPForwardingParamSet)]
         [ValidateNotNullOrEmpty]
         public string NetworkInterfaceName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (string.IsNullOrEmpty(this.Slot))
+            this.obtainedDeploymentName = Client.GetDeploymentName(this.VM, this.Slot, this.ServiceName);
+
+            if (string.Equals(this.ParameterSetName, IaaSIPForwardingParamSet))
             {
-                this.Slot = DeploymentSlotType.Production;
+                this.RoleName = this.VM.Name;
             }
 
-            this.obtainedDeploymentName = Client.GetDeploymentBySlot(this.ServiceName, this.Slot);
-
-            IPForwardingGetResponse ipForwardingState;
+            string ipForwardingState;
             if (string.IsNullOrEmpty(this.NetworkInterfaceName))
             {
                 ipForwardingState = Client.GetIPForwardingForRole(this.ServiceName, this.obtainedDeploymentName, this.RoleName);
@@ -68,10 +68,9 @@ namespace Microsoft.Azure.Commands.Network.IPForwarding
             else
             {
                 ipForwardingState = Client.GetIPForwardingForNetworkInterface(this.ServiceName, this.obtainedDeploymentName, this.RoleName, this.NetworkInterfaceName);
-
             }
 
-            WriteObject(IPForwardingState.Enabled.Equals(ipForwardingState.State));
+            WriteObject(ipForwardingState);
         }
     }
 }

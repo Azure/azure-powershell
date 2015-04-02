@@ -28,8 +28,10 @@ namespace Microsoft.Azure.Commands.Network.IPForwarding
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = EnableIaaSIPForwardingParamSet)]
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DisableIaaSIPForwardingParamSet)]
-        public IPersistentVM VM { get; set; }
+        public PersistentVMRoleContext VM { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = EnableIaaSIPForwardingParamSet)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DisableIaaSIPForwardingParamSet)]
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = EnableSlotIPForwardingParamSet)]
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DisableSlotIPForwardingParamSet)]
         [ValidateNotNullOrEmpty]
@@ -45,8 +47,10 @@ namespace Microsoft.Azure.Commands.Network.IPForwarding
         [ValidateNotNullOrEmpty]
         public string RoleName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = EnableIaaSIPForwardingParamSet)]
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = DisableIaaSIPForwardingParamSet)]
+        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = EnableSlotIPForwardingParamSet)]
+        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = DisableSlotIPForwardingParamSet)]
         [ValidateNotNullOrEmpty]
         public string NetworkInterfaceName { get; set; }
 
@@ -65,12 +69,13 @@ namespace Microsoft.Azure.Commands.Network.IPForwarding
 
         public override void ExecuteCmdlet()
         {
-            if (string.IsNullOrEmpty(this.Slot))
-            {
-                this.Slot = DeploymentSlotType.Production;
-            }
+            this.obtainedDeploymentName = Client.GetDeploymentName(this.VM, this.Slot, this.ServiceName);
 
-            this.obtainedDeploymentName = Client.GetDeploymentBySlot(this.ServiceName, this.Slot);
+            if (string.Equals(this.ParameterSetName, EnableIaaSIPForwardingParamSet) ||
+                string.Equals(this.ParameterSetName, DisableIaaSIPForwardingParamSet))
+            {
+                this.RoleName = this.VM.Name;
+            }
 
             if (string.IsNullOrEmpty(this.NetworkInterfaceName))
             {
