@@ -171,6 +171,7 @@
     <Compile Include="Gateway\StopAzureVNetGatewayDiagnostics.cs" />
     <Compile Include="NetworkClient.cs" />
     <Compile Include="NetworkCmdletBase.cs" />
+    <Compile Include="NetworkSecurityGroup\GetAzureNetworkSecurityGroupConfig.cs" />
     <Compile Include="Routes\GetAzureRouteTable.cs" />
     <Compile Include="Routes\GetAzureSubnetRouteTable.cs" />
     <Compile Include="Routes\Model\SubnetRouteTableContext.cs" />
@@ -197,10 +198,6 @@
     <Compile Include="NetworkSecurityGroup\Subnet\GetAzureNetworkSecurityGroupForSubnet.cs" />
     <Compile Include="NetworkSecurityGroup\Subnet\RemoveAzureNetworkSecurityGroupFromSubnet.cs" />
     <Compile Include="NetworkSecurityGroup\Utilities\NetworkSecurityGroupConfigurationBaseCmdlet.cs" />
-    <Compile Include="..\..\Compute\Commands.ServiceManagement\Model\IPersistentVM.cs" />
-    <Compile Include="..\..\Compute\Commands.ServiceManagement\Model\PersistentVM.cs" />
-    <Compile Include="..\..\Compute\Commands.ServiceManagement\Model\PersistentVMRoleContext.cs" />
-    <Compile Include="..\..\Compute\Commands.ServiceManagement\Model\ServiceOperationContext.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -210,6 +207,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Services\Commands.Utilities\Commands.Utilities.csproj">
+      <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>
+      <Name>Commands.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Compute\Commands.ServiceManagement\Commands.ServiceManagement.csproj">
+      <Project>{E1CA72BA-8374-45F6-904D-FD34ECDF5B6F}</Project>
+      <Name>Commands.ServiceManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
