@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.Network.Routes
         [ValidateNotNullOrEmpty]
         public string RoleInstanceName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = IaaSGetEffectiveRouteTableParamSet)]
+        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = SlotGetEffectiveRouteTableParamSet)]
         [ValidateNotNullOrEmpty]
         public string NetworkInterfaceName { get; set; }
 
