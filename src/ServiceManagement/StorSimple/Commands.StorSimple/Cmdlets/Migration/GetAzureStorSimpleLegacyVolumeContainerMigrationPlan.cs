@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         }
                         else
                         {
-                            var legacyContainerNamesList = new List<string>(LegacyContainerNames);
+                            var legacyContainerNamesList = new List<string>(LegacyContainerNames.ToList().Distinct());
                             foreach (var migrationPlanInfo in migrationPlan.MigrationPlanInfo)
                             {
                                 if (legacyContainerNamesList.Contains(migrationPlanInfo.DataContainerName))

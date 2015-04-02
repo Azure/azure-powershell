@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Runtime.Caching.Configuration;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
@@ -28,10 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
     public class ConfirmMigrationStatusMsg
     {
         public string LegacyConfigId { get; set;}
-        public ConfirmMigrationStatus MigrationNotStarted {get;set;}
-        public ConfirmMigrationStatus MigrationInProgress {get;set;}
-        public ConfirmMigrationStatus MigrationComplete  {get;set;}
-        public ConfirmMigrationStatus MigrationFailed  {get;set;}
+        public ConfirmMigrationStatus NotReadyForCommitRollback { get; set; }
         public ConfirmMigrationStatus CommitInProgress  {get;set;}
         public ConfirmMigrationStatus CommitComplete  {get;set;}
         public ConfirmMigrationStatus CommitFailed  {get;set;}
@@ -47,18 +45,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         public ConfirmMigrationStatusMsg(string configID, ConfirmStatus overallStatus)
         {
             this.LegacyConfigId = configID;
-            this.MigrationNotStarted = new ConfirmMigrationStatus(MigrationDataContainerConfirmStatus.MigrationNotStarted, overallStatus);
-            this.MigrationInProgress = new ConfirmMigrationStatus(MigrationDataContainerConfirmStatus.MigrationInProgress, overallStatus);
-            this.MigrationFailed = new ConfirmMigrationStatus(MigrationDataContainerConfirmStatus.MigrationFailed, overallStatus);
-            this.MigrationComplete = new ConfirmMigrationStatus(MigrationDataContainerConfirmStatus.MigrationComplete, overallStatus);
+            this.NotReadyForCommitRollback = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.NotReadyForCommitRollback, overallStatus);
 
-            this.CommitInProgress = new ConfirmMigrationStatus(MigrationDataContainerConfirmStatus.CommitInProgress, overallStatus);
-            this.CommitFailed = new ConfirmMigrationStatus(MigrationDataContainerConfirmStatus.CommitFailed, overallStatus);
-            this.CommitComplete = new ConfirmMigrationStatus(MigrationDataContainerConfirmStatus.CommitComplete, overallStatus);
+            this.CommitInProgress = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.CommitInProgress, overallStatus);
+            this.CommitFailed = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.CommitFailed, overallStatus);
+            this.CommitComplete = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.CommitComplete, overallStatus);
 
-            this.RollbackInProgress = new ConfirmMigrationStatus(MigrationDataContainerConfirmStatus.RollbackInProgress, overallStatus);
-            this.RollbackFailed = new ConfirmMigrationStatus(MigrationDataContainerConfirmStatus.RollbackFailed, overallStatus);
-            this.RollbackComplete = new ConfirmMigrationStatus(MigrationDataContainerConfirmStatus.RollbackComplete, overallStatus);
+            this.RollbackInProgress = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.RollbackInProgress, overallStatus);
+            this.RollbackFailed = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.RollbackFailed, overallStatus);
+            this.RollbackComplete = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.RollbackComplete, overallStatus);
         }
 
         /// <summary>
@@ -68,10 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         public override string ToString()
         {
             StringBuilder consoleop = new StringBuilder();
-            if ((null != this.MigrationNotStarted.ConfirmStatus && 0 < this.MigrationNotStarted.ConfirmStatus.Count) ||
-                (null != this.MigrationInProgress.ConfirmStatus && 0 < this.MigrationInProgress.ConfirmStatus.Count) ||
-                (null != this.MigrationComplete.ConfirmStatus && 0 < this.MigrationComplete.ConfirmStatus.Count) ||
-                (null != this.MigrationFailed.ConfirmStatus && 0 < this.MigrationFailed.ConfirmStatus.Count) ||
+            if ((null != this.NotReadyForCommitRollback.ConfirmStatus && 0 < this.NotReadyForCommitRollback.ConfirmStatus.Count) ||
                 (null != this.CommitInProgress.ConfirmStatus && 0 < this.CommitInProgress.ConfirmStatus.Count) ||
                 (null != this.CommitComplete.ConfirmStatus && 0 < this.CommitComplete.ConfirmStatus.Count) ||
                 (null != this.CommitFailed.ConfirmStatus && 0 < this.CommitFailed.ConfirmStatus.Count) ||
@@ -79,25 +71,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
                 (null != this.RollbackComplete.ConfirmStatus && 0 < this.RollbackComplete.ConfirmStatus.Count) ||
                 (null != this.RollbackFailed.ConfirmStatus && 0 < this.RollbackFailed.ConfirmStatus.Count))
             {
-                if(null != this.MigrationNotStarted.ConfirmStatus && 0 < this.MigrationNotStarted.ConfirmStatus.Count)
+                if (null != this.NotReadyForCommitRollback.ConfirmStatus && 0 < this.NotReadyForCommitRollback.ConfirmStatus.Count)
                 {
                     consoleop.AppendLine("MigrationNotStarted:");
-                    consoleop.AppendLine(this.MigrationNotStarted.ToString());
-                }
-                if (null != this.MigrationInProgress.ConfirmStatus && 0 < this.MigrationInProgress.ConfirmStatus.Count)
-                {
-                    consoleop.AppendLine("MigrationInProgress:");
-                    consoleop.AppendLine(this.MigrationInProgress.ToString());
-                }
-                if (null != this.MigrationComplete.ConfirmStatus && 0 < this.MigrationComplete.ConfirmStatus.Count)
-                {
-                    consoleop.AppendLine("MigrationComplete:");
-                    consoleop.AppendLine(this.MigrationComplete.ToString());
-                }
-                if (null != this.MigrationFailed.ConfirmStatus && 0 < this.MigrationFailed.ConfirmStatus.Count)
-                {
-                    consoleop.AppendLine("MigrationFailed:");
-                    consoleop.AppendLine(this.MigrationFailed.ToString());
+                    consoleop.AppendLine(this.NotReadyForCommitRollback.ToString());
                 }
                 if (null != this.CommitInProgress.ConfirmStatus && 0 < this.CommitInProgress.ConfirmStatus.Count)
                 {
@@ -144,15 +121,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
     {
         public List<ContainerConfirmStatus> ConfirmStatus { get; set; }
 
-        public MigrationDataContainerConfirmStatus Status { get; set; }
+        public MigrationDataContainerConfirmPortalStatus Status { get; set; }
 
-        public ConfirmMigrationStatus(MigrationDataContainerConfirmStatus statusType, ConfirmStatus overallStatus)
+        public ConfirmMigrationStatus(MigrationDataContainerConfirmPortalStatus statusType, ConfirmStatus overallStatus)
         {
             this.Status = statusType;
             if (null != overallStatus)
             {
                 List<ContainerConfirmStatus> statusList = new List<ContainerConfirmStatus>(overallStatus.ContainerConfirmStatus);
-                this.ConfirmStatus = statusList.FindAll(status => status.Status == statusType);
+                this.ConfirmStatus = statusList.FindAll(status => GetMigrationDataContainerConfirmPortalStatus(status.Status) == statusType);
             }
             else
             {
@@ -163,6 +140,43 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         int CompareConfirmStatus(ContainerConfirmStatus rhs, ContainerConfirmStatus lhs)
         {
             return rhs.Status.CompareTo(lhs.Status);
+        }
+
+        public enum MigrationDataContainerConfirmPortalStatus
+        {
+            NotReadyForCommitRollback,
+            CommitInProgress,
+            CommitComplete,
+            CommitFailed,
+            RollbackInProgress,
+            RollbackComplete,
+            RollbackFailed,
+        }
+
+        MigrationDataContainerConfirmPortalStatus GetMigrationDataContainerConfirmPortalStatus(MigrationDataContainerConfirmStatus status)
+        {
+            switch(status)
+            {
+                case MigrationDataContainerConfirmStatus.MigrationNotStarted:
+                case MigrationDataContainerConfirmStatus.MigrationInProgress:
+                case MigrationDataContainerConfirmStatus.MigrationComplete:
+                case MigrationDataContainerConfirmStatus.MigrationFailed:
+                    return MigrationDataContainerConfirmPortalStatus.NotReadyForCommitRollback;
+                case MigrationDataContainerConfirmStatus.CommitInProgress:
+                    return MigrationDataContainerConfirmPortalStatus.CommitInProgress;
+                case MigrationDataContainerConfirmStatus.CommitComplete:
+                    return MigrationDataContainerConfirmPortalStatus.CommitComplete;
+                case MigrationDataContainerConfirmStatus.CommitFailed:
+                    return MigrationDataContainerConfirmPortalStatus.CommitFailed;
+                case MigrationDataContainerConfirmStatus.RollbackInProgress:
+                    return MigrationDataContainerConfirmPortalStatus.RollbackInProgress;
+                case MigrationDataContainerConfirmStatus.RollbackComplete:
+                    return MigrationDataContainerConfirmPortalStatus.RollbackComplete;
+                case MigrationDataContainerConfirmStatus.RollbackFailed:
+                    return MigrationDataContainerConfirmPortalStatus.RollbackFailed;
+                default:
+                    throw new Exception("Migration Data Container Confirm Status not found.");
+            }
         }
 
         public override string ToString()

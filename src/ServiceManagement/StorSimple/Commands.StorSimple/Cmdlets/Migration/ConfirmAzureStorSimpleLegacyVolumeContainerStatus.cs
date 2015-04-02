@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 MigrationConfirmStatusRequest request = new MigrationConfirmStatusRequest();
                 request.Operation = (MigrationOperation)Enum.Parse(typeof(MigrationOperation), MigrationOperation, true);
-                request.DataContainerNameList = (null != LegacyContainerNames) ? LegacyContainerNames.ToList() : new List<string>();
+                request.DataContainerNameList = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
                 MigrationJobStatus status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, request);
 
                 WriteObject(this.GetResultMessage(status));

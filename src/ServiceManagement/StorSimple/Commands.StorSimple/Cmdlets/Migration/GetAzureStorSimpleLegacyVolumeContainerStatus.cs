@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 if (null != LegacyContainerNames && 0 < LegacyContainerNames.Length)
                 {
-                    List<string> containerNameList = LegacyContainerNames.ToList();
+                    List<string> containerNameList = new List<string>(LegacyContainerNames.ToList().Distinct());
                     migrationStatusSubList = migrationStatusSubList.FindAll(status => containerNameList.Contains(status.DataContainerName));
                 }
 

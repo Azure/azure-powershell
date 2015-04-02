@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     }
                     else
                     {
-                        List<string> legacyContainerNameList = new List<string>(LegacyContainerNames);
+                        List<string> legacyContainerNameList = new List<string>(LegacyContainerNames.ToList().Distinct());
                         foreach (ContainerConfirmStatus singleContainerConfirmStatus in confirmStatus.ContainerConfirmStatus)
                         {
                             if (legacyContainerNameList.Contains(singleContainerConfirmStatus.ContainerName))
