@@ -1228,8 +1228,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         public void NewResourceGroupWithDeploymentSucceeds()
         {
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
-            DeploymentExtended deploymentFromGet = new DeploymentExtended();
-            DeploymentExtended deploymentFromValidate = new DeploymentExtended();
+            Deployment deploymentFromGet = new Deployment();
+            Deployment deploymentFromValidate = new Deployment();
             CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
             {
                 ResourceGroupName = resourceGroupName,
@@ -1263,7 +1263,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 {
                     RequestId = requestId
                 }))
-                .Callback((string name, string dName, DeploymentExtended bDeploy, CancellationToken token) => { deploymentFromGet = bDeploy; });
+                .Callback((string name, string dName, Deployment bDeploy, CancellationToken token) => { deploymentFromGet = bDeploy; });
             deploymentsMock.Setup(f => f.GetAsync(resourceGroupName, deploymentName, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
                     {
@@ -1286,7 +1286,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     IsValid = true,
                     Error = new ResourceManagementErrorWithDetails()
                 }))
-                .Callback((string rg, string dn, DeploymentExtended d, CancellationToken c) => { deploymentFromValidate = d; });
+                .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
             SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "website" } });
             deploymentOperationsMock.Setup(f => f.ListAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new DeploymentOperationsListResult
@@ -1310,15 +1310,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 }));
 
             PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
-            Deployment deploymentCreateOrUpdate = new Deployment();
-            deploymentCreateOrUpdate.Properties = new DeploymentProperties();
-            deploymentCreateOrUpdate.Properties.Mode = deploymentFromGet.Properties.Mode;
-            deploymentCreateOrUpdate.Properties.Parameters = deploymentFromGet.Properties.Parameters;
-            deploymentCreateOrUpdate.Properties.ParametersLink = deploymentFromGet.Properties.ParametersLink;
-            deploymentCreateOrUpdate.Properties.Template = deploymentFromGet.Properties.Template;
-            deploymentCreateOrUpdate.Properties.TemplateLink = deploymentFromGet.Properties.TemplateLink;
-
-            deploymentsMock.Verify((f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, deploymentCreateOrUpdate, new CancellationToken())), Times.Once());
+            deploymentsMock.Verify((f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, deploymentFromGet, new CancellationToken())), Times.Once());
             Assert.Equal(parameters.ResourceGroupName, result.ResourceGroupName);
             Assert.Equal(parameters.Location, result.Location);
             Assert.Equal(1, result.Resources.Count);
@@ -1330,7 +1322,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.NotNull(deploymentFromValidate.Properties.Template);
 
             progressLoggerMock.Verify(
-                f => f(string.Format("GenericResourceExtended {0} '{1}' provisioning status is {2}",
+                f => f(string.Format("Resource {0} '{1}' provisioning status is {2}",
                         "Microsoft.Website",
                         resourceName,
                         ProvisioningState.Succeeded.ToLower())),
@@ -1445,7 +1437,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             //EqualsIgnoreWhitespace(File.ReadAllText(templateParameterFile), deploymentFromValidate.Parameters);
 
             progressLoggerMock.Verify(
-                f => f(string.Format("GenericResourceExtended {0} '{1}' provisioning status is {2}",
+                f => f(string.Format("Resource {0} '{1}' provisioning status is {2}",
                         "Microsoft.Website",
                         resourceName,
                         ProvisioningState.Succeeded.ToLower())),
@@ -1550,7 +1542,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.NotNull(deploymentFromValidate.Properties.Template);
 
             errorLoggerMock.Verify(
-                f => f(string.Format("GenericResourceExtended {0} '{1}' failed with message '{2}'",
+                f => f(string.Format("Resource {0} '{1}' failed with message '{2}'",
                         "Microsoft.Website",
                         resourceName,
                         "A really bad error occured")),
@@ -1658,7 +1650,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.NotNull(deploymentFromValidate.Properties.Template);
 
             errorLoggerMock.Verify(
-                f => f(string.Format("GenericResourceExtended {0} '{1}' failed with message '{2}'",
+                f => f(string.Format("Resource {0} '{1}' failed with message '{2}'",
                         "Microsoft.Website",
                         resourceName,
                         "A really bad error occured")),

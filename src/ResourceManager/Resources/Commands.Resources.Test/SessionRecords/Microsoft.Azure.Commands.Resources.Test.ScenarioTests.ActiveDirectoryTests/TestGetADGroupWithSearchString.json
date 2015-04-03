@@ -65,7 +65,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/groups?&$filter=startswith(displayName,'adgroup5645')&api-version=1.42-previewInternal",
+      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/groups?$filter=startswith(displayName,'adgroup5645')&api-version=1.42-previewInternal",
       "EncodedRequestUri": "LzE0NDlkNWI3LThhODMtNDdkYi1hZTRjLTliMDNlODg4YmFkMC9ncm91cHM/JiRmaWx0ZXI9c3RhcnRzd2l0aChkaXNwbGF5TmFtZSwnYWRncm91cDU2NDUnKSZhcGktdmVyc2lvbj0xLjQyLXByZXZpZXdJbnRlcm5hbA==",
       "RequestMethod": "GET",
       "RequestBody": "",
