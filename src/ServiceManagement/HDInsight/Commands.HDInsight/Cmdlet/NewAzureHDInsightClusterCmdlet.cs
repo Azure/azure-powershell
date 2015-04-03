@@ -255,6 +255,14 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             set { this.command.Endpoint = value; }
         }
 
+        [Parameter(Position = 19, Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public bool IgnoreSslErrors
+        {
+            get { return this.command.IgnoreSslErrors; }
+            set { this.command.IgnoreSslErrors = value; }
+        }
+
         /// <inheritdoc />
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The azure location where the new cluster should be created.",
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
