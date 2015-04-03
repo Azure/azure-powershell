@@ -58,12 +58,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         {
             ExecuteCmdLetWrap(() =>
             {
-                var result = this.Client.UploadCertificate(
-                    this.ResourceGroupName,
-                    this.Name,
-                    this.HostnameType,
-                    this.PfxPath,
-                    this.PfxPassword);
+                var result = Client.UploadCertificate(
+                    ResourceGroupName,
+                    Name,
+                    HostnameType,
+                    PfxPath,
+                    PfxPassword);
 
                 WriteObject(result);
             });

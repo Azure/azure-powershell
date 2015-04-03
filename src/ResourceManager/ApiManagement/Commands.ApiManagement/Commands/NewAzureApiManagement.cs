@@ -1,10 +1,24 @@
-﻿namespace Microsoft.Azure.Commands.ApiManagement.Commands
+﻿//  
+// Copyright (c) Microsoft.  All rights reserved.
+// 
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//    http://www.apache.org/licenses/LICENSE-2.0
+// 
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+
+namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
+    using System.Collections.Generic;
     using System.Management.Automation;
-    using System.Threading;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagement"), OutputType(typeof(ApiManagementAttributes))]
+    [Cmdlet(VerbsCommon.New, "AzureApiManagement"), OutputType(typeof (ApiManagement))]
     public class NewAzureApiManagement : ApiManagementCmdletBase
     {
         [Parameter(
@@ -20,8 +34,7 @@
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Location where want to create API Management service.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            "North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",
+        [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",
             "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
             "Australia Southeast", IgnoreCase = false)]
         public string Location { get; set; }
@@ -44,38 +57,43 @@
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Standard and Premium (preview). Default value is Developer")]
-        [ValidateNotNullOrEmpty]
         public ApiManagementSku? Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Sku capacity of the Azure API Management service. The default value is 1.")]
-        [ValidateNotNullOrEmpty]
         public int? Capacity { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Tags.")]
+        public Dictionary<string, string> Tags { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ExecuteCmdLetWrap(() =>
             {
-                ApiManagementLongRunningOperation longRunningOperation =
-                    this.Client.BeginCreateApiManagementService(
-                        this.ResourceGroupName,
-                        this.Name,
-                        this.Location,
-                        this.Organization,
-                        this.AdminEmail,
-                        this.Sku ?? ApiManagementSku.Developer,
-                        this.Capacity ?? 0);
+                var longRunningOperation =
+                    Client.BeginCreateApiManagementService(
+                        ResourceGroupName,
+                        Name,
+                        Location,
+                        Organization,
+                        AdminEmail,
+                        Sku ?? ApiManagementSku.Developer,
+                        Capacity ?? 1,
+                        Tags);
 
                 longRunningOperation = WaitForOperationToComplete(longRunningOperation);
                 if (!string.IsNullOrWhiteSpace(longRunningOperation.Error))
                 {
                     WriteErrorWithTimestamp(longRunningOperation.Error);
                 }
-                else if (longRunningOperation.ApiManagementAttributes != null)
+                else if (longRunningOperation.ApiManagement != null)
                 {
-                    WriteObject(longRunningOperation.ApiManagementAttributes);
+                    WriteObject(longRunningOperation.ApiManagement);
                 }
             });
         }

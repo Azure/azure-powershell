@@ -11,24 +11,25 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
+
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
     using System;
     using Microsoft.Azure.Management.ApiManagement.Models;
 
-    public class ApiManagementCertificateAttributes
+    public class ApiManagementCertificate
     {
-        public ApiManagementCertificateAttributes()
+        public ApiManagementCertificate()
         {
         }
 
-        public ApiManagementCertificateAttributes(ApiManagementHostnameType hostnameType, CertificateInformation value)
-            :this()
+        internal ApiManagementCertificate(ApiManagementHostnameType hostnameType, CertificateInformation value)
+            : this()
         {
-            this.HostnameType = hostnameType;
-            this.Expiry = value.Expiry;
-            this.Subject = value.Subject;
-            this.Thumbprint = value.Thumbprint;
+            HostnameType = hostnameType;
+            Expiry = value.Expiry;
+            Subject = value.Subject;
+            Thumbprint = value.Thumbprint;
         }
 
         public ApiManagementHostnameType HostnameType { get; set; }

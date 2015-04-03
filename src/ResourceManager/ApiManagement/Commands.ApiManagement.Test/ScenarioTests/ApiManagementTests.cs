@@ -16,8 +16,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
     using System;
     using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Gallery;
+    using Microsoft.Azure.Management.Authorization;
+    using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Microsoft.WindowsAzure.Management;
+    using Microsoft.WindowsAzure.Management.Storage;
     using Xunit;
 
     public class ApiManagementTests
@@ -33,7 +38,44 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         protected void SetupManagementClients()
         {
             var apiManagementManagementClient = GetApiManagementManagementClient();
-            helper.SetupManagementClients(apiManagementManagementClient);
+            var resourceManagementClient = GetResourceManagementClient();
+            var galaryClient = GetGalleryClient();
+            var authorizationManagementClient = GetAuthorizationManagementClient();
+            var managementClient = GetManagementClient();
+            var storageManagementClient = GetStorageManagementClient();
+
+            helper.SetupManagementClients(
+                apiManagementManagementClient, 
+                resourceManagementClient,
+                galaryClient,
+                authorizationManagementClient,
+                managementClient,
+                storageManagementClient);
+        }
+
+        protected StorageManagementClient GetStorageManagementClient()
+        {
+            return TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
+        }
+
+        private ManagementClient GetManagementClient()
+        {
+            return TestBase.GetServiceClient<ManagementClient>(new RDFETestEnvironmentFactory());
+        }
+
+        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        {
+            return TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
+        }
+
+        private GalleryClient GetGalleryClient()
+        {
+            return TestBase.GetServiceClient<GalleryClient>(new CSMTestEnvironmentFactory());
+        }
+
+        private ResourceManagementClient GetResourceManagementClient()
+        {
+            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         private Management.ApiManagement.ApiManagementClient GetApiManagementManagementClient()
@@ -44,9 +86,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestApiManagement()
+        public void TestCrudApiManagement()
         {
-            RunPowerShellTest("Test-NewApiManagement");
+            RunPowerShellTest("Test-CrudApiManagement");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBackupRestoreApiManagement()
+        {
+            RunPowerShellTest("Test-BackupRestoreApiManagement");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateApiManagementDeployment()
+        {
+            RunPowerShellTest("Test-UpdateApiManagementDeployment");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateApiManagementDeploymentWithHelpersAndPipline()
+        {
+            RunPowerShellTest("Test-UpdateApiManagementDeploymentWithHelpersAndPipline");
         }
 
         private void RunPowerShellTest(params string[] scripts)
@@ -69,8 +132,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
                 SetupManagementClients();
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\" + GetType().Name + ".ps1");
+                helper.SetupEnvironment(AzureModule.AzureProfile);
+                helper.SetupModules(AzureModule.AzureProfile, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1");
 
                 helper.RunPowerShellTest(scripts);
             }

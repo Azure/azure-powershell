@@ -11,42 +11,41 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
-//
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet("Update", "AzureApiManagementHostname"), OutputType(typeof(ApiManagementAttributes))]
-    public class UpdateAzureApiManagementHostname : ApiManagementCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureApiManagementHostname"), OutputType(typeof (ApiManagement))]
+    public class SetAzureApiManagementHostname : ApiManagementCmdletBase
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "ApiManagementAttributes returned by Get-AzureApiManagement. Use PortalHostnameConfiguration and ProxyHostnameConfiguration to update hostnames.")]
+            HelpMessage = "ApiManagementAttributes returned by Get-AzureApiManagement. Use PortalHostnameConfiguration and ProxyHostnameConfiguration to set hostnames.")]
         [ValidateNotNull]
-        public ApiManagementAttributes ApiManagementAttributes { get; set; }
+        public ApiManagement ApiManagement { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ExecuteCmdLetWrap(() =>
             {
-                ApiManagementLongRunningOperation longRunningOperation =
-                    this.Client.BeginUpdateHostname(
-                        this.ApiManagementAttributes.ResourceGroupName,
-                        this.ApiManagementAttributes.Name,
-                        this.ApiManagementAttributes.PortalHostnameConfiguration,
-                        this.ApiManagementAttributes.ProxyHostnameConfiguration);
+                var longRunningOperation =
+                    Client.BeginSetHostname(
+                        ApiManagement.ResourceGroupName,
+                        ApiManagement.Name,
+                        ApiManagement.PortalHostnameConfiguration,
+                        ApiManagement.ProxyHostnameConfiguration);
 
                 longRunningOperation = WaitForOperationToComplete(longRunningOperation);
-                bool success = string.IsNullOrWhiteSpace(longRunningOperation.Error);
+                var success = string.IsNullOrWhiteSpace(longRunningOperation.Error);
                 if (!success)
                 {
                     WriteErrorWithTimestamp(longRunningOperation.Error);
                 }
                 else
                 {
-                    WriteObject(longRunningOperation.ApiManagementAttributes);
+                    WriteObject(longRunningOperation.ApiManagement);
                 }
             });
         }

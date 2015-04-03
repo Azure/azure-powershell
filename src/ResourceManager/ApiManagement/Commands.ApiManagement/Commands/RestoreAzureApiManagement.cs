@@ -12,14 +12,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
 
-    [Cmdlet("Restore", "AzureApiManagement"), OutputType(typeof (ApiManagementAttributes))]
+    [Cmdlet(VerbsData.Restore, "AzureApiManagement"), OutputType(typeof (ApiManagement))]
     public class RestoreAzureApiManagement : ApiManagementCmdletBase
     {
         [Parameter(
@@ -64,24 +63,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         {
             ExecuteCmdLetWrap(() =>
             {
-                ApiManagementLongRunningOperation longRunningOperation =
-                    this.Client.BeginRestoreApiManagement(
-                        this.ResourceGroupName,
-                        this.Name,
-                        this.StorageContext.StorageAccount.Credentials.AccountName,
-                        this.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
-                        this.Container,
-                        this.Blob);
+                var longRunningOperation =
+                    Client.BeginRestoreApiManagement(
+                        ResourceGroupName,
+                        Name,
+                        StorageContext.StorageAccount.Credentials.AccountName,
+                        StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
+                        Container,
+                        Blob);
 
                 longRunningOperation = WaitForOperationToComplete(longRunningOperation);
-                bool success = string.IsNullOrWhiteSpace(longRunningOperation.Error);
+                var success = string.IsNullOrWhiteSpace(longRunningOperation.Error);
                 if (!success)
                 {
                     WriteErrorWithTimestamp(longRunningOperation.Error);
                 }
                 else
                 {
-                    WriteObject(longRunningOperation.ApiManagementAttributes);
+                    WriteObject(longRunningOperation.ApiManagement);
                 }
             });
         }

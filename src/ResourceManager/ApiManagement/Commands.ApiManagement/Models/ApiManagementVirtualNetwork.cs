@@ -17,23 +17,29 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     using System;
     using Microsoft.Azure.Management.ApiManagement.Models;
 
-    public class ApiManagementHostnameAtributes
+    public class ApiManagementVirtualNetwork
     {
-        public ApiManagementHostnameAtributes(ApiManagementHostnameType hostnameType, HostnameConfiguration hostnameConfigurationResource)
+        public ApiManagementVirtualNetwork()
         {
-            if (hostnameConfigurationResource == null)
-            {
-                throw new ArgumentNullException("hostnameConfigurationResource");
-            }
-
-            this.HostnameType = hostnameType;
-            this.CertificateAttributes = new ApiManagementCertificateAttributes(hostnameType, hostnameConfigurationResource.Certificate);
         }
 
-        public ApiManagementCertificateAttributes CertificateAttributes { get; set; }
+        internal ApiManagementVirtualNetwork(VirtualNetworkConfiguration vnetConfigurationResource)
+            :this()
+        {
+            if (vnetConfigurationResource == null)
+            {
+                throw new ArgumentNullException("vnetConfigurationResource");
+            }
 
-        public ApiManagementHostnameType HostnameType { get; set; }
+            Location = vnetConfigurationResource.Location;
+            SubnetName = vnetConfigurationResource.SubnetName;
+            VnetId = vnetConfigurationResource.VnetId;
+        }
 
-        public string Hostname { get; set; }
+        public string Location { get; set; }
+
+        public string SubnetName { get; set; }
+
+        public Guid VnetId { get; set; }
     }
 }

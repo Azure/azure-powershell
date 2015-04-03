@@ -4,7 +4,7 @@
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
 
-    [Cmdlet("Backup", "AzureApiManagement"), OutputType(typeof(ApiManagementAttributes))]
+    [Cmdlet(VerbsData.Backup, "AzureApiManagement"), OutputType(typeof(bool))]
     public class BackupAzureApiManagement : ApiManagementCmdletBase
     {
         [Parameter(
@@ -26,8 +26,7 @@
         /// </summary>
         [Parameter(
             Mandatory = true, 
-            Position = 1,
-            HelpMessage = "The storage connection context.")]
+            HelpMessage = "The storage connection context")]
         [ValidateNotNull]
         public AzureStorageContext StorageContext { get; set; }
 
@@ -53,13 +52,13 @@
             ExecuteCmdLetWrap(() =>
             {
                 ApiManagementLongRunningOperation longRunningOperation =
-                    this.Client.BeginBackupApiManagement(
-                        this.ResourceGroupName,
-                        this.Name,
-                        this.StorageContext.StorageAccount.Credentials.AccountName,
-                        this.StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
-                        this.Container,
-                        this.Blob);
+                    Client.BeginBackupApiManagement(
+                        ResourceGroupName,
+                        Name,
+                        StorageContext.StorageAccount.Credentials.AccountName,
+                        StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
+                        Container,
+                        Blob);
 
                 longRunningOperation = WaitForOperationToComplete(longRunningOperation);
                 bool success = string.IsNullOrWhiteSpace(longRunningOperation.Error);
@@ -68,7 +67,7 @@
                     WriteErrorWithTimestamp(longRunningOperation.Error);
                 }
 
-                if (this.PassThru.IsPresent)
+                if (PassThru.IsPresent)
                 {
                     WriteObject(success);
                 }

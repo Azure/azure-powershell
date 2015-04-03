@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using System.Threading;
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.Properties;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     public class ApiManagementCmdletBase : AzurePSCmdlet
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         protected void WriteProgress(ApiManagementLongRunningOperation operation)
         {
-            WriteProgress(new ProgressRecord(0, operation.OperationLink, operation.Status.ToString()));
+            WriteProgress(new ProgressRecord(0, operation.OperationName, operation.Status.ToString()));
         }
 
         protected ApiManagementLongRunningOperation WaitForOperationToComplete(ApiManagementLongRunningOperation longRunningOperation)
@@ -55,9 +56,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             while (longRunningOperation.Status == OperationStatus.InProgress)
             {
                 var retryAfter = longRunningOperation.RetryAfter ?? LongRunningOperationDefaultTimeout;
+
+                WriteVerboseWithTimestamp(Resources.VerboseGetOperationStateTimeoutMessage, retryAfter);
                 Thread.Sleep(retryAfter);
 
-                longRunningOperation = this.Client.GetLongRunningOperationStatus(longRunningOperation);
+                longRunningOperation = Client.GetLongRunningOperationStatus(longRunningOperation);
                 WriteProgress(longRunningOperation);
             }
 
@@ -69,6 +72,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             try
             {
                 action();
+            }
+            catch (ArgumentException ex)
+            {
+                WriteError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidArgument, null));
             }
             catch (Exception ex)
             {

@@ -65,7 +65,8 @@ FormatsToProcess = @(
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',
     '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',
-    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml'
+    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',
+	'.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
@@ -80,7 +81,8 @@ NestedModules = @(
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.dll',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',
     '.\Insights\Microsoft.Azure.Commands.Insights.dll',
-    '.\Websites\Microsoft.Azure.Commands.Websites.dll'
+    '.\Websites\Microsoft.Azure.Commands.Websites.dll',
+	'.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll'
 )
 
 # Functions to export from this module

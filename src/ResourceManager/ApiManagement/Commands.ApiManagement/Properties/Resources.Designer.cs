@@ -61,6 +61,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Region with location &apos;{0}&apos; already added..
+        /// </summary>
+        internal static string AddRegionExistsMessage {
+            get {
+                return ResourceManager.GetString("AddRegionExistsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location &apos;{0}&apos; does not fall within the range: {1}.
+        /// </summary>
+        internal static string InvalidLocation {
+            get {
+                return ResourceManager.GetString("InvalidLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Microsoft Azure API Management &quot;{0}&quot;..
         /// </summary>
         internal static string RemoveAzureApiManagementDescription {
@@ -79,11 +97,38 @@ namespace Microsoft.Azure.Commands.ApiManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing master region in location &apos;{0}&apos; is not allowed..
+        /// </summary>
+        internal static string RemoveRegionCannotRemoveMasterRegion {
+            get {
+                return ResourceManager.GetString("RemoveRegionCannotRemoveMasterRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string ShouldProcessCaption {
             get {
                 return ResourceManager.GetString("ShouldProcessCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Region with location &apos;{0}&apos; not found..
+        /// </summary>
+        internal static string UpdateRegionDoesNotExistsMessage {
+            get {
+                return ResourceManager.GetString("UpdateRegionDoesNotExistsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get operation state in &apos;{0}&apos;.
+        /// </summary>
+        internal static string VerboseGetOperationStateTimeoutMessage {
+            get {
+                return ResourceManager.GetString("VerboseGetOperationStateTimeoutMessage", resourceCulture);
             }
         }
     }

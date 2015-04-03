@@ -117,6 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddRegionExistsMessage" xml:space="preserve">
+    <value>Region with location '{0}' already added.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="InvalidLocation" xml:space="preserve">
+    <value>Location '{0}' does not fall within the range: {1}</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="RemoveAzureApiManagementDescription" xml:space="preserve">
     <value>Removing Microsoft Azure API Management "{0}".</value>
     <comment>Process workflow</comment>
@@ -125,8 +133,20 @@
     <value>Are you sure you want to remove the Microsoft Azure API Management "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="RemoveRegionCannotRemoveMasterRegion" xml:space="preserve">
+    <value>Removing master region in location '{0}' is not allowed.</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="ShouldProcessCaption" xml:space="preserve">
     <value>Confirm</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="UpdateRegionDoesNotExistsMessage" xml:space="preserve">
+    <value>Region with location '{0}' not found.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="VerboseGetOperationStateTimeoutMessage" xml:space="preserve">
+    <value>Get operation state in '{0}'</value>
     <comment>Process workflow</comment>
   </data>
 </root>

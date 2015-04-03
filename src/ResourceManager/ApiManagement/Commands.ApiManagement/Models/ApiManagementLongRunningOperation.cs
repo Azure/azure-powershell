@@ -11,7 +11,6 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
-//
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
@@ -20,10 +19,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
     public class ApiManagementLongRunningOperation
     {
-        public static ApiManagementLongRunningOperation CreateLongRunningOperation(LongRunningOperationResponse longRunningResponse)
+        private ApiManagementLongRunningOperation()
         {
+        }
+
+        public static ApiManagementLongRunningOperation CreateLongRunningOperation(
+            string operationName,
+            LongRunningOperationResponse longRunningResponse)
+        {
+            if (string.IsNullOrWhiteSpace(operationName))
+            {
+                throw new ArgumentNullException("operationName");
+            }
+
+            if (longRunningResponse == null)
+            {
+                throw new ArgumentNullException("longRunningResponse");
+            }
+
             var result = new ApiManagementLongRunningOperation
             {
+                OperationName = operationName,
                 OperationLink = longRunningResponse.OperationStatusLink,
                 RetryAfter = TimeSpan.FromSeconds(longRunningResponse.RetryAfter),
                 Status = longRunningResponse.Status,
@@ -35,20 +51,22 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             var apiServiceLongRunnigResponse = longRunningResponse as ApiServiceLongRunningOperationResponse;
             if (apiServiceLongRunnigResponse != null && apiServiceLongRunnigResponse.Value != null)
             {
-                result.ApiManagementAttributes = new ApiManagementAttributes(apiServiceLongRunnigResponse.Value);
+                result.ApiManagement = new ApiManagement(apiServiceLongRunnigResponse.Value);
             }
 
             return result;
         }
 
-        public OperationStatus Status { get; set; }
+        public string OperationName { get; private set; }
 
-        public TimeSpan? RetryAfter { get; set; }
+        public OperationStatus Status { get; private set; }
 
-        public string OperationLink { get; set; }
+        public TimeSpan? RetryAfter { get; private set; }
 
-        public ApiManagementAttributes ApiManagementAttributes { get; set; }
+        public string OperationLink { get; private set; }
 
-        public string Error { get; set; }
+        public ApiManagement ApiManagement { get; private set; }
+
+        public string Error { get; private set; }
     }
 }

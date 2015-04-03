@@ -11,33 +11,34 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
-//
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
     using System;
     using Microsoft.Azure.Management.ApiManagement.Models;
 
-    public class VirtualNetworkConfigurationAttributes
+    public class ApiManagementHostnameConfiguration
     {
-        public VirtualNetworkConfigurationAttributes(){}
-
-        public VirtualNetworkConfigurationAttributes(VirtualNetworkConfiguration vnetConfigurationResource)
+        public ApiManagementHostnameConfiguration()
         {
-            if (vnetConfigurationResource == null)
-            {
-                throw new ArgumentNullException("vnetConfigurationResource");
-            }
-
-            this.Location = vnetConfigurationResource.Location;
-            this.SubnetName = vnetConfigurationResource.SubnetName;
-            this.VnetId = vnetConfigurationResource.VnetId;
         }
 
-        public string Location { get; set; }
+        internal ApiManagementHostnameConfiguration(ApiManagementHostnameType hostnameType, HostnameConfiguration hostnameConfigurationResource)
+            :this()
+        {
+            if (hostnameConfigurationResource == null)
+            {
+                throw new ArgumentNullException("hostnameConfigurationResource");
+            }
 
-        public string SubnetName { get; set; }
+            HostnameType = hostnameType;
+            Certificate = new ApiManagementCertificate(hostnameType, hostnameConfigurationResource.Certificate);
+        }
 
-        public Guid VnetId { get; set; }
+        public ApiManagementCertificate Certificate { get; set; }
+
+        public ApiManagementHostnameType HostnameType { get; set; }
+
+        public string Hostname { get; set; }
     }
 }
