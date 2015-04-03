@@ -34,6 +34,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The Subnet Name.")]
         public string StaticVNetIPAddress { get; set; }
 
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The network security group.")]
+        public string NetworkSecurityGroup { get; set; }
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -60,6 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
                 {
                     interfaces.IPConfigurations.First().SubnetName = this.SubnetName;
                     interfaces.IPConfigurations.First().StaticVirtualNetworkIPAddress = this.StaticVNetIPAddress;
+                    interfaces.NetworkSecurityGroup = this.NetworkSecurityGroup;
                 }
             }
 
