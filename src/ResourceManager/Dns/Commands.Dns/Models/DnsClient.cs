@@ -126,9 +126,14 @@ namespace Microsoft.Azure.Commands.Dns.Models
             };
         }
 
-        public List<DnsZone> ListDnsZones(string resourceGroupName)
+        public List<DnsZone> ListDnsZones(string resourceGroupName, string endsWith)
         {
-            ZoneListResponse getResponse = this.DnsManagementClient.Zones.List(resourceGroupName);
+            ZoneListParameters zoneListParameters = new ZoneListParameters
+            {
+                Filter = endsWith == null ? null : string.Format("endswith(Name,'{0}')", endsWith)
+            };
+
+            ZoneListResponse getResponse = this.DnsManagementClient.Zones.List(resourceGroupName, zoneListParameters);
             return getResponse.Zones.Select(zoneInResponse => new DnsZone
             {
                 Name = zoneInResponse.Name,
@@ -229,18 +234,28 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return GetPowerShellRecordSet(zoneName, resourceGroupName, getResponse.RecordSet);
         }
 
-        public List<DnsRecordSet> ListRecordSets(string zoneName, string resourceGroupName, RecordType recordType)
+        public List<DnsRecordSet> ListRecordSets(string zoneName, string resourceGroupName, RecordType recordType, string endsWith)
         {
-            RecordListResponse listResponse = this.DnsManagementClient.Records.List(resourceGroupName, zoneName, recordType);
+            RecordListParameters recordListParameters = new RecordListParameters
+            {
+                Filter = endsWith == null ? null : string.Format("endswith(Name,'{0}')", endsWith)
+            };
+
+            RecordListResponse listResponse = this.DnsManagementClient.Records.List(resourceGroupName, zoneName, recordType, recordListParameters);
             return listResponse
                 .RecordSets
                 .Select(recordSetInResponse => GetPowerShellRecordSet(zoneName, resourceGroupName, recordSetInResponse))
                 .ToList();
         }
 
-        public List<DnsRecordSet> ListRecordSets(string zoneName, string resourceGroupName)
+        public List<DnsRecordSet> ListRecordSets(string zoneName, string resourceGroupName, string endsWith)
         {
-            RecordListResponse listResponse = this.DnsManagementClient.Records.ListAll(resourceGroupName, zoneName);
+            RecordListParameters recordListParameters = new RecordListParameters
+            {
+                Filter = endsWith == null ? null : string.Format("endswith(Name,'{0}')", endsWith)
+            };
+
+            RecordListResponse listResponse = this.DnsManagementClient.Records.ListAll(resourceGroupName, zoneName, recordListParameters);
             return listResponse
                 .RecordSets
                 .Select(recordSetInResponse => GetPowerShellRecordSet(zoneName, resourceGroupName, recordSetInResponse))

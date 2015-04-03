@@ -137,6 +137,8 @@
     <Compile Include="ScenarioTests\ZoneTests.cs" />
     <Compile Include="ScenarioTests\RecordsTests.cs" />
     <Compile Include="ScenarioTests\DnsTestsBase.cs" />
+    <Compile Include="UnitTests\GetAzureDnsRecordSetTests.cs" />
+    <Compile Include="UnitTests\GetAzureDnsZoneTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
@@ -194,6 +196,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetCrudWithPiping.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetEtagMismatch.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetGet.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetGetWithEndsWith.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetMX.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetNS.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetRemoveRecordTypeMismatch.json" />
@@ -202,6 +205,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneCrud.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneCrudWithPiping.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneList.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneListWithEndsWith.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneRemoveEtagMismatch.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneRemoveNotFound.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneSetEtagMismatch.json" />
