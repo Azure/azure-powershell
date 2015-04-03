@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
@@ -19,15 +20,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
     public class BackupPolicyTests:StorSimpleTestBase
     {
         #region New-AzureStorSimpleDeviceBackupScheduleAddConfig
-        [Fact]
+        [Fact(Skip = "Skip for CRP2.")]
         [Trait("StorSimpleCmdlets", "New-BackupPolicyConfig")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewBackupPolicyConfig()
         {
             RunPowerShellTest("Test-NewBackupPolicyAddConfig");
         }
 
-        [Fact]
+        [Fact(Skip = "Skip for CRP2.")]
         [Trait("StorSimpleCmdlets", "New-BackupPolicyConfig")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewBackupPolicyAddConfigDefaultValues()
         {
             RunPowerShellTest("Test-NewBackupPolicyAddConfig-DefaultValues");

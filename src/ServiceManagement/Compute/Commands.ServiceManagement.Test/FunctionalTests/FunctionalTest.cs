@@ -25,7 +25,7 @@ using System.Text;
 using System.Threading;
 using System.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
@@ -625,6 +625,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     Assert.IsTrue(ce.Response.StatusCode == System.Net.HttpStatusCode.BadRequest);
                     Assert.IsTrue(ce.Message.Contains("The date specified in parameter EndTime is not within the correct range."));
                 }
+
+                // Negative test for Get-AzureVM
+                var vmRoleList1 = vmPowershellCmdlets.GetAzureVM();
+                Assert.IsFalse(vmRoleList1.Any(r => r.DeploymentName == deploymentName));
+                var vmRoleList2 = vmPowershellCmdlets.GetAzureVM(serviceName);
+                Assert.IsFalse(vmRoleList2.Any(r => r.DeploymentName == deploymentName));
 
                 vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
 

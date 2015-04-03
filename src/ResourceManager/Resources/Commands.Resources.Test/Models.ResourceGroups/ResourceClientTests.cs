@@ -37,7 +37,7 @@ using Newtonsoft.Json.Linq;
 using Xunit;
 using Xunit.Extensions;
 using System.Diagnostics;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
@@ -1060,7 +1060,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewResourceGroupUsesDeploymentNameForDeploymentName()
         {
             string deploymentName = "abc123";
@@ -2306,7 +2305,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         }
                     }
                 }));
-            List<PSResourceProviderType> resourceTypes = resourcesClient.GetLocations(
+            List<PSResourceProviderLocationInfo> resourceTypes = resourcesClient.GetLocations(
                 ResourcesClient.ResourceGroupTypeName,
                 "Microsoft.HDInsight");
 
@@ -2363,7 +2362,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         }
                     }
                 }));
-            List<PSResourceProviderType> resourceTypes = resourcesClient.GetLocations(
+            List<PSResourceProviderLocationInfo> resourceTypes = resourcesClient.GetLocations(
                 ResourcesClient.ResourceGroupTypeName,
                 "Microsoft.Web");
 

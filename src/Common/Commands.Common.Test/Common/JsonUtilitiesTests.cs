@@ -19,13 +19,15 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xunit;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
     public class JsonUtilitiesTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PatchWorksWithStandardStructures()
         {
             var originalProperties = new Dictionary<string, object>
@@ -75,6 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PatchWorksWithListInRoot()
         {
             var originalProperties = new[] {1, 2, 3};
@@ -99,6 +102,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PatchWorksWithValueInRoot()
         {
             var originalProperties = "foo";
@@ -123,6 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PatchWorksWithMismatchInRoot()
         {
             var originalProperties = new Dictionary<string, object>
@@ -155,6 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PatchWorksWithMismatchInBody()
         {
             var originalProperties = new Dictionary<string, object>
@@ -194,6 +200,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PatchWorksWithEmptyPatchValue()
         {
             var originalProperties = new Dictionary<string, object>
@@ -220,6 +227,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PatchWorksWithNullPatchValue()
         {
             var originalProperties = new Dictionary<string, object>
@@ -246,6 +254,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PatchWorksWithEmptySourceValue()
         {
             var patchProperties = new Dictionary<string, object>
@@ -270,6 +279,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PatchWorksWithNullSourceValue()
         {
             var patchProperties = new Dictionary<string, object>

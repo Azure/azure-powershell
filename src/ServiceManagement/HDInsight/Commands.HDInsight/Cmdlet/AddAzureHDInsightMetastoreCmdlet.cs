@@ -52,25 +52,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         public AzureHDInsightConfig Config
         {
             get { return this.command.Config; }
-            set
-            {
-                if (value.IsNull())
-                {
-                    throw new ArgumentNullException("value", "The value for the configuration can not be null.");
-                }
-                this.command.Config.ClusterSizeInNodes = value.ClusterSizeInNodes;
-                this.command.Config.DefaultStorageAccount = value.DefaultStorageAccount;
-                this.command.Config.AdditionalStorageAccounts.AddRange(value.AdditionalStorageAccounts);
-                this.command.Config.ConfigActions.AddRange(value.ConfigActions);
-                if (value.HiveMetastore.IsNotNull())
-                {
-                    this.command.Config.HiveMetastore = value.HiveMetastore;
-                }
-                if (value.OozieMetastore.IsNotNull())
-                {
-                    this.command.Config.OozieMetastore = value.OozieMetastore;
-                }
-            }
+            set { this.command.Config.CopyFrom(value); }
         }
 
         /// <summary>

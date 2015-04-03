@@ -13,15 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.WindowsAzure.Management.Automation.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    using AutomationManagement = Management.Automation;
+    using AutomationManagement = WindowsAzure.Management.Automation;
 
     /// <summary>
     /// The Runbook.
@@ -31,44 +32,41 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Runbook"/> class.
         /// </summary>
+        /// <param name="accountName">
+        /// The account name.
+        /// </param>
         /// <param name="runbook">
         /// The runbook.
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public Runbook(AutomationManagement.Models.Runbook runbook)
+        public Runbook(string accountName, AutomationManagement.Models.Runbook runbook)
         {
             Requires.Argument("runbook", runbook).NotNull();
-            if (runbook.Schedules == null)
-            {
-                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookModel));
-            }
+            Requires.Argument("accountName", accountName).NotNull();
 
-            this.AccountId = new Guid(runbook.AccountId);
-            this.Id = new Guid(runbook.Id);
+            this.AutomationAccountName = accountName;
             this.Name = runbook.Name;
-            this.CreationTime = DateTime.SpecifyKind(runbook.CreationTime, DateTimeKind.Utc).ToLocalTime();
-            this.LastModifiedTime = DateTime.SpecifyKind(runbook.LastModifiedTime, DateTimeKind.Utc).ToLocalTime();
-            this.LastModifiedBy = runbook.LastModifiedBy;
-            this.Description = runbook.Description;
-            this.IsApiOnly = runbook.IsApiOnly;
-            this.IsGlobal = runbook.IsGlobal;
+            this.Location = runbook.Location;
 
-            if (runbook.PublishedRunbookVersionId != null)
+            if (runbook.Properties == null) return;
+
+            this.CreationTime = runbook.Properties.CreationTime.ToLocalTime();
+            this.LastModifiedTime = runbook.Properties.LastModifiedTime.ToLocalTime();
+            this.Description = runbook.Properties.Description;
+
+            this.LogVerbose = runbook.Properties.LogVerbose;
+            this.LogProgress = runbook.Properties.LogProgress;
+            this.State = runbook.Properties.State;
+            this.JobCount = runbook.Properties.JobCount;
+            this.RunbookType = runbook.Properties.RunbookType;
+            this.Tags = runbook.Properties.ServiceManagementTags != null ? runbook.Properties.ServiceManagementTags.Split(Constants.RunbookTagsSeparatorChar) : new string[] { };
+
+            this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
+            foreach (var kvp in runbook.Properties.Parameters)
             {
-                this.PublishedRunbookVersionId = new Guid(runbook.PublishedRunbookVersionId);
+                this.Parameters.Add(kvp.Key, (object)kvp.Value);
             }
-
-            if (runbook.DraftRunbookVersionId != null)
-            {
-                this.DraftRunbookVersionId = new Guid(runbook.DraftRunbookVersionId);
-            }
-
-            this.Tags = runbook.Tags != null ? runbook.Tags.Split(Constants.RunbookTagsSeparatorChar) : new string[] { };
-            this.LogDebug = runbook.LogDebug;
-            this.LogVerbose = runbook.LogVerbose;
-            this.LogProgress = runbook.LogProgress;
-            this.ScheduleNames = from schedule in runbook.Schedules where (schedule.NextRun != null) select schedule.Name;
         }
 
         /// <summary>
@@ -79,14 +77,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         }
 
         /// <summary>
-        /// Gets or sets the account id.
+        /// Gets or sets the automation account name.
         /// </summary>
-        public Guid AccountId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the id.
-        /// </summary>
-        public Guid Id { get; set; }
+        public string AutomationAccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
@@ -94,44 +87,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the creation time.
+        /// Gets or sets the location.
         /// </summary>
-        public DateTime CreationTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the last modified time.
-        /// </summary>
-        public DateTime LastModifiedTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the last modified by.
-        /// </summary>
-        public string LastModifiedBy { get; set; }
-
-        /// <summary>
-        /// Gets or sets the description.
-        /// </summary>
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether is api only.
-        /// </summary>
-        public bool IsApiOnly { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether is global.
-        /// </summary>
-        public bool IsGlobal { get; set; }
-
-        /// <summary>
-        /// Gets or sets the published runbook version id.
-        /// </summary>
-        public Guid? PublishedRunbookVersionId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the draft runbook version id.
-        /// </summary>
-        public Guid? DraftRunbookVersionId { get; set; }
+        public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.
@@ -139,9 +97,34 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string[] Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether log debug is enabled.
+        /// Gets or sets the JobCount.
         /// </summary>
-        public bool LogDebug { get; set; }
+        public int JobCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the runbook type.
+        /// </summary>
+        public string RunbookType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the creation time.
+        /// </summary>
+        public DateTimeOffset CreationTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last modified time.
+        /// </summary>
+        public DateTimeOffset LastModifiedTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the description.
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the parameters.
+        /// </summary>
+        public Hashtable Parameters { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether log verbose is enabled.
@@ -154,8 +137,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public bool LogProgress { get; set; }
 
         /// <summary>
-        /// Gets or sets the schedule names.
+        /// Gets or sets the state of runbook.
         /// </summary>
-        public IEnumerable<string> ScheduleNames { get; set; }
+        public string State { get; set; }
     }
 }

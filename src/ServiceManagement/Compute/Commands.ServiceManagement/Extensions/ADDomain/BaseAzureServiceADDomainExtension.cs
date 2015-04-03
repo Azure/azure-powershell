@@ -32,8 +32,44 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         protected const string WorkgroupParameterSet = "WorkGroupName";
         protected const string WorkgroupThumbprintParameterSet = "WorkGroupNameThumbprint";
 
-        protected PublicConfig PublicConfig { get; private set; }
-        protected PrivateConfig PrivateConfig { get; private set; }
+        protected PublicConfig publicConfig;
+        protected PrivateConfig privateConfig;
+
+        protected PublicConfig PublicConfig
+        {
+            get
+            {
+                if (this.publicConfig == null)
+                {
+                    this.publicConfig = new PublicConfig();
+                }
+
+                return this.publicConfig;
+            }
+
+            private set
+            {
+                this.publicConfig = value;
+            }
+        }
+
+        protected PrivateConfig PrivateConfig
+        {
+            get
+            {
+                if (this.privateConfig == null)
+                {
+                    this.privateConfig = new PrivateConfig();
+                }
+
+                return this.privateConfig;
+            }
+
+            private set
+            {
+                this.privateConfig = value;
+            }
+        }
 
         public virtual string DomainName
         {
@@ -145,6 +181,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         public BaseAzureServiceADDomainExtensionCmdlet()
             : base()
         {
+            PrivateConfig.Password = string.Empty;
+            PrivateConfig.UnjoinDomainPassword = string.Empty;
         }
 
         protected override void ValidateParameters()
@@ -152,10 +190,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             base.ValidateParameters();
             ProviderNamespace = DomainExtensionNamespace;
             ExtensionName = DomainExtensionType;
-            PublicConfig = new PublicConfig();
-            PrivateConfig = new PrivateConfig();
-            PrivateConfig.Password = string.Empty;
-            PrivateConfig.UnjoinDomainPassword = string.Empty;
         }
 
         protected override void ValidateConfiguration()

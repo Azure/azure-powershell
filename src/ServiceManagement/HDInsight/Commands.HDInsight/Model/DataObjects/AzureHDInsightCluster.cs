@@ -188,5 +188,13 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         {
             get { return this.cluster.VersionStatus.ToString(); }
         }
+
+        /// <summary>
+        /// Gets the type of Operating System installed on cluster nodes.
+        /// </summary>
+        public OSType OSType
+        {
+            get { return this.cluster.OSType; }
+        }
     }
 }

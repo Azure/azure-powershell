@@ -13,28 +13,28 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Management.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
     public class Constants
     {
-        public class JobOutputParameter
-        {
-            public const string Any = "Any";
+        public const string ClientIdentity = "PowerShell";
 
-            public const string Progress = JobStreamType.Progress;
+        public const char RunbookTagsSeparatorChar = ',';
 
-            public const string Output = JobStreamType.Output;
+        public const string RunbookTagsSeparatorString = ",";
 
-            public const string Warning = JobStreamType.Warning;
+        public const string Published = "Published";
 
-            public const string Error = JobStreamType.Error;
+        public const string Draft = "Draft";
 
-            public const string Debug = JobStreamType.Debug;
+        public const string AutomationServicePrefix = "OaasCS";
 
-            public const string Verbose = JobStreamType.Verbose;
-        }
+        public const string JobStartedByParameterName = "MicrosoftApplicationManagementStartedBy";
+
+        // default schedule expiry time for daily schedule, consistent with UX
+        // 12/31/9999 12:00:00 AM
+        public static readonly DateTimeOffset DefaultScheduleExpiryTime = DateTimeOffset.MaxValue;
 
         public class AutomationAccountState
         {
@@ -43,16 +43,17 @@ namespace Microsoft.Azure.Commands.Automation.Common
             public const string Suspended = "Suspended";
         }
 
-        // default schedule expiry time for daily schedule, consistent with UX
-        // 12/31/9999 12:00:00 AM
-        public static readonly DateTime DefaultScheduleExpiryTime = new DateTime(9999, 12, 31, 0, 0, 0, DateTimeKind.Utc);
+        public const string PsCommandConvertToJson = "ConvertTo-Json";
 
-        public const string JobStartedByParameterName = "MicrosoftApplicationManagementStartedBy";
+        public const string PsCommandConvertFromJson = "ConvertFrom-Json";
 
-        public const string ClientIdentity = "PowerShell";
+        public const string PsCommandParamInputObject = "InputObject";
 
-        public const char RunbookTagsSeparatorChar = ',';
+        public const string PsCommandParamDepth = "Depth";
 
-        public const string RunbookTagsSeparatorString = ",";
+        public const int PsCommandValueDepth = 10;
+
+        public const string ClientRequestIdHeaderName = "x-ms-client-request-id";
+
     }
 }

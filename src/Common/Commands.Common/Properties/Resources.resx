@@ -156,9 +156,6 @@
   <data name="AddRoleMessageCreatePHP" xml:space="preserve">
     <value>Role has been created at {0}\{1}. For easy access to Microsoft Azure services from your application code, install the Microsoft Azure client library for PHP by running "pear WindowsAzure/WindowsAzure".</value>
   </data>
-  <data name="AddRoleMessageCreatePython" xml:space="preserve">
-    <value>Role has been created at {0}\{1}. For easy access to Microsoft Azure services from your application code, install the Microsoft Azure client library for Python by running "pip windowsazure".</value>
-  </data>
   <data name="AddRoleMessageInsufficientPermissions" xml:space="preserve">
     <value>Unable to set role permissions. Please give the 'Network Service' user 'Read &amp; execute' and 'Modify' permissions to the role folder, or run PowerShell as an Administrator</value>
   </data>
@@ -168,21 +165,6 @@
   <data name="AzureDirectory" xml:space="preserve">
     <value>Windows Azure Powershell\</value>
   </data>
-  <data name="AzureDirectoryName" xml:space="preserve">
-    <value>Windows Azure Powershell</value>
-  </data>
-  <data name="AzureEmulatorDirectory" xml:space="preserve">
-    <value>Emulator</value>
-  </data>
-  <data name="AzureEmulatorNotInstalledMessage" xml:space="preserve">
-    <value>Azure Emulator is not installed and is required</value>
-  </data>
-  <data name="AzureEmulatorPathPortion" xml:space="preserve">
-    <value>Azure Emulator\emulator</value>
-  </data>
-  <data name="AzureEmulatorRegistryKey" xml:space="preserve">
-    <value>SOFTWARE\Microsoft\Windows Azure Emulator</value>
-  </data>
   <data name="AzurePortalUrl" xml:space="preserve">
     <value>https://manage.windowsazure.com</value>
   </data>
@@ -191,22 +173,6 @@
   </data>
   <data name="AzureSdkDirectory" xml:space="preserve">
     <value>Azure SDK\{0}\</value>
-  </data>
-  <data name="AzureSdkInstallPathRegistryKeyValue" xml:space="preserve">
-    <value>InstallPath</value>
-  </data>
-  <data name="AzureSdkRegistryKeyName" xml:space="preserve">
-    <value>SOFTWARE\Microsoft\Microsoft SDKs\ServiceHosting</value>
-  </data>
-  <data name="AzureSdkVersionNotSupported" xml:space="preserve">
-    <value>The installed Azure SDK version is not supported. Make sure you version is between {0} and {1} inclusive</value>
-  </data>
-  <data name="AzureException_WrapExistingError_DetailedErrorFormat" xml:space="preserve">
-    <value>Azure service management error
-{0}</value>
-  </data>
-  <data name="AzureToolsNotInstalledMessage" xml:space="preserve">
-    <value>Azure Authoring Tools are not installed and are required. Installation of Azure SDK for .NET is recommended with Microsoft Web Platform Installer (PI) available at http://www.microsoft.com/web/downloads/platform.aspx.</value>
   </data>
   <data name="BaseUriEmpty" xml:space="preserve">
     <value>Base Uri was empty.</value>
@@ -227,31 +193,6 @@
   <data name="BlobEndpointUriEnv" xml:space="preserve">
     <value>AZURE_BLOBSTORAGE_TEMPLATE</value>
   </data>
-  <data name="CacheAlreadyEnabledMessage" xml:space="preserve">
-    <value>Memcache is already enabled for role '{0}'.</value>
-  </data>
-  <data name="CacheAutoDiscoveryConfig" xml:space="preserve">
-    <value>&lt;configuration&gt;
-  &lt;configSections&gt;
-    &lt;section name="dataCacheClients" type="Microsoft.ApplicationServer.Caching.DataCacheClientsSection, Microsoft.ApplicationServer.Caching.Core" allowLocation="true" 	allowDefinition="Everywhere" /&gt;
-  &lt;/configSections&gt;
-  &lt;dataCacheClients&gt;
-    &lt;tracing sinkType="DiagnosticSink" traceLevel="Error" /&gt;
-    &lt;dataCacheClient name="DefaultShimConfig" useLegacyProtocol="false"&gt;
-      &lt;autoDiscover isEnabled="true" identifier="$RoleName$" /&gt;
-    &lt;/dataCacheClient&gt;
-  &lt;/dataCacheClients&gt;
-&lt;/configuration&gt;</value>
-  </data>
-  <data name="CacheClientDiagnosticLevelAssemblyName" xml:space="preserve">
-    <value>Microsoft.WindowsAzure.Plugins.Caching.ClientDiagnosticLevel</value>
-  </data>
-  <data name="CacheDiagnosticStoreName" xml:space="preserve">
-    <value>DiagnosticStore</value>
-  </data>
-  <data name="CacheMismatchMessage" xml:space="preserve">
-    <value>Please upgrade the cache runtime of role '{0}' to '{1}' using Set-AzureServiceProjectRole -RoleName {0} -Runtime Cache -Version {1}</value>
-  </data>
   <data name="CacheRuntimeUrl" xml:space="preserve">
     <value>CACHERUNTIMEURL</value>
   </data>
@@ -261,26 +202,8 @@
   <data name="CacheRuntimeVersionKey" xml:space="preserve">
     <value>CacheRuntimeVersion</value>
   </data>
-  <data name="CacheScaffolding" xml:space="preserve">
-    <value>Resources\Scaffolding\Cache</value>
-  </data>
-  <data name="CacheStartupCommand" xml:space="preserve">
-    <value>setup_cache.cmd &gt; cache_log.txt</value>
-  </data>
   <data name="CacheVersionWarningText" xml:space="preserve">
     <value>Installing caching version {0} for Role '{1}' (the caching version locally installed is: {2})</value>
-  </data>
-  <data name="CachingCacheSizePercentageSettingName" xml:space="preserve">
-    <value>Microsoft.WindowsAzure.Plugins.Caching.CacheSizePercentage</value>
-  </data>
-  <data name="CachingConfigStoreConnectionStringSettingName" xml:space="preserve">
-    <value>Microsoft.WindowsAzure.Plugins.Caching.ConfigStoreConnectionString</value>
-  </data>
-  <data name="CachingConfigStoreConnectionStringSettingValue" xml:space="preserve">
-    <value>DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}</value>
-  </data>
-  <data name="CachingModuleName" xml:space="preserve">
-    <value>Caching</value>
   </data>
   <data name="CannotFind" xml:space="preserve">
     <value>Cannot find {0} with name {1}.</value>
@@ -308,12 +231,6 @@
   </data>
   <data name="CertificateImportedMessage" xml:space="preserve">
     <value>Certificate imported into CurrentUser\My\{0}</value>
-  </data>
-  <data name="CertificateNotFoundInStore" xml:space="preserve">
-    <value>No certificate was found in the certificate store with thumbprint {0}</value>
-  </data>
-  <data name="CertificateNotFoundInStore1" xml:space="preserve">
-    <value>No certificate was found in the certificate store with thumbprint {0}</value>
   </data>
   <data name="CertificatePrivateKeyAccessError" xml:space="preserve">
     <value>Your account does not have access to the private key for certificate {0}</value>
@@ -352,9 +269,6 @@
     <value>Communication could not be established. This could be due to an invalid subscription ID. Note that subscription IDs are case sensitive.</value>
   </data>
   <data name="CompleteMessage" xml:space="preserve">
-    <value>Complete</value>
-  </data>
-  <data name="CompleteMessage1" xml:space="preserve">
     <value>Complete</value>
   </data>
   <data name="ConfigurationFileName" xml:space="preserve">
@@ -437,9 +351,6 @@
   <data name="EnvironmentExists" xml:space="preserve">
     <value>The environment '{0}' already exists.</value>
   </data>
-  <data name="EnvironmentNotFound" xml:space="preserve">
-    <value>The environment name '{0}' is not found.</value>
-  </data>
   <data name="EnvironmentsFileName" xml:space="preserve">
     <value>environments.xml</value>
   </data>
@@ -453,9 +364,6 @@
   <data name="ErrorUpdatingVirtualMachine" xml:space="preserve">
     <value>Error updating VirtualMachine</value>
     <comment>WAPackIaaS</comment>
-  </data>
-  <data name="ExpiredRefreshToken" xml:space="preserve">
-    <value>Your Microsoft Azure credential in the Windows PowerShell session has expired. Please use Add-AzureAccount to login again.</value>
   </data>
   <data name="FailedJobErrorMessage" xml:space="preserve">
     <value>Job Id {0} failed. Error: {1}, ExceptionDetails: {2}</value>
@@ -485,9 +393,6 @@
   <data name="GlobalSettingsManager_Load_PublishSettingsNotFound" xml:space="preserve">
     <value>Could not find publish settings. Please run Import-AzurePublishSettingsFile.</value>
   </data>
-  <data name="GlobalSettingsManager_Load_PublishSettingsNotFound1" xml:space="preserve">
-    <value>Could not find publish settings. Please run Import-AzurePublishSettingsFile.</value>
-  </data>
   <data name="IISNodeDll" xml:space="preserve">
     <value>iisnode.dll</value>
   </data>
@@ -503,23 +408,11 @@
   <data name="IISNodeVersionWarningText" xml:space="preserve">
     <value>Installing IISNode version {0} in Azure for WebRole '{1}' (the version locally installed is: {2})</value>
   </data>
-  <data name="IllegalPath" xml:space="preserve">
-    <value>Illegal characters in path.</value>
-  </data>
-  <data name="IllegalPath1" xml:space="preserve">
-    <value>Illegal characters in path.</value>
-  </data>
   <data name="InternalServerErrorMessage" xml:space="preserve">
     <value>Internal Server Error</value>
   </data>
   <data name="InvalidCacheRoleName" xml:space="preserve">
     <value>Cannot enable memcach protocol on a cache worker role {0}.</value>
-  </data>
-  <data name="InvalidCertificate" xml:space="preserve">
-    <value>Invalid certificate format. Publish settings may be corrupted. Use Get-AzurePublishSettingsFile to download updated settings</value>
-  </data>
-  <data name="InvalidCertificate1" xml:space="preserve">
-    <value>Invalid certificate format. Publish settings may be corrupted. Use Get-AzurePublishSettingsFile to download updated settings</value>
   </data>
   <data name="InvalidCertificateSingle" xml:space="preserve">
     <value>Invalid certificate format.</value>
@@ -530,32 +423,14 @@
   <data name="InvalidCountryNameMessage" xml:space="preserve">
     <value>The country name is invalid, please use a valid two character country code, as described in ISO 3166-1 alpha-2.</value>
   </data>
-  <data name="InvalidCurrentSubscription" xml:space="preserve">
-    <value>No current subscription has been designated. Use Select-AzureSubscription -Current &lt;subscriptionName&gt; to set the current subscription.</value>
-  </data>
-  <data name="InvalidCurrentSubscriptionId" xml:space="preserve">
-    <value>The ID of the current subscription is invalid. Use Set-AzureSubscription to fix the subscription ID or use Select-AzureSubscription to use a different subscription.</value>
-  </data>
-  <data name="InvalidCurrentSuscriptionCertificate" xml:space="preserve">
-    <value>The management certificate of the current subscription is invalid. Use Set-AzureSubscription to fix the management certificate or use Select-AzureSubscription to use a different subscription.</value>
-  </data>
-  <data name="InvalidDefaultSubscription" xml:space="preserve">
-    <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
-  </data>
   <data name="InvalidDeployment" xml:space="preserve">
     <value>Deployment with {0} does not exist</value>
   </data>
   <data name="InvalidDeploymentSlot" xml:space="preserve">
     <value>The deployment slot name {0} is invalid. Slot name must be either "Staging" or "Production".</value>
   </data>
-  <data name="InvalidDnsName" xml:space="preserve">
-    <value>"{0}" is an invalid DNS name for {1}</value>
-  </data>
   <data name="InvalidEndpoint" xml:space="preserve">
     <value>Invalid service endpoint.</value>
-  </data>
-  <data name="InvalidFileExtension" xml:space="preserve">
-    <value>The provided file in {0} must be have {1} extension</value>
   </data>
   <data name="InvalidFileName" xml:space="preserve">
     <value>File {0} has invalid characters</value>
@@ -580,9 +455,6 @@ Please follow these steps in the portal:
   <data name="InvalidJobFile" xml:space="preserve">
     <value>There was an error creating your webjob. Please make sure that the script is in the root folder of the zip file.</value>
   </data>
-  <data name="InvalidManagementClientType" xml:space="preserve">
-    <value>Cannot create instance of management client type {0}. It does not have the expected constructor.</value>
-  </data>
   <data name="InvalidManifestError" xml:space="preserve">
     <value>Could not download a valid runtime manifest, Please check your internet connection and try again.</value>
   </data>
@@ -594,9 +466,6 @@ Please follow these steps in the portal:
   </data>
   <data name="InvalidNullArgument" xml:space="preserve">
     <value>Value cannot be null. Parameter name: '{0}'</value>
-  </data>
-  <data name="InvalidOrEmptyArgumentMessage" xml:space="preserve">
-    <value>{0} is invalid or empty</value>
   </data>
   <data name="InvalidPackagePath" xml:space="preserve">
     <value>The provided package path is invalid or doesn't exist</value>
@@ -611,9 +480,6 @@ Please follow these steps in the portal:
     <value>Path {0} has invalid characters</value>
   </data>
   <data name="InvalidPublishSettingsSchema" xml:space="preserve">
-    <value>The provided publish settings file {0} has invalid content. Please get valid by running cmdlet Get-AzurePublishSettingsFile</value>
-  </data>
-  <data name="InvalidPublishSettingsSchema1" xml:space="preserve">
     <value>The provided publish settings file {0} has invalid content. Please get valid by running cmdlet Get-AzurePublishSettingsFile</value>
   </data>
   <data name="InvalidRoleNameMessage" xml:space="preserve">
@@ -640,9 +506,6 @@ Please follow these steps in the portal:
   <data name="InvalidServiceSettingElement" xml:space="preserve">
     <value>You must provide valid value for {0}</value>
   </data>
-  <data name="InvalidServiceSettingElement1" xml:space="preserve">
-    <value>You must provide valid value for {0}</value>
-  </data>
   <data name="InvalidServiceSettingMessage" xml:space="preserve">
     <value>settings.json is invalid or doesn't exist</value>
   </data>
@@ -652,17 +515,11 @@ Please follow these steps in the portal:
   <data name="InvalidSubscriptionId" xml:space="preserve">
     <value>The provided subscription id {0} is not valid</value>
   </data>
-  <data name="InvalidSubscriptionName" xml:space="preserve">
-    <value>Must specify a non-null subscription name.</value>
-  </data>
   <data name="InvalidSubscriptionNameMessage" xml:space="preserve">
     <value>A valid subscription name is required. This can be provided using the  -Subscription parameter or by setting the subscription via the Set-AzureSubscription cmdlet</value>
   </data>
   <data name="InvalidSubscriptionsDataSchema" xml:space="preserve">
     <value>The provided subscriptions file {0} has invalid content.</value>
-  </data>
-  <data name="InvalidSubscriptionState" xml:space="preserve">
-    <value>Your Azure credentials have not been set up or have expired, please run Add-AzureAccount to set up your Azure credentials.</value>
   </data>
   <data name="InvalidVMSize" xml:space="preserve">
     <value>Role {0} VM size should be ExtraSmall, Small, Medium, Large or ExtraLarge.</value>
@@ -715,21 +572,6 @@ Please follow these steps in the portal:
   </data>
   <data name="ManifestUri" xml:space="preserve">
     <value>http://az413943.vo.msecnd.net/node/runtimemanifest_0.7.5.2.xml</value>
-  </data>
-  <data name="MaxSupportAzureSdkVersion" xml:space="preserve">
-    <value>v2.5</value>
-  </data>
-  <data name="MemcacheEndpointName" xml:space="preserve">
-    <value>memcache_default</value>
-  </data>
-  <data name="MemcacheEndpointPort" xml:space="preserve">
-    <value>11211</value>
-  </data>
-  <data name="MinSupportAzureSdkVersion" xml:space="preserve">
-    <value>v2.5</value>
-  </data>
-  <data name="MissingPythonPreReq" xml:space="preserve">
-    <value>Python 2.7 is not installed.  Please install it as well as Django 1.4.</value>
   </data>
   <data name="MultipleAddOnsFoundMessage" xml:space="preserve">
     <value>Multiple Add-Ons found holding name {0}</value>
@@ -816,12 +658,6 @@ use and privacy statement at {0} and (c) agree to sharing my contact information
   <data name="NoHint" xml:space="preserve">
     <value>No, I do not agree</value>
   </data>
-  <data name="NoInternetConnection" xml:space="preserve">
-    <value>Please connect to internet before executing this cmdlet</value>
-  </data>
-  <data name="NoInternetConnection1" xml:space="preserve">
-    <value>Please connect to internet before executing this cmdlet</value>
-  </data>
   <data name="NoPublishSettingsFilesFoundMessage" xml:space="preserve">
     <value>No publish settings files with extension *.publishsettings are found in the directory "{0}".</value>
   </data>
@@ -879,12 +715,6 @@ use and privacy statement at {0} and (c) agree to sharing my contact information
   </data>
   <data name="PackageJsonFileName" xml:space="preserve">
     <value>package.json</value>
-  </data>
-  <data name="PathDoesNotExist" xml:space="preserve">
-    <value>Path {0} doesn't exist.</value>
-  </data>
-  <data name="PathDoesNotExistForElement" xml:space="preserve">
-    <value>Path for {0} doesn't exist in {1}.</value>
   </data>
   <data name="PeerAsnRequired" xml:space="preserve">
     <value>A value for the  Peer Asn has to be provided.</value>
@@ -976,9 +806,6 @@ Please follow these steps in the portal:
   <data name="PublishSettingsFileName" xml:space="preserve">
     <value>publishSettings.xml</value>
   </data>
-  <data name="PublishSettingsFileRealmFormat" xml:space="preserve">
-    <value>&amp;whr={0}</value>
-  </data>
   <data name="PublishSettingsSetSuccessfully" xml:space="preserve">
     <value>Publish settings imported</value>
   </data>
@@ -996,9 +823,6 @@ Please follow these steps in the portal:
   </data>
   <data name="PublishVerifyingStorageMessage" xml:space="preserve">
     <value>Verifying storage account '{0}'...</value>
-  </data>
-  <data name="PythonScaffolding" xml:space="preserve">
-    <value>Resources\Scaffolding\Python</value>
   </data>
   <data name="RedeployCommit" xml:space="preserve">
     <value>Replace current deployment with '{0}' Id ?</value>
@@ -1059,12 +883,6 @@ Please follow these steps in the portal:
   </data>
   <data name="RemoveAzureServiceWaitMessage" xml:space="preserve">
     <value>Removing cloud service {0}...</value>
-  </data>
-  <data name="RemoveCurrentSubscription" xml:space="preserve">
-    <value>The current subscription is being removed. Use Select-AzureSubscription &lt;subscriptionName&gt; to select a new current subscription.</value>
-  </data>
-  <data name="RemoveDefaultSubscription" xml:space="preserve">
-    <value>The default subscription is being removed. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to select a new default subscription.</value>
   </data>
   <data name="RemoveDeploymentWaitMessage" xml:space="preserve">
     <value>Removing {0} deployment for {1} service</value>
@@ -1225,9 +1043,6 @@ Please follow these steps in the portal:
   <data name="ServiceDefinitionFileName" xml:space="preserve">
     <value>ServiceDefinition.csdef</value>
   </data>
-  <data name="ServiceDefinitionFileName1" xml:space="preserve">
-    <value>ServiceDefinition.csdef</value>
-  </data>
   <data name="ServiceDeploymentName" xml:space="preserve">
     <value>{0}Deploy</value>
   </data>
@@ -1252,12 +1067,6 @@ Please follow these steps in the portal:
   <data name="ServiceName" xml:space="preserve">
     <value>service name</value>
   </data>
-  <data name="ServiceNameExists" xml:space="preserve">
-    <value>The provided service name {0} already exists, please pick another name</value>
-  </data>
-  <data name="ServiceNameExists1" xml:space="preserve">
-    <value>The provided service name {0} already exists, please pick another name</value>
-  </data>
   <data name="ServiceNameMissingMessage" xml:space="preserve">
     <value>Please provide name for the hosted service</value>
   </data>
@@ -1275,12 +1084,6 @@ Please follow these steps in the portal:
   </data>
   <data name="ServiceSettings_ValidateStorageAccountName_InvalidName" xml:space="preserve">
     <value>The storage account name '{0}' is invalid.  Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.</value>
-  </data>
-  <data name="ServiceSettings_ValidateStorageAccountName_InvalidName1" xml:space="preserve">
-    <value>The storage account name '{0}' is invalid.  Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.</value>
-  </data>
-  <data name="ServiceSettings1" xml:space="preserve">
-    <value>service settings</value>
   </data>
   <data name="ServiceSlotDoesNotExist" xml:space="preserve">
     <value>The {0} slot for cloud service {1} doesn't exist.</value>
@@ -1316,13 +1119,7 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="SettingsFileName" xml:space="preserve">
     <value>deploymentSettings.json</value>
   </data>
-  <data name="SettingsFileName1" xml:space="preserve">
-    <value>deploymentSettings.json</value>
-  </data>
   <data name="ShouldProcessCaption" xml:space="preserve">
-    <value>Confirm</value>
-  </data>
-  <data name="ShouldProcessCaption1" xml:space="preserve">
     <value>Confirm</value>
   </data>
   <data name="Shutdown" xml:space="preserve">
@@ -1391,12 +1188,6 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="SubscriptionDataFileNotFound" xml:space="preserve">
     <value>The subscription data file {0} does not exist.</value>
   </data>
-  <data name="SubscriptionIdNotFoundMessage" xml:space="preserve">
-    <value>The subscription id {0} doesn't exist.</value>
-  </data>
-  <data name="SubscriptionNameNotFoundMessage" xml:space="preserve">
-    <value>The subscription name {0} doesn't exist.</value>
-  </data>
   <data name="SubscriptionMustNotBeNull" xml:space="preserve">
     <value>Subscription must not be null</value>
     <comment>WAPackIaaS</comment>
@@ -1410,15 +1201,6 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   </data>
   <data name="SwapWebsiteSlotWarning" xml:space="preserve">
     <value>Are you sure you want to swap the website '{0}' production slot with slot '{1}'?</value>
-  </data>
-  <data name="UnableToCreateDjangoApp" xml:space="preserve">
-    <value>Unable to create Django application: {0}</value>
-  </data>
-  <data name="UnableToCreateDjangoAppFix" xml:space="preserve">
-    <value>Make sure you have Python 2.7 installed along with Django installed to site-packages.</value>
-  </data>
-  <data name="UnableToPatchJson" xml:space="preserve">
-    <value>Unable to update mismatching Json structured: {0} {1}.</value>
   </data>
   <data name="UnknownProviderMessage" xml:space="preserve">
     <value>The provider {0} is unknown.</value>
@@ -1484,9 +1266,6 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="WorkerRoleTemplateFileName" xml:space="preserve">
     <value>WorkerRole.xml</value>
   </data>
-  <data name="x86InProgramFiles" xml:space="preserve">
-    <value> (x86)</value>
-  </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
   </data>
@@ -1521,18 +1300,12 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
     <value>&lt;NONE&gt;</value>
   </data>
   <data name="ServiceManagementClientExceptionStringFormat" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ServiceManagementClientExceptionStringFormat1" xml:space="preserve">
     <value>"An exception occurred when calling the ServiceManagement API. HTTP Status Code: {0}. Service Management Error Code: {1}. Message: {2}. Operation Tracking ID: {3}."</value>
     <comment>{0} is the HTTP status code. {1} is the Service Management Error Code. {2} is the Service Management Error message. {3} is the operation tracking ID.</comment>
   </data>
   <data name="UnableToDecodeBase64String" xml:space="preserve">
     <value>Unable to decode string from base 64. Please make sure the string is correctly encoded: {0}.</value>
     <comment>{0} is the string that is not in a valid base 64 format.</comment>
-  </data>
-  <data name="CredentialOrganizationIdMessage" xml:space="preserve">
-    <value>-Credential parameter can only be used with Organization ID credentials. For more information, please refer to http://go.microsoft.com/fwlink/?linkid=331007&amp;clcid=0x409 for more information about the difference between an organizational account and a Microsoft account.</value>
   </data>
   <data name="AddAccountNonInteractiveGuestOrFpo" xml:space="preserve">
     <value>Skipping external tenant {0}, because you are using a guest or a foreign principal object identity. In order to access this tenant, please run Add-AzureAccount without "-Credential".</value>
@@ -1543,18 +1316,6 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="RemoveEnvironmentMessage" xml:space="preserve">
     <value>Removing environment</value>
   </data>
-  <data name="RemovingDefaultEnvironmentsNotSupported" xml:space="preserve">
-    <value>Removing public environment is not supported.</value>
-  </data>
-  <data name="ChangingDefaultEnvironmentNotSupported" xml:space="preserve">
-    <value>Changing public environment is not supported.</value>
-  </data>
-  <data name="InvalidCredentialType" xml:space="preserve">
-    <value>Credential type invalid, only handles '{0}'</value>
-  </data>
-  <data name="UnknownCredentialType" xml:space="preserve">
-    <value>Illegal credential type</value>
-  </data>
   <data name="NoSubscriptionAddedMessage" xml:space="preserve">
     <value>There is no subscription associated with account {0}.</value>
   </data>
@@ -1564,9 +1325,6 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="EnvironmentNameDoesntMatchSubscription" xml:space="preserve">
     <value>Environment name doesn't match one in subscription.</value>
   </data>
-  <data name="ServiceKeyNotFound" xml:space="preserve">
-    <value>Unable to retrieve service key for ServicePrincipal account {0}. Please run the Add-AzureAccount cmdlet to supply the credentials for this service principal.</value>
-  </data>
   <data name="RemoveProfileConfirmation" xml:space="preserve">
     <value>Removing the Azure profile will remove all associated environments, subscriptions, and accounts. Are you sure you want to remove the Azure profile?</value>
   </data>
@@ -1575,6 +1333,30 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   </data>
   <data name="SubscriptionDataFileDeprecated" xml:space="preserve">
     <value>The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information.</value>
+  </data>
+  <data name="AccountNeedsToBeSpecified" xml:space="preserve">
+    <value>Account needs to be specified</value>
+  </data>
+  <data name="InvalidDefaultSubscription" xml:space="preserve">
+    <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
+  </data>
+  <data name="InvalidNewProfilePath" xml:space="preserve">
+    <value>Path must specify a valid path to an Azure profile.</value>
+  </data>
+  <data name="InvalidProfileProperties" xml:space="preserve">
+    <value>Property bag Hashtable must contain one of the following sets of properties: {SubscriptionId, Certificate}, {SubscriptionId, Username, Password}, {SubscriptionId, ServicePrincipal, Password, Tenant},  {SubscriptionId, AccountId, Token}</value>
+  </data>
+  <data name="MissingCertificateInProfileProperties" xml:space="preserve">
+    <value>Property bag Hashtable must contain a 'Certificate' of type 'X509Certificate2'.</value>
+  </data>
+  <data name="MissingPasswordInProfileProperties" xml:space="preserve">
+    <value>Property bag Hashtable must contain a 'Password' with an associated 'Username' or 'ServicePrincipal'.</value>
+  </data>
+  <data name="MissingSubscriptionInProfileProperties" xml:space="preserve">
+    <value>Property bag Hashtable must contain a 'SubscriptionId'.</value>
+  </data>
+  <data name="AzureProfileMustNotBeNull" xml:space="preserve">
+    <value>Selected profile must not be null.</value>
   </data>
   <data name="InvalidTagFormat" xml:space="preserve">
     <value>Invalid tag format. Expect @{Name = "tagName"} or @{Name = "tagName"; Value = "tagValue"}</value>

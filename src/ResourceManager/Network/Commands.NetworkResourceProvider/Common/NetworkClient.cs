@@ -15,8 +15,8 @@
 using System;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (storageClient == null)
                 {
-                    storageClient = new StorageManagementClient(CurrentContext)
+                    storageClient = new StorageManagementClient(Profile.Context)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             get
             {
-                return CurrentContext.Subscription.Id.ToString();
+                return Profile.Context.Subscription.Id.ToString();
             }
         }
 

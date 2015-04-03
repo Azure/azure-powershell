@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
 
         protected void SetupManagementClients()
         {
-            var dataPipelineManagementClient = GetStreamAnalyticsManagementClient();
+            var streamAnalyticsManagementClient = GetStreamAnalyticsManagementClient();
             var resourceManagementClient = GetResourceManagementClient();
             var subscriptionsClient = GetSubscriptionClient();
             var galleryClient = GetGalleryClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
 
-            helper.SetupManagementClients(dataPipelineManagementClient,
+            helper.SetupManagementClients(streamAnalyticsManagementClient,
                 resourceManagementClient,
                 subscriptionsClient,
                 galleryClient,

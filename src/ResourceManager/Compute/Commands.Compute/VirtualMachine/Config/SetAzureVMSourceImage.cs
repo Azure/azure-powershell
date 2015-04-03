@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Compute
                 new SourceImageReference
                 {
                     ReferenceUri = this.Name
-                }.Normalize(this.CurrentContext.Subscription.Id.ToString());
+                }.Normalize(this.Profile.Context.Subscription.Id.ToString());
 
             this.VM.StorageProfile.DestinationVhdsContainer = string.IsNullOrEmpty(this.DestinationVhdsContainer) ? null : new Uri(this.DestinationVhdsContainer);
 
