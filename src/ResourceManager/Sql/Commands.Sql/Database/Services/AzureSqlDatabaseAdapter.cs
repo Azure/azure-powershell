@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Gets or sets the AzureEndpointsCommunicator which has all the needed management clients
         /// </summary>
-        private AzureEndpointsCommunicator AzureCommunicator { get; set; }
+        private AzureSqlDatabaseCommunicator Communicator { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public AzureSqlDatabaseAdapter(AzureProfile Profile, AzureSubscription subscription)
         {
             this.Profile = Profile;
-            AzureCommunicator = new AzureEndpointsCommunicator(Profile, subscription);
+            Communicator = new AzureSqlDatabaseCommunicator(Profile, subscription);
         }
 
         /// <summary>
@@ -58,10 +59,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>The Azure Sql Database object</returns>
         internal AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName)
         {
-            SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
-
-            DatabaseGetResponse resp = client.Databases.Get(resourceGroupName, serverName, databaseName);
-            return CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp.Database);
+            var resp = Communicator.Get(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            return CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp);
         }
 
         /// <summary>
@@ -72,11 +71,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>A list of database objects</returns>
         internal ICollection<AzureSqlDatabaseModel> ListDatabases(string resourceGroupName, string serverName)
         {
-            SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
+            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
 
-            DatabaseListResponse resp = client.Databases.List(resourceGroupName, serverName);
-
-            return resp.Databases.Select((db) =>
+            return resp.Select((db) =>
             {
                 return CreateDatabaseModelFromResponse(resourceGroupName, serverName, db);
             }).ToList();
@@ -91,9 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>The upserted Azure Sql Database</returns>
         internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroup, string serverName, AzureSqlDatabaseModel model)
         {
-            SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
-
-            DatabaseCreateOrUpdateResponse response = client.Databases.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.DatabaseName, new DatabaseCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters()
             {
                 Properties = new DatabaseCreateOrUpdateProperties()
                 {
@@ -104,7 +99,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 }
             });
 
-            return CreateDatabaseModelFromResponse(resourceGroup, serverName, response.Database);
+            return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
         }
 
         /// <summary>
@@ -115,9 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <param name="databaseName">The name of the Azure Sql Database to delete</param>
         public void RemoveDatabase(string resourceGroupName, string serverName, string databaseName)
         {
-            SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
-
-            client.Databases.Delete(resourceGroupName, serverName, databaseName);
+            Communicator.Remove(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
         }
 
         /// <summary>

@@ -20,6 +20,8 @@ using System.Security;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Server.Model;
+using Microsoft.Azure.Commands.Sql.Server.Services;
+using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
@@ -34,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <summary>
         /// Gets or sets the AzureEndpointsCommunicator which has all the needed management clients
         /// </summary>
-        private AzureEndpointsCommunicator AzureCommunicator { get; set; }
+        private AzureSqlDatabaseServerCommunicator Communicator { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         public AzureSqlDatabaseServerAdapter(AzureProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
-            AzureCommunicator = new AzureEndpointsCommunicator(Profile, subscription);
+            Communicator = new AzureSqlDatabaseServerCommunicator(Profile, subscription);
         }
 
         /// <summary>
@@ -60,10 +62,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>The server</returns>
         public AzureSqlDatabaseServerModel GetServer(string resourceGroupName, string serverName)
         {
-            SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
-            
-            ServerGetResponse resp = client.Servers.Get(resourceGroupName, serverName);
-            return CreateServerModelFromResponse(resourceGroupName, resp.Server);
+            var resp = Communicator.Get(resourceGroupName, serverName, Util.GenerateTracingId());
+            return CreateServerModelFromResponse(resourceGroupName, resp);
         }
 
         /// <summary>
@@ -73,11 +73,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>A list of all the servers</returns>
         public List<AzureSqlDatabaseServerModel> GetServers(string resourceGroupName)
         {
-            SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
-
-            ServerListResponse resp = client.Servers.List(resourceGroupName);
-
-            return resp.Servers.Select((s) =>
+            var resp = Communicator.List(resourceGroupName, Util.GenerateTracingId());
+            return resp.Select((s) =>
             {
                 return CreateServerModelFromResponse(resourceGroupName, s);
             }).ToList();
@@ -90,21 +87,19 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>The updated server model</returns>
         public AzureSqlDatabaseServerModel UpsertServer(AzureSqlDatabaseServerModel model)
         {
-            SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
-
-            ServerGetResponse response = client.Servers.CreateOrUpdate(model.ResourceGroupName, model.ServerName, new ServerCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, Util.GenerateTracingId(), new ServerCreateOrUpdateParameters()
+            {
+                Location = model.Location,
+                Tags = model.Tags,
+                Properties = new ServerCreateOrUpdateProperties()
                 {
-                    Location = model.Location,
-                    Tags = model.Tags,
-                    Properties = new ServerCreateOrUpdateProperties()
-                    {
-                        AdministratorLogin = model.SqlAdminUserName,
-                        AdministratorLoginPassword = Decrypt(model.SqlAdminPassword),
-                        Version = model.ServerVersion,
-                    }
-                });
+                    AdministratorLogin = model.SqlAdminUserName,
+                    AdministratorLoginPassword = Decrypt(model.SqlAdminPassword),
+                    Version = model.ServerVersion,
+                }
+            });
 
-            return CreateServerModelFromResponse(model.ResourceGroupName, response.Server);
+            return CreateServerModelFromResponse(model.ResourceGroupName, resp);
         }
 
         /// <summary>
@@ -114,9 +109,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <param name="serverName">The name of the server to delete</param>
         public void RemoveServer(string resourceGroupName, string serverName)
         {
-            SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
-
-            client.Servers.Delete(resourceGroupName, serverName);
+            Communicator.Remove(resourceGroupName, serverName, Util.GenerateTracingId());
         }
 
         /// <summary>

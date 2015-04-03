@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        public SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)

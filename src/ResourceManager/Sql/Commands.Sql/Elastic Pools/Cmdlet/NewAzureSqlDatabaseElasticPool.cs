@@ -17,52 +17,26 @@ using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     /// <summary>
-    /// Cmdlet to create a new Azure Sql Database
+    /// Cmdlet to create a new Azure Sql Database ElasticPool
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSqlDatabase",
+    [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseElasticPool",
         ConfirmImpact = ConfirmImpact.Medium)]
-    public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase
+    public class NewAzureSqlDatabaseElasticPool : AzureSqlDatabaseElasticPoolCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the database to create.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the Azure SQL Database to create.")]
+            HelpMessage = "The name of the Azure SQL Database ElasticPool to create.")]
         [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the Azure SQL Database collation to use
-        /// </summary>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the Azure SQL Database collation to use.")]
-        [ValidateNotNullOrEmpty]
-        public string CollationName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the Azure SQL Database catalog collation to use
-        /// </summary>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the Azure SQL Database catalog collation to use.")]
-        [ValidateNotNullOrEmpty]
-        public string CatalogCollation { get; set; }
-
-        /// <summary>
-        /// Gets or sets the maximum size of the Azure SQL Database in bytes
-        /// </summary>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The maximum size of the Azure SQL Database in bytes.")]
-        [ValidateNotNullOrEmpty]
-        public long MaxSizeBytes { get; set; }
+        public string ElasticPoolName { get; set; }
 
         /// <summary>
         /// Gets or sets the edition to assign to the Azure SQL Database
@@ -74,13 +48,40 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public DatabaseEdition Edition { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the service objective to assign to the Azure SQL Database
+        /// Gets or sets the total shared DTU for the Sql Azure Database Elastic Pool.
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the service objective to assign to the Azure SQL Database.")]
+            HelpMessage = "The total shared DTU for the Sql Azure Database Elastic Pool.")]
         [ValidateNotNullOrEmpty]
-        public string RequestedServiceObjectiveName { get; set; }
+        public int Dtu { get; set; }
+
+        /// <summary>
+        /// Gets or sets the storage limit for the Sql Azure Database Elastic Pool in MB.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage limit for the Sql Azure Database Elastic Pool in MB.")]
+        [ValidateNotNullOrEmpty]
+        public long StorageMB { get; set; }
+
+        /// <summary>
+        /// Gets or sets the minimum DTU all Sql Azure Databases are guaranteed.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The minimum DTU all Sql Azure Databases are guaranteed.")]
+        [ValidateNotNullOrEmpty]
+        public int DatabaseDtuMin { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximum DTU any one Sql Azure Database can consume.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The maximum DTU any one Sql Azure Database can consume.")]
+        [ValidateNotNullOrEmpty]
+        public int DatabaseDtuMax { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Database
@@ -94,12 +95,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
-        protected override IEnumerable<AzureSqlDatabaseModel> GetEntity()
+        protected override IEnumerable<AzureSqlDatabaseElasticPoolModel> GetEntity()
         {
             // We try to get the database.  Since this is a create, we don't want the database to exist
             try
             {
-                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName);
+                ModelAdapter.GetElasticPool(this.ResourceGroupName, this.ServerName, this.ElasticPoolName);
             }
             catch (CloudException ex)
             {
@@ -115,8 +116,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             // The database already exists
             throw new PSArgumentException(
-                string.Format(Resources.DatabaseNameExists, this.DatabaseName, this.ServerName),
-                "DatabaseName");
+                string.Format(Resources.ElasticPoolNameExists, this.ElasticPoolName, this.ServerName),
+                "ElasticPoolName");
         }
 
         /// <summary>
@@ -124,20 +125,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
-        protected override IEnumerable<AzureSqlDatabaseModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseModel> model)
+        protected override IEnumerable<AzureSqlDatabaseElasticPoolModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseElasticPoolModel> model)
         {
-            List<Model.AzureSqlDatabaseModel> newEntity = new List<AzureSqlDatabaseModel>();
-            newEntity.Add(new AzureSqlDatabaseModel()
+            List<AzureSqlDatabaseElasticPoolModel> newEntity = new List<AzureSqlDatabaseElasticPoolModel>();
+            newEntity.Add(new AzureSqlDatabaseElasticPoolModel()
                 {
                     ResourceGroupName = ResourceGroupName,
                     ServerName = ServerName,
-                    CatalogCollation = CatalogCollation,
-                    CollationName = CollationName,
-                    DatabaseName = DatabaseName,
-                    Edition = Edition,
-                    MaxSizeBytes = MaxSizeBytes,
-                    RequestedServiceObjectiveName = RequestedServiceObjectiveName,
                     Tags = Tags,
+                    DatabaseDtuMax = DatabaseDtuMax,
+                    DatabaseDtuMin = DatabaseDtuMin,
+                    Dtu = Dtu,
+                    Edition = Edition,
+                    ElasticPoolName = ElasticPoolName,
+                    StorageMB = StorageMB,
                 });
             return newEntity;
         }
@@ -147,10 +148,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
-        protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
+        protected override IEnumerable<AzureSqlDatabaseElasticPoolModel> PersistChanges(IEnumerable<AzureSqlDatabaseElasticPoolModel> entity)
         {
-            return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First())
+            return new List<AzureSqlDatabaseElasticPoolModel>() {
+                ModelAdapter.UpsertElasticPool(this.ResourceGroupName, this.ServerName, entity.First())
             };
         }
     }

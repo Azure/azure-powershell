@@ -52,6 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
+    <Compile Include="Common\Constants.cs" />
     <Compile Include="Database\Cmdlet\AzureSqlDatabaseCmdletBase.cs" />
     <Compile Include="Database\Cmdlet\RemoveAzureSqlDatabase.cs" />
     <Compile Include="Database\Cmdlet\SetAzureSqlDatabase.cs" />
@@ -59,13 +60,23 @@
     <Compile Include="Database\Cmdlet\GetAzureSqlDatabase.cs" />
     <Compile Include="Database\Model\AzureSqlDatabaseModel.cs" />
     <Compile Include="Database\Model\DatabaseEdition.cs" />
+    <Compile Include="Database\Services\AzureSqlDatabaseCommunicator.cs" />
     <Compile Include="Database\Services\AzureSqlDatabaseAdapter.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\AzureSqlDatabaseElasticPoolCmdletBase.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlDatabaseElasticPool.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\NewAzureSqlDatabaseElasticPool.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\RemoveAzureSqlDatabaseElasticPool.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\SetAzureSqlDatabaseElasticPool.cs" />
+    <Compile Include="Elastic Pools\Model\AzureSqlDatabaseElasticPoolModel.cs" />
+    <Compile Include="Elastic Pools\Services\AzureSqlDatabaseElasticPoolAdapter.cs" />
+    <Compile Include="Elastic Pools\Services\AzureSqlDatabaseElasticPoolCommunicator.cs" />
     <Compile Include="FirewallRule\Cmdlet\AzureSqlDatabaseServerFirewallRuleCmdletBase.cs" />
     <Compile Include="FirewallRule\Cmdlet\GetAzureSqlDatabaseServerFirewallRule.cs" />
     <Compile Include="FirewallRule\Cmdlet\NewAzureSqlDatabaseServerFirewallRule.cs" />
     <Compile Include="FirewallRule\Cmdlet\RemoveAzureSqlDatabaseServerFirewallRule.cs" />
     <Compile Include="FirewallRule\Cmdlet\SetAzureSqlDatabaseServerFirewallRule.cs" />
     <Compile Include="FirewallRule\Model\AzureSqlDatabaseServerFirewallRuleModel.cs" />
+    <Compile Include="FirewallRule\Services\AzureSqlDatabaseServerFirewallRuleCommunicator.cs" />
     <Compile Include="FirewallRule\Services\AzureSqlDatabaseServerFirewallRuleAdapter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -115,6 +126,7 @@
     <Compile Include="Security\Services\SqlDataMaskingAdapter.cs" />
     <Compile Include="Security\Services\SqlSecureConnectionAdapter.cs" />
     <Compile Include="Security\Services\SqlAuditAdapter.cs" />
+    <Compile Include="Server\Services\AzureSqlDatabaseServerCommunicator.cs" />
     <Compile Include="ServiceObjective\Cmdlet\AzureSqlDatabaseServerServiceObjectiveCmdletBase.cs" />
     <Compile Include="ServiceObjective\Cmdlet\GetAzureSqlDatabaseServerServiceObjective.cs" />
     <Compile Include="Server\Cmdlet\SetAzureSqlDatabaseServer.cs" />
@@ -125,6 +137,7 @@
     <Compile Include="Server\Model\AzureSqlDatabaseServerModel.cs" />
     <Compile Include="Server\Cmdlet\GetAzureSqlDatabaseServer.cs" />
     <Compile Include="ServiceObjective\Model\AzureSqlDatabaseServerServiceObjectiveModel.cs" />
+    <Compile Include="ServiceObjective\Service\AzureSqlDatabaseServerServiceObjectiveCommunicator.cs" />
     <Compile Include="ServiceObjective\Service\AzureSqlDatabaseServerServiceObjectiveAdapter.cs" />
     <Compile Include="Services\Util.cs" />
     <None Include="packages.config" />

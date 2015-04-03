@@ -39,6 +39,18 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 
 <#
 .SYNOPSIS
+Gets the values of the parameters used in the s
+#>
+function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
+{
+	return @{ rgname = "sql-dm-cmdlet-test-rg" +$testSuffix;
+			  serverName = "sql-dm-cmdlet-server" +$testSuffix;
+			  databaseName = "sql-dm-cmdlet-db" + $testSuffix
+			  }
+}
+
+<#
+.SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
 function Create-TestEnvironment ($testSuffix)
@@ -57,6 +69,57 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 	New-AzureResourceGroup -Name $params.rgname -Location "West US" -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
 	return $params
+}
+
+<#
+	.SYNOPSIS
+	Creates a resource group for tests
+#>
+function Create-ResourceGroupForTest ()
+{
+	$guid = [System.Guid]::NewGuid().ToString()
+	$location = "Japan East"
+	$rgName = "sql-ps-test-rg-" + $guid
+	$rg = New-AzureResourceGroup -Name $rgName -Location $location
+
+	return $rg
+}
+
+
+<#
+	.SYNOPSIS 
+	removes a resource group that was used for testing
+	#>
+function Remove-ResourceGroupForTest ($rg)
+{
+	Remove-AzureResourceGroup -Name $rg.ResourceGroupName -Force
+}
+
+<#
+	.SYNOPSIS
+	Creates the test environment needed to perform the Sql server CRUD tests
+#>
+function Create-ServerForTest ($resourceGroup)
+{
+	$guid = [System.Guid]::NewGuid().ToString()
+	
+	$serverName = "sql-ps-test-server-" + $guid
+	$version = "12.0"
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+
+	$server = New-AzureSqlDatabaseServer -ResourceGroupName  $resourceGroup.Name -ServerName $serverName -Location $resourceGroup.location -ServerVersion $version -SqlAdminCredentials $credentials
+	return $server
+}
+
+<#
+	.SYNOPSIS
+	Remove a server that is no longer needed for tests
+#>
+function Remove-ServerForTest ($server)
+{
+	$server | Remove-AzureSqlDatabaseServer -Force
 }
 
 <#

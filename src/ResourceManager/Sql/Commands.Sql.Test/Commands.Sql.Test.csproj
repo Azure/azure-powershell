@@ -146,6 +146,7 @@
     </Compile>
     <Compile Include="ScenarioTests\DataMaskingTests.cs" />
     <Compile Include="ScenarioTests\SecurityTests.cs" />
+    <Compile Include="ScenarioTests\ServerCrudTests.cs" />
     <Compile Include="ScenarioTests\SqlTestsBase.cs" />
     <Compile Include="UnitTests\AzureSqlCmdletBaseAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseAttributeTests.cs" />
@@ -158,10 +159,6 @@
     <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
       <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
       <Name>Commands.ScenarioTests.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\ServiceManagement\Services\Commands.Test.Utilities\Commands.Test.Utilities.csproj">
-      <Project>{bc420543-c04e-4bf3-96e1-cd81b823bdd7}</Project>
-      <Name>Commands.Test.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
@@ -191,6 +188,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="ScenarioTests\ServerCrudTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\DataMaskingTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

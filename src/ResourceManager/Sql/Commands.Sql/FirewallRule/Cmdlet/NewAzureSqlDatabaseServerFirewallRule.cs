@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         protected override IEnumerable<Model.AzureSqlDatabaseServerFirewallRuleModel> PersistChanges(IEnumerable<Model.AzureSqlDatabaseServerFirewallRuleModel> entity)
         {
             return new List<Model.AzureSqlDatabaseServerFirewallRuleModel>() { 
-                ModelAdapter.UpsertFirewallRule(this.ResourceGroupName, this.ServerName, entity.First()) 
+                ModelAdapter.UpsertFirewallRule(entity.First()) 
             };
         }
     }

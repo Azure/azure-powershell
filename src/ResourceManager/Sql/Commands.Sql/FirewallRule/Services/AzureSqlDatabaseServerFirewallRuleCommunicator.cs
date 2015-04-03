@@ -14,17 +14,20 @@
 
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.WindowsAzure.Management.Storage;
 using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Common;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Services
+namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
 {
     /// <summary>
     /// This class is responsible for all the REST communication with the audit REST endpoints
     /// </summary>
-    public class AuditingEndpointsCommunicator
+    public class AzureSqlDatabaseServerFirewallRuleCommunicator
     {
         /// <summary>
         /// The Sql client to be used by this end points communicator
@@ -41,7 +44,12 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// </summary>
         public AzureProfile Profile { get; set; }
 
-        public AuditingEndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
+        /// <summary>
+        /// Creates a communicator for Azure Sql Databases FirewallRules
+        /// </summary>
+        /// <param name="profile"></param>
+        /// <param name="subscription"></param>
+        public AzureSqlDatabaseServerFirewallRuleCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)
@@ -52,41 +60,35 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         }
 
         /// <summary>
-        /// Gets the database auditing policy for the given database in the given database server in the given resource group
+        /// Gets the Azure Sql Database Server FirewallRules
         /// </summary>
-        public DatabaseAuditingPolicy GetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.Models.FirewallRule Get(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
-            DatabaseAuditingPolicyGetResponse response = operations.GetDatabasePolicy(resourceGroupName, serverName, databaseName);
-            return response.AuditingPolicy;
+            return GetCurrentSqlClient(clientRequestId).FirewallRules.Get(resourceGroupName, serverName, firewallRuleName).FirewallRule;
         }
 
         /// <summary>
-        /// Gets the database server auditing policy for the given database server in the given resource group
+        /// Lists Azure Sql Databases Server FirewallRules
         /// </summary>
-        public ServerAuditingPolicy GetServerAuditingPolicy(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.Models.FirewallRule> List(string resourceGroupName, string serverName, string clientRequestId)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
-            ServerAuditingPolicyGetResponse response = operations.GetServerPolicy(resourceGroupName, serverName);
-            return response.AuditingPolicy;
+            return GetCurrentSqlClient(clientRequestId).FirewallRules.List(resourceGroupName, serverName).FirewallRules;
         }
 
         /// <summary>
-        /// Calls the set audit APIs for the database auditing policy for the given database in the given database server in the given resource group
+        /// Creates or updates an Azure Sql Database Server FirewallRule
         /// </summary>
-        public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseAuditingPolicyCreateOrUpdateParameters parameters)
+        public Management.Sql.Models.FirewallRule CreateOrUpdate(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId, FirewallRuleCreateOrUpdateParameters parameters)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
-            operations.CreateOrUpdateDatebasePolicy(resourceGroupName, serverName, databaseName, parameters);
+            return GetCurrentSqlClient(clientRequestId).FirewallRules.CreateOrUpdate(resourceGroupName, serverName, firewallRuleName, parameters).FirewallRule;
         }
 
         /// <summary>
-        /// Sets the database server auditing policy of the given database server in the given resource group
+        /// Deletes an Azure Sql Database Server FirewallRule
         /// </summary>
-        public void SetServerAuditingPolicy(string resourceGroupName, string serverName,  string clientRequestId, ServerAuditingPolicyCreateOrUpdateParameters parameters)
+        public void Remove(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
-            operations.CreateOrUpdateServerPolicy(resourceGroupName, serverName, parameters);
+            GetCurrentSqlClient(clientRequestId).FirewallRules.Delete(resourceGroupName, serverName, firewallRuleName);
         }
 
         /// <summary>
@@ -101,8 +103,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             {
                 SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(SecurityConstants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(SecurityConstants.ClientRequestIdHeaderName, clientRequestId);
+            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

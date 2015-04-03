@@ -198,4 +198,13 @@
   <data name="RemoveAzureSqlDatabaseServerFirewallRuleWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Firewall Rule '{0}' for Azure Sql Database Server  '{1}'?</value>
   </data>
+  <data name="ElasticPoolNameExists" xml:space="preserve">
+    <value>Elastic Pool with name: '{0}' already exists in server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlDatabaseElasticPoolDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Database Elastic Pool '{0}' on server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlDatabaseElasticPoolWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Database Elastic Pool '{0}' on server '{1}'?</value>
+  </data>
 </root>

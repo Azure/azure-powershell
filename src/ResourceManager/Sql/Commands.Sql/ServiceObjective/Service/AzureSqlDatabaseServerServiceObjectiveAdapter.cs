@@ -20,6 +20,8 @@ using System.Security;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
+using Microsoft.Azure.Commands.Sql.ServiceObjective.Services;
+using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
@@ -32,9 +34,9 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
     public class AzureSqlDatabaseServerServiceObjectiveAdapter
     {
         /// <summary>
-        /// Gets or sets the AzureEndpointsCommunicator which has all the needed management clients
+        /// Gets or sets the AzureSqlDatabaseServerServiceObjectiveCommunicator which has all the needed management clients
         /// </summary>
-        private AzureEndpointsCommunicator AzureCommunicator { get; set; }
+        private AzureSqlDatabaseServerServiceObjectiveCommunicator Communicator { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         public AzureSqlDatabaseServerServiceObjectiveAdapter(AzureProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
-            AzureCommunicator = new AzureEndpointsCommunicator(Profile, subscription);
+            Communicator = new AzureSqlDatabaseServerServiceObjectiveCommunicator(Profile, subscription);
         }
 
         /// <summary>
@@ -61,10 +63,8 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         /// <returns>The ServiceObjective</returns>
         public AzureSqlDatabaseServerServiceObjectiveModel GetServiceObjective(string resourceGroupName, string serverName, string serviceObjectiveName)
         {
-            SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
-            
-            ServiceObjectiveGetResponse resp = client.ServiceObjectives.Get(resourceGroupName, serverName, serviceObjectiveName);
-            return CreateServiceObjectiveModelFromResponse(resourceGroupName, serverName, resp.ServiceObjective);
+            var resp = Communicator.Get(resourceGroupName, serverName, serviceObjectiveName, Util.GenerateTracingId());
+            return CreateServiceObjectiveModelFromResponse(resourceGroupName, serverName, resp);
         }
 
         /// <summary>
@@ -75,11 +75,9 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         /// <returns>A list of all the ServiceObjectives</returns>
         public List<AzureSqlDatabaseServerServiceObjectiveModel> ListServiceObjectives(string resourceGroupName, string serverName)
         {
-            SqlManagementClient client = AzureCommunicator.GetCurrentSqlClient(Guid.NewGuid().ToString());
+            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
 
-            ServiceObjectiveListResponse resp = client.ServiceObjectives.List(resourceGroupName, serverName);
-
-            return resp.ServiceObjectives.Select((s) =>
+            return resp.Select((s) =>
             {
                 return CreateServiceObjectiveModelFromResponse(resourceGroupName, serverName, s);
             }).ToList();

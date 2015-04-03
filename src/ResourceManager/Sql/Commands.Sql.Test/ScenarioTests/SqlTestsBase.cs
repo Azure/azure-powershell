@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected void SetupManagementClients()
         {
-            var sqlCSMClient = GetSqlCSMClient(); // to interact with the security endpoints
+            var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
             var storageClient = GetStorageClient();
             var resourcesClient = GetResourcesClient();
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             }
         }
 
-        protected SqlManagementClient GetSqlCSMClient()
+        protected SqlManagementClient GetSqlClient()
         {
             return TestBase.GetServiceClient<SqlManagementClient>(new CSMTestEnvironmentFactory());
         }

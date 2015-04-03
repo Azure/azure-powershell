@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Elastic Pool with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
+        /// </summary>
+        internal static string ElasticPoolNameExists {
+            get {
+                return ResourceManager.GetString("ElasticPoolNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {your_password_here}.
         /// </summary>
         internal static string EnterPassword {
@@ -174,6 +183,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveAzureSqlDatabaseDescription {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Database Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseElasticPoolDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseElasticPoolDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseElasticPoolWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseElasticPoolWarning", resourceCulture);
             }
         }
         

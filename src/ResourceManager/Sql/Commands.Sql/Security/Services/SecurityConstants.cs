@@ -39,10 +39,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         public const string All = "All";
         public const string None = "None";
 
-        // request headers names
-        public const string ClientSessionIdHeaderName = "x-ms-client-session-id";
-        public const string ClientRequestIdHeaderName = "x-ms-client-request-id";
-        
         //id to locate a server's security policy
         public const string ServerPolicyId = "c3d905bb-e460-48bb-884d-75fac8f63e11";
 

@@ -14,17 +14,20 @@
 
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.WindowsAzure.Management.Storage;
 using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Common;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Services
+namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
 {
     /// <summary>
     /// This class is responsible for all the REST communication with the audit REST endpoints
     /// </summary>
-    public class AuditingEndpointsCommunicator
+    public class AzureSqlDatabaseServerServiceObjectiveCommunicator
     {
         /// <summary>
         /// The Sql client to be used by this end points communicator
@@ -41,7 +44,12 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// </summary>
         public AzureProfile Profile { get; set; }
 
-        public AuditingEndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
+        /// <summary>
+        /// Creates a communicator for Azure Sql Databases ServiceObjective
+        /// </summary>
+        /// <param name="profile"></param>
+        /// <param name="subscription"></param>
+        public AzureSqlDatabaseServerServiceObjectiveCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)
@@ -52,43 +60,21 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         }
 
         /// <summary>
-        /// Gets the database auditing policy for the given database in the given database server in the given resource group
+        /// Gets the Azure Sql Database Server ServiceObjective
         /// </summary>
-        public DatabaseAuditingPolicy GetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.Models.ServiceObjective Get(string resourceGroupName, string serverName, string serviceObjectiveName, string clientRequestId)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
-            DatabaseAuditingPolicyGetResponse response = operations.GetDatabasePolicy(resourceGroupName, serverName, databaseName);
-            return response.AuditingPolicy;
+            return GetCurrentSqlClient(clientRequestId).ServiceObjectives.Get(resourceGroupName, serverName, serviceObjectiveName).ServiceObjective;
         }
 
         /// <summary>
-        /// Gets the database server auditing policy for the given database server in the given resource group
+        /// Lists Azure Sql Databases Server ServiceObjective
         /// </summary>
-        public ServerAuditingPolicy GetServerAuditingPolicy(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.Models.ServiceObjective> List(string resourceGroupName, string serverName, string clientRequestId)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
-            ServerAuditingPolicyGetResponse response = operations.GetServerPolicy(resourceGroupName, serverName);
-            return response.AuditingPolicy;
+            return GetCurrentSqlClient(clientRequestId).ServiceObjectives.List(resourceGroupName, serverName).ServiceObjectives;
         }
-
-        /// <summary>
-        /// Calls the set audit APIs for the database auditing policy for the given database in the given database server in the given resource group
-        /// </summary>
-        public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseAuditingPolicyCreateOrUpdateParameters parameters)
-        {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
-            operations.CreateOrUpdateDatebasePolicy(resourceGroupName, serverName, databaseName, parameters);
-        }
-
-        /// <summary>
-        /// Sets the database server auditing policy of the given database server in the given resource group
-        /// </summary>
-        public void SetServerAuditingPolicy(string resourceGroupName, string serverName,  string clientRequestId, ServerAuditingPolicyCreateOrUpdateParameters parameters)
-        {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
-            operations.CreateOrUpdateServerPolicy(resourceGroupName, serverName, parameters);
-        }
-
+        
         /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.
@@ -101,8 +87,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             {
                 SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(SecurityConstants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(SecurityConstants.ClientRequestIdHeaderName, clientRequestId);
+            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }
