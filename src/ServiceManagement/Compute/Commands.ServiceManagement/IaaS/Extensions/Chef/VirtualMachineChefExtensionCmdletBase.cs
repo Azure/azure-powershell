@@ -24,6 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected const string PrivateConfigurationTemplate = "{{\"validation_key\":\"{0}\"}}";
         protected const string AutoUpdateTemplate = "\"autoUpdateClient\":\"{0}\"";
         protected const string ClientRbTemplate = "\"client_rb\":\"{0}\"";
+        protected const string BootStrapOptionsTemplate = "\"bootstrap_options\":\"{0}\"";
         protected const string RunListTemplate = "\"runlist\": \"\\\"{0}\\\"\"";
 
         public VirtualMachineChefExtensionCmdletBase()

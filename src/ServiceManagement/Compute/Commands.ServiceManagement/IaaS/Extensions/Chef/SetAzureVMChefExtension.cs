@@ -55,6 +55,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Chef Client bootstrap options in JSON format.")]
+        [ValidateNotNullOrEmpty]
+        public string BootstrapOptions { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Chef Server Node Runlist.")]
         [ValidateNotNullOrEmpty]
         public string RunList { get; set; }
@@ -152,6 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             bool IsChefServerUrlEmpty = string.IsNullOrEmpty(this.ChefServerUrl);
             bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
             bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
+            bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
             string AutoUpdateChefClient = this.AutoUpdateChefClient.IsPresent ? "true" : "false";
 
             //Cases handled:
@@ -204,17 +211,39 @@ validation_client_name 	\""{1}\""
 
             if (IsRunListEmpty)
             {
-                this.PublicConfiguration = string.Format("{{{0},{1}}}",
-                    string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                    string.Format(ClientRbTemplate, ClientConfig));
+                if (IsBootstrapOptionsEmpty)
+                {
+                    this.PublicConfiguration = string.Format("{{{0},{1}}}",
+                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                        string.Format(ClientRbTemplate, ClientConfig));
+                }
+                else
+                {
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
+                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                        string.Format(ClientRbTemplate, ClientConfig),
+                        string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
+                }
             }
             else
             {
-                this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
-                    string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                    string.Format(ClientRbTemplate, ClientConfig),
-                    string.Format(RunListTemplate, this.RunList));
+                if (IsBootstrapOptionsEmpty)
+                {
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
+                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                        string.Format(ClientRbTemplate, ClientConfig),
+                        string.Format(RunListTemplate, this.RunList));
+                }
+                else
+                {
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}",
+                         string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                         string.Format(ClientRbTemplate, ClientConfig),
+                         string.Format(RunListTemplate, this.RunList),
+                         string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
+                }
             }
+
         }
 
         protected override void ValidateParameters()
