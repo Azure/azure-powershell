@@ -157,7 +157,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/servicePrincipals?$filter=servicePrincipalNames/any(c:c%20eq%20'http:%2F%2FadApplication2285%2Fhome')&api-version=1.42-previewInternal",
+      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/servicePrincipals?$filter=servicePrincipalNames/any(c:c%20eq%20'http%3A%2F%2FadApplication2285%2Fhome')&api-version=1.42-previewInternal",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
