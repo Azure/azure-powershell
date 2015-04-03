@@ -33,7 +33,7 @@ You must be authenticated to manage your Azure subscription with the Azure Power
 * Option 1: Login with your Microsoft account or Organizational account directly from PowerShell. No management certificate is required. Microsoft Azure Active Directory authentication is used.
 * Option 2: Download and import a publish settings file which contains a management certificate.
 
-Logging in varies by environment.
+Authentication setup varies by environment. Details for each environment below.
 
 ### Microsoft Azure
 If you configure both a credential and management certificate, the Microsoft Azure Active Directory will be used. To return to the management certificate, use ``Remove-AzureAccount`` to remove the Organizational account.
@@ -104,7 +104,7 @@ Azure Powershell has two modes. Service Management mode is for the original infr
 
 They are not designed to work together. Switch between the two modes using ```Switch-AzureMode```.
 
-```bash
+```powershell
 Switch-AzureMode AzureServiceManagement
 Switch-AzureMode AzureResourceManager
 ```
@@ -113,7 +113,7 @@ Switch-AzureMode AzureResourceManager
 
 Some cmdlets support both the public Microsoft Azure environment and your private Windows Azure Pack environment. Some support only one environment. Aliases are used to easily identify the environments a cmdlet supports.
 
-```bash
+```powershell
 # Return all the cmdlets for Microsoft Azure
 Get-Command *Azure*
 
