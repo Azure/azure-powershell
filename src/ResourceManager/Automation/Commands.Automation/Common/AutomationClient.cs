@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
     using Hyak.Common;
 
 
-    public class AutomationClient : IAutomationClient
+    public partial class AutomationClient : IAutomationClient
     {
         private readonly AutomationManagement.IAutomationManagementClient automationManagementClient;
 

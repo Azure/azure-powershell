@@ -36,5 +36,17 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void DeleteAutomationAccount(string resourceGroupName, string automationAccountName);
         
         #endregion
+
+        #region Configurations
+
+        IEnumerable<DscConfiguration> ListAutomationConfigurations(string resourceGroupName, string automationAccountName);
+
+        DscConfiguration GetConfiguration(string resourceGroupName, string automationAccountName, string configurationName);
+
+        #endregion
+
+        #region AgentRegistrationInforamtion
+        Microsoft.Azure.Commands.Automation.Model.AgentRegistration GetAgentRegistration(string resourceGroupName, string automationAccountName);
+        #endregion
     }
 }
