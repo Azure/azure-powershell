@@ -21,33 +21,38 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, "AzureBatchVMFileContent")]
+    [Cmdlet(VerbsCommon.Get, "AzureBatchVMFileContent", DefaultParameterSetName = Constants.NameAndPathParameterSet)]
     public class GetBatchVMFileContentCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool containing the vm.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.NameAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool containing the vm.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.NameAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PoolName { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the vm.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.NameAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the vm.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.NameAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
-        [Parameter(Position = 2, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the vm file to download.")]
+        [Parameter(Position = 2, ParameterSetName = Constants.NameAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the vm file to download.")]
+        [Parameter(Position = 2, ParameterSetName = Constants.NameAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The PSVMFile object representing the vm file to download.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectAndPathParameterSet, ValueFromPipeline = true, HelpMessage = "The PSVMFile object representing the vm file to download.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectAndStreamParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSVMFile InputObject { get; set; }
 
-        [Parameter(HelpMessage = "The path to the directory where the vm file will be downloaded.")]
+        [Parameter(ParameterSetName = Constants.NameAndPathParameterSet, Mandatory = true, HelpMessage = "The file path where the vm file will be downloaded.")]
+        [Parameter(ParameterSetName = Constants.InputObjectAndPathParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string DestinationPath { get; set; }
 
-        /// <summary>
-        /// Used for testing. If not null, the file contents will be copied to this Stream instead of hitting the file system.
-        /// </summary>
-        internal Stream Stream;
+        [Parameter(ParameterSetName = Constants.NameAndStreamParameterSet, Mandatory = true, HelpMessage = "The Stream into which the vm file contents will be written. This stream will not be closed or rewound by this call.")]
+        [Parameter(ParameterSetName = Constants.InputObjectAndStreamParameterSet, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public Stream DestinationStream { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -59,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch
                 VMFileName = this.Name,
                 VMFile = this.InputObject,
                 DestinationPath = this.DestinationPath,
-                Stream = this.Stream,
+                Stream = this.DestinationStream,
                 AdditionalBehaviors = this.AdditionalBehaviors
             };
 

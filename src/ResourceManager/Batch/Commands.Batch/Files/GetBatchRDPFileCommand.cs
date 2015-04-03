@@ -21,29 +21,33 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, "AzureBatchRDPFile")]
+    [Cmdlet(VerbsCommon.Get, "AzureBatchRDPFile", DefaultParameterSetName = Constants.NameAndPathParameterSet)]
     public class GetBatchRDPFileCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool which contains the vm.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.NameAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool which contains the vm.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.NameAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PoolName { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the vm to which the RDP file will point.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.NameAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the vm to which the RDP file will point.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.NameAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The PSVM object representing the vm to which the RDP file will point.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectAndPathParameterSet, ValueFromPipeline = true, HelpMessage = "The PSVM object representing the vm to which the RDP file will point.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectAndStreamParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSVM VM { get; set; }
 
-        [Parameter(HelpMessage = "The path to the directory where the RDP file will be downloaded.")]
+        [Parameter(ParameterSetName = Constants.NameAndPathParameterSet, Mandatory = true, HelpMessage = "The file path where the RDP file will be downloaded.")]
+        [Parameter(ParameterSetName = Constants.InputObjectAndPathParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string DestinationPath { get; set; }
 
-        /// <summary>
-        /// Used for testing. If not null, the file contents will be copied to this Stream instead of hitting the file system.
-        /// </summary>
-        internal Stream Stream;
+        [Parameter(ParameterSetName = Constants.NameAndStreamParameterSet, Mandatory = true, HelpMessage = "The Stream into which the RDP file data will be written. This stream will not be closed or rewound by this call.")]
+        [Parameter(ParameterSetName = Constants.InputObjectAndStreamParameterSet, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public Stream DestinationStream { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -53,7 +57,7 @@ namespace Microsoft.Azure.Commands.Batch
                 PoolName = this.PoolName,
                 VMName = this.VMName,
                 VM = this.VM,
-                Stream = this.Stream,
+                Stream = this.DestinationStream,
                 DestinationPath = this.DestinationPath,
                 AdditionalBehaviors = this.AdditionalBehaviors
             };

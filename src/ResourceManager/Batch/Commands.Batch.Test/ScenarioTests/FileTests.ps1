@@ -157,7 +157,7 @@ function Test-GetTaskFileContentByName
 
 	try
 	{
-		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context -MemStream $stream
+		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -179,7 +179,7 @@ function Test-GetTaskFileContentByName
 	$stream = New-Object System.IO.MemoryStream 
 	try
 	{
-		Get-AzureBatchTaskFileContent_ST $wiName $jobName $taskName $taskFileName -BatchContext $context -MemStream $stream
+		Get-AzureBatchTaskFileContent_ST $wiName $jobName $taskName $taskFileName -BatchContext $context -DestinationStream $stream
 
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -212,7 +212,7 @@ function Test-GetTaskFileContentPipeline
 	try
 	{
 		$taskFile = Get-AzureBatchTaskFile_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context
-		$taskFile | Get-AzureBatchTaskFileContent_ST -BatchContext $context -MemStream $stream
+		$taskFile | Get-AzureBatchTaskFileContent_ST -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -372,7 +372,7 @@ function Test-GetVMFileContentByName
 
 	try
 	{
-		Get-AzureBatchVMFileContent_ST -PoolName $poolName -VMName $vmName -Name $vmFileName -BatchContext $context -MemStream $stream
+		Get-AzureBatchVMFileContent_ST -PoolName $poolName -VMName $vmName -Name $vmFileName -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -394,7 +394,7 @@ function Test-GetVMFileContentByName
 	$stream = New-Object System.IO.MemoryStream 
 	try
 	{
-		Get-AzureBatchVMFileContent_ST $poolName $vmName $vmFileName -BatchContext $context -MemStream $stream
+		Get-AzureBatchVMFileContent_ST $poolName $vmName $vmFileName -BatchContext $context -DestinationStream $stream
 
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -427,7 +427,7 @@ function Test-GetVMFileContentPipeline
 	try
 	{
 		$vmFile = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Name $vmFileName -BatchContext $context
-		$vmFile | Get-AzureBatchVMFileContent_ST -BatchContext $context -MemStream $stream
+		$vmFile | Get-AzureBatchVMFileContent_ST -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -460,7 +460,7 @@ function Test-GetRDPFileByName
 
 	try
 	{
-		Get-AzureBatchRDPFile_ST -PoolName $poolName -VMName $vmName -BatchContext $context -MemStream $stream
+		Get-AzureBatchRDPFile_ST -PoolName $poolName -VMName $vmName -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -482,7 +482,7 @@ function Test-GetRDPFileByName
 	$stream = New-Object System.IO.MemoryStream 
 	try
 	{
-		Get-AzureBatchRDPFile_ST $poolName $vmName -BatchContext $context -MemStream $stream
+		Get-AzureBatchRDPFile_ST $poolName $vmName -BatchContext $context -DestinationStream $stream
 
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -516,7 +516,7 @@ function Test-GetRDPFilePipeline
 	try
 	{
 		$vm = Get-AzureBatchVM_ST -PoolName $poolName -Name $vmName -BatchContext $context
-		$vm | Get-AzureBatchRDPFile_ST -BatchContext $context -MemStream $stream
+		$vm | Get-AzureBatchRDPFile_ST -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream

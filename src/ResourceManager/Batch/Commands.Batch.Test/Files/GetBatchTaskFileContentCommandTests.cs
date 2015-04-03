@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             using (MemoryStream memStream = new MemoryStream())
             {
                 // Don't hit the file system during unit tests
-                cmdlet.Stream = memStream;
+                cmdlet.DestinationStream = memStream;
 
                 Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 

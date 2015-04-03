@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Downloading {0} file &quot;{1}&quot; to: {2}.
+        ///   Looks up a localized string similar to Downloading {0} file {1} to: {2}.
         /// </summary>
         internal static string Downloading {
             get {
@@ -507,6 +507,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string NBWI_CreatingWorkItem {
             get {
                 return ResourceManager.GetString("NBWI_CreatingWorkItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No destination was provided for the downloaded file. Either provide a file path or a Stream object..
+        /// </summary>
+        internal static string NoDownloadDestination {
+            get {
+                return ResourceManager.GetString("NoDownloadDestination", resourceCulture);
             }
         }
         

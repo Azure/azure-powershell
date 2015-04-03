@@ -124,7 +124,7 @@
     <value>Begin {0} call to RP</value>
   </data>
   <data name="Downloading" xml:space="preserve">
-    <value>Downloading {0} file "{1}" to: {2}</value>
+    <value>Downloading {0} file {1} to: {2}</value>
   </data>
   <data name="EndMAMLCall" xml:space="preserve">
     <value>End {0} call to RP</value>
@@ -266,6 +266,9 @@
   </data>
   <data name="NBWI_CreatingWorkItem" xml:space="preserve">
     <value>Creating workitem {0}</value>
+  </data>
+  <data name="NoDownloadDestination" xml:space="preserve">
+    <value>No destination was provided for the downloaded file. Either provide a file path or a Stream object.</value>
   </data>
   <data name="RBA_RemoveConfirm" xml:space="preserve">
     <value>Are you sure you want to remove batch account {0}?</value>

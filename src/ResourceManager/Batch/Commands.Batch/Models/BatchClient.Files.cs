@@ -106,6 +106,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException(Resources.GBTFC_NoTaskFileSpecified);
             }
 
+            if (string.IsNullOrWhiteSpace(options.DestinationPath) && options.Stream == null)
+            {
+                throw new ArgumentNullException(Resources.NoDownloadDestination);
+            }
+
             ITaskFile taskFile = null;
             if (options.TaskFile == null)
             {
@@ -202,6 +207,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException(Resources.GBVMFC_NoVMFileSpecified);
             }
 
+            if (string.IsNullOrWhiteSpace(options.DestinationPath) && options.Stream == null)
+            {
+                throw new ArgumentNullException(Resources.NoDownloadDestination);
+            }
+
             ITaskFile vmFile = null;
             if (options.VMFile == null)
             {
@@ -234,62 +244,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException(Resources.GRDP_NoVM);
             }
 
+            if (string.IsNullOrWhiteSpace(options.DestinationPath) && options.Stream == null)
+            {
+                throw new ArgumentNullException(Resources.NoDownloadDestination);
+            }
+
             if (options.Stream != null)
             {
-                // Used for testing.
                 // Don't dispose supplied Stream
                 CopyRDPStream(options.Stream, options.Context.BatchOMClient, options.PoolName, options.VMName, options.VM, options.AdditionalBehaviors);
             }
             else
             {
                 string vmName = options.VM == null ? options.VMName : options.VM.Name;
-                string fileName = string.Format("{0}.rdp", Path.GetFileName(vmName));
-                string path = GetDownloadFilePath(options.DestinationPath, fileName);
-                WriteVerbose(string.Format(Resources.Downloading, "RDP", fileName, path));
+                string verboseLogFileName = string.Format("for vm {0}", vmName);
+                WriteVerbose(string.Format(Resources.Downloading, "RDP", verboseLogFileName, options.DestinationPath));
 
-                using (FileStream fs = new FileStream(path, FileMode.Create))
+                using (FileStream fs = new FileStream(options.DestinationPath, FileMode.Create))
                 {
                     CopyRDPStream(fs, options.Context.BatchOMClient, options.PoolName, options.VMName, options.VM, options.AdditionalBehaviors);
                 }
             }
         }
 
-        // Gets the download file path given a directory and file name.
-        private string GetDownloadFilePath(string destinationPath, string fileName)
-        {
-            if (string.IsNullOrWhiteSpace(destinationPath))
-            {
-                // If no destination is specified, just save the file to the current directory 
-                destinationPath = Environment.CurrentDirectory;
-            }
-
-            return Path.Combine(destinationPath, fileName);
-        }
-
-        // Downloads the file represented by an ITaskFile instance to the specified path
-        private void DownloadITaskFile(ITaskFile file, string destinationPath, string loggingFileType, Stream stream = null, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
-        {
-            if (stream != null)
-            {
-                // Used for testing.
-                // Don't dispose supplied Stream
-                file.CopyToStream(stream, additionalBehaviors);
-            }
-            else
-            {
-                // The ITaskFile object's name is a relative path that includes directories.
-                string fileName = Path.GetFileName(file.Name);
-                string path = GetDownloadFilePath(destinationPath, fileName);
-
-                WriteVerbose(string.Format(Resources.Downloading, loggingFileType, file.Name, path));
-                using (FileStream fs = new FileStream(path, FileMode.Create))
-                {
-                    file.CopyToStream(fs, additionalBehaviors);
-                }
-            }
-        }
-
-        private void CopyRDPStream(Stream destinationStream, IBatchClient client, string poolName, string vmName, 
+        private void CopyRDPStream(Stream destinationStream, IBatchClient client, string poolName, string vmName,
             PSVM vm, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
         {
             if (vm == null)
@@ -302,6 +280,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
             else
             {
                 vm.omObject.GetRDPFile(destinationStream, additionalBehaviors);
+            }
+        }
+
+        // Downloads the file represented by an ITaskFile instance to the specified path
+        private void DownloadITaskFile(ITaskFile file, string destinationPath, string loggingFileType, Stream stream = null, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        {
+            if (stream != null)
+            {
+                // Don't dispose supplied Stream
+                file.CopyToStream(stream, additionalBehaviors);
+            }
+            else
+            {
+                WriteVerbose(string.Format(Resources.Downloading, loggingFileType, file.Name, destinationPath));
+                using (FileStream fs = new FileStream(destinationPath, FileMode.Create))
+                {
+                    file.CopyToStream(fs, additionalBehaviors);
+                }
             }
         }
     }

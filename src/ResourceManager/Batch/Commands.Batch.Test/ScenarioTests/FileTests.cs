@@ -374,12 +374,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     [Cmdlet(VerbsCommon.Get, "AzureBatchTaskFileContent_ST")]
     public class GetBatchTaskFileContentScenarioTestCommand : GetBatchTaskFileContentCommand
     {
-        [Parameter]
-        public MemoryStream MemStream { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            this.Stream = MemStream;
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
             base.ExecuteCmdlet();
         }
@@ -398,12 +394,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     [Cmdlet(VerbsCommon.Get, "AzureBatchVMFileContent_ST")]
     public class GetBatchVMFileContentScenarioTestCommand : GetBatchVMFileContentCommand
     {
-        [Parameter]
-        public MemoryStream MemStream { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            this.Stream = MemStream;
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
             base.ExecuteCmdlet();
         }
@@ -412,12 +404,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     [Cmdlet(VerbsCommon.Get, "AzureBatchRDPFile_ST")]
     public class GetBatchRDPFileScenarioTestCommand : GetBatchRDPFileCommand
     {
-        [Parameter]
-        public MemoryStream MemStream { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            this.Stream = MemStream;
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
             base.ExecuteCmdlet();
         }

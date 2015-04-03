@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public string DestinationPath { get; set; }
 
         /// <summary>
-        /// Used for testing. If not null, the file contents will be copied to this Stream instead of hitting the file system.
+        /// The Stream into which the vm file data will be written. This stream will not be closed or rewound by this call.
         /// </summary>
         internal Stream Stream { get; set; }
 
