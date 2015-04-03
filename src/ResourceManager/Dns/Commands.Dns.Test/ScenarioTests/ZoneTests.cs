@@ -47,13 +47,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         {
             RunPowerShellTest("Test-ZoneListWithEndsWith");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestZoneListWithEndsWithAndName()
-        {
-            RunPowerShellTest("Test-ZoneListWithEndsWithAndName");
-        }
         
         [Fact(Skip = "Service does not yet support this")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

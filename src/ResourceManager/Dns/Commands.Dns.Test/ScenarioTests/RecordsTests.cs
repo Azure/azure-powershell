@@ -145,12 +145,5 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         {
             RunPowerShellTest("Test-RecordSetGetWithEndsWith");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRecordSetGetWithEndsWithAndName()
-        {
-            RunPowerShellTest("Test-RecordSetGetWithEndsWithAndName");
-        }
     }
 }

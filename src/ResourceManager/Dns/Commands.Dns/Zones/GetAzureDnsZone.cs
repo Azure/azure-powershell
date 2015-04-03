@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The relative name suffix to search.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The single or multiple label suffix to search in the zone name.")]
         [ValidateNotNullOrEmpty]
         public string EndsWith { get; set; }
 
@@ -44,8 +44,7 @@ namespace Microsoft.Azure.Commands.Dns
             {
                 throw new PSArgumentException(ProjectResources.Error_NameAndEndsWith);
             }
-
-            if (this.Name != null)
+            else if (this.Name != null)
             {
                 WriteObject(this.DnsClient.GetDnsZone(this.Name, this.ResourceGroupName));
             }

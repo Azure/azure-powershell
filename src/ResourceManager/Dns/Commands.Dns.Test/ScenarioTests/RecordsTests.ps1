@@ -630,33 +630,3 @@ function Test-RecordSetGetWithEndsWith
 
 	$zone | Remove-AzureDnsZone -Force -IgnoreEtag
 }
-
-<#
-.SYNOPSIS
-Record Set Get using EndsWith parameter and Name parameter. Should throw exception.
-#>
-function Test-RecordSetGetWithEndsWithAndName
-{
-	$rootRecordName = "@"
-	$recordSuffix = ".com"
-	$zoneName = getAssetname
-	$recordName1 = getAssetname + $recordSuffix
-	$recordName2 = getAssetname
-	$recordName3 = getAssetname + $recordSuffix
-
-	$zone = TestSetup-CreateResourceGroup | New-AzureDnsZone -Name $zoneName
-
-    New-AzureDnsRecordSet -Zone $zone -Name $recordName1 -Ttl 100 -RecordType AAAA
-	New-AzureDnsRecordSet -Zone $zone -Name $recordName2 -Ttl 1200 -RecordType AAAA
-	New-AzureDnsRecordSet -Zone $zone -Name $recordName3 -Ttl 1500 -RecordType MX
-
-	Assert-Throws { $zone | Get-AzureDnsRecordSet -Name $recordName1 -RecordType AAAA -EndsWith $recordSuffix } "Name parameter cannot be used with EndsWith."
-
-	Assert-Throws { $zone | Get-AzureDnsRecordSet -Name $recordName1 -EndsWith $recordSuffix } "Name parameter cannot be used with EndsWith."
-	
-	$zone | Remove-AzureDnsRecordSet -Name $recordName1 -RecordType AAAA -Force
-	$zone | Remove-AzureDnsRecordSet -Name $recordName2 -RecordType AAAA -Force
-	$zone | Remove-AzureDnsRecordSet -Name $recordName3 -RecordType MX -Force
-
-	$zone | Remove-AzureDnsZone -Force -IgnoreEtag
-}

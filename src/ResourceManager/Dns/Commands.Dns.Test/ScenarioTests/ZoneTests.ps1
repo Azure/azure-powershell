@@ -228,20 +228,3 @@ function Test-ZoneListWithEndsWith
 
 	$result | Remove-AzureDnsZone -PassThru -Force
 }
-
-<#
-.SYNOPSIS
-Zone List With EndsWith
-#>
-function Test-ZoneListWithEndsWithAndName
-{
-	$suffix = ".com"
-	$suffixWithDot = ".com."
-	$zoneName1 = getAssetname
-	$zoneName2 = $zoneName1 + $suffix
-	$resourceGroup = TestSetup-CreateResourceGroup
-    $createdZone1 = $resourceGroup | New-AzureDnsZone -Name $zoneName1 
-	$createdZone2 = $resourceGroup | New-AzureDnsZone -Name $zoneName2
-
-	Assert-Throws { Get-AzureDnsZone -ResourceGroupName $resourceGroup.ResourceGroupName -Name $zoneName2 -EndsWith $suffixWithDot } "Name parameter cannot be used with EndsWith."
-}

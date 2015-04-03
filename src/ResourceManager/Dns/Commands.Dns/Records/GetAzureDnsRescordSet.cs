@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string RecordType { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The relative name suffix to search.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The single or multiple label suffix to search in the relative name.")]
         [ValidateNotNullOrEmpty]
         public string EndsWith { get; set; }
 
@@ -80,8 +80,7 @@ namespace Microsoft.Azure.Commands.Dns
             {
                 throw new PSArgumentException(ProjectResources.Error_NameAndEndsWith);
             }
-
-            if (this.Name != null)
+            else if (this.Name != null)
             {
                 if (this.RecordType == null)
                 {
