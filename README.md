@@ -18,10 +18,10 @@ Get help and examples from inside Azure Powershell:
 * [Windows Azure Pack](http://www.microsoft.com/en-us/server-cloud/windows-azure-pack.aspx)
 * [Microsoft Azure China](http://www.windowsazure.cn/)
 
-## Install Releases
+## Install Released Builds
 Install using the the [Microsoft Web Platform Installer](http://go.microsoft.com/?linkid=9811175&clcid=0x409).
-or
-Use a standalone MSI from the latest [Microsoft Azure Powershell releases](https://github.com/Azure/azure-powershell/releases)
+
+Or use a standalone MSI from the latest [Microsoft Azure Powershell releases](https://github.com/Azure/azure-powershell/releases)
 
 ## Build Your Own
 
