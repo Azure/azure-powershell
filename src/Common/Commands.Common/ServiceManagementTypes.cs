@@ -889,6 +889,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 this.SetValue("NetworkSecurityGroup", value);
             }
         }
+
+        [DataMember(Name = "IPForwarding", EmitDefaultValue = false, Order = 9)]
+        public string IPForwarding
+        {
+            get
+            {
+                return this.GetValue<string>("IPForwarding");
+            }
+            set
+            {
+                this.SetValue("IPForwarding", value);
+            }
+        }
     }
 
     [CollectionDataContract(Name = "PublicIPs", ItemName = "PublicIP", Namespace = Constants.ServiceManagementNS)]
@@ -947,6 +960,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             }
         }
 
+        [DataMember(Name = "IPForwarding", EmitDefaultValue = false, Order = 4)]
+        public string IPForwarding { get; set; }
     }
 
     [CollectionDataContract(Name = "IPConfigurations", ItemName = "IPConfiguration", Namespace = Constants.ServiceManagementNS)]
