@@ -277,6 +277,78 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting vm &quot;{0}&quot; from pool &quot;{1}&quot;..
+        /// </summary>
+        internal static string GBVM_GetByName {
+            get {
+                return ResourceManager.GetString("GBVM_GetByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting vms matching the specified OData filter from pool &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBVM_GetByOData {
+            get {
+                return ResourceManager.GetString("GBVM_GetByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all vms under pool &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBVM_NoFilter {
+            get {
+                return ResourceManager.GetString("GBVM_NoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No pool was specified. Supply a PSCloudPool object or a pool name to query for vms..
+        /// </summary>
+        internal static string GBVM_NoPoolSpecified {
+            get {
+                return ResourceManager.GetString("GBVM_NoPoolSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting vm file &quot;{0}&quot; from vm &quot;{1}&quot;.
+        /// </summary>
+        internal static string GBVMF_GetByName {
+            get {
+                return ResourceManager.GetString("GBVMF_GetByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting vm files matching the specified OData filter from vm &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBVMF_GetByOData {
+            get {
+                return ResourceManager.GetString("GBVMF_GetByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all vm files from vm &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBVMF_NoFilter {
+            get {
+                return ResourceManager.GetString("GBVMF_NoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No vm was specified. Supply a PSVM object or a pool name and vm name to query for files..
+        /// </summary>
+        internal static string GBVMF_NoVMSpecified {
+            get {
+                return ResourceManager.GetString("GBVMF_NoVMSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting workitem &quot;{0}&quot;.
         /// </summary>
         internal static string GBWI_GetByName {
