@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 
         public const string NameParameterSet = "Name";
         public const string ODataFilterParameterSet = "ODataFilter";
+        public const string InputObjectParameterSet = "InputObject";
         public const string ParentObjectParameterSet = "ParentObject";
     }
 }

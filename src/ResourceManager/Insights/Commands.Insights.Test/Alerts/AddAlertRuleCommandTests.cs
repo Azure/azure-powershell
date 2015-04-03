@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             cmdlet.ResourceGroup = Utilities.ResourceGroup;
             cmdlet.Operator = ConditionOperator.GreaterThan;
             cmdlet.Threshold = 1;
-            cmdlet.ResourceUri = "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo";
+            cmdlet.ResourceId = "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo";
             cmdlet.MetricName = "Requests";
             cmdlet.TimeAggregationOperator = TimeAggregationOperator.Total;
             cmdlet.CustomEmails = new string[] {"gu@macrosoft.com,h@dd.com"};

@@ -255,28 +255,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
             return role;
         }
 
-        /// <summary>
-        /// Adds the given role to both config files and the service def.
-        /// </summary>
-        /// <param name="role"></param>
-        /// <param name="type"></param>
-        private void AddPythonRoleCore(RoleInfo role, RoleType type)
-        {
-            Dictionary<string, object> parameters = CreateDefaultParameters(role);
-
-            string scaffoldPath = Path.Combine(Path.Combine(scaffoldingFolderPath, Resources.PythonScaffolding), type.ToString());
-            Scaffold.GenerateScaffolding(scaffoldPath, Path.Combine(Paths.RootPath, role.Name), parameters);
-        }
-
-        public RoleInfo AddDjangoWebRole(string name = null, int instanceCount = 1)
-        {
-            name = GetRoleName(name, Resources.WebRole, Components.Definition.WebRole == null ? new string[0] : Components.Definition.WebRole.Select(wr => wr.name.ToLower()));
-            WebRoleInfo role = new WebRoleInfo(name, instanceCount);
-            AddPythonRoleCore(role, RoleType.WebRole);
-
-            return role;
-        }
-
         public void ChangeRolePermissions(RoleInfo role)
         {
             string rolePath = Path.Combine(Paths.RootPath, role.Name);

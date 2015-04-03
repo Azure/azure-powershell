@@ -14,6 +14,91 @@
 
 <#
 .SYNOPSIS
+Tests creating Batch Pools
+#>
+function Test-NewPool
+{
+	param([string]$accountName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	
+	$poolName1 = "simple"
+	$poolName2 = "complex"
+
+	try 
+	{
+		# Create a simple Pool using TargetDedicated parameter set
+		$osFamily = "4"
+		$targetDedicated = 1
+		$resizeTimeout = ([TimeSpan]::FromMinutes(10))
+		New-AzureBatchPool_ST $poolName1 -OSFamily $osFamily -TargetDedicated $targetDedicated -ResizeTimeout $resizeTimeout -BatchContext $context
+		$pool1 = Get-AzureBatchPool_ST -Name $poolName1 -BatchContext $context
+
+		# Verify created Pool matches expectations
+		Assert-AreEqual $poolName1 $pool1.Name
+		Assert-AreEqual $osFamily $pool1.OSFamily
+		Assert-AreEqual $resizeTimeout $pool1.ResizeTimeout
+		Assert-AreEqual $targetDedicated $pool1.TargetDedicated
+
+		# Create a complicated Pool using AutoScale parameter set
+		$vmSize = "small"
+		$targetOSVersion = "*"
+		$maxTasksPerVM = 2
+		$autoScaleFormula = '$TargetDedicated=2'
+		
+		$startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
+		$startTaskCmd = "cmd /c dir /s"
+		$startTask.CommandLine = $startTaskCmd
+		$startTask.ResourceFiles = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSResourceFile]
+		$blobSource1 = "https://testacct1.blob.core.windows.net/"
+		$filePath1 = "filePath1"
+		$blobSource2 = "https://testacct2.blob.core.windows.net/"
+		$filePath2 = "filePath2"
+		$r1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList @($blobSource1,$filePath1)
+		$r2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList @($blobSource2,$filePath2)
+		$startTask.ResourceFiles.Add($r1)
+		$startTask.ResourceFiles.Add($r2)
+		$resourceFileCount = $startTask.ResourceFiles.Count
+
+		$vmFillType = ([Microsoft.Azure.Batch.Common.TVMFillType]::Pack)
+		$schedulingPolicy = New-Object Microsoft.Azure.Commands.Batch.Models.PSSchedulingPolicy $vmFillType
+
+		$metadata = @{"meta1"="value1";"meta2"="value2"}
+
+		New-AzureBatchPool_ST -Name $poolName2 -VMSize $vmSize -OSFamily $osFamily -TargetOSVersion $targetOSVersion -MaxTasksPerVM $maxTasksPerVM -AutoScaleFormula $autoScaleFormula -StartTask $startTask -SchedulingPolicy $schedulingPolicy -CommunicationEnabled -Metadata $metadata -BatchContext $context
+		
+		$pool2 = Get-AzureBatchPool_ST -Name $poolName2 -BatchContext $context
+		
+		# Verify created Pool matches expectations
+		Assert-AreEqual $poolName2 $pool2.Name
+		Assert-AreEqual $vmSize $pool2.VMSize
+		Assert-AreEqual $osFamily $pool2.OSFamily
+		Assert-AreEqual $targetOSVersion $pool2.TargetOSVersion
+		Assert-AreEqual $maxTasksPerVM $pool2.MaxTasksPerVM
+		Assert-AreEqual $true $pool2.AutoScaleEnabled
+		Assert-AreEqual $autoScaleFormula $pool2.AutoScaleFormula
+		Assert-AreEqual $true $pool2.Communication
+		Assert-AreEqual $startTaskCmd $pool2.StartTask.CommandLine
+		Assert-AreEqual $resourceFileCount $startTask.ResourceFiles.Count
+		Assert-AreEqual $blobSource1 $startTask.ResourceFiles[0].BlobSource
+		Assert-AreEqual $filePath1 $startTask.ResourceFiles[0].FilePath
+		Assert-AreEqual $blobSource2 $startTask.ResourceFiles[1].BlobSource
+		Assert-AreEqual $filePath2 $startTask.ResourceFiles[1].FilePath
+		Assert-AreEqual $metadata.Count $pool2.Metadata.Count
+		foreach($m in $pool2.Metadata)
+		{
+			Assert-AreEqual $metadata[$m.Name] $m.Value
+		}
+	}
+	finally
+	{
+		Remove-AzureBatchPool_ST -Name $poolName1 -Force -BatchContext $context
+		Remove-AzureBatchPool_ST -Name $poolName2 -Force -BatchContext $context
+	}
+}
+
+<#
+.SYNOPSIS
 Tests querying for a Batch Pool by name
 #>
 function Test-GetPoolByName
@@ -71,4 +156,32 @@ function Test-ListAllPools
 	$workItems = Get-AzureBatchPool_ST -BatchContext $context
 
 	Assert-AreEqual $count $workItems.Length
+}
+
+<#
+.SYNOPSIS
+Tests deleting a Pool
+#>
+function Test-DeletePool
+{
+	param([string]$accountName, [string]$poolName, [string]$usePipeline)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Verify the Pool exists
+	$pools = Get-AzureBatchPool_ST -BatchContext $context
+	Assert-AreEqual 1 $pools.Count
+
+	if ($usePipeline -eq '1')
+	{
+		Get-AzureBatchPool_ST -Name $poolName -BatchContext $context | Remove-AzureBatchPool_ST -Force -BatchContext $context
+	}
+	else
+	{
+		Remove-AzureBatchPool_ST -Name $poolName -Force -BatchContext $context
+	}
+
+	# Verify the Pool was deleted
+	$pools = Get-AzureBatchPool_ST -BatchContext $context
+	Assert-True { $pools -eq $null -or $pools[0].State.ToString().ToLower() -eq 'deleting' }
 }
