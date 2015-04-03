@@ -38,6 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public string InternalLoadBalancerName { get; set; }
 
         public string LoadBalancerDistribution { get; set; }
+        public string VipName { get; set; }
 
         public AzureEndPointConfigInfo()
         {
@@ -53,7 +54,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             bool directServerReturn = false,
             string internalLoadBalancer = null,
             string serviceName = null,
-            string loadBalancerDistribution = null)
+            string loadBalancerDistribution = null,
+            string vipName = null)
         {
             this.Initialize(
                 endpointProtocol,
@@ -71,7 +73,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 directServerReturn,
                 internalLoadBalancer,
                 serviceName,
-                loadBalancerDistribution);
+                loadBalancerDistribution,
+                vipName);
         }
 
         // LoadBalancedNoProbe/DefaultProbe parameter set
@@ -86,7 +89,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             bool directServerReturn = false,
             string internalLoadBalancer = null,
             string serviceName = null,
-            string loadBalancerDistribution = null)
+            string loadBalancerDistribution = null,
+            string vipName = null)
         {
             if ( (paramset == ParameterSet.LoadBalancedNoProbe) || (paramset == ParameterSet.DefaultProbe) )
             {
@@ -106,7 +110,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     directServerReturn,
                     internalLoadBalancer,
                     serviceName,
-                    loadBalancerDistribution);
+                    loadBalancerDistribution,
+                    vipName);
             }
         }
 
@@ -127,7 +132,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             bool directServerReturn = false,
             string internalLoadBalancer= null,
             string serviceName = null,
-            string loadBalancerDistribution = null)
+            string loadBalancerDistribution = null,
+            string vipName = null)
         {
                 this.Initialize(
                     endpointProtocol,
@@ -145,7 +151,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     directServerReturn,
                     internalLoadBalancer,
                     serviceName,
-                    loadBalancerDistribution);
+                    loadBalancerDistribution,
+                    vipName);
         }
 
         public AzureEndPointConfigInfo(AzureEndPointConfigInfo other)
@@ -166,7 +173,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 other.DirectServerReturn,
                 other.InternalLoadBalancerName,
                 other.ServiceName,
-                other.LoadBalancerDistribution);
+                other.LoadBalancerDistribution,
+                other.VipName);
         }
 
         private void Initialize(
@@ -185,7 +193,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             bool directServerReturn,
             string internalLoadBalancer,
             string serviceName,
-            string loadBalancerDistribution)
+            string loadBalancerDistribution,
+            string vipName)
         {
             this.EndpointLocalPort = internalPort;
             this.EndpointProtocol = protocol;
@@ -204,6 +213,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             this.InternalLoadBalancerName = internalLoadBalancer;
             this.ServiceName = serviceName;
             this.LoadBalancerDistribution = loadBalancerDistribution;
+            this.VipName = vipName;
         }
 
         public bool CheckInputEndpointContext(InputEndpointContext context)

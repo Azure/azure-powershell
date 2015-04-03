@@ -79,6 +79,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 this.cmdletParams.Add(new CmdletParam("LoadBalancerDistribution", endPointConfig.LoadBalancerDistribution));
             }
+            if (!string.IsNullOrEmpty(endPointConfig.VipName))
+            {
+                this.cmdletParams.Add(new CmdletParam("VipName", endPointConfig.VipName));
+            }
         }
 
         public AddAzureEndpointCmdletInfo()

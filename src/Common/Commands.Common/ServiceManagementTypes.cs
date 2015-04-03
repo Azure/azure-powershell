@@ -1153,6 +1153,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 base.SetValue("LoadBalancerDistribution", value);
             }
         }
+
+        [DataMember(Name = "VipName", EmitDefaultValue = false, Order = 12)]
+        public string VipName
+        {
+            get
+            {
+                return base.GetValue<string>("VipName");
+            }
+            set
+            {
+                base.SetValue("VipName", value);
+            }
+        }
     }
 
     [DataContract(Namespace = Constants.ServiceManagementNS)]
