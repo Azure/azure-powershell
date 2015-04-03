@@ -661,11 +661,12 @@ namespace Microsoft.Azure.Commands.Network
             return client.Routes.DeleteRouteTable(routeTableName);
         }
 
-        public AzureOperationResponse SetRoute(string routeTableName, string routeName, string addressPrefix, string nextHopType)
+        public AzureOperationResponse SetRoute(string routeTableName, string routeName, string addressPrefix, string nextHopType, string ipAddress)
         {
             NextHop nextHop = new NextHop()
             {
                 Type = nextHopType,
+                IpAddress = ipAddress
             };
             SetRouteParameters parameters = new SetRouteParameters()
             {
