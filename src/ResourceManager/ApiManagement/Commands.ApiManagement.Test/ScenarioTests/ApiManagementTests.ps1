@@ -121,8 +121,9 @@ function Test-BackupRestoreApiManagement
 
     # Create storage account
 
+    $storageLocation = Get-ProviderLocation "Microsoft.ClassicStorage/storageAccounts"
     $storageAccountName = Get-ApiManagementServiceName
-    New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
+    New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $storageLocation
 
     $storageKey = (Get-AzureStorageKey -StorageAccountName $storageAccountName).Primary
     $storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageKey
@@ -158,6 +159,9 @@ function Test-BackupRestoreApiManagement
     # Remove the service
     Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
+    # Remove storage account
+    Remove-AzureStorageAccount -StorageAccountName $storageAccountName
+
     # Remove resource group
     Remove-AzureResourceGroup -Name $resourceGroupName -Force
 }
@@ -185,7 +189,7 @@ function Test-UpdateApiManagementDeployment
     New-AzureApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity
 
     # Get API Management and:
-    #- 1) Scale master region to 'Premium' 2
+    #- 1) Scale master region to 'Premium' 2 units
     $sku = "Premium"
     $capacity = 2
 
@@ -193,16 +197,16 @@ function Test-UpdateApiManagementDeployment
     $service.Sku = $sku;
     $service.Capacity = $capacity
 
-    # - 2) Add new 'Developer' region
-    $devRegionLocation = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {$_ -ne $location} | Select -First 1
-    $devRegionSku = "Developer"
-    $service.AddRegion($devRegionLocation, $devRegionSku)
+    # - 2) Add new region 1 unit
+    $region1Location = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {$_ -ne $location} | Select -First 1
+    $region1Sku = "Premium"
+    $service.AddRegion($region1Location, $region1Sku)
 
-    # - 3) Add new 'Standard' 3 region
-    $stdRegionLocation = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {($_ -ne $location) -and ($_ -ne $devRegionLocation)} | Select -First 1
-    $stdRegionSku = "Standard"
-    $stdRegionCapacity = 3
-    $service.AddRegion($stdRegionLocation, $stdRegionSku, $stdRegionCapacity)
+    # - 3) Add one more region 3 units
+    $region2Location = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {($_ -ne $location) -and ($_ -ne $region1Location)} | Select -First 1
+    $region2Sku = "Premium"
+    $region2Capacity = 3
+    $service.AddRegion($region2Location, $region2Sku, $region2Capacity)
 
     Update-AzureApiManagementDeployment -ApiManagement $service
 
@@ -219,19 +223,19 @@ function Test-UpdateApiManagementDeployment
     $found = 0
     for ($i = 0; $i -lt $service.AdditionalRegions.Count; $i++)
     {
-        if ($service.AdditionalRegions[$i].Location -eq $devRegionLocation)
+        if ($service.AdditionalRegions[$i].Location -eq $region1Location)
         {
             $found = $found + 1
-            Assert-AreEqual $devRegionSku $service.AdditionalRegions[$i].Sku
+            Assert-AreEqual $region1Sku $service.AdditionalRegions[$i].Sku
             Assert-AreEqual 1 $service.AdditionalRegions[$i].Capacity
             Assert-Null $service.AdditionalRegions[$i].VirtualNetwork
         }
 
-        if ($service.AdditionalRegions[$i].Location -eq $stdRegionLocation)
+        if ($service.AdditionalRegions[$i].Location -eq $region2Location)
         {
             $found = $found + 1
-            Assert-AreEqual $stdRegionSku $service.AdditionalRegions[$i].Sku
-            Assert-AreEqual $stdRegionCapacity $service.AdditionalRegions[$i].Capacity
+            Assert-AreEqual $region2Sku $service.AdditionalRegions[$i].Sku
+            Assert-AreEqual $region2Capacity $service.AdditionalRegions[$i].Capacity
             Assert-Null $service.AdditionalRegions[$i].VirtualNetwork
         }
     }
@@ -271,19 +275,19 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
     $sku = "Premium"
     $capacity = 2
 
-    # - 2) Add new 'Developer' region
-    $devRegionLocation = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {$_ -ne $location} | Select -First 1
-    $devRegionSku = "Developer"
+    # - 2) Add new 'Premium' region 1 unit
+    $region1Location = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {$_ -ne $location} | Select -First 1
+    $region1Sku = "Premium"
 
-    # - 3) Add new 'Standard' 3 region
-    $stdRegionLocation = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {($_ -ne $location) -and ($_ -ne $devRegionLocation)} | Select -First 1
-    $stdRegionSku = "Standard"
-    $stdRegionCapacity = 3
+    # - 3) Add new 'Premium' region 3 units
+    $region2Location = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {($_ -ne $location) -and ($_ -ne $region1Location)} | Select -First 1
+    $region2Sku = "Premium"
+    $region2Capacity = 3
 
     Get-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName |
     Update-AzureApiManagementRegion -Sku $sku -Capacity $capacity |
-    Add-AzureApiManagementRegion -Location $devRegionLocation -Sku $devRegionSku |
-    Add-AzureApiManagementRegion -Location $stdRegionLocation -Sku $stdRegionSku -Capacity $stdRegionCapacity |
+    Add-AzureApiManagementRegion -Location $region1Location -Sku $region1Sku |
+    Add-AzureApiManagementRegion -Location $region2Location -Sku $region2Sku -Capacity $region2Capacity |
     Update-AzureApiManagementDeployment
 
     $service = Get-ApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
@@ -299,19 +303,19 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
     $found = 0
     for ($i = 0; $i -lt $service.AdditionalRegions.Count; $i++)
     {
-        if ($service.AdditionalRegions[$i].Location -eq $devRegionLocation)
+        if ($service.AdditionalRegions[$i].Location -eq $region1Location)
         {
             $found = $found + 1
-            Assert-AreEqual $devRegionSku $service.AdditionalRegions[$i].Sku
+            Assert-AreEqual $region1Sku $service.AdditionalRegions[$i].Sku
             Assert-AreEqual 1 $service.AdditionalRegions[$i].Capacity
             Assert-Null $service.AdditionalRegions[$i].VirtualNetwork
         }
 
-        if ($service.AdditionalRegions[$i].Location -eq $stdRegionLocation)
+        if ($service.AdditionalRegions[$i].Location -eq $region2Location)
         {
             $found = $found + 1
-            Assert-AreEqual $stdRegionSku $service.AdditionalRegions[$i].Sku
-            Assert-AreEqual $stdRegionCapacity $service.AdditionalRegions[$i].Capacity
+            Assert-AreEqual $region2Sku $service.AdditionalRegions[$i].Sku
+            Assert-AreEqual $region2Capacity $service.AdditionalRegions[$i].Capacity
             Assert-Null $service.AdditionalRegions[$i].VirtualNetwork
         }
     }

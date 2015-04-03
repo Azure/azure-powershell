@@ -25,6 +25,7 @@
         /// Gets or sets the storage context
         /// </summary>
         [Parameter(
+            ValueFromPipelineByPropertyName = true, 
             Mandatory = true, 
             HelpMessage = "The storage connection context")]
         [ValidateNotNull]

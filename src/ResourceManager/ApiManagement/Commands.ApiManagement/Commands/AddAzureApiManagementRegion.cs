@@ -24,15 +24,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
           ValueFromPipeline = true,
           Mandatory = true,
-          HelpMessage = "ApiManagementAttributes returned by Get-AzureApiManagement. Use Sku, Capacity, VirtualNetwork and " +
-                        "AdditionalRegions properties to manage deployments.")]
+          HelpMessage = "ApiManagement object returned by Get-AzureApiManagement.")]
         [ValidateNotNull]
         public ApiManagement ApiManagement { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = false, 
             Mandatory = true, 
-            HelpMessage = "Location where want to create API Management service.")]
+            HelpMessage = "Location where want to create region.")]
 
         [ValidateNotNullOrEmpty]
         [ValidateSet(
@@ -44,13 +43,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
-            HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Standard and Premium (preview). Default value is Developer")]
+            HelpMessage = "The tier of the region. Valid values are Developer, Standard and Premium. Default value is Developer")]
         public ApiManagementSku? Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
-            HelpMessage = "Sku capacity of the Azure API Management service. The default value is 1.")]
+            HelpMessage = "Sku capacity of the Azure API Management service. Default value is 1.")]
         public int? Capacity { get; set; }
 
         [Parameter(

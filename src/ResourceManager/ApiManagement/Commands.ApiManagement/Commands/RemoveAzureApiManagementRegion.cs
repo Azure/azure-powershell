@@ -23,8 +23,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipeline = true,
             Mandatory = true,
-            HelpMessage = "ApiManagementAttributes returned by Get-AzureApiManagement. Use Sku, Capacity, VirtualNetwork and " +
-                          "AdditionalRegions properties to manage deployments.")]
+            HelpMessage = "ApiManagement object returned by Get-AzureApiManagement.")]
         [ValidateNotNull]
         public ApiManagement ApiManagement { get; set; }
 

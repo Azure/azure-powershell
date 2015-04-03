@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         //[Parameter(
         //    ValueFromPipelineByPropertyName = true,
         //    Mandatory = true,
-        //    HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Standard and Premium (preview).")]
+        //    HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Standard and Premium .")]
         //[ValidateNotNullOrEmpty]
         //public ApiManagementSku Sku { get; set; }
 

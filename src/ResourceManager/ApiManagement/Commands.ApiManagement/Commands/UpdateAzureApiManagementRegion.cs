@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
           ValueFromPipeline = true,
           Mandatory = true,
-          HelpMessage = "ApiManagementAttributes returned by Get-AzureApiManagement. Use Sku, Capacity, VirtualNetwork and " +
-                        "AdditionalRegions properties to manage deployments.")]
+          HelpMessage = "ApiManagement object returned by Get-AzureApiManagement.")]
         [ValidateNotNull]
         public ApiManagement ApiManagement { get; set; }
 
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "New tier value for region. Valid values are Developer, Standard and Premium (preview).")]
+            HelpMessage = "New tier value for region. Valid values are Developer, Standard and Premium.")]
         public ApiManagementSku Sku { get; set; }
 
         [Parameter(
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Vnet configuration. Default value is $null.")]
+            HelpMessage = "Virtual network configuration. Default value is $null.")]
         public ApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()

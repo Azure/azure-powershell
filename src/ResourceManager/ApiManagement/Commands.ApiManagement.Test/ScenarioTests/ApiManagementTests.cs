@@ -27,13 +27,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
     public class ApiManagementTests
     {
-        private readonly EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper _helper;
 
         public ApiManagementTests()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
-
 
         protected void SetupManagementClients()
         {
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             var managementClient = GetManagementClient();
             var storageManagementClient = GetStorageManagementClient();
 
-            helper.SetupManagementClients(
+            _helper.SetupManagementClients(
                 apiManagementManagementClient, 
                 resourceManagementClient,
                 galaryClient,
@@ -132,10 +131,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
                 SetupManagementClients();
 
-                helper.SetupEnvironment(AzureModule.AzureProfile);
-                helper.SetupModules(AzureModule.AzureProfile, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1");
+                _helper.SetupEnvironment(AzureModule.AzureProfile);
+                _helper.SetupModules(AzureModule.AzureProfile, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1");
 
-                helper.RunPowerShellTest(scripts);
+                _helper.RunPowerShellTest(scripts);
             }
         }
     }

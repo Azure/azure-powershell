@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
         {
             get
             {
-                if (_client == null)
+                //if (_client == null)
                 {
                     _client =
                         AzureSession.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(

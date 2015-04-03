@@ -16,13 +16,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "AzureApiManagementSsoToken", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof (string))]
+    [Cmdlet(VerbsCommon.Get, "AzureApiManagementSsoToken"), OutputType(typeof (string))]
     public class GetAzureApiManagementSsoToken : ApiManagementCmdletBase
     {
-        internal const string BaseParameterSetName = "All In Subscription";
-        internal const string ResourceGroupParameterSetName = "All In Resource Group";
-        internal const string ApiManagementParameterSetName = "Specific API Management Service";
-
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
