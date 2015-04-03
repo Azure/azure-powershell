@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
         
-        [Fact]
+        [Fact(Skip = "for CRP")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Scheduler)]
