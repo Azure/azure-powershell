@@ -947,6 +947,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             }
         }
 
+        [DataMember(Name = "NetworkSecurityGroup", EmitDefaultValue = false, Order = 3)]
+        public string NetworkSecurityGroup { get; set; }
     }
 
     [CollectionDataContract(Name = "IPConfigurations", ItemName = "IPConfiguration", Namespace = Constants.ServiceManagementNS)]
