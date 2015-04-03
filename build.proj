@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <UsingTask 
-    AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runners.2.0.0-beta4-build2738\tools\xunit.runner.msbuild.dll"
+    AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runner.console.2.0.0\tools\xunit.runner.msbuild.dll"
     TaskName="Xunit.Runner.MSBuild.xunit" />
   
   <!-- Clean the build in all configurations -->
@@ -154,7 +154,7 @@
   <!-- Do everything possible -->
   <Target
     Name="Full"
-    DependsOnTargets="ForceRestorePackages;Clean;BuildDebug;BuildRelease;Test;BuildSetupDebug;BuildSetupRelease" />
+    DependsOnTargets="ForceRestorePackages;Clean;BuildDebug;Test;BuildSetupDebug" />
 
   <!-- Build the Cmdlets in Release configuration -->
   <Target Name="BuildRelease" DependsOnTargets="ForceRestorePackages">
@@ -180,7 +180,7 @@
 
   <PropertyGroup>
     <RunTestLive Condition="'$(RunTestLive)' == ''">false</RunTestLive>
-    <XUnitExcludedTrait Condition="!$(RunTestLive)">RunType=LiveOnly</XUnitExcludedTrait>
+    <XUnitIncludedTrait Condition="!$(RunTestLive)">AcceptanceType=CheckIn</XUnitIncludedTrait>
   </PropertyGroup>
   <!-- Note: all testing related target should go to 'AzurePowershell.test.targets' file except the one used by CI run -->
   <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.test.targets"/>
@@ -188,7 +188,7 @@
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BuildDebug;BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
-    <CallTarget Targets="InvokeXUnit; TestHDInsight; TestServiceManagement; TestServiceManagementExtensions; TestSqlDatabase; TestStorage;  TestDSCExtension_x64; ComputeTests"/>
+    <CallTarget Targets="InvokeXUnit"/>
   </Target>
   
   <!-- Run Full switch with scenario tests -->

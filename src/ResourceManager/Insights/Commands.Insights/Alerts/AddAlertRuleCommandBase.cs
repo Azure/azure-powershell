@@ -71,9 +71,9 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the ResourceGroupName parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = AddMetricAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceGroup name")]
-        [Parameter(ParameterSetName = AddEventAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceGroup name")]
-        [Parameter(ParameterSetName = AddWebtestAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceGroup name")]
+        [Parameter(ParameterSetName = AddMetricAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = AddEventAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = AddWebtestAlertParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 
@@ -114,18 +114,11 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletInternal()
         {
-            try
-            {
-                RuleCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
-                var result = this.InsightsManagementClient.AlertOperations.CreateOrUpdateRuleAsync(resourceGroupName: this.ResourceGroup, parameters: parameters).Result;
-                WriteObject(result);
-            }
-            catch (AggregateException ex)
-            {
-                throw ex.Flatten().InnerException;
-            }
+            RuleCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
+            var result = this.InsightsManagementClient.AlertOperations.CreateOrUpdateRuleAsync(resourceGroupName: this.ResourceGroup, parameters: parameters).Result;
+            WriteObject(result);
         }
 
         /// <summary>

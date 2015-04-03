@@ -7,7 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		local.runsettings = local.runsettings
 		Local.testsettings = Local.testsettings
 		Local.x64.testsettings = Local.x64.testsettings
-		UnitTest.testsettings = UnitTest.testsettings
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands", "ServiceManagement\Services\Commands\Commands.csproj", "{CD5AA507-F5EF-473D-855B-84B91A1ABE54}"
@@ -187,6 +186,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute", "Resourc
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute.Test", "ResourceManager\Compute\Commands.Compute.Test\Commands.Compute.Test.csproj", "{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7} = {4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

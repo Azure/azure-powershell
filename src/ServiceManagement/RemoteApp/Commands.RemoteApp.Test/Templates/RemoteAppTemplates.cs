@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
     using Common;
     using Microsoft.Azure.Management.RemoteApp.Cmdlets;
     using Microsoft.Azure.Management.RemoteApp.Models;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         private string templateId = "1111";
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAllTemplates()
         {
             int countOfExpectedTemplates = 0;
@@ -83,6 +85,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetTemplatesByName()
         {
             int countOfExpectedTemplates = 0;
@@ -125,6 +128,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RenameTemplate()
         {
             RenameAzureRemoteAppTemplateImage mockCmdlet = SetUpTestCommon<RenameAzureRemoteAppTemplateImage>();
@@ -159,6 +163,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveTemplate()
         {
             RemoveAzureRemoteAppTemplateImage mockCmdlet = SetUpTestCommon<RemoveAzureRemoteAppTemplateImage>();

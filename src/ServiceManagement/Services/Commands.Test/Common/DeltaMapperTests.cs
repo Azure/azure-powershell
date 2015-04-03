@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -42,6 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MappingWithNoChangesReturnsFalse()
         {
             var src = new SourceClass
@@ -65,6 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MappingWithChangeCopiesChangedProperties()
         {
             var src = new SourceClass
@@ -90,6 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NullSourcePropertyIsNotAChange()
         {
             var src = new SourceClass
