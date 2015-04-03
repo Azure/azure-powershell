@@ -62,33 +62,33 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Gets the Azure Sql Database
         /// </summary>
-        public Management.Sql.Models.Database Get(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.Models.ElasticPool Get(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.Get(resourceGroupName, serverName, databaseName).Database;
+            return GetCurrentSqlClient(clientRequestId).ElasticPools.Get(resourceGroupName, serverName, elasticPoolName).ElasticPool;
         }
 
         /// <summary>
         /// Lists Azure Sql Databases
         /// </summary>
-        public IList<Management.Sql.Models.Database> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.Models.ElasticPool> List(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.List(resourceGroupName, serverName).Databases;
+            return GetCurrentSqlClient(clientRequestId).ElasticPools.List(resourceGroupName, serverName).ElasticPools;
         }
 
         /// <summary>
         /// Creates or updates a database
         /// </summary>
-        public Management.Sql.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseCreateOrUpdateParameters parameters)
+        public Management.Sql.Models.ElasticPool CreateOrUpdate(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId, ElasticPoolCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).Database;
+            return GetCurrentSqlClient(clientRequestId).ElasticPools.CreateOrUpdate(resourceGroupName, serverName, elasticPoolName, parameters).ElasticPool;
         }
 
         /// <summary>
         /// Deletes a database
         /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public void Remove(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).Databases.Delete(resourceGroupName, serverName, databaseName);
+            GetCurrentSqlClient(clientRequestId).ElasticPools.Delete(resourceGroupName, serverName, elasticPoolName);
         }
 
         /// <summary>

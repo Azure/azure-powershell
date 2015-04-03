@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseElasticPoolModel> PersistChanges(IEnumerable<AzureSqlDatabaseElasticPoolModel> entity)
         {
             return new List<AzureSqlDatabaseElasticPoolModel>() {
-                ModelAdapter.UpsertElasticPool(this.ResourceGroupName, this.ServerName, entity.First())
+                ModelAdapter.UpsertElasticPool(entity.First())
             };
         }
     }

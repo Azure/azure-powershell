@@ -12,11 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
 {
@@ -82,18 +85,21 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="model">The input parameters for the create/update operation</param>
         /// <returns>The upserted Azure Sql Database ElasticPool</returns>
-        internal AzureSqlDatabaseElasticPoolModel UpsertElasticPool(string resourceGroup, string serverName, AzureSqlDatabaseElasticPoolModel model)
+        internal AzureSqlDatabaseElasticPoolModel UpsertElasticPool(AzureSqlDatabaseElasticPoolModel model)
         {
-            //var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.ResourcePoolName, Util.GenerateTracingId(), new ElasticPoolCreateOrUpdateParameters()
-            //{
-            //    Properties = new ElasticPoolCreateOrUpdateProperties()
-            //    {
-            //    }
-            //});
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, Util.GenerateTracingId(), new ElasticPoolCreateOrUpdateParameters()
+            {
+                Properties = new ElasticPoolCreateOrUpdateProperties()
+                {
+                    DatabaseDtuMax = model.DatabaseDtuMax,
+                    DatabaseDtuMin = model.DatabaseDtuMin,
+                    Edition = model.Edition.ToString(),
+                    Dtu = model.Dtu,
+                    StorageMB = model.StorageMB
+                }
+            });
 
-            //return CreateElasticPoolModelFromResponse(resourceGroup, serverName, resp);
-
-            return null;
+            return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
         }
 
         /// <summary>
@@ -112,12 +118,27 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
-        /// <param name="database">The service response</param>
+        /// <param name="pool">The service response</param>
         /// <returns>The converted model</returns>
-        private AzureSqlDatabaseElasticPoolModel CreateElasticPoolModelFromResponse(string resourceGroup, string serverName, /*Management.Sql.Models.ElasticPool*/object database)
+        private AzureSqlDatabaseElasticPoolModel CreateElasticPoolModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.ElasticPool pool)
         {
             AzureSqlDatabaseElasticPoolModel model = new AzureSqlDatabaseElasticPoolModel();
-           
+
+            model.ResourceGroupName = resourceGroup;
+            model.ServerName = serverName;
+            model.ElasticPoolName = pool.Name;
+            model.CreationDate = pool.Properties.CreationDate?? DateTime.MinValue;
+            model.DatabaseDtuMax = (int)pool.Properties.DatabaseDtuMax;
+            model.DatabaseDtuMin = (int)pool.Properties.DatabaseDtuMin;
+            model.Dtu = (int)pool.Properties.Dtu;
+            model.State = pool.Properties.State;
+            model.StorageMB = pool.Properties.StorageMB;
+            model.Tags = pool.Tags as Dictionary<string,string>;
+
+            DatabaseEdition edition = DatabaseEdition.None;
+            Enum.TryParse<DatabaseEdition>(pool.Properties.Edition, out edition);
+            model.Edition = edition;
+
             return model;
         }
     }
