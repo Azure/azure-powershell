@@ -75,8 +75,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsResourcesGroups()
         {
-            List<Resource> result = new List<Resource>();
-            Resource expected = new Resource()
+            List<GenericResourceExtended> result = new List<GenericResourceExtended>();
+            GenericResourceExtended expected = new GenericResourceExtended()
             {
                 Id = "/subscriptions/aaaa/resourceGroups/foo/providers/Microsoft.Web/serverFarms/" + resourceName,
                 Name = resourceName,
