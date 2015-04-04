@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
 
-            var existingInboundNatRule = this.LoadBalancer.Properties.InboundNatRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var existingInboundNatRule = this.LoadBalancer.InboundNatRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (existingInboundNatRule != null)
             {
@@ -50,24 +50,23 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var inboundNatRule = new PSInboundNatRule();
             inboundNatRule.Name = this.Name;
-            inboundNatRule.Properties = new PSInboundNatRuleProperties();
-            inboundNatRule.Properties.Protocol = this.Protocol;
-            inboundNatRule.Properties.FrontendPort = this.FrontendPort;
-            inboundNatRule.Properties.BackendPort = this.BackendPort;
+            inboundNatRule.Protocol = this.Protocol;
+            inboundNatRule.FrontendPort = this.FrontendPort;
+            inboundNatRule.BackendPort = this.BackendPort;
             if (this.IdleTimeoutInMinutes > 0)
             {
-                inboundNatRule.Properties.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
+                inboundNatRule.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
-            inboundNatRule.Properties.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
-            inboundNatRule.Properties.BackendIPConfiguration = new PSResourceId();
-            inboundNatRule.Properties.BackendIPConfiguration.Id = this.BackendIpConfigurationId;
-            inboundNatRule.Properties.FrontendIPConfigurations = new List<PSResourceId>();
+            inboundNatRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
+            inboundNatRule.BackendIPConfiguration = new PSResourceId();
+            inboundNatRule.BackendIPConfiguration.Id = this.BackendIpConfigurationId;
+            inboundNatRule.FrontendIPConfigurations = new List<PSResourceId>();
 
             foreach (var frontendIPConfigurationId in this.FrontendIPConfigurationId)
             {
                 var resourceId = new PSResourceId();
                 resourceId.Id = frontendIPConfigurationId;
-                inboundNatRule.Properties.FrontendIPConfigurations.Add(resourceId);
+                inboundNatRule.FrontendIPConfigurations.Add(resourceId);
             }
 
             inboundNatRule.Id =
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                     Resources.LoadBalancerInBoundNatRuleName,
                     this.Name);
 
-            this.LoadBalancer.Properties.InboundNatRules.Add(inboundNatRule);
+            this.LoadBalancer.InboundNatRules.Add(inboundNatRule);
 
             WriteObject(this.LoadBalancer);
         }

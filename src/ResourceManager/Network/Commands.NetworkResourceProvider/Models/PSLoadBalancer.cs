@@ -13,17 +13,54 @@
 // limitations under the License.
 //
 
-using Newtonsoft.Json;
-
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class PSLoadBalancer : PSTopLevelResource
      {
-        public PSLoadBalancerProperties Properties { get; set; }
+         public List<PSFrontendIpConfiguration> FrontendIpConfigurations { get; set; }
 
-        public string PropertiesText
-        {
-            get { return JsonConvert.SerializeObject(Properties, Formatting.Indented); }
-        }
+         public List<PSBackendAddressPool> BackendAddressPools { get; set; }
+
+         public List<PSLoadBalancingRule> LoadBalancingRules { get; set; }
+
+         public List<PSProbe> Probes { get; set; }
+
+         public List<PSInboundNatRule> InboundNatRules { get; set; }
+
+         public string ProvisioningState { get; set; }
+
+         [JsonIgnore]
+         public string FrontendIpConfigurationsText
+         {
+             get { return JsonConvert.SerializeObject(FrontendIpConfigurations, Formatting.Indented); }
+         }
+
+         [JsonIgnore]
+         public string BackendAddressPoolsText
+         {
+             get { return JsonConvert.SerializeObject(BackendAddressPools, Formatting.Indented); }
+         }
+
+         [JsonIgnore]
+         public string LoadBalancingRulesText
+         {
+             get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented); }
+         }
+
+         [JsonIgnore]
+         public string ProbesText
+         {
+             get { return JsonConvert.SerializeObject(Probes, Formatting.Indented); }
+         }
+
+         [JsonIgnore]
+         public string InboundNatRulesText
+         {
+             get { return JsonConvert.SerializeObject(InboundNatRules, Formatting.Indented); }
+         }
      }
 }

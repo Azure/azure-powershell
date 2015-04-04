@@ -23,6 +23,8 @@ using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
+    using Microsoft.Azure.Management.Network.Models;
+
     public abstract class LoadBalancerBaseClient : NetworkBaseClient
     {
         public ILoadBalancerOperations LoadBalancerClient
@@ -63,6 +65,15 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 TagsConversionHelper.CreateTagHashtable(getLoadBalancerResponse.LoadBalancer.Tags);
 
             return loadBalancer;
+        }
+
+        public PSLoadBalancer ToPsLoadBalancer(LoadBalancer lb)
+        {
+            var psLb = Mapper.Map<PSLoadBalancer>(lb);
+
+            psLb.Tag = TagsConversionHelper.CreateTagHashtable(lb.Tags);
+
+            return psLb;
         }
     }
 }

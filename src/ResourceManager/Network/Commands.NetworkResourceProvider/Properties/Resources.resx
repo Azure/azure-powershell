@@ -139,11 +139,23 @@
   <data name="LoadBalancerRuleName" xml:space="preserve">
     <value>loadBalancingRules</value>
   </data>
+  <data name="LoadBalancerType" xml:space="preserve">
+    <value>microsoft.network/loadbalancers</value>
+  </data>
+  <data name="NetworkInterfaceType" xml:space="preserve">
+    <value>microsoft.network/networkInterfaces</value>
+  </data>
+  <data name="NetworkSecurityGroupType" xml:space="preserve">
+    <value>microsoft.network/networkSecurityGroups</value>
+  </data>
   <data name="OverwritingResource" xml:space="preserve">
     <value>Are you sure you want to overwriteresource '{0}'</value>
   </data>
   <data name="OverwritingResourceMessage" xml:space="preserve">
     <value>Overwriting resource ...</value>
+  </data>
+  <data name="PublicIpAddressType" xml:space="preserve">
+    <value>microsoft.network/publicIPAddresses</value>
   </data>
   <data name="RemoveResourceMessage" xml:space="preserve">
     <value>Removing resource ...</value>
@@ -168,5 +180,8 @@
   </data>
   <data name="StaticIpAddressErrorMessage" xml:space="preserve">
     <value>PrivateIpAddress needs to be specified in Static allocation</value>
+  </data>
+  <data name="VirtualNetworkType" xml:space="preserve">
+    <value>microsoft.network/virtualNetworks</value>
   </data>
 </root>

@@ -49,19 +49,36 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 
                 WriteObject(loadBalancer);
             }
-            else
+            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var getLoadBalancerResponse = this.LoadBalancerClient.List(this.ResourceGroupName);
+                var getLbResponse = this.LoadBalancerClient.List(this.ResourceGroupName);
 
-                var loadBalancers = Mapper.Map<List<PSLoadBalancer>>(getLoadBalancerResponse.LoadBalancers);
+                var psLoadBalancers = new List<PSLoadBalancer>();
 
-                // populate the loadbalancers with the ResourceGroupName
-                foreach (var loadBalancer in loadBalancers)
+                foreach (var lb in getLbResponse.LoadBalancers)
                 {
-                    loadBalancer.ResourceGroupName = this.ResourceGroupName;
+                    var psLb = this.ToPsLoadBalancer(lb);
+                    psLb.ResourceGroupName = this.ResourceGroupName;
+                    psLoadBalancers.Add(psLb);
                 }
 
-                WriteObject(loadBalancers, true);
+                WriteObject(psLoadBalancers, true);
+            }
+
+            else
+            {
+                var getLbResponse = this.LoadBalancerClient.ListAll();
+
+                var psLoadBalancers = new List<PSLoadBalancer>();
+
+                foreach (var lb in getLbResponse.LoadBalancers)
+                {
+                    var psLb = this.ToPsLoadBalancer(lb);
+                    psLb.ResourceGroupName = NetworkBaseClient.GetResourceGroup(lb.Id);
+                    psLoadBalancers.Add(psLb);
+                }
+
+                WriteObject(psLoadBalancers, true);
             }
         }
     }

@@ -19,5 +19,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
         public string DomainNameLabel { get; set; }
 
         public string Fqdn { get; set; }
+
+        public string ReverseFqdn { get; set; }
     }
 }

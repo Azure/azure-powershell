@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
 
-            var existingbackendAddressPool = this.LoadBalancer.Properties.BackendAddressPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var existingbackendAddressPool = this.LoadBalancer.BackendAddressPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (existingbackendAddressPool != null)
             {
@@ -49,14 +49,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var backendAddressPool = new PSBackendAddressPool();
             backendAddressPool.Name = this.Name;
-            backendAddressPool.Properties = new PSBackendAddressPoolProperties();
-            backendAddressPool.Properties.BackendIpConfigurations = new List<PSResourceId>();
+            backendAddressPool.BackendIpConfigurations = new List<PSResourceId>();
 
             foreach (var backendIpConfigurationId in this.BackendIpConfigurationId)
             {
                 var resourceId = new PSResourceId();
                 resourceId.Id = backendIpConfigurationId;
-                backendAddressPool.Properties.BackendIpConfigurations.Add(resourceId);
+                backendAddressPool.BackendIpConfigurations.Add(resourceId);
             }
 
             backendAddressPool.Id =
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                     Resources.LoadBalancerBackendAddressPoolName,
                     this.Name);
 
-            this.LoadBalancer.Properties.BackendAddressPools.Add(backendAddressPool);
+            this.LoadBalancer.BackendAddressPools.Add(backendAddressPool);
 
             WriteObject(this.LoadBalancer);
         }

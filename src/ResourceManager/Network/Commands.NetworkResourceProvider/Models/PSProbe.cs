@@ -15,8 +15,30 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class PSProbe : PSChildResource
     {
-        public PSProbeProperties Properties { get; set; }
+        public List<PSResourceId> LoadBalancingRules { get; set; }
+
+        public string Protocol { get; set; }
+
+        public int Port { get; set; }
+
+        public int IntervalInSeconds { get; set; }
+
+        public int NumberOfProbes { get; set; }
+
+        public string RequestPath { get; set; }
+
+        public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string LoadBalancingRulesText
+        {
+            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented); }
+        }
     }
 }

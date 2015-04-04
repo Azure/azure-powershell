@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
 
-            var inboundNatRule = this.LoadBalancer.Properties.InboundNatRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var inboundNatRule = this.LoadBalancer.InboundNatRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (inboundNatRule != null)
             {
-                this.LoadBalancer.Properties.InboundNatRules.Remove(inboundNatRule);
+                this.LoadBalancer.InboundNatRules.Remove(inboundNatRule);
             }
 
             WriteObject(this.LoadBalancer);

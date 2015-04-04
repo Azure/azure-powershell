@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
             
-            var probe = this.LoadBalancer.Properties.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var probe = this.LoadBalancer.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (probe == null)
             {
@@ -47,12 +47,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
 
             probe.Name = this.Name;
-            probe.Properties = new PSProbeProperties();
-            probe.Properties.Port = this.Port;
-            probe.Properties.Protocol = this.Protocol;
-            probe.Properties.RequestPath = this.RequestPath;
-            probe.Properties.IntervalInSeconds = this.IntervalInSeconds;
-            probe.Properties.NumberOfProbes = this.ProbeCount;
+            probe.Port = this.Port;
+            probe.Protocol = this.Protocol;
+            probe.RequestPath = this.RequestPath;
+            probe.IntervalInSeconds = this.IntervalInSeconds;
+            probe.NumberOfProbes = this.ProbeCount;
 
             WriteObject(this.LoadBalancer);
         }

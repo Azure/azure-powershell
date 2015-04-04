@@ -57,33 +57,36 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public static void NormalizeChildResourcesId(PSLoadBalancer loadBalancer)
         {
             // Normalize LoadBalancingRules
-            foreach (var loadBalancingRule in loadBalancer.Properties.LoadBalancingRules)
+            if (loadBalancer.LoadBalancingRules != null)
             {
-                loadBalancingRule.Id = string.Empty;
-
-                foreach (var frontendIpConfiguration in loadBalancingRule.Properties.FrontendIPConfigurations)
+                foreach (var loadBalancingRule in loadBalancer.LoadBalancingRules)
                 {
-                    frontendIpConfiguration.Id = NormalizeLoadBalancerChildResourceIds(frontendIpConfiguration.Id,
-                        loadBalancer.ResourceGroupName, loadBalancer.Name);
+                    loadBalancingRule.Id = string.Empty;
+
+                    foreach (var frontendIpConfiguration in loadBalancingRule.FrontendIPConfigurations)
+                    {
+                        frontendIpConfiguration.Id = NormalizeLoadBalancerChildResourceIds(frontendIpConfiguration.Id,
+                            loadBalancer.ResourceGroupName, loadBalancer.Name);
+                    }
+
+                    loadBalancingRule.BackendAddressPool.Id =
+                        NormalizeLoadBalancerChildResourceIds(loadBalancingRule.BackendAddressPool.Id,
+                            loadBalancer.ResourceGroupName, loadBalancer.Name);
+
+                    loadBalancingRule.Probe.Id =
+                        NormalizeLoadBalancerChildResourceIds(loadBalancingRule.Probe.Id,
+                            loadBalancer.ResourceGroupName, loadBalancer.Name);
                 }
-
-                loadBalancingRule.Properties.BackendAddressPool.Id =
-                    NormalizeLoadBalancerChildResourceIds(loadBalancingRule.Properties.BackendAddressPool.Id,
-                        loadBalancer.ResourceGroupName, loadBalancer.Name);
-
-                loadBalancingRule.Properties.Probe.Id =
-                    NormalizeLoadBalancerChildResourceIds(loadBalancingRule.Properties.Probe.Id,
-                        loadBalancer.ResourceGroupName, loadBalancer.Name);
             }
 
             // Normalize InboundNatRule
-            if (loadBalancer.Properties.InboundNatRules != null)
+            if (loadBalancer.InboundNatRules != null)
             {
-                foreach (var inboundNatRule in loadBalancer.Properties.InboundNatRules)
+                foreach (var inboundNatRule in loadBalancer.InboundNatRules)
                 {
                     inboundNatRule.Id = string.Empty;
 
-                    foreach (var frontendIpConfiguration in inboundNatRule.Properties.FrontendIPConfigurations)
+                    foreach (var frontendIpConfiguration in inboundNatRule.FrontendIPConfigurations)
                     {
                         frontendIpConfiguration.Id = NormalizeLoadBalancerChildResourceIds(frontendIpConfiguration.Id,
                             loadBalancer.ResourceGroupName, loadBalancer.Name);
@@ -92,19 +95,22 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
 
             // Normalize FrontendIpconfig
-            foreach (var frontendIpConfig in loadBalancer.Properties.FrontendIpConfigurations)
+            foreach (var frontendIpConfig in loadBalancer.FrontendIpConfigurations)
             {
                 frontendIpConfig.Id = string.Empty;
             }
 
             // Normalize Probe
-            foreach (var probe in loadBalancer.Properties.Probes)
+            if (loadBalancer.Probes != null)
             {
-                probe.Id = string.Empty;
+                foreach (var probe in loadBalancer.Probes)
+                {
+                    probe.Id = string.Empty;
+                }
             }
 
             // Normalize BackendAddressPool
-            foreach (var backendAddressPool in loadBalancer.Properties.BackendAddressPools)
+            foreach (var backendAddressPool in loadBalancer.BackendAddressPools)
             {
                 backendAddressPool.Id = string.Empty;
             }
