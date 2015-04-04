@@ -124,6 +124,33 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to microsoft.network/loadbalancers.
+        /// </summary>
+        public static string LoadBalancerType {
+            get {
+                return ResourceManager.GetString("LoadBalancerType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to microsoft.network/networkInterfaces.
+        /// </summary>
+        public static string NetworkInterfaceType {
+            get {
+                return ResourceManager.GetString("NetworkInterfaceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to microsoft.network/networkSecurityGroups.
+        /// </summary>
+        public static string NetworkSecurityGroupType {
+            get {
+                return ResourceManager.GetString("NetworkSecurityGroupType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to overwriteresource &apos;{0}&apos;.
         /// </summary>
         public static string OverwritingResource {
@@ -138,6 +165,15 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Properties {
         public static string OverwritingResourceMessage {
             get {
                 return ResourceManager.GetString("OverwritingResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to microsoft.network/publicIPAddresses.
+        /// </summary>
+        public static string PublicIpAddressType {
+            get {
+                return ResourceManager.GetString("PublicIpAddressType", resourceCulture);
             }
         }
         
@@ -210,6 +246,15 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Properties {
         public static string StaticIpAddressErrorMessage {
             get {
                 return ResourceManager.GetString("StaticIpAddressErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to microsoft.network/virtualNetworks.
+        /// </summary>
+        public static string VirtualNetworkType {
+            get {
+                return ResourceManager.GetString("VirtualNetworkType", resourceCulture);
             }
         }
     }

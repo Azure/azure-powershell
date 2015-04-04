@@ -15,8 +15,48 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class PSFrontendIpConfiguration : PSChildResource
     {
-        public PSFrontendIpConfigurationProperties Properties { get; set; }
+        public string PrivateIpAddress { get; set; }
+
+        public string PrivateIpAllocationMethod { get; set; }
+
+        public PSResourceId Subnet { get; set; }
+
+        public PSResourceId PublicIpAddress { get; set; }
+
+        public List<PSResourceId> InboundNatRules { get; set; }
+
+        public List<PSResourceId> LoadBalancingRules { get; set; }
+
+        public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string SubnetText
+        {
+            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string PublicIpAddressText
+        {
+            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string InboundNatRulesText
+        {
+            get { return JsonConvert.SerializeObject(InboundNatRules, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string LoadBalancingRulesText
+        {
+            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented); }
+        }
     }
 }

@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
 
-            var lbRule = this.LoadBalancer.Properties.LoadBalancingRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var lbRule = this.LoadBalancer.LoadBalancingRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (lbRule != null)
             {
-                this.LoadBalancer.Properties.LoadBalancingRules.Remove(lbRule);
+                this.LoadBalancer.LoadBalancingRules.Remove(lbRule);
             }
 
             WriteObject(this.LoadBalancer);

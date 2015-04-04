@@ -16,10 +16,11 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Add, "AzureVirtualNetworkSubnetConfig"), OutputType(typeof(PSVirtualNetwork))]
+    [Cmdlet(VerbsCommon.Add, "AzureVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetwork))]
     public class AddAzureVirtualNetworkSubnetConfigCmdlet : CommonAzureVirtualNetworkSubnetConfigCmdlet
     {
         [Parameter(
@@ -39,22 +40,33 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             base.ExecuteCmdlet();
 
             // Verify if the subnet exists in the VirtualNetwork
-            var subnet = this.VirtualNetwork.Properties.Subnets.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var subnet = this.VirtualNetwork.Subnets.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (subnet != null)
             {
                 throw new ArgumentException("Subnet with the specified name already exists");
             }
-            
+
+            if (string.Equals(ParameterSetName, Resources.SetByResource))
+            {
+                if (this.NetworkSecurityGroup != null)
+                {
+                    this.NetworkSecurityGroupId = this.NetworkSecurityGroup.Id;
+                }
+            }
+
             subnet = new PSSubnet();
 
             subnet.Name = this.Name;
-            subnet.Properties = new PSSubnetProperties();
-            subnet.Properties.AddressPrefix = this.AddressPrefix;
-            subnet.Properties.DhcpOptions = new PSDhcpOptions();
-            subnet.Properties.DhcpOptions.DnsServers = this.DnsServer;
+            subnet.AddressPrefix = this.AddressPrefix;
+            
+            if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
+            {
+                subnet.NetworkSecurityGroup = new PSResourceId();
+                subnet.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+            }
 
-            this.VirtualNetwork.Properties.Subnets.Add(subnet);
+            this.VirtualNetwork.Subnets.Add(subnet);
 
             WriteObject(this.VirtualNetwork);
         }

@@ -12,17 +12,46 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class PSVirtualNetwork : PSTopLevelResource
     {
-        public PSVirtualNetworkProperties Properties { get; set; }
+        public PSAddressSpace AddressSpace { get; set; }
 
-        public string PropertiesText
+        public PSDhcpOptions DhcpOptions { get; set; }
+
+        public List<PSResourceId> NetworkInterfaces { get; set; }
+
+        public List<PSSubnet> Subnets { get; set; }
+
+        public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string AddressSpaceText
         {
-            get { return JsonConvert.SerializeObject(Properties, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(AddressSpace, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string DhcpOptionsText
+        {
+            get { return JsonConvert.SerializeObject(DhcpOptions, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string NetworkInterfacesText
+        {
+            get { return JsonConvert.SerializeObject(NetworkInterfaces, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string SubnetsText
+        {
+            get { return JsonConvert.SerializeObject(Subnets, Formatting.Indented); }
         }
     }
 }

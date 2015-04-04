@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var frontendIpConfiguration =
-                    this.LoadBalancer.Properties.FrontendIpConfigurations.First(
+                    this.LoadBalancer.FrontendIpConfigurations.First(
                         resource =>
                             string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
             else
             {
-                var frontendIpConfigurations = this.LoadBalancer.Properties.FrontendIpConfigurations;
+                var frontendIpConfigurations = this.LoadBalancer.FrontendIpConfigurations;
                 WriteObject(frontendIpConfigurations, true);
             }
             

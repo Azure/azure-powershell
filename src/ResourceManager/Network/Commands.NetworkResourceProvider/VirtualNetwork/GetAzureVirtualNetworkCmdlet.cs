@@ -48,19 +48,33 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
                 WriteObject(vnet);
             }
-            else
+            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
                 var vnetGetResponse = this.VirtualNetworkClient.List(this.ResourceGroupName);
 
-                var vnets = Mapper.Map<List<PSVirtualNetwork>>(vnetGetResponse.VirtualNetworks);
-
-                // populate the virtualNetworks with the ResourceGroupName
-                foreach (var vnet in vnets)
+                var psVnets = new List<PSVirtualNetwork>();
+                foreach (var virtualNetwork in vnetGetResponse.VirtualNetworks)
                 {
-                    vnet.ResourceGroupName = this.ResourceGroupName;
+                    var psVnet = this.ToPsVirtualNetwork(virtualNetwork);
+                    psVnet.ResourceGroupName = this.ResourceGroupName;
+                    psVnets.Add(psVnet);
                 }
 
-                WriteObject(vnets, true);
+                WriteObject(psVnets, true);
+            }
+            else
+            {
+                var vnetGetResponse = this.VirtualNetworkClient.ListAll();
+
+                var psVnets = new List<PSVirtualNetwork>();
+                foreach (var virtualNetwork in vnetGetResponse.VirtualNetworks)
+                {
+                    var psVnet = this.ToPsVirtualNetwork(virtualNetwork);
+                    psVnet.ResourceGroupName = NetworkBaseClient.GetResourceGroup(virtualNetwork.Id);
+                    psVnets.Add(psVnet);
+                }
+
+                WriteObject(psVnets, true);
             }
         }
     }
