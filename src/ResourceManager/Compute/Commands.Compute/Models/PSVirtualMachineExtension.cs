@@ -62,13 +62,13 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Name = ext.Name,
                 Location = ext.Location,
                 Etag = null, // TODO: Update CRP library for this field
-                Publisher = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.Publisher,
-                Type = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.Type,
-                TypeHandlerVersion = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.TypeHandlerVersion,
+                Publisher = ext.Publisher,
+                Type = ext.Type,
+                TypeHandlerVersion = ext.TypeHandlerVersion,
                 Id = ext.Id,
-                Properties = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.ProtectedSettings,
-                ProvisioningState = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.ProvisioningState,
-                Statuses = ext.VirtualMachineExtensionProperties == null || ext.VirtualMachineExtensionProperties.InstanceView == null ? null : ext.VirtualMachineExtensionProperties.InstanceView.Statuses
+                Properties = ext.ProtectedSettings,
+                ProvisioningState = ext.ProvisioningState,
+                Statuses = ext.InstanceView == null ? null : ext.InstanceView.Statuses
             };
 
             return result;

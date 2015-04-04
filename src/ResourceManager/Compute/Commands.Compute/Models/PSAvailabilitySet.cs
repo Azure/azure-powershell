@@ -59,10 +59,10 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Etag = null, // TODO: Update CRP library for this field
                 Id = avSet.Id,
                 Location = avSet.Location,
-                Statuses = avSet.Properties.Statuses,
-                PlatformFaultDomainCount = avSet.Properties == null ? null : avSet.Properties.PlatformFaultDomainCount,
-                PlatformUpdateDomainCount = avSet.Properties == null ? null : avSet.Properties.PlatformUpdateDomainCount,
-                VirtualMachines = avSet.Properties == null ? null : avSet.Properties.VirtualMachinesReferences
+                Statuses = avSet.Statuses,
+                PlatformFaultDomainCount = avSet.PlatformFaultDomainCount,
+                PlatformUpdateDomainCount = avSet.PlatformUpdateDomainCount,
+                VirtualMachines = avSet.VirtualMachinesReferences
             };
 
             return result;

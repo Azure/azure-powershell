@@ -64,27 +64,20 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            VirtualMachineProperties vmProps = new VirtualMachineProperties
+            var parameters = new VirtualMachine
             {
                 HardwareProfile = this.VM.HardwareProfile,
                 StorageProfile = this.VM.StorageProfile,
                 NetworkProfile = this.VM.NetworkProfile,
                 OSProfile = this.VM.OSProfile,
-                AvailabilitySetReference = string.IsNullOrEmpty(this.VM.AvailabilitySetId) ? null
-                                         : new AvailabilitySetReference
-                                           {
-                                               ReferenceUri = this.VM.AvailabilitySetId
-                                           }
-            };
-
-            var parameters = new VirtualMachineCreateOrUpdateParameters
-            {
-                VirtualMachine = new VirtualMachine
-                {
-                    VirtualMachineProperties = vmProps,
-                    Location = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
-                    Name = !string.IsNullOrEmpty(this.Name) ? this.Name : this.VM.Name
-                }
+                AvailabilitySetReference = string.IsNullOrEmpty(this.VM.AvailabilitySetId)
+                                            ? null
+                                            : new AvailabilitySetReference
+                                            {
+                                                ReferenceUri = this.VM.AvailabilitySetId
+                                            },
+                Location = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
+                Name = !string.IsNullOrEmpty(this.Name) ? this.Name : this.VM.Name
             };
 
             var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);

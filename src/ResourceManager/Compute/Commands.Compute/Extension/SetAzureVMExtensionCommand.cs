@@ -131,22 +131,16 @@ namespace Microsoft.Azure.Commands.Compute
                 this.ProtectedSettingString = new JsonSettingBuilder(this.ProtectedSettings).ToString();
             }
 
-            var parameters = new VirtualMachineExtensionCreateOrUpdateParameters
+            var parameters = new VirtualMachineExtension
             {
-                VirtualMachineExtension = new VirtualMachineExtension
-                {
-                    Location = this.Location,
-                    Name = this.Name,
-                    Type = VirtualMachineExtensionType,
-                    VirtualMachineExtensionProperties = new VirtualMachineExtensionProperties
-                    {
-                        Publisher = this.Publisher,
-                        Type = this.Type,
-                        TypeHandlerVersion = this.TypeHandlerVersion,
-                        Settings = this.SettingString,
-                        ProtectedSettings = this.ProtectedSettingString
-                    }
-                }
+                Location = this.Location,
+                Name = this.Name,
+                Type = VirtualMachineExtensionType,
+                Publisher = this.Publisher,
+                ExtensionType = this.Type,
+                TypeHandlerVersion = this.TypeHandlerVersion,
+                Settings = this.SettingString,
+                ProtectedSettings = this.ProtectedSettingString,
             };
 
             var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
