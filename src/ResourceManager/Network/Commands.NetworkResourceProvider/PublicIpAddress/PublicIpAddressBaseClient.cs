@@ -73,6 +73,10 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             
             psPublicIpAddress.Tag = TagsConversionHelper.CreateTagHashtable(publicIp.Tags);
 
+            if (string.IsNullOrEmpty(psPublicIpAddress.IpAddress))
+            {
+                psPublicIpAddress.IpAddress = "Not Assigned";
+            }
             return psPublicIpAddress;
         }
     }

@@ -51,19 +51,36 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 
                 WriteObject(networkInterface);
             }
-            else
+            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
                 var getNetworkInterfaceResponse = this.NetworkInterfaceClient.List(this.ResourceGroupName);
 
-                var networkInterfaces = Mapper.Map<List<PSNetworkInterface>>(getNetworkInterfaceResponse.NetworkInterfaces);
+                var psNetworkInterfaces = new List<PSNetworkInterface>();
 
-                // populate the networkInterfaces with the ResourceGroupName
-                foreach (var networkInterface in networkInterfaces)
+                foreach (var nic in getNetworkInterfaceResponse.NetworkInterfaces)
                 {
-                    networkInterface.ResourceGroupName = this.ResourceGroupName;
+                    var psNic = this.ToPsNetworkInterface(nic);
+                    psNic.ResourceGroupName = this.ResourceGroupName;
+                    psNetworkInterfaces.Add(psNic);
                 }
 
-                WriteObject(networkInterfaces, true);
+                WriteObject(psNetworkInterfaces, true);
+            }
+
+            else
+            {
+                var getNetworkInterfaceResponse = this.NetworkInterfaceClient.ListAll();
+
+                var psNetworkInterfaces = new List<PSNetworkInterface>();
+
+                foreach (var nic in getNetworkInterfaceResponse.NetworkInterfaces)
+                {
+                    var psNic = this.ToPsNetworkInterface(nic);
+                    psNic.ResourceGroupName = NetworkBaseClient.GetResourceGroup(psNic.Id);
+                    psNetworkInterfaces.Add(psNic);
+                }
+
+                WriteObject(psNetworkInterfaces, true);
             }
         }
     }

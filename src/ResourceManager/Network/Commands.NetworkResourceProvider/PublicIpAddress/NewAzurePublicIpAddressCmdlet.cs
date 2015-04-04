@@ -124,6 +124,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var publicIpModel = Mapper.Map<MNM.PublicIpAddress>(publicIp);
 
+            publicIpModel.Type = Resources.PublicIpAddressType;
             publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.PublicIpAddressClient.CreateOrUpdate(this.ResourceGroupName, this.Name, publicIpModel);

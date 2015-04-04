@@ -24,6 +24,8 @@ using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
+    using Microsoft.Azure.Management.Network.Models;
+
     public abstract class VirtualNetworkBaseClient : NetworkBaseClient
     {
         public IVirtualNetworkOperations VirtualNetworkClient
@@ -65,6 +67,15 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 TagsConversionHelper.CreateTagHashtable(getNetworkInterfaceResponse.VirtualNetwork.Tags);
 
             return virtualNetwork;
+        }
+
+        public PSVirtualNetwork ToPsVirtualNetwork(VirtualNetwork vnet)
+        {
+            var psVnet = Mapper.Map<PSVirtualNetwork>(vnet);
+
+            psVnet.Tag = TagsConversionHelper.CreateTagHashtable(vnet.Tags);
+
+            return psVnet;
         }
     }
 }

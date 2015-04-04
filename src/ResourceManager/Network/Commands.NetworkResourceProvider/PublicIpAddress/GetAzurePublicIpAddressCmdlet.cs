@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 foreach (var publicIp in getPublicIpResponse.PublicIpAddresses)
                 {
                     var psPublicIp = this.ToPsPublicIpAddress(publicIp);
-                    psPublicIp.ResourceGroupName = GetResourceGroup(publicIp.Id);
+                    psPublicIp.ResourceGroupName = NetworkBaseClient.GetResourceGroup(publicIp.Id);
                     psPublicIps.Add(psPublicIp);
                 }
 

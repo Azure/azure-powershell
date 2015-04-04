@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             networkInterface.IpConfigurations.Add(nicIpConfiguration);
 
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
-
+            networkInterfaceModel.Type = Resources.NetworkInterfaceType;
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);

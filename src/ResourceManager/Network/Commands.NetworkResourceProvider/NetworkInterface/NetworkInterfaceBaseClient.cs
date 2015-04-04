@@ -23,6 +23,8 @@ using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
+    using Microsoft.Azure.Management.Network.Models;
+
     public abstract class NetworkInterfaceBaseClient : NetworkBaseClient
     {
         public INetworkInterfaceOperations NetworkInterfaceClient
@@ -68,6 +70,15 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
 
             return networkInterface;
+        }
+
+        public PSNetworkInterface ToPsNetworkInterface(NetworkInterface nic)
+        {
+            var psNic = Mapper.Map<PSNetworkInterface>(nic);
+
+            psNic.Tag = TagsConversionHelper.CreateTagHashtable(nic.Tags);
+
+            return psNic;
         }
     }
 }

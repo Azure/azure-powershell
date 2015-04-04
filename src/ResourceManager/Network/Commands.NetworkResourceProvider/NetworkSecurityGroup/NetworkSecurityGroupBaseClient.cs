@@ -24,6 +24,8 @@ using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
+    using Microsoft.Azure.Management.Network.Models;
+
     public abstract class NetworkSecurityGroupBaseClient : NetworkBaseClient
     {
         public INetworkSecurityGroupOperations NetworkSecurityGroupClient
@@ -65,6 +67,15 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                 TagsConversionHelper.CreateTagHashtable(getNetworkSecurityGroupResponse.NetworkSecurityGroup.Tags);
 
             return networkSecurityGroup;
+        }
+
+        public PSNetworkSecurityGroup ToPsNetworkSecurityGroup(NetworkSecurityGroup nsg)
+        {
+            var psNsg = Mapper.Map<PSNetworkSecurityGroup>(nsg);
+
+            psNsg.Tag = TagsConversionHelper.CreateTagHashtable(nsg.Tags);
+
+            return psNsg;
         }
     }
 }

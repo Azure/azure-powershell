@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             // Map to the sdk object
             var publicIpModel = Mapper.Map<MNM.PublicIpAddress>(this.PublicIpAddress);
+            publicIpModel.Type = Resources.PublicIpAddressType;
             publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.PublicIpAddress.Tag, validate: true);
 
             this.PublicIpAddressClient.CreateOrUpdate(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name, publicIpModel);

@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             // Map to the sdk object
             var nsgModel = Mapper.Map<MNM.NetworkSecurityGroup>(nsg);
+            nsgModel.Type = Resources.NetworkSecurityGroupType;
             nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

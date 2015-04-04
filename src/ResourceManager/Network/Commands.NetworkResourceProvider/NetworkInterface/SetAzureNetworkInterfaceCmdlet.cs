@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             
             // Map to the sdk object
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(this.NetworkInterface);
+            networkInterfaceModel.Type = Resources.NetworkInterfaceType;
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkInterface.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name, networkInterfaceModel);

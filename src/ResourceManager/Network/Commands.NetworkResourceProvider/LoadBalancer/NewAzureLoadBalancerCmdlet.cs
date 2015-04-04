@@ -150,6 +150,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             // Map to the sdk object
             var lbModel = Mapper.Map<MNM.LoadBalancer>(loadBalancer);
+            lbModel.Type = Resources.LoadBalancerType;
             lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call
