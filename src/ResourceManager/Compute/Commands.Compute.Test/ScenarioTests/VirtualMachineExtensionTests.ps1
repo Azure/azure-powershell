@@ -34,14 +34,14 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
-        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DnsServer "10.1.1.1";
+        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
         $vnet = New-AzureVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
         $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-        $subnetId = $vnet.Properties.Subnets[0].Id;
+        $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzurePublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
         $pubip = Get-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic  -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = New-AzureNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
         $nic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
@@ -83,7 +83,7 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
 
-        # OS
+        # OS & Image
         $user = "Foo12";
         $password = 'BaR@123' + $rgname;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
@@ -117,7 +117,7 @@ function Test-VirtualMachineExtension
         $settingstr = '{"fileUris":[],"commandToExecute":""}';
         $protectedsettingstr = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
         Set-AzureVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr;
-        
+
         # Get VM Extension
         $ext = Get-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
@@ -127,7 +127,7 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-NotNull $ext.ProvisioningState;
-        
+
         $ext = Get-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
@@ -137,7 +137,7 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-NotNull $ext.ProvisioningState;
         Assert-NotNull $ext.Statuses;
-        
+
         # Set extension settings by hash table
         $settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
         $protectedsettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
@@ -152,7 +152,7 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-NotNull $ext.ProvisioningState;
-        
+
         $ext = Get-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
