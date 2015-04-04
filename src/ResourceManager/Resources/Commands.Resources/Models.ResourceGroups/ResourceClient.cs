@@ -168,12 +168,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return template;
         }
 
-        private ResourceGroup CreateOrUpdateResourceGroup(string name, string location, Hashtable[] tags)
+        private ResourceGroupExtended CreateOrUpdateResourceGroup(string name, string location, Hashtable[] tags)
         {
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
             var result = ResourceManagementClient.ResourceGroups.CreateOrUpdate(name,
-                new BasicResourceGroup
+                new ResourceGroup
                 {
                     Location = location,
                     Tags = tagDictionary
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
         }
 
-        private Deployment ProvisionDeploymentStatus(string resourceGroup, string deploymentName, BasicDeployment deployment)
+        private DeploymentExtended ProvisionDeploymentStatus(string resourceGroup, string deploymentName, Deployment deployment)
         {
             operations = new List<DeploymentOperation>();
 
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 ProvisioningState.Failed);
         }
 
-        private void WriteDeploymentProgress(string resourceGroup, string deploymentName, BasicDeployment deployment)
+        private void WriteDeploymentProgress(string resourceGroup, string deploymentName, Deployment deployment)
         {
             const string normalStatusFormat = "Resource {0} '{1}' provisioning status is {2}";
             const string failureStatusFormat = "Resource {0} '{1}' failed with message '{2}'";
@@ -278,14 +278,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
         }
 
-        private Deployment WaitDeploymentStatus(
+        private DeploymentExtended WaitDeploymentStatus(
             string resourceGroup,
             string deploymentName,
-            BasicDeployment basicDeployment,
-            Action<string, string, BasicDeployment> job,
+            Deployment basicDeployment,
+            Action<string, string, Deployment> job,
             params string[] status)
         {
-            Deployment deployment;
+            DeploymentExtended deployment;
 
             do
             {
@@ -317,19 +317,21 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return newOperations;
         }
 
-        private BasicDeployment CreateBasicDeployment(ValidatePSResourceGroupDeploymentParameters parameters)
+        private Deployment CreateBasicDeployment(ValidatePSResourceGroupDeploymentParameters parameters)
         {
-            BasicDeployment deployment = new BasicDeployment
+            Deployment deployment = new Deployment
             {
-                Mode = DeploymentMode.Incremental,
-                Template = GetTemplate(parameters.TemplateFile, parameters.GalleryTemplateIdentity),
-                Parameters = GetDeploymentParameters(parameters.TemplateParameterObject)
+                Properties = new DeploymentProperties {
+                    Mode = DeploymentMode.Incremental,
+                    Template = GetTemplate(parameters.TemplateFile, parameters.GalleryTemplateIdentity),
+                    Parameters = GetDeploymentParameters(parameters.TemplateParameterObject)
+                }
             };
 
             return deployment;
         }
 
-        private TemplateValidationInfo CheckBasicDeploymentErrors(string resourceGroup, string deploymentName, BasicDeployment deployment)
+        private TemplateValidationInfo CheckBasicDeploymentErrors(string resourceGroup, string deploymentName, Deployment deployment)
         {
             DeploymentValidateResponse validationResult = ResourceManagementClient.Deployments.Validate(
                 resourceGroup,
