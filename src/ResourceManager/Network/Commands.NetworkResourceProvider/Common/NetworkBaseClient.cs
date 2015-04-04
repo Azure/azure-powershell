@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -43,6 +44,16 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
             NetworkResourceManagerProfile.Initialize();
+        }
+
+        public static string GetResourceGroup(string resourceId)
+        {
+            const string resourceGroup = "resourceGroups";
+
+            var startIndex = resourceId.IndexOf(resourceGroup, StringComparison.OrdinalIgnoreCase) + resourceGroup.Length + 1;
+            var endIndex = resourceId.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
+
+            return resourceId.Substring(startIndex, endIndex - startIndex);
         }
     }
 }

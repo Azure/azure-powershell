@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
 
-            var backendAddressPool = this.LoadBalancer.Properties.BackendAddressPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var backendAddressPool = this.LoadBalancer.BackendAddressPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (backendAddressPool != null)
             {
-                this.LoadBalancer.Properties.BackendAddressPools.Remove(backendAddressPool);
+                this.LoadBalancer.BackendAddressPools.Remove(backendAddressPool);
             }
 
             WriteObject(this.LoadBalancer);

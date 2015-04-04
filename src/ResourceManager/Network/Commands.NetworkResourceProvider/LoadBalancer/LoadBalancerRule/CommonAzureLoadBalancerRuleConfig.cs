@@ -85,6 +85,16 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The distribution type of the load balancer.")]
+        [ValidateSet(
+            "Default",
+            "SourceIP", 
+            "SourceIPProtocol",
+            IgnoreCase = true)]
+        public string LoadDistribution { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "EnableFloatingIP")]
         public SwitchParameter EnableFloatingIP { get; set; }
 

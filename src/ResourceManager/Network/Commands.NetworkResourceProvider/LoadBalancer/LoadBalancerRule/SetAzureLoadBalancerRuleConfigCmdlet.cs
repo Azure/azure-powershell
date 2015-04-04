@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
 
-            var loadBalancingRule = this.LoadBalancer.Properties.LoadBalancingRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var loadBalancingRule = this.LoadBalancer.LoadBalancingRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (loadBalancingRule == null)
             {
@@ -48,27 +48,31 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
 
             loadBalancingRule.Name = this.Name;
-            loadBalancingRule.Properties = new PSLoadBalancingRuleProperties();
-            loadBalancingRule.Properties.Protocol = this.Protocol;
-            loadBalancingRule.Properties.FrontendPort = this.FrontendPort;
-            loadBalancingRule.Properties.BackendPort = this.BackendPort;
+            loadBalancingRule.Protocol = this.Protocol;
+            loadBalancingRule.FrontendPort = this.FrontendPort;
+            loadBalancingRule.BackendPort = this.BackendPort;
             if (this.IdleTimeoutInMinutes > 0)
             {
-                loadBalancingRule.Properties.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
+                loadBalancingRule.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
-            loadBalancingRule.Properties.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
-            loadBalancingRule.Properties.BackendAddressPool = new PSResourceId();
-            loadBalancingRule.Properties.BackendAddressPool.Id = this.BackendAddressPoolId;
-            loadBalancingRule.Properties.Probe = new PSResourceId();
-            loadBalancingRule.Properties.Probe.Id = this.ProbeId;
+            if (!string.IsNullOrEmpty(this.LoadDistribution))
+            {
+                loadBalancingRule.LoadDistribution = this.LoadDistribution;
+            }
 
-            loadBalancingRule.Properties.FrontendIPConfigurations = new List<PSResourceId>();
+            loadBalancingRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
+            loadBalancingRule.BackendAddressPool = new PSResourceId();
+            loadBalancingRule.BackendAddressPool.Id = this.BackendAddressPoolId;
+            loadBalancingRule.Probe = new PSResourceId();
+            loadBalancingRule.Probe.Id = this.ProbeId;
+
+            loadBalancingRule.FrontendIPConfigurations = new List<PSResourceId>();
 
             foreach (var frontendIPConfigurationId in this.FrontendIPConfigurationId)
             {
                 var resourceId = new PSResourceId();
                 resourceId.Id = frontendIPConfigurationId;
-                loadBalancingRule.Properties.FrontendIPConfigurations.Add(resourceId);
+                loadBalancingRule.FrontendIPConfigurations.Add(resourceId);
             }
 
             WriteObject(this.LoadBalancer);

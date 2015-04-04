@@ -13,14 +13,28 @@
 // limitations under the License.
 //
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
-    public class PSBackendAddressPoolProperties : PSResourceProperties
+    public class PSSecurityRule : PSChildResource
     {
-        public List<PSResourceId> BackendIpConfigurations { get; set; }
+        public string Description { get; set; }
 
-        public List<PSResourceId> LoadBalancingRules { get; set; }
+        public string Protocol { get; set; }
+
+        public string SourcePortRange { get; set; }
+
+        public string DestinationPortRange { get; set; }
+
+        public string SourceAddressPrefix { get; set; }
+
+        public string DestinationAddressPrefix { get; set; }
+
+        public string Access { get; set; }
+
+        public int Priority { get; set; }
+
+        public string Direction { get; set; }
+
+        public string ProvisioningState { get; set; }
     }
 }

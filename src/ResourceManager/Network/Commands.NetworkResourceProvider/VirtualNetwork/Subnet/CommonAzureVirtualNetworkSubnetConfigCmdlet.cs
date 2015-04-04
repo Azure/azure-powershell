@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
@@ -27,14 +28,23 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The address prefix of the subnet")]
         [ValidateNotNullOrEmpty]
         public string AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of Dns Servers")]
-        public List<string> DnsServer { get; set; }
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "NetworkSecurityGroupId")]
+        public string NetworkSecurityGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "NetworkSecurityGroup")]
+        public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
     }
 }

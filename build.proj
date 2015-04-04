@@ -196,12 +196,11 @@
   <!-- Note: all testing related target should go to 'AzurePowershell.test.targets' file except the one used by CI run -->
   <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.test.targets"/>
   
-  <!-- Run checkin tests for each pull request -->
+   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BuildDebug;BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
     <CallTarget Targets="InvokeXUnit"/>
-  </Target>
-  
+  </Target>  
   <!-- Run Full switch with scenario tests -->
   <Target
     Name="FullWithScenarioTests"
