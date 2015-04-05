@@ -808,6 +808,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to continue Rollback.
+        /// </summary>
+        internal static string MigrationRollbackConfirmation {
+            get {
+                return ResourceManager.GetString("MigrationRollbackConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you have made a clone of any of the volume container(s) which is being rollback to a remote device, please ensure you have taken a cloudsnap shot. .
+        /// </summary>
+        internal static string MigrationRollbackRemoteCloneWarning {
+            get {
+                return ResourceManager.GetString("MigrationRollbackRemoteCloneWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error parsing Xml Schema. Schema Input : {0}. .
         /// </summary>
         internal static string MigrationSchemaParsingError {

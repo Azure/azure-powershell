@@ -646,4 +646,10 @@ a special character</value>
   <data name="MigrationConfigDecryptionFailed" xml:space="preserve">
     <value>Unable to decrypt the config file.</value>
   </data>
+  <data name="MigrationRollbackRemoteCloneWarning" xml:space="preserve">
+    <value>If you have made a clone of any of the volume container(s) which is being rollback to a remote device, please ensure you have taken a cloudsnap shot. </value>
+  </data>
+  <data name="MigrationRollbackConfirmation" xml:space="preserve">
+    <value>Do you want to continue Rollback</value>
+  </data>
 </root>

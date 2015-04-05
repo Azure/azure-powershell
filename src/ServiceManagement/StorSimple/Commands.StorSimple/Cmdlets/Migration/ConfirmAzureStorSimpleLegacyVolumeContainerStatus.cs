@@ -23,7 +23,7 @@ using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    [Cmdlet(VerbsLifecycle.Confirm, "AzureStorSimpleLegacyVolumeContainerStatus")]
+    [Cmdlet(VerbsLifecycle.Confirm, "AzureStorSimpleLegacyVolumeContainerStatus", SupportsShouldProcess=true, ConfirmImpact = ConfirmImpact.Medium)]
     public class ConfirmAzureStorSimpleLegacyVolumeContainerStatus : StorSimpleCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigId)]
@@ -44,8 +44,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 MigrationConfirmStatusRequest request = new MigrationConfirmStatusRequest();
                 request.Operation = (MigrationOperation)Enum.Parse(typeof(MigrationOperation), MigrationOperation, true);
                 request.DataContainerNameList = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
-                MigrationJobStatus status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, request);
+                if (Microsoft.WindowsAzure.Management.StorSimple.Models.MigrationOperation.Rollback == request.Operation)
+                {
+                    if (!ShouldContinue(Resources.MigrationRollbackRemoteCloneWarning, Resources.MigrationRollbackConfirmation))
+                    {
+                        return;
+                    }
+                }
 
+                MigrationJobStatus status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, request);
                 WriteObject(this.GetResultMessage(status));
             }
             catch(Exception except)
