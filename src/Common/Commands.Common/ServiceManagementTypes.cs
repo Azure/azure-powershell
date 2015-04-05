@@ -292,6 +292,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         [DataMember(Order = 3, EmitDefaultValue = false)]
         public string Name { get; set; }
 
+        [DataMember(Order = 4, EmitDefaultValue = false)]
+        public string ReservedIPName { get; set; }
+
         public ExtensionDataObject ExtensionData { get; set; }
 
         #region Implements Equals
