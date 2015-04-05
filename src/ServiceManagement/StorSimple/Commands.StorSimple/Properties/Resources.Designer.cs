@@ -817,7 +817,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you have made a clone of any of the volume container(s) which is being rollback to a remote device, please ensure you have taken a cloudsnap shot. .
+        ///   Looks up a localized string similar to If you have made a clone to a remote device, of any of the volume container(s) which is being rolledback , please ensure you have taken a cloudsnap shot. .
         /// </summary>
         internal static string MigrationRollbackRemoteCloneWarning {
             get {

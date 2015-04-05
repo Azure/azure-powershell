@@ -46,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 request.DataContainerNameList = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
                 if (Microsoft.WindowsAzure.Management.StorSimple.Models.MigrationOperation.Rollback == request.Operation)
                 {
-                    if (!ShouldContinue(Resources.MigrationRollbackRemoteCloneWarning, Resources.MigrationRollbackConfirmation))
+                    if (!ShouldContinue(Resources.MigrationRollbackConfirmation, Resources.MigrationRollbackRemoteCloneWarning))
                     {
                         return;
                     }
