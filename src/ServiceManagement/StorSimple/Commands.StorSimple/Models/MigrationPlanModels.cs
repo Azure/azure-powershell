@@ -167,7 +167,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             consoleOp.AppendLine("AssumedBandwidthInMbps : " + AssumedBandwidthInMbps);
             consoleOp.AppendLine("VolumeContainerName : " + VolumeContainerName);
             consoleOp.AppendLine("EstimatedTimeInMinutes : " + EstimatedTimeInMinutes);
-            consoleOp.AppendLine("EstimatedTimeInMinutesForLargestBackup : " + EstimatedTimeInMinutesForLargestBackup);
+            consoleOp.AppendLine("EstimatedTimeInMinutesForLatestBackup : " + EstimatedTimeInMinutesForLargestBackup);
             consoleOp.AppendLine("PlanMessageInfo : " + PlanMessageInfo);
             return consoleOp.ToString();
         }

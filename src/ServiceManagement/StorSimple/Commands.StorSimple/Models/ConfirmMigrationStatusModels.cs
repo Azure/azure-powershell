@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
     public class ConfirmMigrationStatusMsg
     {
         public string LegacyConfigId { get; set;}
-        public ConfirmMigrationStatus NotReadyForCommitRollback { get; set; }
+        public ConfirmMigrationStatus CommitRollbackNotStarted { get; set; }
         public ConfirmMigrationStatus CommitInProgress  {get;set;}
         public ConfirmMigrationStatus CommitComplete  {get;set;}
         public ConfirmMigrationStatus CommitFailed  {get;set;}
@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         public ConfirmMigrationStatusMsg(string configID, ConfirmStatus overallStatus)
         {
             this.LegacyConfigId = configID;
-            this.NotReadyForCommitRollback = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.NotReadyForCommitRollback, overallStatus);
+            this.CommitRollbackNotStarted = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.CommitRollbackNotStarted, overallStatus);
 
             this.CommitInProgress = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.CommitInProgress, overallStatus);
             this.CommitFailed = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.CommitFailed, overallStatus);
@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         public override string ToString()
         {
             StringBuilder consoleop = new StringBuilder();
-            if ((null != this.NotReadyForCommitRollback.ConfirmStatus && 0 < this.NotReadyForCommitRollback.ConfirmStatus.Count) ||
+            if ((null != this.CommitRollbackNotStarted.ConfirmStatus && 0 < this.CommitRollbackNotStarted.ConfirmStatus.Count) ||
                 (null != this.CommitInProgress.ConfirmStatus && 0 < this.CommitInProgress.ConfirmStatus.Count) ||
                 (null != this.CommitComplete.ConfirmStatus && 0 < this.CommitComplete.ConfirmStatus.Count) ||
                 (null != this.CommitFailed.ConfirmStatus && 0 < this.CommitFailed.ConfirmStatus.Count) ||
@@ -71,10 +71,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
                 (null != this.RollbackComplete.ConfirmStatus && 0 < this.RollbackComplete.ConfirmStatus.Count) ||
                 (null != this.RollbackFailed.ConfirmStatus && 0 < this.RollbackFailed.ConfirmStatus.Count))
             {
-                if (null != this.NotReadyForCommitRollback.ConfirmStatus && 0 < this.NotReadyForCommitRollback.ConfirmStatus.Count)
+                if (null != this.CommitRollbackNotStarted.ConfirmStatus && 0 < this.CommitRollbackNotStarted.ConfirmStatus.Count)
                 {
                     consoleop.AppendLine("MigrationNotStarted:");
-                    consoleop.AppendLine(this.NotReadyForCommitRollback.ToString());
+                    consoleop.AppendLine(this.CommitRollbackNotStarted.ToString());
                 }
                 if (null != this.CommitInProgress.ConfirmStatus && 0 < this.CommitInProgress.ConfirmStatus.Count)
                 {
@@ -144,7 +144,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
 
         public enum MigrationDataContainerConfirmPortalStatus
         {
-            NotReadyForCommitRollback,
+            CommitRollbackNotStarted,
             CommitInProgress,
             CommitComplete,
             CommitFailed,
@@ -161,7 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
                 case MigrationDataContainerConfirmStatus.MigrationInProgress:
                 case MigrationDataContainerConfirmStatus.MigrationComplete:
                 case MigrationDataContainerConfirmStatus.MigrationFailed:
-                    return MigrationDataContainerConfirmPortalStatus.NotReadyForCommitRollback;
+                    return MigrationDataContainerConfirmPortalStatus.CommitRollbackNotStarted;
                 case MigrationDataContainerConfirmStatus.CommitInProgress:
                     return MigrationDataContainerConfirmPortalStatus.CommitInProgress;
                 case MigrationDataContainerConfirmStatus.CommitComplete:
@@ -190,7 +190,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
                     consoleop.AppendLine(string.Format("VolumeContainer : {0}", status.ContainerName));
                     consoleop.AppendLine(string.Format("Operation : {0}", status.Operation));
                     consoleop.AppendLine(string.Format("PercentageCompleted : {0}", status.PercentageComplete));
-                    consoleop.AppendLine(string.Format("Status : {0}", status.Status));
                     if (null != status.StatusMessage && 0 < status.StatusMessage.Count)
                     {
                         consoleop.AppendLine("Messages :");
