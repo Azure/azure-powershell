@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public string ElasticPoolName { get; set; }
 
         /// <summary>
+        /// Gets or sets the location for the resource pool.  Must be the same as server location
+        /// </summary>
+        public string Location { get; set; }
+
+        /// <summary>
         /// Gets or sets the creation date of the elastic pool
         /// </summary>
         public DateTime CreationDate { get; set; }

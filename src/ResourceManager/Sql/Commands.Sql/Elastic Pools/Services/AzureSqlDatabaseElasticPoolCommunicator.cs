@@ -60,11 +60,27 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database
+        /// Gets the Azure Sql Database Elastic Pool
         /// </summary>
         public Management.Sql.Models.ElasticPool Get(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ElasticPools.Get(resourceGroupName, serverName, elasticPoolName).ElasticPool;
+        }
+
+        /// <summary>
+        /// Gets the Azure Sql Database in the Elastic Pool
+        /// </summary>
+        public Management.Sql.Models.Database GetDatabase(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).ElasticPools.GetDatabases(resourceGroupName, serverName, elasticPoolName, databaseName).Database;
+        }
+
+        /// <summary>
+        /// Lists the Azure Sql Database in the Elastic Pool
+        /// </summary>
+        public IList<Management.Sql.Models.Database> ListDatabases(string resourceGroupName, string serverName, string elasticPoolName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).ElasticPools.ListDatabases(resourceGroupName, serverName, elasticPoolName).Databases;
         }
 
         /// <summary>

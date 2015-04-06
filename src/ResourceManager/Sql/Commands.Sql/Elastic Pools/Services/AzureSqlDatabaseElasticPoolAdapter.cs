@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -111,6 +112,37 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         public void RemoveElasticPool(string resourceGroupName, string serverName, string databaseName)
         {
             Communicator.Remove(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+        }
+
+        /// <summary>
+        /// Gets a database in an elastic pool
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="poolName">The name of the Azure Sql Database ElasticPool</param>
+        /// <param name="databaseName">The name of the database</param>
+        /// <returns></returns>
+        public AzureSqlDatabaseModel GetElasticPoolDatabase(string resourceGroupName, string serverName, string poolName, string databaseName)
+        {
+            var resp = Communicator.GetDatabase(resourceGroupName, serverName, poolName, databaseName, Util.GenerateTracingId());
+            return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp);
+        }
+
+        /// <summary>
+        /// Gets a list of Azure Sql Databases in an ElasticPool.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="poolName">The name of the elastic pool the database are in</param>
+        /// <returns>A list of database objects</returns>
+        internal ICollection<AzureSqlDatabaseModel> ListElasticPoolDatabases(string resourceGroupName, string serverName, string poolName)
+        {
+            var resp = Communicator.ListDatabases(resourceGroupName, serverName, poolName, Util.GenerateTracingId());
+
+            return resp.Select((db) =>
+            {
+                return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroupName, serverName, db);
+            }).ToList();
         }
 
         /// <summary>

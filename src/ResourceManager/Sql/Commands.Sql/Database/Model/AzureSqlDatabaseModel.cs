@@ -38,6 +38,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public string DatabaseName { get; set; }
 
         /// <summary>
+        /// Gets or sets the location of the database
+        /// </summary>
+        public string Location { get; set; }
+
+        /// <summary>
         /// Gets or sets the unique ID of the database
         /// </summary>
         public Guid DatabaseId { get; set; }
@@ -91,6 +96,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// Gets or sets the requested service objective name
         /// </summary>
         public string RequestedServiceObjectiveName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the Elastic Pool the database is in
+        /// </summary>
+        public string ElasticPoolName { get; set; }
 
         /// <summary>
         /// Gets or sets the earliest restore date

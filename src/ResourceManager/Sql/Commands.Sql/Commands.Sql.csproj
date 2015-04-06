@@ -63,6 +63,7 @@
     <Compile Include="Database\Services\AzureSqlDatabaseCommunicator.cs" />
     <Compile Include="Database\Services\AzureSqlDatabaseAdapter.cs" />
     <Compile Include="Elastic Pools\Cmdlet\AzureSqlDatabaseElasticPoolCmdletBase.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlDatabaseElasticPoolDatabase.cs" />
     <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlDatabaseElasticPool.cs" />
     <Compile Include="Elastic Pools\Cmdlet\NewAzureSqlDatabaseElasticPool.cs" />
     <Compile Include="Elastic Pools\Cmdlet\RemoveAzureSqlDatabaseElasticPool.cs" />

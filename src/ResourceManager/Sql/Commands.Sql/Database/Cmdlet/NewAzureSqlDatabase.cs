@@ -83,12 +83,30 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string RequestedServiceObjectiveName { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the Elastic Pool to put the database in
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the Elastic Pool to put the database in.")]
+        [ValidateNotNullOrEmpty]
+        public string ElasticPoolName { get; set; }
+
+        /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags to associate with the Azure Sql Database Server")]
         public Dictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the location for the Azure SQL Database.  Must be the same as server location
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The location for the Azure SQL Database.  Must be the same as server location")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -129,6 +147,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             List<Model.AzureSqlDatabaseModel> newEntity = new List<AzureSqlDatabaseModel>();
             newEntity.Add(new AzureSqlDatabaseModel()
                 {
+                    Location = Location,
                     ResourceGroupName = ResourceGroupName,
                     ServerName = ServerName,
                     CatalogCollation = CatalogCollation,
@@ -138,6 +157,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     MaxSizeBytes = MaxSizeBytes,
                     RequestedServiceObjectiveName = RequestedServiceObjectiveName,
                     Tags = Tags,
+                    ElasticPoolName = ElasticPoolName,
                 });
             return newEntity;
         }

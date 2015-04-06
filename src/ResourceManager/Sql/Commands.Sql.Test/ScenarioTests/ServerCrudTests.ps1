@@ -19,6 +19,7 @@
 function Test-CreateServer
 {
 	# Setup
+	Write-Output (Get-Date) "Starting Test-CreateServer"
 	$rg = Create-ResourceGroupForTest
 	 	
 	$serverName = "sql-ps-test-server-" + [System.Guid]::NewGuid().ToString()
@@ -31,6 +32,7 @@ function Test-CreateServer
 	{
 		# With all parameters
 		$serverName = "sql-ps-test-server-" + [System.Guid]::NewGuid().ToString()
+		Write-Output (Get-Date) "Creating Server: $serverName with server version: $version"
 		$server1 = New-AzureSqlDatabaseServer -ResourceGroupName $resourceGroup.Name -ServerName $serverName -Location $resourceGroup.location -ServerVersion $version -SqlAdminCredentials $credentials
 		Assert-AreEqual $server1.ServerName $serverName
 		Assert-AreEqual $server1.ServerVersion $version
@@ -38,6 +40,7 @@ function Test-CreateServer
 	
 		# Without server version
 		$serverName = "sql-ps-test-server-" + [System.Guid]::NewGuid().ToString()
+		Write-Output (Get-Date) "Creating Server: $serverName without server version"
 		$server2 = New-AzureSqlDatabaseServer -ResourceGroupName $resourceGroup.Name -ServerName $serverName -Location $resourceGroup.location -SqlAdminCredentials $credentials
 		Assert-AreEqual $server2.ServerName $serverName
 		Assert-AreEqual $server2.ServerVersion $version
@@ -46,6 +49,7 @@ function Test-CreateServer
 		# With piping
 		$serverName = "sql-ps-test-server-" + [System.Guid]::NewGuid().ToString()
 		$server1.ServerName = $serverName
+		Write-Output (Get-Date) "Creating Server: $serverName via piping"
 		$server1 | New-AzureSqlDatabaseServer -SqlAdminCredentials $credentials
 	}
 	finally

@@ -80,6 +80,8 @@ function Create-ResourceGroupForTest ()
 	$guid = [System.Guid]::NewGuid().ToString()
 	$location = "Japan East"
 	$rgName = "sql-ps-test-rg-" + $guid
+	
+	Write-Output (Get-Date) ("Creating resource group: $rgName in location: $location")
 	$rg = New-AzureResourceGroup -Name $rgName -Location $location
 
 	return $rg
@@ -92,6 +94,7 @@ function Create-ResourceGroupForTest ()
 	#>
 function Remove-ResourceGroupForTest ($rg)
 {
+	Write-Output (Get-Date) "Deleting resource group: $rg.ResourceGroupName"
 	Remove-AzureResourceGroup -Name $rg.ResourceGroupName -Force
 }
 
@@ -109,7 +112,8 @@ function Create-ServerForTest ($resourceGroup)
 	$serverPassword = "t357ingP@s5w0rd!"
 	$location = "Japan East"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
-
+	
+	Write-Output (Get-Date) ("Creating server: $serverName in location: $location version: $version")
 	$server = New-AzureSqlDatabaseServer -ResourceGroupName  $resourceGroup.Name -ServerName $serverName -Location $location -ServerVersion $version -SqlAdminCredentials $credentials
 	return $server
 }

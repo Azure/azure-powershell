@@ -95,7 +95,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                     Collation = model.CollationName,
                     Edition = model.Edition.ToString(),
                     MaxSizeBytes = model.MaxSizeBytes,
-                    RequestedServiceObjectiveId = model.RequestedServiceObjectiveId
+                    RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
+                    ElasticPoolName = model.ElasticPoolName,
                 }
             });
 
@@ -120,7 +121,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="database">The service response</param>
         /// <returns>The converted model</returns>
-        private AzureSqlDatabaseModel CreateDatabaseModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.Database database)
+        public static AzureSqlDatabaseModel CreateDatabaseModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.Database database)
         {
             AzureSqlDatabaseModel model = new AzureSqlDatabaseModel();
             Guid id = Guid.Empty;
@@ -135,6 +136,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             model.DatabaseName = database.Name;
             model.Status = database.Properties.Status;
             model.Tags = database.Tags as Dictionary<string, string>;
+            model.ElasticPoolName = database.Properties.ElasticPoolName;
+            model.Location = database.Location;
             
             Guid.TryParse(database.Properties.CurrentServiceObjectiveId, out id);
             model.CurrentServiceObjectiveId = id;

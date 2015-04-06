@@ -63,6 +63,23 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string RequestedServiceObjectiveName { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the Elastic Pool to put the database in
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the Elastic Pool to put the database in.")]
+        [ValidateNotNullOrEmpty]
+        public string ElasticPoolName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the location of the database
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Location the database is in")]
+        public string Location { get; set; }
+
+        /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
@@ -98,6 +115,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 MaxSizeBytes = MaxSizeBytes,
                 RequestedServiceObjectiveName = RequestedServiceObjectiveName,
                 Tags = Tags,
+                ElasticPoolName = ElasticPoolName,
+                Location = Location,
             });
             return newEntity;
         }
