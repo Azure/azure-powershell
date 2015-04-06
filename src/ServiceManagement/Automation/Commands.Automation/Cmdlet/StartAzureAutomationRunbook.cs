@@ -57,25 +57,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             Job job = null;
 
-            job = this.AutomationClient.StartRunbook(this.AutomationAccountName, this.Name, this.AddRunOn());
+            job = this.AutomationClient.StartRunbook(this.AutomationAccountName, this.Name, this.Parameters, this.RunOn);
 
             this.WriteObject(job);
-        }
-
-        /// <summary>
-        /// If RunOn is specified, adds the run on machine name to the parameters dictionary.
-        /// </summary>
-        /// <returns>Existing parameters dictionary if no run on specified, else adds MicrosoftApplicationManagementRunOn key/value pair to the dictionary.</returns>
-        private IDictionary AddRunOn()
-        {
-            if (string.IsNullOrWhiteSpace(this.RunOn))
-            {
-                return this.Parameters;
-            }
-
-            var parameters = this.Parameters ?? new Dictionary<string, string>();
-            parameters.Add(Constants.JobRunOnParameterName, this.RunOn);
-            return parameters;
         }
     }
 }

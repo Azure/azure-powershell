@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Exception = job.Properties.Exception;
             this.EndTime = job.Properties.EndTime.HasValue ? job.Properties.EndTime.Value.ToLocalTime() : (DateTimeOffset?) null;
             this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
+            this.RunOn = job.Properties.RunOn;
             this.JobParameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in job.Properties.Parameters) 
             {
@@ -131,5 +132,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the runbook.
         /// </summary>
         public string RunbookName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the RunOn.
+        /// </summary>
+        public string RunOn { get; set; }
     }
 }
