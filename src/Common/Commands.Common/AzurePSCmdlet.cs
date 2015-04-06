@@ -82,7 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <summary>
         /// Create the default profile, based on the default profile path
         /// </summary>
-        /// <returns>The default prpofile, serialized from the default location on disk</returns>
+        /// <returns>The default profile, serialized from the default location on disk</returns>
         protected static AzureProfile InitializeDefaultProfile()
         {
             if (!string.IsNullOrEmpty(AzureSession.ProfileDirectory) && !string.IsNullOrEmpty(AzureSession.ProfileFile))
