@@ -19,6 +19,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization.Formatters;
 using System.Threading;
+using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Common.Authentication;
@@ -455,6 +456,29 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 .Distinct(StringComparer.InvariantCultureIgnoreCase)
                 .Select(resourceId => new ResourceIdentifier(resourceId))
                 .ToArray();
+        }
+
+        /// <summary>
+        /// Get the list of resource provider operations for every provider specified by the identities list
+        /// </summary>
+        public IList<PSResourceProviderOperation> ListPSProviderOperations(IList<ResourceIdentity> identities)
+        {
+            var allProviderOperations = new List<PSResourceProviderOperation>();
+            Task<ResourceProviderOperationDetailListResult> task;
+
+            if(identities != null)
+            {
+                foreach (var identity in identities)
+                {
+                    task = this.ResourceManagementClient.ResourceProviderOperationDetails.ListAsync(identity);
+                    task.Wait();
+
+                    // Add operations for this provider. 
+                    allProviderOperations.AddRange(task.Result.ResourceProviderOperationDetails.Select(op => op.ToPSResourceProviderOperation()));
+                }
+            }
+              
+            return allProviderOperations;
         }
     }
 }
