@@ -863,18 +863,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 this.SetValue("PublicIPs", value);
             }
         }
-        [DataMember(Name = "NetworkSecurityGroup", EmitDefaultValue = false, Order = 7)]
-        public string NetworkSecurityGroup
-        {
-            get
-            {
-                return this.GetValue<string>("NetworkSecurityGroup");
-            }
-            set
-            {
-                this.SetValue("NetworkSecurityGroup", value);
-            }
-        }
 
         [DataMember(Name = "NetworkInterfaces", EmitDefaultValue = false, Order = 7)]
         public AssignNetworkInterfaceCollection NetworkInterfaces
@@ -886,6 +874,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set
             {
                 this.SetValue("NetworkInterfaces", value);
+            }
+        }
+
+        [DataMember(Name = "NetworkSecurityGroup", EmitDefaultValue = false, Order = 8)]
+        public string NetworkSecurityGroup
+        {
+            get
+            {
+                return this.GetValue<string>("NetworkSecurityGroup");
+            }
+            set
+            {
+                this.SetValue("NetworkSecurityGroup", value);
             }
         }
     }
