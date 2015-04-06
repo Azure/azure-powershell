@@ -156,6 +156,7 @@
     <Compile Include="Models\BatchClient.Jobs.cs" />
     <Compile Include="Models\BatchClient.Pools.cs" />
     <Compile Include="Models\BatchClient.Tasks.cs" />
+    <Compile Include="Models\BatchClient.Users.cs" />
     <Compile Include="Models\BatchClient.VMs.cs" />
     <Compile Include="Models\BatchClient.WorkItems.cs" />
     <Compile Include="Models\DownloadTaskFileOptions.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Models\ListWorkItemOptions.cs" />
     <Compile Include="Models\NewPoolParameters.cs" />
     <Compile Include="Models\NewTaskParameters.cs" />
+    <Compile Include="Models\NewUserParameters.cs" />
     <Compile Include="Models\NewWorkItemParameters.cs" />
     <Compile Include="Models\PSAffinityInformation.cs" />
     <Compile Include="Models\PSAsyncEnumerable.cs" />
@@ -217,6 +219,7 @@
     <Compile Include="Models\PSWorkItemStatistics.cs" />
     <Compile Include="Models\RemoveJobParameters.cs" />
     <Compile Include="Models\RemoveTaskParameters.cs" />
+    <Compile Include="Models\RemoveUserParameters.cs" />
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
     <Compile Include="Pools\NewBatchPoolCommand.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommand.cs" />
@@ -229,6 +232,8 @@
     <Compile Include="Tasks\GetBatchTaskCommand.cs" />
     <Compile Include="Tasks\NewBatchTaskCommand.cs" />
     <Compile Include="Tasks\RemoveBatchTaskCommand.cs" />
+    <Compile Include="Users\NewBatchUserCommand.cs" />
+    <Compile Include="Users\RemoveBatchUserCommand.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="VMs\GetBatchVMCommand.cs" />

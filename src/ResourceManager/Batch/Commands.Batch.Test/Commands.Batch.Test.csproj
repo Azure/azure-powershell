@@ -176,6 +176,8 @@
     <Compile Include="Tasks\GetBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\NewBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\RemoveBatchTaskCommandTests.cs" />
+    <Compile Include="Users\NewBatchUserCommandTests.cs" />
+    <Compile Include="Users\RemoveBatchUserCommandTests.cs" />
     <Compile Include="VMs\GetBatchVMCommandTests.cs" />
     <Compile Include="WorkItems\GetBatchWorkItemCommandTests.cs" />
     <Compile Include="WorkItems\NewBatchWorkItemCommandTests.cs" />
@@ -406,6 +408,7 @@
   <ItemGroup>
     <Content Include="about.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
