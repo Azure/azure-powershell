@@ -39,7 +39,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Common.Authentication">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.20-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.19-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -78,12 +78,6 @@
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Common">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Common.NetFramework">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Common.1.4.1\lib\net45\Microsoft.WindowsAzure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
@@ -136,6 +130,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="ScenarioTests\RecoveryServicesTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
