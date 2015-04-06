@@ -151,8 +151,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     {
 						if (response.StatusCode == HttpStatusCode.NotFound)
 						{
-							this.WriteVerbose("The requested commandlet is not available");
-							var notAvailableException = new Exception("The requested commandlet is not available");
+							var notAvailableException = new Exception(Resources.NotFoundWebExceptionMessage);
 							errorRecord = new ErrorRecord(notAvailableException, string.Empty, ErrorCategory.InvalidOperation, null);
 							break;
 						}

@@ -528,6 +528,8 @@ a special character</value>
   </data>
   <data name="SetAzureStorSimpleDeviceNoSettingsProvided" xml:space="preserve">
     <value>No settings were provided for updating device details.</value>
-
+  </data>
+  <data name="NotFoundWebExceptionMessage" xml:space="preserve">
+    <value>One or more inputs passed is wrong or the cmdlet that you are trying to use is not available or the StorSimple Manager service end point does not exist.</value>
   </data>
 </root>
