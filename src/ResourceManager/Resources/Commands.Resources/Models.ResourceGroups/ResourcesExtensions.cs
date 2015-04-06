@@ -121,6 +121,17 @@ namespace Microsoft.Azure.Commands.Resources.Models
             };
         }
 
+        public static PSResourceProviderOperation ToPSResourceProviderOperation(this ResourceProviderOperationDefinition resourceProviderOperationDefinition)
+        {
+            return new PSResourceProviderOperation
+            {
+                OperationName = resourceProviderOperationDefinition.Name,
+                Description = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Description,
+                Provider = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Provider,
+                Resource = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Resource  
+            };
+        }
+
         public static PSResourceProviderLocationInfo ToPSResourceProviderLocationInfo(this ProviderResourceType resourceType, string providerNamespace)
         {
             PSResourceProviderLocationInfo result = new PSResourceProviderLocationInfo();

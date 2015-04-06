@@ -70,7 +70,6 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -132,6 +131,7 @@
     <Compile Include="ActiveDirectory\NewAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceProviderOperation.cs" />
     <Compile Include="ProviderFeatures\AzureProviderFeatureCmdletsBase.cs" />
     <Compile Include="ProviderFeatures\GetAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryBaseCmdlet.cs" />
@@ -197,6 +197,7 @@
     <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\NewAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleDefinitions\GetAzureRoleDefinitionCommand.cs" />
+    <Compile Include="Providers\GetAzureSecurableActionCommand.cs" />
     <Compile Include="Templates\TestAzureResourceGroupTemplateCommand.cs" />
     <Compile Include="Templates\SaveAzureResourceGroupGalleryTemplateCommand.cs" />
     <Compile Include="Templates\GetAzureResourceGroupGalleryTemplateCommand.cs" />

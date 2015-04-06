@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             Deployment deployment = new Deployment
             {
-                Properties = new DeploymentProperties {
+             Properties = new DeploymentProperties {
                     Mode = DeploymentMode.Incremental,
                     Template = GetTemplate(parameters.TemplateFile, parameters.GalleryTemplateIdentity),
                     Parameters = GetDeploymentParameters(parameters.TemplateParameterObject)
@@ -455,6 +455,32 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 .Distinct(StringComparer.InvariantCultureIgnoreCase)
                 .Select(resourceId => new ResourceIdentifier(resourceId))
                 .ToArray();
+        }
+
+        public IList<PSResourceProviderOperation> ListPSProviderOperations(Dictionary<string, string> resourceProvidersToQuery)
+        {
+            IList<PSResourceProviderOperation> allProviderOperations = new List<PSResourceProviderOperation>();
+
+            foreach (KeyValuePair<string, string> kvp in resourceProvidersToQuery)
+            {
+                ResourceIdentity identity = new ResourceIdentity()
+                {
+                    ResourceName = string.Empty,
+                    ResourceType = "operations",
+                    ResourceProviderNamespace = kvp.Key,
+                    ResourceProviderApiVersion = kvp.Value
+                };
+
+                var ops = this.ResourceManagementClient.ResourceProviderOperationDetails.List(identity);
+
+                // Add operations for this provider. 
+                foreach (var operationDetail in ops.ResourceProviderOperationDetails)
+                {
+                    allProviderOperations.Add(operationDetail.ToPSResourceProviderOperation());
+                }
+            }
+
+            return allProviderOperations;
         }
     }
 }
