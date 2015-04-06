@@ -179,12 +179,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     try
                     {
                         HttpWebResponse response = webEx.Response as HttpWebResponse;
-						if (response.StatusCode == HttpStatusCode.NotFound)
-						{
-							this.WriteVerbose("");
-						}
-						
-                        WriteVerbose(string.Format(Resources.WebExceptionMessage, response.StatusCode));
+						WriteVerbose(string.Format(Resources.WebExceptionMessage, response.StatusCode));
                     }
                     catch (Exception)
                     {
