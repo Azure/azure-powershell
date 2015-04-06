@@ -47,6 +47,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region AgentRegistrationInforamtion
         Microsoft.Azure.Commands.Automation.Model.AgentRegistration GetAgentRegistration(string resourceGroupName, string automationAccountName);
+
+        Microsoft.Azure.Commands.Automation.Model.AgentRegistration NewAgentRegistrationKey(string resourceGroupName, string automationAccountName, string keyType);
         #endregion
     }
 }

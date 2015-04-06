@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = automationAccountName;
             this.PrimaryKey = agentRegistration.Keys.Primary;
             this.SecondaryKey = agentRegistration.Keys.Secondary;
-            this.EndPoint = agentRegistration.Endpoint;
+            this.Endpoint = agentRegistration.Endpoint;
         }
 
         /// <summary>
@@ -81,6 +81,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the pull server end point
         /// </summary>
-        public string EndPoint{ get; set; }
+        public string Endpoint{ get; set; }
     }
 }

@@ -90,6 +90,24 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return new Model.AgentRegistration(resourceGroupName, automationAccountName, agentRegistration);
         }
 
+        public Model.AgentRegistration NewAgentRegistrationKey(
+            string resourceGroupName,
+            string automationAccountName,
+            string keyType)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("KeyType", keyType).NotNull();
+
+            AgentRegistrationRegenerateKeyParameter keyName = new AgentRegistrationRegenerateKeyParameter() { KeyName = keyType};
+
+            var agentRegistration = this.automationManagementClient.AgentRegistrationInformation.RegenerateKey(
+                resourceGroupName,
+                automationAccountName,
+                keyName).AgentRegistration;
+
+            return new Model.AgentRegistration(resourceGroupName, automationAccountName, agentRegistration);
+        }
         #endregion
     }
 }
