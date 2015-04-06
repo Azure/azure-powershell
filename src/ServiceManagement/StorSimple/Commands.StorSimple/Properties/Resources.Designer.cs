@@ -313,6 +313,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide an encryption key consisting of printable ASCII characters.
+        /// </summary>
+        internal static string EncryptionKeyNotAcceptableMessage {
+            get {
+                return ResourceManager.GetString("EncryptionKeyNotAcceptableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not retrieve encryption key for device. Please make sure you have specified the correct device..
         /// </summary>
         internal static string ErrorRetrievingDevicePublicKey {
