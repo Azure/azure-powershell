@@ -264,6 +264,48 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Creates a test user for use in Scenario tests.
+        /// </summary>
+        public static void CreateTestUser(BatchController controller, BatchAccountContext context, string poolName, string vmName, string userName)
+        {
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            NewUserParameters parameters = new NewUserParameters()
+            {
+                Context = context,
+                PoolName = poolName,
+                VMName = vmName,
+                UserName = userName,
+                Password = "Password1234!",
+                AdditionalBehaviors = behaviors
+            };
+
+            client.CreateUser(parameters);
+        }
+
+        /// <summary>
+        /// Deletes a user used in a Scenario test.
+        /// </summary>
+        public static void DeleteUser(BatchController controller, BatchAccountContext context, string poolName, string vmName, string userName)
+        {
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            RemoveUserParameters parameters = new RemoveUserParameters()
+            {
+                Context = context,
+                PoolName = poolName,
+                VMName = vmName,
+                UserName = userName,
+                AdditionalBehaviors = behaviors
+            };
+            client.DeleteUser(parameters);
+        }
+
+        /// <summary>
         /// Creates an interceptor that can be used to support the HTTP recorder scenario tests.
         /// This behavior grabs the outgoing Protocol request, converts it to an HttpRequestMessage compatible with the 
         /// HTTP recorder, sends the request through the HTTP recorder, and converts the response to an HttpWebResponse
@@ -424,6 +466,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             if (createCommandMethod != null)
             {
                 object command = createCommandMethod.Invoke(batchRequest, null);
+                FieldInfo preProcessField = command.GetType().GetField("PreProcessResponse", BindingFlags.Public | BindingFlags.Instance);
+                if (preProcessField != null)
+                {
+                    Delegate preProcessDelegate = preProcessField.GetValue(command) as Delegate;
+                    if (preProcessDelegate != null)
+                    {
+                        preProcessDelegate.DynamicInvoke(command, webResponse, null, null);
+                    }
+                }
 
                 FieldInfo postProcessField = command.GetType().GetField("PostProcessResponse", BindingFlags.Public | BindingFlags.Instance);
                 if (postProcessField != null)

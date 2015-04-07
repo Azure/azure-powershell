@@ -171,6 +171,7 @@
     <Compile Include="ScenarioTests\PoolTests.cs" />
     <Compile Include="ScenarioTests\ScenarioTestHelpers.cs" />
     <Compile Include="ScenarioTests\TaskTests.cs" />
+    <Compile Include="ScenarioTests\UserTests.cs" />
     <Compile Include="ScenarioTests\VMTests.cs" />
     <Compile Include="ScenarioTests\WorkItemTests.cs" />
     <Compile Include="Tasks\GetBatchTaskCommandTests.cs" />
@@ -204,6 +205,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\TaskTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\UserTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\VMTests.ps1">
@@ -345,6 +349,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListTasksWithMaxCount.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.UserTests\TestCreateUser.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.UserTests\TestCreateUserPipeline.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.UserTests\TestDeleteUser.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.VMTests\TestGetVMByName.json">
