@@ -119,6 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Edition = Edition,
                 ElasticPoolName = ElasticPoolName,
                 StorageMB = StorageMB,
+                Location = model.FirstOrDefault().Location,
             });
             return newEntity;
         }

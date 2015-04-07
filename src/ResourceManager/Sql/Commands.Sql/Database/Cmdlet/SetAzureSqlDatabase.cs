@@ -72,14 +72,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string ElasticPoolName { get; set; }
 
         /// <summary>
-        /// Gets or sets the location of the database
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Location the database is in")]
-        public string Location { get; set; }
-
-        /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
@@ -116,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 RequestedServiceObjectiveName = RequestedServiceObjectiveName,
                 Tags = Tags,
                 ElasticPoolName = ElasticPoolName,
-                Location = Location,
+                Location = model.FirstOrDefault().Location,
             });
             return newEntity;
         }

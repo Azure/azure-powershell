@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// gets or sets the requested service objective ID
         /// </summary>
-        public Guid RequestedServiceObjectiveId { get; set; }
+        public Guid? RequestedServiceObjectiveId { get; set; }
 
         /// <summary>
         /// Gets or sets the requested service objective name

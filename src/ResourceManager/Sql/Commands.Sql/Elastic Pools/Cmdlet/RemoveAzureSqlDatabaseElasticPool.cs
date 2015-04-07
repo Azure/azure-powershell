@@ -78,8 +78,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlDatabaseElasticPoolDescription, this.ServerName, this.ElasticPoolName),
-               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlDatabaseElasticPoolWarning, this.ServerName, this.ElasticPoolName),
+               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlDatabaseElasticPoolDescription, this.ElasticPoolName, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlDatabaseElasticPoolWarning, this.ElasticPoolName, this.ServerName),
                Resources.ShouldProcessCaption))
             {
                 return;

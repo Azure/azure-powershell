@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         {
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, Util.GenerateTracingId(), new ElasticPoolCreateOrUpdateParameters()
             {
+                Location = model.Location,
                 Properties = new ElasticPoolCreateOrUpdateProperties()
                 {
                     DatabaseDtuMax = model.DatabaseDtuMax,
@@ -166,6 +167,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             model.State = pool.Properties.State;
             model.StorageMB = pool.Properties.StorageMB;
             model.Tags = pool.Tags as Dictionary<string,string>;
+            model.Location = pool.Location;
 
             DatabaseEdition edition = DatabaseEdition.None;
             Enum.TryParse<DatabaseEdition>(pool.Properties.Edition, out edition);

@@ -90,7 +90,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 {
                     SqlAdminPassword = this.SqlAdminPassword,
                     Tags = this.Tags,
-                    ServerVersion = this.ServerVersion
+                    ServerVersion = this.ServerVersion,
+                    Location = model.FirstOrDefault().Location,
                 });
             return updateData;
         }

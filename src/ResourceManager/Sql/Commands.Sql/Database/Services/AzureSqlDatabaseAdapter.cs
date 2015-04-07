@@ -90,13 +90,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         {
             var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters()
             {
+                Location = model.Location,
                 Properties = new DatabaseCreateOrUpdateProperties()
                 {
                     Collation = model.CollationName,
-                    Edition = model.Edition.ToString(),
+                    Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
                     MaxSizeBytes = model.MaxSizeBytes,
                     RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
                     ElasticPoolName = model.ElasticPoolName,
+                    RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
                 }
             });
 
@@ -138,10 +140,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             model.Tags = database.Tags as Dictionary<string, string>;
             model.ElasticPoolName = database.Properties.ElasticPoolName;
             model.Location = database.Location;
-            
+
             Guid.TryParse(database.Properties.CurrentServiceObjectiveId, out id);
             model.CurrentServiceObjectiveId = id;
-            
+
             Guid.TryParse(database.Properties.DatabaseId, out id);
             model.DatabaseId = id;
 
