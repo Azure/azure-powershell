@@ -32,7 +32,7 @@ function Test-LoadBalancerCRUD-Public
     $inboundNatRuleName = Get-ResourceName
     $lbruleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -129,7 +129,7 @@ function Test-LoadBalancerCRUD-InternalDynamic
     $inboundNatRuleName = Get-ResourceName
     $lbruleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -226,7 +226,7 @@ function Test-LoadBalancerCRUD-InternalStatic
     $inboundNatRuleName = Get-ResourceName
     $lbruleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -323,7 +323,7 @@ function Test-LoadBalancerCRUD-PublicNoInboundNATRule
     $inboundNatRuleName = Get-ResourceName
     $lbruleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -414,7 +414,7 @@ function Test-LoadBalancerCRUD-InternalUsingId
     $inboundNatRuleName = Get-ResourceName
     $lbruleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -509,7 +509,7 @@ function Test-LoadBalancerCRUD-PublicUsingId
     $inboundNatRuleName = Get-ResourceName
     $lbruleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -604,7 +604,7 @@ function Test-LoadBalancerCRUD-PublicNoLbRule
     $inboundNatRuleName = Get-ResourceName
     $lbruleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -696,7 +696,7 @@ function Test-LoadBalancerChildResource
     $inboundNatRuleName = Get-ResourceName
     $lbruleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -885,7 +885,7 @@ function Test-LoadBalancerSet
     $inboundNatRuleName = Get-ResourceName
     $lbruleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 

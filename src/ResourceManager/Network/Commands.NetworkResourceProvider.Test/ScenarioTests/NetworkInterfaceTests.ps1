@@ -26,7 +26,7 @@ function Test-NetworkInterfaceCRUD
     $nicName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -103,7 +103,7 @@ function Test-NetworkInterfaceCRUDUsingId
     $nicName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -180,7 +180,7 @@ function Test-NetworkInterfaceCRUDStaticAllocation
     $nicName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -239,7 +239,7 @@ function Test-NetworkInterfaceNoPublicIpAddress
     $subnetName = Get-ResourceName
     $nicName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -307,7 +307,7 @@ function Test-NetworkInterfaceSet
     $domainNameLabel = Get-ResourceName
     $domainNameLabel2 = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
