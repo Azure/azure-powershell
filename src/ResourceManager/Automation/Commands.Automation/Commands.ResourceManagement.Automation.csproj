@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
+    <Compile Include="Cmdlet\SetAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationAccount.cs" />

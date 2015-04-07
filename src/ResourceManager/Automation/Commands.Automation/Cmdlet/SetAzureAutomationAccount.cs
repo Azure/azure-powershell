@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Creates azure automation accounts based on automation account name and location.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(AutomationAccount))]
-    public class NewAzureAutomationAccount : AzureAutomationBaseCmdlet
+    public class SetAzureAutomationAccount : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the automation account name.
@@ -36,12 +36,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Alias("AutomationAccountName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the location.
-        /// </summary>
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The geo region of the automation account")]
-        public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets the plan.
@@ -62,7 +56,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var account = this.AutomationClient.CreateAutomationAccount(this.ResourceGroupName, this.Name, this.Location, this.Plan, this.Tags);
+            var account = this.AutomationClient.UpdateAutomationAccount(this.ResourceGroupName, this.Name, this.Plan, this.Tags);
             this.WriteObject(account);
         }
     }

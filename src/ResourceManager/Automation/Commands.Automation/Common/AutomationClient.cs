@@ -78,7 +78,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
 
-            // todo fix paging
             return AutomationManagementClient
                 .ContinuationTokenHandler(
                     skipToken =>
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     }).Select(c => new Model.AutomationAccount(resourceGroupName, c));
         }
 
-        public Model.AutomationAccount GetAutomationAccount(string resourceGroupName, string automationAccountName)
+        public AutomationAccount GetAutomationAccount(string resourceGroupName, string automationAccountName)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
@@ -100,11 +99,14 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return new Model.AutomationAccount(resourceGroupName, account);
         }
 
-        public Model.AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName, string location)
+        public AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName, string location, string plan, IDictionary tags)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("Location", location).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).ValidAutomationAccountName();
+
+            IDictionary<string, string> accountTags = null;
+            if (tags != null) accountTags = tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
 
             var accountCreateParameters = new AutomationAccountCreateOrUpdateParameters()
             {
@@ -114,11 +116,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                    Sku = new Sku()
                    {
-                       // todo take input
-                        Name  = "Free",
-                        Capacity = 1,
+                        Name  = String.IsNullOrWhiteSpace(plan) ? Constants.DefaultPlan : plan,
                    }
-                }
+                },
+                Tags = accountTags
             };
 
             var account =
@@ -126,7 +127,46 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     accountCreateParameters).AutomationAccount;
 
 
-            return new Model.AutomationAccount(resourceGroupName, account);
+            return new AutomationAccount(resourceGroupName, account);
+        }
+
+        public AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName, string plan, IDictionary tags)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+
+            var automationAccount = GetAutomationAccount(resourceGroupName, automationAccountName);
+
+            IDictionary<string, string> accountTags = null;
+            if (tags != null)
+            {
+                accountTags = tags.Cast<DictionaryEntry>()
+                    .ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
+            }
+            else
+            {
+                accountTags = automationAccount.Tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString()); ;
+            }
+
+            var accountUpdateParameters = new AutomationAccountPatchParameters()
+            {
+                Name = automationAccountName,
+                Properties = new AutomationAccountPatchProperties()
+                {
+                    Sku = new Sku()
+                    {
+                        Name = String.IsNullOrWhiteSpace(plan) ? automationAccount.Plan : plan,
+                    }
+                },
+                Tags = accountTags, 
+            };
+
+            var account =
+                this.automationManagementClient.AutomationAccounts.Patch(resourceGroupName,
+                    accountUpdateParameters).AutomationAccount;
+
+
+            return new AutomationAccount(resourceGroupName, account);
         }
 
         public void DeleteAutomationAccount(string resourceGroupName, string automationAccountName)

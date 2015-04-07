@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const string Draft = "Draft";
 
+        public const string DefaultPlan = "Free";
+
         public const string AutomationServicePrefix = "OaasCS";
 
         public const string JobStartedByParameterName = "MicrosoftApplicationManagementStartedBy";
