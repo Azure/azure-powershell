@@ -21,16 +21,51 @@ namespace Commands.NetworkResourceProvider.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestLoadBalancerCRUD()
+        public void TestLoadBalancerCRUDPublic()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-Public");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestLoadBalancerCRUDUsingId()
+        public void TestLoadBalancerCRUDInternalDynamic()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUDUsingId");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalDynamic");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerCRUDInternalStatic()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalStatic");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerCRUDPublicNoInboundNATRule()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicNoInboundNATRule");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerCRUDPublicPublicNoLbRule()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicNoLbRule");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerCRUDInternalUsingId()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalUsingId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerCRUDPublicUsingId()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicUsingId");
         }
 
         [Fact]
