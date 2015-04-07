@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Resources
         private const string Operations = "operations";
 
         private const string WildCardCharacter = "*";
-                     
+
         /// <summary>
         /// Gets or sets the provider namespace
         /// </summary>
