@@ -149,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
                     }) as AuthenticationResult;
             var storeToCache = typeof(TokenCache).GetMethod("StoreToCache", BindingFlags.Instance | BindingFlags.NonPublic);
             storeToCache.Invoke(tokenCache,
-                new object[] { authenticationResult, "Common", "123", "123", 0 });
+                new object[] { authenticationResult, "Common", "123", "123", 0, null});
 
             tokenCache.AfterAccess.Invoke(args);
 
