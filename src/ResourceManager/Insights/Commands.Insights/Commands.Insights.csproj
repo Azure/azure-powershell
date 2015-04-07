@@ -80,6 +80,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alerts\AddAlertRuleCommandBase.cs" />
@@ -101,16 +102,22 @@
     <Compile Include="Events\GetAzureResourceProviderLogCommand.cs" />
     <Compile Include="Events\GetAzureSubscriptionIdLogCommand.cs" />
     <Compile Include="InsightsClientCmdletBase.cs" />
+    <Compile Include="InsightsCmdletBase.cs" />
     <Compile Include="ManagementCmdletBase.cs" />
+    <Compile Include="Metrics\FormatMetricsAsTableCommand.cs" />
+    <Compile Include="Metrics\GetMetricDefinitionsCommand.cs" />
+    <Compile Include="Metrics\GetMetricsCommand.cs" />
     <Compile Include="OutputClasses\ConversionExtensions.cs" />
     <Compile Include="OutputClasses\IPSEventData.cs" />
     <Compile Include="OutputClasses\IPSRuleCondition.cs" />
-    <Compile Include="OutputClasses\PSAutoscaleSetting.cs" />
-    <Compile Include="OutputClasses\PSAutoscaleSettingProperty.cs" />
     <Compile Include="OutputClasses\PSAlertRule.cs" />
     <Compile Include="OutputClasses\PSAlertRuleNoDetails.cs" />
     <Compile Include="OutputClasses\PSAlertRuleProperty.cs" />
+    <Compile Include="OutputClasses\PSAutoscaleSetting.cs" />
+    <Compile Include="OutputClasses\PSAutoscaleSettingProperty.cs" />
+    <Compile Include="OutputClasses\PSAvailabilityCollection.cs" />
     <Compile Include="OutputClasses\PSDictionaryElement.cs" />
+    <Compile Include="OutputClasses\PSDimensionCollection.cs" />
     <Compile Include="OutputClasses\PSEventData.cs" />
     <Compile Include="OutputClasses\PSEventDataAuthorization.cs" />
     <Compile Include="OutputClasses\PSEventDataHttpRequest.cs" />
@@ -120,6 +127,13 @@
     <Compile Include="OutputClasses\PSManagementItemDescriptor.cs" />
     <Compile Include="OutputClasses\PSManagementItemDescriptorWithDetails.cs" />
     <Compile Include="OutputClasses\PSManagementPropertyDescriptor.cs" />
+    <Compile Include="OutputClasses\PSMetric.cs" />
+    <Compile Include="OutputClasses\PSMetricDefinition.cs" />
+    <Compile Include="OutputClasses\PSMetricDefinitionNoDetails.cs" />
+    <Compile Include="OutputClasses\PSMetricNoDetails.cs" />
+    <Compile Include="OutputClasses\PSMetricValue.cs" />
+    <Compile Include="OutputClasses\PSMetricValuesCollection.cs" />
+    <Compile Include="OutputClasses\PSMetricTabularResult.cs" />
     <Compile Include="OutputClasses\PSThresholdRuleCondition.cs" />
     <Compile Include="OutputClasses\PSToStringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
